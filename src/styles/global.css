@@ -1,8 +1,44 @@
 /* Schriften self-hosted über npm – kein Aufruf an Google Fonts, damit ohne
-   Einwilligung keine IP-Adressen an Dritte gehen (DSGVO). */
+   Einwilligung keine IP-Adressen an Dritte gehen (DSGVO).
+
+   Nur noch eine Familie. Die Serifenschrift für Überschriften ist entfallen:
+   Sie steckte in jeder Überschrift, also im größten Inhaltsblock, und musste
+   damit vor dem ersten sichtbaren Wort geladen sein. Das Paket bleibt
+   installiert – der Befundbericht in bericht/ setzt sie weiterhin ein, aber
+   der ist ein eigenes Dokument und lädt seine Schriften selbst. */
 @import '@fontsource-variable/inter';
-@import '@fontsource-variable/fraunces';
 @import './tokens.css';
+
+/**
+ * Ersatzschrift mit angepassten Maßen.
+ *
+ * Bis die Schriftdatei da ist, zeigt der Browser die Systemschrift. Deren
+ * Buchstaben sind anders breit und anders hoch – beim Umschalten springt der
+ * Text, und genau dieser Sprung zählt in Lighthouse als Layoutverschiebung.
+ *
+ * Deshalb bekommt die Ersatzschrift hier die Maße der echten aufgerechnet:
+ *   size-adjust  gleicht die x-Höhe an (Inter 1118/2048 = 54,6 %,
+ *                Arial 1062/2048 = 51,9 % → 54,6/51,9 = 105,3 %)
+ *   ascent/descent sind Inters Werte (96,9 % / 24,1 %), geteilt durch
+ *                dieselbe Anpassung, weil sie sich auf die bereits
+ *                skalierte Schrift beziehen
+ *
+ * Ergebnis: Beide Fassungen belegen praktisch dieselbe Fläche. Der Wechsel
+ * bleibt sichtbar, aber nichts verschiebt sich.
+ */
+@font-face {
+  font-family: 'Inter Ersatz';
+  src:
+    local('Arial'),
+    local('Helvetica Neue'),
+    local('Helvetica'),
+    local('Liberation Sans'),
+    local('Roboto');
+  size-adjust: 105.3%;
+  ascent-override: 92%;
+  descent-override: 22.9%;
+  line-gap-override: 0%;
+}
 
 /* ─────────────────────────── Reset ─────────────────────────── */
 
@@ -145,28 +181,71 @@ li {
 
 /* ─────────────────────────── Typografie ─────────────────────────── */
 
+/**
+ * Überschriften.
+ *
+ * Die Laufweite ist an die Größe gekoppelt, nicht für alle gleich. Das ist
+ * der eigentliche Unterschied zwischen "Serifenlose benutzt" und "Serifenlose
+ * gesetzt": Bei 5 rem stehen dieselben Buchstabenabstände sichtbar zu weit
+ * auseinander, bei 1,3 rem kleben sie. Deshalb je Ebene ein eigener Wert.
+ *
+ * Gewicht 700 statt 600: Ohne Serifen trägt allein das Gewicht die Hierarchie.
+ * Das kostet nichts – die Datei ist variabel, jedes Gewicht zwischen 100 und
+ * 900 steckt bereits darin.
+ */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--schrift-titel);
-  font-weight: 600;
+  font-weight: 700;
   line-height: var(--zeile-eng);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--spur-titel);
   text-wrap: balance;
 }
 
 h1 {
   font-size: var(--t-3xl);
+  letter-spacing: var(--spur-display);
 }
 h2 {
   font-size: var(--t-2xl);
+  letter-spacing: -0.028em;
 }
 h3 {
   font-size: var(--t-xl);
+  line-height: 1.15;
 }
 h4 {
   font-size: var(--t-lg);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/**
+ * Kleine Versalzeile über einer Überschrift – in den Entwürfen das Element,
+ * das den Ton setzt. Versalien brauchen zusätzliche Laufweite, sonst wirken
+ * sie wie ein zusammengeschobener Block.
+ */
+.mikro {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--spur-mikro);
+  text-transform: uppercase;
+  color: var(--tinte-leise);
+}
+
+/**
+ * Ziffern in gleicher Breite, wo sie untereinander stehen oder sich ändern:
+ * Telefonnummern, Uhrzeiten, Preise, Tabellen. Ohne das wandert eine
+ * Öffnungszeit beim Wechsel von 09:00 auf 11:00 seitlich aus.
+ */
+.telefon-nr,
+time,
+td,
+th,
+.zahl {
+  font-variant-numeric: tabular-nums;
 }
 
 p {

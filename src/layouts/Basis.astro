@@ -8,6 +8,13 @@
  * durch bewusstes Klicken im Standortwähler.
  */
 import '../styles/global.css';
+/*
+ * Die Schriftdatei wird als Modul geladen, damit hier ihre endgültige,
+ * versionierte Adresse steht. Ein fest getippter Pfad wäre nach jedem
+ * Schriftupdate still falsch – der Preload liefe ins Leere und niemand
+ * bemerkte es, weil die Seite trotzdem funktioniert, nur langsamer.
+ */
+import schriftInter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import Navigation from '../components/Navigation.astro';
 import Fusszeile from '../components/Fusszeile.astro';
 import Brotkrumen from '../components/Brotkrumen.astro';
@@ -117,6 +124,16 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/*
+      Ganz oben, noch vor Titel und Stylesheet: Ohne Preload findet der Browser
+      die Schrift erst, nachdem er das Stylesheet geladen UND ausgewertet hat –
+      zwei Schritte, die nacheinander laufen. Der Hinweis hier startet den
+      Abruf sofort. `crossorigin` ist bei Schriften Pflicht, auch bei Dateien
+      von der eigenen Domain; ohne das Attribut lädt der Browser sie ein
+      zweites Mal.
+    */}
+    <link rel="preload" href={schriftInter} as="font" type="font/woff2" crossorigin />
 
     <title>{seitentitel}</title>
     <meta name="description" content={beschreibung} />

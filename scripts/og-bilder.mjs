@@ -38,8 +38,10 @@ async function schriftenVorbereiten() {
   const schriftOrdner = path.join(homedir(), '.fonts');
   await mkdir(schriftOrdner, { recursive: true });
 
+  // Eine Familie, wie auf der Website. Die Vorschaubilder sind das, was in
+  // sozialen Netzen und in Suchergebnissen von der Marke zu sehen ist – eine
+  // Schrift, die dort nirgends sonst vorkommt, wäre ein sichtbarer Bruch.
   const paare = [
-    ['@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2', 'ku64-fraunces.otf'],
     ['@fontsource-variable/inter/files/inter-latin-wght-normal.woff2', 'ku64-inter.otf'],
   ];
 
@@ -113,13 +115,13 @@ function svgBauen({ titel, unterzeile, fusszeile, akzent }) {
   <circle cx="1060" cy="512" r="230" fill="none" stroke="${akzent}" stroke-width="1.5" opacity="0.22"/>
   <circle cx="1060" cy="512" r="150" fill="none" stroke="${akzent}" stroke-width="1.5" opacity="0.14"/>
 
-  <text x="80" y="118" font-family="Fraunces" font-size="40" fill="${akzent}" letter-spacing="-1">KU64</text>
+  <text x="80" y="118" font-family="Inter" font-weight="700" font-size="40" fill="${akzent}" letter-spacing="-1.6">KU64</text>
   <text x="196" y="118" font-family="Inter" font-size="17" fill="#8f857d" letter-spacing="3">DIE ZAHNSPEZIALISTEN</text>
 
   ${zeilen
     .map(
       (z, i) =>
-        `<text x="80" y="${startY + i * groesse * 1.12}" font-family="Fraunces" font-size="${groesse}" fill="#f5f1ed" letter-spacing="-2">${esc(z)}</text>`,
+        `<text x="80" y="${startY + i * groesse * 1.12}" font-family="Inter" font-weight="700" font-size="${groesse}" fill="#f5f1ed" letter-spacing="${(groesse * -0.035).toFixed(1)}">${esc(z)}</text>`,
     )
     .join('\n  ')}
 
@@ -168,7 +170,12 @@ async function main() {
 
   for (const s of STANDORTE) {
     await bildSchreiben(`standort-${s.slug}.png`, {
-      titel: `Ihr Zahnarzt in ${s.bezirk ? `${s.ort}-${s.bezirk}` : s.ort}`,
+      // `ortsname` statt Ort und Bezirk zusammenzusetzen: Die Regel ergibt in
+      // Berlin "Berlin-Charlottenburg", in Potsdam aber
+      // "Potsdam-Berliner Vorstadt". Auf den Seiten war das längst behoben,
+      // hier nicht – und das Vorschaubild ist genau das, was beim Teilen und
+      // in den Suchergebnissen zu sehen ist.
+      titel: `Ihr Zahnarzt in ${s.ortsname}`,
       unterzeile: `KU64 ${s.name}`,
       fusszeile: `${s.strasse}, ${s.plz} ${s.ort} · ${s.telefon}`,
       akzent: s.akzent,

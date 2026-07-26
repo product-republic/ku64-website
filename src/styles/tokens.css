@@ -39,9 +39,35 @@
   --fehler-flaeche: #fdeceb;
   --info-flaeche: #eef3fb;
 
-  /* ── Typografie ───────────────────────────────────────────────── */
-  --schrift-titel: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
-  --schrift-text: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* ── Typografie ───────────────────────────────────────────────────
+   *
+   * EINE Familie für alles. Das ist zuerst eine Gestaltungsentscheidung nach
+   * den Entwürfen – dort steht die Serifenlose auch in den Überschriften, und
+   * die Wirkung entsteht aus Größe, Gewicht und Laufweite statt aus dem
+   * Wechsel der Schriftart.
+   *
+   * Es ist zugleich die wirksamste Maßnahme für die Ladezeit auf dieser
+   * Seite: Die zweite Familie war eine eigene Datei von 36 kB, die vor dem
+   * ersten Wort geladen sein musste, weil sie in jeder Überschrift steckt –
+   * also genau im größten Inhaltsblock, den Lighthouse misst. Ersatzlos
+   * gestrichen ist besser als jede Optimierung an ihr.
+   *
+   * `--schrift-titel` bleibt als eigener Name bestehen, obwohl es dieselbe
+   * Familie ist: Es sagt an der Aufrufstelle weiterhin "hier steht eine
+   * Überschrift", und eine spätere Markenentscheidung ließe sich an einer
+   * Stelle zurücknehmen.
+   */
+  --schrift-text:
+    'Inter Variable', 'Inter Ersatz', system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  --schrift-titel: var(--schrift-text);
+
+  /* Laufweite. Große Schrift braucht enger, kleine Versalien brauchen weiter –
+     ohne das wirkt dieselbe Schrift oben zerfasert und unten gedrängt. */
+  --spur-display: -0.035em;
+  --spur-titel: -0.025em;
+  --spur-normal: 0;
+  --spur-mikro: 0.1em;
 
   /* Fließende Größen – skalieren mit dem Viewport statt in Sprüngen. */
   --t-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.813rem);
@@ -53,7 +79,10 @@
   --t-3xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
   --t-4xl: clamp(2.75rem, 1.7rem + 4.4vw, 5rem);
 
-  --zeile-eng: 1.15;
+  /* Enger als zuvor: Eine Serifenlose in großem Grad verträgt weniger
+     Durchschuss als eine Serifenschrift, sonst zerfällt die Überschrift in
+     einzelne Zeilen statt einen Block zu bilden. */
+  --zeile-eng: 1.05;
   --zeile-normal: 1.5;
   --zeile-weit: 1.7;
 
