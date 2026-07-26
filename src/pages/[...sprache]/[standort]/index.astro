@@ -9,7 +9,9 @@ import { anzahlBehandelnde } from '../../../data/team';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
+import Kopfmedium from '../../../components/Kopfmedium.astro';
 import { STANDORTE } from '../../../data/standorte';
+import { kopfmediumFuer } from '../../../data/medien';
 import { schemaStandort, schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -26,6 +28,10 @@ const gruppen = daten.gruppen(standort.slug);
 const alleHier = daten.leistungenHier(standort.slug);
 const nichtHier = daten.leistungenAnderswo(standort.slug);
 const ortsname = standort.ortsname;
+
+/* Steht am Kopf dieses Standorts ein Video oder ein Foto? Davon hängt ab, ob
+   der Text darüber hell auf Schleier oder dunkel auf heller Fläche steht. */
+const medium = kopfmediumFuer(standort.slug);
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },
@@ -79,15 +85,33 @@ const schema = [
   brotkrumen={brotkrumen}
   schema={schema}
 >
-  <section class="held">
+  <section class:list={['held', medium && 'held-medium auf-medium']}>
+    {/* Liegt hinter dem Text und bringt den Standort selbst ins Bild – die
+        eigene Aufnahme dieses Standorts, nicht die vom Kurfürstendamm. */}
+    <Kopfmedium standortSlug={standort.slug} />
     <div class="huelle">
       <p class="held-marke">KU64 · {standort.ort}</p>
       <h1>Ihr Zahnarzt in {ortsname}</h1>
       <p class="held-claim">{standort.claim}</p>
 
       <div class="held-knoepfe">
-        <a href={`${pfad}termine/`} class="knopf knopf-primaer knopf-gross">Termin buchen</a>
-        <a href={`${pfad}leistungen/`} class="knopf knopf-sekundaer knopf-gross">
+        {/* Auf dem Medium ist die helle Pille die Hauptschaltfläche, auf
+            heller Fläche die dunkle. Beides ist dieselbe Rangfolge, nur
+            gegen den jeweiligen Grund gedacht. */}
+        <a
+          href={`${pfad}termine/`}
+          class:list={['knopf', 'knopf-gross', medium ? 'knopf-hell' : 'knopf-primaer']}
+        >
+          Termin buchen
+        </a>
+        <a
+          href={`${pfad}leistungen/`}
+          class:list={[
+            'knopf',
+            'knopf-gross',
+            medium ? 'knopf-sekundaer-auf-medium' : 'knopf-sekundaer',
+          ]}
+        >
           {alleHier.length} Behandlungen ansehen
         </a>
       </div>
@@ -250,11 +274,43 @@ const schema = [
 <style>
   .held {
     padding-block: clamp(var(--raum-7), 9vw, var(--raum-10)) var(--raum-8);
+    /* Ohne Medium: ein Hauch Hausfarbe im Verlauf, mehr nicht. Das war vorher
+       eine kräftigere Fläche – Gelb tritt jetzt überall zurück. */
     background: linear-gradient(
       160deg,
-      color-mix(in oklab, var(--akzent) 11%, var(--flaeche)),
-      var(--flaeche) 62%
+      color-mix(in oklab, var(--akzent) 6%, var(--flaeche)),
+      var(--flaeche) 58%
     );
+  }
+
+  /**
+   * Mit Video oder Foto im Rücken.
+   *
+   * `position: relative` und `isolation` kommen aus `.auf-medium`; hier steht
+   * nur, was die Fläche ausmacht: keine eigene Hintergrundfarbe (das Medium
+   * liegt darunter), mehr Höhe, damit das Bild wirken kann, und unten die
+   * runde Kante, die die Entwürfe durchgehend zeigen.
+   */
+  .held-medium {
+    background: none;
+    padding-block: clamp(var(--raum-8), 13vw, 11rem) clamp(var(--raum-7), 8vw, var(--raum-9));
+    border-end-start-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  /* Auf dem Schleier tragen die Trennlinien der Faktenzeile nicht mehr –
+     eine dunkle Linie verschwindet dort, eine weiße wäre zu hart. */
+  .held-medium .held-fakten {
+    border-top-color: rgb(255 255 255 / 0.28);
+  }
+
+  .held-medium .held-marke {
+    color: var(--auf-medium-schrift-leise);
+  }
+
+  .held-medium .held-claim {
+    color: var(--auf-medium-schrift);
   }
 
   .held-marke {

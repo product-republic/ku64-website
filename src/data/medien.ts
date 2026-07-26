@@ -86,6 +86,40 @@ export function kopfvideoFuer(standortSlug: string): Kopfvideo | undefined {
 }
 
 /**
+ * Standbild für Standorte ohne eigenes Kopfvideo.
+ *
+ * Wilmersdorf hat kein Video – aber eine Außenansicht, und die beantwortet
+ * am Kopf der Standortseite die wichtigste Frage überhaupt: Ist das das
+ * Haus, vor dem ich gleich stehe? Ein Foto ist hier nicht der Notbehelf für
+ * ein fehlendes Video, sondern für diesen Standort die bessere Antwort.
+ *
+ * Der Wert ist ein Schlüssel aus dem Bildverzeichnis, kein Pfad: Damit gilt
+ * auch am Seitenkopf die Nachweispflicht aus `src/lib/bilder.ts`.
+ */
+export const KOPFBILDER: Record<string, string> = {
+  wilmersdorf: 'wilmersdorf-aussenansicht',
+};
+
+export type Kopfmedium =
+  | { art: 'video'; video: Kopfvideo }
+  | { art: 'bild'; schluessel: string };
+
+/**
+ * Was am Kopf dieses Standorts steht – Video, Bild oder nichts.
+ *
+ * Die Seite muss das vor dem Rendern wissen: Über einem Medium steht heller
+ * Text auf einem Schleier, ohne Medium dunkler Text auf heller Fläche. Das
+ * ist keine Kleinigkeit, sondern der Unterschied zwischen lesbar und nicht.
+ */
+export function kopfmediumFuer(standortSlug: string): Kopfmedium | undefined {
+  const video = kopfvideoFuer(standortSlug);
+  if (video) return { art: 'video', video };
+  const schluessel = KOPFBILDER[standortSlug];
+  if (schluessel) return { art: 'bild', schluessel };
+  return undefined;
+}
+
+/**
  * Videos, die zu einer Behandlung gehören statt zu einem Ort.
  * Noch nicht eingebunden – erst mit den Seiten, auf die sie gehören.
  */

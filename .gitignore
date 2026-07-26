@@ -24,3 +24,8 @@ bericht/KU64-Befundbericht.pdf
 analyse/altbestand/medien-bericht.md
 analyse/altbestand/medien-benutzt.txt
 analyse/altbestand/medien-kopieren.sh
+
+# Die heruntergeladenen Originale der alten Website. Rohmaterial, aus dem
+# `medien-auswahl.mjs` die Übernahme rechnet – die Auswahl liegt im Repo, der
+# 300-MB-Bestand dahinter nicht.
+analyse/altbestand/roh/
