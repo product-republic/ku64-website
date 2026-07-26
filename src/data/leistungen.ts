@@ -17,7 +17,10 @@
  * bestätigen lassen. Siehe ANALYSE.md, Abschnitt "Offene Datenpunkte".
  */
 
-import { STANDORT_SLUGS } from './standorte';
+// Endung bewusst mitgeschrieben: Das Skript scripts/og-bilder.mjs lädt diese
+// Datei direkt mit Node (ohne Vite), und Node löst erweiterungslose relative
+// Importe in ESM nicht auf.
+import { STANDORT_SLUGS } from './standorte.ts';
 
 export interface Kategorie {
   slug: string;

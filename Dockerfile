@@ -4,6 +4,11 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
+# fontconfig wird gebraucht, damit die Vorschaubilder (scripts/og-bilder.mjs)
+# die Markenschriften finden. Ohne das Paket rendert librsvg leere Kacheln –
+# das Skript bricht in dem Fall bewusst mit einer Prüfung ab.
+RUN apk add --no-cache fontconfig ttf-dejavu
+
 # Abhängigkeiten zuerst – so bleibt die Layer bei reinen Code-Änderungen im Cache.
 COPY package*.json ./
 RUN npm ci

@@ -4,10 +4,13 @@
   "description": "",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "og:bilder": "node --experimental-strip-types scripts/og-bilder.mjs",
+    "build": "npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs",
+    "build:schnell": "astro build",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
-    "check": "astro check"
+    "check": "astro check",
+    "bilder:pruefen": "node scripts/bilder-pruefen.mjs"
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,8 @@
     "sharp": "^0.35.3"
   },
   "type": "module",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "wawoff2": "^2.0.1"
+  }
 }

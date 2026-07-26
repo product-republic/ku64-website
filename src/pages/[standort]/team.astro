@@ -65,7 +65,17 @@ if (team.length > 0) {
             <div class="raster">
               {team.map((m) => (
                 <article class="karte person">
-                  {m.foto && <img src={m.foto} alt="" width="320" height="320" loading="lazy" />}
+                  {/* Porträts brauchen einen beschreibenden Alternativtext –
+                      ein leeres alt macht die Person für Screenreader unsichtbar. */}
+                  {m.foto && (
+                    <img
+                      src={m.foto}
+                      alt={`${m.name}, ${m.funktion} bei KU64 ${standort.name}`}
+                      width="320"
+                      height="320"
+                      loading="lazy"
+                    />
+                  )}
                   <h2>{m.name}</h2>
                   <p class="funktion">{m.funktion}</p>
                   {m.vorstellung && <p class="text">{m.vorstellung}</p>}

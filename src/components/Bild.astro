@@ -1,0 +1,87 @@
+---
+/**
+ * Einzige zugelassene Art, ein Bild auf dieser Website anzuzeigen.
+ *
+ * Der Kern: Fehlt der Nachweis oder ist er unvollständig, wird **nichts**
+ * gerendert – kein Platzhalter, kein graues Kästchen, kein Ersatzmotiv. Eine
+ * Seite ohne Bild ist ein gültiger Zustand, ein Bild ohne geklärte Herkunft
+ * nicht.
+ *
+ * In der Entwicklung erscheint stattdessen ein sichtbarer Hinweis, damit die
+ * Lücke nicht vergessen wird. In Produktion bleibt die Stelle einfach leer.
+ */
+import { getBild, nachweisGueltig, type Bildnachweis } from '../lib/bilder';
+
+interface Props {
+  /** Schlüssel aus dem Bildverzeichnis in src/lib/bilder.ts. */
+  schluessel: string;
+  /** Beschreibt der Redaktion, was hier stehen soll, solange nichts vorliegt. */
+  erwartet?: string;
+  klasse?: string;
+  /** Erstes Bild im sichtbaren Bereich nicht verzögert laden. */
+  vorrang?: boolean;
+}
+
+const { schluessel, erwartet, klasse, vorrang = false } = Astro.props;
+
+const bild: Bildnachweis | undefined = getBild(schluessel);
+const pruefung = bild ? nachweisGueltig(bild) : { ok: false, grund: 'Kein Eintrag im Bildverzeichnis.' };
+const zeigeLuecke = import.meta.env.DEV && !pruefung.ok;
+---
+
+{
+  bild && pruefung.ok ? (
+    <figure class:list={['bild', klasse]}>
+      <img
+        src={bild.pfad}
+        alt={bild.alt}
+        width={bild.breite}
+        height={bild.hoehe}
+        loading={vorrang ? 'eager' : 'lazy'}
+        decoding={vorrang ? 'sync' : 'async'}
+        fetchpriority={vorrang ? 'high' : 'auto'}
+      />
+    </figure>
+  ) : zeigeLuecke ? (
+    <div class="luecke" role="note">
+      <strong>Bild fehlt: {schluessel}</strong>
+      <span>{pruefung.grund}</span>
+      {erwartet && <span>Erwartet: {erwartet}</span>}
+      <span class="regel">
+        Kein Stock-Foto einsetzen. Echte Aufnahme oder gar nichts – siehe BILDER.md.
+      </span>
+    </div>
+  ) : null
+}
+
+<style>
+  .bild {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--flaeche-warm);
+  }
+
+  .bild img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Nur in der Entwicklung sichtbar. */
+  .luecke {
+    display: grid;
+    gap: var(--raum-1);
+    padding: var(--raum-4);
+    border: 2px dashed var(--warnung);
+    border-radius: var(--radius);
+    background: var(--warnung-flaeche);
+    color: var(--warnung);
+    font-size: var(--t-xs);
+    line-height: var(--zeile-normal);
+  }
+
+  .luecke .regel {
+    font-weight: 600;
+  }
+</style>
