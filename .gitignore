@@ -15,3 +15,6 @@ public/og/
 # Repo-Historie. Die Auswertungen daraus schon.
 analyse/altbestand/htaccess.b64
 analyse/altbestand/htaccess.txt
+
+# Der Bericht wird aus vorlage.html + eingebetteten Schriften erzeugt.
+bericht/befundbericht.html

@@ -1,0 +1,671 @@
+<title>Befundbericht ku64.de</title>
+
+<style>
+  @font-face {
+    font-family: 'Inter KU';
+    src: url('__SCHRIFT_INTER__') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Fraunces KU';
+    src: url('__SCHRIFT_FRAUNCES__') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap;
+  }
+
+  /* ── Token ──────────────────────────────────────────────────────
+     Neutrale mit leichtem Blaustich – ein reines Mittelgrau wirkt
+     unentschieden. Der Markenakzent ist dem Abschnitt über den Neubau
+     vorbehalten; Schweregrade laufen auf einer eigenen Skala, damit
+     Akzent und Signal nicht miteinander konkurrieren. */
+  :root {
+    --grund: #f6f8fb;
+    --flaeche: #ffffff;
+    --flaeche-2: #eef1f6;
+    --tinte: #151922;
+    --tinte-2: #47506180;
+    --slate: #576075;
+    --linie: #dde2ec;
+    --linie-2: #c6cedd;
+
+    --ku: #e8532e;
+    --kritisch: #b4291f;
+    --hoch: #9a6b12;
+    --mittel: #3f5da8;
+    --ok: #1f7a52;
+
+    --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+    --mass: 68ch;
+    --raum: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --grund: #0f1319;
+      --flaeche: #171c25;
+      --flaeche-2: #1e2532;
+      --tinte: #eef1f7;
+      --tinte-2: #9aa4b8;
+      --slate: #98a2b8;
+      --linie: #262e3c;
+      --linie-2: #384254;
+
+      --ku: #ff7350;
+      --kritisch: #f0705f;
+      --hoch: #d6a54a;
+      --mittel: #7c9aec;
+      --ok: #4fb98a;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --grund: #0f1319;
+    --flaeche: #171c25;
+    --flaeche-2: #1e2532;
+    --tinte: #eef1f7;
+    --tinte-2: #9aa4b8;
+    --slate: #98a2b8;
+    --linie: #262e3c;
+    --linie-2: #384254;
+    --ku: #ff7350;
+    --kritisch: #f0705f;
+    --hoch: #d6a54a;
+    --mittel: #7c9aec;
+    --ok: #4fb98a;
+  }
+
+  :root[data-theme='light'] {
+    --grund: #f6f8fb;
+    --flaeche: #ffffff;
+    --flaeche-2: #eef1f6;
+    --tinte: #151922;
+    --tinte-2: #47506180;
+    --slate: #576075;
+    --linie: #dde2ec;
+    --linie-2: #c6cedd;
+    --ku: #e8532e;
+    --kritisch: #b4291f;
+    --hoch: #9a6b12;
+    --mittel: #3f5da8;
+    --ok: #1f7a52;
+  }
+
+  /* ── Grundlagen ─────────────────────────────────────────────── */
+
+  body {
+    margin: 0;
+    background: var(--grund);
+    color: var(--tinte);
+    font-family: 'Inter KU', system-ui, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .blatt {
+    max-width: 60rem;
+    margin-inline: auto;
+    padding: var(--raum);
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces KU', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h1 { font-size: clamp(2rem, 5vw, 3rem); }
+  h2 { font-size: clamp(1.4rem, 3vw, 1.85rem); }
+  h3 { font-size: 1.1rem; }
+
+  p { margin: 0; max-width: var(--mass); }
+
+  a { color: inherit; text-underline-offset: 0.2em; }
+
+  code, .mono { font-family: var(--mono); font-size: 0.86em; }
+
+  :focus-visible { outline: 2px solid var(--ku); outline-offset: 3px; }
+
+  section { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .etikett {
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  /* ── Kopf ───────────────────────────────────────────────────── */
+
+  .kopf {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-block-end: 2rem;
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .kopf p { color: var(--slate); font-size: 1.05rem; }
+
+  .stand {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.83rem;
+    color: var(--slate);
+  }
+
+  .stand span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+  .punkt {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--ok); flex-shrink: 0;
+  }
+  .punkt.laeuft { background: var(--hoch); }
+
+  /* ── Kennzahlen ─────────────────────────────────────────────── */
+
+  .zahlen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1px;
+    background: var(--linie);
+    border: 1px solid var(--linie);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .zahl {
+    background: var(--flaeche);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .zahl b {
+    font-family: 'Fraunces KU', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .zahl small { font-size: 0.78rem; color: var(--slate); line-height: 1.4; }
+
+  /* ── Befund ─────────────────────────────────────────────────── */
+
+  .befund {
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-left: 3px solid var(--stufe, var(--linie-2));
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .befund.kritisch { --stufe: var(--kritisch); }
+  .befund.hoch { --stufe: var(--hoch); }
+  .befund.mittel { --stufe: var(--mittel); }
+
+  .befund-kopf {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.9rem;
+  }
+
+  .kennung {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--stufe);
+  }
+
+  .stufe {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stufe);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+
+  .befund h3 { flex: 1 1 100%; }
+
+  .beleg {
+    background: var(--flaeche-2);
+    border-radius: 7px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    line-height: 1.7;
+    white-space: pre;
+    color: var(--tinte);
+  }
+
+  .folge {
+    font-size: 0.93rem;
+    color: var(--slate);
+    padding-top: 0.15rem;
+    border-top: 1px solid var(--linie);
+    padding-block-start: 0.9rem;
+  }
+
+  .folge b { color: var(--tinte); font-weight: 600; }
+
+  /* ── Tabelle ────────────────────────────────────────────────── */
+
+  .tabelle-huelle {
+    overflow-x: auto;
+    border: 1px solid var(--linie);
+    border-radius: 10px;
+    background: var(--flaeche);
+  }
+
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+
+  th, td {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--linie);
+  }
+
+  thead th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    background: var(--flaeche-2);
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  td.zahlenspalte { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+  .balken {
+    display: inline-block;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--slate);
+    opacity: 0.45;
+    vertical-align: middle;
+    margin-right: 0.6rem;
+  }
+
+  /* ── Neubau: einziger Ort mit Markenakzent ──────────────────── */
+
+  .neubau {
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-top: 3px solid var(--ku);
+    border-radius: 10px;
+    padding: 1.6rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .neubau .etikett { color: var(--ku); }
+
+  .liste { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.45rem; max-width: var(--mass); }
+  .liste li { padding-left: 0.2rem; }
+  .liste ::marker { color: var(--slate); }
+
+  .adresse {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    word-break: break-all;
+    background: var(--flaeche-2);
+    border-radius: 7px;
+    padding: 0.7rem 0.9rem;
+  }
+
+  /* ── Offen ──────────────────────────────────────────────────── */
+
+  .offen { display: grid; gap: 1px; background: var(--linie); border: 1px solid var(--linie); border-radius: 10px; overflow: hidden; }
+
+  .offen-zeile {
+    background: var(--flaeche);
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 1rem;
+    align-items: baseline;
+  }
+
+  .offen-zeile p { font-size: 0.88rem; color: var(--slate); grid-column: 1 / -1; }
+
+  .warte {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hoch);
+    white-space: nowrap;
+  }
+  .warte.bereit { color: var(--ok); }
+
+  /* ── Fuß ────────────────────────────────────────────────────── */
+
+  .fuss {
+    border-top: 1px solid var(--linie);
+    padding-top: 1.75rem;
+    font-size: 0.85rem;
+    color: var(--slate);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .fuss strong { color: var(--tinte); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="blatt">
+
+  <header class="kopf">
+    <p class="etikett">Befundbericht · Altbestand ku64.de</p>
+    <h1>Was die Weiterleitungstabelle über die alte Website verrät</h1>
+    <p>
+      Auswertung der Server-Konfiguration von ku64.de. Alle Befunde in diesem
+      Bericht stammen aus der ausgelieferten <code>.htaccess</code> der
+      Live-Website und sind am Quelltext nachprüfbar – es sind keine Schätzungen.
+    </p>
+    <div class="stand">
+      <span><i class="punkt"></i> Stand 26. Juli 2026</span>
+      <span><i class="punkt"></i> Quelle: Server-Backup, 21,8 KB Konfiguration</span>
+      <span><i class="punkt laeuft"></i> Datenbank steht noch aus</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Kurzfassung</h2>
+    <p>
+      Die alte Website trägt <strong>168 aktive Weiterleitungen</strong> – eine
+      über Jahre gewachsene Schicht, die drei Umbauten überlebt hat. In dieser
+      Schicht stecken drei belegbare Fehler, von denen einer seit Jahren jeden
+      unverschlüsselten Aufruf betrifft.
+    </p>
+    <p>
+      Der wichtigere Befund ist aber struktureller Natur: Die Website hat nicht
+      eine Informationsarchitektur, sondern <strong>zwei konkurrierende</strong>.
+      Potsdam und Berlin-Mitte haben eigene Unterbäume mit eigenen
+      Leistungsseiten. Der Kurfürstendamm hat keinen – seine Leistungen belegen
+      den standortlosen Hauptzweig <code>/leistungen/</code> und geben sich
+      damit als „die“ Leistungsstruktur aus. Genau daran rutschen Patientinnen
+      und Patienten aus ihrem Standort heraus.
+    </p>
+
+    <div class="zahlen">
+      <div class="zahl"><b>168</b><small>aktive Weiterleitungen</small></div>
+      <div class="zahl"><b>18</b><small>Weiterleitungsketten</small></div>
+      <div class="zahl"><b>4</b><small>Sprünge im schlimmsten Fall</small></div>
+      <div class="zahl"><b>0</b><small>Endlosschleifen</small></div>
+      <div class="zahl"><b>3</b><small>belegte Fehler</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Die drei Fehler</h2>
+
+    <article class="befund kritisch">
+      <div class="befund-kopf">
+        <span class="kennung">F-1</span>
+        <span class="stufe">kritisch</span>
+        <h3>Die Weiterleitung von HTTP auf HTTPS kann nicht funktionieren</h3>
+      </div>
+      <div class="beleg"># redirect http to https
+RewriteCond %{HTTPS} !=on
+Redirect 301 (.*) https://%{HTTP_HOST}%{REQUEST_URI}</div>
+      <p>Diese drei Zeilen scheitern aus drei voneinander unabhängigen Gründen:</p>
+      <ol class="liste">
+        <li>
+          <code>RewriteCond</code> gehört zu mod_rewrite und wirkt ausschließlich
+          auf eine nachfolgende <code>RewriteRule</code>. Auf ein
+          <code>Redirect</code> aus mod_alias hat sie keinerlei Einfluss – die
+          Bedingung läuft ins Leere.
+        </li>
+        <li>
+          <code>Redirect</code> erwartet als erstes Argument einen Pfad, der mit
+          <code>/</code> beginnt, keinen regulären Ausdruck. <code>(.*)</code>
+          wird wörtlich genommen und trifft auf keine echte Anfrage zu. Für
+          Muster wäre <code>RedirectMatch</code> nötig.
+        </li>
+        <li>
+          <code>%{HTTP_HOST}</code> und <code>%{REQUEST_URI}</code> sind
+          mod_rewrite-Variablen. mod_alias ersetzt sie nicht, sondern gäbe sie
+          wörtlich aus.
+        </li>
+      </ol>
+      <p class="folge">
+        <b>Passt zum Befund im Suchindex:</b> Die Leistungsübersicht ist als
+        <code>http://ku64.de/leistungen/</code> indexiert, also unverschlüsselt.
+        Ob HTTPS trotzdem erzwungen wird, kann nur der Hoster serverseitig
+        leisten – diese Datei tut es nicht. <b>Am Live-Server zu prüfen.</b>
+      </p>
+    </article>
+
+    <article class="befund hoch">
+      <div class="befund-kopf">
+        <span class="kennung">F-2</span>
+        <span class="stufe">hoch</span>
+        <h3>Achtzehn Weiterleitungsketten, die schlimmste mit vier Sprüngen</h3>
+      </div>
+      <div class="beleg">/dros-schiene
+  → /leistungen/kieferorthopaedie/dros-schiene
+  → /potsdam/kieferorthopadie/dros-schiene
+  → /potsdam/kieferorthopadie/cmd
+  → /potsdam</div>
+      <p>
+        Wer die DROS-Schiene sucht, wird viermal umgeleitet und landet auf der
+        Potsdamer Startseite – nicht bei der Schiene. Zwei weitere Ketten führen
+        über je drei Adressen zur Laserbehandlung.
+      </p>
+      <p class="folge">
+        Jeder Sprung kostet Ladezeit und verwässert das Linksignal;
+        Suchmaschinen folgen Ketten nur begrenzt weit. <b>Immerhin: keine
+        Endlosschleifen</b> – der Graph ist zyklenfrei.
+      </p>
+    </article>
+
+    <article class="befund hoch">
+      <div class="befund-kopf">
+        <span class="kennung">F-3</span>
+        <span class="stufe">hoch</span>
+        <h3>Ein Tippfehler schickt eine Weiterleitung garantiert ins Leere</h3>
+      </div>
+      <div class="beleg">Redirect 301 "/leistungen/beauty-cosmetics/hautarzt" \
+                "/leistugen/beauty-cosmetics"
+                  ^^^^^^^^^ fehlendes "n"</div>
+      <p class="folge">
+        Das Ziel <code>/leistugen/</code> existiert nicht. Diese Weiterleitung
+        produziert einen 404 – <b>seit dem Tag, an dem sie angelegt wurde</b>.
+        Drei weitere Regeln sind auskommentiert und damit wirkungslos.
+      </p>
+    </article>
+  </section>
+
+  <section>
+    <h2>Der Strukturbefund</h2>
+    <p>
+      Aus 168 Quell- und Zieladressen lässt sich der Aufbau der alten Website
+      rekonstruieren. Die Verteilung zeigt das Kernproblem deutlicher als jede
+      Einzelbeobachtung:
+    </p>
+
+    <div class="tabelle-huelle">
+      <table>
+        <thead>
+          <tr>
+            <th>Bereich</th>
+            <th>Nennungen</th>
+            <th>Was das bedeutet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>/team/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:64px"></i>64</td>
+            <td>Größter Bereich, tief nach Funktion verschachtelt</td>
+          </tr>
+          <tr>
+            <td><code>/blog/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:48px"></i>48</td>
+            <td>Umfangreiches Archiv, stark zusammengefasst</td>
+          </tr>
+          <tr>
+            <td><code>/potsdam/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:36px"></i>36</td>
+            <td><strong>Eigener Unterbaum mit eigenen Leistungsseiten</strong></td>
+          </tr>
+          <tr>
+            <td><code>/leistungen/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:14px"></i>14</td>
+            <td>Der standortlose Zweig – faktisch der Kurfürstendamm</td>
+          </tr>
+          <tr>
+            <td><code>/berlinmitte/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:11px"></i>11</td>
+            <td>Eigener Unterbaum</td>
+          </tr>
+          <tr>
+            <td><code>/zahnbeschwerden/</code></td>
+            <td class="zahlenspalte"><i class="balken" style="width:3px"></i>3</td>
+            <td>Einstieg über Symptome statt über Behandlungen</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Potsdam hat sehr wohl eigene Seiten – <code>/potsdam/bleaching</code>,
+      <code>/potsdam/zahnaesthetik</code>,
+      <code>/potsdam/parodontitisbehandlung</code>,
+      <code>/potsdam/anamnese</code>. Aber eben nur für einen Teil des
+      Angebots. Für jede Behandlung ohne eigenen Potsdam-Ordner existiert
+      ausschließlich der Kurfürstendamm-Zweig unter <code>/leistungen/</code>.
+    </p>
+    <p>
+      Das ist der Mechanismus hinter dem unfreiwilligen Standortwechsel: Es
+      braucht keinen Fehlklick. Die Struktur führt zwangsläufig dorthin.
+    </p>
+  </section>
+
+  <section>
+    <h2>Der Neubau</h2>
+
+    <div class="neubau">
+      <p class="etikett">Testumgebung · läuft</p>
+      <p>
+        Die neue Website behandelt <strong>alle vier Standorte gleich</strong>.
+        Jede Behandlungsseite gehört zu genau einem Ort und trägt dessen
+        Adresse, Telefonnummer, Sprechzeiten und Terminbuchung.
+      </p>
+      <div class="adresse">https://web-production-4452b1.up.railway.app</div>
+      <ul class="liste">
+        <li>193 statisch erzeugte Seiten, rund 2,5 KB JavaScript pro Seite</li>
+        <li>Keine externen Anfragen beim Seitenaufruf, keine Cookies ohne Einwilligung</li>
+        <li>
+          Fehlt eine Behandlung an einem Standort, wird das offen ausgewiesen und
+          gezielt dorthin verlinkt, wo es sie gibt – auch die Fehlerseite löst
+          diesen Fall konkret auf
+        </li>
+        <li>
+          Die alten Adressen <code>/leistungen/…</code> bleiben als Wegweiser
+          bestehen, damit weder Suchergebnisse noch fremde Verlinkungen brechen
+        </li>
+        <li>150 Vorschaubilder für Social Media, rein typografisch aus echten Standortdaten</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Was noch offen ist</h2>
+
+    <div class="offen">
+      <div class="offen-zeile">
+        <strong>Die Datenbank</strong>
+        <span class="warte">wird hochgeladen</span>
+        <p>
+          Das Server-Backup ist ein reines Dateibackup – die Seiteninhalte liegen
+          in MySQL. Erschwerend: Die Website läuft auf Elementor, das Inhalte
+          nicht in <code>post_content</code> ablegt, sondern als JSON in
+          <code>wp_postmeta</code>. Benötigt werden <code>wp_posts</code>
+          <em>und</em> <code>wp_postmeta</code>.
+        </p>
+      </div>
+      <div class="offen-zeile">
+        <strong>Echte Praxis- und Teamfotos</strong>
+        <span class="warte">wird hochgeladen</span>
+        <p>
+          Kommen mit <code>wp-content/uploads</code>. Generierte Bilder sind
+          hierfür ausgeschlossen: Ein erzeugter „Empfang KU64 Potsdam“ würde
+          einen realen Ort falsch darstellen – das wäre schlechter als ein
+          Stock-Foto, weil es behauptet, diese Praxis zu sein.
+        </p>
+      </div>
+      <div class="offen-zeile">
+        <strong>Ladezeiten am Live-Server</strong>
+        <span class="warte">blockiert</span>
+        <p>
+          Core Web Vitals lassen sich nur am laufenden Server messen. Aus dieser
+          Arbeitsumgebung ist ku64.de netzwerkseitig nicht erreichbar.
+        </p>
+      </div>
+      <div class="offen-zeile">
+        <strong>Leistungsverfügbarkeit je Standort</strong>
+        <span class="warte">bestätigen</span>
+        <p>
+          Der kritischste Datenpunkt: Die gesamte Verlinkungslogik hängt daran.
+          Falsche Angaben schicken Patientinnen und Patienten an den falschen
+          Ort. Die Datenbank wird das weitgehend klären.
+        </p>
+      </div>
+      <div class="offen-zeile">
+        <strong>Fachliche und rechtliche Freigabe</strong>
+        <span class="warte">ausstehend</span>
+        <p>
+          Alle Behandlungstexte brauchen zahnärztliche Prüfung; Impressum und
+          Datenschutzerklärung sind Entwürfe und anwaltlich zu prüfen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fuss">
+    <p>
+      <strong>Zur Belastbarkeit:</strong> Die Befunde F-1 bis F-3 und die
+      Strukturauswertung stammen aus der Server-Konfiguration der Live-Website
+      und sind am Quelltext nachprüfbar. Die Auswertung der Weiterleitungen
+      wurde maschinell erzeugt
+      (<code class="mono">analyse/altbestand/weiterleitungen-pruefen.mjs</code>);
+      der Graph wurde auf Ketten und Zyklen geprüft.
+    </p>
+    <p>
+      <strong>Nicht belegt und als solches gekennzeichnet:</strong> ob HTTPS am
+      Live-Server trotz F-1 erzwungen wird, sowie sämtliche Aussagen zu
+      Ladezeiten. Beides braucht Zugriff auf den laufenden Server.
+    </p>
+  </footer>
+
+</div>
