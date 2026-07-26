@@ -354,14 +354,16 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     transform: scale(1);
   }
 
-  /* Der aktive Punkt trägt zusätzlich den Standortakzent – sonst sähe er
-     genauso aus wie der gerade überfahrene und man wüsste nicht, wo man ist. */
+  /* Die aktive Seite trägt eine dunkle Pille – dieselbe Form wie die
+     Hauptschaltfläche, nur ohne Aufforderung. Vorher war sie gelb: dieselbe
+     Farbe wie der Terminknopf daneben, also zwei gleich laute Signale mit
+     verschiedener Bedeutung. */
   .haupt-link.ist-aktiv {
-    color: var(--akzent-kontrast);
+    color: var(--knopf-schrift);
   }
 
   .haupt-link.ist-aktiv::after {
-    background: var(--akzent);
+    background: var(--knopf-flaeche);
     border-color: transparent;
   }
 
@@ -643,6 +645,37 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     }
     .standortleiste-inner {
       font-size: 0.7rem;
+    }
+  }
+
+  /**
+   * Schmale Geräte: Der Kopf muss in die Breite passen, sonst lässt sich die
+   * ganze Seite seitlich schieben.
+   *
+   * Gemessen bei 390 px: Der Kopf war 105 px zu breit – Wortmarke,
+   * Standortname, Telefonpunkt, Terminknopf und Menüknopf nebeneinander
+   * passen dort nicht. Sichtbar wurde es erst am Gerät, weil `flex` nichts
+   * umbricht, sondern hinausschiebt.
+   *
+   * Es entfällt der Standortname neben der Marke. Er ist keine Auslassung:
+   * Direkt darunter steht „Sie sehen KU64 Kurfürstendamm · Adresse“ – die
+   * Angabe stünde zweimal, und die Zeile darunter ist die genauere.
+   *
+   * Der Terminknopf bleibt, aber schmaler. Er ist der Grund, warum die
+   * meisten Menschen die Seite auf dem Handy öffnen.
+   */
+  @media (max-width: 26rem) {
+    .logo-ort {
+      display: none;
+    }
+
+    .logo {
+      padding-inline-start: 0.5rem;
+    }
+
+    .kopf-aktionen .knopf {
+      padding-inline: var(--raum-4);
+      font-size: var(--t-xs);
     }
   }
 </style>

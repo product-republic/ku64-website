@@ -16,7 +16,9 @@
     "sprachen:pruefen": "node --experimental-strip-types --no-warnings scripts/sprachen-pruefen.mjs",
     "sprachen:sync": "node --experimental-strip-types --no-warnings scripts/sprachen-sync.mjs",
     "oberflaeche:pruefen": "node scripts/oberflaeche-pruefen.mjs",
-    "bericht": "node bericht/bauen.mjs && node bericht/pdf-erzeugen.mjs"
+    "bericht": "node bericht/bauen.mjs && node bericht/pdf-erzeugen.mjs",
+    "layout:pruefen": "node scripts/layout-pruefen.mjs",
+    "ansichten": "node scripts/ansichten.mjs"
   },
   "repository": {
     "type": "git",

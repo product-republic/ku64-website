@@ -298,10 +298,12 @@ const faq = [
     transition: all var(--zeit-schnell) var(--kurve);
   }
 
+  /* Die getroffene Wahl steht dunkel, nicht gelb: Sie zeigt einen Zustand
+     an. Gelb sah aus wie eine zweite Aufforderung neben dem Terminknopf. */
   .wahl-knopf.aktiv {
-    background: var(--akzent);
-    border-color: var(--akzent-schrift);
-    color: var(--akzent-kontrast);
+    background: var(--knopf-flaeche);
+    border-color: transparent;
+    color: var(--knopf-schrift);
   }
 
   .schranke {

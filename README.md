@@ -49,6 +49,49 @@ npm start          # gebaute Fassung lokal starten
 `src/data/leistungen.ts` ändern. Seiten, interne Verlinkung, Vergleichstabelle,
 Sitemap, `llms.txt` und die Chatbot-Antworten ziehen automatisch nach.
 
+## Gestaltung
+
+Die Entwürfe zeigen durchgehend dasselbe: helle, gläserne Flächen, große Radien, und als
+Hauptschaltfläche eine **fast schwarze Pille** – keine gelbe Fläche. Danach ist die
+Oberfläche gebaut.
+
+| Regel | Wo sie steht |
+|---|---|
+| Gelb trägt keine Schaltfläche, keine Karte, kein Band | `--knopf-flaeche` in `src/styles/tokens.css` |
+| Hauptschaltfläche dunkel, auf Bild und Video hell (`.knopf-hell`) | `src/styles/global.css` |
+| Wo Schrift auf Glas liegt, gilt Lesbarkeit vor Durchsicht (`.glas-lesbar`) | `--glas-text-*` in `tokens.css` |
+| Schrift auf Bild oder Video liegt auf einem Schleier (`.auf-medium`) | `--schleier-auf-medium` |
+| Fokusring dunkel mit heller Aura – nicht gelb (1,5:1 wäre zu schwach) | `:focus-visible` |
+| Wortmarke: „KU“ und „64“ in Hausrot, Zusatz schwarz; auf dunklem Grund „KU“ weiß | `src/components/Logo.astro` |
+
+Gelb ist damit nicht verschwunden, sondern hat seinen Platz gewechselt: Es liegt im
+Lichtschein hinter dem Glas – und in den Praxisaufnahmen selbst, denn der Kurfürstendamm
+ist innen gelb.
+
+**Zwei Prüfungen dafür, weil man beides im Quelltext nicht sieht:**
+
+```bash
+npm run layout:pruefen     # seitlicher Überlauf und Text ohne Untergrund, 14 Seiten × 3 Breiten
+npm run ansichten          # Bildschirmfotos zum Ansehen, nach ansichten/
+```
+
+Beide brauchen einen laufenden Server (`npm run dev`).
+
+## Bilder und Medien
+
+Alles Bildmaterial stammt aus dem Bestand der Praxis; die Regel dazu steht in
+[BILDER.md](./BILDER.md) und wird im Build erzwungen. Die Übernahme aus der alten Website
+ist wiederholbar:
+
+```bash
+node analyse/altbestand/medien-holen.mjs --laden   # Bestand erfassen, Originale laden
+node analyse/altbestand/team-holen.mjs             # Teamübersicht auswerten
+node analyse/altbestand/medien-auswahl.mjs         # Auswahl übernehmen, Videos komprimieren
+```
+
+Die Auswahl selbst – welches Motiv wohin gehört – steht als Liste in
+`medien-auswahl.mjs`. Sie ist bewusst kurz: 14 von 536 gefundenen Motiven.
+
 ## Sprachen
 
 Deutsch ist Quellsprache und liegt ohne Präfix unter der Wurzel — deshalb muss

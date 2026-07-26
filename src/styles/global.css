@@ -803,12 +803,16 @@ a:hover {
 
 /* Auf dem Schleier haben Überschrift und Fließtext dieselbe Farbe – der
    sonst übliche Grauton für Nebentext fällt hier zu weit ab. */
+/* Alles außer Schaltflächen: Die tragen ihre eigene Schriftfarbe, und diese
+   Regel wäre sonst spezifischer als `.knopf-hell` – weiße Schrift auf weißer
+   Pille, also unlesbar. Genau der Fall, den die Vorgabe meint: zwei Ebenen,
+   die sich treffen und einander aufheben. */
 .auf-medium h1,
 .auf-medium h2,
 .auf-medium p,
 .auf-medium dt,
 .auf-medium dd,
-.auf-medium a {
+.auf-medium a:not(.knopf) {
   color: var(--auf-medium-schrift);
 }
 

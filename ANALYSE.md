@@ -6,29 +6,36 @@ Stand: 26. Juli 2026
 
 ## 0. Zur Belastbarkeit dieser Analyse — bitte zuerst lesen
 
-**ku64.de war aus dieser Arbeitsumgebung nicht abrufbar.** Jeder Zugriff – über den
-Egress-Proxy der Session wie über den serverseitigen Abruf – endete mit `403 Forbidden`,
-und zwar auf allen Pfaden, auch auf `/robots.txt` und `/sitemap.xml`. Ursache ist
-entweder die Egress-Policy dieser Umgebung oder ein Bot-Schutz vor ku64.de.
+**Nachtrag vom 26. Juli 2026, abends: ku64.de ist jetzt abrufbar.**
 
-Das hat eine konkrete Konsequenz, die ich nicht kaschieren möchte:
+Beim ersten Durchgang war die Domain aus dieser Arbeitsumgebung nicht erreichbar – jeder
+Zugriff endete mit `403 Forbidden`, auch auf `/robots.txt` und `/sitemap.xml`. Das ist
+behoben; ein erneuter Versuch lieferte `200`. Ob die Egress-Policy geändert wurde oder ein
+Bot-Schutz nicht mehr greift, lässt sich von hier aus nicht sagen.
 
-| Analysierbar | Nicht analysierbar |
+Was daraufhin tatsächlich abgerufen wurde:
+
+| | |
 |---|---|
-| URL-Struktur, soweit indexiert | Ladezeiten, Core Web Vitals, Lighthouse-Werte |
-| Title-Tags und Snippets aus dem Index | Bildgrößen, Render-Blocking, JavaScript-Ballast |
-| Strukturelle Probleme der Informationsarchitektur | Defekte Links und Weiterleitungsketten |
-| Erkennbare Inkonsistenzen zwischen Standorten | Verwaiste Seiten ohne interne Verlinkung |
-| Was Suchmaschinen und KI-Suchen tatsächlich sehen | Duplicate Content im Detail, Canonical-Fehler |
+| Seiten aus den Sitemaps gelesen | 291 (deutsch) |
+| Mediendateien erfasst, mit Fundstelle | 536 Motive |
+| Originale heruntergeladen | 535 |
+| Übernommen auf die neue Website | 14 Aufnahmen, 3 Videos, 100 Porträts |
+| Teamübersicht ausgewertet | 100 Personen mit Funktion und Standort |
 
-Die Befunde in Abschnitt 1 sind **belegte Beobachtungen aus dem Suchindex**. Abschnitt 2
-enthält die **Prüfliste, die nachzuholen ist**, sobald die Domain erreichbar ist. Ich habe
-darauf verzichtet, die Lücke mit plausibel klingenden Vermutungen zu füllen — eine
-erfundene Performance-Zahl wäre schlimmer als eine offene Stelle.
+Damit sind zwei Lücken geschlossen, die diese Analyse vorher offen ausweisen musste:
+**Praxisfotos** und **Team**. Die Werkzeuge dafür liegen unter `analyse/altbestand/` und
+lassen sich wiederholen – sie lesen die Website jedes Mal neu.
 
-**Was Sie tun müssen, damit ich das nachholen kann:** ku64.de (plus `www.ku64.de`) in den
-Environment-Einstellungen dieser Session für ausgehende Verbindungen freigeben. Danach
-liefere ich die vollständige technische Analyse aller rund 360 Seiten nach.
+**Weiterhin offen** ist die Messung: Ladezeiten, Core Web Vitals und Lighthouse-Werte des
+Altbestands sind nicht erhoben. Das ist eine bewusste Reihenfolge – die neue Website
+abzuliefern war dringender, als die alte zu vermessen, die ohnehin ersetzt wird. Die
+Messung ist nachholbar, sobald sie gebraucht wird, etwa als Vorher-Nachher-Beleg.
+
+Die Befunde in Abschnitt 1 stammen unverändert aus dem Suchindex und den
+Weiterleitungsregeln; sie sind durch den Abruf nicht hinfällig geworden, sondern
+bestätigt – die Standortfrage bei den Kopfvideos etwa ließ sich erst am Bestand belegen
+(siehe `src/data/medien.ts`).
 
 ---
 
@@ -448,9 +455,9 @@ gleichzeitig ein erheblicher Performance-Vorteil.
 
 ### 4.1 Daten, die nur die Praxis liefern kann
 
-Diese Angaben stammen aus öffentlichen Verzeichnissen, weil ku64.de nicht erreichbar war.
-**Sie müssen vor dem Live-Gang bestätigt werden** — falsche Angaben schicken Patientinnen
-und Patienten an den falschen Ort oder zur falschen Zeit.
+Ein Teil dieser Angaben stammt aus öffentlichen Verzeichnissen, ein Teil inzwischen aus
+ku64.de selbst. **Beides muss vor dem Live-Gang bestätigt werden** — falsche Angaben
+schicken Patientinnen und Patienten an den falschen Ort oder zur falschen Zeit.
 
 | Punkt | Status |
 |---|---|
@@ -458,8 +465,11 @@ und Patienten an den falschen Ort oder zur falschen Zeit.
 | Öffnungszeiten, besonders Mitte und Wilmersdorf | unsicher, im Code markiert |
 | **Leistungsverfügbarkeit je Standort** | **begründete Annahme, unbedingt prüfen** |
 | Preisspannen und Kassenangaben | plausibel, zahnärztlich freizugeben |
-| Team: Namen, Funktionen, Fotos | bewusst leer gelassen — nicht erfindbar |
-| Praxisfotos | fehlen vollständig |
+| Team: Namen, Funktionen, Standorte | **aus der Teamübersicht des Kunden übernommen** |
+| Team Wilmersdorf | fehlt — die KiezPraxis hat dort keinen eigenen Abschnitt |
+| Porträts (100) | übernommen; Nutzungsrechte bestätigen lassen |
+| Praxisfotos | 14 übernommen; es fehlen Außenansichten Kudamm/Potsdam und Innenaufnahmen Wilmersdorf |
+| Urheber der Aufnahmen | nicht ermittelbar — die alte Website nennt keine |
 | Doctolib-Slugs je Standort | aus Suchergebnissen, zu bestätigen |
 | Nelly-Formular-URLs | offen, als Env-Variable vorbereitet |
 

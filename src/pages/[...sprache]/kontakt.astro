@@ -36,7 +36,6 @@ const brotkrumen = [
       <div class="raster">
         {daten.standorte.map((s) => (
           <article class="karte ort" style={`--akzent:${s.akzent}`}>
-            <span class="band" aria-hidden="true" />
             <h2><a href={`/${s.slug}/kontakt/`}>KU64 {s.name}</a></h2>
             <address>{s.strasse}<br />{s.plz} {s.ort}</address>
             <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="tel">{s.telefon}</a>
@@ -68,7 +67,8 @@ const brotkrumen = [
 <style>
   .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-7); font-size: var(--t-lg); color: var(--tinte-weich); }
   .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
-  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
+     Eine Auszeichnung auf jeder Karte zeichnet keine aus. */
   .ort h2 { font-size: var(--t-lg); }
   .ort h2 a { text-decoration: none; }
   address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }

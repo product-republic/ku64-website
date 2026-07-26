@@ -186,7 +186,7 @@ const schema = [
     padding: 0.35rem 0.8rem; font-size: var(--t-xs); font-weight: 600; text-decoration: none;
     color: var(--tinte-weich); background: var(--flaeche-warm-2); border-radius: var(--radius-voll);
   }
-  .sprung a:hover { background: var(--akzent); color: var(--akzent-kontrast); }
+  .sprung a:hover { background: var(--knopf-flaeche); color: var(--knopf-schrift); }
   .gruppe + .gruppe { margin-block-start: var(--raum-8); }
   .gruppe-kopf { margin-block-end: var(--raum-4); padding-block-end: var(--raum-3); border-bottom: 1px solid var(--linie); }
   .gruppe-kopf h2 { font-size: var(--t-xl); }
@@ -207,7 +207,10 @@ const schema = [
     background: var(--flaeche-warm-2); color: var(--linie-stark);
     transition: all var(--zeit-schnell) var(--kurve);
   }
-  .ort-punkt.da { background: var(--akzent); color: var(--akzent-kontrast); }
+  /* „Gibt es hier“ als dunkler Punkt, „gibt es hier nicht“ als heller. Der
+     Unterschied liegt in der Helligkeit, nicht in der Farbe – das bleibt
+     auch für Menschen unterscheidbar, die Farben anders sehen. */
+  .ort-punkt.da { background: var(--knopf-flaeche); color: var(--knopf-schrift); }
   .ort-punkt:hover { transform: scale(1.15); }
   .leer { padding: var(--raum-6); text-align: center; color: var(--tinte-weich); background: var(--flaeche-warm); border-radius: var(--radius-lg); }
 </style>
