@@ -14,6 +14,14 @@ import Brotkrumen from '../components/Brotkrumen.astro';
 import Berater from '../components/Berater.astro';
 import { type Standort } from '../data/standorte';
 import { titelBauen, descriptionKuerzen, kanonisch, SITE_NAME } from '../lib/seo';
+import {
+  pfadInSprache,
+  spracheAusParameter,
+  sprachdefinition,
+  sprachfassungen,
+  QUELLSPRACHE,
+} from '../i18n/sprachen';
+import { texte } from '../i18n/katalog';
 
 interface Props {
   titel: string;
@@ -31,8 +39,6 @@ interface Props {
   ogLeistung?: string;
   /** Seiten, die nicht in den Index sollen (z. B. Danke-Seiten). */
   noindex?: boolean;
-  /** Sprachvariante für hreflang. */
-  sprache?: 'de' | 'en';
 }
 
 const {
@@ -45,8 +51,18 @@ const {
   bild,
   ogLeistung,
   noindex = false,
-  sprache = 'de',
 } = Astro.props;
+
+/*
+ * Die Sprache kommt aus der Route, nicht aus einer Eigenschaft.
+ *
+ * Damit kann keine Seite vergessen, sie weiterzureichen – und es kann auch
+ * keine Seite behaupten, sie sei englisch, während sie unter einer deutschen
+ * Adresse liegt. Die Adresse entscheidet.
+ */
+const sprache = spracheAusParameter(Astro.params.sprache as string | undefined);
+const sprachinfo = sprachdefinition(sprache);
+const t = texte(sprache);
 
 /*
  * Vorschaubild ableiten. Die Dateien werden von scripts/og-bilder.mjs aus
@@ -65,12 +81,39 @@ const ogPfad =
 
 const seitentitel = titelBauen(titel, standort ? `KU64 ${standort.name}` : 'KU64');
 const beschreibung = descriptionKuerzen(description);
-const canonical = kanonisch(pfad);
+const canonical = kanonisch(pfadInSprache(pfad, sprache));
 const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
+
+/*
+ * hreflang-Angaben, absolut ausgegeben.
+ *
+ * Absolut aus zwei Gründen: Google verlangt es, und die Middleware, die alle
+ * internen Links auf die Sprache der Seite umbiegt, erkennt absolute Adressen
+ * und lässt sie in Ruhe. Ein relatives hreflang würde sie umschreiben – und
+ * dann zeigte der Verweis auf die deutsche Fassung ebenfalls nach /en/.
+ *
+ * `x-default` zeigt auf Deutsch. Das ist die Fassung, die für jemanden ohne
+ * passende Sprache am ehesten weiterhilft: Sie ist vollständig, und in einer
+ * Berliner Praxis wird deutsch gesprochen.
+ */
+const alternates = sprachfassungen(pfad).map((f) => ({
+  hreflang: f.sprache.bcp47,
+  href: kanonisch(f.pfad),
+}));
+const xDefault = kanonisch(pfadInSprache(pfad, QUELLSPRACHE));
+
+/* Sprachen im Aufbau gehören nicht in den Index. Eine halb übersetzte Seite
+   in den Suchergebnissen ist schlechter als keine. */
+const nichtIndexieren = noindex || !sprachinfo.freigegeben;
 ---
 
 <!doctype html>
-<html lang={sprache} style={standort ? `--akzent: ${standort.akzent}` : undefined}>
+<html
+  lang={sprachinfo.bcp47}
+  data-sprache={sprache}
+  data-sprachpraefix={sprachinfo.praefix}
+  style={standort ? `--akzent: ${standort.akzent}` : undefined}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,7 +121,14 @@ const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
     <title>{seitentitel}</title>
     <meta name="description" content={beschreibung} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {nichtIndexieren && <meta name="robots" content="noindex, follow" />}
+
+    {
+      alternates.map((a) => (
+        <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -89,7 +139,12 @@ const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={`${titel} – KU64`} />
-    <meta property="og:locale" content={sprache === 'de' ? 'de_DE' : 'en_GB'} />
+    <meta property="og:locale" content={sprachinfo.ogLocale} />
+    {
+      sprachfassungen(pfad)
+        .filter((f) => f.sprache.code !== sprache)
+        .map((f) => <meta property="og:locale:alternate" content={f.sprache.ogLocale} />)
+    }
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#e8532e" media="(prefers-color-scheme: light)" />
@@ -114,7 +169,13 @@ const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
   </head>
 
   <body>
-    <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
+    <a class="sprunglink" href="#inhalt">{t('geruest.zumInhalt')}</a>
+
+    {
+      !sprachinfo.freigegeben && (
+        <p class="sprache-aufbau">{t('sprache.unvollstaendig')}</p>
+      )
+    }
 
     <Navigation standort={standort} pfad={pfad} />
 

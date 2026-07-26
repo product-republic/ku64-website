@@ -31,6 +31,37 @@ const { SPRACHEN, QUELLSPRACHE } = await import(
   pathToFileURL(path.join(WURZEL, 'src/i18n/sprachen.ts')).href
 );
 
+/**
+ * Wörter, die praktisch nur im Deutschen vorkommen. Bewusst keine, die auch
+ * englisch oder französisch sind ("die", "man", "war", "so", "in", "ist"
+ * scheiden deshalb aus). Ein einzelner Treffer ist noch kein Befund – ein
+ * Eigenname darf deutsch bleiben. Erst mehrere Marker auf einer Seite deuten
+ * auf einen ganzen Satz hin, der nicht übersetzt wurde.
+ */
+const MARKER = [
+  'und',
+  'oder',
+  'nicht',
+  'auch',
+  'wird',
+  'werden',
+  'wir',
+  'Ihre',
+  'Ihnen',
+  'für',
+  'über',
+  'können',
+  'müssen',
+  'sind',
+  'haben',
+  'Zähne',
+  'Zahnarzt',
+  'Behandlung',
+  'Öffnungszeiten',
+  'Termin',
+];
+const SCHWELLE = 4;
+
 const nurBericht = process.argv.includes('--bericht');
 
 const quelle = quelltexte();
@@ -136,36 +167,6 @@ console.log('\n[sprachen] In Ordnung.');
 
 // ────────────────────────────────────────────────────────────────────────
 
-/**
- * Wörter, die praktisch nur im Deutschen vorkommen. Bewusst keine, die auch
- * englisch oder französisch sind ("die", "man", "war", "so", "in", "ist"
- * scheiden deshalb aus). Ein einzelner Treffer ist noch kein Befund – ein
- * Eigenname darf deutsch bleiben. Erst mehrere Marker auf einer Seite deuten
- * auf einen ganzen Satz hin, der nicht übersetzt wurde.
- */
-const MARKER = [
-  'und',
-  'oder',
-  'nicht',
-  'auch',
-  'wird',
-  'werden',
-  'wir',
-  'Ihre',
-  'Ihnen',
-  'für',
-  'über',
-  'können',
-  'müssen',
-  'sind',
-  'haben',
-  'Zähne',
-  'Zahnarzt',
-  'Behandlung',
-  'Öffnungszeiten',
-  'Termin',
-];
-const SCHWELLE = 4;
 
 async function restdeutschSuchen(verzeichnis) {
   const { readdir } = await import('node:fs/promises');

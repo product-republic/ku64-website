@@ -8,15 +8,16 @@
  * erhalten – es entstehen keine toten Links aus Suchergebnissen und Backlinks –
  * ohne den Fehler zu wiederholen, dass Leistungen ortlos beschrieben werden.
  */
-import Basis from '../../layouts/Basis.astro';
-import FaqBlock from '../../components/FaqBlock.astro';
-import LeistungKarte from '../../components/LeistungKarte.astro';
-import { LEISTUNGEN, getKategorie, getLeistung } from '../../data/leistungen';
-import { STANDORTE } from '../../data/standorte';
-import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../lib/seo';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import FaqBlock from '../../../components/FaqBlock.astro';
+import LeistungKarte from '../../../components/LeistungKarte.astro';
+import { LEISTUNGEN, getKategorie, getLeistung } from '../../../data/leistungen';
+import { STANDORTE } from '../../../data/standorte';
+import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
-  return LEISTUNGEN.map((l) => ({ params: { leistung: l.slug } }));
+  return mitSprachen(LEISTUNGEN.map((l) => ({ params: { leistung: l.slug } })));
 }
 
 const leistung = getLeistung(Astro.params.leistung!)!;

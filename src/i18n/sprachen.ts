@@ -114,8 +114,27 @@ export function sprachparameter(code: Sprache): string | undefined {
 }
 
 /** Alle Sprachen als Routenparameter – Grundlage jedes `getStaticPaths`. */
-export function sprachpfade(): { sprache: string | undefined }[] {
-  return SPRACH_CODES.map((code) => ({ sprache: sprachparameter(code) }));
+export function sprachpfade(): { params: { sprache: string | undefined } }[] {
+  return SPRACH_CODES.map((code) => ({ params: { sprache: sprachparameter(code) } }));
+}
+
+/**
+ * Bestehende Routenpfade mit allen Sprachen multiplizieren.
+ *
+ * Damit bleibt in jeder Seite genau ein `getStaticPaths`, das weiterhin nur
+ * seine eigene Logik beschreibt – welche Standorte, welche Behandlungen – und
+ * nichts von Sprachen wissen muss. Eine neue Sprache im Register erzeugt
+ * automatisch alle zugehörigen Seiten.
+ */
+export function mitSprachen<T extends Record<string, unknown>, P>(
+  eintraege: { params: T; props?: P }[],
+): { params: T & { sprache: string | undefined }; props?: P }[] {
+  return SPRACH_CODES.flatMap((code) =>
+    eintraege.map((e) => ({
+      ...e,
+      params: { ...e.params, sprache: sprachparameter(code) },
+    })),
+  );
 }
 
 /** Aus dem Routenparameter zurück auf die Sprache. Fehlt er, ist es Deutsch. */
@@ -135,10 +154,26 @@ export function spracheAusParameter(parameter: string | undefined): Sprache {
  */
 export function pfadInSprache(pfad: string, code: Sprache): string {
   const roh = pfad.startsWith('/') ? pfad : `/${pfad}`;
-  const ohneSprache = pfadOhneSprache(roh);
+
+  /* Anker und Abfrageteil vom Pfad trennen. Ohne diese Trennung würde aus
+     "/datenschutz/#berater" ein "/datenschutz/#berater/" – der Schrägstrich,
+     den die Pfadnormalisierung anhängt, landete im Anker und der Sprung ins
+     Ziel funktionierte nicht mehr. */
+  const grenze = roh.search(/[?#]/);
+  const nurPfad = grenze === -1 ? roh : roh.slice(0, grenze);
+  const anhang = grenze === -1 ? '' : roh.slice(grenze);
+
+  const ohneSprache = pfadOhneSprache(nurPfad);
   const praefix = sprachdefinition(code).praefix;
-  if (praefix === '') return ohneSprache;
-  return ohneSprache === '/' ? `/${praefix}/` : `/${praefix}${ohneSprache}`;
+  if (praefix === '') return ohneSprache + anhang;
+  return (ohneSprache === '/' ? `/${praefix}/` : `/${praefix}${ohneSprache}`) + anhang;
+}
+
+/** Die Sprache aus einem fertigen Pfad ablesen. Ohne Präfix ist es Deutsch. */
+export function spracheAusPfad(pfad: string): Sprache {
+  const erstes = pfad.split('/').filter(Boolean)[0];
+  const treffer = SPRACHEN.find((s) => s.praefix !== '' && s.praefix === erstes);
+  return treffer ? treffer.code : QUELLSPRACHE;
 }
 
 /** Ein etwaiges Sprachpräfix entfernen. Idempotent. */

@@ -6,9 +6,14 @@
  * Das Mikrofon wird erst nach ausdrücklichem Klick angefordert. Es läuft nichts
  * im Hintergrund mit, und es wird kein Gespräch aufgezeichnet.
  */
-import Basis from '../layouts/Basis.astro';
-import { STANDORTE } from '../data/standorte';
-import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/beratung/';
 const brotkrumen = [

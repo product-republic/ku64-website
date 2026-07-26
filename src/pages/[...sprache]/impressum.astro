@@ -7,8 +7,13 @@
  * Pflichtangaben für Zahnarztpraxen: § 5 DDG (ehem. TMG), § 18 MStV sowie die
  * berufsrechtlichen Angaben nach der Berufsordnung der Zahnärztekammer.
  */
-import Basis from '../layouts/Basis.astro';
-import { schemaBrotkrumen } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { schemaBrotkrumen } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/impressum/';
 const brotkrumen = [

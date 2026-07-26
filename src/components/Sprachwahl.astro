@@ -1,0 +1,282 @@
+---
+/**
+ * Sprachwahl und Erkennung der Browsersprache.
+ *
+ * Der Umschalter steht in der Standortleiste, direkt neben dem Standortwähler.
+ * Das ist kein Zufall: Beides beantwortet dieselbe Frage – in welchem Kontext
+ * sehe ich diese Seite gerade? – und beides ist an derselben Stelle
+ * umkehrbar.
+ *
+ * Benannt sind die Sprachen mit ihrer Eigenbezeichnung, nicht mit Flaggen.
+ * Flaggen stehen für Länder, nicht für Sprachen: Französisch spricht man auch
+ * in Belgien und Kanada, und für Englisch gäbe es keine richtige Wahl.
+ *
+ * Die Erkennung folgt derselben Regel wie der Standortwechsel: Es passiert
+ * nichts hinter dem Rücken der Person. Umgestellt wird höchstens einmal,
+ * sichtbar, mit einem Weg zurück, der einen Klick entfernt ist – und nie
+ * wieder, sobald jemand einmal selbst gewählt hat. Ohne diese Bedingungen
+ * wäre die Erkennung eine Falle: Wer deutschsprachig ist, aber einen englisch
+ * eingestellten Rechner benutzt, käme sonst nie auf die deutsche Fassung,
+ * weil ihn jeder neue Seitenaufruf zurückwürfe.
+ *
+ * Automatisch umgestellt wird nur auf freigegebene Sprachen. Jemanden ohne
+ * Nachfrage in eine Fassung zu schicken, die noch zur Hälfte deutsch ist,
+ * wäre schlechter als gar nicht umzustellen.
+ */
+import { pfadInSprache, SPRACHEN, spracheAusParameter } from '../i18n/sprachen';
+import { texte } from '../i18n/katalog';
+
+interface Props {
+  /** Sprachneutraler Pfad der aktuellen Seite. */
+  pfad: string;
+}
+
+const { pfad } = Astro.props;
+const aktuell = spracheAusParameter(Astro.params.sprache as string | undefined);
+const t = texte(aktuell);
+
+const fassungen = SPRACHEN.map((s) => ({
+  ...s,
+  ziel: pfadInSprache(pfad, s.code),
+  aktiv: s.code === aktuell,
+}));
+
+/* Nur freigegebene Sprachen sind Ziel einer automatischen Umstellung. */
+const angebot = fassungen
+  .filter((f) => f.freigegeben)
+  .map((f) => ({ code: f.code, name: f.eigenname, pfad: f.ziel }));
+
+const hinweistexte = {
+  titel: t('sprache.hinweisTitel'),
+  text: t('sprache.hinweisText'),
+  zurueck: t('sprache.zurueckZu'),
+};
+---
+
+<div class="sprachwahl" role="group" aria-label={t('sprache.waehlen')}>
+  {
+    fassungen.map((f) => (
+      <a
+        href={f.ziel}
+        hreflang={f.bcp47}
+        lang={f.bcp47}
+        aria-current={f.aktiv ? 'true' : undefined}
+        data-sprache={f.code}
+        data-freigegeben={f.freigegeben ? 'ja' : 'nein'}
+        title={f.freigegeben ? f.aria : `${f.aria} – im Aufbau`}
+      >
+        <span class="kurz" aria-hidden="true">
+          {f.code.toUpperCase()}
+        </span>
+        <span class="voll">{f.eigenname}</span>
+      </a>
+    ))
+  }
+</div>
+
+{/*
+  Der Hinweis nach einer automatischen Umstellung. Er steht fertig im Markup
+  und ist nur ausgeblendet – so wird nichts nachgeladen und das Layout springt
+  nicht, wenn er erscheint.
+*/}
+<aside class="sprachhinweis glas" id="sprachhinweis" hidden>
+  <p>
+    <strong id="sprachhinweisTitel"></strong>
+    <span id="sprachhinweisText"></span>
+  </p>
+  <a class="knopf-leise" id="sprachhinweisZurueck" href="/"></a>
+  <button type="button" id="sprachhinweisZu" aria-label={t('sprache.hinweisSchliessen')}>×</button>
+</aside>
+
+<script is:inline define:vars={{ angebot, hinweistexte }}>
+  (() => {
+    const SCHLUESSEL = 'ku64:sprache';
+    const UMGESTELLT = 'ku64:spracheUmgestellt';
+    const wurzel = document.documentElement;
+    const aktuell = wurzel.dataset.sprache;
+
+    /* Eine eigene Wahl merken – sie hat ab dann Vorrang vor allem anderen. */
+    for (const a of document.querySelectorAll('.sprachwahl a[data-sprache]')) {
+      a.addEventListener('click', () => {
+        try {
+          localStorage.setItem(SCHLUESSEL, a.dataset.sprache);
+        } catch {
+          /* Privater Modus – dann gilt die Wahl eben nur für diesen Aufruf. */
+        }
+      });
+    }
+
+    const hinweis = document.getElementById('sprachhinweis');
+    document.getElementById('sprachhinweisZu')?.addEventListener('click', () => {
+      hinweis.hidden = true;
+    });
+
+    /* Nach einer Umstellung: erklären, was passiert ist, und zurückführen. */
+    try {
+      const roh = sessionStorage.getItem(UMGESTELLT);
+      if (roh) {
+        sessionStorage.removeItem(UMGESTELLT);
+        const von = JSON.parse(roh);
+        const hier = angebot.find((s) => s.code === aktuell);
+        const name = hier ? hier.name : aktuell;
+
+        document.getElementById('sprachhinweisTitel').textContent = hinweistexte.titel.replaceAll(
+          '{sprache}',
+          name,
+        );
+        document.getElementById('sprachhinweisText').textContent = hinweistexte.text.replaceAll(
+          '{sprache}',
+          name,
+        );
+
+        const zurueck = document.getElementById('sprachhinweisZurueck');
+        zurueck.href = von.pfad;
+        zurueck.textContent = hinweistexte.zurueck.replaceAll('{sprache}', von.name);
+        zurueck.addEventListener('click', () => {
+          /* Wer zurückgeht, hat gewählt. Danach nie wieder umstellen. */
+          try {
+            localStorage.setItem(SCHLUESSEL, von.code);
+          } catch {}
+        });
+
+        hinweis.hidden = false;
+      }
+    } catch {
+      /* Ohne sessionStorage eben ohne Hinweis. */
+    }
+
+    /* ── Erkennung ──────────────────────────────────────────────────── */
+
+    let gewaehlt = null;
+    try {
+      gewaehlt = localStorage.getItem(SCHLUESSEL);
+    } catch {}
+    if (gewaehlt) return; // Eigene Entscheidung schlägt jede Erkennung.
+
+    const codes = angebot.map((s) => s.code);
+
+    /*
+     * navigator.languages ist nach Vorliebe sortiert. Verglichen wird nur der
+     * Basiscode: Wer "en-AU" eingestellt hat, will Englisch, auch wenn wir
+     * "en-GB" ausliefern. Passt nichts, bleibt die Seite, wie sie ist – und
+     * das ist der gute Ausgang, denn Deutsch ist die vollständige Fassung.
+     */
+    const wunsch = (navigator.languages || [navigator.language || ''])
+      .map((l) => String(l).toLowerCase().split('-')[0])
+      .find((l) => codes.includes(l));
+
+    if (!wunsch || wunsch === aktuell) return;
+
+    const ziel = angebot.find((s) => s.code === wunsch);
+    const hier = angebot.find((s) => s.code === aktuell);
+    if (!ziel || ziel.pfad === location.pathname) return;
+
+    try {
+      sessionStorage.setItem(
+        UMGESTELLT,
+        JSON.stringify({
+          code: aktuell,
+          name: hier ? hier.name : aktuell,
+          pfad: location.pathname,
+        }),
+      );
+    } catch {}
+
+    /* `replace` statt `assign`: Der Zurück-Knopf des Browsers soll nicht
+       zwischen zwei Sprachfassungen hin- und herspringen. */
+    location.replace(ziel.pfad + location.search + location.hash);
+  })();
+</script>
+
+<style>
+  .sprachwahl {
+    display: flex;
+    gap: 0.125rem;
+    padding: 0.15rem;
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-voll);
+  }
+
+  .sprachwahl a {
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-voll);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--tinte-leise);
+    text-decoration: none;
+    transition: background var(--kurve), color var(--kurve);
+  }
+
+  .sprachwahl a:hover,
+  .sprachwahl a:focus-visible {
+    background: var(--scheibe-flaeche);
+    color: var(--tinte);
+  }
+
+  .sprachwahl a[aria-current='true'] {
+    background: var(--akzent, var(--ku-orange));
+    color: #fff;
+  }
+
+  /* Sprachen im Aufbau bleiben erreichbar, treten aber zurück. */
+  .sprachwahl a[data-freigegeben='nein'] {
+    opacity: 0.5;
+  }
+
+  /* Der ausgeschriebene Name steht Screenreadern immer zur Verfügung –
+     sichtbar ist in der schmalen Leiste nur das Kürzel. */
+  .voll {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Unten links: unten rechts sitzt der digitale Berater. */
+  .sprachhinweis {
+    position: fixed;
+    inset-block-end: var(--raum-5);
+    inset-inline-start: var(--raum-5);
+    z-index: var(--z-dialog);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-3);
+    max-width: min(30rem, calc(100vw - 2 * var(--raum-5)));
+    padding: var(--raum-3) var(--raum-4);
+    border-radius: var(--radius-lg);
+    font-size: var(--t-sm);
+    box-shadow: var(--schatten-lg);
+  }
+
+  .sprachhinweis p {
+    flex: 1 1 12rem;
+    margin: 0;
+  }
+
+  .sprachhinweis strong {
+    display: block;
+  }
+
+  .sprachhinweis button {
+    padding: 0 0.35rem;
+    border: 0;
+    background: none;
+    color: var(--tinte-leise);
+    font-size: var(--t-lg);
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .knopf-leise {
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius-voll);
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+</style>

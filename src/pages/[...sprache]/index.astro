@@ -7,10 +7,15 @@
  * noch per gespeichertem Standort. Wer einmal Potsdam gewählt hat, bekommt
  * Potsdam angeboten, aber die Entscheidung bleibt sichtbar und umkehrbar.
  */
-import Basis from '../layouts/Basis.astro';
-import { STANDORTE } from '../data/standorte';
-import { LEISTUNGEN, leistungenFuerStandort } from '../data/leistungen';
-import { schemaOrganisation, schemaFaq } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE } from '../../data/standorte';
+import { LEISTUNGEN, leistungenFuerStandort } from '../../data/leistungen';
+import { schemaOrganisation, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const faq = [
   {

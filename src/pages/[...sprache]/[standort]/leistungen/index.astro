@@ -2,19 +2,20 @@
 /**
  * Behandlungsübersicht eines Standorts – mit Sofortsuche.
  */
-import Basis from '../../../layouts/Basis.astro';
-import LeistungKarte from '../../../components/LeistungKarte.astro';
-import TerminBand from '../../../components/TerminBand.astro';
-import { STANDORTE, getStandort } from '../../../data/standorte';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import LeistungKarte from '../../../../components/LeistungKarte.astro';
+import TerminBand from '../../../../components/TerminBand.astro';
+import { STANDORTE, getStandort } from '../../../../data/standorte';
 import {
   kategorienMitLeistungen,
   leistungenFuerStandort,
   leistungenNichtAmStandort,
-} from '../../../data/leistungen';
-import { schemaBrotkrumen } from '../../../lib/seo';
+} from '../../../../data/leistungen';
+import { schemaBrotkrumen } from '../../../../lib/seo';
 
 export function getStaticPaths() {
-  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+  return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
 const standort = getStandort(Astro.params.standort!)!;

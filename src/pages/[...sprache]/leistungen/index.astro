@@ -1,8 +1,13 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import { KATEGORIEN, LEISTUNGEN } from '../../data/leistungen';
-import { STANDORTE } from '../../data/standorte';
-import { schemaBrotkrumen, kanonisch } from '../../lib/seo';
+import { sprachpfade } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import { KATEGORIEN, LEISTUNGEN } from '../../../data/leistungen';
+import { STANDORTE } from '../../../data/standorte';
+import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/leistungen/';
 const brotkrumen = [

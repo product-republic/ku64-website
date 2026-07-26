@@ -10,8 +10,13 @@
  * Verantwortlicher, Datenschutzbeauftragter, Aufbewahrungsfristen der
  * Patientenakte, Auftragsverarbeiter-Verträge.
  */
-import Basis from '../layouts/Basis.astro';
-import { schemaBrotkrumen } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { schemaBrotkrumen } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/datenschutz/';
 const brotkrumen = [

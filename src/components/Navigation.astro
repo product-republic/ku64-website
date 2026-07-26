@@ -8,6 +8,7 @@
  */
 import { STANDORTE, type Standort, istGeoeffnet } from '../data/standorte';
 import { KATEGORIEN, leistungenFuerStandort } from '../data/leistungen';
+import Sprachwahl from './Sprachwahl.astro';
 
 interface Props {
   standort: Standort | null;
@@ -158,6 +159,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           </ul>
         </div>
       </details>
+
+      <Sprachwahl pfad={pfad} />
     </div>
   </div>
 

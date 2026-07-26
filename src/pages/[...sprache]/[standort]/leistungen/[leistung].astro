@@ -8,29 +8,30 @@
  * anderen Praxis las. Hier gehört jede Behandlungsseite eindeutig zu einem Ort
  * – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung.
  */
-import Basis from '../../../layouts/Basis.astro';
-import FaqBlock from '../../../components/FaqBlock.astro';
-import LeistungKarte from '../../../components/LeistungKarte.astro';
-import TerminBand from '../../../components/TerminBand.astro';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import FaqBlock from '../../../../components/FaqBlock.astro';
+import LeistungKarte from '../../../../components/LeistungKarte.astro';
+import TerminBand from '../../../../components/TerminBand.astro';
 import {
   LEISTUNGEN,
   getKategorie,
   verwandteLeistungen,
   alleKombinationen,
-} from '../../../data/leistungen';
-import { getStandort, STANDORTE } from '../../../data/standorte';
+} from '../../../../data/leistungen';
+import { getStandort, STANDORTE } from '../../../../data/standorte';
 import {
   schemaLeistung,
   schemaFaq,
   schemaBrotkrumen,
   descriptionKuerzen,
-} from '../../../lib/seo';
+} from '../../../../lib/seo';
 
 export function getStaticPaths() {
-  return alleKombinationen().map(({ standort, leistung }) => ({
+  return mitSprachen(alleKombinationen().map(({ standort, leistung }) => ({
     params: { standort, leistung: leistung.slug },
     props: { leistungSlug: leistung.slug },
-  }));
+  })));
 }
 
 const { standort: standortSlug, leistung: leistungSlug } = Astro.params;

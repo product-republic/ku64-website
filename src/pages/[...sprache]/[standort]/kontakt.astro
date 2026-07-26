@@ -1,11 +1,12 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import { STANDORTE, getStandort } from '../../data/standorte';
-import { schemaBrotkrumen, schemaStandort } from '../../lib/seo';
-import { leistungenFuerStandort } from '../../data/leistungen';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import { STANDORTE, getStandort } from '../../../data/standorte';
+import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
+import { leistungenFuerStandort } from '../../../data/leistungen';
 
 export function getStaticPaths() {
-  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+  return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
 const standort = getStandort(Astro.params.standort!)!;

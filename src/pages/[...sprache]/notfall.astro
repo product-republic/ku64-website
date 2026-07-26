@@ -5,9 +5,14 @@
  * aufgebaut: Die wichtigste Information steht oben, ohne Scrollen, ohne
  * Werbeblöcke davor.
  */
-import Basis from '../layouts/Basis.astro';
-import { STANDORTE } from '../data/standorte';
-import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/notfall/';
 const brotkrumen = [

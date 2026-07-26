@@ -4,9 +4,14 @@
  * ein Gesichtsfoto ist ein sensibles Datum, und die Einwilligung muss
  * informiert sein, nicht weggeklickt.
  */
-import Basis from '../layouts/Basis.astro';
-import { STANDORTE } from '../data/standorte';
-import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 const pfad = '/laecheln-vorschau/';
 const brotkrumen = [
