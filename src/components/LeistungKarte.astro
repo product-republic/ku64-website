@@ -1,0 +1,189 @@
+---
+/**
+ * Karte für eine Behandlung.
+ *
+ * Der Fall, auf den es ankommt: Wird die Leistung am aktuellen Standort NICHT
+ * angeboten, verschweigen wir das nicht und verlinken auch nicht ins Leere –
+ * die Karte sagt offen, an welchem Standort es sie gibt, und führt gezielt
+ * dorthin. Das verhindert genau die Irritation, dass jemand plötzlich auf
+ * einem anderen Standort landet, ohne es zu merken.
+ */
+import type { Leistung } from '../data/leistungen';
+import { getStandort } from '../data/standorte';
+
+interface Props {
+  leistung: Leistung;
+  /** Standort, in dessen Kontext die Karte steht. */
+  standortSlug: string | null;
+  /** Kompakte Darstellung für Seitenleisten. */
+  kompakt?: boolean;
+}
+
+const { leistung, standortSlug, kompakt = false } = Astro.props;
+
+const verfuegbarHier = standortSlug ? leistung.verfuegbar.includes(standortSlug) : true;
+
+/* Zielstandort für nicht verfügbare Leistungen: der erste, der sie anbietet.
+   Wenn die Hauptpraxis dabei ist, wird sie bevorzugt – dort ist das Angebot
+   am breitesten und die Wege sind für die meisten am kürzesten. */
+const ausweichSlug =
+  leistung.verfuegbar.find((s) => s === 'berlin-charlottenburg') ?? leistung.verfuegbar[0];
+const ausweich = ausweichSlug ? getStandort(ausweichSlug) : undefined;
+
+const ziel = verfuegbarHier
+  ? standortSlug
+    ? `/${standortSlug}/leistungen/${leistung.slug}/`
+    : `/leistungen/${leistung.slug}/`
+  : ausweich
+    ? `/${ausweich.slug}/leistungen/${leistung.slug}/`
+    : `/leistungen/${leistung.slug}/`;
+---
+
+<article
+  class:list={['karte', 'karte-klickbar', { kompakt, woanders: !verfuegbarHier }]}
+>
+  <h3 class="titel">
+    <a href={ziel} class="karte-link">{leistung.name}</a>
+  </h3>
+
+  <p class="kurz">{kompakt ? leistung.kurz : leistung.teaser}</p>
+
+  {
+    !kompakt && (
+      <ul class="fakten">
+        {leistung.dauer && (
+          <li>
+            <span class="fakt-titel">Dauer</span>
+            {leistung.dauer}
+          </li>
+        )}
+        {leistung.kosten && (
+          <li>
+            <span class="fakt-titel">Kosten</span>
+            {leistung.kosten}
+          </li>
+        )}
+      </ul>
+    )
+  }
+
+  {
+    !verfuegbarHier && ausweich && (
+      <p class="woanders-hinweis">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M8 4.5v4M8 11h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+        <span>
+          An diesem Standort nicht im Angebot – wir behandeln das bei{' '}
+          <strong>KU64 {ausweich.name}</strong>.
+        </span>
+      </p>
+    )
+  }
+
+  <span class="pfeil" aria-hidden="true">
+    <svg viewBox="0 0 16 12" width="15" height="11">
+      <path
+        d="M1 6h13M9.5 1.5 14 6l-4.5 4.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </span>
+</article>
+
+<style>
+  .titel {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-2);
+  }
+
+  .titel a {
+    text-decoration: none;
+  }
+
+  .kompakt .titel {
+    font-size: var(--t-md);
+  }
+
+  .kurz {
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-4);
+  }
+
+  .kompakt .kurz {
+    margin-block-end: 0;
+  }
+
+  .fakten {
+    list-style: none;
+    padding: 0;
+    margin-block-start: auto;
+    display: grid;
+    gap: var(--raum-2);
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+    border-top: 1px solid var(--linie);
+    padding-block-start: var(--raum-3);
+  }
+
+  .fakt-titel {
+    display: block;
+    font-weight: 600;
+    color: var(--tinte-leise);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+  }
+
+  .woanders {
+    border-style: dashed;
+    background: var(--flaeche-warm);
+  }
+
+  .woanders-hinweis {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--raum-2);
+    margin-block-start: var(--raum-3);
+    padding-block-start: var(--raum-3);
+    border-top: 1px solid var(--linie);
+    font-size: var(--t-xs);
+    line-height: var(--zeile-normal);
+    color: var(--tinte-weich);
+  }
+
+  .woanders-hinweis svg {
+    flex-shrink: 0;
+    margin-block-start: 2px;
+    color: var(--warnung);
+  }
+
+  .pfeil {
+    position: absolute;
+    top: var(--raum-5);
+    inset-inline-end: var(--raum-5);
+    color: var(--tinte-leise);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity var(--zeit) var(--kurve),
+      transform var(--zeit) var(--kurve);
+  }
+
+  .karte-klickbar:hover .pfeil {
+    opacity: 1;
+    transform: none;
+    color: var(--akzent);
+  }
+
+  .kompakt {
+    padding: var(--raum-4);
+  }
+</style>

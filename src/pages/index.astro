@@ -1,0 +1,376 @@
+---
+/**
+ * Startseite. Ihre einzige Aufgabe: die Person schnell und bewusst zum
+ * richtigen Standort bringen.
+ *
+ * Es findet KEINE automatische Weiterleitung statt – weder per Geolocation
+ * noch per gespeichertem Standort. Wer einmal Potsdam gewählt hat, bekommt
+ * Potsdam angeboten, aber die Entscheidung bleibt sichtbar und umkehrbar.
+ */
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { LEISTUNGEN, leistungenFuerStandort } from '../data/leistungen';
+import { schemaOrganisation, schemaFaq } from '../lib/seo';
+
+const faq = [
+  {
+    frage: 'Wie viele KU64-Standorte gibt es?',
+    antwort: `KU64 ist an ${STANDORTE.length} Standorten vertreten: ${STANDORTE.map(
+      (s) => `${s.name} (${s.strasse}, ${s.plz} ${s.ort})`,
+    ).join(', ')}. Das Behandlungsangebot unterscheidet sich je Standort.`,
+  },
+  {
+    frage: 'Bietet jeder Standort alle Behandlungen an?',
+    antwort:
+      'Nein. Die Hauptpraxis am Kurfürstendamm bietet das breiteste Spektrum inklusive Vollnarkose, Kieferorthopädie und All-on-4. Potsdam deckt das volle Standardspektrum inklusive Implantologie und Oralchirurgie ab. Auf jeder Standortseite sehen Sie ausschließlich das, was dort tatsächlich angeboten wird – und wohin Sie für alles Übrige gehen.',
+  },
+  {
+    frage: 'Wie buche ich einen Termin?',
+    antwort:
+      'Online über die Terminseite Ihres Standorts oder telefonisch. Für den ersten Besuch füllen Sie den Anamnesebogen vorab digital aus – das spart Zeit vor Ort und Sie müssen im Wartezimmer nichts auf Papier ausfüllen.',
+  },
+  {
+    frage: 'Was mache ich bei akuten Zahnschmerzen?',
+    antwort:
+      'Rufen Sie den Standort an, der Ihnen am nächsten liegt. Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Bei starken Schmerzen sagen Sie das direkt am Telefon – wir halten Termine für Akutfälle frei.',
+  },
+];
+
+const gesamtLeistungen = LEISTUNGEN.length;
+---
+
+<Basis
+  titel="Zahnarzt in Berlin und Potsdam"
+  description={`KU64 – Die Zahnspezialisten an ${STANDORTE.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Behandlungen, die dort angeboten werden.`}
+  pfad="/"
+  schema={[schemaOrganisation(), schemaFaq(faq)]}
+>
+  <section class="held">
+    <div class="huelle">
+      <p class="held-marke">KU64 · Die Zahnspezialisten</p>
+      <h1>Wo dürfen wir Sie behandeln?</h1>
+      <p class="held-text">
+        {STANDORTE.length} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen
+        Sie ausschließlich Behandlungen, Sprechzeiten und Kontaktdaten dieses Standorts.
+        Kein Wechsel ohne Ihr Zutun.
+      </p>
+
+      {/* Zuletzt gewählter Standort – ein Angebot, keine Umleitung. */}
+      <div class="zuletzt" id="zuletzt" hidden>
+        <p>
+          Zuletzt waren Sie bei <strong id="zuletzt-name"></strong>.
+        </p>
+        <a href="#" id="zuletzt-link" class="knopf knopf-primaer">Dorthin zurück</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <div class="standort-raster">
+        {
+          STANDORTE.map((s) => {
+            const anzahl = leistungenFuerStandort(s.slug).length;
+            return (
+              <article
+                class="s-karte karte karte-klickbar einblenden"
+                style={`--akzent:${s.akzent}`}
+              >
+                <span class="s-band" aria-hidden="true" />
+                <h2>
+                  <a href={`/${s.slug}/`} class="karte-link">
+                    KU64 {s.name}
+                  </a>
+                </h2>
+                <address>
+                  {s.strasse}
+                  <br />
+                  {s.plz} {s.ort}
+                </address>
+                <p class="s-claim">{s.claim}</p>
+                <dl class="s-fakten">
+                  <div>
+                    <dt>Behandlungen</dt>
+                    <dd>{anzahl}</dd>
+                  </div>
+                  <div>
+                    <dt>Geöffnet</dt>
+                    <dd>{s.oeffnungszeiten.filter((z) => z.von).length} Tage/Woche</dd>
+                  </div>
+                  <div>
+                    <dt>Telefon</dt>
+                    <dd>{s.telefon}</dd>
+                  </div>
+                </dl>
+                <span class="s-mehr">
+                  Standort ansehen
+                  <svg viewBox="0 0 16 12" width="15" height="11" aria-hidden="true">
+                    <path
+                      d="M1 6h13M9.5 1.5 14 6l-4.5 4.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Warum diese Website nach Standort aufgebaut ist</h2>
+      <div class="raster-zwei erklaer">
+        <p>
+          Eine Zahnarztpraxis mit mehreren Häusern hat ein Problem, das Patientinnen und
+          Patienten oft erst spät bemerkt: Nicht jede Behandlung wird überall angeboten. Wer
+          nach „Implantat Potsdam“ sucht und auf einer allgemeinen Leistungsseite landet,
+          liest im Zweifel über eine Praxis, die 30 Kilometer entfernt liegt.
+        </p>
+        <p>
+          Deshalb gehört bei uns jede Behandlungsseite zu genau einem Standort – mit dessen
+          Adresse, Telefonnummer, Sprechzeiten und Terminbuchung. Gibt es eine Behandlung an
+          Ihrem Standort nicht, sagen wir das offen und verlinken gezielt dorthin, wo Sie sie
+          bekommen. {gesamtLeistungen} Behandlungen, jeweils dort beschrieben, wo sie
+          stattfinden.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <h2>Digital, bevor Sie ankommen</h2>
+      <div class="raster">
+        <a href="/laecheln-vorschau/" class="karte karte-klickbar dienst">
+          <h3>Lächeln-Vorschau</h3>
+          <p>
+            Foto hochladen und sehen, wie Ihr Lächeln nach einer ästhetischen Behandlung
+            aussehen könnte. Ihr Bild wird dabei nicht gespeichert.
+          </p>
+          <span class="dienst-mehr">Ausprobieren</span>
+        </a>
+        <a href="/anamnese/" class="karte karte-klickbar dienst">
+          <h3>Digitale Anamnese</h3>
+          <p>
+            Den Anamnesebogen bequem von zu Hause ausfüllen – an jedem Standort. Kein
+            Klemmbrett im Wartezimmer.
+          </p>
+          <span class="dienst-mehr">Bogen öffnen</span>
+        </a>
+        <a href="/beratung/" class="karte karte-klickbar dienst">
+          <h3>Digitaler Berater</h3>
+          <p>
+            Fragen zu Behandlung, Kosten oder Ablauf? Schreiben oder sprechen Sie mit
+            unserem Assistenten – rund um die Uhr.
+          </p>
+          <span class="dienst-mehr">Gespräch starten</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<script>
+  /*
+   * Zuletzt gewählten Standort anbieten. Bewusst als Vorschlag mit Namen und
+   * Klick – keine automatische Weiterleitung, weil die sonst genau das
+   * Problem erzeugt, das diese Seite lösen soll.
+   */
+  const STANDORT_NAMEN: Record<string, string> = {
+    'berlin-charlottenburg': 'KU64 Kurfürstendamm',
+    berlinmitte: 'KU64 Berlin-Mitte',
+    wilmersdorf: 'KU64 Wilmersdorf',
+    potsdam: 'KU64 Potsdam',
+  };
+
+  try {
+    const slug = localStorage.getItem('ku64:standort');
+    if (slug && STANDORT_NAMEN[slug]) {
+      const box = document.getElementById('zuletzt');
+      const name = document.getElementById('zuletzt-name');
+      const link = document.getElementById('zuletzt-link') as HTMLAnchorElement | null;
+      if (box && name && link) {
+        name.textContent = STANDORT_NAMEN[slug];
+        link.href = `/${slug}/`;
+        box.hidden = false;
+      }
+    }
+  } catch {
+    /* Kein localStorage verfügbar – dann eben ohne Vorschlag. */
+  }
+</script>
+
+<style>
+  .held {
+    padding-block: clamp(var(--raum-8), 10vw, var(--raum-10)) var(--raum-7);
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--ku-orange) 10%, var(--flaeche)),
+      var(--flaeche) 65%
+    );
+  }
+
+  .held-marke {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--akzent);
+  }
+
+  h1 {
+    font-size: var(--t-4xl);
+    margin-block: var(--raum-4);
+    max-width: 14ch;
+  }
+
+  .held-text {
+    max-width: 52ch;
+    font-size: var(--t-lg);
+    line-height: var(--zeile-weit);
+    color: var(--tinte-weich);
+  }
+
+  .zuletzt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-4);
+    margin-block-start: var(--raum-6);
+    padding: var(--raum-4) var(--raum-5);
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--schatten-sm);
+    width: fit-content;
+  }
+
+  .zuletzt p {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .standort-raster {
+    display: grid;
+    gap: var(--raum-5);
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  }
+
+  .s-karte {
+    overflow: hidden;
+    padding-block-start: calc(var(--raum-5) + 4px);
+  }
+
+  .s-band {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 4px;
+    background: var(--akzent);
+  }
+
+  .s-karte h2 {
+    font-size: var(--t-xl);
+  }
+
+  .s-karte h2 a {
+    text-decoration: none;
+  }
+
+  .s-karte address {
+    margin-block: var(--raum-2) var(--raum-3);
+    font-style: normal;
+    font-size: var(--t-sm);
+    color: var(--tinte-leise);
+    line-height: var(--zeile-normal);
+  }
+
+  .s-claim {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .s-fakten {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--raum-3);
+    margin-block: var(--raum-5) var(--raum-4);
+    padding-block-start: var(--raum-4);
+    border-top: 1px solid var(--linie);
+  }
+
+  .s-fakten dt {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .s-fakten dd {
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+
+  .s-mehr {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    margin-block-start: auto;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--akzent);
+  }
+
+  .s-mehr svg {
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .s-karte:hover .s-mehr svg {
+    transform: translateX(3px);
+  }
+
+  .flaeche-warm {
+    background: var(--flaeche-warm);
+    border-block: 1px solid var(--linie);
+  }
+
+  .erklaer {
+    margin-block-start: var(--raum-5);
+    font-size: var(--t-md);
+    line-height: var(--zeile-weit);
+    color: var(--tinte-weich);
+  }
+
+  .dienst {
+    text-decoration: none;
+  }
+
+  .dienst h3 {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-2);
+  }
+
+  .dienst p {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-4);
+  }
+
+  .dienst-mehr {
+    margin-block-start: auto;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--akzent);
+  }
+</style>

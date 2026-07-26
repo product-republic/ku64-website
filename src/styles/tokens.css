@@ -1,0 +1,125 @@
+/**
+ * Design-Tokens – der einzige Ort, an dem Farben, Abstände und Typografie
+ * definiert werden. Ein Marken-Refresh berührt nur diese Datei.
+ *
+ * Standortakzente kommen als --akzent per Inline-Style vom Layout und
+ * überschreiben den Standardwert. Dadurch bleibt das Design einheitlich,
+ * jeder Standort bekommt aber eine erkennbare eigene Note.
+ */
+
+:root {
+  /* ── Markenfarben ─────────────────────────────────────────────── */
+  --ku-orange: #e8532e;
+  --ku-orange-hell: #ff7a52;
+  --ku-orange-dunkel: #c33d1b;
+
+  /* Standortakzent – wird pro Standort überschrieben. */
+  --akzent: var(--ku-orange);
+  --akzent-kontrast: #ffffff;
+
+  /* ── Neutrale Töne ────────────────────────────────────────────── */
+  --tinte: #14100e;
+  --tinte-weich: #4a423d;
+  --tinte-leise: #7d736c;
+  --linie: #e7e0d9;
+  --linie-stark: #d3c8bd;
+  --flaeche: #ffffff;
+  --flaeche-warm: #faf7f4;
+  --flaeche-warm-2: #f3ede7;
+  --flaeche-dunkel: #14100e;
+
+  /* ── Signalfarben ─────────────────────────────────────────────── */
+  --erfolg: #1f7a52;
+  --erfolg-flaeche: #e8f5ef;
+  --warnung: #9a6b12;
+  --warnung-flaeche: #fdf4e3;
+  --fehler: #b4291f;
+  --fehler-flaeche: #fdeceb;
+  --info-flaeche: #eef3fb;
+
+  /* ── Typografie ───────────────────────────────────────────────── */
+  --schrift-titel: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --schrift-text: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Fließende Größen – skalieren mit dem Viewport statt in Sprüngen. */
+  --t-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.813rem);
+  --t-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.938rem);
+  --t-md: clamp(1rem, 0.96rem + 0.2vw, 1.063rem);
+  --t-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.313rem);
+  --t-xl: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+  --t-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.625rem);
+  --t-3xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --t-4xl: clamp(2.75rem, 1.7rem + 4.4vw, 5rem);
+
+  --zeile-eng: 1.15;
+  --zeile-normal: 1.5;
+  --zeile-weit: 1.7;
+
+  /* ── Raster & Abstände ────────────────────────────────────────── */
+  --raum-1: 0.25rem;
+  --raum-2: 0.5rem;
+  --raum-3: 0.75rem;
+  --raum-4: 1rem;
+  --raum-5: 1.5rem;
+  --raum-6: 2rem;
+  --raum-7: 3rem;
+  --raum-8: 4rem;
+  --raum-9: 6rem;
+  --raum-10: 8rem;
+
+  --breite-inhalt: 72rem;
+  --breite-text: 42rem;
+  --rand: clamp(1.25rem, 5vw, 3rem);
+
+  /* ── Formen ───────────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-voll: 999px;
+
+  --schatten-sm: 0 1px 2px rgb(20 16 14 / 0.06), 0 1px 3px rgb(20 16 14 / 0.04);
+  --schatten: 0 2px 4px rgb(20 16 14 / 0.04), 0 8px 24px rgb(20 16 14 / 0.07);
+  --schatten-lg: 0 4px 8px rgb(20 16 14 / 0.05), 0 20px 48px rgb(20 16 14 / 0.11);
+
+  /* ── Bewegung ─────────────────────────────────────────────────── */
+  --zeit-schnell: 140ms;
+  --zeit: 240ms;
+  --zeit-lang: 420ms;
+  --kurve: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* ── Ebenen ───────────────────────────────────────────────────── */
+  --z-sticky: 10;
+  --z-nav: 100;
+  --z-overlay: 500;
+  --z-dialog: 600;
+  --z-toast: 700;
+}
+
+/**
+ * Dunkler Modus. Wird ausschließlich über die Systemeinstellung aktiviert –
+ * eine Praxis-Website braucht keinen manuellen Umschalter, aber sie sollte
+ * nachts nicht blenden.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tinte: #f5f1ed;
+    --tinte-weich: #c4bab2;
+    --tinte-leise: #8f857d;
+    --linie: #2e2823;
+    --linie-stark: #423a33;
+    --flaeche: #16120f;
+    --flaeche-warm: #1d1815;
+    --flaeche-warm-2: #262019;
+    --flaeche-dunkel: #0d0a08;
+
+    --erfolg-flaeche: #12261e;
+    --warnung-flaeche: #2a2010;
+    --fehler-flaeche: #2b1412;
+    --info-flaeche: #141c29;
+
+    --schatten-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --schatten: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.45);
+    --schatten-lg: 0 4px 8px rgb(0 0 0 / 0.35), 0 20px 48px rgb(0 0 0 / 0.55);
+  }
+}

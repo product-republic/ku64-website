@@ -1,0 +1,411 @@
+---
+/**
+ * Startseite eines Standorts. Ab hier bleibt alles innerhalb dieses Standorts.
+ */
+import Basis from '../../layouts/Basis.astro';
+import LeistungKarte from '../../components/LeistungKarte.astro';
+import TerminBand from '../../components/TerminBand.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import {
+  kategorienMitLeistungen,
+  leistungenFuerStandort,
+  leistungenNichtAmStandort,
+} from '../../data/leistungen';
+import { schemaStandort, schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/`;
+
+const gruppen = kategorienMitLeistungen(standort.slug);
+const alleHier = leistungenFuerStandort(standort.slug);
+const nichtHier = leistungenNichtAmStandort(standort.slug);
+const ortsname = standort.bezirk ? `${standort.ort}-${standort.bezirk}` : standort.ort;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad },
+];
+
+/* Standortbezogene Fragen – beantworten das, was Menschen vor dem ersten
+   Besuch an genau diesem Ort wissen wollen. */
+const faq = [
+  {
+    frage: `Wie erreiche ich KU64 ${standort.name} mit öffentlichen Verkehrsmitteln?`,
+    antwort: `${standort.anfahrt.oepnv.join('. ')}. Die Praxis liegt in der ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
+  },
+  {
+    frage: `Kann ich bei KU64 ${standort.name} parken?`,
+    antwort: standort.anfahrt.parken,
+  },
+  {
+    frage: `Ist die Praxis in ${standort.ort} barrierefrei?`,
+    antwort: standort.anfahrt.barrierefrei
+      ? `Ja, KU64 ${standort.name} ist barrierefrei zugänglich. Melden Sie sich gern vorab, wenn Sie besondere Unterstützung benötigen – dann bereiten wir alles vor.`
+      : (standort.anfahrt.barrierefreiHinweis ??
+        'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.'),
+  },
+  {
+    frage: `Welche Behandlungen bietet KU64 ${standort.name} an?`,
+    antwort: `An diesem Standort behandeln wir ${alleHier.length} Leistungen aus ${gruppen.length} Fachbereichen, darunter ${alleHier
+      .slice(0, 5)
+      .map((l) => l.name)
+      .join(', ')}. Nicht jede Behandlung wird an jedem KU64-Standort angeboten – auf dieser Seite sehen Sie ausschließlich das Angebot in ${standort.ort}.`,
+  },
+  {
+    frage: 'Nehmen Sie neue Patientinnen und Patienten auf?',
+    antwort:
+      'Ja. Sie können online einen Termin buchen oder uns anrufen. Für den ersten Termin füllen Sie den Anamnesebogen bequem vorab digital aus – das spart Zeit im Wartezimmer.',
+  },
+];
+
+const schema = [
+  schemaStandort(standort, alleHier),
+  schemaBrotkrumen(brotkrumen),
+  schemaFaq(faq),
+];
+---
+
+<Basis
+  titel={`Zahnarzt ${ortsname}`}
+  description={`${standort.claim} KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}. ${alleHier.length} Behandlungen, Online-Termin und digitale Anamnese.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="held">
+    <div class="huelle">
+      <p class="held-marke">KU64 · {standort.ort}</p>
+      <h1>Ihr Zahnarzt in {ortsname}</h1>
+      <p class="held-claim">{standort.claim}</p>
+
+      <div class="held-knoepfe">
+        <a href={`${pfad}termine/`} class="knopf knopf-primaer knopf-gross">Termin buchen</a>
+        <a href={`${pfad}leistungen/`} class="knopf knopf-sekundaer knopf-gross">
+          {alleHier.length} Behandlungen ansehen
+        </a>
+      </div>
+
+      <dl class="held-fakten">
+        <div>
+          <dt>Adresse</dt>
+          <dd>{standort.strasse}<br />{standort.plz} {standort.ort}</dd>
+        </div>
+        <div>
+          <dt>Telefon</dt>
+          <dd>
+            <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Geöffnet</dt>
+          <dd>
+            {
+              standort.oeffnungszeiten.filter((z) => z.von).length === 7
+                ? 'Sieben Tage die Woche'
+                : `${standort.oeffnungszeiten.filter((z) => z.von).length} Tage die Woche`
+            }
+          </dd>
+        </div>
+        {
+          standort.anzahlZahnaerzte && (
+            <div>
+              <dt>Behandelnde</dt>
+              <dd>{standort.anzahlZahnaerzte} Zahnärztinnen und Zahnärzte</dd>
+            </div>
+          )
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <h2>Was diesen Standort ausmacht</h2>
+      <ul class="besonderheiten">
+        {
+          standort.besonderheiten.map((b) => (
+            <li class="einblenden">
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <path
+                  d="M4 10.5l4 4 8-9"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{b}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* Leistungen nach Fachbereich – ausschließlich das Angebot dieses Standorts. */}
+  <section class="abschnitt flaeche-warm" id="leistungen">
+    <div class="huelle">
+      <h2>Behandlungen in {standort.ort}</h2>
+      <p class="abschnitt-text">
+        Alles, was wir an diesem Standort anbieten – {alleHier.length} Behandlungen in{' '}
+        {gruppen.length} Fachbereichen. Behandlungen, die es hier nicht gibt, weisen wir
+        offen aus und verlinken zum passenden Standort.
+      </p>
+
+      {
+        gruppen.map((g) => (
+          <div class="gruppe" id={g.kategorie.slug}>
+            <div class="gruppe-kopf">
+              <h3>{g.kategorie.name}</h3>
+              <p>{g.kategorie.beschreibung}</p>
+            </div>
+            <div class="raster">
+              {g.leistungen.map((l) => (
+                <LeistungKarte leistung={l} standortSlug={standort.slug} />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Ehrlicher Umgang mit dem, was es hier nicht gibt. */}
+  {
+    nichtHier.length > 0 && (
+      <section class="abschnitt">
+        <div class="huelle">
+          <h2>Nicht an diesem Standort</h2>
+          <p class="abschnitt-text">
+            Diese Behandlungen bieten wir in {standort.ort} nicht an. Damit Sie nicht
+            vergeblich anrufen, sehen Sie hier direkt, an welchem KU64-Standort Sie sie
+            bekommen.
+          </p>
+          <div class="raster">
+            {nichtHier.map((l) => (
+              <LeistungKarte leistung={l} standortSlug={standort.slug} kompakt />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle raster-zwei">
+      <div>
+        <h2>Anfahrt & Parken</h2>
+        <h3 class="klein-titel">Öffentliche Verkehrsmittel</h3>
+        <ul class="anfahrt-liste">
+          {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
+        </ul>
+        <h3 class="klein-titel">Mit dem Auto</h3>
+        <p class="anfahrt-text">{standort.anfahrt.parken}</p>
+        <p class="anfahrt-text">
+          <strong>Barrierefreiheit:</strong>{' '}
+          {standort.anfahrt.barrierefrei
+            ? 'Die Praxis ist barrierefrei zugänglich.'
+            : standort.anfahrt.barrierefreiHinweis}
+        </p>
+        <a href={`${pfad}anfahrt/`} class="knopf knopf-sekundaer">Detaillierte Anfahrt</a>
+      </div>
+
+      <div>
+        <h2>Sprechzeiten</h2>
+        <table class="zeiten-gross">
+          <caption class="nur-screenreader">
+            Öffnungszeiten von KU64 {standort.name}
+          </caption>
+          <tbody>
+            {
+              standort.oeffnungszeiten.map((z) => (
+                <tr>
+                  <th scope="row">{z.tag}</th>
+                  <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+        {standort.zeitenHinweis && <p class="hinweis hinweis-warnung">{standort.zeitenHinweis}</p>}
+      </div>
+    </div>
+  </section>
+
+  <div class="huelle">
+    <FaqBlock titel={`Fragen zu KU64 ${standort.name}`} eintraege={faq} />
+  </div>
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<style>
+  .held {
+    padding-block: clamp(var(--raum-7), 9vw, var(--raum-10)) var(--raum-8);
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--akzent) 11%, var(--flaeche)),
+      var(--flaeche) 62%
+    );
+  }
+
+  .held-marke {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--akzent);
+  }
+
+  h1 {
+    font-size: var(--t-4xl);
+    margin-block: var(--raum-4) var(--raum-4);
+    max-width: 16ch;
+  }
+
+  .held-claim {
+    max-width: 46ch;
+    font-size: var(--t-lg);
+    line-height: var(--zeile-weit);
+    color: var(--tinte-weich);
+  }
+
+  .held-knoepfe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-3);
+    margin-block-start: var(--raum-6);
+  }
+
+  .held-fakten {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+    gap: var(--raum-5);
+    margin-block-start: var(--raum-8);
+    padding-block-start: var(--raum-6);
+    border-top: 1px solid var(--linie);
+  }
+
+  .held-fakten dt {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+    margin-block-end: var(--raum-1);
+  }
+
+  .held-fakten dd {
+    margin: 0;
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+  }
+
+  .flaeche-warm {
+    background: var(--flaeche-warm);
+    border-block: 1px solid var(--linie);
+  }
+
+  .abschnitt-text {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-3) var(--raum-7);
+    color: var(--tinte-weich);
+    font-size: var(--t-lg);
+  }
+
+  .besonderheiten {
+    list-style: none;
+    padding: 0;
+    margin-block-start: var(--raum-5);
+    display: grid;
+    gap: var(--raum-4);
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  }
+
+  .besonderheiten li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--raum-3);
+    font-size: var(--t-md);
+    line-height: var(--zeile-normal);
+  }
+
+  .besonderheiten svg {
+    flex-shrink: 0;
+    margin-block-start: 4px;
+    color: var(--akzent);
+  }
+
+  .gruppe + .gruppe {
+    margin-block-start: var(--raum-8);
+  }
+
+  .gruppe-kopf {
+    margin-block-end: var(--raum-5);
+  }
+
+  .gruppe-kopf h3 {
+    font-size: var(--t-xl);
+  }
+
+  .gruppe-kopf p {
+    max-width: var(--breite-text);
+    margin-block-start: var(--raum-2);
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+  }
+
+  .klein-titel {
+    font-size: var(--t-md);
+    margin-block: var(--raum-5) var(--raum-2);
+  }
+
+  .anfahrt-liste {
+    padding-inline-start: var(--raum-5);
+    color: var(--tinte-weich);
+  }
+
+  .anfahrt-liste li + li {
+    margin-block-start: var(--raum-2);
+  }
+
+  .anfahrt-text {
+    color: var(--tinte-weich);
+    margin-block-end: var(--raum-4);
+  }
+
+  .zeiten-gross {
+    width: 100%;
+    max-width: 22rem;
+    margin-block-start: var(--raum-4);
+    border-collapse: collapse;
+  }
+
+  .zeiten-gross th,
+  .zeiten-gross td {
+    padding-block: var(--raum-3);
+    border-bottom: 1px solid var(--linie);
+    text-align: start;
+  }
+
+  .zeiten-gross th {
+    font-weight: 600;
+    width: 4rem;
+  }
+
+  .zeiten-gross td {
+    font-variant-numeric: tabular-nums;
+    color: var(--tinte-weich);
+  }
+
+  .hinweis {
+    margin-block-start: var(--raum-5);
+  }
+</style>

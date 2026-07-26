@@ -1,0 +1,604 @@
+---
+/**
+ * Hauptnavigation.
+ *
+ * Kernregel: Steht ein Standort fest, zeigen ALLE Navigationslinks auf
+ * Unterseiten genau dieses Standorts. Ein Standortwechsel ist nur über den
+ * ausdrücklichen Wähler möglich und wird dort klar benannt.
+ */
+import { STANDORTE, type Standort, istGeoeffnet } from '../data/standorte';
+import { KATEGORIEN, leistungenFuerStandort } from '../data/leistungen';
+
+interface Props {
+  standort: Standort | null;
+  pfad: string;
+}
+
+const { standort, pfad } = Astro.props;
+
+/** Basis für alle Links: innerhalb des Standorts bleiben. */
+const basis = standort ? `/${standort.slug}` : '';
+
+const punkte = standort
+  ? [
+      { name: 'Leistungen', pfad: `${basis}/leistungen/` },
+      { name: 'Praxis', pfad: `${basis}/praxis/` },
+      { name: 'Team', pfad: `${basis}/team/` },
+      { name: 'Anfahrt', pfad: `${basis}/anfahrt/` },
+      { name: 'Kontakt', pfad: `${basis}/kontakt/` },
+    ]
+  : [
+      { name: 'Standorte', pfad: '/standorte/' },
+      { name: 'Leistungen', pfad: '/leistungen/' },
+      { name: 'Über KU64', pfad: '/ueber-uns/' },
+      { name: 'Kontakt', pfad: '/kontakt/' },
+    ];
+
+const aktiv = (ziel: string) => pfad === ziel || (ziel !== '/' && pfad.startsWith(ziel));
+
+/* Kategorien für das Leistungs-Flyout – nur, was es hier wirklich gibt. */
+const kategorienHier = standort
+  ? KATEGORIEN.map((k) => ({
+      ...k,
+      anzahl: leistungenFuerStandort(standort.slug).filter((l) => l.kategorie === k.slug).length,
+    }))
+      .filter((k) => k.anzahl > 0)
+      .sort((a, b) => a.rang - b.rang)
+  : [];
+
+/* Der Öffnungsstatus wird beim Build berechnet und im Browser aktualisiert –
+   sonst zeigt eine statische Seite dauerhaft den Stand des Build-Zeitpunkts. */
+const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
+---
+
+<header class="kopf">
+  <div class="kopf-inner huelle">
+    <a
+      href={standort ? `${basis}/` : '/'}
+      class="logo"
+      aria-label={standort ? `KU64 ${standort.name}, zur Startseite` : 'KU64, zur Startseite'}
+    >
+      <span class="logo-wort">KU64</span>
+      {standort && <span class="logo-ort">{standort.name}</span>}
+    </a>
+
+    <nav class="haupt" aria-label="Hauptnavigation">
+      <ul class="haupt-liste">
+        {
+          punkte.map((p) => (
+            <li>
+              <a
+                href={p.pfad}
+                class:list={['haupt-link', { 'ist-aktiv': aktiv(p.pfad) }]}
+                aria-current={aktiv(p.pfad) ? 'page' : undefined}
+              >
+                {p.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="kopf-aktionen">
+      {
+        standort && (
+          <a
+            href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}
+            class="telefon"
+            data-oeffnungszeiten={JSON.stringify(standort.oeffnungszeiten)}
+          >
+            <span class:list={['punkt', { offen: offenJetzt }]} aria-hidden="true" />
+            <span class="telefon-nr">{standort.telefon}</span>
+          </a>
+        )
+      }
+
+      <a href={standort ? `${basis}/termine/` : '/termine/'} class="knopf knopf-primaer">
+        Termin buchen
+      </a>
+
+      <button
+        class="menue-knopf"
+        aria-expanded="false"
+        aria-controls="mobilmenue"
+        aria-label="Menü öffnen"
+      >
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  {/* Standortleiste: immer sichtbar, damit nie unklar ist, wo man gerade ist. */}
+  <div class="standortleiste">
+    <div class="huelle standortleiste-inner">
+      {
+        standort ? (
+          <p class="wo-bin-ich">
+            Sie sehen <strong>KU64 {standort.name}</strong> · {standort.strasse},{' '}
+            {standort.plz} {standort.ort}
+          </p>
+        ) : (
+          <p class="wo-bin-ich">Bitte wählen Sie Ihren Standort für passende Angaben.</p>
+        )
+      }
+
+      <details class="waehler">
+        <summary>
+          {standort ? 'Anderer Standort' : 'Standort wählen'}
+          <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
+            <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          </svg>
+        </summary>
+        <div class="waehler-liste">
+          <p class="waehler-hinweis">
+            Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede
+            Behandlung wird an jedem Standort angeboten.
+          </p>
+          <ul>
+            {
+              STANDORTE.map((s) => (
+                <li>
+                  <a
+                    href={`/${s.slug}/`}
+                    class:list={['waehler-link', { 'ist-aktiv': s.slug === standort?.slug }]}
+                  >
+                    <span class="waehler-punkt" style={`background:${s.akzent}`} aria-hidden="true" />
+                    <span>
+                      <strong>{s.name}</strong>
+                      <small>
+                        {s.strasse}, {s.ort}
+                      </small>
+                    </span>
+                    {s.slug === standort?.slug && <span class="marke marke-erfolg">aktuell</span>}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  {/* Mobiles Menü */}
+  <div class="mobilmenue" id="mobilmenue" hidden>
+    <nav class="huelle" aria-label="Mobile Navigation">
+      <ul class="mobil-liste">
+        {
+          punkte.map((p) => (
+            <li>
+              <a href={p.pfad}>{p.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        kategorienHier.length > 0 && (
+          <>
+            <p class="mobil-titel">Behandlungen</p>
+            <ul class="mobil-liste mobil-liste-klein">
+              {kategorienHier.map((k) => (
+                <li>
+                  <a href={`${basis}/leistungen/#${k.slug}`}>
+                    {k.name} <span class="anzahl">{k.anzahl}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .kopf {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+    background: color-mix(in oklab, var(--flaeche) 88%, transparent);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .kopf-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-5);
+    min-height: 4.25rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: var(--raum-2);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-wort {
+    font-family: var(--schrift-titel);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--akzent);
+  }
+
+  .logo-ort {
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .haupt {
+    margin-inline-end: auto;
+  }
+
+  .haupt-liste {
+    display: flex;
+    gap: var(--raum-5);
+    list-style: none;
+    padding: 0;
+  }
+
+  .haupt-link {
+    position: relative;
+    display: block;
+    padding-block: 0.4rem;
+    font-size: var(--t-sm);
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--tinte-weich);
+    transition: color var(--zeit-schnell) var(--kurve);
+  }
+
+  .haupt-link::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--akzent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .haupt-link:hover,
+  .haupt-link.ist-aktiv {
+    color: var(--tinte);
+  }
+
+  .haupt-link:hover::after,
+  .haupt-link.ist-aktiv::after {
+    transform: scaleX(1);
+  }
+
+  .kopf-aktionen {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+  }
+
+  .telefon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .punkt {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tinte-leise);
+    flex-shrink: 0;
+  }
+
+  .punkt.offen {
+    background: var(--erfolg);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--erfolg) 22%, transparent);
+  }
+
+  /* ── Standortleiste ── */
+
+  .standortleiste {
+    border-top: 1px solid var(--linie);
+    background: var(--flaeche-warm);
+    font-size: var(--t-xs);
+  }
+
+  .standortleiste-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--raum-4);
+    min-height: 2.25rem;
+    flex-wrap: wrap;
+  }
+
+  .wo-bin-ich {
+    color: var(--tinte-leise);
+    line-height: 1.4;
+  }
+
+  .wo-bin-ich strong {
+    color: var(--tinte);
+  }
+
+  .waehler {
+    position: relative;
+  }
+
+  .waehler summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-voll);
+    font-weight: 600;
+    color: var(--akzent);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .waehler summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .waehler summary svg {
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .waehler[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .waehler-liste {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + 0.5rem);
+    z-index: var(--z-overlay);
+    width: min(24rem, calc(100vw - 2rem));
+    padding: var(--raum-4);
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--schatten-lg);
+  }
+
+  .waehler-hinweis {
+    margin-bottom: var(--raum-3);
+    color: var(--tinte-leise);
+    line-height: var(--zeile-normal);
+  }
+
+  .waehler-liste ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  .waehler-link {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+    padding: var(--raum-3);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .waehler-link:hover {
+    background: var(--flaeche-warm);
+  }
+
+  .waehler-link.ist-aktiv {
+    background: var(--flaeche-warm-2);
+  }
+
+  .waehler-punkt {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .waehler-link strong {
+    display: block;
+    font-size: var(--t-sm);
+  }
+
+  .waehler-link small {
+    display: block;
+    color: var(--tinte-leise);
+    line-height: 1.3;
+  }
+
+  .waehler-link .marke {
+    margin-inline-start: auto;
+  }
+
+  /* ── Mobil ── */
+
+  .menue-knopf {
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    border: 1px solid var(--linie-stark);
+  }
+
+  .menue-knopf span,
+  .menue-knopf span::before,
+  .menue-knopf span::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--tinte);
+    border-radius: 2px;
+    transition: transform var(--zeit) var(--kurve), opacity var(--zeit-schnell) var(--kurve);
+  }
+
+  .menue-knopf span::before,
+  .menue-knopf span::after {
+    content: '';
+    position: relative;
+  }
+
+  .menue-knopf span::before {
+    top: -6px;
+  }
+  .menue-knopf span::after {
+    top: 4px;
+  }
+
+  .menue-knopf[aria-expanded='true'] span {
+    background: transparent;
+  }
+
+  .menue-knopf[aria-expanded='true'] span::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .menue-knopf[aria-expanded='true'] span::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobilmenue {
+    border-top: 1px solid var(--linie);
+    background: var(--flaeche);
+    padding-block: var(--raum-5);
+    max-height: calc(100dvh - 8rem);
+    overflow-y: auto;
+  }
+
+  .mobil-liste {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  .mobil-liste a {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--raum-3) var(--raum-2);
+    font-size: var(--t-lg);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--radius);
+  }
+
+  .mobil-liste a:hover {
+    background: var(--flaeche-warm);
+  }
+
+  .mobil-liste-klein a {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .mobil-titel {
+    margin-block: var(--raum-5) var(--raum-2);
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .anzahl {
+    color: var(--tinte-leise);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 68rem) {
+    .haupt {
+      display: none;
+    }
+    .menue-knopf {
+      display: flex;
+    }
+    .haupt {
+      margin-inline-end: 0;
+    }
+    .kopf-aktionen {
+      margin-inline-start: auto;
+    }
+  }
+
+  @media (max-width: 46rem) {
+    .telefon-nr {
+      display: none;
+    }
+    .standortleiste-inner {
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<script>
+  // Mobiles Menü
+  const knopf = document.querySelector<HTMLButtonElement>('.menue-knopf');
+  const menue = document.getElementById('mobilmenue');
+
+  knopf?.addEventListener('click', () => {
+    const offen = knopf.getAttribute('aria-expanded') === 'true';
+    knopf.setAttribute('aria-expanded', String(!offen));
+    knopf.setAttribute('aria-label', offen ? 'Menü öffnen' : 'Menü schließen');
+    if (menue) menue.hidden = offen;
+  });
+
+  // Standortwähler bei Klick außerhalb schließen.
+  const waehler = document.querySelector<HTMLDetailsElement>('.waehler');
+  document.addEventListener('click', (e) => {
+    if (waehler?.open && !waehler.contains(e.target as Node)) waehler.open = false;
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && waehler?.open) waehler.open = false;
+  });
+
+  /*
+   * Öffnungsstatus im Browser neu berechnen. Die Seite ist statisch, der
+   * beim Build ermittelte Status wäre sonst dauerhaft falsch.
+   */
+  const telefon = document.querySelector<HTMLAnchorElement>('.telefon');
+  const punkt = telefon?.querySelector('.punkt');
+  const rohdaten = telefon?.dataset.oeffnungszeiten;
+
+  if (punkt && rohdaten) {
+    try {
+      const zeiten = JSON.parse(rohdaten) as { tag: string; von: string | null; bis: string | null }[];
+      const tage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+      const jetzt = new Date();
+      const heute = zeiten.find((z) => z.tag === tage[jetzt.getDay()]);
+
+      let offen = false;
+      if (heute?.von && heute.bis) {
+        const min = jetzt.getHours() * 60 + jetzt.getMinutes();
+        const [vh, vm] = heute.von.split(':').map(Number);
+        const [bh, bm] = heute.bis.split(':').map(Number);
+        offen = min >= vh * 60 + vm && min < bh * 60 + bm;
+      }
+
+      punkt.classList.toggle('offen', offen);
+      telefon?.setAttribute(
+        'title',
+        offen ? 'Jetzt geöffnet – rufen Sie uns an' : 'Gerade geschlossen – hinterlassen Sie uns eine Nachricht',
+      );
+    } catch {
+      /* Fehlerhafte Daten: Punkt bleibt neutral. */
+    }
+  }
+</script>

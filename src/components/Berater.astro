@@ -1,0 +1,545 @@
+---
+/**
+ * Digitaler Berater – schwebendes Chatfenster.
+ *
+ * Bewusst ohne Framework: reines HTML plus ein kleines Skript. Das Widget lädt
+ * erst beim Öffnen Daten und kostet auf jeder Seite nur wenige Kilobyte.
+ */
+import type { Standort } from '../data/standorte';
+
+interface Props {
+  standort: Standort | null;
+  /** Vorschlagsfragen passend zur aktuellen Seite. */
+  vorschlaege?: string[];
+}
+
+const { standort, vorschlaege = [] } = Astro.props;
+
+const standardVorschlaege = standort
+  ? [
+      `Welche Behandlungen gibt es bei KU64 ${standort.name}?`,
+      'Was kostet eine professionelle Zahnreinigung?',
+      'Ich habe Angst vor dem Zahnarzt – wie läuft der erste Termin?',
+      'Wie komme ich zu Ihnen und kann ich parken?',
+    ]
+  : [
+      'Welcher Standort passt zu mir?',
+      'An welchen Standorten gibt es Implantate?',
+      'Was kostet eine professionelle Zahnreinigung?',
+    ];
+
+const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
+---
+
+<div class="berater nicht-drucken">
+  <button class="ruf" type="button" aria-expanded="false" aria-controls="berater-fenster">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path
+        d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.5 9.5 0 0 1-2.8-.4L4 21l1.4-4a8.2 8.2 0 0 1-1.4-4.6 8.4 8.4 0 0 1 9-8.4 8.4 8.4 0 0 1 8 7.5Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <span class="ruf-text">Fragen? Berater öffnen</span>
+  </button>
+
+  <div class="fenster" id="berater-fenster" role="dialog" aria-labelledby="berater-titel" hidden>
+    <header class="f-kopf">
+      <div>
+        <p class="f-titel" id="berater-titel">Digitaler Berater</p>
+        <p class="f-unter">
+          {standort ? `KU64 ${standort.name}` : 'Bitte Standort wählen'}
+        </p>
+      </div>
+      <button class="f-zu" type="button" aria-label="Berater schließen">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="f-verlauf" id="verlauf" role="log" aria-live="polite" aria-atomic="false">
+      <div class="blase blase-bot">
+        <p>
+          Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen
+          {standort ? ` bei KU64 ${standort.name}` : ' bei KU64'}. Was möchten Sie wissen?
+        </p>
+        <p class="klein">
+          Ich stelle keine Diagnosen und brauche keine persönlichen Daten von Ihnen. Bei
+          starken Schmerzen rufen Sie uns bitte direkt an
+          {standort && <> unter <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a></>}.
+        </p>
+      </div>
+    </div>
+
+    <div class="f-vorschlaege" id="vorschlaege">
+      {fragen.map((f) => <button type="button" class="chip">{f}</button>)}
+    </div>
+
+    <form class="f-eingabe" id="chatform">
+      <label for="frage" class="nur-screenreader">Ihre Frage</label>
+      <textarea
+        id="frage"
+        name="frage"
+        rows="1"
+        placeholder="Ihre Frage eingeben…"
+        maxlength="2000"
+        autocomplete="off"
+      ></textarea>
+      <button type="submit" class="senden" aria-label="Frage senden">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <path
+            d="M2 10 18 3l-5 15-3-6-8-2Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </form>
+
+    <p class="f-fuss">
+      KI-generierte Auskunft, keine medizinische Beratung. Kein Gesprächsinhalt wird
+      dauerhaft gespeichert. <a href="/datenschutz/#berater">Datenschutz</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .berater {
+    position: fixed;
+    inset-block-end: var(--raum-5);
+    inset-inline-end: var(--raum-5);
+    z-index: var(--z-dialog);
+  }
+
+  .ruf {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-3);
+    padding: 0.85rem 1.35rem;
+    border-radius: var(--radius-voll);
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+    font-weight: 600;
+    font-size: var(--t-sm);
+    box-shadow: var(--schatten-lg);
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .ruf:hover {
+    transform: translateY(-2px);
+  }
+
+  .ruf[aria-expanded='true'] {
+    display: none;
+  }
+
+  .fenster {
+    display: flex;
+    flex-direction: column;
+    width: min(24rem, calc(100vw - 2rem));
+    height: min(34rem, calc(100dvh - 6rem));
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--schatten-lg);
+    overflow: hidden;
+  }
+
+  .f-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--raum-3);
+    padding: var(--raum-4) var(--raum-5);
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+  }
+
+  .f-titel {
+    font-family: var(--schrift-titel);
+    font-weight: 600;
+    font-size: var(--t-md);
+  }
+
+  .f-unter {
+    font-size: var(--t-xs);
+    opacity: 0.85;
+  }
+
+  .f-zu {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: inherit;
+    transition: background-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .f-zu:hover {
+    background: rgb(255 255 255 / 0.18);
+  }
+
+  .f-verlauf {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--raum-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-3);
+    scrollbar-width: thin;
+  }
+
+  .blase {
+    max-width: 88%;
+    padding: var(--raum-3) var(--raum-4);
+    border-radius: var(--radius-lg);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+  }
+
+  .blase > * + * {
+    margin-block-start: var(--raum-2);
+  }
+
+  .blase-bot {
+    align-self: flex-start;
+    background: var(--flaeche-warm);
+    border-end-start-radius: var(--radius-sm);
+  }
+
+  .blase-ich {
+    align-self: flex-end;
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+    border-end-end-radius: var(--radius-sm);
+  }
+
+  .blase :global(a) {
+    color: inherit;
+    font-weight: 600;
+  }
+
+  .blase-bot :global(a) {
+    color: var(--akzent);
+  }
+
+  .blase-bot :global(ul) {
+    padding-inline-start: var(--raum-5);
+  }
+
+  .klein {
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  /* Tippanzeige */
+  .tippt span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-inline-end: 3px;
+    border-radius: 50%;
+    background: var(--tinte-leise);
+    animation: huepf 1.2s infinite;
+  }
+  .tippt span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .tippt span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes huepf {
+    0%, 60%, 100% {
+      transform: none;
+      opacity: 0.4;
+    }
+    30% {
+      transform: translateY(-4px);
+      opacity: 1;
+    }
+  }
+
+  .f-vorschlaege {
+    display: flex;
+    gap: var(--raum-2);
+    padding: 0 var(--raum-4) var(--raum-3);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .f-vorschlaege::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    flex-shrink: 0;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-voll);
+    border: 1px solid var(--linie-stark);
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+    white-space: nowrap;
+    transition: all var(--zeit-schnell) var(--kurve);
+  }
+
+  .chip:hover {
+    border-color: var(--akzent);
+    color: var(--akzent);
+  }
+
+  .f-eingabe {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--raum-2);
+    padding: var(--raum-3) var(--raum-4);
+    border-top: 1px solid var(--linie);
+  }
+
+  .f-eingabe textarea {
+    flex: 1;
+    min-width: 0;
+    max-height: 7rem;
+    padding: var(--raum-3);
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius);
+    background: var(--flaeche);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+    resize: none;
+    outline: none;
+  }
+
+  .f-eingabe textarea:focus {
+    border-color: var(--akzent);
+  }
+
+  .senden {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-shrink: 0;
+    border-radius: var(--radius);
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+    transition: opacity var(--zeit-schnell) var(--kurve);
+  }
+
+  .senden:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .f-fuss {
+    padding: 0 var(--raum-4) var(--raum-3);
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--tinte-leise);
+  }
+
+  @media (max-width: 32rem) {
+    .berater {
+      inset-inline: var(--raum-4);
+      inset-block-end: var(--raum-4);
+    }
+    .ruf-text {
+      display: none;
+    }
+    .ruf {
+      padding: 1rem;
+    }
+    .fenster {
+      width: 100%;
+      height: min(32rem, calc(100dvh - 4rem));
+    }
+  }
+</style>
+
+<script>
+  const wurzel = document.querySelector<HTMLElement>('.berater');
+  if (wurzel) {
+    const ruf = wurzel.querySelector<HTMLButtonElement>('.ruf')!;
+    const fenster = wurzel.querySelector<HTMLElement>('.fenster')!;
+    const zu = wurzel.querySelector<HTMLButtonElement>('.f-zu')!;
+    const verlaufEl = wurzel.querySelector<HTMLElement>('.f-verlauf')!;
+    const form = wurzel.querySelector<HTMLFormElement>('#chatform')!;
+    const feld = wurzel.querySelector<HTMLTextAreaElement>('#frage')!;
+    const sendeKnopf = form.querySelector<HTMLButtonElement>('.senden')!;
+    const chipBox = wurzel.querySelector<HTMLElement>('#vorschlaege')!;
+
+    const standort =
+      document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ?? null;
+
+    const verlauf: { role: 'user' | 'assistant'; content: string }[] = [];
+    let laeuft = false;
+
+    /* ── Öffnen und Schließen ── */
+
+    const oeffnen = () => {
+      fenster.hidden = false;
+      ruf.setAttribute('aria-expanded', 'true');
+      feld.focus();
+    };
+
+    const schliessen = () => {
+      fenster.hidden = true;
+      ruf.setAttribute('aria-expanded', 'false');
+      ruf.focus();
+    };
+
+    ruf.addEventListener('click', oeffnen);
+    zu.addEventListener('click', schliessen);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !fenster.hidden) schliessen();
+    });
+
+    // Andere Stellen der Seite können den Berater öffnen.
+    document.querySelectorAll('.chat-oeffner').forEach((el) =>
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        oeffnen();
+      }),
+    );
+
+    /* ── Darstellung ── */
+
+    /** Escapen und danach nur ausgewähltes Markdown zulassen – nie innerHTML
+     *  mit ungeprüfter Modellausgabe füllen. */
+    function alsHtml(text: string): string {
+      const sicher = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+      return sicher
+        // Nur interne Pfade als Link zulassen, keine fremden Domains.
+        .replace(
+          /\[([^\]]+)\]\((\/[a-z0-9\-/#]*)\)/gi,
+          '<a href="$2">$1</a>',
+        )
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n{2,}/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function blaseAnlegen(rolle: 'ich' | 'bot'): HTMLElement {
+      const el = document.createElement('div');
+      el.className = `blase blase-${rolle}`;
+      verlaufEl.append(el);
+      return el;
+    }
+
+    function nachUnten() {
+      verlaufEl.scrollTop = verlaufEl.scrollHeight;
+    }
+
+    /* ── Senden ── */
+
+    async function fragen(text: string) {
+      if (!text.trim() || laeuft) return;
+
+      laeuft = true;
+      sendeKnopf.disabled = true;
+      chipBox.hidden = true;
+
+      const meine = blaseAnlegen('ich');
+      meine.textContent = text;
+      verlauf.push({ role: 'user', content: text });
+      nachUnten();
+
+      const antwortEl = blaseAnlegen('bot');
+      antwortEl.innerHTML = '<span class="tippt"><span></span><span></span><span></span></span>';
+      nachUnten();
+
+      let gesammelt = '';
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nachrichten: verlauf, standort }),
+        });
+
+        if (!res.ok || !res.body) {
+          const daten = await res.json().catch(() => null);
+          throw new Error(daten?.fehler || 'Der Berater antwortet gerade nicht.');
+        }
+
+        const leser = res.body.getReader();
+        const decoder = new TextDecoder();
+        let puffer = '';
+
+        while (true) {
+          const { done, value } = await leser.read();
+          if (done) break;
+
+          puffer += decoder.decode(value, { stream: true });
+          const bloecke = puffer.split('\n\n');
+          puffer = bloecke.pop() ?? '';
+
+          for (const block of bloecke) {
+            const typ = block.match(/^event: (.+)$/m)?.[1];
+            const rohdaten = block.match(/^data: (.*)$/m)?.[1];
+            if (!typ || rohdaten === undefined) continue;
+
+            if (typ === 'text') {
+              gesammelt += JSON.parse(rohdaten);
+              antwortEl.innerHTML = `<p>${alsHtml(gesammelt)}</p>`;
+              nachUnten();
+            } else if (typ === 'fehler') {
+              throw new Error(JSON.parse(rohdaten));
+            }
+          }
+        }
+
+        if (gesammelt) verlauf.push({ role: 'assistant', content: gesammelt });
+      } catch (e) {
+        antwortEl.innerHTML = `<p>${
+          e instanceof Error ? e.message : 'Es ist ein Fehler aufgetreten.'
+        }</p>`;
+        // Fehlgeschlagene Runde nicht im Verlauf lassen – sonst verwirrt sie
+        // das Modell bei der nächsten Frage.
+        if (verlauf[verlauf.length - 1]?.role === 'user') verlauf.pop();
+      } finally {
+        laeuft = false;
+        sendeKnopf.disabled = false;
+        nachUnten();
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = feld.value;
+      feld.value = '';
+      feld.style.height = 'auto';
+      fragen(text);
+    });
+
+    // Enter sendet, Shift+Enter macht einen Zeilenumbruch.
+    feld.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    // Eingabefeld mitwachsen lassen.
+    feld.addEventListener('input', () => {
+      feld.style.height = 'auto';
+      feld.style.height = `${Math.min(feld.scrollHeight, 112)}px`;
+    });
+
+    chipBox.querySelectorAll('.chip').forEach((chip) =>
+      chip.addEventListener('click', () => fragen(chip.textContent ?? '')),
+    );
+  }
+</script>

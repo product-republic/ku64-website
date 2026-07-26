@@ -1,0 +1,124 @@
+---
+/**
+ * Basislayout für jede Seite.
+ *
+ * Der wichtigste Aspekt: `standort` legt den Standortkontext fest. Ist er
+ * gesetzt, bleibt die gesamte Navigation innerhalb dieses Standorts. Es gibt
+ * keinen automatischen Wechsel – ein Standortwechsel passiert ausschließlich
+ * durch bewusstes Klicken im Standortwähler.
+ */
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Fusszeile from '../components/Fusszeile.astro';
+import Brotkrumen from '../components/Brotkrumen.astro';
+import Berater from '../components/Berater.astro';
+import { type Standort } from '../data/standorte';
+import { titelBauen, descriptionKuerzen, kanonisch, SITE_NAME } from '../lib/seo';
+
+interface Props {
+  titel: string;
+  description: string;
+  /** Aktiver Standort. `null` nur auf standortübergreifenden Seiten. */
+  standort?: Standort | null;
+  /** Pfad ohne Domain, für Canonical und Breadcrumbs. */
+  pfad: string;
+  brotkrumen?: { name: string; pfad: string }[];
+  /** Beliebig viele JSON-LD-Objekte. */
+  schema?: Record<string, unknown>[];
+  /** OG-Bild relativ zur Domain. */
+  bild?: string;
+  /** Seiten, die nicht in den Index sollen (z. B. Danke-Seiten). */
+  noindex?: boolean;
+  /** Sprachvariante für hreflang. */
+  sprache?: 'de' | 'en';
+}
+
+const {
+  titel,
+  description,
+  standort = null,
+  pfad,
+  brotkrumen = [],
+  schema = [],
+  bild = '/og/ku64-standard.png',
+  noindex = false,
+  sprache = 'de',
+} = Astro.props;
+
+const seitentitel = titelBauen(titel, standort ? `KU64 ${standort.name}` : 'KU64');
+const beschreibung = descriptionKuerzen(description);
+const canonical = kanonisch(pfad);
+const ogBild = new URL(bild, Astro.site ?? 'https://ku64.de').href;
+---
+
+<!doctype html>
+<html lang={sprache} style={standort ? `--akzent: ${standort.akzent}` : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{seitentitel}</title>
+    <meta name="description" content={beschreibung} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={seitentitel} />
+    <meta property="og:description" content={beschreibung} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogBild} />
+    <meta property="og:locale" content={sprache === 'de' ? 'de_DE' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#e8532e" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16120f" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    {/* Standortbezug maschinenlesbar – auch für den Chatbot auf der Seite. */}
+    {standort && <meta name="ku64:standort" content={standort.slug} />}
+
+    {
+      schema.map((s) => (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(s)}
+        />
+      ))
+    }
+  </head>
+
+  <body>
+    <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
+
+    <Navigation standort={standort} pfad={pfad} />
+
+    {brotkrumen.length > 0 && <Brotkrumen punkte={brotkrumen} />}
+
+    <main id="inhalt">
+      <slot />
+    </main>
+
+    <Fusszeile standort={standort} />
+
+    <Berater standort={standort} />
+
+    {/* Standortgedächtnis: merkt sich ausschließlich den zuletzt bewusst
+        gewählten Standort, um auf standortfreien Seiten passend zu verlinken.
+        Es findet keine automatische Weiterleitung statt. */}
+    <script>
+      const el = document.querySelector('meta[name="ku64:standort"]');
+      if (el) {
+        try {
+          localStorage.setItem('ku64:standort', el.getAttribute('content') || '');
+        } catch {
+          /* Privater Modus o. Ä. – dann eben ohne Gedächtnis. */
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+---
+/**
+ * Wiederkehrender Abschluss-Aufruf mit Terminbuchung.
+ *
+ * Doctolib wird bewusst NICHT als iframe eingebunden, sondern erst nach
+ * ausdrücklicher Zustimmung geladen (siehe /[standort]/termine/). Hier steht
+ * nur der Link – so entsteht auf normalen Inhaltsseiten kein Drittanbieter-
+ * Kontakt ohne Einwilligung und kein Ladeballast.
+ */
+import type { Standort } from '../data/standorte';
+
+interface Props {
+  standort: Standort;
+  /** Behandlungsname, damit der Aufruf konkret statt generisch ist. */
+  anlass?: string;
+}
+
+const { standort, anlass } = Astro.props;
+---
+
+<section class="band" aria-labelledby="band-titel">
+  <div class="huelle band-inner">
+    <div>
+      <h2 id="band-titel">
+        {anlass ? `${anlass} bei KU64 ${standort.name}` : `Termin bei KU64 ${standort.name}`}
+      </h2>
+      <p>
+        Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch
+        gerne bei Ihnen zurück.
+      </p>
+      <p class="feindaten">
+        {standort.strasse}, {standort.plz} {standort.ort}
+        {standort.anfahrt.barrierefrei && <> · barrierefreier Zugang</>}
+      </p>
+    </div>
+
+    <div class="band-knoepfe">
+      <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer knopf-gross">
+        Online-Termin wählen
+      </a>
+      <a
+        href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}
+        class="knopf knopf-sekundaer knopf-gross"
+      >
+        {standort.telefon}
+      </a>
+      <a href={`/${standort.slug}/anamnese/`} class="knopf knopf-leise">
+        Anamnese vorab ausfüllen
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band {
+    padding-block: var(--raum-8);
+    background: var(--flaeche-dunkel);
+    color: #f5f1ed;
+  }
+
+  .band-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--raum-6);
+    align-items: center;
+  }
+
+  h2 {
+    font-size: var(--t-2xl);
+    margin-block-end: var(--raum-3);
+  }
+
+  p {
+    max-width: 42ch;
+    color: #c4bab2;
+    line-height: var(--zeile-weit);
+  }
+
+  .feindaten {
+    margin-block-start: var(--raum-3);
+    font-size: var(--t-sm);
+    color: #8f857d;
+  }
+
+  .band-knoepfe {
+    display: grid;
+    gap: var(--raum-3);
+    justify-items: stretch;
+  }
+
+  .band-knoepfe .knopf-sekundaer {
+    background: transparent;
+    color: #f5f1ed;
+    border-color: #423a33;
+  }
+
+  .band-knoepfe .knopf-sekundaer:hover {
+    border-color: var(--akzent);
+    color: var(--akzent);
+  }
+
+  .band-knoepfe .knopf-leise {
+    color: #8f857d;
+    font-size: var(--t-xs);
+  }
+
+  @media (max-width: 54rem) {
+    .band-inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

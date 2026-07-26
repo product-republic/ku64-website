@@ -1,0 +1,270 @@
+---
+/**
+ * Fußzeile. Im Standortkontext zeigt sie ausschließlich die Daten dieses
+ * Standorts – die anderen Standorte erscheinen nur als bewusste Auswahl,
+ * nie als gleichrangige Kontaktmöglichkeit.
+ */
+import { STANDORTE, type Standort } from '../data/standorte';
+import { KATEGORIEN, leistungenFuerStandort, LEISTUNGEN } from '../data/leistungen';
+
+interface Props {
+  standort: Standort | null;
+}
+const { standort } = Astro.props;
+
+const basis = standort ? `/${standort.slug}` : '';
+
+/* Im Standortkontext die dort meistgesuchten Behandlungen, sonst eine
+   standortübergreifende Auswahl. */
+const beliebt = standort
+  ? leistungenFuerStandort(standort.slug).slice(0, 8)
+  : LEISTUNGEN.slice(0, 8);
+
+const kategorien = standort
+  ? KATEGORIEN.filter(
+      (k) => leistungenFuerStandort(standort.slug).some((l) => l.kategorie === k.slug),
+    ).sort((a, b) => a.rang - b.rang)
+  : KATEGORIEN;
+
+const jahr = new Date().getFullYear();
+---
+
+<footer class="fuss">
+  <div class="huelle">
+    <div class="fuss-raster">
+      {/* Spalte 1: Kontakt des aktuellen Standorts */}
+      <div class="fuss-block">
+        <p class="fuss-titel">
+          {standort ? `KU64 ${standort.name}` : 'KU64 – Die Zahnspezialisten'}
+        </p>
+        {
+          standort ? (
+            <address>
+              {standort.strasse}
+              <br />
+              {standort.plz} {standort.ort}
+              <br />
+              <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>
+              <br />
+              <a href={`mailto:${standort.email}`}>{standort.email}</a>
+            </address>
+          ) : (
+            <p class="fuss-text">
+              Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren
+              Standort – Sprechzeiten und Behandlungsangebot unterscheiden sich.
+            </p>
+          )
+        }
+
+        {
+          standort && (
+            <table class="zeiten">
+              <caption class="nur-screenreader">Öffnungszeiten</caption>
+              <tbody>
+                {standort.oeffnungszeiten.map((z) => (
+                  <tr>
+                    <th scope="row">{z.tag}</th>
+                    <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )
+        }
+      </div>
+
+      {/* Spalte 2: Behandlungsbereiche */}
+      <div class="fuss-block">
+        <p class="fuss-titel">Behandlungsbereiche</p>
+        <ul>
+          {
+            kategorien.map((k) => (
+              <li>
+                <a href={`${basis}/leistungen/#${k.slug}`}>{k.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Spalte 3: Häufig gesucht */}
+      <div class="fuss-block">
+        <p class="fuss-titel">Häufig gesucht</p>
+        <ul>
+          {
+            beliebt.map((l) => (
+              <li>
+                <a
+                  href={
+                    standort
+                      ? `${basis}/leistungen/${l.slug}/`
+                      : `/leistungen/${l.slug}/`
+                  }
+                >
+                  {l.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Spalte 4: Standorte + Service */}
+      <div class="fuss-block">
+        <p class="fuss-titel">Unsere Standorte</p>
+        <ul>
+          {
+            STANDORTE.map((s) => (
+              <li>
+                <a
+                  href={`/${s.slug}/`}
+                  class:list={{ 'ist-aktiv': s.slug === standort?.slug }}
+                  aria-current={s.slug === standort?.slug ? 'true' : undefined}
+                >
+                  {s.name}
+                  {s.slug === standort?.slug && (
+                    <span class="nur-screenreader"> (aktuell gewählt)</span>
+                  )}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="fuss-titel fuss-titel-2">Service</p>
+        <ul>
+          <li><a href={`${basis}/termine/`}>Termin buchen</a></li>
+          <li><a href={`${basis}/anamnese/`}>Digitale Anamnese</a></li>
+          <li><a href="/laecheln-vorschau/">Lächeln-Vorschau</a></li>
+          <li><a href="/notfall/">Zahnärztlicher Notfall</a></li>
+          <li><a href="/karriere/">Karriere</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="linie" />
+
+    <div class="fuss-unten">
+      <p>© {jahr} KU64 – Die Zahnspezialisten</p>
+      <nav aria-label="Rechtliches">
+        <ul>
+          <li><a href="/impressum/">Impressum</a></li>
+          <li><a href="/datenschutz/">Datenschutz</a></li>
+          <li><a href="/barrierefreiheit/">Barrierefreiheit</a></li>
+          <li><a href="/cookies/">Cookie-Einstellungen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fuss {
+    margin-block-start: var(--raum-9);
+    padding-block: var(--raum-8) var(--raum-6);
+    background: var(--flaeche-warm);
+    border-top: 1px solid var(--linie);
+    font-size: var(--t-sm);
+  }
+
+  .fuss-raster {
+    display: grid;
+    gap: var(--raum-7) var(--raum-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  }
+
+  .fuss-titel {
+    font-family: var(--schrift-titel);
+    font-size: var(--t-md);
+    font-weight: 600;
+    margin-block-end: var(--raum-3);
+  }
+
+  .fuss-titel-2 {
+    margin-block-start: var(--raum-5);
+  }
+
+  .fuss-block ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-2);
+  }
+
+  .fuss-block a {
+    color: var(--tinte-weich);
+    text-decoration: none;
+  }
+
+  .fuss-block a:hover {
+    color: var(--akzent);
+    text-decoration: underline;
+  }
+
+  .fuss-block a.ist-aktiv {
+    color: var(--tinte);
+    font-weight: 600;
+  }
+
+  address {
+    font-style: normal;
+    line-height: var(--zeile-weit);
+    color: var(--tinte-weich);
+  }
+
+  address a {
+    color: var(--tinte);
+    font-weight: 500;
+  }
+
+  .fuss-text {
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .zeiten {
+    margin-block-start: var(--raum-4);
+    border-collapse: collapse;
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+  }
+
+  .zeiten th {
+    text-align: start;
+    font-weight: 500;
+    padding-inline-end: var(--raum-4);
+    padding-block: 1px;
+  }
+
+  .zeiten td {
+    font-variant-numeric: tabular-nums;
+    padding-block: 1px;
+  }
+
+  .fuss-unten {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--raum-4);
+    margin-block-start: var(--raum-5);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  .fuss-unten ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .fuss-unten a {
+    color: inherit;
+  }
+
+  .linie {
+    margin-block: var(--raum-7) 0;
+  }
+</style>

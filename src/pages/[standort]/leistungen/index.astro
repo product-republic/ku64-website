@@ -1,0 +1,290 @@
+---
+/**
+ * Behandlungsübersicht eines Standorts – mit Sofortsuche.
+ */
+import Basis from '../../../layouts/Basis.astro';
+import LeistungKarte from '../../../components/LeistungKarte.astro';
+import TerminBand from '../../../components/TerminBand.astro';
+import { STANDORTE, getStandort } from '../../../data/standorte';
+import {
+  kategorienMitLeistungen,
+  leistungenFuerStandort,
+  leistungenNichtAmStandort,
+} from '../../../data/leistungen';
+import { schemaBrotkrumen } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/leistungen/`;
+
+const gruppen = kategorienMitLeistungen(standort.slug);
+const alleHier = leistungenFuerStandort(standort.slug);
+const nichtHier = leistungenNichtAmStandort(standort.slug);
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Leistungen', pfad },
+];
+
+/* Suchindex für die Sofortsuche – enthält auch Synonyme, weil Menschen
+   "Loch im Zahn" tippen und nicht "Kariesbehandlung". */
+const suchindex = alleHier.map((l) => ({
+  slug: l.slug,
+  begriffe: [l.name, l.kurz, ...l.synonyme, l.patientenfrage].join(' ').toLowerCase(),
+}));
+---
+
+<Basis
+  titel={`Behandlungen in ${standort.ort}`}
+  description={`Alle ${alleHier.length} Behandlungen bei KU64 ${standort.name} – von Prophylaxe bis Implantologie. Mit Dauer, Kosten und Kassenangaben je Behandlung.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <h1>Behandlungen bei KU64 {standort.name}</h1>
+      <p class="unter">
+        {alleHier.length} Behandlungen in {gruppen.length} Fachbereichen – alle hier in{' '}
+        {standort.ort} verfügbar. Zu jeder Behandlung finden Sie Dauer, Kostenrahmen und
+        was die Krankenkasse übernimmt.
+      </p>
+
+      <div class="suche">
+        <label for="q" class="nur-screenreader">Behandlung suchen</label>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7" />
+          <path d="M13.8 13.8 18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <input
+          type="search"
+          id="q"
+          placeholder="Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching, Angst"
+          autocomplete="off"
+        />
+      </div>
+      <p class="treffer" role="status" aria-live="polite"></p>
+
+      <nav class="sprung" aria-label="Zu einem Fachbereich springen">
+        {gruppen.map((g) => <a href={`#${g.kategorie.slug}`}>{g.kategorie.name}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  <div class="huelle abschnitt" id="ergebnisse">
+    {
+      gruppen.map((g) => (
+        <section class="gruppe" id={g.kategorie.slug} data-gruppe>
+          <div class="gruppe-kopf">
+            <h2>{g.kategorie.name}</h2>
+            <p>{g.kategorie.beschreibung}</p>
+          </div>
+          <div class="raster">
+            {g.leistungen.map((l) => (
+              <div data-leistung={l.slug}>
+                <LeistungKarte leistung={l} standortSlug={standort.slug} />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <p class="leer" hidden>
+      Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen
+      Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.
+    </p>
+  </div>
+
+  {
+    nichtHier.length > 0 && (
+      <section class="abschnitt woanders-bereich">
+        <div class="huelle">
+          <h2>An anderen KU64-Standorten</h2>
+          <p class="unter">
+            Diese Behandlungen gibt es in {standort.ort} nicht. Damit Sie nicht vergeblich
+            suchen, führen wir Sie direkt zum richtigen Standort.
+          </p>
+          <div class="raster">
+            {nichtHier.map((l) => (
+              <LeistungKarte leistung={l} standortSlug={standort.slug} kompakt />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<script define:vars={{ suchindex }}>
+  const feld = document.getElementById('q');
+  const treffer = document.querySelector('.treffer');
+  const leer = document.querySelector('.leer');
+  const karten = document.querySelectorAll('[data-leistung]');
+  const gruppen = document.querySelectorAll('[data-gruppe]');
+
+  /** Normalisiert Umlaute, damit "zahnfleisch" auch "Zahnfleischbluten" findet. */
+  const norm = (s) =>
+    s
+      .toLowerCase()
+      .replace(/ä/g, 'a')
+      .replace(/ö/g, 'o')
+      .replace(/ü/g, 'u')
+      .replace(/ß/g, 'ss');
+
+  const index = new Map(suchindex.map((e) => [e.slug, norm(e.begriffe)]));
+
+  let timer;
+  feld?.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const frage = norm(feld.value.trim());
+      let sichtbar = 0;
+
+      karten.forEach((k) => {
+        const slug = k.dataset.leistung;
+        const passt = !frage || (index.get(slug) || '').includes(frage);
+        k.hidden = !passt;
+        if (passt) sichtbar++;
+      });
+
+      // Leere Fachbereiche ausblenden, damit keine verwaisten Überschriften stehen bleiben.
+      gruppen.forEach((g) => {
+        const hatTreffer = g.querySelector('[data-leistung]:not([hidden])');
+        g.hidden = !hatTreffer;
+      });
+
+      if (leer) leer.hidden = sichtbar > 0;
+      if (treffer) {
+        treffer.textContent = frage
+          ? `${sichtbar} ${sichtbar === 1 ? 'Behandlung' : 'Behandlungen'} gefunden`
+          : '';
+      }
+    }, 120);
+  });
+</script>
+
+<style>
+  .kopf {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--akzent) 8%, var(--flaeche)),
+      var(--flaeche)
+    );
+    border-bottom: 1px solid var(--linie);
+  }
+
+  h1 {
+    max-width: 18ch;
+  }
+
+  .unter {
+    max-width: var(--breite-text);
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .suche {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+    max-width: 34rem;
+    margin-block-start: var(--raum-6);
+    padding: 0 var(--raum-4);
+    background: var(--flaeche);
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius-voll);
+    transition: border-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .suche:focus-within {
+    border-color: var(--akzent);
+  }
+
+  .suche svg {
+    flex-shrink: 0;
+    color: var(--tinte-leise);
+  }
+
+  .suche input {
+    flex: 1;
+    min-width: 0;
+    padding-block: 0.85rem;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: var(--t-sm);
+  }
+
+  .treffer {
+    min-height: 1.4em;
+    margin-block-start: var(--raum-2);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  .sprung {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+    margin-block-start: var(--raum-4);
+  }
+
+  .sprung a {
+    padding: 0.35rem 0.8rem;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--tinte-weich);
+    background: var(--flaeche-warm-2);
+    border-radius: var(--radius-voll);
+    transition: all var(--zeit-schnell) var(--kurve);
+  }
+
+  .sprung a:hover {
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+  }
+
+  .gruppe + .gruppe {
+    margin-block-start: var(--raum-8);
+  }
+
+  .gruppe-kopf {
+    margin-block-end: var(--raum-5);
+    padding-block-end: var(--raum-4);
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .gruppe-kopf h2 {
+    font-size: var(--t-xl);
+  }
+
+  .gruppe-kopf p {
+    max-width: var(--breite-text);
+    margin-block-start: var(--raum-2);
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+  }
+
+  .leer {
+    padding: var(--raum-6);
+    text-align: center;
+    color: var(--tinte-weich);
+    background: var(--flaeche-warm);
+    border-radius: var(--radius-lg);
+  }
+
+  .woanders-bereich {
+    background: var(--flaeche-warm);
+    border-top: 1px solid var(--linie);
+  }
+</style>
