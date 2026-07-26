@@ -4,7 +4,7 @@ import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import { STANDORTE } from '../../../data/standorte';
-import { teamFuerStandort } from '../../../data/team';
+import { teamAn, gruppenAn, anzahlBehandelnde } from '../../../data/team';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -16,7 +16,7 @@ const daten = inhalte(Astro);
 
 const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/team/`;
-const team = teamFuerStandort(standort.slug);
+const team = teamAn(standort.slug);
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },
@@ -62,8 +62,8 @@ if (team.length > 0) {
         team.length > 0 ? (
           <>
             <p class="unter">
-              {standort.anzahlZahnaerzte
-                ? `${standort.anzahlZahnaerzte} Zahnärztinnen und Zahnärzte behandeln bei KU64 ${standort.name}.`
+              {anzahlBehandelnde(standort.slug)
+                ? `${anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte behandeln bei KU64 ${standort.name}.`
                 : `Die Behandelnden bei KU64 ${standort.name}.`}
             </p>
             <div class="raster">
@@ -110,8 +110,8 @@ if (team.length > 0) {
               mit Fotos und Schwerpunkten der einzelnen Behandelnden.
             </p>
             <p class="text">
-              {standort.anzahlZahnaerzte
-                ? `Bei KU64 ${standort.name} behandeln ${standort.anzahlZahnaerzte} Zahnärztinnen und Zahnärzte.`
+              {anzahlBehandelnde(standort.slug)
+                ? `Bei KU64 ${standort.name} behandeln ${anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte.`
                 : `Bei KU64 ${standort.name} behandelt Sie ein festes, eingespieltes Team.`}{' '}
               Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen
               Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.

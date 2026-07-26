@@ -98,7 +98,7 @@ export const PROPHYLAXE = {
 
 export const PREISRAHMEN: Preisrahmen[] = [
   {
-    leistung: 'zahnkrone',
+    leistung: 'keramik-kronen',
     name: 'Einzelkrone',
     terzile: [
       { von: 1000, bis: 1850 },
@@ -108,14 +108,14 @@ export const PREISRAHMEN: Preisrahmen[] = [
     reife: 'zurueckgestellt',
   },
   {
-    leistung: 'zahnkrone',
+    leistung: 'keramik-kronen',
     name: 'Mehrere Kronen (2 bis 4)',
     einzelspanne: { von: 750, bis: 1550 },
     hinweis: 'typisch je Krone',
     reife: 'uebernommen',
   },
   {
-    leistung: 'inlay',
+    leistung: 'inlays-onlays',
     name: 'Teilkrone oder Inlay',
     terzile: [
       { von: 550, bis: 1350 },
@@ -125,7 +125,7 @@ export const PREISRAHMEN: Preisrahmen[] = [
     reife: 'uebernommen',
   },
   {
-    leistung: 'zahnbruecke',
+    leistung: 'zahnbruecken',
     name: 'Brücke',
     terzile: [
       { von: 900, bis: 2700 },
@@ -160,7 +160,7 @@ export const PREISRAHMEN: Preisrahmen[] = [
     reife: 'uebernommen',
   },
   {
-    leistung: 'zahnprothese',
+    leistung: 'teilprothese',
     name: 'Prothese oder kombinierter Zahnersatz',
     terzile: [
       { von: 900, bis: 2750 },
@@ -195,7 +195,7 @@ export const PREISRAHMEN: Preisrahmen[] = [
     reife: 'zurueckgestellt',
   },
   {
-    leistung: 'zahnfuellung',
+    leistung: 'kunststofffuellungen',
     name: 'Füllung (Mehrkosten gegenüber der Kassenleistung)',
     terzile: [
       { von: 100, bis: 200 },
@@ -224,7 +224,7 @@ export const PREISRAHMEN: Preisrahmen[] = [
     reife: 'uebernommen',
   },
   {
-    leistung: 'weisheitszahn-entfernung',
+    leistung: 'weisheitszaehne',
     name: 'Oralchirurgie',
     terzile: [
       { von: 700, bis: 1000 },

@@ -2,6 +2,7 @@
 import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import { anzahlGesamt } from '../../data/team';
 import { schemaBrotkrumen, schemaOrganisation } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -44,7 +45,7 @@ const jahre = new Date().getFullYear() - seit;
         <div><dt>Behandlungen</dt><dd>{daten.leistungen.length}</dd><p>aus {daten.kategorien.length} Fachbereichen</p></div>
         <div>
           <dt>Behandelnde</dt>
-          <dd>{daten.standorte.reduce((n, s) => n + (s.anzahlZahnaerzte ?? 0), 0)}+</dd>
+          <dd>{anzahlGesamt()}+</dd>
           <p>Zahnärztinnen und Zahnärzte</p>
         </div>
       </dl>

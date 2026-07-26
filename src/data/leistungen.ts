@@ -223,8 +223,7 @@ export const LEISTUNGEN: Leistung[] = [
       'professionelle-zahnreinigung',
       'parodontitis-behandlung',
       'implantat-prophylaxe',
-      'mundgeruch',
-    ],
+      ],
     faq: [
       {
         frage: 'Warum ist der Pulverstrahl besser als das klassische Schaben?',
@@ -722,7 +721,7 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse übernimmt die Behandlung an Frontzähnen und – unter bestimmten Voraussetzungen – an Backenzähnen. Zusatzleistungen wie Mikroskop und maschinelle Aufbereitung sind privat zu tragen.',
     verfuegbar: ALLE,
-    related: ['karies-behandlung', 'keramik-kronen', 'zahnschmerzen', 'zahnentfernung'],
+    related: ['karies-behandlung', 'keramik-kronen', 'zahnentfernung'],
     faq: [
       {
         frage: 'Tut eine Wurzelbehandlung weh?',
@@ -760,7 +759,7 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Seit 2021 gibt es eine strukturierte Parodontitis-Behandlungsstrecke, die die gesetzliche Kasse inklusive der Nachsorge über zwei Jahre übernimmt. Voraussetzung ist ein dokumentierter Befund.',
     verfuegbar: ALLE,
-    related: ['professionelle-zahnreinigung', 'prophylaxe-4-0', 'zahnfleischbluten', 'implantat-prophylaxe'],
+    related: ['professionelle-zahnreinigung', 'prophylaxe-4-0', 'implantat-prophylaxe'],
     faq: [
       {
         frage: 'Ist Zahnfleischbluten normal?',
@@ -1110,7 +1109,7 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse übernimmt bei entsprechendem Befund die Schiene. Die instrumentelle Funktionsanalyse ist Privatleistung.',
     verfuegbar: KUDAMM_POTSDAM,
-    related: ['knirscherschiene', 'zahnschmerzen', 'kopfschmerzen-kiefer'],
+    related: ['knirscherschiene'],
     faq: [
       {
         frage: 'Woran erkenne ich, dass es CMD sein könnte?',
@@ -1137,7 +1136,7 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '350 bis 900 €',
     kasse: 'Bei dokumentiertem Befund übernimmt die gesetzliche Kasse die Standardschiene.',
     verfuegbar: ALLE,
-    related: ['cmd-behandlung', 'veneers', 'keramik-kronen', 'kopfschmerzen-kiefer'],
+    related: ['cmd-behandlung', 'veneers', 'keramik-kronen'],
     faq: [
       {
         frage: 'Woran erkenne ich Knirschen, wenn ich nachts schlafe?',
@@ -1166,7 +1165,7 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Beratung Kassenleistung, Sedierung 250 bis 600 €',
     kasse: 'Die zahnärztliche Behandlung ist Kassenleistung, Sedierung und Narkose meist privat.',
     verfuegbar: ALLE,
-    related: ['behandlung-in-narkose', 'lachgas', 'zahnschmerzen', 'kinderzahnarzt'],
+    related: ['behandlung-in-narkose', 'lachgas', 'kinderzahnarzt'],
     faq: [
       {
         frage: 'Muss ich mich beim ersten Termin behandeln lassen?',
@@ -1332,3 +1331,31 @@ export function alleKombinationen() {
   }
   return paare;
 }
+
+/**
+ * Beschwerde-Seiten, die noch fehlen.
+ *
+ * Diese vier Verweise standen als `related` in mehreren Behandlungen und
+ * zeigten ins Leere – geschrieben in der Annahme, dass es die Seiten gibt.
+ * Der Datenwächter hat sie gefunden; sie sind hier festgehalten statt
+ * stillschweigend gelöscht, denn sie sind aus drei Gründen die wertvollsten
+ * fehlenden Seiten der ganzen Website:
+ *
+ * 1. Menschen suchen nach ihrem Symptom, nicht nach dem Fachbegriff. Niemand
+ *    tippt "Parodontitis-Therapie" ein, bevor er weiß, dass er sie braucht –
+ *    getippt wird "Zahnfleisch blutet".
+ * 2. Der Altbestand hatte sie: unter /zahnbeschwerden/ und als eigene Seiten
+ *    wie /zahn-abgebrochen/. Diese Adressen laufen derzeit ins Leere.
+ * 3. Sie sind der natürliche Einstieg in die interne Verlinkung: von der
+ *    Beschwerde zur Behandlung zum Standort, an dem es sie gibt.
+ *
+ * Beim Anlegen jeweils die alte Adresse als Slug übernehmen, damit die
+ * Platzierung erhalten bleibt.
+ */
+export const BESCHWERDEN_GEPLANT = [
+  { slug: 'zahnschmerzen', fuehrtZu: ['wurzelkanalbehandlung', 'karies-behandlung', 'cmd-behandlung'] },
+  { slug: 'zahnfleischbluten', fuehrtZu: ['parodontitis-behandlung', 'professionelle-zahnreinigung'] },
+  { slug: 'mundgeruch', fuehrtZu: ['professionelle-zahnreinigung', 'prophylaxe-4-0'] },
+  { slug: 'kopfschmerzen-kiefer', fuehrtZu: ['cmd-behandlung', 'knirscherschiene'] },
+  { slug: 'zahn-abgebrochen', fuehrtZu: ['karies-behandlung', 'keramik-kronen'] },
+] as const;

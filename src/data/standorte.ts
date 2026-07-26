@@ -47,7 +47,14 @@ export interface Standort {
   /** Frei formulierter Hinweis, falls die Zeiten Ausnahmen haben. */
   zeitenHinweis?: string;
   eroeffnet: string;
-  anzahlZahnaerzte: number | null;
+  /**
+   * ENTFÄLLT – die Zahl wird gerechnet, nicht gepflegt.
+   *
+   * Hier stand einmal `anzahlZahnaerzte: 21`. Solche Zahlen altern lautlos:
+   * Jemand kommt dazu, und die 21 bleibt auf der Standortseite, in der
+   * Meta-Description, im Vorschaubild und in der Chatbot-Auskunft stehen.
+   * Die Zahl kommt jetzt aus team.ts – siehe anzahlBehandelnde().
+   */
   /** Was diesen Standort besonders macht – wird auf der Standortseite ausgespielt. */
   besonderheiten: string[];
   anfahrt: {
@@ -102,7 +109,6 @@ export const STANDORTE: Standort[] = [
     geo: { lat: 52.4979, lng: 13.3157 },
     oeffnungszeiten: ZEITEN_LANG,
     eroeffnet: '2005-07',
-    anzahlZahnaerzte: 21,
     besonderheiten: [
       'Größte Zahnarztpraxis Deutschlands mit allen Fachbereichen an einem Ort',
       'Eigenes zahntechnisches Meisterlabor im Haus',
@@ -145,7 +151,6 @@ export const STANDORTE: Standort[] = [
     zeitenHinweis:
       'Die Sprechzeiten am Hausvogteiplatz können von der Hauptpraxis abweichen – bitte vor dem Besuch bestätigen lassen.',
     eroeffnet: '2023-01',
-    anzahlZahnaerzte: 5,
     besonderheiten: [
       'Boutique-Atmosphäre mit dem Charakter eines Design-Hotels',
       'Schwerpunkt auf ästhetischer Zahnmedizin und Bleaching',
@@ -192,7 +197,6 @@ export const STANDORTE: Standort[] = [
     zeitenHinweis:
       'Öffnungszeiten der KiezPraxis sind noch nicht final bestätigt – bitte vor Veröffentlichung prüfen.',
     eroeffnet: '2026-01-05',
-    anzahlZahnaerzte: null,
     besonderheiten: [
       'Nachbarschaftspraxis mit persönlicher Betreuung und festen Ansprechpartnern',
       'Tochterpraxis der KU64 am Kurfürstendamm – gleiche Qualitätsstandards',
@@ -231,7 +235,6 @@ export const STANDORTE: Standort[] = [
     geo: { lat: 52.3944, lng: 13.0817 },
     oeffnungszeiten: ZEITEN_LANG,
     eroeffnet: '2019',
-    anzahlZahnaerzte: 12,
     besonderheiten: [
       'Praxis im denkmalgeschützten Palais Ritz – historische Hülle, moderne Zahnmedizin',
       'Sieben Tage die Woche geöffnet, auch am Wochenende',
