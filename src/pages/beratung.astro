@@ -1,0 +1,525 @@
+---
+/**
+ * Sprachberater. Wer nicht tippen mag oder sehr viele Fragen hat, spricht hier
+ * einfach – die Alternative zum Chat, nicht dessen Ersatz.
+ *
+ * Das Mikrofon wird erst nach ausdrücklichem Klick angefordert. Es läuft nichts
+ * im Hintergrund mit, und es wird kein Gespräch aufgezeichnet.
+ */
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+
+const pfad = '/beratung/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Digitale Beratung', pfad },
+];
+
+const faq = [
+  {
+    frage: 'Wird das Gespräch aufgezeichnet?',
+    antwort:
+      'Für die Dauer des Gesprächs wird Ihre Stimme verarbeitet, um die Antwort zu erzeugen. Eine dauerhafte Aufzeichnung findet nicht statt, und wir ordnen das Gespräch keiner Person zu. Sie können jederzeit auflegen.',
+  },
+  {
+    frage: 'Ersetzt das eine Beratung in der Praxis?',
+    antwort:
+      'Nein. Der Sprachberater erklärt Behandlungen, Abläufe und Kostenrahmen. Er stellt keine Diagnose und beurteilt keine Beschwerden. Alles, was Ihren konkreten Fall betrifft, gehört in eine persönliche Untersuchung.',
+  },
+  {
+    frage: 'Was, wenn ich lieber schreibe?',
+    antwort:
+      'Dann nutzen Sie den Chat unten rechts – inhaltlich beantwortet er dieselben Fragen. Manche Menschen tippen lieber, andere sprechen lieber; beides ist gleichwertig.',
+  },
+  {
+    frage: 'Kann ich darüber einen Termin buchen?',
+    antwort:
+      'Nein, der Berater nimmt keine Termine entgegen und erfasst keine persönlichen Daten. Er verweist Sie auf die Terminseite Ihres Standorts oder auf unsere Telefonnummer.',
+  },
+];
+---
+
+<Basis
+  titel="Digitale Beratung"
+  description="Sprechen oder schreiben Sie mit unserem digitalen Berater – rund um die Uhr, zu Behandlungen, Kosten und Abläufen bei KU64."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <span class="marke marke-akzent">Rund um die Uhr</span>
+      <h1>Sprechen Sie mit unserem digitalen Berater</h1>
+      <p class="unter">
+        Fragen zu einer Behandlung, zu Kosten oder zum Ablauf? Stellen Sie sie laut – der
+        Berater antwortet in natürlicher Sprache und kennt das Angebot jedes Standorts.
+      </p>
+    </div>
+  </section>
+
+  <div class="huelle abschnitt spalten">
+    <section class="gespraech">
+      <label class="feld">
+        <span>Zu welchem Standort haben Sie Fragen?</span>
+        <select id="standortWahl">
+          <option value="">Allgemein / noch unentschieden</option>
+          {STANDORTE.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
+        </select>
+      </label>
+
+      <div class="buehne" id="buehne" data-zustand="bereit">
+        {/* Visualisierung des Gesprächszustands */}
+        <div class="welle" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <p class="zustand" id="zustand" role="status" aria-live="polite">
+          Bereit. Klicken Sie, um das Gespräch zu starten.
+        </p>
+
+        <button type="button" class="knopf knopf-primaer knopf-gross mikro" id="mikro">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+            <rect x="7" y="2" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.6" />
+            <path d="M4 9a6 6 0 0 0 12 0M10 15v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <span id="mikroText">Gespräch starten</span>
+        </button>
+
+        <p class="mikro-hinweis">
+          Ihr Browser fragt danach nach der Erlaubnis für das Mikrofon. Ohne Ihre Zustimmung
+          passiert nichts.
+        </p>
+      </div>
+
+      <div class="protokoll" id="protokoll" aria-live="polite"></div>
+
+      <div class="fehlerbox" id="fehlerbox" hidden role="alert"></div>
+    </section>
+
+    <aside class="seite">
+      <div class="karte">
+        <h3>Lieber schreiben?</h3>
+        <p>
+          Der Chat unten rechts beantwortet dieselben Fragen – in Textform, ohne Mikrofon.
+        </p>
+        <button type="button" class="knopf knopf-sekundaer chat-oeffner">Chat öffnen</button>
+      </div>
+
+      <div class="karte">
+        <h3>Lieber mit einem Menschen?</h3>
+        <p>Selbstverständlich. Rufen Sie den Standort an, der Ihnen am nächsten liegt:</p>
+        <ul class="nummern">
+          {
+            STANDORTE.map((s) => (
+              <li>
+                <strong>{s.name}</strong>
+                <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`}>{s.telefon}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="karte grenze">
+        <h3>Was der Berater nicht tut</h3>
+        <ul class="liste">
+          <li>Keine Diagnose und keine Beurteilung von Beschwerden</li>
+          <li>Keine Terminbuchung und keine Aufnahme persönlicher Daten</li>
+          <li>Keine Zusagen zu Behandlungsergebnissen</li>
+        </ul>
+        <p class="notfall">
+          Bei starken Schmerzen, Schwellung im Gesicht oder Fieber: bitte direkt anrufen.
+          Bei Atem- oder Schluckbeschwerden den Rettungsdienst unter 112.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="huelle">
+    <section class="faq-bereich">
+      <h2>Fragen zur digitalen Beratung</h2>
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.frage}</summary>
+            <p>{f.antwort}</p>
+          </details>
+        ))
+      }
+    </section>
+  </div>
+</Basis>
+
+<script>
+  import { Conversation } from '@elevenlabs/client';
+
+  const mikro = document.getElementById('mikro') as HTMLButtonElement;
+  const mikroText = document.getElementById('mikroText')!;
+  const zustand = document.getElementById('zustand')!;
+  const buehne = document.getElementById('buehne')!;
+  const protokoll = document.getElementById('protokoll')!;
+  const fehlerbox = document.getElementById('fehlerbox')!;
+  const standortWahl = document.getElementById('standortWahl') as HTMLSelectElement;
+
+  let gespraech: Awaited<ReturnType<typeof Conversation.startSession>> | null = null;
+
+  // Auf einer Standortseite gelandet? Dann diesen Standort vorauswählen.
+  try {
+    const gemerkt = localStorage.getItem('ku64:standort');
+    if (gemerkt) standortWahl.value = gemerkt;
+  } catch {
+    /* kein Speicher */
+  }
+
+  function setzeZustand(text: string, name: string) {
+    zustand.textContent = text;
+    buehne.dataset.zustand = name;
+  }
+
+  function zeigeFehler(text: string) {
+    fehlerbox.hidden = false;
+    fehlerbox.textContent = text;
+  }
+
+  function protokollZeile(wer: 'Sie' | 'Berater', text: string) {
+    const p = document.createElement('p');
+    p.className = wer === 'Sie' ? 'zeile zeile-ich' : 'zeile zeile-bot';
+    p.innerHTML = `<span class="wer"></span><span class="was"></span>`;
+    p.querySelector('.wer')!.textContent = wer;
+    p.querySelector('.was')!.textContent = text;
+    protokoll.append(p);
+    protokoll.scrollTop = protokoll.scrollHeight;
+  }
+
+  async function starten() {
+    fehlerbox.hidden = true;
+    mikro.disabled = true;
+    setzeZustand('Verbindung wird aufgebaut…', 'verbindet');
+
+    try {
+      // Mikrofon-Erlaubnis zuerst – bevor irgendetwas an ElevenLabs geht.
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      const slug = standortWahl.value;
+      const res = await fetch(`/api/voice-token${slug ? `?standort=${slug}` : ''}`);
+      const daten = await res.json();
+
+      if (daten.demo) {
+        setzeZustand('Noch nicht verbunden', 'bereit');
+        zeigeFehler(daten.hinweis);
+        return;
+      }
+
+      if (!res.ok || !daten.signedUrl) {
+        throw new Error(daten.fehler || 'Verbindung fehlgeschlagen.');
+      }
+
+      gespraech = await Conversation.startSession({
+        signedUrl: daten.signedUrl,
+        onConnect: () => {
+          setzeZustand('Verbunden – sprechen Sie einfach los.', 'verbunden');
+          mikroText.textContent = 'Gespräch beenden';
+          mikro.disabled = false;
+        },
+        onDisconnect: () => {
+          setzeZustand('Gespräch beendet. Sie können jederzeit neu starten.', 'bereit');
+          mikroText.textContent = 'Gespräch starten';
+          mikro.disabled = false;
+          gespraech = null;
+        },
+        onModeChange: (modus: { mode: string }) => {
+          setzeZustand(
+            modus.mode === 'speaking' ? 'Der Berater spricht…' : 'Ich höre zu…',
+            modus.mode === 'speaking' ? 'spricht' : 'hoert',
+          );
+        },
+        onMessage: (n: { message: string; source: string }) => {
+          if (n?.message) protokollZeile(n.source === 'user' ? 'Sie' : 'Berater', n.message);
+        },
+        onError: (e: unknown) => {
+          console.error('[voice]', e);
+          zeigeFehler(
+            'Die Verbindung wurde unterbrochen. Bitte versuchen Sie es erneut oder nutzen Sie den Chat.',
+          );
+        },
+      });
+    } catch (e) {
+      setzeZustand('Bereit. Klicken Sie, um das Gespräch zu starten.', 'bereit');
+      mikro.disabled = false;
+
+      const meldung =
+        e instanceof DOMException && e.name === 'NotAllowedError'
+          ? 'Ohne Mikrofon-Erlaubnis können wir kein Gespräch führen. Sie können stattdessen den Chat nutzen.'
+          : e instanceof Error
+            ? e.message
+            : 'Es ist ein Fehler aufgetreten.';
+
+      zeigeFehler(meldung);
+    }
+  }
+
+  async function beenden() {
+    mikro.disabled = true;
+    await gespraech?.endSession();
+    gespraech = null;
+    mikro.disabled = false;
+  }
+
+  mikro.addEventListener('click', () => (gespraech ? beenden() : starten()));
+
+  // Beim Verlassen der Seite sauber auflegen – sonst laufen Sprachminuten weiter.
+  window.addEventListener('pagehide', () => {
+    gespraech?.endSession();
+  });
+</script>
+
+<style>
+  .kopf {
+    background: linear-gradient(160deg, color-mix(in oklab, var(--akzent) 9%, var(--flaeche)), var(--flaeche) 70%);
+    border-bottom: 1px solid var(--linie);
+  }
+
+  h1 {
+    margin-block: var(--raum-4);
+    max-width: 20ch;
+  }
+
+  .unter {
+    max-width: var(--breite-text);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .spalten {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--raum-8);
+    align-items: start;
+  }
+
+  .feld {
+    display: block;
+    margin-block-end: var(--raum-5);
+    max-width: 26rem;
+  }
+
+  .feld span {
+    display: block;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    margin-block-end: var(--raum-2);
+  }
+
+  .feld select {
+    width: 100%;
+    padding: 0.75rem var(--raum-3);
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius);
+    background: var(--flaeche);
+    font-size: var(--t-sm);
+  }
+
+  .buehne {
+    display: grid;
+    place-items: center;
+    padding: var(--raum-8) var(--raum-5);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-xl);
+    background: var(--flaeche-warm);
+    text-align: center;
+  }
+
+  .welle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 3.5rem;
+    margin-block-end: var(--raum-5);
+  }
+
+  .welle span {
+    width: 5px;
+    height: 12px;
+    border-radius: var(--radius-voll);
+    background: var(--linie-stark);
+    transition: background-color var(--zeit) var(--kurve);
+  }
+
+  /* Der Balkenverlauf zeigt, wer gerade dran ist – ohne Text lesen zu müssen. */
+  [data-zustand='hoert'] .welle span,
+  [data-zustand='spricht'] .welle span {
+    background: var(--akzent);
+    animation: pulsieren 1s ease-in-out infinite;
+  }
+
+  [data-zustand='spricht'] .welle span {
+    animation-duration: 0.6s;
+  }
+
+  .welle span:nth-child(2) { animation-delay: 0.1s; }
+  .welle span:nth-child(3) { animation-delay: 0.2s; }
+  .welle span:nth-child(4) { animation-delay: 0.3s; }
+  .welle span:nth-child(5) { animation-delay: 0.4s; }
+
+  [data-zustand='verbindet'] .welle span {
+    animation: pulsieren 1.4s ease-in-out infinite;
+  }
+
+  @keyframes pulsieren {
+    0%, 100% { height: 12px; }
+    50% { height: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .welle span { animation: none !important; }
+  }
+
+  .zustand {
+    margin-block-end: var(--raum-5);
+    font-size: var(--t-md);
+    color: var(--tinte-weich);
+  }
+
+  .mikro-hinweis {
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+    max-width: 32ch;
+  }
+
+  .protokoll {
+    max-height: 22rem;
+    overflow-y: auto;
+    margin-block-start: var(--raum-5);
+  }
+
+  .protokoll:empty {
+    display: none;
+  }
+
+  .zeile {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: var(--raum-3);
+    padding-block: var(--raum-3);
+    border-bottom: 1px solid var(--linie);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+  }
+
+  .zeile :global(.wer) {
+    font-weight: 700;
+    font-size: var(--t-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+    padding-block-start: 2px;
+  }
+
+  .zeile-bot :global(.wer) {
+    color: var(--akzent);
+  }
+
+  .fehlerbox {
+    margin-block-start: var(--raum-4);
+    padding: var(--raum-4);
+    border-radius: var(--radius);
+    background: var(--fehler-flaeche);
+    color: var(--fehler);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+  }
+
+  .seite {
+    display: grid;
+    gap: var(--raum-4);
+  }
+
+  .seite h3 {
+    font-size: var(--t-md);
+    margin-block-end: var(--raum-3);
+  }
+
+  .seite p {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-3);
+  }
+
+  .nummern {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-3);
+  }
+
+  .nummern li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--raum-3);
+    font-size: var(--t-sm);
+  }
+
+  .nummern a {
+    color: var(--akzent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .liste {
+    padding-inline-start: var(--raum-5);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .liste li + li {
+    margin-block-start: var(--raum-2);
+  }
+
+  .grenze {
+    background: var(--flaeche-warm);
+  }
+
+  .notfall {
+    margin-block-start: var(--raum-4);
+    padding: var(--raum-3);
+    border-radius: var(--radius);
+    background: var(--fehler-flaeche);
+    color: var(--fehler);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    margin-block-end: 0;
+  }
+
+  .faq-bereich {
+    padding-block: var(--raum-8);
+  }
+
+  .faq-bereich h2 {
+    margin-block-end: var(--raum-5);
+  }
+
+  .faq-bereich details {
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .faq-bereich summary {
+    padding-block: var(--raum-4);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq-bereich p {
+    padding-block-end: var(--raum-4);
+    max-width: var(--breite-text);
+    color: var(--tinte-weich);
+  }
+
+  @media (max-width: 62rem) {
+    .spalten {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

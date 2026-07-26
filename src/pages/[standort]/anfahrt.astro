@@ -1,0 +1,150 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import TerminBand from '../../components/TerminBand.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/anfahrt/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Anfahrt', pfad },
+];
+
+const faq = [
+  {
+    frage: `Wie komme ich mit Bus und Bahn zu KU64 ${standort.name}?`,
+    antwort: standort.anfahrt.oepnv.join('. ') + '.',
+  },
+  { frage: 'Wo kann ich parken?', antwort: standort.anfahrt.parken },
+  {
+    frage: 'Ist die Praxis barrierefrei?',
+    antwort: standort.anfahrt.barrierefrei
+      ? 'Ja, die Praxis ist barrierefrei zugänglich.'
+      : (standort.anfahrt.barrierefreiHinweis ?? 'Bitte sprechen Sie uns vorab an.'),
+  },
+];
+
+/* Kartenlink statt eingebetteter Karte: Eine Google-Maps-Einbettung würde ohne
+   Einwilligung Daten an Google senden. Der Link tut es erst auf Klick. */
+const kartenZiel = `https://www.openstreetmap.org/?mlat=${standort.geo.lat}&mlon=${standort.geo.lng}#map=17/${standort.geo.lat}/${standort.geo.lng}`;
+const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  `${standort.strasse}, ${standort.plz} ${standort.ort}`,
+)}`;
+---
+
+<Basis
+  titel={`Anfahrt ${standort.ort}`}
+  description={`So finden Sie KU64 ${standort.name}: ${standort.strasse}, ${standort.plz} ${standort.ort}. Mit ÖPNV-Verbindungen, Parkmöglichkeiten und Hinweisen zur Barrierefreiheit.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>So finden Sie uns</h1>
+      <p class="unter">
+        KU64 {standort.name} liegt in der {standort.strasse}
+        {standort.bezirk && <> in {standort.ort}-{standort.bezirk}</>}.
+      </p>
+
+      <div class="raster-zwei oben">
+        <div class="karte adresse">
+          <h2>Adresse</h2>
+          <address>
+            <strong>KU64 {standort.name}</strong><br />
+            {standort.strasse}<br />
+            {standort.plz} {standort.ort}
+          </address>
+          <div class="adresse-knoepfe">
+            <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">
+              Route planen
+            </a>
+            <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
+              Auf der Karte ansehen
+            </a>
+          </div>
+          <p class="klein">
+            Die Kartendienste sind externe Anbieter. Wir betten sie nicht direkt ein, damit
+            beim bloßen Lesen dieser Seite keine Daten an Dritte fließen.
+          </p>
+        </div>
+
+        <div class="karte">
+          <h2>Sprechzeiten</h2>
+          <table class="zeiten">
+            <caption class="nur-screenreader">Öffnungszeiten</caption>
+            <tbody>
+              {
+                standort.oeffnungszeiten.map((z) => (
+                  <tr>
+                    <th scope="row">{z.tag}</th>
+                    <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+          <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-sekundaer">
+            {standort.telefon}
+          </a>
+        </div>
+      </div>
+
+      <div class="raster-zwei">
+        <section>
+          <h2>Mit öffentlichen Verkehrsmitteln</h2>
+          <ul class="wege">
+            {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
+          </ul>
+        </section>
+
+        <section>
+          <h2>Mit dem Auto</h2>
+          <p class="text">{standort.anfahrt.parken}</p>
+
+          <h2 class="abstand">Barrierefreiheit</h2>
+          <p class="text">
+            {
+              standort.anfahrt.barrierefrei
+                ? 'Die Praxis ist barrierefrei zugänglich. Wenn Sie besondere Unterstützung benötigen, sagen Sie uns vorab Bescheid – dann bereiten wir alles vor.'
+                : standort.anfahrt.barrierefreiHinweis
+            }
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<style>
+  h1 { max-width: 16ch; }
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-7);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+  .oben { margin-block-end: var(--raum-8); }
+  h2 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
+  .abstand { margin-block-start: var(--raum-6); }
+  address { font-style: normal; line-height: var(--zeile-weit); color: var(--tinte-weich); }
+  .adresse-knoepfe { display: flex; flex-wrap: wrap; gap: var(--raum-3); margin-block: var(--raum-4); }
+  .klein { font-size: var(--t-xs); color: var(--tinte-leise); line-height: var(--zeile-normal); }
+  .zeiten { width: 100%; border-collapse: collapse; margin-block-end: var(--raum-4); }
+  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); text-align: start; }
+  .zeiten th { font-weight: 600; width: 4rem; }
+  .zeiten td { font-variant-numeric: tabular-nums; color: var(--tinte-weich); }
+  .wege { padding-inline-start: var(--raum-5); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .wege li + li { margin-block-start: var(--raum-3); }
+  .text { color: var(--tinte-weich); line-height: var(--zeile-weit); max-width: var(--breite-text); }
+</style>

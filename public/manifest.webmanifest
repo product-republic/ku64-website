@@ -1,0 +1,11 @@
+{
+  "name": "KU64 – Die Zahnspezialisten",
+  "short_name": "KU64",
+  "description": "Zahnarztpraxis an vier Standorten in Berlin und Potsdam.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e8532e",
+  "lang": "de",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

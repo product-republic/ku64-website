@@ -1,0 +1,64 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/karriere/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Karriere', pfad },
+];
+---
+
+<Basis
+  titel="Karriere bei KU64"
+  description="Offene Stellen und Initiativbewerbung bei KU64 in Berlin und Potsdam."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Arbeiten bei KU64</h1>
+      <p class="unter">
+        {STANDORTE.length} Standorte, alle Fachbereiche unter einem Dach und ein eigenes
+        Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.
+      </p>
+
+      <div class="hinweis hinweis-info offen">
+        <strong>Stellenanzeigen folgen.</strong>
+        <p>
+          Die aktuellen Ausschreibungen werden gerade eingepflegt. Bis dahin freuen wir uns
+          über Initiativbewerbungen – schreiben Sie uns einfach, welcher Bereich und welcher
+          Standort Sie interessieren.
+        </p>
+      </div>
+
+      <h2>Kontakt für Bewerbungen</h2>
+      <div class="raster">
+        {STANDORTE.map((s) => (
+          <div class="karte ort" style={`--akzent:${s.akzent}`}>
+            <span class="band" aria-hidden="true" />
+            <h3>KU64 {s.name}</h3>
+            <address>{s.strasse}, {s.plz} {s.ort}</address>
+            <a href={`mailto:${s.email}?subject=Initiativbewerbung`} class="knopf knopf-sekundaer">
+              Bewerbung senden
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-6); font-size: var(--t-lg); color: var(--tinte-weich); }
+  .offen { max-width: var(--breite-text); margin-block-end: var(--raum-8); }
+  .offen p { margin-block-start: var(--raum-2); }
+  h2 { font-size: var(--t-xl); margin-block-end: var(--raum-5); }
+  .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h3 { font-size: var(--t-md); }
+  address { font-style: normal; margin-block: var(--raum-2) var(--raum-4); font-size: var(--t-sm); color: var(--tinte-leise); }
+  .ort .knopf { margin-block-start: auto; align-self: flex-start; }
+</style>

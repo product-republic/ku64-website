@@ -1,0 +1,111 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { LEISTUNGEN, KATEGORIEN } from '../data/leistungen';
+import { schemaBrotkrumen, schemaOrganisation } from '../lib/seo';
+
+const pfad = '/ueber-uns/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Über KU64', pfad },
+];
+
+const aeltester = [...STANDORTE].sort((a, b) => a.eroeffnet.localeCompare(b.eroeffnet))[0];
+const seit = Number(aeltester.eroeffnet.slice(0, 4));
+const jahre = new Date().getFullYear() - seit;
+---
+
+<Basis
+  titel="Über KU64"
+  description={`KU64 – Die Zahnspezialisten: seit ${seit} in Berlin, heute an ${STANDORTE.length} Standorten in Berlin und Potsdam mit ${LEISTUNGEN.length} Behandlungen.`}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaOrganisation()]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Über KU64</h1>
+      <p class="unter">
+        Seit {seit} am Kurfürstendamm, heute an {STANDORTE.length} Standorten in Berlin und
+        Potsdam. Was gleich geblieben ist: der Anspruch, dass ein Zahnarztbesuch niemand
+        Angst machen muss.
+      </p>
+
+      <dl class="zahlen">
+        <div><dt>Jahre</dt><dd>{jahre}</dd><p>seit der Gründung {seit}</p></div>
+        <div><dt>Standorte</dt><dd>{STANDORTE.length}</dd><p>in Berlin und Potsdam</p></div>
+        <div><dt>Behandlungen</dt><dd>{LEISTUNGEN.length}</dd><p>aus {KATEGORIEN.length} Fachbereichen</p></div>
+        <div>
+          <dt>Behandelnde</dt>
+          <dd>{STANDORTE.reduce((n, s) => n + (s.anzahlZahnaerzte ?? 0), 0)}+</dd>
+          <p>Zahnärztinnen und Zahnärzte</p>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Wofür wir stehen</h2>
+      <div class="raster">
+        <div class="karte wert">
+          <h3>Ehrlich statt werbend</h3>
+          <p>
+            Wir sagen offen, was eine Behandlung kostet, was die Kasse übernimmt und was
+            nicht – und auch, wenn eine Behandlung an einem Standort gar nicht angeboten
+            wird. Lieber ein Satz zu viel als ein vergeblicher Anruf.
+          </p>
+        </div>
+        <div class="karte wert">
+          <h3>Angst ernst nehmen</h3>
+          <p>
+            Sehr viele Menschen schieben den Zahnarztbesuch auf. Bei uns ist der erste
+            Termin ein Gespräch, keine Behandlung. Sie bestimmen das Tempo, und ein
+            vereinbartes Handzeichen unterbricht jederzeit.
+          </p>
+        </div>
+        <div class="karte wert">
+          <h3>Spezialisierung unter einem Dach</h3>
+          <p>
+            Von Prophylaxe über Kieferorthopädie bis zur Oralchirurgie – für die meisten
+            Behandlungen müssen Sie die Praxis nicht wechseln. Was ein Standort nicht
+            abdeckt, übernimmt ein anderer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <h2>Unsere Standorte</h2>
+      <div class="raster">
+        {STANDORTE.map((s) => (
+          <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
+            <span class="band" aria-hidden="true" />
+            <h3>KU64 {s.name}</h3>
+            <p class="claim">{s.claim}</p>
+            <span class="seit">seit {s.eroeffnet.slice(0, 4)}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-7); font-size: var(--t-lg); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .zahlen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr)); gap: var(--raum-5); padding-block-start: var(--raum-6); border-top: 1px solid var(--linie); }
+  .zahlen dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinte-leise); }
+  .zahlen dd { margin: var(--raum-1) 0 0; font-family: var(--schrift-titel); font-size: var(--t-2xl); font-weight: 600; color: var(--akzent); }
+  .zahlen p { font-size: var(--t-xs); color: var(--tinte-weich); }
+  .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
+  h2 { margin-block-end: var(--raum-6); }
+  .wert h3 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
+  .wert p { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h3 { font-size: var(--t-lg); margin-block-end: var(--raum-2); }
+  .claim { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }
+  .seit { margin-block-start: auto; padding-block-start: var(--raum-4); font-size: var(--t-xs); font-weight: 600; color: var(--akzent); }
+</style>

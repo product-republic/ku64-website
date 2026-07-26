@@ -1,0 +1,38 @@
+---
+import Basis from '../layouts/Basis.astro';
+import Standortwahl from '../components/Standortwahl.astro';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/anamnese/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Digitale Anamnese', pfad },
+];
+---
+
+<Basis
+  titel="Digitale Anamnese"
+  description="Den Anamnesebogen vorab digital ausfüllen – an allen KU64-Standorten in Berlin und Potsdam."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Digitale Anamnese</h1>
+      <p class="unter">
+        Fünf Minuten zu Hause statt Klemmbrett im Wartezimmer – an allen unseren Standorten.
+      </p>
+      <Standortwahl ziel="anamnese" titel="Wo haben Sie Ihren Termin?" />
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-5);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+</style>

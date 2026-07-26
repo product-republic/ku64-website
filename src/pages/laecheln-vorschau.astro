@@ -1,0 +1,868 @@
+---
+/**
+ * Lächeln-Vorschau. Bewusst mit sehr klarer Aufklärung vor dem Upload –
+ * ein Gesichtsfoto ist ein sensibles Datum, und die Einwilligung muss
+ * informiert sein, nicht weggeklickt.
+ */
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+
+const pfad = '/laecheln-vorschau/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Lächeln-Vorschau', pfad },
+];
+
+const faq = [
+  {
+    frage: 'Wird mein Foto gespeichert?',
+    antwort:
+      'Nein. Ihr Foto wird ausschließlich für die Dauer der Berechnung im Arbeitsspeicher verarbeitet und danach verworfen. Es wird nicht auf einer Festplatte abgelegt, nicht in eine Datenbank geschrieben und nicht für das Training von KI-Modellen verwendet. Auch Ihre E-Mail-Adresse nutzen wir nur für diesen einen Versand.',
+  },
+  {
+    frage: 'Ist das Ergebnis ein Behandlungsversprechen?',
+    antwort:
+      'Nein, ausdrücklich nicht. Die Vorschau ist eine unverbindliche Illustration, wie ein Lächeln aussehen könnte. Was in Ihrem Fall tatsächlich möglich ist, hängt von Zahnstellung, Zahnsubstanz, Zahnfleisch und Kieferverhältnissen ab – das lässt sich nur bei einer persönlichen Untersuchung beurteilen.',
+  },
+  {
+    frage: 'Was für ein Foto brauche ich?',
+    antwort:
+      'Ein frontales Porträt bei gutem, gleichmäßigem Licht, auf dem Sie lächeln und die oberen Zähne sichtbar sind. Kein starkes Gegenlicht, keine Schönheitsfilter und möglichst ohne Maske oder Hand vor dem Mund.',
+  },
+  {
+    frage: 'Wer sieht mein Foto?',
+    antwort:
+      'Für die Berechnung wird das Bild an unseren KI-Dienstleister übermittelt und dort verarbeitet. Niemand aus unserem Team sieht Ihr Foto, es sei denn, Sie zeigen es uns selbst beim Termin. Details stehen in unserer Datenschutzerklärung.',
+  },
+  {
+    frage: 'Kann ich das für mein Kind machen?',
+    antwort:
+      'Nein. Die Vorschau ist ausschließlich für volljährige Personen und nur für ein Foto von Ihnen selbst gedacht. Bitte laden Sie keine Fotos anderer Personen hoch.',
+  },
+];
+---
+
+<Basis
+  titel="Lächeln-Vorschau"
+  description="Laden Sie ein Foto hoch und sehen Sie eine unverbindliche Visualisierung Ihres Lächelns. Ihr Bild wird nicht gespeichert."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <span class="marke marke-akzent">Unverbindliche Visualisierung</span>
+      <h1>Sehen Sie Ihr Lächeln, bevor Sie sich entscheiden</h1>
+      <p class="unter">
+        Laden Sie ein Porträtfoto hoch. Wir analysieren Zahnform, Farbe und Lachlinie im
+        Verhältnis zu Ihrem Gesicht und zeigen Ihnen eine Visualisierung – im Browser und
+        auf Wunsch per E-Mail.
+      </p>
+
+      <div class="hinweis hinweis-warnung wichtig">
+        <strong>Das ist kein Behandlungsergebnis.</strong> Die Darstellung ist eine
+        Illustration und keine Zusage. Ob und wie sich etwas Ähnliches umsetzen lässt, kann
+        nur eine persönliche Untersuchung zeigen. Ihre Zahnsubstanz, Ihr Zahnfleisch und Ihre
+        Kieferverhältnisse entscheiden darüber – nicht ein Bild.
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle spalten">
+      <form id="formular" class="formular">
+        {/* Schritt 1 */}
+        <fieldset class="schritt">
+          <legend><span class="nr">1</span> Foto auswählen</legend>
+
+          <div class="ablage" id="ablage" tabindex="0" role="button"
+               aria-label="Foto auswählen oder hierher ziehen">
+            <input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/webp" required hidden />
+            <div class="ablage-leer" id="ablageLeer">
+              <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+                <path d="M4 22V8a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"
+                      fill="none" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="11" cy="13" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+                <path d="m4 20 7-6 6 5 4-3 7 6" fill="none" stroke="currentColor" stroke-width="1.6"
+                      stroke-linejoin="round" />
+              </svg>
+              <p><strong>Foto hierher ziehen</strong> oder klicken zum Auswählen</p>
+              <p class="klein">JPEG, PNG oder WebP · maximal 8 MB</p>
+            </div>
+            <img id="vorschau" alt="Ihr hochgeladenes Foto" hidden />
+            <button type="button" class="ablage-weg" id="ablageWeg" hidden aria-label="Foto entfernen">
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <details class="tipps">
+            <summary>Was macht ein gutes Foto aus?</summary>
+            <ul>
+              <li>Frontal in die Kamera, Kopf gerade</li>
+              <li>Deutlich lächeln, sodass die oberen Zähne sichtbar sind</li>
+              <li>Gleichmäßiges Licht, kein hartes Gegenlicht</li>
+              <li>Keine Filter, keine Beauty-Modi der Kamera-App</li>
+              <li>Nichts vor dem Mund – keine Hand, keine Maske</li>
+            </ul>
+          </details>
+        </fieldset>
+
+        {/* Schritt 2 */}
+        <fieldset class="schritt">
+          <legend><span class="nr">2</span> Wohin dürfen wir das Ergebnis senden?</legend>
+
+          <label class="feld">
+            <span>E-Mail-Adresse</span>
+            <input type="email" name="email" id="email" required autocomplete="email"
+                   placeholder="ihre@adresse.de" />
+          </label>
+
+          <label class="feld">
+            <span>Ihr Wunschstandort <em>(freiwillig)</em></span>
+            <select name="standort" id="standort">
+              <option value="">Noch nicht entschieden</option>
+              {STANDORTE.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
+            </select>
+          </label>
+
+          {/* Honeypot gegen Bots – für Menschen unsichtbar. */}
+          <div class="honig" aria-hidden="true">
+            <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+        </fieldset>
+
+        {/* Schritt 3 */}
+        <fieldset class="schritt">
+          <legend><span class="nr">3</span> Einwilligung</legend>
+
+          <label class="haken">
+            <input type="checkbox" name="einwilligung" value="ja" required />
+            <span>
+              Ich willige ausdrücklich ein, dass mein Foto zur Erstellung einer
+              unverbindlichen Lächeln-Vorschau verarbeitet wird. Mir ist bewusst, dass es
+              sich dabei um ein biometrisches Datum handelt. Ich kann diese Einwilligung
+              jederzeit widerrufen. Details in der
+              <a href="/datenschutz/#laecheln">Datenschutzerklärung</a>.
+            </span>
+          </label>
+
+          <label class="haken">
+            <input type="checkbox" name="volljaehrig" value="ja" required />
+            <span>
+              Ich bin volljährig und das Foto zeigt mich selbst. Ich lade keine Fotos
+              anderer Personen hoch.
+            </span>
+          </label>
+
+          <button type="submit" class="knopf knopf-primaer knopf-gross absenden" id="absenden">
+            Vorschau erstellen
+          </button>
+
+          <p class="dauer-hinweis">Die Berechnung dauert etwa 15 bis 40 Sekunden.</p>
+        </fieldset>
+      </form>
+
+      {/* Ergebnisspalte */}
+      <div class="ergebnis" id="ergebnis" aria-live="polite">
+        <div class="platzhalter" id="platzhalter">
+          <p>Ihre Vorschau erscheint hier.</p>
+        </div>
+
+        <div class="laeuft" id="laeuft" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p id="laeuftText">Foto wird analysiert…</p>
+        </div>
+
+        <div class="fertig" id="fertig" hidden>
+          {/* Vorher-Nachher-Schieberegler */}
+          <div class="vergleich" id="vergleich">
+            <img id="bildVorher" alt="Ihr Ausgangsfoto" />
+            <div class="nachher-huelle" id="nachherHuelle">
+              <img id="bildNachher" alt="Visualisierung Ihres Lächelns" />
+            </div>
+            <input type="range" id="regler" min="0" max="100" value="50"
+                   aria-label="Vergleich zwischen Ausgangsfoto und Visualisierung" />
+            <span class="griff" id="griff" aria-hidden="true"></span>
+            <span class="etikett etikett-links">Ihr Foto</span>
+            <span class="etikett etikett-rechts">Visualisierung</span>
+          </div>
+
+          <div class="analyse" id="analyse"></div>
+
+          <p class="rechtshinweis">
+            Unverbindliche Illustration, kein Behandlungsergebnis und keine medizinische
+            Beratung.
+          </p>
+
+          <p class="versand" id="versand"></p>
+
+          <div class="ergebnis-knoepfe">
+            <a href="/standorte/" class="knopf knopf-primaer" id="terminKnopf">
+              Beratungstermin vereinbaren
+            </a>
+            <button type="button" class="knopf knopf-sekundaer" id="nochmal">
+              Anderes Foto probieren
+            </button>
+          </div>
+        </div>
+
+        <div class="fehlerbox" id="fehlerbox" hidden role="alert"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Was danach möglich ist</h2>
+      <p class="unter">
+        Ein verändertes Lächeln entsteht je nach Ausgangslage über verschiedene Wege. Diese
+        Behandlungen kommen dafür am häufigsten infrage:
+      </p>
+      <div class="raster">
+        <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/veneers/">
+          <h3>Veneers</h3>
+          <p>Keramikschalen für Form und Farbe der Frontzähne.</p>
+        </a>
+        <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/zahnaufhellung/">
+          <h3>Zahnaufhellung</h3>
+          <p>Mehrere Nuancen heller, ohne den Schmelz anzugreifen.</p>
+        </a>
+        <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/aligner/">
+          <h3>Unsichtbare Schienen</h3>
+          <p>Zahnstellung korrigieren, ohne feste Spange.</p>
+        </a>
+        <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/smile-design/">
+          <h3>Digitales Smile Design</h3>
+          <p>Die verbindliche Planung mit Vorschau im eigenen Mund.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="huelle">
+    <section class="faq-bereich">
+      <h2>Fragen zur Lächeln-Vorschau</h2>
+      {faq.map((f) => (
+        <details>
+          <summary>{f.frage}</summary>
+          <p>{f.antwort}</p>
+        </details>
+      ))}
+    </section>
+  </div>
+</Basis>
+
+<script>
+  const form = document.getElementById('formular') as HTMLFormElement;
+  const fotoFeld = document.getElementById('foto') as HTMLInputElement;
+  const ablage = document.getElementById('ablage')!;
+  const ablageLeer = document.getElementById('ablageLeer')!;
+  const vorschau = document.getElementById('vorschau') as HTMLImageElement;
+  const ablageWeg = document.getElementById('ablageWeg') as HTMLButtonElement;
+  const absenden = document.getElementById('absenden') as HTMLButtonElement;
+
+  const platzhalter = document.getElementById('platzhalter')!;
+  const laeuft = document.getElementById('laeuft')!;
+  const laeuftText = document.getElementById('laeuftText')!;
+  const fertig = document.getElementById('fertig')!;
+  const fehlerbox = document.getElementById('fehlerbox')!;
+
+  const bildVorher = document.getElementById('bildVorher') as HTMLImageElement;
+  const bildNachher = document.getElementById('bildNachher') as HTMLImageElement;
+  const nachherHuelle = document.getElementById('nachherHuelle')!;
+  const regler = document.getElementById('regler') as HTMLInputElement;
+  const griff = document.getElementById('griff')!;
+  const analyseEl = document.getElementById('analyse')!;
+  const versandEl = document.getElementById('versand')!;
+  const terminKnopf = document.getElementById('terminKnopf') as HTMLAnchorElement;
+  const nochmal = document.getElementById('nochmal') as HTMLButtonElement;
+
+  let objektUrl: string | null = null;
+
+  /* ── Foto auswählen ── */
+
+  function fotoUebernehmen(datei: File | undefined) {
+    if (!datei) return;
+
+    if (datei.size > 8 * 1024 * 1024) {
+      zeigeFehler('Das Bild ist größer als 8 MB. Bitte wählen Sie ein kleineres Foto.');
+      return;
+    }
+
+    if (objektUrl) URL.revokeObjectURL(objektUrl);
+    objektUrl = URL.createObjectURL(datei);
+
+    vorschau.src = objektUrl;
+    vorschau.hidden = false;
+    ablageLeer.hidden = true;
+    ablageWeg.hidden = false;
+    fehlerbox.hidden = true;
+  }
+
+  ablage.addEventListener('click', (e) => {
+    if (e.target !== ablageWeg && !ablageWeg.contains(e.target as Node)) fotoFeld.click();
+  });
+
+  ablage.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+      e.preventDefault();
+      fotoFeld.click();
+    }
+  });
+
+  fotoFeld.addEventListener('change', () => fotoUebernehmen(fotoFeld.files?.[0]));
+
+  ['dragenter', 'dragover'].forEach((typ) =>
+    ablage.addEventListener(typ, (e) => {
+      e.preventDefault();
+      ablage.classList.add('drueber');
+    }),
+  );
+
+  ['dragleave', 'drop'].forEach((typ) =>
+    ablage.addEventListener(typ, (e) => {
+      e.preventDefault();
+      ablage.classList.remove('drueber');
+    }),
+  );
+
+  ablage.addEventListener('drop', (e) => {
+    const datei = (e as DragEvent).dataTransfer?.files?.[0];
+    if (datei) {
+      // DataTransfer in das Input übernehmen, damit FormData es mitsendet.
+      const dt = new DataTransfer();
+      dt.items.add(datei);
+      fotoFeld.files = dt.files;
+      fotoUebernehmen(datei);
+    }
+  });
+
+  ablageWeg.addEventListener('click', (e) => {
+    e.stopPropagation();
+    fotoFeld.value = '';
+    vorschau.hidden = true;
+    ablageWeg.hidden = true;
+    ablageLeer.hidden = false;
+    if (objektUrl) {
+      URL.revokeObjectURL(objektUrl);
+      objektUrl = null;
+    }
+  });
+
+  /* ── Absenden ── */
+
+  function zeigeFehler(text: string) {
+    laeuft.hidden = true;
+    fertig.hidden = true;
+    platzhalter.hidden = true;
+    fehlerbox.hidden = false;
+    fehlerbox.textContent = text;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!fotoFeld.files?.[0]) {
+      zeigeFehler('Bitte wählen Sie zuerst ein Foto aus.');
+      return;
+    }
+
+    absenden.disabled = true;
+    platzhalter.hidden = true;
+    fehlerbox.hidden = true;
+    fertig.hidden = true;
+    laeuft.hidden = false;
+
+    // Der Ablauf dauert spürbar – die Anzeige erklärt, was gerade passiert.
+    const stufen = [
+      'Foto wird analysiert…',
+      'Zahnform und Lachlinie werden ausgewertet…',
+      'Visualisierung wird erstellt…',
+      'Fast fertig…',
+    ];
+    let stufe = 0;
+    const takt = setInterval(() => {
+      stufe = Math.min(stufe + 1, stufen.length - 1);
+      laeuftText.textContent = stufen[stufe];
+    }, 7000);
+
+    try {
+      const res = await fetch('/api/laecheln', { method: 'POST', body: new FormData(form) });
+      const daten = await res.json();
+
+      if (!res.ok) throw new Error(daten.fehler || 'Die Vorschau konnte nicht erstellt werden.');
+
+      if (daten.demo) {
+        zeigeFehler(daten.analyse);
+        return;
+      }
+
+      bildVorher.src = objektUrl!;
+      bildNachher.src = daten.bild;
+      analyseEl.innerHTML = `<h3>Was uns aufgefallen ist</h3><p></p>`;
+      analyseEl.querySelector('p')!.textContent = daten.analyse;
+
+      versandEl.textContent = daten.versandOk
+        ? 'Wir haben Ihnen das Ergebnis zusätzlich per E-Mail geschickt.'
+        : 'Der E-Mail-Versand ist in dieser Testumgebung noch nicht eingerichtet – Sie sehen das Ergebnis hier.';
+
+      const standort = (document.getElementById('standort') as HTMLSelectElement).value;
+      if (standort) terminKnopf.href = `/${standort}/termine/`;
+
+      laeuft.hidden = true;
+      fertig.hidden = false;
+      reglerAnwenden();
+    } catch (err) {
+      zeigeFehler(err instanceof Error ? err.message : 'Es ist ein Fehler aufgetreten.');
+    } finally {
+      clearInterval(takt);
+      absenden.disabled = false;
+    }
+  });
+
+  /* ── Vorher-Nachher-Regler ── */
+
+  function reglerAnwenden() {
+    const wert = Number(regler.value);
+    nachherHuelle.style.clipPath = `inset(0 0 0 ${wert}%)`;
+    griff.style.insetInlineStart = `${wert}%`;
+  }
+
+  regler.addEventListener('input', reglerAnwenden);
+
+  nochmal.addEventListener('click', () => {
+    fertig.hidden = true;
+    platzhalter.hidden = false;
+    ablageWeg.click();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style>
+  .kopf {
+    background: linear-gradient(160deg, color-mix(in oklab, var(--akzent) 9%, var(--flaeche)), var(--flaeche) 70%);
+    border-bottom: 1px solid var(--linie);
+  }
+
+  h1 {
+    margin-block: var(--raum-4);
+    max-width: 18ch;
+  }
+
+  .unter {
+    max-width: var(--breite-text);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .wichtig {
+    max-width: var(--breite-text);
+    margin-block-start: var(--raum-5);
+  }
+
+  .spalten {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--raum-8);
+    align-items: start;
+  }
+
+  /* ── Formular ── */
+
+  .schritt {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .schritt + .schritt {
+    margin-block-start: var(--raum-7);
+  }
+
+  legend {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+    font-family: var(--schrift-titel);
+    font-size: var(--t-lg);
+    font-weight: 600;
+    margin-block-end: var(--raum-4);
+  }
+
+  .nr {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+    font-family: var(--schrift-text);
+    font-size: var(--t-sm);
+  }
+
+  .ablage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 15rem;
+    padding: var(--raum-5);
+    border: 2px dashed var(--linie-stark);
+    border-radius: var(--radius-lg);
+    background: var(--flaeche-warm);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color var(--zeit) var(--kurve), background-color var(--zeit) var(--kurve);
+  }
+
+  .ablage:hover,
+  .ablage.drueber {
+    border-color: var(--akzent);
+    background: color-mix(in oklab, var(--akzent) 5%, var(--flaeche-warm));
+  }
+
+  .ablage-leer {
+    text-align: center;
+    color: var(--tinte-leise);
+  }
+
+  .ablage-leer svg {
+    margin-inline: auto;
+    margin-block-end: var(--raum-3);
+  }
+
+  .ablage-leer strong {
+    color: var(--tinte);
+  }
+
+  .klein {
+    font-size: var(--t-xs);
+    margin-block-start: var(--raum-1);
+  }
+
+  #vorschau {
+    max-height: 22rem;
+    border-radius: var(--radius);
+  }
+
+  .ablage-weg {
+    position: absolute;
+    top: var(--raum-3);
+    inset-inline-end: var(--raum-3);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--flaeche);
+    box-shadow: var(--schatten-sm);
+  }
+
+  .tipps {
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-sm);
+  }
+
+  .tipps summary {
+    cursor: pointer;
+    color: var(--akzent);
+    font-weight: 600;
+  }
+
+  .tipps ul {
+    margin-block-start: var(--raum-3);
+    padding-inline-start: var(--raum-5);
+    color: var(--tinte-weich);
+  }
+
+  .tipps li + li {
+    margin-block-start: var(--raum-1);
+  }
+
+  .feld {
+    display: block;
+    margin-block-end: var(--raum-4);
+  }
+
+  .feld > span {
+    display: block;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    margin-block-end: var(--raum-2);
+  }
+
+  .feld em {
+    font-weight: 400;
+    font-style: normal;
+    color: var(--tinte-leise);
+  }
+
+  .feld input,
+  .feld select {
+    width: 100%;
+    padding: 0.75rem var(--raum-3);
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius);
+    background: var(--flaeche);
+    font-size: var(--t-sm);
+    outline: none;
+  }
+
+  .feld input:focus,
+  .feld select:focus {
+    border-color: var(--akzent);
+  }
+
+  .honig {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .haken {
+    display: flex;
+    gap: var(--raum-3);
+    margin-block-end: var(--raum-4);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+    color: var(--tinte-weich);
+  }
+
+  .haken input {
+    flex-shrink: 0;
+    margin-block-start: 0.3em;
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--akzent);
+  }
+
+  .absenden {
+    width: 100%;
+    margin-block-start: var(--raum-2);
+  }
+
+  .dauer-hinweis {
+    margin-block-start: var(--raum-3);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+    text-align: center;
+  }
+
+  /* ── Ergebnis ── */
+
+  .ergebnis {
+    position: sticky;
+    top: 7.5rem;
+    min-height: 22rem;
+    padding: var(--raum-5);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-xl);
+    background: var(--flaeche-warm);
+  }
+
+  .platzhalter,
+  .laeuft {
+    display: grid;
+    place-items: center;
+    min-height: 20rem;
+    text-align: center;
+    color: var(--tinte-leise);
+  }
+
+  .spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-block-end: var(--raum-4);
+    border: 3px solid var(--linie-stark);
+    border-top-color: var(--akzent);
+    border-radius: 50%;
+    animation: dreh 0.9s linear infinite;
+  }
+
+  @keyframes dreh {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .vergleich {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--flaeche);
+    touch-action: pan-y;
+  }
+
+  .vergleich img {
+    display: block;
+    width: 100%;
+  }
+
+  .nachher-huelle {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 0 50%);
+  }
+
+  .nachher-huelle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #regler {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+  }
+
+  .griff {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  .griff::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--schatten);
+  }
+
+  .etikett {
+    position: absolute;
+    bottom: var(--raum-3);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-voll);
+    background: rgb(0 0 0 / 0.55);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  .etikett-links {
+    inset-inline-start: var(--raum-3);
+  }
+  .etikett-rechts {
+    inset-inline-end: var(--raum-3);
+  }
+
+  .analyse {
+    margin-block-start: var(--raum-5);
+  }
+
+  .analyse :global(h3) {
+    font-size: var(--t-md);
+    margin-block-end: var(--raum-2);
+  }
+
+  .analyse :global(p) {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .rechtshinweis {
+    margin-block-start: var(--raum-4);
+    padding: var(--raum-3);
+    border-radius: var(--radius);
+    background: var(--warnung-flaeche);
+    color: var(--warnung);
+    font-size: var(--t-xs);
+    font-weight: 600;
+  }
+
+  .versand {
+    margin-block-start: var(--raum-3);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  .ergebnis-knoepfe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-3);
+    margin-block-start: var(--raum-5);
+  }
+
+  .fehlerbox {
+    padding: var(--raum-4);
+    border-radius: var(--radius);
+    background: var(--fehler-flaeche);
+    color: var(--fehler);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+  }
+
+  /* ── Unten ── */
+
+  .flaeche-warm {
+    background: var(--flaeche-warm);
+    border-block: 1px solid var(--linie);
+  }
+
+  .weg {
+    text-decoration: none;
+  }
+
+  .weg h3 {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-2);
+  }
+
+  .weg p {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .faq-bereich {
+    padding-block: var(--raum-8);
+  }
+
+  .faq-bereich h2 {
+    margin-block-end: var(--raum-5);
+  }
+
+  .faq-bereich details {
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .faq-bereich summary {
+    padding-block: var(--raum-4);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq-bereich p {
+    padding-block-end: var(--raum-4);
+    max-width: var(--breite-text);
+    color: var(--tinte-weich);
+  }
+
+  @media (max-width: 62rem) {
+    .spalten {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ergebnis {
+      position: static;
+    }
+  }
+</style>

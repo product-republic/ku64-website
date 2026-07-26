@@ -1,0 +1,447 @@
+---
+/**
+ * Terminbuchung über Doctolib – standortscharf.
+ *
+ * Doctolib wird NICHT automatisch eingebettet. Ein iframe von doctolib.de baut
+ * sofort eine Verbindung zu einem Drittanbieter auf und setzt Cookies; das
+ * braucht nach § 25 TDDDG eine vorherige Einwilligung. Deshalb steht hier
+ * zuerst eine Vorschaukarte, und erst nach Klick wird geladen. Wer nicht
+ * einwilligen möchte, bekommt Telefonnummer und Rückrufoption – kein
+ * Nachteil, keine Sackgasse.
+ */
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/termine/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Termine', pfad },
+];
+
+const faq = [
+  {
+    frage: `Wie buche ich einen Termin bei KU64 ${standort.name}?`,
+    antwort: `Online über die Terminbuchung auf dieser Seite oder telefonisch unter ${standort.telefon}. Für die Online-Buchung brauchen Sie nur wenige Angaben; den Anamnesebogen füllen Sie danach bequem digital aus.`,
+  },
+  {
+    frage: 'Was mache ich, wenn ich starke Schmerzen habe?',
+    antwort: `Rufen Sie uns bitte direkt an unter ${standort.telefon} statt online zu buchen. Wir halten Termine für Akutfälle frei und können am Telefon einschätzen, wie dringend es ist.`,
+  },
+  {
+    frage: 'Kann ich einen Termin wieder absagen?',
+    antwort:
+      'Ja. Bitte sagen Sie spätestens 24 Stunden vorher ab, telefonisch oder über den Link in Ihrer Bestätigungsmail. So kann jemand anderes den Termin bekommen.',
+  },
+  {
+    frage: 'Was muss ich zum ersten Termin mitbringen?',
+    antwort:
+      'Ihre Versichertenkarte, gegebenenfalls Bonusheft und Allergiepass sowie eine Liste Ihrer Medikamente. Den Anamnesebogen können Sie vorab digital ausfüllen – dann geht es vor Ort direkt los.',
+  },
+];
+---
+
+<Basis
+  titel={`Termin in ${standort.ort}`}
+  description={`Online-Termin bei KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}. Oder telefonisch unter ${standort.telefon}.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <h1>Termin bei KU64 {standort.name}</h1>
+      <p class="unter">
+        {standort.strasse}, {standort.plz} {standort.ort}. Buchen Sie online oder rufen Sie
+        uns an – beides führt zum selben Terminkalender.
+      </p>
+    </div>
+  </section>
+
+  <div class="huelle abschnitt wege">
+    {/* Weg 1: Doctolib nach Einwilligung */}
+    <section class="weg">
+      <h2>Online buchen</h2>
+
+      {
+        standort.doctolib.length > 1 && (
+          <div class="hinweis hinweis-info">
+            An diesem Standort gibt es getrennte Kalender. Bitte wählen Sie unten den
+            passenden Bereich – so landen Sie direkt bei den richtigen Behandelnden.
+          </div>
+        )
+      }
+
+      <div class="kalender-wahl">
+        {
+          standort.doctolib.map((d, i) => (
+            <button
+              type="button"
+              class:list={['wahl-knopf', { aktiv: i === 0 }]}
+              data-slug={d.slug}
+            >
+              {d.label}
+            </button>
+          ))
+        }
+      </div>
+
+      {/* Einwilligungsschranke statt sofortigem iframe. */}
+      <div class="schranke" id="schranke">
+        <div class="schranke-inhalt">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <rect x="4" y="10" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+          <h3>Terminkalender von Doctolib laden?</h3>
+          <p>
+            Die Online-Buchung läuft über <strong>Doctolib</strong>. Beim Laden wird eine
+            Verbindung zu deren Servern aufgebaut, dabei werden Ihre IP-Adresse übertragen
+            und Cookies gesetzt. Wir laden das erst, wenn Sie zustimmen.
+          </p>
+          <label class="merken">
+            <input type="checkbox" id="merken" />
+            <span>Diese Entscheidung für künftige Besuche merken</span>
+          </label>
+          <button type="button" class="knopf knopf-primaer knopf-gross" id="laden">
+            Doctolib laden und Termin wählen
+          </button>
+          <p class="klein">
+            Mehr dazu in unserer <a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="rahmen" id="rahmen" hidden></div>
+    </section>
+
+    {/* Weg 2: Ohne Drittanbieter */}
+    <aside class="weg weg-schmal">
+      <h2>Lieber ohne Online-Portal?</h2>
+
+      <div class="karte kontakt">
+        <p class="k-titel">Anrufen</p>
+        <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="k-nummer">
+          {standort.telefon}
+        </a>
+        <table class="zeiten">
+          <caption class="nur-screenreader">Wann Sie uns erreichen</caption>
+          <tbody>
+            {
+              standort.oeffnungszeiten.map((z) => (
+                <tr>
+                  <th scope="row">{z.tag}</th>
+                  <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="karte kontakt">
+        <p class="k-titel">Schreiben</p>
+        <p class="k-text">
+          Schildern Sie kurz Ihr Anliegen – wir melden uns zurück, in der Regel am selben
+          oder nächsten Werktag.
+        </p>
+        <a href={`mailto:${standort.email}`} class="knopf knopf-sekundaer">{standort.email}</a>
+      </div>
+
+      <div class="karte kontakt akut">
+        <p class="k-titel">Akute Schmerzen?</p>
+        <p class="k-text">
+          Bitte rufen Sie an, statt online zu buchen. Wir halten Termine für Akutfälle frei
+          und schätzen am Telefon ein, wie dringend es ist.
+        </p>
+        <a href="/notfall/" class="knopf knopf-sekundaer">Was tun im Notfall</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Vor dem Termin: Anamnese digital ausfüllen</h2>
+      <p class="unter">
+        Den Anamnesebogen füllen Sie bequem von zu Hause aus – an allen KU64-Standorten.
+        Das spart Zeit im Wartezimmer und Sie können in Ruhe nachschauen, welche
+        Medikamente Sie nehmen.
+      </p>
+      <a href={`/${standort.slug}/anamnese/`} class="knopf knopf-primaer knopf-gross">
+        Zur digitalen Anamnese
+      </a>
+    </div>
+  </section>
+
+  <div class="huelle">
+    <section class="faq-bereich">
+      <h2>Fragen zur Terminbuchung</h2>
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.frage}</summary>
+            <p>{f.antwort}</p>
+          </details>
+        ))
+      }
+    </section>
+  </div>
+</Basis>
+
+<script>
+  const schranke = document.getElementById('schranke')!;
+  const rahmen = document.getElementById('rahmen')!;
+  const ladenKnopf = document.getElementById('laden') as HTMLButtonElement;
+  const merken = document.getElementById('merken') as HTMLInputElement;
+  const wahlKnoepfe = document.querySelectorAll<HTMLButtonElement>('.wahl-knopf');
+
+  const SCHLUESSEL = 'ku64:doctolib-ok';
+  let aktuellerSlug = wahlKnoepfe[0]?.dataset.slug ?? '';
+
+  function einbetten(slug: string) {
+    rahmen.innerHTML = '';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.doctolib.de/zahnarztpraxis/${slug}?utm_source=ku64-website`;
+    iframe.title = 'Terminbuchung bei Doctolib';
+    iframe.loading = 'lazy';
+    // Nur das erlauben, was die Buchung wirklich braucht.
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    iframe.setAttribute('allow', 'clipboard-write');
+
+    rahmen.append(iframe);
+    rahmen.hidden = false;
+    schranke.hidden = true;
+  }
+
+  ladenKnopf?.addEventListener('click', () => {
+    if (merken.checked) {
+      try {
+        localStorage.setItem(SCHLUESSEL, 'ja');
+      } catch {
+        /* Ohne Speicher wird eben jedes Mal gefragt. */
+      }
+    }
+    einbetten(aktuellerSlug);
+  });
+
+  wahlKnoepfe.forEach((k) =>
+    k.addEventListener('click', () => {
+      wahlKnoepfe.forEach((x) => x.classList.remove('aktiv'));
+      k.classList.add('aktiv');
+      aktuellerSlug = k.dataset.slug ?? '';
+      // Ist der Kalender schon geladen, direkt umschalten.
+      if (!rahmen.hidden) einbetten(aktuellerSlug);
+    }),
+  );
+
+  // Frühere Zustimmung respektieren.
+  try {
+    if (localStorage.getItem(SCHLUESSEL) === 'ja') einbetten(aktuellerSlug);
+  } catch {
+    /* kein Speicher verfügbar */
+  }
+</script>
+
+<style>
+  .kopf {
+    background: linear-gradient(to bottom, color-mix(in oklab, var(--akzent) 8%, var(--flaeche)), var(--flaeche));
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .unter {
+    max-width: var(--breite-text);
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .wege {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--raum-7);
+    align-items: start;
+  }
+
+  .weg h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-4);
+  }
+
+  .kalender-wahl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+    margin-block-end: var(--raum-4);
+  }
+
+  .wahl-knopf {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--linie-stark);
+    border-radius: var(--radius-voll);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--tinte-weich);
+    transition: all var(--zeit-schnell) var(--kurve);
+  }
+
+  .wahl-knopf.aktiv {
+    background: var(--akzent);
+    border-color: var(--akzent);
+    color: var(--akzent-kontrast);
+  }
+
+  .schranke {
+    display: grid;
+    place-items: center;
+    min-height: 28rem;
+    padding: var(--raum-6);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    background: var(--flaeche-warm);
+  }
+
+  .schranke-inhalt {
+    max-width: 30rem;
+    text-align: center;
+  }
+
+  .schranke-inhalt svg {
+    margin-inline: auto;
+    margin-block-end: var(--raum-4);
+    color: var(--tinte-leise);
+  }
+
+  .schranke-inhalt h3 {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-3);
+  }
+
+  .schranke-inhalt p {
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-weit);
+  }
+
+  .merken {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    margin-block: var(--raum-4);
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+  }
+
+  .merken input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--akzent);
+  }
+
+  .klein {
+    margin-block-start: var(--raum-3);
+    font-size: var(--t-xs);
+  }
+
+  .rahmen :global(iframe) {
+    width: 100%;
+    min-height: 44rem;
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    background: var(--flaeche);
+  }
+
+  .kontakt {
+    margin-block-end: var(--raum-4);
+  }
+
+  .k-titel {
+    font-family: var(--schrift-titel);
+    font-size: var(--t-md);
+    font-weight: 600;
+    margin-block-end: var(--raum-2);
+  }
+
+  .k-nummer {
+    display: block;
+    font-size: var(--t-xl);
+    font-weight: 700;
+    color: var(--akzent);
+    text-decoration: none;
+  }
+
+  .k-text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-4);
+  }
+
+  .zeiten {
+    width: 100%;
+    margin-block-start: var(--raum-4);
+    border-collapse: collapse;
+    font-size: var(--t-xs);
+  }
+
+  .zeiten th {
+    text-align: start;
+    font-weight: 500;
+    padding-block: 2px;
+    color: var(--tinte-weich);
+  }
+
+  .zeiten td {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+    color: var(--tinte-leise);
+  }
+
+  .akut {
+    border-color: color-mix(in oklab, var(--fehler) 30%, var(--linie));
+    background: var(--fehler-flaeche);
+  }
+
+  .flaeche-warm {
+    background: var(--flaeche-warm);
+    border-block: 1px solid var(--linie);
+  }
+
+  .faq-bereich {
+    padding-block: var(--raum-8);
+  }
+
+  .faq-bereich h2 {
+    margin-block-end: var(--raum-5);
+  }
+
+  .faq-bereich details {
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .faq-bereich summary {
+    padding-block: var(--raum-4);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq-bereich p {
+    padding-block-end: var(--raum-4);
+    max-width: var(--breite-text);
+    color: var(--tinte-weich);
+  }
+
+  @media (max-width: 62rem) {
+    .wege {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

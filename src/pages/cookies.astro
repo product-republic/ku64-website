@@ -1,0 +1,89 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/cookies/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Cookie-Einstellungen', pfad },
+];
+---
+
+<Basis
+  titel="Cookie-Einstellungen"
+  description="Diese Website setzt keine Analyse- oder Werbe-Cookies. Was tatsächlich gespeichert wird und wie Sie es löschen."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <div class="huelle abschnitt">
+    <h1>Cookie-Einstellungen</h1>
+
+    <div class="fliesstext">
+      <p>
+        Diese Website setzt <strong>keine Analyse-Cookies, keine Werbe-Cookies und keine
+        Zählpixel</strong>. Es gibt deshalb auch kein Einwilligungsbanner, das Sie
+        wegklicken müssten.
+      </p>
+
+      <h2>Was tatsächlich gespeichert wird</h2>
+      <p>
+        Zwei Angaben liegen im lokalen Speicher Ihres Browsers. Sie erreichen unseren Server
+        nie und dienen ausschließlich Ihrer Bequemlichkeit:
+      </p>
+      <ul>
+        <li>
+          <strong>ku64:standort</strong> – Ihr zuletzt gewählter Standort, damit wir Ihnen
+          beim nächsten Besuch die passenden Angaben anbieten können. Es findet keine
+          automatische Weiterleitung statt.
+        </li>
+        <li>
+          <strong>ku64:doctolib-ok</strong> – nur vorhanden, wenn Sie beim Laden des
+          Terminkalenders angekreuzt haben, dass wir uns Ihre Entscheidung merken sollen.
+        </li>
+      </ul>
+
+      <h2>Wann doch Drittanbieter ins Spiel kommen</h2>
+      <p>
+        Erst wenn Sie es ausdrücklich auslösen: beim Laden des Doctolib-Terminkalenders,
+        beim Öffnen der digitalen Anamnese, beim Nutzen des Sprachberaters oder der
+        Lächeln-Vorschau. Vorher passiert nichts. Details stehen in der
+        <a href="/datenschutz/">Datenschutzerklärung</a>.
+      </p>
+
+      <h2>Löschen</h2>
+      <p>Ein Klick genügt – danach ist der lokale Speicher dieser Website leer.</p>
+      <p>
+        <button type="button" class="knopf knopf-primaer" id="loeschen">
+          Gespeicherte Angaben löschen
+        </button>
+      </p>
+      <p class="ergebnis" id="ergebnis" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</Basis>
+
+<script>
+  document.getElementById('loeschen')?.addEventListener('click', () => {
+    const ergebnis = document.getElementById('ergebnis');
+    try {
+      localStorage.removeItem('ku64:standort');
+      localStorage.removeItem('ku64:doctolib-ok');
+      if (ergebnis) ergebnis.textContent = 'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht.';
+    } catch {
+      if (ergebnis) ergebnis.textContent = 'Ihr Browser erlaubt keinen Zugriff auf den lokalen Speicher – es ist ohnehin nichts gespeichert.';
+    }
+  });
+</script>
+
+<style>
+  h1 { margin-block-end: var(--raum-5); }
+  .ergebnis:not(:empty) {
+    padding: var(--raum-3) var(--raum-4);
+    border-radius: var(--radius);
+    background: var(--erfolg-flaeche);
+    color: var(--erfolg);
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen, schemaOrganisation } from '../lib/seo';
+
+const pfad = '/kontakt/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Kontakt', pfad },
+];
+---
+
+<Basis
+  titel="Kontakt"
+  description="So erreichen Sie KU64 – alle Standorte in Berlin und Potsdam mit Telefonnummern, Adressen und Sprechzeiten."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaOrganisation()]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Kontakt</h1>
+      <p class="unter">
+        Jeder Standort hat eigene Sprechzeiten und eine eigene Nummer. Wählen Sie den, der
+        Ihnen am nächsten liegt.
+      </p>
+
+      <div class="raster">
+        {STANDORTE.map((s) => (
+          <article class="karte ort" style={`--akzent:${s.akzent}`}>
+            <span class="band" aria-hidden="true" />
+            <h2><a href={`/${s.slug}/kontakt/`}>KU64 {s.name}</a></h2>
+            <address>{s.strasse}<br />{s.plz} {s.ort}</address>
+            <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="tel">{s.telefon}</a>
+            <a href={`mailto:${s.email}`} class="mail">{s.email}</a>
+            <table class="zeiten">
+              <caption class="nur-screenreader">Sprechzeiten KU64 {s.name}</caption>
+              <tbody>
+                {s.oeffnungszeiten.map((z) => (
+                  <tr>
+                    <th scope="row">{z.tag}</th>
+                    <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <a href={`/${s.slug}/termine/`} class="knopf knopf-primaer">Termin buchen</a>
+          </article>
+        ))}
+      </div>
+
+      <div class="hinweis notfall">
+        <strong>Akute Beschwerden?</strong> Bitte rufen Sie an, statt zu schreiben. Bei
+        Atem- oder Schluckbeschwerden wählen Sie 112. Mehr unter <a href="/notfall/">Notfall</a>.
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-7); font-size: var(--t-lg); color: var(--tinte-weich); }
+  .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h2 { font-size: var(--t-lg); }
+  .ort h2 a { text-decoration: none; }
+  address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }
+  .tel { display: block; font-size: var(--t-lg); font-weight: 700; color: var(--akzent); text-decoration: none; }
+  .mail { display: block; font-size: var(--t-sm); color: var(--tinte-weich); margin-block-start: var(--raum-1); word-break: break-all; }
+  .zeiten { width: 100%; margin-block: var(--raum-4); border-collapse: collapse; font-size: var(--t-xs); }
+  .zeiten th { text-align: start; font-weight: 500; padding-block: 2px; color: var(--tinte-weich); }
+  .zeiten td { text-align: end; font-variant-numeric: tabular-nums; color: var(--tinte-leise); }
+  .ort .knopf { margin-block-start: auto; align-self: flex-start; }
+  .notfall { margin-block-start: var(--raum-7); border-color: var(--fehler); background: var(--fehler-flaeche); max-width: var(--breite-text); }
+</style>

@@ -1,0 +1,344 @@
+---
+/**
+ * Digitale Anamnese über Nelly Solutions – an ALLEN Standorten, nicht nur in
+ * Potsdam. Das war der ausdrückliche Wunsch: Die Anamnese darf kein
+ * Standortprivileg sein.
+ *
+ * INTEGRATIONS-NAHTSTELLE: Nelly stellt je Praxis eine eigene Formular-URL
+ * bereit. Diese wird pro Standort über eine Umgebungsvariable gesetzt:
+ *
+ *   NELLY_URL_POTSDAM, NELLY_URL_BERLIN_CHARLOTTENBURG,
+ *   NELLY_URL_BERLINMITTE, NELLY_URL_WILMERSDORF
+ *
+ * Fehlt die Variable, zeigt die Seite eine ehrliche Zwischenlösung mit
+ * Telefonnummer statt eines toten Links. Sobald die echten URLs vorliegen,
+ * sind sie eine reine Konfigurationsänderung in Railway – kein Code-Deploy.
+ */
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/anamnese/`;
+
+/** Umgebungsvariable je Standort: Slug in Großbuchstaben, Bindestrich zu Unterstrich. */
+const envName = `NELLY_URL_${standort.slug.toUpperCase().replace(/-/g, '_')}`;
+const nellyUrl = process.env[envName] || null;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Digitale Anamnese', pfad },
+];
+
+const faq = [
+  {
+    frage: 'Was ist ein Anamnesebogen und warum brauchen Sie den?',
+    antwort:
+      'Der Anamnesebogen erfasst Ihre Vorerkrankungen, Medikamente, Allergien und Unverträglichkeiten. Das ist keine Formalität: Blutverdünner, Bisphosphonate, Herzerkrankungen oder eine Schwangerschaft ändern konkret, wie und womit wir behandeln dürfen. Ohne diese Angaben können wir bestimmte Eingriffe nicht sicher durchführen.',
+  },
+  {
+    frage: 'Wie lange dauert das Ausfüllen?',
+    antwort:
+      'Etwa fünf bis zehn Minuten. Sie können zwischendurch pausieren und in Ruhe auf Ihrem Medikamentenplan nachsehen – das ist zu Hause deutlich einfacher als auf einem Klemmbrett im Wartezimmer.',
+  },
+  {
+    frage: 'Sind meine Gesundheitsdaten dabei sicher?',
+    antwort:
+      'Die Anamnese läuft über Nelly Solutions, einen auf Zahnarztpraxen spezialisierten Anbieter mit Serverstandort in der EU. Die Daten fließen verschlüsselt direkt in unser Praxisverwaltungssystem. Diese Website selbst speichert keine Gesundheitsdaten – sie leitet Sie nur zum Formular weiter.',
+  },
+  {
+    frage: 'Muss ich das digital machen?',
+    antwort:
+      'Nein. Wenn Sie lieber auf Papier ausfüllen, sagen Sie das einfach beim Termin – wir haben die Bögen selbstverständlich weiterhin vor Ort. Digital ist ein Angebot, keine Bedingung.',
+  },
+  {
+    frage: 'Ich war schon einmal da – muss ich das erneut ausfüllen?',
+    antwort:
+      'Bei Wiedervorstellung fragen wir in längeren Abständen nach Änderungen. Wenn sich bei Ihnen etwas geändert hat – neue Medikamente, eine neue Diagnose, eine Schwangerschaft –, sagen Sie uns das bitte in jedem Fall, auch zwischen den Terminen.',
+  },
+];
+---
+
+<Basis
+  titel="Digitale Anamnese"
+  description={`Anamnesebogen für KU64 ${standort.name} bequem vorab von zu Hause ausfüllen. Verschlüsselt über Nelly Solutions, ohne Papier im Wartezimmer.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <span class="marke marke-akzent">An allen KU64-Standorten</span>
+      <h1>Anamnese vorab ausfüllen</h1>
+      <p class="unter">
+        Fünf Minuten zu Hause statt Klemmbrett im Wartezimmer. Ihre Angaben landen
+        verschlüsselt direkt bei den Behandelnden von KU64 {standort.name} – Sie starten
+        beim Termin sofort.
+      </p>
+    </div>
+  </section>
+
+  <div class="huelle abschnitt spalten">
+    <div>
+      <ol class="ablauf">
+        <li>
+          <span class="nr">1</span>
+          <div>
+            <h3>Formular öffnen</h3>
+            <p>Sie brauchen weder Konto noch App – ein Link genügt.</p>
+          </div>
+        </li>
+        <li>
+          <span class="nr">2</span>
+          <div>
+            <h3>Angaben machen</h3>
+            <p>
+              Vorerkrankungen, Medikamente, Allergien. Halten Sie Ihren Medikamentenplan
+              bereit, falls Sie regelmäßig etwas einnehmen.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="nr">3</span>
+          <div>
+            <h3>Absenden – fertig</h3>
+            <p>
+              Ihre Angaben gehen verschlüsselt in unser Praxissystem. Beim Termin ist alles
+              schon da.
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      {
+        nellyUrl ? (
+          <a
+            href={nellyUrl}
+            class="knopf knopf-primaer knopf-gross start"
+            rel="noopener"
+            target="_blank"
+          >
+            Anamnesebogen öffnen
+            <span class="nur-screenreader">(öffnet in neuem Tab bei Nelly Solutions)</span>
+          </a>
+        ) : (
+          <div class="hinweis hinweis-warnung platzhalter">
+            <strong>Noch nicht freigeschaltet.</strong>
+            <p>
+              Die digitale Anamnese für KU64 {standort.name} wird gerade eingerichtet. Bis
+              dahin füllen Sie den Bogen wie gewohnt vor Ort aus – oder Sie rufen an, dann
+              schicken wir ihn Ihnen vorab zu.
+            </p>
+            <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-sekundaer">
+              {standort.telefon}
+            </a>
+          </div>
+        )
+      }
+
+      <p class="rechtlich">
+        Mit dem Öffnen wechseln Sie zu Nelly Solutions, unserem Dienstleister für digitale
+        Patientenformulare. Dort gelten deren Datenschutzhinweise ergänzend zu
+        <a href="/datenschutz/#anamnese"> unseren</a>.
+      </p>
+    </div>
+
+    <aside class="seite">
+      <div class="karte">
+        <h3>Das sollten Sie bereithalten</h3>
+        <ul class="liste">
+          <li>Versichertenkarte</li>
+          <li>Medikamentenplan, falls vorhanden</li>
+          <li>Allergiepass</li>
+          <li>Marcumar- oder Antikoagulanzien-Ausweis</li>
+          <li>Bonusheft</li>
+          <li>Vorbefunde oder Röntgenbilder anderer Praxen</li>
+        </ul>
+      </div>
+
+      <div class="karte wichtig-karte">
+        <h3>Bitte unbedingt angeben</h3>
+        <p>
+          Diese Punkte ändern konkret, wie wir behandeln dürfen – bitte auch dann nennen,
+          wenn sie Ihnen nebensächlich erscheinen:
+        </p>
+        <ul class="liste">
+          <li>Blutverdünnende Medikamente</li>
+          <li>Bisphosphonate oder Osteoporose-Therapie</li>
+          <li>Herzklappenersatz oder Herzerkrankungen</li>
+          <li>Diabetes</li>
+          <li>Schwangerschaft oder Stillzeit</li>
+          <li>Allergien gegen Betäubungsmittel oder Antibiotika</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div class="huelle">
+    <section class="faq-bereich">
+      <h2>Fragen zur digitalen Anamnese</h2>
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.frage}</summary>
+            <p>{f.antwort}</p>
+          </details>
+        ))
+      }
+    </section>
+  </div>
+</Basis>
+
+<style>
+  .kopf {
+    background: linear-gradient(to bottom, color-mix(in oklab, var(--akzent) 8%, var(--flaeche)), var(--flaeche));
+    border-bottom: 1px solid var(--linie);
+  }
+
+  h1 {
+    margin-block: var(--raum-4);
+  }
+
+  .unter {
+    max-width: var(--breite-text);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .spalten {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--raum-8);
+    align-items: start;
+  }
+
+  .ablauf {
+    list-style: none;
+    padding: 0;
+    margin-block-end: var(--raum-7);
+  }
+
+  .ablauf li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--raum-4);
+    padding-block: var(--raum-4);
+    position: relative;
+  }
+
+  .ablauf li:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 1.125rem;
+    top: 3.25rem;
+    bottom: -0.25rem;
+    width: 1px;
+    background: var(--linie-stark);
+  }
+
+  .nr {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--akzent);
+    color: var(--akzent-kontrast);
+    font-weight: 700;
+    font-size: var(--t-sm);
+  }
+
+  .ablauf h3 {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-2);
+  }
+
+  .ablauf p {
+    color: var(--tinte-weich);
+    max-width: var(--breite-text);
+  }
+
+  .start {
+    display: inline-flex;
+  }
+
+  .platzhalter p {
+    margin-block: var(--raum-2) var(--raum-4);
+  }
+
+  .rechtlich {
+    margin-block-start: var(--raum-5);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+    max-width: var(--breite-text);
+    line-height: var(--zeile-normal);
+  }
+
+  .seite {
+    display: grid;
+    gap: var(--raum-4);
+  }
+
+  .seite h3 {
+    font-size: var(--t-md);
+    margin-block-end: var(--raum-3);
+  }
+
+  .seite p {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-3);
+  }
+
+  .liste {
+    padding-inline-start: var(--raum-5);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .liste li + li {
+    margin-block-start: var(--raum-2);
+  }
+
+  .wichtig-karte {
+    background: var(--warnung-flaeche);
+    border-color: color-mix(in oklab, var(--warnung) 25%, var(--linie));
+  }
+
+  .faq-bereich {
+    padding-block: var(--raum-8);
+  }
+
+  .faq-bereich h2 {
+    margin-block-end: var(--raum-5);
+  }
+
+  .faq-bereich details {
+    border-bottom: 1px solid var(--linie);
+  }
+
+  .faq-bereich summary {
+    padding-block: var(--raum-4);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq-bereich p {
+    padding-block-end: var(--raum-4);
+    max-width: var(--breite-text);
+    color: var(--tinte-weich);
+  }
+
+  @media (max-width: 62rem) {
+    .spalten {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

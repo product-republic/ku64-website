@@ -1,0 +1,198 @@
+---
+/**
+ * Standortübergreifende Leistungsseite.
+ *
+ * Diese Seite ist ein Wegweiser, KEIN Ersatz für die Standortseite: Sie
+ * erklärt die Behandlung allgemein und führt dann sofort zu dem Standort,
+ * an dem man sie bekommt. Damit bleibt die alte URL-Struktur /leistungen/…
+ * erhalten – es entstehen keine toten Links aus Suchergebnissen und Backlinks –
+ * ohne den Fehler zu wiederholen, dass Leistungen ortlos beschrieben werden.
+ */
+import Basis from '../../layouts/Basis.astro';
+import FaqBlock from '../../components/FaqBlock.astro';
+import LeistungKarte from '../../components/LeistungKarte.astro';
+import { LEISTUNGEN, getKategorie, getLeistung } from '../../data/leistungen';
+import { STANDORTE } from '../../data/standorte';
+import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return LEISTUNGEN.map((l) => ({ params: { leistung: l.slug } }));
+}
+
+const leistung = getLeistung(Astro.params.leistung!)!;
+const kategorie = getKategorie(leistung.kategorie)!;
+const pfad = `/leistungen/${leistung.slug}/`;
+
+const wo = STANDORTE.filter((s) => leistung.verfuegbar.includes(s.slug));
+const nicht = STANDORTE.filter((s) => !leistung.verfuegbar.includes(s.slug));
+
+const verwandte = leistung.related
+  .map((s) => getLeistung(s))
+  .filter((l): l is NonNullable<typeof l> => Boolean(l));
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Leistungen', pfad: '/leistungen/' },
+  { name: leistung.name, pfad },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: leistung.name,
+    alternateName: leistung.synonyme,
+    description: leistung.teaser,
+    url: kanonisch(pfad),
+    // Der Ortsbezug hängt an den einzelnen Standorten, nicht an dieser Seite.
+    availableAtOrFrom: wo.map((s) => ({ '@id': kanonisch(`/${s.slug}/`) + '#praxis' })),
+  },
+  schemaFaq(leistung.faq),
+  schemaBrotkrumen(brotkrumen),
+];
+---
+
+<Basis
+  titel={leistung.name}
+  description={descriptionKuerzen(
+    `${leistung.teaser} Verfügbar an ${wo.length} von ${STANDORTE.length} KU64-Standorten.`,
+  )}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="kopf abschnitt-eng">
+    <div class="huelle">
+      <a href={`/leistungen/#${kategorie.slug}`} class="marke marke-akzent">{kategorie.name}</a>
+      <h1>{leistung.name}</h1>
+      <p class="teaser">{leistung.teaser}</p>
+
+      <dl class="eckdaten">
+        {leistung.dauer && <div><dt>Dauer</dt><dd>{leistung.dauer}</dd></div>}
+        {leistung.kosten && <div><dt>Kosten</dt><dd>{leistung.kosten}</dd></div>}
+        <div>
+          <dt>Verfügbar an</dt>
+          <dd>{wo.length} von {STANDORTE.length} Standorten</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  {/* Die eigentliche Aufgabe dieser Seite: zum richtigen Standort führen. */}
+  <section class="abschnitt wahl">
+    <div class="huelle">
+      <h2>Wo möchten Sie {leistung.name.toLowerCase()} lassen?</h2>
+      <p class="unter">
+        Wählen Sie Ihren Standort – dort finden Sie Sprechzeiten, Telefonnummer und die
+        Terminbuchung für genau diese Behandlung.
+      </p>
+
+      <div class="raster">
+        {
+          wo.map((s) => (
+            <a class="karte karte-klickbar ort" href={`/${s.slug}/leistungen/${leistung.slug}/`}
+               style={`--akzent:${s.akzent}`}>
+              <span class="band" aria-hidden="true" />
+              <h3>KU64 {s.name}</h3>
+              <address>{s.strasse}, {s.plz} {s.ort}</address>
+              <p class="tel">{s.telefon}</p>
+              <span class="mehr">
+                {leistung.name} hier ansehen
+                <svg viewBox="0 0 16 12" width="15" height="11" aria-hidden="true">
+                  <path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      {
+        nicht.length > 0 && (
+          <p class="nicht-hinweis">
+            <strong>Nicht angeboten an:</strong>{' '}
+            {nicht.map((s) => `KU64 ${s.name}`).join(', ')}. Wir sagen das offen, damit Sie
+            nicht vergeblich dort anrufen.
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <div class="huelle abschnitt">
+    <div class="fliesstext">
+      {leistung.kasse && (
+        <>
+          <h2>Zahlt die Krankenkasse?</h2>
+          <p>{leistung.kasse}</p>
+        </>
+      )}
+
+      {
+        leistung.ablauf && leistung.ablauf.length > 0 && (
+          <>
+            <h2>So läuft die Behandlung ab</h2>
+            <ol>
+              {leistung.ablauf.map((a) => (
+                <li>
+                  <strong>{a.titel}</strong> – {a.text}
+                  {a.dauer && <> ({a.dauer})</>}
+                </li>
+              ))}
+            </ol>
+          </>
+        )
+      }
+
+      <h2>Auch bekannt als</h2>
+      <p>{leistung.synonyme.join(' · ')}</p>
+    </div>
+
+    <FaqBlock titel={`${leistung.name}: häufige Fragen`} eintraege={leistung.faq} />
+  </div>
+
+  {
+    verwandte.length > 0 && (
+      <section class="abschnitt flaeche-warm">
+        <div class="huelle">
+          <h2>Passt dazu</h2>
+          <div class="raster">
+            {verwandte.map((l) => <LeistungKarte leistung={l} standortSlug={null} />)}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Basis>
+
+<style>
+  .kopf {
+    background: linear-gradient(to bottom, color-mix(in oklab, var(--akzent) 7%, var(--flaeche)), var(--flaeche));
+    border-bottom: 1px solid var(--linie);
+  }
+  h1 { margin-block: var(--raum-4); max-width: 18ch; }
+  .teaser { max-width: var(--breite-text); font-size: var(--t-lg); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .eckdaten {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr)); gap: var(--raum-4);
+    margin-block-start: var(--raum-6); padding-block-start: var(--raum-5); border-top: 1px solid var(--linie);
+  }
+  .eckdaten dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinte-leise); }
+  .eckdaten dd { margin: 2px 0 0; font-size: var(--t-sm); }
+  .wahl { background: var(--flaeche); }
+  .unter { max-width: var(--breite-text); margin-block: var(--raum-3) var(--raum-6); color: var(--tinte-weich); }
+  .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h3 { font-size: var(--t-lg); }
+  .ort address { font-style: normal; margin-block: var(--raum-2); font-size: var(--t-sm); color: var(--tinte-leise); }
+  .tel { font-size: var(--t-sm); font-weight: 600; margin-block-end: var(--raum-4); }
+  .mehr { display: inline-flex; align-items: center; gap: var(--raum-2); margin-block-start: auto; font-size: var(--t-sm); font-weight: 600; color: var(--akzent); }
+  .ort:hover .mehr svg { transform: translateX(3px); }
+  .mehr svg { transition: transform var(--zeit) var(--kurve); }
+  .nicht-hinweis {
+    margin-block-start: var(--raum-6); padding: var(--raum-4);
+    border-radius: var(--radius); background: var(--flaeche-warm);
+    font-size: var(--t-sm); color: var(--tinte-weich); max-width: var(--breite-text);
+  }
+  .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
+</style>

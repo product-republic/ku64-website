@@ -1,0 +1,235 @@
+---
+/**
+ * Notfallseite. Diese Seite wird von Menschen aufgerufen, die Schmerzen haben
+ * oder Angst – oft nachts, oft auf dem Handy. Sie ist deshalb bewusst nüchtern
+ * aufgebaut: Die wichtigste Information steht oben, ohne Scrollen, ohne
+ * Werbeblöcke davor.
+ */
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen, schemaFaq } from '../lib/seo';
+
+const pfad = '/notfall/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Notfall', pfad },
+];
+
+const faq = [
+  {
+    frage: 'Wann ist ein Zahnproblem ein echter Notfall?',
+    antwort:
+      'Bei starken, nicht beherrschbaren Schmerzen, bei einer Schwellung im Gesicht oder am Hals, bei Fieber zusammen mit Zahnschmerzen, bei einer Blutung, die nicht aufhört, und bei einem ausgeschlagenen oder abgebrochenen Zahn nach einem Unfall. Bei Atem- oder Schluckbeschwerden zählt jede Minute – dann sofort 112.',
+  },
+  {
+    frage: 'Was mache ich mit einem ausgeschlagenen Zahn?',
+    antwort:
+      'Den Zahn nur an der Krone anfassen, nie an der Wurzel, und nicht säubern oder abschrubben. Sofort in eine Zahnrettungsbox legen; wenn keine da ist, in kalte H-Milch, notfalls in Speichel. Nicht in Wasser. Dann so schnell wie möglich zu uns – am besten innerhalb der ersten Stunde. Bei Kindern gilt das auch für Milchzähne: Nehmen Sie den Zahn mit, wir entscheiden dann.',
+  },
+  {
+    frage: 'Eine Füllung oder Krone ist herausgefallen – ist das dringend?',
+    antwort:
+      'Meist nicht akut gefährlich, aber es sollte zeitnah versorgt werden, damit der Zahn nicht bricht oder Karies entsteht. Bewahren Sie die Krone auf und bringen Sie sie mit – oft lässt sie sich wieder einsetzen. Kauen Sie in der Zwischenzeit auf der anderen Seite.',
+  },
+  {
+    frage: 'Was hilft bis zum Termin gegen die Schmerzen?',
+    antwort:
+      'Kühlen Sie von außen mit einem Tuch dazwischen, nicht direkt auf der Haut, und in Intervallen. Halten Sie den Kopf hoch, auch beim Schlafen. Rezeptfreie Schmerzmittel wie Ibuprofen können helfen – bitte nur nach Packungsbeilage und nicht, wenn Sie sie nicht vertragen. Legen Sie niemals eine Tablette direkt auf das Zahnfleisch, das verätzt die Schleimhaut. Keine Wärme, kein Alkohol.',
+  },
+  {
+    frage: 'Wer hilft nachts und an Feiertagen?',
+    antwort:
+      'Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Außerhalb unserer Sprechzeiten hilft der zahnärztliche Notdienst der Kassenzahnärztlichen Vereinigung weiter – die Nummern stehen unten.',
+  },
+];
+
+/* Nach Öffnungstagen sortiert: Wer sieben Tage geöffnet hat, steht oben – das
+   ist im Notfall die relevanteste Sortierung. */
+const nachVerfuegbarkeit = [...STANDORTE].sort(
+  (a, b) =>
+    b.oeffnungszeiten.filter((z) => z.von).length -
+    a.oeffnungszeiten.filter((z) => z.von).length,
+);
+---
+
+<Basis
+  titel="Zahnärztlicher Notfall"
+  description="Akute Zahnschmerzen, Schwellung oder ein ausgeschlagener Zahn? Hier finden Sie sofort die richtige Nummer und die wichtigsten Sofortmaßnahmen."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+>
+  <section class="sofort">
+    <div class="huelle">
+      <h1>Zahnärztlicher Notfall</h1>
+
+      <div class="alarm">
+        <p class="alarm-titel">Atemnot, Schluckbeschwerden oder starke Schwellung am Hals?</p>
+        <p>
+          Das ist ein medizinischer Notfall. Wählen Sie sofort den Rettungsdienst – warten
+          Sie nicht auf einen Zahnarzttermin.
+        </p>
+        <a href="tel:112" class="knopf notruf">112 anrufen</a>
+      </div>
+
+      <h2>Rufen Sie uns an – wir halten Termine frei</h2>
+      <div class="nummern">
+        {
+          nachVerfuegbarkeit.map((s) => {
+            const tage = s.oeffnungszeiten.filter((z) => z.von).length;
+            return (
+              <a class="nummer" href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} style={`--akzent:${s.akzent}`}>
+                <span class="n-ort">KU64 {s.name}</span>
+                <span class="n-tel">{s.telefon}</span>
+                <span class="n-info">
+                  {s.ort} · {tage} {tage === 7 ? 'Tage/Woche geöffnet' : 'Tage/Woche'}
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <p class="ausserhalb">
+        <strong>Außerhalb unserer Sprechzeiten:</strong> zahnärztlicher Notdienst Berlin
+        unter <a href="tel:+493089004333">030 89 00 43 33</a>, Brandenburg unter{' '}
+        <a href="tel:+491803222355510">01803 22 23 55 510</a>. Ärztlicher Bereitschaftsdienst
+        bundesweit: <a href="tel:116117">116 117</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <h2>Sofortmaßnahmen</h2>
+      <div class="raster">
+        <div class="karte fall">
+          <h3>Ausgeschlagener Zahn</h3>
+          <ol>
+            <li>Zahn nur an der Krone anfassen, nie an der Wurzel</li>
+            <li>Nicht säubern, nicht abschrubben, nicht in Wasser legen</li>
+            <li>In Zahnrettungsbox, sonst kalte H-Milch, notfalls Speichel</li>
+            <li>Innerhalb der ersten Stunde zu uns kommen</li>
+          </ol>
+        </div>
+
+        <div class="karte fall">
+          <h3>Starke Schmerzen</h3>
+          <ol>
+            <li>Von außen kühlen, mit Tuch dazwischen, in Intervallen</li>
+            <li>Kopf hochlagern, auch beim Schlafen</li>
+            <li>Schmerzmittel nach Packungsbeilage, nie auf das Zahnfleisch legen</li>
+            <li>Keine Wärme, kein Alkohol</li>
+          </ol>
+        </div>
+
+        <div class="karte fall">
+          <h3>Schwellung im Gesicht</h3>
+          <ol>
+            <li>Immer abklären lassen, auch ohne starke Schmerzen</li>
+            <li>Kühlen, nicht wärmen</li>
+            <li>Bei Fieber oder rascher Zunahme sofort anrufen</li>
+            <li>Bei Atem- oder Schluckproblemen: 112</li>
+          </ol>
+        </div>
+
+        <div class="karte fall">
+          <h3>Blutung nach einem Eingriff</h3>
+          <ol>
+            <li>Sauberes Tuch oder Mulltupfer fest aufbeißen, 20 Minuten</li>
+            <li>Nicht spülen, nicht ausspucken, nicht nachschauen</li>
+            <li>Kopf hoch, körperliche Anstrengung vermeiden</li>
+            <li>Hört es nicht auf: anrufen</li>
+          </ol>
+        </div>
+
+        <div class="karte fall">
+          <h3>Krone oder Füllung verloren</h3>
+          <ol>
+            <li>Teil aufbewahren und mitbringen</li>
+            <li>Auf der anderen Seite kauen</li>
+            <li>Bereich gut sauber halten</li>
+            <li>Zeitnah Termin vereinbaren – meist kein Notfall</li>
+          </ol>
+        </div>
+
+        <div class="karte fall">
+          <h3>Zahn abgebrochen</h3>
+          <ol>
+            <li>Bruchstück aufbewahren, feucht halten</li>
+            <li>Scharfe Kante mit Wachs oder Kaugummi abdecken</li>
+            <li>Bei Schmerz auf Kälte: Nerv ist beteiligt, zügig kommen</li>
+            <li>Anrufen und Situation schildern</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Häufige Fragen im Notfall</h2>
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.frage}</summary>
+            <p>{f.antwort}</p>
+          </details>
+        ))
+      }
+      <p class="disclaimer">
+        Diese Hinweise ersetzen keine Untersuchung. Sie sollen die Zeit bis zum Termin
+        überbrücken – nicht ihn ersetzen.
+      </p>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .sofort { padding-block: var(--raum-7); }
+  h1 { margin-block-end: var(--raum-5); }
+  h2 { font-size: var(--t-xl); margin-block: var(--raum-7) var(--raum-4); }
+  .sofort h2:first-of-type { margin-block-start: var(--raum-7); }
+
+  .alarm {
+    padding: var(--raum-5);
+    border-radius: var(--radius-lg);
+    background: var(--fehler-flaeche);
+    border: 2px solid var(--fehler);
+  }
+  .alarm-titel { font-family: var(--schrift-titel); font-size: var(--t-lg); font-weight: 600; color: var(--fehler); margin-block-end: var(--raum-2); }
+  .alarm p { color: var(--tinte-weich); max-width: var(--breite-text); }
+  .notruf {
+    display: inline-flex; margin-block-start: var(--raum-4);
+    background: var(--fehler); color: #fff; font-size: var(--t-md); padding: 0.9rem 1.8rem;
+  }
+
+  .nummern { display: grid; gap: var(--raum-3); grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); }
+  .nummer {
+    display: grid; gap: 2px; padding: var(--raum-4) var(--raum-5);
+    border: 1px solid var(--linie); border-left: 4px solid var(--akzent);
+    border-radius: var(--radius); background: var(--flaeche); text-decoration: none;
+    transition: box-shadow var(--zeit) var(--kurve), transform var(--zeit) var(--kurve);
+  }
+  .nummer:hover { transform: translateY(-2px); box-shadow: var(--schatten); }
+  .n-ort { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinte-leise); }
+  .n-tel { font-size: var(--t-xl); font-weight: 700; color: var(--akzent); }
+  .n-info { font-size: var(--t-xs); color: var(--tinte-leise); }
+
+  .ausserhalb {
+    margin-block-start: var(--raum-5); padding: var(--raum-4);
+    border-radius: var(--radius); background: var(--flaeche-warm);
+    font-size: var(--t-sm); line-height: var(--zeile-weit); color: var(--tinte-weich);
+  }
+  .ausserhalb a { font-weight: 600; color: var(--akzent); white-space: nowrap; }
+
+  .fall h3 { font-size: var(--t-md); margin-block-end: var(--raum-3); }
+  .fall ol { padding-inline-start: var(--raum-5); font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }
+  .fall li + li { margin-block-start: var(--raum-2); }
+
+  .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
+  details { border-bottom: 1px solid var(--linie); }
+  summary { padding-block: var(--raum-4); font-weight: 600; cursor: pointer; }
+  details p { padding-block-end: var(--raum-4); max-width: var(--breite-text); color: var(--tinte-weich); }
+  .disclaimer { margin-block-start: var(--raum-5); font-size: var(--t-xs); color: var(--tinte-leise); }
+</style>

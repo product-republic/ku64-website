@@ -1,0 +1,134 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import { schemaBrotkrumen, schemaStandort } from '../../lib/seo';
+import { leistungenFuerStandort } from '../../data/leistungen';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/kontakt/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Kontakt', pfad },
+];
+---
+
+<Basis
+  titel={`Kontakt ${standort.ort}`}
+  description={`Kontakt zu KU64 ${standort.name}: ${standort.telefon}, ${standort.email}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen), schemaStandort(standort, leistungenFuerStandort(standort.slug))]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Kontakt zu KU64 {standort.name}</h1>
+      <p class="unter">
+        Wählen Sie den Weg, der Ihnen am angenehmsten ist. Alle führen zum selben Team.
+      </p>
+
+      <div class="raster">
+        <div class="karte weg">
+          <h2>Anrufen</h2>
+          <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="gross">
+            {standort.telefon}
+          </a>
+          <p class="text">
+            Der schnellste Weg – besonders bei Schmerzen oder wenn es dringend ist.
+          </p>
+        </div>
+
+        <div class="karte weg">
+          <h2>Online buchen</h2>
+          <p class="text">
+            Freie Termine sehen und direkt buchen, rund um die Uhr.
+          </p>
+          <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">Zur Terminbuchung</a>
+        </div>
+
+        <div class="karte weg">
+          <h2>Schreiben</h2>
+          <a href={`mailto:${standort.email}`} class="gross klein-gross">{standort.email}</a>
+          <p class="text">
+            Für alles, was nicht eilt. Bitte schicken Sie uns keine Gesundheitsdaten per
+            unverschlüsselter E-Mail.
+          </p>
+        </div>
+
+        <div class="karte weg">
+          <h2>Fragen vorab</h2>
+          <p class="text">
+            Unser digitaler Berater beantwortet Fragen zu Behandlungen, Kosten und Abläufen –
+            per Text oder Sprache.
+          </p>
+          <button type="button" class="knopf knopf-sekundaer chat-oeffner">Chat öffnen</button>
+        </div>
+      </div>
+
+      <div class="raster-zwei unten">
+        <div>
+          <h2>Adresse</h2>
+          <address>
+            <strong>KU64 {standort.name}</strong><br />
+            {standort.strasse}<br />
+            {standort.plz} {standort.ort}
+          </address>
+          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">Anfahrt ansehen</a>
+        </div>
+
+        <div>
+          <h2>Sprechzeiten</h2>
+          <table class="zeiten">
+            <caption class="nur-screenreader">Öffnungszeiten</caption>
+            <tbody>
+              {
+                standort.oeffnungszeiten.map((z) => (
+                  <tr>
+                    <th scope="row">{z.tag}</th>
+                    <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+          {standort.zeitenHinweis && <p class="hinweis hinweis-warnung">{standort.zeitenHinweis}</p>}
+        </div>
+      </div>
+
+      <div class="hinweis notfall">
+        <strong>Bei akuten Beschwerden</strong> rufen Sie bitte an, statt zu schreiben. Bei
+        Atem- oder Schluckbeschwerden, starker Schwellung oder hohem Fieber wählen Sie den
+        Rettungsdienst unter 112. Mehr dazu unter <a href="/notfall/">Notfall</a>.
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  h1 { max-width: 20ch; }
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-7);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+  h2 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
+  .gross { display: block; font-size: var(--t-xl); font-weight: 700; color: var(--akzent); text-decoration: none; margin-block-end: var(--raum-3); }
+  .klein-gross { font-size: var(--t-md); word-break: break-all; }
+  .text { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); margin-block-end: var(--raum-4); }
+  .weg { justify-content: flex-start; }
+  .weg .knopf { margin-block-start: auto; align-self: flex-start; }
+  .unten { margin-block: var(--raum-8) var(--raum-6); }
+  address { font-style: normal; line-height: var(--zeile-weit); color: var(--tinte-weich); margin-block-end: var(--raum-4); }
+  .zeiten { width: 100%; max-width: 22rem; border-collapse: collapse; }
+  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); text-align: start; }
+  .zeiten th { font-weight: 600; width: 4rem; }
+  .zeiten td { font-variant-numeric: tabular-nums; color: var(--tinte-weich); }
+  .notfall { border-color: var(--fehler); background: var(--fehler-flaeche); }
+</style>

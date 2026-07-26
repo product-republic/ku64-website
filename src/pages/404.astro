@@ -1,0 +1,128 @@
+---
+/**
+ * 404-Seite.
+ *
+ * Der Anspruch war, dass es möglichst keine Sackgassen gibt. Wo eine Adresse
+ * trotzdem ins Leere läuft, soll sie nicht mit einer Entschuldigung enden,
+ * sondern mit einem Weg: Suche über alle Behandlungen plus Standortwahl.
+ */
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { LEISTUNGEN } from '../data/leistungen';
+
+const suchindex = LEISTUNGEN.map((l) => ({
+  slug: l.slug,
+  name: l.name,
+  begriffe: [l.name, l.kurz, ...l.synonyme].join(' ').toLowerCase(),
+}));
+---
+
+<Basis
+  titel="Seite nicht gefunden"
+  description="Diese Seite gibt es nicht mehr. Hier finden Sie, wonach Sie gesucht haben."
+  pfad="/404/"
+  noindex={true}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <p class="code">404</p>
+      <h1>Diese Seite gibt es nicht</h1>
+      <p class="unter">
+        Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach
+        Ihrer Behandlung – oder gehen Sie zu Ihrem Standort.
+      </p>
+
+      <div class="suche">
+        <label for="q" class="nur-screenreader">Behandlung suchen</label>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7" />
+          <path d="M13.8 13.8 18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <input type="search" id="q" autocomplete="off" placeholder="z. B. Implantat, Bleaching, Zahnschmerzen" />
+      </div>
+
+      <ul class="ergebnisse" id="ergebnisse"></ul>
+
+      <h2>Oder direkt zu Ihrem Standort</h2>
+      <div class="raster">
+        {STANDORTE.map((s) => (
+          <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
+            <span class="band" aria-hidden="true" />
+            <h3>KU64 {s.name}</h3>
+            <address>{s.strasse}, {s.plz} {s.ort}</address>
+          </a>
+        ))}
+      </div>
+
+      <p class="weiter">
+        Nichts dabei? <a href="/leistungen/">Alle Behandlungen</a> ·
+        <a href="/standorte/">Alle Standorte</a> ·
+        <a href="/notfall/">Notfall</a> ·
+        <button type="button" class="chat-oeffner leise">Berater fragen</button>
+      </p>
+    </div>
+  </section>
+</Basis>
+
+<script define:vars={{ suchindex }}>
+  const feld = document.getElementById('q');
+  const liste = document.getElementById('ergebnisse');
+
+  const norm = (s) =>
+    s.toLowerCase().replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
+
+  const daten = suchindex.map((e) => ({ ...e, norm: norm(e.begriffe) }));
+
+  // Startwert aus der aufgerufenen Adresse ableiten: Wer /leistungen/implantate/
+  // aufgerufen hat, bekommt sofort passende Treffer statt eines leeren Felds.
+  const ausPfad = decodeURIComponent(location.pathname).replace(/[-/]+/g, ' ').trim();
+
+  function suchen(frage) {
+    liste.innerHTML = '';
+    const q = norm(frage.trim());
+    if (!q) return;
+
+    const treffer = daten
+      .filter((e) => q.split(/\s+/).some((wort) => wort.length > 2 && e.norm.includes(wort)))
+      .slice(0, 8);
+
+    for (const t of treffer) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `/leistungen/${t.slug}/`;
+      a.textContent = t.name;
+      li.append(a);
+      liste.append(li);
+    }
+  }
+
+  feld?.addEventListener('input', () => suchen(feld.value));
+
+  if (ausPfad) suchen(ausPfad);
+</script>
+
+<style>
+  .code { font-family: var(--schrift-titel); font-size: var(--t-2xl); font-weight: 700; color: var(--akzent); }
+  h1 { margin-block: var(--raum-3) var(--raum-4); }
+  h2 { font-size: var(--t-lg); margin-block: var(--raum-7) var(--raum-4); }
+  .unter { max-width: var(--breite-text); font-size: var(--t-lg); color: var(--tinte-weich); }
+  .suche {
+    display: flex; align-items: center; gap: var(--raum-3); max-width: 34rem;
+    margin-block-start: var(--raum-6); padding: 0 var(--raum-4);
+    background: var(--flaeche); border: 1px solid var(--linie-stark); border-radius: var(--radius-voll);
+  }
+  .suche:focus-within { border-color: var(--akzent); }
+  .suche svg { flex-shrink: 0; color: var(--tinte-leise); }
+  .suche input { flex: 1; min-width: 0; padding-block: 0.85rem; border: none; background: none; outline: none; font-size: var(--t-sm); }
+  .ergebnisse { list-style: none; padding: 0; margin-block-start: var(--raum-4); max-width: 34rem; }
+  .ergebnisse:empty { display: none; }
+  .ergebnisse li { border-bottom: 1px solid var(--linie); }
+  .ergebnisse a { display: block; padding: var(--raum-3); text-decoration: none; font-weight: 500; }
+  .ergebnisse a:hover { color: var(--akzent); background: var(--flaeche-warm); }
+  .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h3 { font-size: var(--t-md); }
+  address { font-style: normal; margin-block-start: var(--raum-2); font-size: var(--t-sm); color: var(--tinte-leise); }
+  .weiter { margin-block-start: var(--raum-7); font-size: var(--t-sm); color: var(--tinte-weich); }
+  .leise { color: var(--akzent); font-weight: 600; text-decoration: underline; text-underline-offset: 0.18em; }
+</style>

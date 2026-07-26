@@ -1,0 +1,216 @@
+---
+/**
+ * Datenschutzerklärung.
+ *
+ * ⚠️ ENTWURF – muss vor Live-Gang juristisch geprüft werden.
+ *
+ * Der technische Teil ist belastbar: Er beschreibt exakt, was diese Website
+ * tatsächlich tut – geprüft am Code, nicht aus einem Generator übernommen.
+ * Was fehlt und nur die Praxis liefern kann, ist als Platzhalter markiert:
+ * Verantwortlicher, Datenschutzbeauftragter, Aufbewahrungsfristen der
+ * Patientenakte, Auftragsverarbeiter-Verträge.
+ */
+import Basis from '../layouts/Basis.astro';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/datenschutz/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Datenschutz', pfad },
+];
+---
+
+<Basis
+  titel="Datenschutzerklärung"
+  description="Wie diese Website mit Ihren Daten umgeht – konkret und nachvollziehbar."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+  noindex={true}
+>
+  <div class="huelle abschnitt">
+    <h1>Datenschutzerklärung</h1>
+
+    <div class="hinweis hinweis-warnung entwurf">
+      <strong>Entwurfsfassung.</strong> Der technische Teil beschreibt exakt das Verhalten
+      dieser Website. Vor Veröffentlichung muss die Erklärung um die Angaben der Praxis
+      ergänzt und anwaltlich geprüft werden. Die mit
+      <code>[…]</code> markierten Stellen sind noch zu befüllen.
+    </div>
+
+    <div class="fliesstext">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        <code>[Vollständiger Name der Praxis / des Trägers, Anschrift, Telefon, E-Mail,
+        gesetzliche Vertretung]</code>
+      </p>
+      <p>
+        Datenschutzbeauftragte oder Datenschutzbeauftragter: <code>[Name, Kontakt]</code>
+      </p>
+
+      <h2>2. Was beim Aufruf dieser Website passiert</h2>
+      <p>
+        Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren
+        Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem.
+        Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist
+        Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle:
+        <code>[Anzahl Tage]</code>.
+      </p>
+      <p>
+        <strong>Keine Analyse-Werkzeuge, keine Werbe-Cookies.</strong> Diese Website setzt
+        von sich aus keine Cookies zu Analyse- oder Marketingzwecken und bindet keine
+        Zählpixel ein.
+      </p>
+      <p>
+        <strong>Schriften werden selbst ausgeliefert.</strong> Es findet kein Aufruf an
+        Google Fonts oder ein anderes Schriften-Netzwerk statt. Ihre IP-Adresse wird dafür
+        nicht an Dritte übermittelt.
+      </p>
+
+      <h2>3. Lokale Speicherung im Browser</h2>
+      <p>
+        Wir speichern in Ihrem Browser (localStorage) zwei Angaben, die unseren Server nie
+        erreichen:
+      </p>
+      <ul>
+        <li>
+          <strong>Ihren zuletzt gewählten Standort</strong>, damit wir Ihnen beim nächsten
+          Besuch die passenden Angaben anbieten können. Es findet keine automatische
+          Weiterleitung statt.
+        </li>
+        <li>
+          <strong>Ihre Entscheidung zur Terminbuchung</strong>, falls Sie angekreuzt haben,
+          dass wir uns diese merken sollen.
+        </li>
+      </ul>
+      <p>
+        Beides können Sie jederzeit über die Einstellungen Ihres Browsers löschen. Es
+        handelt sich um keine personenbezogenen Daten im engeren Sinne und um keine
+        Nutzerprofile.
+      </p>
+
+      <h2 id="doctolib">4. Online-Terminbuchung (Doctolib)</h2>
+      <p>
+        Die Terminbuchung läuft über Doctolib. Wir binden Doctolib
+        <strong>nicht automatisch</strong> ein: Der Terminkalender wird erst geladen, wenn
+        Sie ausdrücklich darauf klicken. Vorher findet keinerlei Verbindung zu Doctolib
+        statt.
+      </p>
+      <p>
+        Nach Ihrer Zustimmung werden Ihre IP-Adresse und Browserdaten an Doctolib
+        übertragen und dort Cookies gesetzt. Rechtsgrundlage ist Ihre Einwilligung nach
+        Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Für die dortige Verarbeitung gilt
+        die Datenschutzerklärung von Doctolib. Auftragsverarbeitungsvertrag:
+        <code>[Status ergänzen]</code>.
+      </p>
+
+      <h2 id="anamnese">5. Digitale Anamnese (Nelly Solutions)</h2>
+      <p>
+        Der Anamnesebogen wird von Nelly Solutions bereitgestellt. Diese Website leitet Sie
+        lediglich dorthin weiter und verarbeitet selbst <strong>keine Gesundheitsdaten</strong>.
+        Ihre Angaben fließen direkt vom Formular in unser Praxisverwaltungssystem.
+      </p>
+      <p>
+        Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h
+        DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der
+        Patientenakte: <code>[in der Regel 10 Jahre – bitte bestätigen]</code>.
+        Auftragsverarbeitungsvertrag mit Nelly Solutions: <code>[Status ergänzen]</code>.
+      </p>
+
+      <h2 id="berater">6. Digitaler Berater (Text und Sprache)</h2>
+      <p>
+        <strong>Textchat.</strong> Ihre Frage wird an unseren Server und von dort an Anthropic
+        übermittelt, um die Antwort zu erzeugen. Der Gesprächsverlauf existiert
+        ausschließlich in Ihrem Browserfenster und geht beim Schließen verloren. Wir
+        speichern weder Fragen noch Antworten und legen keine Gesprächsprotokolle an. Zur
+        Missbrauchsabwehr zählen wir kurzzeitig Anfragen je IP-Adresse im Arbeitsspeicher.
+      </p>
+      <p>
+        <strong>Sprachberater.</strong> Der Sprachdialog läuft über ElevenLabs. Das Mikrofon
+        wird erst nach Ihrer ausdrücklichen Freigabe aktiviert. Ihre Stimme wird zur
+        Erzeugung der Antwort verarbeitet; eine dauerhafte Aufzeichnung durch uns findet
+        nicht statt.
+      </p>
+      <p>
+        Der Berater ist angewiesen, keine Gesundheitsdaten abzufragen und keine Diagnosen zu
+        stellen. Bitte teilen Sie ihm dennoch keine sensiblen Angaben mit – für alles
+        Medizinische ist der persönliche Termin der richtige Ort. Rechtsgrundlage:
+        Art. 6 Abs. 1 lit. f DSGVO. Auftragsverarbeitungsverträge:
+        <code>[Status ergänzen]</code>.
+      </p>
+
+      <h2 id="laecheln">7. Lächeln-Vorschau (Foto-Upload)</h2>
+      <p>
+        Ein Gesichtsfoto ist ein <strong>biometrisches Datum</strong> und damit eine besondere
+        Kategorie personenbezogener Daten nach Art. 9 DSGVO. Wir verarbeiten es
+        ausschließlich auf Grundlage Ihrer ausdrücklichen, vorher erteilten Einwilligung
+        (Art. 9 Abs. 2 lit. a DSGVO).
+      </p>
+      <p>So läuft die Verarbeitung konkret ab:</p>
+      <ul>
+        <li>
+          Ihr Foto wird an unseren Server übertragen und dort ausschließlich im
+          Arbeitsspeicher gehalten. Es wird <strong>nicht auf einen Datenträger geschrieben</strong>
+          und in keine Datenbank aufgenommen.
+        </li>
+        <li>
+          Zur Analyse und Bilderzeugung wird es an Google (Gemini) übermittelt.
+        </li>
+        <li>
+          Das Ergebnis wird Ihnen angezeigt und an die von Ihnen angegebene Adresse
+          gesendet. Die Adresse wird für diesen einen Versand verwendet und danach nicht
+          gespeichert.
+        </li>
+        <li>
+          Nach Abschluss der Anfrage sind Foto und Ergebnis auf unserem Server nicht mehr
+          vorhanden.
+        </li>
+      </ul>
+      <p>
+        Die erzeugte Darstellung ist eine unverbindliche Illustration und kein
+        Behandlungsergebnis. Sie können Ihre Einwilligung jederzeit mit Wirkung für die
+        Zukunft widerrufen; da nichts gespeichert wird, gibt es danach nichts zu löschen.
+        Auftragsverarbeitungsvertrag mit Google: <code>[Status ergänzen]</code>.
+      </p>
+
+      <h2>8. Kontaktaufnahme</h2>
+      <p>
+        Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung
+        Ihres Anliegens (Art. 6 Abs. 1 lit. b und f DSGVO). Bitte senden Sie uns keine
+        Gesundheitsdaten per unverschlüsselter E-Mail – dieser Weg ist technisch nicht
+        vertraulich.
+      </p>
+
+      <h2>9. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung
+        (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20)
+        und Widerspruch (Art. 21 DSGVO). Erteilte Einwilligungen können Sie jederzeit mit
+        Wirkung für die Zukunft widerrufen.
+      </p>
+      <p>
+        Sie können sich außerdem bei einer Aufsichtsbehörde beschweren – zuständig ist die
+        Behörde an Ihrem Wohnsitz oder am Sitz der Praxis:
+        <code>[zuständige Aufsichtsbehörde eintragen]</code>.
+      </p>
+
+      <h2>10. Änderungen</h2>
+      <p>
+        Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert.
+        Stand: <code>[Datum bei Veröffentlichung eintragen]</code>.
+      </p>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  h1 { margin-block-end: var(--raum-5); }
+  .entwurf { max-width: var(--breite-text); margin-block-end: var(--raum-7); }
+  code {
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-sm);
+    background: var(--warnung-flaeche);
+    color: var(--warnung);
+    font-size: 0.9em;
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { leistungenFuerStandort, LEISTUNGEN } from '../data/leistungen';
+import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../lib/seo';
+
+const pfad = '/standorte/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Standorte', pfad },
+];
+
+/* Vergleichstabelle: Welche Leistung gibt es wo? Genau die Information, die
+   auf der alten Seite fehlte und die Menschen an den falschen Ort führte. */
+const vergleich = LEISTUNGEN.map((l) => ({
+  leistung: l,
+  wo: STANDORTE.map((s) => l.verfuegbar.includes(s.slug)),
+}));
+
+const schema = [
+  schemaOrganisation(),
+  schemaBrotkrumen(brotkrumen),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: STANDORTE.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: kanonisch(`/${s.slug}/`),
+      name: s.nameLang,
+    })),
+  },
+];
+---
+
+<Basis
+  titel="Unsere Standorte"
+  description={`KU64 an ${STANDORTE.length} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.`}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>{STANDORTE.length} Standorte in Berlin und Potsdam</h1>
+      <p class="unter">
+        Jeder Standort hat einen eigenen Charakter und ein eigenes Behandlungsangebot.
+        Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.
+      </p>
+
+      <div class="raster">
+        {
+          STANDORTE.map((s) => {
+            const anzahl = leistungenFuerStandort(s.slug).length;
+            const tage = s.oeffnungszeiten.filter((z) => z.von).length;
+            return (
+              <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
+                <span class="band" aria-hidden="true" />
+                <h2>
+                  <a href={`/${s.slug}/`} class="karte-link">KU64 {s.name}</a>
+                </h2>
+                <address>
+                  {s.strasse}<br />{s.plz} {s.ort}
+                </address>
+                <p class="claim">{s.claim}</p>
+                <ul class="merkmale">
+                  {s.besonderheiten.slice(0, 3).map((b) => <li>{b}</li>)}
+                </ul>
+                <dl class="fakten">
+                  <div><dt>Behandlungen</dt><dd>{anzahl}</dd></div>
+                  <div><dt>Geöffnet</dt><dd>{tage} Tage/Woche</dd></div>
+                  <div><dt>Seit</dt><dd>{s.eroeffnet.slice(0, 4)}</dd></div>
+                </dl>
+                <p class="tel">{s.telefon}</p>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle">
+      <h2>Welche Behandlung gibt es wo?</h2>
+      <p class="unter">
+        Nicht jede Behandlung wird an jedem Standort angeboten. Diese Übersicht zeigt
+        Ihnen vor dem Anruf, wohin Sie müssen.
+      </p>
+
+      <div class="tabelle-huelle">
+        <table class="vergleich">
+          <caption class="nur-screenreader">
+            Verfügbarkeit der Behandlungen je KU64-Standort
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Behandlung</th>
+              {STANDORTE.map((s) => <th scope="col">{s.name}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              vergleich.map(({ leistung, wo }) => (
+                <tr>
+                  <th scope="row">
+                    <a href={`/leistungen/${leistung.slug}/`}>{leistung.name}</a>
+                  </th>
+                  {wo.map((da, i) => (
+                    <td class:list={{ ja: da, nein: !da }}>
+                      {da ? (
+                        <a
+                          href={`/${STANDORTE[i].slug}/leistungen/${leistung.slug}/`}
+                          aria-label={`${leistung.name} bei KU64 ${STANDORTE[i].name}`}
+                        >
+                          <span aria-hidden="true">✓</span>
+                        </a>
+                      ) : (
+                        <span aria-label="nicht verfügbar">–</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  h1 { max-width: 18ch; }
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-7);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+  .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ort h2 { font-size: var(--t-xl); }
+  .ort h2 a { text-decoration: none; }
+  address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }
+  .claim { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }
+  .merkmale { margin-block-start: var(--raum-4); padding-inline-start: var(--raum-5); font-size: var(--t-xs); color: var(--tinte-weich); }
+  .merkmale li + li { margin-block-start: var(--raum-1); }
+  .fakten {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--raum-3);
+    margin-block: var(--raum-5) var(--raum-3);
+    padding-block-start: var(--raum-4); border-top: 1px solid var(--linie);
+  }
+  .fakten dt { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinte-leise); }
+  .fakten dd { margin: 0; font-size: var(--t-sm); font-weight: 600; }
+  .tel { margin-block-start: auto; font-size: var(--t-sm); font-weight: 600; color: var(--akzent); }
+  .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
+
+  .tabelle-huelle { overflow-x: auto; border: 1px solid var(--linie); border-radius: var(--radius-lg); background: var(--flaeche); }
+  .vergleich { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+  .vergleich th, .vergleich td { padding: var(--raum-3); text-align: center; border-bottom: 1px solid var(--linie); }
+  .vergleich thead th {
+    position: sticky; top: 0; background: var(--flaeche);
+    font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--tinte-leise); white-space: nowrap;
+  }
+  .vergleich tbody th { text-align: start; font-weight: 500; white-space: nowrap; }
+  .vergleich tbody th a { text-decoration: none; }
+  .vergleich tbody th a:hover { color: var(--akzent); }
+  .vergleich tbody tr:hover { background: var(--flaeche-warm); }
+  .ja a { display: block; color: var(--erfolg); font-weight: 700; text-decoration: none; font-size: var(--t-md); }
+  .ja a:hover { transform: scale(1.25); }
+  .nein { color: var(--linie-stark); }
+</style>

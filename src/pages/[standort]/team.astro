@@ -1,0 +1,142 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import TerminBand from '../../components/TerminBand.astro';
+import { STANDORTE, getStandort } from '../../data/standorte';
+import { teamFuerStandort } from '../../data/team';
+import { getLeistung } from '../../data/leistungen';
+import { schemaBrotkrumen, kanonisch } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return STANDORTE.map((s) => ({ params: { standort: s.slug } }));
+}
+
+const standort = getStandort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/team/`;
+const team = teamFuerStandort(standort.slug);
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Team', pfad },
+];
+
+const schema: Record<string, unknown>[] = [schemaBrotkrumen(brotkrumen)];
+
+if (team.length > 0) {
+  schema.push({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: team.map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Physician',
+        name: m.name,
+        jobTitle: m.funktion,
+        knowsLanguage: m.sprachen,
+        worksFor: { '@id': kanonisch(`/${standort.slug}/`) + '#praxis' },
+      },
+    })),
+  });
+}
+---
+
+<Basis
+  titel={`Team in ${standort.ort}`}
+  description={`Die Behandelnden bei KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+  noindex={team.length === 0}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Das Team in {standort.ort}</h1>
+
+      {
+        team.length > 0 ? (
+          <>
+            <p class="unter">
+              {standort.anzahlZahnaerzte
+                ? `${standort.anzahlZahnaerzte} Zahnärztinnen und Zahnärzte behandeln bei KU64 ${standort.name}.`
+                : `Die Behandelnden bei KU64 ${standort.name}.`}
+            </p>
+            <div class="raster">
+              {team.map((m) => (
+                <article class="karte person">
+                  {m.foto && <img src={m.foto} alt="" width="320" height="320" loading="lazy" />}
+                  <h2>{m.name}</h2>
+                  <p class="funktion">{m.funktion}</p>
+                  {m.vorstellung && <p class="text">{m.vorstellung}</p>}
+                  {m.sprachen && m.sprachen.length > 0 && (
+                    <p class="sprachen">Spricht {m.sprachen.join(', ')}</p>
+                  )}
+                  {m.schwerpunkte && m.schwerpunkte.length > 0 && (
+                    <ul class="schwerpunkte">
+                      {m.schwerpunkte.map((s) => {
+                        const l = getLeistung(s);
+                        return l ? (
+                          <li>
+                            <a href={`/${standort.slug}/leistungen/${l.slug}/`}>{l.name}</a>
+                          </li>
+                        ) : null;
+                      })}
+                    </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+          </>
+        ) : (
+          /* Ehrlicher Zwischenstand statt einer erfundenen Teamliste. */
+          <div class="offen">
+            <p class="unter">
+              Die Vorstellung unseres Teams in {standort.ort} bereiten wir gerade auf –
+              mit Fotos und Schwerpunkten der einzelnen Behandelnden.
+            </p>
+            <p class="text">
+              {standort.anzahlZahnaerzte
+                ? `Bei KU64 ${standort.name} behandeln ${standort.anzahlZahnaerzte} Zahnärztinnen und Zahnärzte.`
+                : `Bei KU64 ${standort.name} behandelt Sie ein festes, eingespieltes Team.`}{' '}
+              Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen
+              Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.
+            </p>
+            <div class="offen-knoepfe">
+              <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-primaer">
+                {standort.telefon}
+              </a>
+              <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">
+                Behandlungen ansehen
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<style>
+  h1 { max-width: 16ch; }
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-6);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+  .person img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); margin-block-end: var(--raum-4); }
+  .person h2 { font-size: var(--t-lg); }
+  .funktion { font-size: var(--t-sm); color: var(--akzent); font-weight: 600; margin-block: var(--raum-1) var(--raum-3); }
+  .text { color: var(--tinte-weich); line-height: var(--zeile-weit); max-width: var(--breite-text); }
+  .sprachen { margin-block-start: var(--raum-3); font-size: var(--t-xs); color: var(--tinte-leise); }
+  .schwerpunkte { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--raum-2); margin-block-start: var(--raum-3); }
+  .schwerpunkte a {
+    display: inline-block; padding: 0.25rem 0.6rem; border-radius: var(--radius-voll);
+    background: var(--flaeche-warm-2); font-size: var(--t-xs); text-decoration: none; color: var(--tinte-weich);
+  }
+  .offen { max-width: var(--breite-text); }
+  .offen-knoepfe { display: flex; flex-wrap: wrap; gap: var(--raum-3); margin-block-start: var(--raum-5); }
+</style>

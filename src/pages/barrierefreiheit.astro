@@ -1,0 +1,76 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { STANDORTE } from '../data/standorte';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/barrierefreiheit/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Barrierefreiheit', pfad },
+];
+---
+
+<Basis
+  titel="Barrierefreiheit"
+  description="Wie zugänglich diese Website und unsere Praxen sind – und was noch offen ist."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <div class="huelle abschnitt">
+    <h1>Barrierefreiheit</h1>
+
+    <div class="fliesstext">
+      <p>
+        Diese Website soll für alle nutzbar sein – auch mit Screenreader, nur mit der
+        Tastatur, bei eingeschränktem Sehvermögen oder wenn Bewegung auf dem Bildschirm
+        Beschwerden auslöst. Hier steht ehrlich, was umgesetzt ist und was noch nicht.
+      </p>
+
+      <h2>Was umgesetzt ist</h2>
+      <ul>
+        <li>Alle Funktionen sind mit der Tastatur bedienbar, mit sichtbarem Fokusrahmen</li>
+        <li>Ein Sprunglink führt direkt zum Inhalt, ohne die Navigation durchlaufen zu müssen</li>
+        <li>Semantisches HTML: Überschriftenhierarchie, Landmarken, beschriftete Formulare</li>
+        <li>Aufklappbare Inhalte funktionieren auch ohne JavaScript</li>
+        <li>Bewegte Effekte werden bei aktivierter Systemeinstellung „Bewegung reduzieren“ abgeschaltet</li>
+        <li>Ein dunkles Farbschema wird automatisch übernommen, wenn Ihr System es vorgibt</li>
+        <li>Schriftgrößen skalieren mit Ihren Browsereinstellungen, Text bleibt bis 200 % lesbar</li>
+        <li>Bedienelemente sind mindestens 44 × 44 Pixel groß</li>
+        <li>Statusmeldungen werden Screenreadern angekündigt</li>
+      </ul>
+
+      <h2>Was noch offen ist</h2>
+      <ul>
+        <li>Ein vollständiger Test mit Screenreadern (NVDA, VoiceOver) steht noch aus</li>
+        <li>Alternativtexte für Bildmaterial werden ergänzt, sobald die Bilder vorliegen</li>
+        <li>Die Terminbuchung von Doctolib ist ein Fremdsystem, dessen Zugänglichkeit wir nicht steuern</li>
+        <li>Leichte Sprache und Gebärdensprachvideos sind noch nicht verfügbar</li>
+      </ul>
+
+      <h2>Zugänglichkeit unserer Praxen</h2>
+      <ul>
+        {STANDORTE.map((s) => (
+          <li>
+            <strong>KU64 {s.name}</strong> ({s.ort}):{' '}
+            {s.anfahrt.barrierefrei
+              ? 'barrierefrei zugänglich'
+              : (s.anfahrt.barrierefreiHinweis ?? 'bitte vorab anfragen')}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Etwas gefunden, das nicht funktioniert?</h2>
+      <p>
+        Bitte sagen Sie uns Bescheid – das hilft uns mehr als jede Selbsteinschätzung.
+        Beschreiben Sie kurz, welche Seite und welches Hilfsmittel betroffen sind. Wir
+        melden uns zurück und beheben, was sich beheben lässt.
+      </p>
+      <p><a href="/kontakt/" class="knopf knopf-primaer">Barriere melden</a></p>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  h1 { margin-block-end: var(--raum-5); }
+</style>

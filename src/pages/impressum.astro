@@ -1,0 +1,109 @@
+---
+/**
+ * ⚠️ ENTWURF. Ein Impressum enthält ausschließlich Tatsachenangaben über die
+ * Praxis – erfundene Inhalte wären hier rechtlich riskant. Alle Felder sind
+ * als Platzhalter angelegt und von der Praxis zu befüllen.
+ *
+ * Pflichtangaben für Zahnarztpraxen: § 5 DDG (ehem. TMG), § 18 MStV sowie die
+ * berufsrechtlichen Angaben nach der Berufsordnung der Zahnärztekammer.
+ */
+import Basis from '../layouts/Basis.astro';
+import { schemaBrotkrumen } from '../lib/seo';
+
+const pfad = '/impressum/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Impressum', pfad },
+];
+---
+
+<Basis
+  titel="Impressum"
+  description="Anbieterkennzeichnung und berufsrechtliche Angaben."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+  noindex={true}
+>
+  <div class="huelle abschnitt">
+    <h1>Impressum</h1>
+
+    <div class="hinweis hinweis-warnung entwurf">
+      <strong>Entwurfsfassung.</strong> Ein Impressum besteht aus Tatsachenangaben, die nur
+      die Praxis liefern kann. Alle mit <code>[…]</code> markierten Felder sind vor dem
+      Live-Gang zu befüllen und rechtlich zu prüfen.
+    </div>
+
+    <div class="fliesstext">
+      <h2>Angaben nach § 5 DDG</h2>
+      <p>
+        <code>[Vollständiger Name der Praxis / Gesellschaft]</code><br />
+        <code>[Rechtsform]</code><br />
+        <code>[Straße, Hausnummer]</code><br />
+        <code>[PLZ, Ort]</code>
+      </p>
+      <p>
+        Telefon: <code>[Nummer]</code><br />
+        E-Mail: <code>[Adresse]</code>
+      </p>
+
+      <h2>Vertretungsberechtigte</h2>
+      <p><code>[Namen der Geschäftsführung / Partner]</code></p>
+
+      <h2>Registereintrag</h2>
+      <p>
+        Registergericht: <code>[…]</code><br />
+        Registernummer: <code>[…]</code>
+      </p>
+
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
+      <p><code>[USt-IdNr. nach § 27a UStG, falls vorhanden]</code></p>
+
+      <h2>Berufsrechtliche Angaben</h2>
+      <p>
+        Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>, verliehen in
+        <code>[Land]</code><br />
+        Zuständige Kammer: <code>[Zahnärztekammer, Anschrift, Website]</code><br />
+        Zuständige Kassenzahnärztliche Vereinigung: <code>[…]</code><br />
+        Aufsichtsbehörde: <code>[…]</code>
+      </p>
+      <p>
+        Es gelten folgende berufsrechtliche Regelungen: Zahnheilkundegesetz (ZHG),
+        Berufsordnung der zuständigen Zahnärztekammer, Gebührenordnung für Zahnärzte (GOZ),
+        Heilberufsgesetz des Landes. Einsehbar unter <code>[Fundstelle]</code>.
+      </p>
+
+      <h2>Berufshaftpflichtversicherung</h2>
+      <p>
+        <code>[Name und Anschrift des Versicherers]</code><br />
+        Räumlicher Geltungsbereich: <code>[…]</code>
+      </p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p><code>[Name, Anschrift]</code></p>
+
+      <h2>Streitbeilegung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit.
+        Wir sind <code>[nicht]</code> bereit und <code>[nicht]</code> verpflichtet, an
+        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+      <p>
+        Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der
+        zuständigen Zahnärztekammer zur Verfügung: <code>[Anschrift]</code>.
+      </p>
+
+      <h2>Bildnachweise</h2>
+      <p><code>[Urheber und Lizenzen der verwendeten Bilder]</code></p>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  h1 { margin-block-end: var(--raum-5); }
+  .entwurf { max-width: var(--breite-text); margin-block-end: var(--raum-7); }
+  code {
+    padding: 0.1em 0.4em; border-radius: var(--radius-sm);
+    background: var(--warnung-flaeche); color: var(--warnung); font-size: 0.9em;
+  }
+</style>
