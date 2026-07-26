@@ -60,6 +60,20 @@ export interface Leistung {
   /** Trägt die gesetzliche Kasse etwas bei? Häufigste Patientenfrage überhaupt. */
   kasse?: string;
   verfuegbar: string[];
+  /**
+   * Adressen des Altbestands, die auf diese Behandlung zeigen.
+   *
+   * Aus dem Crawl von ku64.de und der alten `.htaccess`. Die alte Website
+   * ordnete Behandlungen nach Fachgebiet und schachtelte drei Ebenen tief;
+   * die neue führt sie flach unter ihrem Namen. Zwischen beiden gibt es keine
+   * Regel, nur eine Zuordnung – und die steht hier, weil sie zur Behandlung
+   * gehört und nicht in eine Weiterleitungsliste.
+   *
+   * `src/data/weiterleitungen.ts` macht daraus die Weiterleitungen: Adressen
+   * mit Standortpräfix landen auf der Standortfassung dieser Behandlung,
+   * Adressen mit `/en/` auf der englischen.
+   */
+  alteAdressen?: string[];
   related: string[];
   ablauf?: AblaufSchritt[];
   faq: FaqEintrag[];
@@ -159,6 +173,11 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Krankenkasse zahlt die PZR in der Regel nicht. Viele Kassen erstatten aber einen Zuschuss über Bonusprogramme – fragen Sie vorab bei Ihrer Kasse nach.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/potsdam/professionelle-zahnreinigung/',
+      '/zahnbeschwerden/mundgeruch-was-tun/',
+      '/zahnbeschwerden/zahnstein-entfernen-behandeln/',
+    ],
     related: ['prophylaxe-4-0', 'parodontitis-behandlung', 'zahnaufhellung', 'kinderprophylaxe'],
     ablauf: [
       {
@@ -219,6 +238,16 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Als Privatleistung nicht im Katalog der gesetzlichen Kassen enthalten. Private Versicherungen erstatten die Behandlung meist vollständig.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/prophylaxe-4-0/air-flow/',
+      '/leistungen/prophylaxe-4-0/ammp8-schnelltest-gewebeabbau/',
+      '/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/',
+      '/en/services/prophylaxis-4-0/',
+      '/en/services/prophylaxis-4-0/air-flow/',
+      '/en/services/prophylaxis-4-0/ammp8-test/',
+      '/en/services/prophylaxis-4-0/gbt-guided-biofilm-therapy/',
+      '/prophylaxis-4-0/',
+    ],
     related: [
       'professionelle-zahnreinigung',
       'parodontitis-behandlung',
@@ -256,6 +285,16 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Krankenkasse übernimmt zwei Vorsorgeuntersuchungen pro Jahr vollständig. Beide Termine gehören ins Bonusheft.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/ganzheitliche-zahnmedizin/erstuntersuchung/',
+      '/leistungen/ganzheitliche-zahnmedizin/karies-risiko-bestimmung/',
+      '/en/services/holistic-dentistry/initial-examination-check-up/',
+      '/en/services/holistic-dentistry/tooth-decay-caries-risk-determination/',
+      '/zahnbeschwerden/ernaehrung-gesunde-zaehne/',
+      '/zahnbeschwerden/mundpilz-mundsoor/',
+      '/zahnbeschwerden/mundtrockenheit/',
+      '/zahnbeschwerden/zahnarzt-schwangerschaft/',
+    ],
     related: ['professionelle-zahnreinigung', 'karies-behandlung', 'parodontitis-behandlung', 'dvt-3d-roentgen'],
     faq: [
       {
@@ -288,6 +327,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '160 bis 260 € je Sitzung',
     kasse: 'Privatleistung. Bei bestehendem Implantat oft von Zusatzversicherungen bezuschusst.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/periimplantitis/',
+    ],
     related: ['zahnimplantate', 'prophylaxe-4-0', 'parodontitis-behandlung'],
     faq: [
       {
@@ -318,6 +360,10 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Rein ästhetische Veneers sind eine Privatleistung und werden von der gesetzlichen Kasse nicht bezuschusst. Bei nachweisbarer medizinischer Indikation – etwa nach einem Unfall – kann ein Teil erstattet werden.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/veneers/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/veneers/',
+    ],
     related: ['smile-design', 'zahnaufhellung', 'keramik-kronen', 'aligner'],
     ablauf: [
       {
@@ -372,6 +418,17 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '350 bis 650 € für beide Kiefer',
     kasse: 'Privatleistung ohne Kassenbeteiligung.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/bleaching-zahnaufhellung/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/bleaching-teeth-whitening/',
+      '/potsdam/bleaching/',
+      '/potsdam/bleaching/g/',
+      '/bleaching-kosmetik-shop/',
+      '/prophylaxis-4-0/prophylaxis-shop/ku64.de/en/bleaching/',
+      '/en/leistungen/prophylaxe-4-0/prophylaxeshop/',
+      '/zahnbeschwerden/gelbe-zaehne/',
+      '/zahnbeschwerden/zahnverfaerbung/',
+    ],
     related: ['professionelle-zahnreinigung', 'veneers', 'smile-design', 'kunststofffuellungen'],
     faq: [
       {
@@ -409,6 +466,15 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '250 bis 600 € für die Planung, wird bei Umsetzung meist angerechnet',
     kasse: 'Privatleistung.',
     verfuegbar: OHNE_KIEZ,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/digital-smile-design/',
+      '/leistungen/zahnaesthetik/ku64-smile-swiss-smile/',
+      '/leistungen/smile-design-dentallabor/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/digital-smile-design/',
+      '/en/services/dental-laboratory-in-house/',
+      '/potsdam/digital-smile-design/',
+      '/potsdam/dentallabor/',
+    ],
     related: ['veneers', 'zahnaufhellung', 'keramik-kronen', 'aligner'],
     faq: [
       {
@@ -461,6 +527,10 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse zahlt einen Festzuschuss für die Regelversorgung. Bei Vollkeramik im Seitenzahnbereich tragen Sie die Differenz selbst. Ein vollständig geführtes Bonusheft erhöht den Zuschuss um bis zu 30 Prozent.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/zahnersatz/kronen/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/dentures/crowns/',
+    ],
     related: ['inlays-onlays', 'zahnbruecken', 'wurzelkanalbehandlung', 'zahnimplantate'],
     faq: [
       {
@@ -493,6 +563,10 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '1.200 bis 2.800 € je nach Spannweite und Material',
     kasse: 'Festzuschuss der gesetzlichen Kasse für die Regelversorgung, erhöht durch Bonusheft.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/zahnersatz/zahnbruecken/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/dentures/bridges/',
+    ],
     related: ['zahnimplantate', 'keramik-kronen', 'teilprothese', 'knochenaufbau'],
     faq: [
       {
@@ -520,6 +594,13 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '450 bis 900 € pro Zahn',
     kasse: 'Festzuschuss auf Niveau der Amalgam- bzw. Kunststofffüllung, Differenz als Eigenanteil.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/zahnersatz/inlays/',
+      '/leistungen/zahnaesthetik/zahnersatz/cerec/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/dentures/inlays/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/dentures/cerec-dental-restorations/',
+      '/potsdam/cerec-in-potsdam/',
+    ],
     related: ['keramik-kronen', 'kunststofffuellungen', 'karies-behandlung'],
     faq: [
       {
@@ -543,6 +624,9 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse leistet einen Festzuschuss. Bei geringem Einkommen ist eine Härtefallregelung mit vollständiger Übernahme der Regelversorgung möglich.',
     verfuegbar: OHNE_KIEZ,
+    alteAdressen: [
+      '/leistungen/zahnaesthetik/zahnersatz/zahnprothese/',
+    ],
     related: ['zahnimplantate', 'all-on-4', 'zahnbruecken'],
     faq: [
       {
@@ -573,6 +657,17 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse zahlt einen Festzuschuss für den Zahnersatz auf dem Implantat, nicht aber für das Implantat selbst. Der Zuschuss entspricht dem der vergleichbaren Regelversorgung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/',
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/',
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/',
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/',
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/',
+      '/en/services/oral-surgery-mkg-surgery/dental-implants/',
+      '/en/services/oral-surgery-mkg-surgery/dental-implants/dental-implant-costs/',
+      '/en/services/oral-surgery-mkg-surgery/dental-implants/dental-surgery-smoking/',
+      '/potsdam/implantate/',
+    ],
     related: ['knochenaufbau', 'all-on-4', 'sofortimplantate', 'implantat-prophylaxe', 'dvt-3d-roentgen'],
     ablauf: [
       {
@@ -664,6 +759,10 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '9.000 bis 18.000 € pro Kiefer',
     kasse: 'Festzuschuss für die vergleichbare Regelversorgung. Ratenzahlung ist möglich.',
     verfuegbar: NUR_KUDAMM,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/all-on-4/',
+      '/en/services/oral-surgery-mkg-surgery/all-on-4/',
+    ],
     related: ['zahnimplantate', 'knochenaufbau', 'teilprothese', 'behandlung-in-narkose'],
     faq: [
       {
@@ -691,6 +790,11 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '400 bis 2.500 € je nach Umfang',
     kasse: 'In der Regel Privatleistung im Rahmen der implantologischen Versorgung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/knochenaufbau/',
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/sinuslift/',
+      '/en/services/oral-surgery-mkg-surgery/dental-bone-grafting/',
+    ],
     related: ['zahnimplantate', 'sofortimplantate', 'dvt-3d-roentgen', 'weisheitszaehne'],
     faq: [
       {
@@ -721,6 +825,17 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse übernimmt die Behandlung an Frontzähnen und – unter bestimmten Voraussetzungen – an Backenzähnen. Zusatzleistungen wie Mikroskop und maschinelle Aufbereitung sind privat zu tragen.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/endodontie-wurzelkanalbehandlung/',
+      '/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/',
+      '/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/',
+      '/en/services/endodontics-root-canal-treatment/',
+      '/potsdam/endodontologie/',
+      '/zahnwurzelentzuendung/',
+      '/zahnbeschwerden/zahnwurzelentzuendung/',
+      '/zahnbeschwerden/vereiterter-zahn/',
+      '/blog/ku64-wurzelkanalbehandlung-ist-spitze-und-zertifiziert/',
+    ],
     related: ['karies-behandlung', 'keramik-kronen', 'zahnentfernung'],
     faq: [
       {
@@ -759,6 +874,23 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Seit 2021 gibt es eine strukturierte Parodontitis-Behandlungsstrecke, die die gesetzliche Kasse inklusive der Nachsorge über zwei Jahre übernimmt. Voraussetzung ist ein dokumentierter Befund.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/parodontologie-zahnfleischbehandlung/',
+      '/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/',
+      '/leistungen/ganzheitliche-zahnmedizin/zahnfleischaufbau/',
+      '/en/services/periodontics/',
+      '/potsdam/parodontitis/',
+      '/potsdam/parodontitisbehandlung/',
+      '/potsdam/parodontitisbehandlung-2/',
+      '/potsdam/parodontitisbehandlung/chbehandlung/',
+      '/zahnbeschwerden/zahnfleischbluten/',
+      '/zahnbeschwerden/zahnfleischentzuendung/',
+      '/zahnbeschwerden/zahnfleischrueckgang/',
+      '/zahnbeschwerden/zahnfleischtaschen/',
+      '/zahnbeschwerden/mundschleimhautentzuendung/',
+      '/zahnbeschwerden/schmerzempfindliche-zaehne/',
+      '/zahnbeschwerden/zahn-locker/',
+    ],
     related: ['professionelle-zahnreinigung', 'prophylaxe-4-0', 'implantat-prophylaxe'],
     faq: [
       {
@@ -792,6 +924,12 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse übernimmt Füllungen im gesamten Gebiss in zahnfarbenem Material. Für aufwendigere Schichttechniken fällt ein Eigenanteil an.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/ganzheitliche-zahnmedizin/kariesbehandlung/',
+      '/en/services/holistic-dentistry/caries-treatment/',
+      '/zahnbeschwerden/karies-symptome/',
+      '/zahnbeschwerden/loch-im-zahn/',
+    ],
     related: ['kunststofffuellungen', 'inlays-onlays', 'wurzelkanalbehandlung', 'zahnvorsorge'],
     faq: [
       {
@@ -819,6 +957,15 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Kassenleistung, Schichttechnik 80 bis 200 € Eigenanteil',
     kasse: 'Zahnfarbene Füllungen sind seit dem Amalgam-Aus Kassenleistung im gesamten Gebiss.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/ganzheitliche-zahnmedizin/zahnfuellung/',
+      '/leistungen/zahnaesthetik/amalgamentfernung/',
+      '/en/services/aesthetic-dentistry-dental-aesthetics/amalgam-removal/',
+      '/zahnbeschwerden/zahnerosion-behandeln/',
+      '/zahnbeschwerden/zahngifte/',
+      '/blog/zahnfuellung-rausgefallen/',
+      '/blog/flowable-injection-technique/',
+    ],
     related: ['karies-behandlung', 'inlays-onlays', 'zahnaufhellung'],
     faq: [
       {
@@ -849,6 +996,18 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Bei Erwachsenen in der Regel Privatleistung. Bei Kindern und Jugendlichen zahlt die Kasse ab Fehlstellungsgrad KIG 3 – dann allerdings meist eine feste Spange.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferorthopaedie/invisalign/',
+      '/leistungen/kieferorthopaedie/incognito/',
+      '/leistungen/kieferorthopaedie/win-brackets-lingualtechnik/',
+      '/leistungen/kieferorthopaedie/zahnkorrektur/',
+      '/leistungen/kieferorthopaedie/sos-zahnspangen/',
+      '/en/services/orthodontics/invisalign/',
+      '/gerade-zaehne/',
+      '/zahnbeschwerden/gerade-zaehne/',
+      '/zahnbeschwerden/schiefe-zaehne/',
+      '/fachbeitraege/aligner/',
+    ],
     related: ['feste-zahnspange', 'retainer', 'veneers', 'smile-design'],
     faq: [
       {
@@ -882,6 +1041,12 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Bei Kindern und Jugendlichen ab KIG-Stufe 3 übernimmt die Kasse die Regelversorgung. Der Eigenanteil von 20 Prozent wird nach erfolgreichem Abschluss zurückerstattet.',
     verfuegbar: NUR_KUDAMM,
+    alteAdressen: [
+      '/leistungen/kieferorthopaedie/feste-zahnspange/',
+      '/leistungen/kieferorthopaedie/zahnspange-reinigen/',
+      '/en/services/orthodontics/braces/',
+      '/zahnbeschwerden/sport-mit-zahnspange/',
+    ],
     related: ['aligner', 'retainer', 'kinderzahnarzt'],
     faq: [
       {
@@ -909,6 +1074,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '250 bis 600 € pro Kiefer',
     kasse: 'In der Regel Privatleistung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferorthopaedie/retentionsspangen/',
+    ],
     related: ['aligner', 'feste-zahnspange', 'knirscherschiene'],
     faq: [
       {
@@ -934,6 +1102,10 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die Entfernung ist bei medizinischer Indikation Kassenleistung. Eine rein vorsorgliche Entfernung ohne Befund sowie Sedierung sind privat zu tragen.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/weisheitszahnentfernung/',
+      '/zahnbeschwerden/weisheitszahn-op/',
+    ],
     related: ['zahnentfernung', 'behandlung-in-narkose', 'dvt-3d-roentgen', 'knochenaufbau'],
     faq: [
       {
@@ -966,6 +1138,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Kassenleistung, Zusatzmaßnahmen nach Aufwand',
     kasse: 'Die Entfernung ist Kassenleistung. Knochenerhaltende Maßnahmen sind privat.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/potsdam/oralchirurgie/',
+    ],
     related: ['sofortimplantate', 'zahnimplantate', 'weisheitszaehne', 'wurzelkanalbehandlung'],
     faq: [
       {
@@ -996,6 +1171,21 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Zahnärztliche Früherkennung ab dem 6. Lebensmonat sowie halbjährliche Kontrollen sind vollständig Kassenleistung. Auch Fissurenversiegelung der bleibenden Backenzähne wird übernommen.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/',
+      '/leistungen/kinderzahnarzt/karies-bei-kindern/',
+      '/leistungen/kinderzahnarzt/therapeutisches-zaubern/',
+      '/leistungen/kinderzahnarzt/kinderkieferorthopaedie/',
+      '/en/services/pediatric-dentist/',
+      '/en/services/pediatric-dentist/first-visit-to-ku64/',
+      '/en/services/pediatric-dentist/pediatric-orthodontics/',
+      '/potsdam/kinderzahnarzt/',
+      '/zahnbeschwerden/kreuzbiss-kinder/',
+      '/blog/unsere-kinderabteilung-bekommt-zuwachs/',
+      '/blog/neues-traumauto-fuer-kids-duest-durch-die-ku64-kinderabteilung/',
+      '/blog/kinder-betreuung/',
+      '/blog/maus-und-elefant-in-unserer-praxis/',
+    ],
     related: ['kreidezaehne', 'kinderprophylaxe', 'fissurenversiegelung', 'zahnarztangst'],
     faq: [
       {
@@ -1028,6 +1218,12 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Grundbehandlung Kassenleistung, Intensivprophylaxe privat',
     kasse: 'Die Behandlung ist Kassenleistung. Zusätzliche Schutzmaßnahmen sind teils privat.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/kreidezahne/',
+      '/zahnbeschwerden/kreidezaehne/',
+      '/zahnbeschwerden/zahnschmelzdefekte/',
+      '/kreidezahne-sanft-behandeln-kinderzahnarzt-ku64-berlin/',
+    ],
     related: ['kinderzahnarzt', 'fissurenversiegelung', 'kinderprophylaxe', 'karies-behandlung'],
     faq: [
       {
@@ -1061,6 +1257,10 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Individualprophylaxe ist von 6 bis 17 Jahren zweimal jährlich Kassenleistung. Für Kinder unter 6 gibt es eigene Früherkennungsleistungen.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/kinderprophylaxe/',
+      '/en/services/pediatric-dentist/child-prophylaxis/',
+    ],
     related: ['kinderzahnarzt', 'fissurenversiegelung', 'kreidezaehne'],
     faq: [
       {
@@ -1084,6 +1284,9 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die Versiegelung der bleibenden großen Backenzähne ist bei Kindern und Jugendlichen Kassenleistung. Weitere Zähne sind privat.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/fissurenversiegelung/',
+    ],
     related: ['kinderprophylaxe', 'kreidezaehne', 'karies-behandlung'],
     faq: [
       {
@@ -1109,6 +1312,16 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die gesetzliche Kasse übernimmt bei entsprechendem Befund die Schiene. Die instrumentelle Funktionsanalyse ist Privatleistung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferorthopaedie/craniomandibulaere-dysfunktion/',
+      '/leistungen/kieferorthopaedie/osteopathie/',
+      '/leistungen/kieferorthopaedie/dros-schiene/',
+      '/leistungen/ganzheitliche-zahnmedizin/bisshebung/',
+      '/en/services/holistic-dentistry/bite-correction/',
+      '/potsdam/kieferorthopadie/cmd/',
+      '/potsdam/kieferorthopadie/dros-schiene/',
+      '/dros-schiene/',
+    ],
     related: ['knirscherschiene'],
     faq: [
       {
@@ -1136,6 +1349,10 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '350 bis 900 €',
     kasse: 'Bei dokumentiertem Befund übernimmt die gesetzliche Kasse die Standardschiene.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/kieferorthopaedie/knirscherschiene/',
+      '/leistungen/kieferorthopaedie/schnarcher-schutzschiene/',
+    ],
     related: ['cmd-behandlung', 'veneers', 'keramik-kronen'],
     faq: [
       {
@@ -1165,6 +1382,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Beratung Kassenleistung, Sedierung 250 bis 600 €',
     kasse: 'Die zahnärztliche Behandlung ist Kassenleistung, Sedierung und Narkose meist privat.',
     verfuegbar: ALLE,
+    alteAdressen: [
+      '/leistungen/angstpatienten/',
+    ],
     related: ['behandlung-in-narkose', 'lachgas', 'kinderzahnarzt'],
     faq: [
       {
@@ -1198,6 +1418,12 @@ export const LEISTUNGEN: Leistung[] = [
     kasse:
       'Die Kasse übernimmt die Narkose nur in bestimmten Fällen, etwa bei nachgewiesener Phobie oder Behinderung. Sonst ist sie privat zu tragen.',
     verfuegbar: NUR_KUDAMM,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/vollnarkose/',
+      '/en/services/pediatric-dentist/vollnarkose/',
+      '/potsdam/anaesthesie/',
+      '/potsdam/anaesthetie/',
+    ],
     related: ['zahnarztangst', 'lachgas', 'weisheitszaehne', 'all-on-4'],
     faq: [
       {
@@ -1225,6 +1451,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '80 bis 200 € je Sitzung',
     kasse: 'Privatleistung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kinderzahnarzt/lachgasbehandlung/',
+    ],
     related: ['zahnarztangst', 'behandlung-in-narkose', 'kinderzahnarzt', 'weisheitszaehne'],
     faq: [
       {
@@ -1254,6 +1483,9 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: '150 bis 350 €',
     kasse: 'In der Regel Privatleistung, in Einzelfällen Kassenleistung.',
     verfuegbar: KUDAMM_POTSDAM,
+    alteAdressen: [
+      '/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/praeimplantationsdiagnostik/',
+    ],
     related: ['zahnimplantate', 'weisheitszaehne', 'knochenaufbau', 'wurzelkanalbehandlung'],
     faq: [
       {

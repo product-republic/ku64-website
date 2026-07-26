@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 import { SPRACHEN, QUELLSPRACHE } from './src/i18n/sprachen.ts';
+import { WEITERLEITUNGEN } from './src/data/weiterleitungen.ts';
 
 const SITE = process.env.PUBLIC_SITE_URL || 'https://ku64.de';
 
@@ -19,6 +20,11 @@ export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
   trailingSlash: 'always',
+  /* Die Adressen des Altbestands. Sie stehen in src/data/weiterleitungen.ts,
+     weil eine Weiterleitung eine inhaltliche Entscheidung ist und keine
+     Serverkonfiguration – und weil derselbe Datensatz den Wächter speist,
+     der im Build prüft, dass keine Adresse ins Leere läuft. */
+  redirects: WEITERLEITUNGEN,
   build: {
     inlineStylesheets: 'auto',
     format: 'directory',
