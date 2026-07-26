@@ -527,3 +527,50 @@ nicht möglich war:
 - Eröffnung der KiezPraxis am 5. Januar 2026: <https://www.presseportal.de/pm/181398/6204848>
 - Kontaktdaten Potsdam: <https://www.doctolib.de/zahnarztpraxis/potsdam/ku64-die-zahnspezialisten>
 - Kontaktdaten Berlin-Mitte: <https://www.doctolib.de/zahnarztpraxis/berlin/ku64-berlin-hausvogteiplatz>
+
+## 1c. URL-Bestand: der kritischste Befund des Umbaus
+
+**Stand:** 216 von 238 nachweisbaren Adressen des Altbestands (90,8 %) laufen
+gegen die neue Website ins Leere. Ermittelt mit `npm run urls:abgleichen`.
+
+Die 238 Adressen stammen aus den Weiterleitungsregeln der alten `.htaccess` –
+sowohl deren Quellen als auch deren Ziele. Beide kennt Google mit Sicherheit:
+Die Ziele sind seit Jahren erreichbare Seiten, die Quellen stehen seit Jahren
+in den Suchergebnissen. **Der tatsächliche Bestand ist größer**, vermutlich um
+ein Mehrfaches; er ließe sich vollständig nur aus der Datenbank, aus einem
+Export der Google Search Console oder aus einem Crawl gewinnen.
+
+### Woran es liegt
+
+Es sind keine Einzelfälle, sondern vier strukturelle Abweichungen:
+
+| Bereich | Alt | Neu | Betroffen |
+|---|---|---|---|
+| Behandlungen je Standort | `/potsdam/parodontitisbehandlung/` | `/potsdam/leistungen/parodontitis-behandlung/` | 20 |
+| Behandlungen allgemein | `/leistungen/kieferorthopaedie/incognito/` | `/leistungen/aligner/` | 11 |
+| Team | `/team/zahnaerzte/<person>/` | existiert nicht | 59 |
+| Blog & Fachbeiträge | `/blog/<beitrag>/` | existiert nicht | 48 |
+
+Die ersten beiden sind reine Adressfragen: Der Inhalt ist da, er liegt nur
+woanders. Die beiden anderen sind Inhaltsfragen – die Seiten gibt es in der
+neuen Struktur bisher gar nicht.
+
+Zwei Details, die beim Abgleich auffallen:
+
+* Der alte Standortpfad ist **flach**. In Potsdam liegt die Behandlung direkt
+  unter `/potsdam/<behandlung>/`, ohne Zwischenstufe `/leistungen/`. Das neue,
+  sauberere Schema kostet damit jede einzelne indexierte Behandlungsseite.
+* Die alten Behandlungs-Slugs sind andere: `parodontitisbehandlung` gegen
+  `parodontitis-behandlung`, `anaesthesie`, `laserbehandlung-potsdam`. Eine
+  Regel kann das nicht auflösen, das braucht eine gepflegte Zuordnung je
+  Behandlung.
+
+### Was daraus folgt
+
+Vorrang hat, die alte Adresse beizubehalten, statt sie weiterzuleiten. Eine
+Weiterleitung ist der zweitbeste Fall; sie ist vertretbar, wo es den Inhalt so
+nicht mehr gibt, und sie war beim Altbestand bereits 168-fach nötig.
+
+`npm run urls:abgleichen` bricht ab, solange eine Adresse tot ist. Damit kann
+der Zustand nicht unbemerkt schlechter werden – und nicht unbemerkt bestehen
+bleiben.

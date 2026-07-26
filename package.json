@@ -11,6 +11,7 @@
     "start": "node ./dist/server/entry.mjs",
     "check": "astro check",
     "bilder:pruefen": "node scripts/bilder-pruefen.mjs",
+    "urls:abgleichen": "node scripts/urls-abgleichen.mjs",
     "sprachen:pruefen": "node --experimental-strip-types --no-warnings scripts/sprachen-pruefen.mjs",
     "sprachen:sync": "node --experimental-strip-types --no-warnings scripts/sprachen-sync.mjs",
     "oberflaeche:pruefen": "node scripts/oberflaeche-pruefen.mjs",
