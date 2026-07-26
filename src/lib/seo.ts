@@ -96,7 +96,7 @@ export function schemaLeistung(l: Leistung, s: Standort) {
     '@context': 'https://schema.org',
     '@type': 'MedicalProcedure',
     '@id': kanonisch(`/${s.slug}/leistungen/${l.slug}/`) + '#behandlung',
-    name: `${l.name} in ${s.ort}${s.bezirk ? `-${s.bezirk}` : ''}`,
+    name: `${l.name} in ${s.ortsname}`,
     alternateName: l.synonyme,
     description: l.teaser,
     url: kanonisch(`/${s.slug}/leistungen/${l.slug}/`),

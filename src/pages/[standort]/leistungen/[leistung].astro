@@ -40,7 +40,7 @@ const leistung = LEISTUNGEN.find((l) => l.slug === leistungSlug)!;
 const kategorie = getKategorie(leistung.kategorie)!;
 
 const pfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
-const ortsname = standort.bezirk ? `${standort.ort}-${standort.bezirk}` : standort.ort;
+const ortsname = standort.ortsname;
 
 /* Titel und Description tragen den Ortsbezug – das ist der Unterschied
    zwischen einem generischen Treffer und einem lokalen. */

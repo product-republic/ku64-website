@@ -29,6 +29,16 @@ export interface Standort {
   plz: string;
   ort: string;
   bezirk: string | null;
+  /**
+   * Ortsangabe, wie sie in Überschriften und Titeln erscheint.
+   *
+   * Bewusst ein eigenes Feld statt `Ort + Bindestrich + Bezirk`: Diese Regel
+   * ergibt in Berlin "Berlin-Charlottenburg", in Potsdam aber
+   * "Potsdam-Berliner Vorstadt" – schlechtes Deutsch, und danach sucht
+   * niemand. Wie ein Ort benannt wird, ist eine redaktionelle Entscheidung,
+   * keine String-Verkettung.
+   */
+  ortsname: string;
   telefon: string;
   telefonRaw: string;
   email: string;
@@ -74,6 +84,7 @@ export const STANDORTE: Standort[] = [
     plz: '10707',
     ort: 'Berlin',
     bezirk: 'Charlottenburg-Wilmersdorf',
+    ortsname: 'Berlin-Charlottenburg',
     telefon: '030 86 47 320',
     telefonRaw: '+493086473 20',
     email: 'info@ku64.de',
@@ -114,6 +125,7 @@ export const STANDORTE: Standort[] = [
     plz: '10117',
     ort: 'Berlin',
     bezirk: 'Mitte',
+    ortsname: 'Berlin-Mitte',
     telefon: '030 50 93 04 280',
     telefonRaw: '+4930509304280',
     email: 'berlinmitte@ku64.de',
@@ -152,6 +164,7 @@ export const STANDORTE: Standort[] = [
     plz: '10717',
     ort: 'Berlin',
     bezirk: 'Wilmersdorf',
+    ortsname: 'Berlin-Wilmersdorf',
     telefon: '030 86 47 320',
     telefonRaw: '+4930864732 0',
     email: 'kiezpraxis@ku64.de',
@@ -200,6 +213,7 @@ export const STANDORTE: Standort[] = [
     plz: '14467',
     ort: 'Potsdam',
     bezirk: 'Berliner Vorstadt',
+    ortsname: 'Potsdam',
     telefon: '0331 98 22 22 80',
     telefonRaw: '+493319822 2280',
     email: 'potsdam@ku64.de',

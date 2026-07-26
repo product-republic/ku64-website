@@ -24,7 +24,7 @@ const pfad = `/${standort.slug}/`;
 const gruppen = kategorienMitLeistungen(standort.slug);
 const alleHier = leistungenFuerStandort(standort.slug);
 const nichtHier = leistungenNichtAmStandort(standort.slug);
-const ortsname = standort.bezirk ? `${standort.ort}-${standort.bezirk}` : standort.ort;
+const ortsname = standort.ortsname;
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },
