@@ -15,6 +15,31 @@ const suchindex = LEISTUNGEN.map((l) => ({
   name: l.name,
   begriffe: [l.name, l.kurz, ...l.synonyme].join(' ').toLowerCase(),
 }));
+
+/*
+ * Der wichtigste 404-Fall überhaupt: jemand ruft eine Behandlung an einem
+ * Standort auf, der sie nicht anbietet – über einen alten Link, ein
+ * Suchergebnis oder geratene Adresse. Statt einer allgemeinen Fehlerseite
+ * bekommt diese Person eine präzise Antwort: Hier nicht, dort schon.
+ *
+ * Die Auflösung passiert im Browser, weil eine statische Seite den
+ * aufgerufenen Pfad zur Buildzeit nicht kennen kann. Der HTTP-Status bleibt
+ * korrekt 404 – die Seite existiert ja tatsächlich nicht.
+ */
+const kombinationen = {
+  standorte: Object.fromEntries(
+    STANDORTE.map((s) => [s.slug, { name: s.name, ort: s.ort }]),
+  ),
+  leistungen: Object.fromEntries(
+    LEISTUNGEN.map((l) => [
+      l.slug,
+      {
+        name: l.name,
+        verfuegbar: l.verfuegbar,
+      },
+    ]),
+  ),
+};
 ---
 
 <Basis
@@ -26,6 +51,16 @@ const suchindex = LEISTUNGEN.map((l) => ({
   <section class="abschnitt">
     <div class="huelle">
       <p class="code">404</p>
+
+      {/* Präzise Antwort, falls die Adresse eine Behandlung an einem Standort
+          meint, der sie nicht anbietet. Wird per Skript eingeblendet. */}
+      <div class="treffer-box" id="treffer" hidden>
+        <h1 id="treffer-titel"></h1>
+        <p class="treffer-text" id="treffer-text"></p>
+        <div class="treffer-knoepfe" id="treffer-knoepfe"></div>
+      </div>
+
+      <div id="allgemein">
       <h1>Diese Seite gibt es nicht</h1>
       <p class="unter">
         Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach
@@ -60,11 +95,59 @@ const suchindex = LEISTUNGEN.map((l) => ({
         <a href="/notfall/">Notfall</a> ·
         <button type="button" class="chat-oeffner leise">Berater fragen</button>
       </p>
+      </div>
     </div>
   </section>
 </Basis>
 
-<script define:vars={{ suchindex }}>
+<script define:vars={{ suchindex, kombinationen }}>
+  /* ── Fall 1: Behandlung an einem Standort, der sie nicht anbietet ── */
+
+  const teile = location.pathname.split('/').filter(Boolean);
+
+  if (teile.length === 3 && teile[1] === 'leistungen') {
+    const standort = kombinationen.standorte[teile[0]];
+    const leistung = kombinationen.leistungen[teile[2]];
+
+    if (standort && leistung) {
+      const box = document.getElementById('treffer');
+      const titel = document.getElementById('treffer-titel');
+      const text = document.getElementById('treffer-text');
+      const knoepfe = document.getElementById('treffer-knoepfe');
+      const allgemein = document.getElementById('allgemein');
+
+      const woNamen = leistung.verfuegbar.map((s) => `KU64 ${kombinationen.standorte[s].name}`);
+
+      titel.textContent = `${leistung.name} gibt es in ${standort.ort} nicht`;
+
+      text.textContent = woNamen.length
+        ? `Diese Behandlung bieten wir an diesem Standort nicht an. Sie bekommen sie bei ${woNamen.join(' und ')} – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung.`
+        : 'Diese Behandlung bieten wir derzeit an keinem Standort an. Rufen Sie uns gern an – wir sagen Ihnen, wer Ihnen weiterhelfen kann.';
+
+      // Zuerst die Standorte, an denen es die Behandlung gibt …
+      for (const slug of leistung.verfuegbar) {
+        const a = document.createElement('a');
+        a.href = `/${slug}/leistungen/${teile[2]}/`;
+        a.className = 'knopf knopf-primaer';
+        a.textContent = `${leistung.name} bei KU64 ${kombinationen.standorte[slug].name}`;
+        knoepfe.append(a);
+      }
+
+      // … danach der Weg zurück in den ursprünglich gewählten Standort.
+      const zurueck = document.createElement('a');
+      zurueck.href = `/${teile[0]}/leistungen/`;
+      zurueck.className = 'knopf knopf-sekundaer';
+      zurueck.textContent = `Alle Behandlungen in ${standort.ort}`;
+      knoepfe.append(zurueck);
+
+      box.hidden = false;
+      allgemein.hidden = true;
+      document.title = `${leistung.name} in ${standort.ort} • KU64`;
+    }
+  }
+
+  /* ── Fall 2: alles Übrige – Suche über alle Behandlungen ── */
+
   const feld = document.getElementById('q');
   const liste = document.getElementById('ergebnisse');
 
@@ -103,6 +186,10 @@ const suchindex = LEISTUNGEN.map((l) => ({
 
 <style>
   .code { font-family: var(--schrift-titel); font-size: var(--t-2xl); font-weight: 700; color: var(--akzent); }
+  .treffer-box { max-width: var(--breite-text); }
+  .treffer-box h1 { margin-block: var(--raum-3) var(--raum-4); }
+  .treffer-text { font-size: var(--t-lg); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .treffer-knoepfe { display: flex; flex-wrap: wrap; gap: var(--raum-3); margin-block-start: var(--raum-6); }
   h1 { margin-block: var(--raum-3) var(--raum-4); }
   h2 { font-size: var(--t-lg); margin-block: var(--raum-7) var(--raum-4); }
   .unter { max-width: var(--breite-text); font-size: var(--t-lg); color: var(--tinte-weich); }

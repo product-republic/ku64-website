@@ -202,7 +202,7 @@ const faq = [
       await navigator.mediaDevices.getUserMedia({ audio: true });
 
       const slug = standortWahl.value;
-      const res = await fetch(`/api/voice-token${slug ? `?standort=${slug}` : ''}`);
+      const res = await fetch(`/api/voice-token/${slug ? `?standort=${slug}` : ''}`);
       const daten = await res.json();
 
       if (daten.demo) {

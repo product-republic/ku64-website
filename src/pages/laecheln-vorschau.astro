@@ -390,7 +390,7 @@ const faq = [
     }, 7000);
 
     try {
-      const res = await fetch('/api/laecheln', { method: 'POST', body: new FormData(form) });
+      const res = await fetch('/api/laecheln/', { method: 'POST', body: new FormData(form) });
       const daten = await res.json();
 
       if (!res.ok) throw new Error(daten.fehler || 'Die Vorschau konnte nicht erstellt werden.');

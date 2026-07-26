@@ -463,7 +463,10 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
       let gesammelt = '';
 
       try {
-        const res = await fetch('/api/chat', {
+        // Schrägstrich am Ende ist Pflicht: Die Seite läuft mit
+        // trailingSlash 'always', ohne ihn antwortet der Server mit 301 –
+        // und eine Weiterleitung macht aus dem POST ein GET ohne Rumpf.
+        const res = await fetch('/api/chat/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ nachrichten: verlauf, standort }),
