@@ -8,27 +8,30 @@
  * erhalten – es entstehen keine toten Links aus Suchergebnissen und Backlinks –
  * ohne den Fehler zu wiederholen, dass Leistungen ortlos beschrieben werden.
  */
+import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
-import { LEISTUNGEN, getKategorie, getLeistung } from '../../../data/leistungen';
-import { STANDORTE } from '../../../data/standorte';
+import { LEISTUNGEN } from '../../../data/leistungen';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
   return mitSprachen(LEISTUNGEN.map((l) => ({ params: { leistung: l.slug } })));
 }
 
-const leistung = getLeistung(Astro.params.leistung!)!;
-const kategorie = getKategorie(leistung.kategorie)!;
+const daten = inhalte(Astro);
+
+
+const leistung = daten.leistung(Astro.params.leistung!)!;
+const kategorie = daten.kategorie(leistung.kategorie)!;
 const pfad = `/leistungen/${leistung.slug}/`;
 
-const wo = STANDORTE.filter((s) => leistung.verfuegbar.includes(s.slug));
-const nicht = STANDORTE.filter((s) => !leistung.verfuegbar.includes(s.slug));
+const wo = daten.standorte.filter((s) => leistung.verfuegbar.includes(s.slug));
+const nicht = daten.standorte.filter((s) => !leistung.verfuegbar.includes(s.slug));
 
 const verwandte = leistung.related
-  .map((s) => getLeistung(s))
+  .map((s) => daten.leistung(s))
   .filter((l): l is NonNullable<typeof l> => Boolean(l));
 
 const brotkrumen = [
@@ -56,7 +59,7 @@ const schema = [
 <Basis
   titel={leistung.name}
   description={descriptionKuerzen(
-    `${leistung.teaser} Verfügbar an ${wo.length} von ${STANDORTE.length} KU64-Standorten.`,
+    `${leistung.teaser} Verfügbar an ${wo.length} von ${daten.standorte.length} KU64-Standorten.`,
   )}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -74,7 +77,7 @@ const schema = [
         {leistung.kosten && <div><dt>Kosten</dt><dd>{leistung.kosten}</dd></div>}
         <div>
           <dt>Verfügbar an</dt>
-          <dd>{wo.length} von {STANDORTE.length} Standorten</dd>
+          <dd>{wo.length} von {daten.standorte.length} Standorten</dd>
         </div>
       </dl>
     </div>

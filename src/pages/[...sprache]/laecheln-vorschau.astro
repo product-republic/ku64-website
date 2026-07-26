@@ -4,14 +4,17 @@
  * ein Gesichtsfoto ist ein sensibles Datum, und die Einwilligung muss
  * informiert sein, nicht weggeklickt.
  */
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/laecheln-vorschau/';
 const brotkrumen = [
@@ -129,7 +132,7 @@ const faq = [
             <span>Ihr Wunschstandort <em>(freiwillig)</em></span>
             <select name="standort" id="standort">
               <option value="">Noch nicht entschieden</option>
-              {STANDORTE.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
+              {daten.standorte.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
             </select>
           </label>
 

@@ -8,8 +8,11 @@
  * dorthin. Das verhindert genau die Irritation, dass jemand plötzlich auf
  * einem anderen Standort landet, ohne es zu merken.
  */
+import { inhalte } from '../i18n/daten';
 import type { Leistung } from '../data/leistungen';
-import { getStandort } from '../data/standorte';
+
+const daten = inhalte(Astro);
+
 
 interface Props {
   leistung: Leistung;
@@ -28,7 +31,7 @@ const verfuegbarHier = standortSlug ? leistung.verfuegbar.includes(standortSlug)
    am breitesten und die Wege sind für die meisten am kürzesten. */
 const ausweichSlug =
   leistung.verfuegbar.find((s) => s === 'berlin-charlottenburg') ?? leistung.verfuegbar[0];
-const ausweich = ausweichSlug ? getStandort(ausweichSlug) : undefined;
+const ausweich = ausweichSlug ? daten.standort(ausweichSlug) : undefined;
 
 const ziel = verfuegbarHier
   ? standortSlug

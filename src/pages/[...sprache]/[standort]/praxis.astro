@@ -8,22 +8,25 @@
  * standorte.ts. Sobald Fotos und Ausstattungslisten vorliegen, werden sie in
  * `besonderheiten` bzw. als Bildergalerie ergänzt – ohne Änderung am Seitencode.
  */
+import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
-import { STANDORTE, getStandort } from '../../../data/standorte';
-import { leistungenFuerStandort, kategorienMitLeistungen } from '../../../data/leistungen';
+import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
-const standort = getStandort(Astro.params.standort!)!;
+const daten = inhalte(Astro);
+
+
+const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/praxis/`;
-const alleHier = leistungenFuerStandort(standort.slug);
-const gruppen = kategorienMitLeistungen(standort.slug);
+const alleHier = daten.leistungenHier(standort.slug);
+const gruppen = daten.gruppen(standort.slug);
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },

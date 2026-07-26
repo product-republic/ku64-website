@@ -1,13 +1,15 @@
 ---
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
-import { LEISTUNGEN, KATEGORIEN } from '../../data/leistungen';
 import { schemaBrotkrumen, schemaOrganisation } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/ueber-uns/';
 const brotkrumen = [
@@ -15,14 +17,14 @@ const brotkrumen = [
   { name: 'Über KU64', pfad },
 ];
 
-const aeltester = [...STANDORTE].sort((a, b) => a.eroeffnet.localeCompare(b.eroeffnet))[0];
+const aeltester = [...daten.standorte].sort((a, b) => a.eroeffnet.localeCompare(b.eroeffnet))[0];
 const seit = Number(aeltester.eroeffnet.slice(0, 4));
 const jahre = new Date().getFullYear() - seit;
 ---
 
 <Basis
   titel="Über KU64"
-  description={`KU64 – Die Zahnspezialisten: seit ${seit} in Berlin, heute an ${STANDORTE.length} Standorten in Berlin und Potsdam mit ${LEISTUNGEN.length} Behandlungen.`}
+  description={`KU64 – Die Zahnspezialisten: seit ${seit} in Berlin, heute an ${daten.standorte.length} Standorten in Berlin und Potsdam mit ${daten.leistungen.length} Behandlungen.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), schemaOrganisation()]}
@@ -31,18 +33,18 @@ const jahre = new Date().getFullYear() - seit;
     <div class="huelle">
       <h1>Über KU64</h1>
       <p class="unter">
-        Seit {seit} am Kurfürstendamm, heute an {STANDORTE.length} Standorten in Berlin und
+        Seit {seit} am Kurfürstendamm, heute an {daten.standorte.length} Standorten in Berlin und
         Potsdam. Was gleich geblieben ist: der Anspruch, dass ein Zahnarztbesuch niemand
         Angst machen muss.
       </p>
 
       <dl class="zahlen">
         <div><dt>Jahre</dt><dd>{jahre}</dd><p>seit der Gründung {seit}</p></div>
-        <div><dt>Standorte</dt><dd>{STANDORTE.length}</dd><p>in Berlin und Potsdam</p></div>
-        <div><dt>Behandlungen</dt><dd>{LEISTUNGEN.length}</dd><p>aus {KATEGORIEN.length} Fachbereichen</p></div>
+        <div><dt>Standorte</dt><dd>{daten.standorte.length}</dd><p>in Berlin und Potsdam</p></div>
+        <div><dt>Behandlungen</dt><dd>{daten.leistungen.length}</dd><p>aus {daten.kategorien.length} Fachbereichen</p></div>
         <div>
           <dt>Behandelnde</dt>
-          <dd>{STANDORTE.reduce((n, s) => n + (s.anzahlZahnaerzte ?? 0), 0)}+</dd>
+          <dd>{daten.standorte.reduce((n, s) => n + (s.anzahlZahnaerzte ?? 0), 0)}+</dd>
           <p>Zahnärztinnen und Zahnärzte</p>
         </div>
       </dl>
@@ -85,7 +87,7 @@ const jahre = new Date().getFullYear() - seit;
     <div class="huelle">
       <h2>Unsere Standorte</h2>
       <div class="raster">
-        {STANDORTE.map((s) => (
+        {daten.standorte.map((s) => (
           <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
             <span class="band" aria-hidden="true" />
             <h3>KU64 {s.name}</h3>

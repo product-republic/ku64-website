@@ -1,13 +1,15 @@
 ---
+import { inhalte } from '../../../i18n/daten';
 import { sprachpfade } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { KATEGORIEN, LEISTUNGEN } from '../../../data/leistungen';
-import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/leistungen/';
 const brotkrumen = [
@@ -15,14 +17,14 @@ const brotkrumen = [
   { name: 'Leistungen', pfad },
 ];
 
-const gruppen = KATEGORIEN.map((k) => ({
+const gruppen = daten.kategorien.map((k) => ({
   kategorie: k,
-  leistungen: LEISTUNGEN.filter((l) => l.kategorie === k.slug),
+  leistungen: daten.leistungen.filter((l) => l.kategorie === k.slug),
 }))
   .filter((g) => g.leistungen.length > 0)
   .sort((a, b) => a.kategorie.rang - b.kategorie.rang);
 
-const suchindex = LEISTUNGEN.map((l) => ({
+const suchindex = daten.leistungen.map((l) => ({
   slug: l.slug,
   begriffe: [l.name, l.kurz, ...l.synonyme, l.patientenfrage].join(' ').toLowerCase(),
 }));
@@ -32,7 +34,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: LEISTUNGEN.map((l, i) => ({
+    itemListElement: daten.leistungen.map((l, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: kanonisch(`/leistungen/${l.slug}/`),
@@ -44,7 +46,7 @@ const schema = [
 
 <Basis
   titel="Alle Behandlungen"
-  description={`${LEISTUNGEN.length} Behandlungen bei KU64 – von Prophylaxe bis Implantologie. Mit Übersicht, welche Behandlung an welchem Standort angeboten wird.`}
+  description={`${daten.leistungen.length} Behandlungen bei KU64 – von Prophylaxe bis Implantologie. Mit Übersicht, welche Behandlung an welchem Standort angeboten wird.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={schema}
@@ -53,8 +55,8 @@ const schema = [
     <div class="huelle">
       <h1>Alle Behandlungen</h1>
       <p class="unter">
-        {LEISTUNGEN.length} Behandlungen in {gruppen.length} Fachbereichen. Zu jeder sehen
-        Sie, an welchen unserer {STANDORTE.length} Standorte sie angeboten wird.
+        {daten.leistungen.length} Behandlungen in {gruppen.length} Fachbereichen. Zu jeder sehen
+        Sie, an welchen unserer {daten.standorte.length} Standorte sie angeboten wird.
       </p>
 
       <div class="suche">
@@ -90,7 +92,7 @@ const schema = [
                   <span class="e-kurz">{l.kurz}</span>
                 </a>
                 <span class="orte">
-                  {STANDORTE.map((s) => (
+                  {daten.standorte.map((s) => (
                     <a
                       href={
                         l.verfuegbar.includes(s.slug)

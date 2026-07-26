@@ -7,20 +7,22 @@
  * noch per gespeichertem Standort. Wer einmal Potsdam gewählt hat, bekommt
  * Potsdam angeboten, aber die Entscheidung bleibt sichtbar und umkehrbar.
  */
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
-import { LEISTUNGEN, leistungenFuerStandort } from '../../data/leistungen';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
 
+const daten = inhalte(Astro);
+
+
 const faq = [
   {
     frage: 'Wie viele KU64-Standorte gibt es?',
-    antwort: `KU64 ist an ${STANDORTE.length} Standorten vertreten: ${STANDORTE.map(
+    antwort: `KU64 ist an ${daten.standorte.length} Standorten vertreten: ${daten.standorte.map(
       (s) => `${s.name} (${s.strasse}, ${s.plz} ${s.ort})`,
     ).join(', ')}. Das Behandlungsangebot unterscheidet sich je Standort.`,
   },
@@ -41,12 +43,12 @@ const faq = [
   },
 ];
 
-const gesamtLeistungen = LEISTUNGEN.length;
+const gesamtLeistungen = daten.leistungen.length;
 ---
 
 <Basis
   titel="Zahnarzt in Berlin und Potsdam"
-  description={`KU64 – Die Zahnspezialisten an ${STANDORTE.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Behandlungen, die dort angeboten werden.`}
+  description={`KU64 – Die Zahnspezialisten an ${daten.standorte.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Behandlungen, die dort angeboten werden.`}
   pfad="/"
   schema={[schemaOrganisation(), schemaFaq(faq)]}
 >
@@ -55,7 +57,7 @@ const gesamtLeistungen = LEISTUNGEN.length;
       <p class="held-marke">KU64 · Die Zahnspezialisten</p>
       <h1>Wo dürfen wir Sie behandeln?</h1>
       <p class="held-text">
-        {STANDORTE.length} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen
+        {daten.standorte.length} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen
         Sie ausschließlich Behandlungen, Sprechzeiten und Kontaktdaten dieses Standorts.
         Kein Wechsel ohne Ihr Zutun.
       </p>
@@ -74,8 +76,8 @@ const gesamtLeistungen = LEISTUNGEN.length;
     <div class="huelle">
       <div class="standort-raster">
         {
-          STANDORTE.map((s) => {
-            const anzahl = leistungenFuerStandort(s.slug).length;
+          daten.standorte.map((s) => {
+            const anzahl = daten.leistungenHier(s.slug).length;
             return (
               <article
                 class="s-karte karte karte-klickbar einblenden"

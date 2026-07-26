@@ -4,8 +4,11 @@
  * Standorts – die anderen Standorte erscheinen nur als bewusste Auswahl,
  * nie als gleichrangige Kontaktmöglichkeit.
  */
-import { STANDORTE, type Standort } from '../data/standorte';
-import { KATEGORIEN, leistungenFuerStandort, LEISTUNGEN } from '../data/leistungen';
+import { inhalte } from '../i18n/daten';
+import { type Standort } from '../data/standorte';
+
+const daten = inhalte(Astro);
+
 
 interface Props {
   standort: Standort | null;
@@ -17,14 +20,14 @@ const basis = standort ? `/${standort.slug}` : '';
 /* Im Standortkontext die dort meistgesuchten Behandlungen, sonst eine
    standortübergreifende Auswahl. */
 const beliebt = standort
-  ? leistungenFuerStandort(standort.slug).slice(0, 8)
-  : LEISTUNGEN.slice(0, 8);
+  ? daten.leistungenHier(standort.slug).slice(0, 8)
+  : daten.leistungen.slice(0, 8);
 
 const kategorien = standort
-  ? KATEGORIEN.filter(
-      (k) => leistungenFuerStandort(standort.slug).some((l) => l.kategorie === k.slug),
+  ? daten.kategorien.filter(
+      (k) => daten.leistungenHier(standort.slug).some((l) => l.kategorie === k.slug),
     ).sort((a, b) => a.rang - b.rang)
-  : KATEGORIEN;
+  : daten.kategorien;
 
 const jahr = new Date().getFullYear();
 ---
@@ -114,7 +117,7 @@ const jahr = new Date().getFullYear();
         <p class="fuss-titel">Unsere Standorte</p>
         <ul>
           {
-            STANDORTE.map((s) => (
+            daten.standorte.map((s) => (
               <li>
                 <a
                   href={`/${s.slug}/`}

@@ -1,12 +1,15 @@
 ---
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
 import { schemaBrotkrumen, schemaOrganisation } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/kontakt/';
 const brotkrumen = [
@@ -31,7 +34,7 @@ const brotkrumen = [
       </p>
 
       <div class="raster">
-        {STANDORTE.map((s) => (
+        {daten.standorte.map((s) => (
           <article class="karte ort" style={`--akzent:${s.akzent}`}>
             <span class="band" aria-hidden="true" />
             <h2><a href={`/${s.slug}/kontakt/`}>KU64 {s.name}</a></h2>

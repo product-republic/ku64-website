@@ -1,12 +1,15 @@
 ---
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/barrierefreiheit/';
 const brotkrumen = [
@@ -55,7 +58,7 @@ const brotkrumen = [
 
       <h2>Zugänglichkeit unserer Praxen</h2>
       <ul>
-        {STANDORTE.map((s) => (
+        {daten.standorte.map((s) => (
           <li>
             <strong>KU64 {s.name}</strong> ({s.ort}):{' '}
             {s.anfahrt.barrierefrei

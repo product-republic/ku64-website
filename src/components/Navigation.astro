@@ -6,9 +6,13 @@
  * Unterseiten genau dieses Standorts. Ein Standortwechsel ist nur über den
  * ausdrücklichen Wähler möglich und wird dort klar benannt.
  */
-import { STANDORTE, type Standort, istGeoeffnet } from '../data/standorte';
-import { KATEGORIEN, leistungenFuerStandort } from '../data/leistungen';
+import { inhalte } from '../i18n/daten';
+import { type Standort, istGeoeffnet } from '../data/standorte';
 import Sprachwahl from './Sprachwahl.astro';
+import { texte } from '../i18n/katalog';
+
+const daten = inhalte(Astro);
+
 
 interface Props {
   standort: Standort | null;
@@ -16,32 +20,33 @@ interface Props {
 }
 
 const { standort, pfad } = Astro.props;
+const t = texte(daten.sprache);
 
 /** Basis für alle Links: innerhalb des Standorts bleiben. */
 const basis = standort ? `/${standort.slug}` : '';
 
 const punkte = standort
   ? [
-      { name: 'Leistungen', pfad: `${basis}/leistungen/` },
-      { name: 'Praxis', pfad: `${basis}/praxis/` },
-      { name: 'Team', pfad: `${basis}/team/` },
-      { name: 'Anfahrt', pfad: `${basis}/anfahrt/` },
-      { name: 'Kontakt', pfad: `${basis}/kontakt/` },
+      { name: t('nav.behandlungen'), pfad: `${basis}/leistungen/` },
+      { name: t('nav.praxis'), pfad: `${basis}/praxis/` },
+      { name: t('nav.team'), pfad: `${basis}/team/` },
+      { name: t('nav.anfahrt'), pfad: `${basis}/anfahrt/` },
+      { name: t('nav.kontakt'), pfad: `${basis}/kontakt/` },
     ]
   : [
-      { name: 'Standorte', pfad: '/standorte/' },
-      { name: 'Leistungen', pfad: '/leistungen/' },
-      { name: 'Über KU64', pfad: '/ueber-uns/' },
-      { name: 'Kontakt', pfad: '/kontakt/' },
+      { name: t('nav.standorte'), pfad: '/standorte/' },
+      { name: t('nav.behandlungen'), pfad: '/leistungen/' },
+      { name: t('nav.ueberKu64'), pfad: '/ueber-uns/' },
+      { name: t('nav.kontakt'), pfad: '/kontakt/' },
     ];
 
 const aktiv = (ziel: string) => pfad === ziel || (ziel !== '/' && pfad.startsWith(ziel));
 
 /* Kategorien für das Leistungs-Flyout – nur, was es hier wirklich gibt. */
 const kategorienHier = standort
-  ? KATEGORIEN.map((k) => ({
+  ? daten.kategorien.map((k) => ({
       ...k,
-      anzahl: leistungenFuerStandort(standort.slug).filter((l) => l.kategorie === k.slug).length,
+      anzahl: daten.leistungenHier(standort.slug).filter((l) => l.kategorie === k.slug).length,
     }))
       .filter((k) => k.anzahl > 0)
       .sort((a, b) => a.rang - b.rang)
@@ -63,7 +68,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       {standort && <span class="logo-ort">{standort.name}</span>}
     </a>
 
-    <nav class="haupt" aria-label="Hauptnavigation">
+    <nav class="haupt" aria-label={t('geruest.hauptnavigation')}>
       <ul class="haupt-liste">
         {
           punkte.map((p) => (
@@ -96,14 +101,16 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       }
 
       <a href={standort ? `${basis}/termine/` : '/termine/'} class="knopf knopf-primaer">
-        Termin buchen
+        {t('nav.terminBuchen')}
       </a>
 
       <button
         class="menue-knopf"
         aria-expanded="false"
         aria-controls="mobilmenue"
-        aria-label="Menü öffnen"
+        aria-label={t('geruest.menueOeffnen')}
+        data-label-oeffnen={t('geruest.menueOeffnen')}
+        data-label-schliessen={t('geruest.menueSchliessen')}
       >
         <span aria-hidden="true"></span>
       </button>
@@ -120,13 +127,13 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
             {standort.plz} {standort.ort}
           </p>
         ) : (
-          <p class="wo-bin-ich">Bitte wählen Sie Ihren Standort für passende Angaben.</p>
+          <p class="wo-bin-ich">{t('nav.standortWaehlen')}</p>
         )
       }
 
       <details class="waehler">
         <summary>
-          {standort ? 'Anderer Standort' : 'Standort wählen'}
+          {standort ? t('nav.andererStandort') : t('nav.standortWaehlenKurz')}
           <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
             <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
           </svg>
@@ -138,7 +145,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           </p>
           <ul>
             {
-              STANDORTE.map((s) => (
+              daten.standorte.map((s) => (
                 <li>
                   <a
                     href={`/${s.slug}/`}
@@ -166,7 +173,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
   {/* Mobiles Menü */}
   <div class="mobilmenue" id="mobilmenue" hidden>
-    <nav class="huelle" aria-label="Mobile Navigation">
+    <nav class="huelle" aria-label={t('geruest.mobileNavigation')}>
       <ul class="mobil-liste">
         {
           punkte.map((p) => (
@@ -573,7 +580,10 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   knopf?.addEventListener('click', () => {
     const offen = knopf.getAttribute('aria-expanded') === 'true';
     knopf.setAttribute('aria-expanded', String(!offen));
-    knopf.setAttribute('aria-label', offen ? 'Menü öffnen' : 'Menü schließen');
+    knopf.setAttribute(
+      'aria-label',
+      offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen,
+    );
     if (menue) menue.hidden = offen;
   });
 

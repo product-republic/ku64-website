@@ -1,17 +1,20 @@
 ---
+import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
-import { STANDORTE, getStandort } from '../../../data/standorte';
+import { STANDORTE } from '../../../data/standorte';
 import { teamFuerStandort } from '../../../data/team';
-import { getLeistung } from '../../../data/leistungen';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
-const standort = getStandort(Astro.params.standort!)!;
+const daten = inhalte(Astro);
+
+
+const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/team/`;
 const team = teamFuerStandort(standort.slug);
 
@@ -86,7 +89,7 @@ if (team.length > 0) {
                   {m.schwerpunkte && m.schwerpunkte.length > 0 && (
                     <ul class="schwerpunkte">
                       {m.schwerpunkte.map((s) => {
-                        const l = getLeistung(s);
+                        const l = daten.leistung(s);
                         return l ? (
                           <li>
                             <a href={`/${standort.slug}/leistungen/${l.slug}/`}>{l.name}</a>

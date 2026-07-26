@@ -1,15 +1,18 @@
 ---
+import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE, getStandort } from '../../../data/standorte';
+import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
-import { leistungenFuerStandort } from '../../../data/leistungen';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
-const standort = getStandort(Astro.params.standort!)!;
+const daten = inhalte(Astro);
+
+
+const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/kontakt/`;
 
 const brotkrumen = [
@@ -25,7 +28,7 @@ const brotkrumen = [
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}
-  schema={[schemaBrotkrumen(brotkrumen), schemaStandort(standort, leistungenFuerStandort(standort.slug))]}
+  schema={[schemaBrotkrumen(brotkrumen), schemaStandort(standort, daten.leistungenHier(standort.slug))]}
 >
   <section class="abschnitt">
     <div class="huelle">

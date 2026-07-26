@@ -37,6 +37,9 @@ export const TEXTE = {
   'nav.standorte': 'Standorte',
   'nav.standortWaehlen': 'Bitte wählen Sie Ihren Standort für passende Angaben.',
   'nav.standortWechseln': 'Standort wechseln',
+  'nav.andererStandort': 'Anderer Standort',
+  'nav.standortWaehlenKurz': 'Standort wählen',
+  'nav.ueberKu64': 'Über KU64',
   'nav.terminBuchen': 'Termin buchen',
 
   // ── Fußzeile ────────────────────────────────────────────────────────

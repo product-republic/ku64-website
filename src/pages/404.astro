@@ -6,11 +6,13 @@
  * trotzdem ins Leere läuft, soll sie nicht mit einer Entschuldigung enden,
  * sondern mit einem Weg: Suche über alle Behandlungen plus Standortwahl.
  */
+import { inhalte } from '../i18n/daten';
 import Basis from '../layouts/Basis.astro';
-import { STANDORTE } from '../data/standorte';
-import { LEISTUNGEN } from '../data/leistungen';
 
-const suchindex = LEISTUNGEN.map((l) => ({
+const daten = inhalte(Astro);
+
+
+const suchindex = daten.leistungen.map((l) => ({
   slug: l.slug,
   name: l.name,
   begriffe: [l.name, l.kurz, ...l.synonyme].join(' ').toLowerCase(),
@@ -28,10 +30,10 @@ const suchindex = LEISTUNGEN.map((l) => ({
  */
 const kombinationen = {
   standorte: Object.fromEntries(
-    STANDORTE.map((s) => [s.slug, { name: s.name, ort: s.ort }]),
+    daten.standorte.map((s) => [s.slug, { name: s.name, ort: s.ort }]),
   ),
   leistungen: Object.fromEntries(
-    LEISTUNGEN.map((l) => [
+    daten.leistungen.map((l) => [
       l.slug,
       {
         name: l.name,
@@ -80,7 +82,7 @@ const kombinationen = {
 
       <h2>Oder direkt zu Ihrem Standort</h2>
       <div class="raster">
-        {STANDORTE.map((s) => (
+        {daten.standorte.map((s) => (
           <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
             <span class="band" aria-hidden="true" />
             <h3>KU64 {s.name}</h3>

@@ -1,4 +1,345 @@
 {
   "sprache": "en",
-  "eintraege": {}
+  "eintraege": {
+    "kategorie.aesthetik.beschreibung": {
+      "text": "Treatments that are about how your teeth look: colour, shape, position and how they work together with your face.",
+      "quelle": "021e0eb7"
+    },
+    "kategorie.aesthetik.name": {
+      "text": "Cosmetic dentistry",
+      "quelle": "ead75062"
+    },
+    "kategorie.angst.beschreibung": {
+      "text": "For everyone who keeps putting off the dentist: treatment under sedation, with nitrous oxide or under general anaesthetic.",
+      "quelle": "4130dc3e"
+    },
+    "kategorie.angst.name": {
+      "text": "Treatment without fear",
+      "quelle": "051d9c83"
+    },
+    "kategorie.chirurgie.beschreibung": {
+      "text": "Surgical procedures in the mouth: wisdom teeth, extractions, bone grafting – with experience and a gentle technique.",
+      "quelle": "84064898"
+    },
+    "kategorie.chirurgie.name": {
+      "text": "Oral surgery",
+      "quelle": "ee9e5625"
+    },
+    "kategorie.funktion.beschreibung": {
+      "text": "When jaw, muscles and teeth no longer work together: grinding, TMJ disorders, jaw joint pain and tension.",
+      "quelle": "16ec645f"
+    },
+    "kategorie.funktion.name": {
+      "text": "Function & pain",
+      "quelle": "60418483"
+    },
+    "kategorie.implantologie.beschreibung": {
+      "text": "Artificial tooth roots as a firm foundation for a single tooth, a bridge or a complete jaw.",
+      "quelle": "6bc05f26"
+    },
+    "kategorie.implantologie.name": {
+      "text": "Implantology",
+      "quelle": "b607a3ff"
+    },
+    "kategorie.kieferorthopaedie.beschreibung": {
+      "text": "Correcting misaligned teeth – with almost invisible aligners or classic braces, for children and adults.",
+      "quelle": "bdbdd4f0"
+    },
+    "kategorie.kieferorthopaedie.name": {
+      "text": "Orthodontics",
+      "quelle": "b53e5251"
+    },
+    "kategorie.kinder.beschreibung": {
+      "text": "Dentistry that does not frighten children – from the very first check-up to treating chalky teeth.",
+      "quelle": "329090d2"
+    },
+    "kategorie.kinder.name": {
+      "text": "Children's dentistry",
+      "quelle": "350e5b02"
+    },
+    "kategorie.vorsorge.beschreibung": {
+      "text": "Everything that keeps larger treatments from becoming necessary in the first place – from professional cleaning to early detection.",
+      "quelle": "ee54c80c"
+    },
+    "kategorie.vorsorge.name": {
+      "text": "Prevention & hygiene",
+      "quelle": "00d9064c"
+    },
+    "kategorie.zahnerhalt.beschreibung": {
+      "text": "Saving your own tooth instead of replacing it – root canal treatment, gum disease therapy and gentle fillings.",
+      "quelle": "4e789068"
+    },
+    "kategorie.zahnerhalt.name": {
+      "text": "Saving natural teeth",
+      "quelle": "24a182ae"
+    },
+    "kategorie.zahnersatz.beschreibung": {
+      "text": "When tooth structure is missing: fillings, inlays, crowns, bridges and dentures – made in our own master laboratory.",
+      "quelle": "f5773119"
+    },
+    "kategorie.zahnersatz.name": {
+      "text": "Dental restorations",
+      "quelle": "59942be3"
+    },
+    "ui.allgemein.absenden": {
+      "text": "Send",
+      "quelle": "d595515b"
+    },
+    "ui.allgemein.fehler": {
+      "text": "Something went wrong. Please try again.",
+      "quelle": "159582a2"
+    },
+    "ui.allgemein.mehr": {
+      "text": "More",
+      "quelle": "03d3839d"
+    },
+    "ui.allgemein.pflichtfeld": {
+      "text": "Required field",
+      "quelle": "d89aa4a8"
+    },
+    "ui.allgemein.schliessen": {
+      "text": "Close",
+      "quelle": "e1cab4a5"
+    },
+    "ui.allgemein.zurueck": {
+      "text": "Back",
+      "quelle": "7ca3460c"
+    },
+    "ui.fuss.aktuellGewaehlt": {
+      "text": "(currently selected)",
+      "quelle": "05cdde05"
+    },
+    "ui.fuss.anamnese": {
+      "text": "Digital medical history form",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.fuss.barrierefreiheit": {
+      "text": "Accessibility",
+      "quelle": "2151accf"
+    },
+    "ui.fuss.behandlungsbereiche": {
+      "text": "Areas of treatment",
+      "quelle": "a8728901"
+    },
+    "ui.fuss.cookieEinstellungen": {
+      "text": "Cookie settings",
+      "quelle": "8ade692f"
+    },
+    "ui.fuss.datenschutz": {
+      "text": "Privacy",
+      "quelle": "f95b3d96"
+    },
+    "ui.fuss.haeufigGesucht": {
+      "text": "Frequently searched",
+      "quelle": "c35349fb"
+    },
+    "ui.fuss.impressum": {
+      "text": "Legal notice",
+      "quelle": "c702dc58"
+    },
+    "ui.fuss.karriere": {
+      "text": "Careers",
+      "quelle": "bed1a24e"
+    },
+    "ui.fuss.laechelnVorschau": {
+      "text": "Smile preview",
+      "quelle": "50789e23"
+    },
+    "ui.fuss.notfall": {
+      "text": "Dental emergency",
+      "quelle": "90db9ee1"
+    },
+    "ui.fuss.oeffnungszeiten": {
+      "text": "Opening hours",
+      "quelle": "92e62cdb"
+    },
+    "ui.fuss.service": {
+      "text": "Service",
+      "quelle": "b643c704"
+    },
+    "ui.fuss.unsereStandorte": {
+      "text": "Our locations",
+      "quelle": "2041aab5"
+    },
+    "ui.geruest.aktuell": {
+      "text": "current",
+      "quelle": "f0ef78e5"
+    },
+    "ui.geruest.hauptnavigation": {
+      "text": "Main navigation",
+      "quelle": "16d92baf"
+    },
+    "ui.geruest.menueOeffnen": {
+      "text": "Open menu",
+      "quelle": "36ba0b98"
+    },
+    "ui.geruest.menueSchliessen": {
+      "text": "Close menu",
+      "quelle": "9904be4b"
+    },
+    "ui.geruest.mobileNavigation": {
+      "text": "Mobile navigation",
+      "quelle": "21638813"
+    },
+    "ui.geruest.rechtliches": {
+      "text": "Legal",
+      "quelle": "5667ce59"
+    },
+    "ui.geruest.sieSindHier": {
+      "text": "You are here",
+      "quelle": "4232d848"
+    },
+    "ui.geruest.startseite": {
+      "text": "Home",
+      "quelle": "8bd72e71"
+    },
+    "ui.geruest.zumInhalt": {
+      "text": "Skip to content",
+      "quelle": "60ca65f1"
+    },
+    "ui.leistung.ablauf": {
+      "text": "How the treatment works",
+      "quelle": "118a0fdf"
+    },
+    "ui.leistung.andereBezeichnungen": {
+      "text": "Also known as",
+      "quelle": "510e0e45"
+    },
+    "ui.leistung.dauer": {
+      "text": "Duration",
+      "quelle": "d0c110d2"
+    },
+    "ui.leistung.faq": {
+      "text": "Frequently asked questions",
+      "quelle": "5e46dd30"
+    },
+    "ui.leistung.hierNichtVerfuegbar": {
+      "text": "We do not offer this treatment at this location. You will find it here:",
+      "quelle": "00cc42f6"
+    },
+    "ui.leistung.kasse": {
+      "text": "Health insurance",
+      "quelle": "308f6858"
+    },
+    "ui.leistung.kosten": {
+      "text": "Cost",
+      "quelle": "0f3e02f3"
+    },
+    "ui.leistung.mehrErfahren": {
+      "text": "Read more",
+      "quelle": "7977c838"
+    },
+    "ui.leistung.verwandt": {
+      "text": "This might suit you as well",
+      "quelle": "60be0c21"
+    },
+    "ui.nav.andererStandort": {
+      "text": "A different location",
+      "quelle": "7def3c51"
+    },
+    "ui.nav.anfahrt": {
+      "text": "Getting here",
+      "quelle": "fc83faa7"
+    },
+    "ui.nav.behandlungen": {
+      "text": "Treatments",
+      "quelle": "4d3e5232"
+    },
+    "ui.nav.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.nav.praxis": {
+      "text": "Practice",
+      "quelle": "6955fe52"
+    },
+    "ui.nav.standorte": {
+      "text": "Locations",
+      "quelle": "aae6c265"
+    },
+    "ui.nav.standortWaehlen": {
+      "text": "Please choose your location so we can show you the right details.",
+      "quelle": "e7e441b6"
+    },
+    "ui.nav.standortWaehlenKurz": {
+      "text": "Choose location",
+      "quelle": "190c5686"
+    },
+    "ui.nav.standortWechseln": {
+      "text": "Change location",
+      "quelle": "45f4c033"
+    },
+    "ui.nav.team": {
+      "text": "Team",
+      "quelle": "2329c92c"
+    },
+    "ui.nav.terminBuchen": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.nav.termine": {
+      "text": "Appointments",
+      "quelle": "5f1e529b"
+    },
+    "ui.nav.ueberKu64": {
+      "text": "About KU64",
+      "quelle": "92039106"
+    },
+    "ui.sprache.aktuell": {
+      "text": "Current language: {sprache}",
+      "quelle": "2ef18a2c"
+    },
+    "ui.sprache.hinweisSchliessen": {
+      "text": "Close notice",
+      "quelle": "d71b5de2"
+    },
+    "ui.sprache.hinweisText": {
+      "text": "Your browser is set to {sprache}, so this page is shown in {sprache}.",
+      "quelle": "34a57f63"
+    },
+    "ui.sprache.hinweisTitel": {
+      "text": "We switched to {sprache}",
+      "quelle": "cf7fbb3d"
+    },
+    "ui.sprache.unvollstaendig": {
+      "text": "This language version is still being built. Some sections still appear in German.",
+      "quelle": "10cfe0c4"
+    },
+    "ui.sprache.waehlen": {
+      "text": "Choose language",
+      "quelle": "aac7cfb5"
+    },
+    "ui.sprache.zurueckZu": {
+      "text": "Continue in {sprache}",
+      "quelle": "b8138759"
+    },
+    "ui.standort.anrufen": {
+      "text": "Call us",
+      "quelle": "542e8108"
+    },
+    "ui.standort.barrierefrei": {
+      "text": "step-free access",
+      "quelle": "9858ed34"
+    },
+    "ui.standort.geoeffnet": {
+      "text": "Open now",
+      "quelle": "55a568db"
+    },
+    "ui.standort.geschlossen": {
+      "text": "Currently closed",
+      "quelle": "24d49955"
+    },
+    "ui.standort.geschlossenAmTag": {
+      "text": "closed",
+      "quelle": "d266c7e1"
+    },
+    "ui.standort.route": {
+      "text": "Get directions",
+      "quelle": "aea4bcc6"
+    },
+    "ui.standort.zuletztGewaehlt": {
+      "text": "last selected",
+      "quelle": "7d75258a"
+    }
+  }
 }

@@ -1,13 +1,15 @@
 ---
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
-import { leistungenFuerStandort, LEISTUNGEN } from '../../data/leistungen';
 import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/standorte/';
 const brotkrumen = [
@@ -17,9 +19,9 @@ const brotkrumen = [
 
 /* Vergleichstabelle: Welche Leistung gibt es wo? Genau die Information, die
    auf der alten Seite fehlte und die Menschen an den falschen Ort führte. */
-const vergleich = LEISTUNGEN.map((l) => ({
+const vergleich = daten.leistungen.map((l) => ({
   leistung: l,
-  wo: STANDORTE.map((s) => l.verfuegbar.includes(s.slug)),
+  wo: daten.standorte.map((s) => l.verfuegbar.includes(s.slug)),
 }));
 
 const schema = [
@@ -28,7 +30,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    itemListElement: STANDORTE.map((s, i) => ({
+    itemListElement: daten.standorte.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: kanonisch(`/${s.slug}/`),
@@ -40,14 +42,14 @@ const schema = [
 
 <Basis
   titel="Unsere Standorte"
-  description={`KU64 an ${STANDORTE.length} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.`}
+  description={`KU64 an ${daten.standorte.length} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={schema}
 >
   <section class="abschnitt">
     <div class="huelle">
-      <h1>{STANDORTE.length} Standorte in Berlin und Potsdam</h1>
+      <h1>{daten.standorte.length} Standorte in Berlin und Potsdam</h1>
       <p class="unter">
         Jeder Standort hat einen eigenen Charakter und ein eigenes Behandlungsangebot.
         Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.
@@ -55,8 +57,8 @@ const schema = [
 
       <div class="raster">
         {
-          STANDORTE.map((s) => {
-            const anzahl = leistungenFuerStandort(s.slug).length;
+          daten.standorte.map((s) => {
+            const anzahl = daten.leistungenHier(s.slug).length;
             const tage = s.oeffnungszeiten.filter((z) => z.von).length;
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
@@ -101,7 +103,7 @@ const schema = [
           <thead>
             <tr>
               <th scope="col">Behandlung</th>
-              {STANDORTE.map((s) => <th scope="col">{s.name}</th>)}
+              {daten.standorte.map((s) => <th scope="col">{s.name}</th>)}
             </tr>
           </thead>
           <tbody>
@@ -115,8 +117,8 @@ const schema = [
                     <td class:list={{ ja: da, nein: !da }}>
                       {da ? (
                         <a
-                          href={`/${STANDORTE[i].slug}/leistungen/${leistung.slug}/`}
-                          aria-label={`${leistung.name} bei KU64 ${STANDORTE[i].name}`}
+                          href={`/${daten.standorte[i].slug}/leistungen/${leistung.slug}/`}
+                          aria-label={`${leistung.name} bei KU64 ${daten.standorte[i].name}`}
                         >
                           <span aria-hidden="true">✓</span>
                         </a>

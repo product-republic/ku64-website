@@ -1,12 +1,15 @@
 ---
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/karriere/';
 const brotkrumen = [
@@ -26,7 +29,7 @@ const brotkrumen = [
     <div class="huelle">
       <h1>Arbeiten bei KU64</h1>
       <p class="unter">
-        {STANDORTE.length} Standorte, alle Fachbereiche unter einem Dach und ein eigenes
+        {daten.standorte.length} Standorte, alle Fachbereiche unter einem Dach und ein eigenes
         Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.
       </p>
 
@@ -41,7 +44,7 @@ const brotkrumen = [
 
       <h2>Kontakt für Bewerbungen</h2>
       <div class="raster">
-        {STANDORTE.map((s) => (
+        {daten.standorte.map((s) => (
           <div class="karte ort" style={`--akzent:${s.akzent}`}>
             <span class="band" aria-hidden="true" />
             <h3>KU64 {s.name}</h3>

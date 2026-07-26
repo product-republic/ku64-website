@@ -9,16 +9,20 @@
  * einwilligen möchte, bekommt Telefonnummer und Rückrufoption – kein
  * Nachteil, keine Sackgasse.
  */
+import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE, getStandort } from '../../../data/standorte';
+import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
-const standort = getStandort(Astro.params.standort!)!;
+const daten = inhalte(Astro);
+
+
+const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/termine/`;
 
 const brotkrumen = [

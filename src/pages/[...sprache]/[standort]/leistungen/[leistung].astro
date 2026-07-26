@@ -8,18 +8,13 @@
  * anderen Praxis las. Hier gehört jede Behandlungsseite eindeutig zu einem Ort
  * – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung.
  */
+import { inhalte } from '../../../../i18n/daten';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import FaqBlock from '../../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
-import {
-  LEISTUNGEN,
-  getKategorie,
-  verwandteLeistungen,
-  alleKombinationen,
-} from '../../../../data/leistungen';
-import { getStandort, STANDORTE } from '../../../../data/standorte';
+import { alleKombinationen } from '../../../../data/leistungen';
 import {
   schemaLeistung,
   schemaFaq,
@@ -34,11 +29,14 @@ export function getStaticPaths() {
   })));
 }
 
+const daten = inhalte(Astro);
+
+
 const { standort: standortSlug, leistung: leistungSlug } = Astro.params;
 
-const standort = getStandort(standortSlug!)!;
-const leistung = LEISTUNGEN.find((l) => l.slug === leistungSlug)!;
-const kategorie = getKategorie(leistung.kategorie)!;
+const standort = daten.standort(standortSlug!)!;
+const leistung = daten.leistungen.find((l) => l.slug === leistungSlug)!;
+const kategorie = daten.kategorie(leistung.kategorie)!;
 
 const pfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
 const ortsname = standort.ortsname;
@@ -50,14 +48,14 @@ const description = descriptionKuerzen(
   `${leistung.teaser} Bei KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
 );
 
-const verwandte = verwandteLeistungen(leistung, standort.slug);
+const verwandte = daten.verwandte(leistung, standort.slug);
 const verwandteHier = verwandte.filter((v) => v.amStandort);
 const verwandteWoanders = verwandte.filter((v) => !v.amStandort);
 
 /* An welchen anderen Standorten gibt es diese Behandlung auch? Wichtig für
    Menschen, denen ein anderer Standort besser passt – und für Suchmaschinen,
    die so das vollständige Bild bekommen. */
-const auchAn = STANDORTE.filter(
+const auchAn = daten.standorte.filter(
   (s) => s.slug !== standort.slug && leistung.verfuegbar.includes(s.slug),
 );
 

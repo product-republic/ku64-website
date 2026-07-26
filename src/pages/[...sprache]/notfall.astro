@@ -5,14 +5,17 @@
  * aufgebaut: Die wichtigste Information steht oben, ohne Scrollen, ohne
  * Werbeblöcke davor.
  */
+import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { STANDORTE } from '../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
+
+const daten = inhalte(Astro);
+
 
 const pfad = '/notfall/';
 const brotkrumen = [
@@ -50,7 +53,7 @@ const faq = [
 
 /* Nach Öffnungstagen sortiert: Wer sieben Tage geöffnet hat, steht oben – das
    ist im Notfall die relevanteste Sortierung. */
-const nachVerfuegbarkeit = [...STANDORTE].sort(
+const nachVerfuegbarkeit = [...daten.standorte].sort(
   (a, b) =>
     b.oeffnungszeiten.filter((z) => z.von).length -
     a.oeffnungszeiten.filter((z) => z.von).length,

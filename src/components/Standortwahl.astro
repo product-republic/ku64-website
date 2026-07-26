@@ -1,4 +1,8 @@
 ---
+import { inhalte } from '../i18n/daten';
+
+const daten = inhalte(Astro);
+
 /**
  * Standortwahl für standortfreie Seiten (/termine/, /anamnese/).
  *
@@ -6,7 +10,6 @@
  * fragen wir. Der zuletzt gewählte Standort wird oben angeboten – sichtbar
  * gekennzeichnet, damit niemand versehentlich am falschen Ort landet.
  */
-import { STANDORTE } from '../data/standorte';
 
 interface Props {
   /** Unterpfad, der an den Standort angehängt wird, z. B. "termine". */
@@ -26,7 +29,7 @@ const { ziel, titel = 'Bitte wählen Sie Ihren Standort' } = Astro.props;
 
   <div class="raster" id="wahlRaster">
     {
-      STANDORTE.map((s) => (
+      daten.standorte.map((s) => (
         <a
           class="karte karte-klickbar ziel"
           href={`/${s.slug}/${ziel}/`}

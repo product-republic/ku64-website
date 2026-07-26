@@ -2,28 +2,27 @@
 /**
  * Behandlungsübersicht eines Standorts – mit Sofortsuche.
  */
+import { inhalte } from '../../../../i18n/daten';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
-import { STANDORTE, getStandort } from '../../../../data/standorte';
-import {
-  kategorienMitLeistungen,
-  leistungenFuerStandort,
-  leistungenNichtAmStandort,
-} from '../../../../data/leistungen';
+import { STANDORTE } from '../../../../data/standorte';
 import { schemaBrotkrumen } from '../../../../lib/seo';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
-const standort = getStandort(Astro.params.standort!)!;
+const daten = inhalte(Astro);
+
+
+const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/leistungen/`;
 
-const gruppen = kategorienMitLeistungen(standort.slug);
-const alleHier = leistungenFuerStandort(standort.slug);
-const nichtHier = leistungenNichtAmStandort(standort.slug);
+const gruppen = daten.gruppen(standort.slug);
+const alleHier = daten.leistungenHier(standort.slug);
+const nichtHier = daten.leistungenAnderswo(standort.slug);
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },

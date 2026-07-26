@@ -1,4 +1,345 @@
 {
   "sprache": "fr",
-  "eintraege": {}
+  "eintraege": {
+    "kategorie.aesthetik.beschreibung": {
+      "text": "Les traitements qui concernent l'apparence de vos dents : couleur, forme, position et harmonie avec votre visage.",
+      "quelle": "021e0eb7"
+    },
+    "kategorie.aesthetik.name": {
+      "text": "Dentisterie esthétique",
+      "quelle": "ead75062"
+    },
+    "kategorie.angst.beschreibung": {
+      "text": "Pour tous ceux qui repoussent la visite chez le dentiste : traitement sous sédation, au gaz hilarant ou sous anesthésie générale.",
+      "quelle": "4130dc3e"
+    },
+    "kategorie.angst.name": {
+      "text": "Traitement sans peur",
+      "quelle": "051d9c83"
+    },
+    "kategorie.chirurgie.beschreibung": {
+      "text": "Les interventions chirurgicales dans la bouche : dents de sagesse, extractions, greffes osseuses – avec expérience et une technique douce.",
+      "quelle": "84064898"
+    },
+    "kategorie.chirurgie.name": {
+      "text": "Chirurgie orale",
+      "quelle": "ee9e5625"
+    },
+    "kategorie.funktion.beschreibung": {
+      "text": "Quand la mâchoire, les muscles et les dents ne fonctionnent plus ensemble : bruxisme, troubles de l'articulation, douleurs et tensions.",
+      "quelle": "16ec645f"
+    },
+    "kategorie.funktion.name": {
+      "text": "Fonction et douleur",
+      "quelle": "60418483"
+    },
+    "kategorie.implantologie.beschreibung": {
+      "text": "Des racines artificielles comme base solide pour une seule dent, un bridge ou une mâchoire entière.",
+      "quelle": "6bc05f26"
+    },
+    "kategorie.implantologie.name": {
+      "text": "Implantologie",
+      "quelle": "b607a3ff"
+    },
+    "kategorie.kieferorthopaedie.beschreibung": {
+      "text": "Corriger les dents mal alignées – avec des gouttières presque invisibles ou des bagues classiques, pour enfants et adultes.",
+      "quelle": "bdbdd4f0"
+    },
+    "kategorie.kieferorthopaedie.name": {
+      "text": "Orthodontie",
+      "quelle": "b53e5251"
+    },
+    "kategorie.kinder.beschreibung": {
+      "text": "Une dentisterie qui ne fait pas peur aux enfants – du tout premier contrôle au traitement des dents crayeuses.",
+      "quelle": "329090d2"
+    },
+    "kategorie.kinder.name": {
+      "text": "Dentisterie pédiatrique",
+      "quelle": "350e5b02"
+    },
+    "kategorie.vorsorge.beschreibung": {
+      "text": "Tout ce qui évite d'en arriver à des traitements plus lourds – du nettoyage professionnel au dépistage précoce.",
+      "quelle": "ee54c80c"
+    },
+    "kategorie.vorsorge.name": {
+      "text": "Prévention et hygiène",
+      "quelle": "00d9064c"
+    },
+    "kategorie.zahnerhalt.beschreibung": {
+      "text": "Sauver votre dent plutôt que la remplacer – traitement de canal, traitement des gencives et obturations douces.",
+      "quelle": "4e789068"
+    },
+    "kategorie.zahnerhalt.name": {
+      "text": "Conservation dentaire",
+      "quelle": "24a182ae"
+    },
+    "kategorie.zahnersatz.beschreibung": {
+      "text": "Lorsqu'il manque de la substance dentaire : obturations, inlays, couronnes, bridges et prothèses – fabriqués dans notre propre laboratoire.",
+      "quelle": "f5773119"
+    },
+    "kategorie.zahnersatz.name": {
+      "text": "Prothèses dentaires",
+      "quelle": "59942be3"
+    },
+    "ui.allgemein.absenden": {
+      "text": "Envoyer",
+      "quelle": "d595515b"
+    },
+    "ui.allgemein.fehler": {
+      "text": "Une erreur s'est produite. Veuillez réessayer.",
+      "quelle": "159582a2"
+    },
+    "ui.allgemein.mehr": {
+      "text": "Plus",
+      "quelle": "03d3839d"
+    },
+    "ui.allgemein.pflichtfeld": {
+      "text": "Champ obligatoire",
+      "quelle": "d89aa4a8"
+    },
+    "ui.allgemein.schliessen": {
+      "text": "Fermer",
+      "quelle": "e1cab4a5"
+    },
+    "ui.allgemein.zurueck": {
+      "text": "Retour",
+      "quelle": "7ca3460c"
+    },
+    "ui.fuss.aktuellGewaehlt": {
+      "text": "(actuellement sélectionné)",
+      "quelle": "05cdde05"
+    },
+    "ui.fuss.anamnese": {
+      "text": "Questionnaire médical en ligne",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.fuss.barrierefreiheit": {
+      "text": "Accessibilité",
+      "quelle": "2151accf"
+    },
+    "ui.fuss.behandlungsbereiche": {
+      "text": "Domaines de traitement",
+      "quelle": "a8728901"
+    },
+    "ui.fuss.cookieEinstellungen": {
+      "text": "Paramètres des cookies",
+      "quelle": "8ade692f"
+    },
+    "ui.fuss.datenschutz": {
+      "text": "Protection des données",
+      "quelle": "f95b3d96"
+    },
+    "ui.fuss.haeufigGesucht": {
+      "text": "Recherches fréquentes",
+      "quelle": "c35349fb"
+    },
+    "ui.fuss.impressum": {
+      "text": "Mentions légales",
+      "quelle": "c702dc58"
+    },
+    "ui.fuss.karriere": {
+      "text": "Carrières",
+      "quelle": "bed1a24e"
+    },
+    "ui.fuss.laechelnVorschau": {
+      "text": "Aperçu du sourire",
+      "quelle": "50789e23"
+    },
+    "ui.fuss.notfall": {
+      "text": "Urgence dentaire",
+      "quelle": "90db9ee1"
+    },
+    "ui.fuss.oeffnungszeiten": {
+      "text": "Horaires d'ouverture",
+      "quelle": "92e62cdb"
+    },
+    "ui.fuss.service": {
+      "text": "Services",
+      "quelle": "b643c704"
+    },
+    "ui.fuss.unsereStandorte": {
+      "text": "Nos cabinets",
+      "quelle": "2041aab5"
+    },
+    "ui.geruest.aktuell": {
+      "text": "actuel",
+      "quelle": "f0ef78e5"
+    },
+    "ui.geruest.hauptnavigation": {
+      "text": "Navigation principale",
+      "quelle": "16d92baf"
+    },
+    "ui.geruest.menueOeffnen": {
+      "text": "Ouvrir le menu",
+      "quelle": "36ba0b98"
+    },
+    "ui.geruest.menueSchliessen": {
+      "text": "Fermer le menu",
+      "quelle": "9904be4b"
+    },
+    "ui.geruest.mobileNavigation": {
+      "text": "Navigation mobile",
+      "quelle": "21638813"
+    },
+    "ui.geruest.rechtliches": {
+      "text": "Informations légales",
+      "quelle": "5667ce59"
+    },
+    "ui.geruest.sieSindHier": {
+      "text": "Vous êtes ici",
+      "quelle": "4232d848"
+    },
+    "ui.geruest.startseite": {
+      "text": "Accueil",
+      "quelle": "8bd72e71"
+    },
+    "ui.geruest.zumInhalt": {
+      "text": "Aller au contenu",
+      "quelle": "60ca65f1"
+    },
+    "ui.leistung.ablauf": {
+      "text": "Le déroulement du traitement",
+      "quelle": "118a0fdf"
+    },
+    "ui.leistung.andereBezeichnungen": {
+      "text": "Également appelé",
+      "quelle": "510e0e45"
+    },
+    "ui.leistung.dauer": {
+      "text": "Durée",
+      "quelle": "d0c110d2"
+    },
+    "ui.leistung.faq": {
+      "text": "Questions fréquentes",
+      "quelle": "5e46dd30"
+    },
+    "ui.leistung.hierNichtVerfuegbar": {
+      "text": "Nous ne proposons pas ce traitement dans ce cabinet. Vous le trouverez ici :",
+      "quelle": "00cc42f6"
+    },
+    "ui.leistung.kasse": {
+      "text": "Assurance maladie",
+      "quelle": "308f6858"
+    },
+    "ui.leistung.kosten": {
+      "text": "Tarif",
+      "quelle": "0f3e02f3"
+    },
+    "ui.leistung.mehrErfahren": {
+      "text": "En savoir plus",
+      "quelle": "7977c838"
+    },
+    "ui.leistung.verwandt": {
+      "text": "Cela pourrait aussi vous convenir",
+      "quelle": "60be0c21"
+    },
+    "ui.nav.andererStandort": {
+      "text": "Un autre cabinet",
+      "quelle": "7def3c51"
+    },
+    "ui.nav.anfahrt": {
+      "text": "Accès",
+      "quelle": "fc83faa7"
+    },
+    "ui.nav.behandlungen": {
+      "text": "Traitements",
+      "quelle": "4d3e5232"
+    },
+    "ui.nav.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.nav.praxis": {
+      "text": "Le cabinet",
+      "quelle": "6955fe52"
+    },
+    "ui.nav.standorte": {
+      "text": "Nos cabinets",
+      "quelle": "aae6c265"
+    },
+    "ui.nav.standortWaehlen": {
+      "text": "Veuillez choisir votre cabinet pour obtenir les informations qui vous concernent.",
+      "quelle": "e7e441b6"
+    },
+    "ui.nav.standortWaehlenKurz": {
+      "text": "Choisir un cabinet",
+      "quelle": "190c5686"
+    },
+    "ui.nav.standortWechseln": {
+      "text": "Changer de cabinet",
+      "quelle": "45f4c033"
+    },
+    "ui.nav.team": {
+      "text": "Équipe",
+      "quelle": "2329c92c"
+    },
+    "ui.nav.terminBuchen": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.nav.termine": {
+      "text": "Rendez-vous",
+      "quelle": "5f1e529b"
+    },
+    "ui.nav.ueberKu64": {
+      "text": "À propos de KU64",
+      "quelle": "92039106"
+    },
+    "ui.sprache.aktuell": {
+      "text": "Langue actuelle : {sprache}",
+      "quelle": "2ef18a2c"
+    },
+    "ui.sprache.hinweisSchliessen": {
+      "text": "Fermer l'avis",
+      "quelle": "d71b5de2"
+    },
+    "ui.sprache.hinweisText": {
+      "text": "Votre navigateur est réglé sur {sprache}, cette page s'affiche donc en {sprache}.",
+      "quelle": "34a57f63"
+    },
+    "ui.sprache.hinweisTitel": {
+      "text": "Nous sommes passés au {sprache}",
+      "quelle": "cf7fbb3d"
+    },
+    "ui.sprache.unvollstaendig": {
+      "text": "Cette version linguistique est en cours de constitution. Certaines sections apparaissent encore en allemand.",
+      "quelle": "10cfe0c4"
+    },
+    "ui.sprache.waehlen": {
+      "text": "Choisir la langue",
+      "quelle": "aac7cfb5"
+    },
+    "ui.sprache.zurueckZu": {
+      "text": "Continuer en {sprache}",
+      "quelle": "b8138759"
+    },
+    "ui.standort.anrufen": {
+      "text": "Appelez-nous",
+      "quelle": "542e8108"
+    },
+    "ui.standort.barrierefrei": {
+      "text": "accès de plain-pied",
+      "quelle": "9858ed34"
+    },
+    "ui.standort.geoeffnet": {
+      "text": "Ouvert maintenant",
+      "quelle": "55a568db"
+    },
+    "ui.standort.geschlossen": {
+      "text": "Actuellement fermé",
+      "quelle": "24d49955"
+    },
+    "ui.standort.geschlossenAmTag": {
+      "text": "fermé",
+      "quelle": "d266c7e1"
+    },
+    "ui.standort.route": {
+      "text": "Itinéraire",
+      "quelle": "aea4bcc6"
+    },
+    "ui.standort.zuletztGewaehlt": {
+      "text": "dernier choix",
+      "quelle": "7d75258a"
+    }
+  }
 }
