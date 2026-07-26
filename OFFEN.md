@@ -46,29 +46,41 @@ Die Werkzeuge dafür stehen im Repository und sind wiederholbar:
 
 ## Offene Punkte, nach Dringlichkeit
 
-### 1. KI-Verordnung, Frist 2. August 2026 — sieben Tage
+### 1. KI-Verordnung, Frist 2. August 2026 — weitgehend erledigt
 
 Artikel 50 der Verordnung (EU) 2024/1689 wird an diesem Tag anwendbar. Drei
-Systeme auf dieser Website sind betroffen. **Das ist der dringendste Punkt der
-Liste.**
+Systeme auf dieser Website sind betroffen: Chat, Sprachberater und
+Lächeln-Vorschau. Alle drei sind gekennzeichnet.
 
-**Fertig:** Bildkennzeichnung der Lächeln-Vorschau, sichtbar und
-maschinenlesbar (`src/lib/ki-kennzeichnung.ts`). Der IPTC-Wert
-`trainedAlgorithmicMedia` steht in der Datei, ein Streifen mit Hinweis unter
-dem Bild. Eine Prüfung verhindert, dass ein unmarkiertes Bild ausgeliefert
-wird, falls im Container die Schrift fehlt.
+**Fertig:**
+- Bildkennzeichnung der Lächeln-Vorschau, sichtbar und maschinenlesbar
+  (`src/lib/ki-kennzeichnung.ts`). Der IPTC-Wert `trainedAlgorithmicMedia`
+  steht in der Datei, ein Streifen mit Hinweis unter dem Bild.
+- **Offenlegung im Chat vor der ersten Interaktion.** Sie steht als eigener
+  Block über dem Gesprächsverlauf, abgesetzt vom Gespräch, mit der
+  Telefonnummer des Standorts daneben. Vorher stand dort eine Begrüßung und
+  weit darunter, klein, „KI-generierte Auskunft".
+- **Offenlegung beim Sprachberater**, einschließlich synthetischer Stimme, und
+  zwar zwischen Standortwahl und Startknopf – wer das Gespräch beginnt, ist
+  daran vorbeigekommen.
+- **Transparenzseite `/ki-transparenz/`** mit allen drei Systemen: Zweck,
+  Anbieter, Modell, was übertragen wird, was nicht passiert, Grenzen. Verlinkt
+  aus der Fußzeile und aus beiden Hinweisfeldern.
+- Der Wortlaut kommt für alle Stellen aus `src/data/ki-systeme.ts`. Ein System,
+  das dort fehlt, hat nirgends ein Hinweisfeld.
+- Im Dockerfile stehen jetzt `fontconfig` und die Inter-Schrift auch in der
+  Laufzeitstufe. Der Bau prüft mit `fc-match`, ob die Schrift ankommt, und
+  bricht sonst ab.
 
 **Offen:**
-- Offenlegung im Chat **vor der ersten Interaktion**. Die Begrüßung sagt
-  derzeit nicht, dass man mit einer Maschine schreibt; der Hinweis steht nur
-  klein unter dem Eingabefeld. Artikel 50 Absatz 1 verlangt „klar und
-  unterscheidbar, spätestens bei der ersten Interaktion".
-- Dasselbe für den Sprachberater, dort zusätzlich als synthetische Stimme.
-- Eine Transparenzseite `/ki-transparenz/`: welche Systeme, wofür, welcher
-  Anbieter, welche Daten, wie man einen Menschen erreicht.
-- Im Dockerfile fehlt in der Laufzeitstufe `fontconfig` und die Inter-Schrift.
-  Ohne sie rendert der Hinweisstreifen leer – die Prüfung fängt es ab, aber
-  dann kommt gar kein Bild.
+- **Der Docker-Bau ist nicht verifiziert.** In der Sitzungsumgebung lief kein
+  Docker-Daemon. Die Kennzeichnung selbst ist lokal geprüft (der Streifen
+  rendert mit Text), aber ob die Schrift im Container ankommt, zeigt erst der
+  nächste Railway-Deploy. Falls er abbricht, ist der `fc-match`-Schritt die
+  Fehlerquelle – dann stimmt der Pfad `/root/.fonts/ku64-inter.otf` aus der
+  Build-Stufe nicht mehr.
+- Englische und französische Fassung der Transparenzseite. Beide Sprachen
+  tragen ohnehin `noindex`, aber die Offenlegung gilt unabhängig davon.
 
 **Vorbehalt:** Die Anwendbarkeit einzelner Teile war 2025/26 Gegenstand eines
 Digital-Omnibus-Verfahrens. Umgesetzt ist auf den Stand 2. August 2026; die
