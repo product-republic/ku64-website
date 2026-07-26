@@ -272,10 +272,22 @@ Regel gewinnt, hängt von der Reihenfolge ab und gehört geprüft.
 
 ---
 
-## 2. Prüfliste für den Crawl (nachzuholen)
+## 2. Prüfliste für den Crawl
 
-Sobald die Domain erreichbar ist, arbeite ich diese Liste vollständig ab und ergänze
-diesen Abschnitt um die Ergebnisse.
+**Teilweise abgearbeitet (26.07.2026).** `analyse/altbestand/crawl.mjs` hat
+erhoben, was für den Umzug der Adressen zählt – siehe Abschnitt 1c:
+
+* ✅ Vollständige URL-Liste gegen die XML-Sitemap
+* ✅ Weiterleitungsketten (315 Stück), alle 404 und 5xx (6 Stück)
+* ✅ Canonical-Angaben und `noindex` je Seite
+* ✅ Verwaiste Seiten – die zentrale Frage für die Weiterleitungsplanung
+* ✅ Gewicht und Format aller Bilder (2023 Dateien, rund 570 eigenständige
+  Motive)
+
+**Offen bleibt alles, was eine Messung im Browser braucht.** Der Crawl liest
+HTML; Core Web Vitals, Kontraste und Tastaturbedienbarkeit lassen sich so nicht
+feststellen. Diese Punkte betreffen ohnehin die alte Website, die abgelöst
+wird – sie sind Vergleichswerte, keine Aufgaben.
 
 **Performance:** Core Web Vitals (LCP, INP, CLS) je Seitentyp und getrennt nach Mobil und
 Desktop · Gewicht und Format aller Bilder, ungenutzte Dimensionen · Render-blockierendes
@@ -528,49 +540,97 @@ nicht möglich war:
 - Kontaktdaten Potsdam: <https://www.doctolib.de/zahnarztpraxis/potsdam/ku64-die-zahnspezialisten>
 - Kontaktdaten Berlin-Mitte: <https://www.doctolib.de/zahnarztpraxis/berlin/ku64-berlin-hausvogteiplatz>
 
-## 1c. URL-Bestand: der kritischste Befund des Umbaus
+## 1c. URL-Bestand: erledigt, und dabei größer als gedacht
 
-**Stand:** 216 von 238 nachweisbaren Adressen des Altbestands (90,8 %) laufen
-gegen die neue Website ins Leere. Ermittelt mit `npm run urls:abgleichen`.
+**Stand 26.07.2026, nach dem Crawl:** 546 Adressen im Bestand, davon 0 tot.
+20 bleiben unter derselben Adresse, 526 werden weitergeleitet. Geprüft mit
+`npm run urls:abgleichen`, das im Build mitläuft.
 
-Die 238 Adressen stammen aus den Weiterleitungsregeln der alten `.htaccess` –
-sowohl deren Quellen als auch deren Ziele. Beide kennt Google mit Sicherheit:
-Die Ziele sind seit Jahren erreichbare Seiten, die Quellen stehen seit Jahren
-in den Suchergebnissen. **Der tatsächliche Bestand ist größer**, vermutlich um
-ein Mehrfaches; er ließe sich vollständig nur aus der Datenbank, aus einem
-Export der Google Search Console oder aus einem Crawl gewinnen.
+### Der Crawl hat die Zahl erst verdoppelt
 
-### Woran es liegt
+Vorher war der Bestand mit 238 Adressen bekannt – alles, was in der alten
+`.htaccess` als Quelle oder Ziel steht. Davon liefen 216 ins Leere.
 
-Es sind keine Einzelfälle, sondern vier strukturelle Abweichungen:
+`analyse/altbestand/crawl.mjs` hat ku64.de vollständig erhoben: Yoast-Sitemaps
+plus Linkcrawl ab der Startseite, 662 geprüfte Adressen.
 
-| Bereich | Alt | Neu | Betroffen |
-|---|---|---|---|
-| Behandlungen je Standort | `/potsdam/parodontitisbehandlung/` | `/potsdam/leistungen/parodontitis-behandlung/` | 20 |
-| Behandlungen allgemein | `/leistungen/kieferorthopaedie/incognito/` | `/leistungen/aligner/` | 11 |
-| Team | `/team/zahnaerzte/<person>/` | existiert nicht | 59 |
-| Blog & Fachbeiträge | `/blog/<beitrag>/` | existiert nicht | 48 |
+| | Anzahl |
+|---|---:|
+| Live ausgeliefert (200) | 341 |
+| Weitergeleitet (3xx) | 315 |
+| Schon heute Fehlerseite | 6 |
 
-Die ersten beiden sind reine Adressfragen: Der Inhalt ist da, er liegt nur
-woanders. Die beiden anderen sind Inhaltsfragen – die Seiten gibt es in der
-neuen Struktur bisher gar nicht.
+Der wahre Bestand lag damit bei 552 statt 238 – die Zahl der toten Adressen
+stieg zunächst von 216 auf 517. Das war keine Verschlechterung, sondern das
+Ende des Ratens.
 
-Zwei Details, die beim Abgleich auffallen:
+Was der Crawl außerdem sichtbar gemacht hat und die `.htaccess` nicht wusste:
 
-* Der alte Standortpfad ist **flach**. In Potsdam liegt die Behandlung direkt
-  unter `/potsdam/<behandlung>/`, ohne Zwischenstufe `/leistungen/`. Das neue,
-  sauberere Schema kostet damit jede einzelne indexierte Behandlungsseite.
-* Die alten Behandlungs-Slugs sind andere: `parodontitisbehandlung` gegen
-  `parodontitis-behandlung`, `anaesthesie`, `laserbehandlung-potsdam`. Eine
-  Regel kann das nicht auflösen, das braucht eine gepflegte Zuordnung je
-  Behandlung.
+* **31 Beschwerdeseiten** unter `/zahnbeschwerden/` – von „Zahnfleischbluten"
+  bis „Zahn locker". Genau die Seiten, die OFFEN.md als „die wertvollsten
+  fehlenden Seiten" führt, gab es also längst. Sie sind jetzt auf die
+  nächstliegende Behandlung weitergeleitet; als eigene Seiten fehlen sie
+  weiterhin.
+* **54 englische Seiten** mit eigenen englischen Slugs
+  (`/en/services/oral-surgery-mkg-surgery/`). Die neue Website übersetzt Texte,
+  nicht Adressen – eine Entscheidung, die zwei Adressbestände je Sprache
+  vermeidet.
+* **102 Teamseiten** live, mit den Namen in den Seitentiteln. Damit ist die
+  Schreibweisenfrage aus OFFEN.md beantwortbar: Zeynep Çınar, Jessica
+  Oberländer, Sabine Kühnau-Falkenau stehen so auf den eigenen Seiten der
+  Praxis. Auch die Gegenprobe stimmt – `/team/verwaltung/jana-jain/` ist auf
+  ku64.de heute eine Fehlerseite.
+* **Sechs Adressen laufen schon auf ku64.de ins Leere.** Sie fallen aus dem
+  Bestand: Ihre Platzierung ist längst weg, eine Weiterleitung bringt niemanden
+  zurück.
 
-### Was daraus folgt
+### Woran es lag
 
-Vorrang hat, die alte Adresse beizubehalten, statt sie weiterzuleiten. Eine
-Weiterleitung ist der zweitbeste Fall; sie ist vertretbar, wo es den Inhalt so
-nicht mehr gibt, und sie war beim Altbestand bereits 168-fach nötig.
+Vier strukturelle Abweichungen, keine Einzelfälle:
 
-`npm run urls:abgleichen` bricht ab, solange eine Adresse tot ist. Damit kann
-der Zustand nicht unbemerkt schlechter werden – und nicht unbemerkt bestehen
-bleiben.
+| Bereich | Alt | Neu |
+|---|---|---|
+| Behandlungen je Standort | `/potsdam/parodontitisbehandlung/` | `/potsdam/leistungen/parodontitis-behandlung/` |
+| Behandlungen allgemein | `/leistungen/kieferorthopaedie/incognito/` | `/leistungen/aligner/` |
+| Team | `/team/zahnaerzte/<person>/` | existiert nicht |
+| Blog & Fachbeiträge | `/blog/<beitrag>/` | existiert nicht |
+
+Der alte Standortpfad war **flach**: In Potsdam lag die Behandlung direkt unter
+`/potsdam/<behandlung>/`, ohne Zwischenstufe. Und die alten Slugs weichen ab –
+`parodontitisbehandlung` gegen `parodontitis-behandlung`, `anaesthesie`,
+`laserbehandlung-potsdam`. Eine Regel löst das nicht auf.
+
+### Wie es gelöst ist
+
+Die Zuordnung steht bei dem, was sie beschreibt:
+
+* **152 alte Adressen** als Feld `alteAdressen` an ihrer Behandlung in
+  `src/data/leistungen.ts`. Wer eine Behandlung umbenennt, sieht ihre alten
+  Adressen daneben.
+* **Personenseiten** an ihrer Person in `src/data/team.ts`.
+* Alles Übrige in `src/data/weiterleitungen.ts`, nach Bereich sortiert.
+
+`src/data/weiterleitungen.ts` rechnet daraus die Tabelle. Standortpräfixe
+bleiben erhalten: Wer in Potsdam nach Parodontitis gesucht hat, landet in
+Potsdam und nicht am Kurfürstendamm. `astro.config.mjs` liest dieselbe Datei –
+eine Quelle für Server und Wächter.
+
+Rangfolge der Ziele: dieselbe Adresse, sonst die inhaltlich gleiche Seite,
+sonst die Übersicht mit Sprungziel. **Die Startseite kommt als Ziel nicht vor.**
+Wer aus der Suche nach „Zahnfleischbluten" auf einer Startseite landet, geht
+zurück.
+
+Der Node-Adapter antwortet mit 308 statt 301. Beides sind dauerhafte
+Weiterleitungen und für Suchmaschinen gleichwertig.
+
+### Was der Wächter zusätzlich prüft
+
+Zwei Fehler, die man ohne Prüfung nicht bemerkt:
+
+* Eine Weiterleitung, deren **Ziel es nicht gibt**. Für jemanden aus der Suche
+  ist das schlechter als keine Weiterleitung – erst ein zweiter Seitenaufbau,
+  dann die Fehlerseite.
+* Eine Weiterleitung, die eine **vorhandene Seite verdeckt**. Die Seite wird
+  gebaut und niemand sieht sie je.
+
+`npm run urls:abgleichen` bricht bei beidem ab und läuft im Build mit.
