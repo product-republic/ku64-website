@@ -25,6 +25,7 @@ const { LEISTUNGEN, KATEGORIEN } = await laden('src/data/leistungen.ts');
 const { STANDORTE } = await laden('src/data/standorte.ts');
 const { PREISRAHMEN, PROPHYLAXE } = await laden('src/data/preise.ts');
 const team = await laden('src/data/team.ts');
+const { KOPFVIDEOS } = await laden('src/data/medien.ts');
 
 const leistungSlugs = new Set(LEISTUNGEN.map((l) => l.slug));
 const kategorieSlugs = new Set(KATEGORIEN.map((k) => k.slug));
@@ -68,6 +69,24 @@ for (const m of team.TEAM) {
   }
 }
 
+for (const v of KOPFVIDEOS) {
+  if (!standortSlugs.has(v.standort)) {
+    melden('medien.ts', `Kopfvideo für unbekannten Standort "${v.standort}"`);
+  }
+}
+
+/* Medien, die zugeordnet, aber noch nicht übernommen sind. Kein Fehler –
+   die Seite läuft ohne sie – aber ein Rückstand, der sichtbar bleiben muss.
+   Sonst geht die Website mit einem grauen Kopfbereich live und niemand
+   erinnert sich, dass da eine Aufnahme hingehörte. */
+const { existsSync } = await import('node:fs');
+const fehlendeMedien = [];
+for (const v of KOPFVIDEOS) {
+  for (const datei of [v.datei, v.poster]) {
+    if (!existsSync(path.join(WURZEL, 'public', datei))) fehlendeMedien.push(datei);
+  }
+}
+
 /* Umgekehrt: Behandlungen, deren Kostenangabe im Fließtext steht, obwohl es
    inzwischen einen belastbaren Preisrahmen gäbe. Kein Fehler, aber ein
    Hinweis – zwei Quellen für dieselbe Zahl laufen irgendwann auseinander. */
@@ -85,6 +104,16 @@ console.log(
 for (const s of STANDORTE) {
   const gesamt = team.TEAM.filter((m) => m.standorte.includes(s.slug)).length;
   console.log(`         ${s.name.padEnd(18)} ${String(gesamt).padStart(3)} erfasst, ${String(team.anzahlAn(s.slug)).padStart(3)} veröffentlicht`);
+}
+
+if (fehlendeMedien.length) {
+  console.log(
+    `[daten] Rückstand: ${fehlendeMedien.length} zugeordnete Mediendateien fehlen noch in public/`,
+  );
+  for (const d of fehlendeMedien) console.log(`  · ${d}`);
+  const quellen = KOPFVIDEOS.map((v) => `${v.quelle} → public${v.datei}`);
+  console.log('        Aus dem Server-Backup zu übernehmen:');
+  for (const q of quellen) console.log(`          ${q}`);
 }
 
 if (doppelt.length) {
