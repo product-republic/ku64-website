@@ -10,3 +10,8 @@ dist/
 
 # Vorschaubilder werden bei jedem Build aus den Daten neu erzeugt.
 public/og/
+
+# Rohdaten aus dem Server-Backup bleiben lokal – sie gehören nicht in die
+# Repo-Historie. Die Auswertungen daraus schon.
+analyse/altbestand/htaccess.b64
+analyse/altbestand/htaccess.txt

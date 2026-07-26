@@ -148,6 +148,130 @@ Wahl dem Zufall überlassen.
 
 ---
 
+---
+
+## 1b. Befunde aus der Server-`.htaccess` (26.07., aus dem Backup)
+
+Aus dem Server-Backup lag die `.htaccess` der Live-Website vor: 21,8 KB, davon
+der größte Teil Yoast-Weiterleitungen. Damit sind die folgenden Punkte **keine
+Vermutungen mehr, sondern belegt**. Auswertung:
+[`analyse/altbestand/WEITERLEITUNGEN.md`](analyse/altbestand/WEITERLEITUNGEN.md)
+
+### 1b.1 Die HTTP→HTTPS-Weiterleitung ist wirkungslos
+
+Ganz oben im Weiterleitungsblock steht:
+
+```apache
+# redirect http to https
+RewriteCond %{HTTPS} !=on
+Redirect 301 (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+```
+
+Diese drei Zeilen können nicht funktionieren, aus drei unabhängigen Gründen:
+
+1. `RewriteCond` gehört zu mod_rewrite und wirkt ausschließlich auf eine
+   nachfolgende `RewriteRule`. Auf ein `Redirect` (mod_alias) hat sie keinerlei
+   Einfluss – die Bedingung läuft hier ins Leere.
+2. `Redirect` erwartet als erstes Argument einen Pfad, der mit `/` beginnt,
+   keinen regulären Ausdruck. `(.*)` wird als wörtlicher Pfad behandelt und
+   trifft damit auf keine echte Anfrage zu. Für Muster wäre `RedirectMatch`
+   nötig.
+3. `%{HTTP_HOST}` und `%{REQUEST_URI}` sind mod_rewrite-Variablen. mod_alias
+   ersetzt sie nicht, sondern würde sie wörtlich ausgeben.
+
+**Das erklärt einen Befund aus Abschnitt 1.5:** Die Leistungsübersicht ist als
+`http://ku64.de/leistungen/` indexiert. Wenn HTTPS überhaupt erzwungen wird,
+dann durch die Serverkonfiguration des Hosters, nicht durch diese Datei.
+
+> ⚠️ **Zu prüfen:** Ob HTTP-Aufrufe live tatsächlich auf HTTPS umgeleitet werden,
+> lässt sich nur am laufenden Server feststellen. Der LiteSpeed-Host kann das
+> unabhängig von dieser Datei erledigen. Die Direktive selbst leistet es nicht.
+
+### 1b.2 168 aktive Weiterleitungen, davon 18 Ketten
+
+Eine Kette bedeutet: Die Weiterleitung zeigt auf eine Adresse, die selbst
+wieder weiterleitet. Jeder Sprung kostet Ladezeit und verwässert das
+Linksignal.
+
+Der schlimmste Fall braucht **vier Sprünge**:
+
+```
+/dros-schiene
+  → /leistungen/kieferorthopaedie/dros-schiene
+  → /potsdam/kieferorthopadie/dros-schiene
+  → /potsdam/kieferorthopadie/cmd
+  → /potsdam
+```
+
+Wer über die alte Adresse kommt, landet nach vier Umleitungen auf der
+Potsdamer Startseite – nicht bei der gesuchten Schiene. Weitere 17 Ketten mit
+zwei Sprüngen, darunter:
+
+```
+/schmerzfreie-zahnbehandlung-mit-dem-laser → /laserbehandlung
+  → /leistungen/ganzheitliche-zahnmedizin/laserbehandlung
+
+/potsdam/schonende-zahnbehandlung-mit-laser-… → /potsdam/laserbehandlung-potsdam
+  → /potsdam/zahnbehandlung-laser
+```
+
+Immerhin: **keine Endlosschleifen.**
+
+### 1b.3 Eine Weiterleitung führt garantiert ins Nichts
+
+```apache
+Redirect 301 "/leistungen/beauty-cosmetics/hautarzt" "/leistugen/beauty-cosmetics"
+```
+
+Das Ziel heißt `/leistugen/` statt `/leistungen/` – ein Tippfehler. Diese
+Adresse existiert nicht. Wer den alten Link aufruft, bekommt einen 404 serviert,
+und zwar seit dem Tag, an dem die Regel angelegt wurde.
+
+### 1b.4 Drei auskommentierte Regeln
+
+`/potsdam/team/wiebke-lange`, `/team/verwaltung/manuel-schuler` und
+`/potsdam/kieferorthopadie` waren einmal weitergeleitet, sind es jetzt nicht
+mehr. Ob sie ins Leere laufen, hängt davon ab, ob die Seiten noch existieren.
+
+### 1b.5 Die echte URL-Struktur – und was sie über die Standorte verrät
+
+Aus 168 Quell- und Zieladressen lässt sich der Aufbau rekonstruieren:
+
+| Bereich | Nennungen | Anmerkung |
+|---|---|---|
+| `/team/` | 64 | Größter Bereich, tief verschachtelt nach Funktion |
+| `/blog/` | 48 | Umfangreiches Archiv, stark zusammengefasst |
+| `/potsdam/` | 36 | **Eigener Unterbaum mit eigenen Leistungsseiten** |
+| `/leistungen/` | 14 | Der standortlose Zweig |
+| `/berlinmitte/` | 11 | Eigener Unterbaum |
+| `/zahnbeschwerden/` | 3 | Symptom-Einstieg |
+
+**Das ist der wichtigste inhaltliche Fund.** Potsdam und Berlin-Mitte haben
+sehr wohl eigene Unterseiten – `/potsdam/parodontitisbehandlung`,
+`/potsdam/bleaching`, `/potsdam/zahnaesthetik`, `/potsdam/anaesthesie`,
+`/potsdam/anamnese`, `/potsdam/zahnbehandlung-laser`. Der Kurfürstendamm hat
+dagegen **keinen eigenen Präfix**: Seine Leistungen liegen unter `/leistungen/`
+und belegen damit den standortlosen Hauptzweig.
+
+Die Folge ist genau das, was Sie beschrieben haben, nur präziser als vermutet:
+Es gibt nicht eine standortlose Struktur, sondern **zwei konkurrierende** – ein
+gewachsener Potsdam- und Mitte-Zweig neben einem Kurfürstendamm-Zweig, der sich
+als „die“ Leistungsstruktur ausgibt. Wer in Potsdam auf eine Leistung klickt,
+die dort keinen eigenen Unterordner hat, landet zwangsläufig im
+Kurfürstendamm-Zweig.
+
+Der Neubau löst das, indem **alle vier** Standorte gleich behandelt werden.
+
+### 1b.6 Technikstack der alten Website
+
+WP Rocket 3.23 (Caching), Imagify (WebP), Wordfence (WAF), Yoast SEO,
+LiteSpeed-Server. Auffällig: `ExpiresByType text/html "access plus 1 year"` –
+HTML ein Jahr lang cachen ist für eine Praxis-Website mit wechselnden
+Sprechzeiten riskant. WP Rocket setzt weiter oben korrekt `0 seconds`; welche
+Regel gewinnt, hängt von der Reihenfolge ab und gehört geprüft.
+
+---
+
 ## 2. Prüfliste für den Crawl (nachzuholen)
 
 Sobald die Domain erreichbar ist, arbeite ich diese Liste vollständig ab und ergänze

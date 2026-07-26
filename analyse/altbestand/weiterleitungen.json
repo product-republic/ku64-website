@@ -1,0 +1,785 @@
+{
+  "aktiv": [
+    {
+      "von": "/potsdam/kontakt-potsdam",
+      "nach": "/potsdam/kontakt"
+    },
+    {
+      "von": "/potsdam/parodontitisbehandlung-2",
+      "nach": "/potsdam/parodontitisbehandlung"
+    },
+    {
+      "von": "/potsdam/anaesthetie",
+      "nach": "/potsdam/anaesthesie"
+    },
+    {
+      "von": "/leistungen/kieferorthopaedie/incognito",
+      "nach": "/leistungen/kieferorthopaedie/win-brackets-lingualtechnik"
+    },
+    {
+      "von": "/telefon-service",
+      "nach": "/team/telefon-service"
+    },
+    {
+      "von": "/team/verwaltung/jana-hoeynck",
+      "nach": "/team/verwaltung/jana-jain"
+    },
+    {
+      "von": "/team/assistenzen/diana-flint",
+      "nach": "/team/assistenzen"
+    },
+    {
+      "von": "/potsdam/jobs-und-karriere-potsdam",
+      "nach": "/potsdam/jobs-und-karriere"
+    },
+    {
+      "von": "/team/assistenzen/angie-skall",
+      "nach": "/team/telefon-service/angie-skall"
+    },
+    {
+      "von": "/teams/cigmen-korur",
+      "nach": "/teams/cigdem-korur"
+    },
+    {
+      "von": "/jiotis-hondralis",
+      "nach": "/team/zahnaerzte/jiotis-hondralis"
+    },
+    {
+      "von": "/lulu-buerger",
+      "nach": "/team/assistenzen/lulu-buerger"
+    },
+    {
+      "von": "/sulmaz-mohammad",
+      "nach": "/team/zahnaerzte/sulmaz-mohammad"
+    },
+    {
+      "von": "/jannik-scheurenbrand",
+      "nach": "/team/prophylaxe/jannik-scheurenbrand"
+    },
+    {
+      "von": "/anamnese-2",
+      "nach": "/potsdam/anamnese"
+    },
+    {
+      "von": "/nils-radsack",
+      "nach": "/potsdam/team/nils-radsack"
+    },
+    {
+      "von": "/kreidezahne-sanft-behandeln-kinderzahnarzt-ku64-berlin",
+      "nach": "/leistungen/kinderzahnarzt/kreidezahne"
+    },
+    {
+      "von": "/das-sind-wir",
+      "nach": "/ueber-uns/location/das-sind-wir"
+    },
+    {
+      "von": "/team-2/zahnaerzte/christian-morar",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/ueber-uns/location/das-sind-wir",
+      "nach": "/ueber-uns/location/best-practice"
+    },
+    {
+      "von": "/schmerzfreie-zahnbehandlung-mit-dem-laser",
+      "nach": "/laserbehandlung"
+    },
+    {
+      "von": "/zahnaerzte",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/dr-anne-moser-2",
+      "nach": "/potsdam/team/dr-anne-moser"
+    },
+    {
+      "von": "/laserbehandlung",
+      "nach": "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung"
+    },
+    {
+      "von": "/potsdam/schonende-zahnbehandlung-mit-laser-ihr-laser-zahnarzt-ku64-potsdam",
+      "nach": "/potsdam/laserbehandlung-potsdam"
+    },
+    {
+      "von": "/potsdam/laserbehandlung-potsdam",
+      "nach": "/potsdam/zahnbehandlung-laser"
+    },
+    {
+      "von": "/prophylaxe",
+      "nach": "/team/prophylaxe"
+    },
+    {
+      "von": "/verwaltung-2",
+      "nach": "/team/verwaltung-2"
+    },
+    {
+      "von": "/team/verwaltung-2",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/marcellina-dallashaj",
+      "nach": "/team/prophylaxe/marcellina-dallashaj"
+    },
+    {
+      "von": "/team/zahnaerzte/dr-dr-thorsten-wegner",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/leistungen/beauty-cosmetics/hautarzt",
+      "nach": "/leistugen/beauty-cosmetics"
+    },
+    {
+      "von": "/leistungen/beauty-cosmetics/hautarzt__trashed/hauttumorchirurgie",
+      "nach": "/leistungen/beauty-cosmetics"
+    },
+    {
+      "von": "/leistungen/beauty-cosmetics/hautarzt__trashed/hyperhidrose",
+      "nach": "/leistungen"
+    },
+    {
+      "von": "/infusionstherapie-reviv",
+      "nach": "/leistungen"
+    },
+    {
+      "von": "/dros-schiene",
+      "nach": "/leistungen/kieferorthopaedie/dros-schiene"
+    },
+    {
+      "von": "/team/prophylaxe/nicole-dickhoff-franz",
+      "nach": "/team/prophylaxe/nicole-dickhoff-kranz"
+    },
+    {
+      "von": "/leistungen/beauty-cosmetics/ku64-cosmetics",
+      "nach": "/leistungen/cosmetics"
+    },
+    {
+      "von": "/potsdam/zahnasthetik",
+      "nach": "/potsdam/zahnaesthetik"
+    },
+    {
+      "von": "/leistungen/kieferorthopaedie/dros-schiene",
+      "nach": "/potsdam/kieferorthopadie/dros-schiene"
+    },
+    {
+      "von": "/potsdam/parodontitis",
+      "nach": "/potsdam/parodontitisbehandlung"
+    },
+    {
+      "von": "/potsdam-neu",
+      "nach": "/potsdam"
+    },
+    {
+      "von": "/team/zahnaerzte/maike-bauer",
+      "nach": "/team/zahnaerzte/dr-maike-bauer"
+    },
+    {
+      "von": "/telefon-service/doreen-ziliox",
+      "nach": "/doreen-ziliox"
+    },
+    {
+      "von": "/telefon-service/angie-skall",
+      "nach": "/angie-skall"
+    },
+    {
+      "von": "/telefon-service/jutta-pueschel",
+      "nach": "/jutta-pueschel"
+    },
+    {
+      "von": "/potsdam/www.ku64.de",
+      "nach": "/potsdam"
+    },
+    {
+      "von": "/ueber-uns/presseinfo/ku64.de/pressemitteilung",
+      "nach": "/medienecho"
+    },
+    {
+      "von": "/team/kommunikation-human-resources/christian-schuetz",
+      "nach": "/team/human-resources"
+    },
+    {
+      "von": "/ueber-uns/location/architekten/ku64.de",
+      "nach": "/ueber-uns/location/architekten"
+    },
+    {
+      "von": "/fachbeitraege/zahnheilkunde",
+      "nach": "/fachbeitraege"
+    },
+    {
+      "von": "/fachbeitraege/kieferorthopaedie",
+      "nach": "/fachbeitraege"
+    },
+    {
+      "von": "/fachbeitraege/all",
+      "nach": "/fachbeitraege"
+    },
+    {
+      "von": "/fachbeitraege/wissenswert",
+      "nach": "/fachbeitraege"
+    },
+    {
+      "von": "/fachbeitraege/aligner",
+      "nach": "/fachbeitraege"
+    },
+    {
+      "von": "/leistugen/beauty-cosmetics/hauttumorchirurgie",
+      "nach": "/leistungen/cosmetics"
+    },
+    {
+      "von": "/ueber-uns/location/referenzen-der-graft-architekten/ku64.de",
+      "nach": "/ueber-uns/location/architekten"
+    },
+    {
+      "von": "/potsdam/parodontitisbehandlung/chbehandlung",
+      "nach": "/potsdam/parodontitisbehandlung"
+    },
+    {
+      "von": "/potsdam/bleaching/g",
+      "nach": "/potsdam/bleaching"
+    },
+    {
+      "von": "/prophylaxis-4-0/prophylaxis-shop/ku64.de/en/bleaching",
+      "nach": "/en/leistungen/prophylaxe-4-0/prophylaxeshop"
+    },
+    {
+      "von": "/team/bleaching-and-cosmetics",
+      "nach": "/bleaching-kosmetik-shop"
+    },
+    {
+      "von": "/anka-ulrich",
+      "nach": "/team/verwaltung/anka-ulrich"
+    },
+    {
+      "von": "/potsdam/team/sarah-sander",
+      "nach": "/potsdam/team"
+    },
+    {
+      "von": "/ina-lehmann",
+      "nach": "/team/verwaltung/ina-lehmann"
+    },
+    {
+      "von": "/potsdam/team/susan-knickenberg",
+      "nach": "/potsdam/team"
+    },
+    {
+      "von": "/celina-leppin",
+      "nach": "/potsdam/team/celina-leppin"
+    },
+    {
+      "von": "/berlinmitte-2",
+      "nach": "/berlinmitte"
+    },
+    {
+      "von": "/team/prophylaxe/anna-zafarian",
+      "nach": "/team/prophylaxe"
+    },
+    {
+      "von": "/team/prophylaxe/marcellina-dallashaj",
+      "nach": "/team/prophylaxe"
+    },
+    {
+      "von": "/team/zahnaerzte/mohamed-budrya",
+      "nach": "/team/zahnaerzte/mohamed-abudrya"
+    },
+    {
+      "von": "/rezeption-und-service/jennifer-roedel",
+      "nach": "/berlinmitte/jennifer-roedel"
+    },
+    {
+      "von": "/team/zahnaerzte/feras-younes",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/assistenzen/dominik-demski",
+      "nach": "/berlinmitte/dominik-demski"
+    },
+    {
+      "von": "/berlinmitte-2-2/link-tree",
+      "nach": "/berlinmitte/link-tree"
+    },
+    {
+      "von": "/potsdam/team/dr-anne-moser",
+      "nach": "/potsdam/team"
+    },
+    {
+      "von": "/potsdam/kieferorthopadie/dros-schiene",
+      "nach": "/potsdam/kieferorthopadie/cmd"
+    },
+    {
+      "von": "/contact",
+      "nach": "/kontakt"
+    },
+    {
+      "von": "/team/zahnaerzte/freya-voge",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/zahnaerzte/diana-wald",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/prophylaxe/maja-asoska",
+      "nach": "/team/prophylaxe"
+    },
+    {
+      "von": "/caecilia-mickel",
+      "nach": "/team"
+    },
+    {
+      "von": "/zahn-abgebrochen",
+      "nach": "/zahnbeschwerden/zahn-abgebrochen"
+    },
+    {
+      "von": "/gerade-zaehne",
+      "nach": "/zahnbeschwerden/gerade-zaehne"
+    },
+    {
+      "von": "/zahnwurzelentzuendung",
+      "nach": "/zahnbeschwerden/zahnwurzelentzuendung"
+    },
+    {
+      "von": "/team/zahnaerzte/ute-katja-koenig",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/kommunikation-human-resources__trashed/susan-feldmann",
+      "nach": "/human-resources/susan-feldmann"
+    },
+    {
+      "von": "/human-resources",
+      "nach": "/team/human-resources"
+    },
+    {
+      "von": "/jana-jain",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/eva-maria-stauffenberg",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/team/zahnaerzte/dr-birte-habedank",
+      "nach": "/potsdam/team/dr-birte-habedank"
+    },
+    {
+      "von": "/team/zahnaerzte/tommy-bettac",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/zahnaerzte/sulmaz-mohammad",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team-za-berlin",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/zahnaerzte/dr-rahima-arsalan",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/fachbeitraege",
+      "nach": "/blog"
+    },
+    {
+      "von": "/ahmet-turan",
+      "nach": "/team/zahnaerzte/ahmet-turan"
+    },
+    {
+      "von": "/potsdam/team/jenny-friedla",
+      "nach": "/team/dentalhygieniker/jenny-friedla"
+    },
+    {
+      "von": "/team/bleaching-kosmetik-shop/samaneh-salehipour",
+      "nach": "/team/zahnaerzte/samaneh-salehipour"
+    },
+    {
+      "von": "/blog-potsdam/erfahren-sie-alles-ueber-aesthetische-behandlungen-bei-dr-benedikt-straub-in-potsdam-im-ku64-eine-einzigartige-gelegenheit-fuer-ein-strahlendes-laecheln-und-jugendliches-aussehen-termin-mittwoch-1",
+      "nach": "/blog-potsdam/aesthetische-behandlungen-dr-benedikt-straub-in-potsdam-ku64"
+    },
+    {
+      "von": "/leistungen/beauty-cosmetics/matrixtherapie",
+      "nach": "/leistungen/beauty-cosmetics"
+    },
+    {
+      "von": "/jobs-karriere/zahnmedizinischer-prophylaxeassistent-berlin/melissa-albalizade",
+      "nach": "/team/prophylaxe/melissa-albalizade"
+    },
+    {
+      "von": "/dr-jana-westerhorstmann",
+      "nach": "/berlinmitte/dr-jana-westerhorstmann"
+    },
+    {
+      "von": "/alexandra-sophia-fischer",
+      "nach": "/team/zahnaerzte/alexandra-sophia-fischer"
+    },
+    {
+      "von": "/blog/ku64-in-den-medien-2",
+      "nach": "/blog/ku64-in-den-medien"
+    },
+    {
+      "von": "/julia-ressler",
+      "nach": "/berlinmitte/julia-ressler"
+    },
+    {
+      "von": "/auszubildende/eugenia-nicoleta-dutu",
+      "nach": "/team/assistenzen/eugenia-nicoleta-dutu"
+    },
+    {
+      "von": "/communication-and-human-recources",
+      "nach": "/team/human-resources"
+    },
+    {
+      "von": "/carola-wantke",
+      "nach": "/team/assistenzen"
+    },
+    {
+      "von": "/team/zahnaerzte/frederike-bruning",
+      "nach": "/team/zahnaerzte/frederike-bruening"
+    },
+    {
+      "von": "/blog/ku64-liebt-kunst",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/ku64-unterstuetzt-die-kunst",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/mali-black-berlins-juengste-malerin-stellt-bei-ku64-aus",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/neue-austellung-in-unseren-raeumen-2",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/neue-austellung-in-unseren-raeumen",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/rolf-zscharnack-stellt-bei-ku64-aus",
+      "nach": "/blog/kunst-ausstellungen-bei-ku64"
+    },
+    {
+      "von": "/blog/malt-fuer-uns",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/maus-und-elefant-in-unserer-praxis",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/neues-traumauto-fuer-kids-duest-durch-die-ku64-kinderabteilung",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/radeln-fuer-den-guten-zweck",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/trainingsanzuguebergabe-ku64-kick-box-jugend-team-e-v",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/unsere-kinderabteilung-bekommt-zuwachs",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/unterstuetzt-den-boys-day",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/unterstuetzt-die-jungen-rebels",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/unterstue]zung-fuer-berliner-heimkinder",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/viel-glueck-der-f1-jugend-des-bfc-preussen",
+      "nach": "/blog/ku64s-engagement-fuer-kinder-jugendliche"
+    },
+    {
+      "von": "/blog/ku64-und-lokahiloft",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/ku64-und-physion-emotion",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/medizinische-kompetenz-und-sinn-fuer-schoenheit",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/tag-des-kusses-2",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/tag-des-kusses",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/unser-partner-lokahi-loft-feiert-geburtstag",
+      "nach": "/unkategorisiert/ku64-kooperationen"
+    },
+    {
+      "von": "/blog/ku64-sucht-endodontiespezialisten-zur-teamverstaerkung",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/ku64-sucht-mitarbeiter",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/ku64-sucht-neues-kompetentes-personal",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/ku64-unterstuetzt-bwb",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/medaille-fuer-henning-bommel",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/neue-kollegin-bei-ku64-herzlich-willkommen-anika-pia-sievers-dentalberatung",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/neue-zahnaerztin-bei-ku64-mit-spezialisierung-in-zahnaesthetik-und-endodontie-dr-sandra-viktorov",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/weihnachtswichtel-gesucht-2",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/weihnachtswichtel-gesucht",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/zfa-m-w-gesucht",
+      "nach": "/blog/ku64-mitarbeiter-und-mitarbeitersuche"
+    },
+    {
+      "von": "/blog/ku64-hat-ein-herz-fuer-leidenschaftliche-radfahrer",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/ku64-hat-gewonnen",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/ku64-macht-mit-bei-berlin-teilt",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/ku64-verwendet-jetzt-ipads",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/ku64-wurzelkanalbehandlung-ist-spitze-und-zertifiziert",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/mitmachen-und-gewinnen",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/toooooooor-viel-glueck-dem-ssc-suedwest-1947",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/unsere-kuh-64-hat-einen-namen",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/blog/weisse-weihnachten-weisse-zaehne-exklusiv-bei-den-zahnspezialisten-von-ku64",
+      "nach": "/blog/neuigkeiten-aus-der-praxis"
+    },
+    {
+      "von": "/berlinmitte/julia-ressler",
+      "nach": "/berlinmitte"
+    },
+    {
+      "von": "/team/verwaltung/tanya-moir-douglas",
+      "nach": "/team/verwaltung/tanya-douglas-moir"
+    },
+    {
+      "von": "/berlinmitte/dr-jana-westerhorstmann",
+      "nach": "/berlinmitte/dr-jana-huesch"
+    },
+    {
+      "von": "/elena-hude",
+      "nach": "/team/zahnaerzte/elena-hude"
+    },
+    {
+      "von": "/team/verwaltung/tanya-douglas-moir",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/potsdam/kieferorthopadie/cmd",
+      "nach": "/potsdam"
+    },
+    {
+      "von": "/team/verwaltung/jasmin-piontek",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/team/verwaltung/jocelyn-ballard",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/potsdam/team/dr-birte-habedank",
+      "nach": "/potsdam/team"
+    },
+    {
+      "von": "/team/verwaltung/diane-dobrin",
+      "nach": "/team/verwaltung"
+    },
+    {
+      "von": "/hazem-genidy",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/team/zahnaerzte/elena-hude",
+      "nach": "/team/zahnaerzte"
+    },
+    {
+      "von": "/clara-marlene-schulz",
+      "nach": "/potsdam/team/clara-marlene-schulz"
+    },
+    {
+      "von": "/team/dentalhygieniker/peggy-bofinger-hofmann",
+      "nach": "/team/dentalhygieniker"
+    },
+    {
+      "von": "/berlinmitte/hatice-aktas",
+      "nach": "/berlinmitte"
+    },
+    {
+      "von": "/berlinmitte/manuel-schuler",
+      "nach": "/berlinmitte"
+    },
+    {
+      "von": "/team/prophylaxe/edin-plavsic",
+      "nach": "/team/dentalhygieniker/edin-plavsic"
+    },
+    {
+      "von": "/team/zahnaerzte/ferry-dickmann",
+      "nach": "/team/zahnaerzte"
+    }
+  ],
+  "deaktiviert": [
+    {
+      "von": "/potsdam/team/wiebke-lange",
+      "nach": "/potsdam/team"
+    },
+    {
+      "von": "/team/verwaltung/manuel-schuler",
+      "nach": "/berlinmitte/manuel-schuler"
+    },
+    {
+      "von": "/potsdam/kieferorthopadie",
+      "nach": "/potsdam"
+    }
+  ],
+  "ketten": [
+    [
+      "/dros-schiene",
+      "/leistungen/kieferorthopaedie/dros-schiene",
+      "/potsdam/kieferorthopadie/dros-schiene",
+      "/potsdam/kieferorthopadie/cmd",
+      "/potsdam"
+    ],
+    [
+      "/sulmaz-mohammad",
+      "/team/zahnaerzte/sulmaz-mohammad",
+      "/team/zahnaerzte"
+    ],
+    [
+      "/das-sind-wir",
+      "/ueber-uns/location/das-sind-wir",
+      "/ueber-uns/location/best-practice"
+    ],
+    [
+      "/schmerzfreie-zahnbehandlung-mit-dem-laser",
+      "/laserbehandlung",
+      "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung"
+    ],
+    [
+      "/dr-anne-moser-2",
+      "/potsdam/team/dr-anne-moser",
+      "/potsdam/team"
+    ],
+    [
+      "/potsdam/schonende-zahnbehandlung-mit-laser-ihr-laser-zahnarzt-ku64-potsdam",
+      "/potsdam/laserbehandlung-potsdam",
+      "/potsdam/zahnbehandlung-laser"
+    ],
+    [
+      "/verwaltung-2",
+      "/team/verwaltung-2",
+      "/team/verwaltung"
+    ],
+    [
+      "/marcellina-dallashaj",
+      "/team/prophylaxe/marcellina-dallashaj",
+      "/team/prophylaxe"
+    ],
+    [
+      "/fachbeitraege/zahnheilkunde",
+      "/fachbeitraege",
+      "/blog"
+    ],
+    [
+      "/fachbeitraege/kieferorthopaedie",
+      "/fachbeitraege",
+      "/blog"
+    ],
+    [
+      "/fachbeitraege/all",
+      "/fachbeitraege",
+      "/blog"
+    ],
+    [
+      "/fachbeitraege/wissenswert",
+      "/fachbeitraege",
+      "/blog"
+    ],
+    [
+      "/fachbeitraege/aligner",
+      "/fachbeitraege",
+      "/blog"
+    ],
+    [
+      "/team/zahnaerzte/dr-birte-habedank",
+      "/potsdam/team/dr-birte-habedank",
+      "/potsdam/team"
+    ],
+    [
+      "/dr-jana-westerhorstmann",
+      "/berlinmitte/dr-jana-westerhorstmann",
+      "/berlinmitte/dr-jana-huesch"
+    ],
+    [
+      "/julia-ressler",
+      "/berlinmitte/julia-ressler",
+      "/berlinmitte"
+    ],
+    [
+      "/team/verwaltung/tanya-moir-douglas",
+      "/team/verwaltung/tanya-douglas-moir",
+      "/team/verwaltung"
+    ],
+    [
+      "/elena-hude",
+      "/team/zahnaerzte/elena-hude",
+      "/team/zahnaerzte"
+    ]
+  ],
+  "schleifen": []
+}
