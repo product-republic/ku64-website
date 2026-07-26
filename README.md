@@ -36,7 +36,10 @@ npm start          # gebaute Fassung lokal starten
 |---|---|
 | `src/data/standorte.ts` | Alle Standortdaten — einzige Quelle |
 | `src/data/leistungen.ts` | Leistungskatalog inkl. **Verfügbarkeit je Standort** |
-| `src/data/team.ts` | Team — bewusst leer, siehe Kommentar in der Datei |
+| `src/data/team.ts` | Team — 100 Personen aus der Teamübersicht des Kunden |
+| `src/data/medien.ts` | Kopfvideos, Standort- und Raumbilder je Standort |
+| `src/lib/bilder.ts` | Bildverzeichnis mit Nachweispflicht — ohne Nachweis kein Bild |
+| `src/data/weiterleitungen.ts` | Adressen des Altbestands und ihre Ziele |
 | `src/lib/seo.ts` | Titel, Descriptions, Canonicals, JSON-LD |
 | `src/lib/wissen.ts` | Wissensbasis des Chatbots, aus denselben Daten erzeugt |
 | `src/pages/api/` | Chat, Lächeln-Vorschau, Sprach-Token |
