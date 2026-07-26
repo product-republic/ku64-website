@@ -19,3 +19,8 @@ analyse/altbestand/htaccess.txt
 # Der Bericht wird aus vorlage.html + eingebetteten Schriften erzeugt.
 bericht/befundbericht.html
 bericht/KU64-Befundbericht.pdf
+
+# Ergebnisse der Medienanalyse – werden lokal gegen das Backup erzeugt.
+analyse/altbestand/medien-bericht.md
+analyse/altbestand/medien-benutzt.txt
+analyse/altbestand/medien-kopieren.sh
