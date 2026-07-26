@@ -114,7 +114,10 @@ const schema = [
           </dd>
         </div>
         {
-          anzahlBehandelnde(standort.slug) && (
+          /* Ausdrücklich `> 0` und nicht die bloße Zahl: `0 && …` ergibt in
+             JSX die 0, und die wird ausgegeben. Solange niemand aus dem Team
+             bestätigt ist, stand hier eine nackte Null ohne Beschriftung. */
+          anzahlBehandelnde(standort.slug) > 0 && (
             <div>
               <dt>Behandelnde</dt>
               <dd>{anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte</dd>

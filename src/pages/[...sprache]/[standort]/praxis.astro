@@ -2,11 +2,13 @@
 /**
  * Praxisvorstellung je Standort.
  *
- * INHALTLICHE LÜCKE: Praxisfotos und Ausstattungsdetails liegen für diese
- * Session nicht vor (ku64.de war nicht abrufbar, siehe ANALYSE.md). Die Seite
- * ist strukturell fertig und zieht alles, was gesichert bekannt ist, aus
- * standorte.ts. Sobald Fotos und Ausstattungslisten vorliegen, werden sie in
- * `besonderheiten` bzw. als Bildergalerie ergänzt – ohne Änderung am Seitencode.
+ * Jeder Standort zeigt seine eigene Aufnahme – oder keine. Das ist dieselbe
+ * Regel wie beim Kopfvideo und aus demselben Grund: Wer auf der Potsdamer
+ * Seite Berliner Räume sieht, findet sie beim Termin nicht wieder.
+ *
+ * OFFEN: Ausstattungsdetails (Behandlungszimmer, Kinderbereich, Meisterlabor)
+ * fehlen weiterhin. Sie kommen in `besonderheiten` bzw. als Bildergalerie
+ * dazu, ohne Änderung am Seitencode.
  */
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
@@ -14,6 +16,7 @@ import Basis from '../../../layouts/Basis.astro';
 import { anzahlBehandelnde } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
+import Praxisbild from '../../../components/Praxisbild.astro';
 import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 
@@ -59,7 +62,10 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
           <p>{jahre > 0 ? `${jahre} Jahre in ${standort.ort}` : `neu in ${standort.ort}`}</p>
         </div>
         {
-          anzahlBehandelnde(standort.slug) && (
+          /* Ausdrücklich `> 0` und nicht die bloße Zahl: `0 && …` ergibt in
+             JSX die 0, und die wird ausgegeben. Solange niemand aus dem Team
+             bestätigt ist, stand hier eine nackte Null ohne Beschriftung. */
+          anzahlBehandelnde(standort.slug) > 0 && (
             <div>
               <dt>Behandelnde</dt>
               <dd>{anzahlBehandelnde(standort.slug)}</dd>
@@ -78,6 +84,17 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
           <p>Tage in der Woche</p>
         </div>
       </dl>
+
+      {/* Das Bild steht nach den Zahlen und nicht davor: Die Überschrift soll
+          zuerst da sein. `eager`, weil es hier trotzdem das erste große Bild
+          der Seite ist und ein verzögertes erstes Bild die Messung
+          verschlechtert, die es verbessern soll. */}
+      <Praxisbild
+        schluessel={`standort-${standort.slug}`}
+        laden="eager"
+        klasse="ansicht"
+        breiten="(min-width: 68rem) 64rem, 100vw"
+      />
     </div>
   </section>
 
@@ -166,6 +183,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
     font-size: var(--t-2xl); font-weight: 600; color: var(--akzent-schrift);
   }
   .zahlen p { font-size: var(--t-xs); color: var(--tinte-weich); }
+  .ansicht { margin-block-start: var(--raum-7); }
   .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
   .unter { max-width: var(--breite-text); margin-block: var(--raum-3) var(--raum-6); color: var(--tinte-weich); font-size: var(--t-lg); }
   .merkmale {

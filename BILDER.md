@@ -10,21 +10,42 @@ durchgesetzt.
 
 ## 1. Aktueller Stand
 
-**Die Website enthält null Stock-Fotos und aktuell überhaupt keine Fotografie.**
+**Null Stock-Fotos. Vier echte Aufnahmen, je eine pro Standort. Drei
+Kopfvideos.**
 
-Das ist kein Versehen. Es liegen keine echten Praxisaufnahmen vor, und statt die
-Lücke mit Füllmaterial zu schließen, arbeitet das Layout mit Typografie,
-Farbflächen und Inline-SVG. Die Seiten funktionieren so – sie wirken nicht
-„unfertig ohne Bild“.
-
-Bildhafte Elemente, die es gibt:
+Alles davon stammt aus dem öffentlichen Bestand von ku64.de – erhoben durch
+`analyse/altbestand/crawl.mjs`, geholt durch
+`analyse/altbestand/medien-holen.mjs`.
 
 | Element | Herkunft | Bezug |
 |---|---|---|
+| Standortaufnahme Kurfürstendamm, Berlin-Mitte, Potsdam, Wilmersdorf | echte Aufnahme, ku64.de | je Standort die eigene Praxis, auf `/<standort>/praxis/` |
+| Kopfvideos Kurfürstendamm, Berlin-Mitte, Potsdam | echte Aufnahme, ku64.de | je Standort die eigene Praxis |
 | Vorschaubilder für Social Media (150 Stück) | selbst erzeugt, rein typografisch | zeigen echte Standortdaten der jeweiligen Seite |
 | Piktogramme, Pfeile, Haken | Inline-SVG, selbst gezeichnet | funktional |
 | Standort-Akzentfarben | Design-Tokens | Unterscheidung der Standorte |
 | Foto in der Lächeln-Vorschau | **Foto der Person selbst** | ihr eigenes Bild, auf Einwilligung |
+
+Wilmersdorf zeigt das Haus von außen statt eines Innenraums – für die
+KiezPraxis gibt es im Bestand keine Innenaufnahme. Das ist ehrlicher als ein
+fremder Raum und hilft beim Wiederfinden.
+
+### Warum nicht das bekannteste Bild
+
+Die berühmte Aufnahme des Kurfürstendamms – der gelbe Empfangstresen unter der
+geschwungenen Decke – zeigt zwei Mitarbeiterinnen erkennbar. Ob dafür eine
+Einwilligung vorliegt, weiß im Projekt niemand. Genommen ist deshalb der Flur
+mit der Grünwand: dieselbe Architektur, dieselbe Praxis, keine Person darauf.
+
+**Sobald für Aufnahmen mit Menschen eine Einwilligung vorliegt, sind sie die
+besseren Bilder.** Bis dahin nicht.
+
+### Was noch fehlt
+
+Behandlungszimmer, Kinderbereich, Meisterlabor, Teamfotos. Der Bestand hat sie
+(rund 570 eigenständige Motive, siehe `medien-live.json` nach einem Crawl). Sie
+brauchen je Bild eine Zuordnung, einen Alternativtext und bei Personen eine
+Einwilligung – und genau deshalb kommen sie nicht als Stapel, sondern einzeln.
 
 ---
 

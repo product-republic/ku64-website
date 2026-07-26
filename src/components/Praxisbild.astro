@@ -1,0 +1,97 @@
+---
+/**
+ * Eine echte Aufnahme aus dem Bildverzeichnis – oder nichts.
+ *
+ * Der Baustein nimmt einen Schlüssel, keinen Pfad. Damit kann keine Seite ein
+ * Bild einbinden, das nicht in `src/lib/bilder.ts` mit Alternativtext,
+ * Herkunft und Begründung steht. Fehlt der Nachweis, gibt `getBild` nichts
+ * zurück und die Stelle bleibt leer – das ist der vorgesehene Zustand und
+ * kein Fehler.
+ *
+ * ── Was hier für die Ladezeit passiert ─────────────────────────────────────
+ *
+ * `width` und `height` stehen am Bild, damit der Platz feststeht, bevor die
+ * Datei da ist. Ohne sie springt beim Eintreffen der gesamte Text nach unten.
+ *
+ * Drei Formate, zwei Breiten, Auswahl beim Browser: Wer AVIF versteht, lädt
+ * etwa die Hälfte von JPEG. `sizes` sagt, wie breit das Bild im Layout
+ * wirklich wird – ohne diese Angabe nimmt der Browser die Fensterbreite an
+ * und lädt für ein halbbreites Bild die doppelte Auflösung.
+ *
+ * `loading` ist voreingestellt auf `lazy`. Wer das Bild oben auf der Seite
+ * einsetzt, schaltet es auf `eager` – ein verzögert geladenes erstes Bild
+ * verschlechtert genau die Messung, die es verbessern sollte.
+ */
+import { getBild } from '../lib/bilder';
+
+interface Props {
+  schluessel: string;
+  /** Bildunterschrift. Ohne sie steht das Bild ohne Rahmen im Fluss. */
+  unterschrift?: string;
+  laden?: 'lazy' | 'eager';
+  /** Wie breit das Bild im Layout wird, als CSS-Größenangabe. */
+  breiten?: string;
+  klasse?: string;
+}
+
+const {
+  schluessel,
+  unterschrift,
+  laden = 'lazy',
+  breiten = '(min-width: 60rem) 60rem, 100vw',
+  klasse,
+} = Astro.props;
+
+const bild = getBild(schluessel);
+
+/* Die 800er Fassung heißt <name>-800, die große trägt keinen Zusatz. */
+const satz = (endung: string) =>
+  `${bild!.pfad}-800.${endung} 800w, ${bild!.pfad}.${endung} ${bild!.breite}w`;
+---
+
+{
+  bild && (
+    <figure class:list={['praxisbild', klasse]}>
+      <picture>
+        <source type="image/avif" srcset={satz('avif')} sizes={breiten} />
+        <source type="image/webp" srcset={satz('webp')} sizes={breiten} />
+        <img
+          src={`${bild.pfad}.jpg`}
+          srcset={satz('jpg')}
+          sizes={breiten}
+          alt={bild.alt}
+          width={bild.breite}
+          height={bild.hoehe}
+          loading={laden}
+          decoding="async"
+        />
+      </picture>
+      {unterschrift && <figcaption>{unterschrift}</figcaption>}
+    </figure>
+  )
+}
+
+<style>
+  .praxisbild {
+    margin: 0;
+  }
+  .praxisbild img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--schatten-lg);
+  }
+  .praxisbild figcaption {
+    margin-block-start: var(--raum-3);
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+    line-height: var(--zeile-normal);
+  }
+
+  @media (max-width: 40rem) {
+    .praxisbild img {
+      border-radius: var(--radius-lg);
+    }
+  }
+</style>
