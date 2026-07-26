@@ -18,7 +18,7 @@
  *
  * BILDER werden auf ein vernünftiges Webmaß gerechnet. Die Originale sind bis
  * zu 4 MB groß; auf einer Seite, die vier davon zeigt, ist das die Ladezeit.
- * Querformate landen bei höchstens 1800 px Breite, Porträts bei 900 px im
+ * Querformate landen bei höchstens 1800 px Breite, Porträts bei 640 px im
  * Quadrat – mehr zeigt kein Browser auf keinem Gerät dieser Seite an.
  *
  * VIDEOS werden neu kodiert. Die Rohfassungen aus Potsdam (14,9 MB) und Mitte
@@ -53,7 +53,18 @@ const PORTRAETS = path.join(WURZEL, 'public/team');
 
 /** Höchstmaße. Darüber hinaus sieht niemand einen Unterschied. */
 const BREITE_QUER = 1800;
-const KANTE_PORTRAET = 900;
+/*
+ * Porträts: 640 statt 900 px.
+ *
+ * Gerechnet, nicht geschätzt: Eine Teamkachel ist auf dem Bildschirm rund
+ * 320 px breit, auf einem Gerät mit doppelter Pixeldichte also 640. Alles
+ * darüber wird heruntergerechnet und war umsonst geladen.
+ *
+ * Der Unterschied ist keine Feinheit: Die Teamseite am Kurfürstendamm zeigt
+ * 33 Porträts. Bei 900 px sind das 2,8 MB, bei 640 px etwa die Hälfte – und
+ * zwar bei identischem Aussehen.
+ */
+const KANTE_PORTRAET = 640;
 
 /**
  * Die Auswahl.

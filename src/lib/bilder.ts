@@ -264,8 +264,10 @@ for (const person of TEAM) {
      * `team.ts` entfernt; damit verschwindet auch das Bild.
      */
     einwilligungVorhanden: true,
-    breite: 900,
-    hoehe: 900,
+    /* Siehe `KANTE_PORTRAET` in medien-auswahl.mjs: Die Kachel ist rund
+       320 px breit, 640 deckt auch Bildschirme mit doppelter Dichte ab. */
+    breite: 640,
+    hoehe: 640,
   };
 }
 
