@@ -3,13 +3,13 @@
 <style>
   @font-face {
     font-family: 'Inter KU';
-    src: url('__SCHRIFT_INTER__') format('woff2-variations');
+    src: url('__SCHRIFT_INTER__') format('woff2');
     font-weight: 100 900;
     font-display: swap;
   }
   @font-face {
     font-family: 'Fraunces KU';
-    src: url('__SCHRIFT_FRAUNCES__') format('woff2-variations');
+    src: url('__SCHRIFT_FRAUNCES__') format('woff2');
     font-weight: 100 900;
     font-display: swap;
   }
@@ -378,6 +378,118 @@
 
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
+  }
+
+  /* ── Druck ──────────────────────────────────────────────────────
+     Der Bericht wird herumgereicht und ausgedruckt. Zwei Dinge sind
+     dabei entscheidend: Ein Befund darf nicht über den Seitenumbruch
+     zerrissen werden – ein Beleg ohne die zugehörige Behauptung ist
+     wertlos –, und die dunkle Fassung wird zwangsweise auf die helle
+     zurückgesetzt, weil sonst ganze Seiten schwarz gedruckt würden. */
+  @page {
+    size: A4;
+    margin: 16mm 15mm 18mm;
+  }
+
+  @media print {
+    :root {
+      --grund: #ffffff;
+      --flaeche: #ffffff;
+      --flaeche-2: #f2f4f8;
+      --tinte: #14181f;
+      --slate: #4c5566;
+      --linie: #d3dae5;
+      --linie-2: #b9c2d1;
+      --ku: #c8431f;
+      --kritisch: #a3241b;
+      --hoch: #8a5f10;
+      --mittel: #33509a;
+      --ok: #1b6c49;
+    }
+
+    /* Flächen und farbige Kanten müssen mitgedruckt werden, sonst
+       verschwindet die Schweregrad-Codierung. */
+    * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body { background: #fff; font-size: 10.5pt; line-height: 1.55; }
+
+    .blatt {
+      max-width: none;
+      padding: 0;
+      gap: 1.9rem;
+    }
+
+    /* Zusammenhängende Blöcke nicht über Seiten zerreißen. */
+    .befund,
+    .zahlen,
+    .tabelle-huelle,
+    .neubau,
+    .offen-zeile,
+    .beleg,
+    .fuss {
+      break-inside: avoid;
+    }
+
+    /* Eine Überschrift allein am Seitenfuß ist eine Waise. */
+    h1, h2, h3 { break-after: avoid; }
+
+    section { gap: 0.9rem; }
+
+    /* Auf A4 passen alle fünf Kennzahlen in eine Reihe. Ohne feste
+       Spaltenzahl bricht die letzte um und hinterlässt eine leere
+       graue Fläche, weil der Rasterabstand den Hintergrund durchlässt. */
+    .zahlen { grid-template-columns: repeat(5, 1fr); }
+    .zahl { padding: 0.85rem 0.9rem; }
+    .zahl small { font-size: 7.5pt; }
+
+    /* Am Bildschirm erzeugen diese Container ihre Trennlinien über den
+       eigenen Hintergrund, den ein 1px-Rasterabstand durchscheinen lässt.
+       Bricht so ein Container über eine Seite um, bleibt am Seitenfuß ein
+       leerer grauer Balken stehen. Im Druck deshalb echte Linien an den
+       Zeilen statt Hintergrund am Container. */
+    .zahlen,
+    .offen {
+      background: none;
+      gap: 0;
+    }
+
+    .zahl,
+    .offen-zeile {
+      border-bottom: 1px solid var(--linie);
+    }
+
+    .zahl:not(:last-child) {
+      border-right: 1px solid var(--linie);
+    }
+
+    .offen-zeile:last-child,
+    .zahl:last-child {
+      border-bottom: none;
+    }
+
+    h1 { font-size: 24pt; }
+    h2 { font-size: 15pt; }
+    h3 { font-size: 11.5pt; }
+
+    .zahl b { font-size: 17pt; }
+
+    /* Im Druck gibt es kein Scrollen – Belege müssen umbrechen dürfen. */
+    .beleg {
+      white-space: pre-wrap;
+      overflow-x: visible;
+      font-size: 8.5pt;
+    }
+
+    .tabelle-huelle { overflow-x: visible; }
+    table { font-size: 9pt; }
+
+    p, .liste { max-width: none; }
+
+    /* Die Quellenangabe gehört auf die letzte Seite, nicht mittendrin. */
+    .fuss { break-before: auto; }
   }
 </style>
 
