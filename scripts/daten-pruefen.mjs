@@ -97,9 +97,17 @@ console.log(
   `[daten] ${LEISTUNGEN.length} Behandlungen, ${STANDORTE.length} Standorte, ` +
     `${PREISRAHMEN.length} Preisrahmen für ${mitRahmen.size} Behandlungen`,
 );
+/*
+ * Die unbestätigten Einträge sind nicht mehr dasselbe wie früher: Damals
+ * waren es Namen, die auf ihre Schreibweise warteten. Jetzt sind es Personen,
+ * die auf der Teamseite des Kunden nicht mehr stehen – sie bleiben in der
+ * Datei, weil ihre alten Adressen weiter umgeleitet werden müssen. Die
+ * Meldung sagt das, damit niemand sie als offene Aufgabe abarbeitet.
+ */
 console.log(
-  `[daten] Team: ${team.TEAM.length} Einträge, davon ${team.veroeffentlichbar().length} bestätigt ` +
-    `und veröffentlicht – ${team.offeneNamen()} warten auf Bestätigung`,
+  `[daten] Team: ${team.TEAM.length} Einträge, davon ${team.veroeffentlichbar().length} ` +
+    `veröffentlicht; ${team.offeneNamen()} nicht mehr auf der Teamseite des Kunden ` +
+    `(bleiben für die Weiterleitung ihrer alten Adressen)`,
 );
 for (const s of STANDORTE) {
   const gesamt = team.TEAM.filter((m) => m.standorte.includes(s.slug)).length;

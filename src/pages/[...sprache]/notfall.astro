@@ -215,7 +215,10 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
   .nummern { display: grid; gap: var(--raum-3); grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); }
   .nummer {
     display: grid; gap: 2px; padding: var(--raum-4) var(--raum-5);
-    border: 1px solid var(--linie); border-left: 4px solid var(--akzent);
+    /* Auf dieser Seite trägt Rot die Auszeichnung, nicht Gelb: Es ist die
+       einzige Seite, auf der Dringlichkeit die richtige Aussage ist – und
+       zwei Signalfarben nebeneinander heben sich gegenseitig auf. */
+    border: 1px solid var(--linie); border-left: 4px solid var(--akzent-schrift);
     border-radius: var(--radius); background: var(--flaeche); text-decoration: none;
     transition: box-shadow var(--zeit) var(--kurve), transform var(--zeit) var(--kurve);
   }

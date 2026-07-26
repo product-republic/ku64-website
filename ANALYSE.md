@@ -473,6 +473,31 @@ schicken Patientinnen und Patienten an den falschen Ort oder zur falschen Zeit.
 | Doctolib-Slugs je Standort | aus Suchergebnissen, zu bestätigen |
 | Nelly-Formular-URLs | offen, als Env-Variable vorbereitet |
 
+### 4.2 Weiterleitungen — erledigt
+
+Der Abgleich meldete zuletzt **216 tote Adressen von 238 (90,8 %)**. Das ist behoben:
+`src/data/weiterleitungen.ts` enthält 271 Regeln, die der Node-Server als echten 301
+ausliefert. Der Stand jetzt:
+
+| | Anzahl | Anteil |
+|---|---:|---:|
+| unter derselben Adresse vorhanden | 7 | 2,9 % |
+| über eine Weiterleitung erreichbar | 175 | 73,5 % |
+| bewusst ohne Ziel (Blog, Fachbeiträge) | 56 | 23,5 % |
+| **tot** | **0** | **0 %** |
+
+Die 56 offenen Adressen sind Blog- und Fachbeitragsseiten. Für sie gibt es auf der neuen
+Website keine Entsprechung, und eine Weiterleitung auf eine unpassende Seite wäre eine
+verschleierte Fehlerseite — Google wertet das als „soft 404“. Sie liefern deshalb eine
+ehrliche 404 mit einer Fehlerseite, die weiterhilft.
+
+**Zu entscheiden:** ob die Blogbeiträge übernommen werden. 48 Adressen sind ein
+messbarer Bestand; wenn die Inhalte weiter gelten, lohnt die Übernahme, sonst ist die
+404 richtig.
+
+Die Prüfung läuft ab jetzt im Build mit (`npm run build` bricht bei einer toten Adresse
+ab), damit dieser Stand nicht unbemerkt verfällt.
+
 Die Leistungsverfügbarkeit ist der kritischste Punkt: Die gesamte Cross-Linking-Logik
 hängt daran. Sie steht an einer Stelle (`src/data/leistungen.ts`, Feld `verfuegbar`) und
 ist in Minuten korrigiert.

@@ -92,6 +92,20 @@ node analyse/altbestand/medien-auswahl.mjs         # Auswahl übernehmen, Videos
 Die Auswahl selbst – welches Motiv wohin gehört – steht als Liste in
 `medien-auswahl.mjs`. Sie ist bewusst kurz: 14 von 536 gefundenen Motiven.
 
+## Adressen des Altbestands
+
+Jede Adresse, die Google von der alten Website kennt, muss ankommen. Die Regeln stehen
+als Daten in `src/data/weiterleitungen.ts` und werden vom Server als 301 ausgeliefert.
+
+```bash
+npm run weiterleitungen:planen   # Vorschlag aus Altbestand + Teamdaten neu berechnen
+npm run urls:abgleichen          # Ergebnis prüfen (läuft im Build mit)
+```
+
+Der Build bricht ab, sobald eine bekannte Adresse ins Leere läuft. Ausgenommen sind
+Blog- und Fachbeitragsadressen: Für sie gibt es keinen Ersatzinhalt, und eine
+Weiterleitung auf eine unpassende Seite wäre schlechter als eine ehrliche 404.
+
 ## Sprachen
 
 Deutsch ist Quellsprache und liegt ohne Präfix unter der Wurzel — deshalb muss

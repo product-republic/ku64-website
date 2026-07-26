@@ -35,16 +35,29 @@ const SEITEN = [
   { pfad: '/berlin-charlottenburg/', name: 'standort-kudamm', warum: 'Kopf mit Video' },
   { pfad: '/wilmersdorf/', name: 'standort-wilmersdorf', warum: 'Kopf mit Foto statt Video' },
   { pfad: '/potsdam/', name: 'standort-potsdam', warum: 'Kopf mit Video, zweiter Standort' },
+  { pfad: '/berlinmitte/', name: 'standort-mitte', warum: 'Kopf mit Video, dritter Standort' },
   { pfad: '/berlin-charlottenburg/team/', name: 'team', warum: 'Porträtraster' },
   { pfad: '/berlin-charlottenburg/praxis/', name: 'praxis', warum: 'Praxisaufnahmen' },
-  { pfad: '/leistungen/', name: 'leistungen', warum: 'Kartenraster, Schaltflächen' },
+  { pfad: '/berlin-charlottenburg/anfahrt/', name: 'anfahrt', warum: 'Karte, Wegbeschreibung' },
+  { pfad: '/berlin-charlottenburg/leistungen/zahnimplantate/', name: 'leistung', warum: 'Behandlungsseite mit Ablauf und Preis' },
+  { pfad: '/leistungen/', name: 'leistungen', warum: 'Kartenraster, Standortpunkte' },
   { pfad: '/termine/', name: 'termine', warum: 'Hauptschaltflächen in Menge' },
+  { pfad: '/notfall/', name: 'notfall', warum: 'Rot als Signalfarbe – der einzige Ort dafür' },
+  { pfad: '/laecheln-vorschau/', name: 'laecheln', warum: 'Formular, Hochladen, Hinweise' },
+  { pfad: '/beratung/', name: 'beratung', warum: 'Sprachberater, Zustandsanzeige' },
+  { pfad: '/kontakt/', name: 'kontakt', warum: 'Kartenraster ohne Bild' },
+  { pfad: '/ueber-uns/', name: 'ueber-uns', warum: 'Zahlen, Text ohne Bild' },
+  { pfad: '/karriere/', name: 'karriere', warum: 'Kartenraster' },
+  { pfad: '/gibtsnicht/', name: 'vierhundertvier', warum: 'Fehlerseite' },
 ];
 
 /** Zwei Breiten: Handy und Schreibtisch. Dazwischen liegt nichts Eigenes. */
 const BREITEN = [
-  { name: 'handy', viewport: { width: 390, height: 844 }, scale: 2 },
-  { name: 'gross', viewport: { width: 1440, height: 900 }, scale: 1 },
+  { name: 'handy', viewport: { width: 390, height: 844 }, scale: 2, schema: 'light' },
+  { name: 'gross', viewport: { width: 1440, height: 900 }, scale: 1, schema: 'light' },
+  /* Der dunkle Modus ist kein Sonderfall: Wer sein Telefon nachts benutzt,
+     sieht die Seite so – und Glasflächen kippen dort am ehesten. */
+  { name: 'dunkel', viewport: { width: 1440, height: 900 }, scale: 1, schema: 'dark' },
 ];
 
 await mkdir(ZIEL, { recursive: true });
@@ -60,6 +73,7 @@ for (const breite of BREITEN) {
     viewport: breite.viewport,
     deviceScaleFactor: breite.scale,
     locale: 'de-DE',
+    colorScheme: breite.schema ?? 'light',
     /* Bewegung aus: Ein Bildschirmfoto von einer laufenden Animation zeigt
        einen zufälligen Zwischenstand. */
     reducedMotion: 'reduce',
@@ -68,8 +82,11 @@ for (const breite of BREITEN) {
 
   for (const s of SEITEN) {
     const antwort = await seite.goto(BASIS + s.pfad, { waitUntil: 'networkidle' });
-    if (!antwort?.ok()) {
-      console.error(`  ${s.pfad} → ${antwort?.status()}`);
+    /* Die Fehlerseite MUSS 404 liefern – dort ist das der richtige Status. */
+    const erwartet404 = s.name === 'vierhundertvier';
+    const status = antwort?.status();
+    if (erwartet404 ? status !== 404 : !antwort?.ok()) {
+      console.error(`  ${s.pfad} → ${status}`);
       fehler++;
       continue;
     }
