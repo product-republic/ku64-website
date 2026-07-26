@@ -24,8 +24,10 @@
   --linie: #e7e0d9;
   --linie-stark: #d3c8bd;
   --flaeche: #ffffff;
-  --flaeche-warm: #faf7f4;
-  --flaeche-warm-2: #f3ede7;
+  /* Durchscheinend, damit die Lichtstimmung im Hintergrund sichtbar bleibt.
+     Deckende Bänder würden sie über die halbe Seite abschneiden. */
+  --flaeche-warm: rgb(255 255 255 / 0.5);
+  --flaeche-warm-2: rgb(255 255 255 / 0.72);
   --flaeche-dunkel: #14100e;
 
   /* ── Signalfarben ─────────────────────────────────────────────── */
@@ -88,6 +90,44 @@
   --zeit-lang: 420ms;
   --kurve: cubic-bezier(0.32, 0.72, 0, 1);
 
+  /* ── Glas ─────────────────────────────────────────────────────────
+   *
+   * Materialsprache nach Apple-Vorbild: durchscheinende Ebenen, die den
+   * Hintergrund weichzeichnen, mit einer hellen Kante oben und einer
+   * dunkleren unten. Der Eindruck entsteht nicht durch die Unschärfe
+   * allein, sondern durch diese Lichtkante – deshalb sind es zwei Tokens.
+   *
+   * ZWEI STUFEN, aus einem Leistungsgrund:
+   *   --glas-*        echte Unschärfe (backdrop-filter). GPU-teuer, deshalb
+   *                   nur für die wenigen festen Flächen: Navigation,
+   *                   Chatfenster, Dialoge.
+   *   --scheibe-*     nachgebildetes Glas ohne backdrop-filter. Kostet
+   *                   nichts und wird für die vielen scrollenden Karten
+   *                   verwendet. 40 unscharf gerechnete Karten würden auf
+   *                   dem Handy sichtbar ruckeln.
+   */
+  --glas-flaeche: rgb(255 255 255 / 0.62);
+  --glas-flaeche-stark: rgb(255 255 255 / 0.82);
+  --glas-rand: rgb(255 255 255 / 0.55);
+  --glas-rand-unten: rgb(20 16 14 / 0.09);
+  --glas-glanz: rgb(255 255 255 / 0.9);
+  --glas-unschaerfe: 22px;
+  --glas-saettigung: 1.7;
+
+  --scheibe-flaeche: linear-gradient(
+    150deg,
+    rgb(255 255 255 / 0.9),
+    rgb(255 255 255 / 0.62) 55%,
+    rgb(255 255 255 / 0.74)
+  );
+  --scheibe-rand: rgb(255 255 255 / 0.75);
+
+  /* Weiches Farblicht im Hintergrund. Ohne etwas zum Brechen wirkt Glas
+     auf einer weißen Fläche wie ein grauer Kasten. */
+  --dunst-1: color-mix(in oklab, var(--akzent) 26%, transparent);
+  --dunst-2: color-mix(in oklab, var(--akzent) 12%, transparent);
+  --dunst-3: rgb(120 150 220 / 0.14);
+
   /* ── Ebenen ───────────────────────────────────────────────────── */
   --z-sticky: 10;
   --z-nav: 100;
@@ -109,14 +149,34 @@
     --linie: #2e2823;
     --linie-stark: #423a33;
     --flaeche: #16120f;
-    --flaeche-warm: #1d1815;
-    --flaeche-warm-2: #262019;
+    --flaeche-warm: rgb(255 255 255 / 0.045);
+    --flaeche-warm-2: rgb(255 255 255 / 0.075);
     --flaeche-dunkel: #0d0a08;
 
     --erfolg-flaeche: #12261e;
     --warnung-flaeche: #2a2010;
     --fehler-flaeche: #2b1412;
     --info-flaeche: #141c29;
+
+    /* Im Dunkeln ist Glas dunkles, leicht aufgehelltes Material – nicht
+       weiß mit weniger Deckkraft. Sonst wird es milchig statt tief. */
+    --glas-flaeche: rgb(38 32 27 / 0.58);
+    --glas-flaeche-stark: rgb(30 25 21 / 0.86);
+    --glas-rand: rgb(255 255 255 / 0.14);
+    --glas-rand-unten: rgb(0 0 0 / 0.4);
+    --glas-glanz: rgb(255 255 255 / 0.22);
+
+    --scheibe-flaeche: linear-gradient(
+      150deg,
+      rgb(255 255 255 / 0.09),
+      rgb(255 255 255 / 0.03) 55%,
+      rgb(255 255 255 / 0.06)
+    );
+    --scheibe-rand: rgb(255 255 255 / 0.12);
+
+    --dunst-1: color-mix(in oklab, var(--akzent) 30%, transparent);
+    --dunst-2: color-mix(in oklab, var(--akzent) 14%, transparent);
+    --dunst-3: rgb(90 120 200 / 0.18);
 
     --schatten-sm: 0 1px 2px rgb(0 0 0 / 0.4);
     --schatten: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.45);

@@ -50,11 +50,19 @@ const { titel = 'Häufige Fragen', eintraege, ersteOffen = true } = Astro.props;
   }
 
   .faq-liste {
-    border-top: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
+    box-shadow: inset 0 1px 0 var(--glas-glanz), 0 10px 30px -14px rgb(20 16 14 / 0.14);
+    padding-inline: var(--raum-5);
   }
 
   details {
-    border-bottom: 1px solid var(--linie);
+    border-bottom: 1px solid var(--glas-rand-unten);
+  }
+
+  details:last-child {
+    border-bottom: none;
   }
 
   summary {

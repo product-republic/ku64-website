@@ -35,6 +35,27 @@ body {
   font-synthesis-weight: none;
 }
 
+/**
+ * Lichtstimmung im Hintergrund.
+ *
+ * Glas braucht etwas, das es brechen kann – auf reinem Weiß sieht eine
+ * durchscheinende Fläche aus wie ein grauer Kasten. Diese drei weichen
+ * Farbwolken liegen fest hinter dem Inhalt und nehmen den Standortakzent
+ * auf. Als Pseudoelement mit `position: fixed`, damit kein zusätzliches
+ * Markup nötig ist und beim Scrollen nichts neu gezeichnet wird.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(58rem 42rem at 12% -8%, var(--dunst-1), transparent 62%),
+    radial-gradient(46rem 38rem at 92% 8%, var(--dunst-3), transparent 60%),
+    radial-gradient(52rem 40rem at 78% 96%, var(--dunst-2), transparent 62%);
+}
+
 img,
 picture,
 svg,
@@ -56,6 +77,24 @@ button {
   cursor: pointer;
   background: none;
   border: none;
+}
+
+/**
+ * Das `hidden`-Attribut muss jede Anzeigeregel schlagen.
+ *
+ * Der Browser setzt für [hidden] lediglich `display: none` in seinem eigenen
+ * Stylesheet – und das verliert gegen jede Autoren-Regel mit `display`. Ein
+ * Element mit `display: flex` in der Komponente bleibt deshalb sichtbar,
+ * obwohl `hidden` gesetzt ist. Genau daran ließ sich das Chatfenster nicht
+ * schließen: `.fenster { display: flex }` gewann gegen `[hidden]`.
+ *
+ * Das trifft jedes Element, das per JavaScript ein- und ausgeblendet wird.
+ * Deshalb hier einmal zentral und mit !important – das ist eine der wenigen
+ * Stellen, an denen das die richtige Lösung ist: `hidden` ist eine Aussage
+ * über Sichtbarkeit, keine Gestaltungsfrage.
+ */
+[hidden] {
+  display: none !important;
 }
 
 /* Lange medizinische Fachbegriffe dürfen den Textfluss nicht sprengen. */
@@ -153,6 +192,47 @@ a:hover {
 
 .sprunglink:focus {
   transform: translateY(0);
+}
+
+/**
+ * Glas ist ein Effekt, kein Selbstzweck – wer Transparenz abgeschaltet hat
+ * oder höheren Kontrast braucht, bekommt deckende Flächen. Das ist auf einer
+ * Praxis-Website nicht optional: Lesbarkeit steht über Optik.
+ */
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root {
+    --glas-flaeche: var(--flaeche);
+    --glas-flaeche-stark: var(--flaeche);
+    --glas-rand: var(--linie-stark);
+    --glas-glanz: transparent;
+    --scheibe-flaeche: var(--flaeche);
+    --scheibe-rand: var(--linie-stark);
+    --glas-unschaerfe: 0px;
+    --glas-saettigung: 1;
+    --dunst-1: transparent;
+    --dunst-2: transparent;
+    --dunst-3: transparent;
+  }
+
+  .glas {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Windows-Kontrastmodus: Das System bestimmt die Farben, Glas hat hier nichts
+   zu suchen – sonst verschwinden Ränder komplett. */
+@media (forced-colors: active) {
+  .glas,
+  .karte,
+  .knopf {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid CanvasText;
+  }
+  body::before {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -278,24 +358,42 @@ a:hover {
 }
 
 .knopf-primaer {
-  background: var(--akzent);
+  /* Leichter Verlauf plus Lichtkante oben: der Knopf wirkt gewölbt statt flach. */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--akzent) 92%, white),
+    var(--akzent)
+  );
   color: var(--akzent-kontrast);
-  box-shadow: var(--schatten-sm);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.32),
+    0 1px 2px rgb(20 16 14 / 0.16),
+    0 6px 16px -6px color-mix(in oklab, var(--akzent) 55%, transparent);
 }
 
 .knopf-primaer:hover {
-  background: color-mix(in oklab, var(--akzent) 88%, black);
-  box-shadow: var(--schatten);
+  background: linear-gradient(
+    to bottom,
+    var(--akzent),
+    color-mix(in oklab, var(--akzent) 86%, black)
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.26),
+    0 2px 4px rgb(20 16 14 / 0.18),
+    0 12px 26px -8px color-mix(in oklab, var(--akzent) 60%, transparent);
 }
 
 .knopf-sekundaer {
-  background: var(--flaeche);
+  background: var(--scheibe-flaeche);
   color: var(--tinte);
-  border: 1px solid var(--linie-stark);
+  border: 1px solid var(--scheibe-rand);
+  box-shadow:
+    inset 0 1px 0 var(--glas-glanz),
+    0 1px 2px rgb(20 16 14 / 0.05);
 }
 
 .knopf-sekundaer:hover {
-  border-color: var(--akzent);
+  border-color: color-mix(in oklab, var(--akzent) 55%, transparent);
   color: var(--akzent);
 }
 
@@ -315,6 +413,33 @@ a:hover {
   min-height: 3.25rem;
 }
 
+/* ─────────────────────────── Glas ───────────────────────────
+ *
+ * `.glas` ist die teure Variante mit echtem backdrop-filter. Sie ist den
+ * wenigen festen Flächen vorbehalten – Navigation, Chatfenster, Dialoge –,
+ * weil jede unscharf gerechnete Ebene die GPU kostet.
+ *
+ * Für alles, was in Mengen vorkommt und scrollt, gibt es `.karte`
+ * (siehe unten): nachgebildetes Glas ohne Unschärfe.
+ */
+
+.glas {
+  background: var(--glas-flaeche);
+  backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+  -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+  border: 1px solid var(--glas-rand);
+  /* Die helle Kante oben und die dunkle unten erzeugen den Eindruck einer
+     Materialdicke – ohne sie wirkt Unschärfe allein nur wie Milchglas. */
+  box-shadow:
+    inset 0 1px 0 var(--glas-glanz),
+    inset 0 -1px 0 var(--glas-rand-unten),
+    var(--schatten);
+}
+
+.glas-stark {
+  background: var(--glas-flaeche-stark);
+}
+
 /* ─────────────────────────── Karten ─────────────────────────── */
 
 .karte {
@@ -322,9 +447,15 @@ a:hover {
   display: flex;
   flex-direction: column;
   padding: var(--raum-5);
-  background: var(--flaeche);
-  border: 1px solid var(--linie);
+  /* Nachgebildetes Glas: Farbverlauf plus Lichtkante, kein backdrop-filter.
+     Optisch kaum zu unterscheiden, kostet aber nichts. */
+  background: var(--scheibe-flaeche);
+  border: 1px solid var(--scheibe-rand);
   border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 var(--glas-glanz),
+    0 1px 2px rgb(20 16 14 / 0.04),
+    0 10px 30px -12px rgb(20 16 14 / 0.16);
   transition:
     transform var(--zeit) var(--kurve),
     border-color var(--zeit) var(--kurve),
@@ -333,8 +464,11 @@ a:hover {
 
 .karte-klickbar:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in oklab, var(--akzent) 45%, var(--linie));
-  box-shadow: var(--schatten);
+  border-color: color-mix(in oklab, var(--akzent) 40%, var(--scheibe-rand));
+  box-shadow:
+    inset 0 1px 0 var(--glas-glanz),
+    0 2px 4px rgb(20 16 14 / 0.05),
+    0 20px 44px -14px rgb(20 16 14 / 0.24);
 }
 
 /* Ganze Karte klickbar machen, ohne verschachtelte Links zu erzeugen. */
@@ -361,7 +495,9 @@ a:hover {
   font-size: var(--t-xs);
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: var(--flaeche-warm-2);
+  background: var(--scheibe-flaeche);
+  border: 1px solid var(--scheibe-rand);
+  box-shadow: inset 0 1px 0 var(--glas-glanz);
   color: var(--tinte-weich);
 }
 
@@ -378,8 +514,10 @@ a:hover {
 .hinweis {
   padding: var(--raum-4) var(--raum-5);
   border-radius: var(--radius);
+  border: 1px solid var(--scheibe-rand);
   border-inline-start: 3px solid var(--akzent);
-  background: var(--flaeche-warm);
+  background: var(--scheibe-flaeche);
+  box-shadow: inset 0 1px 0 var(--glas-glanz);
   font-size: var(--t-sm);
   line-height: var(--zeile-normal);
 }

@@ -194,13 +194,20 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 </header>
 
 <style>
+  /*
+   * Die Navigation ist eine der wenigen Stellen mit echtem backdrop-filter:
+   * Sie liegt fest, der Inhalt scrollt darunter durch – genau dafür ist der
+   * Effekt gemacht.
+   */
   .kopf {
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    background: color-mix(in oklab, var(--flaeche) 88%, transparent);
-    backdrop-filter: blur(14px) saturate(1.4);
-    border-bottom: 1px solid var(--linie);
+    background: var(--glas-flaeche);
+    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    border-bottom: 1px solid var(--glas-rand-unten);
+    box-shadow: inset 0 1px 0 var(--glas-glanz);
   }
 
   .kopf-inner {
@@ -310,8 +317,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   /* ── Standortleiste ── */
 
   .standortleiste {
-    border-top: 1px solid var(--linie);
-    background: var(--flaeche-warm);
+    border-top: 1px solid var(--glas-rand-unten);
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0.14), transparent);
     font-size: var(--t-xs);
   }
 
@@ -368,10 +375,13 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     z-index: var(--z-overlay);
     width: min(24rem, calc(100vw - 2rem));
     padding: var(--raum-4);
-    background: var(--flaeche);
-    border: 1px solid var(--linie);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--schatten-lg);
+    /* Schwebendes Element über beliebigem Inhalt: echtes Glas. */
+    background: var(--glas-flaeche-stark);
+    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    border: 1px solid var(--glas-rand);
+    border-radius: var(--radius-xl);
+    box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);
   }
 
   .waehler-hinweis {
@@ -436,7 +446,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     align-items: center;
     justify-content: center;
     border-radius: var(--radius);
-    border: 1px solid var(--linie-stark);
+    border: 1px solid var(--scheibe-rand);
+    background: var(--scheibe-flaeche);
+    box-shadow: inset 0 1px 0 var(--glas-glanz);
   }
 
   .menue-knopf span,
@@ -476,8 +488,10 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   .mobilmenue {
-    border-top: 1px solid var(--linie);
-    background: var(--flaeche);
+    border-top: 1px solid var(--glas-rand-unten);
+    background: var(--glas-flaeche-stark);
+    backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
     padding-block: var(--raum-5);
     max-height: calc(100dvh - 8rem);
     overflow-y: auto;

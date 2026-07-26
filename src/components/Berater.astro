@@ -122,11 +122,18 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     gap: var(--raum-3);
     padding: 0.85rem 1.35rem;
     border-radius: var(--radius-voll);
-    background: var(--akzent);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--akzent) 92%, white),
+      var(--akzent)
+    );
     color: var(--akzent-kontrast);
     font-weight: 600;
     font-size: var(--t-sm);
-    box-shadow: var(--schatten-lg);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.34),
+      0 8px 28px -8px color-mix(in oklab, var(--akzent) 65%, transparent),
+      var(--schatten-lg);
     transition: transform var(--zeit) var(--kurve);
   }
 
@@ -143,10 +150,13 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     flex-direction: column;
     width: min(24rem, calc(100vw - 2rem));
     height: min(34rem, calc(100dvh - 6rem));
-    background: var(--flaeche);
-    border: 1px solid var(--linie);
+    /* Schwebt über der Seite – hier ist echtes Glas richtig. */
+    background: var(--glas-flaeche-stark);
+    backdrop-filter: blur(30px) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(30px) saturate(var(--glas-saettigung));
+    border: 1px solid var(--glas-rand);
     border-radius: var(--radius-xl);
-    box-shadow: var(--schatten-lg);
+    box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);
     overflow: hidden;
   }
 
@@ -156,8 +166,13 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     justify-content: space-between;
     gap: var(--raum-3);
     padding: var(--raum-4) var(--raum-5);
-    background: var(--akzent);
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--akzent) 94%, white),
+      var(--akzent)
+    );
     color: var(--akzent-kontrast);
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.12);
   }
 
   .f-titel {
@@ -210,7 +225,9 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
 
   .blase-bot {
     align-self: flex-start;
-    background: var(--flaeche-warm);
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
+    box-shadow: inset 0 1px 0 var(--glas-glanz);
     border-end-start-radius: var(--radius-sm);
   }
 
@@ -283,7 +300,9 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     flex-shrink: 0;
     padding: 0.4rem 0.8rem;
     border-radius: var(--radius-voll);
-    border: 1px solid var(--linie-stark);
+    background: var(--scheibe-flaeche);
+    box-shadow: inset 0 1px 0 var(--glas-glanz);
+    border: 1px solid var(--scheibe-rand);
     font-size: var(--t-xs);
     color: var(--tinte-weich);
     white-space: nowrap;

@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
     "check": "astro check",
-    "bilder:pruefen": "node scripts/bilder-pruefen.mjs"
+    "bilder:pruefen": "node scripts/bilder-pruefen.mjs",
+    "oberflaeche:pruefen": "node scripts/oberflaeche-pruefen.mjs"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "type": "module",
   "private": true,
   "devDependencies": {
+    "playwright": "^1.62.0",
     "wawoff2": "^2.0.1"
   }
 }
