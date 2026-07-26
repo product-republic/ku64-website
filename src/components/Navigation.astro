@@ -234,7 +234,17 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     gap: var(--raum-5);
     min-height: 4rem;
     margin-block-start: var(--raum-3);
-    padding-inline: var(--raum-5);
+    /*
+     * Ringsum derselbe Abstand.
+     *
+     * Der Wert ist nicht frei gewählt, sondern ausgerechnet: Die Leiste ist
+     * 4 rem hoch, die Schaltfläche darin 2,75 rem (das Mindestmaß für ein
+     * Berührungsziel nach WCAG 2.2). Bleiben 1,25 rem, also 0,625 rem oben
+     * und unten. Genau so viel steht auch links und rechts – dadurch sitzt
+     * die Schaltfläche in einer gleichmäßigen Fassung statt an die rechte
+     * Kante zu stoßen.
+     */
+    padding: 0.625rem;
     border: 1px solid var(--glas-rand);
     border-radius: var(--radius-voll);
     background: var(--glas-flaeche);
@@ -269,6 +279,10 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
      ein Logo, das man nicht lesen kann, ist keins. */
   .logo {
     color: var(--tinte);
+    /* Das Wortbild braucht Luft zur gerundeten Kante, sonst wirkt es
+       angeschnitten – anders als eine Schaltfläche hat es keine eigene
+       Fläche, die den Abstand sichtbar macht. */
+    padding-inline-start: 0.9rem;
   }
 
   .logo-ort {
