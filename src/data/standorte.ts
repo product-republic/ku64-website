@@ -58,7 +58,18 @@ export interface Standort {
   };
   /** Doctolib-Praxis-Slugs. Ein Standort kann mehrere Einträge haben (z. B. KFO separat). */
   doctolib: { label: string; slug: string }[];
-  /** Farbakzent zur sanften Unterscheidung der Standorte im einheitlichen Design. */
+  /**
+   * Farbakzent des Standorts.
+   *
+   * Steht bei allen Standorten auf der Hausfarbe. Eine eigene Farbe je
+   * Standort war eine gestalterische Idee und ein Markenfehler: KU64 ist eine
+   * Marke mit vier Adressen, keine vier Marken. Wer in Potsdam Goldbraun und
+   * am Kurfürstendamm Orange sieht, hält es für zwei Praxen.
+   *
+   * Das Feld bleibt bestehen, weil die Orientierung ein echtes Bedürfnis ist –
+   * sie wird jetzt aber über den Standortnamen in der Leiste gelöst, nicht
+   * über die Farbe.
+   */
   akzent: string;
   zuPruefen: boolean;
 }
@@ -112,7 +123,7 @@ export const STANDORTE: Standort[] = [
       { label: 'Zahnmedizin', slug: 'ku64-berlin' },
       { label: 'Kieferorthopädie', slug: 'ku64-kieferorthopaedie' },
     ],
-    akzent: '#E8532E',
+    akzent: '#FFCC00',
     zuPruefen: true,
   },
   {
@@ -151,7 +162,7 @@ export const STANDORTE: Standort[] = [
       barrierefrei: true,
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-hausvogteiplatz' }],
-    akzent: '#2E6BE8',
+    akzent: '#FFCC00',
     zuPruefen: true,
   },
   {
@@ -200,7 +211,7 @@ export const STANDORTE: Standort[] = [
         'Bitte melden Sie sich vorab, wenn Sie einen barrierefreien Zugang benötigen – wir finden gemeinsam eine Lösung oder vermitteln an den Kurfürstendamm.',
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-gasteiner-strasse-9-die-kiezpraxis' }],
-    akzent: '#1F9E74',
+    akzent: '#FFCC00',
     zuPruefen: true,
   },
   {
@@ -238,7 +249,7 @@ export const STANDORTE: Standort[] = [
       barrierefrei: true,
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten' }],
-    akzent: '#B8873A',
+    akzent: '#FFCC00',
     zuPruefen: true,
   },
 ];

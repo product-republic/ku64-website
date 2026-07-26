@@ -122,17 +122,15 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     gap: var(--raum-3);
     padding: 0.85rem 1.35rem;
     border-radius: var(--radius-voll);
-    background: linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--akzent) 92%, white),
-      var(--akzent)
-    );
-    color: var(--akzent-kontrast);
+    /* Dunkel statt gelb. Auf einem Bildschirm soll genau eine Sache gelb sein –
+       die Terminbuchung. Wären es zwei, wäre keine mehr die erste. */
+    background: var(--tinte);
+    color: var(--flaeche);
     font-weight: 600;
     font-size: var(--t-sm);
     box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.34),
-      0 8px 28px -8px color-mix(in oklab, var(--akzent) 65%, transparent),
+      inset 0 1px 0 rgb(255 255 255 / 0.14),
+      0 8px 28px -8px rgb(29 29 27 / 0.5),
       var(--schatten-lg);
     transition: transform var(--zeit) var(--kurve);
   }
@@ -244,7 +242,7 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
   }
 
   .blase-bot :global(a) {
-    color: var(--akzent);
+    color: var(--akzent-schrift);
   }
 
   .blase-bot :global(ul) {
@@ -310,8 +308,8 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
   }
 
   .chip:hover {
-    border-color: var(--akzent);
-    color: var(--akzent);
+    border-color: var(--akzent-schrift);
+    color: var(--akzent-schrift);
   }
 
   .f-eingabe {
@@ -337,7 +335,7 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
   }
 
   .f-eingabe textarea:focus {
-    border-color: var(--akzent);
+    border-color: var(--akzent-schrift);
   }
 
   .senden {

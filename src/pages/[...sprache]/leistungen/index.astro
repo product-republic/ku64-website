@@ -177,7 +177,7 @@ const schema = [
     margin-block-start: var(--raum-6); padding: 0 var(--raum-4);
     background: var(--scheibe-flaeche); box-shadow: inset 0 1px 0 var(--glas-glanz); border: 1px solid var(--scheibe-rand); border-radius: var(--radius-voll);
   }
-  .suche:focus-within { border-color: var(--akzent); }
+  .suche:focus-within { border-color: var(--akzent-schrift); }
   .suche svg { flex-shrink: 0; color: var(--tinte-leise); }
   .suche input { flex: 1; min-width: 0; padding-block: 0.85rem; border: none; background: none; outline: none; font-size: var(--t-sm); }
   .treffer { min-height: 1.4em; margin-block-start: var(--raum-2); font-size: var(--t-xs); color: var(--tinte-leise); }
@@ -199,7 +199,7 @@ const schema = [
   .eintrag { flex: 1; min-width: 14rem; text-decoration: none; }
   .e-name { display: block; font-weight: 600; }
   .e-kurz { display: block; font-size: var(--t-sm); color: var(--tinte-leise); }
-  .eintrag:hover .e-name { color: var(--akzent); }
+  .eintrag:hover .e-name { color: var(--akzent-schrift); }
   .orte { display: flex; gap: var(--raum-2); }
   .ort-punkt {
     display: grid; place-items: center; width: 2rem; height: 2rem;
@@ -207,7 +207,7 @@ const schema = [
     background: var(--flaeche-warm-2); color: var(--linie-stark);
     transition: all var(--zeit-schnell) var(--kurve);
   }
-  .ort-punkt.da { background: var(--akzent); color: #fff; }
+  .ort-punkt.da { background: var(--akzent); color: var(--akzent-kontrast); }
   .ort-punkt:hover { transform: scale(1.15); }
   .leer { padding: var(--raum-6); text-align: center; color: var(--tinte-weich); background: var(--flaeche-warm); border-radius: var(--radius-lg); }
 </style>

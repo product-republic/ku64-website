@@ -8,21 +8,48 @@
  */
 
 :root {
-  /* ── Markenfarben ─────────────────────────────────────────────── */
-  --ku-orange: #e8532e;
-  --ku-orange-hell: #ff7a52;
-  --ku-orange-dunkel: #c33d1b;
+  /* ── Markenfarben ─────────────────────────────────────────────────
+   *
+   * HERKUNFT: Aus den Originaldateien der Praxis gemessen, nicht geschätzt.
+   * Das Gelb stammt aus ku64-logo-gelb.webp (18992 von rund 19700 Pixeln
+   * tragen exakt diesen Wert), Schwarz und Rot aus der Farbtabelle des
+   * Favicons KU64-die-Zahnspezialisten-Favicon.png. Vor dem Live-Gang bitte
+   * gegen das Corporate-Design-Handbuch bestätigen lassen – gemessen ist
+   * belastbarer als geraten, aber nicht dasselbe wie freigegeben.
+   *
+   * EINSATZ: Beide Farben treten sparsam auf. Das ist keine Zurückhaltung um
+   * ihrer selbst willen, sondern eine Anforderung des Gegenstands: Wer eine
+   * Zahnbehandlung sucht, ist häufig beunruhigt. Eine Seite, die mit Signal-
+   * farben arbeitet, verstärkt das. Ruhe entsteht durch viel Weißraum und
+   * ruhige Typografie; die Hausfarbe markiert darin die wenigen Stellen, an
+   * denen es weitergeht.
+   *
+   * Gelb ist eine Füllfarbe, niemals Schriftfarbe: Gelb auf Weiß erreicht ein
+   * Kontrastverhältnis von 1,5:1 – unlesbar, und zwar für alle, nicht nur für
+   * Menschen mit Sehschwäche. Schwarz auf Gelb erreicht 11,2:1.
+   *
+   * Rot ist die Schriftfarbe für Betonung (8,0:1 auf Weiß) und bleibt dem
+   * vorbehalten, was wirklich dringlich ist – Notfall, Warnung. Wird es zur
+   * allgemeinen Auszeichnungsfarbe, sagt es nichts mehr aus.
+   */
+  --ku-gelb: #ffcc00;
+  --ku-gelb-tief: #e0b400;
+  --ku-rot: #9f1537;
+  --ku-rot-hell: #c2264a;
+  --ku-schwarz: #1d1d1b;
 
-  /* Standortakzent – wird pro Standort überschrieben. */
-  --akzent: var(--ku-orange);
-  --akzent-kontrast: #ffffff;
+  --akzent: var(--ku-gelb);
+  /* Schrift auf der Hausfarbe. Schwarz, nicht Weiß – siehe Kontrast oben. */
+  --akzent-kontrast: var(--ku-schwarz);
+  /* Auszeichnungsfarbe für Schrift auf hellem Grund. */
+  --akzent-schrift: var(--ku-rot);
 
   /* ── Neutrale Töne ────────────────────────────────────────────── */
-  --tinte: #14100e;
-  --tinte-weich: #4a423d;
-  --tinte-leise: #7d736c;
-  --linie: #e7e0d9;
-  --linie-stark: #d3c8bd;
+  --tinte: #1d1d1b;
+  --tinte-weich: #4a4a46;
+  --tinte-leise: #78786f;
+  --linie: #e6e4de;
+  --linie-stark: #cfccc2;
   --flaeche: #ffffff;
   /* Durchscheinend, damit die Lichtstimmung im Hintergrund sichtbar bleibt.
      Deckende Bänder würden sie über die halbe Seite abschneiden. */
@@ -35,7 +62,7 @@
   --erfolg-flaeche: #e8f5ef;
   --warnung: #9a6b12;
   --warnung-flaeche: #fdf4e3;
-  --fehler: #b4291f;
+  --fehler: #9f1537;
   --fehler-flaeche: #fdeceb;
   --info-flaeche: #eef3fb;
 
@@ -180,9 +207,13 @@
 
   /* Weiches Farblicht im Hintergrund. Ohne etwas zum Brechen wirkt Glas
      auf einer weißen Fläche wie ein grauer Kasten. */
-  --dunst-1: color-mix(in oklab, var(--akzent) 26%, transparent);
-  --dunst-2: color-mix(in oklab, var(--akzent) 12%, transparent);
-  --dunst-3: rgb(120 150 220 / 0.14);
+  /* Deutlich zurückgenommen gegenüber der ersten Fassung: Das Licht soll das
+     Glas brechen, nicht die Seite einfärben. Gelb großflächig wirkt schnell
+     billig – bei einer Zahnarztpraxis zusätzlich unangenehm, weil Gelb genau
+     die Farbe ist, die niemand mit Zähnen verbunden sehen möchte. */
+  --dunst-1: color-mix(in oklab, var(--ku-gelb) 5%, transparent);
+  --dunst-2: color-mix(in oklab, var(--ku-gelb) 3%, transparent);
+  --dunst-3: rgb(120 150 220 / 0.07);
 
   /* ── Ebenen ───────────────────────────────────────────────────── */
   --z-sticky: 10;
@@ -199,12 +230,16 @@
  */
 @media (prefers-color-scheme: dark) {
   :root {
-    --tinte: #f5f1ed;
-    --tinte-weich: #c4bab2;
-    --tinte-leise: #8f857d;
-    --linie: #2e2823;
-    --linie-stark: #423a33;
-    --flaeche: #16120f;
+    --tinte: #f2f1ee;
+    --tinte-weich: #c0bfb8;
+    --tinte-leise: #8b8a82;
+    --linie: #2b2b28;
+    --linie-stark: #3e3e39;
+    --flaeche: #141412;
+
+    /* Umgekehrt zum hellen Modus: Auf Schwarz trägt Gelb die Betonung
+       (11,2:1), das Markenrot fiele auf 3:1 und wäre grenzwertig. */
+    --akzent-schrift: var(--ku-gelb);
     --flaeche-warm: rgb(255 255 255 / 0.045);
     --flaeche-warm-2: rgb(255 255 255 / 0.075);
     --flaeche-dunkel: #0d0a08;
@@ -230,9 +265,9 @@
     );
     --scheibe-rand: rgb(255 255 255 / 0.12);
 
-    --dunst-1: color-mix(in oklab, var(--akzent) 30%, transparent);
-    --dunst-2: color-mix(in oklab, var(--akzent) 14%, transparent);
-    --dunst-3: rgb(90 120 200 / 0.18);
+    --dunst-1: color-mix(in oklab, var(--ku-gelb) 11%, transparent);
+    --dunst-2: color-mix(in oklab, var(--ku-gelb) 6%, transparent);
+    --dunst-3: rgb(90 120 200 / 0.1);
 
     --schatten-sm: 0 1px 2px rgb(0 0 0 / 0.4);
     --schatten: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.45);

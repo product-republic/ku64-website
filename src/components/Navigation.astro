@@ -9,6 +9,7 @@
 import { inhalte } from '../i18n/daten';
 import { type Standort, istGeoeffnet } from '../data/standorte';
 import Sprachwahl from './Sprachwahl.astro';
+import Logo from './Logo.astro';
 import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
@@ -64,7 +65,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       class="logo"
       aria-label={standort ? `KU64 ${standort.name}, zur Startseite` : 'KU64, zur Startseite'}
     >
-      <span class="logo-wort">KU64</span>
+      <Logo hoehe="1.75rem" dekorativ />
       {standort && <span class="logo-ort">{standort.name}</span>}
     </a>
 
@@ -264,12 +265,10 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     flex-shrink: 0;
   }
 
-  .logo-wort {
-    font-family: var(--schrift-titel);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    color: var(--akzent);
+  /* Die Marke steht in Schriftfarbe. Gelb wäre auf Weiß nicht lesbar – und
+     ein Logo, das man nicht lesen kann, ist keins. */
+  .logo {
+    color: var(--tinte);
   }
 
   .logo-ort {
@@ -423,7 +422,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     padding: 0.25rem 0.6rem;
     border-radius: var(--radius-voll);
     font-weight: 600;
-    color: var(--akzent);
+    color: var(--akzent-schrift);
     cursor: pointer;
     list-style: none;
   }

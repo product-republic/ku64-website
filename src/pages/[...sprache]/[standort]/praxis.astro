@@ -162,7 +162,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
   .zahlen dd {
     margin: var(--raum-1) 0 0;
     font-family: var(--schrift-titel);
-    font-size: var(--t-2xl); font-weight: 600; color: var(--akzent);
+    font-size: var(--t-2xl); font-weight: 600; color: var(--akzent-schrift);
   }
   .zahlen p { font-size: var(--t-xs); color: var(--tinte-weich); }
   .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
@@ -173,10 +173,10 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
     grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
   }
   .merkmale li { display: flex; align-items: flex-start; gap: var(--raum-3); line-height: var(--zeile-normal); }
-  .merkmale svg { flex-shrink: 0; margin-block-start: 4px; color: var(--akzent); }
+  .merkmale svg { flex-shrink: 0; margin-block-start: 4px; color: var(--akzent-schrift); }
   .bereich { text-decoration: none; }
   .bereich h3 { font-size: var(--t-lg); margin-block-end: var(--raum-2); }
   .bereich p { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); margin-block-end: var(--raum-4); }
-  .anzahl { margin-block-start: auto; font-size: var(--t-xs); font-weight: 600; color: var(--akzent); }
+  .anzahl { margin-block-start: auto; font-size: var(--t-xs); font-weight: 600; color: var(--akzent-schrift); }
   .alle { margin-block-start: var(--raum-6); }
 </style>

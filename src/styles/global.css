@@ -538,12 +538,7 @@ a:hover {
 /* ─────────────────────────── Schaltflächen ─────────────────────────── */
 
 .knopf {
-  /* Der Lichtreflex wandert beim Überfahren über die Schaltfläche. Weil er
-     innerhalb der Fläche bleiben muss, ist hier `overflow: hidden` richtig –
-     bei Karten wäre es falsch, dort würde es den Schlagschatten abschneiden. */
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -561,30 +556,6 @@ a:hover {
     background-color var(--zeit-schnell) var(--kurve),
     border-color var(--zeit-schnell) var(--kurve),
     box-shadow var(--zeit-schnell) var(--kurve);
-}
-
-.knopf::before {
-  content: '';
-  position: absolute;
-  inset-block: -60%;
-  inset-inline-start: -60%;
-  z-index: -1;
-  width: 40%;
-  pointer-events: none;
-  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.45), transparent);
-  opacity: 0;
-  transform: translate3d(0, 0, 0) skewX(-14deg);
-  transition:
-    opacity var(--zeit) var(--kurve-weich),
-    transform var(--zeit-lang) var(--kurve-weich);
-}
-
-@media (hover: hover) {
-  .knopf:hover::before,
-  .knopf:focus-visible::before {
-    opacity: 1;
-    transform: translate3d(420%, 0, 0) skewX(-14deg);
-  }
 }
 
 .knopf:active {
@@ -647,7 +618,7 @@ a:hover {
 
 .knopf-sekundaer:hover {
   border-color: color-mix(in oklab, var(--akzent) 55%, transparent);
-  color: var(--akzent);
+  color: var(--akzent-schrift);
 }
 
 .knopf-leise {
@@ -657,7 +628,7 @@ a:hover {
 }
 
 .knopf-leise:hover {
-  color: var(--akzent);
+  color: var(--akzent-schrift);
 }
 
 .knopf-gross {
@@ -781,8 +752,10 @@ a:hover {
 }
 
 .marke-akzent {
-  background: color-mix(in oklab, var(--akzent) 12%, transparent);
-  color: color-mix(in oklab, var(--akzent) 78%, var(--tinte));
+  /* Gelb als schmale Fläche, Schrift in Tinte. Gelbe Schrift auf gelblichem
+     Grund war der schlechteste denkbare Fall: unauffällig UND unlesbar. */
+  background: color-mix(in oklab, var(--ku-gelb) 22%, transparent);
+  color: var(--tinte);
 }
 
 .marke-erfolg {
