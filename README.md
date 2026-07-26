@@ -40,10 +40,43 @@ npm start          # gebaute Fassung lokal starten
 | `src/lib/seo.ts` | Titel, Descriptions, Canonicals, JSON-LD |
 | `src/lib/wissen.ts` | Wissensbasis des Chatbots, aus denselben Daten erzeugt |
 | `src/pages/api/` | Chat, Lächeln-Vorschau, Sprach-Token |
+| `src/i18n/sprachen.ts` | Sprachregister — einzige Quelle, welche Sprachen es gibt |
+| `src/i18n/texte.ts` | Oberflächentexte auf Deutsch (Quellfassung) |
+| `src/inhalte/<code>.json` | Übersetzungskataloge, eingecheckt und gegenlesbar |
+| `src/middleware.ts` | Biegt interne Links auf die Sprache der Seite um |
 
 **Eine Leistung an einem Standort ergänzen oder entfernen:** Feld `verfuegbar` in
 `src/data/leistungen.ts` ändern. Seiten, interne Verlinkung, Vergleichstabelle,
 Sitemap, `llms.txt` und die Chatbot-Antworten ziehen automatisch nach.
+
+## Sprachen
+
+Deutsch ist Quellsprache und liegt ohne Präfix unter der Wurzel — deshalb muss
+zum Relaunch keine deutsche Adresse umgeleitet werden. Jede weitere Sprache
+bekommt ein Präfix (`/en/`, `/fr/`).
+
+```bash
+npm run sprachen:pruefen              # Rückstand anzeigen (läuft im Build mit)
+npm run sprachen:sync                 # Fehlendes und Veraltetes übersetzen
+npm run sprachen:sync -- --trocken    # nur zeigen, was zu tun wäre
+```
+
+Jeder Katalogeintrag trägt den Fingerabdruck des deutschen Textes, aus dem er
+entstand. Ändert sich das Original, gilt die Übersetzung als **veraltet** statt
+stillschweigend weiterzulaufen.
+
+Eine Sprache gilt als **freigegeben**, wenn sie vollständig übersetzt und
+redaktionell geprüft ist (Feld `freigegeben` im Register). Erst dann wird sie
+indexiert, in `hreflang` angeboten, in die Sitemap aufgenommen und als Ziel der
+automatischen Browsererkennung verwendet. Vorher wird sie gebaut und ist über
+den Sprachwähler erreichbar, trägt aber `noindex` — so lässt sich die
+Übersetzung im fertigen Layout gegenlesen, ohne dass eine halbfertige Seite in
+die Suchergebnisse gerät. Sobald `freigegeben: true` steht, bricht **jede**
+Lücke den Build ab.
+
+**Eine Sprache aufnehmen:** Eintrag in `src/i18n/sprachen.ts` ergänzen, leere
+`src/inhalte/<code>.json` anlegen, `npm run sprachen:sync` laufen lassen. Routen,
+hreflang, Sitemap und Sprachwähler ziehen automatisch nach.
 
 ## Konfiguration
 

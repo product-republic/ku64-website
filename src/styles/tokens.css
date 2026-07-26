@@ -84,11 +84,38 @@
   --schatten: 0 2px 4px rgb(20 16 14 / 0.04), 0 8px 24px rgb(20 16 14 / 0.07);
   --schatten-lg: 0 4px 8px rgb(20 16 14 / 0.05), 0 20px 48px rgb(20 16 14 / 0.11);
 
-  /* ── Bewegung ─────────────────────────────────────────────────── */
+  /* ── Bewegung ─────────────────────────────────────────────────────
+   *
+   * "Flüssig" heißt hier nicht länger, sondern anders: Eine Bewegung wirkt
+   * dann wie Material und nicht wie eine Animation, wenn sie schnell anläuft,
+   * spät abbremst und am Ende ein kaum sichtbares Stück überschwingt – so
+   * verhält sich Masse.
+   *
+   * Dafür steht `linear()`: eine Kurve aus Stützpunkten, mit der sich eine
+   * gedämpfte Feder nachbilden lässt, was mit cubic-bezier nicht geht (das
+   * kann nicht über 1 hinaus und wieder zurück). Browser ohne `linear()`
+   * fallen auf `--kurve` zurück; die Bewegung ist dann etwas nüchterner, aber
+   * nie kaputt.
+   *
+   * Bewegt werden ausschließlich `transform` und `opacity`. Beides läuft im
+   * Compositor, ohne Layout und ohne Neuzeichnen – jede Animation auf
+   * `width`, `top` oder `box-shadow` würde bei jedem Bild das Layout neu
+   * berechnen und schlägt in Lighthouse als Ruckeln durch.
+   */
   --zeit-schnell: 140ms;
   --zeit: 240ms;
   --zeit-lang: 420ms;
   --kurve: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Gedämpfte Feder mit leichtem Überschwingen – für Dinge, die auftauchen. */
+  --kurve-feder: linear(
+    0, 0.0068 1.5%, 0.0277 3.1%, 0.1096 6.4%, 0.4231 14.3%, 0.5407 17.4%,
+    0.6419 20.6%, 0.7259 23.8%, 0.7956 27.1%, 0.8526 30.5%, 0.8988 34%,
+    0.9355 37.7%, 0.9639 41.6%, 0.9853 45.9%, 1.0006 50.7%, 1.0107 56.1%,
+    1.0161 62.5%, 1.0174 71.2%, 1.0154 87.4%, 1.0113
+  );
+  /* Weiches Ausgleiten ohne Überschwingen – für Zustandswechsel an Ort. */
+  --kurve-weich: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ── Glas ─────────────────────────────────────────────────────────
    *

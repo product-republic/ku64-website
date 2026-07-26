@@ -213,18 +213,47 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     position: sticky;
     top: 0;
     z-index: var(--z-nav);
-    background: var(--glas-flaeche);
-    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
-    -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
-    border-bottom: 1px solid var(--glas-rand-unten);
-    box-shadow: inset 0 1px 0 var(--glas-glanz);
   }
 
+  /*
+   * Schwebende Glasleiste statt durchgehendem Balken.
+   *
+   * Die Leiste steht frei im Raum und lässt links und rechts die
+   * Hintergrundstimmung durch – so wirkt sie wie eine aufgelegte Scheibe und
+   * nicht wie eine angeklebte Kante. Der Abstand nach oben ist bewusst klein:
+   * Die Leiste soll schweben, aber beim Scrollen nicht wandern.
+   *
+   * Wichtig fürs Layout: Die Leiste hat eine feste Mindesthöhe. Sie darf beim
+   * Laden nicht wachsen, sonst rutscht der gesamte Inhalt darunter nach – das
+   * ist genau der Layoutsprung, den Lighthouse als CLS misst.
+   */
   .kopf-inner {
     display: flex;
     align-items: center;
     gap: var(--raum-5);
-    min-height: 4.25rem;
+    min-height: 4rem;
+    margin-block-start: var(--raum-3);
+    padding-inline: var(--raum-5);
+    border: 1px solid var(--glas-rand);
+    border-radius: var(--radius-voll);
+    background: var(--glas-flaeche);
+    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      inset 0 -1px 0 var(--glas-rand-unten),
+      var(--schatten);
+  }
+
+  /* Auf schmalen Geräten bleibt die Leiste eine Leiste – eine gerundete Pille
+     über die volle Breite verschenkt dort nur Platz. */
+  @media (max-width: 40rem) {
+    .kopf-inner {
+      margin-block-start: 0;
+      border-inline: 0;
+      border-block-start: 0;
+      border-radius: 0;
+    }
   }
 
   .logo {
@@ -257,32 +286,47 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
   .haupt-liste {
     display: flex;
-    gap: var(--raum-5);
+    gap: var(--raum-1);
     list-style: none;
     padding: 0;
   }
 
+  /*
+   * Navigationspunkte als Pillen, wie in den Entwürfen.
+   *
+   * Die Füllung liegt in einem Pseudoelement, das nur skaliert und ein- und
+   * ausgeblendet wird. Damit bewegt sich beim Überfahren ausschließlich der
+   * Compositor; würde stattdessen der Hintergrund des Links selbst wechseln,
+   * müsste der Browser die Fläche bei jedem Bild neu zeichnen.
+   */
   .haupt-link {
     position: relative;
+    /* Eigener Stapelkontext, damit die Füllung mit z-index -1 hinter dem Text
+       landet und nicht hinter der Glasleiste verschwindet. */
+    isolation: isolate;
     display: block;
-    padding-block: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-voll);
     font-size: var(--t-sm);
     font-weight: 500;
     text-decoration: none;
     color: var(--tinte-weich);
-    transition: color var(--zeit-schnell) var(--kurve);
+    transition: color var(--zeit) var(--kurve-weich);
   }
 
   .haupt-link::after {
     content: '';
     position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: 2px;
-    background: var(--akzent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--zeit) var(--kurve);
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
+    opacity: 0;
+    transform: scale(0.86);
+    transition:
+      opacity var(--zeit) var(--kurve-weich),
+      transform var(--zeit-lang) var(--kurve-feder);
   }
 
   .haupt-link:hover,
@@ -291,8 +335,21 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   .haupt-link:hover::after,
+  .haupt-link:focus-visible::after,
   .haupt-link.ist-aktiv::after {
-    transform: scaleX(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Der aktive Punkt trägt zusätzlich den Standortakzent – sonst sähe er
+     genauso aus wie der gerade überfahrene und man wüsste nicht, wo man ist. */
+  .haupt-link.ist-aktiv {
+    color: var(--akzent-kontrast);
+  }
+
+  .haupt-link.ist-aktiv::after {
+    background: var(--akzent);
+    border-color: transparent;
   }
 
   .kopf-aktionen {
@@ -326,9 +383,14 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
   /* ── Standortleiste ── */
 
+  /*
+   * Die Standortleiste trägt keine eigene Kante mehr.
+   *
+   * Unter einer frei schwebenden Pille wirkt eine durchgehende Linie wie ein
+   * abgerissener Rest der alten Balkennavigation – sie schneidet genau dort
+   * durch, wo die Leiste eigentlich schweben soll.
+   */
   .standortleiste {
-    border-top: 1px solid var(--glas-rand-unten);
-    background: linear-gradient(to bottom, rgb(255 255 255 / 0.14), transparent);
     font-size: var(--t-xs);
   }
 

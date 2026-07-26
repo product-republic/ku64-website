@@ -54,6 +54,41 @@ body::before {
     radial-gradient(58rem 42rem at 12% -8%, var(--dunst-1), transparent 62%),
     radial-gradient(46rem 38rem at 92% 8%, var(--dunst-3), transparent 60%),
     radial-gradient(52rem 40rem at 78% 96%, var(--dunst-2), transparent 62%);
+  /* Etwas größer als der Bildschirm, damit die Drift unten keine Kante zeigt. */
+  scale: 1.15;
+  will-change: transform;
+}
+
+/**
+ * Das Licht im Hintergrund bewegt sich mit dem Scrollen.
+ *
+ * Bewusst an den Scrollfortschritt gekoppelt und nicht als Dauerschleife: Eine
+ * Endlosanimation hält die Grafikeinheit dauerhaft beschäftigt, auch wenn
+ * niemand hinsieht – das kostet Akku und taucht in der Messung als ständige
+ * Compositor-Arbeit auf. `animation-timeline: scroll()` läuft dagegen im
+ * Compositor, ohne einen einzigen Scroll-Handler in JavaScript, und steht
+ * still, sobald das Scrollen aufhört.
+ *
+ * Ergebnis: Die Farbwolken ziehen langsam gegen die Leserichtung. Das ist der
+ * "flüssige" Eindruck – Tiefe durch Parallaxe, nicht durch Bewegung um ihrer
+ * selbst willen.
+ */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    body::before {
+      animation: licht-drift linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+@keyframes licht-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-2%, -6%, 0) rotate(-4deg);
+  }
 }
 
 img,
@@ -249,6 +284,96 @@ a:hover {
   }
 }
 
+/* ─────────────────────────── Flüssige Bewegung ─────────────────────────── */
+
+/**
+ * Abschnitte steigen beim Hereinscrollen auf.
+ *
+ * Zwei Entscheidungen, die für Lighthouse den Unterschied machen:
+ *
+ * 1. Der Ausgangszustand (unsichtbar, leicht versetzt) steht AUSSCHLIESSLICH
+ *    innerhalb von `@supports (animation-timeline: view())`. Stünde er außen,
+ *    bliebe der Inhalt in jedem Browser ohne diese Technik dauerhaft
+ *    unsichtbar – für Menschen wie für Suchmaschinen. Progressive Erweiterung
+ *    heißt hier: ohne Unterstützung ist einfach alles sofort da.
+ *
+ * 2. Es läuft kein IntersectionObserver und kein Scroll-Handler. Die Zeitachse
+ *    ist der Scrollfortschritt des Elements selbst; die Animation liegt im
+ *    Compositor. Das ist der Unterschied zwischen einer Bibliothek mit 15 kB
+ *    JavaScript, die bei jedem Bild den Hauptthread anfasst, und null Bytes.
+ *
+ * Nicht anwenden auf alles oberhalb der Falz: Was beim Laden sichtbar ist,
+ * muss sofort dastehen, sonst verschiebt sich der größte Inhaltsblock (LCP)
+ * um die Dauer der Animation nach hinten.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .aufsteigen {
+      animation: aufsteigen both var(--kurve-feder);
+      animation-timeline: view();
+      /* Startet, wenn das Element 12 % über die Unterkante gestiegen ist,
+         und ist bei 40 % Sichtbarkeit fertig – die Bewegung endet, bevor
+         man den Abschnitt zu lesen beginnt. */
+      animation-range: entry 12% cover 40%;
+    }
+  }
+}
+
+@keyframes aufsteigen {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.75rem, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/**
+ * Glanzkante, die beim Überfahren über die Fläche wandert.
+ *
+ * Der Lichtreflex ist das, was Glas von milchigem Kunststoff unterscheidet.
+ * Nachgebildet mit einem einzigen Pseudoelement, das quer über die Fläche
+ * geschoben wird – nur `transform`, also kein Neuzeichnen. Ein Reflex, der
+ * dem Mauszeiger folgt, bräuchte einen Handler bei jeder Mausbewegung; der
+ * Zugewinn wäre gering und die Rechnung dafür ständig.
+ */
+.glanz {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.glanz::after {
+  content: '';
+  position: absolute;
+  inset-block: -50%;
+  inset-inline-start: -60%;
+  z-index: 1;
+  width: 45%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    var(--glas-glanz) 45%,
+    transparent
+  );
+  opacity: 0;
+  transform: translate3d(0, 0, 0) skewX(-14deg);
+  transition:
+    opacity var(--zeit) var(--kurve-weich),
+    transform var(--zeit-lang) var(--kurve-weich);
+}
+
+@media (hover: hover) {
+  .glanz:hover::after,
+  .glanz:focus-within::after {
+    opacity: 0.85;
+    transform: translate3d(340%, 0, 0) skewX(-14deg);
+  }
+}
+
 /* ─────────────────────────── Layout-Bausteine ─────────────────────────── */
 
 .huelle {
@@ -334,6 +459,12 @@ a:hover {
 /* ─────────────────────────── Schaltflächen ─────────────────────────── */
 
 .knopf {
+  /* Der Lichtreflex wandert beim Überfahren über die Schaltfläche. Weil er
+     innerhalb der Fläche bleiben muss, ist hier `overflow: hidden` richtig –
+     bei Karten wäre es falsch, dort würde es den Schlagschatten abschneiden. */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -353,8 +484,51 @@ a:hover {
     box-shadow var(--zeit-schnell) var(--kurve);
 }
 
+.knopf::before {
+  content: '';
+  position: absolute;
+  inset-block: -60%;
+  inset-inline-start: -60%;
+  z-index: -1;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  opacity: 0;
+  transform: translate3d(0, 0, 0) skewX(-14deg);
+  transition:
+    opacity var(--zeit) var(--kurve-weich),
+    transform var(--zeit-lang) var(--kurve-weich);
+}
+
+@media (hover: hover) {
+  .knopf:hover::before,
+  .knopf:focus-visible::before {
+    opacity: 1;
+    transform: translate3d(420%, 0, 0) skewX(-14deg);
+  }
+}
+
 .knopf:active {
   transform: translateY(1px);
+}
+
+/**
+ * Abschnitte unterhalb der ersten steigen beim Scrollen auf.
+ *
+ * Als Regel statt als Klasse an jeder einzelnen Seite: So kann kein Abschnitt
+ * vergessen werden und keiner doppelt animiert sein. Der erste Abschnitt ist
+ * ausgenommen, weil er beim Laden sichtbar ist – ihn einzublenden würde die
+ * Messung des größten Inhaltsblocks um die Animationsdauer verschlechtern,
+ * und der Titel soll ohnehin sofort dastehen.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section:nth-of-type(n + 2) {
+      animation: aufsteigen both var(--kurve-feder);
+      animation-timeline: view();
+      animation-range: entry 10% cover 32%;
+    }
+  }
 }
 
 .knopf-primaer {
@@ -451,24 +625,50 @@ a:hover {
      Optisch kaum zu unterscheiden, kostet aber nichts. */
   background: var(--scheibe-flaeche);
   border: 1px solid var(--scheibe-rand);
-  border-radius: var(--radius-lg);
+  /* Großzügig gerundet nach dem Vorbild der Entwürfe – eine Karte soll wie
+     ein aufgelegtes Plättchen wirken, nicht wie ein Kasten. */
+  border-radius: var(--radius-xl);
   box-shadow:
     inset 0 1px 0 var(--glas-glanz),
     0 1px 2px rgb(20 16 14 / 0.04),
     0 10px 30px -12px rgb(20 16 14 / 0.16);
   transition:
-    transform var(--zeit) var(--kurve),
-    border-color var(--zeit) var(--kurve),
-    box-shadow var(--zeit) var(--kurve);
+    transform var(--zeit-lang) var(--kurve-feder),
+    border-color var(--zeit) var(--kurve-weich);
 }
 
-.karte-klickbar:hover {
-  transform: translateY(-3px);
+/**
+ * Anheben beim Überfahren.
+ *
+ * Der zweite Schatten liegt fertig in einem Pseudoelement und wird nur
+ * eingeblendet. Zwei Schattenwerte ineinander zu überführen sieht gleich aus,
+ * zwingt den Browser aber bei jedem Bild, die Weichzeichnung neu zu rechnen –
+ * das ist die klassische Stelle, an der eine hübsche Karte die Bildrate
+ * kostet. `opacity` dagegen kostet nichts.
+ */
+.karte-klickbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Ohne z-index-Spielereien: Ein äußerer Schatten wird ausschließlich
+     außerhalb der eigenen Fläche gezeichnet, kann die Karte also nicht
+     überdecken – egal, in welcher Stapelreihenfolge er landet. */
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: 0 24px 50px -16px rgb(20 16 14 / 0.28);
+  opacity: 0;
+  transition: opacity var(--zeit) var(--kurve-weich);
+}
+
+.karte-klickbar:hover,
+.karte-klickbar:focus-within {
+  transform: translate3d(0, -4px, 0);
   border-color: color-mix(in oklab, var(--akzent) 40%, var(--scheibe-rand));
-  box-shadow:
-    inset 0 1px 0 var(--glas-glanz),
-    0 2px 4px rgb(20 16 14 / 0.05),
-    0 20px 44px -14px rgb(20 16 14 / 0.24);
+}
+
+.karte-klickbar:hover::before,
+.karte-klickbar:focus-within::before {
+  opacity: 1;
 }
 
 /* Ganze Karte klickbar machen, ohne verschachtelte Links zu erzeugen. */
