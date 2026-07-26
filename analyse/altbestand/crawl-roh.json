@@ -1,0 +1,4317 @@
+{
+  "erhobenAm": "2026-07-26",
+  "host": "ku64.de",
+  "gesamt": 662,
+  "erreichbar": 341,
+  "umgeleitet": 315,
+  "tot": 6,
+  "seiten": [
+    {
+      "pfad": "/",
+      "status": 200,
+      "von": "Start",
+      "titel": "Zahnarzt Berlin Charlottenburg • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ahmet-turan/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/ahmet-turan/"
+    },
+    {
+      "pfad": "/alexandra-sophia-fischer/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/alexandra-sophia-fischer/"
+    },
+    {
+      "pfad": "/anamnese-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/anamnese/"
+    },
+    {
+      "pfad": "/anamnese/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Anamnese • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/angie-skall/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/angie-skall/"
+    },
+    {
+      "pfad": "/anka-ulrich/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/anka-ulrich/"
+    },
+    {
+      "pfad": "/auszubildende/eugenia-nicoleta-dutu/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/assistenzen/eugenia-nicoleta-dutu/"
+    },
+    {
+      "pfad": "/berlin-charlottenburg/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnarztpraxis KU64: Ihr Zahnarzt in Berlin-Charlottenburg",
+      "noindex": false
+    },
+    {
+      "pfad": "/berlinmitte-2-2/link-tree/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/link-tree/"
+    },
+    {
+      "pfad": "/berlinmitte-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/"
+    },
+    {
+      "pfad": "/berlinmitte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnarzt Berlin Mitte • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/berlinmitte/dominik-demski/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnmedizinische-fachangestellte/dominik-ruffo/"
+    },
+    {
+      "pfad": "/berlinmitte/dr-jana-huesch/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/dr-jana-huesch/"
+    },
+    {
+      "pfad": "/berlinmitte/dr-jana-westerhorstmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/dr-jana-huesch/"
+    },
+    {
+      "pfad": "/berlinmitte/hatice-aktas/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/"
+    },
+    {
+      "pfad": "/berlinmitte/jennifer-roedel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/berlinmitte/julia-ressler/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/"
+    },
+    {
+      "pfad": "/berlinmitte/kontakt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kontakt KU64 Berlin-Mitte • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/berlinmitte/link-tree/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Link-tree Berlin-Mitte - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/berlinmitte/manuel-schuler/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/"
+    },
+    {
+      "pfad": "/bleaching-kosmetik-shop/",
+      "status": 401,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/blog-potsdam/aesthetische-behandlungen-dr-benedikt-straub-in-potsdam-ku64/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/"
+    },
+    {
+      "pfad": "/blog-potsdam/erfahren-sie-alles-ueber-aesthetische-behandlungen-bei-dr-benedikt-straub-in-potsdam-im-ku64-eine-einzigartige-gelegenheit-fuer-ein-strahlendes-laecheln-und-jugendliches-aussehen-termin-mittwoch-1/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog-potsdam/aesthetische-behandlungen-dr-benedikt-straub-in-potsdam-ku64/"
+    },
+    {
+      "pfad": "/blog/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Blog • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/20-jahre-ku64/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "20 Jahre KU64: Pioniere der digitalen Zahnmedizin seit 2005",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/360zahn-aus-duesseldorf/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "360Zahn aus Düsseldorf - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/architektur-design/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Architektur und Design bei KU64 - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/box-legende-axel-schulz-sagt-karies-den-kampf-an/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Box-Legende Axel Schulz sagt Karies den Kampf an - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/boys-day-in-der-zahnarztpraxis-ku64-3/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Boy&#039;s Day in der Zahnarztpraxis KU64 - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/category/blog/backstage/",
+      "status": 301,
+      "von": "Sitemap",
+      "ziel": "/"
+    },
+    {
+      "pfad": "/blog/category/blog/trendradar/",
+      "status": 301,
+      "von": "Sitemap",
+      "ziel": "/"
+    },
+    {
+      "pfad": "/blog/category/blog/zahn-guide/",
+      "status": 301,
+      "von": "Sitemap",
+      "ziel": "/"
+    },
+    {
+      "pfad": "/blog/category/blog/zahn-sos/",
+      "status": 301,
+      "von": "Sitemap",
+      "ziel": "/"
+    },
+    {
+      "pfad": "/blog/flowable-injection-technique/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Perfektes Lächeln mit Flowable Injection Technique | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/interview-dentosophie-clara-constanze-meinberg/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Unsere Dentosophie-Expertin im Interview | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/interviews/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Interview mit MFA-Azubi Dominik - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/kinder-betreuung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinder-Betreuung - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/ku64-die-gruene-praxis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 – DIE GRÜNE PRAXIS - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/ku64-hat-ein-herz-fuer-leidenschaftliche-radfahrer/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/ku64-hat-gewonnen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/ku64-in-den-medien-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-in-den-medien/"
+    },
+    {
+      "pfad": "/blog/ku64-in-den-medien/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ku64 in den medien - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/ku64-liebt-kunst/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/ku64-macht-mit-bei-berlin-teilt/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 Mitarbeiter und Mitarbeitersuche - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/ku64-sucht-endodontiespezialisten-zur-teamverstaerkung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/ku64-sucht-mitarbeiter/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/ku64-sucht-neues-kompetentes-personal/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/ku64-und-lokahiloft/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/ku64-und-physion-emotion/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/ku64-unterstuetzt-bwb/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/ku64-unterstuetzt-die-kunst/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/ku64-verwendet-jetzt-ipads/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/ku64-wurzelkanalbehandlung-ist-spitze-und-zertifiziert/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/ku64s-engagement-fuer-kinder-jugendliche/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kinder-betreuung/"
+    },
+    {
+      "pfad": "/blog/kunst-ausstellungen-bei-ku64/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kunst &amp; Ausstellungen bei KU64 - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/mali-black-berlins-juengste-malerin-stellt-bei-ku64-aus/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/malt-fuer-uns/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/maus-und-elefant-in-unserer-praxis/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/medaille-fuer-henning-bommel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/medizinische-kompetenz-und-sinn-fuer-schoenheit/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/mitmachen-und-gewinnen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/mundpilz-hausmittel/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Mundsoor: Hausmittel, Medikamente &amp; Tipps | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/neue-austellung-in-unseren-raeumen-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/neue-austellung-in-unseren-raeumen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/neue-kollegin-bei-ku64-herzlich-willkommen-anika-pia-sievers-dentalberatung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/neue-zahnaerztin-bei-ku64-mit-spezialisierung-in-zahnaesthetik-und-endodontie-dr-sandra-viktorov/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/neues-traumauto-fuer-kids-duest-durch-die-ku64-kinderabteilung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/neuigkeiten-aus-der-praxis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Neuigkeiten aus der Praxis - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/patient-ist-bei-ku64-gast-koenig/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "PATIENT IST BEI KU64 GAST &amp; KÖNIG - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/radeln-fuer-den-guten-zweck/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/referral-growth-culture-award-2026/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Referral &amp; Growth Culture Award 2026 für KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/rolf-zscharnack-stellt-bei-ku64-aus/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/kunst-ausstellungen-bei-ku64/"
+    },
+    {
+      "pfad": "/blog/social-media-2023/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Social Media 2023 - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-2024/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Social Media 2024 - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-april-2025/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das war im April auf unseren Social-Media-Kanälen los - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-ferbruar-2025/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das war im Februar auf unseren Social-Media-Kanälen los - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-januar-2025/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das war im Januar auf unseren Social-Media-Kanälen los - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-maerz-2025/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das war im März auf unseren Social-Media-Kanälen los - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/social-media-mai-2025/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das war im Mai auf unseren Social-Media-Kanälen los - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/tag-des-kusses-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/tag-des-kusses/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/toooooooor-viel-glueck-dem-ssc-suedwest-1947/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/trainingsanzuguebergabe-ku64-kick-box-jugend-team-e-v/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/ultraschallreiniger-potsdam-strahlender-zahnersatz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Unser neuer Ultraschallreiniger bei KU64 in Potsdam für strahlenden Zahnersatz!",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/unser-partner-lokahi-loft-feiert-geburtstag/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/unkategorisiert/ku64-kooperationen/"
+    },
+    {
+      "pfad": "/blog/unsere-kinderabteilung-bekommt-zuwachs/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/unsere-kuh-64-hat-einen-namen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/unterstue]zung-fuer-berliner-heimkinder/",
+      "status": 404,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/blog/unterstuetzt-den-boys-day/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/unterstuetzt-die-jungen-rebels/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/viel-glueck-der-f1-jugend-des-bfc-preussen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64s-engagement-fuer-kinder-jugendliche/"
+    },
+    {
+      "pfad": "/blog/weihnachtswichtel-gesucht-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/weihnachtswichtel-gesucht/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/blog/weisse-weihnachten-weisse-zaehne-exklusiv-bei-den-zahnspezialisten-von-ku64/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/neuigkeiten-aus-der-praxis/"
+    },
+    {
+      "pfad": "/blog/west-coast-kids-2026-hilfsprojekt-suedafrika/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "West Coast Kids 2026: KU64-Hilfsprojekt zeigt Wirkung - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/white-smile-das-perfekte-hochzeitslaecheln-zu-ihrem-schoensten-tag/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "WHITE SMILE – Das perfekte Hochzeitslächeln zu Ihrem schönsten Tag! - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/zahnfuellung-rausgefallen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfüllung rausgefallen: Was tun? | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/zahnprothese-reinigen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnprothese reinigen: Tipps &amp; Fehler vermeiden | KU64 Zahnarzt",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/zahnseide-vorher-oder-nachher/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnseide vor oder nach dem Zähneputzen? | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/blog/zfa-m-w-gesucht/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/"
+    },
+    {
+      "pfad": "/caecilia-mickel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/carola-wantke/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/assistenzen/"
+    },
+    {
+      "pfad": "/celina-leppin/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/celina-leppin/"
+    },
+    {
+      "pfad": "/clara-marlene-schulz/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/clara-marlene-schulz/"
+    },
+    {
+      "pfad": "/communication-and-human-recources/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/human-resources/"
+    },
+    {
+      "pfad": "/contact/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/kontakt/"
+    },
+    {
+      "pfad": "/das-sind-wir/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/das-sind-wir/"
+    },
+    {
+      "pfad": "/datenschutzerklaerung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Datenschutzerklärung - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/doreen-ziliox/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/downloads/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Finden Sie hier alle Informationsflyer, Dokumente, die wir zum download zur Verfügung stellen.",
+      "noindex": false
+    },
+    {
+      "pfad": "/dr-anne-moser-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/dr-anne-moser/"
+    },
+    {
+      "pfad": "/dr-jana-westerhorstmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/dr-jana-westerhorstmann/"
+    },
+    {
+      "pfad": "/dros-schiene/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/kieferorthopaedie/dros-schiene/"
+    },
+    {
+      "pfad": "/elena-hude/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/elena-hude/"
+    },
+    {
+      "pfad": "/en/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "The Dentist in Berlin • KU64 The Teeth Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/about-us/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "The KU64 Quality Promise for Your Aesthetic Smile",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/charlottenburg-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Practice KU64: Your Dentist in Berlin-Charlottenburg",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/contact/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Contact • KU64 - The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/dental-problems/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Problems • KU64 The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/dentist-berlin-mitte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dentist Berlin-Mitte • KU64 Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/imprint/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Imprint - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/jobs-career/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jobs &amp; Career • KU64 - The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/leistungen/prophylaxe-4-0/prophylaxeshop/",
+      "status": 404,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/en/potsdam/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dentist Potsdam • KU64 The Tooth Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/privacy-policy/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Privacy Policy - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Treatment spectrum - KU64 The dental specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Aesthetic Dentistry Berlin – Veneers, Crowns &amp; Whitening KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/amalgam-removal/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Amalgam Removal in Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/bleaching-teeth-whitening/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Teeth Whitening Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dental-remediation/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Restoration Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Prosthesis Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/bridges/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Bridges Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/cerec-dental-restorations/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "CEREC Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/crowns/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Crowns Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/inlays/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Inlays Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/digital-smile-design/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Digital Smile Design Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/veneers/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Veneers Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/dental-laboratory-in-house/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "In-house Dental Laboratory • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/endodontics-root-canal-treatment/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Root Canal Treatment Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Holistic Dentistry Berlin • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/bite-correction/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "bite correction • KU64 The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/caries-treatment/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Caries Treatment • KU64 The Dentist Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/initial-examination-check-up/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Examination Berlin – KU64 The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/laser-treatment/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Pain-free laser treatment • KU64 The dental specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/holistic-dentistry/tooth-decay-caries-risk-determination/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Caries risk assessment • KU64 The Dentist Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/medicine-aesthetic/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Aesthetic Medicine in Berlin • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/medicine-aesthetic/hyaluronic-acid-fillers-berlin-ku64/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Hyaluronic Acid Fillers Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/medicine-aesthetic/wrinkle-treatment-in-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Wrinkle Treatment: Naturally Beautiful with KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/medicine-aesthetic/wrinkles-forehead/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Botulinum Toxin: Frown Lines and More",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jaw Surgery – Oral &amp; Maxillofacial Surgery • KU64 The Dental Expert",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/all-on-4/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "All on 4 – Fixed Teeth in One Day • The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/dental-bone-grafting/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sinus Lift &amp; Bone Grafting • KU64 Dental Experts Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Implants • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-implant-costs/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Implant Costs • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-surgery-smoking/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dental Surgery and Smoking • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/oral-surgery-mkg-surgery/maxillofacial-combination-therapy/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Combined Maxillofacial Surgical Therapy at KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/orthodontics/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "The Orthodontist in Berlin • KU64 The Teeth Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/orthodontics/braces/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Fixed Braces • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/orthodontics/invisalign/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Invisalign® in Berlin • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/pediatric-dentist/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Pediatric Dentist • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/pediatric-dentist/child-prophylaxis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Child Prophylaxis • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/pediatric-dentist/first-visit-to-ku64/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "First Visit to KU64 • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/pediatric-dentist/pediatric-orthodontics/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Children and Adolescent Orthodontics • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/pediatric-dentist/vollnarkose/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "General Anesthesia • KU64 The Dental Specialists",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/periodontics/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Parodontologie Berlin: Parodontitis behandeln und Zähne schützen - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/prophylaxis-4-0/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Prophylaxis 4.0 • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/prophylaxis-4-0/air-flow/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Air-Flow • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/prophylaxis-4-0/ammp8-test/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "aMMP8 Quick Test • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/services/prophylaxis-4-0/gbt-guided-biofilm-therapy/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "GBT – Guided Biofilm Therapy • KU64 The Dental Experts",
+      "noindex": false
+    },
+    {
+      "pfad": "/en/team/bleaching-kosmetik-shop/joana-charlott-radsack/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching-kosmetik-shop/joana-charlott-radsack/"
+    },
+    {
+      "pfad": "/en/team/bleaching/anja-baranowsky/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/anja-baranowsky/"
+    },
+    {
+      "pfad": "/en/team/bleaching/emma-gloria-findeisen/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/emma-gloria-findeisen/"
+    },
+    {
+      "pfad": "/en/team/bleaching/lysann-kosiol/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/lysann-kosiol/"
+    },
+    {
+      "pfad": "/en/team/bleaching/maryam-karimi/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/maryam-karimi/"
+    },
+    {
+      "pfad": "/en/team/bleaching/melissa-albalizade/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/melissa-albalizade/"
+    },
+    {
+      "pfad": "/en/team/bleaching/ricco-molkentin/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/bleaching/ricco-molkentin/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/adina-mauder/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/adina-mauder/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/aisegkioul-netzipoglou-housein/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/aisegkioul-netzipoglou-housein/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/atoosa-hafezi/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/atoosa-hafezi/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/edin-plavsic/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/edin-plavsic/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/eva-caspers/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/eva-caspers/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/malou-fricke/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/malou-fricke/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/michaela-kunkel/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/michaela-kunkel/"
+    },
+    {
+      "pfad": "/en/team/dentalhygieniker/saskia-baer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dentalhygieniker/saskia-baer/"
+    },
+    {
+      "pfad": "/en/team/dsd-koordination-dentalberatung/viktoria-genkel/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/dsd-koordination-dentalberatung/viktoria-genkel/"
+    },
+    {
+      "pfad": "/en/team/human-resources/adrianna-targatz/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/human-resources/adrianna-targatz/"
+    },
+    {
+      "pfad": "/en/team/human-resources/delphine-martineau-rewig/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/human-resources/delphine-martineau-rewig/"
+    },
+    {
+      "pfad": "/en/team/human-resources/karoline-hansen/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/human-resources/karoline-hansen/"
+    },
+    {
+      "pfad": "/en/team/human-resources/lulu-buerger/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/human-resources/lulu-buerger/"
+    },
+    {
+      "pfad": "/en/team/human-resources/susan-feldmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/human-resources/susan-feldmann/"
+    },
+    {
+      "pfad": "/en/team/it-technik/marcel-baer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/it-technik/marcel-baer/"
+    },
+    {
+      "pfad": "/en/team/kommunikation/petros-prontis/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/kommunikation/petros-prontis/"
+    },
+    {
+      "pfad": "/en/team/materialverwaltung/sabine-kuehnau-falkenau/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/materialverwaltung/sabine-kuehnau-falkenau/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/alisar-lala/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/alisar-lala/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/amar-alrejebi/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/amar-alrejebi/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/amy-beckmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/amy-beckmann/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/bettina-ehrhardt/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/bettina-ehrhardt/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/ievgeniia-nevzgoda/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/ievgeniia-nevzgoda/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/jessica-oberlaender/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/jessica-oberlaender/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/karin-wagner/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/karin-wagner/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/kevin-cords/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/kevin-cords/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/kim-jasmin-yudaev/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/kim-jasmin-yudaev/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/madeleine-kettner/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/madeleine-kettner/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/melanie-ruedel/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/melanie-ruedel/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/nicole-dickhoff-kranz/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/nicole-dickhoff-kranz/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/nicole-lindenau/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/nicole-lindenau/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/nurcan-sahin/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/nurcan-sahin/"
+    },
+    {
+      "pfad": "/en/team/prophylaxe/zeynep-cinar/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/prophylaxe/zeynep-cinar/"
+    },
+    {
+      "pfad": "/en/team/rezeption-service/ayca-kilic/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/rezeption-service/ayca-kilic/"
+    },
+    {
+      "pfad": "/en/team/rezeption-service/ina-lehmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/rezeption-service/ina-lehmann/"
+    },
+    {
+      "pfad": "/en/team/rezeption-service/lisa-hauk/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/rezeption-service/lisa-hauk/"
+    },
+    {
+      "pfad": "/en/team/rezeption-service/sarah-henkel/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/rezeption-service/sarah-henkel/"
+    },
+    {
+      "pfad": "/en/team/sterilisation-qm/liana-noack/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/sterilisation-qm/liana-noack/"
+    },
+    {
+      "pfad": "/en/team/sterilisation-qm/monika-kuckelt/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/sterilisation-qm/monika-kuckelt/"
+    },
+    {
+      "pfad": "/en/team/telefon-service/angie-skall/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/telefon-service/angie-skall/"
+    },
+    {
+      "pfad": "/en/team/telefon-service/doreen-ziliox/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/telefon-service/doreen-ziliox/"
+    },
+    {
+      "pfad": "/en/team/telefon-service/magnus-salecker/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/telefon-service/magnus-salecker/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/celina-leppin/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/celina-leppin/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/denise-matzas/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/denise-matzas/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/michaela-dulz/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/michaela-dulz/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/patricia-willer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/patricia-willer/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/sandra-mueller/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/sandra-mueller/"
+    },
+    {
+      "pfad": "/en/team/verwaltung/vivien-zacher/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/verwaltung/vivien-zacher/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/abby-ferguson/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/abby-ferguson/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/alexandra-fischer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/alexandra-fischer/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/amjad-misherqi/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/amjad-misherqi/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/clara-constanze-meinberg/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/clara-constanze-meinberg/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/clara-marlene-schulz/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/clara-marlene-schulz/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/denise-moldenhauer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/denise-moldenhauer/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-alexandra-wolf/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-alexandra-wolf/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-andrej-knezevic/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-andrej-knezevic/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-anna-lena-zopfs/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-anna-lena-zopfs/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-cora-betko/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-cora-betko/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-elisabeth-futterlieb/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-elisabeth-futterlieb/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-frank-schreiber/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-frank-schreiber/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-heike-hoppe-zirbs/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-heike-hoppe-zirbs/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-isabella-piekos/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-isabella-piekos/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-jana-huesch/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-jana-huesch/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-jonathan-botmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-jonathan-botmann/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-karin-loeer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-karin-loeer/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-maike-bauer/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-maike-bauer/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-med-dent-eric-paul-oehme/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-med-dent-eric-paul-oehme/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-sabine-gousetis/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-sabine-gousetis/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-silvia-munoz/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-silvia-munoz/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/dr-surian-herrmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/dr-surian-herrmann/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/erny-grundmann/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/erny-grundmann/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/inke-supantia/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/inke-supantia/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/jackeline-schaupp/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/jackeline-schaupp/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/janna-mitscherling/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/janna-mitscherling/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/jargalmaa-kleister/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/jargalmaa-kleister/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/juliane-kottenhagen/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/juliane-kottenhagen/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/juliane-reichmuth/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/juliane-reichmuth/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/lais-haidari/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/lais-haidari/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/malte-labonte/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/malte-labonte/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/mohamed-abudrya/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/mohamed-abudrya/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/nils-radsack/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/nils-radsack/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/samaneh-salehipour/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/samaneh-salehipour/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/tim-walter/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/tim-walter/"
+    },
+    {
+      "pfad": "/en/team/zahnaerzte/tsong-ung-an/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnaerzte/tsong-ung-an/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/cheyenne-bande/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/cheyenne-bande/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/dominik-ruffo/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/dominik-ruffo/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/grit-roggelin-henning/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/grit-roggelin-henning/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/huyen-nguyen-dieu/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/huyen-nguyen-dieu/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/lisbany-martinez-cubillas/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/lisbany-martinez-cubillas/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/marlies-vlahek/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/marlies-vlahek/"
+    },
+    {
+      "pfad": "/en/team/zahnmedizinische-fachangestellte/steffi-kohl/",
+      "status": 301,
+      "von": "/en/dentist-berlin-mitte/",
+      "ziel": "/team/zahnmedizinische-fachangestellte/steffi-kohl/"
+    },
+    {
+      "pfad": "/eva-maria-stauffenberg/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/fachbeitraege/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/"
+    },
+    {
+      "pfad": "/fachbeitraege/aligner/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/fachbeitraege/"
+    },
+    {
+      "pfad": "/fachbeitraege/all/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/fachbeitraege/"
+    },
+    {
+      "pfad": "/fachbeitraege/kieferorthopaedie/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/fachbeitraege/"
+    },
+    {
+      "pfad": "/fachbeitraege/wissenswert/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/fachbeitraege/"
+    },
+    {
+      "pfad": "/fachbeitraege/zahnheilkunde/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/fachbeitraege/"
+    },
+    {
+      "pfad": "/gerade-zaehne/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/zahnbeschwerden/gerade-zaehne/"
+    },
+    {
+      "pfad": "/hazem-genidy/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/human-resources/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/human-resources/"
+    },
+    {
+      "pfad": "/human-resources/susan-feldmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/human-resources/susan-feldmann/"
+    },
+    {
+      "pfad": "/impressum/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Impressum - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/ina-lehmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/ina-lehmann/"
+    },
+    {
+      "pfad": "/infusionstherapie-reviv/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/"
+    },
+    {
+      "pfad": "/jana-jain/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/jannik-scheurenbrand/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/jannik-scheurenbrand/"
+    },
+    {
+      "pfad": "/jiotis-hondralis/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/jiotis-hondralis/"
+    },
+    {
+      "pfad": "/jobs-karriere/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jobs &amp; Karriere • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/kinderzahnarzt-stellenangebot-job-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinderzahnarzt Stellenangebot Job Berlin • KU64 Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/wir-bilden-aus/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Wir bilden aus • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/zahnarzt-job-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnarzt Job Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/zahnmedizinischer-fachangestellter-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnmedizinischer Fachangestellter in Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/zahnmedizinischer-prophylaxeassistent-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnmedizinischer Prophylaxeassistent Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/jobs-karriere/zahnmedizinischer-prophylaxeassistent-berlin/melissa-albalizade/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/melissa-albalizade/"
+    },
+    {
+      "pfad": "/julia-ressler/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/julia-ressler/"
+    },
+    {
+      "pfad": "/jutta-pueschel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/kommunikation-human-resources__trashed/susan-feldmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/human-resources/susan-feldmann/"
+    },
+    {
+      "pfad": "/kontakt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kontakt • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/kontakt/anfahrt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Anfahrt • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/kreidezahne-sanft-behandeln-kinderzahnarzt-ku64-berlin/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/kinderzahnarzt/kreidezahne/"
+    },
+    {
+      "pfad": "/laserbehandlung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung/"
+    },
+    {
+      "pfad": "/leistugen/beauty-cosmetics/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/zahnaesthetik/"
+    },
+    {
+      "pfad": "/leistugen/beauty-cosmetics/hauttumorchirurgie/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/cosmetics/"
+    },
+    {
+      "pfad": "/leistungen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Behandlungsspektrum • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/aesthetische-medizin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ästhetische Medizin in Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/aesthetische-medizin/faltenbehandlung-in-berlin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Faltenbehandlung in Berlin: Natürlich schön mit KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/aesthetische-medizin/hyaluron-lippen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Hyaluron für Lippen &amp; Co. – KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/aesthetische-medizin/zornesfalte-entfernen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Botulinumtoxin: Zornesfalte entfernen und mehr - KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/angstpatienten/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Angstpatienten Zahnarzt Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/",
+      "status": 404,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/hautarzt__trashed/hauttumorchirurgie/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/beauty-cosmetics/"
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/hautarzt__trashed/hyperhidrose/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/"
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/hautarzt/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistugen/beauty-cosmetics/"
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/ku64-cosmetics/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/cosmetics/"
+    },
+    {
+      "pfad": "/leistungen/beauty-cosmetics/matrixtherapie/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/beauty-cosmetics/"
+    },
+    {
+      "pfad": "/leistungen/cosmetics/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/aesthetische-medizin/"
+    },
+    {
+      "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Endodontie (Wurzelkanalbehandlung) • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "UNSER Endodontie-SERVICE für Überweiser &amp; IHRE PATIENTEN - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Endodontie für überwiesene Patienten – KU64 die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ganzheitliche Zahnmedizin Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/bisshebung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Bisshebung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/dentosophie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dentosophie-Behandlung in Berlin | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/erstuntersuchung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Erstuntersuchung bei Ihrem Zahnarzt von KU64 in Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/karies-risiko-bestimmung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Karies Risiko Bestimmung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/kariesbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kariesbehandlung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Schmerzfreie Laserbehandlung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/longevity/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Longevity Zahnmedizin Berlin: Gesunde Zähne für ein langes Leben | KU64 Zahnarzt",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/zahnfleischaufbau/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfleischaufbau für ein neues Lächeln | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/ganzheitliche-zahnmedizin/zahnfuellung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfüllung: Arten, Kosten &amp; Behandlung | KU64 Zahnarzt Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kieferchirurgie - MKG Chirurgie • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/all-on-4/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "All-on-4, die Zahnprothese an einem Tag • Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/kieferchirurgische-kombinationstherapie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kieferchirurgische Kombinationstherapie • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/knochenaufbau/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Knochenaufbau • Sinuslift • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/weisheitszahnentfernung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Weisheitszahnentfernung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnimplantate • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Implantat oder Brücke • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnimplantat und Rauchen | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/periimplantitis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Periimplantitis • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/praeimplantationsdiagnostik/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Präimplantationsdiagnostik • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/sinuslift/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sinuslift • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnimplantat Haltbarkeit • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnimplantat Kosten • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kieferorthopädie in Berlin • KU64, Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/craniomandibulaere-dysfunktion/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Craniomandibuläre Dysfunktion • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/dros-schiene/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/kieferorthopadie/dros-schiene/"
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/feste-zahnspange/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Festsitzende Zahnspange • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/incognito/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/leistungen/kieferorthopaedie/win-brackets-lingualtechnik/"
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/invisalign/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Invisalign® in Berlin • KU64, die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/knirscherschiene/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Knirscherschiene • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/osteopathie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Osteopathie in Berlin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/retentionsspangen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Retentionsspangen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/schnarcher-schutzschiene/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Schnarcher Schutzschiene • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/sos-zahnspangen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "SOS Zahnspangen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/win-brackets-lingualtechnik/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "WIN Brackets Lingualtechnik • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/zahnkorrektur/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnkorrektur • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kieferorthopaedie/zahnspange-reinigen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KFO Zahnpflegetipps • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinderzahnarzt • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Erster Besuch bei KU64 • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/fissurenversiegelung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Fissurenversiegelung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/karies-bei-kindern/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Karies bei Kindern ・ KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/kinderkieferorthopaedie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinderkieferorthopädie • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/kinderprophylaxe/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinderprophylaxe in Berlin • KU64, die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/kreidezahne/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/zahnbeschwerden/kreidezaehne/"
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/lachgasbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lachgasbehandlung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/therapeutisches-zaubern/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Therapeutisches Zaubern • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/kinderzahnarzt/vollnarkose/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Vollnarkose • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/parodontologie-zahnfleischbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Parodontologie Berlin – KU64, die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Photothermische Therapie mit EmunDo • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/prophylaxe-4-0/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Prophylaxe 4.0 • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/prophylaxe-4-0/air-flow/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Air-Flow • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/prophylaxe-4-0/ammp8-schnelltest-gewebeabbau/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "aMMP8 Test • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "GBT - Guided Biofilm Therapy • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/smile-design-dentallabor/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dentallabor im Haus • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ästhetische Zahnmedizin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/amalgamentfernung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Amalgamentfernung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/bleaching-zahnaufhellung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Transparente Bleaching-Kosten • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/digital-smile-design/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Digital Smile Design in Berlin | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/ku64-smile-swiss-smile/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 smile + swiss smile • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/veneers/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Veneers, keramische Verblendschalen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnersatz Berlin: Inlays, Kronen, Brücken, Prothesen | KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/cerec/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnersatz in einer Sitzung mit CEREC Berlin | KU64 Zahnarzt",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/inlays/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Inlays in Berlin: Arten, Kosten &amp; Behandlung | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/kronen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kronen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/zahnbruecken/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Brücken • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnersatz/zahnprothese/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnprothese Berlin: Natürlich &amp; passgenau | KU64 Zahnarzt",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnaesthetik/zahnsanierung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnsanierung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/leistungen/zahnschmuck/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnschmuck beim Zahnarzt in Berlin | KU64 Zahnarzt",
+      "noindex": false
+    },
+    {
+      "pfad": "/link-tree/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Link-tree - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/lulu-buerger/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/assistenzen/lulu-buerger/"
+    },
+    {
+      "pfad": "/marcellina-dallashaj/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/marcellina-dallashaj/"
+    },
+    {
+      "pfad": "/medienecho/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/blog/"
+    },
+    {
+      "pfad": "/nils-radsack/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/nils-radsack/"
+    },
+    {
+      "pfad": "/online-termine/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Online Termine • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/onlinetermine/",
+      "status": 301,
+      "von": "/ueber-uns/presseinfo/",
+      "ziel": "/online-termine/"
+    },
+    {
+      "pfad": "/potsdam-neu/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/"
+    },
+    {
+      "pfad": "/potsdam/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/anaesthesie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Anästhesie Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/anaesthetie/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/anaesthesie/"
+    },
+    {
+      "pfad": "/potsdam/anamnese/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Anamnese Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/bleaching/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Bleaching Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/bleaching/g/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/bleaching/"
+    },
+    {
+      "pfad": "/potsdam/cerec-in-potsdam/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Cerec in Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/dentallabor/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dentallabor Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/digital-smile-design/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Digital Smile Design Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/endodontologie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Endodontologie Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/https://ku64.de/wilmersdorf/",
+      "status": 301,
+      "von": "/zahnbeschwerden/mundpilz-mundsoor/",
+      "ziel": "/wilmersdorf/"
+    },
+    {
+      "pfad": "/potsdam/implantate/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnimplantate Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/jobs-und-karriere-potsdam/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/jobs-und-karriere/"
+    },
+    {
+      "pfad": "/potsdam/jobs-und-karriere/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/jobs-karriere/"
+    },
+    {
+      "pfad": "/potsdam/kieferorthopadie/cmd/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/"
+    },
+    {
+      "pfad": "/potsdam/kieferorthopadie/dros-schiene/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/kieferorthopadie/cmd/"
+    },
+    {
+      "pfad": "/potsdam/kinderzahnarzt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kinderzahnarzt Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/kontakt-potsdam/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/kontakt/"
+    },
+    {
+      "pfad": "/potsdam/kontakt/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/"
+    },
+    {
+      "pfad": "/potsdam/laserbehandlung-potsdam/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/zahnbehandlung-laser/"
+    },
+    {
+      "pfad": "/potsdam/link-tree/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Link-tree Potsdam - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/oralchirurgie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Oralchirurgie Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/parodontitis/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/parodontitisbehandlung/"
+    },
+    {
+      "pfad": "/potsdam/parodontitisbehandlung-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/parodontitisbehandlung/"
+    },
+    {
+      "pfad": "/potsdam/parodontitisbehandlung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Parodontitisbehandlung Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/parodontitisbehandlung/chbehandlung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/parodontitisbehandlung/"
+    },
+    {
+      "pfad": "/potsdam/professionelle-zahnreinigung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Professionelle Zahnreinigung • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/schonende-zahnbehandlung-mit-laser-ihr-laser-zahnarzt-ku64-potsdam/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/laserbehandlung-potsdam/"
+    },
+    {
+      "pfad": "/potsdam/team/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/potsdam/team/celina-leppin/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/celina-leppin/"
+    },
+    {
+      "pfad": "/potsdam/team/clara-marlene-schulz/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/clara-marlene-schulz/"
+    },
+    {
+      "pfad": "/potsdam/team/dr-anne-moser/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/"
+    },
+    {
+      "pfad": "/potsdam/team/dr-birte-habedank/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/"
+    },
+    {
+      "pfad": "/potsdam/team/jenny-friedla/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/dentalhygieniker/jenny-friedla/"
+    },
+    {
+      "pfad": "/potsdam/team/nils-radsack/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/nils-radsack/"
+    },
+    {
+      "pfad": "/potsdam/team/sarah-sander/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/"
+    },
+    {
+      "pfad": "/potsdam/team/susan-knickenberg/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/"
+    },
+    {
+      "pfad": "/potsdam/ultraschall-reiniger/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ultraschall Reiniger • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/www.ku64.de/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/"
+    },
+    {
+      "pfad": "/potsdam/zahnaesthetik/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnästhetik Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/potsdam/zahnasthetik/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/zahnaesthetik/"
+    },
+    {
+      "pfad": "/potsdam/zahnbehandlung-laser/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/"
+    },
+    {
+      "pfad": "/potsdam/zahnersatz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnersatz Potsdam • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/prophylaxe/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/"
+    },
+    {
+      "pfad": "/prophylaxis-4-0/prophylaxis-shop/ku64.de/en/bleaching/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/en/leistungen/prophylaxe-4-0/prophylaxeshop/"
+    },
+    {
+      "pfad": "/rezeption-und-service/jennifer-roedel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/jennifer-roedel/"
+    },
+    {
+      "pfad": "/schmerzfreie-zahnbehandlung-mit-dem-laser/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/laserbehandlung/"
+    },
+    {
+      "pfad": "/standorte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 Standorte – Zahnmedizin an drei besonderen Orten",
+      "noindex": false
+    },
+    {
+      "pfad": "/sulmaz-mohammad/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/sulmaz-mohammad/"
+    },
+    {
+      "pfad": "/team-2/zahnaerzte/christian-morar/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team-za-berlin/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Team - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/assistenzen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/assistenzen/angie-skall/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/angie-skall/"
+    },
+    {
+      "pfad": "/team/assistenzen/diana-flint/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/assistenzen/"
+    },
+    {
+      "pfad": "/team/assistenzen/dominik-demski/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/berlinmitte/dominik-demski/"
+    },
+    {
+      "pfad": "/team/assistenzen/eugenia-nicoleta-dutu/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/"
+    },
+    {
+      "pfad": "/team/assistenzen/lulu-buerger/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/human-resources/lulu-buerger/"
+    },
+    {
+      "pfad": "/team/bleaching-and-cosmetics/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/bleaching-kosmetik-shop/"
+    },
+    {
+      "pfad": "/team/bleaching-kosmetik-shop/joana-charlott-radsack/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Joana Charlott Radsack • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching-kosmetik-shop/samaneh-salehipour/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/samaneh-salehipour/"
+    },
+    {
+      "pfad": "/team/bleaching/anja-baranowsky/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Anja Baranowsky - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching/emma-gloria-findeisen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Emma-Gloria Findeisen - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching/lysann-kosiol/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lysann Kosiol - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching/maryam-karimi/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Maryam Karimi - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching/melissa-albalizade/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Melissa Albalizade - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/bleaching/ricco-molkentin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ricco Molkentin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/dentalhygieniker/adina-mauder/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Adina Mauder - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/aisegkioul-netzipoglou-housein/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Aisegkioul Netzipoglou-Housein - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/atoosa-hafezi/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Atoosa Hafezi - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/edin-plavsic/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Edin Plavsic - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/eva-caspers/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Eva Caspers - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/jenny-friedla/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/dentalhygieniker/malou-fricke/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Malou Fricke - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/michaela-kunkel/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Michaela Kunkel - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dentalhygieniker/peggy-bofinger-hofmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/dentalhygieniker/"
+    },
+    {
+      "pfad": "/team/dentalhygieniker/saskia-baer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Saskia Baer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/dsd-koordination-dentalberatung/viktoria-genkel/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Viktoria Genkel - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/human-resources/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/human-resources/adrianna-targatz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Adrianna Targatz - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/human-resources/delphine-martineau-rewig/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Delphine Martineau-Rewig - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/human-resources/karoline-hansen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Karoline Hansen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/human-resources/lulu-buerger/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lulu Bürger - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/human-resources/susan-feldmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Susan Feldmann - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/it-technik/marcel-baer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Marcel Baer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/kommunikation-human-resources/christian-schuetz/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/human-resources/"
+    },
+    {
+      "pfad": "/team/kommunikation/petros-prontis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Petros Prontis - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/materialverwaltung/sabine-kuehnau-falkenau/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sabine Kühnau-Falkenau - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/organigramm/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Team Kurfürstendamm • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/prophylaxe/alisar-lala/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Alisar Lala - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/amar-alrejebi/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Amar Alrejebi - Zahnarzt &amp; Zahnmedizinischer Prophylaxeassistent - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/amy-beckmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Amy Beckmann - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/anna-zafarian/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/"
+    },
+    {
+      "pfad": "/team/prophylaxe/bettina-ehrhardt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Bettina Ehrhardt - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/edin-plavsic/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/dentalhygieniker/edin-plavsic/"
+    },
+    {
+      "pfad": "/team/prophylaxe/ievgeniia-nevzgoda/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ievgeniia Nevzgoda - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/jannik-scheurenbrand/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/prophylaxe/jessica-oberlaender/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jessica Oberländer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/karin-wagner/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Karin Wagner - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/kevin-cords/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kevin Cords - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/kim-jasmin-yudaev/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kim Jasmin Yudaev - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/madeleine-kettner/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Madeleine Kettner - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/maja-asoska/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/"
+    },
+    {
+      "pfad": "/team/prophylaxe/marcellina-dallashaj/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/"
+    },
+    {
+      "pfad": "/team/prophylaxe/melanie-ruedel/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Melanie Rüdel - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/melissa-albalizade/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/bleaching/melissa-albalizade/"
+    },
+    {
+      "pfad": "/team/prophylaxe/nicole-dickhoff-franz/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/prophylaxe/nicole-dickhoff-kranz/"
+    },
+    {
+      "pfad": "/team/prophylaxe/nicole-dickhoff-kranz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Nicole Dickhoff-Kranz - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/nicole-lindenau/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Nicole Lindenau - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/nurcan-sahin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 Die Zahnspezialisten • Nurcan Sahin",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/prophylaxe/zeynep-cinar/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zeynep Çınar - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/rezeption-service/ayca-kilic/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ayca Kilic • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/rezeption-service/ina-lehmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Ina Lehmann - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/rezeption-service/lisa-hauk/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lisa Hauk • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/rezeption-service/sarah-henkel/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sarah Henkel - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/sterilisation-qm/liana-noack/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Liana Noack - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/sterilisation-qm/monika-kuckelt/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Monika Kuckelt - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/telefon-service/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/kontakt/"
+    },
+    {
+      "pfad": "/team/telefon-service/angie-skall/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Angie Skall - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/telefon-service/doreen-ziliox/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Doreen Ziliox - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/telefon-service/jutta-pueschel/",
+      "status": 301,
+      "von": "Weiterleitung von /telefon-service/jutta-pueschel/",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/telefon-service/magnus-salecker/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Magnus Salecker - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/team/verwaltung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/verwaltung/anka-ulrich/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/verwaltung/celina-leppin/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Celina Leppin • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung/denise-matzas/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Denise Matzas - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung/diane-dobrin/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/team/verwaltung/ina-lehmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/rezeption-service/ina-lehmann/"
+    },
+    {
+      "pfad": "/team/verwaltung/jana-hoeynck/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/jana-jain/"
+    },
+    {
+      "pfad": "/team/verwaltung/jana-jain/",
+      "status": 404,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/team/verwaltung/jasmin-piontek/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/team/verwaltung/jocelyn-ballard/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/team/verwaltung/michaela-dulz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Michaela Dulz - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung/patricia-willer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Patricia Willer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung/sandra-mueller/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sandra Müller - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/verwaltung/tanya-douglas-moir/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/"
+    },
+    {
+      "pfad": "/team/verwaltung/tanya-moir-douglas/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung/tanya-douglas-moir/"
+    },
+    {
+      "pfad": "/team/verwaltung/vivien-zacher/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Vivien Zacher - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/abby-ferguson/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Abby Ferguson - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/ahmet-turan/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/alexandra-fischer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Alexandra Fischer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/alexandra-sophia-fischer/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/alexandra-fischer/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/amjad-misherqi/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Amjad Misherqi - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/clara-constanze-meinberg/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Clara-Constanze Meinberg - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/clara-marlene-schulz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Clara Marlene Schulz - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/denise-moldenhauer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Denise Moldenhauer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/diana-wald/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-alexandra-wolf/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Alexandra Wolf - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-andrej-knezevic/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Andrej Knezevic • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-anna-lena-zopfs/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Anna-Lena Zopfs - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-birte-habedank/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/potsdam/team/dr-birte-habedank/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-cora-betko/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Cora Betko, M.SC. - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-dr-thorsten-wegner/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-elisabeth-futterlieb/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Elisabeth Futterlieb • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-frank-schreiber/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Frank Schreiber - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-frederike-arnold-bruening/",
+      "status": 301,
+      "von": "Weiterleitung von /team/zahnaerzte/frederike-bruening/",
+      "ziel": "/team/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-heike-hoppe-zirbs/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Heike Hoppe-Zirbs - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-isabella-piekos/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Isabella Piekos - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-jana-huesch/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Jana Hüsch • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-jonathan-botmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Jonathan Botmann - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-karin-loeer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Karin Löer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-maike-bauer/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Maike Bauer - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-med-dent-eric-paul-oehme/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. med. dent. Eric Paul Oehme M.Sc. M.Sc. - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-rahima-arsalan/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-sabine-gousetis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Sabine Gousetis - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-silvia-munoz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. med. dent. Silvia Muñoz - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-stephan-ziegler/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Stephan Ziegler - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/dr-surian-herrmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Surian Herrmann - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/elena-hude/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/erny-grundmann/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Erny Grundmann, MPH, M.Sc. - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/feras-younes/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/ferry-dickmann/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/frederike-bruening/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/dr-frederike-arnold-bruening/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/frederike-bruning/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/frederike-bruening/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/freya-voge/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/inke-supantia/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Inke Supantia - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/jackeline-schaupp/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jackeline Schaupp - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/janna-mitscherling/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Janna Mitscherling-Baumgartner - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/jargalmaa-kleister/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jargalmaa Kleister - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/jiotis-hondralis/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Jiotis Hondralis M.Sc. - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/juliane-kottenhagen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Juliane Kottenhagen - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/juliane-reichmuth/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Juliane Reichmuth - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/lais-haidari/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lais Haidari - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/maike-bauer/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/dr-maike-bauer/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/malte-labonte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Malte Labonté • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/mohamed-abudrya/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dr. Mohamed Abudrya M.Sc. - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/mohamed-budrya/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/mohamed-abudrya/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/nils-radsack/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Nils Radsack - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/samaneh-salehipour/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Samaneh Salehipour - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/sulmaz-mohammad/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/tim-walter/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Tim Walter - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/tommy-bettac/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnaerzte/tsong-ung-an/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Tsong-Ung An - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnaerzte/ute-katja-koenig/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/cheyenne-bande/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Cheyenne Bande - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/dominik-ruffo/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Dominik Ruffo • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Eugenia Nicoleta Dutu - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/grit-roggelin-henning/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Grit Roggelin-Henning • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/huyen-nguyen-dieu/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Huyen Nguyen-Dieu • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/lisbany-martinez-cubillas/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Lisbany Martinez Cubillas - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/marlies-vlahek/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Marlies Vlahek - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/team/zahnmedizinische-fachangestellte/steffi-kohl/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Steffi Kohl - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/teams/cigdem-korur/",
+      "status": 404,
+      "von": "htaccess"
+    },
+    {
+      "pfad": "/teams/cigmen-korur/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/teams/cigdem-korur/"
+    },
+    {
+      "pfad": "/telefon-service/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/"
+    },
+    {
+      "pfad": "/telefon-service/angie-skall/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/angie-skall/"
+    },
+    {
+      "pfad": "/telefon-service/doreen-ziliox/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/doreen-ziliox/"
+    },
+    {
+      "pfad": "/telefon-service/jutta-pueschel/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/telefon-service/jutta-pueschel/"
+    },
+    {
+      "pfad": "/ueber-uns/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Das KU64-Qualitätsversprechen für Ihr ästhetisches Lächeln",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/auszeichnungen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Auszeichnungen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/best-practice/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Best Practice bei KU64 – Inspiration für Ihr Unternehmen",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/galerie/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Galerie - KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/hilfsprojekt-suedafrika/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Soziales Engagement in Südafrika • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/kooperationspartner/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kooperationspartner • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/location/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Healing Architecture bei KU64 – Räume, die Vertrauen schaffen",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/location/architekten/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/"
+    },
+    {
+      "pfad": "/ueber-uns/location/architekten/ku64.de/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/architekten/"
+    },
+    {
+      "pfad": "/ueber-uns/location/best-practice/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/"
+    },
+    {
+      "pfad": "/ueber-uns/location/das-sind-wir/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/best-practice/"
+    },
+    {
+      "pfad": "/ueber-uns/location/referenzen-der-graft-architekten/ku64.de/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/location/architekten/"
+    },
+    {
+      "pfad": "/ueber-uns/mitgliedschaften/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Mitgliedschaften • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/presseinfo/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Presseinfo • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/ueber-uns/presseinfo/ku64.de/pressemitteilung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/medienecho/"
+    },
+    {
+      "pfad": "/ueber-uns/qualitaetsversprechen/",
+      "status": 301,
+      "von": "/ueber-uns/kooperationspartner/",
+      "ziel": "/ueber-uns/"
+    },
+    {
+      "pfad": "/ueber-uns/soziales-engagement/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Soziales Engagement • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/unkategorisiert/ku64-kooperationen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/ueber-uns/kooperationspartner/"
+    },
+    {
+      "pfad": "/verwaltung-2/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/verwaltung-2/"
+    },
+    {
+      "pfad": "/wilmersdorf/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "KU64 – Die KiezPraxis: Ihr Zahnarzt in Wilmersdorf",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahn-abgebrochen/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/zahnbeschwerden/zahn-abgebrochen/"
+    },
+    {
+      "pfad": "/zahnaerzte/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/team/zahnaerzte/"
+    },
+    {
+      "pfad": "/zahnbeschwerden/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Die häufigsten Zahnbeschwerden | KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/druckschmerz/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Druckschmerz am Zahn behandeln - KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/ernaehrung-gesunde-zaehne/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Calcium &amp; Co.: Gesunde Ernährung für die Zähne | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/gelbe-zaehne/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Gelbe Zähne – was tun? | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/gerade-zaehne/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/zahnbeschwerden/schiefe-zaehne/"
+    },
+    {
+      "pfad": "/zahnbeschwerden/karies-symptome/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Karies rechtzeitig erkennen &amp; Symptome richtig deuten • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/kreidezaehne/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kreidezähne sanft behandeln • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/kreuzbiss-kinder/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Kreuzbiss bei Kindern erkennen &amp; behandeln | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/loch-im-zahn/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Loch im Zahn: Was tun? | KU64 – Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/mundgeruch-was-tun/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Mundgeruch, was tun? • KU64 Die Dentalspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/mundpilz-mundsoor/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Mundpilz (Mundsoor) erkennen &amp; behandeln | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/mundschleimhautentzuendung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Stomatitis: Das hilft bei einer Mundschleimhautentzündung",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/mundtrockenheit/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Mundtrockenheit behandeln in Berlin - KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/schiefe-zaehne/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Gerade Zähne • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/schmerzempfindliche-zaehne/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Schmerzempfindliche Zähne • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/sport-mit-zahnspange/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Sportmundschutz für die Zahnspange | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/vereiterter-zahn/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Vereiterter Zahn – Ursachen, Symptome &amp; wirksame Behandlungstipps | KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/weisheitszahn-op/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Weisheitszahn-OP: Alles, was Sie wissen müssen • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahn-abgebrochen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahn abgebrochen • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahn-locker/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahn locker? Ursachen, Hausmittel &amp; Hilfe bei lockeren Zähnen | KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnarzt-schwangerschaft/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnarztbesuche während der Schwangerschaft | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnerosion-behandeln/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnerosion behandeln: KU64 Die Zahnspezialisten in Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnfleischbluten/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfleischbluten behandeln • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnfleischentzuendung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfleischentzündung rechtzeitig erkennen &amp; vorbeugen • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnfleischrueckgang/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfleischrückgang: Ursachen, Symptome &amp; Behandlung | KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnfleischtaschen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnfleischtaschen – Ursachen, Behandlung &amp; Tipps | KU64 Berlin",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahngifte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Krank durch Zahngifte: Symptome und Behandlung – KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnschmelzdefekte/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnschmelzdefekte – Ursachen, Symptome &amp; Behandlung | KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnschmerzen/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnschmerzen: Schnelle Linderung &amp; professionelle Behandlung • KU64",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnstein-entfernen-behandeln/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnstein entfernen und behandeln • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnverfaerbung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnverfärbung – Ursachen, Prävention &amp; Behandlung",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnbeschwerden/zahnwurzelentzuendung/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnwurzelentzündung selbst heilen? • KU64, die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnunfall/",
+      "status": 200,
+      "von": "Sitemap",
+      "titel": "Zahnunfall • KU64 Die Zahnspezialisten",
+      "noindex": false
+    },
+    {
+      "pfad": "/zahnwurzelentzuendung/",
+      "status": 301,
+      "von": "htaccess",
+      "ziel": "/zahnbeschwerden/zahnwurzelentzuendung/"
+    }
+  ]
+}

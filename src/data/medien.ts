@@ -18,13 +18,19 @@
  * kein Material. Dort läuft die Seite ohne Kopfvideo – das ist ehrlicher als
  * ein fremdes.
  *
- * ── Warum hier nur Namen und keine Dateien stehen ────────────────────────
+ * ── Woher die Dateien kommen ────────────────────────────────────────────
  *
- * Die Dateien liegen im Server-Backup. Sie in dieses Projekt zu bringen ist
- * ein reiner Kopiervorgang, den ein Mensch mit Zugriff auf beide Seiten in
- * einer Minute erledigt. Diese Datei beschreibt, wohin – damit die Seiten
- * fertig verdrahtet sind, bevor die erste Datei da ist, und der Bildwächter
- * jede fehlende meldet statt sie stillschweigend auszulassen.
+ * Alle drei Aufnahmen liegen öffentlich auf ku64.de und sind von dort
+ * übernommen. Die Standbilder bestätigen die Zuordnung ohne jeden Zweifel:
+ * Kurfürstendamm zeigt die Dachterrasse mit dem KU64-Schriftzug, Potsdam das
+ * Portal des Palais Ritz, Berlin-Mitte das Schild am Hausvogteiplatz. Es sind
+ * drei verschiedene Häuser – die alte Website spielte für alle drei dasselbe
+ * Video aus.
+ *
+ * `scripts/kopfvideos-aufbereiten.mjs` hat sie danach in den Zustand
+ * gebracht, in dem sie hier liegen: ohne Tonspur, mit Kopfdaten vorn und auf
+ * eine Bitrate gebracht, die ein Hintergrundvideo verträgt. Dort steht auch,
+ * warum.
  */
 
 export interface Kopfvideo {
@@ -49,6 +55,14 @@ export interface Kopfvideo {
  * Mobilverbindung wären das mehrere Minuten Ladezeit für eine Aufnahme, die
  * im Hintergrund läuft. Selbst 17 MB sind für ein Kopfvideo zu viel – ein
  * Kopfvideo darf die Seite nicht aufhalten, es schmückt sie.
+ *
+ * Potsdam und Berlin-Mitte lagen mit 14,3 und 12,1 MB genau in diesem
+ * Bereich. Beide sind neu kodiert; zusammen wiegen die drei Videos jetzt
+ * 16,8 MB statt 31,7 MB. Die Tonspur ist überall entfernt – das Element ist
+ * `muted`, sie wurde nie abgespielt und trotzdem geladen.
+ *
+ * Die Angabe `megabyte` ist der Ist-Stand der Datei unter `public/`, nicht
+ * eine Absicht. Wer ein Video austauscht, korrigiert sie mit.
  */
 export const KOPFVIDEOS: Kopfvideo[] = [
   {
@@ -56,7 +70,7 @@ export const KOPFVIDEOS: Kopfvideo[] = [
     quelle: 'kudamm720p-full-compressed.mp4',
     datei: '/medien/kopf-berlin-charlottenburg.mp4',
     poster: '/medien/kopf-berlin-charlottenburg.jpg',
-    megabyte: 5.6,
+    megabyte: 5.3,
     beschreibung: 'Rundgang durch die Praxis am Kurfürstendamm',
   },
   {
@@ -64,7 +78,7 @@ export const KOPFVIDEOS: Kopfvideo[] = [
     quelle: 'potsdam-720p-full.mp4',
     datei: '/medien/kopf-potsdam.mp4',
     poster: '/medien/kopf-potsdam.jpg',
-    megabyte: 14.9,
+    megabyte: 6.2,
     beschreibung: 'Rundgang durch die Praxis im Palais Ritz in Potsdam',
   },
   {
@@ -72,7 +86,7 @@ export const KOPFVIDEOS: Kopfvideo[] = [
     quelle: 'mitte-720-full.mp4',
     datei: '/medien/kopf-berlinmitte.mp4',
     poster: '/medien/kopf-berlinmitte.jpg',
-    megabyte: 12.7,
+    megabyte: 5.4,
     beschreibung: 'Rundgang durch die Praxis am Hausvogteiplatz',
   },
   /*
@@ -87,26 +101,14 @@ export function kopfvideoFuer(standortSlug: string): Kopfvideo | undefined {
 
 /**
  * Videos, die zu einer Behandlung gehören statt zu einem Ort.
- * Noch nicht eingebunden – erst mit den Seiten, auf die sie gehören.
+ *
+ * Noch nicht eingebunden – erst mit den Seiten, auf die sie gehören. Beide
+ * sind im Backup namentlich bekannt, aber auf ku64.de nicht öffentlich
+ * ausgespielt; sie kommen aus dem Backup und nicht aus dem Netz. Das
+ * Cad-Cam-Video braucht dieselbe Behandlung wie die Kopfvideos, 29,7 MB
+ * liefert man niemandem aus.
  */
 export const BEHANDLUNGSVIDEOS = [
   { quelle: 'Cad-Cam-2.mp4', megabyte: 29.7, thema: 'Fertigung im eigenen Meisterlabor' },
   { quelle: 'Zima-ultrasonic-cleaner.mp4', megabyte: 5.7, thema: 'Aufbereitung der Instrumente' },
 ];
-
-/**
- * Was aus dem Backup übernommen werden muss, als Liste zum Abarbeiten.
- *
- * Die Videos sind namentlich bekannt, die Bilder ermittelt
- * `analyse/altbestand/medien-nutzung.mjs` – es führt die
- * WordPress-Ableitungen auf ihre Originale zurück und prüft, welche davon
- * überhaupt irgendwo verwendet werden.
- */
-export const UEBERNAHME_OFFEN = {
-  videos: KOPFVIDEOS.map((v) => ({ von: v.quelle, nach: v.datei })),
-  poster: KOPFVIDEOS.map((v) => v.poster),
-  hinweis:
-    'Poster aus dem jeweiligen Video greifen, erstes ruhiges Bild. Ohne Poster ' +
-    'bleibt der Kopfbereich bis zum ersten Videobild leer – und auf Verbindungen, ' +
-    'auf denen das Video gar nicht lädt, dauerhaft.',
-};

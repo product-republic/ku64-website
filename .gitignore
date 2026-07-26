@@ -24,3 +24,8 @@ bericht/KU64-Befundbericht.pdf
 analyse/altbestand/medien-bericht.md
 analyse/altbestand/medien-benutzt.txt
 analyse/altbestand/medien-kopieren.sh
+
+# Vollständige Medienliste aus dem Crawl – 2000 Einträge, in Sekunden neu
+# erhoben durch analyse/altbestand/crawl.mjs. Die daraus übernommenen
+# Dateien liegen in public/medien/.
+analyse/altbestand/medien-live.json
