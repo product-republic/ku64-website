@@ -2953,6 +2953,10 @@
       "text": "Bonjour ! Je réponds à vos questions sur les traitements, les coûts et le déroulement chez KU64 {ort}. Que souhaitez-vous savoir ?",
       "quelle": "dd7b63a5"
     },
+    "ui.berater.datenschutz": {
+      "text": "Confidentialité",
+      "quelle": "f95b3d96"
+    },
     "ui.berater.eingabeHinweis": {
       "text": "Saisissez votre question…",
       "quelle": "045b7143"
@@ -2960,6 +2964,10 @@
     "ui.berater.frageSenden": {
       "text": "Envoyer la question",
       "quelle": "61723a3d"
+    },
+    "ui.berater.grenzen": {
+      "text": "Pas d'avis médical, pas de tarifs fermes, pas de prise de rendez-vous. Aucun contenu de la conversation n'est conservé durablement. {verweis}",
+      "quelle": "68900b0d"
     },
     "ui.berater.ihreFrage": {
       "text": "Votre question",
@@ -3101,6 +3109,10 @@
       "text": "Ce texte provient de la documentation du cabinet et ne remplace pas un examen : seule une consultation permet de déterminer l'origine de vos symptômes.",
       "quelle": "ec6f0736"
     },
+    "ui.beschwerde.uebersichtVorspann": {
+      "text": "Pour le chemin inverse : non pas du traitement au symptôme, mais de ce que vous ressentez à ce qui aide. {anzahl} symptômes, chacun avec les traitements envisageables.",
+      "quelle": "05051c0e"
+    },
     "ui.beschwseite.aufDieserSeite": {
       "text": "Sur cette page",
       "quelle": "88204195"
@@ -3237,9 +3249,17 @@
       "text": "Prendre rendez-vous",
       "quelle": "57146cdd"
     },
+    "ui.blogz.beschreibung": {
+      "text": "{anzahl} articles sur les traitements, la prévention et le quotidien chez KU64 – de {von} à {bis}.",
+      "quelle": "454ccaf3"
+    },
     "ui.blogz.nachStandort": {
       "text": "Articles par cabinet",
       "quelle": "9f3ee4ba"
+    },
+    "ui.blogz.vorspann": {
+      "text": "{anzahl} articles sur les traitements, la prévention et ce qui se passe chez nous – de {von} à {bis}.",
+      "quelle": "6953971e"
     },
     "ui.ck.beschreibung": {
       "text": "Ce site n'utilise ni cookies d'analyse ni cookies publicitaires. Ce qui est réellement enregistré et comment le supprimer.",
@@ -3773,6 +3793,10 @@
       "text": "Les candidatures spontanées sont toujours les bienvenues – nous recrutons aussi de bons profils en dehors des offres publiées.",
       "quelle": "9030ebcb"
     },
+    "ui.karriere.vorspann": {
+      "text": "{anzahl} cabinets, toutes les spécialités sous un même toit et notre propre laboratoire de prothèse – pour la dentisterie, la prophylaxie, l'assistance et l'administration.",
+      "quelle": "7f0d9a2a"
+    },
     "ui.karriere.zurAusschreibung": {
       "text": "Voir l'offre",
       "quelle": "0cba277d"
@@ -3796,6 +3820,10 @@
     "ui.karte.kosten": {
       "text": "Coût",
       "quelle": "0f3e02f3"
+    },
+    "ui.karte.nichtImAngebot": {
+      "text": "Non proposé dans ce cabinet – nous le réalisons à {wo}.",
+      "quelle": "9ffd2cc8"
     },
     "ui.karte.standortAnsehen": {
       "text": "Voir ce cabinet",
@@ -4585,6 +4613,10 @@
       "text": "Douleurs dentaires aiguës, gonflement ou dent cassée ? Trouvez ici immédiatement le bon numéro et les premiers gestes à faire.",
       "quelle": "222aa890"
     },
+    "ui.notfallz.brandenburg": {
+      "text": ", Brandebourg au ",
+      "quelle": "d7c39467"
+    },
     "ui.notfallz.seitentitel": {
       "text": "Urgence dentaire",
       "quelle": "90db9ee1"
@@ -4621,6 +4653,10 @@
       "text": "Voir tous les articles",
       "quelle": "7fd8af29"
     },
+    "ui.orte.anzahlStandorte": {
+      "text": "{anzahl} cabinets à Berlin et Potsdam",
+      "quelle": "908a7147"
+    },
     "ui.orte.behandlungen": {
       "text": "Traitements",
       "quelle": "4d3e5232"
@@ -4648,6 +4684,14 @@
     "ui.person.terminIn": {
       "text": "Rendez-vous à {ort}",
       "quelle": "896a0d98"
+    },
+    "ui.person.zurueckZumTeam": {
+      "text": "Retour à l'équipe de {ort}",
+      "quelle": "e191d573"
+    },
+    "ui.praxis.anzahlBehandlungen": {
+      "text": "{anzahl} traitements",
+      "quelle": "3a8efc12"
     },
     "ui.praxis.ausFachbereichen": {
       "text": "de {anzahl} spécialités",
@@ -4697,6 +4741,10 @@
       "text": "Choisir la langue",
       "quelle": "aac7cfb5"
     },
+    "ui.sprache.zurueckAllgemein": {
+      "text": "Revenir à la version linguistique précédente",
+      "quelle": "a8865da8"
+    },
     "ui.sprache.zurueckZu": {
       "text": "Continuer en {sprache}",
       "quelle": "b8138759"
@@ -4704,6 +4752,18 @@
     "ui.standort.adresse": {
       "text": "Adresse",
       "quelle": "1f2a8a8e"
+    },
+    "ui.standort.alleBehandlungenAnsehen": {
+      "text": "Voir les {anzahl} traitements",
+      "quelle": "63766520"
+    },
+    "ui.standort.anamneseInArbeit": {
+      "text": "Le questionnaire médical numérique de KU64 {name} est en cours de mise en place. D'ici là, vous le remplissez comme d'habitude sur place – ou appelez-nous et nous vous l'enverrons à l'avance.",
+      "quelle": "b78e685c"
+    },
+    "ui.standort.anamneseVorspann": {
+      "text": "Cinq minutes chez soi plutôt qu'un porte-bloc en salle d'attente. Vos informations parviennent chiffrées directement aux praticiens de KU64 {name} – votre rendez-vous commence sans attendre.",
+      "quelle": "1278339a"
     },
     "ui.standort.angebotHier": {
       "text": "Tout ce que nous proposons dans ce cabinet – {anzahl} soins dans {bereiche} domaines. Les soins non disponibles ici sont clairement indiqués, avec un lien vers le bon cabinet.",
@@ -4725,9 +4785,41 @@
       "text": "Praticiens",
       "quelle": "ba6934cd"
     },
+    "ui.standort.behandlungenAnsehen": {
+      "text": "Voir les {anzahl} traitements",
+      "quelle": "9bb58644"
+    },
+    "ui.standort.behandlungenBeiKu64": {
+      "text": "Traitements à KU64 {name}",
+      "quelle": "e62fb735"
+    },
     "ui.standort.behandlungenIn": {
       "text": "Soins à {ort}",
       "quelle": "6f3f59e2"
+    },
+    "ui.standort.blogAnzahl": {
+      "text": "{anzahl} {wort} en lien avec KU64 {name}.",
+      "quelle": "4ff9b6f2"
+    },
+    "ui.standort.blogAusOrt": {
+      "text": "Le blog de {ort}",
+      "quelle": "518f4d8d"
+    },
+    "ui.standort.blogBeitraege": {
+      "text": "articles",
+      "quelle": "964a5893"
+    },
+    "ui.standort.blogBeitrag": {
+      "text": "article",
+      "quelle": "18641779"
+    },
+    "ui.standort.blogLeer": {
+      "text": "Il n'existe pas encore d'article propre à KU64 {name}.",
+      "quelle": "1bda9bd7"
+    },
+    "ui.standort.fachbereicheUnterEinemDach": {
+      "text": "{anzahl} spécialités sous un même toit – pour la plupart des traitements, vous n'avez pas à changer de cabinet.",
+      "quelle": "b371a272"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographies de ce cabinet – dans l’ordre où vous découvrirez les pièces lors de votre visite.",
@@ -4737,9 +4829,17 @@
       "text": "Ouvert",
       "quelle": "2562ba58"
     },
+    "ui.standort.ihrZahnarztIn": {
+      "text": "Votre dentiste à {ort}",
+      "quelle": "992b1b24"
+    },
     "ui.standort.kartenHinweis": {
       "text": "Les services de cartographie sont des prestataires tiers. Nous ne les intégrons pas directement, afin que la simple consultation de cette page ne transmette aucune donnée à des tiers.",
       "quelle": "e53070d4"
+    },
+    "ui.standort.leistungenVorspann": {
+      "text": "{anzahl} traitements répartis sur {bereiche} spécialités – tous disponibles ici, à {ort}. Pour chaque traitement, vous trouverez la durée, la fourchette de prix et la part prise en charge par l'assurance maladie.",
+      "quelle": "6fb42b6e"
     },
     "ui.standort.nichtHierText": {
       "text": "Nous ne proposons pas ces soins à {ort}. Pour éviter un appel inutile, vous voyez ici directement dans quel cabinet KU64 les obtenir.",
@@ -4768,6 +4868,14 @@
     "ui.standort.telefon": {
       "text": "Téléphone",
       "quelle": "9efa9d9c"
+    },
+    "ui.standort.terminBeiKu64": {
+      "text": "Un rendez-vous à KU64 {name}",
+      "quelle": "b24a64cb"
+    },
+    "ui.standort.termineVorspann": {
+      "text": "{adresse}. Réservez en ligne ou appelez-nous – les deux mènent au même agenda.",
+      "quelle": "851911b2"
     },
     "ui.standort.xTageWoche": {
       "text": "{anzahl} jours par semaine",
@@ -4924,6 +5032,110 @@
     "ui.suchez.beschreibung": {
       "text": "Trouvez traitements, symptômes, cabinets et équipe chez KU64 – avec vos propres mots.",
       "quelle": "fa985357"
+    },
+    "ui.suchindex.anamnese": {
+      "text": "Questionnaire médical",
+      "quelle": "470ecb1c"
+    },
+    "ui.suchindex.anamneseKurz": {
+      "text": "À remplir avant le premier rendez-vous – cela fait gagner du temps au cabinet.",
+      "quelle": "ebdd5d72"
+    },
+    "ui.suchindex.barrierefreiheit": {
+      "text": "Accessibilité",
+      "quelle": "2151accf"
+    },
+    "ui.suchindex.barrierefreiheitKurz": {
+      "text": "Déclaration d'accessibilité de ce site.",
+      "quelle": "c781bebf"
+    },
+    "ui.suchindex.beratung": {
+      "text": "Conseil numérique",
+      "quelle": "4e315ae6"
+    },
+    "ui.suchindex.beratungKurz": {
+      "text": "Parlez ou écrivez à notre conseiller numérique.",
+      "quelle": "2264c83c"
+    },
+    "ui.suchindex.datenschutz": {
+      "text": "Confidentialité",
+      "quelle": "f95b3d96"
+    },
+    "ui.suchindex.datenschutzKurz": {
+      "text": "Comment nous traitons vos données.",
+      "quelle": "c6ad63cd"
+    },
+    "ui.suchindex.impressum": {
+      "text": "Mentions légales",
+      "quelle": "c702dc58"
+    },
+    "ui.suchindex.impressumKurz": {
+      "text": "Identification du prestataire.",
+      "quelle": "013df210"
+    },
+    "ui.suchindex.karriere": {
+      "text": "Carrière chez KU64",
+      "quelle": "2d55e894"
+    },
+    "ui.suchindex.karriereKurz": {
+      "text": "Postes ouverts et formation.",
+      "quelle": "89111fd0"
+    },
+    "ui.suchindex.kiTransparenz": {
+      "text": "Transparence sur l'IA",
+      "quelle": "5528b9bc"
+    },
+    "ui.suchindex.kiTransparenzKurz": {
+      "text": "Quels systèmes d'IA travaillent ici, pour quoi faire et avec quelles données.",
+      "quelle": "0bf966eb"
+    },
+    "ui.suchindex.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.suchindex.kontaktKurz": {
+      "text": "Téléphone, courriel et formulaire.",
+      "quelle": "d806d78e"
+    },
+    "ui.suchindex.laecheln": {
+      "text": "Aperçu du sourire",
+      "quelle": "50789e23"
+    },
+    "ui.suchindex.laechelnKurz": {
+      "text": "Une illustration indicative à partir de votre photo.",
+      "quelle": "fed46234"
+    },
+    "ui.suchindex.notfall": {
+      "text": "Urgence dentaire",
+      "quelle": "90db9ee1"
+    },
+    "ui.suchindex.notfallKurz": {
+      "text": "Ce qu'il faut faire maintenant – et qui joindre immédiatement.",
+      "quelle": "1f8d3bfe"
+    },
+    "ui.suchindex.standorte": {
+      "text": "Nos cabinets",
+      "quelle": "2041aab5"
+    },
+    "ui.suchindex.standorteKurz": {
+      "text": "Quatre cabinets à Berlin et Potsdam.",
+      "quelle": "f57d5b33"
+    },
+    "ui.suchindex.termine": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.suchindex.termineKurz": {
+      "text": "Convenir d'un rendez-vous en ligne.",
+      "quelle": "8a4830f1"
+    },
+    "ui.suchindex.ueberUns": {
+      "text": "À propos de KU64",
+      "quelle": "92039106"
+    },
+    "ui.suchindex.ueberUnsKurz": {
+      "text": "Le cabinet, l'architecture, l'histoire.",
+      "quelle": "32ad4a8d"
     },
     "ui.teamliste.alle": {
       "text": "Tous",
@@ -5097,6 +5309,10 @@
       "text": "à Berlin et à Potsdam",
       "quelle": "9540453d"
     },
+    "ui.ueber.jahre": {
+      "text": "Années",
+      "quelle": "cfccee95"
+    },
     "ui.ueber.mitProphylaxeAssistenzEmpfang": {
       "text": "avec prophylaxie, assistance, accueil et administration",
       "quelle": "da18d291"
@@ -5105,9 +5321,21 @@
       "text": "Beaucoup de personnes repoussent leur visite chez le dentiste. Chez nous, le premier rendez-vous est un entretien, pas un soin. Vous décidez du rythme, et un signe convenu permet d'interrompre à tout moment.",
       "quelle": "94c9b3be"
     },
+    "ui.ueber.seit": {
+      "text": "Sur le Kurfürstendamm depuis {jahr}, aujourd'hui dans {anzahl} cabinets à Berlin et Potsdam. Ce qui n'a pas changé : la conviction qu'une visite chez le dentiste ne doit faire peur à personne.",
+      "quelle": "0e1d8fd3"
+    },
+    "ui.ueber.seitGruendung": {
+      "text": "depuis la fondation en {jahr}",
+      "quelle": "7e011857"
+    },
     "ui.ueber.spezialisierungUnterEinemDach": {
       "text": "Spécialisation sous un même toit",
       "quelle": "d03d10f7"
+    },
+    "ui.ueber.standorte": {
+      "text": "Cabinets",
+      "quelle": "aae6c265"
     },
     "ui.ueber.ueberKu64": {
       "text": "À propos de KU64",

@@ -2953,6 +2953,10 @@
       "text": "Hello! I answer your questions about treatments, costs and procedures at KU64 {ort}. What would you like to know?",
       "quelle": "dd7b63a5"
     },
+    "ui.berater.datenschutz": {
+      "text": "Privacy",
+      "quelle": "f95b3d96"
+    },
     "ui.berater.eingabeHinweis": {
       "text": "Type your question…",
       "quelle": "045b7143"
@@ -2960,6 +2964,10 @@
     "ui.berater.frageSenden": {
       "text": "Send question",
       "quelle": "61723a3d"
+    },
+    "ui.berater.grenzen": {
+      "text": "No medical advice, no binding prices, no appointment booking. No part of the conversation is stored permanently. {verweis}",
+      "quelle": "68900b0d"
     },
     "ui.berater.ihreFrage": {
       "text": "Your question",
@@ -3101,6 +3109,10 @@
       "text": "This text comes from the practice's own material and is no substitute for an examination: only a check-up in the chair can show what is causing your symptoms.",
       "quelle": "ec6f0736"
     },
+    "ui.beschwerde.uebersichtVorspann": {
+      "text": "For the route the other way round: not from the treatment to the symptom, but from what you notice to what helps. {anzahl} symptoms, each with the treatments that come into question for them.",
+      "quelle": "05051c0e"
+    },
     "ui.beschwseite.aufDieserSeite": {
       "text": "On this page",
       "quelle": "88204195"
@@ -3237,9 +3249,17 @@
       "text": "Book an appointment",
       "quelle": "57146cdd"
     },
+    "ui.blogz.beschreibung": {
+      "text": "{anzahl} posts on treatments, prevention and everyday life at KU64 – from {von} to {bis}.",
+      "quelle": "454ccaf3"
+    },
     "ui.blogz.nachStandort": {
       "text": "Articles by location",
       "quelle": "9f3ee4ba"
+    },
+    "ui.blogz.vorspann": {
+      "text": "{anzahl} posts on treatments, prevention and what goes on here – from {von} to {bis}.",
+      "quelle": "6953971e"
     },
     "ui.ck.beschreibung": {
       "text": "This website does not use analytics or advertising cookies. What's actually stored and how to delete it.",
@@ -3773,6 +3793,10 @@
       "text": "We're still glad to receive speculative applications – we also hire good people outside of advertised vacancies.",
       "quelle": "9030ebcb"
     },
+    "ui.karriere.vorspann": {
+      "text": "{anzahl} locations, every specialisation under one roof and our own master laboratory – for dentistry, prophylaxis, assistance and administration.",
+      "quelle": "7f0d9a2a"
+    },
     "ui.karriere.zurAusschreibung": {
       "text": "View vacancy",
       "quelle": "0cba277d"
@@ -3796,6 +3820,10 @@
     "ui.karte.kosten": {
       "text": "Cost",
       "quelle": "0f3e02f3"
+    },
+    "ui.karte.nichtImAngebot": {
+      "text": "Not offered at this location – we provide it at {wo}.",
+      "quelle": "9ffd2cc8"
     },
     "ui.karte.standortAnsehen": {
       "text": "View this location",
@@ -4585,6 +4613,10 @@
       "text": "Sudden toothache, swelling or a knocked-out tooth? Find the right number here straight away, plus key first steps.",
       "quelle": "222aa890"
     },
+    "ui.notfallz.brandenburg": {
+      "text": ", Brandenburg on ",
+      "quelle": "d7c39467"
+    },
     "ui.notfallz.seitentitel": {
       "text": "Dental emergency",
       "quelle": "90db9ee1"
@@ -4621,6 +4653,10 @@
       "text": "View all articles",
       "quelle": "7fd8af29"
     },
+    "ui.orte.anzahlStandorte": {
+      "text": "{anzahl} locations in Berlin and Potsdam",
+      "quelle": "908a7147"
+    },
     "ui.orte.behandlungen": {
       "text": "Treatments",
       "quelle": "4d3e5232"
@@ -4648,6 +4684,14 @@
     "ui.person.terminIn": {
       "text": "Appointment in {ort}",
       "quelle": "896a0d98"
+    },
+    "ui.person.zurueckZumTeam": {
+      "text": "Back to the team in {ort}",
+      "quelle": "e191d573"
+    },
+    "ui.praxis.anzahlBehandlungen": {
+      "text": "{anzahl} treatments",
+      "quelle": "3a8efc12"
     },
     "ui.praxis.ausFachbereichen": {
       "text": "from {anzahl} specialisms",
@@ -4697,6 +4741,10 @@
       "text": "Choose language",
       "quelle": "aac7cfb5"
     },
+    "ui.sprache.zurueckAllgemein": {
+      "text": "Back to the previous language version",
+      "quelle": "a8865da8"
+    },
     "ui.sprache.zurueckZu": {
       "text": "Continue in {sprache}",
       "quelle": "b8138759"
@@ -4704,6 +4752,18 @@
     "ui.standort.adresse": {
       "text": "Address",
       "quelle": "1f2a8a8e"
+    },
+    "ui.standort.alleBehandlungenAnsehen": {
+      "text": "View all {anzahl} treatments",
+      "quelle": "63766520"
+    },
+    "ui.standort.anamneseInArbeit": {
+      "text": "The digital medical history form for KU64 {name} is being set up. Until then you fill in the form on site as usual – or give us a call and we will send it to you in advance.",
+      "quelle": "b78e685c"
+    },
+    "ui.standort.anamneseVorspann": {
+      "text": "Five minutes at home instead of a clipboard in the waiting room. Your details go encrypted straight to the practitioners at KU64 {name} – so you can start immediately at your appointment.",
+      "quelle": "1278339a"
     },
     "ui.standort.angebotHier": {
       "text": "Everything we offer at this location – {anzahl} treatments across {bereiche} specialist areas. Treatments not available here are clearly marked, with a link to the right location.",
@@ -4725,9 +4785,41 @@
       "text": "Our team",
       "quelle": "ba6934cd"
     },
+    "ui.standort.behandlungenAnsehen": {
+      "text": "View {anzahl} treatments",
+      "quelle": "9bb58644"
+    },
+    "ui.standort.behandlungenBeiKu64": {
+      "text": "Treatments at KU64 {name}",
+      "quelle": "e62fb735"
+    },
     "ui.standort.behandlungenIn": {
       "text": "Treatments in {ort}",
       "quelle": "6f3f59e2"
+    },
+    "ui.standort.blogAnzahl": {
+      "text": "{anzahl} {wort} relating to KU64 {name}.",
+      "quelle": "4ff9b6f2"
+    },
+    "ui.standort.blogAusOrt": {
+      "text": "Blog from {ort}",
+      "quelle": "518f4d8d"
+    },
+    "ui.standort.blogBeitraege": {
+      "text": "posts",
+      "quelle": "964a5893"
+    },
+    "ui.standort.blogBeitrag": {
+      "text": "post",
+      "quelle": "18641779"
+    },
+    "ui.standort.blogLeer": {
+      "text": "There is no post specific to KU64 {name} yet.",
+      "quelle": "1bda9bd7"
+    },
+    "ui.standort.fachbereicheUnterEinemDach": {
+      "text": "{anzahl} specialisations under one roof – for most treatments you do not have to change practice.",
+      "quelle": "b371a272"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographs of this practice – in the order you will see the rooms when you visit.",
@@ -4737,9 +4829,17 @@
       "text": "Open",
       "quelle": "2562ba58"
     },
+    "ui.standort.ihrZahnarztIn": {
+      "text": "Your dentist in {ort}",
+      "quelle": "992b1b24"
+    },
     "ui.standort.kartenHinweis": {
       "text": "Map services are third-party providers. We do not embed them directly, so that simply reading this page sends no data to anyone else.",
       "quelle": "e53070d4"
+    },
+    "ui.standort.leistungenVorspann": {
+      "text": "{anzahl} treatments across {bereiche} specialisations – all available here in {ort}. For every treatment you will find the duration, the cost range and what statutory insurance covers.",
+      "quelle": "6fb42b6e"
     },
     "ui.standort.nichtHierText": {
       "text": "We do not offer these treatments in {ort}. So you don't call in vain, you can see straight away which KU64 location offers them.",
@@ -4768,6 +4868,14 @@
     "ui.standort.telefon": {
       "text": "Phone",
       "quelle": "9efa9d9c"
+    },
+    "ui.standort.terminBeiKu64": {
+      "text": "An appointment at KU64 {name}",
+      "quelle": "b24a64cb"
+    },
+    "ui.standort.termineVorspann": {
+      "text": "{adresse}. Book online or give us a call – both lead to the same appointment calendar.",
+      "quelle": "851911b2"
     },
     "ui.standort.xTageWoche": {
       "text": "{anzahl} days a week",
@@ -4924,6 +5032,110 @@
     "ui.suchez.beschreibung": {
       "text": "Find treatments, symptoms, locations and people at KU64 – using your own words.",
       "quelle": "fa985357"
+    },
+    "ui.suchindex.anamnese": {
+      "text": "Medical history form",
+      "quelle": "470ecb1c"
+    },
+    "ui.suchindex.anamneseKurz": {
+      "text": "Fill it in before your first appointment – it saves time at the practice.",
+      "quelle": "ebdd5d72"
+    },
+    "ui.suchindex.barrierefreiheit": {
+      "text": "Accessibility",
+      "quelle": "2151accf"
+    },
+    "ui.suchindex.barrierefreiheitKurz": {
+      "text": "Accessibility statement for this website.",
+      "quelle": "c781bebf"
+    },
+    "ui.suchindex.beratung": {
+      "text": "Digital advice",
+      "quelle": "4e315ae6"
+    },
+    "ui.suchindex.beratungKurz": {
+      "text": "Speak or write with our digital adviser.",
+      "quelle": "2264c83c"
+    },
+    "ui.suchindex.datenschutz": {
+      "text": "Privacy",
+      "quelle": "f95b3d96"
+    },
+    "ui.suchindex.datenschutzKurz": {
+      "text": "How we handle your data.",
+      "quelle": "c6ad63cd"
+    },
+    "ui.suchindex.impressum": {
+      "text": "Legal notice",
+      "quelle": "c702dc58"
+    },
+    "ui.suchindex.impressumKurz": {
+      "text": "Provider identification.",
+      "quelle": "013df210"
+    },
+    "ui.suchindex.karriere": {
+      "text": "Careers at KU64",
+      "quelle": "2d55e894"
+    },
+    "ui.suchindex.karriereKurz": {
+      "text": "Open positions and training.",
+      "quelle": "89111fd0"
+    },
+    "ui.suchindex.kiTransparenz": {
+      "text": "AI transparency",
+      "quelle": "5528b9bc"
+    },
+    "ui.suchindex.kiTransparenzKurz": {
+      "text": "Which AI systems work here, what for and with which data.",
+      "quelle": "0bf966eb"
+    },
+    "ui.suchindex.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.suchindex.kontaktKurz": {
+      "text": "Phone, email and form.",
+      "quelle": "d806d78e"
+    },
+    "ui.suchindex.laecheln": {
+      "text": "Smile preview",
+      "quelle": "50789e23"
+    },
+    "ui.suchindex.laechelnKurz": {
+      "text": "A non-binding illustration made from your photograph.",
+      "quelle": "fed46234"
+    },
+    "ui.suchindex.notfall": {
+      "text": "Dental emergency",
+      "quelle": "90db9ee1"
+    },
+    "ui.suchindex.notfallKurz": {
+      "text": "What to do now – and who to reach straight away.",
+      "quelle": "1f8d3bfe"
+    },
+    "ui.suchindex.standorte": {
+      "text": "Our locations",
+      "quelle": "2041aab5"
+    },
+    "ui.suchindex.standorteKurz": {
+      "text": "Four practices in Berlin and Potsdam.",
+      "quelle": "f57d5b33"
+    },
+    "ui.suchindex.termine": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.suchindex.termineKurz": {
+      "text": "Arrange an appointment online.",
+      "quelle": "8a4830f1"
+    },
+    "ui.suchindex.ueberUns": {
+      "text": "About KU64",
+      "quelle": "92039106"
+    },
+    "ui.suchindex.ueberUnsKurz": {
+      "text": "The practice, the architecture, the history.",
+      "quelle": "32ad4a8d"
     },
     "ui.teamliste.alle": {
       "text": "All",
@@ -5097,6 +5309,10 @@
       "text": "in Berlin and Potsdam",
       "quelle": "9540453d"
     },
+    "ui.ueber.jahre": {
+      "text": "Years",
+      "quelle": "cfccee95"
+    },
     "ui.ueber.mitProphylaxeAssistenzEmpfang": {
       "text": "with preventive care, assistance, reception and administration",
       "quelle": "da18d291"
@@ -5105,9 +5321,21 @@
       "text": "Many people put off going to the dentist. With us, the first appointment is a conversation, not treatment. You set the pace, and an agreed hand signal can pause things at any time.",
       "quelle": "94c9b3be"
     },
+    "ui.ueber.seit": {
+      "text": "On Kurfürstendamm since {jahr}, today at {anzahl} locations in Berlin and Potsdam. What has not changed: the conviction that a visit to the dentist should frighten no one.",
+      "quelle": "0e1d8fd3"
+    },
+    "ui.ueber.seitGruendung": {
+      "text": "since the founding in {jahr}",
+      "quelle": "7e011857"
+    },
     "ui.ueber.spezialisierungUnterEinemDach": {
       "text": "Specialisation under one roof",
       "quelle": "d03d10f7"
+    },
+    "ui.ueber.standorte": {
+      "text": "Locations",
+      "quelle": "aae6c265"
     },
     "ui.ueber.ueberKu64": {
       "text": "About KU64",
