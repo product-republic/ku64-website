@@ -1,0 +1,131 @@
+---
+/**
+ * Eine Beitragskachel – auf der Blogübersicht und auf Standortseiten.
+ *
+ * Trägt sichtbar ihre Standort-Marken. Das ist der Zweck der ganzen
+ * Verschlagwortung: Wer über Potsdam liest, soll sehen, dass es um Potsdam
+ * geht, ohne den Beitrag zu öffnen – und mit einem Klick alles zu diesem
+ * Standort finden.
+ */
+import { datumLesbar, type Beitrag } from '../lib/blog';
+import { STANDORTE } from '../data/standorte';
+
+interface Props {
+  beitrag: Beitrag;
+  /** Auf einer Standortseite ist die eigene Marke überflüssig. */
+  ohneStandort?: string;
+  /** Das erste Bild einer Übersicht soll nicht verzögert laden. */
+  vorrang?: boolean;
+}
+
+const { beitrag, ohneStandort, vorrang = false } = Astro.props;
+
+const marken = beitrag.standorte
+  .filter((s) => s !== ohneStandort)
+  .map((slug) => STANDORTE.find((s) => s.slug === slug))
+  .filter((s) => s !== undefined);
+---
+
+<article class="karte b-karte">
+  {
+    beitrag.bild && (
+      <img
+        class="b-bild"
+        src={beitrag.bild.pfad}
+        alt=""
+        width={beitrag.bild.breite}
+        height={beitrag.bild.hoehe}
+        loading={vorrang ? 'eager' : 'lazy'}
+        fetchpriority={vorrang ? 'high' : 'auto'}
+        decoding="async"
+      />
+    )
+  }
+
+  <div class="b-inhalt">
+    {beitrag.datum && <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>}
+
+    <h3>
+      <a href={`/blog/${beitrag.slug}/`} class="b-link">{beitrag.titel}</a>
+    </h3>
+
+    {beitrag.anriss && <p class="b-anriss">{beitrag.anriss}…</p>}
+
+    {
+      marken.length > 0 && (
+        <p class="b-marken">
+          {marken.map((s) => (
+            <span class="marke">{s!.name}</span>
+          ))}
+        </p>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .b-karte {
+    padding: 0;
+    overflow: hidden;
+    transition:
+      transform var(--zeit) var(--kurve-feder),
+      border-color var(--zeit) var(--kurve-weich);
+  }
+
+  .b-karte:hover,
+  .b-karte:focus-within {
+    transform: translate3d(0, -3px, 0);
+    border-color: color-mix(in oklab, var(--tinte) 25%, var(--scheibe-rand));
+  }
+
+  .b-bild {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .b-inhalt {
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-2);
+    padding: var(--raum-5);
+  }
+
+  time {
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  h3 {
+    font-size: var(--t-lg);
+  }
+
+  /* Die ganze Kachel klickbar, ohne verschachtelte Verweise. */
+  .b-link {
+    text-decoration: none;
+  }
+
+  .b-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .b-anriss {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .b-marken {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+    margin-block-start: auto;
+    padding-block-start: var(--raum-3);
+  }
+</style>

@@ -1,0 +1,358 @@
+---
+/**
+ * Profil einer behandelnden Person – standortscharf.
+ *
+ * ── Warum diese Seite gebraucht wird ────────────────────────────────────
+ *
+ * Weil die Frage „wem öffne ich den Mund?“ mit einem Porträt und einer
+ * Funktionsbezeichnung nicht beantwortet ist. Wer eine Wurzelbehandlung vor
+ * sich hat, will wissen, ob die Person das oft macht, wo sie es gelernt hat
+ * und seit wann sie es tut. Genau das stand auf der alten Website und war
+ * beim Umbau verlorengegangen.
+ *
+ * ── Woher die Inhalte kommen ────────────────────────────────────────────
+ *
+ * Aus den Personenseiten von ku64.de, übernommen von
+ * `analyse/altbestand/profile-holen.mjs` nach `src/data/profile.json`. Die
+ * Abschnitte heißen dort so, wie die Praxis sie benannt hat – „Beruflicher
+ * Werdegang“, „Schwerpunkte“, „Mitgliedschaften“, „Fortbildungen“. Sie
+ * werden nicht vereinheitlicht: Wer eine Publikationsliste führt, hat sie
+ * aus einem Grund, und wer keine hat, soll keine leere Überschrift bekommen.
+ *
+ * ── Wer eine Seite bekommt ──────────────────────────────────────────────
+ *
+ * Nur wer Inhalte hat – 55 von 100. Für die übrigen wäre die Seite eine
+ * Wiederholung der Teamkachel, und ein Klick, der nichts Neues bringt, ist
+ * schlechter als kein Klick. Sie erscheinen weiterhin im Team, nur ohne
+ * Verweis.
+ *
+ * ── Standortscharf, wie alles hier ──────────────────────────────────────
+ *
+ * Die Adresse trägt den Standort: `/potsdam/team/nils-radsack/`. Wer an
+ * zwei Standorten arbeitet, hat unter beiden eine Seite – mit den
+ * Kontaktdaten des jeweiligen Hauses. Das ist der ganze Grundgedanke dieser
+ * Website, und er gilt auch für Menschen.
+ */
+import { inhalte } from '../../../../i18n/daten';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import Bild from '../../../../components/Bild.astro';
+import TerminBand from '../../../../components/TerminBand.astro';
+import { STANDORTE } from '../../../../data/standorte';
+import { TEAM, veroeffentlichbar } from '../../../../data/team';
+import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
+import profile from '../../../../data/profile.json';
+
+export function getStaticPaths() {
+  const pfade = [];
+  for (const standort of STANDORTE) {
+    for (const person of TEAM) {
+      if (!person.bestaetigt) continue;
+      if (!person.standorte.includes(standort.slug)) continue;
+      /* Ohne Inhalt keine Seite – siehe Kopfkommentar. */
+      if (!(person.slug in profile)) continue;
+      pfade.push({ params: { standort: standort.slug, person: person.slug } });
+    }
+  }
+  return mitSprachen(pfade);
+}
+
+const daten = inhalte(Astro);
+
+const standort = daten.standort(Astro.params.standort!)!;
+const person = veroeffentlichbar().find((m) => m.slug === Astro.params.person)!;
+const profil = (profile as Record<string, Profil>)[person.slug];
+
+interface Profil {
+  name: string;
+  funktion: string | null;
+  abschnitte: { titel: string; zeilen: string[]; alsListe: boolean }[];
+  quelle: string;
+}
+
+const pfad = `/${standort.slug}/team/${person.slug}/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Team', pfad: `/${standort.slug}/team/` },
+  { name: person.name, pfad },
+];
+
+/*
+ * Ein Werdegang ist eine Aufzählung, ein Schwerpunkt ein Fließtext. Der
+ * Unterschied lässt sich an den Zeilen ablesen: Beginnt die Mehrheit mit
+ * einer Jahreszahl, ist es eine Zeitleiste.
+ */
+function istZeitleiste(zeilen: string[]): boolean {
+  const mitJahr = zeilen.filter((z) => /^(seit\s+)?\d{2}\/?\d{0,4}|^\d{4}/.test(z.trim()));
+  return zeilen.length > 2 && mitJahr.length >= zeilen.length / 2;
+}
+
+const schema = [
+  schemaBrotkrumen(brotkrumen),
+  {
+    '@context': 'https://schema.org',
+    '@type': person.gruppe === 'zahnaerzte' ? 'Physician' : 'Person',
+    name: person.name,
+    jobTitle: person.funktion,
+    url: kanonisch(pfad),
+    worksFor: { '@id': kanonisch(`/${standort.slug}/`) + '#praxis' },
+    workLocation: {
+      '@type': 'Place',
+      name: `KU64 ${standort.name}`,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: standort.strasse,
+        postalCode: standort.plz,
+        addressLocality: standort.ort,
+      },
+    },
+  },
+];
+---
+
+<Basis
+  titel={`${person.name} – KU64 ${standort.name}`}
+  description={`${person.name}${person.funktion ? `, ${person.funktion}` : ''} bei KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="abschnitt">
+    <div class="huelle kopf">
+      <div class="kopf-bild">
+        <Bild schluessel={`team-${person.slug}`} klasse="portraet" vorrang />
+      </div>
+
+      <div class="kopf-text">
+        <p class="mikro">KU64 {standort.name}</p>
+        <h1>{person.name}</h1>
+        {person.funktion && <p class="funktion">{person.funktion}</p>}
+        {person.leitung && <p class="marke">Medizinische Leitung</p>}
+
+        <div class="kopf-knoepfe">
+          <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">
+            Termin in {standort.ort}
+          </a>
+          <a
+            href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}
+            class="knopf knopf-sekundaer"
+          >
+            {standort.telefon}
+          </a>
+        </div>
+
+        {
+          person.standorte.length > 1 && (
+            <p class="auch">
+              {person.name.split(' ').slice(-1)} behandelt auch an{' '}
+              {person.standorte
+                .filter((s) => s !== standort.slug)
+                .map((s) => {
+                  const anderer = daten.standorte.find((x) => x.slug === s);
+                  return anderer ? (
+                    <a href={`/${anderer.slug}/team/${person.slug}/`}>KU64 {anderer.name}</a>
+                  ) : null;
+                })}
+              .
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="huelle">
+      <div class="profil">
+        {
+          profil.abschnitte.map((a) => (
+            <div class="block">
+              <h2>{a.titel}</h2>
+              {istZeitleiste(a.zeilen) ? (
+                /* Zeitleiste: Jahr und Inhalt getrennt, damit die Jahre eine
+                   Spalte bilden und der Blick daran entlanglaufen kann. */
+                <ul class="zeitleiste">
+                  {a.zeilen.map((z) => {
+                    /*
+                     * Eine Jahresangabe kann eine Spanne sein: „2004 – 2008“.
+                     * Wird nur die erste Zahl abgetrennt, steht in der
+                     * Jahresspalte „2004“ und der Text beginnt mit
+                     * „– 2008 – Ausbildung …“ – die Spanne ist zerrissen und
+                     * der Satz beginnt mit einem Gedankenstrich. Deshalb
+                     * greift der Ausdruck die vollständige Angabe ab,
+                     * einschließlich zweitem Jahr.
+                     */
+                    const teilung =
+                      /^((?:seit\s+)?[\d/.]{2,9}(?:\s*[–—-]\s*(?:heute|[\d/.]{2,9}))?)\s*[–—-]?\s*(.*)$/i.exec(
+                        z.trim(),
+                      );
+                    return (
+                      <li>
+                        {teilung && teilung[2] ? (
+                          <>
+                            <span class="jahr zahl">{teilung[1]}</span>
+                            <span>{teilung[2]}</span>
+                          </>
+                        ) : (
+                          <span class="ohne-jahr">{z}</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : a.alsListe ? (
+                <ul class="punkte">
+                  {a.zeilen.map((z) => (
+                    <li>{z}</li>
+                  ))}
+                </ul>
+              ) : (
+                a.zeilen.map((z) => <p>{z}</p>)
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="zurueck">
+        <a href={`/${standort.slug}/team/`}>Zurück zum Team in {standort.ort}</a>
+      </p>
+    </div>
+  </section>
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<style>
+  .kopf {
+    display: grid;
+    grid-template-columns: minmax(12rem, 20rem) 1fr;
+    gap: clamp(var(--raum-5), 4vw, var(--raum-8));
+    align-items: start;
+  }
+
+  .kopf-bild :global(.portraet) {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .kopf-bild :global(.portraet img) {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  h1 {
+    margin-block: var(--raum-2) var(--raum-3);
+  }
+
+  .funktion {
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+    max-width: 40ch;
+  }
+
+  .marke {
+    margin-block-start: var(--raum-3);
+  }
+
+  .kopf-knoepfe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-3);
+    margin-block-start: var(--raum-6);
+  }
+
+  .auch {
+    margin-block-start: var(--raum-5);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .profil {
+    display: grid;
+    gap: var(--raum-7);
+    max-width: 46rem;
+  }
+
+  .block h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-4);
+  }
+
+  .block p {
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+    margin-block-end: var(--raum-3);
+  }
+
+  .punkte {
+    display: grid;
+    gap: var(--raum-2);
+    padding-inline-start: 1.1rem;
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  /*
+   * Die Zeitleiste ist zweispaltig: Jahre links, Inhalt rechts. Bei einem
+   * Werdegang mit fünfzehn Stationen ist das der Unterschied zwischen einer
+   * Liste, die man überfliegt, und einer, die man liest.
+   */
+  .zeitleiste {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-3);
+  }
+
+  .zeitleiste li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--raum-4);
+    padding-block-end: var(--raum-3);
+    border-block-end: 1px solid var(--linie);
+    line-height: var(--zeile-normal);
+  }
+
+  .zeitleiste li:last-child {
+    border-block-end: 0;
+  }
+
+  .jahr {
+    font-weight: 600;
+    color: var(--tinte);
+  }
+
+  .zeitleiste span:not(.jahr) {
+    color: var(--tinte-weich);
+  }
+
+  .ohne-jahr {
+    grid-column: 1 / -1;
+    color: var(--tinte-weich);
+  }
+
+  .zurueck {
+    margin-block-start: var(--raum-8);
+    font-size: var(--t-sm);
+  }
+
+  @media (max-width: 48rem) {
+    .kopf {
+      grid-template-columns: 1fr;
+    }
+
+    .kopf-bild {
+      max-width: 16rem;
+    }
+
+    .zeitleiste li {
+      grid-template-columns: 1fr;
+      gap: var(--raum-1);
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+/**
+ * Beiträge mit Bezug zu diesem Standort.
+ *
+ * Die Zuordnung ist automatisch: `blog-holen.mjs` liest aus, welcher
+ * Standort im Text vorkommt – im Titel genannt oder mindestens zweimal
+ * erwähnt. Ein Beitrag über die Eröffnung der KiezPraxis gehört damit zu
+ * Wilmersdorf, ohne dass jemand ihn zuordnen muss.
+ *
+ * Der Beitrag selbst liegt weiterhin unter `/blog/<slug>/` und nicht unter
+ * dem Standort: Er ist derselbe Text, egal von wo man kommt, und seine
+ * Adresse steht seit Jahren im Suchindex. Standortscharf ist hier die
+ * SICHT auf die Beiträge, nicht der Beitrag.
+ */
+import { inhalte } from '../../../../i18n/daten';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import BlogKarte from '../../../../components/BlogKarte.astro';
+import TerminBand from '../../../../components/TerminBand.astro';
+import { STANDORTE } from '../../../../data/standorte';
+import { beitraegeAn, nachJahren } from '../../../../lib/blog';
+import { schemaBrotkrumen } from '../../../../lib/seo';
+
+export function getStaticPaths() {
+  return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
+}
+
+const daten = inhalte(Astro);
+
+const standort = daten.standort(Astro.params.standort!)!;
+const pfad = `/${standort.slug}/blog/`;
+const beitraege = beitraegeAn(standort.slug);
+const jahre = nachJahren(beitraege);
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
+  { name: 'Blog', pfad },
+];
+---
+
+<Basis
+  titel={`Blog – KU64 ${standort.name}`}
+  description={`Beiträge mit Bezug zu KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+  noindex={beitraege.length === 0}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Blog aus {standort.ort}</h1>
+      <p class="unter">
+        {
+          beitraege.length > 0
+            ? `${beitraege.length} ${beitraege.length === 1 ? 'Beitrag' : 'Beiträge'} mit Bezug zu KU64 ${standort.name}.`
+            : `Zu KU64 ${standort.name} gibt es bisher keinen eigenen Beitrag.`
+        }
+        <a href="/blog/">Alle Beiträge ansehen</a>
+      </p>
+    </div>
+  </section>
+
+  {
+    jahre.map(({ jahr, beitraege: imJahr }) => (
+      <section class="abschnitt jahr-block">
+        <div class="huelle">
+          <h2 class="jahr-titel">{jahr ?? 'Ohne Datum'}</h2>
+          <div class="raster">
+            {imJahr.map((b) => (
+              <BlogKarte beitrag={b} ohneStandort={standort.slug} />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <TerminBand standort={standort} />
+</Basis>
+
+<style>
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) 0;
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .jahr-block {
+    padding-block: var(--raum-5);
+  }
+
+  .jahr-titel {
+    font-size: var(--t-xl);
+    padding-block-end: var(--raum-3);
+    margin-block-end: var(--raum-5);
+    border-block-end: 1px solid var(--linie);
+  }
+</style>

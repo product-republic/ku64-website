@@ -1,0 +1,164 @@
+---
+/**
+ * Der Blog – alle Beiträge, nach Jahren geordnet.
+ *
+ * ── Warum nach Jahren ───────────────────────────────────────────────────
+ *
+ * Weil bei fachlichen Texten das Jahr mitliest: Eine Empfehlung von 2012
+ * und eine von 2026 sind zwei verschiedene Aussagen. Eine durchlaufende
+ * Liste verwischt genau das.
+ *
+ * ── Warum die Standort-Marken ───────────────────────────────────────────
+ *
+ * Sie sind automatisch aus dem Text erkannt (siehe `blog-holen.mjs`) und
+ * führen auf die Beiträge des jeweiligen Standorts. Damit hängt auch der
+ * Blog an der Ortsstruktur, die diese Website trägt – statt daneben.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { sprachpfade } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import BlogKarte from '../../../components/BlogKarte.astro';
+import { BEITRAEGE, nachJahren } from '../../../lib/blog';
+import { schemaBrotkrumen } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
+
+const daten = inhalte(Astro);
+
+const pfad = '/blog/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Blog', pfad },
+];
+
+const jahre = nachJahren();
+
+/* Wie viele Beiträge tragen welchen Standort? Steht als Filterleiste oben. */
+const proStandort = daten.standorte
+  .map((s) => ({
+    standort: s,
+    anzahl: BEITRAEGE.filter((b) => b.standorte.includes(s.slug)).length,
+  }))
+  .filter((x) => x.anzahl > 0);
+---
+
+<Basis
+  titel="Zahnmedizinischer Blog"
+  description={`${BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von ${jahre[jahre.length - 1]?.jahr} bis ${jahre[0]?.jahr}.`}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <section class="abschnitt">
+    <div class="huelle">
+      <h1>Zahnmedizinischer Blog</h1>
+      <p class="unter">
+        {BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
+        passiert – von {jahre[jahre.length - 1]?.jahr} bis {jahre[0]?.jahr}.
+      </p>
+
+      {
+        proStandort.length > 0 && (
+          <nav class="filter" aria-label="Beiträge nach Standort">
+            <span class="filter-titel">Nach Standort:</span>
+            {proStandort.map((x) => (
+              <a href={`/${x.standort.slug}/blog/`} class="filter-knopf">
+                {x.standort.name}
+                <span class="anzahl">{x.anzahl}</span>
+              </a>
+            ))}
+          </nav>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    jahre.map(({ jahr, beitraege }, i) => (
+      <section class="abschnitt jahr-block">
+        <div class="huelle">
+          <h2 class="jahr-titel" id={`jahr-${jahr}`}>
+            {jahr ?? 'Ohne Datum'}
+            <span class="jahr-anzahl">
+              {beitraege.length} {beitraege.length === 1 ? 'Beitrag' : 'Beiträge'}
+            </span>
+          </h2>
+          <div class="raster">
+            {beitraege.map((b, j) => (
+              <BlogKarte beitrag={b} vorrang={i === 0 && j === 0} />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</Basis>
+
+<style>
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-6);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-2);
+  }
+
+  .filter-titel {
+    font-size: var(--t-sm);
+    color: var(--tinte-leise);
+    margin-inline-end: var(--raum-2);
+  }
+
+  .filter-knopf {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-voll);
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .filter-knopf:hover {
+    border-color: color-mix(in oklab, var(--tinte) 28%, transparent);
+  }
+
+  .anzahl {
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  /* Die Jahresblöcke stehen enger beieinander als gewöhnliche Abschnitte –
+     sie sind eine Liste, kein Kapitelwechsel. */
+  .jahr-block {
+    padding-block: var(--raum-5);
+  }
+
+  .jahr-titel {
+    display: flex;
+    align-items: baseline;
+    gap: var(--raum-4);
+    font-size: var(--t-xl);
+    padding-block-end: var(--raum-3);
+    margin-block-end: var(--raum-5);
+    border-block-end: 1px solid var(--linie);
+  }
+
+  .jahr-anzahl {
+    font-size: var(--t-sm);
+    font-weight: 400;
+    color: var(--tinte-leise);
+  }
+</style>

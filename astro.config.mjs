@@ -32,7 +32,20 @@ export default defineConfig({
    * der alten Website kennt. Das ist der teuerste einzelne Fehler, den ein
    * Relaunch machen kann, und der am leichtesten vermeidbare.
    */
-  redirects: alsAstroRedirects(),
+  /*
+   * `OHNE_WEITERLEITUNGEN=1` baut ohne sie.
+   *
+   * Das ist kein Schalter für den Betrieb, sondern für die Planung: Eine
+   * Weiterleitung hat in Astro Vorrang vor einer echten Seite mit derselben
+   * Adresse. Solange eine veraltete Regel auf `/leistungen/` zeigt, wird die
+   * Leistungsübersicht gar nicht erst gebaut – und das Planungsskript, das
+   * gegen das Bauergebnis prüft, hält sie dann für nicht vorhanden und
+   * schreibt die Regel wieder. Ein Kreis, der sich selbst bestätigt.
+   *
+   * Deshalb: einmal ohne Weiterleitungen bauen, planen, normal bauen.
+   * `npm run weiterleitungen:planen` macht genau das.
+   */
+  redirects: process.env.OHNE_WEITERLEITUNGEN ? {} : alsAstroRedirects(),
   build: {
     inlineStylesheets: 'auto',
     format: 'directory',

@@ -1,0 +1,221 @@
+---
+/**
+ * Ein Blogbeitrag.
+ *
+ * Die Adresse ist absichtlich dieselbe wie auf der alten Website
+ * (`/blog/<slug>/`). Diese Adressen stehen teils seit Jahren im Suchindex;
+ * sie zu behalten ist mehr wert als jede Weiterleitung.
+ *
+ * Der Text kommt als Folge einfacher Blöcke aus `blog.json` – Überschrift,
+ * Absatz, Liste. Kein HTML aus fremder Quelle: Was übernommen wurde, ist
+ * reiner Text, und die Gestaltung macht diese Seite.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import BlogKarte from '../../../components/BlogKarte.astro';
+import TerminBand from '../../../components/TerminBand.astro';
+import { BEITRAEGE, beitrag as findeBeitrag, datumLesbar } from '../../../lib/blog';
+import { STANDORTE } from '../../../data/standorte';
+import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return mitSprachen(BEITRAEGE.map((b) => ({ params: { artikel: b.slug } })));
+}
+
+const daten = inhalte(Astro);
+
+const beitrag = findeBeitrag(Astro.params.artikel!)!;
+const pfad = `/blog/${beitrag.slug}/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Blog', pfad: '/blog/' },
+  { name: beitrag.titel, pfad },
+];
+
+const orte = beitrag.standorte
+  .map((slug) => STANDORTE.find((s) => s.slug === slug))
+  .filter((s) => s !== undefined);
+
+/* Weiterlesen: Beiträge mit gemeinsamem Standort, sonst die neuesten. */
+const weitere = (
+  beitrag.standorte.length
+    ? BEITRAEGE.filter(
+        (b) => b.slug !== beitrag.slug && b.standorte.some((s) => beitrag.standorte.includes(s)),
+      )
+    : BEITRAEGE.filter((b) => b.slug !== beitrag.slug)
+).slice(0, 3);
+
+const schema = [
+  schemaBrotkrumen(brotkrumen),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: beitrag.titel,
+    datePublished: beitrag.datum ?? undefined,
+    image: beitrag.bild ? kanonisch(beitrag.bild.pfad) : undefined,
+    author: { '@type': 'Organization', name: 'KU64 – Die Zahnspezialisten' },
+    publisher: { '@type': 'Organization', name: 'KU64 – Die Zahnspezialisten' },
+    mainEntityOfPage: kanonisch(pfad),
+  },
+];
+---
+
+<Basis
+  titel={beitrag.titel}
+  description={beitrag.anriss || `Beitrag aus dem Blog von KU64: ${beitrag.titel}`}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <article>
+    <section class="abschnitt">
+      <div class="huelle kopf">
+        {beitrag.datum && <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>}
+        <h1>{beitrag.titel}</h1>
+        {
+          orte.length > 0 && (
+            <p class="orte">
+              {orte.map((s) => (
+                <a href={`/${s!.slug}/blog/`} class="marke">
+                  {s!.name}
+                </a>
+              ))}
+            </p>
+          )
+        }
+      </div>
+    </section>
+
+    {
+      beitrag.bild && (
+        <section class="abschnitt-eng">
+          <div class="huelle">
+            <img
+              class="titelbild"
+              src={beitrag.bild.pfad}
+              alt=""
+              width={beitrag.bild.breite}
+              height={beitrag.bild.hoehe}
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </section>
+      )
+    }
+
+    <section class="abschnitt">
+      <div class="huelle">
+        <div class="text">
+          {
+            beitrag.bloecke.map((b) =>
+              b.art === 'h2' ? (
+                <h2>{b.text}</h2>
+              ) : b.art === 'h3' ? (
+                <h3>{b.text}</h3>
+              ) : b.art === 'liste' ? (
+                <ul>
+                  {(b.punkte ?? []).map((p) => (
+                    <li>{p}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{b.text}</p>
+              ),
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    {
+      weitere.length > 0 && (
+        <section class="abschnitt flaeche-warm">
+          <div class="huelle">
+            <h2 class="weiter-titel">Weiterlesen</h2>
+            <div class="raster">
+              {weitere.map((b) => (
+                <BlogKarte beitrag={b} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </article>
+
+  {orte.length === 1 && <TerminBand standort={orte[0]!} />}
+</Basis>
+
+<style>
+  .kopf {
+    max-width: var(--breite-text);
+  }
+
+  time {
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  h1 {
+    margin-block: var(--raum-3) var(--raum-4);
+  }
+
+  .orte {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+  }
+
+  .orte .marke {
+    text-decoration: none;
+  }
+
+  .titelbild {
+    width: 100%;
+    max-height: 34rem;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+  }
+
+  /* Der Lesetext ist bewusst schmal: Über 75 Zeichen je Zeile verliert das
+     Auge beim Zeilenwechsel den Anschluss. */
+  .text {
+    max-width: var(--breite-text);
+    display: grid;
+    gap: var(--raum-4);
+  }
+
+  .text h2 {
+    font-size: var(--t-xl);
+    margin-block-start: var(--raum-5);
+  }
+
+  .text h3 {
+    font-size: var(--t-lg);
+    margin-block-start: var(--raum-4);
+  }
+
+  .text p {
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .text ul {
+    display: grid;
+    gap: var(--raum-2);
+    padding-inline-start: 1.2rem;
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .weiter-titel {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-5);
+  }
+</style>

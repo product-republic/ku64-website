@@ -1,12 +1,13 @@
 ---
-import { inhalte } from '../../../i18n/daten';
-import { mitSprachen } from '../../../i18n/sprachen';
-import Basis from '../../../layouts/Basis.astro';
-import TerminBand from '../../../components/TerminBand.astro';
-import Bild from '../../../components/Bild.astro';
-import { STANDORTE } from '../../../data/standorte';
-import { teamAn, gruppenAn, anzahlBehandelnde } from '../../../data/team';
-import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
+import { inhalte } from '../../../../i18n/daten';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import TerminBand from '../../../../components/TerminBand.astro';
+import Bild from '../../../../components/Bild.astro';
+import { STANDORTE } from '../../../../data/standorte';
+import { teamAn, gruppenAn, anzahlBehandelnde } from '../../../../data/team';
+import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
+import profile from '../../../../data/profile.json';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
@@ -68,15 +69,28 @@ if (team.length > 0) {
                 : `Die Behandelnden bei KU64 ${standort.name}.`}
             </p>
             <div class="raster">
-              {team.map((m) => (
-                <article class="karte person">
+              {team.map((m) => {
+                /* Verlinkt wird nur, wo es auch etwas zu lesen gibt. Eine
+                   Kachel, die auf eine Seite mit dem eigenen Inhalt der
+                   Kachel führt, ist ein enttäuschter Klick. */
+                const hatProfil = m.slug in profile;
+                return (
+                <article class:list={['karte', 'person', { 'person-klickbar': hatProfil }]}>
                   {/* Über das Bildverzeichnis, nicht über einen Pfad aus den
                       Teamdaten: So gilt für Porträts dieselbe Nachweispflicht
                       wie für jedes andere Bild – Alternativtext, Herkunft,
                       Einwilligung. Fehlt der Nachweis, erscheint die Kachel
                       ohne Bild statt mit einem Platzhalter. */}
                   <Bild schluessel={`team-${m.slug}`} klasse="portraet" />
-                  <h2>{m.name}</h2>
+                  <h2>
+                    {hatProfil ? (
+                      <a href={`/${standort.slug}/team/${m.slug}/`} class="person-link">
+                        {m.name}
+                      </a>
+                    ) : (
+                      m.name
+                    )}
+                  </h2>
                   <p class="funktion">{m.funktion}</p>
                   {m.vorstellung && <p class="text">{m.vorstellung}</p>}
                   {m.sprachen && m.sprachen.length > 0 && (
@@ -94,8 +108,18 @@ if (team.length > 0) {
                       })}
                     </ul>
                   )}
+                  {hatProfil && (
+                    <span class="person-mehr" aria-hidden="true">
+                      Profil ansehen
+                      <svg viewBox="0 0 24 24" width="15" height="15">
+                        <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  )}
                 </article>
-              ))}
+                );
+              })}
             </div>
           </>
         ) : (
@@ -140,6 +164,27 @@ if (team.length > 0) {
   .person :global(.portraet) { margin-block-end: var(--raum-4); border-radius: var(--radius-lg); }
   .person :global(.portraet img) { width: 100%; aspect-ratio: 1; object-fit: cover; }
   .person h2 { font-size: var(--t-lg); }
+  .person-klickbar {
+    position: relative;
+    transition:
+      transform var(--zeit) var(--kurve-feder),
+      border-color var(--zeit) var(--kurve-weich);
+  }
+  .person-klickbar:hover,
+  .person-klickbar:focus-within {
+    transform: translate3d(0, -3px, 0);
+    border-color: color-mix(in oklab, var(--tinte) 25%, var(--scheibe-rand));
+  }
+  /* Die ganze Kachel klickbar, ohne verschachtelte Verweise. */
+  .person-link { text-decoration: none; }
+  .person-link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+  .person-mehr {
+    display: inline-flex; align-items: center; gap: var(--raum-2);
+    margin-block-start: auto; padding-block-start: var(--raum-3);
+    font-size: var(--t-sm); font-weight: 600;
+  }
+  .person-klickbar:hover .person-mehr svg { transform: translateX(3px); }
+  .person-mehr svg { transition: transform var(--zeit) var(--kurve-feder); }
   .funktion { font-size: var(--t-sm); color: var(--akzent-schrift); font-weight: 600; margin-block: var(--raum-1) var(--raum-3); }
   .text { color: var(--tinte-weich); line-height: var(--zeile-weit); max-width: var(--breite-text); }
   .sprachen { margin-block-start: var(--raum-3); font-size: var(--t-xs); color: var(--tinte-leise); }

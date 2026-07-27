@@ -384,6 +384,53 @@ a:hover {
   }
 }
 
+/* ─────────────────────────── Seitenwechsel ───────────────────────────────
+ *
+ * Der Übergang von Seite zu Seite – vor allem beim Wechsel der Sprache und
+ * des Standorts, wo derselbe Inhalt in anderer Fassung erscheint.
+ *
+ * Zwei Bewegungen, die sich überlagern: Das Alte geht weg und leicht nach
+ * oben, das Neue kommt von leicht unten. Zusammen ergibt das den Eindruck,
+ * dass etwas ausgetauscht wird – nicht, dass die Seite neu lädt.
+ *
+ * Kurz gehalten (240 ms): Ein Übergang, den man bemerkt, ist zu lang. Er
+ * soll die Härte nehmen, nicht das Tempo.
+ */
+::view-transition-old(root) {
+  animation: seite-raus 180ms var(--kurve-weich) both;
+}
+
+::view-transition-new(root) {
+  animation: seite-rein 240ms var(--kurve-weich) both;
+}
+
+@keyframes seite-raus {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -0.5rem, 0);
+  }
+}
+
+@keyframes seite-rein {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.75rem, 0);
+  }
+}
+
+/*
+ * Wer Bewegung abbestellt hat, bekommt einen harten Schnitt statt einer
+ * Überblendung. `animation: none` allein genügt nicht – die Standarddauer
+ * der Übergänge bliebe bestehen; deshalb zusätzlich auf null gesetzt.
+ */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+}
+
 /* ─────────────────────────── Flüssige Bewegung ─────────────────────────── */
 
 /**

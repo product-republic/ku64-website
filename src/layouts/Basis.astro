@@ -15,6 +15,7 @@ import '../styles/global.css';
  * bemerkte es, weil die Seite trotzdem funktioniert, nur langsamer.
  */
 import schriftInter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import { ClientRouter } from 'astro:transitions';
 import Navigation from '../components/Navigation.astro';
 import Fusszeile from '../components/Fusszeile.astro';
 import Brotkrumen from '../components/Brotkrumen.astro';
@@ -183,6 +184,25 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
         />
       ))
     }
+
+    {/*
+      Weiche Übergänge zwischen Seiten.
+
+      Ein Wechsel der Sprache oder des Standorts ist inhaltlich ein kleiner
+      Schritt – dieselbe Seite, andere Fassung. Als harter Neuaufbau der
+      ganzen Seite sieht er aber aus wie ein Sprung an einen anderen Ort.
+      Der Übergang blendet stattdessen über, und was gleich bleibt (Kopf,
+      Fußzeile), bleibt auch stehen.
+
+      Das ist keine Bibliothek: `ClientRouter` benutzt die
+      View-Transitions-Schnittstelle des Browsers. Wo es sie nicht gibt,
+      wird ganz normal navigiert – der Übergang ist eine Zugabe, keine
+      Voraussetzung.
+
+      Bei `prefers-reduced-motion` unterbleibt er; die Regel dazu steht in
+      global.css, weil sie dort neben den übrigen Bewegungsregeln gehört.
+    */}
+    <ClientRouter />
   </head>
 
   <body>

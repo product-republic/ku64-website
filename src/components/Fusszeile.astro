@@ -141,6 +141,9 @@ const jahr = new Date().getFullYear();
           <li><a href="/laecheln-vorschau/">Lächeln-Vorschau</a></li>
           <li><a href="/notfall/">Zahnärztlicher Notfall</a></li>
           <li><a href="/karriere/">Karriere</a></li>
+          {/* Der Blog liegt standortfrei unter /blog/ – die Standortsicht
+              darauf erreicht man über die Marken an den Beiträgen. */}
+          <li><a href={basis ? `${basis}/blog/` : '/blog/'}>Blog</a></li>
         </ul>
       </div>
     </div>
