@@ -5,10 +5,21 @@
  *
  * Das Mikrofon wird erst nach ausdrücklichem Klick angefordert. Es läuft nichts
  * im Hintergrund mit, und es wird kein Gespräch aufgezeichnet.
+ *
+ * ── Warum die Offenlegung hier größer ausfällt als im Chat ───────────────
+ *
+ * Beim Chat sieht man Text auf einem Bildschirm; dass dahinter keine Person
+ * in Echtzeit tippt, ahnt man. Eine natürlich klingende Stimme, die antwortet,
+ * ohne zu zögern, ist etwas anderes – Artikel 50 Absatz 1 nennt genau das als
+ * Grund, warum die Ausnahme „ist ohnehin offensichtlich" hier nicht trägt.
+ *
+ * Der Hinweis steht deshalb VOR dem Startknopf und nicht darunter: Wer das
+ * Gespräch beginnt, hat ihn gelesen, weil er im Weg stand.
  */
 import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import { kiSystem, WEG_ZUM_MENSCHEN } from '../../data/ki-systeme';
 import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -24,7 +35,14 @@ const brotkrumen = [
   { name: 'Digitale Beratung', pfad },
 ];
 
+const system = kiSystem('sprachberater')!;
+
 const faq = [
+  {
+    frage: 'Spreche ich mit einem Menschen?',
+    antwort:
+      'Nein. Sie sprechen mit einem KI-System, und die Stimme ist synthetisch erzeugt. Einen Menschen erreichen Sie unter der Telefonnummer Ihres Standorts.',
+  },
   {
     frage: 'Wird das Gespräch aufgezeichnet?',
     antwort:
@@ -75,6 +93,18 @@ const faq = [
           {daten.standorte.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
         </select>
       </label>
+
+      <p class="offenlegung">
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.6" />
+          <path d="M10 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          <circle cx="10" cy="6.2" r="1" fill="currentColor" />
+        </svg>
+        <span>
+          <strong>{system.offenlegung}</strong> {WEG_ZUM_MENSCHEN}{' '}
+          <a href="/ki-transparenz/">Welches System hier arbeitet</a>
+        </span>
+      </p>
 
       <div class="buehne" id="buehne" data-zustand="bereit">
         {/* Visualisierung des Gesprächszustands */}
@@ -305,6 +335,28 @@ const faq = [
     gap: var(--raum-8);
     align-items: start;
   }
+
+  /* Im Weg, mit Absicht: zwischen Standortwahl und Startknopf. Wer das
+     Gespräch beginnt, ist daran vorbeigekommen. */
+  .offenlegung {
+    display: flex;
+    gap: var(--raum-3);
+    align-items: flex-start;
+    margin-block: var(--raum-5) 0;
+    padding: var(--raum-4);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-lg);
+    background: var(--flaeche-warm);
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+    color: var(--tinte-weich);
+  }
+  .offenlegung svg {
+    flex-shrink: 0;
+    margin-block-start: 2px;
+    color: var(--akzent-schrift);
+  }
+  .offenlegung strong { color: var(--tinte); }
 
   .feld {
     display: block;

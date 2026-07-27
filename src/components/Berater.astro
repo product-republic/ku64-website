@@ -4,8 +4,23 @@
  *
  * Bewusst ohne Framework: reines HTML plus ein kleines Skript. Das Widget lädt
  * erst beim Öffnen Daten und kostet auf jeder Seite nur wenige Kilobyte.
+ *
+ * ── Die Offenlegung steht ganz oben, nicht in der Fußzeile ───────────────
+ *
+ * Artikel 50 Absatz 1 der KI-Verordnung verlangt die Information „klar und
+ * unterscheidbar, spätestens zum Zeitpunkt der ersten Interaktion". Vorher
+ * stand hier eine freundliche Begrüßung und weit darunter, klein, der Hinweis
+ * „KI-generierte Auskunft". Das ist beides zu spät und zu leise: Wer die
+ * Begrüßung liest und antwortet, hat interagiert, ohne es gelesen zu haben.
+ *
+ * Der Hinweis steht deshalb als eigener Block über dem Gesprächsverlauf –
+ * abgesetzt, damit er nicht wie eine Chatnachricht der Maschine aussieht, und
+ * mit dem Weg zu einem Menschen direkt daneben. Der Wortlaut kommt aus
+ * `src/data/ki-systeme.ts`, damit Chat, Sprachberater und Transparenzseite
+ * dasselbe sagen.
  */
 import type { Standort } from '../data/standorte';
+import { kiSystem, WEG_ZUM_MENSCHEN } from '../data/ki-systeme';
 
 interface Props {
   standort: Standort | null;
@@ -29,6 +44,8 @@ const standardVorschlaege = standort
     ];
 
 const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
+
+const system = kiSystem('berater')!;
 ---
 
 <div class="berater nicht-drucken">
@@ -59,6 +76,30 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
         </svg>
       </button>
     </header>
+
+    <p class="f-offenlegung">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+        <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <path d="M10 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <circle cx="10" cy="6.2" r="1" fill="currentColor" />
+      </svg>
+      <span>
+        <strong>{system.offenlegung}</strong>
+        {' '}
+        {
+          standort ? (
+            <>
+              Einen Menschen erreichen Sie unter{' '}
+              <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>.
+            </>
+          ) : (
+            WEG_ZUM_MENSCHEN
+          )
+        }
+        {' '}
+        <a href="/ki-transparenz/">Wie das funktioniert</a>
+      </span>
+    </p>
 
     <div class="f-verlauf" id="verlauf" role="log" aria-live="polite" aria-atomic="false">
       <div class="blase blase-bot">
@@ -101,9 +142,13 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
       </button>
     </form>
 
+    {/* Die Offenlegung steht oben. Hier stehen nur noch die Grenzen – sie
+        gehören ans Eingabefeld, weil man sie genau dann braucht, wenn man
+        gerade tippt. */}
     <p class="f-fuss">
-      KI-generierte Auskunft, keine medizinische Beratung. Kein Gesprächsinhalt wird
-      dauerhaft gespeichert. <a href="/datenschutz/#berater">Datenschutz</a>
+      Keine medizinische Beratung, keine verbindlichen Preise, keine Terminbuchung.
+      Kein Gesprächsinhalt wird dauerhaft gespeichert.{' '}
+      <a href="/datenschutz/#berater">Datenschutz</a>
     </p>
   </div>
 </div>
@@ -206,6 +251,32 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
 
   .f-zu:hover {
     background: rgb(255 255 255 / 0.18);
+  }
+
+  /* Abgesetzt vom Verlauf, damit der Hinweis nicht wie eine Nachricht der
+     Maschine aussieht – eine Maschine, die versichert, eine Maschine zu sein,
+     ist genau die Konstruktion, der niemand glauben soll. Der Rahmen unten
+     trennt ihn vom Gespräch. */
+  .f-offenlegung {
+    display: flex;
+    gap: var(--raum-2);
+    align-items: flex-start;
+    margin: 0;
+    padding: var(--raum-3) var(--raum-4);
+    border-block-end: 1px solid var(--linie);
+    background: var(--flaeche-warm);
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: var(--tinte-weich);
+  }
+  .f-offenlegung svg {
+    flex-shrink: 0;
+    margin-block-start: 1px;
+    color: var(--akzent-schrift);
+  }
+  .f-offenlegung strong {
+    color: var(--tinte);
+    font-weight: 600;
   }
 
   .f-verlauf {
