@@ -84,7 +84,7 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
 
 {
   medium?.art === 'video' && (
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       {`
       (() => {
         const v = document.querySelector('.kopfmedium-video');

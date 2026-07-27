@@ -166,6 +166,8 @@ const t = texte(daten.sprache);
 </Basis>
 
 <script>
+  import { beimSeitenaufbau } from '../../lib/seitenaufbau';
+
   /*
    * Zuletzt gewählten Standort anbieten. Bewusst als Vorschlag mit Namen und
    * Klick – keine automatische Weiterleitung, weil die sonst genau das
@@ -178,21 +180,26 @@ const t = texte(daten.sprache);
     potsdam: 'KU64 Potsdam',
   };
 
-  try {
-    const slug = localStorage.getItem('ku64:standort');
-    if (slug && STANDORT_NAMEN[slug]) {
-      const box = document.getElementById('zuletzt');
-      const name = document.getElementById('zuletzt-name');
-      const link = document.getElementById('zuletzt-link') as HTMLAnchorElement | null;
-      if (box && name && link) {
-        name.textContent = STANDORT_NAMEN[slug];
-        link.href = `/${slug}/`;
-        box.hidden = false;
+  /* Nach jedem Seitenaufbau – wer von einer Standortseite zurück auf die
+     Startseite wechselt, soll den Vorschlag sehen, und genau dann ist das
+     Modul längst ausgeführt. */
+  beimSeitenaufbau(() => {
+    try {
+      const slug = localStorage.getItem('ku64:standort');
+      if (slug && STANDORT_NAMEN[slug]) {
+        const box = document.getElementById('zuletzt');
+        const name = document.getElementById('zuletzt-name');
+        const link = document.getElementById('zuletzt-link') as HTMLAnchorElement | null;
+        if (box && name && link) {
+          name.textContent = STANDORT_NAMEN[slug];
+          link.href = `/${slug}/`;
+          box.hidden = false;
+        }
       }
+    } catch {
+      /* Kein localStorage verfügbar – dann eben ohne Vorschlag. */
     }
-  } catch {
-    /* Kein localStorage verfügbar – dann eben ohne Vorschlag. */
-  }
+  });
 </script>
 
 <style>

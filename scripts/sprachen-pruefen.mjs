@@ -2,7 +2,7 @@
  * Sprachwächter. Beantwortet genau eine Frage: Gibt es einen Inhalt, den es
  * auf Deutsch gibt und in einer anderen Sprache nicht?
  *
- * Geprüft wird auf drei Ebenen, weil eine allein nicht reicht:
+ * Geprüft wird auf vier Ebenen, weil eine allein nicht reicht:
  *
  *   1. Katalog gegen Quelle – fehlende und veraltete Schlüssel. Das ist die
  *      genaue Prüfung: Sie kennt jeden einzelnen Text.
@@ -13,9 +13,27 @@
  *      Katalog vorbei direkt in eine Seitendatei geschrieben wurde, findet
  *      ihn Ebene 1 nicht, weil sie ihn gar nicht kennt. Ebene 3 sieht ihn
  *      trotzdem, weil er im englischen HTML steht.
+ *   4. Der Weg zwischen den Sprachen. Die ersten drei Ebenen prüfen, ob eine
+ *      Sprache vollständig ist – keine prüft, ob man sie erreicht.
  *
- * Für freigegebene Sprachen ist jeder Fund ein Fehler und der Build bricht ab.
- * Für Sprachen im Aufbau ist er eine Rückstandsliste.
+ * Für freigegebene Sprachen ist jeder Fund der Ebenen 1–3 ein Fehler und der
+ * Build bricht ab. Für Sprachen im Aufbau ist er eine Rückstandsliste.
+ * Ebene 4 ist immer streng: Sie hängt nicht daran, wie weit eine Übersetzung
+ * ist, sondern nur daran, ob die Links stimmen.
+ *
+ * ── Warum es Ebene 4 gibt ───────────────────────────────────────────────
+ *
+ * Weil sie einmal gefehlt hat. Die Middleware hält interne Links in der
+ * Sprache der Seite und hatte dabei auch den Sprachwähler erwischt: Auf
+ * `/en/…` zeigten alle drei Knöpfe auf `/en/…`. Deutsch war die einzige
+ * Sprache, aus der man herauskam – von überall sonst führte kein Weg zurück.
+ *
+ * Kein Prüfschritt sah das. Ebene 1 war zufrieden (die Schlüssel waren da),
+ * der Linkprüfer war zufrieden (die Ziele existierten), und die Seite
+ * lieferte 200. Der Fehler steckte nicht in einem Wert, sondern in einer
+ * Beziehung: Der Knopf mit der Aufschrift „Deutsch" führte nicht nach
+ * Deutsch. Genau das prüft Ebene 4 – gegen die Aufschrift, nicht gegen eine
+ * Erwartungsliste.
  */
 
 import { readFile } from 'node:fs/promises';
@@ -27,7 +45,7 @@ const WURZEL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const { quelltexte } = await import(pathToFileURL(path.join(WURZEL, 'src/i18n/quelle.ts')).href);
 const { fingerabdruck } = await import(pathToFileURL(path.join(WURZEL, 'src/i18n/felder.ts')).href);
-const { SPRACHEN, QUELLSPRACHE } = await import(
+const { SPRACHEN, QUELLSPRACHE, spracheAusPfad } = await import(
   pathToFileURL(path.join(WURZEL, 'src/i18n/sprachen.ts')).href
 );
 
@@ -72,6 +90,7 @@ const quellHashes = new Map(
 console.log(`[sprachen] Quellfassung ${QUELLSPRACHE}: ${quellHashes.size} Textbausteine`);
 
 let fehler = 0;
+let wegFehler = 0;
 const zusammenfassung = [];
 
 for (const sprache of SPRACHEN) {
@@ -145,6 +164,26 @@ for (const sprache of SPRACHEN) {
   }
 }
 
+// ── Ebene 4: Führt der Sprachwähler aus der Sprache heraus? ─────────────
+
+const dist = path.join(WURZEL, 'dist/client');
+if (existsSync(dist)) {
+  const { seiten, befunde } = await sprachwaehlerPruefen(dist);
+  console.log(`\n[sprachen] Sprachwähler auf ${seiten} gebauten Seiten geprüft`);
+
+  if (befunde.length) {
+    console.log(`  FEHLER: ${befunde.length} Seite(n) mit falschen Zielen`);
+    for (const b of befunde.slice(0, 10)) {
+      console.log(`    · ${b.datei}`);
+      for (const z of b.zeilen) console.log(`        ${z}`);
+    }
+    if (befunde.length > 10) console.log(`    … und ${befunde.length - 10} weitere`);
+    wegFehler = befunde.length;
+  } else {
+    console.log('  Jede Seite führt in jede Sprache. In Ordnung.');
+  }
+}
+
 console.log('\n[sprachen] Übersicht');
 for (const z of zusammenfassung) {
   console.log(
@@ -152,6 +191,18 @@ for (const z of zusammenfassung) {
       `fehlend ${String(z.fehlend).padStart(4)}  veraltet ${String(z.veraltet).padStart(3)}  ` +
       `${z.freigegeben ? 'freigegeben' : 'im Aufbau'}`,
   );
+}
+
+if (wegFehler > 0) {
+  console.error(
+    `\n[sprachen] ABBRUCH: Auf ${wegFehler} Seite(n) führt der Sprachwähler nicht dorthin,\n` +
+      '           wo er hinzuführen behauptet. Eine Sprache, die man nicht mehr\n' +
+      '           verlassen kann, ist eine Sackgasse.\n' +
+      '           Verdächtig ist zuerst src/middleware.ts – dort werden interne\n' +
+      '           Links in die Sprache der Seite gezogen, und der Sprachwähler ist\n' +
+      '           die eine Ausnahme davon (Attribut hreflang bzw. data-sprachfest).',
+  );
+  process.exit(1);
 }
 
 if (fehler > 0) {
@@ -208,4 +259,77 @@ async function restdeutschSuchen(verzeichnis) {
 
   await durchlaufen(verzeichnis);
   return treffer;
+}
+
+/**
+ * Prüft auf jeder gebauten Seite die Ziele des Sprachwählers.
+ *
+ * Die Prüfung vergleicht nicht gegen eine Erwartungsliste, sondern gegen die
+ * Aufschrift des Knopfes selbst: Ein Link mit `data-sprache="de"` muss auf
+ * einen Pfad zeigen, den `spracheAusPfad` als Deutsch liest. Damit kann die
+ * Prüfung nicht mit demselben Denkfehler danebenliegen wie die Erzeugung –
+ * sie stellt nur fest, ob Beschriftung und Ziel dasselbe sagen.
+ *
+ * Zusätzlich müssen die Ziele voneinander verschieden sein. Drei Knöpfe, die
+ * alle auf dieselbe Adresse zeigen, wären formal je „richtig", wenn diese
+ * Adresse zufällig die eigene Sprache trägt – zusammen sind sie trotzdem
+ * kaputt.
+ */
+async function sprachwaehlerPruefen(verzeichnis) {
+  const { readdir } = await import('node:fs/promises');
+  const befunde = [];
+  let seiten = 0;
+
+  const ANKER = /<a\b((?:"[^"]*"|'[^']*'|[^>"'])*)>/gi;
+
+  async function durchlaufen(ordner) {
+    for (const eintrag of await readdir(ordner, { withFileTypes: true })) {
+      const voll = path.join(ordner, eintrag.name);
+      if (eintrag.isDirectory()) await durchlaufen(voll);
+      else if (eintrag.name.endsWith('.html')) await pruefen(voll);
+    }
+  }
+
+  async function pruefen(datei) {
+    const html = await readFile(datei, 'utf8');
+    if (!html.includes('data-sprache=')) return; // Weiterleitungsseiten u. Ä.
+
+    /* Der Wähler steht zweimal im Markup – in der Leiste und im mobilen Menü.
+       Beide müssen stimmen, aber gemeldet wird jedes Ziel nur einmal. */
+    const ziele = new Map();
+    for (const [, attribute] of html.matchAll(ANKER)) {
+      const code = attribute.match(/\bdata-sprache="([a-z]{2})"/)?.[1];
+      if (!code) continue;
+      const ziel = attribute.match(/\bhref="([^"]*)"/)?.[1];
+      if (!ziel) continue;
+      if (!ziele.has(code)) ziele.set(code, new Set());
+      ziele.get(code).add(ziel);
+    }
+    if (ziele.size === 0) return;
+    seiten++;
+
+    const zeilen = [];
+
+    for (const [code, menge] of ziele) {
+      for (const ziel of menge) {
+        const tatsaechlich = spracheAusPfad(ziel);
+        if (tatsaechlich !== code) {
+          zeilen.push(`Knopf "${code}" führt nach "${tatsaechlich}": ${ziel}`);
+        }
+      }
+    }
+
+    /* Alle Ziele über alle Sprachen zusammen – doppelte fallen so auf. */
+    const alle = [...ziele.values()].flatMap((m) => [...m]);
+    if (new Set(alle).size < ziele.size) {
+      zeilen.push(`nur ${new Set(alle).size} verschiedene Ziele für ${ziele.size} Sprachen`);
+    }
+
+    if (zeilen.length) {
+      befunde.push({ datei: path.relative(verzeichnis, datei), zeilen });
+    }
+  }
+
+  await durchlaufen(verzeichnis);
+  return { seiten, befunde };
 }

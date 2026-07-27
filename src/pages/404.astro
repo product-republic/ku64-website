@@ -101,7 +101,7 @@ const kombinationen = {
   </section>
 </Basis>
 
-<script define:vars={{ suchindex, kombinationen }}>
+<script is:inline define:vars={{ suchindex, kombinationen }} data-astro-rerun>
   /* ── Fall 1: Behandlung an einem Standort, der sie nicht anbietet ── */
 
   const teile = location.pathname.split('/').filter(Boolean);

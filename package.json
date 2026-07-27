@@ -23,7 +23,8 @@
     "bericht": "node bericht/bauen.mjs && node bericht/pdf-erzeugen.mjs",
     "layout:pruefen": "node scripts/layout-pruefen.mjs",
     "ansichten": "node scripts/ansichten.mjs",
-    "weiterleitungen:planen": "OHNE_WEITERLEITUNGEN=1 astro build && node --experimental-strip-types --no-warnings analyse/altbestand/weiterleitungen-planen.mjs"
+    "weiterleitungen:planen": "OHNE_WEITERLEITUNGEN=1 astro build && node --experimental-strip-types --no-warnings analyse/altbestand/weiterleitungen-planen.mjs",
+    "klickpfad": "node scripts/klickpfad.mjs"
   },
   "repository": {
     "type": "git",

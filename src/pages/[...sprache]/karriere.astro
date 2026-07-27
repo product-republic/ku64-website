@@ -158,6 +158,8 @@ const brotkrumen = [
 </Basis>
 
 <script>
+  import { beimSeitenaufbau } from '../../lib/seitenaufbau';
+
   /**
    * Holt die aktuelle Stellenliste nach.
    *
@@ -168,60 +170,66 @@ const brotkrumen = [
    *
    * Schlägt der Abruf fehl, bleibt der gebaute Stand stehen. Das ist der
    * Grund, warum er überhaupt im HTML steht.
+   *
+   * Nach jedem Seitenaufbau, nicht nur einmal: Beim Seitenwechsel führt die
+   * Website Module nicht erneut aus – wer die Karriereseite als zweite Seite
+   * ansteuerte, sah sonst dauerhaft den Stand des letzten Deployments.
    */
-  const liste = document.getElementById('stellen-liste');
+  beimSeitenaufbau(() => {
+    const liste = document.getElementById('stellen-liste');
 
-  if (liste) {
-    type Stelle = {
-      id: string;
-      titel: string;
-      standortName: string;
-      abteilung: string;
-      umfang: string;
-      adresse: string;
-    };
+    if (liste) {
+      type Stelle = {
+        id: string;
+        titel: string;
+        standortName: string;
+        abteilung: string;
+        umfang: string;
+        adresse: string;
+      };
 
-    const pfeil = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+      const pfeil = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
 
-    /* Fremde Zeichenketten gehören nicht ungeprüft ins Markup – auch wenn
-       sie aus dem eigenen Personio kommen. */
-    const sicher = (text: string) => {
-      const d = document.createElement('div');
-      d.textContent = text;
-      return d.innerHTML;
-    };
+      /* Fremde Zeichenketten gehören nicht ungeprüft ins Markup – auch wenn
+         sie aus dem eigenen Personio kommen. */
+      const sicher = (text: string) => {
+        const d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+      };
 
-    const zeichnen = (stellen: Stelle[]) => {
-      liste.innerHTML = stellen
-        .map(
-          (s) => `
-        <a href="${sicher(s.adresse)}" class="karte stelle" target="_blank" rel="noopener noreferrer">
-          <span class="s-kopf">
-            <span class="s-ort">${sicher(s.standortName)}</span>
-            ${s.umfang ? `<span class="marke">${sicher(s.umfang)}</span>` : ''}
-          </span>
-          <h3>${sicher(s.titel)}</h3>
-          ${s.abteilung ? `<p class="s-abteilung">${sicher(s.abteilung)}</p>` : ''}
-          <span class="s-mehr">Zur Ausschreibung${pfeil}</span>
-        </a>`,
-        )
-        .join('');
-    };
+      const zeichnen = (stellen: Stelle[]) => {
+        liste.innerHTML = stellen
+          .map(
+            (s) => `
+          <a href="${sicher(s.adresse)}" class="karte stelle" target="_blank" rel="noopener noreferrer">
+            <span class="s-kopf">
+              <span class="s-ort">${sicher(s.standortName)}</span>
+              ${s.umfang ? `<span class="marke">${sicher(s.umfang)}</span>` : ''}
+            </span>
+            <h3>${sicher(s.titel)}</h3>
+            ${s.abteilung ? `<p class="s-abteilung">${sicher(s.abteilung)}</p>` : ''}
+            <span class="s-mehr">Zur Ausschreibung${pfeil}</span>
+          </a>`,
+          )
+          .join('');
+      };
 
-    /* Mit Schrägstrich am Ende – die Website ist auf `trailingSlash: always`
-       eingestellt, ohne ihn antwortet der Server mit einer Weiterleitung. */
-    fetch('/api/stellen/')
-      .then((a) => (a.ok ? a.json() : null))
-      .then((daten) => {
-        if (!daten?.stellen) return;
-        const bekannt = [...liste.querySelectorAll('a')].length;
-        /* Nur neu zeichnen, wenn sich wirklich etwas geändert hat. */
-        if (daten.stellen.length !== bekannt) zeichnen(daten.stellen);
-      })
-      .catch(() => {
-        /* Der gebaute Stand bleibt stehen. */
-      });
-  }
+      /* Mit Schrägstrich am Ende – die Website ist auf `trailingSlash: always`
+         eingestellt, ohne ihn antwortet der Server mit einer Weiterleitung. */
+      fetch('/api/stellen/')
+        .then((a) => (a.ok ? a.json() : null))
+        .then((daten) => {
+          if (!daten?.stellen) return;
+          const bekannt = [...liste.querySelectorAll('a')].length;
+          /* Nur neu zeichnen, wenn sich wirklich etwas geändert hat. */
+          if (daten.stellen.length !== bekannt) zeichnen(daten.stellen);
+        })
+        .catch(() => {
+          /* Der gebaute Stand bleibt stehen. */
+        });
+    }
+  });
 </script>
 
 <style>

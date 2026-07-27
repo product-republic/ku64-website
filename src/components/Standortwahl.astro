@@ -47,20 +47,28 @@ const { ziel, titel = 'Bitte wählen Sie Ihren Standort' } = Astro.props;
 </div>
 
 <script>
-  // Zuletzt gewählten Standort markieren und nach vorn sortieren.
-  try {
-    const slug = localStorage.getItem('ku64:standort');
-    if (slug) {
-      const karte = document.querySelector<HTMLElement>(`.ziel[data-slug="${slug}"]`);
-      const marke = karte?.querySelector<HTMLElement>('.zuletzt-marke');
-      if (karte && marke) {
-        marke.hidden = false;
-        karte.parentElement?.prepend(karte);
+  import { beimSeitenaufbau } from '../lib/seitenaufbau';
+
+  /* Nach jedem Seitenaufbau: Die Karten sind beim Seitenwechsel neue
+     Elemente, das Modul läuft aber nicht noch einmal. Ohne das blieb die
+     Markierung „zuletzt gewählt" beim zweiten Aufruf der Standortübersicht
+     aus. */
+  beimSeitenaufbau(() => {
+    // Zuletzt gewählten Standort markieren und nach vorn sortieren.
+    try {
+      const slug = localStorage.getItem('ku64:standort');
+      if (slug) {
+        const karte = document.querySelector<HTMLElement>(`.ziel[data-slug="${slug}"]`);
+        const marke = karte?.querySelector<HTMLElement>('.zuletzt-marke');
+        if (karte && marke) {
+          marke.hidden = false;
+          karte.parentElement?.prepend(karte);
+        }
       }
+    } catch {
+      /* kein Speicher verfügbar */
     }
-  } catch {
-    /* kein Speicher verfügbar */
-  }
+  });
 </script>
 
 <style>

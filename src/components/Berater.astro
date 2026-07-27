@@ -469,205 +469,234 @@ const system = kiSystem('berater')!;
 </style>
 
 <script>
-  const wurzel = document.querySelector<HTMLElement>('.berater');
-  if (wurzel) {
-    const ruf = wurzel.querySelector<HTMLButtonElement>('.ruf')!;
-    const fenster = wurzel.querySelector<HTMLElement>('.fenster')!;
-    const zu = wurzel.querySelector<HTMLButtonElement>('.f-zu')!;
-    const verlaufEl = wurzel.querySelector<HTMLElement>('.f-verlauf')!;
-    const form = wurzel.querySelector<HTMLFormElement>('#chatform')!;
-    const feld = wurzel.querySelector<HTMLTextAreaElement>('#frage')!;
-    const sendeKnopf = form.querySelector<HTMLButtonElement>('.senden')!;
-    const chipBox = wurzel.querySelector<HTMLElement>('#vorschlaege')!;
+  import { beimSeitenaufbau } from '../lib/seitenaufbau';
 
-    const standort =
-      document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ?? null;
+  /*
+   * Der Berater wird nach jedem Seitenaufbau neu gebunden.
+   *
+   * Ohne das öffnete er sich genau einmal: Beim Seitenwechsel tauscht die
+   * Website den Körper aus, führt Module aber nicht erneut aus – der
+   * Zuhörer am Rufknopf hing danach an einem Knopf, den es nicht mehr gab.
+   * Gemeldet wurde das als „Fragen? Berater öffnen funktioniert nicht", und
+   * es stimmte: auf jeder Seite außer der zuerst geladenen.
+   *
+   * Die Zuhörer an `document` und `window` hängen an einem Signal, das vor
+   * dem nächsten Austausch abgebrochen wird. Sonst lägen nach zehn
+   * Seitenwechseln zehn Escape-Zuhörer übereinander, von denen neun auf
+   * Fenster zeigen, die es nicht mehr gibt.
+   */
+  beimSeitenaufbau(() => {
+    const steuerung = new AbortController();
+    const signal = steuerung.signal;
+    const wurzel = document.querySelector<HTMLElement>('.berater');
+    if (wurzel) {
+      const ruf = wurzel.querySelector<HTMLButtonElement>('.ruf')!;
+      const fenster = wurzel.querySelector<HTMLElement>('.fenster')!;
+      const zu = wurzel.querySelector<HTMLButtonElement>('.f-zu')!;
+      const verlaufEl = wurzel.querySelector<HTMLElement>('.f-verlauf')!;
+      const form = wurzel.querySelector<HTMLFormElement>('#chatform')!;
+      const feld = wurzel.querySelector<HTMLTextAreaElement>('#frage')!;
+      const sendeKnopf = form.querySelector<HTMLButtonElement>('.senden')!;
+      const chipBox = wurzel.querySelector<HTMLElement>('#vorschlaege')!;
 
-    const verlauf: { role: 'user' | 'assistant'; content: string }[] = [];
-    let laeuft = false;
+      const standort =
+        document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ?? null;
 
-    /* ── Öffnen und Schließen ── */
+      const verlauf: { role: 'user' | 'assistant'; content: string }[] = [];
+      let laeuft = false;
 
-    const oeffnen = () => {
-      fenster.hidden = false;
-      ruf.setAttribute('aria-expanded', 'true');
-      feld.focus();
-    };
+      /* ── Öffnen und Schließen ── */
 
-    const schliessen = () => {
-      fenster.hidden = true;
-      ruf.setAttribute('aria-expanded', 'false');
-      ruf.focus();
-    };
+      const oeffnen = () => {
+        fenster.hidden = false;
+        ruf.setAttribute('aria-expanded', 'true');
+        feld.focus();
+      };
 
-    ruf.addEventListener('click', oeffnen);
-    zu.addEventListener('click', schliessen);
+      const schliessen = () => {
+        fenster.hidden = true;
+        ruf.setAttribute('aria-expanded', 'false');
+        ruf.focus();
+      };
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !fenster.hidden) schliessen();
-    });
+      ruf.addEventListener('click', oeffnen);
+      zu.addEventListener('click', schliessen);
 
-    // Andere Stellen der Seite können den Berater öffnen.
-    document.querySelectorAll('.chat-oeffner').forEach((el) =>
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        oeffnen();
-      }),
-    );
+      document.addEventListener(
+        'keydown',
+        (e) => {
+          if (e.key === 'Escape' && !fenster.hidden) schliessen();
+        },
+        { signal },
+      );
 
-    /*
-     * Und andere Stellen können eine Frage mitgeben.
-     *
-     * Die Suche tut das: Wer dort etwas eintippt, das erkennbar eine Frage
-     * ist, bekommt einen Knopf, der genau diese Frage hierher weiterreicht.
-     * Über ein Ereignis am Fenster und nicht über einen direkten Aufruf –
-     * so muss die Suche nichts über den Berater wissen und er nichts über
-     * sie. Wer den Berater eines Tages austauscht, tauscht eine Datei.
-     *
-     * Die Frage wird eingetragen und abgeschickt, nicht nur eingetragen:
-     * Wer den Knopf „Frage an den Berater" drückt, hat die Frage schon
-     * gestellt. Ein zweites Mal auf Senden zu drücken wäre eine Hürde ohne
-     * Zweck.
-     */
-    addEventListener('ku64:berater-fragen', (e) => {
-      const frage = (e as CustomEvent<{ frage?: string }>).detail?.frage?.trim();
-      oeffnen();
-      if (frage) void fragen(frage);
-    });
+      // Andere Stellen der Seite können den Berater öffnen.
+      document.querySelectorAll('.chat-oeffner').forEach((el) =>
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          oeffnen();
+        }),
+      );
 
-    /* ── Darstellung ── */
+      /*
+       * Und andere Stellen können eine Frage mitgeben.
+       *
+       * Die Suche tut das: Wer dort etwas eintippt, das erkennbar eine Frage
+       * ist, bekommt einen Knopf, der genau diese Frage hierher weiterreicht.
+       * Über ein Ereignis am Fenster und nicht über einen direkten Aufruf –
+       * so muss die Suche nichts über den Berater wissen und er nichts über
+       * sie. Wer den Berater eines Tages austauscht, tauscht eine Datei.
+       *
+       * Die Frage wird eingetragen und abgeschickt, nicht nur eingetragen:
+       * Wer den Knopf „Frage an den Berater" drückt, hat die Frage schon
+       * gestellt. Ein zweites Mal auf Senden zu drücken wäre eine Hürde ohne
+       * Zweck.
+       */
+      addEventListener(
+        'ku64:berater-fragen',
+        (e) => {
+          const frage = (e as CustomEvent<{ frage?: string }>).detail?.frage?.trim();
+          oeffnen();
+          if (frage) void fragen(frage);
+        },
+        { signal },
+      );
 
-    /** Escapen und danach nur ausgewähltes Markdown zulassen – nie innerHTML
-     *  mit ungeprüfter Modellausgabe füllen. */
-    function alsHtml(text: string): string {
-      const sicher = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+      /* ── Darstellung ── */
 
-      return sicher
-        // Nur interne Pfade als Link zulassen, keine fremden Domains.
-        .replace(
-          /\[([^\]]+)\]\((\/[a-z0-9\-/#]*)\)/gi,
-          '<a href="$2">$1</a>',
-        )
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n{2,}/g, '</p><p>')
-        .replace(/\n/g, '<br>');
-    }
+      /** Escapen und danach nur ausgewähltes Markdown zulassen – nie innerHTML
+       *  mit ungeprüfter Modellausgabe füllen. */
+      function alsHtml(text: string): string {
+        const sicher = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
 
-    function blaseAnlegen(rolle: 'ich' | 'bot'): HTMLElement {
-      const el = document.createElement('div');
-      el.className = `blase blase-${rolle}`;
-      verlaufEl.append(el);
-      return el;
-    }
+        return sicher
+          // Nur interne Pfade als Link zulassen, keine fremden Domains.
+          .replace(
+            /\[([^\]]+)\]\((\/[a-z0-9\-/#]*)\)/gi,
+            '<a href="$2">$1</a>',
+          )
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\n{2,}/g, '</p><p>')
+          .replace(/\n/g, '<br>');
+      }
 
-    function nachUnten() {
-      verlaufEl.scrollTop = verlaufEl.scrollHeight;
-    }
+      function blaseAnlegen(rolle: 'ich' | 'bot'): HTMLElement {
+        const el = document.createElement('div');
+        el.className = `blase blase-${rolle}`;
+        verlaufEl.append(el);
+        return el;
+      }
 
-    /* ── Senden ── */
+      function nachUnten() {
+        verlaufEl.scrollTop = verlaufEl.scrollHeight;
+      }
 
-    async function fragen(text: string) {
-      if (!text.trim() || laeuft) return;
+      /* ── Senden ── */
 
-      laeuft = true;
-      sendeKnopf.disabled = true;
-      chipBox.hidden = true;
+      async function fragen(text: string) {
+        if (!text.trim() || laeuft) return;
 
-      const meine = blaseAnlegen('ich');
-      meine.textContent = text;
-      verlauf.push({ role: 'user', content: text });
-      nachUnten();
+        laeuft = true;
+        sendeKnopf.disabled = true;
+        chipBox.hidden = true;
 
-      const antwortEl = blaseAnlegen('bot');
-      antwortEl.innerHTML = '<span class="tippt"><span></span><span></span><span></span></span>';
-      nachUnten();
+        const meine = blaseAnlegen('ich');
+        meine.textContent = text;
+        verlauf.push({ role: 'user', content: text });
+        nachUnten();
 
-      let gesammelt = '';
+        const antwortEl = blaseAnlegen('bot');
+        antwortEl.innerHTML = '<span class="tippt"><span></span><span></span><span></span></span>';
+        nachUnten();
 
-      try {
-        // Schrägstrich am Ende ist Pflicht: Die Seite läuft mit
-        // trailingSlash 'always', ohne ihn antwortet der Server mit 301 –
-        // und eine Weiterleitung macht aus dem POST ein GET ohne Rumpf.
-        const res = await fetch('/api/chat/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nachrichten: verlauf, standort }),
-        });
+        let gesammelt = '';
 
-        if (!res.ok || !res.body) {
-          const daten = await res.json().catch(() => null);
-          throw new Error(daten?.fehler || 'Der Berater antwortet gerade nicht.');
-        }
+        try {
+          // Schrägstrich am Ende ist Pflicht: Die Seite läuft mit
+          // trailingSlash 'always', ohne ihn antwortet der Server mit 301 –
+          // und eine Weiterleitung macht aus dem POST ein GET ohne Rumpf.
+          const res = await fetch('/api/chat/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nachrichten: verlauf, standort }),
+          });
 
-        const leser = res.body.getReader();
-        const decoder = new TextDecoder();
-        let puffer = '';
+          if (!res.ok || !res.body) {
+            const daten = await res.json().catch(() => null);
+            throw new Error(daten?.fehler || 'Der Berater antwortet gerade nicht.');
+          }
 
-        while (true) {
-          const { done, value } = await leser.read();
-          if (done) break;
+          const leser = res.body.getReader();
+          const decoder = new TextDecoder();
+          let puffer = '';
 
-          puffer += decoder.decode(value, { stream: true });
-          const bloecke = puffer.split('\n\n');
-          puffer = bloecke.pop() ?? '';
+          while (true) {
+            const { done, value } = await leser.read();
+            if (done) break;
 
-          for (const block of bloecke) {
-            const typ = block.match(/^event: (.+)$/m)?.[1];
-            const rohdaten = block.match(/^data: (.*)$/m)?.[1];
-            if (!typ || rohdaten === undefined) continue;
+            puffer += decoder.decode(value, { stream: true });
+            const bloecke = puffer.split('\n\n');
+            puffer = bloecke.pop() ?? '';
 
-            if (typ === 'text') {
-              gesammelt += JSON.parse(rohdaten);
-              antwortEl.innerHTML = `<p>${alsHtml(gesammelt)}</p>`;
-              nachUnten();
-            } else if (typ === 'fehler') {
-              throw new Error(JSON.parse(rohdaten));
+            for (const block of bloecke) {
+              const typ = block.match(/^event: (.+)$/m)?.[1];
+              const rohdaten = block.match(/^data: (.*)$/m)?.[1];
+              if (!typ || rohdaten === undefined) continue;
+
+              if (typ === 'text') {
+                gesammelt += JSON.parse(rohdaten);
+                antwortEl.innerHTML = `<p>${alsHtml(gesammelt)}</p>`;
+                nachUnten();
+              } else if (typ === 'fehler') {
+                throw new Error(JSON.parse(rohdaten));
+              }
             }
           }
+
+          if (gesammelt) verlauf.push({ role: 'assistant', content: gesammelt });
+        } catch (e) {
+          antwortEl.innerHTML = `<p>${
+            e instanceof Error ? e.message : 'Es ist ein Fehler aufgetreten.'
+          }</p>`;
+          // Fehlgeschlagene Runde nicht im Verlauf lassen – sonst verwirrt sie
+          // das Modell bei der nächsten Frage.
+          if (verlauf[verlauf.length - 1]?.role === 'user') verlauf.pop();
+        } finally {
+          laeuft = false;
+          sendeKnopf.disabled = false;
+          nachUnten();
         }
-
-        if (gesammelt) verlauf.push({ role: 'assistant', content: gesammelt });
-      } catch (e) {
-        antwortEl.innerHTML = `<p>${
-          e instanceof Error ? e.message : 'Es ist ein Fehler aufgetreten.'
-        }</p>`;
-        // Fehlgeschlagene Runde nicht im Verlauf lassen – sonst verwirrt sie
-        // das Modell bei der nächsten Frage.
-        if (verlauf[verlauf.length - 1]?.role === 'user') verlauf.pop();
-      } finally {
-        laeuft = false;
-        sendeKnopf.disabled = false;
-        nachUnten();
       }
-    }
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const text = feld.value;
-      feld.value = '';
-      feld.style.height = 'auto';
-      fragen(text);
-    });
-
-    // Enter sendet, Shift+Enter macht einen Zeilenumbruch.
-    feld.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
-        form.requestSubmit();
-      }
-    });
+        const text = feld.value;
+        feld.value = '';
+        feld.style.height = 'auto';
+        fragen(text);
+      });
 
-    // Eingabefeld mitwachsen lassen.
-    feld.addEventListener('input', () => {
-      feld.style.height = 'auto';
-      feld.style.height = `${Math.min(feld.scrollHeight, 112)}px`;
-    });
+      // Enter sendet, Shift+Enter macht einen Zeilenumbruch.
+      feld.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          form.requestSubmit();
+        }
+      });
 
-    chipBox.querySelectorAll('.chip').forEach((chip) =>
-      chip.addEventListener('click', () => fragen(chip.textContent ?? '')),
-    );
-  }
+      // Eingabefeld mitwachsen lassen.
+      feld.addEventListener('input', () => {
+        feld.style.height = 'auto';
+        feld.style.height = `${Math.min(feld.scrollHeight, 112)}px`;
+      });
+
+      chipBox.querySelectorAll('.chip').forEach((chip) =>
+        chip.addEventListener('click', () => fragen(chip.textContent ?? '')),
+      );
+    }
+    return () => steuerung.abort();
+  });
 </script>

@@ -1186,19 +1186,26 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 </style>
 
 <script>
-  // Mobiles Menü
-  const knopf = document.querySelector<HTMLButtonElement>('.menue-knopf');
-  const menue = document.getElementById('mobilmenue');
+  import { beimSeitenaufbau } from '../lib/seitenaufbau';
 
-  knopf?.addEventListener('click', () => {
-    const offen = knopf.getAttribute('aria-expanded') === 'true';
-    knopf.setAttribute('aria-expanded', String(!offen));
-    knopf.setAttribute(
-      'aria-label',
-      offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen,
-    );
-    if (menue) menue.hidden = offen;
-  });
+  /* ── Was den Seitenwechsel überlebt und was nicht ──────────────────────
+   *
+   * Die Website tauscht beim Seitenwechsel den Körper aus, führt Module aber
+   * nicht erneut aus. Alles, was ein Element aus der Seite greift, muss
+   * deshalb nach jedem Aufbau neu gebunden werden – sonst hängt der Zuhörer
+   * an einem Knopf, den es nicht mehr gibt. Genau das war der Fall: Das
+   * mobile Menü ließ sich nach dem ersten Wechsel nicht mehr öffnen.
+   *
+   * `document` und `window` überleben den Austausch. Was an ihnen hängt,
+   * steht deshalb unten und wird genau einmal registriert – zweimal wäre
+   * hier ein Fehler, nicht nur Ballast.
+   */
+
+  function waehlerZu() {
+    for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
+      d.open = false;
+    }
+  }
 
   /*
    * Standortwähler schließen, sobald man woanders hinklickt.
@@ -1212,35 +1219,6 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Zweitens zählte nur der Klick als "außerhalb". Wer mit der Tastatur
    * weiterspringt oder das Fenster wechselt, ließ den Wähler offen stehen.
    */
-  /*
-   * Angedockt oder nicht.
-   *
-   * Ein IntersectionObserver auf einem Pixel über dem Kopf statt eines
-   * Scroll-Handlers: Der Browser meldet den Wechsel selbst, statt bei jedem
-   * Scrollschritt eine Position auszurechnen. Zwei Meldungen pro Seite statt
-   * hundert pro Sekunde.
-   */
-  const marke = document.querySelector('.kopf-marke');
-  const kopf = document.querySelector('.kopf');
-
-  if (marke && kopf && 'IntersectionObserver' in window) {
-    new IntersectionObserver(
-      ([eintrag]) => {
-        kopf.classList.toggle('ist-angedockt', !eintrag.isIntersecting);
-        /* Beim Einklappen darf kein offener Wähler zurückbleiben – er hinge
-           sonst unter einer Leiste, die es nicht mehr gibt. */
-        if (!eintrag.isIntersecting) waehlerZu();
-      },
-      { threshold: 0 },
-    ).observe(marke);
-  }
-
-  function waehlerZu() {
-    for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
-      d.open = false;
-    }
-  }
-
   document.addEventListener('click', (e) => {
     const ziel = e.target as Node;
     for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
@@ -1264,108 +1242,164 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
      oder beim Wechsel in ein anderes Fenster aber nicht. */
   window.addEventListener('blur', waehlerZu);
 
-  /*
-   * Öffnungsstatus im Browser neu berechnen. Die Seite ist statisch, der
-   * beim Build ermittelte Status wäre sonst dauerhaft falsch.
-   */
-  const telefon = document.querySelector<HTMLAnchorElement>('.telefon');
-  const punkt = telefon?.querySelector('.punkt');
-  const rohdaten = telefon?.dataset.oeffnungszeiten;
+  // ── Ab hier: alles, was Elemente aus der Seite braucht ────────────────
 
-  if (punkt && rohdaten) {
-    try {
-      const zeiten = JSON.parse(rohdaten) as { tag: string; von: string | null; bis: string | null }[];
-      const tage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-      const jetzt = new Date();
-      const heute = zeiten.find((z) => z.tag === tage[jetzt.getDay()]);
+  beimSeitenaufbau(() => {
+    const abbauen: (() => void)[] = [];
 
-      let offen = false;
-      if (heute?.von && heute.bis) {
-        const min = jetzt.getHours() * 60 + jetzt.getMinutes();
-        const [vh, vm] = heute.von.split(':').map(Number);
-        const [bh, bm] = heute.bis.split(':').map(Number);
-        offen = min >= vh * 60 + vm && min < bh * 60 + bm;
-      }
+    // Mobiles Menü
+    const knopf = document.querySelector<HTMLButtonElement>('.menue-knopf');
+    const menue = document.getElementById('mobilmenue');
 
-      punkt.classList.toggle('offen', offen);
-      telefon?.setAttribute(
-        'title',
-        offen ? 'Jetzt geöffnet – rufen Sie uns an' : 'Gerade geschlossen – hinterlassen Sie uns eine Nachricht',
+    knopf?.addEventListener('click', () => {
+      const offen = knopf.getAttribute('aria-expanded') === 'true';
+      knopf.setAttribute('aria-expanded', String(!offen));
+      knopf.setAttribute(
+        'aria-label',
+        offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen,
       );
-    } catch {
-      /* Fehlerhafte Daten: Punkt bleibt neutral. */
-    }
-  }
-
-  /* ── Das wandernde Feld im Hauptmenü ──────────────────────────────────
-   *
-   * Es folgt dem Zeiger von Punkt zu Punkt und kehrt beim Verlassen zum
-   * aktiven Punkt zurück. Gemessen wird gegen die Liste, nicht gegen das
-   * Fenster – so stimmt die Rechnung auch, wenn der Kopf beim Scrollen
-   * andockt und sich dabei verschiebt.
-   */
-  (() => {
-    const liste = document.querySelector<HTMLElement>('.haupt-liste');
-    const laeufer = liste?.querySelector<HTMLElement>('.haupt-laeufer');
-    if (!liste || !laeufer) return;
-
-    const links = [...liste.querySelectorAll<HTMLElement>('.haupt-link')];
-    if (links.length === 0) return;
-
-    let zuletzt: HTMLElement | null = null;
-
-    const stellen = (ziel: HTMLElement) => {
-      const l = liste.getBoundingClientRect();
-      const z = ziel.getBoundingClientRect();
-      laeufer.style.setProperty('--x', `${z.left - l.left}px`);
-      laeufer.style.setProperty('--b', `${z.width}px`);
-    };
-
-    const zeigen = (ziel: HTMLElement) => {
-      /* Über dem aktiven Punkt nicht – dort steht schon seine eigene Fläche. */
-      if (ziel.classList.contains('ist-aktiv')) {
-        verbergen();
-        return;
-      }
-      /*
-       * Beim ersten Erscheinen erst setzen, dann einblenden – sonst gleitet
-       * das Feld sichtbar von der linken Kante herbei, weil es vorher bei
-       * Null stand. Danach soll es gleiten, das ist ja der Sinn.
-       */
-      const warVerborgen = !laeufer.hasAttribute('data-sichtbar');
-      if (warVerborgen) {
-        const alteUebergang = laeufer.style.transition;
-        laeufer.style.transition = 'none';
-        stellen(ziel);
-        /* Layout erzwingen, damit die Sprungposition gilt, bevor der
-           Übergang zurückkommt. */
-        void laeufer.offsetWidth;
-        laeufer.style.transition = alteUebergang;
-      } else {
-        stellen(ziel);
-      }
-      laeufer.dataset.sichtbar = '';
-      zuletzt = ziel;
-    };
-
-    const verbergen = () => {
-      delete laeufer.dataset.sichtbar;
-      zuletzt = null;
-    };
-
-    for (const link of links) {
-      link.addEventListener('pointerenter', () => zeigen(link));
-      link.addEventListener('focus', () => zeigen(link));
-    }
-    liste.addEventListener('pointerleave', verbergen);
-    liste.addEventListener('focusout', (e) => {
-      if (!liste.contains(e.relatedTarget as Node)) verbergen();
+      if (menue) menue.hidden = offen;
     });
 
-    /* Die Breite der Punkte ändert sich mit der Fenstergröße und mit der
-       Sprache. Ohne Beobachter säße das Feld danach neben seinem Punkt. */
-    const nachmessen = () => { if (zuletzt) stellen(zuletzt); };
-    new ResizeObserver(nachmessen).observe(liste);
-    document.fonts?.ready.then(nachmessen);
-  })();
+    /*
+     * Angedockt oder nicht.
+     *
+     * Ein IntersectionObserver auf einem Pixel über dem Kopf statt eines
+     * Scroll-Handlers: Der Browser meldet den Wechsel selbst, statt bei jedem
+     * Scrollschritt eine Position auszurechnen. Zwei Meldungen pro Seite statt
+     * hundert pro Sekunde.
+     */
+    const marke = document.querySelector('.kopf-marke');
+    const kopf = document.querySelector('.kopf');
+
+    if (marke && kopf && 'IntersectionObserver' in window) {
+      const beobachter = new IntersectionObserver(
+        ([eintrag]) => {
+          kopf.classList.toggle('ist-angedockt', !eintrag.isIntersecting);
+          /* Beim Einklappen darf kein offener Wähler zurückbleiben – er hinge
+             sonst unter einer Leiste, die es nicht mehr gibt. */
+          if (!eintrag.isIntersecting) waehlerZu();
+        },
+        { threshold: 0 },
+      );
+      beobachter.observe(marke);
+      abbauen.push(() => beobachter.disconnect());
+    }
+
+    /*
+     * Öffnungsstatus im Browser neu berechnen. Die Seite ist statisch, der
+     * beim Build ermittelte Status wäre sonst dauerhaft falsch.
+     */
+    const telefon = document.querySelector<HTMLAnchorElement>('.telefon');
+    const punkt = telefon?.querySelector('.punkt');
+    const rohdaten = telefon?.dataset.oeffnungszeiten;
+
+    if (punkt && rohdaten) {
+      try {
+        const zeiten = JSON.parse(rohdaten) as {
+          tag: string;
+          von: string | null;
+          bis: string | null;
+        }[];
+        const tage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+        const jetzt = new Date();
+        const heute = zeiten.find((z) => z.tag === tage[jetzt.getDay()]);
+
+        let offen = false;
+        if (heute?.von && heute.bis) {
+          const min = jetzt.getHours() * 60 + jetzt.getMinutes();
+          const [vh, vm] = heute.von.split(':').map(Number);
+          const [bh, bm] = heute.bis.split(':').map(Number);
+          offen = min >= vh * 60 + vm && min < bh * 60 + bm;
+        }
+
+        punkt.classList.toggle('offen', offen);
+        telefon?.setAttribute(
+          'title',
+          offen
+            ? 'Jetzt geöffnet – rufen Sie uns an'
+            : 'Gerade geschlossen – hinterlassen Sie uns eine Nachricht',
+        );
+      } catch {
+        /* Fehlerhafte Daten: Punkt bleibt neutral. */
+      }
+    }
+
+    /* ── Das wandernde Feld im Hauptmenü ────────────────────────────────
+     *
+     * Es folgt dem Zeiger von Punkt zu Punkt und kehrt beim Verlassen zum
+     * aktiven Punkt zurück. Gemessen wird gegen die Liste, nicht gegen das
+     * Fenster – so stimmt die Rechnung auch, wenn der Kopf beim Scrollen
+     * andockt und sich dabei verschiebt.
+     */
+    const liste = document.querySelector<HTMLElement>('.haupt-liste');
+    const laeufer = liste?.querySelector<HTMLElement>('.haupt-laeufer');
+    const links = liste ? [...liste.querySelectorAll<HTMLElement>('.haupt-link')] : [];
+
+    if (liste && laeufer && links.length > 0) {
+      let zuletzt: HTMLElement | null = null;
+
+      const stellen = (ziel: HTMLElement) => {
+        const l = liste.getBoundingClientRect();
+        const z = ziel.getBoundingClientRect();
+        laeufer.style.setProperty('--x', `${z.left - l.left}px`);
+        laeufer.style.setProperty('--b', `${z.width}px`);
+      };
+
+      const verbergen = () => {
+        delete laeufer.dataset.sichtbar;
+        zuletzt = null;
+      };
+
+      const zeigen = (ziel: HTMLElement) => {
+        /* Über dem aktiven Punkt nicht – dort steht schon seine eigene Fläche. */
+        if (ziel.classList.contains('ist-aktiv')) {
+          verbergen();
+          return;
+        }
+        /*
+         * Beim ersten Erscheinen erst setzen, dann einblenden – sonst gleitet
+         * das Feld sichtbar von der linken Kante herbei, weil es vorher bei
+         * Null stand. Danach soll es gleiten, das ist ja der Sinn.
+         */
+        const warVerborgen = !laeufer.hasAttribute('data-sichtbar');
+        if (warVerborgen) {
+          const alterUebergang = laeufer.style.transition;
+          laeufer.style.transition = 'none';
+          stellen(ziel);
+          /* Layout erzwingen, damit die Sprungposition gilt, bevor der
+             Übergang zurückkommt. */
+          void laeufer.offsetWidth;
+          laeufer.style.transition = alterUebergang;
+        } else {
+          stellen(ziel);
+        }
+        laeufer.dataset.sichtbar = '';
+        zuletzt = ziel;
+      };
+
+      for (const link of links) {
+        link.addEventListener('pointerenter', () => zeigen(link));
+        link.addEventListener('focus', () => zeigen(link));
+      }
+      liste.addEventListener('pointerleave', verbergen);
+      liste.addEventListener('focusout', (e) => {
+        if (!liste.contains(e.relatedTarget as Node)) verbergen();
+      });
+
+      /* Die Breite der Punkte ändert sich mit der Fenstergröße und mit der
+         Sprache. Ohne Beobachter säße das Feld danach neben seinem Punkt. */
+      const nachmessen = () => {
+        if (zuletzt) stellen(zuletzt);
+      };
+      const groesse = new ResizeObserver(nachmessen);
+      groesse.observe(liste);
+      document.fonts?.ready.then(nachmessen);
+      abbauen.push(() => groesse.disconnect());
+    }
+
+    return () => {
+      for (const f of abbauen) f();
+    };
+  });
 </script>

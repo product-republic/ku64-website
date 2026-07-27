@@ -180,124 +180,155 @@ const faq = [
 
 <script>
   import { Conversation } from '@elevenlabs/client';
+  import { beimSeitenaufbau } from '../../lib/seitenaufbau';
 
-  const mikro = document.getElementById('mikro') as HTMLButtonElement;
-  const mikroText = document.getElementById('mikroText')!;
-  const zustand = document.getElementById('zustand')!;
-  const buehne = document.getElementById('buehne')!;
-  const protokoll = document.getElementById('protokoll')!;
-  const fehlerbox = document.getElementById('fehlerbox')!;
-  const standortWahl = document.getElementById('standortWahl') as HTMLSelectElement;
+  /*
+   * Nach jedem Seitenaufbau neu binden.
+   *
+   * Beim Seitenwechsel tauscht die Website den Körper aus, führt Module aber
+   * nicht erneut aus – der Mikrofonknopf hörte danach auf niemanden mehr.
+   * Ein laufendes Gespräch wird beim Verlassen der Seite beendet: Es geht um
+   * Sprachminuten, die sonst weiterlaufen, während niemand mehr zuhört.
+   */
+  beimSeitenaufbau(() => {
+    /* Das Modul bleibt geladen, auch wenn man die Beratungsseite verlässt –
+       ab hier ist also zu prüfen, ob wir überhaupt noch auf ihr sind. */
+    const gefunden = document.getElementById('mikro') as HTMLButtonElement | null;
+    if (!gefunden) return;
+    /* Eigene Bindung, damit die Prüfung oben auch in den Funktionen weiter
+       unten gilt – Funktionsdeklarationen werden vorgezogen, die Verengung
+       einer geprüften Variablen nicht. */
+    const mikro: HTMLButtonElement = gefunden;
+    const mikroText = document.getElementById('mikroText')!;
+    const zustand = document.getElementById('zustand')!;
+    const buehne = document.getElementById('buehne')!;
+    const protokoll = document.getElementById('protokoll')!;
+    const fehlerbox = document.getElementById('fehlerbox')!;
+    const standortWahl = document.getElementById('standortWahl') as HTMLSelectElement;
 
-  let gespraech: Awaited<ReturnType<typeof Conversation.startSession>> | null = null;
+    let gespraech: Awaited<ReturnType<typeof Conversation.startSession>> | null = null;
 
-  // Auf einer Standortseite gelandet? Dann diesen Standort vorauswählen.
-  try {
-    const gemerkt = localStorage.getItem('ku64:standort');
-    if (gemerkt) standortWahl.value = gemerkt;
-  } catch {
-    /* kein Speicher */
-  }
-
-  function setzeZustand(text: string, name: string) {
-    zustand.textContent = text;
-    buehne.dataset.zustand = name;
-  }
-
-  function zeigeFehler(text: string) {
-    fehlerbox.hidden = false;
-    fehlerbox.textContent = text;
-  }
-
-  function protokollZeile(wer: 'Sie' | 'Berater', text: string) {
-    const p = document.createElement('p');
-    p.className = wer === 'Sie' ? 'zeile zeile-ich' : 'zeile zeile-bot';
-    p.innerHTML = `<span class="wer"></span><span class="was"></span>`;
-    p.querySelector('.wer')!.textContent = wer;
-    p.querySelector('.was')!.textContent = text;
-    protokoll.append(p);
-    protokoll.scrollTop = protokoll.scrollHeight;
-  }
-
-  async function starten() {
-    fehlerbox.hidden = true;
-    mikro.disabled = true;
-    setzeZustand('Verbindung wird aufgebaut…', 'verbindet');
-
+    // Auf einer Standortseite gelandet? Dann diesen Standort vorauswählen.
     try {
-      // Mikrofon-Erlaubnis zuerst – bevor irgendetwas an ElevenLabs geht.
-      await navigator.mediaDevices.getUserMedia({ audio: true });
-
-      const slug = standortWahl.value;
-      const res = await fetch(`/api/voice-token/${slug ? `?standort=${slug}` : ''}`);
-      const daten = await res.json();
-
-      if (daten.demo) {
-        setzeZustand('Noch nicht verbunden', 'bereit');
-        zeigeFehler(daten.hinweis);
-        return;
-      }
-
-      if (!res.ok || !daten.signedUrl) {
-        throw new Error(daten.fehler || 'Verbindung fehlgeschlagen.');
-      }
-
-      gespraech = await Conversation.startSession({
-        signedUrl: daten.signedUrl,
-        onConnect: () => {
-          setzeZustand('Verbunden – sprechen Sie einfach los.', 'verbunden');
-          mikroText.textContent = 'Gespräch beenden';
-          mikro.disabled = false;
-        },
-        onDisconnect: () => {
-          setzeZustand('Gespräch beendet. Sie können jederzeit neu starten.', 'bereit');
-          mikroText.textContent = 'Gespräch starten';
-          mikro.disabled = false;
-          gespraech = null;
-        },
-        onModeChange: (modus: { mode: string }) => {
-          setzeZustand(
-            modus.mode === 'speaking' ? 'Der Berater spricht…' : 'Ich höre zu…',
-            modus.mode === 'speaking' ? 'spricht' : 'hoert',
-          );
-        },
-        onMessage: (n: { message: string; source: string }) => {
-          if (n?.message) protokollZeile(n.source === 'user' ? 'Sie' : 'Berater', n.message);
-        },
-        onError: (e: unknown) => {
-          console.error('[voice]', e);
-          zeigeFehler(
-            'Die Verbindung wurde unterbrochen. Bitte versuchen Sie es erneut oder nutzen Sie den Chat.',
-          );
-        },
-      });
-    } catch (e) {
-      setzeZustand('Bereit. Klicken Sie, um das Gespräch zu starten.', 'bereit');
-      mikro.disabled = false;
-
-      const meldung =
-        e instanceof DOMException && e.name === 'NotAllowedError'
-          ? 'Ohne Mikrofon-Erlaubnis können wir kein Gespräch führen. Sie können stattdessen den Chat nutzen.'
-          : e instanceof Error
-            ? e.message
-            : 'Es ist ein Fehler aufgetreten.';
-
-      zeigeFehler(meldung);
+      const gemerkt = localStorage.getItem('ku64:standort');
+      if (gemerkt) standortWahl.value = gemerkt;
+    } catch {
+      /* kein Speicher */
     }
-  }
 
-  async function beenden() {
-    mikro.disabled = true;
-    await gespraech?.endSession();
-    gespraech = null;
-    mikro.disabled = false;
-  }
+    function setzeZustand(text: string, name: string) {
+      zustand.textContent = text;
+      buehne.dataset.zustand = name;
+    }
 
-  mikro.addEventListener('click', () => (gespraech ? beenden() : starten()));
+    function zeigeFehler(text: string) {
+      fehlerbox.hidden = false;
+      fehlerbox.textContent = text;
+    }
 
-  // Beim Verlassen der Seite sauber auflegen – sonst laufen Sprachminuten weiter.
-  window.addEventListener('pagehide', () => {
-    gespraech?.endSession();
+    function protokollZeile(wer: 'Sie' | 'Berater', text: string) {
+      const p = document.createElement('p');
+      p.className = wer === 'Sie' ? 'zeile zeile-ich' : 'zeile zeile-bot';
+      p.innerHTML = `<span class="wer"></span><span class="was"></span>`;
+      p.querySelector('.wer')!.textContent = wer;
+      p.querySelector('.was')!.textContent = text;
+      protokoll.append(p);
+      protokoll.scrollTop = protokoll.scrollHeight;
+    }
+
+    async function starten() {
+      fehlerbox.hidden = true;
+      mikro.disabled = true;
+      setzeZustand('Verbindung wird aufgebaut…', 'verbindet');
+
+      try {
+        // Mikrofon-Erlaubnis zuerst – bevor irgendetwas an ElevenLabs geht.
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        const slug = standortWahl.value;
+        const res = await fetch(`/api/voice-token/${slug ? `?standort=${slug}` : ''}`);
+        const daten = await res.json();
+
+        if (daten.demo) {
+          setzeZustand('Noch nicht verbunden', 'bereit');
+          zeigeFehler(daten.hinweis);
+          return;
+        }
+
+        if (!res.ok || !daten.signedUrl) {
+          throw new Error(daten.fehler || 'Verbindung fehlgeschlagen.');
+        }
+
+        gespraech = await Conversation.startSession({
+          signedUrl: daten.signedUrl,
+          onConnect: () => {
+            setzeZustand('Verbunden – sprechen Sie einfach los.', 'verbunden');
+            mikroText.textContent = 'Gespräch beenden';
+            mikro.disabled = false;
+          },
+          onDisconnect: () => {
+            setzeZustand('Gespräch beendet. Sie können jederzeit neu starten.', 'bereit');
+            mikroText.textContent = 'Gespräch starten';
+            mikro.disabled = false;
+            gespraech = null;
+          },
+          onModeChange: (modus: { mode: string }) => {
+            setzeZustand(
+              modus.mode === 'speaking' ? 'Der Berater spricht…' : 'Ich höre zu…',
+              modus.mode === 'speaking' ? 'spricht' : 'hoert',
+            );
+          },
+          onMessage: (n: { message: string; source: string }) => {
+            if (n?.message) protokollZeile(n.source === 'user' ? 'Sie' : 'Berater', n.message);
+          },
+          onError: (e: unknown) => {
+            console.error('[voice]', e);
+            zeigeFehler(
+              'Die Verbindung wurde unterbrochen. Bitte versuchen Sie es erneut oder nutzen Sie den Chat.',
+            );
+          },
+        });
+      } catch (e) {
+        setzeZustand('Bereit. Klicken Sie, um das Gespräch zu starten.', 'bereit');
+        mikro.disabled = false;
+
+        const meldung =
+          e instanceof DOMException && e.name === 'NotAllowedError'
+            ? 'Ohne Mikrofon-Erlaubnis können wir kein Gespräch führen. Sie können stattdessen den Chat nutzen.'
+            : e instanceof Error
+              ? e.message
+              : 'Es ist ein Fehler aufgetreten.';
+
+        zeigeFehler(meldung);
+      }
+    }
+
+    async function beenden() {
+      mikro.disabled = true;
+      await gespraech?.endSession();
+      gespraech = null;
+      mikro.disabled = false;
+    }
+
+    mikro?.addEventListener('click', () => (gespraech ? beenden() : starten()));
+
+    const steuerung = new AbortController();
+
+    // Beim Verlassen der Seite sauber auflegen – sonst laufen Sprachminuten weiter.
+    window.addEventListener(
+      'pagehide',
+      () => {
+        gespraech?.endSession();
+      },
+      { signal: steuerung.signal },
+    );
+
+    /* Auch der Wechsel auf eine andere Seite ist ein Verlassen – nur ohne
+       `pagehide`, weil das Dokument dabei bestehen bleibt. */
+    return () => {
+      gespraech?.endSession();
+      steuerung.abort();
+    };
   });
 </script>
 

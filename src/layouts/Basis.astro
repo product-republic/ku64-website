@@ -243,14 +243,22 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
         gewählten Standort, um auf standortfreien Seiten passend zu verlinken.
         Es findet keine automatische Weiterleitung statt. */}
     <script>
-      const el = document.querySelector('meta[name="ku64:standort"]');
-      if (el) {
-        try {
-          localStorage.setItem('ku64:standort', el.getAttribute('content') || '');
-        } catch {
-          /* Privater Modus o. Ä. – dann eben ohne Gedächtnis. */
+      import { beimSeitenaufbau } from '../lib/seitenaufbau';
+
+      /* Nach jedem Seitenaufbau – sonst merkt sich die Website nur den
+         Standort der zuerst geladenen Seite, und wer über das Menü nach
+         Potsdam wechselt, bekommt beim nächsten Besuch wieder den alten
+         vorgeschlagen. */
+      beimSeitenaufbau(() => {
+        const el = document.querySelector('meta[name="ku64:standort"]');
+        if (el) {
+          try {
+            localStorage.setItem('ku64:standort', el.getAttribute('content') || '');
+          } catch {
+            /* Privater Modus o. Ä. – dann eben ohne Gedächtnis. */
+          }
         }
-      }
+      });
     </script>
   </body>
 </html>

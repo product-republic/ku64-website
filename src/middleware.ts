@@ -19,13 +19,49 @@
  *   · Pfade mit Dateiendung (/favicon.svg, /og/…png) – das sind Dateien
  *   · Inhalte von <script> und <style>
  *   · hreflang- und Canonical-Angaben, die bewusst absolut ausgegeben werden
+ *   · Links, die ihre Zielsprache selbst benennen – siehe unten
+ *
+ * ── Der Sprachwähler, oder: wer die Regel anwendet, muss sie aufheben können ─
+ *
+ * Diese Regel hatte einen blinden Fleck, und er hat genau das kaputtgemacht,
+ * wofür es sie gibt. „Jeder interne Link bleibt in dieser Sprache" gilt für
+ * jeden Link, der irgendwohin führt – aber nicht für die drei, die AUS dieser
+ * Sprache herausführen sollen. Der Sprachwähler auf `/en/potsdam/` schrieb
+ * `/potsdam/` und `/fr/potsdam/`; die Middleware machte pflichtschuldig aus
+ * beiden `/en/potsdam/`. Alle drei Knöpfe zeigten auf die Seite, auf der man
+ * schon stand.
+ *
+ * Nach außen sah das aus wie ein hängender Umschalter: Von Deutsch kam man
+ * einmal heraus – dort läuft die Middleware nicht – und danach nie wieder
+ * zurück. Kein Fehler in der Konsole, keine tote Adresse, nichts, was ein
+ * Linkprüfer meldet. Nur drei Links, die alle dasselbe taten.
+ *
+ * Ausgenommen ist deshalb jeder Link, der ein `hreflang` trägt. Das ist keine
+ * Sonderregel für den Sprachwähler, sondern die Bedeutung des Attributs: Wer
+ * `hreflang` schreibt, sagt „dieses Ziel ist in jener Sprache". Ein Präfix
+ * nachträglich zu ändern hieße, dieser Angabe zu widersprechen. Für Fälle
+ * ohne `hreflang` gibt es zusätzlich `data-sprachfest`.
+ *
+ * Damit das prüfbar ist, arbeitet die Ersetzung nicht mehr auf einzelnen
+ * Attributen, sondern auf ganzen Tags – nur so sieht sie, was sonst noch am
+ * Link steht.
  */
 
 import { defineMiddleware } from 'astro:middleware';
 import { pfadInSprache, QUELLSPRACHE, spracheAusPfad, type Sprache } from './i18n/sprachen';
 
+/**
+ * Ein ganzes Tag, mit Attributwerten in Anführungszeichen.
+ *
+ * Der Wechselteil `(?:"[^"]*"|'[^']*'|[^>"'])*` ist der Grund, warum hier
+ * nicht `[^>]*` steht: Ein `>` in einem Attributwert – etwa in einem
+ * `title="Größer > kleiner"` – würde das Tag sonst mitten im Wert beenden.
+ */
+const TAG = /<(a|area|form|link|base)\b((?:"[^"]*"|'[^']*'|[^>"'])*)>/gi;
 const VERWEIS = /(href|action)="(\/[^"]*)"/g;
 const AUSNAHMEN = /^\/(api|_astro|og|fonts)\//;
+/** Der Link benennt seine Zielsprache selbst und wird nicht umgeschrieben. */
+const SPRACHFEST = /\bhreflang=|\bdata-sprachfest\b/i;
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const antwort = await next();
@@ -78,15 +114,23 @@ function strukturdatenUmschreiben(html: string, sprache: Sprache, site?: string)
 }
 
 function verweiseUmschreiben(html: string, sprache: Sprache): string {
-  return html.replace(VERWEIS, (ganz, attribut: string, pfad: string) => {
-    if (AUSNAHMEN.test(pfad)) return ganz;
+  return html.replace(TAG, (ganzesTag, name: string, attribute: string) => {
+    /* Links, die ihre Zielsprache selbst benennen, bleiben, wie sie sind –
+       sonst zeigt der Sprachwähler auf die Seite, auf der man schon steht. */
+    if (SPRACHFEST.test(attribute)) return ganzesTag;
 
-    // Dateien erkennt man an der Endung im letzten Segment. Ein Sprachpräfix
-    // davor wäre eine 404 – die Datei liegt nur einmal.
-    const letztes = pfad.split(/[?#]/)[0].split('/').filter(Boolean).pop() ?? '';
-    if (letztes.includes('.')) return ganz;
+    const neu = attribute.replace(VERWEIS, (ganz, attribut: string, pfad: string) => {
+      if (AUSNAHMEN.test(pfad)) return ganz;
 
-    return `${attribut}="${pfadInSprache(pfad, sprache)}"`;
+      // Dateien erkennt man an der Endung im letzten Segment. Ein Sprachpräfix
+      // davor wäre eine 404 – die Datei liegt nur einmal.
+      const letztes = pfad.split(/[?#]/)[0].split('/').filter(Boolean).pop() ?? '';
+      if (letztes.includes('.')) return ganz;
+
+      return `${attribut}="${pfadInSprache(pfad, sprache)}"`;
+    });
+
+    return neu === attribute ? ganzesTag : `<${name}${neu}>`;
   });
 }
 

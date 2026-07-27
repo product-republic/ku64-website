@@ -162,14 +162,7 @@ const schema = [
 
 <script>
   import { suchen, istFrage, type Indexeintrag, type Trefferart } from '../../lib/suche-kern';
-
-  const feld = document.querySelector<HTMLInputElement>('#suchfeld');
-  const bereich = document.querySelector<HTMLElement>('#ergebnisse');
-  const liste = document.querySelector<HTMLUListElement>('#liste');
-  const zaehler = document.querySelector<HTMLElement>('#zaehler');
-  const uebersicht = document.querySelector<HTMLElement>('#uebersicht');
-  const fragenkasten = document.querySelector<HTMLElement>('#frage-hinweis');
-  const fragenknopf = document.querySelector<HTMLButtonElement>('#fh-knopf');
+  import { beimSeitenaufbau } from '../../lib/seitenaufbau';
 
   interface Indexdatei {
     eintraege: Indexeintrag[];
@@ -184,29 +177,6 @@ const schema = [
     beitrag: 'Beitrag',
     seite: 'Seite',
   };
-
-  /*
-   * Standort und Sprache aus der Seite lesen, nicht aus der Adresse raten.
-   *
-   * Der Standort steht als Meta-Angabe im Kopf – dieselbe Quelle, aus der
-   * sich auch der Berater bedient. Der Sprachpräfix steckt im Pfad und ist
-   * genau dann vorhanden, wenn er zwei Buchstaben lang ist.
-   */
-  /*
-   * Der Standort kommt aus der Adresse, nicht aus dem Seitenkopf.
-   *
-   * Diese Seite gibt es nur einmal, also trägt sie keinen Standort im Kopf.
-   * Die Lupe im Menü hängt ihn als `?ort=` an – so behält die Suche, wo man
-   * herkam, ohne dass es vier Suchseiten braucht, die um dieselbe
-   * Suchanfrage konkurrieren.
-   */
-  const ausAdresseOrt = new URLSearchParams(location.search).get('ort');
-  const standort =
-    ausAdresseOrt ||
-    document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ||
-    null;
-  const ersterTeil = location.pathname.split('/')[1] ?? '';
-  const praefix = /^[a-z]{2}$/.test(ersterTeil) ? `/${ersterTeil}` : '';
 
   let daten: Indexdatei | null = null;
   let laedt: Promise<Indexdatei> | null = null;
@@ -224,167 +194,212 @@ const schema = [
     return laedt;
   }
 
-  /** Wohin ein Treffer führt – mit Standort, wenn es ihn dort gibt. */
-  function ziel(e: Indexeintrag): { pfad: string; stattdessen?: string } {
-    if ((e.art !== 'leistung' && e.art !== 'person') || !standort) {
-      return { pfad: praefix + e.pfad };
-    }
-    if (e.verfuegbar?.includes(standort)) {
+  /*
+   * Nach jedem Seitenaufbau neu binden.
+   *
+   * Beim Seitenwechsel tauscht die Website den Körper aus, führt Module aber
+   * nicht erneut aus – das Suchfeld hörte danach auf niemanden mehr, und wer
+   * die Suche als zweite Seite ansteuerte, bekam ein Feld, in dem man tippen
+   * konnte, ohne dass etwas geschah.
+   *
+   * Der Zwischenspeicher des Suchindex steht bewusst DRAUSSEN: Er hängt an
+   * keiner Seite, und ihn bei jedem Wechsel neu zu holen wären 26 Kilobyte
+   * für nichts.
+   */
+  beimSeitenaufbau(() => {
+    const feld = document.querySelector<HTMLInputElement>('#suchfeld');
+    const bereich = document.querySelector<HTMLElement>('#ergebnisse');
+    const liste = document.querySelector<HTMLUListElement>('#liste');
+    const zaehler = document.querySelector<HTMLElement>('#zaehler');
+    const uebersicht = document.querySelector<HTMLElement>('#uebersicht');
+    const fragenkasten = document.querySelector<HTMLElement>('#frage-hinweis');
+    const fragenknopf = document.querySelector<HTMLButtonElement>('#fh-knopf');
+
+    /*
+     * Standort und Sprache aus der Seite lesen, nicht aus der Adresse raten.
+     *
+     * Der Standort steht als Meta-Angabe im Kopf – dieselbe Quelle, aus der
+     * sich auch der Berater bedient. Der Sprachpräfix steckt im Pfad und ist
+     * genau dann vorhanden, wenn er zwei Buchstaben lang ist.
+     */
+    /*
+     * Der Standort kommt aus der Adresse, nicht aus dem Seitenkopf.
+     *
+     * Diese Seite gibt es nur einmal, also trägt sie keinen Standort im Kopf.
+     * Die Lupe im Menü hängt ihn als `?ort=` an – so behält die Suche, wo man
+     * herkam, ohne dass es vier Suchseiten braucht, die um dieselbe
+     * Suchanfrage konkurrieren.
+     */
+    const ausAdresseOrt = new URLSearchParams(location.search).get('ort');
+    const standort =
+      ausAdresseOrt ||
+      document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ||
+      null;
+    const ersterTeil = location.pathname.split('/')[1] ?? '';
+    const praefix = /^[a-z]{2}$/.test(ersterTeil) ? `/${ersterTeil}` : '';
+
+    /** Wohin ein Treffer führt – mit Standort, wenn es ihn dort gibt. */
+    function ziel(e: Indexeintrag): { pfad: string; stattdessen?: string } {
+      if ((e.art !== 'leistung' && e.art !== 'person') || !standort) {
+        return { pfad: praefix + e.pfad };
+      }
+      if (e.verfuegbar?.includes(standort)) {
+        const rest = e.art === 'leistung' ? `leistungen/${e.id}` : `team/${e.id}`;
+        return { pfad: `${praefix}/${standort}/${rest}/` };
+      }
+      const anderer = e.verfuegbar?.[0];
+      const name = daten?.standorte.find((s) => s.slug === anderer)?.name;
+      if (!anderer || !name) return { pfad: praefix + e.pfad };
       const rest = e.art === 'leistung' ? `leistungen/${e.id}` : `team/${e.id}`;
-      return { pfad: `${praefix}/${standort}/${rest}/` };
-    }
-    const anderer = e.verfuegbar?.[0];
-    const name = daten?.standorte.find((s) => s.slug === anderer)?.name;
-    if (!anderer || !name) return { pfad: praefix + e.pfad };
-    const rest = e.art === 'leistung' ? `leistungen/${e.id}` : `team/${e.id}`;
-    return { pfad: `${praefix}/${anderer}/${rest}/`, stattdessen: name };
-  }
-
-  function ausgeben(frage: string) {
-    if (!bereich || !liste || !zaehler || !daten) return;
-
-    const treffer = suchen(daten.eintraege, frage, 12);
-
-    bereich.hidden = false;
-    if (uebersicht) uebersicht.hidden = true;
-    liste.replaceChildren();
-
-    if (treffer.length === 0) {
-      zaehler.textContent = `Nichts gefunden zu „${frage}“.`;
-    } else {
-      zaehler.textContent = `${treffer.length} ${treffer.length === 1 ? 'Ergebnis' : 'Ergebnisse'} zu „${frage}“`;
+      return { pfad: `${praefix}/${anderer}/${rest}/`, stattdessen: name };
     }
 
-    for (const t of treffer) {
-      const { pfad, stattdessen } = ziel(t.eintrag);
+    function ausgeben(frage: string) {
+      if (!bereich || !liste || !zaehler || !daten) return;
 
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = pfad;
-      a.className = 'treffer';
+      const treffer = suchen(daten.eintraege, frage, 12);
 
-      const marke = document.createElement('span');
-      marke.className = 'tr-marke';
-      marke.textContent = MARKEN[t.eintrag.art] ?? '';
+      bereich.hidden = false;
+      if (uebersicht) uebersicht.hidden = true;
+      liste.replaceChildren();
 
-      const titel = document.createElement('span');
-      titel.className = 'tr-titel';
-      titel.textContent = t.eintrag.titel;
-
-      a.append(marke, titel);
-
-      if (t.eintrag.kurz) {
-        const kurz = document.createElement('span');
-        kurz.className = 'tr-kurz';
-        kurz.textContent = t.eintrag.kurz;
-        a.append(kurz);
+      if (treffer.length === 0) {
+        zaehler.textContent = `Nichts gefunden zu „${frage}“.`;
+      } else {
+        zaehler.textContent = `${treffer.length} ${treffer.length === 1 ? 'Ergebnis' : 'Ergebnisse'} zu „${frage}“`;
       }
 
-      /* „Gefunden über: PZR“ erklärt, warum dieser Treffer hier steht. Bei
-         einer Suche, die Synonyme kennt, ist das keine Spielerei: Sonst
-         sieht es aus, als hätte sie geraten. */
-      if (t.ueber) {
-        const ueber = document.createElement('span');
-        ueber.className = 'tr-ueber';
-        ueber.textContent = `gefunden über: ${t.ueber}`;
-        a.append(ueber);
+      for (const t of treffer) {
+        const { pfad, stattdessen } = ziel(t.eintrag);
+
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = pfad;
+        a.className = 'treffer';
+
+        const marke = document.createElement('span');
+        marke.className = 'tr-marke';
+        marke.textContent = MARKEN[t.eintrag.art] ?? '';
+
+        const titel = document.createElement('span');
+        titel.className = 'tr-titel';
+        titel.textContent = t.eintrag.titel;
+
+        a.append(marke, titel);
+
+        if (t.eintrag.kurz) {
+          const kurz = document.createElement('span');
+          kurz.className = 'tr-kurz';
+          kurz.textContent = t.eintrag.kurz;
+          a.append(kurz);
+        }
+
+        /* „Gefunden über: PZR“ erklärt, warum dieser Treffer hier steht. Bei
+           einer Suche, die Synonyme kennt, ist das keine Spielerei: Sonst
+           sieht es aus, als hätte sie geraten. */
+        if (t.ueber) {
+          const ueber = document.createElement('span');
+          ueber.className = 'tr-ueber';
+          ueber.textContent = `gefunden über: ${t.ueber}`;
+          a.append(ueber);
+        }
+
+        if (stattdessen) {
+          /*
+           * Zwei Sätze für zwei Sachverhalte.
+           *
+           * „An Ihrem Standort nicht im Angebot" stimmt für eine Behandlung
+           * und ist bei einem Menschen schlicht falsch – niemand ist ein
+           * Angebot. Wer nicht in Potsdam arbeitet, arbeitet woanders, und
+           * genau das gehört dort hin.
+           */
+          const hinweis = document.createElement('span');
+          hinweis.className = 'tr-anderswo';
+          hinweis.textContent =
+            t.eintrag.art === 'person'
+              ? `Behandelt an: KU64 ${stattdessen}`
+              : `An Ihrem Standort nicht im Angebot – hier: KU64 ${stattdessen}`;
+          a.append(hinweis);
+        }
+
+        li.append(a);
+        liste.append(li);
       }
 
-      if (stattdessen) {
-        /*
-         * Zwei Sätze für zwei Sachverhalte.
-         *
-         * „An Ihrem Standort nicht im Angebot" stimmt für eine Behandlung
-         * und ist bei einem Menschen schlicht falsch – niemand ist ein
-         * Angebot. Wer nicht in Potsdam arbeitet, arbeitet woanders, und
-         * genau das gehört dort hin.
-         */
-        const hinweis = document.createElement('span');
-        hinweis.className = 'tr-anderswo';
-        hinweis.textContent =
-          t.eintrag.art === 'person'
-            ? `Behandelt an: KU64 ${stattdessen}`
-            : `An Ihrem Standort nicht im Angebot – hier: KU64 ${stattdessen}`;
-        a.append(hinweis);
-      }
-
-      li.append(a);
-      liste.append(li);
+      /* Der Beraterhinweis kommt zusätzlich zur Liste, nie an ihrer Stelle. */
+      if (fragenkasten) fragenkasten.hidden = !istFrage(frage);
     }
 
-    /* Der Beraterhinweis kommt zusätzlich zur Liste, nie an ihrer Stelle. */
-    if (fragenkasten) fragenkasten.hidden = !istFrage(frage);
-  }
+    function leeren() {
+      if (bereich) bereich.hidden = true;
+      if (uebersicht) uebersicht.hidden = false;
+      if (fragenkasten) fragenkasten.hidden = true;
+    }
 
-  function leeren() {
-    if (bereich) bereich.hidden = true;
-    if (uebersicht) uebersicht.hidden = false;
-    if (fragenkasten) fragenkasten.hidden = true;
-  }
+    let zeitgeber: number | undefined;
 
-  let zeitgeber: number | undefined;
+    function angestossen() {
+      const frage = feld?.value.trim() ?? '';
+      clearTimeout(zeitgeber);
 
-  function angestossen() {
-    const frage = feld?.value.trim() ?? '';
-    clearTimeout(zeitgeber);
+      if (frage.length < 2) {
+        leeren();
+        return;
+      }
 
-    if (frage.length < 2) {
-      leeren();
-      return;
+      /*
+       * 120 Millisekunden.
+       *
+       * Kurz genug, dass es sich wie sofort anfühlt; lang genug, dass beim
+       * Tippen eines langen Wortes nicht jede Zwischenstufe gerechnet wird.
+       * Das Rechnen selbst ist billig – teuer ist das Neuzeichnen der Liste.
+       */
+      zeitgeber = window.setTimeout(() => {
+        indexHolen().then(() => ausgeben(frage));
+      }, 120);
+    }
+
+    if (feld) {
+      feld.addEventListener('input', angestossen);
+      /* Beim ersten Anfassen schon laden, damit die erste Suche nicht auf das
+         Netz wartet. */
+      feld.addEventListener('focus', () => void indexHolen(), { once: true });
+
+      /* Ohne JavaScript sendet das Formular an ?q=; mit JavaScript soll es das
+         nicht, sonst lädt die Seite bei jedem Enter neu. */
+      feld.form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        angestossen();
+      });
+
+      /* Adresse mit ?q= – aus einem Lesezeichen oder von einer anderen Seite. */
+      const ausAdresse = new URLSearchParams(location.search).get('q');
+      if (ausAdresse) {
+        feld.value = ausAdresse;
+        indexHolen().then(() => ausgeben(ausAdresse.trim()));
+      }
+    }
+
+    for (const knopf of document.querySelectorAll<HTMLButtonElement>('.beispiel')) {
+      knopf.addEventListener('click', () => {
+        if (!feld) return;
+        feld.value = knopf.dataset.frage ?? '';
+        feld.focus();
+        angestossen();
+      });
     }
 
     /*
-     * 120 Millisekunden.
+     * Die Frage an den Berater weiterreichen.
      *
-     * Kurz genug, dass es sich wie sofort anfühlt; lang genug, dass beim
-     * Tippen eines langen Wortes nicht jede Zwischenstufe gerechnet wird.
-     * Das Rechnen selbst ist billig – teuer ist das Neuzeichnen der Liste.
+     * Der Berater hört auf ein Ereignis am Fenster – so muss die Suche nichts
+     * über sein Innenleben wissen und er nichts über die Suche.
      */
-    zeitgeber = window.setTimeout(() => {
-      indexHolen().then(() => ausgeben(frage));
-    }, 120);
-  }
-
-  if (feld) {
-    feld.addEventListener('input', angestossen);
-    /* Beim ersten Anfassen schon laden, damit die erste Suche nicht auf das
-       Netz wartet. */
-    feld.addEventListener('focus', () => void indexHolen(), { once: true });
-
-    /* Ohne JavaScript sendet das Formular an ?q=; mit JavaScript soll es das
-       nicht, sonst lädt die Seite bei jedem Enter neu. */
-    feld.form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      angestossen();
+    fragenknopf?.addEventListener('click', () => {
+      dispatchEvent(
+        new CustomEvent('ku64:berater-fragen', { detail: { frage: feld?.value.trim() ?? '' } }),
+      );
     });
-
-    /* Adresse mit ?q= – aus einem Lesezeichen oder von einer anderen Seite. */
-    const ausAdresse = new URLSearchParams(location.search).get('q');
-    if (ausAdresse) {
-      feld.value = ausAdresse;
-      indexHolen().then(() => ausgeben(ausAdresse.trim()));
-    }
-  }
-
-  for (const knopf of document.querySelectorAll<HTMLButtonElement>('.beispiel')) {
-    knopf.addEventListener('click', () => {
-      if (!feld) return;
-      feld.value = knopf.dataset.frage ?? '';
-      feld.focus();
-      angestossen();
-    });
-  }
-
-  /*
-   * Die Frage an den Berater weiterreichen.
-   *
-   * Der Berater hört auf ein Ereignis am Fenster – so muss die Suche nichts
-   * über sein Innenleben wissen und er nichts über die Suche.
-   */
-  fragenknopf?.addEventListener('click', () => {
-    dispatchEvent(
-      new CustomEvent('ku64:berater-fragen', { detail: { frage: feld?.value.trim() ?? '' } }),
-    );
   });
 </script>
 

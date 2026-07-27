@@ -64,18 +64,24 @@ const brotkrumen = [
 </Basis>
 
 <script>
-  document.getElementById('loeschen')?.addEventListener('click', () => {
-    const ergebnis = document.getElementById('ergebnis');
-    try {
-      localStorage.removeItem('ku64:standort');
-      localStorage.removeItem('ku64:einwilligung');
-      /* Der alte Schlüssel aus der Zeit, als der Terminkalender eingebettet
-         werden sollte. Wer ihn noch hat, soll ihn hier loswerden können. */
-      localStorage.removeItem('ku64:doctolib-ok');
-      if (ergebnis) ergebnis.textContent = 'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht.';
-    } catch {
-      if (ergebnis) ergebnis.textContent = 'Ihr Browser erlaubt keinen Zugriff auf den lokalen Speicher – es ist ohnehin nichts gespeichert.';
-    }
+  import { beimSeitenaufbau } from '../../lib/seitenaufbau';
+
+  /* Nach jedem Seitenaufbau neu binden – der Knopf ist beim Seitenwechsel
+     ein anderes Element, das Modul läuft aber nicht noch einmal. */
+  beimSeitenaufbau(() => {
+    document.getElementById('loeschen')?.addEventListener('click', () => {
+      const ergebnis = document.getElementById('ergebnis');
+      try {
+        localStorage.removeItem('ku64:standort');
+        localStorage.removeItem('ku64:einwilligung');
+        /* Der alte Schlüssel aus der Zeit, als der Terminkalender eingebettet
+           werden sollte. Wer ihn noch hat, soll ihn hier loswerden können. */
+        localStorage.removeItem('ku64:doctolib-ok');
+        if (ergebnis) ergebnis.textContent = 'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht.';
+      } catch {
+        if (ergebnis) ergebnis.textContent = 'Ihr Browser erlaubt keinen Zugriff auf den lokalen Speicher – es ist ohnehin nichts gespeichert.';
+      }
+    });
   });
 </script>
 

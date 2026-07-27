@@ -228,6 +228,8 @@ if (team.length > 0) {
 </Basis>
 
 <script>
+  import { beimSeitenaufbau } from '../../../../lib/seitenaufbau';
+
   /*
    * Filtern im Browser, nicht auf dem Server.
    *
@@ -235,63 +237,70 @@ if (team.length > 0) {
    * vollständig, nur ohne Filterleiste. Deshalb wird die Leiste erst hier
    * sichtbar geschaltet: Ein Filter, der nicht filtert, ist schlimmer als
    * keiner.
+   *
+   * Aufgebaut wird nach jedem Seitenaufbau. Beim Seitenwechsel führt die
+   * Website Module nicht erneut aus – wer die Teamseite verließ und
+   * zurückkam, bekam eine Filterleiste, die auf nichts mehr hörte, und
+   * genau das ist der Fall, den der Absatz oben ausschließen will.
    */
-  const leiste = document.querySelector<HTMLElement>('.filter');
-  const raster = document.getElementById('teamraster');
+  beimSeitenaufbau(() => {
+    const leiste = document.querySelector<HTMLElement>('.filter');
+    const raster = document.getElementById('teamraster');
 
-  if (leiste && raster) {
-    leiste.hidden = false;
+    if (leiste && raster) {
+      leiste.hidden = false;
 
-    const karten = [...raster.querySelectorAll<HTMLElement>('[data-bereich]')];
-    const stand = leiste.querySelector<HTMLElement>('.filter-stand');
-    const leer = document.querySelector<HTMLElement>('.filter-leer');
-    const auswahl: Record<string, string> = { bereich: '', fach: '' };
+      const karten = [...raster.querySelectorAll<HTMLElement>('[data-bereich]')];
+      const stand = leiste.querySelector<HTMLElement>('.filter-stand');
+      const leer = document.querySelector<HTMLElement>('.filter-leer');
+      const auswahl: Record<string, string> = { bereich: '', fach: '' };
 
-    function anwenden() {
-      let sichtbar = 0;
-      for (const karte of karten) {
-        const passtBereich = !auswahl.bereich || karte.dataset.bereich === auswahl.bereich;
-        const passtFach =
-          !auswahl.fach || (karte.dataset.fach ?? '').split(' ').includes(auswahl.fach);
-        const zeigen = passtBereich && passtFach;
-        karte.hidden = !zeigen;
-        if (zeigen) sichtbar++;
+      function anwenden() {
+        let sichtbar = 0;
+        for (const karte of karten) {
+          const passtBereich = !auswahl.bereich || karte.dataset.bereich === auswahl.bereich;
+          const passtFach =
+            !auswahl.fach || (karte.dataset.fach ?? '').split(' ').includes(auswahl.fach);
+          const zeigen = passtBereich && passtFach;
+          karte.hidden = !zeigen;
+          if (zeigen) sichtbar++;
+        }
+
+        if (stand?.dataset.vorlage) {
+          stand.textContent =
+            auswahl.bereich || auswahl.fach
+              ? stand.dataset.vorlage.replace('{n}', String(sichtbar))
+              : '';
+        }
+        if (leer) leer.hidden = sichtbar > 0;
       }
 
-      if (stand?.dataset.vorlage) {
-        stand.textContent =
-          auswahl.bereich || auswahl.fach
-            ? stand.dataset.vorlage.replace('{n}', String(sichtbar))
-            : '';
+      for (const gruppe of leiste.querySelectorAll<HTMLElement>('.chips')) {
+        const feld = gruppe.dataset.feld!;
+        gruppe.addEventListener('click', (e) => {
+          const knopf = (e.target as HTMLElement).closest<HTMLButtonElement>('.chip');
+          if (!knopf) return;
+          /* Nochmals auf denselben Wert klicken hebt ihn auf – das erwartet
+             man von einem Schalter, und es erspart den Weg über "Alle". */
+          const wert = knopf.dataset.wert ?? '';
+          auswahl[feld] = auswahl[feld] === wert && wert !== '' ? '' : wert;
+          for (const k of gruppe.querySelectorAll<HTMLButtonElement>('.chip')) {
+            k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === auswahl[feld]));
+          }
+          anwenden();
+        });
       }
-      if (leer) leer.hidden = sichtbar > 0;
-    }
 
-    for (const gruppe of leiste.querySelectorAll<HTMLElement>('.chips')) {
-      const feld = gruppe.dataset.feld!;
-      gruppe.addEventListener('click', (e) => {
-        const knopf = (e.target as HTMLElement).closest<HTMLButtonElement>('.chip');
-        if (!knopf) return;
-        /* Nochmals auf denselben Wert klicken hebt ihn auf – das erwartet
-           man von einem Schalter, und es erspart den Weg über "Alle". */
-        const wert = knopf.dataset.wert ?? '';
-        auswahl[feld] = auswahl[feld] === wert && wert !== '' ? '' : wert;
-        for (const k of gruppe.querySelectorAll<HTMLButtonElement>('.chip')) {
-          k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === auswahl[feld]));
+      document.querySelector('.filter-zuruecksetzen')?.addEventListener('click', () => {
+        auswahl.bereich = '';
+        auswahl.fach = '';
+        for (const k of leiste.querySelectorAll<HTMLButtonElement>('.chip')) {
+          k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === ''));
         }
         anwenden();
       });
     }
-
-    document.querySelector('.filter-zuruecksetzen')?.addEventListener('click', () => {
-      auswahl.bereich = '';
-      auswahl.fach = '';
-      for (const k of leiste.querySelectorAll<HTMLButtonElement>('.chip')) {
-        k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === ''));
-      }
-      anwenden();
-    });
-  }
+  });
 </script>
 
 <style>
