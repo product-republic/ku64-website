@@ -59,6 +59,11 @@ const kategorienHier = standort
 const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 ---
 
+{/* Ein Pixel über dem Kopf. Verlässt er das Sichtfeld, ist der Kopf
+    angedockt – das erkennt ein IntersectionObserver, ohne bei jedem
+    Scrollschritt zu rechnen. */}
+<div class="kopf-marke" aria-hidden="true"></div>
+
 <header class="kopf">
   <div class="kopf-glas">
     {/* Die Glasfläche ist eine eigene Ebene und nicht der Hintergrund der
@@ -71,7 +76,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       aria-label={standort ? `KU64 ${standort.name}, zur Startseite` : 'KU64, zur Startseite'}
     >
       <Logo hoehe="1.75rem" dekorativ />
-      {standort && <span class="logo-ort">{standort.name}</span>}
+      {/* Erscheint erst beim Scrollen, wenn die Standortleiste einklappt –
+          bis dahin steht der Ort ausgeschrieben in der Leiste darunter. */}
+      {standort && <span class="logo-ort">KU64 {standort.name}</span>}
     </a>
 
     <nav class="haupt" aria-label={t('geruest.hauptnavigation')}>
@@ -244,6 +251,19 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       inset 0 1px 0 var(--glas-glanz),
       inset 0 -1px 0 var(--glas-rand-unten),
       var(--schatten);
+    /*
+     * KEIN `overflow: hidden` hier.
+     *
+     * Es stand hier, um die Standortleiste in die runden Ecken der Pille zu
+     * zwingen – und schnitt dabei den Standortwähler ab. Der klappt nach
+     * unten aus der Pille heraus; geklippt sah es aus, als reagiere der
+     * Klick überhaupt nicht. Ein `<details>`, das sich öffnet und nichts
+     * zeigt, ist von einem kaputten Knopf nicht zu unterscheiden.
+     *
+     * Die Ecken macht jetzt die Leiste selbst rund.
+     */
+  }
+
   /*
    * Warum das Glas eine eigene Ebene ist und nicht der Hintergrund der Pille
    *
@@ -280,21 +300,6 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     z-index: 1;
   }
 
-  .kopf-glas {
-    /*
-     * KEIN `overflow: hidden` hier.
-     *
-     * Es stand hier, um die Standortleiste in die runden Ecken der Pille zu
-     * zwingen – und schnitt dabei den Standortwähler ab. Der klappt nach
-     * unten aus der Pille heraus; geklippt sah es aus, als reagiere der
-     * Klick überhaupt nicht. Ein `<details>`, das sich öffnet und nichts
-     * zeigt, ist von einem kaputten Knopf nicht zu unterscheiden.
-     *
-     * Die Ecken macht jetzt die Leiste selbst rund. Das ist eine Zeile mehr
-     * und kostet keine Funktion.
-     */
-  }
-
   .logo {
     display: flex;
     align-items: baseline;
@@ -316,12 +321,71 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     color: var(--tinte);
   }
 
+  .kopf-marke {
+    height: 1px;
+  }
+
+  /*
+   * Zwei Zustände: oben ausführlich, gescrollt knapp.
+   *
+   * Ganz oben steht in der Leiste ausgeschrieben, wo man ist – „Sie sehen
+   * KU64 Berlin-Mitte, Hausvogteiplatz 14". Das ist die wichtigste Angabe
+   * beim Ankommen und darf Platz brauchen.
+   *
+   * Sobald gescrollt wird, ist die Frage beantwortet und der Kopf soll aus
+   * dem Weg. Die Leiste klappt ein, und der Ort rutscht unter das Logo –
+   * klein, aber dauerhaft sichtbar. Die Angabe verschwindet also nie, sie
+   * wechselt nur den Platz.
+   *
+   * Vorher stand der Ort doppelt da: neben dem Logo UND in der Leiste.
+   */
+  .logo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
   .logo-ort {
-    font-size: var(--t-xs);
+    font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--tinte-leise);
+    /* Nimmt keinen Platz, solange die Leiste die Angabe trägt. */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height var(--zeit) var(--kurve),
+      opacity var(--zeit) var(--kurve);
+  }
+
+  /* `:global()` um die Zustandsklasse: Sie wird erst im Browser gesetzt und
+     steht nirgends im Markup. Ohne diesen Hinweis versucht Astro, sie zu
+     einem Bauteil zuzuordnen, und die Regel greift nie. */
+  .kopf:global(.ist-angedockt) .logo-ort {
+    max-height: 1.4em;
+    opacity: 1;
+  }
+
+  /* Die Leiste klappt ein – Höhe, Polsterung und Trennlinie zugleich, sonst
+     bleibt ein Strich ohne Inhalt stehen. */
+  .kopf:global(.ist-angedockt) .standortleiste-inner {
+    /* `min-height` muss mit weg: Es schlägt `max-height`, und die Leiste
+       bliebe sonst als 40 Pixel hohe leere Fläche stehen. */
+    min-height: 0;
+    max-height: 0;
+    padding-block: 0;
+    border-block-start-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-ort,
+    .standortleiste-inner {
+      transition: none;
+    }
   }
 
   .haupt {
@@ -456,6 +520,12 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     /* Die untere Rundung der Glaspille – siehe Begründung bei `.kopf-glas`. */
     border-end-start-radius: var(--radius-xl);
     border-end-end-radius: var(--radius-xl);
+    max-height: 8rem;
+    overflow: hidden;
+    transition:
+      max-height var(--zeit) var(--kurve),
+      padding-block var(--zeit) var(--kurve),
+      opacity var(--zeit) var(--kurve);
   }
 
 
@@ -763,6 +833,29 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Zweitens zählte nur der Klick als "außerhalb". Wer mit der Tastatur
    * weiterspringt oder das Fenster wechselt, ließ den Wähler offen stehen.
    */
+  /*
+   * Angedockt oder nicht.
+   *
+   * Ein IntersectionObserver auf einem Pixel über dem Kopf statt eines
+   * Scroll-Handlers: Der Browser meldet den Wechsel selbst, statt bei jedem
+   * Scrollschritt eine Position auszurechnen. Zwei Meldungen pro Seite statt
+   * hundert pro Sekunde.
+   */
+  const marke = document.querySelector('.kopf-marke');
+  const kopf = document.querySelector('.kopf');
+
+  if (marke && kopf && 'IntersectionObserver' in window) {
+    new IntersectionObserver(
+      ([eintrag]) => {
+        kopf.classList.toggle('ist-angedockt', !eintrag.isIntersecting);
+        /* Beim Einklappen darf kein offener Wähler zurückbleiben – er hinge
+           sonst unter einer Leiste, die es nicht mehr gibt. */
+        if (!eintrag.isIntersecting) waehlerZu();
+      },
+      { threshold: 0 },
+    ).observe(marke);
+  }
+
   function waehlerZu() {
     for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
       d.open = false;
