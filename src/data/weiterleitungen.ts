@@ -35,7 +35,7 @@ export interface Weiterleitung {
   /** Ziel auf der neuen Website. */
   nach: string;
   /** Nach welcher Regel das Ziel bestimmt wurde – siehe Planungsskript. */
-  regel: 'HAND' | 'PERSON' | 'LEISTUNG' | 'BEREICH' | 'GRUPPE' | 'SEITE' | 'ORT';
+  regel: 'HAND' | 'PERSON' | 'LEISTUNG' | 'BEREICH' | 'GRUPPE' | 'SEITE' | 'ORT' | 'ALTBESTAND';
 }
 
 export const WEITERLEITUNGEN: Weiterleitung[] = [
@@ -471,6 +471,70 @@ export const WEITERLEITUNGEN: Weiterleitung[] = [
   { von: '/ueber-uns/presseinfo/', nach: '/ueber-uns/', regel: 'SEITE' },
   { von: '/ueber-uns/soziales-engagement/', nach: '/ueber-uns/', regel: 'SEITE' },
   { von: '/zahnunfall/', nach: '/notfall/', regel: 'SEITE' },
+
+  /*
+   * Zusammengelegte Blogbeiträge – das Ziel hat ku64.de selbst bestimmt.
+   *
+   * Diese 50 Adressen standen als „bewusst ohne Ziel“ mit der Begründung
+   * „kein Inhalt auf der neuen Website“. Das stimmte nicht: Die alte Website
+   * leitet sie längst selbst weiter, auf Sammelbeiträge, die wir haben – 42
+   * auf einen unserer 30 übernommenen Artikel, 8 auf die Blogübersicht.
+   *
+   * Ermittelt durch Folgen der Weiterleitungskette auf ku64.de, nicht
+   * geraten. Damit ist auch das Ziel richtig und nicht nur vorhanden: Wer
+   * „/blog/tag-des-kusses/“ aufruft, landet dort, wo die Praxis diesen
+   * Beitrag hingelegt hat.
+   */
+  { von: '/blog-potsdam/aesthetische-behandlungen-dr-benedikt-straub-in-potsdam-ku64/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/blog-potsdam/erfahren-sie-alles-ueber-aesthetische-behandlungen-bei-dr-benedikt-straub-in-potsdam-im-ku64-eine-einzigartige-gelegenheit-fuer-ein-strahlendes-laecheln-und-jugendliches-aussehen-termin-mittwoch-1/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-hat-ein-herz-fuer-leidenschaftliche-radfahrer/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-hat-gewonnen/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-in-den-medien-2/', nach: '/blog/ku64-in-den-medien/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-liebt-kunst/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-macht-mit-bei-berlin-teilt/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-sucht-endodontiespezialisten-zur-teamverstaerkung/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-sucht-mitarbeiter/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-sucht-neues-kompetentes-personal/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-und-lokahiloft/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-und-physion-emotion/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-unterstuetzt-bwb/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-unterstuetzt-die-kunst/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-verwendet-jetzt-ipads/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64-wurzelkanalbehandlung-ist-spitze-und-zertifiziert/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/ku64s-engagement-fuer-kinder-jugendliche/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/mali-black-berlins-juengste-malerin-stellt-bei-ku64-aus/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/malt-fuer-uns/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/maus-und-elefant-in-unserer-praxis/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/medaille-fuer-henning-bommel/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/medizinische-kompetenz-und-sinn-fuer-schoenheit/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/mitmachen-und-gewinnen/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/neue-austellung-in-unseren-raeumen-2/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/neue-austellung-in-unseren-raeumen/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/neue-kollegin-bei-ku64-herzlich-willkommen-anika-pia-sievers-dentalberatung/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/neue-zahnaerztin-bei-ku64-mit-spezialisierung-in-zahnaesthetik-und-endodontie-dr-sandra-viktorov/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/neues-traumauto-fuer-kids-duest-durch-die-ku64-kinderabteilung/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/radeln-fuer-den-guten-zweck/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/rolf-zscharnack-stellt-bei-ku64-aus/', nach: '/blog/kunst-ausstellungen-bei-ku64/', regel: 'ALTBESTAND' },
+  { von: '/blog/tag-des-kusses-2/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/tag-des-kusses/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/toooooooor-viel-glueck-dem-ssc-suedwest-1947/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/trainingsanzuguebergabe-ku64-kick-box-jugend-team-e-v/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/unser-partner-lokahi-loft-feiert-geburtstag/', nach: '/ueber-uns/', regel: 'ALTBESTAND' },
+  { von: '/blog/unsere-kinderabteilung-bekommt-zuwachs/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/unsere-kuh-64-hat-einen-namen/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/unterstuetzt-den-boys-day/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/unterstuetzt-die-jungen-rebels/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/viel-glueck-der-f1-jugend-des-bfc-preussen/', nach: '/blog/kinder-betreuung/', regel: 'ALTBESTAND' },
+  { von: '/blog/weihnachtswichtel-gesucht-2/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/weihnachtswichtel-gesucht/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/blog/weisse-weihnachten-weisse-zaehne-exklusiv-bei-den-zahnspezialisten-von-ku64/', nach: '/blog/neuigkeiten-aus-der-praxis/', regel: 'ALTBESTAND' },
+  { von: '/blog/zfa-m-w-gesucht/', nach: '/blog/ku64-mitarbeiter-und-mitarbeitersuche/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/aligner/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/all/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/kieferorthopaedie/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/wissenswert/', nach: '/blog/', regel: 'ALTBESTAND' },
+  { von: '/fachbeitraege/zahnheilkunde/', nach: '/blog/', regel: 'ALTBESTAND' },
 ];
 
 /**
@@ -481,57 +545,7 @@ export const WEITERLEITUNGEN: Weiterleitung[] = [
  */
 
 export const OHNE_ZIEL: { von: string; grund: string }[] = [
-  { von: '/blog-potsdam/aesthetische-behandlungen-dr-benedikt-straub-in-potsdam-ku64/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog-potsdam/erfahren-sie-alles-ueber-aesthetische-behandlungen-bei-dr-benedikt-straub-in-potsdam-im-ku64-eine-einzigartige-gelegenheit-fuer-ein-strahlendes-laecheln-und-jugendliches-aussehen-termin-mittwoch-1/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-hat-ein-herz-fuer-leidenschaftliche-radfahrer/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-hat-gewonnen/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-in-den-medien-2/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-liebt-kunst/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-macht-mit-bei-berlin-teilt/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-sucht-endodontiespezialisten-zur-teamverstaerkung/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-sucht-mitarbeiter/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-sucht-neues-kompetentes-personal/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-und-lokahiloft/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-und-physion-emotion/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-unterstuetzt-bwb/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-unterstuetzt-die-kunst/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-verwendet-jetzt-ipads/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64-wurzelkanalbehandlung-ist-spitze-und-zertifiziert/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/ku64s-engagement-fuer-kinder-jugendliche/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/mali-black-berlins-juengste-malerin-stellt-bei-ku64-aus/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/malt-fuer-uns/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/maus-und-elefant-in-unserer-praxis/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/medaille-fuer-henning-bommel/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/medizinische-kompetenz-und-sinn-fuer-schoenheit/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/mitmachen-und-gewinnen/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/neue-austellung-in-unseren-raeumen-2/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/neue-austellung-in-unseren-raeumen/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/neue-kollegin-bei-ku64-herzlich-willkommen-anika-pia-sievers-dentalberatung/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/neue-zahnaerztin-bei-ku64-mit-spezialisierung-in-zahnaesthetik-und-endodontie-dr-sandra-viktorov/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/neues-traumauto-fuer-kids-duest-durch-die-ku64-kinderabteilung/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/radeln-fuer-den-guten-zweck/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/rolf-zscharnack-stellt-bei-ku64-aus/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/tag-des-kusses-2/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/tag-des-kusses/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/toooooooor-viel-glueck-dem-ssc-suedwest-1947/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/trainingsanzuguebergabe-ku64-kick-box-jugend-team-e-v/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unser-partner-lokahi-loft-feiert-geburtstag/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unsere-kinderabteilung-bekommt-zuwachs/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unsere-kuh-64-hat-einen-namen/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unterstue]zung-fuer-berliner-heimkinder/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unterstuetzt-den-boys-day/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/unterstuetzt-die-jungen-rebels/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/viel-glueck-der-f1-jugend-des-bfc-preussen/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/weihnachtswichtel-gesucht-2/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/weihnachtswichtel-gesucht/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/weisse-weihnachten-weisse-zaehne-exklusiv-bei-den-zahnspezialisten-von-ku64/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/blog/zfa-m-w-gesucht/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/aligner/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/all/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/kieferorthopaedie/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/wissenswert/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
-  { von: '/fachbeitraege/zahnheilkunde/', grund: 'Kein Inhalt auf der neuen Website (Blog/Fachbeiträge)' },
+  { von: '/blog/unterstue]zung-fuer-berliner-heimkinder/', grund: 'Tippfehler in der Adresse – auf ku64.de selbst eine 404. Eine Adresse, die nie funktioniert hat, braucht kein Ziel.' },
 ];
 
 /** Für astro.config.mjs: das Format, das Astro erwartet. */
