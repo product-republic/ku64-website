@@ -43,7 +43,12 @@ function tabelle(liste) {
     '|---:|---|---|---|---|',
   ];
   liste.forEach((b, i) => {
-    const motiv = b.hinweis ? `${b.motiv}<br>**Hinweis:** ${b.hinweis}` : b.motiv;
+    let motiv = b.hinweis ? `${b.motiv}<br>**Hinweis:** ${b.hinweis}` : b.motiv;
+    /* Vorläufig belegte Stellen bleiben in der Liste – sonst verschwindet
+       die Anforderung still und „vorläufig" wird endgültig. */
+    if (b.vorlaeufig) {
+      motiv += `<br>_Vorläufig steht dort \`${b.vorlaeufig}\` – ein echtes, aber anderes Motiv._`;
+    }
     zeilen.push(
       `| ${i + 1} | \`${b.schluessel}.jpg\` | ${motiv} | ${b.wo} | ${FORMATE[b.format]} |`,
     );

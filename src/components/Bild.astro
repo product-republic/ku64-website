@@ -39,25 +39,37 @@ const { schluessel, erwartet, klasse, vorrang = false } = Astro.props;
 const bild: Bildnachweis | undefined = getBild(schluessel);
 const pruefung = bild ? nachweisGueltig(bild) : { ok: false, grund: 'Kein Eintrag im Bildverzeichnis.' };
 
-/* Angemeldeter Bedarf ohne Foto → Platzhalter. Alles andere → nichts. */
+/*
+ * Angemeldeter Bedarf ohne Foto → vorläufiges Bild, sonst Platzhalter.
+ * Alles andere → nichts.
+ */
 const bedarf = pruefung.ok ? undefined : bedarfFuer(schluessel);
+
+/* Springt ein, bis das eigentliche Motiv vorliegt – mit eigenem Nachweis,
+   eigenem Alternativtext, eigener Herkunft. Es ist ein echtes Foto der
+   Praxis, nur nicht das gewünschte. */
+const ersatzbild = bedarf?.vorlaeufig ? getBild(bedarf.vorlaeufig) : undefined;
+const ersatzOk = ersatzbild ? nachweisGueltig(ersatzbild) : { ok: false };
+
+const zeigen = pruefung.ok ? bild : ersatzOk.ok ? ersatzbild : undefined;
+const zeigePlatzhalter = Boolean(bedarf) && !zeigen;
 const zeigeLuecke = import.meta.env.DEV && !pruefung.ok && !bedarf;
 ---
 
 {
-  bild && pruefung.ok ? (
+  zeigen ? (
     <figure class:list={['bild', klasse]}>
       <img
-        src={bild.pfad}
-        alt={bild.alt}
-        width={bild.breite}
-        height={bild.hoehe}
+        src={zeigen.pfad}
+        alt={zeigen.alt}
+        width={zeigen.breite}
+        height={zeigen.hoehe}
         loading={vorrang ? 'eager' : 'lazy'}
         decoding={vorrang ? 'sync' : 'async'}
         fetchpriority={vorrang ? 'high' : 'auto'}
       />
     </figure>
-  ) : bedarf ? (
+  ) : zeigePlatzhalter && bedarf ? (
     <figure class:list={['bild', 'platzhalter', `ph-${bedarf.format}`, klasse]} role="img"
             aria-label={`Bild folgt: ${bedarf.motiv}`}>
       <div class="ph-inhalt">

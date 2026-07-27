@@ -51,6 +51,20 @@ export interface Bildbedarf {
   format: 'quer' | 'hoch' | 'quadrat';
   /** Hinweise zur Aufnahme, wo sie nicht offensichtlich sind. */
   hinweis?: string;
+  /**
+   * Ein vorhandenes Foto, das bis dahin einspringt.
+   *
+   * Schlüssel aus `src/lib/bilder.ts`. Gesetzt wird das nur, wo das
+   * vorhandene Bild ehrlich passt – das Meisterlabor steht für Zahnersatz,
+   * der Wartebereich für die angstfreie Behandlung. NICHT gesetzt wird es,
+   * wo es in die Irre führen würde: Die Außenansicht der KiezPraxis unter
+   * der Überschrift „Empfang" wäre eine Falschaussage, kein Notbehelf.
+   *
+   * Der Bedarf bleibt bestehen. In BILDER-BEDARF.md steht die Zeile weiter,
+   * nur mit dem Vermerk, dass vorläufig etwas anderes dort steht – sonst
+   * verschwindet die Anforderung still, und „vorläufig" wird endgültig.
+   */
+  vorlaeufig?: string;
 }
 
 /**
@@ -80,6 +94,7 @@ export const BEREICHSMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'bereich-zahnersatz',
+    vorlaeufig: 'kudamm-meisterlabor',
     motiv: 'Meisterlabor am Kurfürstendamm: Zahntechnikerin bei der Arbeit an einer Krone',
     wo: 'Kopf aller Zahnersatzseiten',
     dringlich: 'hoch',
@@ -96,6 +111,7 @@ export const BEREICHSMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'bereich-zahnerhalt',
+    vorlaeufig: 'kudamm-behandlungszimmer',
     motiv: 'Behandler mit Lupenbrille am Mikroskop, konzentrierte Arbeitssituation',
     wo: 'Kopf aller Zahnerhalt-Seiten (Wurzelkanal, Parodontitis, Füllungen)',
     dringlich: 'hoch',
@@ -134,6 +150,7 @@ export const BEREICHSMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'bereich-angst',
+    vorlaeufig: 'kudamm-wartebereich',
     motiv: 'Ruhiges Vorgespräch im Sitzen, nicht am Behandlungsstuhl – Augenhöhe',
     wo: 'Kopf aller Seiten zu Angstpatienten, Narkose, Lachgas',
     dringlich: 'hoch',
@@ -152,6 +169,7 @@ export const BEREICHSMOTIVE: Bildbedarf[] = [
 export const SEITENMOTIVE: Bildbedarf[] = [
   {
     schluessel: 'start-kopf',
+    vorlaeufig: 'kudamm-flur',
     motiv: 'Die gelbe Landschaft am Kurfürstendamm, weit, ohne Menschen im Vordergrund',
     wo: 'Startseite, oberster Bereich',
     dringlich: 'hoch',
@@ -160,6 +178,7 @@ export const SEITENMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'ueber-uns',
+    vorlaeufig: 'berlinmitte-praxis',
     motiv: 'Gruppenaufnahme des Teams oder die Praxisarchitektur als Ganzes',
     wo: 'Über KU64',
     dringlich: 'mittel',
@@ -175,6 +194,7 @@ export const SEITENMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'notfall',
+    vorlaeufig: 'berlinmitte-empfang',
     motiv: 'Empfang mit Ansprechperson, freundlich und erreichbar wirkend',
     wo: 'Notfallseite',
     dringlich: 'mittel',
@@ -183,6 +203,7 @@ export const SEITENMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'beratung',
+    vorlaeufig: 'berlinmitte-wartebereich',
     motiv: 'Beratungssituation am Bildschirm, Behandler und Patient gemeinsam davor',
     wo: 'Digitale Beratung',
     dringlich: 'niedrig',
@@ -190,6 +211,7 @@ export const SEITENMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'termine',
+    vorlaeufig: 'potsdam-empfang',
     motiv: 'Empfangstresen mit Terminvergabe',
     wo: 'Terminseite',
     dringlich: 'niedrig',
@@ -197,6 +219,7 @@ export const SEITENMOTIVE: Bildbedarf[] = [
   },
   {
     schluessel: 'labor',
+    vorlaeufig: 'kudamm-meisterlabor',
     motiv: 'Meisterlabor: Arbeitsplatz mit Zahntechnik, Werkstücke erkennbar',
     wo: 'Über KU64, Zahnersatzseiten',
     dringlich: 'mittel',
