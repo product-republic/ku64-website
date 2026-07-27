@@ -374,16 +374,36 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
   /* Die Leiste klappt ein – Höhe, Polsterung und Trennlinie zugleich, sonst
      bleibt ein Strich ohne Inhalt stehen. */
-  .kopf:global(.ist-angedockt) .standortleiste-inner {
-    overflow: hidden;
-    /* `min-height` muss mit weg: Es schlägt `max-height`, und die Leiste
-       bliebe sonst als 40 Pixel hohe leere Fläche stehen. */
-    min-height: 0;
+  /*
+   * Beim Scrollen klappt die ADRESSE ein, nicht die Leiste.
+   *
+   * Erst klappte die ganze Leiste zusammen. Das war zwar knapper, machte
+   * aber den Standortwähler unerreichbar: eingeklappt trägt sie
+   * `pointer-events: none`, und wer nach dem Scrollen den Standort wechseln
+   * wollte, klickte ins Nichts. Ein Bedienelement, das nur ganz oben auf der
+   * Seite funktioniert, ist kaputt – nur nicht immer.
+   *
+   * Weg ist deshalb die ausgeschriebene Adresse. Sie beantwortet die Frage
+   * „wo bin ich?" beim Ankommen; danach reicht der Ort unter dem Logo. Der
+   * Wähler bleibt, wo er ist, und bleibt anklickbar.
+   */
+  .kopf:global(.ist-angedockt) .wo-bin-ich {
     max-height: 0;
-    padding-block: 0;
-    border-block-start-color: transparent;
     opacity: 0;
-    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .wo-bin-ich {
+    max-height: 3em;
+    transition:
+      max-height var(--zeit) var(--kurve),
+      opacity var(--zeit) var(--kurve);
+  }
+
+  /* Die Leiste selbst wird nur schmaler, nicht unsichtbar. */
+  .kopf:global(.ist-angedockt) .standortleiste-inner {
+    min-height: 0;
+    padding-block: 0.2rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
