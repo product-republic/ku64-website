@@ -15,6 +15,9 @@
  *      trotzdem, weil er im englischen HTML steht.
  *   4. Der Weg zwischen den Sprachen. Die ersten drei Ebenen prüfen, ob eine
  *      Sprache vollständig ist – keine prüft, ob man sie erreicht.
+ *   5. Auszeichnung und Platzhalter. Ein paar Texte tragen <strong>, <code>
+ *      oder {platzhalter} mitten im Satz. Geht eines davon beim Übersetzen
+ *      verloren, ist der Satz sprachlich einwandfrei und die Seite kaputt.
  *
  * Für freigegebene Sprachen ist jeder Fund der Ebenen 1–3 ein Fehler und der
  * Build bricht ab. Für Sprachen im Aufbau ist er eine Rückstandsliste.
@@ -91,6 +94,8 @@ console.log(`[sprachen] Quellfassung ${QUELLSPRACHE}: ${quellHashes.size} Textba
 
 let fehler = 0;
 let wegFehler = 0;
+let bausteinFehler = 0;
+const kataloge = {};
 const zusammenfassung = [];
 
 for (const sprache of SPRACHEN) {
@@ -99,6 +104,8 @@ for (const sprache of SPRACHEN) {
   const katalogPfad = path.join(WURZEL, 'src/inhalte', `${sprache.code}.json`);
   const katalog = JSON.parse(await readFile(katalogPfad, 'utf8'));
   const eintraege = katalog.eintraege ?? {};
+  /* Für Ebene 5 aufheben – zweimal dieselbe Datei zu lesen wäre unnötig. */
+  kataloge[sprache.code] = katalog;
 
   const fehlend = [];
   const veraltet = [];
@@ -184,6 +191,20 @@ if (existsSync(dist)) {
   }
 }
 
+// ── Ebene 5: Auszeichnung und Platzhalter unverändert? ──────────────────
+
+const bausteinBefunde = bausteinePruefen();
+if (bausteinBefunde.length) {
+  console.log(`\n[sprachen] FEHLER: ${bausteinBefunde.length} Übersetzung(en) mit fehlender Auszeichnung`);
+  for (const b of bausteinBefunde.slice(0, 12)) console.log(`    · ${b}`);
+  if (bausteinBefunde.length > 12) {
+    console.log(`    … und ${bausteinBefunde.length - 12} weitere`);
+  }
+  bausteinFehler = bausteinBefunde.length;
+} else {
+  console.log('\n[sprachen] Auszeichnung und Platzhalter: unverändert übernommen');
+}
+
 console.log('\n[sprachen] Übersicht');
 for (const z of zusammenfassung) {
   console.log(
@@ -191,6 +212,17 @@ for (const z of zusammenfassung) {
       `fehlend ${String(z.fehlend).padStart(4)}  veraltet ${String(z.veraltet).padStart(3)}  ` +
       `${z.freigegeben ? 'freigegeben' : 'im Aufbau'}`,
   );
+}
+
+if (bausteinFehler > 0) {
+  console.error(
+    `\n[sprachen] ABBRUCH: ${bausteinFehler} Übersetzung(en) haben Auszeichnung oder\n` +
+      '           Platzhalter verloren. Der Satz liest sich dann richtig und die\n' +
+      '           Seite zeigt trotzdem Unsinn – ein <code> weniger, und die Stelle,\n' +
+      '           die die Praxis noch befüllen muss, sieht aus wie fertiger Text.\n' +
+      '           Abhilfe: den Eintrag in src/inhalte/ löschen und neu übersetzen.',
+  );
+  process.exit(1);
 }
 
 if (wegFehler > 0) {
@@ -332,4 +364,53 @@ async function sprachwaehlerPruefen(verzeichnis) {
 
   await durchlaufen(verzeichnis);
   return { seiten, befunde };
+}
+
+/**
+ * Vergleicht Auszeichnung und Platzhalter zwischen Quelle und Übersetzung.
+ *
+ * Gezählt wird, nicht verglichen: Die Reihenfolge darf sich ändern – im
+ * Englischen steht der fette Einstieg manchmal woanders –, die Menge nicht.
+ * Aus <strong>…</strong> darf kein <em> werden und aus zwei <code> kein
+ * einziges.
+ */
+function bausteinePruefen() {
+  const befunde = [];
+
+  const zaehlen = (text) => {
+    const stand = new Map();
+    for (const [, name] of text.matchAll(/<\/?([a-z]+)[^>]*>/gi)) {
+      const k = `<${name.toLowerCase()}>`;
+      stand.set(k, (stand.get(k) ?? 0) + 1);
+    }
+    for (const [, name] of text.matchAll(/\{([a-zA-Z]+)\}/g)) {
+      const k = `{${name}}`;
+      stand.set(k, (stand.get(k) ?? 0) + 1);
+    }
+    return stand;
+  };
+
+  for (const sprache of SPRACHEN) {
+    if (sprache.code === QUELLSPRACHE) continue;
+    const katalog = kataloge[sprache.code];
+    if (!katalog) continue;
+
+    for (const [schluessel, deutsch] of Object.entries(quelle)) {
+      const eintrag = katalog.eintraege?.[schluessel];
+      if (!eintrag) continue;
+
+      const soll = zaehlen(deutsch);
+      if (soll.size === 0) continue;
+      const ist = zaehlen(eintrag.text);
+
+      for (const [baustein, anzahl] of soll) {
+        const da = ist.get(baustein) ?? 0;
+        if (da !== anzahl) {
+          befunde.push(`${sprache.code} ${schluessel}: ${baustein} ${anzahl}× erwartet, ${da}× da`);
+        }
+      }
+    }
+  }
+
+  return befunde;
 }

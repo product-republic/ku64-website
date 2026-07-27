@@ -188,6 +188,8 @@ Patientinnen und Patienten, keine Fachleute. Ruhig, klar, kurze Sätze, kein Wer
 - Angaben zur deutschen gesetzlichen Krankenversicherung bleiben Angaben über das deutsche System. Ersetze sie nicht durch das Gesundheitssystem eines Landes der Zielsprache.
 - Diese Namen bleiben unverändert: ${UNVERAENDERT.join(', ')}. Ebenso Straßennamen, Haltestellen, Stadtteile und Gebäudenamen.
 - Platzhalter in geschweiften Klammern wie {anzahl} oder {sprache} exakt so stehen lassen.
+- Manche Texte enthalten Auszeichnung: <strong>…</strong>, <code>…</code>, <br />. Die Tags bleiben unverändert stehen, an derselben Stelle im Satz, mit denselben Namen. Übersetzt wird nur der Text zwischen ihnen. Ein fehlendes oder umbenanntes Tag macht die Seite kaputt.
+- In eckigen Klammern innerhalb von <code> stehen Angaben, die die Praxis noch einträgt – etwa <code>[Anzahl Tage]</code>. Übersetze den Text darin mit, aber lass die eckigen Klammern stehen: Sie sind das Zeichen dafür, dass hier noch etwas fehlt.
 - Länge halten. Oberflächentexte (Schlüssel beginnt mit "ui.") dürfen die deutsche Länge um höchstens ein Viertel überschreiten, sonst bricht das Layout.
 - Keine Anführungszeichen um die Übersetzung, keine Erklärungen, keine Alternativen.
 
