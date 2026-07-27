@@ -212,13 +212,30 @@
    *                   verwendet. 40 unscharf gerechnete Karten würden auf
    *                   dem Handy sichtbar ruckeln.
    */
-  --glas-flaeche: rgb(255 255 255 / 0.62);
-  --glas-flaeche-stark: rgb(255 255 255 / 0.82);
-  --glas-rand: rgb(255 255 255 / 0.55);
-  --glas-rand-unten: rgb(20 16 14 / 0.09);
-  --glas-glanz: rgb(255 255 255 / 0.9);
-  --glas-unschaerfe: 22px;
-  --glas-saettigung: 1.7;
+  /*
+   * Dichte und Unschärfe.
+   *
+   * Kräftiger als zuvor, und zwar in beide Richtungen: mehr Deckung UND
+   * mehr Unschärfe. Bei 62 % Deckung und 22 px Unschärfe schien der Inhalt
+   * dahinter noch als Muster durch – man erkannte Zeilen und Kanten, und
+   * dadurch sah die Fläche nicht wie Glas aus, sondern wie eine
+   * schmutzige Scheibe.
+   *
+   * Glas wirkt dann wie Glas, wenn dahinter FARBE durchkommt, aber keine
+   * FORM mehr. Genau das ist der Unterschied zwischen 22 px und 44 px:
+   * Bei 22 px bleibt die Struktur des Untergrunds erkennbar, bei 44 px
+   * bleibt nur noch seine Stimmung.
+   */
+  --glas-flaeche: rgb(255 255 255 / 0.76);
+  --glas-flaeche-stark: rgb(255 255 255 / 0.9);
+  --glas-rand: rgb(255 255 255 / 0.62);
+  --glas-rand-unten: rgb(20 16 14 / 0.1);
+  --glas-glanz: rgb(255 255 255 / 0.92);
+  --glas-unschaerfe: 44px;
+  /* Etwas mehr Farbsättigung als früher: Wenn stark weichgezeichnet wird,
+     verliert der Untergrund an Kraft – die Sättigung holt sie zurück, und
+     erst dadurch entsteht der Eindruck von Tiefe statt von Milchglas. */
+  --glas-saettigung: 1.9;
 
   /* ── Glas, auf dem Text steht ─────────────────────────────────────
    *
@@ -242,17 +259,17 @@
    * Ein Kasten, den man nicht durchschaut, ist ein hinnehmbarer Verlust;
    * eine Überschrift, die man nicht lesen kann, nicht.
    */
-  --glas-text-flaeche: rgb(255 255 255 / 0.86);
-  --glas-text-unschaerfe: 40px;
+  --glas-text-flaeche: rgb(255 255 255 / 0.93);
+  --glas-text-unschaerfe: 72px;
 
   /* Schleier für Schrift, die direkt auf Bild oder Video liegt. Von unten
      nach oben abnehmend – Text steht dort, wo es am dunkelsten ist. */
   --schleier-auf-medium: linear-gradient(
     to top,
-    rgb(12 10 9 / 0.82),
-    rgb(12 10 9 / 0.58) 42%,
-    rgb(12 10 9 / 0.28) 72%,
-    rgb(12 10 9 / 0.12)
+    rgb(12 10 9 / 0.9),
+    rgb(12 10 9 / 0.74) 38%,
+    rgb(12 10 9 / 0.5) 70%,
+    rgb(12 10 9 / 0.3)
   );
   /* Schriftfarben auf dem Schleier. Fest, nicht vom Farbschema abhängig:
      Der Schleier ist immer dunkel, auch im hellen Modus. */
@@ -313,13 +330,13 @@
 
     /* Im Dunkeln ist Glas dunkles, leicht aufgehelltes Material – nicht
        weiß mit weniger Deckkraft. Sonst wird es milchig statt tief. */
-    --glas-flaeche: rgb(38 32 27 / 0.58);
-    --glas-flaeche-stark: rgb(30 25 21 / 0.86);
-    --glas-rand: rgb(255 255 255 / 0.14);
+    --glas-flaeche: rgb(34 29 25 / 0.78);
+    --glas-flaeche-stark: rgb(28 24 20 / 0.92);
+    --glas-rand: rgb(255 255 255 / 0.16);
     --glas-rand-unten: rgb(0 0 0 / 0.4);
     --glas-glanz: rgb(255 255 255 / 0.22);
     /* Auch im Dunkeln gilt: Glas mit Schrift darauf ist dichter. */
-    --glas-text-flaeche: rgb(26 23 20 / 0.9);
+    --glas-text-flaeche: rgb(24 21 18 / 0.94);
 
     /* Umgekehrte Schaltflächen: Auf dunklem Grund ist die helle Pille die
        Hauptschaltfläche – dieselbe Logik wie im Entwurf mit dem Foto. */

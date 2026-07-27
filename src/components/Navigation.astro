@@ -247,9 +247,17 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     padding: 0.625rem;
     border: 1px solid var(--glas-rand);
     border-radius: var(--radius-voll);
-    background: var(--glas-flaeche);
-    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
-    -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    /*
+     * Die dichteste Glasstufe, und zwar aus einem handfesten Grund: Unter
+     * dieser Leiste scrollt der gesamte Seiteninhalt hindurch. Bei der
+     * leichteren Stufe war eine große Überschrift dahinter noch als Wort zu
+     * lesen – „Das Team in Potsdam“ stand quer durch die Navigationspunkte.
+     *
+     * Für Zierglas ist Durchsicht der Zweck; hier ist sie ein Fehler.
+     */
+    background: var(--glas-text-flaeche);
+    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
     box-shadow:
       inset 0 1px 0 var(--glas-glanz),
       inset 0 -1px 0 var(--glas-rand-unten),
@@ -405,17 +413,54 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * abgerissener Rest der alten Balkennavigation – sie schneidet genau dort
    * durch, wo die Leiste eigentlich schweben soll.
    */
+  /**
+   * Die Standortleiste bekommt eine eigene Fläche.
+   *
+   * Zwei Mängel hatten dieselbe Ursache: Sie lag ohne eigenen Grund direkt
+   * auf der Seite. Auf hellem Grund wirkte sie deshalb verloren – drei
+   * Bruchstücke, weit auseinandergezogen, ohne erkennbare Zusammengehörigkeit.
+   * Und über dem Kopfbild einer Standortseite war sie schlicht nicht mehr
+   * lesbar: dunkelgraue Schrift auf einem Foto.
+   *
+   * Als eigene gläserne Leiste löst sich beides: Sie ist ein Element statt
+   * dreier Fundstücke, und sie bringt ihren eigenen Untergrund mit – egal,
+   * was darunter liegt.
+   */
   .standortleiste {
     font-size: var(--t-xs);
+    position: relative;
+    z-index: calc(var(--z-nav) - 1);
+    margin-block-start: calc(var(--raum-2) * -1);
+    padding-inline: var(--rand);
   }
 
   .standortleiste-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--raum-4);
+    gap: var(--raum-3);
     min-height: 2.25rem;
     flex-wrap: wrap;
+    /* Dieselbe Glasstufe wie überall, wo Schrift auf Glas liegt: Lesbarkeit
+       vor Durchsicht. */
+    padding: var(--raum-2) var(--raum-4);
+    border-radius: var(--radius-voll);
+    background: var(--glas-text-flaeche);
+    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.3);
+    -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.3);
+    border: 1px solid var(--glas-rand);
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      var(--schatten-sm);
+  }
+
+  /* Auf schmalen Geräten bricht die Leiste um; dann ist die Pillenform
+     falsch – ein Block mit weichen Ecken passt zum Umbruch. */
+  @media (max-width: 46rem) {
+    .standortleiste-inner {
+      border-radius: var(--radius-lg);
+      gap: var(--raum-2);
+    }
   }
 
   .wo-bin-ich {

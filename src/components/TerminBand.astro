@@ -54,8 +54,24 @@ const { standort, anlass } = Astro.props;
 <style>
   .band {
     padding-block: var(--raum-8);
-    background: var(--flaeche-dunkel);
-    color: #f5f1ed;
+    /*
+     * Warmer, heller Grund statt fast Schwarz.
+     *
+     * Vorher stand hier `--flaeche-dunkel` (#14100e) – ein Band, das quer
+     * durch eine ansonsten helle, gläserne Seite schnitt und dabei härter
+     * wirkte als alles andere darauf. Die Entwürfe kennen dunkle Flächen nur
+     * als kleine Elemente, nicht als ganze Bänder.
+     *
+     * Jetzt ist es eine ruhige Sandfläche mit feiner Kante: Der Abschnitt
+     * hebt sich weiterhin ab, aber er bricht die Seite nicht mehr auf.
+     */
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--ku-gelb) 7%, #f7f4ee),
+      #f2eee7 70%
+    );
+    color: var(--tinte);
+    border-block: 1px solid var(--linie);
   }
 
   .band-inner {
@@ -72,14 +88,14 @@ const { standort, anlass } = Astro.props;
 
   p {
     max-width: 42ch;
-    color: #c4bab2;
+    color: var(--tinte-weich);
     line-height: var(--zeile-weit);
   }
 
   .feindaten {
     margin-block-start: var(--raum-3);
     font-size: var(--t-sm);
-    color: #8f857d;
+    color: var(--tinte-leise);
   }
 
   .band-knoepfe {
@@ -89,9 +105,9 @@ const { standort, anlass } = Astro.props;
   }
 
   .band-knoepfe .knopf-sekundaer {
-    background: transparent;
-    color: #f5f1ed;
-    border-color: #423a33;
+    background: var(--scheibe-flaeche);
+    color: var(--tinte);
+    border-color: var(--scheibe-rand);
   }
 
   .band-knoepfe .knopf-sekundaer:hover {
@@ -100,7 +116,7 @@ const { standort, anlass } = Astro.props;
   }
 
   .band-knoepfe .knopf-leise {
-    color: #8f857d;
+    color: var(--tinte-leise);
     font-size: var(--t-xs);
   }
 

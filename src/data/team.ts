@@ -88,6 +88,14 @@ export interface TeamMitglied {
   standorte: string[];
   /** z. B. 'Zahnärztin', 'Fachzahnarzt für Oralchirurgie'. Aus der Datenbank nachzutragen. */
   funktion?: string;
+  /**
+   * Steht innerhalb der eigenen Gruppe an erster Stelle.
+   *
+   * Für die medizinische Leitung eines Standorts. Nicht als Rangordnung
+   * gedacht, sondern als Orientierung: Wer an einem Standort etwas klären
+   * will, sucht zuerst die Person, die dort verantwortlich ist.
+   */
+  leitung?: boolean;
   /** Leistungs-Slugs als Schwerpunkte – erzeugt automatisch Querverlinkung. */
   schwerpunkte?: string[];
   sprachen?: string[];
@@ -135,7 +143,11 @@ export const TEAM: TeamMitglied[] = [
   { slug: 'dr-med-dent-eric-paul-oehme', name: 'Dr. med. dent. Eric Paul Oehme M.Sc. M.Sc.', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Zahnarzt für allgemeine Zahnmedizin & Zahnästhetik', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-med-dent-eric-paul-oehme/'] },
   { slug: 'mohamed-abudrya', name: 'Dr. Mohamed Abudrya M.Sc.', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Kinder- und Jugendzahnarzt', portraet: true, alteAdressen: ['/team/zahnaerzte/mohamed-budrya/', '/team/zahnaerzte/mohamed-abudrya/'] },
   { slug: 'dr-sabine-gousetis', name: 'Dr. Sabine Gousetis', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Spezialistin für Endodontologie der DGET', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-sabine-gousetis/'] },
-  { slug: 'dr-stephan-ziegler', name: 'Dr. Stephan Ziegler', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg', 'potsdam'], funktion: 'Geschäftsführender Gründungspartner', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-stephan-ziegler/'] },
+  /* Nur am Kurfürstendamm. Die Teamübersicht des Kunden führte ihn auch
+     unter Potsdam auf – gemeint ist die Rolle als Gründer, nicht die
+     Behandlung vor Ort. Wer in Potsdam nach seiner Behandlerin sucht, soll
+     die Menschen sehen, die dort behandeln. */
+  { slug: 'dr-stephan-ziegler', name: 'Dr. Stephan Ziegler', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Geschäftsführender Gründungspartner', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-stephan-ziegler/'] },
   { slug: 'dr-surian-herrmann', name: 'Dr. Surian Herrmann', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Fachzahnarzt für Oralchirurgie mit Schwerpunkt Implantologie & Leiter der Oralchirurgie', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-surian-herrmann/'] },
   { slug: 'erny-grundmann', name: 'Erny Grundmann, MPH, M.Sc.', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Kinder- und Jugendzahnärztin', portraet: true, alteAdressen: ['/team/zahnaerzte/erny-grundmann/'] },
   { slug: 'inke-supantia', name: 'Inke Supantia', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['berlin-charlottenburg'], funktion: 'Kinder- und Jugendzahnärztin', portraet: true, alteAdressen: ['/team/zahnaerzte/inke-supantia/'] },
@@ -241,7 +253,7 @@ export const TEAM: TeamMitglied[] = [
   { slug: 'dr-anna-lena-zopfs', name: 'Dr. Anna-Lena Zopfs', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['potsdam'], funktion: 'Kinder- und Jugendzahnärztin (aktuell in Mutterschutz)', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-anna-lena-zopfs/'] },
   { slug: 'dr-elisabeth-futterlieb', name: 'Dr. Elisabeth Futterlieb', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['potsdam'], funktion: 'Zahnärztin für Zahnästhetik und Kinder- & Jugendzahnheilkunde und leidenschaftliche Künstlerin', portraet: true, alteAdressen: ['/team/zahnaerzte/dr-elisabeth-futterlieb/'] },
   { slug: 'janna-mitscherling', name: 'Janna Mitscherling-Baumgartner', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['potsdam'], funktion: 'Zahnärztin Master of Science Kieferorthopädie Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie (aktuell in Mutterschutz)', portraet: true, alteAdressen: ['/team/zahnaerzte/janna-mitscherling/'] },
-  { slug: 'nils-radsack', name: 'Nils Radsack', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['potsdam'], funktion: 'Zahnarzt für Zahnästhetik und Endodontologie - medizinischer Leiter', portraet: true, alteAdressen: ['/nils-radsack/', '/team/zahnaerzte/nils-radsack/'] },
+  { slug: 'nils-radsack', name: 'Nils Radsack', bestaetigt: true, gruppe: 'zahnaerzte', standorte: ['potsdam'], funktion: 'Zahnarzt für Zahnästhetik und Endodontologie – medizinischer Leiter', leitung: true, portraet: true, alteAdressen: ['/nils-radsack/', '/team/zahnaerzte/nils-radsack/'] },
 
   // ── prophylaxe ──
   { slug: 'amy-beckmann', name: 'Amy Beckmann', bestaetigt: true, gruppe: 'prophylaxe', standorte: ['potsdam'], funktion: 'Zahnmedizinische Prophylaxeassistentin', portraet: true, alteAdressen: ['/team/prophylaxe/amy-beckmann/'] },
@@ -327,7 +339,10 @@ export function veroeffentlichbar(): TeamMitglied[] {
  * dafür nichts weiter tun muss, als diese Liste zu pflegen.
  */
 export function teamAn(standortSlug: string): TeamMitglied[] {
-  return veroeffentlichbar().filter((m) => m.standorte.includes(standortSlug));
+  return veroeffentlichbar()
+    .filter((m) => m.standorte.includes(standortSlug))
+    /* Die Leitung des Standorts steht vorn – siehe `leitung` im Typ. */
+    .sort((a, b) => Number(b.leitung ?? false) - Number(a.leitung ?? false));
 }
 
 export function anzahlAn(standortSlug: string, gruppe?: Teamgruppe): number {
@@ -366,7 +381,11 @@ export function gruppenAn(
     .map((gruppe) => ({
       gruppe,
       name: GRUPPENNAMEN[gruppe],
-      mitglieder: hier.filter((m) => m.gruppe === gruppe),
+      /* Leitung zuerst, alles Weitere in der Reihenfolge der Datei. Ein
+         stabiler Sortiervergleich, damit sich sonst nichts verschiebt. */
+      mitglieder: hier
+        .filter((m) => m.gruppe === gruppe)
+        .sort((a, b) => Number(b.leitung ?? false) - Number(a.leitung ?? false)),
     }))
     .filter((g) => g.mitglieder.length > 0);
 }

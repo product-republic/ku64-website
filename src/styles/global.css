@@ -641,11 +641,18 @@ a:hover {
  * Dort wäre die schwarze Pille unsichtbar; im Entwurf mit dem Foto ist die
  * Hauptschaltfläche deshalb weiß.
  */
+/*
+ * Die Hauptschaltfläche auf Bild: die deckende helle Pille – in der Vorlage
+ * die eine aktive Taste zwischen den mattierten. Der Unterschied zwischen
+ * „aktiv“ und „daneben“ entsteht dort durch Deckkraft, nicht durch Farbe.
+ */
 .knopf-hell {
   background: var(--knopf-hell-flaeche);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
   color: var(--knopf-hell-schrift);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
     0 2px 6px rgb(0 0 0 / 0.24),
     0 14px 30px -14px rgb(0 0 0 / 0.5);
 }
@@ -670,19 +677,48 @@ a:hover {
   color: var(--tinte);
 }
 
-/* Auf dunklem Grund: gläsern und hell umrandet statt weißer Fläche. */
+/**
+ * Die zweite Schaltfläche auf Bild und Video: mattiertes Glas.
+ *
+ * NACH DER VORLAGE (iOS-Bedienfeld über einem Foto): Die Fläche ist nicht
+ * durchsichtig mit heller Kontur, sondern eine milchige Scheibe – der
+ * Untergrund kommt als Farbe und Helligkeit durch, aber als Form gar nicht
+ * mehr. Genau das macht den Unterschied zwischen „Umriss auf einem Bild“
+ * und „Glas auf einem Bild“.
+ *
+ * Drei Werte tragen das:
+ *   0.22 Weiß  – genug Substanz, dass die Pille eine Fläche ist
+ *   30 px      – kräftig weichgezeichnet, damit keine Kante durchschlägt
+ *   1.5 Sätt.  – holt die Farbe zurück, die das Weichzeichnen wegnimmt
+ *
+ * Die helle Kante oben ist nicht Zierrat: Sie ist das, was in der Vorlage
+ * die Wölbung erzeugt – Licht, das sich auf der Oberkante der Scheibe fängt.
+ */
 .knopf-sekundaer-auf-medium {
-  background: rgb(255 255 255 / 0.12);
-  backdrop-filter: blur(14px) saturate(1.3);
-  -webkit-backdrop-filter: blur(14px) saturate(1.3);
-  border: 1px solid rgb(255 255 255 / 0.45);
+  background: rgb(255 255 255 / 0.22);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid rgb(255 255 255 / 0.34);
   color: var(--auf-medium-schrift);
-  box-shadow: 0 2px 12px rgb(0 0 0 / 0.28);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    0 2px 14px rgb(0 0 0 / 0.26);
 }
 
 .knopf-sekundaer-auf-medium:hover {
-  background: rgb(255 255 255 / 0.2);
-  border-color: rgb(255 255 255 / 0.7);
+  background: rgb(255 255 255 / 0.32);
+  border-color: rgb(255 255 255 / 0.5);
+}
+
+/*
+ * Ohne Rückwärts-Unschärfe (ältere Browser) muss die Fläche selbst tragen –
+ * sonst steht heller Text auf einem hellen Bildausschnitt.
+ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .knopf-sekundaer-auf-medium {
+    background: rgb(40 34 30 / 0.72);
+    border-color: rgb(255 255 255 / 0.4);
+  }
 }
 
 .knopf-leise {
