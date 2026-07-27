@@ -63,8 +63,15 @@ export interface Standort {
     barrierefrei: boolean;
     barrierefreiHinweis?: string;
   };
-  /** Doctolib-Praxis-Slugs. Ein Standort kann mehrere Einträge haben (z. B. KFO separat). */
-  doctolib: { label: string; slug: string }[];
+  /**
+   * Doctolib-Kalender. Ein Standort kann mehrere haben (z. B. KFO separat).
+   *
+   * `stadt` gehört zwingend dazu: Die Adresse lautet
+   * `doctolib.de/zahnarztpraxis/<stadt>/<slug>`. Ohne die Stadt antwortet
+   * Doctolib mit einer Weiterleitung oder gar nicht – das war der Grund,
+   * warum die Terminbuchung ins Leere lief.
+   */
+  doctolib: { label: string; slug: string; stadt: string }[];
   /**
    * Farbakzent des Standorts.
    *
@@ -126,8 +133,8 @@ export const STANDORTE: Standort[] = [
       barrierefrei: true,
     },
     doctolib: [
-      { label: 'Zahnmedizin', slug: 'ku64-berlin' },
-      { label: 'Kieferorthopädie', slug: 'ku64-kieferorthopaedie' },
+      { label: 'Zahnmedizin', slug: 'ku64-berlin', stadt: 'berlin' },
+      { label: 'Kieferorthopädie', slug: 'ku64-kieferorthopaedie', stadt: 'berlin' },
     ],
     akzent: '#FFCC00',
     zuPruefen: true,
@@ -166,7 +173,7 @@ export const STANDORTE: Standort[] = [
       parken: 'Öffentliche Tiefgaragen am Gendarmenmarkt und in der Mohrenstraße.',
       barrierefrei: true,
     },
-    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-hausvogteiplatz' }],
+    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-hausvogteiplatz', stadt: 'berlin' }],
     akzent: '#FFCC00',
     zuPruefen: true,
   },
@@ -214,7 +221,7 @@ export const STANDORTE: Standort[] = [
       barrierefreiHinweis:
         'Bitte melden Sie sich vorab, wenn Sie einen barrierefreien Zugang benötigen – wir finden gemeinsam eine Lösung oder vermitteln an den Kurfürstendamm.',
     },
-    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-gasteiner-strasse-9-die-kiezpraxis' }],
+    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-gasteiner-strasse-9-die-kiezpraxis', stadt: 'berlin' }],
     akzent: '#FFCC00',
     zuPruefen: true,
   },
@@ -251,13 +258,28 @@ export const STANDORTE: Standort[] = [
       parken: 'Eigene Parkplätze am Haus sowie Parkmöglichkeiten in der Berliner Straße.',
       barrierefrei: true,
     },
-    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten' }],
+    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten', stadt: 'potsdam' }],
     akzent: '#FFCC00',
     zuPruefen: true,
   },
 ];
 
 export const STANDORT_SLUGS = STANDORTE.map((s) => s.slug);
+
+/**
+ * Die Adresse eines Doctolib-Kalenders.
+ *
+ * An einer Stelle gebaut, nicht in jeder Vorlage neu zusammengesetzt: Die
+ * Terminbuchung lief monatelang ins Leere, weil an der einen Stelle, an der
+ * sie gebaut wurde, die Stadt fehlte. Ein Fehler an einem Ort ist ärgerlich –
+ * derselbe Fehler an fünf Orten ist eine Suchaktion.
+ *
+ * `utm_source` bleibt dran, damit die Praxis in Doctolib sieht, wie viele
+ * Buchungen von der eigenen Website kommen.
+ */
+export function doctolibAdresse(eintrag: { slug: string; stadt: string }): string {
+  return `https://www.doctolib.de/zahnarztpraxis/${eintrag.stadt}/${eintrag.slug}?utm_source=ku64-website`;
+}
 
 export function getStandort(slug: string): Standort | undefined {
   return STANDORTE.find((s) => s.slug === slug);

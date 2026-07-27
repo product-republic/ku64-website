@@ -2,17 +2,34 @@
 /**
  * Terminbuchung über Doctolib – standortscharf.
  *
- * Doctolib wird NICHT automatisch eingebettet. Ein iframe von doctolib.de baut
- * sofort eine Verbindung zu einem Drittanbieter auf und setzt Cookies; das
- * braucht nach § 25 TDDDG eine vorherige Einwilligung. Deshalb steht hier
- * zuerst eine Vorschaukarte, und erst nach Klick wird geladen. Wer nicht
- * einwilligen möchte, bekommt Telefonnummer und Rückrufoption – kein
- * Nachteil, keine Sackgasse.
+ * ── Warum hier kein Kalender eingebettet ist ────────────────────────────
+ *
+ * Weil es nicht geht. Doctolib sendet `X-Frame-Options: SAMEORIGIN`; jeder
+ * Einbettungsversuch endet im Browser mit „www.doctolib.de hat die
+ * Verbindung abgelehnt“ – eine graue Fläche an der Stelle, an der der
+ * Terminkalender stehen sollte. Das ist keine Einstellungssache, sondern
+ * eine Entscheidung von Doctolib, und sie gilt für jede fremde Seite.
+ *
+ * Vorher stand hier eine Einwilligungsschranke, hinter der genau dieser
+ * graue Kasten wartete: Man stimmte der Datenübertragung zu und bekam
+ * dafür einen Fehler. Schlechter geht es kaum.
+ *
+ * Stattdessen führt ein deutlicher Verweis direkt zum Kalender bei
+ * Doctolib. Das ist obendrein datenschutzrechtlich der sauberere Weg:
+ * Ohne Einbettung wird beim Aufruf dieser Seite überhaupt keine
+ * Verbindung zu einem Dritten aufgebaut, und es braucht keine
+ * Einwilligung nach § 25 TDDDG. Erst wer klickt, geht dorthin – bewusst
+ * und sichtbar.
+ *
+ * Die zweite Ursache stand in den Daten: Die Adresse wurde ohne die Stadt
+ * gebaut (`/zahnarztpraxis/<slug>` statt `/zahnarztpraxis/<stadt>/<slug>`).
+ * Sie führte damit auch beim Klicken ins Leere. Gebaut wird sie jetzt an
+ * genau einer Stelle – `doctolibAdresse()` in standorte.ts.
  */
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE } from '../../../data/standorte';
+import { STANDORTE, doctolibAdresse } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -78,54 +95,52 @@ const faq = [
 
       {
         standort.doctolib.length > 1 && (
-          <div class="hinweis hinweis-info">
-            An diesem Standort gibt es getrennte Kalender. Bitte wählen Sie unten den
-            passenden Bereich – so landen Sie direkt bei den richtigen Behandelnden.
-          </div>
+          <p class="unter-klein">
+            An diesem Standort gibt es getrennte Kalender. Bitte wählen Sie den passenden
+            Bereich – so landen Sie direkt bei den richtigen Behandelnden.
+          </p>
         )
       }
 
-      <div class="kalender-wahl">
+      <div class="kalender">
         {
           standort.doctolib.map((d, i) => (
-            <button
-              type="button"
-              class:list={['wahl-knopf', { aktiv: i === 0 }]}
-              data-slug={d.slug}
+            <a
+              href={doctolibAdresse(d)}
+              class:list={['kalender-karte', 'karte', { erste: i === 0 }]}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {d.label}
-            </button>
+              <span class="k-bereich">{d.label}</span>
+              <span class="k-titel">
+                Termin bei KU64 {standort.name}
+                {standort.doctolib.length > 1 && ` · ${d.label}`}
+              </span>
+              <span class="k-hinweis">
+                Öffnet den Kalender bei Doctolib in einem neuen Tab
+              </span>
+              <span class="k-pfeil" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path
+                    d="M5 12h13M13 6l6 6-6 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
           ))
         }
       </div>
 
-      {/* Einwilligungsschranke statt sofortigem iframe. */}
-      <div class="schranke" id="schranke">
-        <div class="schranke-inhalt">
-          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
-            <rect x="4" y="10" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
-            <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.6" />
-          </svg>
-          <h3>Terminkalender von Doctolib laden?</h3>
-          <p>
-            Die Online-Buchung läuft über <strong>Doctolib</strong>. Beim Laden wird eine
-            Verbindung zu deren Servern aufgebaut, dabei werden Ihre IP-Adresse übertragen
-            und Cookies gesetzt. Wir laden das erst, wenn Sie zustimmen.
-          </p>
-          <label class="merken">
-            <input type="checkbox" id="merken" />
-            <span>Diese Entscheidung für künftige Besuche merken</span>
-          </label>
-          <button type="button" class="knopf knopf-primaer knopf-gross" id="laden">
-            Doctolib laden und Termin wählen
-          </button>
-          <p class="klein">
-            Mehr dazu in unserer <a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
-          </p>
-        </div>
-      </div>
-
-      <div class="rahmen" id="rahmen" hidden></div>
+      <p class="klein">
+        Doctolib ist ein eigenständiger Dienst. Erst wenn Sie dort ankommen, werden Ihre
+        IP-Adresse übertragen und Cookies gesetzt – auf dieser Seite passiert das nicht.
+        Mehr dazu in unserer <a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
+      </p>
     </section>
 
     {/* Weg 2: Ohne Drittanbieter */}
@@ -201,60 +216,6 @@ const faq = [
   </div>
 </Basis>
 
-<script>
-  const schranke = document.getElementById('schranke')!;
-  const rahmen = document.getElementById('rahmen')!;
-  const ladenKnopf = document.getElementById('laden') as HTMLButtonElement;
-  const merken = document.getElementById('merken') as HTMLInputElement;
-  const wahlKnoepfe = document.querySelectorAll<HTMLButtonElement>('.wahl-knopf');
-
-  const SCHLUESSEL = 'ku64:doctolib-ok';
-  let aktuellerSlug = wahlKnoepfe[0]?.dataset.slug ?? '';
-
-  function einbetten(slug: string) {
-    rahmen.innerHTML = '';
-
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.doctolib.de/zahnarztpraxis/${slug}?utm_source=ku64-website`;
-    iframe.title = 'Terminbuchung bei Doctolib';
-    iframe.loading = 'lazy';
-    // Nur das erlauben, was die Buchung wirklich braucht.
-    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    iframe.setAttribute('allow', 'clipboard-write');
-
-    rahmen.append(iframe);
-    rahmen.hidden = false;
-    schranke.hidden = true;
-  }
-
-  ladenKnopf?.addEventListener('click', () => {
-    if (merken.checked) {
-      try {
-        localStorage.setItem(SCHLUESSEL, 'ja');
-      } catch {
-        /* Ohne Speicher wird eben jedes Mal gefragt. */
-      }
-    }
-    einbetten(aktuellerSlug);
-  });
-
-  wahlKnoepfe.forEach((k) =>
-    k.addEventListener('click', () => {
-      wahlKnoepfe.forEach((x) => x.classList.remove('aktiv'));
-      k.classList.add('aktiv');
-      aktuellerSlug = k.dataset.slug ?? '';
-      // Ist der Kalender schon geladen, direkt umschalten.
-      if (!rahmen.hidden) einbetten(aktuellerSlug);
-    }),
-  );
-
-  // Frühere Zustimmung respektieren.
-  try {
-    if (localStorage.getItem(SCHLUESSEL) === 'ja') einbetten(aktuellerSlug);
-  } catch {
-    /* kein Speicher verfügbar */
-  }
-</script>
 
 <style>
   .kopf {
@@ -281,89 +242,91 @@ const faq = [
     margin-block-end: var(--raum-4);
   }
 
-  .kalender-wahl {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--raum-2);
+  .unter-klein {
+    max-width: var(--breite-text);
     margin-block-end: var(--raum-4);
-  }
-
-  .wahl-knopf {
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--linie-stark);
-    border-radius: var(--radius-voll);
-    font-size: var(--t-sm);
-    font-weight: 600;
     color: var(--tinte-weich);
-    transition: all var(--zeit-schnell) var(--kurve);
+    font-size: var(--t-sm);
   }
 
-  /* Die getroffene Wahl steht dunkel, nicht gelb: Sie zeigt einen Zustand
-     an. Gelb sah aus wie eine zweite Aufforderung neben dem Terminknopf. */
-  .wahl-knopf.aktiv {
-    background: var(--knopf-flaeche);
-    border-color: transparent;
-    color: var(--knopf-schrift);
-  }
-
-  .schranke {
+  /**
+   * Eine Karte je Kalender statt eines eingebetteten Fensters.
+   *
+   * Sie ist absichtlich groß und trägt das Ziel im Text: Wer klickt,
+   * verlässt diese Website. Ein kleiner Verweis „hier buchen“ wäre kürzer
+   * und würde verschweigen, was passiert.
+   */
+  .kalender {
     display: grid;
-    place-items: center;
-    min-height: 28rem;
-    padding: var(--raum-6);
-    border: 1px solid var(--linie);
-    border-radius: var(--radius-lg);
-    background: var(--flaeche-warm);
-  }
-
-  .schranke-inhalt {
-    max-width: 30rem;
-    text-align: center;
-  }
-
-  .schranke-inhalt svg {
-    margin-inline: auto;
+    gap: var(--raum-3);
     margin-block-end: var(--raum-4);
+  }
+
+  .kalender-karte {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--raum-2) var(--raum-4);
+    padding: var(--raum-5);
+    text-decoration: none;
+    transition:
+      transform var(--zeit) var(--kurve-feder),
+      border-color var(--zeit) var(--kurve-weich);
+  }
+
+  .kalender-karte:hover,
+  .kalender-karte:focus-visible {
+    transform: translate3d(0, -2px, 0);
+    border-color: color-mix(in oklab, var(--tinte) 28%, var(--scheibe-rand));
+  }
+
+  .k-bereich {
+    grid-column: 1;
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--tinte-leise);
   }
 
-  .schranke-inhalt h3 {
+  .k-titel {
+    grid-column: 1;
+    font-family: var(--schrift-titel);
     font-size: var(--t-lg);
-    margin-block-end: var(--raum-3);
+    font-weight: 700;
+    line-height: var(--zeile-eng);
   }
 
-  .schranke-inhalt p {
-    color: var(--tinte-weich);
+  .k-hinweis {
+    grid-column: 1;
     font-size: var(--t-sm);
-    line-height: var(--zeile-weit);
-  }
-
-  .merken {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--raum-2);
-    margin-block: var(--raum-4);
-    font-size: var(--t-xs);
     color: var(--tinte-weich);
   }
 
-  .merken input {
-    width: 1rem;
-    height: 1rem;
-    accent-color: var(--akzent);
+  /* Der Pfeil in der dunklen Scheibe – die Form aus den Entwürfen. Er sitzt
+     über alle drei Textzeilen hinweg an der rechten Kante. */
+  .k-pfeil {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-voll);
+    background: var(--knopf-flaeche);
+    color: var(--knopf-schrift);
+    transition: transform var(--zeit) var(--kurve-feder);
+  }
+
+  .kalender-karte:hover .k-pfeil {
+    transform: translateX(3px);
   }
 
   .klein {
     margin-block-start: var(--raum-3);
     font-size: var(--t-xs);
-  }
-
-  .rahmen :global(iframe) {
-    width: 100%;
-    min-height: 44rem;
-    border: 1px solid var(--linie);
-    border-radius: var(--radius-lg);
-    background: var(--flaeche);
+    color: var(--tinte-weich);
+    max-width: var(--breite-text);
   }
 
   .kontakt {
