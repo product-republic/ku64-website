@@ -40,6 +40,9 @@ export const TEXTE = {
   'nav.andererStandort': 'Anderer Standort',
   'nav.standortWaehlenKurz': 'Standort wählen',
   'nav.ueberKu64': 'Über KU64',
+  'nav.zurStartseiteOrt': 'KU64 {ort}, zur Startseite',
+  'nav.zurStartseite': 'KU64, zur Startseite',
+  'nav.sieSehen': 'Sie sehen',
   /* ── Behandlungsseiten ────────────────────────────────────────────────
    *
    * Standen bis eben fest in den Vorlagen. Der Katalog meldete deshalb 99,9
@@ -99,6 +102,14 @@ export const TEXTE = {
   'krume.team': 'Team',
   'krume.blog': 'Blog',
   'krume.suche': 'Suche',
+  'krume.datenschutz': 'Datenschutz',
+  'krume.impressum': 'Impressum',
+  'krume.barrierefreiheit': 'Barrierefreiheit',
+  'krume.kiTransparenz': 'KI-Transparenz',
+  'krume.cookies': 'Cookies',
+  'krume.karriere': 'Karriere',
+  'krume.standorte': 'Standorte',
+  'krume.digitaleBeratung': 'Digitale Beratung',
 
   /* ── Fußzeile und Berater ─────────────────────────────────────────────
    *
@@ -120,6 +131,19 @@ export const TEXTE = {
   'berater.standortWaehlen': 'Bitte Standort wählen',
   'berater.schliessen': 'Berater schließen',
   'berater.frageSenden': 'Frage senden',
+  /* Diese vier tragen einen Telefonverweis mitten im Satz. Der Verweis kommt
+     als {telefon} herein; die Auszeichnung baut die Vorlage, nicht der
+     Katalog. Getrennt zu übersetzen wäre nicht möglich – im Englischen steht
+     die Nummer an anderer Stelle. */
+  'berater.menschUnter': 'Einen Menschen erreichen Sie unter {telefon}.',
+  'berater.begruessungOrt':
+    'Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen bei KU64 {ort}. Was möchten Sie wissen?',
+  'berater.begruessung':
+    'Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen bei KU64. Was möchten Sie wissen?',
+  'berater.keineDiagnosenOrt':
+    'Ich stelle keine Diagnosen und brauche keine persönlichen Daten von Ihnen. Bei starken Schmerzen rufen Sie uns bitte direkt an unter {telefon}.',
+  'berater.keineDiagnosen':
+    'Ich stelle keine Diagnosen und brauche keine persönlichen Daten von Ihnen. Bei starken Schmerzen rufen Sie uns bitte direkt an.',
 
   /* ── Notfallseite ─────────────────────────────────────────────────── */
   'notfall.112Anrufen': '112 anrufen',
@@ -411,6 +435,106 @@ export const TEXTE = {
   'ck.nurVorhandenWennSie': '– nur vorhanden, wenn Sie einen eingebetteten Dienst geladen und angekreuzt haben, dass wir uns Ihre Entscheidung merken sollen. Solange Sie das nicht tun, wird nichts gespeichert.',
   'ck.wannDochDrittanbieterIns': 'Wann doch Drittanbieter ins Spiel kommen',
   'ck.wasTatsaechlichGespeichertWird': 'Was tatsächlich gespeichert wird',
+  /* ── Rechtstexte ──────────────────────────────────────────────────────
+   *
+   * Diese Werte enthalten Auszeichnung – <strong> für den fetten Einstieg
+   * eines Absatzes, <code> für die Stellen, die die Praxis noch befüllen
+   * muss. Das ist Absicht und die Ausnahme von der Regel, dass Texte keine
+   * Auszeichnung tragen.
+   *
+   * Der Grund steht in Regel 1 oben: ganze Sätze, keine Bruchstücke. Ein
+   * Satz, in dem ein Wort fett steht, war vorher in drei Schlüssel zerlegt –
+   * Anfang, fettes Wort, Rest. Übersetzen ließ sich das nur, indem man rät,
+   * wie die drei Stücke im Englischen wieder zusammenpassen. Sie passen
+   * nicht: Im Englischen steht das Wort an anderer Stelle im Satz.
+   *
+   * Ausgegeben wird das mit `set:html`. Die Auszeichnung stammt aus dieser
+   * Datei und aus dem Übersetzungskatalog – beides eigener Inhalt, keine
+   * Eingabe von außen.
+   */
+  'imp.seitentitel': 'Impressum',
+  'imp.beschreibung': 'Anbieterkennzeichnung und berufsrechtliche Angaben.',
+  'imp.entwurf':
+    '<strong>Entwurfsfassung.</strong> Ein Impressum besteht aus Tatsachenangaben über die Praxis. Die mit <code>[…]</code> markierten Felder sind vor Veröffentlichung von der Praxis zu befüllen.',
+  'imp.anschrift':
+    '<code>[Vollständiger Name der Praxis / Gesellschaft]</code><br /><code>[Rechtsform]</code><br /><code>[Straße, Hausnummer]</code><br /><code>[PLZ, Ort]</code>',
+  'imp.kontakt': 'Telefon: <code>[Nummer]</code><br />E-Mail: <code>[Adresse]</code>',
+  'imp.vertretung': 'Vertretungsberechtigte',
+  'imp.vertretungAngabe': '<code>[Namen der Geschäftsführung / Partner]</code>',
+  'imp.register': 'Registereintrag',
+  'imp.registerAngabe':
+    'Registergericht: <code>[…]</code><br />Registernummer: <code>[…]</code>',
+  'imp.ustId': 'Umsatzsteuer-Identifikationsnummer',
+  'imp.ustIdAngabe': '<code>[USt-IdNr. nach § 27a UStG, falls vorhanden]</code>',
+  'imp.berufsAngaben':
+    'Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>, verliehen in <code>[Land]</code><br />Zuständige Kammer: <code>[Zahnärztekammer, Anschrift, Website]</code><br />Zuständige Kassenzahnärztliche Vereinigung: <code>[…]</code><br />Aufsichtsbehörde: <code>[…]</code>',
+  'imp.berufsRegeln':
+    'Es gelten folgende berufsrechtliche Regelungen: Zahnheilkundegesetz (ZHG), Berufsordnung der zuständigen Zahnärztekammer, Gebührenordnung für Zahnärzte (GOZ), Heilberufsgesetz des Landes. Einsehbar unter <code>[Fundstelle]</code>.',
+  'imp.haftpflicht': 'Berufshaftpflichtversicherung',
+  'imp.haftpflichtAngabe':
+    '<code>[Name und Anschrift des Versicherers]</code><br />Räumlicher Geltungsbereich: <code>[…]</code>',
+  'imp.verantwortlichAngabe': '<code>[Name, Anschrift]</code>',
+  'imp.streitbeilegung': 'Streitbeilegung',
+  'imp.streitbeilegungText':
+    'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind <code>[nicht]</code> bereit und <code>[nicht]</code> verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+  'imp.schlichtungsstelle':
+    'Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der zuständigen Zahnärztekammer zur Verfügung: <code>[Anschrift]</code>.',
+  'imp.bildnachweise': 'Bildnachweise',
+  'imp.bildnachweiseAngabe': '<code>[Urheber und Lizenzen der verwendeten Bilder]</code>',
+  'ds.seitentitel': 'Datenschutzerklärung',
+  'ds.beschreibung': 'Wie diese Website mit Ihren Daten umgeht – konkret und nachvollziehbar.',
+  'ds.entwurf':
+    '<strong>Entwurfsfassung.</strong> Der technische Teil beschreibt exakt das Verhalten dieser Website. Vor Veröffentlichung muss die Erklärung um die Angaben der Praxis ergänzt und anwaltlich geprüft werden. Die mit <code>[…]</code> markierten Stellen sind noch zu befüllen.',
+  'ds.verantwortlicherAngaben':
+    '<code>[Vollständiger Name der Praxis / des Trägers, Anschrift, Telefon, E-Mail, gesetzliche Vertretung]</code>',
+  'ds.datenschutzbeauftragter':
+    'Datenschutzbeauftragte oder Datenschutzbeauftragter: <code>[Name, Kontakt]</code>',
+  'ds.serverdaten':
+    'Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem. Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle: <code>[Anzahl Tage]</code>.',
+  'ds.keineAnalyse':
+    '<strong>Keine Analyse-Werkzeuge, keine Werbe-Cookies.</strong> Diese Website setzt von sich aus keine Cookies zu Analyse- oder Marketingzwecken und bindet keine Zählpixel ein.',
+  'ds.schriften':
+    '<strong>Schriften werden selbst ausgeliefert.</strong> Es findet kein Aufruf an Google Fonts oder ein anderes Schriften-Netzwerk statt. Ihre IP-Adresse wird dafür nicht an Dritte übermittelt.',
+  'ds.lokalEinleitung':
+    'Wir speichern in Ihrem Browser (localStorage) zwei Angaben, die unseren Server nie erreichen:',
+  'ds.lokalStandort':
+    '<strong>Ihren zuletzt gewählten Standort</strong>, damit wir Ihnen beim nächsten Besuch die passenden Angaben anbieten können. Es findet keine automatische Weiterleitung statt.',
+  'ds.lokalTermin':
+    '<strong>Ihre Entscheidung zur Terminbuchung</strong>, falls Sie angekreuzt haben, dass wir uns diese merken sollen.',
+  'ds.4Doctolib': '4. Online-Terminbuchung (Doctolib)',
+  'ds.doctolibEins':
+    'Die Terminbuchung läuft über Doctolib. Der Kalender ist auf dieser Website <strong>nicht eingebettet</strong>: Sie werden über einen Verweis dorthin geleitet und erkennen am Wechsel der Adresse, dass Sie sich ab dann auf doctolib.de befinden. Solange Sie auf unserer Seite bleiben, findet keinerlei Verbindung zu Doctolib statt – auch kein Vorabladen im Hintergrund.',
+  'ds.doctolibZwei':
+    'Erst auf der Seite von Doctolib werden Ihre IP-Adresse und Browserdaten dort verarbeitet und Cookies gesetzt. Verantwortlich dafür ist Doctolib; es gilt die Datenschutzerklärung von Doctolib. Weil wir nichts einbetten, ist auf unserer Seite dafür keine Einwilligung nach § 25 Abs. 1 TDDDG erforderlich. Auftragsverarbeitungsvertrag für die Terminverwaltung: <code>[Status ergänzen]</code>.',
+  'ds.5Anamnese': '5. Digitale Anamnese (Nelly Solutions)',
+  'ds.anamneseEins':
+    'Der Anamnesebogen wird von Nelly Solutions bereitgestellt. Diese Website leitet Sie lediglich dorthin weiter und verarbeitet selbst <strong>keine Gesundheitsdaten</strong>. Ihre Angaben fließen direkt vom Formular in unser Praxisverwaltungssystem.',
+  'ds.anamneseZwei':
+    'Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der Patientenakte: <code>[in der Regel 10 Jahre – bitte bestätigen]</code>. Auftragsverarbeitungsvertrag mit Nelly Solutions: <code>[Status ergänzen]</code>.',
+  'ds.6Berater': '6. Digitaler Berater (Text und Sprache)',
+  'ds.beraterText':
+    '<strong>Textchat.</strong> Ihre Frage wird an unseren Server und von dort an Anthropic übermittelt, um die Antwort zu erzeugen. Der Gesprächsverlauf existiert ausschließlich in Ihrem Browserfenster und geht beim Schließen verloren. Wir speichern weder Fragen noch Antworten und legen keine Gesprächsprotokolle an. Zur Missbrauchsabwehr zählen wir kurzzeitig Anfragen je IP-Adresse im Arbeitsspeicher.',
+  'ds.beraterSprache':
+    '<strong>Sprachberater.</strong> Der Sprachdialog läuft über ElevenLabs. Das Mikrofon wird erst nach Ihrer ausdrücklichen Freigabe aktiviert. Ihre Stimme wird zur Erzeugung der Antwort verarbeitet; eine dauerhafte Aufzeichnung durch uns findet nicht statt.',
+  'ds.beraterHinweis':
+    'Der Berater ist angewiesen, keine Gesundheitsdaten abzufragen und keine Diagnosen zu stellen. Bitte teilen Sie ihm dennoch keine sensiblen Angaben mit – für alles Medizinische ist der persönliche Termin der richtige Ort. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Auftragsverarbeitungsverträge: <code>[Status ergänzen]</code>.',
+  'ds.7Laecheln': '7. Lächeln-Vorschau (Foto-Upload)',
+  'ds.laechelnEins':
+    'Ein Gesichtsfoto ist ein <strong>biometrisches Datum</strong> und damit eine besondere Kategorie personenbezogener Daten nach Art. 9 DSGVO. Wir verarbeiten es ausschließlich auf Grundlage Ihrer ausdrücklichen, vorher erteilten Einwilligung (Art. 9 Abs. 2 lit. a DSGVO).',
+  'ds.laechelnAblauf': 'So läuft die Verarbeitung konkret ab:',
+  'ds.laechelnSpeicher':
+    'Ihr Foto wird an unseren Server übertragen und dort ausschließlich im Arbeitsspeicher gehalten. Es wird <strong>nicht auf einen Datenträger geschrieben</strong> und in keine Datenbank aufgenommen.',
+  'ds.laechelnGoogle': 'Zur Analyse und Bilderzeugung wird es an Google (Gemini) übermittelt.',
+  'ds.laechelnSchluss':
+    'Die erzeugte Darstellung ist eine unverbindliche Illustration und kein Behandlungsergebnis. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen; da nichts gespeichert wird, gibt es danach nichts zu löschen. Auftragsverarbeitungsvertrag mit Google: <code>[Status ergänzen]</code>.',
+  'ds.kontaktText':
+    'Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung Ihres Anliegens (Art. 6 Abs. 1 lit. b und f DSGVO). Bitte senden Sie uns keine Gesundheitsdaten per unverschlüsselter E-Mail – dieser Weg ist technisch nicht vertraulich.',
+  'ds.rechteText':
+    'Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen.',
+  'ds.beschwerdeText':
+    'Sie können sich außerdem bei einer Aufsichtsbehörde beschweren – zuständig ist die Behörde an Ihrem Wohnsitz oder am Sitz der Praxis: <code>[zuständige Aufsichtsbehörde eintragen]</code>.',
+  'ds.aenderungenText':
+    'Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert. Stand: <code>[Datum bei Veröffentlichung eintragen]</code>.',
   'ds.10Aenderungen': '10. Änderungen',
   'ds.1Verantwortlicher': '1. Verantwortlicher',
   'ds.2WasBeimAufruf': '2. Was beim Aufruf dieser Website passiert',
@@ -544,6 +668,27 @@ export const TEXTE = {
   'fehler.text':
     'Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach Ihrer Behandlung – oder gehen Sie zu Ihrem Standort.',
   'fehler.suchen': 'Behandlung suchen',
+  'fehler.seitentitel': 'Seite nicht gefunden',
+  'fehler.beschreibung':
+    'Diese Seite gibt es nicht mehr. Hier finden Sie, wonach Sie gesucht haben.',
+  'fehler.platzhalter': 'z. B. Implantat, Bleaching, Zahnschmerzen',
+  'fehler.oderStandort': 'Oder direkt zu Ihrem Standort',
+  'fehler.nichtsDabei': 'Nichts dabei?',
+  'fehler.alleBehandlungen': 'Alle Behandlungen',
+  'fehler.alleStandorte': 'Alle Standorte',
+  'fehler.notfall': 'Notfall',
+  'fehler.beraterFragen': 'Berater fragen',
+  /* Die folgenden vier stehen im Skript der Fehlerseite: Welche Behandlung an
+     welchem Standort fehlt, weiß erst der Browser – die Seite ist statisch und
+     kennt die aufgerufene Adresse zur Buildzeit nicht. */
+  'fehler.gibtEsNichtIn': '{name} gibt es in {ort} nicht',
+  'fehler.stattdessenDort':
+    'Diese Behandlung bieten wir an diesem Standort nicht an. Sie bekommen sie bei {wo} – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung.',
+  'fehler.nirgends':
+    'Diese Behandlung bieten wir derzeit an keinem Standort an. Rufen Sie uns gern an – wir sagen Ihnen, wer Ihnen weiterhelfen kann.',
+  'fehler.beiStandort': '{name} bei KU64 {ort}',
+  'fehler.alleBehandlungenIn': 'Alle Behandlungen in {ort}',
+  'fehler.und': 'und',
 
   // ── Bausteine ───────────────────────────────────────────────────────
   'nav.waehlerHinweis':
@@ -556,6 +701,22 @@ export const TEXTE = {
     'Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
 
   // ── Standortseiten ──────────────────────────────────────────────────
+  'standort.adresse': 'Adresse',
+  'standort.telefon': 'Telefon',
+  'standort.geoeffnet': 'Geöffnet',
+  'standort.siebenTage': 'Sieben Tage die Woche',
+  'standort.xTageWoche': '{anzahl} Tage die Woche',
+  'standort.behandelnde': 'Behandelnde',
+  'standort.zahnaerzteAnzahl': '{anzahl} Zahnärztinnen und Zahnärzte',
+  'standort.behandlungenIn': 'Behandlungen in {ort}',
+  'standort.angebotHier':
+    'Alles, was wir an diesem Standort anbieten – {anzahl} Behandlungen in {bereiche} Fachbereichen. Behandlungen, die es hier nicht gibt, weisen wir offen aus und verlinken zum passenden Standort.',
+  'standort.nichtHierText':
+    'Diese Behandlungen bieten wir in {ort} nicht an. Damit Sie nicht vergeblich anrufen, sehen Sie hier direkt, an welchem KU64-Standort Sie sie bekommen.',
+  'standort.barrierefreiheit': 'Barrierefreiheit:',
+  'standort.barrierefreiJa': 'Die Praxis ist barrierefrei zugänglich.',
+  'standort.sprechzeiten': 'Sprechzeiten',
+  'standort.oeffnungszeitenVon': 'Öffnungszeiten von KU64 {name}',
   'standort.zahnaerzteLabel': 'Zahnärztinnen und Zahnärzte',
   'standort.tageWoche': 'Tage in der Woche',
   'standort.galerieHinweis':

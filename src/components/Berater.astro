@@ -26,6 +26,7 @@ import { texte } from '../i18n/katalog';
 
 const t = texte(inhalte(Astro).sprache);
 
+
 interface Props {
   standort: Standort | null;
   /** Vorschlagsfragen passend zur aktuellen Seite. */
@@ -33,6 +34,16 @@ interface Props {
 }
 
 const { standort, vorschlaege = [] } = Astro.props;
+/* Der Telefonverweis als fertiger Baustein.
+
+   Er steht mitten in vier Sätzen. Die Sätze gehören als Ganzes in den
+   Katalog – zerlegt in „Text davor", „Verweis", „Text danach" ließen sie
+   sich nicht übersetzen, weil die Nummer im Englischen an anderer Stelle
+   steht. Die Auszeichnung baut deshalb hier die Vorlage und reicht sie als
+   Platzhalter hinein; im Katalog steht nur {telefon}. */
+const telefonVerweis = standort
+  ? `<a href="tel:${standort.telefonRaw.replace(/\s/g, '')}">${standort.telefon}</a>`
+  : '';
 
 const standardVorschlaege = standort
   ? [
@@ -92,10 +103,7 @@ const system = kiSystem('berater')!;
         {' '}
         {
           standort ? (
-            <>
-              Einen Menschen erreichen Sie unter{' '}
-              <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>.
-            </>
+            <span set:html={t('berater.menschUnter', { telefon: telefonVerweis })} />
           ) : (
             WEG_ZUM_MENSCHEN
           )
@@ -108,14 +116,20 @@ const system = kiSystem('berater')!;
     <div class="f-verlauf" id="verlauf" role="log" aria-live="polite" aria-atomic="false">
       <div class="blase blase-bot">
         <p>
-          Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen
-          {standort ? ` bei KU64 ${standort.name}` : ' bei KU64'}. Was möchten Sie wissen?
+          {
+            standort
+              ? t('berater.begruessungOrt', { ort: standort.name })
+              : t('berater.begruessung')
+          }
         </p>
-        <p class="klein">
-          Ich stelle keine Diagnosen und brauche keine persönlichen Daten von Ihnen. Bei
-          starken Schmerzen rufen Sie uns bitte direkt an
-          {standort && <> unter <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a></>}.
-        </p>
+        <p
+          class="klein"
+          set:html={
+            standort
+              ? t('berater.keineDiagnosenOrt', { telefon: telefonVerweis })
+              : t('berater.keineDiagnosen')
+          }
+        />
       </div>
     </div>
 
@@ -124,12 +138,12 @@ const system = kiSystem('berater')!;
     </div>
 
     <form class="f-eingabe" id="chatform">
-      <label for="frage" class="nur-screenreader">Ihre Frage</label>
+      <label for="frage" class="nur-screenreader">{t('berater.ihreFrage')}</label>
       <textarea
         id="frage"
         name="frage"
         rows="1"
-        placeholder="Ihre Frage eingeben…"
+        placeholder={t('berater.eingabeHinweis')}
         maxlength="2000"
         autocomplete="off"
       ></textarea>

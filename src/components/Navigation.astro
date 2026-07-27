@@ -101,7 +101,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     <a
       href={standort ? `${basis}/` : '/'}
       class="logo"
-      aria-label={standort ? `KU64 ${standort.name}, zur Startseite` : 'KU64, zur Startseite'}
+      aria-label={
+        standort ? t('nav.zurStartseiteOrt', { ort: standort.name }) : t('nav.zurStartseite')
+      }
     >
       <Logo hoehe="1.75rem" dekorativ />
       {/* Erscheint erst beim Scrollen, wenn die Standortleiste einklappt –
@@ -189,7 +191,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       {
         standort ? (
           <p class="wo-bin-ich">
-            Sie sehen <strong>KU64 {standort.name}</strong> · {standort.strasse},{' '}
+            {t('nav.sieSehen')} <strong>KU64 {standort.name}</strong> · {standort.strasse},{' '}
             {standort.plz} {standort.ort}
           </p>
         ) : (
@@ -221,7 +223,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
                         {s.strasse}, {s.ort}
                       </small>
                     </span>
-                    {s.slug === standort?.slug && <span class="marke marke-erfolg">aktuell</span>}
+                    {s.slug === standort?.slug && (
+                      <span class="marke marke-erfolg">{t('geruest.aktuell')}</span>
+                    )}
                   </a>
                 </li>
               ))
@@ -258,7 +262,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       {
         kategorienHier.length > 0 && (
           <>
-            <p class="mobil-titel">Behandlungen</p>
+            <p class="mobil-titel">{t('nav.behandlungen')}</p>
             <ul class="mobil-liste mobil-liste-klein">
               {kategorienHier.map((k) => (
                 <li>

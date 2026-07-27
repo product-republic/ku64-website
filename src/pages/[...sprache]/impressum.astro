@@ -23,81 +23,57 @@ export function getStaticPaths() {
 const pfad = '/impressum/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Impressum', pfad },
+  { name: t('krume.impressum'), pfad },
 ];
 ---
 
 <Basis
-  titel="Impressum"
-  description="Anbieterkennzeichnung und berufsrechtliche Angaben."
+  titel={t('imp.seitentitel')}
+  description={t('imp.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
   noindex={true}
 >
   <div class="huelle abschnitt">
-    <h1>Impressum</h1>
-      <Vorrangklausel />
+    <h1>{t('imp.seitentitel')}</h1>
+    <Vorrangklausel />
 
-    <div class="hinweis hinweis-warnung entwurf">
-      <strong>Entwurfsfassung.</strong>{t('imp.einImpressumBestehtAus')}<code>[…]</code>{t('imp.markiertenFelderSindVor')}</div>
+    {/* `set:html` wie in der Datenschutzerklärung: Die Felder, die die Praxis
+        noch befüllt, stehen als <code> mitten im Satz. Warum das hier die
+        richtige Ausnahme ist, steht bei den Rechtstexten in texte.ts. */}
+    <p class="hinweis hinweis-warnung entwurf" set:html={t('imp.entwurf')} />
 
     <div class="fliesstext">
       <h2>{t('imp.angabenNach5Ddg')}</h2>
-      <p>
-        <code>[Vollständiger Name der Praxis / Gesellschaft]</code><br />
-        <code>[Rechtsform]</code><br />
-        <code>[Straße, Hausnummer]</code><br />
-        <code>[PLZ, Ort]</code>
-      </p>
-      <p>
-        Telefon: <code>[Nummer]</code><br />
-        E-Mail: <code>[Adresse]</code>
-      </p>
+      <p set:html={t('imp.anschrift')} />
+      <p set:html={t('imp.kontakt')} />
 
-      <h2>Vertretungsberechtigte</h2>
-      <p><code>[Namen der Geschäftsführung / Partner]</code></p>
+      <h2>{t('imp.vertretung')}</h2>
+      <p set:html={t('imp.vertretungAngabe')} />
 
-      <h2>Registereintrag</h2>
-      <p>
-        Registergericht: <code>[…]</code><br />
-        Registernummer: <code>[…]</code>
-      </p>
+      <h2>{t('imp.register')}</h2>
+      <p set:html={t('imp.registerAngabe')} />
 
-      <h2>Umsatzsteuer-Identifikationsnummer</h2>
-      <p><code>[USt-IdNr. nach § 27a UStG, falls vorhanden]</code></p>
+      <h2>{t('imp.ustId')}</h2>
+      <p set:html={t('imp.ustIdAngabe')} />
 
       <h2>{t('imp.berufsrechtlicheAngaben')}</h2>
-      <p>
-        Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>{t('imp.verliehenIn')}<code>[Land]</code><br />
-        Zuständige Kammer: <code>[Zahnärztekammer, Anschrift, Website]</code><br />
-        Zuständige Kassenzahnärztliche Vereinigung: <code>[…]</code><br />
-        Aufsichtsbehörde: <code>[…]</code>
-      </p>
-      <p>
-        Es gelten folgende berufsrechtliche Regelungen: Zahnheilkundegesetz (ZHG),
-        Berufsordnung der zuständigen Zahnärztekammer, Gebührenordnung für Zahnärzte (GOZ),
-        Heilberufsgesetz des Landes. Einsehbar unter <code>[Fundstelle]</code>.
-      </p>
+      <p set:html={t('imp.berufsAngaben')} />
+      <p set:html={t('imp.berufsRegeln')} />
 
-      <h2>Berufshaftpflichtversicherung</h2>
-      <p>
-        <code>[Name und Anschrift des Versicherers]</code><br />
-        Räumlicher Geltungsbereich: <code>[…]</code>
-      </p>
+      <h2>{t('imp.haftpflicht')}</h2>
+      <p set:html={t('imp.haftpflichtAngabe')} />
 
       <h2>{t('imp.verantwortlichFuerDenInhalt')}</h2>
-      <p><code>[Name, Anschrift]</code></p>
+      <p set:html={t('imp.verantwortlichAngabe')} />
 
-      <h2>Streitbeilegung</h2>
-      <p>{t('imp.dieEuropaeischeKommissionStellt')}<code>[nicht]</code>{t('imp.bereitUnd')}<code>[nicht]</code>{t('imp.verpflichtetAnStreitbeilegungsverfahrenVor')}</p>
-      <p>
-        Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der
-        zuständigen Zahnärztekammer zur Verfügung: <code>[Anschrift]</code>.
-      </p>
+      <h2>{t('imp.streitbeilegung')}</h2>
+      <p set:html={t('imp.streitbeilegungText')} />
+      <p set:html={t('imp.schlichtungsstelle')} />
 
-      <h2>Bildnachweise</h2>
-      <p><code>[Urheber und Lizenzen der verwendeten Bilder]</code></p>
+      <h2>{t('imp.bildnachweise')}</h2>
+      <p set:html={t('imp.bildnachweiseAngabe')} />
     </div>
   </div>
 </Basis>

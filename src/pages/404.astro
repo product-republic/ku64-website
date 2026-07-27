@@ -8,8 +8,10 @@
  */
 import { inhalte } from '../i18n/daten';
 import Basis from '../layouts/Basis.astro';
+import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const suchindex = daten.leistungen.map((l) => ({
@@ -28,6 +30,22 @@ const suchindex = daten.leistungen.map((l) => ({
  * aufgerufenen Pfad zur Buildzeit nicht kennen kann. Der HTTP-Status bleibt
  * korrekt 404 – die Seite existiert ja tatsächlich nicht.
  */
+/*
+ * Die Sätze für das Skript.
+ *
+ * Sie stehen im Katalog wie jeder andere Text und werden dem Skript
+ * mitgegeben. Sie dort direkt hinzuschreiben wäre der Fehler, den der
+ * Sprachwächter nicht sehen kann: In einem Skript findet er nichts.
+ */
+const skripttexte = {
+  gibtEsNichtIn: t('fehler.gibtEsNichtIn'),
+  stattdessenDort: t('fehler.stattdessenDort'),
+  nirgends: t('fehler.nirgends'),
+  beiStandort: t('fehler.beiStandort'),
+  alleBehandlungenIn: t('fehler.alleBehandlungenIn'),
+  und: t('fehler.und'),
+};
+
 const kombinationen = {
   standorte: Object.fromEntries(
     daten.standorte.map((s) => [s.slug, { name: s.name, ort: s.ort }]),
@@ -45,8 +63,8 @@ const kombinationen = {
 ---
 
 <Basis
-  titel="Seite nicht gefunden"
-  description="Diese Seite gibt es nicht mehr. Hier finden Sie, wonach Sie gesucht haben."
+  titel={t('fehler.seitentitel')}
+  description={t('fehler.beschreibung')}
   pfad="/404/"
   noindex={true}
 >
@@ -63,24 +81,21 @@ const kombinationen = {
       </div>
 
       <div id="allgemein">
-      <h1>Diese Seite gibt es nicht</h1>
-      <p class="unter">
-        Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach
-        Ihrer Behandlung – oder gehen Sie zu Ihrem Standort.
-      </p>
+      <h1>{t('fehler.titel')}</h1>
+      <p class="unter">{t('fehler.text')}</p>
 
       <div class="suche">
-        <label for="q" class="nur-screenreader">Behandlung suchen</label>
+        <label for="q" class="nur-screenreader">{t('fehler.suchen')}</label>
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
           <circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7" />
           <path d="M13.8 13.8 18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
         </svg>
-        <input type="search" id="q" autocomplete="off" placeholder="z. B. Implantat, Bleaching, Zahnschmerzen" />
+        <input type="search" id="q" autocomplete="off" placeholder={t('fehler.platzhalter')} />
       </div>
 
       <ul class="ergebnisse" id="ergebnisse"></ul>
 
-      <h2>Oder direkt zu Ihrem Standort</h2>
+      <h2>{t('fehler.oderStandort')}</h2>
       <div class="raster">
         {daten.standorte.map((s) => (
           <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
@@ -91,17 +106,17 @@ const kombinationen = {
       </div>
 
       <p class="weiter">
-        Nichts dabei? <a href="/leistungen/">Alle Behandlungen</a> ·
-        <a href="/standorte/">Alle Standorte</a> ·
-        <a href="/notfall/">Notfall</a> ·
-        <button type="button" class="chat-oeffner leise">Berater fragen</button>
+        {t('fehler.nichtsDabei')} <a href="/leistungen/">{t('fehler.alleBehandlungen')}</a> ·
+        <a href="/standorte/">{t('fehler.alleStandorte')}</a> ·
+        <a href="/notfall/">{t('fehler.notfall')}</a> ·
+        <button type="button" class="chat-oeffner leise">{t('fehler.beraterFragen')}</button>
       </p>
       </div>
     </div>
   </section>
 </Basis>
 
-<script is:inline define:vars={{ suchindex, kombinationen }} data-astro-rerun>
+<script is:inline define:vars={{ suchindex, kombinationen, skripttexte }} data-astro-rerun>
   /* ── Fall 1: Behandlung an einem Standort, der sie nicht anbietet ── */
 
   const teile = location.pathname.split('/').filter(Boolean);
@@ -119,18 +134,29 @@ const kombinationen = {
 
       const woNamen = leistung.verfuegbar.map((s) => `KU64 ${kombinationen.standorte[s].name}`);
 
-      titel.textContent = `${leistung.name} gibt es in ${standort.ort} nicht`;
+      const fuellen = (vorlage, werte) =>
+        Object.entries(werte).reduce((t, [k, v]) => t.replaceAll(`{${k}}`, v), vorlage);
+
+      titel.textContent = fuellen(skripttexte.gibtEsNichtIn, {
+        name: leistung.name,
+        ort: standort.ort,
+      });
 
       text.textContent = woNamen.length
-        ? `Diese Behandlung bieten wir an diesem Standort nicht an. Sie bekommen sie bei ${woNamen.join(' und ')} – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung.`
-        : 'Diese Behandlung bieten wir derzeit an keinem Standort an. Rufen Sie uns gern an – wir sagen Ihnen, wer Ihnen weiterhelfen kann.';
+        ? fuellen(skripttexte.stattdessenDort, {
+            wo: woNamen.join(` ${skripttexte.und} `),
+          })
+        : skripttexte.nirgends;
 
       // Zuerst die Standorte, an denen es die Behandlung gibt …
       for (const slug of leistung.verfuegbar) {
         const a = document.createElement('a');
         a.href = `/${slug}/leistungen/${teile[2]}/`;
         a.className = 'knopf knopf-primaer';
-        a.textContent = `${leistung.name} bei KU64 ${kombinationen.standorte[slug].name}`;
+        a.textContent = fuellen(skripttexte.beiStandort, {
+          name: leistung.name,
+          ort: kombinationen.standorte[slug].name,
+        });
         knoepfe.append(a);
       }
 
@@ -138,7 +164,7 @@ const kombinationen = {
       const zurueck = document.createElement('a');
       zurueck.href = `/${teile[0]}/leistungen/`;
       zurueck.className = 'knopf knopf-sekundaer';
-      zurueck.textContent = `Alle Behandlungen in ${standort.ort}`;
+      zurueck.textContent = fuellen(skripttexte.alleBehandlungenIn, { ort: standort.ort });
       knoepfe.append(zurueck);
 
       box.hidden = false;

@@ -26,150 +26,78 @@ export function getStaticPaths() {
 const pfad = '/datenschutz/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Datenschutz', pfad },
+  { name: t('krume.datenschutz'), pfad },
 ];
 ---
 
 <Basis
-  titel="Datenschutzerklärung"
-  description="Wie diese Website mit Ihren Daten umgeht – konkret und nachvollziehbar."
+  titel={t('ds.seitentitel')}
+  description={t('ds.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
   noindex={true}
 >
   <div class="huelle abschnitt">
-    <h1>Datenschutzerklärung</h1>
-      <Vorrangklausel />
+    <h1>{t('ds.seitentitel')}</h1>
+    <Vorrangklausel />
 
-    <div class="hinweis hinweis-warnung entwurf">
-      <strong>Entwurfsfassung.</strong>{t('ds.derTechnischeTeilBeschreibt')}<code>[…]</code>{t('ds.markiertenStellenSindNoch')}</div>
+    {/* `set:html`: Die Texte tragen Auszeichnung – fetter Einstieg, <code>
+        für das, was die Praxis noch befüllen muss. Warum das hier die
+        richtige Ausnahme ist, steht bei den Rechtstexten in texte.ts. */}
+    <p class="hinweis hinweis-warnung entwurf" set:html={t('ds.entwurf')} />
 
     <div class="fliesstext">
       <h2>{t('ds.1Verantwortlicher')}</h2>
-      <p>
-        <code>[Vollständiger Name der Praxis / des Trägers, Anschrift, Telefon, E-Mail,
-        gesetzliche Vertretung]</code>
-      </p>
-      <p>
-        Datenschutzbeauftragte oder Datenschutzbeauftragter: <code>[Name, Kontakt]</code>
-      </p>
+      <p set:html={t('ds.verantwortlicherAngaben')} />
+      <p set:html={t('ds.datenschutzbeauftragter')} />
 
       <h2>{t('ds.2WasBeimAufruf')}</h2>
-      <p>
-        Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren
-        Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem.
-        Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist
-        Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle:
-        <code>[Anzahl Tage]</code>.
-      </p>
-      <p>
-        <strong>{t('ds.keineAnalyseWerkzeugeKeine')}</strong>{t('ds.dieseWebsiteSetztVon')}</p>
-      <p>
-        <strong>{t('ds.schriftenWerdenSelbstAusgeliefert')}</strong>{t('ds.esFindetKeinAufruf')}</p>
+      <p set:html={t('ds.serverdaten')} />
+      <p set:html={t('ds.keineAnalyse')} />
+      <p set:html={t('ds.schriften')} />
 
       <h2>{t('ds.3LokaleSpeicherungIm')}</h2>
-      <p>
-        Wir speichern in Ihrem Browser (localStorage) zwei Angaben, die unseren Server nie
-        erreichen:
-      </p>
+      <p>{t('ds.lokalEinleitung')}</p>
       <ul>
-        <li>
-          <strong>{t('ds.ihrenZuletztGewaehltenStandort')}</strong>{t('ds.damitWirIhnenBeim')}</li>
-        <li>
-          <strong>{t('ds.ihreEntscheidungZurTerminbuchung')}</strong>{t('ds.fallsSieAngekreuztHaben')}</li>
+        <li set:html={t('ds.lokalStandort')} />
+        <li set:html={t('ds.lokalTermin')} />
       </ul>
       <p>{t('ds.beidesKoennenSieJederzeit')}</p>
 
-      <h2 id="doctolib">4. Online-Terminbuchung (Doctolib)</h2>
-      <p>{t('ds.dieTerminbuchungLaeuftUeber')}<strong>{t('ds.nichtEingebettet')}</strong>: Sie werden über einen Verweis dorthin
-        geleitet und erkennen am Wechsel der Adresse, dass Sie sich ab dann auf
-        doctolib.de befinden. Solange Sie auf unserer Seite bleiben, findet keinerlei
-        Verbindung zu Doctolib statt – auch kein Vorabladen im Hintergrund.
-      </p>
-      <p>
-        Erst auf der Seite von Doctolib werden Ihre IP-Adresse und Browserdaten dort
-        verarbeitet und Cookies gesetzt. Verantwortlich dafür ist Doctolib; es gilt die
-        Datenschutzerklärung von Doctolib. Weil wir nichts einbetten, ist auf unserer
-        Seite dafür keine Einwilligung nach § 25 Abs. 1 TDDDG erforderlich.
-        Auftragsverarbeitungsvertrag für die Terminverwaltung:
-        <code>[Status ergänzen]</code>.
-      </p>
+      <h2 id="doctolib">{t('ds.4Doctolib')}</h2>
+      <p set:html={t('ds.doctolibEins')} />
+      <p set:html={t('ds.doctolibZwei')} />
 
-      <h2 id="anamnese">5. Digitale Anamnese (Nelly Solutions)</h2>
-      <p>{t('ds.derAnamnesebogenWirdVon')}<strong>{t('ds.keineGesundheitsdaten')}</strong>{t('ds.ihreAngabenFliessenDirekt')}</p>
-      <p>
-        Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h
-        DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der
-        Patientenakte: <code>[in der Regel 10 Jahre – bitte bestätigen]</code>.
-        Auftragsverarbeitungsvertrag mit Nelly Solutions: <code>[Status ergänzen]</code>.
-      </p>
+      <h2 id="anamnese">{t('ds.5Anamnese')}</h2>
+      <p set:html={t('ds.anamneseEins')} />
+      <p set:html={t('ds.anamneseZwei')} />
 
-      <h2 id="berater">6. Digitaler Berater (Text und Sprache)</h2>
-      <p>
-        <strong>Textchat.</strong>{t('ds.ihreFrageWirdAn')}</p>
-      <p>
-        <strong>Sprachberater.</strong> Der Sprachdialog läuft über ElevenLabs. Das Mikrofon
-        wird erst nach Ihrer ausdrücklichen Freigabe aktiviert. Ihre Stimme wird zur
-        Erzeugung der Antwort verarbeitet; eine dauerhafte Aufzeichnung durch uns findet
-        nicht statt.
-      </p>
-      <p>
-        Der Berater ist angewiesen, keine Gesundheitsdaten abzufragen und keine Diagnosen zu
-        stellen. Bitte teilen Sie ihm dennoch keine sensiblen Angaben mit – für alles
-        Medizinische ist der persönliche Termin der richtige Ort. Rechtsgrundlage:
-        Art. 6 Abs. 1 lit. f DSGVO. Auftragsverarbeitungsverträge:
-        <code>[Status ergänzen]</code>.
-      </p>
+      <h2 id="berater">{t('ds.6Berater')}</h2>
+      <p set:html={t('ds.beraterText')} />
+      <p set:html={t('ds.beraterSprache')} />
+      <p set:html={t('ds.beraterHinweis')} />
 
-      <h2 id="laecheln">7. Lächeln-Vorschau (Foto-Upload)</h2>
-      <p>{t('ds.einGesichtsfotoIstEin')}<strong>{t('ds.biometrischesDatum')}</strong> und damit eine besondere
-        Kategorie personenbezogener Daten nach Art. 9 DSGVO. Wir verarbeiten es
-        ausschließlich auf Grundlage Ihrer ausdrücklichen, vorher erteilten Einwilligung
-        (Art. 9 Abs. 2 lit. a DSGVO).
-      </p>
-      <p>So läuft die Verarbeitung konkret ab:</p>
+      <h2 id="laecheln">{t('ds.7Laecheln')}</h2>
+      <p set:html={t('ds.laechelnEins')} />
+      <p>{t('ds.laechelnAblauf')}</p>
       <ul>
-        <li>{t('ds.ihrFotoWirdAn')}<strong>{t('ds.nichtAufEinenDatentraeger')}</strong>{t('ds.undInKeineDatenbank')}</li>
-        <li>
-          Zur Analyse und Bilderzeugung wird es an Google (Gemini) übermittelt.
-        </li>
+        <li set:html={t('ds.laechelnSpeicher')} />
+        <li>{t('ds.laechelnGoogle')}</li>
         <li>{t('ds.dasErgebnisWirdIhnen')}</li>
         <li>{t('ds.nachAbschlussDerAnfrage')}</li>
       </ul>
-      <p>
-        Die erzeugte Darstellung ist eine unverbindliche Illustration und kein
-        Behandlungsergebnis. Sie können Ihre Einwilligung jederzeit mit Wirkung für die
-        Zukunft widerrufen; da nichts gespeichert wird, gibt es danach nichts zu löschen.
-        Auftragsverarbeitungsvertrag mit Google: <code>[Status ergänzen]</code>.
-      </p>
+      <p set:html={t('ds.laechelnSchluss')} />
 
       <h2>{t('ds.8Kontaktaufnahme')}</h2>
-      <p>
-        Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung
-        Ihres Anliegens (Art. 6 Abs. 1 lit. b und f DSGVO). Bitte senden Sie uns keine
-        Gesundheitsdaten per unverschlüsselter E-Mail – dieser Weg ist technisch nicht
-        vertraulich.
-      </p>
+      <p>{t('ds.kontaktText')}</p>
 
       <h2>{t('ds.9IhreRechte')}</h2>
-      <p>
-        Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung
-        (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20)
-        und Widerspruch (Art. 21 DSGVO). Erteilte Einwilligungen können Sie jederzeit mit
-        Wirkung für die Zukunft widerrufen.
-      </p>
-      <p>
-        Sie können sich außerdem bei einer Aufsichtsbehörde beschweren – zuständig ist die
-        Behörde an Ihrem Wohnsitz oder am Sitz der Praxis:
-        <code>[zuständige Aufsichtsbehörde eintragen]</code>.
-      </p>
+      <p>{t('ds.rechteText')}</p>
+      <p set:html={t('ds.beschwerdeText')} />
 
       <h2>{t('ds.10Aenderungen')}</h2>
-      <p>
-        Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert.
-        Stand: <code>[Datum bei Veröffentlichung eintragen]</code>.
-      </p>
+      <p set:html={t('ds.aenderungenText')} />
     </div>
   </div>
 </Basis>

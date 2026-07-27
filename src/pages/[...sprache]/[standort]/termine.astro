@@ -30,7 +30,7 @@ import { inhalte } from '../../../i18n/daten';
 import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE, doctolibAdresse } from '../../../data/standorte';
+import { STANDORTE, doctolibAdresse, zeitLesbar } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -153,7 +153,7 @@ const faq = [
               standort.oeffnungszeiten.map((z) => (
                 <tr>
                   <th scope="row">{z.tag}</th>
-                  <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                  <td>{zeitLesbar(z)}</td>
                 </tr>
               ))
             }
