@@ -19,12 +19,24 @@
  * werden nicht vereinheitlicht: Wer eine Publikationsliste führt, hat sie
  * aus einem Grund, und wer keine hat, soll keine leere Überschrift bekommen.
  *
+ * ── Zwei Sorten Profil ──────────────────────────────────────────────────
+ *
+ * Die Hälfte des Teams hat einen gegliederten Lebenslauf, die andere einen
+ * Brief: Anrede, ein paar Absätze in der Ich-Form, Grußformel. Beides bleibt
+ * so, wie es geschrieben wurde. Der Brief steht oben und etwas größer – er
+ * ist die Vorstellung, nicht der Anhang.
+ *
+ * Über einen Text, der mit „Liebe Patientinnen, liebe Patienten“ beginnt,
+ * gehört keine Überschrift „Über mich“. Die hat die Person nicht
+ * geschrieben.
+ *
  * ── Wer eine Seite bekommt ──────────────────────────────────────────────
  *
- * Nur wer Inhalte hat – 55 von 100. Für die übrigen wäre die Seite eine
- * Wiederholung der Teamkachel, und ein Klick, der nichts Neues bringt, ist
- * schlechter als kein Klick. Sie erscheinen weiterhin im Team, nur ohne
- * Verweis.
+ * Wer Inhalte hat – 98 von 100. Die beiden übrigen: eine Seite ist auf
+ * ku64.de selbst inzwischen 404, eine trägt nur Name und Funktion. Für sie
+ * wäre die Seite eine Wiederholung der Teamkachel, und ein Klick, der nichts
+ * Neues bringt, ist schlechter als kein Klick. Sie erscheinen weiterhin im
+ * Team, nur ohne Verweis.
  *
  * ── Standortscharf, wie alles hier ──────────────────────────────────────
  *
@@ -66,6 +78,7 @@ const profil = (profile as Record<string, Profil>)[person.slug];
 interface Profil {
   name: string;
   funktion: string | null;
+  vorstellung: string[];
   abschnitte: { titel: string; zeilen: string[]; alsListe: boolean }[];
   quelle: string;
 }
@@ -167,6 +180,15 @@ const schema = [
   <section class="abschnitt">
     <div class="huelle">
       <div class="profil">
+        {
+          profil.vorstellung.length > 0 && (
+            <div class="vorstellung">
+              {profil.vorstellung.map((z) => (
+                <p>{z}</p>
+              ))}
+            </div>
+          )
+        }
         {
           profil.abschnitte.map((a) => (
             <div class="block">
@@ -276,6 +298,25 @@ const schema = [
     display: grid;
     gap: var(--raum-7);
     max-width: 46rem;
+  }
+
+  /*
+   * Der Vorstellungstext steht über allem und liest sich als Anrede. Eine
+   * Spur größer und mit mehr Zeilenabstand als der Werdegang darunter: Das
+   * ist der Unterschied zwischen „hier spricht jemand“ und „hier steht ein
+   * Lebenslauf“, und er lässt sich nicht über eine Überschrift herstellen,
+   * die es nicht gibt.
+   */
+  .vorstellung p {
+    font-size: var(--t-lg);
+    color: var(--tinte);
+    line-height: var(--zeile-weit);
+    margin-block-end: var(--raum-4);
+    max-width: 38rem;
+  }
+
+  .vorstellung p:first-child {
+    color: var(--tinte-weich);
   }
 
   .block h2 {

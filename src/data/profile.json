@@ -1,32 +1,22 @@
 {
-  "aisegkioul-netzipoglou-housein": {
-    "name": "Aisegkioul Netzipoglou-Housein",
-    "funktion": "Dentalhygienikerin mit über 15 Jahren Erfahrung in München und Berlin",
-    "abschnitte": [
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "2006 bis heute – Tätigkeit als Zahnmedizinische Fachangestellte, Zahnmedizinische Prophylaxeassistentin und als Dentalhygienikerin in verschiedenen Münchener und Berliner Zahnarztpraxen",
-          "seit Februar 2022 – stolze Mitarbeiterin in der Zahnarztpraxis KU64"
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Bildung/ Weiterbildung",
-        "zeilen": [
-          "2006 – Ausbildung zur Zahnmedizinischen Fachangestellten, Abschluss 2008",
-          "2012 – Bayerische Landes Zahnärzte Kammer Basis- und Fortbildungskurs zur Prophylaxe-Assistentin",
-          "2014 – Philipp-Pfaff-Institut Aufstiegskurs zur Zahnmedizinische Prophylaxeassistentin, Abschluss: ZMP mit Auszeichnung",
-          "2021 – Philipp-Pfaff-Institut Aufstiegskurs zur Dentalhygienikerin, Abschluss Februar 2022"
-        ],
-        "alsListe": false
-      }
-    ],
-    "quelle": "https://ku64.de/team/dentalhygieniker/aisegkioul-netzipoglou-housein/"
-  },
   "abby-ferguson": {
     "name": "Abby Ferguson",
     "funktion": "Kinder- und Jugendzahnärztin",
+    "vorstellung": [
+      "Liebe Eltern,",
+      "mein Name ist Abby Ferguson – mit viel Herzblut begleite ich seit über 5 Jahren Kinder und Jugendliche auf ihrem Weg zu gesunden Zähnen. Es ist mir eine große Freude, nun Teil des großartigen KU64-Teams zu sein.",
+      "Als einfühlsame und enthusiastische Kinderzahnärztin mit umfassender Erfahrung in der Diagnostik, Prävention und hochwertigen zahnärztlichen Behandlung von Kindern bis zum vollendeten 17. Lebensjahr liegt mir die Zahngesundheit Ihrer Kleinen ganz besonders am Herzen.",
+      "Mein Ziel ist es, jedem Kind den Zahnarztbesuch so angenehm wie möglich zu gestalten – mit viel Geduld, Einfühlungsvermögen und einer kindgerechten Behandlung.",
+      "Hier sind einige Aspekte, die mir besonders wichtig sind:",
+      "Eine kinderfreundliche Umgebung: Eine liebevolle Atmosphäre, bunte Farben und eine entspannte Stimmung helfen Kindern, sich sicher und wohlzufühlen.",
+      "Sanfte Kommunikation: Ich erkläre alles spielerisch und kindgerecht, damit Ängste gar nicht erst entstehen.",
+      "Spezielles Equipment für kleine Zähne: Ich arbeite mit auf Kinder abgestimmten Instrumenten, um die Behandlung so schmerzfrei wie möglich zu gestalten.",
+      "Ruhe und Geduld: Jedes Kind ist anders – deshalb nehme ich mir die Zeit, individuell auf die Bedürfnisse der kleinen Patienten einzugehen.",
+      "Eltern als starke Partner: Sie sind ein wichtiger Teil der Zahngesundheit Ihres Kindes. Ich gebe Ihnen wertvolle Tipps zur Zahnpflege und Ernährung.",
+      "Prävention steht an erster Stelle: Fluoridierungen, Fissurenversiegelungen und regelmäßige Kontrollen helfen, Karies frühzeitig zu verhindern.",
+      "Belohnungen für mutige kleine Patienten: Ein positives Erlebnis ist mir wichtig – deshalb gibt es nach der Behandlung eine kleine Überraschung.",
+      "Ich freue mich darauf, Sie und Ihr Kind kennenzulernen und gemeinsam für strahlende, gesunde und starke Kinderzähne zu sorgen!"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Abby Ferguson",
@@ -44,6 +34,16 @@
   "adina-mauder": {
     "name": "Adina Mauder",
     "funktion": "Dentalhygienikerin und zertifizierte EMS GBT Prophyloaxe-Trainerin",
+    "vorstellung": [
+      "Jahrgang 1976",
+      "Mit viel Freude unterstütze ich seit August 2019 das Prophylaxeteam von KU64 als Dental Hygienist!",
+      "Meine Aufgaben liegen hierbei in der Betreuung der Patienten in zahnmedizinischer Prävention und Therapie lebenslang. Wir können heute sehr gut und sehr frühzeitig Erkrankungen erkennen und stoppen. Ich nutze dabei mit Freude neueste Technologien und Materialien nach höchstem wissenschaftlichen Standard. Dabei ist mir die Guided Biofilm Therapie sehr wichtig. Die Patienten lieben es. Prophylaxe und resultierende Therapien können heute mit neuen Methoden sehr sanft durchgeführt werden. Sehr schonend, zum Wohle unserer Patienten.",
+      "Zusätzlich kümmere ich mich mit dem Team gemeinsam um eine immer fortwährende Entwicklung unseres Prophylaxe- und Schulungskonzeptes in Kooperation mit der Kinder- und Jugendabteilung von KU64.",
+      "Mein Motto: Stillstand gibt es nicht!",
+      "Für ein schönes Lächeln! Weil jeder Zahn zählt!",
+      "Ich freue mich auf Sie.",
+      "Ihre Adina Mauder"
+    ],
     "abschnitte": [
       {
         "titel": "Mitgliedschaften",
@@ -108,9 +108,64 @@
     ],
     "quelle": "https://ku64.de/team/dentalhygieniker/adina-mauder/"
   },
+  "adrianna-targatz": {
+    "name": "Adrianna Targatz",
+    "funktion": "Stellvertretende Leitung ZFA/Azubis & Human Resources Assistant (Recruiting)",
+    "vorstellung": [
+      "Schön, dass Sie auf meinem Profil gelandet sind – das könnte der Anfang von etwas Großartigem sein!",
+      "Ich bin Adrianna Targatz, gebürtig aus Polen, seit 2010 Wahl-Berlinerin und mit viel Herzblut bei KU64 unterwegs. Mein Weg führte mich über ein Studium der Bildungswissenschaften und ein anschließendes im Gesundheitsmanagement direkt in meine berufliche Leidenschaft: die Arbeit mit Menschen – und ihren Karrieren.",
+      "Ob als HR-Assistenz im Recruiting oder in meiner Rolle als stellvertretende Leitung für ZFA und Auszubildende – ich begleite Menschen mit einem guten Gespür für Talente, ehrlichem Interesse und einer ordentlichen Portion Humor (denn: ein Bewerbungsgespräch darf auch mal Spaß machen!).",
+      "Mit praktischer Erfahrung aus der zahnmedizinischen Assistenz, dem Praxismanagement und der Verwaltung kenne ich die täglichen Abläufe in der Praxis aus erster Hand – und weiß, worauf es ankommt.",
+      "Lust auf den nächsten Karriereschritt bei uns? Ich freue mich darauf, Sie kennenzulernen – vielleicht sprechen wir ja schon bald über Ihre berufliche Zukunft bei KU64."
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/human-resources/adrianna-targatz/"
+  },
+  "aisegkioul-netzipoglou-housein": {
+    "name": "Aisegkioul Netzipoglou-Housein",
+    "funktion": "Dentalhygienikerin mit über 15 Jahren Erfahrung in München und Berlin",
+    "vorstellung": [
+      "Jahrgang 1982",
+      "Seit über 15 Jahren arbeite ich mit großer Leidenschaft in verschiedenen Münchener und Berliner Zahnarztpraxen. Nach meiner Ausbildung zur zahnmedizinischen Fachangestellten umfasste mein Aufgabengebiet die systematische und professionelle Reinigung der Zähne, Kinderprophylaxe Maßnahmen inklusive der Fissurenversiegelung, Erwachsenen Prophylaxe sowie die selbständige PA-Vorbehandlung, Bleaching, sowie der Recall.",
+      "Heute nach meinem Abschluss zur Dentalhygienikerin hat sich mein Arbeitsgebiet um folgende Punkte erweitert:",
+      "Erkennung von krankhaften Veränderungen an Zahnfleisch, Zahnhalteapparat, Zähnen, Zunge und Mundschleimhaut durch klinische und radiologische Untersuchung der Patienten unter Berücksichtigung des Gesamtbehandlungskonzeptes des Zahnarztes.",
+      "Durchführung nicht chirurgischen Parodontaltherapie",
+      "Beratung von Patienten zur optimalen individuellen Mundhygiene und zur Ernährung. Als Prophylaxe Assistentin habe ich ein Gespür für die Bedürfnisse der Patienten in der Zahnarztpraxis und kann auf Fragen und Ängste mit menschlicher und fachlicher Kompetenz eingehen."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "2006 bis heute – Tätigkeit als Zahnmedizinische Fachangestellte, Zahnmedizinische Prophylaxeassistentin und als Dentalhygienikerin in verschiedenen Münchener und Berliner Zahnarztpraxen",
+          "seit Februar 2022 – stolze Mitarbeiterin in der Zahnarztpraxis KU64"
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Bildung/ Weiterbildung",
+        "zeilen": [
+          "2006 – Ausbildung zur Zahnmedizinischen Fachangestellten, Abschluss 2008",
+          "2012 – Bayerische Landes Zahnärzte Kammer Basis- und Fortbildungskurs zur Prophylaxe-Assistentin",
+          "2014 – Philipp-Pfaff-Institut Aufstiegskurs zur Zahnmedizinische Prophylaxeassistentin, Abschluss: ZMP mit Auszeichnung",
+          "2021 – Philipp-Pfaff-Institut Aufstiegskurs zur Dentalhygienikerin, Abschluss Februar 2022"
+        ],
+        "alsListe": false
+      }
+    ],
+    "quelle": "https://ku64.de/team/dentalhygieniker/aisegkioul-netzipoglou-housein/"
+  },
   "alexandra-fischer": {
     "name": "Alexandra Fischer",
     "funktion": "Zahnärztin für Zahnästhetik & Sportzahnmedizin",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten!",
+      "Was mich an der Zahnmedizin fasziniert, ist die Kombination aus Handwerk und Ästhetik – jeder Zahn ist anders, und genau das macht meine Arbeit jeden Tag spannend und interessant. Aufgewachsen bin ich hier in Berlin, mein Handwerk gelernt habe ich an der Universität Greifswald, wo ich mein Staatsexamen 2021 mit „sehr gut“ abgeschlossen habe. Seit November 2023 bin ich Teil des Teams bei Ku64 am Kudamm.",
+      "In meiner Arbeit geht es mir vor allem um eines: so viel wie möglich von der eigenen Zahnsubstanz zu erhalten. So kann ich mit CEREC Zahnersatz in nur einer Sitzung anfertigen, oder mit Curodont Repair beginnende Karies sogar ganz ohne Bohrer stoppen. Und wo eine Restauration nötig ist, arbeite ich am liebsten unter Kofferdam. Mit der Flowable-Injection-Technik entstehen Frontzahnfüllungen, die man im besten Fall gar nicht sieht und ohne viel zu beschleifen Zahnkorrekturen durchführen kann.",
+      "Da ich selbst leidenschaftlich Sport treibe – ob beim Laufen, Schwimmen, Skifahren oder auf dem Tennisplatz – habe ich mich auch zur Sportzahnärztin weitergebildet. Ich weiß, wie wichtig ein gesunder Kiefer für die Leistungsfähigkeit ist, und berate Sportler:innen entsprechend. Aktuell studiere ich berufsbegleitend Parodontologie und Implantologie im Master der DG PARO, um Sie künftig auch bei diesen Themen umfassend begleiten zu können.",
+      "Wenn ich nicht in der Praxis bin und Sie fachgerecht behandeln kann, zieht es mich raus in die Natur oder zu Freunden – am liebsten mit Laufschuhen oder Tennisschläger im Gepäck.",
+      "Ich freue mich darauf, Sie in meiner Praxis begrüßen zu dürfen und gemeinsam mit Ihnen die Reise zu einem gesunden und ästhetischen Lächeln anzutreten.",
+      "Ihre Alexandra Sophia Fischer"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -154,9 +209,59 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/alexandra-fischer/"
   },
+  "alisar-lala": {
+    "name": "Alisar Lala",
+    "funktion": "Prophylaxespezialistin für Kinder & Erwachsene",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten,",
+      "mein Name ist Alisar Lala und ich freue mich sehr, Teil des KU64-Teams zu sein.",
+      "Als Prophylaxespezialistin betreue ich sowohl Kinder als auch Erwachsene – mit viel Geduld, Einfühlungsvermögen und Fachwissen.",
+      "Gerade bei unseren kleinen Patient:innen ist es mir wichtig, spielerisch Vertrauen aufzubauen und ihnen zu zeigen, dass Zahnpflege auch Spaß machen kann. Mit Tipps, kleinen Tricks und einer kindgerechten Herangehensweise wird der Zahnarztbesuch zum positiven Erlebnis.",
+      "Auch unsere erwachsenen Patient:innen profitieren von meiner gründlichen und sanften Prophylaxe – für nachhaltig gesunde Zähne und ein strahlendes Lächeln.",
+      "Ich freue mich darauf, Sie und Ihre Kinder persönlich kennenzulernen und gemeinsam für Ihre Zahngesundheit zu sorgen."
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/alisar-lala/"
+  },
+  "amar-alrejebi": {
+    "name": "Amar Alrejebi – Zahnarzt & Zahnmedizinischer Prophylaxeassistent",
+    "funktion": "Zahnarzt & Parodontitis- und Prophylaxeexperte",
+    "vorstellung": [
+      "Herzlich willkommen!",
+      "Ich bin Zahnarzt aus Überzeugung – mit einem klaren Fokus auf Parodontologie und moderne Prophylaxe. Mein Ziel ist es, nicht nur Zähne, sondern vor allem Zahnfleisch langfristig gesund zu erhalten. Denn gesunde Zähne beginnen mit gesundem Zahnfleisch",
+      "In meiner täglichen Arbeit bei KU64 verbinde ich präzise Diagnostik mit sanften, wirksamen Behandlungsmethoden in der Prophylaxe. Besonders wichtig ist mir eine vertrauensvolle Atmosphäre, in der Sie sich gut informiert und sicher fühlen.",
+      "Wie gesund ist Ihr Zahnfleisch?",
+      "Lassen Sie es überprüfen – mit einer professionellen Prophylaxe-Sitzung inklusive PerioSafe-Test direkt bei KU64.",
+      "Terminvereinbarung: 030-864 73 20",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen!",
+      "Ihr Amar Alrejebi",
+      "•2006-2011 Bachelor im Zahnmedizin in Tripolis, Libyen",
+      "•2012-2013 Gastzahnarzt im Ain-shams Universität in Kairo, Ägypten",
+      "•2011-2017 Mitglied des Dental Syndicate in Tripolis, Libyen",
+      "•2014-2017 Zahnarzt im Hai Al-Entesar Gesundheitszentrum in Tripolis",
+      "•2021 bis heute: Prophylaxe- und Parodontitisbehandlung in Berliner Zahnarztpraxen",
+      "Weiterbildungen, Fortbildungen:",
+      "•2020 LPS Zentrum Strahlenschutzausbildung Bei dem Betrieb von Röntgeneinrichtungen in der Zahnmedizin Berlin",
+      "•2021 C1 Zahnmedizin-Fachsprache",
+      "•Juli 2022-Feb 2023 Vorbereitungskurs für die Kenntnisprüfung für Zahnärzte im Berliner Philipp-Pfaff-Institut",
+      "•2025-2026 Ausbildung zum Zahnmedizinischen Prophylaxeassistenten (ZMP)"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/amar-alrejebi/"
+  },
   "amjad-misherqi": {
     "name": "Amjad Misherqi",
     "funktion": "Fachzahnarzt für Kieferorthopädie",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten,",
+      "mein Name ist Amjad Misherqi und ich habe mein Zahnmedizinstudium im Dezember 2012 an der Johannes Gutenberg Universität in Mainz abgeschlossen. Nach erfolgreichem Abschluss des israelischen Staatsexamens in Jerusalem schloss ich mich im Januar 2015 der fachzahnärztlichen Praxis für Kieferorthopädie – Dr. Kujat an.",
+      "Dort absolvierte ich die Weiterbildung und das hessische Curriculum, die ich im Januar 2019 erfolgreich als Fachzahnarzt für Kieferorthopädie abschloss. In meiner Zeit bei Dr. Kujat erwarb ich umfassende Erfahrungen in verschiedenen Bereichen der Kieferorthopädie, von Patientenberatungen über die Erstellung von Behandlungsplänen und Abrechnungen bis hin zu diversen kieferorthopädischen Verfahren.",
+      "Meine Expertise umfasst unter anderem die Behandlung mit verschiedenen Zahnspangen, festsitzenden vestibulären und lingualen Apparaturen, sowie interdisziplinäre Behandlungen. Besonderen Wert lege ich auf eine vertrauensvolle Zusammenarbeit und respektvollen Umgang mit Patienten und Kollegen.",
+      "Nachdem ich wertvolle Fähigkeiten und umfassende Erfahrungen gesammelt habe, bin ich nun bereit, mich neuen Herausforderungen zu stellen. Mit meinem Fachwissen und meiner engagierten Persönlichkeit strebe ich danach, einen bedeutenden Beitrag für Ihre Praxis zu leisten.",
+      "Wir können uns auch in Arabisch und Englisch unterhalten!",
+      "Beratungstermine finden Sie online hier",
+      "Ihr Amjad Misherqi"
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte/Zertifizierungen",
@@ -189,6 +294,13 @@
   "amy-beckmann": {
     "name": "Amy Beckmann",
     "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "Mein Spezialgebiet ist die Prophylaxe. Hierbei arbeite ich besonders gern mit den Kleinsten unter uns und bringe ihnen spielerisch bei, das Zähneputzen zu lieben.",
+      "Auch Erwachsene und speziell Angstpatienten gehen nach der Behandlung immer mit einem Lächeln aus meinem Behandlungszimmer.",
+      "Ich freue mich, Sie in unserer Praxis begrüßen zu können und sorge gerne dafür, dass Ihre Zähne gesund bleiben.",
+      "Ihre Amy Beckmann"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Amy Beckmann:",
@@ -221,9 +333,35 @@
     ],
     "quelle": "https://ku64.de/team/prophylaxe/amy-beckmann/"
   },
+  "angie-skall": {
+    "name": "Angie Skall",
+    "funktion": "Zahnmedizinische Fachangestellte +Telefon & Service",
+    "vorstellung": [
+      "Jahrgang 1989",
+      "2005 – 2008 – Ausbildung zur Zahnmedizinischen Fachangestellten",
+      "2008 – 2019 – Zahnmedizinische Fachangestellte in einer Zahnarztpraxis in Berlin mit regelmäßiger Teilnahme an betrieblichen und außerbetrieblichen Weiterbildungen",
+      "Im Oktober 2019 wechselte ich nach dem Elternjahr /Mutter einer kleinen Tochter zu KU64 als zahnmedizinische Fachangestellte im Telefonteam, dies mir ermöglichte Vereinbarung Dienstzeit und Betreuung meines Kindes unter einen Hut zu bekommen.",
+      "Zuständig bin ich mit meinen Kollegen im Telefonteam u.a. für die telefonische Kommunikation, Terminvereinbarungen, Bearbeitung von Emails, Akten pflegen und die Termin-Koordination in Zusammenarbeit mit dem Dreamteam Anästhesie MVZ für den reibungslosen Ablauf für die Behandlung in Vollnarkose in unserer Praxis.",
+      "Ich liebe den Patientenkontakt und freue mich auf viele weitere Gespräche mit Ihnen!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/telefon-service/angie-skall/"
+  },
   "anja-baranowsky": {
     "name": "Anja Baranowsky",
     "funktion": "Chirurgische und Implantologische Fachassistenz & Bleachingspezialistin",
+    "vorstellung": [
+      "Willkommen auf meiner Seite!",
+      "Schon in der Ausbildung zur Zahnmedizinischen Fachangestellten habe ich gewusst, dass mich mein Weg in die Chirurgie führen wird und bereue es keinen Tag mich für diesen Bereich der Zahnmedizin entschieden zu haben. Ich lebe für die Chirurgie. Ich habe täglich Freude daran mit Menschen zu arbeiten und Ihnen zur Seite zu stehen. Es ist mir wichtig ,dass die Patienten sich während den Operationen angstfrei und wohl fühlen.",
+      "In der Chirurgieabteilung begleite ich Sie gern durch Ihre chirurgischen Behandlungen.",
+      "Darüber hinaus würde ich Sie gerne auf in Sachen Zahnaufhellung beraten und behandeln.",
+      "Zu meinen Tätigkeiten gehören:",
+      "sterile Assistenz, Röntgenaufnahmen, Zimmerhygiene, Patientenkommunikation, Patientenbetreuung, Telefonkommunikation, Terminkoordination, Materialverwaltung und -kontrolle.",
+      "Mein Motto: „Wähle einen Beruf, den du liebst, und du brauchst keinen Tag in deinem Leben mehr zu arbeiten“, Konfuzius",
+      "Gerne unterhalte ich mich auch auf Englisch oder Polnisch mit Ihnen.",
+      "Ich freue mich auf Sie!",
+      "Ihre Anja Baranowsky"
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -241,9 +379,56 @@
     ],
     "quelle": "https://ku64.de/team/bleaching/anja-baranowsky/"
   },
+  "atoosa-hafezi": {
+    "name": "Atoosa Hafezi",
+    "funktion": "Dentalhygienikerin, Bachelor of Science Dentalhygiene und Präventionsmanagement, B.Sc.",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten!",
+      "Ich heiße Atoosa Hafezi und bin Dentalhygienikerin, Bachelor of Science Dentalhygiene und Präventionsmanagement, B.Sc.",
+      "Ich kümmere mich gerne um Ihre Mundgesundheit!",
+      "Mein Ziel ist es, Menschen jeden Alters für Zahngesundheit zu begeistern – mit Fachwissen, Feingefühl und einem Lächeln.",
+      "Ich betreue sowohl Kinder als auch Erwachsene in der Prophylaxe – individuell, gründlich und mit viel Geduld. Gerade bei unseren kleinen Patient:innen lege ich großen Wert darauf, spielerisch und liebevoll Vertrauen aufzubauen und ihnen den Zahnarztbesuch so angenehm wie möglich zu gestalten.",
+      "Neben der klassischen Prophylaxe biete ich auch professionelles Bleaching an – für alle, die ihrem Lächeln ein bisschen Extra-Glanz verleihen möchten. Aktuell absolviere ich außerdem die Weiterbildung zur Dentalhygienikerin, um meine Patient:innen künftig noch umfassender betreuen zu können – insbesondere in der Parodontalbehandlung und nachhaltigen Mundgesundheit.",
+      "Ich freue mich darauf, Sie bei KU64 begrüßen zu dürfen!",
+      "Ihre Atoosa Hafezi"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/dentalhygieniker/atoosa-hafezi/"
+  },
+  "ayca-kilic": {
+    "name": "Ayca Kilic",
+    "funktion": "Empfang, Telefon & Patientenbetreuung",
+    "vorstellung": [
+      "Hallo liebe Patienten, liebe Freunde!",
+      "Mein Name ist Ayca Kilic, und es bereitet mir große Freude, als zahnmedizinische Fachangestellte an der Rezeption und bei der Patientenbetreuung für Euch da zu sein.",
+      "Im Januar 2020 habe ich erfolgreich meine Ausbildung zur Zahnmedizinischen Fachangestellten abgeschlossen. Während dieser Zeit konnte ich umfassendes Wissen in verschiedenen Bereichen wie Organisation, Kontrolle und Management erwerben. Dazu gehören die Stuhlassistenz sowohl im chirurgischen Bereich als auch in der Prophylaxe, Röntgentätigkeiten, die Abrechnung der Behandlungsbegleitung sowie die persönliche und telefonische Aufnahme von Patienten und die Terminvergabe. Als engagierte und zuverlässige Mitarbeiterin stehe ich bereit, mich jeder Aufgabe zu stellen.",
+      "Unsere Patienten sind für mich eine Herzensangelegenheit, und ich werde alles daransetzen, Euren Besuch so angenehm wie möglich zu gestalten.",
+      "Ich freue mich schon sehr auf Euren Besuch!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/rezeption-service/ayca-kilic/"
+  },
+  "bettina-ehrhardt": {
+    "name": "Bettina Ehrhardt",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Mit Herz, Fingerspitzengefühl und Erfahrung für Ihre Zahngesundheit",
+      "Seit Juni 2006 bin ich Teil des KU64-Teams – und das mit großer Freude und echter Leidenschaft für meinen Beruf als zahnmedizinische Prophylaxeassistentin.",
+      "Mein beruflicher Weg begann 1996 mit dem Abschluss zur zahnmedizinischen Fachangestellten, gefolgt von der Weiterbildung zur zahnmedizinischen Prophylaxeassistentin im Jahr 2000. Seitdem widme ich mich mit viel Einfühlungsvermögen der individuellen Prophylaxe und Gesunderhaltung Ihrer Zähne.",
+      "Ein besonderes Anliegen ist mir die Betreuung von Angstpatientinnen und -patienten. Mit Ruhe, Geduld und einem sicheren Gespür für Ihre Bedürfnisse möchte ich Ihnen helfen, den Besuch bei uns so angenehm wie möglich zu gestalten.",
+      "Ich freue mich darauf, Sie persönlich bei KU64 begrüßen zu dürfen – in entspannter Atmosphäre und mit einem Lächeln.",
+      "Ihre Bettina Ehrhardt"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/bettina-ehrhardt/"
+  },
   "celina-leppin": {
     "name": "Celina Leppin",
     "funktion": "Zahnmedizinische Verwaltungsassistentin",
+    "vorstellung": [
+      "Zu meinen Aufgaben gehört es, für Ihre Behandlung individuelle Kostenangebote zu erstellen. Das bedeutet, dass ich Ihnen eine detaillierte Übersicht über die voraussichtlichen Kosten Ihrer Behandlung gebe. Außerdem kümmere ich mich um die Erstellung der Rechnungen, die Sie nach der Behandlung erhalten.",
+      "Darüber hinaus unterstütze ich Sie gerne bei Fragen oder Problemen im Zusammenhang mit der Erstattung Ihrer Behandlungskosten durch Ihre Versicherung oder Zusatzversicherung. Falls es Unklarheiten oder Schwierigkeiten bei der Abwicklung mit Ihrer Versicherung gibt, stehe ich Ihnen mit Rat und Tat zur Seite, um eine schnelle und reibungslose Lösung zu finden."
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -277,9 +462,63 @@
     ],
     "quelle": "https://ku64.de/team/verwaltung/celina-leppin/"
   },
+  "cheyenne-bande": {
+    "name": "Cheyenne Bande",
+    "funktion": "Zahnmedizinische Fachangestellte (ZFA)",
+    "vorstellung": [
+      "Jahrgang 1995",
+      "2013 habe ich meine Ausbildung als Zahnmedizinische Fachangestellte bei KU64 begonnen und wurde sehr herzlich von allen aufgenommen. Ich habe mich gleich wohl gefühlt.",
+      "Während meiner Ausbildung habe ich viele Bereiche der Zahnmedizin kennengelernt. Seit Anfang 2015 assistiere ich bei Zahnärztin Dr. Karin Löer und bin sehr glücklich dort. Wir sind ein super Team und haben immer viel Spaß und Freude beim Behandeln. Im Juli 2016 habe ich meine Ausbildung beendet.",
+      "Ich freue ich mich auf viele weitere nette Patienten!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/cheyenne-bande/"
+  },
+  "clara-constanze-meinberg": {
+    "name": "Clara-Constanze Meinberg",
+    "funktion": "Zahnärztin und Heilpraktikerin",
+    "vorstellung": [
+      "Meine Philosophie: Den ganzen Menschen betrachten und wahrnehmen!",
+      "Eine interdisziplinäre Zusammenarbeit erachte ich als unabdingbare Maßnahme, um das für Sie und Ihre Gesundheit beste Ergebnis zu erzielen.",
+      "Gerne nehme ich mir ausreichend Zeit, um mit Ihnen gemeinsam Ihre Behandlung zu besprechen, Lösungen zu finden und einen für Sie annehmbaren Weg zu finden. Ein einfühlsamer Umgang mit Ihren Problemen, Sorgen und Schmerzen haben stets oberste Priorität für mich, nur so kann eine vertrauensvolle Zusammenarbeit zwischen Zahnarzt und Patient entstehen. Mein besonderes Interesse gilt der ganzheitlichen Betrachtung und Wahrnehmung des Körpers.",
+      "Nicht die Behandlung einzelner Symptome, sondern die Behandlung von deren Ursachen, stehen bei meiner Behandlung im Fokus."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "Ganzheitliche Zahnmedizin",
+          "Angstpatienten"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "2008 – Staatlich geprüfte Heilpraktikerin (Paracelsus Universität)",
+          "2012 – Ausbildung zur Hypnosetherapeutin",
+          "2012-2017 – Studium der Zahnmedizin, Charité Universitätsmedizin Berlin",
+          "2017 – Zahnärztliches Staatsexamen und Approbation als Zahnärztin",
+          "seit 2017 – Arbeit an einer Promotion an der Charité Berlin, Abteilung für Kieferorthopädie",
+          "seit April 2018 – unterstütze ich das Team bei KU64"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/clara-constanze-meinberg/"
+  },
   "clara-marlene-schulz": {
     "name": "Clara Marlene Schulz",
     "funktion": "Zahnärztin für allgemeine Zahnheilkunde & Zahnästhetik",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten,",
+      "mein Name ist Clara Marlene Schulz, und als Ihre Zahnärztin freue ich mich, Sie auf Ihrem Weg zu gesunden und schönen Zähnen begleiten zu dürfen. Mein Ziel ist es, Ihre Zahngesundheit nicht nur zu erhalten, sondern Ihnen ein Lächeln zu schenken, das Ihre Persönlichkeit und Lebensfreude widerspiegelt.",
+      "Mit meiner umfassenden Ausbildung und praktischen Erfahrung in der ästhetischen Zahnmedizin und Endodontie sowie meiner Promotion zu innovativen Ansätzen für Angstpatienten bringe ich nicht nur fachliches Wissen, sondern auch Einfühlungsvermögen und eine patientenzentrierte Herangehensweise in jede Behandlung ein. Dabei ist mir besonders wichtig, dass Sie sich bei uns gut aufgehoben fühlen.",
+      "In meiner Praxis lege ich großen Wert auf transparente Kommunikation und die gemeinsame Entwicklung individueller Behandlungspläne, die Ihre Wünsche und Bedürfnisse in den Mittelpunkt stellen. Dank regelmäßiger Fortbildungen halte ich mich stets auf dem neuesten Stand der Zahnmedizin, um Ihnen moderne, schonende und effektive Behandlungsmethoden bieten zu können.",
+      "Ich lade Sie herzlich ein, unsere Praxis kennenzulernen. Gemeinsam mit meinem engagierten Team freue ich mich darauf, Ihr Vertrauen zu gewinnen und Ihnen dabei zu helfen, Ihr schönstes Lächeln zu entfalten.",
+      "Buchen Sie einfach einen Bratungstermin online hier oder unter ☎ 0331 98 2222 80.",
+      "Ihre Clara Marlene Schulz"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -317,57 +556,44 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/clara-marlene-schulz/"
   },
-  "clara-constanze-meinberg": {
-    "name": "Clara-Constanze Meinberg",
-    "funktion": "Zahnärztin und Heilpraktikerin",
-    "abschnitte": [
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "Ganzheitliche Zahnmedizin",
-          "Angstpatienten"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "2008 – Staatlich geprüfte Heilpraktikerin (Paracelsus Universität)",
-          "2012 – Ausbildung zur Hypnosetherapeutin",
-          "2012-2017 – Studium der Zahnmedizin, Charité Universitätsmedizin Berlin",
-          "2017 – Zahnärztliches Staatsexamen und Approbation als Zahnärztin",
-          "seit 2017 – Arbeit an einer Promotion an der Charité Berlin, Abteilung für Kieferorthopädie",
-          "seit April 2018 – unterstütze ich das Team bei KU64"
-        ],
-        "alsListe": true
-      }
+  "delphine-martineau-rewig": {
+    "name": "Delphine Martineau-Rewig",
+    "funktion": "People Operations Manager",
+    "vorstellung": [
+      "Herzlich willkommen bei den Zahnspezialisten von KU64!",
+      "Mit 34 Jahren Expertise in verschiedenen Branchen und Aufgaben bin ich sehr stolz, Teil dieses dynamischen HR-Teams zu sein. Meine berufliche Reise führte mich durch die aufregende Welt der Eventplanung, die pulsierende Musikszene und die kreative Atmosphäre einer internationalen Werbeagentur. Zuletzt habe ich als selbstständige Office Managerin für kleine Agenturen meine vielseitigen Fähigkeiten unter Beweis gestellt.",
+      "Meine Erfahrung ermöglicht es mir, die Personalabteilung zu unterstützen und mich engagiert den Anliegen des KU64-Teams zu widmen. Ich stehe allen Mitarbeitern sowie allen Bewerbern gerne mit Rat und Tat zur Verfügung!",
+      "Übrigens, KU64 sucht Verstärkung!",
+      "Wenn Sie in der Welt der Dentalmedizin zu Hause sind und Ihr Talent in einer innovativen Zahnarztpraxis entfalten möchten, dann sollten Sie unbedingt einen Blick auf unsere aktuellen Stellenangebote werfen! Wir suchen motiviertes dentales Personal, ZFAs, ZMPs, Zahnärzte und Zahnärztinnen, die unser Team bereichern wollen.",
+      "Wir freuen uns darauf, Sie kennenzulernen!"
     ],
-    "quelle": "https://ku64.de/team/zahnaerzte/clara-constanze-meinberg/"
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/human-resources/delphine-martineau-rewig/"
   },
-  "dominik-ruffo": {
-    "name": "Dominik Ruffo",
-    "funktion": "Fachwirt für zahnmedizinisches Praxismanagement, Floormanager & KU64-Ausbilder",
-    "abschnitte": [
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "Qualitätsmanagement",
-          "Zeitmanagement",
-          "Kommunikation und Konfliktmanagement",
-          "Personalmanagement",
-          "Gesundheitswesen",
-          "Datenschutz und Datensicherheit",
-          "Hygiene – und Arbeitsschutz",
-          "Strahlenschutz"
-        ],
-        "alsListe": true
-      }
+  "denise-matzas": {
+    "name": "Denise Matzas",
+    "funktion": "Zahnmedizinische Verwaltungsassistentin",
+    "vorstellung": [
+      "Geboren wurde ich im Juni 1987 und bin seit 2019 mittlerweile Mutter eines Sohnes.",
+      "Im Sommer 2009 habe ich meine Ausbildung zur zahnmedizinischen Fachangestellten erfolgreich absolviert und war anschließend in zwei Zahnarztpraxen langfristig angestellt. Im Jahr 2015 habe ich dann die Aufstiegsfortbildung zur zahnmedizinischen Verwaltungsassistentin abgeschlossen und arbeite seither, immer mit viel Herz und Freude, ausschließlich in der Verwaltung.",
+      "Meine Aufgaben liegen hauptsächlich im Erstellen von Kostenangeboten sowie Rechnungen. Zudem unterstütze ich Sie in jeglichen Anliegen gegenüber Ihren Krankenkassen, sehr gerne bin ich auch immer im persönlichen Gespräch für Sie da.",
+      "Mit dem KU64 habe ich einen der für mich besten Arbeitsplätze mit einer großartigen Arbeitsatmosphäre erworben und bin froh seit 2020 Teil dieses tollen Unternehmens zu sein.",
+      "Ich bin gerne für Sie da!"
     ],
-    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/dominik-ruffo/"
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/verwaltung/denise-matzas/"
   },
   "denise-moldenhauer": {
     "name": "Denise Moldenhauer",
     "funktion": "Zahnärztin für allgemeine Zahnheilkunde & Zahnästhetik",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten,",
+      "mein Name ist Denise Moldenhauer und ich freue mich sehr, Ihnen als Ihre Zahnärztin zur Seite stehen zu dürfen. Es ist mir eine große Freude, Ihnen ein strahlendes Lächeln zu schenken und Ihre Zahngesundheit zu erhalten.",
+      "Als Zahnärztin habe ich mich besonders auf ästhetische Zahnmedizin spezialisiert. Ich bin davon überzeugt, dass ein schönes Lächeln nicht nur das Selbstvertrauen stärkt, sondern auch ein Spiegelbild der inneren Schönheit ist. Mein Ziel ist es, Ihnen zu helfen, Ihr strahlendes Lächeln zu entfalten und Ihr individuelles ästhetisches Potenzial zu erreichen und Ihnen Lebensqualität zu(rückzu)geben.",
+      "Neben der ästhetischen Zahnmedizin liegt mir auch die umfassende zahnärztliche Versorgung am Herzen. Wir bieten Ihnen eine breite Palette von Leistungen an, um Ihre Zahngesundheit optimal zu unterstützen.",
+      "Als Ihre Zahnärztin stehe ich Ihnen nicht nur für die Behandlung, sondern auch für eine individuelle Beratung zur Verfügung. Gemeinsam erarbeiten wir einen maßgeschneiderten Behandlungsplan, der Ihre persönlichen Bedürfnisse und Wünsche berücksichtigt. Transparenz und offene Kommunikation sind für mich selbstverständlich, denn ich möchte, dass Sie sich gut informiert und sicher fühlen.",
+      "Ich lade Sie herzlich ein, unsere moderne und freundliche Praxis kennenzulernen. Bei uns steht Ihr Wohlbefinden an erster Stelle, und wir tun alles, um Ihnen den Besuch so angenehm wie möglich zu gestalten. Ich und mein einfühlsames Team freuen uns darauf, Ihnen zu helfen, Ihre Zahngesundheit zu erhalten und Ihnen ein strahlendes Lächeln zu schenken."
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Denise Moldenhauer:",
@@ -397,9 +623,51 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/denise-moldenhauer/"
   },
+  "dominik-ruffo": {
+    "name": "Dominik Ruffo",
+    "funktion": "Fachwirt für zahnmedizinisches Praxismanagement, Floormanager & KU64-Ausbilder",
+    "vorstellung": [],
+    "abschnitte": [
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "Qualitätsmanagement",
+          "Zeitmanagement",
+          "Kommunikation und Konfliktmanagement",
+          "Personalmanagement",
+          "Gesundheitswesen",
+          "Datenschutz und Datensicherheit",
+          "Hygiene – und Arbeitsschutz",
+          "Strahlenschutz"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/dominik-ruffo/"
+  },
+  "doreen-ziliox": {
+    "name": "Doreen Ziliox",
+    "funktion": "Telefon & Patienten­service",
+    "vorstellung": [
+      "Jahrgang 1967",
+      "Nach meiner Ausbildung zur Rechtsanwaltsangestellten arbeitete ich viele Jahre in der freien Wirtschaft. Im Jahr 1999 habe ich mich mit einer Agentur für Kinowerbung selbständig gemacht. Seit Oktober 2019 bin ich ein Teil von KU64 und unterstütze mit Freude das Telefonteam.",
+      "Zu meinen Aufgaben gehört es, den Patienten am Telefon zuzuhören und ihnen bei allen Belangen und Wünschen behilflich zu sein, damit sie den besten Service erhalten.",
+      "Ich helfe gerne weiter!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/telefon-service/doreen-ziliox/"
+  },
   "dr-alexandra-wolf": {
     "name": "Dr. Alexandra Wolf",
     "funktion": "Kinder- und Jugendzahnärztin",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten, liebe Eltern!",
+      "Schon in der Universität habe ich eine Vorliebe für Kinderzahnheilkunde entwickelt. Mit viel Freude wirkte ich bei der jährlichen Ausrichtung des Teddykrankenhauses Dresden mit. Ein Projekt, das darauf abzielt, Kindern im Vorschulalter auf spielerische Art und Weise die Angst vor dem Zahn-/Arztbesuch zu nehmen. Hierfür habe ich eine zahnärztliche „Teddy-Station“ gestaltet. Darüber hinaus führte ich zwei Jahre Vorsorgeuntersuchungen sowie Zahnputzübungen in Berliner Kindergärten im Rahmen des Prophylaxeprogrammes der LAG durch.",
+      "Ich möchte in kindgerechter und liebevoller Atmosphäre bei unseren kleinen Patienten eine positive Einstellung zur Zahnpflege und Zahnheilkunde fördern und somit für einen langfristigen Zahnerhalt sorgen. Es liegt mir sehr am Herzen, den Kindern mit Einfühlungsvermögen und Geduld die zahnmedizinischen Behandlungsschritte zu veranschaulichen und so die Scheu vor dem Zahnarztbesuch zu nehmen. Mein Ziel ist es, dass die Kinder freudestrahlend das Behandlungszimmer verlassen und fragen, wann sie wiederkommen dürfen.",
+      "Aufgrund einiger Auslandsaufenthalte spreche ich mit Ihnen auch gerne auf Englisch und Französisch. Zudem kann ich mich etwas auf Norwegisch verständigen.",
+      "Ich freue mich über Ihren Besuch!",
+      "Ihre Dr. Alexandra Wolf"
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -475,9 +743,92 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-alexandra-wolf/"
   },
+  "dr-andrej-knezevic": {
+    "name": "Dr. Andrej Knezevic",
+    "funktion": "Zahnarzt für restaurative und prothetische Zahnheilkunde bei KU64 Berlin",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten,",
+      "Mein beruflicher Fokus liegt auf der restaurativen und prothetischen Zahnheilkunde – zwei Fachbereiche, in denen Präzision, Ästhetik und Nachhaltigkeit Hand in Hand gehen. Besonders wichtig ist mir dabei, Ihnen Behandlungen auf höchstem fachlichen Niveau anzubieten, die sowohl funktional als auch optisch überzeugen.",
+      "Als zertifizierter CEREC-Anwender nutze ich moderne digitale Technologien, um Kronen, Inlays und Brücken in nur einer Sitzung passgenau herzustellen – schnell, komfortabel und effizient. Für noch mehr Sicherheit und Qualität arbeite ich routinemäßig unter Kofferdam, einer Technik, die für ein sauberes Behandlungsfeld sorgt und optimale Ergebnisse ermöglicht.",
+      "Mein Ziel ist es, Ihnen mit Fachkompetenz, moderner Technik und viel Einfühlungsvermögen zu einem gesunden und schönen Lächeln zu verhelfen. Ich freue mich darauf, Sie bei uns willkommen zu heißen und gemeinsam mit Ihnen Ihre individuellen zahnmedizinischen Wünsche umzusetzen.",
+      "Fachliche Schwerpunkte",
+      "Restorative und prothetische Zahnheilkunde — Dr. Knezevic nennt diese beiden Bereiche ausdrücklich als seinen „beruflichen Fokus“",
+      "Ästhetik & Funktionalität, hochwertiger Zahnersatz (Kronen, Inlays, Brücken) — Dank moderner CEREC-Technik werden Kronen, Inlays und Brücken oft in nur einer Sitzung hergestellt",
+      "Chirurgie, Implantologie, Parodontologie & Zahnerhaltung",
+      "Darüber hinaus verfügt Dr. Knezevic über umfassende Erfahrung in den Bereichen chirurgische Zahnheilkunde, Implantologie, Parodontologie sowie Zahnerhaltung. Mit rund 15 Jahren praktischer Berufserfahrung behandelt er auch komplexere Fälle sicher, strukturiert und vorausschauend.",
+      "Arbeitsweise & Spezialtechniken",
+      "Digitale Zahnmedizin / CAD/CAM mit CEREC — Durch Nutzung moderner digitaler Technologien kann Zahnersatz effizient und passgenau angefertigt",
+      "Behandlung unter Kofferdam — Dr. Knezevic zählt zu den führenden Experten im Bereich Kofferdam-Anwendung in Berlin. Durch diese Technik kann ein besonders sauberes Behandlungsfeld und optimale Qualität gewährleistet werden",
+      "Werdegang",
+      "Seit Oktober 2017 – Angestellter in einer Berliner Praxis",
+      "Mai 2015 – September 2017 – Assistenzzahnarzt in einer Berliner Praxis",
+      "März 2012 – März 2015 – Zahnarzt im Gesundheitszentrum Subtica, Serbien",
+      "Studium",
+      "April 2017 Erteilung der deutschen Aprobationsurkunde, Landesamt für Gesundheit und Soziales Berlin",
+      "2005 – 2010 Universität „Privredna Akademija“ Novi Sad, Fakultät in Pančevo",
+      "Praktisches Jahr Gesundheitszentrum Subotica, Serbien",
+      "Wichtige Fortbildungen",
+      "2015 Curriculum Chirurgie",
+      "05/2015 Visalays Veneers Chairside",
+      "11/2015 Herbstsymposium KZV Berlin",
+      "03/2016 Strahlenschutzkurs für Zahnärzte",
+      "06/2016 Dokumentation in der Zahnarztpraxis",
+      "2016 Hygiene in der Zahnarztpraxis",
+      "04/2017 IVO Training in der Zahnarztpraxis",
+      "03/2018 Arbeitsschutz in der Zahnarztpraxis, Zahnärztekammer Berlin",
+      "04/2019 CEREC Chairside Restauration",
+      "2019–2021 Curriculum Parodontologie",
+      "01/2021 Aktualisierung Strahlenschutz, Pfaff Berlin"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-andrej-knezevic/"
+  },
+  "dr-anna-lena-zopfs": {
+    "name": "Dr. Anna-Lena Zopfs",
+    "funktion": "Kinder- und Jugendzahnärztin (aktuell in Mutterschutz)",
+    "vorstellung": [
+      "Schon früh hatte ich viel Freude an der Arbeit mit Kindern und Jugendlichen – so war ich beispielweise bereits im Jugendalter viele Jahre als Hockeytrainerin tätig.",
+      "Eine empathische, angstfreie und auf jedes Kind angepasste Behandlung liegen mir besonders am Herzen.",
+      "Schon ab dem ersten Zahnarztbesuch sind gesunde Zähne und vor allem strahlende Kinderaugen mein Ziel.",
+      "Sollte es doch mal zu einer größeren Behandlung kommen, freue ich mich Ihrem Kind alles verständlich und dennoch kindgerecht zu erklären. Auch können wir gemeinsam die Zauberluft (Lachgas) entdecken oder aber alles wie im Schlaf (Vollnarkose) behandeln.",
+      "Ich freue mich sehr darauf Dich und deine Eltern kennenzulernen, um dich bei deinem ersten Zahn, dem ersten Wackelzahn bis hin zu Zahnspange zu begleiten."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Werdegang von Frau Dr. Anna-Lena Zopfs:",
+        "zeilen": [
+          "2012 – 2017 – Studium der Zahnmedizin an der Georg- August- Universität, Göttingen",
+          "2017 – Approbation zur Zahnärztin",
+          "2018 – 2020 – Assistenzzeit in Berlin",
+          "2019 – Abschluss Curriculum Kinder- und Jugendzahnheilkunde",
+          "2019 – 2022 – Master der Kieferorthopädie",
+          "2020 – 2021 – angestellte Zahnärztin in Berlin",
+          "Nov. 2021 – Promotion im Bereich der Endodontie mit Erlangung des Doktortitels",
+          "Seit 2021 – Teil des Ku64-Teams als Zahnärztin für Kinderzahnheilkunde"
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "Teil des Ku64-Teams als Zahnärztin für Kinderzahnheilkunde",
+          "Angstpatienten"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-anna-lena-zopfs/"
+  },
   "dr-cora-betko": {
     "name": "Dr. Cora Betko, M.SC.",
     "funktion": "Zahnärztin für Prothetik & Parodontologie",
+    "vorstellung": [
+      "Lieber Patient, liebe Patientin,",
+      "ich freue mich Sie bei KU64 sowohl in unserer Filiale Berlin-Mitte (Hausvogteiplatz 14) als auch im Mutterhaus (Kudamm 64) begrüßen zu dürfen.",
+      "Der langfristige ästhetische Zahnerhalt ist mir sehr wichtig, weshalb ich mich auf die Behandlung fortgeschrittener Parodontitis sowie die Therapie ästhetischer Zahnfleischkorrekturen spezialisiert habe.",
+      "Mit viel Empathie und Einfühlungsvermögen möchte ich meinen Patienten die Behandlung so angenehm wie möglich gestalten. Dabei nehme ich mir viel Zeit für eine individuelle Beratung und ausführliche Therapieplanung.",
+      "Zu meinen Tätigkeitsschwerpunkten zählen Prothetik, Parodontologie, Implantologie, der chirurgische Knochenaufbau sowie die Therapie der Periimplantitis."
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -522,70 +873,18 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-cora-betko/"
   },
-  "dr-anna-lena-zopfs": {
-    "name": "Dr. Anna-Lena Zopfs",
-    "funktion": "Kinder- und Jugendzahnärztin (aktuell in Mutterschutz)",
-    "abschnitte": [
-      {
-        "titel": "Werdegang von Frau Dr. Anna-Lena Zopfs:",
-        "zeilen": [
-          "2012 – 2017 – Studium der Zahnmedizin an der Georg- August- Universität, Göttingen",
-          "2017 – Approbation zur Zahnärztin",
-          "2018 – 2020 – Assistenzzeit in Berlin",
-          "2019 – Abschluss Curriculum Kinder- und Jugendzahnheilkunde",
-          "2019 – 2022 – Master der Kieferorthopädie",
-          "2020 – 2021 – angestellte Zahnärztin in Berlin",
-          "Nov. 2021 – Promotion im Bereich der Endodontie mit Erlangung des Doktortitels",
-          "Seit 2021 – Teil des Ku64-Teams als Zahnärztin für Kinderzahnheilkunde"
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "Teil des Ku64-Teams als Zahnärztin für Kinderzahnheilkunde",
-          "Angstpatienten"
-        ],
-        "alsListe": true
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/dr-anna-lena-zopfs/"
-  },
-  "dr-frank-schreiber": {
-    "name": "Dr. Frank Schreiber",
-    "funktion": "Zahnarzt für Ästhetik und Endodontologie",
-    "abschnitte": [
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "mikroskopische Endodontie (Wurzelkanalbehandlung)",
-          "Ästhetische Zahnmedizin",
-          "Prothetik"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "beruflicher werdegang",
-        "zeilen": [
-          "09/2001 - 07/2002 – Stipendium des Deutsch-Amerikanischen-Dialogzentrums Magdeburg für ein Auslandsstudium an der Mineral-Wells High School, TX, USA",
-          "04/2007 - 07/2012 – Studium der Zahnmedizin an der Charité-Universitätsmedizin Berlin, Abschluss: Staatsexamen (Note: sehr gut; Punkte: 42)",
-          "04/2011 - 03/2012 – Deutschlandstipendiat der Charité-Universitätsmedizin Berlin, Stipendiengeber: Bundesministerium für Bildung und Forschung",
-          "07/2012 – Approbation als Zahnarzt",
-          "10/2012 - 09/2015 – Assistenzzahnarzt und anschließende Übernahme als angestellter Zahnarzt in einer Zahnarztpraxis in Berlin, Aufgabengebiet: minimalinvasive konservierende Zahnheilkunde, ästhetische Zahnmedizin, Endodontie",
-          "08/2016 - 12/2016 – angestellter Zahnarzt in einem Zahnärztezentrum in Berlin, Aufgabengebiet: ästhetische Zahnmedizin, Endodontie",
-          "07/2014 - 06/2018 – Arbeit an der Promotion im Bereich der Mund-, Kiefer- und Gesichtschirurgie an der Medizinischen Fakultät der Charité – Universitätsmedizin Berlin",
-          "seit 01/2017 – Zahnarzt bei KU64",
-          "seit 04/2017 – Curriculare Weiterbildung auf dem Gebiet der Endodontie nach den Richtlinien der BZÄK/DGZMK",
-          "06/2018 – Promotion im Bereich der Mund-, Kiefer- und Gesichtschirurgie an der Medizinischen Fakultät der Charité – Universitätsmedizin Berlin"
-        ],
-        "alsListe": true
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/dr-frank-schreiber/"
-  },
   "dr-elisabeth-futterlieb": {
     "name": "Dr. Elisabeth Futterlieb",
     "funktion": "Zahnärztin für Zahnästhetik und Kinder- & Jugendzahnheilkunde und leidenschaftliche Künstlerin",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "mein Name ist Dr. Elisabeth Futterlieb und ich bin leidenschaftliche Zahnärztin und Künstlerin.",
+      "Ja, Sie haben richtig gelesen…durch meine bilaterale Branchenkompetenz, kann ich Ihnen nicht nur qualitativ hochwertige zahnärztliche Versorgungen ermöglichen, sondern bringe durch mein künstlerisches geschultes Auge, noch eine gewisse zusätzliche Ästhetik mit in unser Behandlungsspektrum.",
+      "Mein Ziel ist es zudem, dass sich meine Patienten und auch insbesondere die Kleinen unter uns, in meiner Behandlung wohl und gut aufgehoben fühlen.",
+      "Durch mein Feingefühl, fand ich schnell den Zugang zu Angstpatienten und zur Kinderzahnheilkunde, was mit der Ästhetik zusammen zu meinem Behandlungsschwerpunkt wurde.",
+      "Ich freue mich von Herzen auf ein Kennenlernen in unserem wunderschönen Palais Ritz in Potsdam.",
+      "Ihre Dr. Elisabeth Futterlieb"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang Dr. Elisabeth Futterlieb:",
@@ -644,9 +943,53 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-elisabeth-futterlieb/"
   },
+  "dr-frank-schreiber": {
+    "name": "Dr. Frank Schreiber",
+    "funktion": "Zahnarzt für Ästhetik und Endodontologie",
+    "vorstellung": [
+      "Jahrgang 1984",
+      "Ich verstehe mich als überaus leidenschaftlicher Zahnarzt, der sich höchsten Qualitäts- und Ästhetikansprüchen verpflichtet hat. Mein Ziel ist es bei jedem Patienten das bestmögliche Ergebnis in puncto Ästhetik und Funktion zu erreichen, sei es nur bei einer kleinen Füllung oder bei ästhetisch anspruchsvollen und komplexen Behandlungsfällen.",
+      "Es erwartet Sie bei mir eine ausführliche, verständliche Beratung und Therapieplanung unter Einbeziehung des gesamten zahnmedizinischen Spektrums.",
+      "I will be happy to provide you consultation in English."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "mikroskopische Endodontie (Wurzelkanalbehandlung)",
+          "Ästhetische Zahnmedizin",
+          "Prothetik"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "beruflicher werdegang",
+        "zeilen": [
+          "09/2001 - 07/2002 – Stipendium des Deutsch-Amerikanischen-Dialogzentrums Magdeburg für ein Auslandsstudium an der Mineral-Wells High School, TX, USA",
+          "04/2007 - 07/2012 – Studium der Zahnmedizin an der Charité-Universitätsmedizin Berlin, Abschluss: Staatsexamen (Note: sehr gut; Punkte: 42)",
+          "04/2011 - 03/2012 – Deutschlandstipendiat der Charité-Universitätsmedizin Berlin, Stipendiengeber: Bundesministerium für Bildung und Forschung",
+          "07/2012 – Approbation als Zahnarzt",
+          "10/2012 - 09/2015 – Assistenzzahnarzt und anschließende Übernahme als angestellter Zahnarzt in einer Zahnarztpraxis in Berlin, Aufgabengebiet: minimalinvasive konservierende Zahnheilkunde, ästhetische Zahnmedizin, Endodontie",
+          "08/2016 - 12/2016 – angestellter Zahnarzt in einem Zahnärztezentrum in Berlin, Aufgabengebiet: ästhetische Zahnmedizin, Endodontie",
+          "07/2014 - 06/2018 – Arbeit an der Promotion im Bereich der Mund-, Kiefer- und Gesichtschirurgie an der Medizinischen Fakultät der Charité – Universitätsmedizin Berlin",
+          "seit 01/2017 – Zahnarzt bei KU64",
+          "seit 04/2017 – Curriculare Weiterbildung auf dem Gebiet der Endodontie nach den Richtlinien der BZÄK/DGZMK",
+          "06/2018 – Promotion im Bereich der Mund-, Kiefer- und Gesichtschirurgie an der Medizinischen Fakultät der Charité – Universitätsmedizin Berlin"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-frank-schreiber/"
+  },
   "dr-heike-hoppe-zirbs": {
     "name": "Dr. Heike Hoppe-Zirbs",
     "funktion": "Fachzahnärztin für Kieferorthopädie",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten,",
+      "Ihnen ein schönes Lächeln zu zaubern ist meine große Leidenschaft! Mit viel Liebe zum Detail, Einfühlungsvermögen, einem hohen Maß an Perfektion und Ihrer Mitarbeit erreichen wir gemeinsam das gesteckte Ziel. Seit 13 Jahren bin ich als Fachärztin für Kieferorthopädie tätig, wovon ich 7 Jahre in eigener Praxis praktiziert habe. In dieser Zeit habe ich viele zufriedene Kinder, Familien und Erwachsene mit meinem ganzheitlichen Therapiekonzept betreut.",
+      "Dank meiner langjährigen Erfahrung verfüge ich über eine umfassende Kompetenz, insbesondere in der Anwendung von Invisalign-Schienen und der lingualen Zahnspange (WIN). Meine Arbeitsweise zeichnet durch einen hohen Qualitätsanspruch und einem starken Verantwortungsbewusstsein gegenüber meinen Patienten aus. Ich schätze die kollegiale Zusammenarbeit und freue mich sehr in einem großen Team voller großartiger Spezialist:innen arbeiten zu dürfen, damit wir für unsere Patienten die bestmöglichen Behandlungen anbieten können!",
+      "Ich freue mich darauf, Sie bei KU64 begrüßen zu dürfen!"
+    ],
     "abschnitte": [
       {
         "titel": "beruflicher werdegang",
@@ -703,49 +1046,13 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-heike-hoppe-zirbs/"
   },
-  "dr-karin-loeer": {
-    "name": "Dr. Karin Löer",
-    "funktion": "zertifizierte Zahnärztin für Zahnästhetik",
-    "abschnitte": [
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "Zahnästhetik",
-          "Prothetik"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "Dissertation an der Christian-Albrechts-Universität zu Kiel:",
-        "zeilen": [
-          "„Untersuchungen zum Zusammenhang von Zahnbehandlungsangst und Mundgesundheit mit generalisierter Angst, Ängstlichkeit und anderen psychpathologischen Symptomen bei Patienten einer Zahnarztpraxis“"
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Mitgliedschaften",
-        "zeilen": [
-          "Deutsche Gesellschaft für Ästhetische Zahnheilkunde e.V. (DGÄZ)",
-          "American Academy of Cosmetic Dentistry (AACD)"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "1997 ‒ Approbation als Zahnärztin an der Universität Hamburg",
-          "1997 - 1999 ‒ Assistenzzeit in Hamburger Praxis",
-          "1999 - 2011 ‒ selbstständige Zahnärztin in Hamburger Gemeinschaftspraxis",
-          "2006 - 2007 ‒ zertifizierte Zahnärztin für Zahnästhetik – Weiterbildendes Studium in ästhetischer Zahnheilkunde an der New York University und Erlangen des „Certificate of Esthetic Dentistry (NYU)“."
-        ],
-        "alsListe": true
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/dr-karin-loeer/"
-  },
   "dr-isabella-piekos": {
     "name": "Dr. Isabella Piekos",
     "funktion": "Fachzahnärztin für Kieferorthopädie",
+    "vorstellung": [
+      "Jahrgang 1977",
+      "Ein interdisziplinäres Behandlungskonzept ist mir außerordentlich wichtig und ist für den Behandlungserfolg unabdingbar. Dabei arbeite ich eng mit Zahnärzten, MKG-Chirurgen, HNO-Ärzten, Logopäden, Physiotherapeuten und weiteren Spezialisten zusammen."
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -799,6 +1106,13 @@
   "dr-jana-huesch": {
     "name": "Dr. Jana Hüsch",
     "funktion": "Zahnärztin mit Schwerpunkt Endodontologie",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "Ich bin begeistert, Teil der KU64-Praxisfamilie zu sein, wo ich meine Expertise in der Endodontie auf höchstem Niveau einbringen kann. Mein Interesse an der mikroskopischen Endodontie wurde während meiner Assistenzarztzeit in Hamburg geweckt. Im Sommer 2020 absolvierte ich daraufhin erfolgreich das Curriculum Endodontie und entwickelte eine tiefe Leidenschaft für dieses Fachgebiet. Im Anschluss folgte dann 2021 eine ästhetische Weiterbildung in Form des Curriculums ästhetische Zahnmedizin.",
+      "Als Zahnärztin sehe ich kontinuierliche Fortbildung als unerlässlich an, um qualitativ hochwertige Behandlungen auf dem neuesten Stand der Forschung zu bieten. Aus diesem Grund habe ich mich entschieden, meinen Fokus vollständig auf die Endodontie zu legen und einen Masterstudiengang in diesem Fach an der Düsseldorfer Dental Academy zu absolvieren, den ich im Juni 2024 abschließen werde.",
+      "Ich bin äußerst motiviert, in einem freundlichen und hochkompetenten Team zu arbeiten, dass das gesamte Spektrum der Zahnmedizin abdeckt. Dabei steht für mich insbesondere der interdisziplinäre Austausch auf höchstem Niveau im Vordergrund, um unseren Patienten die bestmögliche Behandlung bieten zu können. Ein einfühlsamer und respektvoller Umgang mit den Patienten ist für mich von höchster Bedeutung.",
+      "Ich freue mich darauf, Sie bei KU64 begrüßen zu dürfen!"
+    ],
     "abschnitte": [
       {
         "titel": "Weiterbildungen:",
@@ -816,9 +1130,108 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-jana-huesch/"
   },
+  "dr-jonathan-botmann": {
+    "name": "Dr. Jonathan Botmann",
+    "funktion": "Zahnarzt für Allgemeine & Ästhetische Zahnmedizin, Implantologie (i.A.)",
+    "vorstellung": [
+      "Liebe Patientinnen & Patienten,",
+      "schön, dass Sie hier sind – und danke, dass Sie sich die Zeit nehmen, mich etwas näher kennenzulernen.",
+      "Ich bin Zahnarzt geworden, weil mich zwei Dinge antreiben: die Freude an präziser, moderner Zahnmedizin und die Begeisterung dafür, Menschen wirklich zu helfen. Mir liegt viel daran, dass Sie sich gesehen, verstanden und ernst genommen fühlen. Eine gute Behandlung entsteht für mich immer aus einem offenen Gespräch, einem klaren Konzept und echter Zusammenarbeit – zwischen Ihnen, mir und unserem Behandlungsteam.",
+      "Während meiner bisherigen Tätigkeit in mehreren Berliner Zahnarztpraxen habe ich erlebt, wie wichtig eine klare, transparente Kommunikation ist. Ich nehme mir gerne Zeit, um Ihnen jeden Schritt verständlich zu erklären und gemeinsam mit Ihnen Entscheidungen zu treffen, die sowohl medizinisch sinnvoll als auch persönlich stimmig sind. Eine hochwertige Behandlung bedeutet für mich nicht nur Fachkompetenz, sondern auch Ruhe, Vertrauen und ein respektvoller Umgang.",
+      "Ich arbeite strukturiert, modern und mit viel Geduld – und ich liebe es, zusammen mit meinen Patientinnen und Patienten Lösungen zu entwickeln, die langfristig funktionieren und gleichzeitig ästhetisch überzeugen. Denn ein wirklich gutes Ergebnis entsteht nur dann, wenn wir als Team arbeiten.",
+      "Was hat Ihnen bei Ihrem letzten Zahnarzt gefehlt?",
+      "Erzählen Sie es mir – ich höre zu, nehme Ihre Wünsche ernst und finde gemeinsam mit Ihnen den passenden Weg.",
+      "Kennenlerntermine finden Sie online unter:",
+      "Ich freue mich auf Sie",
+      "Meine fachlichen Schwerpunkte",
+      "Ästhetische Zahnmedizin",
+      "Ich habe meine Expertise durch spezialisierte Weiterbildungen gezielt geschärft.",
+      "Die ästhetische Zahnheilkunde ist ein Bereich, der mir besonders am Herzen liegt.",
+      "Dazu gehören:",
+      "hochwertige ästhetische Kompositrestaurationen",
+      "schonende Form- und Farbkorrekturen",
+      "ästhetische Frontzahnbehandlungen",
+      "minimalinvasive Konzepte für natürliche, harmonische Ergebnisse",
+      "Allgemeine, konservierende Zahnheilkunde & Prothetik",
+      "Mein tägliches Behandlungsspektrum umfasst:",
+      "Kariesbehandlung & Zahnerhaltung",
+      "Füllungstherapien und minimalinvasive Maßnahmen",
+      "hochwertige, ästhetische Keramikversorgungen (Veneers, No-Prep-Veneers, Inlays und Kronen)",
+      "funktionelle, ästhetische Gesamtkonzepte",
+      "langfristige, nachhaltige Mundgesundheitsstrategien",
+      "umfassende Diagnostik und verständliche Beratung",
+      "Digitale Diagnostik (DVT Fachkunde)",
+      "Moderne Behandlung beginnt mit moderner Diagnostik. Mit der erworbenen DVT-Sach- und Fachkunde kann ich komplexe Situationen dreidimensional beurteilen und Behandlungen präziser planen.",
+      "Invisalign / Alignertherapie",
+      "Für unauffällige Zahnkorrekturen setze ich transparente Schienen ein – ideal für Patienten, die Wert auf Ästhetik und Flexibilität legen.",
+      "Implantologie (in Weiterbildung)",
+      "Derzeit erweitere ich meine implantologische Kompetenz durch ein umfassendes Curriculum. Ziel ist es, meine Patientinnen und Patienten noch vollständiger auf ihrem Weg zu funktionellen und ästhetischen Lösungen nach Zahnverlust zu begleiten – von der Planung bis zur Versorgung.",
+      "Wie ich arbeite",
+      "Zuhörend, einfühlsam & transparent",
+      "Ich möchte, dass Sie jederzeit wissen, wo wir stehen und welche Optionen Sie haben. Gemeinsam entwickeln wir eine Therapie, die zu Ihnen passt – fachlich, funktional und menschlich.",
+      "Moderne, strukturierte Arbeitsweise",
+      "Ich kombiniere aktuelle wissenschaftliche Erkenntnisse mit klaren Abläufen und hochwertigem Handwerk. Qualität und Präzision stehen für mich an erster Stelle.",
+      "Teamwork & positive Atmosphäre",
+      "Eine erfolgreiche Praxis funktioniert nur mit gegenseitiger Unterstützung – im Team und gemeinsam mit den Patienten. Ich schätze offene Kommunikation, Zusammenarbeit auf Augenhöhe und ein respektvolles Miteinander.",
+      "Mein Hintergrund",
+      "Ich habe Zahnmedizin an der Sigmund Freud Privatuniversität Wien studiert und davor bereits ein Bachelorstudium in Humanmedizin mit Schwerpunkt Zahnmedizin abgeschlossen. Meine Ausbildung hat mir nicht nur fundiertes Fachwissen vermittelt, sondern auch die Freude am lebenslangen Lernen.",
+      "Mehrere Fortbildungen – unter anderem in ästhetischer Zahnmedizin, DVT-Diagnostik und Implantologie – bilden das Fundament meiner modernen, qualitätsorientierten Arbeitsweise. Zudem spreche ich neben Deutsch auch Englisch, Russisch und Hebräisch fließend und kann so viele Menschen sprachlich direkt erreichen."
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-jonathan-botmann/"
+  },
+  "dr-karin-loeer": {
+    "name": "Dr. Karin Löer",
+    "funktion": "zertifizierte Zahnärztin für Zahnästhetik",
+    "vorstellung": [
+      "Mein besonderes Interesse gilt der ästhetischen Zahnheilkunde. Das Verschönern eines Lächelns mit Hilfe von Veneers, No-Prep-Veneers und Keramikrestaurationen ist meine Leidenschaft.",
+      "Ich unterhalte mich gerne mit Ihnen auf Englisch."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "Zahnästhetik",
+          "Prothetik"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "Dissertation an der Christian-Albrechts-Universität zu Kiel:",
+        "zeilen": [
+          "„Untersuchungen zum Zusammenhang von Zahnbehandlungsangst und Mundgesundheit mit generalisierter Angst, Ängstlichkeit und anderen psychpathologischen Symptomen bei Patienten einer Zahnarztpraxis“"
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Mitgliedschaften",
+        "zeilen": [
+          "Deutsche Gesellschaft für Ästhetische Zahnheilkunde e.V. (DGÄZ)",
+          "American Academy of Cosmetic Dentistry (AACD)"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "1997 ‒ Approbation als Zahnärztin an der Universität Hamburg",
+          "1997 - 1999 ‒ Assistenzzeit in Hamburger Praxis",
+          "1999 - 2011 ‒ selbstständige Zahnärztin in Hamburger Gemeinschaftspraxis",
+          "2006 - 2007 ‒ zertifizierte Zahnärztin für Zahnästhetik – Weiterbildendes Studium in ästhetischer Zahnheilkunde an der New York University und Erlangen des „Certificate of Esthetic Dentistry (NYU)“."
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-karin-loeer/"
+  },
   "dr-maike-bauer": {
     "name": "Dr. Maike Bauer",
     "funktion": "Zahnärztin für Prothetik & ästhetische Zahn­medizin",
+    "vorstellung": [
+      "Lieber Patient, liebe Patientin,",
+      "ich freue mich Sie bei KU64 in unserer Filiale Berlin-Mitte (Hausvogteiplatz 14) begrüßen zu dürfen.",
+      "Meine Tätigkeitsschwerpunkte umfassen sowohl die Zahnerhaltung, als auch den Zahnersatz. Mit Hilfe modernster Techniken und minimalinvasivem Vorgehen können wir Ihnen zu Ihrem gewünschten Behandlungsergebnis verhelfen. Hochwertige Keramikkronen und unsichtbare Kompositfüllungen werden stets auf höchstem wissenschaftlichen, sowie technischen Stand hergestellt. Hierbei legen wir großen Wert auf das optimale Zusammenspiel von Ästhetik, Funktion und Qualität. Fehlende Zähne können mit künstlichen Zahnwurzeln (Implantaten) ersetzt werden, sodass Ästhetik und Kaufunktion wiederhergestellt werden können. Bei Beschwerden im Bereich der Kiefergelenke und Kaumuskulatur berate ich Sie gerne. Gemeinsam bespreche ich mit Ihnen die unterschiedlichen Behandlungsmethoden und erstelle für Sie Ihren individuell passenden Behandlungsplan."
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -844,58 +1257,17 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-maike-bauer/"
   },
-  "mohamed-abudrya": {
-    "name": "Dr. Mohamed Abudrya M.Sc.",
-    "funktion": "Kinder- und Jugendzahnarzt",
-    "abschnitte": [
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "07/2021-11/2022 – Zahnarztpraxis für Kinder- und Jugendzahnheilkunde, Hannover",
-          "10/2020 – 07/2021 – Wissenschaftlicher Mitarbeiter: Abteilung Präventive Zahnmedizin und Kinderzahnheilkunde, Zentrum für Zahn- Mund- und Kieferheilkunde (ZZMK), Universitätsmedizin, Greifswald",
-          "08/2017 – 09/2020 – Kinderzahnarzt in postgradualer Weiterbildung (M.Sc. Kinderzahnheilkunde) Abt. Präventive Zahnmedizin und Kinderzahnheilkunde, ZZMK Universitätsmedizin Greifswald",
-          "10/2015 – 06/2016 – Zahnarzt/Tutor: Abteilung für Kinderzahnheilkunde, Universität Pharos, Alexandria (Ägypten)",
-          "09/2009 – 07/2014 – Bachelor der Mund- und Zahnmedizin und Chirurgie, Pharos Universität in Alexandria (Ägypten)",
-          "3/2026 – Promotion und Erlangung des Doktor-Titels der Zahnmedizin „dr. med. dent.“ zum Thema „Efficacy of Different Fluoride Therapies on Hypersensitive Carious Lesions in Primary Teeth: A Clinical Comparative Double-Cohort Study“"
-        ],
-        "alsListe": false
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/mohamed-abudrya/"
-  },
-  "dr-silvia-munoz": {
-    "name": "Dr. med. dent. Silvia Muñoz",
-    "funktion": "Zahnärztin für Prothetik & ästhetische Zahn­medizin",
-    "abschnitte": [
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "Ästhetisch hochanspruchsvolle „unsichtbare“ Kompositfüllungen im Front- und Seitenzahnbereich",
-          "Hochwertige Keramikfüllungen (Inlay, Onlays)",
-          "Zahnerhaltung und prothetischer Zahnersatz (Kronen, Teilkronen, Brücken, Implantatkronen)",
-          "Individuelles „perfektes Lachen“ durch minimalinvasive Veneers",
-          "Gerne berate ich auch Sie für ein perfektes Lachen, auch in englisch oder spanisch."
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "2008 – 2013 ‒ Studium der Zahnmedizin an der Georg-August Universität Göttingen",
-          "2014 – 2016 ‒ Assistenzzeit in Berlin, Tegel und Charlottenburg",
-          "2015 – Promotion an der Georg-August Universität Göttingen",
-          "2017 – 2020 ‒ Angestellte Zahnärztin in einer Privatpraxis in Berlin als Spezialistin für Ästhetische Zahnmedizin, Prothetik und Funktion",
-          "Seit 2021 ‒ Zahnärztin im Team von KU64 in unserer Filiale Berlin-Mitte (Hausvogteiplatz 14) als Spezialistin für Ästhetische Zahnmedizin",
-          "Seit 2022 ‒ Erfolgreicher Abschluss des Cuririculums „Ästhetische Zahnmedizin“ der Deutschen Gesellschaft für Ästhetische Zahnmedizin e.V. (DGÄZ) und der Akademie Praxis und Wissenschaft in der DKZMK"
-        ],
-        "alsListe": false
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/dr-silvia-munoz/"
-  },
   "dr-med-dent-eric-paul-oehme": {
     "name": "Dr. med. dent. Eric Paul Oehme M.Sc. M.Sc.",
     "funktion": "Zahnarzt für allgemeine Zahnmedizin & Zahnästhetik",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "schon von Kindheit an habe ich mich leidenschaftlich für Technik und Ästhetik interessiert. So habe ich mich damals früh entschlossen, ein Studium der Zahnmedizin zu beginnen. Schon während meines Studiums galt mein Hauptaugenmerk der ästhetisch-rekonstruktiven Zahnmedizin. Deshalb bin ich stets motiviert, mich durch Fortbildungen und wissenschaftliche Fachliteratur auf den aktuellen Stand zu bringen.",
+      "Mit viel Empathie und Einfühlungsvermögen möchte ich mit Ihnen ein individuelles ganzheitliches Behandlungskonzept entwickeln, welches eine Symbiose aus Funktionalität, Gesundheit und Ästhetik bietet.",
+      "Ich habe meine fachliche Kompetenz durch zwei Masterstudiengänge vertieft – in „Implantologie und zahnärztlicher Chirurgie“ an der Universität Duisburg-Essen sowie in „Ästhetik und restaurativer Zahnheilkunde“. Diese Ausbildung ermöglicht es mir, ästhetische Ansprüche und funktionelle Präzision in meiner täglichen Arbeit optimal zu vereinen.",
+      "Besonders durch die Implantologie und die Möglichkeit der Einzelzahnversorgung kann die Rekonstruktion von Zahnersatz deutlich minimalinvasiver erfolgen, ohne zusätzlich gesunde Zahnhartsubstanz zu entfernen.",
+      "Ich freue mich, Sie bei KU64 am Kurfürstendamm 64 in Charlottenburg begrüßen zu dürfen."
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -950,6 +1322,10 @@
   "dr-sabine-gousetis": {
     "name": "Dr. Sabine Gousetis",
     "funktion": "Spezialistin für Endodontologie der DGET",
+    "vorstellung": [
+      "Aufgrund meines mehrjährigen Amerikaaufenthaltes bin ich mit der englischen Sprache sehr vertraut. Vereinbaren Sie einen Termin bei Endodontologin Dr. Sabine Gousetis telefonisch unter 030-8647320 oder schnell und unkompliziert online hier:",
+      "Jetzt Beratungstermin online vereinbaren oder fragen Sie einfach per E-Mail unter info@ku64.de an – wir melden uns gerne zurück!"
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -991,9 +1367,50 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/dr-sabine-gousetis/"
   },
+  "dr-silvia-munoz": {
+    "name": "Dr. med. dent. Silvia Muñoz",
+    "funktion": "Zahnärztin für Prothetik & ästhetische Zahn­medizin",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten,",
+      "ich freue mich Sie bei KU64 in unserer Filiale Berlin-Mitte (Hausvogteiplatz 14) begrüßen zu dürfen!",
+      "Unseren Patienten schnell, kompetent und schmerzfrei ein schönes Lächeln zu verschaffen ist meine Leidenschaft. Um diese Harmonie aus Funktion, Komfort und Schönheit täglich auf höchstem Qualitätsstandart vermitteln zu können, habe ich mich in den letzten Jahren intensiv mit der Kunst der Ästhetischen Zahnmedizin beschäftigt. Umfangreiche Rekonstruktionen des Bisses möglichst minimalinvasiv durchzuführen und dabei eine individuelle, an der Natur orientierten Ästhetik zu schaffen, zählt zu meinen Schwerpunkten."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "Ästhetisch hochanspruchsvolle „unsichtbare“ Kompositfüllungen im Front- und Seitenzahnbereich",
+          "Hochwertige Keramikfüllungen (Inlay, Onlays)",
+          "Zahnerhaltung und prothetischer Zahnersatz (Kronen, Teilkronen, Brücken, Implantatkronen)",
+          "Individuelles „perfektes Lachen“ durch minimalinvasive Veneers",
+          "Gerne berate ich auch Sie für ein perfektes Lachen, auch in englisch oder spanisch."
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "2008 – 2013 ‒ Studium der Zahnmedizin an der Georg-August Universität Göttingen",
+          "2014 – 2016 ‒ Assistenzzeit in Berlin, Tegel und Charlottenburg",
+          "2015 – Promotion an der Georg-August Universität Göttingen",
+          "2017 – 2020 ‒ Angestellte Zahnärztin in einer Privatpraxis in Berlin als Spezialistin für Ästhetische Zahnmedizin, Prothetik und Funktion",
+          "Seit 2021 ‒ Zahnärztin im Team von KU64 in unserer Filiale Berlin-Mitte (Hausvogteiplatz 14) als Spezialistin für Ästhetische Zahnmedizin",
+          "Seit 2022 ‒ Erfolgreicher Abschluss des Cuririculums „Ästhetische Zahnmedizin“ der Deutschen Gesellschaft für Ästhetische Zahnmedizin e.V. (DGÄZ) und der Akademie Praxis und Wissenschaft in der DKZMK"
+        ],
+        "alsListe": false
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/dr-silvia-munoz/"
+  },
   "dr-stephan-ziegler": {
     "name": "Dr. Stephan Ziegler",
     "funktion": "Geschäftsführender Gründungspartner",
+    "vorstellung": [
+      "der Zahnarztpraxis KU64 am Kurfürstendamm 64",
+      "[zum rundgang",
+      "durch KU64]",
+      "„Mit Digital Smile Design  schaffen wir eine  perfekte Harmonie  zwischen Gesicht, Lippen  und Zähnen.“"
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -1056,6 +1473,14 @@
   "dr-surian-herrmann": {
     "name": "Dr. Surian Herrmann",
     "funktion": "Fachzahnarzt für Oralchirurgie mit Schwerpunkt Implantologie & Leiter der Oralchirurgie",
+    "vorstellung": [
+      "Jahrgang 1988",
+      "Schon während meines Studiums erwachte meine Leidenschaft für die Oralchirurgie, ein Bereich, dem ich seitdem mit Hingabe und Engagement nachgehe.",
+      "Mein Fokus liegt nicht nur auf der Anwendung meines chirurgischen Wissens, sondern auch darauf, die Behandlung so angenehm wie möglich für meine Patienten zu gestalten. Neben bewährten Verfahren zur Schmerzausschaltung wie Oberflächenanästhesie (Vorbetäubung) vor der Lokalanästhesie, bieten wir auch die Möglichkeit größere Eingriffe in Vollnarkose oder Sedierung durchzuführen. Dabei steht stets die individuelle Betreuung im Vordergrund und ich bemühe mich, auf die spezifischen Bedürfnisse jedes Patienten einzugehen.",
+      "Meine Schwerpunkte liegen insbesondere in der sicheren Versorgung von Zahnlücken mit Implantaten, der Aufbau des Kieferknochens oder die Versorgung von zahnlosen/teilbezahnten Kiefern durch implantatgetragene Prothesen mit dem All-On 4 Konzept (Zahnersatz an einem Tag). Durch innovative Verfahren, wie die Sofortimplantation mit Sofortversorgung im ästhetischen Bereich kann ich Ihnen die Entfernung von Zähnen ermöglichen, ohne, dass Sie die Praxis mit einer Zahnlücke und somit ohne Ihr Lächeln verlassen müssen. Lästige Provisorien im Fronzahnbereich gehören somit der Vergangenheit an.",
+      "Ihr strahlendes Lächeln ist unsere Motivation – vereinbaren Sie noch heute einen Termin für eine individuelle Beratung.",
+      "Wir freuen uns darauf, Sie bei uns in der oralchirurgischen Abteilung willkommen zu heißen."
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -1076,6 +1501,11 @@
   "edin-plavsic": {
     "name": "Edin Plavsic",
     "funktion": "Dentalhygieniker, Bachelor of Science Dentalhygiene und Präventionsmanagement, B.Sc.",
+    "vorstellung": [
+      "Ich liebe die Herausforderung, erwachsene Patienten hinsichtlich ihrer Mundhygiene beraten und behandeln zu können. Durch Aufklärung inklusive Mundhygienetipps sowie eine fundierte Behandlung helfe ich Ihnen gerne dabei, Ihre Zähne ein Leben lang gesund zu erhalten.",
+      "Ich freue mich auf Ihren Besuch!",
+      "Ihr Edin Plavsic"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -1092,9 +1522,29 @@
     ],
     "quelle": "https://ku64.de/team/dentalhygieniker/edin-plavsic/"
   },
+  "emma-gloria-findeisen": {
+    "name": "Emma-Gloria Findeisen",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin und Bleachingspezialistin",
+    "vorstellung": [
+      "Herzlich willkommen bei KU64!",
+      "Ich bin Ihre persönliche Zahnfee und bereit, Ihre Mundhygieneträume Wirklichkeit werden zu lassen. Mit über 8 Jahren Erfahrung in der Zahnmedizin und seit 2020 als Prophylaxeassistentin bringe ich frischen Wind und fundiertes Know-how mit.",
+      "Ich trage auch dazu bei, dass wir bei KU64 mehr Prophylaxetermine als je zuvor anbieten können, damit Ihre Zähne in vollem Glanz erstrahlen! Mit einem Team von 30 hochqualifizierten Dentalhygieniker:innen und Prophylaxeassistent:innen ist KU64 die Top-Adresse für professionelle Mundhygiene.",
+      "Telefonisch unter 030-8647320",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen und gemeinsam für die Gesundheit Ihrer Zähne zu sorgen!",
+      "P.S. Übrigens, wir suchen weitere Prophylaxe-Talente für unser Team! Schick uns deinen Lebenslauf an bewerbung@ku64.de und werde Teil unserer #Prophylaxepowerfrauen!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching/emma-gloria-findeisen/"
+  },
   "erny-grundmann": {
     "name": "Erny Grundmann, MPH, M.Sc.",
     "funktion": "Kinder- und Jugendzahnärztin",
+    "vorstellung": [
+      "Mit Kindern zu arbeiten ist seit meinem Studium der Zahnmedizin meine große Leidenschaft. Ich pflege mit Kindern einen offenen und ehrlichen Umgang, und nehme ihre Empfindungen und Ängste sehr ernst. Eine gute Zusammenarbeit auch mit deren Eltern liegt mir für das Wohl der Kinder besonders am Herzen. Mir ist es wichtig, das Vertrauen Ihrer Kinder zu gewinnen und sie in ihrer individuellen Situation abzuholen.",
+      "Mein oberstes Ziel ist es, den Kindern so eine bestmögliche Behandlung zu bieten.",
+      "Gerne unterhalte ich mich auch mit Ihnen auf Englisch und Indonesisch.",
+      "Ich freue mich auf Ihr Kind und bin gerne für Sie da!"
+    ],
     "abschnitte": [
       {
         "titel": "Auszüge aus der Fortbildungs­reihe",
@@ -1165,9 +1615,60 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/erny-grundmann/"
   },
+  "eugenia-nicoleta-dutu": {
+    "name": "Eugenia Nicoleta Dutu",
+    "funktion": "Zahnmedizinische Fachangestellte",
+    "vorstellung": [
+      "Jahrgang 1991",
+      "Herzlich willkommen auf meiner Seite!",
+      "Meine Reise als zahnmedizinische Fachangestellte begann im August 2019 direkt hier bei KU64, und seitdem bin ich mit voller Leidenschaft Teil des Teams der Zahnärztin für Zahnästhetik, Samaneh Salehipour. Bei KU64 habe ich nicht nur meine Ausbildung erfolgreich abgeschlossen, sondern auch wunderbare Kollegen gefunden, die längst mehr sind als nur Teammitglieder – sie sind meine geschätzte Gemeinschaft.",
+      "Die tägliche Zusammenarbeit mit Menschen und die Möglichkeit, dies als Teil eines großartigen Teams zu tun, erfüllen mich mit überwältigender beruflicher Zufriedenheit. Es war schon immer mein Traum, Menschen so nah zu kommen und ihnen bei ihrer Zahngesundheit zu helfen, und bei KU64 wird dieser Traum wahr.",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen und gemeinsam an Ihrer Zahngesundheit zu arbeiten.",
+      "Auf bald! Ich freue mich auf Sie 🙂"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/"
+  },
+  "eva-caspers": {
+    "name": "Eva Caspers",
+    "funktion": "Dentalhygienikerin",
+    "vorstellung": [
+      "Jahrgang 1986",
+      "Liebe KU64-Patientinnen und Patienten,",
+      "herzlich willkommen auf meinem Profil.",
+      "Nach meiner zwölfjährigen Dienstzeit bei der Bundeswehr freue ich mich sehr, Teil des KU64-Teams zu sein. In den vergangenen Jahren war ich in der Filiale am Kurfürstendamm tätig, seit Dezember 2025 verstärke ich das Team der KU64-Filiale in Berlin-Mitte.",
+      "Mein Tätigkeitsschwerpunkt liegt in der lebenslangen Betreuung unserer Patientinnen und Patienten im Bereich der zahnmedizinischen Prävention und begleitenden Therapie. Dank moderner Diagnostik können Erkrankungen heute frühzeitig erkannt und effektiv aufgehalten werden. Dabei arbeite ich mit neuesten Technologien und Materialien auf höchstem wissenschaftlichem Niveau.",
+      "Ein besonderes Anliegen ist mir die Guided Biofilm Therapie, die von unseren Patientinnen und Patienten sehr geschätzt wird. Moderne Prophylaxe- und Therapiekonzepte ermöglichen heute eine besonders sanfte, schonende und angenehme Behandlung – stets zum Wohle unserer Patientinnen und Patienten.",
+      "Meine tägliche Motivation ist es, Menschen ein gesundes Lächeln zu schenken und langfristig für gesunde Zähne und gesundes Zahnfleisch zu sorgen. Ein besonderer Fokus meiner Arbeit liegt auf der Prävention und Behandlung von Zahnfleischerkrankungen, denn gesundes Zahnfleisch ist die Grundlage für den dauerhaften Erhalt der Zähne. Selbstverständlich gehe ich dabei individuell auf die Bedürfnisse und Herausforderungen jeder einzelnen Patientin und jedes einzelnen Patienten ein.",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen.",
+      "Ihre Dentalhygienikerin,",
+      "BERUFLICHER WERDEGANG",
+      "2005-2008 Ausbildung zur Zahnmedizinischen Fachangestellte/ZFA ( in Hessen)",
+      "2008-2020 Laufbahn einer Berufssoldatin im Sanitätsdienst der Zahnmedizin in diversen Zahnarztgruppen und verschiedenen Standorten",
+      "2015 Aufstiegsfortbildung zur Zahnmedizinischen Verwaltungsassistentin/ZMV",
+      "2016 Bundeswehrkrankenhaus Berlin als Stuhlassistenz in der Oralchirurgie",
+      "2017 Gutachter in Schwielowsee",
+      "2018-2020 Prophylaxeassistentin im Standort Gatow",
+      "2021-2024 Nach Ausscheiden aus der Bundeswehr seit 01/2021 bei KU64 im Prophylaxe Team. Erfolgreicher Abschluss der Ausbildung zur ZMP Zahnmedizinische Prophylaxeassistentin",
+      "2023-2024 Erfolgreicher Abschluss der Aufstiegsfortbildung zur Dentalhygienikerin",
+      "2025 Dentalhygienikerin bei der Bundeswehr",
+      "seit Dez 2025 im Team von KU64 BERLIN-MITTE"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/dentalhygieniker/eva-caspers/"
+  },
   "huyen-nguyen-dieu": {
     "name": "Huyen Nguyen-Dieu",
     "funktion": "Zahnmedizinische Fachangestellte & Bleachingspezialistin",
+    "vorstellung": [
+      "Ich bin Huyen – mit Herz, Präzision und einem sicheren Gespür für Ästhetik bin ich bei KU64 für Sie da.",
+      "Nach meinem Abschluss zur Zahnmedizinischen Fachangestellten habe ich schnell meine Leidenschaft für die feinen Details der Endodontologie entdeckt. Seit vielen Jahren unterstütze ich mit Erfahrung, Sorgfalt und Einfühlungsvermögen Zahnarzt Nils Radsack bei der Behandlung in diesem sensiblen Fachbereich.",
+      "Doch mein Können endet nicht an der Wurzelspitze: Seit über fünf Jahren bin ich zusätzlich als Bleachingspezialistin tätig – mit dem Ziel, Ihren Zähnen ein gesundes, natürlich strahlendes Weiß zu verleihen.",
+      "Was Sie bei mir erwartet? Ruhe, Präzision, ein Lächeln – und eine Atmosphäre, in der Sie sich wohlfühlen können.",
+      "Ich freue mich darauf, Sie bei KU64 willkommen zu heißen und Ihnen vielleicht schon bald ein funkelnagelneues Lächeln zu zaubern!",
+      "Herzlich,Ihre Huyen Nguyen Dieu",
+      "Kontakt aufnehmen"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Nguyen-Dieu:",
@@ -1206,6 +1707,15 @@
   "ievgeniia-nevzgoda": {
     "name": "Ievgeniia Nevzgoda",
     "funktion": "Zahnärztin & Prophylaxeexpertin",
+    "vorstellung": [
+      "Herzlich willkommen!",
+      "Als ausgebildete Zahnärztin mit zusätzlicher deutscher Qualifikation im Bereich Prophylaxe verbinde ich fundierte klinische Expertise mit moderner, präventionsorientierter Zahnmedizin. Mein Schwerpunkt liegt auf strukturierter, sanfter und nachhaltiger Prophylaxe auf hohem fachlichen Niveau.",
+      "Nach meinem Studium der Zahnmedizin in Kiew und mehrjähriger Tätigkeit in der ästhetischen und prothetischen Zahnmedizin gründete ich 2019 meine eigene Zahnarztpraxis mit Fokus auf ästhetische und rekonstruktive Versorgung.",
+      "Heute spezialisiere ich mich bewusst auf professionelle Prophylaxe- und Parodontalkonzepte im deutschen Gesundheitssystem – mit dem Anspruch, Funktion, Ästhetik und langfristige Mundgesundheit optimal zu verbinden.",
+      "Ich betreue Sie gerne auf Deutsch, Englisch, Ukrainisch, Polnisch, Italienisch und Russisch.",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen.",
+      "Terminvereinbarung: 030 – 864 73 20"
+    ],
     "abschnitte": [
       {
         "titel": "werdegang",
@@ -1231,61 +1741,35 @@
     ],
     "quelle": "https://ku64.de/team/prophylaxe/ievgeniia-nevzgoda/"
   },
-  "janna-mitscherling": {
-    "name": "Janna Mitscherling-Baumgartner",
-    "funktion": "Zahnärztin Master of Science Kieferorthopädie Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie (aktuell in Mutterschutz)",
-    "abschnitte": [
-      {
-        "titel": "Werdegang von Frau Janna Mitscherling:",
-        "zeilen": [
-          "2011 – Abitur",
-          "2012 – 2017 – Studium der Zahnheilkunde an der Charité- Universitätsmedizin Berlin",
-          "2017 – Approbation als Zahnärztin",
-          "seit 2017 – kieferorthopädische Tätigkeit in Berlin und Brandenburg",
-          "2018 – 2021 – Weiterbildung zum Master of Science Kieferorthopädie an der Danube Private University Krems, Österreich",
-          "seit 2019 – allgemeinzahnärztliche Tätigkeit in Berlin Westend",
-          "seit 2020 – Arbeit an einer Promotion an der Charité- Universitätsmedizin Charité Abteilung für Kieferorthopädie"
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Schwerpunkte",
-        "zeilen": [
-          "Ganzheitliche Kieferorthopädie von Kindern, Jugendlichen und Erwachsenen mit herausnehmbaren und festsitzenden Apparaturen",
-          "Unsichtbare Kieferorthopädie Lingualtechnik und durchsichtige Zahnschienen (Alignern)",
-          "CMD-Behandlungen Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie",
-          "Kiefergelenksdiagnostik Klinische Funktionsanalyse und Manuelle Strukturanalyse",
-          "Funktionskieferorthopädie",
-          "Faceformer Behandlungen",
-          "Individueller Sportmundschutz",
-          "Prä- und postchirurgische Kieferorthopädie",
-          "Präprothetische Kieferorthopädie"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "Aktuelle Fortbildungen:",
-        "zeilen": [
-          "Zertifizierte Invisalign Anwenderin",
-          "DVT Fachkunde",
-          "CMD Curriculum unter der Leitung Prof. Axel Bumann"
-        ],
-        "alsListe": true
-      },
-      {
-        "titel": "Mitgliedschaften in Gesellschaften, Arbeitskreisen und Verbänden",
-        "zeilen": [
-          "DGZMK",
-          "GMSCKFO"
-        ],
-        "alsListe": true
-      }
+  "ina-lehmann": {
+    "name": "Ina Lehmann",
+    "funktion": "Assistentin der KU64-Geschäftsleitung und Leitung Rezeption, Telefon & Patientenservice",
+    "vorstellung": [
+      "Wer KU64 kennt, kennt auch Ina. Seit 2008 ist sie Teil des Teams – und längst eine feste Größe im Herzen der Praxis: dem Empfang!",
+      "Vom Behandlungszimmer und der Verwaltung bis zur Buchhaltung – Ina hat (fast) alles gesehen und gemeistert. Als vielseitige ZFA, Rezeptionistin mit Überblick und in den letzten Jahren als souveräne Meisterin unserer Buchhaltung. Seit September 2013 ist sie auch die treue Assistentin der KU64-Geschäftsleitung. Heute leitet sie mit Herz, Verstand und ganz viel Erfahrung den Bereich Rezeption & Patientenservice.",
+      "Was sie genau macht?",
+      "Alles, was dafür sorgt, dass Dein Besuch bei KU64 reibungslos, freundlich und stressfrei abläuft. Sie plant, koordiniert, organisiert, hört zu, denkt mit und sorgt dafür, dass ihr Team täglich Höchstleistungen bringt – ganz ohne Drama, dafür mit echter Leidenschaft.",
+      "Ina in drei Worten?",
+      "Herzlich. Strukturiert. Unersetzlich.",
+      "„Mein Ziel ist es, dass sich jede:r vom ersten Moment an willkommen fühlt – mit ehrlicher Freundlichkeit, klarer Kommunikation und dem Gefühl: Hier bin ich gut aufgehoben.“",
+      "Kleiner Hinweis in eigener Sache:",
+      "Ina sucht Verstärkung fürs Empfangsteam!",
+      "Sie sind ZFA, MFA oder ein motivierter Quereinsteiger (w/m/d) aus Gastronomie oder Hotellerie mit Organisationstalent und Menschenkenntnis?",
+      "Dann her mit Ihrem Lebenslauf an bewerbung@ku64.de"
     ],
-    "quelle": "https://ku64.de/team/zahnaerzte/janna-mitscherling/"
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/rezeption-service/ina-lehmann/"
   },
   "inke-supantia": {
     "name": "Inke Supantia",
     "funktion": "Kinder- und Jugendzahnärztin",
+    "vorstellung": [
+      "Jahrgang 1971, verheiratet, 1 Kind",
+      "Wir in der Kinderabteilung von KU64 empfangen die Kinder liebevoll und mit viel Geduld und Einfühlungsvermögen in der kindgerechten Atmosphäre der KU64-Youngstars. Uns liegt am Herzen, dass der erste Besuch beim Zahnarzt so schön ist, dass Angst gar nicht erst entstehen kann. Damit die Kinder mit einem gesunden Lachen groß werden, ist mir die Verhütung von Zahnerkrankungen im Sinne des KidsClubs von KU64 sehr wichtig. Sollte doch einmal eine Behandlung nötig sein, führen wir diese schonend und schmerzfrei durch. Dabei zeigen und erklären wir Ihnen vorher alles ganz genau – mit viel Spaß und kleinen Liedern.",
+      "Bei schwierigen Behandlungen greifen wir gerne auf unsere Erfahrung im Umgang mit „Zauberluft“ und „Zaubersaft“ (siehe hierzu Lachgasbehandlung und Vollnarkose) zurück: So kann sich Ihr Kind während der Behandlung ganz beruhigt entspannen 🙂",
+      "Ich freue mich täglich über gesundes Kinderlächeln vor, während und nach dem Zahnarztbesuch bei KU64!",
+      "Gerne unterhalte ich mich mit Ihnen auch auf Englisch."
+    ],
     "abschnitte": [
       {
         "titel": "Mitgliedschaften",
@@ -1318,6 +1802,29 @@
   "jackeline-schaupp": {
     "name": "Jackeline Schaupp",
     "funktion": "Kinder- und Jugendzahnheilkunde",
+    "vorstellung": [
+      "Liebe Eltern,",
+      "mein Name ist Jackeline Schaupp, und ich freue mich sehr, als Kinderzahnärztin Teil des wunderbaren KU64-Teams zu sein. Als einfühlsame und enthusiastische Kinderzahnärztin mit über 18 Jahren Erfahrung in der Diagnostik, Prävention und hochwertigen zahnärztlichen Behandlung von Kindern und Jugendlichen bis 18 Jahren, liegt mir die Zahngesundheit Ihrer Kleinen besonders am Herzen. Mein Ziel ist es, jedem Kind den Zahnarztbesuch so angenehm wie möglich zu machen – mit viel Geduld, Einfühlungsvermögen und einer kindgerechten Behandlung.",
+      "Hier sind einige Aspekte, die mir besonders wichtig sind:",
+      "Eine kinderfreundliche Umgebung: Eine liebevolle Atmosphäre, bunte Farben und eine entspannte Stimmung helfen Kindern, sich sicher und wohlzufühlen.",
+      "Sanfte Kommunikation: Ich erkläre alles spielerisch und kindgerecht, damit Ängste gar nicht erst entstehen.",
+      "Spezielles Equipment für kleine Zähne: Ich arbeite mit auf Kinder abgestimmten Instrumenten, um die Behandlung so schmerzfrei wie möglich zu gestalten.",
+      "Ruhe und Geduld: Jedes Kind ist anders – deshalb nehme ich mir die Zeit, individuell auf die Bedürfnisse der kleinen Patienten einzugehen.",
+      "Eltern als starke Partner: Sie sind ein wichtiger Teil der Zahngesundheit Ihres Kindes. Ich gebe Ihnen wertvolle Tipps zur Zahnpflege und Ernährung.",
+      "Prävention steht an erster Stelle: Fluoridierungen, Fissurenversiegelungen und regelmäßige Kontrollen helfen, Karies frühzeitig zu verhindern.",
+      "Belohnungen für mutige kleine Patienten: Ein positives Erlebnis ist mir wichtig – deshalb gibt es nach der Behandlung eine kleine Überraschung.",
+      "Ich freue mich darauf, Sie und Ihr Kind kennenzulernen und gemeinsam für strahlende, gesunde und starke Kinderzähne zu sorgen!",
+      "Queridas familias,",
+      "¡Estamos muy felices de presentarles a Jackeline Schaupp, nuestra nueva odontopediatra! Con mucha experiencia, paciencia y cariño, su objetivo es que cada niño viva su visita al dentista de manera positiva y sin miedos.",
+      "Ambiente acogedor: Espacios coloridos y amigables para que los peques se sientan seguros.",
+      "Comunicación cercana: Explicaciones claras y divertidas para reducir la ansiedad.",
+      "Equipamiento especial: Herramientas adaptadas para una experiencia más cómoda y sin dolor.",
+      "Paciencia y empatía: Jackeline se toma el tiempo necesario para cada niño.",
+      "Padres como aliados: Consejos prácticos para el cuidado dental en casa.",
+      "Pequeñas recompensas: Porque cada valiente merece un premio.",
+      "Nos encanta tener a Jackeline en el equipo y estamos seguros de que a vuestros peques también. ¡Os esperamos!",
+      "Vuestro equipo de la clínica"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Jackeline Schaupp",
@@ -1377,9 +1884,77 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/jackeline-schaupp/"
   },
+  "janna-mitscherling": {
+    "name": "Janna Mitscherling-Baumgartner",
+    "funktion": "Zahnärztin Master of Science Kieferorthopädie Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie (aktuell in Mutterschutz)",
+    "vorstellung": [
+      "Janna Mitscherling-Baumgartner M.Sc.",
+      "Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie",
+      "Jahrgang: 1992",
+      "Jeder Patient ist anders und benötigt ein individuell entwickeltes Konzept.",
+      "Ich lege sehr viel Wert auf eine interdisziplinäre Zusammenarbeit um nicht nur ein ästhetisches, sondern auch ein funktionelles Ergebnis zu erzielen.",
+      "Gemeinsam finden wir die passende Therapie für Sie.",
+      "Ich berate Sie auch gerne auf Englisch"
+    ],
+    "abschnitte": [
+      {
+        "titel": "Werdegang von Frau Janna Mitscherling:",
+        "zeilen": [
+          "2011 – Abitur",
+          "2012 – 2017 – Studium der Zahnheilkunde an der Charité- Universitätsmedizin Berlin",
+          "2017 – Approbation als Zahnärztin",
+          "seit 2017 – kieferorthopädische Tätigkeit in Berlin und Brandenburg",
+          "2018 – 2021 – Weiterbildung zum Master of Science Kieferorthopädie an der Danube Private University Krems, Österreich",
+          "seit 2019 – allgemeinzahnärztliche Tätigkeit in Berlin Westend",
+          "seit 2020 – Arbeit an einer Promotion an der Charité- Universitätsmedizin Charité Abteilung für Kieferorthopädie"
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Schwerpunkte",
+        "zeilen": [
+          "Ganzheitliche Kieferorthopädie von Kindern, Jugendlichen und Erwachsenen mit herausnehmbaren und festsitzenden Apparaturen",
+          "Unsichtbare Kieferorthopädie Lingualtechnik und durchsichtige Zahnschienen (Alignern)",
+          "CMD-Behandlungen Tätigkeitsschwerpunkt Funktionsdiagnostik und Funktionstherapie",
+          "Kiefergelenksdiagnostik Klinische Funktionsanalyse und Manuelle Strukturanalyse",
+          "Funktionskieferorthopädie",
+          "Faceformer Behandlungen",
+          "Individueller Sportmundschutz",
+          "Prä- und postchirurgische Kieferorthopädie",
+          "Präprothetische Kieferorthopädie"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "Aktuelle Fortbildungen:",
+        "zeilen": [
+          "Zertifizierte Invisalign Anwenderin",
+          "DVT Fachkunde",
+          "CMD Curriculum unter der Leitung Prof. Axel Bumann"
+        ],
+        "alsListe": true
+      },
+      {
+        "titel": "Mitgliedschaften in Gesellschaften, Arbeitskreisen und Verbänden",
+        "zeilen": [
+          "DGZMK",
+          "GMSCKFO"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/janna-mitscherling/"
+  },
   "jargalmaa-kleister": {
     "name": "Jargalmaa Kleister",
     "funktion": "Zahnärztin mit Schwerpunkt Zahnästhetik",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten,",
+      "gerne möchte ich mich Ihnen einmal vorstellen. Meine leidenschaftliche Hingabe zur Zahnmedizin hat mich dazu motiviert, kontinuierlich mein Fachwissen zu vertiefen und meine zahnmedizinischen Fähigkeiten zu verfeinern. Dank meiner Berufserfahrung sowohl in Berliner Zahnarztpraxen als auch an der Zahnklinik Charité, arbeite ich auf höchstem wissenschaftlichem Niveau und führe meine Behandlungen unter Verwendung modernster digitaler Technologien durch. Jetzt bin ich stolz darauf, meine Expertise und Begeisterung als neue Zahnärztin bei den Zahnspezialisten von KU64 einzubringen, um Ihnen den Zahnarztbesuch zu einer angenehmen Erfahrung zu gestalten.",
+      "Oberste Priorität für mich ist es, Zähne zu retten. Deshalb liebe ich die moderne Endodontologie (Wurzelkanalbehandlung) unter dem OP- Mikroskop für einen maximalen Erfolg in der Zahnerhaltung. Im Anschluss kann der erhaltene Zahn mit einer erstklassigen, langfristigen Versorgung therapiert werden.",
+      "Weitere Tätigkeitsfelder für mich sind Smile-Checks, Füllungen und die Anfertigung von hochwertigem Zahnersatz. Besonders fasziniert bin ich von der Anwendung modernster digitaler Technologien, wie dem intraoralen Scannen und der Herstellung von keramischen Einlagefüllungen, Kronen und Brücken mit dem Cerec-System. So möchte ich meinen Patienten nicht nur ein strahlendes Lächeln schenken, sondern auch ihre Zähne bestmöglich in ihrer Funktion erhalten.",
+      "Ihre Jargalmaa Kleister"
+    ],
     "abschnitte": [
       {
         "titel": "Ausbildung",
@@ -1444,9 +2019,35 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/jargalmaa-kleister/"
   },
+  "jessica-oberlaender": {
+    "name": "Jessica Oberländer",
+    "funktion": "zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "2012-2015 – Ausbildung zur Zahnmedizinischen Fachangestellten",
+      "2018-2019 – Aufstiegsfortbildung zur Zahnmedizinischen Prophylaxeassistentin",
+      "seit 2018 – Tätigkeit als Zahnmedizinische Prophylaxeassistentin",
+      "seit August 2022 – Teil des KU64 Teams als Zahnmedizinische Prophylaxeassistentin",
+      "Ich freue mich Sie dabei unterstützen zu können, Ihre Zähne optimal zu reinigen und diese lebenslang gesund zu erhalten. Denn eine professionelle Zahnreinigung (Prophylaxe) sorgt für den dauerhaften Erhalt von Zahnfleisch, Zähnen und Mundschleimhaut.",
+      "Mein Ziel ist es, das am Ende jeder einzelne die Praxis mit einem Lächeln verlässt.",
+      "Ich freue mich auf Sie!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/jessica-oberlaender/"
+  },
   "jiotis-hondralis": {
     "name": "Jiotis Hondralis M.Sc.",
     "funktion": "Zahnarzt & Fachzahnarzt für Oralchirurgie Master of Science in Oral Implantology & Periodontology",
+    "vorstellung": [
+      "Master of Science in Oral Implantology & Periodontology",
+      "Lieber Patient, liebe Patientin,",
+      "ich freue mich Sie bei KU64 sowohl in unserer Filiale in Potsdam (Berliner Str. 139) als auch im Mutterhaus (Kudamm 64) begrüßen zu dürfen.",
+      "Als Oralchirurg mit dem akademischen Grad Master of Science (M.Sc.) in Oral Implantology & Periodontology biete ich Ihnen moderne, wissenschaftlich fundierte Implantologie auf höchstem Niveau. Mein Masterabschluss umfasst 120 ECTS-Punkte und wurde an der privaten, renommierten Steinbeis Hochschule erworben – in Kooperation mit der größten europäischen wissenschaftlichen Fachgesellschaft für Implantologie.",
+      "Dieses Studium vereint aktuelle wissenschaftliche Erkenntnisse mit umfangreicher klinischer Erfahrung und ermöglicht eine besonders anspruchsvolle Spezialisierung im Bereich der Implantologie und Parodontologie. Für Sie als Patient bedeutet das:",
+      "präzise Diagnostik, moderne Verfahren, schonende chirurgische Techniken und langfristig stabile Behandlungsergebnisse.",
+      "Bei KU64 stehe ich Ihnen für das gesamte Spektrum der oralchirurgischen und implantologischen Behandlungen zur Verfügung – von komplexen Implantatversorgungen über Knochenaufbauverfahren bis hin zu ästhetisch anspruchsvollen Lösungen, die Funktion und Ästhetik optimal vereinen.",
+      "Ich freue mich auf Sie!",
+      "Ihr Jiotis Hondralis M.Sc."
+    ],
     "abschnitte": [
       {
         "titel": "FORTBILDUNGEN",
@@ -1474,9 +2075,70 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/jiotis-hondralis/"
   },
+  "joana-charlott-radsack": {
+    "name": "Joana Charlott Radsack",
+    "funktion": "Staatlich geprüfte Kosmetikerin & Matrix Spezialistin. Leistungen: Gesichtsbehandlung, Maniküre, Pediküre und mehr",
+    "vorstellung": [
+      "Hallo liebe Patientinnen & Patienten,",
+      "gemeinsam mit meiner Kollegin und Teamleiterin Sabine Kühnau-Falkenau bilde ich ein unschlagbares Team – für Struktur, Überblick und einen reibungslosen Praxisalltag bei KU64.",
+      "Ich sorge dafür, dass im Hintergrund alles rund läuft – und im Behandlungszimmer nichts fehlt.",
+      "Zu meinen Aufgaben gehören:– Die strukturierte Verwaltung und Pflege unseres zahnmedizinischen Materiallagers– Die Digitalisierung und Optimierung unseres Bestellsystems– Die Koordination und Nachverfolgung aller internen Materialbestellungen",
+      "Kurz gesagt: Ich halte den operativen Rücken frei, damit sich unsere Zahnärztinnen, Zahnärzte und Assistenzen voll und ganz auf das konzentrieren können, was zählt – Ihre Behandlung.",
+      "Werdegang",
+      "2001 Abitur",
+      "2006 Abschluss als staatlich geprüfte Kosmetikerin – Mitglied im Bundesverband deutscher Kosmetiker",
+      "2006-2009 Tätigkeit in mehreren Kosmetikstudios",
+      "2010-2024 KU64 cosmetics  am Kudamm 65",
+      "2014 Weiterbildung zur Matrix-Rhythmus-Therapeutin",
+      "seit 2025 Materialverwaltung bei KU64"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching-kosmetik-shop/joana-charlott-radsack/"
+  },
+  "juliane-kottenhagen": {
+    "name": "Juliane Kottenhagen",
+    "funktion": "Zahnärztin und Praxispartnerin",
+    "vorstellung": [
+      "Jahrgang 1974",
+      "Nach meiner Tätigkeit als Zahnärztin in einer kleinen Berliner Gemeinschaftspraxis freue ich mich, das KU64-Team zu verstärken. Ich arbeite gerne im Bereich der ästhetischen Zahnmedizin und nehme mir viel Zeit für meine Patienten, insbesondere für Kinder und Angstpatienten!",
+      "Seit 2010 bin ich Praxis-Partnerin.",
+      "Regelmäßige Fortbildungen in allen Bereichen der Zahnmedizin: Endodontie, Oralchirurgie, Parodontologie und Ästhetik, Keramikversorgung (CEREC), Funktionsdiagnostik.",
+      "Gerne unterhalte ich mich auch auf Englisch mit Ihnen!",
+      "Sie können mich jederzeit per E-Mail kontaktieren!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnaerzte/juliane-kottenhagen/"
+  },
+  "juliane-reichmuth": {
+    "name": "Juliane Reichmuth",
+    "funktion": "Kinder- und Jugendzahnärztin",
+    "vorstellung": [
+      "Nach meiner Dienstzeit als Stabsärztin bei der Bundeswehr habe ich meine Liebe zur Kinderzahnheilkunde entdeckt. Durch die Arbeit mit den Kleinsten fühle ich mich sowohl durch die unverblümte Ehrlichkeit der Kinder, als auch durch ihr herzliches Wesen in meinem Arbeitsalltag bereichert.",
+      "Mich immer wieder aufs Neue bei jedem einzelnen kleinen Patienten auf den jeweiligen Charakter einzustellen fordert mich heraus und bereitet mir große Freude."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "2004-2011 – Laufbahn als Sanitätsoffizier bei der Bundeswehr und Studium der Zahnmedizin, Charité Universitätsmedizin Berlin",
+          "2011-09/2014 – zahnärztliche Tätigkeit als Stabsärztin bei der Bundeswehr",
+          "01/2015-2017 – angestellte Zahnärztin in einer Kinderzahnarztpraxis",
+          "2017 – Curriculum Kinder- und Jugendzahnmedizin, Berlin",
+          "2017 – Lachgaszertifizierung, Berlin",
+          "seit 10/2017 – Kinderzahnärztin bei KU64"
+        ],
+        "alsListe": true
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/juliane-reichmuth/"
+  },
   "karin-wagner": {
     "name": "Karin Wagner",
     "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Ich befasse mich gern mit Erwachsenen und Jugendlichen, die weniger entspannt zum Zahnarzt gehen und helfe ihnen, ein gutes Gefühl zum Thema Prophylaxe zu entwickeln.",
+      "Ich unterhalte mich gerne auch auf Englisch mit Ihnen! You don’t speak german? No Problem, i can talk english with you 🙂"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -1526,28 +2188,16 @@
     ],
     "quelle": "https://ku64.de/team/prophylaxe/karin-wagner/"
   },
-  "juliane-reichmuth": {
-    "name": "Juliane Reichmuth",
-    "funktion": "Kinder- und Jugendzahnärztin",
-    "abschnitte": [
-      {
-        "titel": "Beruflicher Werdegang",
-        "zeilen": [
-          "2004-2011 – Laufbahn als Sanitätsoffizier bei der Bundeswehr und Studium der Zahnmedizin, Charité Universitätsmedizin Berlin",
-          "2011-09/2014 – zahnärztliche Tätigkeit als Stabsärztin bei der Bundeswehr",
-          "01/2015-2017 – angestellte Zahnärztin in einer Kinderzahnarztpraxis",
-          "2017 – Curriculum Kinder- und Jugendzahnmedizin, Berlin",
-          "2017 – Lachgaszertifizierung, Berlin",
-          "seit 10/2017 – Kinderzahnärztin bei KU64"
-        ],
-        "alsListe": true
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnaerzte/juliane-reichmuth/"
-  },
   "karoline-hansen": {
     "name": "Karoline Hansen",
     "funktion": "Zahnmedizinische Verwaltungsassistentin, Praxis- und HR Managerin KU64 Potsdam, Betriebswirtin der Zahnmedizin",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "als Praxismanagerin bei KU64 bin ich für die vielfältigen organisatorischen und personellen Belange unserer Mitarbeiter verantwortlich. Dazu gehören unter anderem die Rekrutierung von Auszubildenden und neuen Kollegen in enger Zusammenarbeit mit den jeweiligen Teams sowie die Begleitung und Unterstützung unserer Mitarbeiter im Arbeitsalltag. Darüber hinaus verantworte ich das Controlling und habe die wirtschaftlichen Kennzahlen und Prozesse unserer Praxis stets im Blick, um eine nachhaltige und erfolgreiche Entwicklung sicherzustellen.",
+      "Ein offener, wertschätzender und respektvoller Umgang mit allen Mitarbeitern liegt mir besonders am Herzen. Mein Ziel ist es, den Arbeitsalltag in unserer Praxis kontinuierlich zu optimieren – sei es durch die Gestaltung eines angenehmen Arbeitsumfeldes, die Förderung der Mitarbeitermotivation oder die Schaffung von Aufstiegs- und Weiterbildungsmöglichkeiten. So möchte ich dazu beitragen, dass sich unsere Mitarbeiter langfristig wohlfühlen, ihr Potenzial entfalten können und wir gemeinsam als Team erfolgreich sind.",
+      "Mein Motto:",
+      "Wertschätzendes Verhalten führt zum Erfolg!"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Karoline Hansen:",
@@ -1586,9 +2236,47 @@
     ],
     "quelle": "https://ku64.de/team/human-resources/karoline-hansen/"
   },
+  "kevin-cords": {
+    "name": "Kevin Cords",
+    "funktion": "angehender zahnmedizinischer Prophylaxeassistent und Bleachingspezialist",
+    "vorstellung": [
+      "Herzlich willkommen!",
+      "Ich bin Kevin Cords – Ihr Ansprechpartner rund um das Thema professionelle Zahnreinigung bei KU64. Ich bin für Sie da, wenn es um gründliche, sanfte und zugleich entspannte Prophylaxe geht.",
+      "Ob hartnäckige Beläge, Zahnstein oder Verfärbungen durch Kaffee, Tee oder Nikotin – gemeinsam bringen wir Ihr Lächeln zum Strahlen. Mit viel Ruhe, Fachwissen und Feingefühl sorge ich dafür, dass Ihre Zahnreinigung nicht nur effektiv, sondern auch angenehm verläuft.",
+      "Ganz gleich, ob Sie regelmäßig zur Prophylaxe kommen oder nach längerer Zeit wieder einsteigen – ich nehme mir Zeit für Ihre individuellen Bedürfnisse und gehe jeden Schritt mit Ihnen transparent durch.",
+      "Jetzt einen tollen Termin für Ihre professionelle Zahnreinigung ergattern – unter 030-8647320.",
+      "Ich freue mich auf Sie!",
+      "Ihr Kevin Cords"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/kevin-cords/"
+  },
+  "kim-jasmin-yudaev": {
+    "name": "Kim Jasmin Yudaev",
+    "funktion": "Zahnmedizinische Fachangestellte & angehende Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Liebe kleine und große Patienten,",
+      "❤️willkommen in unserer farbenfrohen Praxis! Seit 2018 bin ich ausgebildete Zahnmedizinische Fachangestellte und stehe kurz vor meinem Abschluss zur Zahnmedizinischen Prophylaxeassistentin!",
+      "Als Mama eines dreijährigen Sohnes habe ich viel Verständnis für die Bedürfnisse Ihrer Kinder und sorge mit Freude für strahlende Lächeln. Die Zahngesundheit Ihrer Kinder liegt mir besonders am Herzen.",
+      "Eure Kimi"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/kim-jasmin-yudaev/"
+  },
   "lais-haidari": {
     "name": "Lais Haidari",
     "funktion": "Zahnarzt für Ästhetik und Prothetik",
+    "vorstellung": [
+      "Jahrgang 1991",
+      "Viele Patienten fragen mich, warum ich so gerne Zahnarzt bin. Einer der Gründe, warum ich diesen Beruf mit Leidenschaft ausübe, liegt darin, dass ich gemeinsam mit meinen Patienten ein individuelles Behandlungskonzept erarbeiten und dieses mit Hilfe modernster Technik und handwerklicher Präzisionsarbeit verwirklichen kann. Patienten die verloren gegangene Lebensqualität durch eine funktionell und ästhetisch optimale Versorgung zurückzugeben, motiviert mich jeden Tag aufs Neue.",
+      "Tätigkeitsschwerpunkte:",
+      "Konservierende Zahnmedizin (Compositrestaurationen im Front- und Seitenzahnbereich)",
+      "Ästhetische Zahnmedizin (Veneers)",
+      "Prothetik (vollkeramische Restaurationen)",
+      "Gerne berate ich meine Patienten auch auf Englisch.",
+      "Hier können Sie direkt einen Termin bei mir ganz bequem online buchen",
+      "Ihr Lais Haidari"
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -1605,9 +2293,24 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/lais-haidari/"
   },
+  "lisa-hauk": {
+    "name": "Lisa Hauk",
+    "funktion": "Empfang und Patienten­betreuung",
+    "vorstellung": [
+      "Liebe Patienten, liebe Freunde!",
+      "Im Jahr 2010 begann meine berufliche Reise. Ich absolviert die Ausbildung zur zahnmedizinischen Fachangestellten und startete meinen Weg in einer Fachzahnarztpraxis für Kieferorthopädie.",
+      "Dort habe ich 7 Jahre sehr viel Erfahrung sammeln können und so habe ich mich auf die Suche nach Weiterentwicklungsmöglichkeiten gemacht. Nach ein Paar Abstechern in andere Praxen und einer Schulter-OP habe ich den Weg zu KU64 gefunden. Hier bin ich, mit viel Eifer und Engagement, an der Rezeption tätig – und bin sehr glücklich hier.",
+      "Derzeit absolviere ich die Aufstiegsfortbildung zur zahnmedizinischen Verwaltungsassistentin, welche ich im November 2021, hoffentlich erfolgreich beenden werde.",
+      "Ich freu mich darauf Sie in unserer Praxis zu begrüßen, bis bald",
+      "Ihre Lisa Hauk"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/rezeption-service/lisa-hauk/"
+  },
   "lisbany-martinez-cubillas": {
     "name": "Lisbany Martinez Cubillas",
     "funktion": "OP-Manager, Zahnmedizinischer Fachangestellter & Anästhesietechnischer Assistent",
+    "vorstellung": [],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -1626,6 +2329,11 @@
   "lulu-buerger": {
     "name": "Lulu Bürger",
     "funktion": "ZFA-Leitung & Ausbildungsbeauftragte, Personalmanagerin (IHK)",
+    "vorstellung": [
+      "Jahrgang 1996",
+      "Als Leiterin aller ZFAs bei KU64 sowie Ausbildungsbeauftragte für junge Talente habe ich gemerkt, dass ich viel Energie und Freude in das Schreiben der Dienstpläne, das erklären der Behandlungen, den Ablauf der Praxis & natürlich die KU64 Philosophie weitergebe & erkläre. Es war mit einer der besten Entscheidungen bei KU64 angefangen zu haben, ich habe ein tolles Team & viel Engagment dahinter.",
+      "Wenn Sie eine ausgelernte zahnmedizinische Fachangestellte (w/m/d) sind oder gerne eine Ausbildung bei uns starten möchten, schicken Sie uns Ihre Bewerbung an bewerbung@ku64.de – ich kümmere mich!"
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -1644,9 +2352,28 @@
     ],
     "quelle": "https://ku64.de/team/human-resources/lulu-buerger/"
   },
+  "lysann-kosiol": {
+    "name": "Lysann Kosiol",
+    "funktion": "Zahnmedizinische Fachangestellte, Prophylaxe- und Bleachingspezialistin",
+    "vorstellung": [
+      "[zum rundgang",
+      "durch KU64]",
+      "Ich bin Lysann, Jahrgang 1983 – und seit 2011 mit ganzem Herzen Teil des KU64-Teams.",
+      "Nach meinem erfolgreichen Abschluss zur Zahnmedizinischen Fachangestellten im Jahr 2005 habe ich meine Leidenschaft für präzises Arbeiten und einfühlsame Betreuung in der Endodontologie gefunden. Seit vielen Jahren unterstütze ich mit großer Sorgfalt und Erfahrung Dr. Sabine Gousetis in diesem anspruchsvollen Bereich.",
+      "Doch damit nicht genug: Seit 2018 bin ich zusätzlich als Zahnmedizinische Prophylaxeassistentin und Bleachingspezialistin tätig – für gesunde, strahlende Zähne und ein gutes Gefühl beim Blick in den Spiegel.",
+      "Was mich auszeichnet? Ein ruhiges Händchen, ein offenes Ohr für Ihre Fragen – und der Anspruch, Ihnen jede Behandlung so angenehm wie möglich zu gestalten. Ich freue mich darauf, Sie bei KU64 willkommen zu heißen!",
+      "Ihre Lysann Kosiol"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching/lysann-kosiol/"
+  },
   "madeleine-kettner": {
     "name": "Madeleine Kettner",
     "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Liebe Patienten,",
+      "In der Prophylaxe arbeite ich mit viel Leidenschaft, Einfühlungsvermögen und Freunde selbst am Patienten. Mit der regelmäßigen Prophylaxe schaffen wir es gemeinsam die Mundgesundheit und ein strahlendes Lächeln zu erhalten."
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Frau Madeleine Kettner:",
@@ -1679,9 +2406,50 @@
     ],
     "quelle": "https://ku64.de/team/prophylaxe/madeleine-kettner/"
   },
+  "magnus-salecker": {
+    "name": "Magnus Salecker",
+    "funktion": "Zahnmedizinischer Fachangestellter",
+    "vorstellung": [
+      "Jahrgang 1988",
+      "2014-2017 Ausbildung zum Zahnmedizinischen Fachangestellten (ZFA)",
+      "2017 Ausbildungsabschluss zur ZFA",
+      "2019-2021 als ZFA in der Chirurgie bei KU64",
+      "seit 2019 im Patientenservice und Telefon tätig",
+      "Ich freue mich sehr, Ihnen sowohl am Telefon mit Rat und Tat zur Seite stehen zu können, d.h. Ihnen kompetente Unterstützung in folgenden Bereichen anbieten zu können:",
+      "– Terminvereinbarungen",
+      "– Nachfragen zu Behandlungen/Behandlungsplanungen",
+      "– Nachfragen zu Rechnungen und Kostenvoranschlägen",
+      "Englisch, Spanisch"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/telefon-service/magnus-salecker/"
+  },
+  "malou-fricke": {
+    "name": "Malou Fricke",
+    "funktion": "Dentalhygienekerin & Präventionsmanagerin",
+    "vorstellung": [
+      "Dentalhygienikerin, Bachelor of Science Dentalhygiene und Präventionsmanagement, B.Sc.",
+      "Liebe Profil-Besucher!",
+      "Mit einem leidenschaftlichen Einstieg in die Zahnmedizin begann meine berufliche Reise direkt nach meinem Abitur im Jahr 2013. Nach einer erfolgreichen zweieinhalbjährigen Ausbildung zur Zahnmedizinischen Fachangestellten verspürte ich den Wunsch, mein Verständnis für die Zahnheilkunde zu vertiefen. Daher tauchte ich unmittelbar nach der Ausbildung für vier Wochen in die Welt des Dentallabors ein, um auch die zahntechnische Seite besser zu verstehen.",
+      "Im April 2016 startete meine aufregende Reise bei KU64 in Charlottenburg. Zunächst begann ich als Zahnmedizinische Fachangestellte in der allgemeinen Zahnheilkunde, bevor mich meine Leidenschaft nach fast einem Jahr in den Fachbereich der Endodontologie führte.",
+      "Nach fast vier Jahren im Bereich der Endodontologie entschied ich mich für eine erneute Weiterbildung. Ich wechselte in den Fachbereich der Kinderzahnheilkunde und schloss im Dezember 2022 erfolgreich eine Fortbildung von der DGKiZ ab.",
+      "Mit reichhaltiger Erfahrung als Stuhlassistenz verspürte ich den Wunsch, auch die Perspektive der Behandlerseite kennenzulernen. Von Oktober 2023 bis November 2025 studierte ich Dentalhygiene und Präventionsmanagement an der EUFH in Köln und ich habe meinen Abschluss mit der Note 1,3 erfolgreich abgeschlossen.",
+      "Neben meiner fachlichen Expertise freue ich mich darauf, mit Ihnen in Englisch zu kommunizieren. I glady welcome you to talk to me in English.",
+      "Ich freue mich darauf, sowohl große als auch kleine Patienten zu betreuen und gemeinsam mit Ihnen einen Wohlfühl-Zahnarzttermin zu gestalten!",
+      "Vereinbaren Sie jetzt Ihre Prophylaxe, die profesionelle Grundreinigung oder Ihre parodontale Vorbehandlunge",
+      "Ihre Malou"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/dentalhygieniker/malou-fricke/"
+  },
   "malte-labonte": {
     "name": "Malte Labonté",
     "funktion": "Zahnarzt mit Schwerpunkt Oralchirurgie & Implantologie",
+    "vorstellung": [
+      "Sehr geehrte Patientinnen und Patienten,",
+      "es erfüllt mich mit Freude, mich Ihnen als Ihr zukünftiger Zahnarzt vorzustellen. Die moderne Zahnmedizin, insbesondere die anspruchsvollen Bereiche der oralen Chirurgie und Implantologie, sind für mich mehr als nur ein Beruf – es ist eine Herzensangelegenheit. Mein größter Wunsch ist es, Ihnen durch mein Wissen, meine Erfahrung und vor allem durch eine Behandlung, die auf Ihre individuellen Bedürfnisse zugeschnitten ist, zu helfen. Ich möchte, dass Sie sich bei uns sicher und gut aufgehoben fühlen, denn Ihr Wohlbefinden liegt mir sehr am Herzen. In unserer modern ausgestatteten Praxis erwartet Sie nicht nur zahnmedizinische Kompetenz auf höchstem Niveau, sondern auch eine Atmosphäre des Vertrauens und der Geborgenheit.",
+      "Gemeinsam mit dem hochqualifizierten Team von KU64 legen wir größten Wert darauf, dass Sie sich verstanden und optimal versorgt fühlen. Für mich ist es essenziell, dass wir Hand in Hand arbeiten, um die besten Ergebnisse für Ihre Zahngesundheit zu erzielen. Ich glaube fest daran, dass der Schlüssel zu einer erfolgreichen Behandlung in einem offenen und ehrlichen Austausch liegt. Zögern Sie nicht, Ihre Fragen und Anliegen mit mir zu teilen – ich freue mich darauf, Sie persönlich kennenzulernen und Sie auf Ihrem Weg zu einem gesunden und strahlenden Lächeln zu begleiten."
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -1743,6 +2511,7 @@
   "marcel-baer": {
     "name": "Marcel Baer",
     "funktion": "IT & Technik",
+    "vorstellung": [],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -1765,9 +2534,74 @@
     ],
     "quelle": "https://ku64.de/team/it-technik/marcel-baer/"
   },
+  "marlies-vlahek": {
+    "name": "Marlies Vlahek",
+    "funktion": "Kieferorthopädische Fachangestellte (ZFA)",
+    "vorstellung": [
+      "Jahrgang 1989",
+      "2 Töchter",
+      "Ich habe im Sommer 2008 erfolgreich meine Ausbildung zur Zahnmedizinischen Fachangestellten absolviert. Von da an habe ich mich entschlossen, in der Kieferorthopädie zu arbeiten.",
+      "Seit Januar 2015 gehöre ich zum Team von KU64 und bin sehr glücklich damit.",
+      "Zu meinen Aufgaben gehören vor allem die Stuhlassistenz in der kieferorthopädischen Abteilung von KU64 sowie kleine Büroarbeiten.",
+      "Ich freue mich, wenn ich Groß und Klein glücklich lächeln sehe."
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/marlies-vlahek/"
+  },
+  "maryam-karimi": {
+    "name": "Maryam Karimi",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin und Bleachingspezialistin",
+    "vorstellung": [
+      "Liebe Patienten!",
+      "Seit 2003 bin ich zahnmedizinische und chirurgische Assistentin. 2011 habe ich die Weiterbildung zur Prophylaxe-Assistentin abgeschlossen.",
+      "Aufgrund meiner langjährigen Erfahrung in der chirurgischer Behandlung, besonders in der Parodontologie, ist es mir wichtig, die Zusammenhänge zwischen Mundhygiene und dem allgemeinen gesundheitlichen Wohlbefinden zu erklären.",
+      "Prophylaxe steht für mehr als ein strahlendes schönes Lächeln. Möchten Sie wissen warum, dann buchen Sie einen Termin bei mir.",
+      "Ich freue mich auf Ihren Besuch!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching/maryam-karimi/"
+  },
+  "melanie-ruedel": {
+    "name": "Melanie Rüdel",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin & Bleachingspezialistin",
+    "vorstellung": [
+      "Jahrgang 1984",
+      "Als ich damals in der 9. Klasse mein Schulpraktikum in einer Zahnarztpraxis absolvierte, wusste ich, dass ich den Beruf der Zahnmedizinischen Fachangestellten erlernen möchte.",
+      "2001 begann ich die Ausbildung zur ZMF und beendete sie im Juni 2004 mit Erfolg. Seitdem arbeite ich in diesem Beruf, überwiegend in der Stuhlassistenz, und es macht mir viel Freude, immer wieder neue Herausforderungen zu finden und mich weiterzubilden.",
+      "Ich freue mich, dass ich das Team von KU64 (Zahnärzte in Berlin-Charlottenburg) tatkräftig unterstützen darf. Ich bin zuständig für die Prophylaxe und für die professionelle Zahnaufhellung (Bleaching) in der Lounge von KU64 SMILE – ich berate und behandle Sie gern!",
+      "Ihre Melanie Rüdel"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/melanie-ruedel/"
+  },
+  "melissa-albalizade": {
+    "name": "Melissa Albalizade",
+    "funktion": "Prophylaxeexpertin für Kids und Erwachsene & Bleachingspezialistin",
+    "vorstellung": [
+      "Jahrgang 1995",
+      "Liebe Kids, liebe Patientinnen und Patienten,",
+      "ein gesundes Lächeln beginnt mit Vertrauen – und genau das möchte ich Ihnen bei jedem Besuch mitgeben.",
+      "Mein Weg in die Zahnmedizin begann 2016 mit einem Praktikum in einer renommierten chirurgischen Praxis, in der ich erste Erfahrungen in der Implantologie sammeln durfte. Nach meiner Ausbildung zur zahnmedizinischen Fachangestellten, die ich 2020 erfolgreich abgeschlossen habe, folgten Weiterbildungen in der kieferorthopädischen Assistenz sowie mein Schwerpunkt in der Prophylaxe.",
+      "Heute begleite ich Erwachsene und Kinder auf dem Weg zu gesunden Zähnen und einem strahlenden Lächeln. Als Prophylaxe- und Bleachingspezialistin verbinde ich moderne Vorsorge mit ästhetischer Zahnmedizin – einfühlsam, sorgfältig und immer mit einem Lächeln.",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen und gemeinsam das Beste für Ihre Zahngesundheit zu erreichen.",
+      "📞 KU64 am Kurfürstendamm: 030 8647320",
+      "🌐 Doctolib: https://www.doctolib.de/prophylaxeassistentin/berlin/zuemrued-melissa-albalizade",
+      "Bis bald – ich freue mich auf Ihr Lächeln!",
+      "Zümrüd Melissa Albalizade"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching/melissa-albalizade/"
+  },
   "michaela-dulz": {
     "name": "Michaela Dulz",
     "funktion": "Kieferorthopädische Fachangestellte & KFO-Verwaltung",
+    "vorstellung": [
+      "FACH­ANGESTELLTE & KFO-VERWALTUNG",
+      "Jahrgang 1984, Mutter von zwei Töchtern",
+      "Ich find es schön, wenn Patienten nach der kieferorthopädischen Behandlung lächelnd mit geraden Zähnen unsere Praxis verlassen 🙂",
+      "Seit Dezember 2019 bin ich als kieferorthopädische Koordinatorin der kieferorthopädischen Abteilung und seit Juli 2021 in der kieferorthopädischen Abrechnungsabteilung tätig.",
+      "Fortlaufend Fortbildungen in der Kieferorthopädie (u.a. Organisation, Qualitätsmanagement, Abrechnung)"
+    ],
     "abschnitte": [
       {
         "titel": "Beruflicher Werdegang",
@@ -1787,6 +2621,9 @@
   "michaela-kunkel": {
     "name": "Michaela Kunkel",
     "funktion": "Dentalhygienikerin",
+    "vorstellung": [
+      "Mit viel Freude unterstütze ich seit Februar 2009 das Prophylaxeteam von KU64 – seit März 2011 mit der Zusatzqualifikation Dental Hygienist."
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -1818,9 +2655,95 @@
     ],
     "quelle": "https://ku64.de/team/dentalhygieniker/michaela-kunkel/"
   },
+  "mohamed-abudrya": {
+    "name": "Dr. Mohamed Abudrya M.Sc.",
+    "funktion": "Kinder- und Jugendzahnarzt",
+    "vorstellung": [
+      "Herzlich willkommen bei KU64!",
+      "Es ist mir eine große Freude, Sie und Ihre Kinder in unserer Praxis begrüßen zu dürfen. Meine Leidenschaft liegt darin, jungen Patienten ein gesundes und strahlendes Lächeln zu schenken – und dabei eine angenehme Atmosphäre zu schaffen, in der sich Ihre Kleinen wohlfühlen.",
+      "Dank meiner umfangreichen Erfahrung und zahlreicher Fortbildungen habe ich mich auf die kinderfreundliche Zahnbehandlung spezialisiert. Ich weiß, wie wichtig es ist, dass der Zahnarztbesuch für Kinder so stressfrei wie möglich verläuft, und ich setze alles daran, dies zu gewährleisten.",
+      "Bei KU64 stehen Ihnen 30 Zahnärztinnen und Zahnärzte zur Verfügung, die verschiedene Spezialgebiete abdecken. Besonders stolz sind wir auf unser Team von 9 Kinder- und Jugendzahnärztinnen & Zahnärzte, die sich mit viel Einfühlungsvermögen um die Bedürfnisse unserer jüngsten Patienten kümmern.",
+      "Ich freue mich darauf, Sie und Ihre Kinder bei Ihrem nächsten Check-up oder Prophylaxe-Termin begrüßen zu dürfen. Sie können ganz bequem online einen Termin buchen oder uns unter der Nummer 030-8647320 kontaktieren.",
+      "Bis bald in unserer Praxis!",
+      "Dr. Mohamed Abudrya MSc."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Beruflicher Werdegang",
+        "zeilen": [
+          "07/2021-11/2022 – Zahnarztpraxis für Kinder- und Jugendzahnheilkunde, Hannover",
+          "10/2020 – 07/2021 – Wissenschaftlicher Mitarbeiter: Abteilung Präventive Zahnmedizin und Kinderzahnheilkunde, Zentrum für Zahn- Mund- und Kieferheilkunde (ZZMK), Universitätsmedizin, Greifswald",
+          "08/2017 – 09/2020 – Kinderzahnarzt in postgradualer Weiterbildung (M.Sc. Kinderzahnheilkunde) Abt. Präventive Zahnmedizin und Kinderzahnheilkunde, ZZMK Universitätsmedizin Greifswald",
+          "10/2015 – 06/2016 – Zahnarzt/Tutor: Abteilung für Kinderzahnheilkunde, Universität Pharos, Alexandria (Ägypten)",
+          "09/2009 – 07/2014 – Bachelor der Mund- und Zahnmedizin und Chirurgie, Pharos Universität in Alexandria (Ägypten)",
+          "3/2026 – Promotion und Erlangung des Doktor-Titels der Zahnmedizin „dr. med. dent.“ zum Thema „Efficacy of Different Fluoride Therapies on Hypersensitive Carious Lesions in Primary Teeth: A Clinical Comparative Double-Cohort Study“"
+        ],
+        "alsListe": false
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnaerzte/mohamed-abudrya/"
+  },
+  "monika-kuckelt": {
+    "name": "Monika Kuckelt",
+    "funktion": "Zahnmedizinische Fachangestellte und Sterilgutbeauftragte",
+    "vorstellung": [
+      "Sterilgutbeauftragte",
+      "Hallo, ich bin Schwester Monika!",
+      "Ich bin seit über 25 Jahren als zahnmedizinische Fachangestellte in verschiedenen Berliner Zahnarztpraxen tätig – mit viel Leidenschaft und Engagement!",
+      "Bei den Zahnspezialisten von KU64 bin ich seit 2006, anfangs in der Praxis in Weissensee, seit 2009 am Kurfürstendamm 64. Mein Aufgabengebiet betrifft den gesamten OP-Bereich – angefangen bei der Patientenbetreuung über die Operationsvorbereitung bis hin zur Koordinierung sämtlicher Arbeitsabläufe und der dazugehörigen Materialbestellung.",
+      "Seit 2011 bin ich die Sterilgutbeauftragte der Zahnarztpraxis KU64 und lerne auch die Auszubildenden in diesem Bereich ein, was mir sehr viel Spaß macht.",
+      "Ich bin immer für Sie und meine lieben Kollegen da!",
+      "Sie können mich jederzeit kontaktieren per Mail",
+      "kuckelt@ku64.de",
+      "Ihre Monika Kuckelt"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/sterilisation-qm/monika-kuckelt/"
+  },
+  "nicole-dickhoff-kranz": {
+    "name": "Nicole Dickhoff-Kranz",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Jahrgang 1977",
+      "1994 – 1997 – Ausbildung zur Zahnarzthelferin",
+      "1998 – Fortbildung Individualprophylaxe",
+      "2008 – Aufstiegsfortbildung zur zahnmedizinischen Prophylaxeassistentin am Philipp-Pfaff-Institut in Berlin",
+      "Seit Januar 2009 – unterstütze ich das KU64-Team im Bereich der professionellen Zahnreinigung. Ich widme mich mit Geduld und Einfühlungsvermögen allen meinen Patienten!"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/nicole-dickhoff-kranz/"
+  },
+  "nicole-lindenau": {
+    "name": "Nicole Lindenau",
+    "funktion": "Zahnmedizinische Prophylaxeassistentin",
+    "vorstellung": [
+      "Jahrgang 1978",
+      "1995 – 1998 – Ausbildung zur zahnmedizinischen Fachassistentin",
+      "1999 – 2009 – Assistentin in der Mund-Kiefer-Gesichtschirurgie in Berlin",
+      "2006 – Zertifizierung zur Hypnoseassistentin (DGZH)",
+      "2009 – Stuhlassistenz in der Kinderabteilung KU64",
+      "2010-2018 – Kinderrezeption KU64",
+      "seit 2018 – Prophylaxeassistentin für Kids und Teens",
+      "2019 – “ZFKIZ“ zertifizierte zahnmedizinische Fachangestellte für Kinderzahnheilkunde",
+      "2020 – Aufstiegsfortbildung zur Zahnmedizinischen Prophylaxeassistentin /ZMP für Erwachsene",
+      "Herzlich willkommen bei KU64!",
+      "Seit über 17 Jahren bin ich Teil der KU64-Familie – und es erfüllt mich bis heute mit Freude, Menschen auf ihrem Weg zu gesunden und schönen Zähnen begleiten zu dürfen.",
+      "Mein Schwerpunkt liegt heute auf der professionellen Zahnreinigung und Prophylaxe für Erwachsene. Dabei ist mir besonders wichtig, dass Sie sich bei jedem Termin rundum wohlfühlen. Mit viel Einfühlungsvermögen, einer angenehmen Atmosphäre und einem geschulten Blick fürs Detail sorge ich dafür, dass Ihre Behandlung nicht nur gründlich, sondern auch so entspannt wie möglich verläuft.",
+      "Jeder Mensch bringt seine eigene Geschichte, seine Wünsche und manchmal auch Unsicherheiten mit. Genau deshalb nehme ich mir Zeit, höre zu und gehe individuell auf Sie ein. Denn die beste Prophylaxe beginnt mit Vertrauen.",
+      "Was mich an meinem Beruf begeistert? Dass ich jeden Tag dazu beitragen kann, Menschen mit einem guten Gefühl und einem strahlenden Lächeln nach Hause gehen zu sehen. Regelmäßige Fortbildungen helfen mir dabei, Sie stets nach aktuellen Erkenntnissen und mit höchstem Qualitätsanspruch zu betreuen.",
+      "Sie möchten Ihre Zahngesundheit langfristig erhalten? Dann freue ich mich darauf, Sie persönlich kennenzulernen.",
+      "Übrigens: Gerne berate und behandle ich Sie auch auf Englisch.",
+      "Ihre Nicole Lindenau"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/nicole-lindenau/"
+  },
   "nils-radsack": {
     "name": "Nils Radsack",
     "funktion": "Zahnarzt für Zahnästhetik und Endodontologie - medizinischer Leiter",
+    "vorstellung": [
+      "Der Anspruch von Herrn Nils Radsack und seinen Mitarbeitern in Potsdam ist, die Realisierung von schmerzfreier und ästhetisch und qualitativ höchst ansprechender Behandlung. Er verfolgt dabei das Ziel den Wunsch des Patienten nach Funktionalität und Ästhetik perfekt in Einklang zu bringen."
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang von Herrn Nils Radsack:",
@@ -1868,9 +2791,49 @@
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/nils-radsack/"
   },
+  "nurcan-sahin": {
+    "name": "Nurcan Sahin",
+    "funktion": "Prophylaxeassistentin & Bleachingspezialistin",
+    "vorstellung": [
+      "Liebe Patientinnen und Patienten,",
+      "Ich heiße Sie herzlich am Hausvogteiplatz als Zahnmedizinische Prophylaxe Assistentin & Bleachingspezialistin willkommen.",
+      "Seit Juli 2023 bin ich Teil des Teams KU64 Mitte am Hausvogteiplatz. Die Ausbildung zur Zahnmedizinischen Fachangestellten habe ich bereits 2014 erfolgreich abgeschlossen. Im Jahr 2021 habe ich die Herausforderung angenommen, mit zwei Kindern, meinen Träumen zu folgen, und die Aufstiegsfortbildung (ZMP) am Philipp-Pfaff-Institut ebenfalls erfolgreich absolviert.",
+      "Es bereitet mir Freude, meine Patienten im Bereich der Mundhygiene zu beraten und ihnen Empfehlungen zur lebenslangen Erhaltung von Zähnen und Zahnfleisch zu geben.",
+      "Gerne unterhalte ich mich auch auf Türkisch mit Ihnen.",
+      "Mit freundlichen Grüßen,"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/nurcan-sahin/"
+  },
+  "patricia-willer": {
+    "name": "Patricia Willer",
+    "funktion": "Zahnmedizinische Verwaltungsassistentin in der Kids-Abteilung",
+    "vorstellung": [
+      "Jahrgang 1980",
+      "2000 Erfolgreicher Abschluss als Zahnmedizinische Fachangestellte",
+      "2000-2003 tätig als Zahnmedizinische Fachangestellte",
+      "2003 Erfolgreicher Abschluss als Zahnmedizinische Verwaltungsassistentin",
+      "2003-2009 tätig als Stuhl- und Verwaltungsassistentin",
+      "2007 Geburt meiner Tochter Lilliana",
+      "2009-2019 tätig als Rezeptionistin und Verwaltungsassistentin",
+      "2019 Teammitglied bei KU64 als Zahnmedizinische Verwaltungsassistentin",
+      "2000-bis heute fortlaufende Weiterbildungen in allen Abrechnungsbereichen",
+      "Zu meinen Aufgaben zählt u.a. das Erstellen von jeglichen Kostenangeboten sowie von Rechnungen für die Kids-Abteilung. Des Weiteren unterstütze ich Sie bei der Umsetzung Ihrer Interessen gegenüber Krankenkassen und Versicherungen.",
+      "Ich liebe meinen Beruf und freue mich jeden Tag ein Teil des großartigen KU64-Teams zu sein und hier meinen Beruf ausüben zu dürfen.",
+      "Ihre Patricia Willer"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/verwaltung/patricia-willer/"
+  },
   "petros-prontis": {
     "name": "Petros Prontis",
     "funktion": "Presse & Kommunikation, Marketing",
+    "vorstellung": [
+      "Jahrgang 1974",
+      "Kommunikationswissenschaftler M.A. und Freier Journalist",
+      "Meine Sprachkenntnisse: Englisch und Griechisch",
+      "Ich begeistere mich für Sport (Volleyball), Reisen und Fotografie"
+    ],
     "abschnitte": [
       {
         "titel": "Werdegang",
@@ -1901,9 +2864,155 @@
     ],
     "quelle": "https://ku64.de/team/kommunikation/petros-prontis/"
   },
+  "ricco-molkentin": {
+    "name": "Ricco Molkentin",
+    "funktion": "Prophylaxeshop-Leiter & Prophylaxekoordination",
+    "vorstellung": [
+      "Herzlich willkommen bei KU64!",
+      "Ich verantworte unseren Prophylaxeshop sowie die organisatorische Koordination im Bereich Prophylaxe und Dentalhygiene. Seit April 2021 bringe ich meine kaufmännische Erfahrung bei KU64 ein – mit dem Anspruch, Service, Qualität und Menschlichkeit sinnvoll zu verbinden.",
+      "Was uns auszeichnet?",
+      "Ein starkes, eingespieltes Team, das moderne Prophylaxe mit echter Wertschätzung verbindet. Fachliche Kompetenz ist für uns selbstverständlich – eine angenehme, vertrauensvolle Atmosphäre ebenso. Besonders wichtig ist uns dabei der sensible Umgang mit Angstpatient:innen.",
+      "Im Prophylaxeshop in der fünften Etage berate ich Sie persönlich rund um Mundhygieneprodukte, Schallzahnbürsten oder Bleaching. Außerdem unterstütze ich Sie bei Terminabsprachen und stehe als Ansprechpartner zur Verfügung – unkompliziert und serviceorientiert.",
+      "Terminvereinbarung",
+      "Beratungsgespräche sind auch auf Englisch oder Spanisch möglich – meiner Muttersprache.",
+      "Ich freue mich darauf, Sie kennenzulernen.",
+      "Karriere bei KU64",
+      "Sie sind Prophylaxeassistent:in oder Dentalhygieniker:in und möchten Teil eines professionellen, wertschätzenden Teams werden?",
+      "Dann freuen wir uns auf Ihre Bewerbung:",
+      "📧 bewerbung@ku64.de",
+      "Werdegang",
+      "2004 Abitur",
+      "2010 Kaufmann im Einzelhandel",
+      "2011 Handelsfachwirt",
+      "Seit Ende 2011 Assistant Store Manager bei van Laack am Ku’damm"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/bleaching/ricco-molkentin/"
+  },
+  "sabine-kuehnau-falkenau": {
+    "name": "Sabine Kühnau-Falkenau",
+    "funktion": "Leitung Materialeinkauf & -verwaltung",
+    "vorstellung": [
+      "Jahrgang 1960",
+      "1978-1980 Ausbildung als Zahnmedizinische Fachangestellte",
+      "1980-1987 Zahnmedizinische Fachangestellte mit dem Schwerpunkt „Abrechnung“",
+      "2006-2007 Feng-Shui Ausbildung. Schwerpunkt: Farbpsychologie, Architektur",
+      "Seit 2013 unterstütze ich das KU64-Team als Leitung des Bereichs Materialeinkauf und -verwaltung",
+      "Hallo liebe Patientinnen & Patienten,",
+      "meine Aufgaben dienen dem reibungslosen Ablauf in der Materialverwaltung, sodass sich unsere Behandler und Assistenzen zu 100% auf Sie und Ihre individuelle Behandlung konzentrieren können. Mit meiner Kollegin Joana sorgen wir dafür, dass alles rund läuft!",
+      "Meine Tätigkeitsfelder:",
+      "Verwalten der zahnmedizinischen Materialien",
+      "Digitalisierung und Zentralisierung des Bestellsystems unserer Praxis",
+      "Bearbeitung der eingegangenen Bestellungen unserer Behandler"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/materialverwaltung/sabine-kuehnau-falkenau/"
+  },
+  "samaneh-salehipour": {
+    "name": "Samaneh Salehipour",
+    "funktion": "Zahnärztin für Zahnästhetik & Prothetik",
+    "vorstellung": [
+      "Jahrgang 1988",
+      "Liebe Patientinnen & Patienten!",
+      "Ihr Wohlbefinden und Ihr strahlendes Lächeln liegen mir besonders am Herzen! Das umfasst sowohl die ästhetische Komponente als auch die einwandfreie Funktion Ihrer Zähne und Kiefer, einschließlich einer optimalen Kaufunktion. Die Welt der modernen Zahnmedizin fasziniert mich, wobei ich mich vorrangig auf Füllungen, Kronen und qualitativ hochwertigen Zahnersatz konzentriere. Die stetigen Fortschritte in der zeitgemäßen Zahnmedizin eröffnen uns laufend neue Möglichkeiten, um Ihre Zahngesundheit zu verbessern und die Funktion Ihres Kausystems zu optimieren. Um dies zu gewährleisten, setze ich alles daran, immer auf dem neuesten Stand des Wissens zu sein.",
+      "Als Zahnärztin, die sowohl ästhetische Aspekte als auch Funktionalität schätzt, biete ich umfassende Beratungen an, um Sie über die besten Optionen für Ihr schönstes Lächeln zu informieren. In meinen Behandlungen verwende ich modernste Techniken und digitale Zahnmedizin. Dazu gehört unter anderem die Verwendung von computergestütztem, individuell angefertigtem Zahnersatz, der von erfahrenen Zahntechnikern perfektioniert wird – das so genannte CEREC-System.",
+      "Ich stehe Ihnen auch gerne für Beratungen auf Englisch und Farsi zur Verfügung!",
+      "Meine Assistentin und ich freuen uns schon sehr auf Ihren Besuch.",
+      "Zahnärztin Samaneh Salehipour"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/zahnaerzte/samaneh-salehipour/"
+  },
+  "sandra-mueller": {
+    "name": "Sandra Müller",
+    "funktion": "Zahnmedizinische Verwaltungsassistentin",
+    "vorstellung": [
+      "Jahrgang 1981",
+      "2004 Abschluss als Zahnmedizinische Fachangestellte",
+      "2005 tätig im zahnmedizinischen Verwaltungsbereich",
+      "2006 Abschluss als Zahnmedizinische Verwaltungsassistentin",
+      "2014 stolzes Teammitglied bei KU64",
+      "Zu meinen Aufgaben zählt u. a. das Erstellen von jeglichen Kostenangeboten sowie von Rechnungen. Des Weiteren unterstütze ich Sie bei der Umsetzung Ihrer Interessen gegenüber Krankenkassen und Versicherungen.",
+      "Ich liebe und lebe meinen Beruf und gehe mit viel Herzblut an die Arbeit. Hier bei KU64 habe ich meinen Traum-Arbeitsplatz zu meinem Traum-Job gefunden.",
+      "Ihre Sandra Müller"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/verwaltung/sandra-mueller/"
+  },
+  "sarah-henkel": {
+    "name": "Sarah Henkel",
+    "funktion": "Rezeption & Service",
+    "vorstellung": [
+      "Liebe Kids, liebe Patientinnen und Patienten,",
+      "Ich möchte mich Ihnen gerne vorstellen: Mein Name ist Sarah Henkel. Geboren wurde ich in Amerika, aber meine Wurzeln sind ägyptisch-deutsch. Bis zu meinem 11. Lebensjahr habe ich in Indonesien gelebt, und diese internationale Erfahrung prägt mich bis heute. 🌍",
+      "Als gelernte Zahnmedizinische Fachangestellte habe ich meine Ausbildung bei einem Berliner Zahnarzt-Urgestein absolviert. Diese Zeit war für mich unglaublich prägend, und ich habe gelernt, wie wichtig es ist, Patientinnen und Patienten mit Herz und Hingabe zu betreuen. Seit Ende 2016 bin ich stolzes Mitglied des KU64-Teams. In dieser renommierten und internationalen Praxis habe ich schnell mein berufliches Zuhause gefunden, und meine Kolleginnen und Kollegen haben mich herzlich aufgenommen. Ich fühle mich hier rundum wohl! 😊",
+      "Unsere Praxis ist groß, aber mein Ziel ist es, dass Sie sich bei uns genauso gut aufgehoben fühlen wie in einer kleinen, familiären Zahnarztpraxis. Mit meiner jahrelangen Erfahrung stehe ich Ihnen bei all Ihren Anliegen gerne zur Seite. Falls Sie Fragen haben oder ein nettes Gespräch führen möchten, sprechen Sie mich einfach an. Und wenn Sie lieber auf Englisch kommunizieren möchten, bin ich auch dafür die richtige Ansprechpartnerin!",
+      "Übrigens, ich bin auch die TikTok-Beauftragte hier bei KU64! 🎥 Wenn Sie Lust haben, über Ihre KU64-Erfahrungen zu berichten oder einfach ein Fun-Video mit mir zu drehen, bin ich total dabei. Und das Beste: Es winkt sogar eine kleine Belohnung!",
+      "Also, kommen Sie vorbei, lassen Sie uns gemeinsam lachen, plaudern und Ihren Zahnarztbesuch zu etwas Besonderem machen!",
+      "Ihre Sarah Henkel"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/rezeption-service/sarah-henkel/"
+  },
+  "saskia-baer": {
+    "name": "Saskia Baer",
+    "funktion": "Dentalhygienikerin Bachelor of Science Dentalhygiene und Präventionsmanagement, B. Sc.",
+    "vorstellung": [
+      "Ich freue mich sehr darüber, im größten Dentalhygiene-Team Berlin/Potsdam arbeiten zu dürfen! Ich sorge gerne dafür, dass Ihre Zähne gesund bleiben.",
+      "Ihre Saskia Baer"
+    ],
+    "abschnitte": [
+      {
+        "titel": "Werdegang von Frau Saskia Baer:",
+        "zeilen": [
+          "2009 – Abschluss Ausbildung zur zahnmedizinischen Fachangestellten",
+          "2009 – 2014 – Assistentin im Bereich Endodontie und ästhetische Zahnheilkunde",
+          "03/2015 – 03/2017 – Studium der Bachelor für Dentalhygiene und Präventionsmanagement (B.Sc.) in Köln",
+          "11/2019 – Dentalhygienikerin bei KU64 in Potsdam"
+        ],
+        "alsListe": false
+      }
+    ],
+    "quelle": "https://ku64.de/team/dentalhygieniker/saskia-baer/"
+  },
+  "steffi-kohl": {
+    "name": "Steffi Kohl",
+    "funktion": "Zahnmedizinische Fachangestellte (ZFA)",
+    "vorstellung": [
+      "Ich habe nach dem Abitur im Jahr 1998 ein Jahr in Freiburg im Breisgau gelebt und 1999 meine Ausbildung zur zahnmedizinischen Assistenz begonnen, die ich 2002 als zahnmedizinische Fachangestellte erfolgreich abgeschlossen habe. Von 2003 bis 2015 habe ich bei Dr. Stephan Ziegler (KU64-Inhaber) assistiert. Seit 2015 bis heute bin ich die lustige und liebevolle Assistenz in der Kinderabteilung bei Kinderzahnärztin Dr. Frederike Arnold-Brüning."
+    ],
+    "abschnitte": [
+      {
+        "titel": "Ausbildungsmanagement",
+        "zeilen": [
+          "2013 habe ich eine neue Tätigkeit übernommen, die ich bis heute mit großer Freude und Leidenschaft ausübe: Die Betreuung von unseren Auszubildenden. Ich bin sehr stolz auf unsere Mädels und Jungs! Wir suchen immer wieder neue Azubis (w/m/d) und freue mich über neue Bewerbungen: ausbildung@ku64.de"
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Qualitätsmanagement Stuhlassistenz",
+        "zeilen": [
+          "Von Januar 2017 bis März 2018 hatte ich die Leitung der KU64-ZFAs (zahnmedizinischer Fachangestellten) inne. Unter anderem sorgte ich gemeinsam mit meinem Team für eine fortlaufende Optimierung der Abläufe in der Stuhlassistenz sowie in der Qualität der Praxisabläufe – dieser Prozess ist nun abgeschlossen."
+        ],
+        "alsListe": false
+      },
+      {
+        "titel": "Ehrenamt im Südafrika-Projekt",
+        "zeilen": [
+          "Besonders stolz bin ich auch auf unser ehrenamtliches Südafrika-Projekt, bei dem ich von der Geburtsstunde an im Jahr 2009 mit beteiligt bin – sowohl organisatorisch als auch ausführend! Hier erfahren Sie mehr über unser Engagement in Paternoster."
+        ],
+        "alsListe": false
+      }
+    ],
+    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/steffi-kohl/"
+  },
   "susan-feldmann": {
     "name": "Susan Feldmann",
     "funktion": "Head of Human Resources",
+    "vorstellung": [
+      "Jahrgang 1994",
+      "Als Personalmanager (Human Resources Manager) kümmere ich mich um alle Belange der KU64-Mitarbeiter und bin zuständig für die Rekrutierung von Azubis und neuen Kollegen in enger Kooperation mit den Abteilungsleitern. Der offene und wertschätzende Umgang mit allen Mitarbeitern von KU64 ist mir sehr wichtig. Ich versuche den Arbeitsalltag in unserer Praxis fortlaufend zu optimieren, wie zum Beispiel Arbeitsumfeld, Kollegenmotivation, Aufstiegs- und Weiterbildungsmöglichkeiten."
+    ],
     "abschnitte": [
       {
         "titel": "Referenten­tätigkeit",
@@ -1941,54 +3050,17 @@
     ],
     "quelle": "https://ku64.de/team/human-resources/susan-feldmann/"
   },
-  "saskia-baer": {
-    "name": "Saskia Baer",
-    "funktion": "Dentalhygienikerin Bachelor of Science Dentalhygiene und Präventionsmanagement, B. Sc.",
-    "abschnitte": [
-      {
-        "titel": "Werdegang von Frau Saskia Baer:",
-        "zeilen": [
-          "2009 – Abschluss Ausbildung zur zahnmedizinischen Fachangestellten",
-          "2009 – 2014 – Assistentin im Bereich Endodontie und ästhetische Zahnheilkunde",
-          "03/2015 – 03/2017 – Studium der Bachelor für Dentalhygiene und Präventionsmanagement (B.Sc.) in Köln",
-          "11/2019 – Dentalhygienikerin bei KU64 in Potsdam"
-        ],
-        "alsListe": false
-      }
-    ],
-    "quelle": "https://ku64.de/team/dentalhygieniker/saskia-baer/"
-  },
-  "steffi-kohl": {
-    "name": "Steffi Kohl",
-    "funktion": "Zahnmedizinische Fachangestellte (ZFA)",
-    "abschnitte": [
-      {
-        "titel": "Ausbildungsmanagement",
-        "zeilen": [
-          "2013 habe ich eine neue Tätigkeit übernommen, die ich bis heute mit großer Freude und Leidenschaft ausübe: Die Betreuung von unseren Auszubildenden. Ich bin sehr stolz auf unsere Mädels und Jungs! Wir suchen immer wieder neue Azubis (w/m/d) und freue mich über neue Bewerbungen: ausbildung@ku64.de"
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Qualitätsmanagement Stuhlassistenz",
-        "zeilen": [
-          "Von Januar 2017 bis März 2018 hatte ich die Leitung der KU64-ZFAs (zahnmedizinischer Fachangestellten) inne. Unter anderem sorgte ich gemeinsam mit meinem Team für eine fortlaufende Optimierung der Abläufe in der Stuhlassistenz sowie in der Qualität der Praxisabläufe – dieser Prozess ist nun abgeschlossen."
-        ],
-        "alsListe": false
-      },
-      {
-        "titel": "Ehrenamt im Südafrika-Projekt",
-        "zeilen": [
-          "Besonders stolz bin ich auch auf unser ehrenamtliches Südafrika-Projekt, bei dem ich von der Geburtsstunde an im Jahr 2009 mit beteiligt bin – sowohl organisatorisch als auch ausführend! Hier erfahren Sie mehr über unser Engagement in Paternoster."
-        ],
-        "alsListe": false
-      }
-    ],
-    "quelle": "https://ku64.de/team/zahnmedizinische-fachangestellte/steffi-kohl/"
-  },
   "tim-walter": {
     "name": "Tim Walter",
     "funktion": "Zahnarzt für Zahnästhetik",
+    "vorstellung": [
+      "Liebe Patienten und Patientinnen,",
+      "mein Name ist Tim Walter, und es freut mich sehr, mich Ihnen vorstellen zu dürfen.",
+      "Ursprünglich startete ich meine berufliche Laufbahn als Zahntechniker, doch schon bald wurde mir klar, dass meine Leidenschaft eine weiterführende Entwicklung forderte. Dies führte mich zu meinem Herzensprojekt, dem Zahnmedizinstudium an der renommierten Universität Greifswald, welches ich 2021 erfolgreich abschloss.",
+      "Meine Motivation liegt darin, Ihnen einfühlsame, schnelle und effektive Beratung und Behandlung zu bieten. Für mich ist die Zahnmedizin nicht nur ein Beruf, sondern eine wahre Berufung. Mein Ansatz ist geprägt von Wissbegierde, Bedachtsamkeit und Pünktlichkeit. Ich engagiere mich leidenschaftlich, bin kontaktfreudig und zuverlässig. Ein harmonisches Arbeitsumfeld ist mir ebenso wichtig wie die kontinuierliche Weiterentwicklung. In diesem Sinne schätze ich die geballte Expertise und die interdisziplinäre Zusammenarbeit, die eine renommierte Praxis wie KU64 zu bieten hat.",
+      "Als Zahnarzt bei KU64 bin ich überzeugt, dass ich Ihnen eine kompetente und einfühlsame Betreuung bieten kann. Mir liegt viel daran, eine positive Behandlungsatmosphäre zu schaffen, um Ihren Aufenthalt in unserer Praxis so angenehm wie möglich zu gestalten. Gerne stehe ich Ihnen für sämtliche Fragen rund um Ihre Zahngesundheit zur Verfügung.",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen und gemeinsam mit dem Team von KU64 für Ihre optimale Zahnpflege zu sorgen."
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -2047,6 +3119,14 @@
   "tsong-ung-an": {
     "name": "Tsong-Ung An",
     "funktion": "Zahnarzt & Praxispartner",
+    "vorstellung": [
+      "Jahrgang 1982, geboren in Berlin",
+      "Die zahntechnische Ausbildung vor dem Studium erweitert meine manuellen Fähigkeiten und meinen Blick für die Ästhetik und Funktion. Dies bietet eine gute Grundlage für eine optimale Zusammenarbeit mit unserem praxisintegrierten High-Tech-Dentallabor SMILE DESIGN hinsichtlich der technischen Umsetzung, um Ihnen die qualitativ hochwertigste Anfertigung anbieten zu können.",
+      "Eine kompetente und zufriedenstellende Betreuung unserer Patienten steht für mich stets im Vordergrund und darüber hinaus ist mir die einfühlsame Betreuung unserer Angstpatienten sehr wichtig.",
+      "Ich betreue Sie auch gerne in den Sprachen Englisch und Koreanisch.",
+      "ERHALTEN SIE EINE ZWEITE MEINUNG ZU IHRER ZAHNÄRZTLICHEN BEHANDLUNG",
+      "Sie möchten einen zahnärztlichen Eingriff vornehmen lassen und benötigen eine kompetente Zweitmeinung? Sie möchten das Ergebnis einer vorgenommenen Behandlung unabhängig beurteilen lassen? Unser Zahnarzt Tsong-ung An ist der kompetente Ansprechpartner mit einer Berufserfahrung von über 10 Jahren. Er beantwortet unverbindlich und kompetent alle Fragen zur Zahnbehandlung. Egal ob Sie eine Zweitmeinung zu einer Behandlung benötigen oder Fragen zu Themen wie Zahnersatz oder Heil- und Kostenpläne haben, Herr An kann Ihnen hier professionell zur Seite stehen."
+    ],
     "abschnitte": [
       {
         "titel": "Schwerpunkte",
@@ -2071,5 +3151,57 @@
       }
     ],
     "quelle": "https://ku64.de/team/zahnaerzte/tsong-ung-an/"
+  },
+  "viktoria-genkel": {
+    "name": "Viktoria Genkel",
+    "funktion": "Dentalberaterin & Digital Smile Design Koordinatorin",
+    "vorstellung": [
+      "Liebe Patientinnen, liebe Patienten!",
+      "Schön, dass Sie zu uns gefunden haben. Träumen Sie von einem strahlenden, natürlichen Lächeln? Dann sind Sie hier genau richtig!",
+      "Mit Digital Smile Design (DSD) wird dieser Traum Wirklichkeit: Sie können das Ergebnis Ihrer Zahnbehandlung schon vorab wie bei einer kleinen „Probefahrt“ sehen und sogar „anprobieren“. So stellen Sie sicher, dass Ihr neues Lächeln perfekt zu Ihnen passt.",
+      "Gemeinsam mit Ihnen und Ihrer Zahnärztin oder Ihrem Zahnarzt entwerfen wir es direkt am Computer – präzise, modern und ganz individuell – in unserer hochmodernen Praxis.",
+      "Wir planen Ihre Behandlung Schritt für Schritt, damit Sie die bestmögliche Versorgung und ein optimales Ergebnis erhalten.",
+      "Ich berate Sie auch gern auf Englisch. Für Fragen oder Terminwünsche erreichen Sie mich per E-Mail unter genkel@ku64.de",
+      "Jahrgang 1987, Mutter zwei Töchter",
+      "2011 – Abschluss der Ausbildung zur zahnmedizinischen Fachangestellten, Bereich Kieferorthopädie",
+      "2011-2015 – kieferorthopädische Fachangestellte bei KU64",
+      "2015-2023 – zahnmedizinische Verwaltungsassistentin (ZMV) für die kieferorthopädische Angebotserstellung sowie Abrechnung zuständig",
+      "2023-2025 – Patientenbetreuung & Service",
+      "seit Sommer 2025 – Dentalberaterin & Digital Smile Design Koordinatorin"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/dsd-koordination-dentalberatung/viktoria-genkel/"
+  },
+  "vivien-zacher": {
+    "name": "Vivien Zacher",
+    "funktion": "Zahnmedizinische Verwaltungsassistentin & Fachwirt für zahnärztliches Praxismanagement",
+    "vorstellung": [
+      "Jahrgang 1998",
+      "Seit 2019 bin ich Zahnmedizinische Fachangestellte und habe bis 2022 in der Stuhlassistenz und an der Rezeption gearbeitet. 2021 schloss ich die Weiterbildung zur Zahnmedizinischen Verwaltungsassistentin ab, verwirklichte mich 2023 und absolvierte meinen Fachwirt für zahnärztliches Praxismanagement.",
+      "Ich bin zuständig für die Erstellung von Kostenangeboten jeglicher Art sowie obliegt mir das Mahnwesen.",
+      "Fachlich bin ich durch meine Zeit in der Assistenz breit aufgestellt in Zahnerhaltung, aber auch chirurgisch/implantologisch ist die Expertise breit gefächert. Die Behandlung mit den Kindern jedoch war mir immer eine besondere Freude. Meine Kollegen und ich unterstützen Sie in allen Bereichen damit, Sie bestmöglich aufgeklärt sind und die Behandlungen bei uns immer in guter Erinnerung behalten werden. Bei bürokratischen Hürden stehen wir Ihnen mit Rat und Tat beiseite, sodass Sie vom Betreten der Praxis bis zur Erstattung durch Kostenträger rundum versorgt werden.",
+      "Ich freue mich, Sie bei uns begrüßen zu dürfen!",
+      "Ihre Vivien Zacher"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/verwaltung/vivien-zacher/"
+  },
+  "zeynep-cinar": {
+    "name": "Zeynep Çınar",
+    "funktion": "Zahnärztin · Parodontitis- & Prophylaxeexpertin",
+    "vorstellung": [
+      "Herzlich willkommen!",
+      "Gesundes Zahnfleisch ist die Grundlage für ein strahlendes Lächeln – und genau darauf liegt meine Leidenschaft.",
+      "Mein Schwerpunkt liegt auf Parodontologie und moderne Prophylaxe. Es ist mein Ziel, Ihre Mundgesundheit nachhaltig zu stärken – sanft, präzise und auf dem neuesten Stand der Wissenschaft.",
+      "Bei KU64 arbeite ich mit innovativen Methoden wie der Guided Biofilm Therapy (GBT) – einer besonders schonenden und effektiven Form der professionellen Zahnreinigung. Für Sie bedeutet das: saubere Zähne, gesundes Zahnfleisch und ein rundum gutes Gefühl – ganz ohne Schmerzen.",
+      "Mir ist wichtig, dass Sie sich bei jeder Behandlung verstanden, gut aufgehoben und bestens informiert fühlen. Vertrauen und Empathie sind für mich genauso essenziell wie Fachwissen und Präzision.",
+      "Wie gesund ist Ihr Zahnfleisch?",
+      "Finden Sie es heraus – mit einer professionellen Prophylaxe-Sitzung inklusive PerioSafe®-Test direkt bei KU64.",
+      "Terminvereinbarung: 030 – 864 73 20",
+      "Ich freue mich darauf, Sie persönlich kennenzulernen!",
+      "Ihre Zeynep Çınar"
+    ],
+    "abschnitte": [],
+    "quelle": "https://ku64.de/team/prophylaxe/zeynep-cinar/"
   }
 }
