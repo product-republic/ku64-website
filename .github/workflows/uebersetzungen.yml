@@ -49,10 +49,14 @@ on:
         required: false
         default: ''
 
-# Zwei Läufe gleichzeitig würden sich gegenseitig überschreiben.
+# Zwei Läufe gleichzeitig würden sich gegenseitig überschreiben – deshalb
+# nacheinander. Aber NICHT abbrechen: Ein Übersetzungslauf, der zur Hälfte
+# durch ist, hat bereits Geld gekostet. Ihn wegen eines neuen Zugs auf den
+# Zweig zu beenden, wirft diese Arbeit weg und fängt beim nächsten Lauf von
+# vorn an. (Genau das ist beim ersten Lauf passiert.)
 concurrency:
   group: uebersetzungen-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   uebersetzen:
