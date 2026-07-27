@@ -2,15 +2,27 @@
 /**
  * Einzige zugelassene Art, ein Bild auf dieser Website anzuzeigen.
  *
- * Der Kern: Fehlt der Nachweis oder ist er unvollständig, wird **nichts**
- * gerendert – kein Platzhalter, kein graues Kästchen, kein Ersatzmotiv. Eine
- * Seite ohne Bild ist ein gültiger Zustand, ein Bild ohne geklärte Herkunft
- * nicht.
+ * Der Kern: Fehlt der Nachweis oder ist er unvollständig, wird **kein Foto**
+ * gerendert – kein Stock-Motiv, kein Ersatzbild, nichts Fremdes. Ein Bild
+ * ohne geklärte Herkunft ist kein gültiger Zustand.
  *
- * In der Entwicklung erscheint stattdessen ein sichtbarer Hinweis, damit die
- * Lücke nicht vergessen wird. In Produktion bleibt die Stelle einfach leer.
+ * ── Was sich geändert hat: der Platzhalter ─────────────────────────────
+ *
+ * Bisher blieb die Stelle in Produktion einfach leer. Das ist richtig gegen
+ * Stock-Fotos und falsch gegen Vergessen: Eine leere Stelle sieht aus wie
+ * eine Gestaltungsentscheidung. Steht das Motiv dagegen in
+ * `src/data/bildbedarf.ts`, erscheint jetzt ein benannter Platzhalter mit
+ * genau der Bildbeschreibung, die dort hinterlegt ist.
+ *
+ * Er sieht unter keinen Umständen wie ein Foto aus – getönte Fläche, Raster,
+ * Text darin. Niemand kann ihn für das fertige Bild halten, und niemand kann
+ * eine Seite voller Platzhalter für fertig halten.
+ *
+ * Ohne Eintrag im Bedarf bleibt es beim alten Verhalten: nichts. Eine
+ * Bildstelle, die niemand angemeldet hat, soll auch nicht angemahnt werden.
  */
 import { getBild, nachweisGueltig, type Bildnachweis } from '../lib/bilder';
+import { bedarfFuer } from '../data/bildbedarf';
 
 interface Props {
   /** Schlüssel aus dem Bildverzeichnis in src/lib/bilder.ts. */
@@ -26,7 +38,10 @@ const { schluessel, erwartet, klasse, vorrang = false } = Astro.props;
 
 const bild: Bildnachweis | undefined = getBild(schluessel);
 const pruefung = bild ? nachweisGueltig(bild) : { ok: false, grund: 'Kein Eintrag im Bildverzeichnis.' };
-const zeigeLuecke = import.meta.env.DEV && !pruefung.ok;
+
+/* Angemeldeter Bedarf ohne Foto → Platzhalter. Alles andere → nichts. */
+const bedarf = pruefung.ok ? undefined : bedarfFuer(schluessel);
+const zeigeLuecke = import.meta.env.DEV && !pruefung.ok && !bedarf;
 ---
 
 {
@@ -41,6 +56,14 @@ const zeigeLuecke = import.meta.env.DEV && !pruefung.ok;
         decoding={vorrang ? 'sync' : 'async'}
         fetchpriority={vorrang ? 'high' : 'auto'}
       />
+    </figure>
+  ) : bedarf ? (
+    <figure class:list={['bild', 'platzhalter', `ph-${bedarf.format}`, klasse]} role="img"
+            aria-label={`Bild folgt: ${bedarf.motiv}`}>
+      <div class="ph-inhalt">
+        <span class="ph-marke">Foto folgt</span>
+        <span class="ph-motiv">{bedarf.motiv}</span>
+      </div>
     </figure>
   ) : zeigeLuecke ? (
     <div class="luecke" role="note">
@@ -66,6 +89,66 @@ const zeigeLuecke = import.meta.env.DEV && !pruefung.ok;
     width: 100%;
     height: auto;
     object-fit: cover;
+  }
+
+  /*
+   * Der Platzhalter.
+   *
+   * Getönt statt grau, mit sichtbarem Raster und der Bildbeschreibung darin.
+   * Das Raster ist der eigentliche Trick: Eine glatte Fläche liest sich als
+   * Gestaltung, eine gerasterte als „hier fehlt etwas". Genau das soll sie
+   * sagen – auf der Website wie im Screenshot, den jemand herumschickt.
+   */
+  .platzhalter {
+    display: grid;
+    place-items: center;
+    padding: var(--raum-6);
+    background:
+      repeating-linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--akzent) 7%, var(--flaeche-warm)) 0 10px,
+        var(--flaeche-warm) 10px 20px
+      );
+    border: 1px dashed color-mix(in oklab, var(--tinte) 22%, transparent);
+  }
+
+  /*
+   * Das Seitenverhältnis des künftigen Fotos, aber gedeckelt.
+   *
+   * Das Verhältnis gehört dazu: Es reserviert den Platz, den das Foto
+   * einnehmen wird, und verhindert, dass die Seite beim Einbau springt. Die
+   * Obergrenze auch: Ein 16:10-Platzhalter über die volle Textbreite ist
+   * vierhundert Pixel hoch, und bei zwei Dutzend davon sieht die Website
+   * nicht unfertig aus, sondern leer. Beim echten Foto fällt die Grenze weg.
+   */
+  .ph-quer { aspect-ratio: 16 / 10; }
+  .ph-hoch { aspect-ratio: 3 / 4; }
+  .ph-quadrat { aspect-ratio: 1; }
+
+  .platzhalter {
+    max-height: 17rem;
+  }
+
+  .ph-inhalt {
+    display: grid;
+    gap: var(--raum-2);
+    justify-items: center;
+    text-align: center;
+    max-width: 34ch;
+  }
+
+  .ph-marke {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--akzent-schrift);
+  }
+
+  .ph-motiv {
+    font-size: var(--t-sm);
+    line-height: var(--zeile-normal);
+    color: var(--tinte-weich);
   }
 
   /* Nur in der Entwicklung sichtbar. */

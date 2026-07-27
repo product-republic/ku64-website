@@ -11,10 +11,12 @@
 import { inhalte } from '../../../../i18n/daten';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
+import Bild from '../../../../components/Bild.astro';
 import FaqBlock from '../../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { alleKombinationen } from '../../../../data/leistungen';
+import { bereichsbild } from '../../../../data/bildbedarf';
 import {
   schemaLeistung,
   schemaFaq,
@@ -95,6 +97,9 @@ const schema = [
 
         {/* Die vier Fragen, die Patientinnen und Patienten zuerst stellen –
             direkt sichtbar, ohne Scrollen und ohne Klick. */}
+        {/* Bereichsmotiv – siehe src/data/bildbedarf.ts. */}
+        <Bild schluessel={bereichsbild(kategorie.slug)} klasse="kopfbild" vorrang />
+
         <dl class="eckdaten">
           {
             leistung.dauer && (
@@ -303,6 +308,11 @@ const schema = [
     font-size: var(--t-lg);
     line-height: var(--zeile-weit);
     color: var(--tinte-weich);
+  }
+
+  .kopfbild {
+    margin-block: var(--raum-6) 0;
+    max-width: 46rem;
   }
 
   .eckdaten {

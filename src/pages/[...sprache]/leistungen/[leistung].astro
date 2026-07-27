@@ -12,9 +12,11 @@ import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
+import Bild from '../../../components/Bild.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import { LEISTUNGEN } from '../../../data/leistungen';
 import { beschwerdenZuBehandlung } from '../../../data/beschwerden';
+import { bereichsbild } from '../../../data/bildbedarf';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -74,6 +76,17 @@ const schema = [
       <a href={`/leistungen/#${kategorie.slug}`} class="marke marke-akzent">{kategorie.name}</a>
       <h1>{leistung.name}</h1>
       <p class="teaser">{leistung.teaser}</p>
+
+      {/*
+        Ein Bild je Bereich, nicht je Behandlung.
+
+        35 Behandlungen einzeln zu bebildern hieße 35 Fototermine, und im
+        Bild unterscheidet sich eine professionelle Zahnreinigung nicht von
+        einer Prophylaxe 4.0. Solange das Foto fehlt, steht hier ein
+        benannter Platzhalter statt einer leeren Stelle – siehe
+        src/data/bildbedarf.ts.
+      */}
+      <Bild schluessel={bereichsbild(kategorie.slug)} klasse="kopfbild" vorrang />
 
       <dl class="eckdaten">
         {leistung.dauer && <div><dt>Dauer</dt><dd>{leistung.dauer}</dd></div>}
@@ -224,6 +237,11 @@ const schema = [
   .fuehrt a:hover {
     border-color: var(--akzent);
     color: var(--tinte);
+  }
+
+  .kopfbild {
+    margin-block: var(--raum-6) 0;
+    max-width: 46rem;
   }
 
   .kopf {

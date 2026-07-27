@@ -29,7 +29,9 @@ import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
+import Bild from '../../../components/Bild.astro';
 import { BESCHWERDEN, getBeschwerde, behandlungenZu, AKUT } from '../../../data/beschwerden';
+import { bereichsbild } from '../../../data/bildbedarf';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -41,6 +43,15 @@ const daten = inhalte(Astro);
 const beschwerde = getBeschwerde(Astro.params.beschwerde!)!;
 const behandlungen = behandlungenZu(beschwerde.slug);
 const istAkut = AKUT.has(beschwerde.slug);
+
+/*
+ * Das Bild kommt vom Bereich der Behandlung, die hier hilft.
+ *
+ * Eine Beschwerde hat kein eigenes Motiv – „Zahnfleischbluten" fotografiert
+ * man nicht. Was sich zeigen lässt, ist die Situation, in der geholfen wird,
+ * und die gehört zum Bereich der Behandlung.
+ */
+const bildschluessel = behandlungen[0] ? bereichsbild(behandlungen[0].kategorie) : null;
 const pfad = `/zahnbeschwerden/${beschwerde.slug}/`;
 
 const brotkrumen = [
@@ -110,6 +121,8 @@ const schema = [
       <a href="/zahnbeschwerden/" class="marke marke-akzent">Beschwerden</a>
       <h1>{beschwerde.titel}</h1>
       {beschwerde.beschreibung && <p class="anriss">{beschwerde.beschreibung}</p>}
+
+      {bildschluessel && <Bild schluessel={bildschluessel} klasse="kopfbild" vorrang />}
 
       {
         istAkut && (
@@ -247,6 +260,11 @@ const schema = [
     line-height: var(--zeile-weit);
     max-width: 46rem;
     margin-block-start: var(--raum-4);
+  }
+
+  .kopfbild {
+    margin-block-start: var(--raum-6);
+    max-width: 46rem;
   }
 
   /* ── Akutkasten ──────────────────────────────────────────────────────── */

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "og:bilder": "node --experimental-strip-types scripts/og-bilder.mjs",
-    "build": "npm run daten:pruefen && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen",
+    "bilder:liste": "node --experimental-strip-types --no-warnings scripts/bilder-liste.mjs",
+    "build": "npm run daten:pruefen && npm run bilder:liste && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen",
     "build:schnell": "astro build",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",

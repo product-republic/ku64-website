@@ -36,7 +36,10 @@
  * hin, und wird ausdrücklich als unverbindliche Illustration gekennzeichnet.
  */
 
-import { TEAM } from '../data/team';
+// Endung mitgeschrieben: scripts/bilder-liste.mjs lädt diese Datei direkt mit
+// Node (ohne Vite), und Node löst erweiterungslose relative Importe in ESM
+// nicht auf. Dieselbe Begründung wie in src/data/leistungen.ts.
+import { TEAM } from '../data/team.ts';
 
 export type Bildherkunft = 'praxis' | 'generiert';
 
