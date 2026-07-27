@@ -3,15 +3,55 @@ import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
+import { offeneStellen } from '../../lib/personio';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
 
+/*
+ * Die Seite bleibt statisch – mit dem Stand des letzten Deployments im HTML,
+ * damit Suchmaschinen und Menschen ohne JavaScript die Stellen sehen. Nach
+ * dem Laden holt das Skript unten die aktuelle Liste von `/api/stellen/` und
+ * tauscht sie aus, falls sie sich geändert hat.
+ *
+ * Der naheliegende Weg wäre gewesen, die Seite serverseitig zu rendern. Das
+ * geht hier nicht: Diese Route trägt das Sprachpräfix als dynamisches
+ * Segment, und ohne getStaticPaths würde jeder beliebige Präfix eine Seite
+ * ausliefern statt einer 404.
+ */
+
 const daten = inhalte(Astro);
 
 
 const pfad = '/karriere/';
+
+/* null heißt: Personio war nicht erreichbar. Das ist etwas anderes als
+   „keine offenen Stellen" und wird auch anders dargestellt. */
+const stellen = await offeneStellen();
+
+/*
+ * JobPosting-Auszeichnung, damit die Stellen in der Google-Jobsuche
+ * erscheinen. Ohne sie taucht eine Ausschreibung dort nicht auf, egal wie
+ * gut sie geschrieben ist.
+ */
+const stellenSchema = (stellen ?? []).map((stelle) => ({
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: stelle.titel,
+  description: stelle.anriss,
+  employmentType: stelle.umfang,
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: 'KU64 – Die Zahnspezialisten',
+    sameAs: 'https://ku64.de/',
+  },
+  jobLocation: {
+    '@type': 'Place',
+    name: stelle.standortName,
+  },
+  url: stelle.adresse,
+}));
 const brotkrumen = [
   { name: 'Start', pfad: '/' },
   { name: 'Karriere', pfad },
@@ -23,7 +63,7 @@ const brotkrumen = [
   description="Offene Stellen und Initiativbewerbung bei KU64 in Berlin und Potsdam."
   pfad={pfad}
   brotkrumen={brotkrumen}
-  schema={[schemaBrotkrumen(brotkrumen)]}
+  schema={[schemaBrotkrumen(brotkrumen), ...stellenSchema]}
 >
   <section class="abschnitt">
     <div class="huelle">
@@ -33,16 +73,84 @@ const brotkrumen = [
         Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.
       </p>
 
-      <div class="hinweis hinweis-info offen">
-        <strong>Stellenanzeigen folgen.</strong>
-        <p>
-          Die aktuellen Ausschreibungen werden gerade eingepflegt. Bis dahin freuen wir uns
-          über Initiativbewerbungen – schreiben Sie uns einfach, welcher Bereich und welcher
-          Standort Sie interessieren.
-        </p>
-      </div>
+      {
+        stellen === null && (
+          <div class="hinweis offen">
+            <strong>Die Stellenübersicht ist gerade nicht erreichbar.</strong>
+            <p>
+              Sie erreichen alle Ausschreibungen direkt im{' '}
+              <a href="https://ku64.jobs.personio.de/" target="_blank" rel="noopener noreferrer">
+                Stellenportal
+              </a>{' '}
+              – oder Sie schreiben uns einfach, welcher Bereich und welcher Standort Sie
+              interessieren.
+            </p>
+          </div>
+        )
+      }
 
-      <h2>Kontakt für Bewerbungen</h2>
+      {
+        stellen !== null && stellen.length === 0 && (
+          <div class="hinweis offen">
+            <strong>Zurzeit ist keine Stelle ausgeschrieben.</strong>
+            <p>
+              Über Initiativbewerbungen freuen wir uns trotzdem – gute Leute stellen wir
+              auch außerhalb einer Ausschreibung ein.
+            </p>
+          </div>
+        )
+      }
+
+      {
+        stellen !== null && stellen.length > 0 && (
+          <>
+            <h2 id="stellen">
+              {stellen.length === 1
+                ? 'Eine offene Stelle'
+                : `${stellen.length} offene Stellen`}
+            </h2>
+
+            <div class="stellen" id="stellen-liste">
+              {stellen.map((stelle) => (
+                <a
+                  href={stelle.adresse}
+                  class="karte stelle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="s-kopf">
+                    <span class="s-ort">{stelle.standortName}</span>
+                    {stelle.umfang && <span class="marke">{stelle.umfang}</span>}
+                  </span>
+                  <h3>{stelle.titel}</h3>
+                  {stelle.abteilung && <p class="s-abteilung">{stelle.abteilung}</p>}
+                  <span class="s-mehr">
+                    Zur Ausschreibung
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                      <path
+                        d="M5 12h13M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <p class="klein">
+              Die Ausschreibungen liegen bei Personio. Erst wenn Sie eine davon öffnen,
+              verlassen Sie diese Website – auf dieser Seite wird keine Verbindung dorthin
+              aufgebaut.
+            </p>
+          </>
+        )
+      }
+
+      <h2>Initiativ bewerben</h2>
       <div class="raster">
         {daten.standorte.map((s) => (
           <div class="karte ort" style={`--akzent:${s.akzent}`}>
@@ -58,7 +166,145 @@ const brotkrumen = [
   </section>
 </Basis>
 
+<script>
+  /**
+   * Holt die aktuelle Stellenliste nach.
+   *
+   * Im HTML steht der Stand des letzten Deployments. Wenn sich seitdem
+   * etwas geändert hat, wird die Liste hier ersetzt – still, ohne Meldung:
+   * Wer die Seite gerade liest, soll die richtigen Stellen sehen, aber
+   * nicht dabei zusehen müssen, wie sie ausgetauscht werden.
+   *
+   * Schlägt der Abruf fehl, bleibt der gebaute Stand stehen. Das ist der
+   * Grund, warum er überhaupt im HTML steht.
+   */
+  const liste = document.getElementById('stellen-liste');
+
+  if (liste) {
+    type Stelle = {
+      id: string;
+      titel: string;
+      standortName: string;
+      abteilung: string;
+      umfang: string;
+      adresse: string;
+    };
+
+    const pfeil = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+
+    /* Fremde Zeichenketten gehören nicht ungeprüft ins Markup – auch wenn
+       sie aus dem eigenen Personio kommen. */
+    const sicher = (text: string) => {
+      const d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    };
+
+    const zeichnen = (stellen: Stelle[]) => {
+      liste.innerHTML = stellen
+        .map(
+          (s) => `
+        <a href="${sicher(s.adresse)}" class="karte stelle" target="_blank" rel="noopener noreferrer">
+          <span class="s-kopf">
+            <span class="s-ort">${sicher(s.standortName)}</span>
+            ${s.umfang ? `<span class="marke">${sicher(s.umfang)}</span>` : ''}
+          </span>
+          <h3>${sicher(s.titel)}</h3>
+          ${s.abteilung ? `<p class="s-abteilung">${sicher(s.abteilung)}</p>` : ''}
+          <span class="s-mehr">Zur Ausschreibung${pfeil}</span>
+        </a>`,
+        )
+        .join('');
+    };
+
+    /* Mit Schrägstrich am Ende – die Website ist auf `trailingSlash: always`
+       eingestellt, ohne ihn antwortet der Server mit einer Weiterleitung. */
+    fetch('/api/stellen/')
+      .then((a) => (a.ok ? a.json() : null))
+      .then((daten) => {
+        if (!daten?.stellen) return;
+        const bekannt = [...liste.querySelectorAll('a')].length;
+        /* Nur neu zeichnen, wenn sich wirklich etwas geändert hat. */
+        if (daten.stellen.length !== bekannt) zeichnen(daten.stellen);
+      })
+      .catch(() => {
+        /* Der gebaute Stand bleibt stehen. */
+      });
+  }
+</script>
+
 <style>
+  .stellen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    gap: var(--raum-4);
+    margin-block: var(--raum-5) var(--raum-4);
+  }
+
+  .stelle {
+    text-decoration: none;
+    gap: var(--raum-2);
+    transition:
+      transform var(--zeit) var(--kurve-feder),
+      border-color var(--zeit) var(--kurve-weich);
+  }
+
+  .stelle:hover,
+  .stelle:focus-visible {
+    transform: translate3d(0, -3px, 0);
+    border-color: color-mix(in oklab, var(--tinte) 28%, var(--scheibe-rand));
+  }
+
+  .s-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--raum-2);
+    flex-wrap: wrap;
+  }
+
+  .s-ort {
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .stelle h3 {
+    font-size: var(--t-lg);
+  }
+
+  .s-abteilung {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+
+  .s-mehr {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    margin-block-start: auto;
+    padding-block-start: var(--raum-3);
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+
+  .stelle:hover .s-mehr svg {
+    transform: translateX(3px);
+  }
+
+  .s-mehr svg {
+    transition: transform var(--zeit) var(--kurve-feder);
+  }
+
+  .klein {
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+    max-width: var(--breite-text);
+    margin-block-end: var(--raum-7);
+  }
+
   .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-6); font-size: var(--t-lg); color: var(--tinte-weich); }
   .offen { max-width: var(--breite-text); margin-block-end: var(--raum-8); }
   .offen p { margin-block-start: var(--raum-2); }
