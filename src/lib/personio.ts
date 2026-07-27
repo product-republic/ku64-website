@@ -76,14 +76,53 @@ const STANDORTE_VON_PERSONIO: Record<string, string> = {
 function feld(abschnitt: string, name: string): string {
   const treffer = new RegExp(`<${name}>([\\s\\S]*?)</${name}>`).exec(abschnitt);
   if (!treffer) return '';
-  return treffer[1]
+  return entschaerfen(treffer[1]);
+}
+
+/**
+ * XML-Reste und HTML-Entitäten auflösen.
+ *
+ * Personio liefert die Texte so, wie sie im Editor eingegeben wurden –
+ * inklusive Entitäten. Ohne diese Auflösung stand auf der Seite
+ * „Ihre Karriere am Ku&#039;damm“ statt „Ku'damm“. Die numerischen
+ * Entitäten deshalb allgemein, nicht einzeln aufgezählt: Die nächste
+ * Ausschreibung enthält garantiert eine, an die niemand gedacht hat.
+ */
+function entschaerfen(roh: string): string {
+  return roh
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
     .replace(/<[^>]+>/g, ' ')
-    .replace(/&amp;/g, '&')
+    .replace(/&#(\d+);/g, (_, z) => String.fromCodePoint(Number(z)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, z) => String.fromCodePoint(parseInt(z, 16)))
     .replace(/&nbsp;/g, ' ')
-    .replace(/&#8211;/g, '–')
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    /* Zuletzt, sonst entstehen aus &amp;#039; neue Entitäten. */
+    .replace(/&amp;/g, '&')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/**
+ * Personios englische Beschäftigungsangaben auf Deutsch.
+ *
+ * `recruitingCategory` ist ein freies Feld und meistens schon deutsch
+ * gepflegt; fehlt es, kommt `schedule` zum Zug – und das ist immer
+ * englisch. Auf einer deutschen Karriereseite stand dann „full-or-part-time“.
+ */
+const UMFANG: Record<string, string> = {
+  'full-time': 'Vollzeit',
+  'part-time': 'Teilzeit',
+  'full-or-part-time': 'Voll- oder Teilzeit',
+  intern: 'Praktikum',
+  trainee: 'Ausbildung',
+  temporary: 'Befristet',
+  permanent: 'Festanstellung',
+};
+
+function umfangDeutsch(wert: string): string {
+  return UMFANG[wert.toLowerCase()] ?? wert;
 }
 
 /** Kurzer Zwischenspeicher, damit nicht jeder Seitenaufruf Personio abruft. */
@@ -124,7 +163,7 @@ export async function offeneStellen(): Promise<Stelle[] | null> {
       standort: STANDORTE_VON_PERSONIO[standortName] ?? null,
       standortName,
       abteilung: feld(stueck, 'department'),
-      umfang: feld(stueck, 'recruitingCategory') || feld(stueck, 'schedule'),
+      umfang: umfangDeutsch(feld(stueck, 'recruitingCategory') || feld(stueck, 'schedule')),
       anriss: beschreibung.slice(0, 180).trim() + (beschreibung.length > 180 ? ' …' : ''),
       adresse: `https://ku64.jobs.personio.de/job/${id}?display=de`,
     });
