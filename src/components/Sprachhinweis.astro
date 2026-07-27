@@ -64,7 +64,18 @@ const hinweistexte = {
     <strong id="sprachhinweisTitel"></strong>
     <span id="sprachhinweisText"></span>
   </p>
-  <a class="knopf-leise" id="sprachhinweisZurueck" href="/"></a>
+  {/*
+    Der Text kommt erst vom Skript – es weiß, aus welcher Sprache jemand
+    kam, der Build weiß es nicht. Bis dahin trägt der Verweis einen Namen
+    aus dem Katalog: Ein Link ohne Namen heißt für einen Screenreader nur
+    „Link", und das gilt auch für die Sekunde, bevor das Skript läuft.
+  */}
+  <a
+    class="knopf-leise"
+    id="sprachhinweisZurueck"
+    href="/"
+    aria-label={t('sprache.zurueckAllgemein')}
+  ></a>
   <button type="button" id="sprachhinweisZu" aria-label={t('sprache.hinweisSchliessen')}>×</button>
 </aside>
 
@@ -112,6 +123,9 @@ const hinweistexte = {
         const zurueck = document.getElementById('sprachhinweisZurueck');
         zurueck.href = von.pfad;
         zurueck.textContent = hinweistexte.zurueck.replaceAll('{sprache}', von.name);
+        /* Sichtbarer Text schlägt aria-label – der Platzhalter darf nicht
+           stehen bleiben und den genaueren Namen überdecken. */
+        zurueck.removeAttribute('aria-label');
         zurueck.addEventListener('click', () => {
           /* Wer zurückgeht, hat gewählt. Danach nie wieder umstellen. */
           try {

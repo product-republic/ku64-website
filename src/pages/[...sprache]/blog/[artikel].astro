@@ -37,6 +37,7 @@ import {
   gliederung,
   ankerJeUeberschrift,
 } from '../../../lib/blog';
+import { alsStufe, ebenenGeradeziehen } from '../../../lib/gliederung';
 import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
@@ -56,6 +57,14 @@ const marken = gliederung(beitrag);
 /* Dieselbe Zählung wie in der Gliederung – sonst zeigt sie auf Anker, die es
    so nicht gibt. */
 const sprungmarken = ankerJeUeberschrift(beitrag);
+
+/* Ebenen geradeziehen: Manche übernommenen Beiträge beginnen mit einer h3,
+   weil sie im alten Layout unter etwas hingen, das es hier nicht gibt. */
+const ueberschriften = beitrag.bloecke
+  .map((b, i) => ({ i, stufe: alsStufe(b.art) }))
+  .filter(({ stufe }) => stufe > 0);
+const gezogen = ebenenGeradeziehen(ueberschriften.map((u) => u.stufe));
+const stufen = new Map(ueberschriften.map((u, n) => [u.i, gezogen[n]]));
 
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
@@ -185,7 +194,13 @@ const schema = [
               b.art === 'h2' ? (
                 <h2 id={sprungmarken.get(i)}>{b.text}</h2>
               ) : b.art === 'h3' ? (
-                <h3>{b.text}</h3>
+                /* Eine h3 vor der ersten h2 gäbe einen Ebenensprung unter der
+                   h1 des Beitrags – siehe src/lib/gliederung.ts. */
+                stufen.get(i) === 2 ? (
+                  <h2 id={sprungmarken.get(i)}>{b.text}</h2>
+                ) : (
+                  <h3>{b.text}</h3>
+                )
               ) : b.art === 'liste' ? (
                 <ul>
                   {(b.punkte ?? []).map((p) => (

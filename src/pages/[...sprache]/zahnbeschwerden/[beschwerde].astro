@@ -32,6 +32,7 @@ import FaqBlock from '../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import Bild from '../../../components/Bild.astro';
 import { BESCHWERDEN, behandlungenZu, AKUT } from '../../../data/beschwerden';
+import { alsStufe, ebenenGeradeziehen } from '../../../lib/gliederung';
 import { bereichsbild } from '../../../data/bildbedarf';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
@@ -69,9 +70,18 @@ const brotkrumen = [
  * einer zweiten gepflegten Liste. Nur h2 – eine Gliederung, die jede
  * Zwischenüberschrift aufführt, ist keine mehr.
  */
+/*
+ * Die Ebenen kommen aus dem Bestand und beginnen nicht immer bei h2 – siehe
+ * src/lib/gliederung.ts. Geradegezogen wird einmal, und Gliederung wie
+ * Überschriften benutzen dasselbe Ergebnis; sonst zeigt die eine auf eine
+ * Ebene, die die andere nicht hat.
+ */
+const stufen = ebenenGeradeziehen(beschwerde.abschnitte.map((a) => alsStufe(a.ebene)));
+
 const gliederung = beschwerde.abschnitte
-  .filter((a) => a.ebene === 'h2')
-  .map((a) => ({ titel: a.titel, anker: anker(a.titel) }));
+  .map((a, i) => ({ a, stufe: stufen[i] }))
+  .filter(({ stufe }) => stufe === 2)
+  .map(({ a }) => ({ titel: a.titel, anker: anker(a.titel) }));
 
 function anker(titel: string): string {
   return titel
@@ -172,12 +182,14 @@ const schema = [
         }
 
         {
-          beschwerde.abschnitte.map((a) => (
+          beschwerde.abschnitte.map((a, i) => (
             <>
-              {a.ebene === 'h2' ? (
+              {stufen[i] === 2 ? (
                 <h2 id={anker(a.titel)}>{a.titel}</h2>
-              ) : (
+              ) : stufen[i] === 3 ? (
                 <h3>{a.titel}</h3>
+              ) : (
+                <h4>{a.titel}</h4>
               )}
               {a.bloecke.map((b) =>
                 b.art === 'liste' ? (

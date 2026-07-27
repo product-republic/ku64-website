@@ -705,6 +705,7 @@ export const TEXTE = {
   'sprache.hinweisTitel': 'Wir haben auf {sprache} umgestellt',
   'sprache.hinweisText':
     'Ihr Browser ist auf {sprache} eingestellt, deshalb sehen Sie diese Seite auf {sprache}.',
+  'sprache.zurueckAllgemein': 'Zurück zur vorherigen Sprachfassung',
   'sprache.zurueckZu': 'Weiter auf {sprache}',
   'sprache.hinweisSchliessen': 'Hinweis schließen',
   'sprache.unvollstaendig':

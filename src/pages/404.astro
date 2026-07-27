@@ -77,16 +77,27 @@ const kombinationen = {
     <div class="huelle">
       <p class="code">404</p>
 
-      {/* Präzise Antwort, falls die Adresse eine Behandlung an einem Standort
-          meint, der sie nicht anbietet. Wird per Skript eingeblendet. */}
+      {/*
+        Eine H1, nicht zwei.
+
+        Vorher stand hier eine zweite, leere H1 im Kasten für die präzise
+        Antwort – ausgeblendet, aber im Markup. Zwei erste Ebenen auf einer
+        Seite heißen: Es gibt zwei Anfänge, und die Gliederung stimmt nicht.
+        Dass immer nur eine sichtbar ist, weiß der Quelltext nicht.
+
+        Jetzt gibt es eine, und das Skript schreibt ihren Text um, wenn die
+        Adresse eine Behandlung an einem Standort meint, der sie nicht
+        anbietet.
+      */}
+      <h1 id="titel">{t('fehler.titel')}</h1>
+
+      {/* Präzise Antwort. Wird per Skript eingeblendet. */}
       <div class="treffer-box" id="treffer" hidden>
-        <h1 id="treffer-titel"></h1>
         <p class="treffer-text" id="treffer-text"></p>
         <div class="treffer-knoepfe" id="treffer-knoepfe"></div>
       </div>
 
       <div id="allgemein">
-      <h1>{t('fehler.titel')}</h1>
       <p class="unter">{t('fehler.text')}</p>
 
       <div class="suche">
@@ -135,7 +146,7 @@ const kombinationen = {
 
     if (standort && leistung) {
       const box = document.getElementById('treffer');
-      const titel = document.getElementById('treffer-titel');
+      const titel = document.getElementById('titel');
       const text = document.getElementById('treffer-text');
       const knoepfe = document.getElementById('treffer-knoepfe');
       const allgemein = document.getElementById('allgemein');
