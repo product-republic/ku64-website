@@ -81,6 +81,206 @@
       "text": "Prothèses dentaires",
       "quelle": "59942be3"
     },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.0": {
+      "text": "Métro U1 Uhlandstraße (3 minutes à pied)",
+      "quelle": "3a60c240"
+    },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.1": {
+      "text": "Métro U3/U9 Spichernstraße (8 minutes à pied)",
+      "quelle": "2f064f30"
+    },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.2": {
+      "text": "Bus M19, M29, X10 Kurfürstendamm/Adenauerplatz",
+      "quelle": "5a667a75"
+    },
+    "standort.berlin-charlottenburg.anfahrt.parken": {
+      "text": "Parking Ku'damm-Karree et places de stationnement à Adenauerplatz, à deux pas.",
+      "quelle": "f7cadfc7"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.0": {
+      "text": "Le plus grand cabinet dentaire d'Allemagne, avec toutes les disciplines réunies en un lieu",
+      "quelle": "1a8049ec"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.1": {
+      "text": "Notre propre laboratoire de prothèse dentaire sur place",
+      "quelle": "ee109171"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.2": {
+      "text": "Ouvert sept jours sur sept – dimanche compris",
+      "quelle": "14b92736"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.3": {
+      "text": "Service d'orthodontie dédié avec ses propres rendez-vous",
+      "quelle": "fd718d06"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.4": {
+      "text": "Prise en charge des patients anxieux, sédation comprise",
+      "quelle": "b93a0734"
+    },
+    "standort.berlin-charlottenburg.claim": {
+      "text": "Le cabinet principal : toutes les spécialités dentaires sous un même toit, sept jours sur sept.",
+      "quelle": "a5ed262b"
+    },
+    "standort.berlin-charlottenburg.doctolib.0.label": {
+      "text": "Dentisterie",
+      "quelle": "110cd550"
+    },
+    "standort.berlin-charlottenburg.doctolib.1.label": {
+      "text": "Orthodontie",
+      "quelle": "b53e5251"
+    },
+    "standort.berlin-charlottenburg.nameLang": {
+      "text": "KU64 Berlin Charlottenburg – Kurfürstendamm",
+      "quelle": "a0503df9"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.0": {
+      "text": "Métro U2 Hausvogteiplatz (juste devant la porte)",
+      "quelle": "fd108959"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.1": {
+      "text": "Métro U2/U6 Stadtmitte (5 minutes à pied)",
+      "quelle": "6eb5fb34"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.2": {
+      "text": "Bus 265 Hausvogteiplatz",
+      "quelle": "58117c70"
+    },
+    "standort.berlinmitte.anfahrt.parken": {
+      "text": "Parkings souterrains publics à Gendarmenmarkt et dans la Mohrenstraße.",
+      "quelle": "3652efcc"
+    },
+    "standort.berlinmitte.besonderheiten.0": {
+      "text": "Une atmosphère de boutique, dans l'esprit d'un hôtel de design",
+      "quelle": "ef8e7fbc"
+    },
+    "standort.berlinmitte.besonderheiten.1": {
+      "text": "Spécialisé en dentisterie esthétique et en blanchiment",
+      "quelle": "b92a3f02"
+    },
+    "standort.berlinmitte.besonderheiten.2": {
+      "text": "Emplacement central entre Gendarmenmarkt et Spittelmarkt",
+      "quelle": "40fc48cd"
+    },
+    "standort.berlinmitte.besonderheiten.3": {
+      "text": "Pratique si vous travaillez à proximité – rendez-vous jusqu'en soirée",
+      "quelle": "29ca8e4d"
+    },
+    "standort.berlinmitte.claim": {
+      "text": "Un cabinet boutique sur Hausvogteiplatz : esthétique, prophylaxie et implantologie dans un cadre paisible.",
+      "quelle": "e79c864b"
+    },
+    "standort.berlinmitte.doctolib.0.label": {
+      "text": "Dentisterie",
+      "quelle": "110cd550"
+    },
+    "standort.berlinmitte.nameLang": {
+      "text": "KU64 Berlin-Mitte – Hausvogteiplatz",
+      "quelle": "fc6f60b6"
+    },
+    "standort.berlinmitte.zeitenHinweis": {
+      "text": "Les horaires de Hausvogteiplatz peuvent différer de ceux du cabinet principal – merci de les confirmer avant votre visite.",
+      "quelle": "a0af2407"
+    },
+    "standort.potsdam.anfahrt.oepnv.0": {
+      "text": "Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 minutes à pied)",
+      "quelle": "21f58e50"
+    },
+    "standort.potsdam.anfahrt.oepnv.1": {
+      "text": "Bus 693 Schloss Cecilienhof",
+      "quelle": "c9ac8843"
+    },
+    "standort.potsdam.anfahrt.oepnv.2": {
+      "text": "S-Bahn S7 Potsdam Griebnitzsee (10 minutes en bus depuis là)",
+      "quelle": "4338cec1"
+    },
+    "standort.potsdam.anfahrt.parken": {
+      "text": "Nos propres places de stationnement devant le bâtiment, ainsi que des places dans la Berliner Straße.",
+      "quelle": "1995db0e"
+    },
+    "standort.potsdam.besonderheiten.0": {
+      "text": "Un cabinet dans le Palais Ritz classé – un cadre historique, une dentisterie moderne",
+      "quelle": "e69ab05a"
+    },
+    "standort.potsdam.besonderheiten.1": {
+      "text": "Ouvert sept jours sur sept, week-end compris",
+      "quelle": "bc52cb0e"
+    },
+    "standort.potsdam.besonderheiten.2": {
+      "text": "Toute la gamme des soins, de la prophylaxie à l'implantologie",
+      "quelle": "44c22ff8"
+    },
+    "standort.potsdam.besonderheiten.3": {
+      "text": "Chirurgie orale sur place pour les dents de sagesse et les interventions",
+      "quelle": "e6476ee5"
+    },
+    "standort.potsdam.besonderheiten.4": {
+      "text": "Questionnaire médical numérique depuis chez vous – sans papier en salle d'attente",
+      "quelle": "10f17fef"
+    },
+    "standort.potsdam.claim": {
+      "text": "La dentisterie dans le Palais Ritz classé monument historique : toute la gamme des soins, sept jours sur sept, sur la Berliner Straße.",
+      "quelle": "2420e516"
+    },
+    "standort.potsdam.doctolib.0.label": {
+      "text": "Dentisterie",
+      "quelle": "110cd550"
+    },
+    "standort.potsdam.nameLang": {
+      "text": "KU64 Potsdam – dentiste au Palais Ritz",
+      "quelle": "191e2a1f"
+    },
+    "standort.wilmersdorf.anfahrt.barrierefreiHinweis": {
+      "text": "Signalez-nous à l'avance si vous avez besoin d'un accès sans marches – nous trouverons une solution ensemble ou organiserons votre rendez-vous au Kurfürstendamm.",
+      "quelle": "840cff31"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.0": {
+      "text": "Métro U7 Blissestraße (4 minutes à pied)",
+      "quelle": "919468c1"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.1": {
+      "text": "Métro U3/U7 Fehrbelliner Platz (7 minutes à pied)",
+      "quelle": "db6f46e8"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.2": {
+      "text": "Bus 101, 104 Blissestraße",
+      "quelle": "a6c06024"
+    },
+    "standort.wilmersdorf.anfahrt.parken": {
+      "text": "Stationnement résidentiel dans la Gasteiner Straße, parking à Fehrbelliner Platz.",
+      "quelle": "39e8bc72"
+    },
+    "standort.wilmersdorf.besonderheiten.0": {
+      "text": "Un cabinet de quartier, avec un suivi personnel et des visages familiers",
+      "quelle": "a7f85f33"
+    },
+    "standort.wilmersdorf.besonderheiten.1": {
+      "text": "Cabinet affilié à KU64 Kurfürstendamm – les mêmes exigences de qualité",
+      "quelle": "3bc73270"
+    },
+    "standort.wilmersdorf.besonderheiten.2": {
+      "text": "Temps d'attente courts et ambiance de soin paisible",
+      "quelle": "a5f75a5d"
+    },
+    "standort.wilmersdorf.besonderheiten.3": {
+      "text": "Accès à tous les spécialistes du cabinet principal pour les cas complexes",
+      "quelle": "dfb95152"
+    },
+    "standort.wilmersdorf.claim": {
+      "text": "Petit, familial et ancré dans le quartier : une dentisterie personnelle, avec la technique du cabinet principal derrière elle.",
+      "quelle": "d309361f"
+    },
+    "standort.wilmersdorf.doctolib.0.label": {
+      "text": "Dentisterie",
+      "quelle": "110cd550"
+    },
+    "standort.wilmersdorf.nameLang": {
+      "text": "KU64 – DIE KIEZPRAXIS à Berlin-Wilmersdorf",
+      "quelle": "0bd62dbc"
+    },
+    "standort.wilmersdorf.zeitenHinweis": {
+      "text": "Les horaires de la KiezPraxis ne sont pas encore confirmés – merci de les vérifier avant publication.",
+      "quelle": "f4aaeaf5"
+    },
     "ui.allgemein.absenden": {
       "text": "Envoyer",
       "quelle": "d595515b"

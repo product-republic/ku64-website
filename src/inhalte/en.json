@@ -81,6 +81,650 @@
       "text": "Dental restorations",
       "quelle": "59942be3"
     },
+    "leistung.implantat-prophylaxe.dauer": {
+      "text": "45 to 60 minutes",
+      "quelle": "0058dc0c"
+    },
+    "leistung.implantat-prophylaxe.faq.0.antwort": {
+      "text": "We recommend two to four appointments a year, depending on how well oral hygiene works at home and whether you have had gum disease in the past.",
+      "quelle": "4a89e92e"
+    },
+    "leistung.implantat-prophylaxe.faq.0.frage": {
+      "text": "How often should an implant be checked?",
+      "quelle": "0106cc6b"
+    },
+    "leistung.implantat-prophylaxe.faq.1.antwort": {
+      "text": "An inflammation of the tissue around the implant which, untreated, breaks down bone and in the worst case costs you the implant. It does not hurt at first – which is why regular checks matter so much.",
+      "quelle": "3718a311"
+    },
+    "leistung.implantat-prophylaxe.faq.1.frage": {
+      "text": "What is peri-implantitis?",
+      "quelle": "09638fcf"
+    },
+    "leistung.implantat-prophylaxe.kasse": {
+      "text": "A private service. Where an implant already exists, supplementary insurance often contributes.",
+      "quelle": "7380b2a8"
+    },
+    "leistung.implantat-prophylaxe.kosten": {
+      "text": "160 to 260 € per session",
+      "quelle": "b61235a7"
+    },
+    "leistung.implantat-prophylaxe.kurz": {
+      "text": "Specialised aftercare for implants – so they last a lifetime.",
+      "quelle": "bedca97a"
+    },
+    "leistung.implantat-prophylaxe.name": {
+      "text": "Implant maintenance",
+      "quelle": "9fd3396b"
+    },
+    "leistung.implantat-prophylaxe.patientenfrage": {
+      "text": "How do I care for my dental implants properly?",
+      "quelle": "fdfe2c88"
+    },
+    "leistung.implantat-prophylaxe.synonyme.0": {
+      "text": "peri-implantitis prevention",
+      "quelle": "e013a58c"
+    },
+    "leistung.implantat-prophylaxe.synonyme.1": {
+      "text": "implant aftercare",
+      "quelle": "fb366bb7"
+    },
+    "leistung.implantat-prophylaxe.synonyme.2": {
+      "text": "implant cleaning",
+      "quelle": "374aefb5"
+    },
+    "leistung.implantat-prophylaxe.teaser": {
+      "text": "Implants cannot decay, but they can lose the bone they stand in if the surrounding tissue becomes inflamed. Implant maintenance checks exactly that and cleans the implant surfaces with instruments made for the purpose.",
+      "quelle": "c824055a"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.dauer": {
+      "text": "5 min.",
+      "quelle": "84c77926"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.text": {
+      "text": "We look at your teeth and gums and stain the plaque so it becomes visible – you can see for yourself where the problem areas are.",
+      "quelle": "f7f81c75"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.titel": {
+      "text": "Examination and disclosing",
+      "quelle": "346fa1d4"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.dauer": {
+      "text": "25 min.",
+      "quelle": "e5169516"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.text": {
+      "text": "Soft and hard deposits are loosened with a powder jet and ultrasound – no scraping with sharp instruments.",
+      "quelle": "98e0777c"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.titel": {
+      "text": "Removing deposits",
+      "quelle": "0be2fe07"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.dauer": {
+      "text": "10 min.",
+      "quelle": "f9e3e66a"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.text": {
+      "text": "The tooth surfaces are smoothed and protected with fluoride. Smooth surfaces give bacteria less to cling to.",
+      "quelle": "5f75fe23"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.titel": {
+      "text": "Polishing and fluoride",
+      "quelle": "254f5cea"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.dauer": {
+      "text": "10 min.",
+      "quelle": "f9e3e66a"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.text": {
+      "text": "You get concrete tips on brushes, technique and aids – based on what we actually found.",
+      "quelle": "f460ce21"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.titel": {
+      "text": "Advice for home",
+      "quelle": "de66f708"
+    },
+    "leistung.professionelle-zahnreinigung.dauer": {
+      "text": "45 to 60 minutes",
+      "quelle": "0058dc0c"
+    },
+    "leistung.professionelle-zahnreinigung.faq.0.antwort": {
+      "text": "In the vast majority of cases, no. We work with a powder jet rather than sharp hand instruments. If your gums are inflamed or your tooth necks are sensitive, tell us – we will numb those areas locally.",
+      "quelle": "6b0b7963"
+    },
+    "leistung.professionelle-zahnreinigung.faq.0.frage": {
+      "text": "Does a professional clean hurt?",
+      "quelle": "b1719608"
+    },
+    "leistung.professionelle-zahnreinigung.faq.1.antwort": {
+      "text": "Twice a year for most adults. If you are prone to gum inflammation, smoke, wear braces or have implants, three to four appointments a year are better. We agree the rhythm together, based on your findings.",
+      "quelle": "cefab24f"
+    },
+    "leistung.professionelle-zahnreinigung.faq.1.frage": {
+      "text": "How often is a professional clean worthwhile?",
+      "quelle": "b198aaba"
+    },
+    "leistung.professionelle-zahnreinigung.faq.2.antwort": {
+      "text": "Your teeth return to their natural colour, because external staining from coffee, tea or red wine disappears. It will not make them lighter than your natural shade – that requires whitening.",
+      "quelle": "9033463d"
+    },
+    "leistung.professionelle-zahnreinigung.faq.2.frage": {
+      "text": "Will it make my teeth whiter?",
+      "quelle": "e7b3b726"
+    },
+    "leistung.professionelle-zahnreinigung.faq.3.antwort": {
+      "text": "Wait about an hour after the fluoride treatment. After that we recommend avoiding strongly colouring food and drink such as red wine, coffee or curry for around 24 hours – freshly polished surfaces take on colour more readily at first.",
+      "quelle": "82df1fee"
+    },
+    "leistung.professionelle-zahnreinigung.faq.3.frage": {
+      "text": "Can I eat and drink straight afterwards?",
+      "quelle": "0eb7419d"
+    },
+    "leistung.professionelle-zahnreinigung.kasse": {
+      "text": "Statutory health insurance usually does not cover professional cleaning. Many funds do contribute through bonus schemes – ask yours beforehand.",
+      "quelle": "cf0b65e8"
+    },
+    "leistung.professionelle-zahnreinigung.kosten": {
+      "text": "150 to 250 € per hour of treatment, depending on the work involved",
+      "quelle": "ecbd3ac5"
+    },
+    "leistung.professionelle-zahnreinigung.kurz": {
+      "text": "A thorough clean where your toothbrush and floss cannot reach.",
+      "quelle": "1c37e19f"
+    },
+    "leistung.professionelle-zahnreinigung.name": {
+      "text": "Professional teeth cleaning",
+      "quelle": "74bf4eb6"
+    },
+    "leistung.professionelle-zahnreinigung.patientenfrage": {
+      "text": "How often should I have my teeth professionally cleaned?",
+      "quelle": "b718b677"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.0": {
+      "text": "PZR",
+      "quelle": "b21c83a7"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.1": {
+      "text": "teeth cleaning",
+      "quelle": "353d92b0"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.2": {
+      "text": "having teeth cleaned",
+      "quelle": "fe039559"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.3": {
+      "text": "tartar removal",
+      "quelle": "38f3b80b"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.4": {
+      "text": "polishing",
+      "quelle": "bef4c022"
+    },
+    "leistung.professionelle-zahnreinigung.teaser": {
+      "text": "During a professional clean we remove plaque and staining from the places you cannot reach at home. This prevents decay and gum inflammation, and leaves your teeth noticeably smoother and brighter.",
+      "quelle": "5ab2d066"
+    },
+    "leistung.prophylaxe-4-0.dauer": {
+      "text": "50 to 70 minutes",
+      "quelle": "6b29391f"
+    },
+    "leistung.prophylaxe-4-0.faq.0.antwort": {
+      "text": "The powder jet also reaches the spaces between teeth and the gum pockets, where hand instruments struggle. At the same time it removes less tooth substance. To you it feels like a warm jet of water rather than scraping.",
+      "quelle": "01dda35d"
+    },
+    "leistung.prophylaxe-4-0.faq.0.frage": {
+      "text": "Why is the powder jet better than classic scraping?",
+      "quelle": "0b95d1a3"
+    },
+    "leistung.prophylaxe-4-0.faq.1.antwort": {
+      "text": "Especially then. The erythritol powder we use is very fine and is applied with water at body temperature. Many people with sensitive tooth necks find this method considerably more comfortable than a classic clean.",
+      "quelle": "97ba2d49"
+    },
+    "leistung.prophylaxe-4-0.faq.1.frage": {
+      "text": "Is it suitable for sensitive teeth?",
+      "quelle": "15a6f79a"
+    },
+    "leistung.prophylaxe-4-0.faq.2.antwort": {
+      "text": "Yes. The method was developed explicitly for implant surfaces and restorations as well, and does not attack ceramic or titanium. Do tell us what work you have in your mouth – we adjust the powder and pressure accordingly.",
+      "quelle": "b52a70dc"
+    },
+    "leistung.prophylaxe-4-0.faq.2.frage": {
+      "text": "Does it work with implants, crowns and veneers?",
+      "quelle": "d0486174"
+    },
+    "leistung.prophylaxe-4-0.kasse": {
+      "text": "A private service, not included in the statutory catalogue. Private insurers usually reimburse the treatment in full.",
+      "quelle": "3a13f5f8"
+    },
+    "leistung.prophylaxe-4-0.kosten": {
+      "text": "170 to 260 € per hour of treatment",
+      "quelle": "8508faec"
+    },
+    "leistung.prophylaxe-4-0.kurz": {
+      "text": "Cleaning to the GBT protocol – no scraping, just a warm powder jet.",
+      "quelle": "ecf35d61"
+    },
+    "leistung.prophylaxe-4-0.name": {
+      "text": "Prophylaxis 4.0",
+      "quelle": "2b844c99"
+    },
+    "leistung.prophylaxe-4-0.patientenfrage": {
+      "text": "What is the difference between Prophylaxis 4.0 and an ordinary clean?",
+      "quelle": "c189bebc"
+    },
+    "leistung.prophylaxe-4-0.synonyme.0": {
+      "text": "GBT",
+      "quelle": "d4e95ea8"
+    },
+    "leistung.prophylaxe-4-0.synonyme.1": {
+      "text": "Guided Biofilm Therapy",
+      "quelle": "630f4b14"
+    },
+    "leistung.prophylaxe-4-0.synonyme.2": {
+      "text": "Airflow",
+      "quelle": "7f919233"
+    },
+    "leistung.prophylaxe-4-0.synonyme.3": {
+      "text": "EMS",
+      "quelle": "f241bcec"
+    },
+    "leistung.prophylaxe-4-0.synonyme.4": {
+      "text": "gentle teeth cleaning",
+      "quelle": "ecc30265"
+    },
+    "leistung.prophylaxe-4-0.teaser": {
+      "text": "Prophylaxis 4.0 is our cleaning concept following the GBT protocol. Instead of scraping with sharp hand instruments, we loosen deposits with a warm, fine powder jet. It is more thorough, gentler on enamel and gums – and for most people considerably more pleasant.",
+      "quelle": "b6303e74"
+    },
+    "leistung.veneers.ablauf.0.dauer": {
+      "text": "60 min.",
+      "quelle": "def4536f"
+    },
+    "leistung.veneers.ablauf.0.text": {
+      "text": "We photograph and scan your teeth and talk about what bothers you. On screen you see a preview of the possible result.",
+      "quelle": "1a99acdb"
+    },
+    "leistung.veneers.ablauf.0.titel": {
+      "text": "Analysis and planning",
+      "quelle": "62d6aa62"
+    },
+    "leistung.veneers.ablauf.1.dauer": {
+      "text": "90 min.",
+      "quelle": "02edd6c2"
+    },
+    "leistung.veneers.ablauf.1.text": {
+      "text": "Depending on the starting point, very little or no enamel is removed. You get temporary shells so you can test shape and length in everyday life.",
+      "quelle": "a0d46491"
+    },
+    "leistung.veneers.ablauf.1.titel": {
+      "text": "Preparing the teeth",
+      "quelle": "b72286c7"
+    },
+    "leistung.veneers.ablauf.2.dauer": {
+      "text": "90 min.",
+      "quelle": "02edd6c2"
+    },
+    "leistung.veneers.ablauf.2.text": {
+      "text": "The finished veneers are tried in, checked for colour and fit, and then bonded permanently.",
+      "quelle": "c6e9ce0b"
+    },
+    "leistung.veneers.ablauf.2.titel": {
+      "text": "Fitting",
+      "quelle": "4ed247a2"
+    },
+    "leistung.veneers.dauer": {
+      "text": "2 to 3 appointments over about 3 weeks",
+      "quelle": "24a1b381"
+    },
+    "leistung.veneers.faq.0.antwort": {
+      "text": "Considerably less than it used to be. With classic veneers about half a millimetre of enamel is removed. In suitable cases we work with non-prep veneers and no grinding at all. What is possible for you depends on tooth position and starting shape – we clarify that before the first cut.",
+      "quelle": "90d3767e"
+    },
+    "leistung.veneers.faq.0.frage": {
+      "text": "Does a lot of healthy tooth have to be ground away?",
+      "quelle": "0308382d"
+    },
+    "leistung.veneers.faq.1.antwort": {
+      "text": "With good care and regular checks, ceramic veneers usually last ten to fifteen years, often longer. The greatest risk to them is grinding your teeth at night – so we check for that beforehand and fit you with a splint if needed.",
+      "quelle": "f09f1f32"
+    },
+    "leistung.veneers.faq.1.frage": {
+      "text": "How long do veneers last?",
+      "quelle": "bbc7df22"
+    },
+    "leistung.veneers.faq.2.antwort": {
+      "text": "Not if they are carefully planned. Ceramic transmits light much like natural enamel. What matters is that shape, length and colour suit your face – which is why we work with a preview and temporaries before anything becomes final.",
+      "quelle": "d144d879"
+    },
+    "leistung.veneers.faq.2.frage": {
+      "text": "Can people tell they are veneers?",
+      "quelle": "4ecb4f60"
+    },
+    "leistung.veneers.faq.3.antwort": {
+      "text": "If enamel has been removed, the restoration is permanent – the tooth will always need a facing. Non-prep veneers, by contrast, can in principle be taken off again. We tell you clearly beforehand which route applies to you.",
+      "quelle": "fe8a934e"
+    },
+    "leistung.veneers.faq.3.frage": {
+      "text": "Can veneers be removed again?",
+      "quelle": "be9dae75"
+    },
+    "leistung.veneers.kasse": {
+      "text": "Purely cosmetic veneers are a private service and receive no contribution from statutory insurance. Where there is a demonstrable medical indication – after an accident, for instance – part of the cost may be reimbursed.",
+      "quelle": "1729bdc0"
+    },
+    "leistung.veneers.kosten": {
+      "text": "900 to 1,800 € per tooth, depending on material and effort",
+      "quelle": "af7ff516"
+    },
+    "leistung.veneers.kurz": {
+      "text": "Wafer-thin ceramic shells that change the shape and colour of the visible teeth.",
+      "quelle": "b10e1cbd"
+    },
+    "leistung.veneers.name": {
+      "text": "Veneers",
+      "quelle": "7bd00f2b"
+    },
+    "leistung.veneers.patientenfrage": {
+      "text": "What do veneers cost and how long do they last?",
+      "quelle": "0fec6411"
+    },
+    "leistung.veneers.synonyme.0": {
+      "text": "facings",
+      "quelle": "f07742fb"
+    },
+    "leistung.veneers.synonyme.1": {
+      "text": "ceramic shells",
+      "quelle": "da1dcf31"
+    },
+    "leistung.veneers.synonyme.2": {
+      "text": "tooth facing",
+      "quelle": "f95cb7e6"
+    },
+    "leistung.veneers.synonyme.3": {
+      "text": "Hollywood smile",
+      "quelle": "9ce7455a"
+    },
+    "leistung.veneers.synonyme.4": {
+      "text": "non-prep veneers",
+      "quelle": "8d327f04"
+    },
+    "leistung.veneers.teaser": {
+      "text": "Veneers are thin ceramic shells bonded to the front of your anterior teeth. They correct discolouration, small gaps, chipped edges and slight misalignment – usually within two to three appointments.",
+      "quelle": "195a36ee"
+    },
+    "leistung.zahnvorsorge.dauer": {
+      "text": "20 to 30 minutes",
+      "quelle": "ae398166"
+    },
+    "leistung.zahnvorsorge.faq.0.antwort": {
+      "text": "For the bonus booklet, one appointment per calendar year is enough for adults. Medically we recommend two – decay and gum inflammation often develop within a few months and do not hurt for a long time.",
+      "quelle": "904ba3d3"
+    },
+    "leistung.zahnvorsorge.faq.0.frage": {
+      "text": "Is once a year enough?",
+      "quelle": "62684d20"
+    },
+    "leistung.zahnvorsorge.faq.1.antwort": {
+      "text": "Not routinely. We only take X-rays if there is a specific suspicion or the last images are old – typically every two years. Every image is explained and justified to you beforehand.",
+      "quelle": "220952a4"
+    },
+    "leistung.zahnvorsorge.faq.1.frage": {
+      "text": "Will you take X-rays?",
+      "quelle": "a01655fc"
+    },
+    "leistung.zahnvorsorge.faq.2.antwort": {
+      "text": "No. We do not judge, we examine. A great many people come to us after a long break, and we go through what makes sense now, calmly and in an order that works for you.",
+      "quelle": "fd7f4cfb"
+    },
+    "leistung.zahnvorsorge.faq.2.frage": {
+      "text": "I have not been to a dentist for years. Will I be told off?",
+      "quelle": "51055b39"
+    },
+    "leistung.zahnvorsorge.kasse": {
+      "text": "Statutory health insurance covers two check-ups per year in full. Both appointments belong in your bonus booklet.",
+      "quelle": "10fe275d"
+    },
+    "leistung.zahnvorsorge.kosten": {
+      "text": "No charge for patients with statutory insurance",
+      "quelle": "2101b709"
+    },
+    "leistung.zahnvorsorge.kurz": {
+      "text": "The six-monthly check – short, painless and the best protection against expensive treatment.",
+      "quelle": "5532a012"
+    },
+    "leistung.zahnvorsorge.name": {
+      "text": "Check-up",
+      "quelle": "39d07f1f"
+    },
+    "leistung.zahnvorsorge.patientenfrage": {
+      "text": "What happens at a dental check-up?",
+      "quelle": "97224f6b"
+    },
+    "leistung.zahnvorsorge.synonyme.0": {
+      "text": "check",
+      "quelle": "e68c26b1"
+    },
+    "leistung.zahnvorsorge.synonyme.1": {
+      "text": "check-up",
+      "quelle": "53907f73"
+    },
+    "leistung.zahnvorsorge.synonyme.2": {
+      "text": "bonus booklet",
+      "quelle": "0b46d0c1"
+    },
+    "leistung.zahnvorsorge.synonyme.3": {
+      "text": "examination",
+      "quelle": "99fda186"
+    },
+    "leistung.zahnvorsorge.synonyme.4": {
+      "text": "dental check appointment",
+      "quelle": "f7a6a5e8"
+    },
+    "leistung.zahnvorsorge.teaser": {
+      "text": "At a check-up we systematically examine your teeth, gums and oral tissues. Early decay and gum inflammation can be treated while the effort is still small – and the entry in your bonus booklet secures you higher insurance contributions towards dentures.",
+      "quelle": "8c341706"
+    },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.0": {
+      "text": "Underground U1 Uhlandstraße (3 minutes on foot)",
+      "quelle": "3a60c240"
+    },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.1": {
+      "text": "Underground U3/U9 Spichernstraße (8 minutes on foot)",
+      "quelle": "2f064f30"
+    },
+    "standort.berlin-charlottenburg.anfahrt.oepnv.2": {
+      "text": "Bus M19, M29, X10 Kurfürstendamm/Adenauerplatz",
+      "quelle": "5a667a75"
+    },
+    "standort.berlin-charlottenburg.anfahrt.parken": {
+      "text": "Ku'damm-Karree car park and parking spaces at Adenauerplatz, both close by.",
+      "quelle": "f7cadfc7"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.0": {
+      "text": "Germany's largest dental practice, with every department in one place",
+      "quelle": "1a8049ec"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.1": {
+      "text": "Our own master dental laboratory on site",
+      "quelle": "ee109171"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.2": {
+      "text": "Open seven days a week – Sundays included",
+      "quelle": "14b92736"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.3": {
+      "text": "Dedicated orthodontics with its own appointment booking",
+      "quelle": "fd718d06"
+    },
+    "standort.berlin-charlottenburg.besonderheiten.4": {
+      "text": "Treatment for anxious patients, including sedation",
+      "quelle": "b93a0734"
+    },
+    "standort.berlin-charlottenburg.claim": {
+      "text": "The main practice: every dental specialisation under one roof, seven days a week.",
+      "quelle": "a5ed262b"
+    },
+    "standort.berlin-charlottenburg.doctolib.0.label": {
+      "text": "Dentistry",
+      "quelle": "110cd550"
+    },
+    "standort.berlin-charlottenburg.doctolib.1.label": {
+      "text": "Orthodontics",
+      "quelle": "b53e5251"
+    },
+    "standort.berlin-charlottenburg.nameLang": {
+      "text": "KU64 Berlin Charlottenburg – Kurfürstendamm",
+      "quelle": "a0503df9"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.0": {
+      "text": "Underground U2 Hausvogteiplatz (right outside the door)",
+      "quelle": "fd108959"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.1": {
+      "text": "Underground U2/U6 Stadtmitte (5 minutes on foot)",
+      "quelle": "6eb5fb34"
+    },
+    "standort.berlinmitte.anfahrt.oepnv.2": {
+      "text": "Bus 265 Hausvogteiplatz",
+      "quelle": "58117c70"
+    },
+    "standort.berlinmitte.anfahrt.parken": {
+      "text": "Public underground car parks at Gendarmenmarkt and on Mohrenstraße.",
+      "quelle": "3652efcc"
+    },
+    "standort.berlinmitte.besonderheiten.0": {
+      "text": "Boutique atmosphere with the feel of a design hotel",
+      "quelle": "ef8e7fbc"
+    },
+    "standort.berlinmitte.besonderheiten.1": {
+      "text": "Focused on cosmetic dentistry and whitening",
+      "quelle": "b92a3f02"
+    },
+    "standort.berlinmitte.besonderheiten.2": {
+      "text": "Central location between Gendarmenmarkt and Spittelmarkt",
+      "quelle": "40fc48cd"
+    },
+    "standort.berlinmitte.besonderheiten.3": {
+      "text": "Easy to reach if you work nearby – appointments into the evening",
+      "quelle": "29ca8e4d"
+    },
+    "standort.berlinmitte.claim": {
+      "text": "A boutique practice on Hausvogteiplatz: aesthetics, prophylaxis and implantology in calm surroundings.",
+      "quelle": "e79c864b"
+    },
+    "standort.berlinmitte.doctolib.0.label": {
+      "text": "Dentistry",
+      "quelle": "110cd550"
+    },
+    "standort.berlinmitte.nameLang": {
+      "text": "KU64 Berlin-Mitte – Hausvogteiplatz",
+      "quelle": "fc6f60b6"
+    },
+    "standort.berlinmitte.zeitenHinweis": {
+      "text": "Opening hours at Hausvogteiplatz may differ from the main practice – please confirm before your visit.",
+      "quelle": "a0af2407"
+    },
+    "standort.potsdam.anfahrt.oepnv.0": {
+      "text": "Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 minutes on foot)",
+      "quelle": "21f58e50"
+    },
+    "standort.potsdam.anfahrt.oepnv.1": {
+      "text": "Bus 693 Schloss Cecilienhof",
+      "quelle": "c9ac8843"
+    },
+    "standort.potsdam.anfahrt.oepnv.2": {
+      "text": "S-Bahn S7 Potsdam Griebnitzsee (10 minutes by bus from there)",
+      "quelle": "4338cec1"
+    },
+    "standort.potsdam.anfahrt.parken": {
+      "text": "Our own parking spaces at the building, plus parking on Berliner Straße.",
+      "quelle": "1995db0e"
+    },
+    "standort.potsdam.besonderheiten.0": {
+      "text": "A practice in the listed Palais Ritz – historic setting, modern dentistry",
+      "quelle": "e69ab05a"
+    },
+    "standort.potsdam.besonderheiten.1": {
+      "text": "Open seven days a week, weekends included",
+      "quelle": "bc52cb0e"
+    },
+    "standort.potsdam.besonderheiten.2": {
+      "text": "The full range of treatments, from prophylaxis to implantology",
+      "quelle": "44c22ff8"
+    },
+    "standort.potsdam.besonderheiten.3": {
+      "text": "In-house oral surgery for wisdom teeth and surgical procedures",
+      "quelle": "e6476ee5"
+    },
+    "standort.potsdam.besonderheiten.4": {
+      "text": "Digital medical history from home – no paperwork in the waiting room",
+      "quelle": "10f17fef"
+    },
+    "standort.potsdam.claim": {
+      "text": "Dentistry in the listed Palais Ritz: the full range of treatments, seven days a week, right on Berliner Straße.",
+      "quelle": "2420e516"
+    },
+    "standort.potsdam.doctolib.0.label": {
+      "text": "Dentistry",
+      "quelle": "110cd550"
+    },
+    "standort.potsdam.nameLang": {
+      "text": "KU64 Potsdam – dentist at Palais Ritz",
+      "quelle": "191e2a1f"
+    },
+    "standort.wilmersdorf.anfahrt.barrierefreiHinweis": {
+      "text": "Please let us know in advance if you need step-free access – we will find a solution together or arrange your appointment at Kurfürstendamm.",
+      "quelle": "840cff31"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.0": {
+      "text": "Underground U7 Blissestraße (4 minutes on foot)",
+      "quelle": "919468c1"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.1": {
+      "text": "Underground U3/U7 Fehrbelliner Platz (7 minutes on foot)",
+      "quelle": "db6f46e8"
+    },
+    "standort.wilmersdorf.anfahrt.oepnv.2": {
+      "text": "Bus 101, 104 Blissestraße",
+      "quelle": "a6c06024"
+    },
+    "standort.wilmersdorf.anfahrt.parken": {
+      "text": "Resident parking on Gasteiner Straße, car park at Fehrbelliner Platz.",
+      "quelle": "39e8bc72"
+    },
+    "standort.wilmersdorf.besonderheiten.0": {
+      "text": "A neighbourhood practice with personal care and familiar faces",
+      "quelle": "a7f85f33"
+    },
+    "standort.wilmersdorf.besonderheiten.1": {
+      "text": "A sister practice of KU64 on Kurfürstendamm – the same standards",
+      "quelle": "3bc73270"
+    },
+    "standort.wilmersdorf.besonderheiten.2": {
+      "text": "Short waiting times and a quiet treatment atmosphere",
+      "quelle": "a5f75a5d"
+    },
+    "standort.wilmersdorf.besonderheiten.3": {
+      "text": "Access to every specialist at the main practice for complex cases",
+      "quelle": "dfb95152"
+    },
+    "standort.wilmersdorf.claim": {
+      "text": "Small, personal and rooted in the neighbourhood: dentistry with the technology of the main practice behind it.",
+      "quelle": "d309361f"
+    },
+    "standort.wilmersdorf.doctolib.0.label": {
+      "text": "Dentistry",
+      "quelle": "110cd550"
+    },
+    "standort.wilmersdorf.nameLang": {
+      "text": "KU64 – DIE KIEZPRAXIS in Berlin-Wilmersdorf",
+      "quelle": "0bd62dbc"
+    },
+    "standort.wilmersdorf.zeitenHinweis": {
+      "text": "Opening hours for the KiezPraxis are not yet confirmed – please check before publication.",
+      "quelle": "f4aaeaf5"
+    },
     "ui.allgemein.absenden": {
       "text": "Send",
       "quelle": "d595515b"

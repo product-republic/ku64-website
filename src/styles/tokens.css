@@ -264,12 +264,18 @@
 
   /* Schleier für Schrift, die direkt auf Bild oder Video liegt. Von unten
      nach oben abnehmend – Text steht dort, wo es am dunkelsten ist. */
+  /*
+   * Zurückgenommen: Bei 0,9 unten war das Bild dahinter nur noch zu ahnen –
+   * ein dunkler Kasten mit einem Foto als Andeutung. Der Schleier soll die
+   * Schrift tragen, nicht das Bild ersetzen. Diese Werte halten die Schrift
+   * über 7:1 und lassen den Raum erkennbar.
+   */
   --schleier-auf-medium: linear-gradient(
     to top,
-    rgb(12 10 9 / 0.9),
-    rgb(12 10 9 / 0.74) 38%,
-    rgb(12 10 9 / 0.5) 70%,
-    rgb(12 10 9 / 0.3)
+    rgb(12 10 9 / 0.78),
+    rgb(12 10 9 / 0.6) 38%,
+    rgb(12 10 9 / 0.34) 70%,
+    rgb(12 10 9 / 0.16)
   );
   /* Schriftfarben auf dem Schleier. Fest, nicht vom Farbschema abhängig:
      Der Schleier ist immer dunkel, auch im hellen Modus. */
