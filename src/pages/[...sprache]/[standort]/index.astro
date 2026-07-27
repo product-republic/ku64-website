@@ -103,9 +103,7 @@ const schema = [
         <a
           href={`${pfad}termine/`}
           class:list={['knopf', 'knopf-gross', medium ? 'knopf-hell' : 'knopf-primaer']}
-        >
-          Termin buchen
-        </a>
+        >{t('ort.terminBuchen')}</a>
         <a
           href={`${pfad}leistungen/`}
           class:list={[
@@ -155,7 +153,7 @@ const schema = [
 
   <section class="abschnitt">
     <div class="huelle">
-      <h2>Was diesen Standort ausmacht</h2>
+      <h2>{t('ort.wasDiesenStandortAusmacht')}</h2>
       <ul class="besonderheiten">
         {
           standort.besonderheiten.map((b) => (
@@ -211,7 +209,7 @@ const schema = [
     nichtHier.length > 0 && (
       <section class="abschnitt">
         <div class="huelle">
-          <h2>Nicht an diesem Standort</h2>
+          <h2>{t('ort.nichtAnDiesemStandort')}</h2>
           <p class="abschnitt-text">
             Diese Behandlungen bieten wir in {standort.ort} nicht an. Damit Sie nicht
             vergeblich anrufen, sehen Sie hier direkt, an welchem KU64-Standort Sie sie
@@ -230,12 +228,12 @@ const schema = [
   <section class="abschnitt flaeche-warm">
     <div class="huelle raster-zwei">
       <div>
-        <h2>Anfahrt & Parken</h2>
-        <h3 class="klein-titel">Öffentliche Verkehrsmittel</h3>
+        <h2>{t('ort.anfahrtParken')}</h2>
+        <h3 class="klein-titel">{t('ort.oeffentlicheVerkehrsmittel')}</h3>
         <ul class="anfahrt-liste">
           {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
         </ul>
-        <h3 class="klein-titel">Mit dem Auto</h3>
+        <h3 class="klein-titel">{t('ort.mitDemAuto')}</h3>
         <p class="anfahrt-text">{standort.anfahrt.parken}</p>
         <p class="anfahrt-text">
           <strong>Barrierefreiheit:</strong>{' '}
@@ -243,7 +241,7 @@ const schema = [
             ? 'Die Praxis ist barrierefrei zugänglich.'
             : standort.anfahrt.barrierefreiHinweis}
         </p>
-        <a href={`${pfad}anfahrt/`} class="knopf knopf-sekundaer">Detaillierte Anfahrt</a>
+        <a href={`${pfad}anfahrt/`} class="knopf knopf-sekundaer">{t('ort.detaillierteAnfahrt')}</a>
       </div>
 
       <div>

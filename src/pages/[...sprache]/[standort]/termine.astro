@@ -93,14 +93,11 @@ const faq = [
   <div class="huelle abschnitt wege">
     {/* Weg 1: Doctolib nach Einwilligung */}
     <section class="weg">
-      <h2>Online buchen</h2>
+      <h2>{t('termine.onlineBuchen')}</h2>
 
       {
         standort.doctolib.length > 1 && (
-          <p class="unter-klein">
-            An diesem Standort gibt es getrennte Kalender. Bitte wählen Sie den passenden
-            Bereich – so landen Sie direkt bei den richtigen Behandelnden.
-          </p>
+          <p class="unter-klein">{t('termine.anDiesemStandortGibt')}</p>
         )
       }
 
@@ -118,9 +115,7 @@ const faq = [
                 Termin bei KU64 {standort.name}
                 {standort.doctolib.length > 1 && ` · ${d.label}`}
               </span>
-              <span class="k-hinweis">
-                Öffnet den Kalender bei Doctolib in einem neuen Tab
-              </span>
+              <span class="k-hinweis">{t('termine.oeffnetDenKalenderBei')}</span>
               <span class="k-pfeil" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -138,16 +133,13 @@ const faq = [
         }
       </div>
 
-      <p class="klein">
-        Doctolib ist ein eigenständiger Dienst. Erst wenn Sie dort ankommen, werden Ihre
-        IP-Adresse übertragen und Cookies gesetzt – auf dieser Seite passiert das nicht.
-        Mehr dazu in unserer <a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
+      <p class="klein">{t('termine.doctolibIstEinEigenstaendiger')}<a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
       </p>
     </section>
 
     {/* Weg 2: Ohne Drittanbieter */}
     <aside class="weg weg-schmal">
-      <h2>Lieber ohne Online-Portal?</h2>
+      <h2>{t('termine.lieberOhneOnlinePortal')}</h2>
 
       <div class="karte kontakt">
         <p class="k-titel">Anrufen</p>
@@ -155,7 +147,7 @@ const faq = [
           {standort.telefon}
         </a>
         <table class="zeiten">
-          <caption class="nur-screenreader">Wann Sie uns erreichen</caption>
+          <caption class="nur-screenreader">{t('termine.wannSieUnsErreichen')}</caption>
           <tbody>
             {
               standort.oeffnungszeiten.map((z) => (
@@ -171,41 +163,29 @@ const faq = [
 
       <div class="karte kontakt">
         <p class="k-titel">Schreiben</p>
-        <p class="k-text">
-          Schildern Sie kurz Ihr Anliegen – wir melden uns zurück, in der Regel am selben
-          oder nächsten Werktag.
-        </p>
+        <p class="k-text">{t('termine.schildernSieKurzIhr')}</p>
         <a href={`mailto:${standort.email}`} class="knopf knopf-sekundaer">{standort.email}</a>
       </div>
 
       <div class="karte kontakt akut">
-        <p class="k-titel">Akute Schmerzen?</p>
-        <p class="k-text">
-          Bitte rufen Sie an, statt online zu buchen. Wir halten Termine für Akutfälle frei
-          und schätzen am Telefon ein, wie dringend es ist.
-        </p>
-        <a href="/notfall/" class="knopf knopf-sekundaer">Was tun im Notfall</a>
+        <p class="k-titel">{t('termine.akuteSchmerzen')}</p>
+        <p class="k-text">{t('termine.bitteRufenSieAn')}</p>
+        <a href="/notfall/" class="knopf knopf-sekundaer">{t('termine.wasTunImNotfall')}</a>
       </div>
     </aside>
   </div>
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Vor dem Termin: Anamnese digital ausfüllen</h2>
-      <p class="unter">
-        Den Anamnesebogen füllen Sie bequem von zu Hause aus – an allen KU64-Standorten.
-        Das spart Zeit im Wartezimmer und Sie können in Ruhe nachschauen, welche
-        Medikamente Sie nehmen.
-      </p>
-      <a href={`/${standort.slug}/anamnese/`} class="knopf knopf-primaer knopf-gross">
-        Zur digitalen Anamnese
-      </a>
+      <h2>{t('termine.vorDemTerminAnamnese')}</h2>
+      <p class="unter">{t('termine.denAnamnesebogenFuellenSie')}</p>
+      <a href={`/${standort.slug}/anamnese/`} class="knopf knopf-primaer knopf-gross">{t('termine.zurDigitalenAnamnese')}</a>
     </div>
   </section>
 
   <div class="huelle">
     <section class="faq-bereich">
-      <h2>Fragen zur Terminbuchung</h2>
+      <h2>{t('termine.fragenZurTerminbuchung')}</h2>
       {
         faq.map((f) => (
           <details>

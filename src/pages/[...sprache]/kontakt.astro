@@ -31,10 +31,7 @@ const brotkrumen = [
   <section class="abschnitt">
     <div class="huelle">
       <h1>Kontakt</h1>
-      <p class="unter">
-        Jeder Standort hat eigene Sprechzeiten und eine eigene Nummer. Wählen Sie den, der
-        Ihnen am nächsten liegt.
-      </p>
+      <p class="unter">{t('kontaktz.jederStandortHatEigene')}</p>
 
       <div class="raster">
         {daten.standorte.map((s) => (
@@ -54,14 +51,13 @@ const brotkrumen = [
                 ))}
               </tbody>
             </table>
-            <a href={`/${s.slug}/termine/`} class="knopf knopf-primaer">Termin buchen</a>
+            <a href={`/${s.slug}/termine/`} class="knopf knopf-primaer">{t('kontaktz.terminBuchen')}</a>
           </article>
         ))}
       </div>
 
       <div class="hinweis notfall">
-        <strong>Akute Beschwerden?</strong> Bitte rufen Sie an, statt zu schreiben. Bei
-        Atem- oder Schluckbeschwerden wählen Sie 112. Mehr unter <a href="/notfall/">Notfall</a>.
+        <strong>{t('kontaktz.akuteBeschwerden')}</strong>{t('kontaktz.bitteRufenSieAn')}<a href="/notfall/">Notfall</a>.
       </div>
     </div>
   </section>

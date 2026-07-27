@@ -108,8 +108,7 @@ if (team.length > 0) {
               <div class="filter-zeile">
                 <span class="filter-titel" id="f-bereich">Bereich</span>
                 <div class="chips" data-feld="bereich" aria-labelledby="f-bereich">
-                  <button type="button" class="chip" data-wert="" aria-pressed="true">
-                    Alle <span class="chip-zahl">{team.length}</span>
+                  <button type="button" class="chip" data-wert="" aria-pressed="true">{t('teamliste.alle')}<span class="chip-zahl">{team.length}</span>
                   </button>
                   {bereiche.map((b) => (
                     <button type="button" class="chip" data-wert={b.wert} aria-pressed="false">
@@ -140,7 +139,7 @@ if (team.length > 0) {
 
             <p class="filter-leer" hidden>
               Mit dieser Auswahl steht niemand in {standort.ort}.
-              <button type="button" class="filter-zuruecksetzen">Auswahl aufheben</button>
+              <button type="button" class="filter-zuruecksetzen">{t('teamliste.auswahlAufheben')}</button>
             </p>
 
             <div class="raster" id="teamraster">
@@ -188,9 +187,7 @@ if (team.length > 0) {
                     </ul>
                   )}
                   {hatProfil && (
-                    <span class="person-mehr" aria-hidden="true">
-                      Profil ansehen
-                      <svg viewBox="0 0 24 24" width="15" height="15">
+                    <span class="person-mehr" aria-hidden="true">{t('teamliste.profilAnsehen')}<svg viewBox="0 0 24 24" width="15" height="15">
                         <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor"
                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
@@ -219,9 +216,7 @@ if (team.length > 0) {
               <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-primaer">
                 {standort.telefon}
               </a>
-              <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">
-                Behandlungen ansehen
-              </a>
+              <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">{t('teamliste.behandlungenAnsehen')}</a>
             </div>
           </div>
         )

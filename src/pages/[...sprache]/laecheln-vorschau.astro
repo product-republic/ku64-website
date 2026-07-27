@@ -62,20 +62,12 @@ const faq = [
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <span class="marke marke-akzent">Unverbindliche Visualisierung</span>
-      <h1>Sehen Sie Ihr Lächeln, bevor Sie sich entscheiden</h1>
-      <p class="unter">
-        Laden Sie ein Porträtfoto hoch. Wir analysieren Zahnform, Farbe und Lachlinie im
-        Verhältnis zu Ihrem Gesicht und zeigen Ihnen eine Visualisierung – im Browser und
-        auf Wunsch per E-Mail.
-      </p>
+      <span class="marke marke-akzent">{t('laecheln.unverbindlicheVisualisierung')}</span>
+      <h1>{t('laecheln.sehenSieIhrLaecheln')}</h1>
+      <p class="unter">{t('laecheln.ladenSieEinPortraetfoto')}</p>
 
       <div class="hinweis hinweis-warnung wichtig">
-        <strong>Das ist kein Behandlungsergebnis.</strong> Die Darstellung ist eine
-        Illustration und keine Zusage. Ob und wie sich etwas Ähnliches umsetzen lässt, kann
-        nur eine persönliche Untersuchung zeigen. Ihre Zahnsubstanz, Ihr Zahnfleisch und Ihre
-        Kieferverhältnisse entscheiden darüber – nicht ein Bild.
-      </div>
+        <strong>{t('laecheln.dasIstKeinBehandlungsergebnis')}</strong>{t('laecheln.dieDarstellungIstEine')}</div>
     </div>
   </section>
 
@@ -84,7 +76,7 @@ const faq = [
       <form id="formular" class="formular">
         {/* Schritt 1 */}
         <fieldset class="schritt">
-          <legend><span class="nr">1</span> Foto auswählen</legend>
+          <legend><span class="nr">1</span>{t('laecheln.fotoAuswaehlen')}</legend>
 
           <div class="ablage" id="ablage" tabindex="0" role="button"
                aria-label="Foto auswählen oder hierher ziehen">
@@ -97,8 +89,8 @@ const faq = [
                 <path d="m4 20 7-6 6 5 4-3 7 6" fill="none" stroke="currentColor" stroke-width="1.6"
                       stroke-linejoin="round" />
               </svg>
-              <p><strong>Foto hierher ziehen</strong> oder klicken zum Auswählen</p>
-              <p class="klein">JPEG, PNG oder WebP · maximal 8 MB</p>
+              <p><strong>{t('laecheln.fotoHierherZiehen')}</strong>{t('laecheln.oderKlickenZumAuswaehlen')}</p>
+              <p class="klein">{t('laecheln.jpegPngOderWebp')}</p>
             </div>
             <img id="vorschau" alt="Ihr hochgeladenes Foto" hidden />
             <button type="button" class="ablage-weg" id="ablageWeg" hidden aria-label="Foto entfernen">
@@ -109,20 +101,20 @@ const faq = [
           </div>
 
           <details class="tipps">
-            <summary>Was macht ein gutes Foto aus?</summary>
+            <summary>{t('laecheln.wasMachtEinGutes')}</summary>
             <ul>
-              <li>Frontal in die Kamera, Kopf gerade</li>
-              <li>Deutlich lächeln, sodass die oberen Zähne sichtbar sind</li>
-              <li>Gleichmäßiges Licht, kein hartes Gegenlicht</li>
-              <li>Keine Filter, keine Beauty-Modi der Kamera-App</li>
-              <li>Nichts vor dem Mund – keine Hand, keine Maske</li>
+              <li>{t('laecheln.frontalInDieKamera')}</li>
+              <li>{t('laecheln.deutlichLaechelnSodassDie')}</li>
+              <li>{t('laecheln.gleichmaessigesLichtKeinHartes')}</li>
+              <li>{t('laecheln.keineFilterKeineBeauty')}</li>
+              <li>{t('laecheln.nichtsVorDemMund')}</li>
             </ul>
           </details>
         </fieldset>
 
         {/* Schritt 2 */}
         <fieldset class="schritt">
-          <legend><span class="nr">2</span> Wohin dürfen wir das Ergebnis senden?</legend>
+          <legend><span class="nr">2</span>{t('laecheln.wohinDuerfenWirDas')}</legend>
 
           <label class="feld">
             <span>E-Mail-Adresse</span>
@@ -131,9 +123,9 @@ const faq = [
           </label>
 
           <label class="feld">
-            <span>Ihr Wunschstandort <em>(freiwillig)</em></span>
+            <span>{t('laecheln.ihrWunschstandort')}<em>(freiwillig)</em></span>
             <select name="standort" id="standort">
-              <option value="">Noch nicht entschieden</option>
+              <option value="">{t('laecheln.nochNichtEntschieden')}</option>
               {daten.standorte.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
             </select>
           </label>
@@ -150,40 +142,30 @@ const faq = [
 
           <label class="haken">
             <input type="checkbox" name="einwilligung" value="ja" required />
-            <span>
-              Ich willige ausdrücklich ein, dass mein Foto zur Erstellung einer
-              unverbindlichen Lächeln-Vorschau verarbeitet wird. Mir ist bewusst, dass es
-              sich dabei um ein biometrisches Datum handelt. Ich kann diese Einwilligung
-              jederzeit widerrufen. Details in der
-              <a href="/datenschutz/#laecheln">Datenschutzerklärung</a>.
+            <span>{t('laecheln.ichWilligeAusdruecklichEin')}<a href="/datenschutz/#laecheln">Datenschutzerklärung</a>.
             </span>
           </label>
 
           <label class="haken">
             <input type="checkbox" name="volljaehrig" value="ja" required />
-            <span>
-              Ich bin volljährig und das Foto zeigt mich selbst. Ich lade keine Fotos
-              anderer Personen hoch.
-            </span>
+            <span>{t('laecheln.ichBinVolljaehrigUnd')}</span>
           </label>
 
-          <button type="submit" class="knopf knopf-primaer knopf-gross absenden" id="absenden">
-            Vorschau erstellen
-          </button>
+          <button type="submit" class="knopf knopf-primaer knopf-gross absenden" id="absenden">{t('laecheln.vorschauErstellen')}</button>
 
-          <p class="dauer-hinweis">Die Berechnung dauert etwa 15 bis 40 Sekunden.</p>
+          <p class="dauer-hinweis">{t('laecheln.dieBerechnungDauertEtwa')}</p>
         </fieldset>
       </form>
 
       {/* Ergebnisspalte */}
       <div class="ergebnis" id="ergebnis" aria-live="polite">
         <div class="platzhalter" id="platzhalter">
-          <p>Ihre Vorschau erscheint hier.</p>
+          <p>{t('laecheln.ihreVorschauErscheintHier')}</p>
         </div>
 
         <div class="laeuft" id="laeuft" hidden>
           <div class="spinner" aria-hidden="true"></div>
-          <p id="laeuftText">Foto wird analysiert…</p>
+          <p id="laeuftText">{t('laecheln.fotoWirdAnalysiert')}</p>
         </div>
 
         <div class="fertig" id="fertig" hidden>
@@ -196,26 +178,19 @@ const faq = [
             <input type="range" id="regler" min="0" max="100" value="50"
                    aria-label="Vergleich zwischen Ausgangsfoto und Visualisierung" />
             <span class="griff" id="griff" aria-hidden="true"></span>
-            <span class="etikett etikett-links">Ihr Foto</span>
+            <span class="etikett etikett-links">{t('laecheln.ihrFoto')}</span>
             <span class="etikett etikett-rechts">Visualisierung</span>
           </div>
 
           <div class="analyse" id="analyse"></div>
 
-          <p class="rechtshinweis">
-            Unverbindliche Illustration, kein Behandlungsergebnis und keine medizinische
-            Beratung.
-          </p>
+          <p class="rechtshinweis">{t('laecheln.unverbindlicheIllustrationKeinBehandlungsergebnis')}</p>
 
           <p class="versand" id="versand"></p>
 
           <div class="ergebnis-knoepfe">
-            <a href="/standorte/" class="knopf knopf-primaer" id="terminKnopf">
-              Beratungstermin vereinbaren
-            </a>
-            <button type="button" class="knopf knopf-sekundaer" id="nochmal">
-              Anderes Foto probieren
-            </button>
+            <a href="/standorte/" class="knopf knopf-primaer" id="terminKnopf">{t('laecheln.beratungsterminVereinbaren')}</a>
+            <button type="button" class="knopf knopf-sekundaer" id="nochmal">{t('laecheln.anderesFotoProbieren')}</button>
           </div>
         </div>
 
@@ -226,27 +201,24 @@ const faq = [
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Was danach möglich ist</h2>
-      <p class="unter">
-        Ein verändertes Lächeln entsteht je nach Ausgangslage über verschiedene Wege. Diese
-        Behandlungen kommen dafür am häufigsten infrage:
-      </p>
+      <h2>{t('laecheln.wasDanachMoeglichIst')}</h2>
+      <p class="unter">{t('laecheln.einVeraendertesLaechelnEntsteht')}</p>
       <div class="raster">
         <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/veneers/">
           <h3>Veneers</h3>
-          <p>Keramikschalen für Form und Farbe der Frontzähne.</p>
+          <p>{t('laecheln.keramikschalenFuerFormUnd')}</p>
         </a>
         <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/zahnaufhellung/">
           <h3>Zahnaufhellung</h3>
-          <p>Mehrere Nuancen heller, ohne den Schmelz anzugreifen.</p>
+          <p>{t('laecheln.mehrereNuancenHellerOhne')}</p>
         </a>
         <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/aligner/">
-          <h3>Unsichtbare Schienen</h3>
-          <p>Zahnstellung korrigieren, ohne feste Spange.</p>
+          <h3>{t('laecheln.unsichtbareSchienen')}</h3>
+          <p>{t('laecheln.zahnstellungKorrigierenOhneFeste')}</p>
         </a>
         <a class="karte karte-klickbar weg" href="/berlin-charlottenburg/leistungen/smile-design/">
-          <h3>Digitales Smile Design</h3>
-          <p>Die verbindliche Planung mit Vorschau im eigenen Mund.</p>
+          <h3>{t('laecheln.digitalesSmileDesign')}</h3>
+          <p>{t('laecheln.dieVerbindlichePlanungMit')}</p>
         </a>
       </div>
     </div>
@@ -254,7 +226,7 @@ const faq = [
 
   <div class="huelle">
     <section class="faq-bereich">
-      <h2>Fragen zur Lächeln-Vorschau</h2>
+      <h2>{t('laecheln.fragenZurLaechelnVorschau')}</h2>
       {faq.map((f) => (
         <details>
           <summary>{f.frage}</summary>

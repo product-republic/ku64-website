@@ -35,9 +35,7 @@ const brotkrumen = [
   <section class="abschnitt">
     <div class="huelle">
       <h1>Kontakt zu KU64 {standort.name}</h1>
-      <p class="unter">
-        Wählen Sie den Weg, der Ihnen am angenehmsten ist. Alle führen zum selben Team.
-      </p>
+      <p class="unter">{t('kontakt.waehlenSieDenWeg')}</p>
 
       <div class="raster">
         <div class="karte weg">
@@ -45,35 +43,25 @@ const brotkrumen = [
           <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="gross">
             {standort.telefon}
           </a>
-          <p class="text">
-            Der schnellste Weg – besonders bei Schmerzen oder wenn es dringend ist.
-          </p>
+          <p class="text">{t('kontakt.derSchnellsteWegBesonders')}</p>
         </div>
 
         <div class="karte weg">
-          <h2>Online buchen</h2>
-          <p class="text">
-            Freie Termine sehen und direkt buchen, rund um die Uhr.
-          </p>
-          <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">Zur Terminbuchung</a>
+          <h2>{t('kontakt.onlineBuchen')}</h2>
+          <p class="text">{t('kontakt.freieTermineSehenUnd')}</p>
+          <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">{t('kontakt.zurTerminbuchung')}</a>
         </div>
 
         <div class="karte weg">
           <h2>Schreiben</h2>
           <a href={`mailto:${standort.email}`} class="gross klein-gross">{standort.email}</a>
-          <p class="text">
-            Für alles, was nicht eilt. Bitte schicken Sie uns keine Gesundheitsdaten per
-            unverschlüsselter E-Mail.
-          </p>
+          <p class="text">{t('kontakt.fuerAllesWasNicht')}</p>
         </div>
 
         <div class="karte weg">
-          <h2>Fragen vorab</h2>
-          <p class="text">
-            Unser digitaler Berater beantwortet Fragen zu Behandlungen, Kosten und Abläufen –
-            per Text oder Sprache.
-          </p>
-          <button type="button" class="knopf knopf-sekundaer chat-oeffner">Chat öffnen</button>
+          <h2>{t('kontakt.fragenVorab')}</h2>
+          <p class="text">{t('kontakt.unserDigitalerBeraterBeantwortet')}</p>
+          <button type="button" class="knopf knopf-sekundaer chat-oeffner">{t('kontakt.chatOeffnen')}</button>
         </div>
       </div>
 
@@ -85,7 +73,7 @@ const brotkrumen = [
             {standort.strasse}<br />
             {standort.plz} {standort.ort}
           </address>
-          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">Anfahrt ansehen</a>
+          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">{t('kontakt.anfahrtAnsehen')}</a>
         </div>
 
         <div>
@@ -108,9 +96,7 @@ const brotkrumen = [
       </div>
 
       <div class="hinweis notfall">
-        <strong>Bei akuten Beschwerden</strong> rufen Sie bitte an, statt zu schreiben. Bei
-        Atem- oder Schluckbeschwerden, starker Schwellung oder hohem Fieber wählen Sie den
-        Rettungsdienst unter 112. Mehr dazu unter <a href="/notfall/">Notfall</a>.
+        <strong>{t('kontakt.beiAkutenBeschwerden')}</strong>{t('kontakt.rufenSieBitteAn')}<a href="/notfall/">Notfall</a>.
       </div>
     </div>
   </section>

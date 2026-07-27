@@ -58,7 +58,7 @@ const t = texte(daten.sprache);
 >
   <section class="held">
     <div class="huelle">
-      <p class="held-marke">KU64 · Die Zahnspezialisten</p>
+      <p class="held-marke">{t('start.ku64DieZahnspezialisten')}</p>
       <h1>{t('start.ueberschrift')}</h1>
       <p class="held-text">{t('start.vorspann', { anzahl: daten.standorte.length })}</p>
 
@@ -151,12 +151,12 @@ const t = texte(daten.sprache);
           <span class="dienst-mehr">{t('start.laechelnKnopf')}</span>
         </a>
         <a href="/anamnese/" class="karte karte-klickbar dienst">
-          <h3>Digitale Anamnese</h3>
+          <h3>{t('start.digitaleAnamnese')}</h3>
           <p>{t('start.anamneseText')}</p>
           <span class="dienst-mehr">{t('start.anamneseKnopf')}</span>
         </a>
         <a href="/beratung/" class="karte karte-klickbar dienst">
-          <h3>Digitaler Berater</h3>
+          <h3>{t('start.digitalerBerater')}</h3>
           <p>{t('start.beraterText')}</p>
           <span class="dienst-mehr">{t('start.beraterKnopf')}</span>
         </a>

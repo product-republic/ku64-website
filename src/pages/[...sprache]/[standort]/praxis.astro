@@ -94,7 +94,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
     raeume.length > 0 && (
       <section class="abschnitt">
         <div class="huelle">
-          <h2>Die Räume</h2>
+          <h2>{t('praxis.dieRaeume')}</h2>
           <p class="abschnitt-text">
             {t('standort.galerieHinweis')}
           </p>
@@ -114,7 +114,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Was diesen Standort ausmacht</h2>
+      <h2>{t('praxis.wasDiesenStandortAusmacht')}</h2>
       <ul class="merkmale">
         {
           standort.besonderheiten.map((b) => (

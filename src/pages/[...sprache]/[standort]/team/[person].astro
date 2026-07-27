@@ -145,7 +145,7 @@ const schema = [
         <p class="mikro">KU64 {standort.name}</p>
         <h1>{person.name}</h1>
         {person.funktion && <p class="funktion">{person.funktion}</p>}
-        {person.leitung && <p class="marke">Medizinische Leitung</p>}
+        {person.leitung && <p class="marke">{t('person.medizinischeLeitung')}</p>}
 
         <div class="kopf-knoepfe">
           <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">

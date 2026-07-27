@@ -150,7 +150,7 @@ function kurz(titel: string): string {
   <section class="abschnitt-eng">
     <div class="huelle">
       <span class="marke marke-akzent">Beschwerden</span>
-      <h1>Was haben Sie?</h1>
+      <h1>{t('beschw.wasHabenSie')}</h1>
       <p class="anriss">
         Für den Weg andersherum: nicht von der Behandlung zur Beschwerde,
         sondern von dem, was Sie merken, zu dem, was hilft. {BESCHWERDEN.length}{' '}
@@ -158,11 +158,8 @@ function kurz(titel: string): string {
       </p>
 
       <aside class="akut glas">
-        <p class="akut-titel">Starke Schmerzen oder eine Verletzung?</p>
-        <p class="akut-text">
-          Dann lesen Sie hier nicht weiter. Wir halten an jedem Standort Zeiten
-          für Schmerzpatientinnen und -patienten frei.
-        </p>
+        <p class="akut-titel">{t('beschw.starkeSchmerzenOderEine')}</p>
+        <p class="akut-text">{t('beschw.dannLesenSieHier')}</p>
         <div class="akut-nummern">
           {
             daten.standorte.map((s) => (
@@ -187,7 +184,7 @@ function kurz(titel: string): string {
               <a href={`/zahnbeschwerden/${b!.slug}/`} class="karte">
                 <span class="karte-titel">{kurz(b!.titel)}</span>
                 {b!.beschreibung && <span class="karte-text">{b!.beschreibung}</span>}
-                {AKUT.has(b!.slug) && <span class="karte-akut">Kann akut sein</span>}
+                {AKUT.has(b!.slug) && <span class="karte-akut">{t('beschw.kannAkutSein')}</span>}
               </a>
             ))}
           </div>
@@ -198,11 +195,7 @@ function kurz(titel: string): string {
 
   <section class="abschnitt-eng">
     <div class="huelle">
-      <p class="herkunft">
-        Diese Texte stammen aus dem Bestand der Praxis. Sie ersetzen keine
-        Untersuchung: Was Ihre Beschwerden verursacht, lässt sich erst am
-        Behandlungsstuhl feststellen.
-      </p>
+      <p class="herkunft">{t('beschw.dieseTexteStammenAus')}</p>
     </div>
   </section>
 </Basis>

@@ -68,7 +68,7 @@ const proStandort = daten.standorte
 >
   <section class="abschnitt">
     <div class="huelle-weit">
-      <h1>Zahnmedizinischer Blog</h1>
+      <h1>{t('blogliste.zahnmedizinischerBlog')}</h1>
       <p class="unter">
         {BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
         passiert – von {jahre[jahre.length - 1]?.jahr} bis {leitbeitrag?.jahr}.
@@ -77,7 +77,7 @@ const proStandort = daten.standorte
       {
         proStandort.length > 0 && (
           <nav class="filter" aria-label="Beiträge nach Standort">
-            <span class="filter-titel">Nach Standort:</span>
+            <span class="filter-titel">{t('blogliste.nachStandort')}</span>
             {proStandort.map((x) => (
               <a href={`/${x.standort.slug}/blog/`} class="filter-knopf">
                 {x.standort.name}
@@ -104,7 +104,7 @@ const proStandort = daten.standorte
             )}
             <div class="leit-text">
               <p class="leit-zeile">
-                <span class="leit-neu">Neuester Beitrag</span>
+                <span class="leit-neu">{t('blogliste.neuesterBeitrag')}</span>
                 {leitbeitrag.datum && (
                   <time datetime={leitbeitrag.datum}>{datumLesbar(leitbeitrag.datum)}</time>
                 )}
@@ -113,7 +113,7 @@ const proStandort = daten.standorte
               </p>
               <h2 class="leit-titel">{leitbeitrag.titel}</h2>
               {leitbeitrag.anriss && <p class="leit-anriss">{leitbeitrag.anriss}…</p>}
-              <span class="leit-mehr">Beitrag lesen →</span>
+              <span class="leit-mehr">{t('blogliste.beitragLesen')}</span>
             </div>
           </a>
         )

@@ -47,22 +47,15 @@ const brotkrumen = [
   <section class="kopf abschnitt-eng">
     <div class="huelle">
       <span class="marke marke-akzent">Transparenz</span>
-      <h1>Wo auf dieser Website KI arbeitet</h1>
-      <p class="unter">
-        Drei Systeme, und wir sagen bei jedem, was es tut, wer es betreibt und was mit
-        Ihren Eingaben geschieht. Sie müssen keines davon benutzen: Alles, was sie
-        beantworten, beantwortet Ihnen auch jemand am Telefon.
-      </p>
+      <h1>{t('kitrans.woAufDieserWebsite')}</h1>
+      <p class="unter">{t('kitrans.dreiSystemeUndWir')}</p>
     </div>
   </section>
 
   <div class="huelle abschnitt">
     <section class="mensch karte">
-      <h2>Wenn Sie mit einem Menschen sprechen möchten</h2>
-      <p>
-        Das ist keine Ausweichlösung, sondern der normale Weg. Rufen Sie den Standort an,
-        der Ihnen am nächsten liegt:
-      </p>
+      <h2>{t('kitrans.wennSieMitEinem')}</h2>
+      <p>{t('kitrans.dasIstKeineAusweichloesung')}</p>
       <ul class="nummern">
         {
           daten.standorte.map((s) => (
@@ -73,10 +66,7 @@ const brotkrumen = [
           ))
         }
       </ul>
-      <p class="klein">
-        Oder schriftlich über das <a href="/kontakt/">Kontaktformular</a>. Beides
-        beantwortet ein Mensch.
-      </p>
+      <p class="klein">{t('kitrans.oderSchriftlichUeberDas')}<a href="/kontakt/">Kontaktformular</a>{t('kitrans.beidesBeantwortetEinMensch')}</p>
     </section>
 
     {
@@ -89,7 +79,7 @@ const brotkrumen = [
 
           <dl class="angaben">
             <div>
-              <dt>Wo Sie ihm begegnen</dt>
+              <dt>{t('kitrans.woSieIhmBegegnen')}</dt>
               <dd>{s.wo}</dd>
             </div>
             <div>
@@ -101,11 +91,11 @@ const brotkrumen = [
               <dd>{s.modell}</dd>
             </div>
             <div>
-              <dt>Was übertragen wird</dt>
+              <dt>{t('kitrans.wasUebertragenWird')}</dt>
               <dd>{s.daten}</dd>
             </div>
             <div>
-              <dt>Was nicht passiert</dt>
+              <dt>{t('kitrans.wasNichtPassiert')}</dt>
               <dd>{s.nichtDaten}</dd>
             </div>
             <div>
@@ -118,24 +108,10 @@ const brotkrumen = [
     }
 
     <section class="rechtlich">
-      <h2>Rechtlicher Rahmen</h2>
-      <p>
-        Diese Angaben setzen Artikel 50 der Verordnung (EU) 2024/1689 über künstliche
-        Intelligenz um. Der Artikel verlangt dreierlei: Wer mit einem KI-System
-        interagiert, muss das spätestens bei der ersten Interaktion erfahren. Erzeugte
-        Inhalte müssen maschinenlesbar als solche gekennzeichnet sein. Und veränderte
-        Bilder von Menschen müssen auch sichtbar gekennzeichnet sein.
-      </p>
-      <p>
-        Für die Lächeln-Vorschau heißt das konkret: Der Hinweis steht in einem Streifen
-        am Bild und zusätzlich in der Bilddatei selbst, als IPTC-Angabe
-        <code>trainedAlgorithmicMedia</code>. Er bleibt damit auch dann erhalten, wenn
-        das Bild diese Website verlässt – per E-Mail, weitergeleitet, gespeichert.
-      </p>
-      <p>
-        Wie Ihre Daten verarbeitet werden, steht in der
-        <a href="/datenschutz/">Datenschutzerklärung</a>. Welche Dienste beim Aufruf
-        geladen werden, in den <a href="/cookies/">Cookie-Einstellungen</a>.
+      <h2>{t('kitrans.rechtlicherRahmen')}</h2>
+      <p>{t('kitrans.dieseAngabenSetzenArtikel')}</p>
+      <p>{t('kitrans.fuerDieLaechelnVorschau')}<code>trainedAlgorithmicMedia</code>{t('kitrans.erBleibtDamitAuch')}</p>
+      <p>{t('kitrans.wieIhreDatenVerarbeitet')}<a href="/datenschutz/">Datenschutzerklärung</a>{t('kitrans.welcheDiensteBeimAufruf')}<a href="/cookies/">Cookie-Einstellungen</a>.
       </p>
     </section>
   </div>

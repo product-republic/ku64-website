@@ -198,7 +198,7 @@ const schema = [
           {
             marken.length > 0 && (
               <nav class="gliederung" aria-label="Auf dieser Seite">
-                <p class="spalte-titel">Auf dieser Seite</p>
+                <p class="spalte-titel">{t('blogseite.aufDieserSeite')}</p>
                 <ul>
                   {marken.map((m) => (
                     <li>
@@ -211,11 +211,9 @@ const schema = [
           }
 
           <div class="quelle">
-            <p class="spalte-titel">Termin</p>
-            <p class="quelle-text">
-              Fragen zu diesem Thema beantworten wir am besten persönlich.
-            </p>
-            <a href="/termine/" class="knopf knopf-sekundaer knopf-klein">Termin buchen</a>
+            <p class="spalte-titel">{t('blogseite.termin')}</p>
+            <p class="quelle-text">{t('blogseite.fragenZuDiesemThema')}</p>
+            <a href="/termine/" class="knopf knopf-sekundaer knopf-klein">{t('blogseite.terminBuchen')}</a>
           </div>
         </aside>
       </div>

@@ -71,9 +71,7 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
             {standort.plz} {standort.ort}
           </address>
           <div class="adresse-knoepfe">
-            <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">
-              Route planen
-            </a>
+            <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">{t('anfahrt.routePlanen')}</a>
             <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
               {t('standort.aufKarteAnsehen')}
             </a>
@@ -106,14 +104,14 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
 
       <div class="raster-zwei">
         <section>
-          <h2>Mit öffentlichen Verkehrsmitteln</h2>
+          <h2>{t('anfahrt.mitOeffentlichenVerkehrsmitteln')}</h2>
           <ul class="wege">
             {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
           </ul>
         </section>
 
         <section>
-          <h2>Mit dem Auto</h2>
+          <h2>{t('anfahrt.mitDemAuto')}</h2>
           <p class="text">{standort.anfahrt.parken}</p>
 
           <h2 class="abstand">Barrierefreiheit</h2>

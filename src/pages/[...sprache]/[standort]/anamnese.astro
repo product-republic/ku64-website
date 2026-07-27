@@ -81,8 +81,8 @@ const faq = [
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <span class="marke marke-akzent">An allen KU64-Standorten</span>
-      <h1>Anamnese vorab ausfüllen</h1>
+      <span class="marke marke-akzent">{t('anamnese.anAllenKu64Standorten')}</span>
+      <h1>{t('anamnese.anamneseVorabAusfuellen')}</h1>
       <p class="unter">
         Fünf Minuten zu Hause statt Klemmbrett im Wartezimmer. Ihre Angaben landen
         verschlüsselt direkt bei den Behandelnden von KU64 {standort.name} – Sie starten
@@ -97,28 +97,22 @@ const faq = [
         <li>
           <span class="nr">1</span>
           <div>
-            <h3>Formular öffnen</h3>
-            <p>Sie brauchen weder Konto noch App – ein Link genügt.</p>
+            <h3>{t('anamnese.formularOeffnen')}</h3>
+            <p>{t('anamnese.sieBrauchenWederKonto')}</p>
           </div>
         </li>
         <li>
           <span class="nr">2</span>
           <div>
-            <h3>Angaben machen</h3>
-            <p>
-              Vorerkrankungen, Medikamente, Allergien. Halten Sie Ihren Medikamentenplan
-              bereit, falls Sie regelmäßig etwas einnehmen.
-            </p>
+            <h3>{t('anamnese.angabenMachen')}</h3>
+            <p>{t('anamnese.vorerkrankungenMedikamenteAllergienHalten')}</p>
           </div>
         </li>
         <li>
           <span class="nr">3</span>
           <div>
-            <h3>Absenden – fertig</h3>
-            <p>
-              Ihre Angaben gehen verschlüsselt in unser Praxissystem. Beim Termin ist alles
-              schon da.
-            </p>
+            <h3>{t('anamnese.absendenFertig')}</h3>
+            <p>{t('anamnese.ihreAngabenGehenVerschluesselt')}</p>
           </div>
         </li>
       </ol>
@@ -130,13 +124,11 @@ const faq = [
             class="knopf knopf-primaer knopf-gross start"
             rel="noopener"
             target="_blank"
-          >
-            Anamnesebogen öffnen
-            <span class="nur-screenreader">(öffnet in neuem Tab bei Nelly Solutions)</span>
+          >{t('anamnese.anamnesebogenOeffnen')}<span class="nur-screenreader">{t('anamnese.oeffnetInNeuemTab')}</span>
           </a>
         ) : (
           <div class="hinweis hinweis-warnung platzhalter">
-            <strong>Noch nicht freigeschaltet.</strong>
+            <strong>{t('anamnese.nochNichtFreigeschaltet')}</strong>
             <p>
               Die digitale Anamnese für KU64 {standort.name} wird gerade eingerichtet. Bis
               dahin füllen Sie den Bogen wie gewohnt vor Ort aus – oder Sie rufen an, dann
@@ -149,39 +141,33 @@ const faq = [
         )
       }
 
-      <p class="rechtlich">
-        Mit dem Öffnen wechseln Sie zu Nelly Solutions, unserem Dienstleister für digitale
-        Patientenformulare. Dort gelten deren Datenschutzhinweise ergänzend zu
-        <a href="/datenschutz/#anamnese"> unseren</a>.
+      <p class="rechtlich">{t('anamnese.mitDemOeffnenWechseln')}<a href="/datenschutz/#anamnese"> unseren</a>.
       </p>
     </div>
 
     <aside class="seite">
       <div class="karte">
-        <h3>Das sollten Sie bereithalten</h3>
+        <h3>{t('anamnese.dasSolltenSieBereithalten')}</h3>
         <ul class="liste">
           <li>Versichertenkarte</li>
-          <li>Medikamentenplan, falls vorhanden</li>
+          <li>{t('anamnese.medikamentenplanFallsVorhanden')}</li>
           <li>Allergiepass</li>
-          <li>Marcumar- oder Antikoagulanzien-Ausweis</li>
+          <li>{t('anamnese.marcumarOderAntikoagulanzienAusweis')}</li>
           <li>Bonusheft</li>
-          <li>Vorbefunde oder Röntgenbilder anderer Praxen</li>
+          <li>{t('anamnese.vorbefundeOderRoentgenbilderAnderer')}</li>
         </ul>
       </div>
 
       <div class="karte wichtig-karte">
-        <h3>Bitte unbedingt angeben</h3>
-        <p>
-          Diese Punkte ändern konkret, wie wir behandeln dürfen – bitte auch dann nennen,
-          wenn sie Ihnen nebensächlich erscheinen:
-        </p>
+        <h3>{t('anamnese.bitteUnbedingtAngeben')}</h3>
+        <p>{t('anamnese.diesePunkteAendernKonkret')}</p>
         <ul class="liste">
-          <li>Blutverdünnende Medikamente</li>
-          <li>Bisphosphonate oder Osteoporose-Therapie</li>
-          <li>Herzklappenersatz oder Herzerkrankungen</li>
+          <li>{t('anamnese.blutverduennendeMedikamente')}</li>
+          <li>{t('anamnese.bisphosphonateOderOsteoporoseTherapie')}</li>
+          <li>{t('anamnese.herzklappenersatzOderHerzerkrankungen')}</li>
           <li>Diabetes</li>
-          <li>Schwangerschaft oder Stillzeit</li>
-          <li>Allergien gegen Betäubungsmittel oder Antibiotika</li>
+          <li>{t('anamnese.schwangerschaftOderStillzeit')}</li>
+          <li>{t('anamnese.allergienGegenBetaeubungsmittelOder')}</li>
         </ul>
       </div>
     </aside>
@@ -189,7 +175,7 @@ const faq = [
 
   <div class="huelle">
     <section class="faq-bereich">
-      <h2>Fragen zur digitalen Anamnese</h2>
+      <h2>{t('anamnese.fragenZurDigitalenAnamnese')}</h2>
       {
         faq.map((f) => (
           <details>

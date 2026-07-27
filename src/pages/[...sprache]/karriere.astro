@@ -69,7 +69,7 @@ const brotkrumen = [
 >
   <section class="abschnitt">
     <div class="huelle">
-      <h1>Arbeiten bei KU64</h1>
+      <h1>{t('karriere.arbeitenBeiKu64')}</h1>
       <p class="unter">
         {daten.standorte.length} Standorte, alle Fachbereiche unter einem Dach und ein eigenes
         Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.
@@ -78,7 +78,7 @@ const brotkrumen = [
       {
         stellen === null && (
           <div class="hinweis offen">
-            <strong>Die Stellenübersicht ist gerade nicht erreichbar.</strong>
+            <strong>{t('karriere.dieStellenuebersichtIstGerade')}</strong>
             <p>
               Sie erreichen alle Ausschreibungen direkt im{' '}
               <a href="https://ku64.jobs.personio.de/" target="_blank" rel="noopener noreferrer">
@@ -94,11 +94,8 @@ const brotkrumen = [
       {
         stellen !== null && stellen.length === 0 && (
           <div class="hinweis offen">
-            <strong>Zurzeit ist keine Stelle ausgeschrieben.</strong>
-            <p>
-              Über Initiativbewerbungen freuen wir uns trotzdem – gute Leute stellen wir
-              auch außerhalb einer Ausschreibung ein.
-            </p>
+            <strong>{t('karriere.zurzeitIstKeineStelle')}</strong>
+            <p>{t('karriere.ueberInitiativbewerbungenFreuenWir')}</p>
           </div>
         )
       }
@@ -126,9 +123,7 @@ const brotkrumen = [
                   </span>
                   <h3>{stelle.titel}</h3>
                   {stelle.abteilung && <p class="s-abteilung">{stelle.abteilung}</p>}
-                  <span class="s-mehr">
-                    Zur Ausschreibung
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <span class="s-mehr">{t('karriere.zurAusschreibung')}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                       <path
                         d="M5 12h13M13 6l6 6-6 6"
                         fill="none"
@@ -143,24 +138,18 @@ const brotkrumen = [
               ))}
             </div>
 
-            <p class="klein">
-              Die Ausschreibungen liegen bei Personio. Erst wenn Sie eine davon öffnen,
-              verlassen Sie diese Website – auf dieser Seite wird keine Verbindung dorthin
-              aufgebaut.
-            </p>
+            <p class="klein">{t('karriere.dieAusschreibungenLiegenBei')}</p>
           </>
         )
       }
 
-      <h2>Initiativ bewerben</h2>
+      <h2>{t('karriere.initiativBewerben')}</h2>
       <div class="raster">
         {daten.standorte.map((s) => (
           <div class="karte ort" style={`--akzent:${s.akzent}`}>
             <h3>KU64 {s.name}</h3>
             <address>{s.strasse}, {s.plz} {s.ort}</address>
-            <a href={`mailto:${s.email}?subject=Initiativbewerbung`} class="knopf knopf-sekundaer">
-              Bewerbung senden
-            </a>
+            <a href={`mailto:${s.email}?subject=Initiativbewerbung`} class="knopf knopf-sekundaer">{t('karriere.bewerbungSenden')}</a>
           </div>
         ))}
       </div>

@@ -77,21 +77,18 @@ const faq = [
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <span class="marke marke-akzent">Rund um die Uhr</span>
-      <h1>Sprechen Sie mit unserem digitalen Berater</h1>
-      <p class="unter">
-        Fragen zu einer Behandlung, zu Kosten oder zum Ablauf? Stellen Sie sie laut – der
-        Berater antwortet in natürlicher Sprache und kennt das Angebot jedes Standorts.
-      </p>
+      <span class="marke marke-akzent">{t('beratung.rundUmDieUhr')}</span>
+      <h1>{t('beratung.sprechenSieMitUnserem')}</h1>
+      <p class="unter">{t('beratung.fragenZuEinerBehandlung')}</p>
     </div>
   </section>
 
   <div class="huelle abschnitt spalten">
     <section class="gespraech">
       <label class="feld">
-        <span>Zu welchem Standort haben Sie Fragen?</span>
+        <span>{t('beratung.zuWelchemStandortHaben')}</span>
         <select id="standortWahl">
-          <option value="">Allgemein / noch unentschieden</option>
+          <option value="">{t('beratung.allgemeinNochUnentschieden')}</option>
           {daten.standorte.map((s) => <option value={s.slug}>KU64 {s.name} – {s.ort}</option>)}
         </select>
       </label>
@@ -104,7 +101,7 @@ const faq = [
         </svg>
         <span>
           <strong>{system.offenlegung}</strong> {WEG_ZUM_MENSCHEN}{' '}
-          <a href="/ki-transparenz/">Welches System hier arbeitet</a>
+          <a href="/ki-transparenz/">{t('beratung.welchesSystemHierArbeitet')}</a>
         </span>
       </p>
 
@@ -114,22 +111,17 @@ const faq = [
           <span></span><span></span><span></span><span></span><span></span>
         </div>
 
-        <p class="zustand" id="zustand" role="status" aria-live="polite">
-          Bereit. Klicken Sie, um das Gespräch zu starten.
-        </p>
+        <p class="zustand" id="zustand" role="status" aria-live="polite">{t('beratung.bereitKlickenSieUm')}</p>
 
         <button type="button" class="knopf knopf-primaer knopf-gross mikro" id="mikro">
           <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
             <rect x="7" y="2" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.6" />
             <path d="M4 9a6 6 0 0 0 12 0M10 15v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
           </svg>
-          <span id="mikroText">Gespräch starten</span>
+          <span id="mikroText">{t('beratung.gespraechStarten')}</span>
         </button>
 
-        <p class="mikro-hinweis">
-          Ihr Browser fragt danach nach der Erlaubnis für das Mikrofon. Ohne Ihre Zustimmung
-          passiert nichts.
-        </p>
+        <p class="mikro-hinweis">{t('beratung.ihrBrowserFragtDanach')}</p>
       </div>
 
       <div class="protokoll" id="protokoll" aria-live="polite"></div>
@@ -139,16 +131,14 @@ const faq = [
 
     <aside class="seite">
       <div class="karte">
-        <h3>Lieber schreiben?</h3>
-        <p>
-          Der Chat unten rechts beantwortet dieselben Fragen – in Textform, ohne Mikrofon.
-        </p>
-        <button type="button" class="knopf knopf-sekundaer chat-oeffner">Chat öffnen</button>
+        <h3>{t('beratung.lieberSchreiben')}</h3>
+        <p>{t('beratung.derChatUntenRechts')}</p>
+        <button type="button" class="knopf knopf-sekundaer chat-oeffner">{t('beratung.chatOeffnen')}</button>
       </div>
 
       <div class="karte">
-        <h3>Lieber mit einem Menschen?</h3>
-        <p>Selbstverständlich. Rufen Sie den Standort an, der Ihnen am nächsten liegt:</p>
+        <h3>{t('beratung.lieberMitEinemMenschen')}</h3>
+        <p>{t('beratung.selbstverstaendlichRufenSieDen')}</p>
         <ul class="nummern">
           {
             daten.standorte.map((s) => (
@@ -162,23 +152,20 @@ const faq = [
       </div>
 
       <div class="karte grenze">
-        <h3>Was der Berater nicht tut</h3>
+        <h3>{t('beratung.wasDerBeraterNicht')}</h3>
         <ul class="liste">
-          <li>Keine Diagnose und keine Beurteilung von Beschwerden</li>
-          <li>Keine Terminbuchung und keine Aufnahme persönlicher Daten</li>
-          <li>Keine Zusagen zu Behandlungsergebnissen</li>
+          <li>{t('beratung.keineDiagnoseUndKeine')}</li>
+          <li>{t('beratung.keineTerminbuchungUndKeine')}</li>
+          <li>{t('beratung.keineZusagenZuBehandlungsergebnissen')}</li>
         </ul>
-        <p class="notfall">
-          Bei starken Schmerzen, Schwellung im Gesicht oder Fieber: bitte direkt anrufen.
-          Bei Atem- oder Schluckbeschwerden den Rettungsdienst unter 112.
-        </p>
+        <p class="notfall">{t('beratung.beiStarkenSchmerzenSchwellung')}</p>
       </div>
     </aside>
   </div>
 
   <div class="huelle">
     <section class="faq-bereich">
-      <h2>Fragen zur digitalen Beratung</h2>
+      <h2>{t('beratung.fragenZurDigitalenBeratung')}</h2>
       {
         faq.map((f) => (
           <details>

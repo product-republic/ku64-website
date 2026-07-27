@@ -135,10 +135,7 @@ const schema = [
            */
           <aside class="akut glas">
             <p class="akut-titel">Akute Beschwerden? Rufen Sie an.</p>
-            <p class="akut-text">
-              Wir halten an jedem Standort Zeiten für Schmerzpatientinnen und
-              -patienten frei.
-            </p>
+            <p class="akut-text">{t('beschwseite.wirHaltenAnJedem')}</p>
             <div class="akut-nummern">
               {daten.standorte.map((s) => (
                 <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="akut-nummer">
@@ -147,7 +144,7 @@ const schema = [
                 </a>
               ))}
             </div>
-            <a href="/notfall/" class="akut-mehr">Was bei einem Zahnnotfall zu tun ist →</a>
+            <a href="/notfall/" class="akut-mehr">{t('beschwseite.wasBeiEinemZahnnotfall')}</a>
           </aside>
         )
       }
@@ -200,7 +197,7 @@ const schema = [
            * Seite ein Textblock, dessen Ende man nicht absehen kann.
            */
           <nav class="gliederung" aria-label="Auf dieser Seite">
-            <p class="gliederung-titel">Auf dieser Seite</p>
+            <p class="gliederung-titel">{t('beschwseite.aufDieserSeite')}</p>
             <ul>
               {gliederung.map((g) => (
                 <li>
@@ -228,7 +225,7 @@ const schema = [
     behandlungen.length > 0 && (
       <section class="abschnitt weiter">
         <div class="huelle">
-          <h2>Was dagegen hilft</h2>
+          <h2>{t('beschwseite.wasDagegenHilft')}</h2>
           <p class="weiter-text">
             {behandlungen.length === 1
               ? 'Die Behandlung, die hier in Frage kommt – mit den Standorten, an denen es sie gibt:'

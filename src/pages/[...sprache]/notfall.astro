@@ -72,18 +72,15 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
 >
   <section class="sofort">
     <div class="huelle">
-      <h1>Zahnärztlicher Notfall</h1>
+      <h1>{t('notfall.zahnaRztlicherNotfall')}</h1>
 
       <div class="alarm">
-        <p class="alarm-titel">Atemnot, Schluckbeschwerden oder starke Schwellung am Hals?</p>
-        <p>
-          Das ist ein medizinischer Notfall. Wählen Sie sofort den Rettungsdienst – warten
-          Sie nicht auf einen Zahnarzttermin.
-        </p>
-        <a href="tel:112" class="knopf notruf">112 anrufen</a>
+        <p class="alarm-titel">{t('notfall.atemnotSchluckbeschwerdenOderStarke')}</p>
+        <p>{t('notfall.dasIstEinMedizinischer')}</p>
+        <a href="tel:112" class="knopf notruf">{t('notfall.112Anrufen')}</a>
       </div>
 
-      <h2>Rufen Sie uns an – wir halten Termine frei</h2>
+      <h2>{t('notfall.rufenSieUnsAn')}</h2>
       <div class="nummern">
         {
           nachVerfuegbarkeit.map((s) => {
@@ -102,75 +99,73 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
       </div>
 
       <p class="ausserhalb">
-        <strong>Außerhalb unserer Sprechzeiten:</strong> zahnärztlicher Notdienst Berlin
-        unter <a href="tel:+493089004333">030 89 00 43 33</a>, Brandenburg unter{' '}
-        <a href="tel:+491803222355510">01803 22 23 55 510</a>. Ärztlicher Bereitschaftsdienst
-        bundesweit: <a href="tel:116117">116 117</a>.
+        <strong>{t('notfall.ausserhalbUnsererSprechzeiten')}</strong>{t('notfall.zahnaRztlicherNotdienstBerlin')}<a href="tel:+493089004333">030 89 00 43 33</a>, Brandenburg unter{' '}
+        <a href="tel:+491803222355510">01803 22 23 55 510</a>{t('notfall.aRztlicherBereitschaftsdienstBundesweit')}<a href="tel:116117">116 117</a>.
       </p>
     </div>
   </section>
 
   <section class="abschnitt">
     <div class="huelle">
-      <h2>Sofortmaßnahmen</h2>
+      <h2>{t('notfall.sofortmassnahmen')}</h2>
       <div class="raster">
         <div class="karte fall">
-          <h3>Ausgeschlagener Zahn</h3>
+          <h3>{t('notfall.ausgeschlagenerZahn')}</h3>
           <ol>
-            <li>Zahn nur an der Krone anfassen, nie an der Wurzel</li>
-            <li>Nicht säubern, nicht abschrubben, nicht in Wasser legen</li>
-            <li>In Zahnrettungsbox, sonst kalte H-Milch, notfalls Speichel</li>
-            <li>Innerhalb der ersten Stunde zu uns kommen</li>
+            <li>{t('notfall.zahnNurAnDer')}</li>
+            <li>{t('notfall.nichtSaUbernNicht')}</li>
+            <li>{t('notfall.inZahnrettungsboxSonstKalte')}</li>
+            <li>{t('notfall.innerhalbDerErstenStunde')}</li>
           </ol>
         </div>
 
         <div class="karte fall">
-          <h3>Starke Schmerzen</h3>
+          <h3>{t('notfall.starkeSchmerzen')}</h3>
           <ol>
-            <li>Von außen kühlen, mit Tuch dazwischen, in Intervallen</li>
-            <li>Kopf hochlagern, auch beim Schlafen</li>
-            <li>Schmerzmittel nach Packungsbeilage, nie auf das Zahnfleisch legen</li>
-            <li>Keine Wärme, kein Alkohol</li>
+            <li>{t('notfall.vonAussenKuHlen')}</li>
+            <li>{t('notfall.kopfHochlagernAuchBeim')}</li>
+            <li>{t('notfall.schmerzmittelNachPackungsbeilageNie')}</li>
+            <li>{t('notfall.keineWaRmeKein')}</li>
           </ol>
         </div>
 
         <div class="karte fall">
-          <h3>Schwellung im Gesicht</h3>
+          <h3>{t('notfall.schwellungImGesicht')}</h3>
           <ol>
-            <li>Immer abklären lassen, auch ohne starke Schmerzen</li>
-            <li>Kühlen, nicht wärmen</li>
-            <li>Bei Fieber oder rascher Zunahme sofort anrufen</li>
-            <li>Bei Atem- oder Schluckproblemen: 112</li>
+            <li>{t('notfall.immerAbklaRenLassen')}</li>
+            <li>{t('notfall.kuHlenNichtWa')}</li>
+            <li>{t('notfall.beiFieberOderRascher')}</li>
+            <li>{t('notfall.beiAtemOderSchluckproblemen')}</li>
           </ol>
         </div>
 
         <div class="karte fall">
-          <h3>Blutung nach einem Eingriff</h3>
+          <h3>{t('notfall.blutungNachEinemEingriff')}</h3>
           <ol>
-            <li>Sauberes Tuch oder Mulltupfer fest aufbeißen, 20 Minuten</li>
-            <li>Nicht spülen, nicht ausspucken, nicht nachschauen</li>
-            <li>Kopf hoch, körperliche Anstrengung vermeiden</li>
-            <li>Hört es nicht auf: anrufen</li>
+            <li>{t('notfall.sauberesTuchOderMulltupfer')}</li>
+            <li>{t('notfall.nichtSpuLenNicht')}</li>
+            <li>{t('notfall.kopfHochKoRperliche')}</li>
+            <li>{t('notfall.hoRtEsNicht')}</li>
           </ol>
         </div>
 
         <div class="karte fall">
-          <h3>Krone oder Füllung verloren</h3>
+          <h3>{t('notfall.kroneOderFuLlung')}</h3>
           <ol>
-            <li>Teil aufbewahren und mitbringen</li>
-            <li>Auf der anderen Seite kauen</li>
-            <li>Bereich gut sauber halten</li>
-            <li>Zeitnah Termin vereinbaren – meist kein Notfall</li>
+            <li>{t('notfall.teilAufbewahrenUndMitbringen')}</li>
+            <li>{t('notfall.aufDerAnderenSeite')}</li>
+            <li>{t('notfall.bereichGutSauberHalten')}</li>
+            <li>{t('notfall.zeitnahTerminVereinbarenMeist')}</li>
           </ol>
         </div>
 
         <div class="karte fall">
-          <h3>Zahn abgebrochen</h3>
+          <h3>{t('notfall.zahnAbgebrochen')}</h3>
           <ol>
-            <li>Bruchstück aufbewahren, feucht halten</li>
-            <li>Scharfe Kante mit Wachs oder Kaugummi abdecken</li>
-            <li>Bei Schmerz auf Kälte: Nerv ist beteiligt, zügig kommen</li>
-            <li>Anrufen und Situation schildern</li>
+            <li>{t('notfall.bruchstuCkAufbewahrenFeucht')}</li>
+            <li>{t('notfall.scharfeKanteMitWachs')}</li>
+            <li>{t('notfall.beiSchmerzAufKa')}</li>
+            <li>{t('notfall.anrufenUndSituationSchildern')}</li>
           </ol>
         </div>
       </div>
@@ -179,7 +174,7 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Häufige Fragen im Notfall</h2>
+      <h2>{t('notfall.haUfigeFragenIm')}</h2>
       {
         faq.map((f) => (
           <details>
@@ -188,10 +183,7 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
           </details>
         ))
       }
-      <p class="disclaimer">
-        Diese Hinweise ersetzen keine Untersuchung. Sie sollen die Zeit bis zum Termin
-        überbrücken – nicht ihn ersetzen.
-      </p>
+      <p class="disclaimer">{t('notfall.dieseHinweiseErsetzenKeine')}</p>
     </div>
   </section>
 </Basis>
