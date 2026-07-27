@@ -161,6 +161,23 @@ await pruefe('Suchfeld liefert Treffer', async () => {
   return treffer > 0 || 'keine Treffer';
 });
 
+await pruefe('Suche auf Englisch liefert englische Treffer', async () => {
+  await weiter(seite, '/en/suche/');
+  const feld = seite.locator('#suchfeld');
+  if (!(await feld.count())) return 'kein Suchfeld';
+  await feld.fill('cleaning');
+  await seite.waitForTimeout(1400);
+  const titel = await seite.locator('#liste .tr-titel').first().textContent();
+  if (!titel) return 'keine Treffer';
+  /*
+   * Geprüft wird gegen deutsche Umlaute und typische Endungen, nicht gegen
+   * eine Wortliste: Die Titel ändern sich, die Sprache nicht. Vorher stand
+   * hier „Professionelle Zahnreinigung" – die Seite darunter war übersetzt,
+   * der Treffer, der zu ihr führte, nicht.
+   */
+  return /[äöüß]|ungen?\b|Zahn/i.test(titel) ? `deutscher Titel: ${titel}` : true;
+});
+
 console.log('\n[klickpfad] Lesefortschritt im Blog');
 await weiter(seite, '/blog/');
 /* Nicht der erstbeste Blog-Link: Die Übersicht verweist auch auf sich selbst

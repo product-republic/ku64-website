@@ -56,6 +56,17 @@ import {
   normieren,
   zerlegen,
 } from './suche-kern.ts';
+import {
+  beitraegeIn,
+  beschwerdenIn,
+  kategorieIn,
+  leistungenIn,
+  personIn,
+  standorteIn,
+  texte,
+} from '../i18n/katalog.ts';
+import { QUELLSPRACHE, type Sprache } from '../i18n/sprachen.ts';
+import { type TextSchluessel } from '../i18n/texte.ts';
 
 export * from './suche-kern.ts';
 
@@ -79,11 +90,25 @@ function ausSlug(pfad: string): string {
  * rausgefallen" kommen, „Karriere" unter „job" und „ausbildung" – das steht
  * in keiner Seitenüberschrift.
  */
-const SEITEN: Omit<Indexeintrag, 'art' | 'schwach'>[] = [
+/*
+ * Titel und Kurztext stehen als Katalogschlüssel, nicht als Text.
+ *
+ * Die Suchbegriffe im starken Feld bleiben deutsch. Das ist keine Nachlässigkeit,
+ * sondern die Grenze zwischen Übersetzen und Neudenken: „zahn rausgefallen" ist
+ * kein Satz, den man überträgt, sondern eine Liste dessen, was Menschen
+ * tatsächlich eintippen. Für Englisch und Französisch gehört diese Liste neu
+ * erhoben – bis dahin finden die Seiten dort über ihren übersetzten Titel.
+ */
+type Seiteneintrag = Omit<Indexeintrag, 'art' | 'schwach' | 'titel' | 'kurz'> & {
+  titelSchluessel: TextSchluessel;
+  kurzSchluessel: TextSchluessel;
+};
+
+const SEITEN: Seiteneintrag[] = [
   {
     id: 'notfall',
-    titel: 'Zahnärztlicher Notfall',
-    kurz: 'Was jetzt zu tun ist – und wen Sie sofort erreichen.',
+    titelSchluessel: 'suchindex.notfall',
+    kurzSchluessel: 'suchindex.notfallKurz',
     pfad: '/notfall/',
     stark: [
       'notfall', 'notdienst', 'akut', 'sofort', 'schmerzen', 'starke zahnschmerzen',
@@ -94,48 +119,48 @@ const SEITEN: Omit<Indexeintrag, 'art' | 'schwach'>[] = [
   },
   {
     id: 'termine',
-    titel: 'Termin buchen',
-    kurz: 'Online einen Termin vereinbaren.',
+    titelSchluessel: 'suchindex.termine',
+    kurzSchluessel: 'suchindex.termineKurz',
     pfad: '/termine/',
     stark: ['termin', 'termin buchen', 'terminvereinbarung', 'buchen', 'anmelden', 'doctolib', 'online termin'],
     rang: 1,
   },
   {
     id: 'standorte',
-    titel: 'Unsere Standorte',
-    kurz: 'Vier Praxen in Berlin und Potsdam.',
+    titelSchluessel: 'suchindex.standorte',
+    kurzSchluessel: 'suchindex.standorteKurz',
     pfad: '/standorte/',
     stark: ['standorte', 'praxen', 'filialen', 'adressen', 'wo', 'welche praxis'],
     rang: 2,
   },
   {
     id: 'kontakt',
-    titel: 'Kontakt',
-    kurz: 'Telefon, E-Mail und Formular.',
+    titelSchluessel: 'suchindex.kontakt',
+    kurzSchluessel: 'suchindex.kontaktKurz',
     pfad: '/kontakt/',
     stark: ['kontakt', 'telefon', 'telefonnummer', 'anrufen', 'email', 'e mail', 'erreichen', 'nummer'],
     rang: 3,
   },
   {
     id: 'anamnese',
-    titel: 'Anamnesebogen',
-    kurz: 'Vor dem ersten Termin ausfüllen – spart Zeit in der Praxis.',
+    titelSchluessel: 'suchindex.anamnese',
+    kurzSchluessel: 'suchindex.anamneseKurz',
     pfad: '/anamnese/',
     stark: ['anamnese', 'anamnesebogen', 'formular', 'bogen', 'fragebogen', 'erstbesuch', 'vor dem termin'],
     rang: 4,
   },
   {
     id: 'beratung',
-    titel: 'Digitale Beratung',
-    kurz: 'Sprechen oder schreiben Sie mit unserem digitalen Berater.',
+    titelSchluessel: 'suchindex.beratung',
+    kurzSchluessel: 'suchindex.beratungKurz',
     pfad: '/beratung/',
     stark: ['beratung', 'berater', 'chat', 'sprechen', 'fragen stellen', 'ki', 'assistent'],
     rang: 5,
   },
   {
     id: 'karriere',
-    titel: 'Karriere bei KU64',
-    kurz: 'Offene Stellen und Ausbildung.',
+    titelSchluessel: 'suchindex.karriere',
+    kurzSchluessel: 'suchindex.karriereKurz',
     pfad: '/karriere/',
     stark: [
       'karriere', 'job', 'jobs', 'stelle', 'stellenangebot', 'bewerbung', 'bewerben',
@@ -145,48 +170,48 @@ const SEITEN: Omit<Indexeintrag, 'art' | 'schwach'>[] = [
   },
   {
     id: 'laecheln-vorschau',
-    titel: 'Lächeln-Vorschau',
-    kurz: 'Aus Ihrem Foto eine unverbindliche Illustration.',
+    titelSchluessel: 'suchindex.laecheln',
+    kurzSchluessel: 'suchindex.laechelnKurz',
     pfad: '/laecheln-vorschau/',
     stark: ['lacheln vorschau', 'vorher nachher', 'simulation', 'wie sehe ich aus', 'foto', 'vorschau'],
     rang: 7,
   },
   {
     id: 'ueber-uns',
-    titel: 'Über KU64',
-    kurz: 'Die Praxis, die Architektur, die Geschichte.',
+    titelSchluessel: 'suchindex.ueberUns',
+    kurzSchluessel: 'suchindex.ueberUnsKurz',
     pfad: '/ueber-uns/',
     stark: ['uber uns', 'praxis', 'geschichte', 'architektur', 'graft', 'auszeichnungen', 'wer sind'],
     rang: 8,
   },
   {
     id: 'ki-transparenz',
-    titel: 'KI-Transparenz',
-    kurz: 'Welche KI-Systeme hier arbeiten, wofür und mit welchen Daten.',
+    titelSchluessel: 'suchindex.kiTransparenz',
+    kurzSchluessel: 'suchindex.kiTransparenzKurz',
     pfad: '/ki-transparenz/',
     stark: ['ki', 'kunstliche intelligenz', 'transparenz', 'ki transparenz', 'chatbot', 'datenverarbeitung ki'],
     rang: 9,
   },
   {
     id: 'datenschutz',
-    titel: 'Datenschutz',
-    kurz: 'Wie wir mit Ihren Daten umgehen.',
+    titelSchluessel: 'suchindex.datenschutz',
+    kurzSchluessel: 'suchindex.datenschutzKurz',
     pfad: '/datenschutz/',
     stark: ['datenschutz', 'dsgvo', 'daten', 'privatsphare'],
     rang: 10,
   },
   {
     id: 'impressum',
-    titel: 'Impressum',
-    kurz: 'Anbieterkennzeichnung.',
+    titelSchluessel: 'suchindex.impressum',
+    kurzSchluessel: 'suchindex.impressumKurz',
     pfad: '/impressum/',
     stark: ['impressum', 'anbieter', 'rechtliches'],
     rang: 11,
   },
   {
     id: 'barrierefreiheit',
-    titel: 'Barrierefreiheit',
-    kurz: 'Erklärung zur Barrierefreiheit dieser Website.',
+    titelSchluessel: 'suchindex.barrierefreiheit',
+    kurzSchluessel: 'suchindex.barrierefreiheitKurz',
     pfad: '/barrierefreiheit/',
     stark: ['barrierefreiheit', 'barrierefrei', 'zuganglichkeit', 'rollstuhl', 'aufzug'],
     rang: 12,
@@ -222,12 +247,22 @@ function beschwerdenJeLeistung(): Map<string, string[]> {
   return karte;
 }
 
-export function indexBauen(): Indexeintrag[] {
+/**
+ * Der Index in einer Sprache.
+ *
+ * Ohne den Parameter kam die englische Suche zu deutschen Titeln – die Seite
+ * darunter war übersetzt, der Treffer, der zu ihr führte, nicht. Gebaut wird
+ * jetzt je Sprache eine Indexdatei; siehe `[...sprache]/suche-index.json.ts`.
+ */
+export function indexBauen(sprache: Sprache = QUELLSPRACHE): Indexeintrag[] {
   const beschwerden = beschwerdenJeLeistung();
   const eintraege: Indexeintrag[] = [];
+  const t = texte(sprache);
 
-  for (const l of LEISTUNGEN) {
-    const kat = KATEGORIEN.find((k) => k.slug === l.kategorie);
+  const kategorien = KATEGORIEN.map((k) => kategorieIn(k, sprache));
+
+  for (const l of leistungenIn(LEISTUNGEN, sprache)) {
+    const kat = kategorien.find((k) => k.slug === l.kategorie);
     eintraege.push({
       art: 'leistung',
       id: l.slug,
@@ -241,7 +276,7 @@ export function indexBauen(): Indexeintrag[] {
     });
   }
 
-  for (const s of STANDORTE) {
+  for (const s of standorteIn(STANDORTE, sprache)) {
     eintraege.push({
       art: 'standort',
       id: s.slug,
@@ -254,8 +289,13 @@ export function indexBauen(): Indexeintrag[] {
     });
   }
 
-  for (const s of SEITEN) {
-    eintraege.push({ art: 'seite', schwach: [s.kurz], ...s });
+  for (const { titelSchluessel, kurzSchluessel, ...s } of SEITEN) {
+    const titel = t(titelSchluessel);
+    const kurz = t(kurzSchluessel);
+    /* Der übersetzte Titel gehört ins starke Feld: Er ist in der Zielsprache
+       das, wonach jemand sucht – die gepflegte deutsche Begriffsliste bleibt
+       daneben stehen und schadet nicht. */
+    eintraege.push({ art: 'seite', titel, kurz, schwach: [kurz], ...s, stark: [...s.stark, titel] });
   }
 
   /*
@@ -267,7 +307,7 @@ export function indexBauen(): Indexeintrag[] {
    * Vorspann („Ein heikles Thema: Mundgeruch – …"); gesucht wird nach dem
    * Slug, deshalb steht der mit im starken Feld.
    */
-  for (const b of BESCHWERDEN) {
+  for (const b of beschwerdenIn(BESCHWERDEN, sprache)) {
     eintraege.push({
       art: 'beschwerde',
       id: b.slug,
@@ -293,14 +333,18 @@ export function indexBauen(): Indexeintrag[] {
     if (!mitProfil.has(m.slug)) continue;
     const wo = m.standorte[0];
     if (!wo) continue;
+    /* Der Name bleibt, die Funktionsbezeichnung wird übersetzt – sie steht
+       unter dem Namen im Treffer. */
+    const profil = personIn(m.slug, (profile as Record<string, { funktion?: string }>)[m.slug], sprache);
+    const funktion = profil?.funktion ?? m.funktion ?? '';
     eintraege.push({
       art: 'person',
       id: m.slug,
       titel: m.name,
-      kurz: m.funktion ?? '',
+      kurz: funktion,
       pfad: `/${wo}/team/${m.slug}/`,
       stark: [m.name],
-      schwach: [m.funktion ?? ''],
+      schwach: [funktion],
       verfuegbar: m.standorte,
       rang: 40,
     });
@@ -312,7 +356,7 @@ export function indexBauen(): Indexeintrag[] {
    * Sie sollen gefunden werden, aber nie vor einer Behandlung stehen: Wer
    * „veneers" sucht, will die Behandlung, nicht einen Beitrag darüber.
    */
-  for (const b of BEITRAEGE) {
+  for (const b of beitraegeIn(BEITRAEGE, sprache)) {
     eintraege.push({
       art: 'beitrag',
       id: b.slug,

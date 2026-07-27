@@ -22,10 +22,24 @@
  * schreiben kann, ohne dafür den Standortdatensatz zu laden.
  */
 import type { APIRoute } from 'astro';
-import { indexBauen, zerlegen } from '../lib/suche.ts';
-import { STANDORTE } from '../data/standorte.ts';
+import { indexBauen, zerlegen } from '../../lib/suche.ts';
+import { STANDORTE } from '../../data/standorte.ts';
+import { sprachpfade, spracheAusParameter } from '../../i18n/sprachen.ts';
 
 export const prerender = true;
+
+/*
+ * Je Sprache eine Datei: `/suche-index.json`, `/en/suche-index.json`,
+ * `/fr/suche-index.json`.
+ *
+ * Vorher gab es eine einzige, und sie war deutsch. Die englische Suchseite
+ * war übersetzt, die Treffer darin nicht – man tippte „implant" und bekam
+ * eine Liste deutscher Titel. Drei Dateien statt einer kosten 26 Kilobyte
+ * mehr im Bauergebnis und werden ohnehin nur einzeln geladen.
+ */
+export function getStaticPaths() {
+  return sprachpfade();
+}
 
 /**
  * Das schwache Feld auf seine Wörter eindampfen.
@@ -46,9 +60,10 @@ function verdichten(felder: string[]): string[] {
   return woerter.size ? [[...woerter].join(' ')] : [];
 }
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = ({ params }) => {
+  const sprache = spracheAusParameter(params.sprache as string | undefined);
   const daten = {
-    eintraege: indexBauen().map((e) => ({
+    eintraege: indexBauen(sprache).map((e) => ({
       ...e,
       /* Auch das starke Feld kennt Doppelte – „Veneers“ steht im Namen und
          noch einmal in den Synonymen. */

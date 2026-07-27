@@ -178,20 +178,32 @@ const schema = [
     seite: 'Seite',
   };
 
-  let daten: Indexdatei | null = null;
-  let laedt: Promise<Indexdatei> | null = null;
+  /*
+   * Ein Zwischenspeicher JE SPRACHE.
+   *
+   * Es gibt drei Indexdateien – `/suche-index.json`, `/en/…`, `/fr/…`. Wer
+   * von der deutschen Suche auf die englische wechselt, wechselt dabei nicht
+   * das Dokument (der Seitenwechsel passiert im Browser). Ein einzelner
+   * Zwischenspeicher gäbe ihm deshalb weiter den deutschen Index, und die
+   * englische Suche zeigte deutsche Titel – derselbe Fehler wie vorher, nur
+   * schwerer zu finden.
+   */
+  const zwischenspeicher = new Map<string, Promise<Indexdatei>>();
+
+  /** Der Sprachpräfix aus der aktuellen Adresse: '' für Deutsch, '/en' sonst. */
+  function praefixJetzt(): string {
+    const erster = location.pathname.split('/')[1] ?? '';
+    return /^[a-z]{2}$/.test(erster) ? `/${erster}` : '';
+  }
 
   function indexHolen(): Promise<Indexdatei> {
-    if (daten) return Promise.resolve(daten);
-    if (!laedt) {
-      laedt = fetch('/suche-index.json')
-        .then((a) => a.json())
-        .then((d: Indexdatei) => {
-          daten = d;
-          return d;
-        });
+    const praefix = praefixJetzt();
+    let vorhanden = zwischenspeicher.get(praefix);
+    if (!vorhanden) {
+      vorhanden = fetch(`${praefix}/suche-index.json`).then((a) => a.json() as Promise<Indexdatei>);
+      zwischenspeicher.set(praefix, vorhanden);
     }
-    return laedt;
+    return vorhanden;
   }
 
   /*
@@ -230,6 +242,11 @@ const schema = [
      * herkam, ohne dass es vier Suchseiten braucht, die um dieselbe
      * Suchanfrage konkurrieren.
      */
+    /* Der geladene Index dieser Seite. Er wird beim ersten Tastendruck
+       geholt und danach hier gehalten – der Zwischenspeicher oben verhindert,
+       dass ein zweiter Seitenaufbau ihn erneut über das Netz zieht. */
+    let daten: Indexdatei | null = null;
+
     const ausAdresseOrt = new URLSearchParams(location.search).get('ort');
     const standort =
       ausAdresseOrt ||
@@ -355,7 +372,10 @@ const schema = [
        * Das Rechnen selbst ist billig – teuer ist das Neuzeichnen der Liste.
        */
       zeitgeber = window.setTimeout(() => {
-        indexHolen().then(() => ausgeben(frage));
+        indexHolen().then((d) => {
+        daten = d;
+        ausgeben(frage);
+      });
       }, 120);
     }
 
@@ -376,7 +396,10 @@ const schema = [
       const ausAdresse = new URLSearchParams(location.search).get('q');
       if (ausAdresse) {
         feld.value = ausAdresse;
-        indexHolen().then(() => ausgeben(ausAdresse.trim()));
+        indexHolen().then((d) => {
+        daten = d;
+        ausgeben(ausAdresse.trim());
+      });
       }
     }
 
