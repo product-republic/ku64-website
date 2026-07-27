@@ -20,6 +20,7 @@ import Navigation from '../components/Navigation.astro';
 import Fusszeile from '../components/Fusszeile.astro';
 import Brotkrumen from '../components/Brotkrumen.astro';
 import Berater from '../components/Berater.astro';
+import Sprachhinweis from '../components/Sprachhinweis.astro';
 import { type Standort } from '../data/standorte';
 import { titelBauen, descriptionKuerzen, kanonisch, SITE_NAME } from '../lib/seo';
 import {
@@ -245,6 +246,10 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     }
 
     <Navigation standort={standort} pfad={sprachziel} />
+
+    {/* Genau einmal je Seite – der Wähler im Kopf und der im mobilen Menü
+        sind zwei, der Hinweis ist einer. */}
+    <Sprachhinweis pfad={sprachziel} />
 
     {brotkrumen.length > 0 && <Brotkrumen punkte={brotkrumen} />}
 

@@ -35,7 +35,7 @@ import {
   datumLesbar,
   lesedauer,
   gliederung,
-  anker,
+  ankerJeUeberschrift,
 } from '../../../lib/blog';
 import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
@@ -53,6 +53,9 @@ const beitrag = daten.beitrag(Astro.params.artikel!)!;
 const pfad = `/blog/${beitrag.slug}/`;
 const minuten = lesedauer(beitrag);
 const marken = gliederung(beitrag);
+/* Dieselbe Zählung wie in der Gliederung – sonst zeigt sie auf Anker, die es
+   so nicht gibt. */
+const sprungmarken = ankerJeUeberschrift(beitrag);
 
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
@@ -180,7 +183,7 @@ const schema = [
              */
             beitrag.bloecke.map((b, i) =>
               b.art === 'h2' ? (
-                <h2 id={anker(b.text!)}>{b.text}</h2>
+                <h2 id={sprungmarken.get(i)}>{b.text}</h2>
               ) : b.art === 'h3' ? (
                 <h3>{b.text}</h3>
               ) : b.art === 'liste' ? (

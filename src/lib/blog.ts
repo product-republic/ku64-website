@@ -99,10 +99,39 @@ export function lesedauer(b: Beitrag): number {
  * keine mehr. Beiträge mit weniger als drei Überschriften bekommen keine:
  * Bei zwei Sprungmarken ist Scrollen schneller als Zielen.
  */
+/**
+ * Die Sprungmarken eines Beitrags – je Überschrift genau eine, und keine
+ * zweimal.
+ *
+ * Zwei Überschriften mit demselben Wortlaut ergeben denselben Anker. Das
+ * kommt im übernommenen Bestand vor: „KU64 im Aeroflot Boardmagazine" steht
+ * in einem Beitrag zweimal, einmal als Abschnitt und einmal als Unterpunkt.
+ * Das Ergebnis war ein doppeltes `id` – und ein Sprungziel, das immer beim
+ * ersten landet, auch wenn die Gliederung auf den zweiten zeigt.
+ *
+ * Deshalb wird hier durchgezählt: Der zweite bekommt eine `-2`. Die Zählung
+ * muss an EINER Stelle passieren, sonst rechnen Gliederung und Überschrift
+ * verschieden – genau dafür gibt es diese Funktion, und beide benutzen sie.
+ */
+export function ankerJeUeberschrift(b: Beitrag): Map<number, string> {
+  const vergeben = new Map<string, number>();
+  const karte = new Map<number, string>();
+
+  b.bloecke.forEach((block, i) => {
+    if (block.art !== 'h2' || !block.text) return;
+    const basis = anker(block.text);
+    const wievielt = (vergeben.get(basis) ?? 0) + 1;
+    vergeben.set(basis, wievielt);
+    karte.set(i, wievielt === 1 ? basis : `${basis}-${wievielt}`);
+  });
+
+  return karte;
+}
+
 export function gliederung(b: Beitrag): { titel: string; anker: string }[] {
-  const h2 = b.bloecke.filter((x) => x.art === 'h2' && x.text);
-  if (h2.length < 3) return [];
-  return h2.map((x) => ({ titel: x.text!, anker: anker(x.text!) }));
+  const marken = ankerJeUeberschrift(b);
+  if (marken.size < 3) return [];
+  return [...marken].map(([i, marke]) => ({ titel: b.bloecke[i].text!, anker: marke }));
 }
 
 /** Sprungmarke aus einer Überschrift – Umlaute ausgeschrieben. */
