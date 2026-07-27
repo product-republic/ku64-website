@@ -45,6 +45,7 @@ KLICKPFAD_BASIS=http://127.0.0.1:4331 npm run klickpfad
 | Blog | vollständig übernommen, mit Lesefortschritt |
 | Tote Adressen des Altbestands | 0 von 552 |
 | Deutsche Sätze außerhalb des Katalogs | 0 (der eine Fund ist eine Baustellenmeldung, die nur im Entwicklungsmodus erscheint) |
+| Übersetzbare Textbausteine | 7401 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden |
 | Echte Fotos | 0 von 24 angemeldeten Motiven |
 
 ---
@@ -102,6 +103,13 @@ Der aktuelle Rückstand steht in `npm run sprachen:pruefen` – die Zahl dort
 ist die einzige, der zu glauben ist. Beide Sprachen tragen bis auf Weiteres
 `freigegeben: false` und damit `noindex`, und im Sprachwähler einen
 abgeblendeten Knopf.
+
+**Achtung bei der Zahl.** Sie ist an einem Abend zweimal gefallen, ohne dass
+etwas kaputtging: von 100 auf 70 Prozent, als 396 fest verdrahtete Sätze in
+den Katalog kamen, und von 100 auf 17, als Profile, Blog und
+Beschwerdeseiten dazukamen. Beide Male hat die Zahl nicht abgenommen,
+sondern angefangen, mehr zu meinen. Wer sie mit einer früheren vergleicht,
+vergleicht zwei verschiedene Fragen.
 
 Freigeben heißt: in `src/i18n/sprachen.ts` auf `true` stellen. Ab dann bricht
 **jede** Lücke den Build ab, die Seiten kommen in die Sitemap und der Hinweis
