@@ -6,6 +6,7 @@
  */
 import { inhalte } from '../i18n/daten';
 import { type Standort } from '../data/standorte';
+import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
 
@@ -30,6 +31,7 @@ const kategorien = standort
   : daten.kategorien;
 
 const jahr = new Date().getFullYear();
+const t = texte(daten.sprache);
 ---
 
 <footer class="fuss">
@@ -52,10 +54,7 @@ const jahr = new Date().getFullYear();
               <a href={`mailto:${standort.email}`}>{standort.email}</a>
             </address>
           ) : (
-            <p class="fuss-text">
-              Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren
-              Standort – Sprechzeiten und Behandlungsangebot unterscheiden sich.
-            </p>
+            <p class="fuss-text">{t('fuss.ohneStandort')}</p>
           )
         }
 

@@ -151,10 +151,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           </svg>
         </summary>
         <div class="waehler-liste">
-          <p class="waehler-hinweis">
-            Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede
-            Behandlung wird an jedem Standort angeboten.
-          </p>
+          <p class="waehler-hinweis">{t('nav.waehlerHinweis')}</p>
           <ul>
             {
               daten.standorte.map((s) => (

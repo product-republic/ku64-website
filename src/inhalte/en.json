@@ -749,6 +749,18 @@
       "text": "Back",
       "quelle": "7ca3460c"
     },
+    "ui.fehler.suchen": {
+      "text": "Search treatments",
+      "quelle": "f9ef7d33"
+    },
+    "ui.fehler.text": {
+      "text": "It may have been renamed when the website was rebuilt. Search for your treatment directly here – or go to your location.",
+      "quelle": "39869b99"
+    },
+    "ui.fehler.titel": {
+      "text": "This page does not exist",
+      "quelle": "59a255f5"
+    },
     "ui.fuss.aktuellGewaehlt": {
       "text": "(currently selected)",
       "quelle": "05cdde05"
@@ -797,6 +809,10 @@
       "text": "Opening hours",
       "quelle": "92e62cdb"
     },
+    "ui.fuss.ohneStandort": {
+      "text": "Dentistry at four locations in Berlin and Potsdam. Please choose your practice – opening hours and the range of treatments differ.",
+      "quelle": "48ef0626"
+    },
     "ui.fuss.service": {
       "text": "Service",
       "quelle": "b643c704"
@@ -840,6 +856,26 @@
     "ui.geruest.zumInhalt": {
       "text": "Skip to content",
       "quelle": "60ca65f1"
+    },
+    "ui.karte.behandlungen": {
+      "text": "Treatments",
+      "quelle": "4d3e5232"
+    },
+    "ui.karte.geoeffnet": {
+      "text": "Open",
+      "quelle": "2562ba58"
+    },
+    "ui.karte.standortAnsehen": {
+      "text": "View this location",
+      "quelle": "b62f18d4"
+    },
+    "ui.karte.tageWoche": {
+      "text": "{anzahl} days a week",
+      "quelle": "316b9589"
+    },
+    "ui.karte.telefon": {
+      "text": "Phone",
+      "quelle": "9efa9d9c"
     },
     "ui.leistung.ablauf": {
       "text": "How the treatment works",
@@ -929,6 +965,10 @@
       "text": "About KU64",
       "quelle": "92039106"
     },
+    "ui.nav.waehlerHinweis": {
+      "text": "When you switch, we show you the details of the location you choose. Not every treatment is offered at every location.",
+      "quelle": "f7fa2655"
+    },
     "ui.sprache.aktuell": {
       "text": "Current language: {sprache}",
       "quelle": "2ef18a2c"
@@ -984,6 +1024,70 @@
     "ui.standort.zuletztGewaehlt": {
       "text": "last selected",
       "quelle": "7d75258a"
+    },
+    "ui.standortwahl.hinweis": {
+      "text": "Opening hours, phone numbers and the range of treatments differ from location to location – so we would rather ask than guess.",
+      "quelle": "0da8332f"
+    },
+    "ui.start.anamneseKnopf": {
+      "text": "Open the form",
+      "quelle": "3f01fc37"
+    },
+    "ui.start.anamneseText": {
+      "text": "Fill in your medical history form comfortably from home – for every location. No clipboard in the waiting room.",
+      "quelle": "42ae4917"
+    },
+    "ui.start.beraterKnopf": {
+      "text": "Start a conversation",
+      "quelle": "3a3d1810"
+    },
+    "ui.start.beraterText": {
+      "text": "Questions about a treatment, costs or what happens next? Write to our assistant or talk to it – around the clock.",
+      "quelle": "856d2390"
+    },
+    "ui.start.digitalTitel": {
+      "text": "Digital, before you arrive",
+      "quelle": "8526c44e"
+    },
+    "ui.start.laechelnKnopf": {
+      "text": "Try it out",
+      "quelle": "0dde9fee"
+    },
+    "ui.start.laechelnText": {
+      "text": "Upload a photo and see how your smile could look after a cosmetic treatment. Your picture is not stored.",
+      "quelle": "475fe91e"
+    },
+    "ui.start.ueberschrift": {
+      "text": "Where may we treat you?",
+      "quelle": "7522822b"
+    },
+    "ui.start.vorspann": {
+      "text": "{anzahl} locations in Berlin and Potsdam. Choose yours – from then on you will only see the treatments, opening hours and contact details of that practice. Nothing changes without your say-so.",
+      "quelle": "b05c4238"
+    },
+    "ui.start.warumEins": {
+      "text": "A dental practice with several houses has a problem that patients often notice too late: not every treatment is offered everywhere. Search for “implant Potsdam”, land on a general treatment page, and you may well be reading about a practice 30 kilometres away.",
+      "quelle": "4175db07"
+    },
+    "ui.start.warumTitel": {
+      "text": "Why this website is organised by location",
+      "quelle": "f31946b9"
+    },
+    "ui.start.warumZwei": {
+      "text": "That is why every treatment page here belongs to exactly one location – with its address, phone number, opening hours and booking. If a treatment is not available at your practice, we say so plainly and link you to the one where you can get it. {anzahl} treatments, each described where it actually takes place.",
+      "quelle": "26c433f1"
+    },
+    "ui.start.zuletztWaren": {
+      "text": "Last time you were at {standort}.",
+      "quelle": "abd12f24"
+    },
+    "ui.start.zuletztZurueck": {
+      "text": "Back to that practice",
+      "quelle": "d0c63f92"
+    },
+    "ui.termin.vorspann": {
+      "text": "Book online in under a minute – or give us a call. We are also happy to call you back.",
+      "quelle": "93e55c49"
     }
   }
 }

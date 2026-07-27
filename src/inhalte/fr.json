@@ -305,6 +305,18 @@
       "text": "Retour",
       "quelle": "7ca3460c"
     },
+    "ui.fehler.suchen": {
+      "text": "Rechercher un soin",
+      "quelle": "f9ef7d33"
+    },
+    "ui.fehler.text": {
+      "text": "Elle a peut-être été renommée lors de la refonte du site. Cherchez directement votre soin ici – ou rendez-vous sur la page de votre cabinet.",
+      "quelle": "39869b99"
+    },
+    "ui.fehler.titel": {
+      "text": "Cette page n’existe pas",
+      "quelle": "59a255f5"
+    },
     "ui.fuss.aktuellGewaehlt": {
       "text": "(actuellement sélectionné)",
       "quelle": "05cdde05"
@@ -353,6 +365,10 @@
       "text": "Horaires d'ouverture",
       "quelle": "92e62cdb"
     },
+    "ui.fuss.ohneStandort": {
+      "text": "Des soins dentaires dans quatre cabinets à Berlin et Potsdam. Choisissez le vôtre : les horaires et les soins proposés diffèrent.",
+      "quelle": "48ef0626"
+    },
     "ui.fuss.service": {
       "text": "Services",
       "quelle": "b643c704"
@@ -396,6 +412,26 @@
     "ui.geruest.zumInhalt": {
       "text": "Aller au contenu",
       "quelle": "60ca65f1"
+    },
+    "ui.karte.behandlungen": {
+      "text": "Soins",
+      "quelle": "4d3e5232"
+    },
+    "ui.karte.geoeffnet": {
+      "text": "Ouvert",
+      "quelle": "2562ba58"
+    },
+    "ui.karte.standortAnsehen": {
+      "text": "Voir ce cabinet",
+      "quelle": "b62f18d4"
+    },
+    "ui.karte.tageWoche": {
+      "text": "{anzahl} jours par semaine",
+      "quelle": "316b9589"
+    },
+    "ui.karte.telefon": {
+      "text": "Téléphone",
+      "quelle": "9efa9d9c"
     },
     "ui.leistung.ablauf": {
       "text": "Le déroulement du traitement",
@@ -485,6 +521,10 @@
       "text": "À propos de KU64",
       "quelle": "92039106"
     },
+    "ui.nav.waehlerHinweis": {
+      "text": "En changeant de cabinet, vous verrez les informations de celui que vous choisissez. Tous les soins ne sont pas proposés dans chaque cabinet.",
+      "quelle": "f7fa2655"
+    },
     "ui.sprache.aktuell": {
       "text": "Langue actuelle : {sprache}",
       "quelle": "2ef18a2c"
@@ -540,6 +580,70 @@
     "ui.standort.zuletztGewaehlt": {
       "text": "dernier choix",
       "quelle": "7d75258a"
+    },
+    "ui.standortwahl.hinweis": {
+      "text": "Les horaires, les numéros de téléphone et les soins proposés varient d’un cabinet à l’autre : nous préférons vous demander plutôt que de deviner.",
+      "quelle": "0da8332f"
+    },
+    "ui.start.anamneseKnopf": {
+      "text": "Ouvrir le questionnaire",
+      "quelle": "3f01fc37"
+    },
+    "ui.start.anamneseText": {
+      "text": "Remplissez votre questionnaire médical tranquillement chez vous – pour chaque cabinet. Plus de porte-bloc en salle d’attente.",
+      "quelle": "42ae4917"
+    },
+    "ui.start.beraterKnopf": {
+      "text": "Démarrer la conversation",
+      "quelle": "3a3d1810"
+    },
+    "ui.start.beraterText": {
+      "text": "Des questions sur un soin, les coûts ou le déroulement ? Écrivez à notre assistant ou parlez-lui – à toute heure.",
+      "quelle": "856d2390"
+    },
+    "ui.start.digitalTitel": {
+      "text": "Numérique, avant votre venue",
+      "quelle": "8526c44e"
+    },
+    "ui.start.laechelnKnopf": {
+      "text": "Essayer",
+      "quelle": "0dde9fee"
+    },
+    "ui.start.laechelnText": {
+      "text": "Envoyez une photo et voyez à quoi pourrait ressembler votre sourire après un soin esthétique. Votre image n’est pas conservée.",
+      "quelle": "475fe91e"
+    },
+    "ui.start.ueberschrift": {
+      "text": "Où pouvons-nous vous soigner ?",
+      "quelle": "7522822b"
+    },
+    "ui.start.vorspann": {
+      "text": "{anzahl} cabinets à Berlin et Potsdam. Choisissez le vôtre : vous ne verrez ensuite que les soins, les horaires et les coordonnées de ce cabinet. Rien ne change sans votre accord.",
+      "quelle": "b05c4238"
+    },
+    "ui.start.warumEins": {
+      "text": "Un cabinet dentaire réparti sur plusieurs sites pose un problème que les patients remarquent souvent trop tard : tous les soins ne sont pas proposés partout. Cherchez « implant Potsdam », tombez sur une page générale, et vous lisez peut-être la description d’un cabinet situé à 30 kilomètres.",
+      "quelle": "4175db07"
+    },
+    "ui.start.warumTitel": {
+      "text": "Pourquoi ce site est organisé par cabinet",
+      "quelle": "f31946b9"
+    },
+    "ui.start.warumZwei": {
+      "text": "C’est pourquoi chaque page de soin appartient ici à un seul cabinet – avec son adresse, son téléphone, ses horaires et sa prise de rendez-vous. Si un soin n’est pas proposé dans votre cabinet, nous le disons clairement et vous orientons vers celui qui le propose. {anzahl} soins, décrits là où ils ont lieu.",
+      "quelle": "26c433f1"
+    },
+    "ui.start.zuletztWaren": {
+      "text": "La dernière fois, vous étiez à {standort}.",
+      "quelle": "abd12f24"
+    },
+    "ui.start.zuletztZurueck": {
+      "text": "Y retourner",
+      "quelle": "d0c63f92"
+    },
+    "ui.termin.vorspann": {
+      "text": "Réservez en ligne en moins d’une minute – ou appelez-nous. Nous vous rappelons volontiers.",
+      "quelle": "93e55c49"
     }
   }
 }

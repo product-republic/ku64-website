@@ -97,6 +97,51 @@ export const TEXTE = {
   'allgemein.absenden': 'Absenden',
   'allgemein.pflichtfeld': 'Pflichtfeld',
   'allgemein.fehler': 'Da ist etwas schiefgegangen. Bitte versuchen Sie es noch einmal.',
+
+  // ── Startseite ──────────────────────────────────────────────────────
+  'start.ueberschrift': 'Wo dürfen wir Sie behandeln?',
+  'start.vorspann':
+    '{anzahl} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen Sie ausschließlich Behandlungen, Sprechzeiten und Kontaktdaten dieses Standorts. Kein Wechsel ohne Ihr Zutun.',
+  'start.zuletztWaren': 'Zuletzt waren Sie bei {standort}.',
+  'start.zuletztZurueck': 'Dorthin zurück',
+  'start.warumTitel': 'Warum diese Website nach Standort aufgebaut ist',
+  'start.warumEins':
+    'Eine Zahnarztpraxis mit mehreren Häusern hat ein Problem, das Patientinnen und Patienten oft erst spät bemerkt: Nicht jede Behandlung wird überall angeboten. Wer nach „Implantat Potsdam“ sucht und auf einer allgemeinen Leistungsseite landet, liest im Zweifel über eine Praxis, die 30 Kilometer entfernt liegt.',
+  'start.warumZwei':
+    'Deshalb gehört bei uns jede Behandlungsseite zu genau einem Standort – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung. Gibt es eine Behandlung an Ihrem Standort nicht, sagen wir das offen und verlinken gezielt dorthin, wo Sie sie bekommen. {anzahl} Behandlungen, jeweils dort beschrieben, wo sie stattfinden.',
+  'start.digitalTitel': 'Digital, bevor Sie ankommen',
+  'start.laechelnText':
+    'Foto hochladen und sehen, wie Ihr Lächeln nach einer ästhetischen Behandlung aussehen könnte. Ihr Bild wird dabei nicht gespeichert.',
+  'start.laechelnKnopf': 'Ausprobieren',
+  'start.anamneseText':
+    'Den Anamnesebogen bequem von zu Hause ausfüllen – an jedem Standort. Kein Klemmbrett im Wartezimmer.',
+  'start.anamneseKnopf': 'Bogen öffnen',
+  'start.beraterText':
+    'Fragen zu Behandlung, Kosten oder Ablauf? Schreiben oder sprechen Sie mit unserem Assistenten – rund um die Uhr.',
+  'start.beraterKnopf': 'Gespräch starten',
+
+  // ── Standortkarte ───────────────────────────────────────────────────
+  'karte.behandlungen': 'Behandlungen',
+  'karte.geoeffnet': 'Geöffnet',
+  'karte.telefon': 'Telefon',
+  'karte.tageWoche': '{anzahl} Tage/Woche',
+  'karte.standortAnsehen': 'Standort ansehen',
+
+  // ── Fehlerseite ─────────────────────────────────────────────────────
+  'fehler.titel': 'Diese Seite gibt es nicht',
+  'fehler.text':
+    'Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach Ihrer Behandlung – oder gehen Sie zu Ihrem Standort.',
+  'fehler.suchen': 'Behandlung suchen',
+
+  // ── Bausteine ───────────────────────────────────────────────────────
+  'nav.waehlerHinweis':
+    'Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede Behandlung wird an jedem Standort angeboten.',
+  'fuss.ohneStandort':
+    'Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren Standort – Sprechzeiten und Behandlungsangebot unterscheiden sich.',
+  'termin.vorspann':
+    'Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch gerne bei Ihnen zurück.',
+  'standortwahl.hinweis':
+    'Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
 } as const;
 
 export type TextSchluessel = keyof typeof TEXTE;

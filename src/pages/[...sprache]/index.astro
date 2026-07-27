@@ -13,6 +13,7 @@ import Basis from '../../layouts/Basis.astro';
 import Bild from '../../components/Bild.astro';
 import { standortbildFuer } from '../../data/medien';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
+import { texte } from '../../i18n/katalog';
 
 export function getStaticPaths() {
   return sprachpfade();
@@ -46,6 +47,7 @@ const faq = [
 ];
 
 const gesamtLeistungen = daten.leistungen.length;
+const t = texte(daten.sprache);
 ---
 
 <Basis
@@ -57,19 +59,15 @@ const gesamtLeistungen = daten.leistungen.length;
   <section class="held">
     <div class="huelle">
       <p class="held-marke">KU64 · Die Zahnspezialisten</p>
-      <h1>Wo dürfen wir Sie behandeln?</h1>
-      <p class="held-text">
-        {daten.standorte.length} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen
-        Sie ausschließlich Behandlungen, Sprechzeiten und Kontaktdaten dieses Standorts.
-        Kein Wechsel ohne Ihr Zutun.
-      </p>
+      <h1>{t('start.ueberschrift')}</h1>
+      <p class="held-text">{t('start.vorspann', { anzahl: daten.standorte.length })}</p>
 
       {/* Zuletzt gewählter Standort – ein Angebot, keine Umleitung. */}
       <div class="zuletzt" id="zuletzt" hidden>
-        <p>
-          Zuletzt waren Sie bei <strong id="zuletzt-name"></strong>.
+        <p data-vorlage={t('start.zuletztWaren', { standort: '{standort}' })}>
+          <strong id="zuletzt-name"></strong>
         </p>
-        <a href="#" id="zuletzt-link" class="knopf knopf-primaer">Dorthin zurück</a>
+        <a href="#" id="zuletzt-link" class="knopf knopf-primaer">{t('start.zuletztZurueck')}</a>
       </div>
     </div>
   </section>
@@ -100,20 +98,20 @@ const gesamtLeistungen = daten.leistungen.length;
                 <p class="s-claim">{s.claim}</p>
                 <dl class="s-fakten">
                   <div>
-                    <dt>Behandlungen</dt>
+                    <dt>{t('karte.behandlungen')}</dt>
                     <dd>{anzahl}</dd>
                   </div>
                   <div>
-                    <dt>Geöffnet</dt>
-                    <dd>{s.oeffnungszeiten.filter((z) => z.von).length} Tage/Woche</dd>
+                    <dt>{t('karte.geoeffnet')}</dt>
+                    <dd>{t('karte.tageWoche', { anzahl: s.oeffnungszeiten.filter((z) => z.von).length })}</dd>
                   </div>
                   <div>
-                    <dt>Telefon</dt>
+                    <dt>{t('karte.telefon')}</dt>
                     <dd>{s.telefon}</dd>
                   </div>
                 </dl>
                 <span class="s-mehr">
-                  Standort ansehen
+                  {t('karte.standortAnsehen')}
                   <svg viewBox="0 0 16 12" width="15" height="11" aria-hidden="true">
                     <path
                       d="M1 6h13M9.5 1.5 14 6l-4.5 4.5"
@@ -135,52 +133,32 @@ const gesamtLeistungen = daten.leistungen.length;
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Warum diese Website nach Standort aufgebaut ist</h2>
+      <h2>{t('start.warumTitel')}</h2>
       <div class="raster-zwei erklaer">
-        <p>
-          Eine Zahnarztpraxis mit mehreren Häusern hat ein Problem, das Patientinnen und
-          Patienten oft erst spät bemerkt: Nicht jede Behandlung wird überall angeboten. Wer
-          nach „Implantat Potsdam“ sucht und auf einer allgemeinen Leistungsseite landet,
-          liest im Zweifel über eine Praxis, die 30 Kilometer entfernt liegt.
-        </p>
-        <p>
-          Deshalb gehört bei uns jede Behandlungsseite zu genau einem Standort – mit dessen
-          Adresse, Telefonnummer, Sprechzeiten und Terminbuchung. Gibt es eine Behandlung an
-          Ihrem Standort nicht, sagen wir das offen und verlinken gezielt dorthin, wo Sie sie
-          bekommen. {gesamtLeistungen} Behandlungen, jeweils dort beschrieben, wo sie
-          stattfinden.
-        </p>
+        <p>{t('start.warumEins')}</p>
+        <p>{t('start.warumZwei', { anzahl: gesamtLeistungen })}</p>
       </div>
     </div>
   </section>
 
   <section class="abschnitt">
     <div class="huelle">
-      <h2>Digital, bevor Sie ankommen</h2>
+      <h2>{t('start.digitalTitel')}</h2>
       <div class="raster">
         <a href="/laecheln-vorschau/" class="karte karte-klickbar dienst">
           <h3>Lächeln-Vorschau</h3>
-          <p>
-            Foto hochladen und sehen, wie Ihr Lächeln nach einer ästhetischen Behandlung
-            aussehen könnte. Ihr Bild wird dabei nicht gespeichert.
-          </p>
-          <span class="dienst-mehr">Ausprobieren</span>
+          <p>{t('start.laechelnText')}</p>
+          <span class="dienst-mehr">{t('start.laechelnKnopf')}</span>
         </a>
         <a href="/anamnese/" class="karte karte-klickbar dienst">
           <h3>Digitale Anamnese</h3>
-          <p>
-            Den Anamnesebogen bequem von zu Hause ausfüllen – an jedem Standort. Kein
-            Klemmbrett im Wartezimmer.
-          </p>
-          <span class="dienst-mehr">Bogen öffnen</span>
+          <p>{t('start.anamneseText')}</p>
+          <span class="dienst-mehr">{t('start.anamneseKnopf')}</span>
         </a>
         <a href="/beratung/" class="karte karte-klickbar dienst">
           <h3>Digitaler Berater</h3>
-          <p>
-            Fragen zu Behandlung, Kosten oder Ablauf? Schreiben oder sprechen Sie mit
-            unserem Assistenten – rund um die Uhr.
-          </p>
-          <span class="dienst-mehr">Gespräch starten</span>
+          <p>{t('start.beraterText')}</p>
+          <span class="dienst-mehr">{t('start.beraterKnopf')}</span>
         </a>
       </div>
     </div>
