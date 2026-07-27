@@ -135,8 +135,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
     <div class="huelle">
       <h2>Unsere Fachbereiche in {standort.ort}</h2>
       <p class="unter">
-        {gruppen.length} Fachbereiche unter einem Dach – Sie müssen für die meisten
-        Behandlungen nicht die Praxis wechseln.
+        {t('standort.fachbereicheUnterEinemDach', { anzahl: gruppen.length })}
       </p>
       <div class="raster">
         {
@@ -144,7 +143,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
             <a class="karte karte-klickbar bereich" href={`/${standort.slug}/leistungen/#${g.kategorie.slug}`}>
               <h3>{g.kategorie.name}</h3>
               <p>{g.kategorie.beschreibung}</p>
-              <span class="anzahl">{g.leistungen.length} Behandlungen</span>
+              <span class="anzahl">{t('praxis.anzahlBehandlungen', { anzahl: g.leistungen.length })}</span>
             </a>
           ))
         }
@@ -163,7 +162,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         }
       </div>
       <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer alle">
-        Alle {alleHier.length} Behandlungen ansehen
+        {t('standort.alleBehandlungenAnsehen', { anzahl: alleHier.length })}
       </a>
     </div>
   </section>

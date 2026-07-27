@@ -783,6 +783,47 @@ export const TEXTE = {
     'Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
 
   // ── Standortseiten ──────────────────────────────────────────────────
+  'standort.ihrZahnarztIn': 'Ihr Zahnarzt in {ort}',
+  'standort.behandlungenAnsehen': '{anzahl} Behandlungen ansehen',
+  'standort.alleBehandlungenAnsehen': 'Alle {anzahl} Behandlungen ansehen',
+  'standort.fachbereicheUnterEinemDach':
+    '{anzahl} Fachbereiche unter einem Dach – Sie müssen für die meisten Behandlungen nicht die Praxis wechseln.',
+  'standort.behandlungenBeiKu64': 'Behandlungen bei KU64 {name}',
+  'standort.leistungenVorspann':
+    '{anzahl} Behandlungen in {bereiche} Fachbereichen – alle hier in {ort} verfügbar. Zu jeder Behandlung finden Sie Dauer, Kostenrahmen und was die Krankenkasse übernimmt.',
+  'standort.terminBeiKu64': 'Termin bei KU64 {name}',
+  'standort.termineVorspann':
+    '{adresse}. Buchen Sie online oder rufen Sie uns an – beides führt zum selben Terminkalender.',
+  'standort.anamneseVorspann':
+    'Fünf Minuten zu Hause statt Klemmbrett im Wartezimmer. Ihre Angaben landen verschlüsselt direkt bei den Behandelnden von KU64 {name} – Sie starten beim Termin sofort.',
+  'standort.anamneseInArbeit':
+    'Die digitale Anamnese für KU64 {name} wird gerade eingerichtet. Bis dahin füllen Sie den Bogen wie gewohnt vor Ort aus – oder Sie rufen an, dann schicken wir ihn Ihnen vorab zu.',
+  'standort.blogAusOrt': 'Blog aus {ort}',
+  'praxis.anzahlBehandlungen': '{anzahl} Behandlungen',
+  'standort.blogAnzahl': '{anzahl} {wort} mit Bezug zu KU64 {name}.',
+  'standort.blogBeitrag': 'Beitrag',
+  'standort.blogBeitraege': 'Beiträge',
+  'standort.blogLeer': 'Zu KU64 {name} gibt es bisher keinen eigenen Beitrag.',
+  'person.zurueckZumTeam': 'Zurück zum Team in {ort}',
+  'karte.nichtImAngebot': 'An diesem Standort nicht im Angebot – wir behandeln das bei {wo}.',
+  'orte.anzahlStandorte': '{anzahl} Standorte in Berlin und Potsdam',
+  'ueber.seit':
+    'Seit {jahr} am Kurfürstendamm, heute an {anzahl} Standorten in Berlin und Potsdam. Was gleich geblieben ist: der Anspruch, dass ein Zahnarztbesuch niemand Angst machen muss.',
+  'ueber.seitGruendung': 'seit der Gründung {jahr}',
+  'ueber.jahre': 'Jahre',
+  'ueber.standorte': 'Standorte',
+  'karriere.vorspann':
+    '{anzahl} Standorte, alle Fachbereiche unter einem Dach und ein eigenes Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.',
+  'blogz.vorspann':
+    '{anzahl} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns passiert – von {von} bis {bis}.',
+  'blogz.beschreibung':
+    '{anzahl} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von {von} bis {bis}.',
+  'notfallz.brandenburg': ', Brandenburg unter ',
+  'beschwerde.uebersichtVorspann':
+    'Für den Weg andersherum: nicht von der Behandlung zur Beschwerde, sondern von dem, was Sie merken, zu dem, was hilft. {anzahl} Beschwerden, jeweils mit den Behandlungen, die dafür in Frage kommen.',
+  'berater.grenzen':
+    'Keine medizinische Beratung, keine verbindlichen Preise, keine Terminbuchung. Kein Gesprächsinhalt wird dauerhaft gespeichert. {verweis}',
+  'berater.datenschutz': 'Datenschutz',
   'standort.adresse': 'Adresse',
   'standort.telefon': 'Telefon',
   'standort.geoeffnet': 'Geöffnet',

@@ -54,12 +54,16 @@ const brotkrumen = [
 >
   <section class="abschnitt">
     <div class="huelle">
-      <h1>Blog aus {standort.ort}</h1>
+      <h1>{t('standort.blogAusOrt', { ort: standort.ort })}</h1>
       <p class="unter">
         {
           beitraege.length > 0
-            ? `${beitraege.length} ${beitraege.length === 1 ? 'Beitrag' : 'Beiträge'} mit Bezug zu KU64 ${standort.name}.`
-            : `Zu KU64 ${standort.name} gibt es bisher keinen eigenen Beitrag.`
+            ? t('standort.blogAnzahl', {
+                anzahl: beitraege.length,
+                wort: t(beitraege.length === 1 ? 'standort.blogBeitrag' : 'standort.blogBeitraege'),
+                name: standort.name,
+              })
+            : t('standort.blogLeer', { name: standort.name })
         }
         <a href="/blog/">{t('ortblog.alleBeitraegeAnsehen')}</a>
       </p>

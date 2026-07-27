@@ -155,9 +155,7 @@ function kurz(titel: string): string {
       <span class="marke marke-akzent">Beschwerden</span>
       <h1>{t('beschw.wasHabenSie')}</h1>
       <p class="anriss">
-        Für den Weg andersherum: nicht von der Behandlung zur Beschwerde,
-        sondern von dem, was Sie merken, zu dem, was hilft. {alleBeschwerden.length}{' '}
-        Beschwerden, jeweils mit den Behandlungen, die dafür in Frage kommen.
+        {t('beschwerde.uebersichtVorspann', { anzahl: alleBeschwerden.length })}
       </p>
 
       <aside class="akut glas">

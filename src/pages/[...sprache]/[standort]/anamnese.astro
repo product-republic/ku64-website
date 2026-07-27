@@ -83,11 +83,7 @@ const faq = [
     <div class="huelle">
       <span class="marke marke-akzent">{t('anamnese.anAllenKu64Standorten')}</span>
       <h1>{t('anamnese.anamneseVorabAusfuellen')}</h1>
-      <p class="unter">
-        Fünf Minuten zu Hause statt Klemmbrett im Wartezimmer. Ihre Angaben landen
-        verschlüsselt direkt bei den Behandelnden von KU64 {standort.name} – Sie starten
-        beim Termin sofort.
-      </p>
+      <p class="unter">{t('standort.anamneseVorspann', { name: standort.name })}</p>
     </div>
   </section>
 
@@ -129,11 +125,7 @@ const faq = [
         ) : (
           <div class="hinweis hinweis-warnung platzhalter">
             <strong>{t('anamnese.nochNichtFreigeschaltet')}</strong>
-            <p>
-              Die digitale Anamnese für KU64 {standort.name} wird gerade eingerichtet. Bis
-              dahin füllen Sie den Bogen wie gewohnt vor Ort aus – oder Sie rufen an, dann
-              schicken wir ihn Ihnen vorab zu.
-            </p>
+            <p>{t('standort.anamneseInArbeit', { name: standort.name })}</p>
             <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-sekundaer">
               {standort.telefon}
             </a>

@@ -163,11 +163,12 @@ const system = kiSystem('berater')!;
     {/* Die Offenlegung steht oben. Hier stehen nur noch die Grenzen – sie
         gehören ans Eingabefeld, weil man sie genau dann braucht, wenn man
         gerade tippt. */}
-    <p class="f-fuss">
-      Keine medizinische Beratung, keine verbindlichen Preise, keine Terminbuchung.
-      Kein Gesprächsinhalt wird dauerhaft gespeichert.{' '}
-      <a href="/datenschutz/#berater">Datenschutz</a>
-    </p>
+    <p
+      class="f-fuss"
+      set:html={t('berater.grenzen', {
+        verweis: `<a href="/datenschutz/#berater">${t('berater.datenschutz')}</a>`,
+      })}
+    />
   </div>
 </div>
 

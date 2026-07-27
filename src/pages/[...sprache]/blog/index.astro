@@ -64,7 +64,11 @@ const proStandort = daten.standorte
 
 <Basis
   titel="Zahnmedizinischer Blog"
-  description={`${beitraege.length} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von ${jahre[jahre.length - 1]?.jahr} bis ${jahre[0]?.jahr}.`}
+  description={t('blogz.beschreibung', {
+    anzahl: beitraege.length,
+    von: jahre[jahre.length - 1]?.jahr ?? '',
+    bis: jahre[0]?.jahr ?? '',
+  })}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
@@ -73,8 +77,11 @@ const proStandort = daten.standorte
     <div class="huelle-weit">
       <h1>{t('blogliste.zahnmedizinischerBlog')}</h1>
       <p class="unter">
-        {beitraege.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
-        passiert – von {jahre[jahre.length - 1]?.jahr} bis {leitbeitrag?.jahr}.
+        {t('blogz.vorspann', {
+          anzahl: beitraege.length,
+          von: jahre[jahre.length - 1]?.jahr ?? '',
+          bis: leitbeitrag?.jahr ?? '',
+        })}
       </p>
 
       {

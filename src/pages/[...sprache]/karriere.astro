@@ -74,10 +74,7 @@ const portalVerweis =
   <section class="abschnitt">
     <div class="huelle">
       <h1>{t('karriere.arbeitenBeiKu64')}</h1>
-      <p class="unter">
-        {daten.standorte.length} Standorte, alle Fachbereiche unter einem Dach und ein eigenes
-        Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.
-      </p>
+      <p class="unter">{t('karriere.vorspann', { anzahl: daten.standorte.length })}</p>
 
       {
         stellen === null && (

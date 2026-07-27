@@ -50,11 +50,13 @@ const suchindex = alleHier.map((l) => ({
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <h1>Behandlungen bei KU64 {standort.name}</h1>
+      <h1>{t('standort.behandlungenBeiKu64', { name: standort.name })}</h1>
       <p class="unter">
-        {alleHier.length} Behandlungen in {gruppen.length} Fachbereichen – alle hier in{' '}
-        {standort.ort} verfügbar. Zu jeder Behandlung finden Sie Dauer, Kostenrahmen und
-        was die Krankenkasse übernimmt.
+        {t('standort.leistungenVorspann', {
+          anzahl: alleHier.length,
+          bereiche: gruppen.length,
+          ort: standort.ort,
+        })}
       </p>
 
       <div class="suche">

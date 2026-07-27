@@ -82,10 +82,11 @@ const faq = [
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <h1>Termin bei KU64 {standort.name}</h1>
+      <h1>{t('standort.terminBeiKu64', { name: standort.name })}</h1>
       <p class="unter">
-        {standort.strasse}, {standort.plz} {standort.ort}. Buchen Sie online oder rufen Sie
-        uns an – beides führt zum selben Terminkalender.
+        {t('standort.termineVorspann', {
+          adresse: `${standort.strasse}, ${standort.plz} ${standort.ort}`,
+        })}
       </p>
     </div>
   </section>

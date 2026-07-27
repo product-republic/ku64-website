@@ -79,10 +79,13 @@ const ziel = verfuegbarHier
           <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4" />
           <path d="M8 4.5v4M8 11h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
         </svg>
-        <span>
-          An diesem Standort nicht im Angebot – wir behandeln das bei{' '}
-          <strong>KU64 {ausweich.name}</strong>.
-        </span>
+        {/* Der Standortname steht fett mitten im Satz – deshalb ganzer Satz
+            im Katalog und die Auszeichnung als Platzhalter. Siehe texte.ts. */}
+        <span
+          set:html={t('karte.nichtImAngebot', {
+            wo: `<strong>KU64 ${ausweich.name}</strong>`,
+          })}
+        />
       </p>
     )
   }

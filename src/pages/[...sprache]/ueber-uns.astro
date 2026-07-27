@@ -36,14 +36,12 @@ const jahre = new Date().getFullYear() - seit;
     <div class="huelle">
       <h1>{t('ueber.ueberKu64')}</h1>
       <p class="unter">
-        Seit {seit} am Kurfürstendamm, heute an {daten.standorte.length} Standorten in Berlin und
-        Potsdam. Was gleich geblieben ist: der Anspruch, dass ein Zahnarztbesuch niemand
-        Angst machen muss.
+        {t('ueber.seit', { jahr: seit, anzahl: daten.standorte.length })}
       </p>
 
       <dl class="zahlen">
-        <div><dt>Jahre</dt><dd>{jahre}</dd><p>seit der Gründung {seit}</p></div>
-        <div><dt>Standorte</dt><dd>{daten.standorte.length}</dd><p>{t('ueber.inBerlinUndPotsdam')}</p></div>
+        <div><dt>{t('ueber.jahre')}</dt><dd>{jahre}</dd><p>{t('ueber.seitGruendung', { jahr: seit })}</p></div>
+        <div><dt>{t('ueber.standorte')}</dt><dd>{daten.standorte.length}</dd><p>{t('ueber.inBerlinUndPotsdam')}</p></div>
         <div><dt>{t('praxis.behandlungen')}</dt><dd>{daten.leistungen.length}</dd><p>{t('praxis.ausFachbereichen', { anzahl: daten.kategorien.length })}</p></div>
         {/* Zwei Zahlen statt einer. Vorher stand hier "100+ Zahnärztinnen und
             Zahnärzte" – die 100 stimmte, aber sie ist die gesamte

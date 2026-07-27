@@ -60,6 +60,15 @@ const KEIN_TEXT = [
    * und kein Gleichheitszeichen zwischen Wörtern.
    */
   /[<>]|=["'{]|\{[a-z]/i,
+  /*
+   * Und kein Code.
+   *
+   * Die Suche nach Textknoten mit Ausdruck darin ersetzt `{…}` durch ein
+   * Zeichen – aus einem Ausdruck, der über mehrere Zeilen geht, bleibt
+   * dabei manchmal ein Rest stehen, der wie Text aussieht. Ein Aufruf, ein
+   * Pfeil oder ein Fragezeichen-Doppelpunkt-Paar ist keiner.
+   */
+  /[A-Za-z_$]\(|=>|\?\?|\.length\b/,
 ];
 
 async function dateien(ordner, treffer = []) {
@@ -105,6 +114,23 @@ for (const datei of await dateien(path.join(WURZEL, 'src'))) {
      tragen: alt, title, aria-label, placeholder. */
   const kandidaten = [];
   for (const m of markup.matchAll(/>([^<>{}]{4,})</g)) kandidaten.push(m[1]);
+
+  /*
+   * Textknoten MIT Ausdruck darin.
+   *
+   * Das war der zweite blinde Fleck: `<h1>Ihr Zahnarzt in {ort}</h1>` ist
+   * ein deutscher Satz, aber die Suche oben schließt geschweifte Klammern
+   * aus – sie sah ihn nie. Auf der englischen Standortseite stand deshalb
+   * „Ihr Zahnarzt in Potsdam" über einem sonst vollständig übersetzten
+   * Kopfbereich, und der Finder meldete null.
+   *
+   * Deshalb hier noch einmal, mit den Ausdrücken durch ein Zeichen ersetzt:
+   * Was übrig bleibt, ist der deutsche Text drumherum.
+   */
+  const ohneAusdruecke = markup.replace(/\{[^{}]*\}/g, '\u0001');
+  for (const m of ohneAusdruecke.matchAll(/>([^<>]{4,})</g)) {
+    kandidaten.push(m[1].replaceAll('\u0001', ' '));
+  }
   for (const m of markup.matchAll(
     /(?:alt|title|aria-label|placeholder|description|titel|anlass)=["']([^"']{4,})["']/g,
   )) {

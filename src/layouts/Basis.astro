@@ -239,7 +239,7 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
        */
       !sprachinfo.freigegeben && (
         <p class="sprache-aufbau">
-          <span class="sprache-aufbau-inhalt">{t('sprache.unvollstaendig')}</span>
+          <span class="huelle sprache-aufbau-inhalt">{t('sprache.unvollstaendig')}</span>
         </p>
       )
     }
@@ -281,5 +281,27 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
 </html>
 
 <style>
-  .sprache-aufbau { padding-block: 0.45rem; }
+  /*
+   * Ein Streifen, kein Banner.
+   *
+   * Er steht über dem Kopf und ist die erste Zeile, die eine englische
+   * Besucherin sieht. Ungestaltet las er sich wie ein Versehen: schwarzer
+   * Text am linken Rand, ohne Fläche, ohne Bezug zur Seite darunter.
+   *
+   * Jetzt trägt er die warme Flächenfarbe des Hauses, richtet sich am
+   * selben Raster aus wie alles andere und tritt in Größe und Farbe zurück.
+   * Er informiert, er warnt nicht – deshalb kein Gelb und kein Rot.
+   */
+  .sprache-aufbau {
+    padding-block: 0.5rem;
+    background: var(--flaeche-warm);
+    border-block-end: 1px solid var(--linie);
+    font-size: var(--t-xs);
+    line-height: var(--zeile-normal);
+    color: var(--tinte-leise);
+  }
+
+  .sprache-aufbau-inhalt {
+    display: block;
+  }
 </style>

@@ -93,7 +93,7 @@ const schema = [
     <Kopfmedium standortSlug={standort.slug} />
     <div class="huelle">
       <p class="held-marke">KU64 · {standort.ort}</p>
-      <h1>Ihr Zahnarzt in {ortsname}</h1>
+      <h1>{t('standort.ihrZahnarztIn', { ort: ortsname })}</h1>
       <p class="held-claim">{standort.claim}</p>
 
       <div class="held-knoepfe">
@@ -112,7 +112,7 @@ const schema = [
             medium ? 'knopf-sekundaer-auf-medium' : 'knopf-sekundaer',
           ]}
         >
-          {alleHier.length} Behandlungen ansehen
+          {t('standort.behandlungenAnsehen', { anzahl: alleHier.length })}
         </a>
       </div>
 
