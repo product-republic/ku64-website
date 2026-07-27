@@ -81,6 +81,434 @@
       "text": "Dental restorations",
       "quelle": "59942be3"
     },
+    "leistung.aligner.dauer": {
+      "text": "6 to 18 months, depending on your starting position",
+      "quelle": "93d3d2f7"
+    },
+    "leistung.aligner.faq.0.antwort": {
+      "text": "At least 20 to 22 hours – in other words, all the time except when eating or brushing your teeth. This is the point where treatments succeed or fail. If you don't keep to the wearing time, the treatment will take considerably longer.",
+      "quelle": "aaa572b2"
+    },
+    "leistung.aligner.faq.0.frage": {
+      "text": "How many hours a day do I need to wear the aligner?",
+      "quelle": "9d19fc3b"
+    },
+    "leistung.aligner.faq.1.antwort": {
+      "text": "Barely, at normal conversation distance. If so-called attachments – small tooth-coloured bumps – are needed, these may be visible up close.",
+      "quelle": "51d582c3"
+    },
+    "leistung.aligner.faq.1.frage": {
+      "text": "Can people see the aligners when I speak?",
+      "quelle": "7073277d"
+    },
+    "leistung.aligner.faq.2.antwort": {
+      "text": "Only with a retainer. Teeth naturally tend to drift back to their old position. That's why permanent stabilisation is needed after any orthodontic treatment – usually a thin wire behind the front teeth.",
+      "quelle": "773f269c"
+    },
+    "leistung.aligner.faq.2.frage": {
+      "text": "Will my teeth stay straight afterwards?",
+      "quelle": "f3916e87"
+    },
+    "leistung.aligner.kasse": {
+      "text": "For adults, this is usually a private (self-pay) treatment. For children and young people, the statutory health insurance covers it from misalignment grade KIG 3 onwards – though this usually means fixed braces rather than aligners.",
+      "quelle": "ad5f0f5e"
+    },
+    "leistung.aligner.kosten": {
+      "text": "€3,500 to €7,000 for both jaws",
+      "quelle": "224b316f"
+    },
+    "leistung.aligner.kurz": {
+      "text": "Straighten your teeth with clear aligners instead of fixed braces.",
+      "quelle": "e783c504"
+    },
+    "leistung.aligner.name": {
+      "text": "Invisible dental aligners",
+      "quelle": "040c6df6"
+    },
+    "leistung.aligner.patientenfrage": {
+      "text": "How long does aligner treatment take for adults?",
+      "quelle": "a72a7d1f"
+    },
+    "leistung.aligner.synonyme.0": {
+      "text": "Invisalign",
+      "quelle": "9d4fb93d"
+    },
+    "leistung.aligner.synonyme.1": {
+      "text": "clear aligners",
+      "quelle": "f2cea9bc"
+    },
+    "leistung.aligner.synonyme.2": {
+      "text": "invisible braces",
+      "quelle": "700d3d8e"
+    },
+    "leistung.aligner.synonyme.3": {
+      "text": "teeth straightening trays",
+      "quelle": "ce54914f"
+    },
+    "leistung.aligner.synonyme.4": {
+      "text": "straight teeth",
+      "quelle": "140fff02"
+    },
+    "leistung.aligner.teaser": {
+      "text": "Aligners are removable, transparent trays that move your teeth in small steps. They're hardly noticeable in everyday life, and you simply take them out to eat or brush your teeth. For mild to moderate misalignments, they're a very good alternative to fixed braces.",
+      "quelle": "03331422"
+    },
+    "leistung.all-on-4.dauer": {
+      "text": "Procedure 2 to 4 hours, final restoration after 3 to 6 months",
+      "quelle": "b36a5dfc"
+    },
+    "leistung.all-on-4.faq.0.antwort": {
+      "text": "Yes, if they are positioned correctly. The two back implants are placed at an angle to make the best use of the available bone. This method has been documented for over twenty years. If the bone conditions are less favourable, we use six implants instead.",
+      "quelle": "48d4fd61"
+    },
+    "leistung.all-on-4.faq.0.frage": {
+      "text": "Are four implants really enough for a whole jaw?",
+      "quelle": "cdab4d66"
+    },
+    "leistung.all-on-4.faq.1.antwort": {
+      "text": "The temporary teeth are fixed, but not yet able to bear full pressure. For around three months, we recommend soft food and avoiding anything very hard. After that, the final bridge can be used without restriction.",
+      "quelle": "05e2c4ac"
+    },
+    "leistung.all-on-4.faq.1.frage": {
+      "text": "What can I eat in the first few weeks?",
+      "quelle": "a7a9a53e"
+    },
+    "leistung.all-on-4.kasse": {
+      "text": "Fixed subsidy for the comparable standard treatment. Payment in instalments is possible.",
+      "quelle": "05485674"
+    },
+    "leistung.all-on-4.kosten": {
+      "text": "9,000 to 18,000 € per jaw",
+      "quelle": "23ea66e8"
+    },
+    "leistung.all-on-4.kurz": {
+      "text": "A complete jaw supported by four implants – with a fixed temporary set of teeth on the same day.",
+      "quelle": "5b35f9a2"
+    },
+    "leistung.all-on-4.name": {
+      "text": "Fixed teeth in one day (All-on-4)",
+      "quelle": "8186e977"
+    },
+    "leistung.all-on-4.patientenfrage": {
+      "text": "Can I really get fixed teeth in just one day?",
+      "quelle": "bd308f7a"
+    },
+    "leistung.all-on-4.synonyme.0": {
+      "text": "All-on-4",
+      "quelle": "d712c541"
+    },
+    "leistung.all-on-4.synonyme.1": {
+      "text": "fixed teeth in a day",
+      "quelle": "e406ca8a"
+    },
+    "leistung.all-on-4.synonyme.2": {
+      "text": "immediate treatment for a toothless jaw",
+      "quelle": "3c6ac1e6"
+    },
+    "leistung.all-on-4.synonyme.3": {
+      "text": "All-on-6",
+      "quelle": "68570485"
+    },
+    "leistung.all-on-4.teaser": {
+      "text": "When a jaw is badly damaged or has no teeth left, a bridge fitted to four to six carefully positioned implants can carry the entire jaw. Often a fixed temporary set of teeth can be fitted on the very day of the procedure – so you don't go home without teeth.",
+      "quelle": "89058ffc"
+    },
+    "leistung.behandlung-in-narkose.dauer": {
+      "text": "2 to 5 hours in one session",
+      "quelle": "d941c32b"
+    },
+    "leistung.behandlung-in-narkose.faq.0.antwort": {
+      "text": "It's administered by a specialist anaesthetist and monitored throughout. Beforehand, there's a consultation to review your medical history. For healthy people, the risk is very low.",
+      "quelle": "bde797fb"
+    },
+    "leistung.behandlung-in-narkose.faq.0.frage": {
+      "text": "How safe is the anaesthetic?",
+      "quelle": "e04303be"
+    },
+    "leistung.behandlung-in-narkose.faq.1.antwort": {
+      "text": "No. You'll need someone to accompany you, and you mustn't drive or make important decisions for 24 hours.",
+      "quelle": "749a82c1"
+    },
+    "leistung.behandlung-in-narkose.faq.1.frage": {
+      "text": "Can I go home alone afterwards?",
+      "quelle": "95de931a"
+    },
+    "leistung.behandlung-in-narkose.kasse": {
+      "text": "Statutory health insurance only covers the anaesthetic in certain cases, for example with a proven phobia or disability. Otherwise it must be paid for privately.",
+      "quelle": "1b8dd90f"
+    },
+    "leistung.behandlung-in-narkose.kosten": {
+      "text": "Anaesthetic 600 to 1,500 € in addition to treatment",
+      "quelle": "0e043a4d"
+    },
+    "leistung.behandlung-in-narkose.kurz": {
+      "text": "Extensive treatment in a single session – you sleep, we work.",
+      "quelle": "9163e8c8"
+    },
+    "leistung.behandlung-in-narkose.name": {
+      "text": "Treatment under general anaesthetic",
+      "quelle": "ebfd7b92"
+    },
+    "leistung.behandlung-in-narkose.patientenfrage": {
+      "text": "Is dental treatment under general anaesthetic safe?",
+      "quelle": "8812c028"
+    },
+    "leistung.behandlung-in-narkose.synonyme.0": {
+      "text": "dental treatment under general anaesthetic",
+      "quelle": "4f647e11"
+    },
+    "leistung.behandlung-in-narkose.synonyme.1": {
+      "text": "sleep dentistry",
+      "quelle": "bf75e0b5"
+    },
+    "leistung.behandlung-in-narkose.synonyme.2": {
+      "text": "full mouth treatment under anaesthetic",
+      "quelle": "0b35a17f"
+    },
+    "leistung.behandlung-in-narkose.synonyme.3": {
+      "text": "general anaesthesia dentist",
+      "quelle": "ded2a97a"
+    },
+    "leistung.behandlung-in-narkose.teaser": {
+      "text": "For severe anxiety, a strong gag reflex, or very extensive treatment needs, a general anaesthetic is a good solution. An anaesthetist monitors you throughout while we take care of everything necessary in one session.",
+      "quelle": "ba7995a7"
+    },
+    "leistung.cmd-behandlung.dauer": {
+      "text": "Diagnosis 60 to 90 minutes, treatment over several months",
+      "quelle": "068a03a2"
+    },
+    "leistung.cmd-behandlung.faq.0.antwort": {
+      "text": "Typical signs are clicking or grinding in the jaw joint, restricted mouth opening, morning tension in the cheek muscles, recurring headaches around the temples, and ear noises with no ENT findings. Several of these signs often occur together.",
+      "quelle": "3b5af0fb"
+    },
+    "leistung.cmd-behandlung.faq.0.frage": {
+      "text": "How do I know if it might be TMJ disorder?",
+      "quelle": "c19f6bf3"
+    },
+    "leistung.cmd-behandlung.faq.1.antwort": {
+      "text": "Many people notice an initial improvement after a few weeks with the splint. Stabilisation usually takes three to six months. In more pronounced cases, we work together with physiotherapy.",
+      "quelle": "46d9a9c1"
+    },
+    "leistung.cmd-behandlung.faq.1.frage": {
+      "text": "How long does the treatment take?",
+      "quelle": "5ed5b27d"
+    },
+    "leistung.cmd-behandlung.kasse": {
+      "text": "Statutory health insurance covers the splint where the findings justify it. The instrumental functional analysis is a private service.",
+      "quelle": "f5ec4ca1"
+    },
+    "leistung.cmd-behandlung.kosten": {
+      "text": "Functional analysis €200 to €600, splint €350 to €900",
+      "quelle": "9c719b9f"
+    },
+    "leistung.cmd-behandlung.kurz": {
+      "text": "When your jaw, neck or ears ache and no one can find the cause.",
+      "quelle": "b950d886"
+    },
+    "leistung.cmd-behandlung.name": {
+      "text": "TMD & jaw joint problems",
+      "quelle": "79104419"
+    },
+    "leistung.cmd-behandlung.patientenfrage": {
+      "text": "Could my headaches be coming from my jaw?",
+      "quelle": "a4c9fee2"
+    },
+    "leistung.cmd-behandlung.synonyme.0": {
+      "text": "TMJ disorder",
+      "quelle": "796cd3cb"
+    },
+    "leistung.cmd-behandlung.synonyme.1": {
+      "text": "jaw joint pain",
+      "quelle": "ca2741dc"
+    },
+    "leistung.cmd-behandlung.synonyme.2": {
+      "text": "jaw clicking",
+      "quelle": "487810a1"
+    },
+    "leistung.cmd-behandlung.synonyme.3": {
+      "text": "jaw tension",
+      "quelle": "7e2c804c"
+    },
+    "leistung.cmd-behandlung.synonyme.4": {
+      "text": "tinnitus jaw",
+      "quelle": "607990e9"
+    },
+    "leistung.cmd-behandlung.teaser": {
+      "text": "Temporomandibular dysfunction (TMD) occurs when the teeth, jaw joints and chewing muscles don't work together properly. The symptoms often show up far from the jaw – as headaches, ringing in the ears or neck tension. We measure your jaw function systematically and treat the underlying cause.",
+      "quelle": "b6977c0d"
+    },
+    "leistung.dvt-3d-roentgen.dauer": {
+      "text": "10 to 20 seconds scan time",
+      "quelle": "0239d36e"
+    },
+    "leistung.dvt-3d-roentgen.faq.0.antwort": {
+      "text": "Considerably less than with a medical CT scan and, depending on the device and field size, roughly equivalent to a few days of natural background radiation. We only take a scan when there is a clear reason for it, and we always choose the smallest possible image field.",
+      "quelle": "ed122f89"
+    },
+    "leistung.dvt-3d-roentgen.faq.0.frage": {
+      "text": "How much radiation is involved?",
+      "quelle": "6a5b5dbd"
+    },
+    "leistung.dvt-3d-roentgen.faq.1.antwort": {
+      "text": "Yes. If you wish, you can have the data on a digital file – for example, for a second opinion or for other specialists involved in your treatment.",
+      "quelle": "5fc672a7"
+    },
+    "leistung.dvt-3d-roentgen.faq.1.frage": {
+      "text": "Can I take the scan with me?",
+      "quelle": "a10403f8"
+    },
+    "leistung.dvt-3d-roentgen.kasse": {
+      "text": "Usually a private fee, in some cases covered by German statutory health insurance.",
+      "quelle": "a26de238"
+    },
+    "leistung.dvt-3d-roentgen.kosten": {
+      "text": "150 to 350 €",
+      "quelle": "3ded83e3"
+    },
+    "leistung.dvt-3d-roentgen.kurz": {
+      "text": "Three-dimensional imaging for planning where every millimetre counts.",
+      "quelle": "3d6f7603"
+    },
+    "leistung.dvt-3d-roentgen.name": {
+      "text": "3D X-ray (CBCT)",
+      "quelle": "83a09ed6"
+    },
+    "leistung.dvt-3d-roentgen.patientenfrage": {
+      "text": "How much radiation exposure does a CBCT scan involve?",
+      "quelle": "159eee41"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.0": {
+      "text": "CBCT",
+      "quelle": "2de58591"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.1": {
+      "text": "cone beam CT scan",
+      "quelle": "9db946d4"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.2": {
+      "text": "3D dental X-ray",
+      "quelle": "c54e9f25"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.3": {
+      "text": "dentist CT scan",
+      "quelle": "76686450"
+    },
+    "leistung.dvt-3d-roentgen.teaser": {
+      "text": "Digital volume tomography shows the jaw, teeth and nerve pathways in three dimensions. It is used when a two-dimensional X-ray does not provide enough certainty – for example before implant placement or wisdom tooth surgery.",
+      "quelle": "e727bfca"
+    },
+    "leistung.feste-zahnspange.dauer": {
+      "text": "12 to 30 months",
+      "quelle": "48a9f2a3"
+    },
+    "leistung.feste-zahnspange.faq.0.antwort": {
+      "text": "After fitting and after each adjustment, your teeth feel sensitive to pressure for two to three days. This is uncomfortable but manageable – soft food helps during this time.",
+      "quelle": "e6dc9bc5"
+    },
+    "leistung.feste-zahnspange.faq.0.frage": {
+      "text": "Do fixed braces hurt?",
+      "quelle": "17a83675"
+    },
+    "leistung.feste-zahnspange.faq.1.antwort": {
+      "text": "No. Teeth can be moved at any age, as long as the gums are healthy. In adults, treatment tends to take a little longer, and any existing gum disease must be treated first.",
+      "quelle": "5e6161bb"
+    },
+    "leistung.feste-zahnspange.faq.1.frage": {
+      "text": "Am I too old for braces at 40?",
+      "quelle": "6da59bb9"
+    },
+    "leistung.feste-zahnspange.kasse": {
+      "text": "For children and teenagers from KIG grade 3 upwards, statutory health insurance covers standard treatment. The 20 percent personal contribution is refunded once treatment is successfully completed.",
+      "quelle": "dab76c66"
+    },
+    "leistung.feste-zahnspange.kosten": {
+      "text": "€2,500 to €8,000 depending on the system",
+      "quelle": "66e739be"
+    },
+    "leistung.feste-zahnspange.kurz": {
+      "text": "The most reliable method for pronounced misalignments – also available as an invisible option.",
+      "quelle": "55d7fd5a"
+    },
+    "leistung.feste-zahnspange.name": {
+      "text": "Fixed braces",
+      "quelle": "0d768a19"
+    },
+    "leistung.feste-zahnspange.patientenfrage": {
+      "text": "Fixed braces or aligners – which suits my bite?",
+      "quelle": "47ec6ea6"
+    },
+    "leistung.feste-zahnspange.synonyme.0": {
+      "text": "train tracks",
+      "quelle": "c3d2cb20"
+    },
+    "leistung.feste-zahnspange.synonyme.1": {
+      "text": "braces",
+      "quelle": "ae45ada2"
+    },
+    "leistung.feste-zahnspange.synonyme.2": {
+      "text": "metal braces",
+      "quelle": "525d8590"
+    },
+    "leistung.feste-zahnspange.synonyme.3": {
+      "text": "lingual braces",
+      "quelle": "488f2ea5"
+    },
+    "leistung.feste-zahnspange.synonyme.4": {
+      "text": "ceramic braces",
+      "quelle": "0711fc9e"
+    },
+    "leistung.feste-zahnspange.teaser": {
+      "text": "Fixed braces can move teeth in ways that aligners cannot. Besides classic brackets, there are tooth-coloured ceramic brackets and lingual systems, which sit on the inside of the teeth and are invisible from the outside.",
+      "quelle": "f31d5c83"
+    },
+    "leistung.fissurenversiegelung.dauer": {
+      "text": "15 to 30 minutes",
+      "quelle": "7222838a"
+    },
+    "leistung.fissurenversiegelung.faq.0.antwort": {
+      "text": "It wears down over the years and is checked at your regular appointments. If needed, it's topped up – this is quick and painless.",
+      "quelle": "6df36c98"
+    },
+    "leistung.fissurenversiegelung.faq.0.frage": {
+      "text": "Does the sealant last forever?",
+      "quelle": "5ebaef1e"
+    },
+    "leistung.fissurenversiegelung.kasse": {
+      "text": "Sealing the permanent molars is covered by statutory health insurance for children and teenagers. Additional teeth are private.",
+      "quelle": "0c2ff81d"
+    },
+    "leistung.fissurenversiegelung.kosten": {
+      "text": "Covered by statutory health insurance for permanent molars",
+      "quelle": "fc1b6b0c"
+    },
+    "leistung.fissurenversiegelung.kurz": {
+      "text": "Sealing the deep grooves in molars before decay can start.",
+      "quelle": "d5e2f454"
+    },
+    "leistung.fissurenversiegelung.name": {
+      "text": "Fissure sealants",
+      "quelle": "8b7756aa"
+    },
+    "leistung.fissurenversiegelung.patientenfrage": {
+      "text": "Is a fissure sealant worthwhile?",
+      "quelle": "10c038d1"
+    },
+    "leistung.fissurenversiegelung.synonyme.0": {
+      "text": "sealant",
+      "quelle": "6647f8f1"
+    },
+    "leistung.fissurenversiegelung.synonyme.1": {
+      "text": "decay protection for molars",
+      "quelle": "07a14b34"
+    },
+    "leistung.fissurenversiegelung.synonyme.2": {
+      "text": "tooth sealing for children",
+      "quelle": "882bc530"
+    },
+    "leistung.fissurenversiegelung.teaser": {
+      "text": "The chewing surfaces of the permanent molars have deep grooves that a toothbrush can't reach. A thin coat of resin seals them – painless, no drilling, and done within minutes.",
+      "quelle": "4bf84032"
+    },
     "leistung.implantat-prophylaxe.dauer": {
       "text": "45 to 60 minutes",
       "quelle": "0058dc0c"
@@ -136,6 +564,702 @@
     "leistung.implantat-prophylaxe.teaser": {
       "text": "Implants cannot decay, but they can lose the bone they stand in if the surrounding tissue becomes inflamed. Implant maintenance checks exactly that and cleans the implant surfaces with instruments made for the purpose.",
       "quelle": "c824055a"
+    },
+    "leistung.inlays-onlays.dauer": {
+      "text": "2 appointments",
+      "quelle": "8f016911"
+    },
+    "leistung.inlays-onlays.faq.0.antwort": {
+      "text": "Considerably longer than a composite filling – typically ten to fifteen years or more. Ceramic doesn't shrink as it sets, so the seal at the edges stays tighter over the years.",
+      "quelle": "de4f2f26"
+    },
+    "leistung.inlays-onlays.faq.0.frage": {
+      "text": "How long does a ceramic inlay last?",
+      "quelle": "aad02dc1"
+    },
+    "leistung.inlays-onlays.kasse": {
+      "text": "Fixed allowance at the level of an amalgam or composite filling, with the difference paid privately.",
+      "quelle": "9762fd11"
+    },
+    "leistung.inlays-onlays.kosten": {
+      "text": "450 to 900 € per tooth",
+      "quelle": "cabd69ab"
+    },
+    "leistung.inlays-onlays.kurz": {
+      "text": "Custom-fitted ceramic inlays for larger cavities in back teeth.",
+      "quelle": "b784d8ab"
+    },
+    "leistung.inlays-onlays.name": {
+      "text": "Inlays & Onlays",
+      "quelle": "0cc6d547"
+    },
+    "leistung.inlays-onlays.patientenfrage": {
+      "text": "When is an inlay worth it compared to a composite filling?",
+      "quelle": "0798497f"
+    },
+    "leistung.inlays-onlays.synonyme.0": {
+      "text": "Ceramic inlay",
+      "quelle": "d3dd547e"
+    },
+    "leistung.inlays-onlays.synonyme.1": {
+      "text": "Inlay filling",
+      "quelle": "e48fdd72"
+    },
+    "leistung.inlays-onlays.synonyme.2": {
+      "text": "Partial crown",
+      "quelle": "bc0eb6aa"
+    },
+    "leistung.inlays-onlays.synonyme.3": {
+      "text": "Onlay",
+      "quelle": "56dd7fe2"
+    },
+    "leistung.inlays-onlays.teaser": {
+      "text": "When a cavity is too large for a filling but the tooth is still too healthy for a crown, an inlay is the right choice. It's made to fit precisely in a laboratory from ceramic and then bonded in place – sturdier and longer-lasting than a composite filling.",
+      "quelle": "ff939087"
+    },
+    "leistung.karies-behandlung.dauer": {
+      "text": "30 to 60 minutes",
+      "quelle": "aded5260"
+    },
+    "leistung.karies-behandlung.faq.0.antwort": {
+      "text": "In very early stages, yes. Early decay in the enamel can be stopped with fluoride treatment or treated with a resin infiltration technique, without drilling. Once the decay has reached the dentine, it needs to be removed mechanically.",
+      "quelle": "b63e821d"
+    },
+    "leistung.karies-behandlung.faq.0.frage": {
+      "text": "Can tooth decay go away without drilling?",
+      "quelle": "a1ea7dcb"
+    },
+    "leistung.karies-behandlung.faq.1.antwort": {
+      "text": "Pain only develops once the decay gets close to the nerve. Until then, it can grow unnoticed for months. That's exactly why check-ups are so valuable – they find what you can't feel yourself.",
+      "quelle": "2b3a27c6"
+    },
+    "leistung.karies-behandlung.faq.1.frage": {
+      "text": "Why doesn't my tooth hurt, even though there's decay there?",
+      "quelle": "556e5c78"
+    },
+    "leistung.karies-behandlung.kasse": {
+      "text": "German statutory health insurance covers fillings in tooth-coloured material throughout the mouth. More elaborate layering techniques involve a patient contribution.",
+      "quelle": "81adfcd1"
+    },
+    "leistung.karies-behandlung.kosten": {
+      "text": "Covered by statutory health insurance; high-quality fillings 80 to 250 € patient contribution",
+      "quelle": "4ec7dc79"
+    },
+    "leistung.karies-behandlung.kurz": {
+      "text": "Removing decay and sealing the tooth securely – while preserving as much healthy tooth as possible.",
+      "quelle": "c97d0755"
+    },
+    "leistung.karies-behandlung.name": {
+      "text": "Treating tooth decay",
+      "quelle": "fdf25690"
+    },
+    "leistung.karies-behandlung.patientenfrage": {
+      "text": "Can tooth decay be treated without drilling?",
+      "quelle": "284bc1b2"
+    },
+    "leistung.karies-behandlung.synonyme.0": {
+      "text": "hole in tooth",
+      "quelle": "272ccd0a"
+    },
+    "leistung.karies-behandlung.synonyme.1": {
+      "text": "tooth decay",
+      "quelle": "2c379cb4"
+    },
+    "leistung.karies-behandlung.synonyme.2": {
+      "text": "filling",
+      "quelle": "59b273b5"
+    },
+    "leistung.karies-behandlung.synonyme.3": {
+      "text": "drilling a tooth",
+      "quelle": "1dbe6b80"
+    },
+    "leistung.karies-behandlung.synonyme.4": {
+      "text": "tooth decay without drilling",
+      "quelle": "00219028"
+    },
+    "leistung.karies-behandlung.teaser": {
+      "text": "The longer tooth decay goes unnoticed, the more involved the treatment becomes. Caught early, a small filling is often enough. We work with magnification and, where appropriate, particularly gentle methods to preserve as much healthy tooth structure as possible.",
+      "quelle": "ac9c2068"
+    },
+    "leistung.keramik-kronen.dauer": {
+      "text": "2 appointments over about 2 weeks",
+      "quelle": "b38685f5"
+    },
+    "leistung.keramik-kronen.faq.0.antwort": {
+      "text": "Studies and experience suggest fifteen to twenty years, often longer. What matters most is how well the crown margin is cared for and whether you grind your teeth at night.",
+      "quelle": "36bee910"
+    },
+    "leistung.keramik-kronen.faq.0.frage": {
+      "text": "How long does a ceramic crown last?",
+      "quelle": "3bf105fc"
+    },
+    "leistung.keramik-kronen.faq.1.antwort": {
+      "text": "Not necessarily. As long as the nerve is healthy, it stays in place. Root canal treatment is only needed if the nerve is already inflamed or has died.",
+      "quelle": "ac80ea56"
+    },
+    "leistung.keramik-kronen.faq.1.frage": {
+      "text": "Does the tooth need root canal treatment first?",
+      "quelle": "7931d3e0"
+    },
+    "leistung.keramik-kronen.faq.2.antwort": {
+      "text": "Usually one to two weeks. Because we make crowns in our own in-house dental laboratory, turnaround times are often shorter than with external labs.",
+      "quelle": "731969ed"
+    },
+    "leistung.keramik-kronen.faq.2.frage": {
+      "text": "How long will I need to live with a temporary crown?",
+      "quelle": "0a9a533b"
+    },
+    "leistung.keramik-kronen.kasse": {
+      "text": "Statutory health insurance pays a fixed subsidy towards standard treatment. For all-ceramic crowns on back teeth, you cover the difference yourself. A fully completed bonus record book increases the subsidy by up to 30 per cent.",
+      "quelle": "d3169956"
+    },
+    "leistung.keramik-kronen.kosten": {
+      "text": "€700 to €1,400 per crown",
+      "quelle": "c9e88589"
+    },
+    "leistung.keramik-kronen.kurz": {
+      "text": "When too little of the tooth is left – a crown that looks like a real tooth.",
+      "quelle": "8022c7a0"
+    },
+    "leistung.keramik-kronen.name": {
+      "text": "All-ceramic crowns",
+      "quelle": "d4c667e0"
+    },
+    "leistung.keramik-kronen.patientenfrage": {
+      "text": "When does a tooth need a crown rather than a filling?",
+      "quelle": "793978e1"
+    },
+    "leistung.keramik-kronen.synonyme.0": {
+      "text": "dental crown",
+      "quelle": "32e8ab65"
+    },
+    "leistung.keramik-kronen.synonyme.1": {
+      "text": "all-ceramic crown",
+      "quelle": "94a7f0a5"
+    },
+    "leistung.keramik-kronen.synonyme.2": {
+      "text": "zirconia crown",
+      "quelle": "040a8ce5"
+    },
+    "leistung.keramik-kronen.synonyme.3": {
+      "text": "crowning a tooth",
+      "quelle": "dca39e58"
+    },
+    "leistung.keramik-kronen.synonyme.4": {
+      "text": "tooth crown",
+      "quelle": "acff939c"
+    },
+    "leistung.keramik-kronen.teaser": {
+      "text": "A crown covers the damaged tooth completely, restoring its shape and strength. All-ceramic crowns come very close to matching the translucency of natural teeth and need no metal core that might later show through as a dark rim.",
+      "quelle": "665f8280"
+    },
+    "leistung.kinderprophylaxe.dauer": {
+      "text": "30 minutes",
+      "quelle": "65faa7c8"
+    },
+    "leistung.kinderprophylaxe.faq.0.antwort": {
+      "text": "An adult should keep helping with brushing until your child can write fluently – usually around age eight. Before that, children lack the fine motor skills needed for the inner surfaces and back molars.",
+      "quelle": "38981b0a"
+    },
+    "leistung.kinderprophylaxe.faq.0.frage": {
+      "text": "From what age can my child brush their teeth alone?",
+      "quelle": "8302e0e8"
+    },
+    "leistung.kinderprophylaxe.kasse": {
+      "text": "Individual preventive care is covered by German statutory health insurance twice a year for children aged 6 to 17. Separate early detection services are available for children under 6.",
+      "quelle": "23046aa8"
+    },
+    "leistung.kinderprophylaxe.kosten": {
+      "text": "Covered by German statutory health insurance for children aged 6 to 17",
+      "quelle": "e6236c63"
+    },
+    "leistung.kinderprophylaxe.kurz": {
+      "text": "Brushing practice, fluoride treatment and check-ups – playful rather than preachy.",
+      "quelle": "6fb4a515"
+    },
+    "leistung.kinderprophylaxe.name": {
+      "text": "Children's preventive care",
+      "quelle": "8cfe9f0e"
+    },
+    "leistung.kinderprophylaxe.patientenfrage": {
+      "text": "What happens during preventive care for children?",
+      "quelle": "0fcc26cc"
+    },
+    "leistung.kinderprophylaxe.synonyme.0": {
+      "text": "individual preventive dental care",
+      "quelle": "04e2f4bc"
+    },
+    "leistung.kinderprophylaxe.synonyme.1": {
+      "text": "brushing practice for children",
+      "quelle": "04644b10"
+    },
+    "leistung.kinderprophylaxe.synonyme.2": {
+      "text": "child fluoride treatment",
+      "quelle": "a1807424"
+    },
+    "leistung.kinderprophylaxe.synonyme.3": {
+      "text": "children's dental check-ups",
+      "quelle": "3568177b"
+    },
+    "leistung.kinderprophylaxe.teaser": {
+      "text": "In children's preventive care, we practise brushing with your child in the spots they can't yet reach themselves, use dye to show up plaque, and protect the teeth with fluoride varnish.",
+      "quelle": "fd320f8e"
+    },
+    "leistung.kinderzahnarzt.dauer": {
+      "text": "20 to 45 minutes",
+      "quelle": "cc02ea16"
+    },
+    "leistung.kinderzahnarzt.faq.0.antwort": {
+      "text": "As soon as the first tooth appears, and by the first birthday at the latest. The first appointments are just for getting to know each other and for advice – your child should experience the practice as a harmless place, before anything ever needs to be treated.",
+      "quelle": "66db7e7d"
+    },
+    "leistung.kinderzahnarzt.faq.0.frage": {
+      "text": "At what age should we come in?",
+      "quelle": "eb3397dc"
+    },
+    "leistung.kinderzahnarzt.faq.1.antwort": {
+      "text": "Yes. Baby teeth hold the space open for the permanent teeth, and an infection can damage the permanent tooth underneath. Besides, decay hurts children too.",
+      "quelle": "cf4a9729"
+    },
+    "leistung.kinderzahnarzt.faq.1.frage": {
+      "text": "Does a hole in a baby tooth really need treatment?",
+      "quelle": "51de025f"
+    },
+    "leistung.kinderzahnarzt.faq.2.antwort": {
+      "text": "It's best to stay neutral and avoid promises like “it won't hurt at all” – such phrases only draw attention to the possibility of pain. Just tell them that someone wants to look at and count their teeth. We'll take care of the rest.",
+      "quelle": "0fa5b4b8"
+    },
+    "leistung.kinderzahnarzt.faq.2.frage": {
+      "text": "How can I prepare my child for the appointment?",
+      "quelle": "cc719cd1"
+    },
+    "leistung.kinderzahnarzt.kasse": {
+      "text": "Dental check-ups from the age of 6 months, as well as six-monthly examinations, are fully covered by German statutory health insurance. Fissure sealing of the permanent molars is also covered.",
+      "quelle": "86544dd9"
+    },
+    "leistung.kinderzahnarzt.kosten": {
+      "text": "Usually no extra charge for children",
+      "quelle": "c17cb6c3"
+    },
+    "leistung.kinderzahnarzt.kurz": {
+      "text": "Dental care that children are happy to come back to.",
+      "quelle": "c9dc6529"
+    },
+    "leistung.kinderzahnarzt.name": {
+      "text": "Paediatric dentistry",
+      "quelle": "350e5b02"
+    },
+    "leistung.kinderzahnarzt.patientenfrage": {
+      "text": "When should my child first visit the dentist?",
+      "quelle": "f49ce530"
+    },
+    "leistung.kinderzahnarzt.synonyme.0": {
+      "text": "children's dentist",
+      "quelle": "3f2895a2"
+    },
+    "leistung.kinderzahnarzt.synonyme.1": {
+      "text": "dentist for children",
+      "quelle": "a5ea08cc"
+    },
+    "leistung.kinderzahnarzt.synonyme.2": {
+      "text": "baby teeth",
+      "quelle": "1cf7bfc5"
+    },
+    "leistung.kinderzahnarzt.synonyme.3": {
+      "text": "child's first dentist visit",
+      "quelle": "131a2176"
+    },
+    "leistung.kinderzahnarzt.teaser": {
+      "text": "With children, one thing matters most: the first impression must never be frightening. We take time to get to know them, explain every instrument in a child-friendly way, and only begin treatment once trust has been built. This shapes their attitude towards the dentist for life.",
+      "quelle": "a61d73b6"
+    },
+    "leistung.knirscherschiene.dauer": {
+      "text": "2 appointments",
+      "quelle": "8f016911"
+    },
+    "leistung.knirscherschiene.faq.0.antwort": {
+      "text": "Signs include flattened tooth edges, sensitive teeth in the morning, tense cheek muscles, and tooth imprints on the edge of the tongue. Often it's a partner who first notices the sound.",
+      "quelle": "7da9f6d8"
+    },
+    "leistung.knirscherschiene.faq.0.frage": {
+      "text": "How do I know if I grind my teeth at night?",
+      "quelle": "312a7ead"
+    },
+    "leistung.knirscherschiene.faq.1.antwort": {
+      "text": "Most people do, within a few nights. If the splint feels uncomfortable, we adjust it – a splint left in a drawer protects nothing.",
+      "quelle": "787fa9d0"
+    },
+    "leistung.knirscherschiene.faq.1.frage": {
+      "text": "Do you get used to wearing the splint?",
+      "quelle": "2b4e1a68"
+    },
+    "leistung.knirscherschiene.kasse": {
+      "text": "With a documented finding, statutory health insurance covers the standard splint.",
+      "quelle": "dfb4face"
+    },
+    "leistung.knirscherschiene.kosten": {
+      "text": "€350 to €900",
+      "quelle": "ccdd70d6"
+    },
+    "leistung.knirscherschiene.kurz": {
+      "text": "Protection for your teeth if you clench or grind at night.",
+      "quelle": "a4f7e36e"
+    },
+    "leistung.knirscherschiene.name": {
+      "text": "Night guard",
+      "quelle": "7a268e0d"
+    },
+    "leistung.knirscherschiene.patientenfrage": {
+      "text": "How do I know if I grind my teeth at night?",
+      "quelle": "2e5e2a50"
+    },
+    "leistung.knirscherschiene.synonyme.0": {
+      "text": "bite splint",
+      "quelle": "eb2e0079"
+    },
+    "leistung.knirscherschiene.synonyme.1": {
+      "text": "bruxism",
+      "quelle": "9360fb6f"
+    },
+    "leistung.knirscherschiene.synonyme.2": {
+      "text": "teeth grinding",
+      "quelle": "80f60a43"
+    },
+    "leistung.knirscherschiene.synonyme.3": {
+      "text": "Michigan splint",
+      "quelle": "e014fb63"
+    },
+    "leistung.knirscherschiene.synonyme.4": {
+      "text": "bite splint",
+      "quelle": "e6b55865"
+    },
+    "leistung.knirscherschiene.teaser": {
+      "text": "Nighttime grinding produces forces many times greater than normal chewing. An individually made splint spreads these forces and protects the enamel, fillings, crowns and jaw joints.",
+      "quelle": "fe4eaf04"
+    },
+    "leistung.knochenaufbau.dauer": {
+      "text": "Procedure 45 to 120 minutes, healing 4 to 9 months",
+      "quelle": "226e91ce"
+    },
+    "leistung.knochenaufbau.faq.0.antwort": {
+      "text": "For smaller defects, we usually use certified graft material, which the body gradually replaces with its own bone. For larger reconstructions, the patient's own bone may be more suitable, which we take from the jaw area.",
+      "quelle": "6f390420"
+    },
+    "leistung.knochenaufbau.faq.0.frage": {
+      "text": "Where does the bone come from?",
+      "quelle": "1c32e1e4"
+    },
+    "leistung.knochenaufbau.faq.1.antwort": {
+      "text": "It is a routine procedure backed by very good clinical evidence. The sinus membrane is lifted, not cut through. Thanks to prior 3D planning, we know the exact anatomical conditions before the procedure.",
+      "quelle": "4bde4bbf"
+    },
+    "leistung.knochenaufbau.faq.1.frage": {
+      "text": "Is a sinus lift dangerous?",
+      "quelle": "2e6a0141"
+    },
+    "leistung.knochenaufbau.kasse": {
+      "text": "Usually a private service as part of implant treatment.",
+      "quelle": "a38f3651"
+    },
+    "leistung.knochenaufbau.kosten": {
+      "text": "400 to 2,500 € depending on scope",
+      "quelle": "477afae5"
+    },
+    "leistung.knochenaufbau.kurz": {
+      "text": "Building a foundation where the jawbone is no longer sufficient for an implant.",
+      "quelle": "2723db2f"
+    },
+    "leistung.knochenaufbau.name": {
+      "text": "Bone grafting",
+      "quelle": "442bb3f1"
+    },
+    "leistung.knochenaufbau.patientenfrage": {
+      "text": "What happens during bone grafting and how long does healing take?",
+      "quelle": "cad73086"
+    },
+    "leistung.knochenaufbau.synonyme.0": {
+      "text": "Bone augmentation",
+      "quelle": "22947725"
+    },
+    "leistung.knochenaufbau.synonyme.1": {
+      "text": "Sinus lift",
+      "quelle": "6a613460"
+    },
+    "leistung.knochenaufbau.synonyme.2": {
+      "text": "Jaw bone graft",
+      "quelle": "e086194b"
+    },
+    "leistung.knochenaufbau.synonyme.3": {
+      "text": "Bone graft material",
+      "quelle": "a315bf65"
+    },
+    "leistung.knochenaufbau.teaser": {
+      "text": "When a tooth has been missing for a long time, the jawbone in that area gradually breaks down. Using the patient's own bone or a biological substitute material, this volume can be rebuilt so that an implant has secure support.",
+      "quelle": "ea6186c7"
+    },
+    "leistung.kreidezaehne.dauer": {
+      "text": "30 to 60 minutes, depending on the stage",
+      "quelle": "54d78a32"
+    },
+    "leistung.kreidezaehne.faq.0.antwort": {
+      "text": "The cause has not been fully established. Influences during pregnancy and the first years of life are being discussed. What is certain is that it is not down to poor tooth brushing – for many parents, this is an important relief.",
+      "quelle": "32059fb6"
+    },
+    "leistung.kreidezaehne.faq.0.frage": {
+      "text": "What causes chalky teeth?",
+      "quelle": "146a22db"
+    },
+    "leistung.kreidezaehne.faq.1.antwort": {
+      "text": "The chronically irritated tooth nerve responds differently. We take this into account, use adapted techniques and, for more pronounced cases, can treat under sedation on request.",
+      "quelle": "becad73a"
+    },
+    "leistung.kreidezaehne.faq.1.frage": {
+      "text": "Why does anaesthetic work less well on chalky teeth?",
+      "quelle": "ff63d49b"
+    },
+    "leistung.kreidezaehne.faq.2.antwort": {
+      "text": "The enamel does not regenerate. With intensive fluoride treatment, sealing and, where needed, crowns, the teeth can be well protected and preserved until a permanent solution becomes possible later on.",
+      "quelle": "44fff302"
+    },
+    "leistung.kreidezaehne.faq.2.frage": {
+      "text": "Will the teeth stay like this forever?",
+      "quelle": "d21519ba"
+    },
+    "leistung.kreidezaehne.kasse": {
+      "text": "Treatment is covered by German statutory health insurance. Additional protective measures are sometimes private.",
+      "quelle": "e448959e"
+    },
+    "leistung.kreidezaehne.kosten": {
+      "text": "Basic treatment covered by statutory health insurance, intensive prevention private",
+      "quelle": "25fdf799"
+    },
+    "leistung.kreidezaehne.kurz": {
+      "text": "Yellowish, crumbly teeth in children – recognise, protect, and treat painlessly.",
+      "quelle": "bc93b5c7"
+    },
+    "leistung.kreidezaehne.name": {
+      "text": "Chalky Teeth (MIH)",
+      "quelle": "8595e92d"
+    },
+    "leistung.kreidezaehne.patientenfrage": {
+      "text": "What are chalky teeth and what can be done about them?",
+      "quelle": "9933e9c6"
+    },
+    "leistung.kreidezaehne.synonyme.0": {
+      "text": "MIH",
+      "quelle": "0c45f191"
+    },
+    "leistung.kreidezaehne.synonyme.1": {
+      "text": "molar incisor hypomineralisation",
+      "quelle": "14ba06f5"
+    },
+    "leistung.kreidezaehne.synonyme.2": {
+      "text": "white spots on child's teeth",
+      "quelle": "7a21da13"
+    },
+    "leistung.kreidezaehne.synonyme.3": {
+      "text": "crumbling teeth",
+      "quelle": "99d335a4"
+    },
+    "leistung.kreidezaehne.teaser": {
+      "text": "With chalky teeth, the enamel forms with too little mineral content from birth. The teeth are very sensitive, break more easily and respond poorly to anaesthetic. Early detection and intensive protective treatment can preserve a great deal.",
+      "quelle": "667360f4"
+    },
+    "leistung.kunststofffuellungen.dauer": {
+      "text": "30 to 60 minutes",
+      "quelle": "aded5260"
+    },
+    "leistung.kunststofffuellungen.faq.0.antwort": {
+      "text": "Depending on size and location, around five to ten years. Small fillings last longer than large ones. If a very large part of the tooth is affected, an inlay or partial crown is the more durable option.",
+      "quelle": "6e0fbdb7"
+    },
+    "leistung.kunststofffuellungen.faq.0.frage": {
+      "text": "How long does a composite filling last?",
+      "quelle": "8e56caa5"
+    },
+    "leistung.kunststofffuellungen.faq.1.antwort": {
+      "text": "Intact amalgam fillings don't need to be removed as a precaution – every replacement costs healthy tooth substance. Replacing them makes sense if the filling is leaking, decay has developed underneath, or you wish to for personal reasons. In that case, we take protective measures against mercury vapour.",
+      "quelle": "dd4bbaef"
+    },
+    "leistung.kunststofffuellungen.faq.1.frage": {
+      "text": "Should I have my old amalgam fillings replaced?",
+      "quelle": "144ca8f5"
+    },
+    "leistung.kunststofffuellungen.kasse": {
+      "text": "Since amalgam was phased out, tooth-coloured fillings have been covered by statutory health insurance throughout the mouth.",
+      "quelle": "cd8a2ebc"
+    },
+    "leistung.kunststofffuellungen.kosten": {
+      "text": "Covered by statutory health insurance, layering technique 80 to 200 € out-of-pocket cost",
+      "quelle": "c2db84bc"
+    },
+    "leistung.kunststofffuellungen.kurz": {
+      "text": "Composite fillings that are indistinguishable in colour from the tooth.",
+      "quelle": "88491db6"
+    },
+    "leistung.kunststofffuellungen.name": {
+      "text": "Tooth-coloured fillings",
+      "quelle": "d487cc36"
+    },
+    "leistung.kunststofffuellungen.patientenfrage": {
+      "text": "What does a tooth-coloured filling cost, and how long does it last?",
+      "quelle": "7cadf6fe"
+    },
+    "leistung.kunststofffuellungen.synonyme.0": {
+      "text": "composite filling",
+      "quelle": "fbc8a854"
+    },
+    "leistung.kunststofffuellungen.synonyme.1": {
+      "text": "white filling",
+      "quelle": "45bfd062"
+    },
+    "leistung.kunststofffuellungen.synonyme.2": {
+      "text": "resin filling",
+      "quelle": "ad635f80"
+    },
+    "leistung.kunststofffuellungen.synonyme.3": {
+      "text": "amalgam alternative",
+      "quelle": "2b9211d6"
+    },
+    "leistung.kunststofffuellungen.synonyme.4": {
+      "text": "tooth filling",
+      "quelle": "95a9df40"
+    },
+    "leistung.kunststofffuellungen.teaser": {
+      "text": "Modern composite fillings are built up in layers and hardened with light. They bond directly to the tooth, so less tooth substance needs to be removed than in the past – and the colour can be matched exactly.",
+      "quelle": "2d80cae3"
+    },
+    "leistung.lachgas.dauer": {
+      "text": "Takes effect immediately, wears off after 10 to 15 minutes",
+      "quelle": "432df1f8"
+    },
+    "leistung.lachgas.faq.0.antwort": {
+      "text": "After breathing pure oxygen for about 15 minutes, the effect has fully worn off. Unlike with general anaesthesia or tablets, you may usually drive yourself afterwards – we confirm this individually.",
+      "quelle": "901b49ad"
+    },
+    "leistung.lachgas.faq.0.frage": {
+      "text": "Can I drive afterwards?",
+      "quelle": "2a4f2df3"
+    },
+    "leistung.lachgas.faq.1.antwort": {
+      "text": "Yes, it has been well studied in children and is often used when treatment would not otherwise be possible. The child must be able to breathe through the nose.",
+      "quelle": "1b3c7631"
+    },
+    "leistung.lachgas.faq.1.frage": {
+      "text": "Is nitrous oxide suitable for children too?",
+      "quelle": "4600f0c7"
+    },
+    "leistung.lachgas.kasse": {
+      "text": "Private treatment.",
+      "quelle": "6449329c"
+    },
+    "leistung.lachgas.kosten": {
+      "text": "80 to 200 € per session",
+      "quelle": "38b18028"
+    },
+    "leistung.lachgas.kurz": {
+      "text": "Relaxed and responsive – the gentle stage between local anaesthetic and general anaesthesia.",
+      "quelle": "27b2a360"
+    },
+    "leistung.lachgas.name": {
+      "text": "Treatment with nitrous oxide",
+      "quelle": "1f470346"
+    },
+    "leistung.lachgas.patientenfrage": {
+      "text": "What does treatment with nitrous oxide feel like?",
+      "quelle": "95c9f913"
+    },
+    "leistung.lachgas.synonyme.0": {
+      "text": "nitrous oxide sedation",
+      "quelle": "c73e1e12"
+    },
+    "leistung.lachgas.synonyme.1": {
+      "text": "N2O",
+      "quelle": "73988aa2"
+    },
+    "leistung.lachgas.synonyme.2": {
+      "text": "dental sedation",
+      "quelle": "60db5d3f"
+    },
+    "leistung.lachgas.synonyme.3": {
+      "text": "sedation dentistry",
+      "quelle": "406c3b11"
+    },
+    "leistung.lachgas.teaser": {
+      "text": "Nitrous oxide is breathed in through a small nasal mask and takes effect within a few minutes. You stay awake and responsive, but feel noticeably more relaxed. The effect wears off completely after a short time.",
+      "quelle": "abf39f33"
+    },
+    "leistung.parodontitis-behandlung.dauer": {
+      "text": "2 to 4 appointments plus follow-up care",
+      "quelle": "1fe4460b"
+    },
+    "leistung.parodontitis-behandlung.faq.0.antwort": {
+      "text": "No. Healthy gums do not bleed, not even when brushing or flossing. Bleeding is a sign of inflammation and the earliest warning you can notice yourself. Please don't try to brush it away – have it checked instead.",
+      "quelle": "b8de8045"
+    },
+    "leistung.parodontitis-behandlung.faq.0.frage": {
+      "text": "Is bleeding gums normal?",
+      "quelle": "999a5ce4"
+    },
+    "leistung.parodontitis-behandlung.faq.1.antwort": {
+      "text": "Lost bone and receded gums do not grow back on their own. What we can achieve is stopping the inflammation and keeping the condition stable. In selected cases, regenerative or plastic surgical procedures are possible.",
+      "quelle": "101469e0"
+    },
+    "leistung.parodontitis-behandlung.faq.1.frage": {
+      "text": "Do receded gums grow back?",
+      "quelle": "5a6b0c3d"
+    },
+    "leistung.parodontitis-behandlung.faq.2.antwort": {
+      "text": "Yes. There are well-documented links with diabetes, cardiovascular disease and pregnancy complications. Conversely, poorly controlled diabetes makes treatment more difficult. This is why we ask about any pre-existing conditions.",
+      "quelle": "e1201823"
+    },
+    "leistung.parodontitis-behandlung.faq.2.frage": {
+      "text": "Does gum disease affect my general health?",
+      "quelle": "ba3be625"
+    },
+    "leistung.parodontitis-behandlung.kasse": {
+      "text": "Since 2021, there has been a structured periodontitis treatment pathway that the German statutory health insurance covers, including two years of follow-up care. This requires a documented diagnosis.",
+      "quelle": "8c8c2b4d"
+    },
+    "leistung.parodontitis-behandlung.kosten": {
+      "text": "Covered by statutory health insurance where indicated; additional treatments cost €200 to €800",
+      "quelle": "771ae559"
+    },
+    "leistung.parodontitis-behandlung.kurz": {
+      "text": "Stopping gum disease before it costs you bone and teeth.",
+      "quelle": "d90d9091"
+    },
+    "leistung.parodontitis-behandlung.name": {
+      "text": "Periodontitis treatment",
+      "quelle": "6c3686a2"
+    },
+    "leistung.parodontitis-behandlung.patientenfrage": {
+      "text": "My gums bleed – is that already periodontitis?",
+      "quelle": "361570fe"
+    },
+    "leistung.parodontitis-behandlung.synonyme.0": {
+      "text": "Gum disease",
+      "quelle": "9348e21f"
+    },
+    "leistung.parodontitis-behandlung.synonyme.1": {
+      "text": "Gingivitis",
+      "quelle": "75e14197"
+    },
+    "leistung.parodontitis-behandlung.synonyme.2": {
+      "text": "Bleeding gums",
+      "quelle": "24e34d8c"
+    },
+    "leistung.parodontitis-behandlung.synonyme.3": {
+      "text": "Periodontal treatment",
+      "quelle": "cb9e077d"
+    },
+    "leistung.parodontitis-behandlung.synonyme.4": {
+      "text": "receding gums",
+      "quelle": "bf124083"
+    },
+    "leistung.parodontitis-behandlung.teaser": {
+      "text": "Periodontitis is the most common cause of tooth loss in adults – and for a long time, it doesn't hurt at all. We clean the gum pockets thoroughly, remove the bacteria, and follow up with you closely afterwards so the infection doesn't come back.",
+      "quelle": "a8b07937"
     },
     "leistung.professionelle-zahnreinigung.ablauf.0.dauer": {
       "text": "5 min.",
@@ -337,6 +1461,238 @@
       "text": "Prophylaxis 4.0 is our cleaning concept following the GBT protocol. Instead of scraping with sharp hand instruments, we loosen deposits with a warm, fine powder jet. It is more thorough, gentler on enamel and gums – and for most people considerably more pleasant.",
       "quelle": "b6303e74"
     },
+    "leistung.retainer.dauer": {
+      "text": "1 appointment, then regular check-ups",
+      "quelle": "f906e372"
+    },
+    "leistung.retainer.faq.0.antwort": {
+      "text": "Yes, if you want the result to stay stable for good. The forces that push teeth back fade over the years, but they never fully disappear. A bonded retainer doesn't get in the way of daily life and just needs regular check-ups.",
+      "quelle": "a90129be"
+    },
+    "leistung.retainer.faq.0.frage": {
+      "text": "Do I really need to keep the retainer forever?",
+      "quelle": "bd497b3b"
+    },
+    "leistung.retainer.kasse": {
+      "text": "Usually a private, self-funded treatment.",
+      "quelle": "f03e7eed"
+    },
+    "leistung.retainer.kosten": {
+      "text": "€250 to €600 per jaw",
+      "quelle": "396a2f19"
+    },
+    "leistung.retainer.kurz": {
+      "text": "Stabilisation after orthodontic treatment – without it, teeth drift back.",
+      "quelle": "5942f7b2"
+    },
+    "leistung.retainer.name": {
+      "text": "Retainer",
+      "quelle": "fc8b7eab"
+    },
+    "leistung.retainer.patientenfrage": {
+      "text": "How long do I need to wear a retainer?",
+      "quelle": "537839ce"
+    },
+    "leistung.retainer.synonyme.0": {
+      "text": "retainer wire",
+      "quelle": "36c2c3ce"
+    },
+    "leistung.retainer.synonyme.1": {
+      "text": "retainer after braces",
+      "quelle": "cb816359"
+    },
+    "leistung.retainer.synonyme.2": {
+      "text": "teeth shifting back after braces",
+      "quelle": "e5eb3396"
+    },
+    "leistung.retainer.teaser": {
+      "text": "A retainer keeps the treatment result stable in the long term. It's usually a thin wire bonded to the inside of the front teeth, invisible from the outside. Removable splints for night-time wear are also an option.",
+      "quelle": "7908aad2"
+    },
+    "leistung.smile-design.dauer": {
+      "text": "2 appointments of 60 to 90 minutes",
+      "quelle": "1c9b176a"
+    },
+    "leistung.smile-design.faq.0.antwort": {
+      "text": "The digital preview shows shape, length and proportions very accurately. It becomes even more reliable with the mock-up: here, we place the planned shape as a thin plastic layer directly onto your teeth, without any grinding. You can then see and feel the result on your own face.",
+      "quelle": "69d18ca1"
+    },
+    "leistung.smile-design.faq.0.frage": {
+      "text": "How realistic is the preview?",
+      "quelle": "f0f618c3"
+    },
+    "leistung.smile-design.faq.1.antwort": {
+      "text": "That's exactly what this step is for. As long as nothing has been ground down, any change can be made without any loss. We adjust the plan until you're happy with it – only then does the actual treatment begin.",
+      "quelle": "3699d7f8"
+    },
+    "leistung.smile-design.faq.1.frage": {
+      "text": "What if I don't like the result?",
+      "quelle": "fb5f2aee"
+    },
+    "leistung.smile-design.kasse": {
+      "text": "Private treatment.",
+      "quelle": "6449329c"
+    },
+    "leistung.smile-design.kosten": {
+      "text": "€250 to €600 for the planning, usually offset against the cost if you go ahead",
+      "quelle": "f64b17e3"
+    },
+    "leistung.smile-design.kurz": {
+      "text": "See your new smile on screen before a single tooth is treated.",
+      "quelle": "917a2bfe"
+    },
+    "leistung.smile-design.name": {
+      "text": "Digital Smile Design",
+      "quelle": "5b3ce40b"
+    },
+    "leistung.smile-design.patientenfrage": {
+      "text": "Can I see beforehand how my teeth will look afterwards?",
+      "quelle": "11efa0cc"
+    },
+    "leistung.smile-design.synonyme.0": {
+      "text": "DSD",
+      "quelle": "07d87dcc"
+    },
+    "leistung.smile-design.synonyme.1": {
+      "text": "smile makeover",
+      "quelle": "aa6320bd"
+    },
+    "leistung.smile-design.synonyme.2": {
+      "text": "smile design",
+      "quelle": "9bb6d4b5"
+    },
+    "leistung.smile-design.synonyme.3": {
+      "text": "cosmetic dentistry planning",
+      "quelle": "089eef93"
+    },
+    "leistung.smile-design.synonyme.4": {
+      "text": "mock-up",
+      "quelle": "966de24f"
+    },
+    "leistung.smile-design.teaser": {
+      "text": "With digital smile design, we plan your smile using photos, videos and a 3D scan – in relation to your face shape, lip line and expression. You see the result on screen beforehand, and can even try it out in your mouth as a temporary version before deciding.",
+      "quelle": "90dabf24"
+    },
+    "leistung.sofortimplantate.dauer": {
+      "text": "A procedure of 60 to 120 minutes",
+      "quelle": "8321e619"
+    },
+    "leistung.sofortimplantate.faq.0.antwort": {
+      "text": "The requirement is that the socket is not inflamed and that there is enough stable bone for the implant to hold securely. If there is an acute infection, the tissue needs to heal first. The 3D scan shows in advance what is possible.",
+      "quelle": "a4c9957e"
+    },
+    "leistung.sofortimplantate.faq.0.frage": {
+      "text": "Who is suitable for an immediate implant?",
+      "quelle": "3128d4f5"
+    },
+    "leistung.sofortimplantate.faq.1.antwort": {
+      "text": "In the front tooth area, we usually fit a temporary tooth straight away, which is not put under full load. So you won't leave the practice with a visible gap.",
+      "quelle": "0e92f6fc"
+    },
+    "leistung.sofortimplantate.faq.1.frage": {
+      "text": "Will I have a visible tooth straight away?",
+      "quelle": "180b8b96"
+    },
+    "leistung.sofortimplantate.kasse": {
+      "text": "As with a regular implant: a fixed subsidy applies only to the dental restoration.",
+      "quelle": "3c549647"
+    },
+    "leistung.sofortimplantate.kosten": {
+      "text": "€2,000 to €3,800 including the restoration",
+      "quelle": "8cd1fe60"
+    },
+    "leistung.sofortimplantate.kurz": {
+      "text": "Tooth extraction and implant placement in one session.",
+      "quelle": "6ba14cc7"
+    },
+    "leistung.sofortimplantate.name": {
+      "text": "Immediate implants",
+      "quelle": "1341da33"
+    },
+    "leistung.sofortimplantate.patientenfrage": {
+      "text": "Can I get an implant straight after having a tooth removed?",
+      "quelle": "3a830609"
+    },
+    "leistung.sofortimplantate.synonyme.0": {
+      "text": "immediate implant placement",
+      "quelle": "8624fbf2"
+    },
+    "leistung.sofortimplantate.synonyme.1": {
+      "text": "same-day implant",
+      "quelle": "3b4296b0"
+    },
+    "leistung.sofortimplantate.synonyme.2": {
+      "text": "tooth extraction and implant",
+      "quelle": "75aef986"
+    },
+    "leistung.sofortimplantate.teaser": {
+      "text": "Under certain conditions, the implant can be placed directly into the socket right after the tooth is removed. This saves one procedure, shortens the overall treatment, and protects the bone and gum line.",
+      "quelle": "c502b6c4"
+    },
+    "leistung.teilprothese.dauer": {
+      "text": "4 to 6 appointments over about 6 weeks",
+      "quelle": "4ac78b8f"
+    },
+    "leistung.teilprothese.faq.0.antwort": {
+      "text": "A well-fitting denture stays reliably in place in the upper jaw through suction. In the lower jaw, staying in place is naturally more difficult – but even two implants used as press-stud anchors provide enormous stability.",
+      "quelle": "e687106f"
+    },
+    "leistung.teilprothese.faq.0.frage": {
+      "text": "Does the denture slip when speaking or eating?",
+      "quelle": "8bc0a1b7"
+    },
+    "leistung.teilprothese.faq.1.antwort": {
+      "text": "Usually two to four weeks. At first, speech and taste perception change. We schedule follow-up appointments to correct any sore spots early on.",
+      "quelle": "08541478"
+    },
+    "leistung.teilprothese.faq.1.frage": {
+      "text": "How long does it take to get used to?",
+      "quelle": "61bcf566"
+    },
+    "leistung.teilprothese.kasse": {
+      "text": "Statutory health insurance pays a fixed subsidy. If your income is low, a hardship provision may allow full cover of the standard treatment.",
+      "quelle": "634c3d1c"
+    },
+    "leistung.teilprothese.kosten": {
+      "text": "€900 to €4,500 depending on design",
+      "quelle": "497cbaab"
+    },
+    "leistung.teilprothese.kurz": {
+      "text": "Removable replacement when several or all teeth are missing.",
+      "quelle": "7bf02f1d"
+    },
+    "leistung.teilprothese.name": {
+      "text": "Dentures & Partial Dentures",
+      "quelle": "b30a474f"
+    },
+    "leistung.teilprothese.patientenfrage": {
+      "text": "How much does a denture cost, and will it stay in place while eating?",
+      "quelle": "cea7f570"
+    },
+    "leistung.teilprothese.synonyme.0": {
+      "text": "Denture",
+      "quelle": "eaa4499f"
+    },
+    "leistung.teilprothese.synonyme.1": {
+      "text": "False teeth",
+      "quelle": "f2ba7712"
+    },
+    "leistung.teilprothese.synonyme.2": {
+      "text": "Telescopic denture",
+      "quelle": "5aed7f42"
+    },
+    "leistung.teilprothese.synonyme.3": {
+      "text": "Full denture",
+      "quelle": "753cd35c"
+    },
+    "leistung.teilprothese.synonyme.4": {
+      "text": "Dentures",
+      "quelle": "77ad52c6"
+    },
+    "leistung.teilprothese.teaser": {
+      "text": "When larger gaps can no longer be treated with bridges, removable dentures restore both chewing function and appearance. Modern telescopic and precision-attachment dentures manage without visible metal clasps.",
+      "quelle": "15a2601f"
+    },
     "leistung.veneers.ablauf.0.dauer": {
       "text": "60 min.",
       "quelle": "def4536f"
@@ -452,6 +1808,610 @@
     "leistung.veneers.teaser": {
       "text": "Veneers are thin ceramic shells bonded to the front of your anterior teeth. They correct discolouration, small gaps, chipped edges and slight misalignment – usually within two to three appointments.",
       "quelle": "195a36ee"
+    },
+    "leistung.weisheitszaehne.dauer": {
+      "text": "30 to 90 minutes for all four",
+      "quelle": "4140359b"
+    },
+    "leistung.weisheitszaehne.faq.0.antwort": {
+      "text": "Usually two to three days. Swelling and tightness are at their worst on the second day and then ease off. If possible, schedule the procedure so it falls before a free weekend.",
+      "quelle": "bedeaab4"
+    },
+    "leistung.weisheitszaehne.faq.0.frage": {
+      "text": "How long will I be off sick afterwards?",
+      "quelle": "90259830"
+    },
+    "leistung.weisheitszaehne.faq.1.antwort": {
+      "text": "Both are possible. Having all four done in one session means just one recovery period – most people choose this, often with sedation. Doing them one at a time is gentler if you can't take much time off work or if you have pre-existing conditions.",
+      "quelle": "145991e1"
+    },
+    "leistung.weisheitszaehne.faq.1.frage": {
+      "text": "All four at once, or one at a time?",
+      "quelle": "c7f4f61b"
+    },
+    "leistung.weisheitszaehne.faq.2.antwort": {
+      "text": "In the lower jaw, a nerve runs close to the roots. That's precisely why, in critical cases, we take a 3D scan beforehand that shows the distance to the millimetre. Temporary numbness is rare, and permanent numbness very rare – we'll discuss your individual risk with you before the procedure.",
+      "quelle": "3bae26e8"
+    },
+    "leistung.weisheitszaehne.faq.2.frage": {
+      "text": "Can a nerve be damaged during this?",
+      "quelle": "2d36a725"
+    },
+    "leistung.weisheitszaehne.kasse": {
+      "text": "Removal is covered by statutory health insurance when there's a medical reason for it. Purely preventive removal without a clinical finding, as well as sedation, must be paid for privately.",
+      "quelle": "8e5548f6"
+    },
+    "leistung.weisheitszaehne.kosten": {
+      "text": "Covered by statutory health insurance if medically indicated, sedation an extra 250 to 600 €",
+      "quelle": "94ee2dd2"
+    },
+    "leistung.weisheitszaehne.kurz": {
+      "text": "A routine procedure with careful planning – sedation is available if you'd like it.",
+      "quelle": "87bdbfe1"
+    },
+    "leistung.weisheitszaehne.name": {
+      "text": "Wisdom tooth removal",
+      "quelle": "ba585258"
+    },
+    "leistung.weisheitszaehne.patientenfrage": {
+      "text": "Do wisdom teeth always have to come out, and how long am I off afterwards?",
+      "quelle": "608542d4"
+    },
+    "leistung.weisheitszaehne.synonyme.0": {
+      "text": "wisdom tooth surgery",
+      "quelle": "31c82ea2"
+    },
+    "leistung.weisheitszaehne.synonyme.1": {
+      "text": "having a wisdom tooth pulled",
+      "quelle": "9afd71b1"
+    },
+    "leistung.weisheitszaehne.synonyme.2": {
+      "text": "wisdom tooth infection",
+      "quelle": "c015de36"
+    },
+    "leistung.weisheitszaehne.synonyme.3": {
+      "text": "wisdom tooth extraction",
+      "quelle": "48ff5a30"
+    },
+    "leistung.weisheitszaehne.teaser": {
+      "text": "Wisdom teeth don't always have to come out. But if they're growing at an angle, inflamed, or putting neighbouring teeth at risk, removal makes sense. A 3D scan shows us exactly where they sit in relation to the nerve beforehand.",
+      "quelle": "cd1664cb"
+    },
+    "leistung.wurzelkanalbehandlung.dauer": {
+      "text": "1 to 2 appointments of 60 to 120 minutes each",
+      "quelle": "a5630eb7"
+    },
+    "leistung.wurzelkanalbehandlung.faq.0.antwort": {
+      "text": "That reputation dates back to a time before modern anaesthetics. Today, the tooth is reliably numbed throughout the treatment. What actually hurts is usually the infection beforehand – the treatment puts an end to that pain.",
+      "quelle": "fa7dfb26"
+    },
+    "leistung.wurzelkanalbehandlung.faq.0.frage": {
+      "text": "Does root canal treatment hurt?",
+      "quelle": "3da40b33"
+    },
+    "leistung.wurzelkanalbehandlung.faq.1.antwort": {
+      "text": "For a first treatment carried out under the microscope, studies show success rates of around 85 to 95 per cent. For a repeat treatment, the rates are lower. No one can honestly guarantee an outcome – we'll tell you frankly beforehand what the prospects look like in your case.",
+      "quelle": "38630158"
+    },
+    "leistung.wurzelkanalbehandlung.faq.1.frage": {
+      "text": "What are the chances of success?",
+      "quelle": "ba6af60b"
+    },
+    "leistung.wurzelkanalbehandlung.faq.2.antwort": {
+      "text": "For back teeth, almost always. A root-treated tooth becomes more brittle and can easily crack without a crown. For front teeth with little loss of tooth structure, a filling is often enough.",
+      "quelle": "45d38abf"
+    },
+    "leistung.wurzelkanalbehandlung.faq.2.frage": {
+      "text": "Does the tooth need a crown afterwards?",
+      "quelle": "705032fa"
+    },
+    "leistung.wurzelkanalbehandlung.faq.3.antwort": {
+      "text": "Your own tooth has a natural support structure that no implant can fully replace – that's why we try to save it first. But if the tooth is badly damaged or has already failed treatment more than once, an implant can be the more stable option. We'll set out both paths for you, with costs and prognosis side by side.",
+      "quelle": "28367ea3"
+    },
+    "leistung.wurzelkanalbehandlung.faq.3.frage": {
+      "text": "Wouldn't an implant make more sense?",
+      "quelle": "e48f35d2"
+    },
+    "leistung.wurzelkanalbehandlung.kasse": {
+      "text": "The statutory health insurance covers treatment on front teeth and, under certain conditions, on molars. Additional services such as microscope use and mechanical preparation must be paid for privately.",
+      "quelle": "e9666512"
+    },
+    "leistung.wurzelkanalbehandlung.kosten": {
+      "text": "300 to 1,200 € for extended procedures",
+      "quelle": "83303a6a"
+    },
+    "leistung.wurzelkanalbehandlung.kurz": {
+      "text": "Saving your own tooth when the nerve is inflamed.",
+      "quelle": "644b9ac6"
+    },
+    "leistung.wurzelkanalbehandlung.name": {
+      "text": "Root canal treatment",
+      "quelle": "27a8058f"
+    },
+    "leistung.wurzelkanalbehandlung.patientenfrage": {
+      "text": "Is root canal treatment painful, and does it really save the tooth?",
+      "quelle": "4eae690c"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.0": {
+      "text": "Root canal treatment",
+      "quelle": "fb3517f4"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.1": {
+      "text": "Endodontics",
+      "quelle": "5ae69202"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.2": {
+      "text": "Root canal",
+      "quelle": "d5faf687"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.3": {
+      "text": "Inflamed tooth nerve",
+      "quelle": "d162586b"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.4": {
+      "text": "Apicoectomy",
+      "quelle": "965c1bc9"
+    },
+    "leistung.wurzelkanalbehandlung.teaser": {
+      "text": "During root canal treatment, inflamed tissue is removed from inside the tooth, the canal system is cleaned and sealed tightly. With the help of a microscope and mechanical instruments, even difficult, curved canals can now be reliably treated.",
+      "quelle": "a195b150"
+    },
+    "leistung.zahnarztangst.dauer": {
+      "text": "Initial consultation 30 to 45 minutes, no treatment",
+      "quelle": "7e8f42b7"
+    },
+    "leistung.zahnarztangst.faq.0.antwort": {
+      "text": "No. The first appointment is just a conversation – you don't have to sit in the treatment chair if you don't want to. We look together at what you need and decide how to proceed from there. Nothing happens without warning.",
+      "quelle": "9ae1a2c9"
+    },
+    "leistung.zahnarztangst.faq.0.frage": {
+      "text": "Do I have to undergo treatment at the first appointment?",
+      "quelle": "be3148db"
+    },
+    "leistung.zahnarztangst.faq.1.antwort": {
+      "text": "No. Many of our patients come back after years away. We assess, we don't judge – and we'll tell you honestly and without drama what needs to be done.",
+      "quelle": "7430b7aa"
+    },
+    "leistung.zahnarztangst.faq.1.frage": {
+      "text": "Will I be judged for my long gaps between treatments?",
+      "quelle": "bf206099"
+    },
+    "leistung.zahnarztangst.faq.2.antwort": {
+      "text": "Then we stop. We agree on a hand signal beforehand that means an immediate pause. Getting that control back makes all the difference for many people.",
+      "quelle": "0e1391e1"
+    },
+    "leistung.zahnarztangst.faq.2.frage": {
+      "text": "What if I can't go on partway through treatment?",
+      "quelle": "6a6f710a"
+    },
+    "leistung.zahnarztangst.kasse": {
+      "text": "Dental treatment is covered by statutory health insurance; sedation and general anaesthetic are usually paid for privately.",
+      "quelle": "7c3cacfd"
+    },
+    "leistung.zahnarztangst.kosten": {
+      "text": "Consultation covered by statutory health insurance, sedation €250 to €600",
+      "quelle": "0011144c"
+    },
+    "leistung.zahnarztangst.kurz": {
+      "text": "For anyone who's been putting off that appointment for years.",
+      "quelle": "531d8000"
+    },
+    "leistung.zahnarztangst.name": {
+      "text": "Treatment for dental anxiety",
+      "quelle": "b44ebcfc"
+    },
+    "leistung.zahnarztangst.patientenfrage": {
+      "text": "I'm very afraid of the dentist – what happens at the first appointment?",
+      "quelle": "61880409"
+    },
+    "leistung.zahnarztangst.synonyme.0": {
+      "text": "fear of the dentist",
+      "quelle": "965b32e1"
+    },
+    "leistung.zahnarztangst.synonyme.1": {
+      "text": "dental phobia",
+      "quelle": "251e5c6e"
+    },
+    "leistung.zahnarztangst.synonyme.2": {
+      "text": "anxious patient",
+      "quelle": "d13da4fd"
+    },
+    "leistung.zahnarztangst.synonyme.3": {
+      "text": "dentist panic",
+      "quelle": "550e1886"
+    },
+    "leistung.zahnarztangst.teaser": {
+      "text": "Dental anxiety isn't a character flaw – it's a very common and treatable reaction. With us, you set the pace: the first appointment is simply a conversation, with no treatment involved. Everything else happens only once you're ready.",
+      "quelle": "529b0a7e"
+    },
+    "leistung.zahnaufhellung.dauer": {
+      "text": "60 to 90 minutes in the practice, 10 to 14 days at home",
+      "quelle": "bd676f43"
+    },
+    "leistung.zahnaufhellung.faq.0.antwort": {
+      "text": "Not when carried out properly. The active ingredient penetrates the tooth and breaks down colour molecules there, without removing any substance. It's important that teeth and gums are healthy beforehand – that's why we always examine and professionally clean first, before whitening.",
+      "quelle": "890c25e6"
+    },
+    "leistung.zahnaufhellung.faq.0.frage": {
+      "text": "Does whitening damage the tooth enamel?",
+      "quelle": "4d36eefd"
+    },
+    "leistung.zahnaufhellung.faq.1.antwort": {
+      "text": "Ceramic and composite material do not react to the whitening agent. If you have visible crowns or fillings, we plan for this: whitening comes first, then the restorations are matched to the new shade.",
+      "quelle": "dc262322"
+    },
+    "leistung.zahnaufhellung.faq.1.frage": {
+      "text": "Why won't my crowns and fillings get lighter?",
+      "quelle": "f369f700"
+    },
+    "leistung.zahnaufhellung.faq.2.antwort": {
+      "text": "Usually one to three years. Coffee, tea, red wine and smoking shorten this noticeably. With a touch-up using your individual tray, you can keep the result stable at low cost.",
+      "quelle": "3971ac3e"
+    },
+    "leistung.zahnaufhellung.faq.2.frage": {
+      "text": "How long does the result last?",
+      "quelle": "22ce45dd"
+    },
+    "leistung.zahnaufhellung.faq.3.antwort": {
+      "text": "Temporary sensitivity to cold can occur, usually settling within one to two days. We use gels containing potassium nitrate and fluoride, which noticeably ease this.",
+      "quelle": "56aedd06"
+    },
+    "leistung.zahnaufhellung.faq.3.frage": {
+      "text": "Will my teeth become sensitive afterwards?",
+      "quelle": "274050f6"
+    },
+    "leistung.zahnaufhellung.kasse": {
+      "text": "Private treatment, not covered by German statutory health insurance.",
+      "quelle": "acf1bb88"
+    },
+    "leistung.zahnaufhellung.kosten": {
+      "text": "€350 to €650 for both jaws",
+      "quelle": "df41b02b"
+    },
+    "leistung.zahnaufhellung.kurz": {
+      "text": "Teeth several shades lighter – controlled and without damaging the enamel.",
+      "quelle": "0b5437d6"
+    },
+    "leistung.zahnaufhellung.name": {
+      "text": "Teeth Whitening (Bleaching)",
+      "quelle": "883f0fab"
+    },
+    "leistung.zahnaufhellung.patientenfrage": {
+      "text": "Does whitening harm my teeth?",
+      "quelle": "255ba52a"
+    },
+    "leistung.zahnaufhellung.synonyme.0": {
+      "text": "teeth whitening",
+      "quelle": "1ba11f46"
+    },
+    "leistung.zahnaufhellung.synonyme.1": {
+      "text": "whiten teeth",
+      "quelle": "c9e5d7fc"
+    },
+    "leistung.zahnaufhellung.synonyme.2": {
+      "text": "white teeth",
+      "quelle": "c23c9c9b"
+    },
+    "leistung.zahnaufhellung.synonyme.3": {
+      "text": "home whitening",
+      "quelle": "eb0acdd3"
+    },
+    "leistung.zahnaufhellung.synonyme.4": {
+      "text": "in-office whitening",
+      "quelle": "f402a3fc"
+    },
+    "leistung.zahnaufhellung.teaser": {
+      "text": "With whitening, we lighten the teeth using an active gel that breaks down colour pigments in the tooth. Depending on the starting shade, several shades lighter are possible. In the practice, this can be done in one session; with take-home trays it works a little more slowly and gently.",
+      "quelle": "30971d10"
+    },
+    "leistung.zahnbruecken.dauer": {
+      "text": "2 to 3 appointments over about 3 weeks",
+      "quelle": "24a1b381"
+    },
+    "leistung.zahnbruecken.faq.0.antwort": {
+      "text": "If the neighbouring teeth are healthy and undamaged, an implant often makes more sense – it preserves healthy tooth structure. If the neighbouring teeth need crowns anyway, a bridge is often the more sensible and more affordable option. We will explain both options, along with the costs and consequences, before you decide.",
+      "quelle": "9ead2232"
+    },
+    "leistung.zahnbruecken.faq.0.frage": {
+      "text": "Bridge or implant?",
+      "quelle": "985d948b"
+    },
+    "leistung.zahnbruecken.faq.1.antwort": {
+      "text": "In certain cases in the front tooth area, yes – with an adhesive bridge, which is attached using just one wing to the back of a neighbouring tooth. This is a good interim solution, especially for young people with congenitally missing teeth.",
+      "quelle": "65c4fbe0"
+    },
+    "leistung.zahnbruecken.faq.1.frage": {
+      "text": "Can a bridge be fitted without grinding down the teeth?",
+      "quelle": "bfd0c08c"
+    },
+    "leistung.zahnbruecken.kasse": {
+      "text": "Fixed subsidy from the statutory health insurance for standard care, increased with a bonus record.",
+      "quelle": "296753b6"
+    },
+    "leistung.zahnbruecken.kosten": {
+      "text": "€1,200 to €2,800 depending on span and material",
+      "quelle": "704d88bf"
+    },
+    "leistung.zahnbruecken.kurz": {
+      "text": "Closing a gap by letting the neighbouring teeth carry the new tooth.",
+      "quelle": "c490e987"
+    },
+    "leistung.zahnbruecken.name": {
+      "text": "Dental bridges",
+      "quelle": "c22f8fe3"
+    },
+    "leistung.zahnbruecken.patientenfrage": {
+      "text": "Bridge or implant – which is better for a gap in your teeth?",
+      "quelle": "da3b10de"
+    },
+    "leistung.zahnbruecken.synonyme.0": {
+      "text": "bridge",
+      "quelle": "fa7b5124"
+    },
+    "leistung.zahnbruecken.synonyme.1": {
+      "text": "closing a gap in teeth",
+      "quelle": "ad7a1bc9"
+    },
+    "leistung.zahnbruecken.synonyme.2": {
+      "text": "fixed dentures",
+      "quelle": "b3254739"
+    },
+    "leistung.zahnbruecken.synonyme.3": {
+      "text": "adhesive bridge",
+      "quelle": "d47411d9"
+    },
+    "leistung.zahnbruecken.teaser": {
+      "text": "A bridge replaces one or more missing teeth, supported by the neighbouring teeth. It sits firmly, can be used straight away and needs no surgery – but unlike an implant, the neighbouring teeth have to be ground down to hold it.",
+      "quelle": "e4a94168"
+    },
+    "leistung.zahnentfernung.dauer": {
+      "text": "20 to 60 minutes",
+      "quelle": "27ed65c7"
+    },
+    "leistung.zahnentfernung.faq.0.antwort": {
+      "text": "For 24 hours: no smoking, no alcohol, no coffee, no dairy products, no rinsing and no exercise. Warmth and physical exertion can trigger further bleeding. Cool the area from the outside at intervals.",
+      "quelle": "37e3813f"
+    },
+    "leistung.zahnentfernung.faq.0.frage": {
+      "text": "What shouldn't I do afterwards?",
+      "quelle": "ee777174"
+    },
+    "leistung.zahnentfernung.faq.1.antwort": {
+      "text": "In visible areas, usually yes, with a temporary tooth. In the back teeth, it depends on whether the opposing tooth would otherwise shift out of place. Ideally, we plan the permanent solution with you even before the extraction.",
+      "quelle": "00618a8f"
+    },
+    "leistung.zahnentfernung.faq.1.frage": {
+      "text": "Should the gap be treated straight away?",
+      "quelle": "89a5acac"
+    },
+    "leistung.zahnentfernung.kasse": {
+      "text": "Removal is covered by statutory health insurance. Bone-preserving measures are private.",
+      "quelle": "73a335e1"
+    },
+    "leistung.zahnentfernung.kosten": {
+      "text": "Covered by statutory health insurance, additional measures charged according to effort",
+      "quelle": "b1dd9cf2"
+    },
+    "leistung.zahnentfernung.kurz": {
+      "text": "When a tooth can't be saved – removed gently, with an eye on what comes next.",
+      "quelle": "646ea072"
+    },
+    "leistung.zahnentfernung.name": {
+      "text": "Tooth extraction",
+      "quelle": "db88ece6"
+    },
+    "leistung.zahnentfernung.patientenfrage": {
+      "text": "What should I be careful of after having a tooth removed?",
+      "quelle": "17061719"
+    },
+    "leistung.zahnentfernung.synonyme.0": {
+      "text": "Having a tooth pulled",
+      "quelle": "e7772455"
+    },
+    "leistung.zahnentfernung.synonyme.1": {
+      "text": "Extraction",
+      "quelle": "854a6d78"
+    },
+    "leistung.zahnentfernung.synonyme.2": {
+      "text": "Tooth removal",
+      "quelle": "25befa1b"
+    },
+    "leistung.zahnentfernung.synonyme.3": {
+      "text": "Tooth loss",
+      "quelle": "f6f6d133"
+    },
+    "leistung.zahnentfernung.teaser": {
+      "text": "Sometimes a tooth is so badly damaged that saving it no longer makes sense. We remove it as gently as possible while preserving the bony socket – this makes fitting an implant later on much easier.",
+      "quelle": "1fdb10a5"
+    },
+    "leistung.zahnimplantate.ablauf.0.dauer": {
+      "text": "45 min.",
+      "quelle": "d96be374"
+    },
+    "leistung.zahnimplantate.ablauf.0.text": {
+      "text": "A CBCT scan shows bone volume and nerve pathways to the millimetre. From this, we plan the position and length of the implant on screen.",
+      "quelle": "de9a677f"
+    },
+    "leistung.zahnimplantate.ablauf.0.titel": {
+      "text": "Planning with 3D scan",
+      "quelle": "b8cabcab"
+    },
+    "leistung.zahnimplantate.ablauf.1.dauer": {
+      "text": "30 – 90 min.",
+      "quelle": "3b853aa6"
+    },
+    "leistung.zahnimplantate.ablauf.1.text": {
+      "text": "Under local anaesthetic – or sedation if you prefer – the implant is placed into the jawbone. Most people find this less demanding than having a tooth removed.",
+      "quelle": "063e76e3"
+    },
+    "leistung.zahnimplantate.ablauf.1.titel": {
+      "text": "Placing the implant",
+      "quelle": "47a36e2d"
+    },
+    "leistung.zahnimplantate.ablauf.2.dauer": {
+      "text": "3 – 6 months",
+      "quelle": "617e9dc9"
+    },
+    "leistung.zahnimplantate.ablauf.2.text": {
+      "text": "The bone fuses firmly with the implant surface. During this time you wear a temporary restoration, so you can eat and smile as normal.",
+      "quelle": "1123bff9"
+    },
+    "leistung.zahnimplantate.ablauf.2.titel": {
+      "text": "Healing time",
+      "quelle": "d0a18a85"
+    },
+    "leistung.zahnimplantate.ablauf.3.dauer": {
+      "text": "2 appointments",
+      "quelle": "8f016911"
+    },
+    "leistung.zahnimplantate.ablauf.3.text": {
+      "text": "Once healing is complete, the new tooth is fitted – made in our own master lab and matched to your natural tooth colour.",
+      "quelle": "8bb903d6"
+    },
+    "leistung.zahnimplantate.ablauf.3.titel": {
+      "text": "Fitting the crown",
+      "quelle": "bf49b755"
+    },
+    "leistung.zahnimplantate.dauer": {
+      "text": "Procedure 30 to 90 minutes, overall treatment 3 to 6 months",
+      "quelle": "aa351ae9"
+    },
+    "leistung.zahnimplantate.faq.0.antwort": {
+      "text": "You won't feel anything during the procedure thanks to the local anaesthetic. Afterwards, there may be mild pain and swelling for one to three days – similar to having a tooth removed, and easily managed with standard painkillers. If you feel very anxious, the procedure can also be done under sedation.",
+      "quelle": "c62f4a14"
+    },
+    "leistung.zahnimplantate.faq.0.frage": {
+      "text": "Does the placement hurt?",
+      "quelle": "82172ff0"
+    },
+    "leistung.zahnimplantate.faq.1.antwort": {
+      "text": "After ten years, over ninety per cent of implants are still in function. What matters most is consistent aftercare, healthy gums and not smoking. Smoking significantly increases the risk of implant loss.",
+      "quelle": "6e17511e"
+    },
+    "leistung.zahnimplantate.faq.1.frage": {
+      "text": "How long does an implant last?",
+      "quelle": "ec48515c"
+    },
+    "leistung.zahnimplantate.faq.2.antwort": {
+      "text": "There is no upper age limit. What matters is general health and bone quality, not the year you were born. There is a lower limit, though: for teenagers, treatment waits until jaw growth is complete.",
+      "quelle": "bd848069"
+    },
+    "leistung.zahnimplantate.faq.2.frage": {
+      "text": "Am I too old for an implant?",
+      "quelle": "5ffddde3"
+    },
+    "leistung.zahnimplantate.faq.3.antwort": {
+      "text": "In that case, bone can be built up – depending on the extent needed, either at the same time as the implant is placed or in a preceding procedure. The 3D scan shows how much you would need.",
+      "quelle": "ff52c7a7"
+    },
+    "leistung.zahnimplantate.faq.3.frage": {
+      "text": "What if there isn't enough bone?",
+      "quelle": "6194626b"
+    },
+    "leistung.zahnimplantate.faq.4.antwort": {
+      "text": "Yes, made from zirconium oxide ceramic. They are white, tissue-friendly and an option for people with a titanium sensitivity or thin gum tissue in visible areas. Not every situation is suited to this – we will check this during planning.",
+      "quelle": "613f8e8c"
+    },
+    "leistung.zahnimplantate.faq.4.frage": {
+      "text": "Are there implants without metal?",
+      "quelle": "bdd58882"
+    },
+    "leistung.zahnimplantate.kasse": {
+      "text": "Statutory health insurance pays a fixed subsidy for the denture attached to the implant, but not for the implant itself. The subsidy matches that for the comparable standard treatment.",
+      "quelle": "b57e3059"
+    },
+    "leistung.zahnimplantate.kosten": {
+      "text": "€1,800 to €3,500 per implant including crown",
+      "quelle": "239fe240"
+    },
+    "leistung.zahnimplantate.kurz": {
+      "text": "An artificial tooth root made of titanium – firmly anchored, without grinding down neighbouring teeth.",
+      "quelle": "f49d471c"
+    },
+    "leistung.zahnimplantate.name": {
+      "text": "Dental implants",
+      "quelle": "4594839f"
+    },
+    "leistung.zahnimplantate.patientenfrage": {
+      "text": "How does an implant procedure work, and does it hurt?",
+      "quelle": "28f10855"
+    },
+    "leistung.zahnimplantate.synonyme.0": {
+      "text": "Implant",
+      "quelle": "8128ca75"
+    },
+    "leistung.zahnimplantate.synonyme.1": {
+      "text": "artificial tooth root",
+      "quelle": "2030e608"
+    },
+    "leistung.zahnimplantate.synonyme.2": {
+      "text": "dental implant cost",
+      "quelle": "9ebc0742"
+    },
+    "leistung.zahnimplantate.synonyme.3": {
+      "text": "titanium implant",
+      "quelle": "7ad29c69"
+    },
+    "leistung.zahnimplantate.synonyme.4": {
+      "text": "ceramic implant",
+      "quelle": "add152a7"
+    },
+    "leistung.zahnimplantate.teaser": {
+      "text": "An implant replaces the tooth root and carries a crown, bridge or denture on top. It transfers chewing forces into the jawbone, keeping it active – an advantage no other type of denture can offer. The neighbouring teeth remain untouched.",
+      "quelle": "9072c1c0"
+    },
+    "leistung.zahnschmuck.dauer": {
+      "text": "20 minutes",
+      "quelle": "94e96abd"
+    },
+    "leistung.zahnschmuck.faq.0.antwort": {
+      "text": "No, not if it's fitted and cared for properly. The tooth itself isn't harmed. It's important to brush thoroughly around the piece so plaque doesn't build up there.",
+      "quelle": "84641fd6"
+    },
+    "leistung.zahnschmuck.faq.0.frage": {
+      "text": "Does tooth jewellery damage the tooth?",
+      "quelle": "68b5ed94"
+    },
+    "leistung.zahnschmuck.kasse": {
+      "text": "Private treatment.",
+      "quelle": "6449329c"
+    },
+    "leistung.zahnschmuck.kosten": {
+      "text": "€60 to €150 depending on the piece",
+      "quelle": "298d235f"
+    },
+    "leistung.zahnschmuck.kurz": {
+      "text": "A small crystal or gold ornament, bonded on without drilling.",
+      "quelle": "c9c33a87"
+    },
+    "leistung.zahnschmuck.name": {
+      "text": "Tooth gems",
+      "quelle": "af47c5a8"
+    },
+    "leistung.zahnschmuck.patientenfrage": {
+      "text": "Do you have to drill into the tooth for a tooth gem?",
+      "quelle": "2ead2c19"
+    },
+    "leistung.zahnschmuck.synonyme.0": {
+      "text": "tooth gem",
+      "quelle": "0b3839c3"
+    },
+    "leistung.zahnschmuck.synonyme.1": {
+      "text": "tooth jewellery",
+      "quelle": "55d5c56c"
+    },
+    "leistung.zahnschmuck.synonyme.2": {
+      "text": "Skyce",
+      "quelle": "2691833e"
+    },
+    "leistung.zahnschmuck.synonyme.3": {
+      "text": "Twinkles",
+      "quelle": "1020d6e8"
+    },
+    "leistung.zahnschmuck.teaser": {
+      "text": "Tooth gems are bonded on using the same method as braces – without drilling and without any loss of tooth substance. They can be removed again at any time, leaving no trace.",
+      "quelle": "2d67a07a"
     },
     "leistung.zahnvorsorge.dauer": {
       "text": "20 to 30 minutes",

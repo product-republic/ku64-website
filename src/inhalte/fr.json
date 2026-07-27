@@ -81,6 +81,2406 @@
       "text": "Prothèses dentaires",
       "quelle": "59942be3"
     },
+    "leistung.aligner.dauer": {
+      "text": "6 à 18 mois, selon la situation de départ",
+      "quelle": "93d3d2f7"
+    },
+    "leistung.aligner.faq.0.antwort": {
+      "text": "Au moins 20 à 22 heures – donc en permanence, sauf pour manger et se brosser les dents. C'est le point qui fait réussir ou échouer le traitement. Ne pas respecter le temps de port prolonge considérablement le traitement.",
+      "quelle": "aaa572b2"
+    },
+    "leistung.aligner.faq.0.frage": {
+      "text": "Combien d'heures par jour dois-je porter la gouttière ?",
+      "quelle": "9d19fc3b"
+    },
+    "leistung.aligner.faq.1.antwort": {
+      "text": "À une distance de conversation normale, pratiquement pas. Si des attaches – de petits éléments de la couleur des dents – sont nécessaires, elles peuvent être visibles de près.",
+      "quelle": "51d582c3"
+    },
+    "leistung.aligner.faq.1.frage": {
+      "text": "Voit-on les gouttières quand on parle ?",
+      "quelle": "7073277d"
+    },
+    "leistung.aligner.faq.2.antwort": {
+      "text": "Seulement avec une contention. Les dents ont naturellement tendance à revenir à leur position initiale. Après tout traitement orthodontique, une stabilisation durable est donc nécessaire – le plus souvent un fin fil derrière les dents de devant.",
+      "quelle": "773f269c"
+    },
+    "leistung.aligner.faq.2.frage": {
+      "text": "Les dents restent-elles droites par la suite ?",
+      "quelle": "f3916e87"
+    },
+    "leistung.aligner.kasse": {
+      "text": "Chez l'adulte, il s'agit en général d'une prestation privée. Chez l'enfant et l'adolescent, la caisse d'assurance maladie légale allemande prend en charge le traitement à partir du degré de malposition KIG 3 – mais il s'agit alors le plus souvent d'un appareil fixe.",
+      "quelle": "ad5f0f5e"
+    },
+    "leistung.aligner.kosten": {
+      "text": "3.500 à 7.000 € pour les deux mâchoires",
+      "quelle": "224b316f"
+    },
+    "leistung.aligner.kurz": {
+      "text": "Redresser les dents avec des gouttières transparentes plutôt qu'un appareil fixe.",
+      "quelle": "e783c504"
+    },
+    "leistung.aligner.name": {
+      "text": "Gouttières dentaires invisibles (aligneurs)",
+      "quelle": "040c6df6"
+    },
+    "leistung.aligner.patientenfrage": {
+      "text": "Combien de temps dure un traitement par aligneurs chez l'adulte ?",
+      "quelle": "a72a7d1f"
+    },
+    "leistung.aligner.synonyme.0": {
+      "text": "Invisalign",
+      "quelle": "9d4fb93d"
+    },
+    "leistung.aligner.synonyme.1": {
+      "text": "gouttière transparente",
+      "quelle": "f2cea9bc"
+    },
+    "leistung.aligner.synonyme.2": {
+      "text": "appareil dentaire invisible",
+      "quelle": "700d3d8e"
+    },
+    "leistung.aligner.synonyme.3": {
+      "text": "Gouttière dentaire",
+      "quelle": "ce54914f"
+    },
+    "leistung.aligner.synonyme.4": {
+      "text": "Dents droites",
+      "quelle": "140fff02"
+    },
+    "leistung.aligner.teaser": {
+      "text": "Les aligneurs sont des gouttières transparentes et amovibles qui déplacent les dents par petites étapes. Au quotidien, ils passent presque inaperçus, et pour manger ou vous brosser les dents, il vous suffit de les retirer. Pour les malpositions légères à moyennes, ils constituent une très bonne alternative à l'appareil fixe.",
+      "quelle": "03331422"
+    },
+    "leistung.all-on-4.dauer": {
+      "text": "Intervention de 2 à 4 heures, prothèse définitive après 3 à 6 mois",
+      "quelle": "b36a5dfc"
+    },
+    "leistung.all-on-4.faq.0.antwort": {
+      "text": "Oui, s'ils sont correctement positionnés. Les deux implants du fond sont posés en inclinaison pour exploiter au mieux l'os disponible. Cette méthode est documentée depuis plus de vingt ans. Lorsque la qualité osseuse est moins favorable, nous utilisons six implants.",
+      "quelle": "48d4fd61"
+    },
+    "leistung.all-on-4.faq.0.frage": {
+      "text": "Quatre implants suffisent-ils vraiment pour toute une mâchoire ?",
+      "quelle": "cdab4d66"
+    },
+    "leistung.all-on-4.faq.1.antwort": {
+      "text": "La prothèse provisoire est fixe, mais elle ne supporte pas encore toutes les charges. Pendant environ trois mois, nous conseillons une alimentation molle et d'éviter les aliments très durs. Ensuite, le pont définitif peut être utilisé sans restriction.",
+      "quelle": "05e2c4ac"
+    },
+    "leistung.all-on-4.faq.1.frage": {
+      "text": "Que puis-je manger pendant les premières semaines ?",
+      "quelle": "a7a9a53e"
+    },
+    "leistung.all-on-4.kasse": {
+      "text": "Forfait pour le traitement de référence comparable. Un paiement échelonné est possible.",
+      "quelle": "05485674"
+    },
+    "leistung.all-on-4.kosten": {
+      "text": "9 000 à 18 000 € par mâchoire",
+      "quelle": "23ea66e8"
+    },
+    "leistung.all-on-4.kurz": {
+      "text": "Un mâchoire complète sur quatre implants – avec une prothèse provisoire fixe dès le jour même.",
+      "quelle": "5b35f9a2"
+    },
+    "leistung.all-on-4.name": {
+      "text": "Dents fixes en une journée (All-on-4)",
+      "quelle": "8186e977"
+    },
+    "leistung.all-on-4.patientenfrage": {
+      "text": "Aurai-je vraiment des dents fixes en une seule journée ?",
+      "quelle": "bd308f7a"
+    },
+    "leistung.all-on-4.synonyme.0": {
+      "text": "All on 4",
+      "quelle": "d712c541"
+    },
+    "leistung.all-on-4.synonyme.1": {
+      "text": "dents fixes en une journée",
+      "quelle": "e406ca8a"
+    },
+    "leistung.all-on-4.synonyme.2": {
+      "text": "prise en charge immédiate mâchoire édentée",
+      "quelle": "3c6ac1e6"
+    },
+    "leistung.all-on-4.synonyme.3": {
+      "text": "All-on-6",
+      "quelle": "68570485"
+    },
+    "leistung.all-on-4.teaser": {
+      "text": "Lorsque la mâchoire est très abîmée ou édentée, un bridge posé sur quatre à six implants habilement positionnés porte l'ensemble de la mâchoire. Une prothèse provisoire fixe est souvent possible dès le jour de l'intervention – vous ne rentrez donc pas chez vous sans dents.",
+      "quelle": "89058ffc"
+    },
+    "leistung.behandlung-in-narkose.dauer": {
+      "text": "2 à 5 heures en une seule séance",
+      "quelle": "d941c32b"
+    },
+    "leistung.behandlung-in-narkose.faq.0.antwort": {
+      "text": "Elle est réalisée par un médecin spécialiste en anesthésie et surveillée en continu. Un entretien préalable permet d'examiner vos antécédents médicaux. Pour une personne en bonne santé, le risque est très faible.",
+      "quelle": "bde797fb"
+    },
+    "leistung.behandlung-in-narkose.faq.0.frage": {
+      "text": "L'anesthésie est-elle sans danger ?",
+      "quelle": "e04303be"
+    },
+    "leistung.behandlung-in-narkose.faq.1.antwort": {
+      "text": "Non. Vous avez besoin d'un accompagnateur et vous ne devez ni conduire ni prendre de décisions importantes pendant 24 heures.",
+      "quelle": "749a82c1"
+    },
+    "leistung.behandlung-in-narkose.faq.1.frage": {
+      "text": "Puis-je rentrer seul chez moi après ?",
+      "quelle": "95de931a"
+    },
+    "leistung.behandlung-in-narkose.kasse": {
+      "text": "La caisse d'assurance maladie allemande ne prend en charge l'anesthésie que dans certains cas, par exemple en cas de phobie avérée ou de handicap. Sinon, elle reste à votre charge.",
+      "quelle": "1b8dd90f"
+    },
+    "leistung.behandlung-in-narkose.kosten": {
+      "text": "Anesthésie : 600 à 1 500 € en plus du traitement",
+      "quelle": "0e043a4d"
+    },
+    "leistung.behandlung-in-narkose.kurz": {
+      "text": "Des soins étendus en une seule séance – vous dormez, nous travaillons.",
+      "quelle": "9163e8c8"
+    },
+    "leistung.behandlung-in-narkose.name": {
+      "text": "Traitement sous anesthésie générale",
+      "quelle": "ebfd7b92"
+    },
+    "leistung.behandlung-in-narkose.patientenfrage": {
+      "text": "Un traitement dentaire sous anesthésie générale est-il sûr ?",
+      "quelle": "8812c028"
+    },
+    "leistung.behandlung-in-narkose.synonyme.0": {
+      "text": "Anesthésie générale dentiste",
+      "quelle": "4f647e11"
+    },
+    "leistung.behandlung-in-narkose.synonyme.1": {
+      "text": "Soins dentaires sous sédation",
+      "quelle": "bf75e0b5"
+    },
+    "leistung.behandlung-in-narkose.synonyme.2": {
+      "text": "Traitement dentaire sous anesthésie générale",
+      "quelle": "0b35a17f"
+    },
+    "leistung.behandlung-in-narkose.synonyme.3": {
+      "text": "Intubation dentaire",
+      "quelle": "ded2a97a"
+    },
+    "leistung.behandlung-in-narkose.teaser": {
+      "text": "En cas de peur importante, de fort réflexe nauséeux ou de besoins de soins très étendus, l'anesthésie générale est une bonne solution. Un médecin anesthésiste vous surveille en permanence pendant que nous réalisons tout le nécessaire en une seule séance.",
+      "quelle": "ba7995a7"
+    },
+    "leistung.cmd-behandlung.dauer": {
+      "text": "Diagnostic 60 à 90 minutes, traitement sur plusieurs mois",
+      "quelle": "068a03a2"
+    },
+    "leistung.cmd-behandlung.faq.0.antwort": {
+      "text": "Les signes typiques sont des craquements ou des frottements dans l'articulation de la mâchoire, une ouverture limitée de la bouche, une tension matinale des muscles des joues, des maux de tête récurrents au niveau des tempes et des bruits dans les oreilles sans cause ORL identifiée. Plusieurs de ces signes apparaissent souvent ensemble.",
+      "quelle": "3b5af0fb"
+    },
+    "leistung.cmd-behandlung.faq.0.frage": {
+      "text": "Comment savoir s'il s'agit d'un DTM ?",
+      "quelle": "c19f6bf3"
+    },
+    "leistung.cmd-behandlung.faq.1.antwort": {
+      "text": "Beaucoup de patients constatent une première amélioration après quelques semaines de port de la gouttière. La stabilisation prend généralement de trois à six mois. Dans les cas prononcés, nous travaillons en collaboration avec des kinésithérapeutes.",
+      "quelle": "46d9a9c1"
+    },
+    "leistung.cmd-behandlung.faq.1.frage": {
+      "text": "Combien de temps dure le traitement ?",
+      "quelle": "5ed5b27d"
+    },
+    "leistung.cmd-behandlung.kasse": {
+      "text": "La caisse légale prend en charge la gouttière en cas de diagnostic correspondant. L'analyse fonctionnelle instrumentale est une prestation privée.",
+      "quelle": "f5ec4ca1"
+    },
+    "leistung.cmd-behandlung.kosten": {
+      "text": "Analyse fonctionnelle 200 à 600 €, gouttière 350 à 900 €",
+      "quelle": "9c719b9f"
+    },
+    "leistung.cmd-behandlung.kurz": {
+      "text": "Quand la mâchoire, la nuque ou les oreilles font mal et que personne ne trouve la cause.",
+      "quelle": "b950d886"
+    },
+    "leistung.cmd-behandlung.name": {
+      "text": "DTM et troubles de l'articulation temporo-mandibulaire",
+      "quelle": "79104419"
+    },
+    "leistung.cmd-behandlung.patientenfrage": {
+      "text": "Mes maux de tête peuvent-ils venir de ma mâchoire ?",
+      "quelle": "a4c9fee2"
+    },
+    "leistung.cmd-behandlung.synonyme.0": {
+      "text": "DTM",
+      "quelle": "796cd3cb"
+    },
+    "leistung.cmd-behandlung.synonyme.1": {
+      "text": "Douleurs articulation mâchoire",
+      "quelle": "ca2741dc"
+    },
+    "leistung.cmd-behandlung.synonyme.2": {
+      "text": "Mâchoire qui craque",
+      "quelle": "487810a1"
+    },
+    "leistung.cmd-behandlung.synonyme.3": {
+      "text": "Tension mâchoire",
+      "quelle": "7e2c804c"
+    },
+    "leistung.cmd-behandlung.synonyme.4": {
+      "text": "Acouphènes mâchoire",
+      "quelle": "607990e9"
+    },
+    "leistung.cmd-behandlung.teaser": {
+      "text": "Un dysfonctionnement temporo-mandibulaire apparaît lorsque les dents, les articulations de la mâchoire et les muscles masticateurs ne s'accordent plus entre eux. Les symptômes se manifestent souvent loin de la mâchoire – maux de tête, acouphènes ou tensions dans la nuque. Nous mesurons la fonction de manière systématique et traitons la cause.",
+      "quelle": "b6977c0d"
+    },
+    "leistung.dvt-3d-roentgen.dauer": {
+      "text": "10 à 20 secondes de prise de vue",
+      "quelle": "0239d36e"
+    },
+    "leistung.dvt-3d-roentgen.faq.0.antwort": {
+      "text": "Nettement plus faible que lors d'une tomographie médicale et, selon l'appareil et la taille du champ, de l'ordre de quelques jours de rayonnement naturel de fond. Nous ne réalisons une image qu'en cas d'indication claire et choisissons le champ le plus petit possible.",
+      "quelle": "ed122f89"
+    },
+    "leistung.dvt-3d-roentgen.faq.0.frage": {
+      "text": "Quelle est l'exposition aux radiations ?",
+      "quelle": "6a5b5dbd"
+    },
+    "leistung.dvt-3d-roentgen.faq.1.frage": {
+      "text": "Puis-je emporter l'image avec moi ?",
+      "quelle": "a10403f8"
+    },
+    "leistung.dvt-3d-roentgen.kasse": {
+      "text": "En règle générale, une prestation privée ; dans certains cas, prise en charge par la caisse.",
+      "quelle": "a26de238"
+    },
+    "leistung.dvt-3d-roentgen.kosten": {
+      "text": "150 à 350 €",
+      "quelle": "3ded83e3"
+    },
+    "leistung.dvt-3d-roentgen.kurz": {
+      "text": "Une image tridimensionnelle pour les plans où chaque millimètre compte.",
+      "quelle": "3d6f7603"
+    },
+    "leistung.dvt-3d-roentgen.name": {
+      "text": "Radiographie 3D (CBCT)",
+      "quelle": "83a09ed6"
+    },
+    "leistung.dvt-3d-roentgen.patientenfrage": {
+      "text": "Quelle est l'exposition aux radiations lors d'un CBCT ?",
+      "quelle": "159eee41"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.0": {
+      "text": "CBCT",
+      "quelle": "2de58591"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.1": {
+      "text": "tomographie volumique",
+      "quelle": "9db946d4"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.2": {
+      "text": "radiographie 3D dent",
+      "quelle": "c54e9f25"
+    },
+    "leistung.dvt-3d-roentgen.synonyme.3": {
+      "text": "scanner dentiste",
+      "quelle": "76686450"
+    },
+    "leistung.dvt-3d-roentgen.teaser": {
+      "text": "La tomographie volumique numérique montre la mâchoire, les dents et le trajet des nerfs en trois dimensions. Elle est utilisée lorsqu'une image bidimensionnelle ne suffit pas – par exemple avant la pose d'implants ou l'extraction des dents de sagesse.",
+      "quelle": "e727bfca"
+    },
+    "leistung.feste-zahnspange.dauer": {
+      "text": "12 à 30 mois",
+      "quelle": "48a9f2a3"
+    },
+    "leistung.feste-zahnspange.faq.0.antwort": {
+      "text": "Après la pose et après chaque réglage, les dents sont sensibles à la pression pendant deux à trois jours. C'est désagréable, mais supportable – une alimentation molle aide pendant cette période.",
+      "quelle": "e6dc9bc5"
+    },
+    "leistung.feste-zahnspange.faq.0.frage": {
+      "text": "Un appareil dentaire fixe fait-il mal ?",
+      "quelle": "17a83675"
+    },
+    "leistung.feste-zahnspange.faq.1.antwort": {
+      "text": "Non. Les dents peuvent être déplacées à tout âge, tant que les gencives sont saines. Chez les adultes, cela prend généralement un peu plus de temps, et une parodontite existante doit être traitée au préalable.",
+      "quelle": "5e6161bb"
+    },
+    "leistung.feste-zahnspange.faq.1.frage": {
+      "text": "Suis-je trop âgé(e) à 40 ans pour un appareil dentaire ?",
+      "quelle": "6da59bb9"
+    },
+    "leistung.feste-zahnspange.kasse": {
+      "text": "Pour les enfants et adolescents à partir du niveau KIG 3, la caisse prend en charge le traitement standard. La participation personnelle de 20 pour cent est remboursée une fois le traitement terminé avec succès.",
+      "quelle": "dab76c66"
+    },
+    "leistung.feste-zahnspange.kosten": {
+      "text": "2 500 à 8 000 € selon le système",
+      "quelle": "66e739be"
+    },
+    "leistung.feste-zahnspange.kurz": {
+      "text": "La méthode la plus fiable pour les malpositions marquées – aussi en version invisible.",
+      "quelle": "55d7fd5a"
+    },
+    "leistung.feste-zahnspange.name": {
+      "text": "Appareil dentaire fixe",
+      "quelle": "0d768a19"
+    },
+    "leistung.feste-zahnspange.patientenfrage": {
+      "text": "Appareil fixe ou gouttières – lequel convient à ma malposition ?",
+      "quelle": "47ec6ea6"
+    },
+    "leistung.feste-zahnspange.synonyme.0": {
+      "text": "Brackets",
+      "quelle": "c3d2cb20"
+    },
+    "leistung.feste-zahnspange.synonyme.1": {
+      "text": "Appareil dentaire",
+      "quelle": "ae45ada2"
+    },
+    "leistung.feste-zahnspange.synonyme.2": {
+      "text": "Bagues dentaires",
+      "quelle": "525d8590"
+    },
+    "leistung.feste-zahnspange.synonyme.3": {
+      "text": "Technique linguale",
+      "quelle": "488f2ea5"
+    },
+    "leistung.feste-zahnspange.synonyme.4": {
+      "text": "Brackets céramiques",
+      "quelle": "0711fc9e"
+    },
+    "leistung.feste-zahnspange.teaser": {
+      "text": "L'appareil fixe permet des mouvements dentaires impossibles avec des gouttières. Outre les brackets classiques, il existe des brackets céramiques de la couleur des dents et des systèmes linguaux, placés à l'intérieur des dents et invisibles de l'extérieur.",
+      "quelle": "f31d5c83"
+    },
+    "leistung.fissurenversiegelung.dauer": {
+      "text": "15 à 30 minutes",
+      "quelle": "7222838a"
+    },
+    "leistung.fissurenversiegelung.faq.0.antwort": {
+      "text": "Il s'use avec les années et est vérifié lors des contrôles. Si besoin, il est complété – rapidement et sans douleur.",
+      "quelle": "6df36c98"
+    },
+    "leistung.fissurenversiegelung.faq.0.frage": {
+      "text": "Le scellement tient-il durablement ?",
+      "quelle": "5ebaef1e"
+    },
+    "leistung.fissurenversiegelung.kasse": {
+      "text": "Le scellement des grosses molaires définitives est pris en charge par la caisse pour les enfants et les adolescents. Les autres dents sont à votre charge.",
+      "quelle": "0c2ff81d"
+    },
+    "leistung.fissurenversiegelung.kosten": {
+      "text": "Prise en charge par la caisse pour les molaires définitives",
+      "quelle": "fc1b6b0c"
+    },
+    "leistung.fissurenversiegelung.kurz": {
+      "text": "Sceller les sillons profonds des molaires avant l'apparition de caries.",
+      "quelle": "d5e2f454"
+    },
+    "leistung.fissurenversiegelung.name": {
+      "text": "Scellement des sillons",
+      "quelle": "8b7756aa"
+    },
+    "leistung.fissurenversiegelung.patientenfrage": {
+      "text": "Le scellement des sillons est-il utile ?",
+      "quelle": "10c038d1"
+    },
+    "leistung.fissurenversiegelung.synonyme.0": {
+      "text": "Scellement des sillons",
+      "quelle": "6647f8f1"
+    },
+    "leistung.fissurenversiegelung.synonyme.1": {
+      "text": "Protection carie molaires",
+      "quelle": "07a14b34"
+    },
+    "leistung.fissurenversiegelung.synonyme.2": {
+      "text": "Scellement dents enfant",
+      "quelle": "882bc530"
+    },
+    "leistung.fissurenversiegelung.teaser": {
+      "text": "Les faces masticatoires des molaires définitives présentent des sillons profonds que la brosse à dents n'atteint pas. Un fin vernis en résine les obture – sans douleur, sans fraise, en quelques minutes.",
+      "quelle": "4bf84032"
+    },
+    "leistung.implantat-prophylaxe.dauer": {
+      "text": "45 à 60 minutes",
+      "quelle": "0058dc0c"
+    },
+    "leistung.implantat-prophylaxe.faq.0.antwort": {
+      "text": "Nous recommandons deux à quatre rendez-vous par an, selon la qualité de l'hygiène bucco-dentaire à la maison et si vous avez déjà eu une parodontite par le passé.",
+      "quelle": "4a89e92e"
+    },
+    "leistung.implantat-prophylaxe.faq.0.frage": {
+      "text": "À quelle fréquence un implant doit-il être contrôlé ?",
+      "quelle": "0106cc6b"
+    },
+    "leistung.implantat-prophylaxe.faq.1.antwort": {
+      "text": "C'est une inflammation des tissus autour de l'implant, qui, non traitée, entraîne une perte osseuse et, dans le pire des cas, la perte de l'implant. Elle ne fait pas mal au début – c'est pourquoi le contrôle régulier est si important.",
+      "quelle": "3718a311"
+    },
+    "leistung.implantat-prophylaxe.faq.1.frage": {
+      "text": "Qu'est-ce que la péri-implantite ?",
+      "quelle": "09638fcf"
+    },
+    "leistung.implantat-prophylaxe.kasse": {
+      "text": "Prestation privée. En cas d'implant déjà posé, souvent prise en charge partiellement par les assurances complémentaires.",
+      "quelle": "7380b2a8"
+    },
+    "leistung.implantat-prophylaxe.kosten": {
+      "text": "160 à 260 € par séance",
+      "quelle": "b61235a7"
+    },
+    "leistung.implantat-prophylaxe.kurz": {
+      "text": "Un suivi spécifique pour vos implants, afin qu'ils durent toute la vie.",
+      "quelle": "bedca97a"
+    },
+    "leistung.implantat-prophylaxe.name": {
+      "text": "Prophylaxie implantaire",
+      "quelle": "9fd3396b"
+    },
+    "leistung.implantat-prophylaxe.patientenfrage": {
+      "text": "Comment bien entretenir mes implants dentaires ?",
+      "quelle": "fdfe2c88"
+    },
+    "leistung.implantat-prophylaxe.synonyme.0": {
+      "text": "Prévention de la péri-implantite",
+      "quelle": "e013a58c"
+    },
+    "leistung.implantat-prophylaxe.synonyme.1": {
+      "text": "Suivi d'implant dentaire",
+      "quelle": "fb366bb7"
+    },
+    "leistung.implantat-prophylaxe.synonyme.2": {
+      "text": "Nettoyage d'implant dentaire",
+      "quelle": "374aefb5"
+    },
+    "leistung.implantat-prophylaxe.teaser": {
+      "text": "Les implants ne développent pas de caries, mais ils peuvent perdre leur ancrage osseux si les tissus s'enflamment. La prophylaxie implantaire surveille précisément ce risque et nettoie la surface des implants avec des instruments adaptés.",
+      "quelle": "c824055a"
+    },
+    "leistung.inlays-onlays.dauer": {
+      "text": "2 rendez-vous",
+      "quelle": "8f016911"
+    },
+    "leistung.inlays-onlays.faq.0.antwort": {
+      "text": "Nettement plus longtemps qu'un plombage en composite – on compte en général dix à quinze ans, voire davantage. La céramique ne se rétracte pas en durcissant, ce qui garantit un joint étanche durable.",
+      "quelle": "de4f2f26"
+    },
+    "leistung.inlays-onlays.faq.0.frage": {
+      "text": "Combien de temps dure un inlay céramique ?",
+      "quelle": "aad02dc1"
+    },
+    "leistung.inlays-onlays.kasse": {
+      "text": "Forfait au niveau d'un plombage à l'amalgame ou en résine composite, la différence restant à votre charge.",
+      "quelle": "9762fd11"
+    },
+    "leistung.inlays-onlays.kosten": {
+      "text": "450 à 900 € par dent",
+      "quelle": "cabd69ab"
+    },
+    "leistung.inlays-onlays.kurz": {
+      "text": "Incrustations en céramique sur mesure pour les caries importantes sur les dents postérieures.",
+      "quelle": "b784d8ab"
+    },
+    "leistung.inlays-onlays.name": {
+      "text": "Inlays & Onlays",
+      "quelle": "0cc6d547"
+    },
+    "leistung.inlays-onlays.patientenfrage": {
+      "text": "Quand un inlay est-il préférable à un plombage en résine composite ?",
+      "quelle": "0798497f"
+    },
+    "leistung.inlays-onlays.synonyme.0": {
+      "text": "Inlay céramique",
+      "quelle": "d3dd547e"
+    },
+    "leistung.inlays-onlays.synonyme.1": {
+      "text": "Incrustation dentaire",
+      "quelle": "e48fdd72"
+    },
+    "leistung.inlays-onlays.synonyme.2": {
+      "text": "Couronne partielle",
+      "quelle": "bc0eb6aa"
+    },
+    "leistung.inlays-onlays.synonyme.3": {
+      "text": "Onlay",
+      "quelle": "56dd7fe2"
+    },
+    "leistung.inlays-onlays.teaser": {
+      "text": "Lorsqu'une carie est trop grande pour un plombage mais que la dent est encore trop saine pour une couronne, l'inlay est la solution adaptée. Il est fabriqué sur mesure en céramique au laboratoire, puis collé – plus stable et plus durable qu'un plombage en résine composite.",
+      "quelle": "ff939087"
+    },
+    "leistung.karies-behandlung.dauer": {
+      "text": "30 à 60 minutes",
+      "quelle": "aded5260"
+    },
+    "leistung.karies-behandlung.faq.0.antwort": {
+      "text": "À un stade très précoce, oui. Une carie débutante dans l'émail peut être stoppée par une fluoration ou traitée par une technique d'infiltration résinée, sans fraisage. Dès que la carie atteint la dentine, elle doit être retirée mécaniquement.",
+      "quelle": "b63e821d"
+    },
+    "leistung.karies-behandlung.faq.0.frage": {
+      "text": "Une carie peut-elle disparaître sans fraisage ?",
+      "quelle": "a1ea7dcb"
+    },
+    "leistung.karies-behandlung.faq.1.antwort": {
+      "text": "La douleur n'apparaît que lorsque la carie se rapproche du nerf. D'ici là, elle peut évoluer pendant des mois sans être remarquée. C'est justement pour cela que les contrôles réguliers sont si précieux : ils détectent ce que vous ne ressentez pas encore.",
+      "quelle": "2b3a27c6"
+    },
+    "leistung.karies-behandlung.faq.1.frage": {
+      "text": "Pourquoi ma dent ne me fait-elle pas mal alors qu'il y a une carie ?",
+      "quelle": "556e5c78"
+    },
+    "leistung.karies-behandlung.kasse": {
+      "text": "La caisse légale allemande prend en charge les obturations de couleur dentaire sur l'ensemble de la dentition. Pour les techniques de stratification plus élaborées, une participation reste à votre charge.",
+      "quelle": "81adfcd1"
+    },
+    "leistung.karies-behandlung.kosten": {
+      "text": "Prise en charge par la caisse, obturations de qualité supérieure : 80 à 250 € à votre charge",
+      "quelle": "4ec7dc79"
+    },
+    "leistung.karies-behandlung.kurz": {
+      "text": "Éliminer la carie et refermer la dent hermétiquement – en préservant au maximum la substance dentaire.",
+      "quelle": "c97d0755"
+    },
+    "leistung.karies-behandlung.name": {
+      "text": "Traitement de la carie",
+      "quelle": "fdf25690"
+    },
+    "leistung.karies-behandlung.patientenfrage": {
+      "text": "Peut-on traiter une carie sans fraiser ?",
+      "quelle": "284bc1b2"
+    },
+    "leistung.karies-behandlung.synonyme.0": {
+      "text": "trou dans la dent",
+      "quelle": "272ccd0a"
+    },
+    "leistung.karies-behandlung.synonyme.1": {
+      "text": "carie",
+      "quelle": "2c379cb4"
+    },
+    "leistung.karies-behandlung.synonyme.2": {
+      "text": "plombage",
+      "quelle": "59b273b5"
+    },
+    "leistung.karies-behandlung.synonyme.3": {
+      "text": "percer une dent",
+      "quelle": "1dbe6b80"
+    },
+    "leistung.karies-behandlung.synonyme.4": {
+      "text": "carie sans fraiser",
+      "quelle": "00219028"
+    },
+    "leistung.karies-behandlung.teaser": {
+      "text": "Plus une carie reste inaperçue longtemps, plus son traitement devient complexe. Détectée tôt, une petite obturation suffit souvent. Nous travaillons avec un système de grossissement et, lorsque cela est pertinent, avec des méthodes particulièrement respectueuses de la dent, afin de préserver un maximum de tissu dentaire sain.",
+      "quelle": "ac9c2068"
+    },
+    "leistung.keramik-kronen.dauer": {
+      "text": "2 rendez-vous sur environ 2 semaines",
+      "quelle": "b38685f5"
+    },
+    "leistung.keramik-kronen.faq.0.antwort": {
+      "text": "Selon les études et l'expérience, on compte entre quinze et vingt ans, souvent plus. L'entretien du bord de la couronne et le fait de grincer des dents la nuit jouent un rôle déterminant.",
+      "quelle": "36bee910"
+    },
+    "leistung.keramik-kronen.faq.0.frage": {
+      "text": "Combien de temps dure une couronne en céramique ?",
+      "quelle": "3bf105fc"
+    },
+    "leistung.keramik-kronen.faq.1.antwort": {
+      "text": "Pas forcément. Tant que le nerf est sain, il reste en place. Un traitement de racine n'est nécessaire que si le nerf est déjà enflammé ou mort.",
+      "quelle": "ac80ea56"
+    },
+    "leistung.keramik-kronen.faq.1.frage": {
+      "text": "La dent doit-elle subir un traitement de racine pour cela ?",
+      "quelle": "7931d3e0"
+    },
+    "leistung.keramik-kronen.faq.2.antwort": {
+      "text": "En général une à deux semaines. Comme nous fabriquons dans notre propre laboratoire de maître, les délais sont plus courts qu'avec des laboratoires externes.",
+      "quelle": "731969ed"
+    },
+    "leistung.keramik-kronen.faq.2.frage": {
+      "text": "Combien de temps dois-je vivre avec une couronne provisoire ?",
+      "quelle": "0a9a533b"
+    },
+    "leistung.keramik-kronen.kasse": {
+      "text": "La caisse d'assurance maladie légale verse une participation forfaitaire pour les soins de base. Pour une couronne en céramique intégrale sur une dent postérieure, vous prenez en charge la différence vous-même. Un carnet de bonus entièrement rempli augmente la participation jusqu'à 30 pour cent.",
+      "quelle": "d3169956"
+    },
+    "leistung.keramik-kronen.kosten": {
+      "text": "700 à 1.400 € par couronne",
+      "quelle": "c9e88589"
+    },
+    "leistung.keramik-kronen.kurz": {
+      "text": "Quand il ne reste plus assez de dent naturelle : une couronne qui a l'apparence d'une vraie dent.",
+      "quelle": "8022c7a0"
+    },
+    "leistung.keramik-kronen.name": {
+      "text": "Couronnes en céramique intégrale",
+      "quelle": "d4c667e0"
+    },
+    "leistung.keramik-kronen.patientenfrage": {
+      "text": "Dans quels cas une dent a-t-elle besoin d'une couronne plutôt que d'un plombage ?",
+      "quelle": "793978e1"
+    },
+    "leistung.keramik-kronen.synonyme.0": {
+      "text": "couronne dentaire",
+      "quelle": "32e8ab65"
+    },
+    "leistung.keramik-kronen.synonyme.1": {
+      "text": "couronne céramique intégrale",
+      "quelle": "94a7f0a5"
+    },
+    "leistung.keramik-kronen.synonyme.2": {
+      "text": "couronne zircone",
+      "quelle": "040a8ce5"
+    },
+    "leistung.keramik-kronen.synonyme.3": {
+      "text": "pose d'une couronne",
+      "quelle": "dca39e58"
+    },
+    "leistung.keramik-kronen.synonyme.4": {
+      "text": "couronner une dent",
+      "quelle": "acff939c"
+    },
+    "leistung.keramik-kronen.teaser": {
+      "text": "Une couronne enveloppe entièrement la dent abîmée et lui redonne sa forme et sa résistance. La céramique intégrale se rapproche beaucoup de la transparence des dents naturelles et ne nécessite pas d'armature métallique, qui apparaîtrait plus tard comme un liseré sombre.",
+      "quelle": "665f8280"
+    },
+    "leistung.kinderprophylaxe.dauer": {
+      "text": "30 minutes",
+      "quelle": "65faa7c8"
+    },
+    "leistung.kinderprophylaxe.faq.0.antwort": {
+      "text": "Un brossage complémentaire par un adulte reste nécessaire jusqu'à ce que l'enfant sache écrire couramment – en général vers huit ans. Avant cet âge, la motricité fine manque pour les faces internes et les molaires du fond.",
+      "quelle": "38981b0a"
+    },
+    "leistung.kinderprophylaxe.faq.0.frage": {
+      "text": "À partir de quel âge mon enfant peut-il se brosser les dents seul ?",
+      "quelle": "8302e0e8"
+    },
+    "leistung.kinderprophylaxe.kasse": {
+      "text": "La prophylaxie individuelle est prise en charge par la caisse deux fois par an de 6 à 17 ans. Pour les enfants de moins de 6 ans, il existe des prestations de dépistage précoce spécifiques.",
+      "quelle": "23046aa8"
+    },
+    "leistung.kinderprophylaxe.kosten": {
+      "text": "Prise en charge par la caisse pour les enfants de 6 à 17 ans",
+      "quelle": "e6236c63"
+    },
+    "leistung.kinderprophylaxe.kurz": {
+      "text": "Apprentissage du brossage, fluoration et contrôle – de façon ludique plutôt que moralisatrice.",
+      "quelle": "6fb4a515"
+    },
+    "leistung.kinderprophylaxe.name": {
+      "text": "Prophylaxie pour enfants",
+      "quelle": "8cfe9f0e"
+    },
+    "leistung.kinderprophylaxe.patientenfrage": {
+      "text": "Que se passe-t-il lors de la prophylaxie pour enfants ?",
+      "quelle": "0fcc26cc"
+    },
+    "leistung.kinderprophylaxe.synonyme.0": {
+      "text": "prophylaxie individuelle enfant",
+      "quelle": "04e2f4bc"
+    },
+    "leistung.kinderprophylaxe.synonyme.1": {
+      "text": "apprentissage du brossage enfant",
+      "quelle": "04644b10"
+    },
+    "leistung.kinderprophylaxe.synonyme.2": {
+      "text": "fluoration dents enfant",
+      "quelle": "a1807424"
+    },
+    "leistung.kinderprophylaxe.synonyme.3": {
+      "text": "prestations de prévention dentaire enfant",
+      "quelle": "3568177b"
+    },
+    "leistung.kinderprophylaxe.teaser": {
+      "text": "Lors de la prophylaxie pour enfants, nous montrons à votre enfant comment brosser les zones qu'il n'atteint pas encore seul, nous colorons la plaque pour la rendre visible et protégeons les dents avec un vernis fluoré.",
+      "quelle": "fd320f8e"
+    },
+    "leistung.kinderzahnarzt.dauer": {
+      "text": "20 à 45 minutes",
+      "quelle": "cc02ea16"
+    },
+    "leistung.kinderzahnarzt.faq.0.antwort": {
+      "text": "Dès l'apparition de la première dent, au plus tard pour le premier anniversaire. Les premiers rendez-vous servent à faire connaissance et à échanger : votre enfant doit découvrir le cabinet comme un lieu sans danger, avant même qu'un soin ne soit nécessaire.",
+      "quelle": "66db7e7d"
+    },
+    "leistung.kinderzahnarzt.faq.0.frage": {
+      "text": "À partir de quel âge devrions-nous venir ?",
+      "quelle": "eb3397dc"
+    },
+    "leistung.kinderzahnarzt.faq.1.antwort": {
+      "text": "Oui. Les dents de lait maintiennent la place pour les dents définitives, et une inflammation peut endommager la dent définitive en dessous. De plus, les caries font mal aussi aux enfants.",
+      "quelle": "cf4a9729"
+    },
+    "leistung.kinderzahnarzt.faq.1.frage": {
+      "text": "Faut-il vraiment soigner un trou dans une dent de lait ?",
+      "quelle": "51de025f"
+    },
+    "leistung.kinderzahnarzt.faq.2.antwort": {
+      "text": "Le mieux est de rester neutre, sans promesses du type « ça ne fait pas mal du tout » : ces phrases attirent justement l'attention sur une possible douleur. Dites simplement que quelqu'un va regarder et compter ses dents. Le reste, nous nous en occupons.",
+      "quelle": "0fa5b4b8"
+    },
+    "leistung.kinderzahnarzt.faq.2.frage": {
+      "text": "Comment préparer mon enfant au rendez-vous ?",
+      "quelle": "cc719cd1"
+    },
+    "leistung.kinderzahnarzt.kasse": {
+      "text": "Le dépistage dentaire précoce dès le 6ème mois ainsi que les contrôles semestriels sont entièrement pris en charge par les caisses. Le scellement des sillons des molaires définitives est également couvert.",
+      "quelle": "86544dd9"
+    },
+    "leistung.kinderzahnarzt.kosten": {
+      "text": "En général sans participation financière pour les enfants",
+      "quelle": "c17cb6c3"
+    },
+    "leistung.kinderzahnarzt.kurz": {
+      "text": "Une dentisterie qui donne envie aux enfants de revenir.",
+      "quelle": "c9dc6529"
+    },
+    "leistung.kinderzahnarzt.name": {
+      "text": "Dentisterie pédiatrique",
+      "quelle": "350e5b02"
+    },
+    "leistung.kinderzahnarzt.patientenfrage": {
+      "text": "À partir de quel âge mon enfant devrait-il aller chez le dentiste pour la première fois ?",
+      "quelle": "f49ce530"
+    },
+    "leistung.kinderzahnarzt.synonyme.0": {
+      "text": "Dentiste pour enfants",
+      "quelle": "3f2895a2"
+    },
+    "leistung.kinderzahnarzt.synonyme.1": {
+      "text": "Dentiste pédiatrique",
+      "quelle": "a5ea08cc"
+    },
+    "leistung.kinderzahnarzt.synonyme.2": {
+      "text": "Dents de lait",
+      "quelle": "1cf7bfc5"
+    },
+    "leistung.kinderzahnarzt.synonyme.3": {
+      "text": "Première visite chez le dentiste enfant",
+      "quelle": "131a2176"
+    },
+    "leistung.kinderzahnarzt.teaser": {
+      "text": "Chez les enfants, une chose compte avant tout : la première impression ne doit pas faire peur. Nous prenons le temps de faire connaissance, expliquons chaque instrument avec des mots adaptés aux enfants et ne traitons que lorsque la confiance est là. Cela marque durablement le rapport au dentiste, pour toute la vie.",
+      "quelle": "a61d73b6"
+    },
+    "leistung.knirscherschiene.dauer": {
+      "text": "2 rendez-vous",
+      "quelle": "8f016911"
+    },
+    "leistung.knirscherschiene.faq.0.antwort": {
+      "text": "Par des bords de dents aplatis, une sensibilité dentaire le matin, des muscles des joues tendus et des marques de dents sur le bord de la langue. Souvent, c'est le/la partenaire qui remarque en premier le bruit.",
+      "quelle": "7da9f6d8"
+    },
+    "leistung.knirscherschiene.faq.0.frage": {
+      "text": "Comment savoir si je grince des dents pendant que je dors ?",
+      "quelle": "312a7ead"
+    },
+    "leistung.knirscherschiene.faq.1.antwort": {
+      "text": "La plupart des personnes s'y habituent après quelques nuits. Si la gouttière gêne, nous l'ajustons : une gouttière qui reste dans un tiroir ne protège rien.",
+      "quelle": "787fa9d0"
+    },
+    "leistung.knirscherschiene.faq.1.frage": {
+      "text": "S'habitue-t-on à la gouttière ?",
+      "quelle": "2b4e1a68"
+    },
+    "leistung.knirscherschiene.kasse": {
+      "text": "En cas de diagnostic documenté, la caisse d'assurance maladie légale allemande prend en charge la gouttière standard.",
+      "quelle": "dfb4face"
+    },
+    "leistung.knirscherschiene.kosten": {
+      "text": "350 à 900 €",
+      "quelle": "ccdd70d6"
+    },
+    "leistung.knirscherschiene.kurz": {
+      "text": "Une protection pour les dents en cas de crispation et de grincement nocturnes.",
+      "quelle": "a4f7e36e"
+    },
+    "leistung.knirscherschiene.name": {
+      "text": "Gouttière anti-bruxisme",
+      "quelle": "7a268e0d"
+    },
+    "leistung.knirscherschiene.patientenfrage": {
+      "text": "Comment savoir si je grince des dents la nuit ?",
+      "quelle": "2e5e2a50"
+    },
+    "leistung.knirscherschiene.synonyme.0": {
+      "text": "Gouttière occlusale",
+      "quelle": "eb2e0079"
+    },
+    "leistung.knirscherschiene.synonyme.1": {
+      "text": "Bruxisme",
+      "quelle": "9360fb6f"
+    },
+    "leistung.knirscherschiene.synonyme.2": {
+      "text": "Grincement des dents",
+      "quelle": "80f60a43"
+    },
+    "leistung.knirscherschiene.synonyme.3": {
+      "text": "Gouttière de Michigan",
+      "quelle": "e014fb63"
+    },
+    "leistung.knirscherschiene.synonyme.4": {
+      "text": "Gouttière de nuit",
+      "quelle": "e6b55865"
+    },
+    "leistung.knirscherschiene.teaser": {
+      "text": "En cas de bruxisme nocturne, les forces exercées peuvent être plusieurs fois supérieures à celles de la mastication normale. Une gouttière fabriquée sur mesure répartit ces forces et protège l'émail, les plombages, les couronnes et les articulations de la mâchoire.",
+      "quelle": "fe4eaf04"
+    },
+    "leistung.knochenaufbau.dauer": {
+      "text": "Intervention de 45 à 120 minutes, cicatrisation de 4 à 9 mois",
+      "quelle": "226e91ce"
+    },
+    "leistung.knochenaufbau.faq.0.antwort": {
+      "text": "Pour les défauts de petite taille, nous utilisons le plus souvent un matériau de substitution certifié, que l'organisme remplace progressivement par son propre os. Pour des reconstructions plus importantes, il peut être utile de prélever de l'os du patient, généralement au niveau de la mâchoire.",
+      "quelle": "6f390420"
+    },
+    "leistung.knochenaufbau.faq.0.frage": {
+      "text": "D'où provient l'os utilisé ?",
+      "quelle": "1c32e1e4"
+    },
+    "leistung.knochenaufbau.faq.1.antwort": {
+      "text": "Il s'agit d'une intervention de routine, très bien documentée par les études. La muqueuse du sinus est soulevée, et non sectionnée. Grâce à une planification 3D préalable, nous connaissons précisément l'anatomie avant l'intervention.",
+      "quelle": "4bde4bbf"
+    },
+    "leistung.knochenaufbau.faq.1.frage": {
+      "text": "Le sinus lift est-il dangereux ?",
+      "quelle": "2e6a0141"
+    },
+    "leistung.knochenaufbau.kasse": {
+      "text": "En règle générale, prestation privée dans le cadre du traitement implantologique.",
+      "quelle": "a38f3651"
+    },
+    "leistung.knochenaufbau.kosten": {
+      "text": "400 à 2 500 € selon l'ampleur",
+      "quelle": "477afae5"
+    },
+    "leistung.knochenaufbau.kurz": {
+      "text": "Créer une base solide lorsque l'os de la mâchoire ne suffit plus pour un implant.",
+      "quelle": "2723db2f"
+    },
+    "leistung.knochenaufbau.name": {
+      "text": "Greffe osseuse",
+      "quelle": "442bb3f1"
+    },
+    "leistung.knochenaufbau.patientenfrage": {
+      "text": "Que se passe-t-il lors d'une greffe osseuse et combien de temps dure la cicatrisation ?",
+      "quelle": "cad73086"
+    },
+    "leistung.knochenaufbau.synonyme.0": {
+      "text": "Augmentation osseuse",
+      "quelle": "22947725"
+    },
+    "leistung.knochenaufbau.synonyme.1": {
+      "text": "Sinus lift",
+      "quelle": "6a613460"
+    },
+    "leistung.knochenaufbau.synonyme.2": {
+      "text": "Greffe osseuse mâchoire",
+      "quelle": "e086194b"
+    },
+    "leistung.knochenaufbau.synonyme.3": {
+      "text": "Substitut osseux",
+      "quelle": "a315bf65"
+    },
+    "leistung.knochenaufbau.teaser": {
+      "text": "Quand une dent manque depuis longtemps, l'os de la mâchoire se résorbe à cet endroit. Grâce à de l'os propre au patient ou à un matériau de substitution biologique, ce volume osseux peut être reconstitué afin que l'implant trouve un ancrage solide.",
+      "quelle": "ea6186c7"
+    },
+    "leistung.kreidezaehne.dauer": {
+      "text": "Selon le stade, 30 à 60 minutes",
+      "quelle": "54d78a32"
+    },
+    "leistung.kreidezaehne.faq.0.antwort": {
+      "text": "La cause n'est pas définitivement établie. Des influences pendant la grossesse et les premières années de vie sont évoquées. Une chose est sûre : cela n'est pas lié à un manque d'hygiène dentaire, ce qui rassure beaucoup de parents.",
+      "quelle": "32059fb6"
+    },
+    "leistung.kreidezaehne.faq.0.frage": {
+      "text": "D'où viennent les dents de craie ?",
+      "quelle": "146a22db"
+    },
+    "leistung.kreidezaehne.faq.1.antwort": {
+      "text": "Le nerf dentaire, irrité de façon chronique, réagit différemment. Nous en tenons compte, adaptons nos techniques et, dans les cas marqués, proposons sur demande un traitement sous sédation.",
+      "quelle": "becad73a"
+    },
+    "leistung.kreidezaehne.faq.1.frage": {
+      "text": "Pourquoi l'anesthésie agit-elle moins bien sur les dents de craie ?",
+      "quelle": "ff63d49b"
+    },
+    "leistung.kreidezaehne.faq.2.antwort": {
+      "text": "L'émail ne se reforme pas. Mais avec une fluoration intensive, un scellement et, si nécessaire, une couronne, les dents peuvent être bien protégées et préservées jusqu'à ce qu'une solution durable soit possible plus tard.",
+      "quelle": "44fff302"
+    },
+    "leistung.kreidezaehne.faq.2.frage": {
+      "text": "Les dents resteront-elles ainsi pour toujours ?",
+      "quelle": "d21519ba"
+    },
+    "leistung.kreidezaehne.kasse": {
+      "text": "Le traitement est pris en charge par la caisse. Les mesures de protection supplémentaires sont parfois à votre charge.",
+      "quelle": "e448959e"
+    },
+    "leistung.kreidezaehne.kosten": {
+      "text": "Traitement de base pris en charge par la caisse, prophylaxie intensive à titre privé",
+      "quelle": "25fdf799"
+    },
+    "leistung.kreidezaehne.kurz": {
+      "text": "Dents jaunâtres et friables chez l'enfant : les repérer, les protéger, les soigner sans douleur.",
+      "quelle": "bc93b5c7"
+    },
+    "leistung.kreidezaehne.name": {
+      "text": "Dents de craie (MIH)",
+      "quelle": "8595e92d"
+    },
+    "leistung.kreidezaehne.patientenfrage": {
+      "text": "Que sont les dents de craie et que peut-on faire contre ?",
+      "quelle": "9933e9c6"
+    },
+    "leistung.kreidezaehne.synonyme.0": {
+      "text": "MIH",
+      "quelle": "0c45f191"
+    },
+    "leistung.kreidezaehne.synonyme.1": {
+      "text": "hypominéralisation molaires-incisives",
+      "quelle": "14ba06f5"
+    },
+    "leistung.kreidezaehne.synonyme.2": {
+      "text": "taches blanches dents enfant",
+      "quelle": "7a21da13"
+    },
+    "leistung.kreidezaehne.synonyme.3": {
+      "text": "dents qui s'effritent",
+      "quelle": "99d335a4"
+    },
+    "leistung.kreidezaehne.teaser": {
+      "text": "Dans le cas des dents de craie, l'émail se forme dès la naissance avec un manque de minéraux. Les dents sont très sensibles, se cassent plus facilement et réagissent mal à l'anesthésie. Un dépistage précoce et un traitement de protection intensif permettent d'en préserver beaucoup.",
+      "quelle": "667360f4"
+    },
+    "leistung.kunststofffuellungen.dauer": {
+      "text": "30 à 60 minutes",
+      "quelle": "aded5260"
+    },
+    "leistung.kunststofffuellungen.faq.0.antwort": {
+      "text": "Selon la taille et l'emplacement, environ cinq à dix ans. Les petits plombages durent plus longtemps que les grands. Si une très grande partie de la dent est touchée, un inlay ou une couronne partielle constitue une solution plus durable.",
+      "quelle": "6e0fbdb7"
+    },
+    "leistung.kunststofffuellungen.faq.0.frage": {
+      "text": "Combien de temps dure un plombage en composite ?",
+      "quelle": "8e56caa5"
+    },
+    "leistung.kunststofffuellungen.faq.1.antwort": {
+      "text": "Un plombage en amalgame intact ne doit pas être retiré par précaution : chaque remplacement coûte de la substance dentaire saine. Le remplacement est judicieux si le plombage n'est plus étanche, si une carie se forme en dessous, ou si vous le souhaitez pour des raisons personnelles. Dans ce cas, nous prenons des mesures de protection contre les vapeurs de mercure.",
+      "quelle": "dd4bbaef"
+    },
+    "leistung.kunststofffuellungen.faq.1.frage": {
+      "text": "Faut-il faire remplacer ses anciens plombages en amalgame ?",
+      "quelle": "144ca8f5"
+    },
+    "leistung.kunststofffuellungen.kasse": {
+      "text": "Depuis la fin de l'amalgame, les plombages de la couleur de la dent sont pris en charge par les caisses d'assurance maladie légales allemandes, quelle que soit la dent concernée.",
+      "quelle": "cd8a2ebc"
+    },
+    "leistung.kunststofffuellungen.kosten": {
+      "text": "Prise en charge par la caisse, technique de stratification : 80 à 200 € à votre charge",
+      "quelle": "c2db84bc"
+    },
+    "leistung.kunststofffuellungen.kurz": {
+      "text": "Des obturations en composite, dont la couleur se confond parfaitement avec celle de la dent.",
+      "quelle": "88491db6"
+    },
+    "leistung.kunststofffuellungen.name": {
+      "text": "Obturations de couleur dentaire",
+      "quelle": "d487cc36"
+    },
+    "leistung.kunststofffuellungen.patientenfrage": {
+      "text": "Combien coûte une obturation de couleur dentaire et combien de temps dure-t-elle ?",
+      "quelle": "7cadf6fe"
+    },
+    "leistung.kunststofffuellungen.synonyme.0": {
+      "text": "Composite",
+      "quelle": "fbc8a854"
+    },
+    "leistung.kunststofffuellungen.synonyme.1": {
+      "text": "plombage blanc",
+      "quelle": "45bfd062"
+    },
+    "leistung.kunststofffuellungen.synonyme.2": {
+      "text": "plombage en composite",
+      "quelle": "ad635f80"
+    },
+    "leistung.kunststofffuellungen.synonyme.3": {
+      "text": "alternative à l'amalgame",
+      "quelle": "2b9211d6"
+    },
+    "leistung.kunststofffuellungen.synonyme.4": {
+      "text": "plombage dentaire",
+      "quelle": "95a9df40"
+    },
+    "leistung.kunststofffuellungen.teaser": {
+      "text": "Les obturations en composite modernes sont appliquées par couches et durcies à la lumière. Elles adhèrent directement à la dent, ce qui nécessite moins de retrait de tissu dentaire qu'autrefois – et leur teinte peut être ajustée avec précision.",
+      "quelle": "2d80cae3"
+    },
+    "leistung.lachgas.dauer": {
+      "text": "Effet immédiat, disparaît après 10 à 15 minutes",
+      "quelle": "432df1f8"
+    },
+    "leistung.lachgas.faq.0.antwort": {
+      "text": "Après une phase de respiration d'oxygène pur d'environ 15 minutes, l'effet a complètement disparu. Contrairement à une anesthésie ou à des comprimés, vous pouvez généralement conduire vous-même ensuite – nous vous le confirmons au cas par cas.",
+      "quelle": "901b49ad"
+    },
+    "leistung.lachgas.faq.0.frage": {
+      "text": "Puis-je conduire après ?",
+      "quelle": "2a4f2df3"
+    },
+    "leistung.lachgas.faq.1.antwort": {
+      "text": "Oui, il a été bien étudié chez les enfants et est souvent utilisé lorsqu'un traitement ne serait sinon pas possible. La condition est que l'enfant puisse respirer par le nez.",
+      "quelle": "1b3c7631"
+    },
+    "leistung.lachgas.faq.1.frage": {
+      "text": "Le gaz hilarant convient-il aussi aux enfants ?",
+      "quelle": "4600f0c7"
+    },
+    "leistung.lachgas.kasse": {
+      "text": "Prestation privée.",
+      "quelle": "6449329c"
+    },
+    "leistung.lachgas.kosten": {
+      "text": "80 à 200 € par séance",
+      "quelle": "38b18028"
+    },
+    "leistung.lachgas.kurz": {
+      "text": "Détendu et conscient : l'étape douce entre l'anesthésie locale et l'anesthésie générale.",
+      "quelle": "27b2a360"
+    },
+    "leistung.lachgas.name": {
+      "text": "Traitement au gaz hilarant",
+      "quelle": "1f470346"
+    },
+    "leistung.lachgas.patientenfrage": {
+      "text": "Quelles sensations procure un traitement au gaz hilarant ?",
+      "quelle": "95c9f913"
+    },
+    "leistung.lachgas.synonyme.0": {
+      "text": "Sédation au gaz hilarant",
+      "quelle": "c73e1e12"
+    },
+    "leistung.lachgas.synonyme.1": {
+      "text": "N2O",
+      "quelle": "73988aa2"
+    },
+    "leistung.lachgas.synonyme.2": {
+      "text": "sédation dentiste",
+      "quelle": "60db5d3f"
+    },
+    "leistung.lachgas.synonyme.3": {
+      "text": "soins dentaires sans stress",
+      "quelle": "406c3b11"
+    },
+    "leistung.lachgas.teaser": {
+      "text": "Le gaz hilarant s'inhale par un petit masque nasal et agit en quelques minutes. Vous restez éveillé et conscient, mais ressentez la situation comme beaucoup plus détendue. L'effet disparaît complètement peu après.",
+      "quelle": "abf39f33"
+    },
+    "leistung.parodontitis-behandlung.dauer": {
+      "text": "2 à 4 rendez-vous plus le suivi",
+      "quelle": "1fe4460b"
+    },
+    "leistung.parodontitis-behandlung.faq.0.antwort": {
+      "text": "Non. Des gencives saines ne saignent pas, même en se brossant les dents ou en utilisant du fil dentaire. Le saignement est un signe d'inflammation et le tout premier signal d'alerte que vous pouvez remarquer vous-même. Ne cherchez pas à le faire disparaître en brossant plus, mais faites-le examiner.",
+      "quelle": "b8de8045"
+    },
+    "leistung.parodontitis-behandlung.faq.0.frage": {
+      "text": "Est-ce normal que les gencives saignent ?",
+      "quelle": "999a5ce4"
+    },
+    "leistung.parodontitis-behandlung.faq.1.antwort": {
+      "text": "L'os perdu et les gencives rétractées ne repoussent pas d'eux-mêmes. Ce que nous pouvons obtenir : stopper l'inflammation et stabiliser la situation. Dans certains cas, des interventions régénératives ou de chirurgie plastique sont possibles.",
+      "quelle": "101469e0"
+    },
+    "leistung.parodontitis-behandlung.faq.1.frage": {
+      "text": "Les gencives qui se sont rétractées repoussent-elles ?",
+      "quelle": "5a6b0c3d"
+    },
+    "leistung.parodontitis-behandlung.faq.2.antwort": {
+      "text": "Oui. Des liens bien documentés existent avec le diabète, les maladies cardiovasculaires et des complications pendant la grossesse. Inversement, un diabète mal équilibré complique le traitement. C'est pourquoi nous vous interrogeons sur vos antécédents médicaux.",
+      "quelle": "e1201823"
+    },
+    "leistung.parodontitis-behandlung.faq.2.frage": {
+      "text": "La parodontite a-t-elle un lien avec ma santé générale ?",
+      "quelle": "ba3be625"
+    },
+    "leistung.parodontitis-behandlung.kasse": {
+      "text": "Depuis 2021, il existe un parcours de soins structuré pour la parodontite, pris en charge par la caisse légale, suivi compris, sur deux ans. Un diagnostic documenté est requis.",
+      "quelle": "8c8c2b4d"
+    },
+    "leistung.parodontitis-behandlung.kosten": {
+      "text": "Prise en charge par la caisse en cas d'indication, mesures complémentaires 200 à 800 €",
+      "quelle": "771ae559"
+    },
+    "leistung.parodontitis-behandlung.kurz": {
+      "text": "Stopper l'inflammation de la gencive avant qu'elle ne coûte l'os et les dents.",
+      "quelle": "d90d9091"
+    },
+    "leistung.parodontitis-behandlung.name": {
+      "text": "Traitement de la parodontite",
+      "quelle": "6c3686a2"
+    },
+    "leistung.parodontitis-behandlung.patientenfrage": {
+      "text": "Mes gencives saignent – est-ce déjà une parodontite ?",
+      "quelle": "361570fe"
+    },
+    "leistung.parodontitis-behandlung.synonyme.0": {
+      "text": "Parodontose",
+      "quelle": "9348e21f"
+    },
+    "leistung.parodontitis-behandlung.synonyme.1": {
+      "text": "Inflammation des gencives",
+      "quelle": "75e14197"
+    },
+    "leistung.parodontitis-behandlung.synonyme.2": {
+      "text": "Saignement des gencives",
+      "quelle": "24e34d8c"
+    },
+    "leistung.parodontitis-behandlung.synonyme.3": {
+      "text": "Traitement parodontal",
+      "quelle": "cb9e077d"
+    },
+    "leistung.parodontitis-behandlung.synonyme.4": {
+      "text": "Récession gingivale",
+      "quelle": "bf124083"
+    },
+    "leistung.parodontitis-behandlung.teaser": {
+      "text": "La parodontite est la cause la plus fréquente de perte des dents chez l'adulte – et elle ne fait pas mal pendant longtemps. Nous nettoyons soigneusement les poches gingivales, éliminons les bactéries et vous accompagnons ensuite de près pour que l'inflammation ne revienne pas.",
+      "quelle": "a8b07937"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.dauer": {
+      "text": "5 min.",
+      "quelle": "84c77926"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.text": {
+      "text": "Nous examinons vos dents et vos gencives, puis colorons la plaque pour la rendre visible – ainsi vous voyez vous-même où se trouvent les zones à traiter.",
+      "quelle": "f7f81c75"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.0.titel": {
+      "text": "Diagnostic et coloration de la plaque",
+      "quelle": "346fa1d4"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.dauer": {
+      "text": "25 min.",
+      "quelle": "e5169516"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.text": {
+      "text": "La plaque molle et le tartre sont éliminés par aéropolissage et ultrasons – sans grattage avec des instruments tranchants.",
+      "quelle": "98e0777c"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.1.titel": {
+      "text": "Élimination de la plaque",
+      "quelle": "0be2fe07"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.dauer": {
+      "text": "10 min",
+      "quelle": "f9e3e66a"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.text": {
+      "text": "Les surfaces des dents sont lissées et protégées par du fluor. Des surfaces lisses retiennent moins facilement les bactéries.",
+      "quelle": "5f75fe23"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.2.titel": {
+      "text": "Polissage et fluoration",
+      "quelle": "254f5cea"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.dauer": {
+      "text": "10 min",
+      "quelle": "f9e3e66a"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.text": {
+      "text": "Nous vous donnons des conseils concrets sur la brosse, la technique et les accessoires à utiliser, adaptés à ce que nous avons constaté.",
+      "quelle": "f460ce21"
+    },
+    "leistung.professionelle-zahnreinigung.ablauf.3.titel": {
+      "text": "Conseils pour la maison",
+      "quelle": "de66f708"
+    },
+    "leistung.professionelle-zahnreinigung.dauer": {
+      "text": "45 à 60 minutes",
+      "quelle": "0058dc0c"
+    },
+    "leistung.professionelle-zahnreinigung.faq.0.antwort": {
+      "text": "Dans la grande majorité des cas, non. Nous travaillons avec un aéropolissage plutôt qu'avec des instruments manuels tranchants. Si vos gencives sont enflammées ou vos collets dentaires sensibles, dites-le-nous : nous pourrons anesthésier localement ces zones.",
+      "quelle": "6b0b7963"
+    },
+    "leistung.professionelle-zahnreinigung.faq.0.frage": {
+      "text": "Le détartrage professionnel fait-il mal ?",
+      "quelle": "b1719608"
+    },
+    "leistung.professionelle-zahnreinigung.faq.1.antwort": {
+      "text": "Pour la plupart des adultes, deux fois par an. Si vous êtes sujet aux inflammations gingivales, fumeur, porteur d'un appareil dentaire ou d'implants, trois à quatre rendez-vous par an sont bénéfiques. Nous déterminons ensemble le rythme adapté selon votre bilan.",
+      "quelle": "cefab24f"
+    },
+    "leistung.professionelle-zahnreinigung.faq.1.frage": {
+      "text": "À quelle fréquence un détartrage est-il recommandé ?",
+      "quelle": "b198aaba"
+    },
+    "leistung.professionelle-zahnreinigung.faq.2.antwort": {
+      "text": "Vos dents retrouvent leur couleur naturelle, car les taches superficielles dues au café, au thé ou au vin rouge disparaissent. Elles ne deviennent pas plus blanches que leur teinte naturelle : pour cela, un blanchiment dentaire est nécessaire.",
+      "quelle": "9033463d"
+    },
+    "leistung.professionelle-zahnreinigung.faq.2.frage": {
+      "text": "Mes dents deviendront-elles plus blanches ?",
+      "quelle": "e7b3b726"
+    },
+    "leistung.professionelle-zahnreinigung.faq.3.antwort": {
+      "text": "Après la fluoration, attendez environ une heure. Nous recommandons ensuite d'éviter, pendant environ 24 heures, les aliments très colorants comme le vin rouge, le café ou le curry : les surfaces fraîchement polies absorbent plus facilement les colorants dans un premier temps.",
+      "quelle": "82df1fee"
+    },
+    "leistung.professionelle-zahnreinigung.faq.3.frage": {
+      "text": "Puis-je manger et boire tout de suite après ?",
+      "quelle": "0eb7419d"
+    },
+    "leistung.professionelle-zahnreinigung.kasse": {
+      "text": "La caisse d'assurance maladie légale allemande ne prend généralement pas en charge ce soin. Mais de nombreuses caisses remboursent une partie via des programmes de bonus – renseignez-vous au préalable auprès de votre caisse.",
+      "quelle": "cf0b65e8"
+    },
+    "leistung.professionelle-zahnreinigung.kosten": {
+      "text": "150 à 250 € par heure de soin, selon la complexité",
+      "quelle": "ecbd3ac5"
+    },
+    "leistung.professionelle-zahnreinigung.kurz": {
+      "text": "Un nettoyage minutieux là où la brosse à dents et le fil dentaire n'atteignent pas.",
+      "quelle": "1c37e19f"
+    },
+    "leistung.professionelle-zahnreinigung.name": {
+      "text": "Détartrage et polissage professionnel",
+      "quelle": "74bf4eb6"
+    },
+    "leistung.professionelle-zahnreinigung.patientenfrage": {
+      "text": "À quelle fréquence dois-je faire un détartrage professionnel ?",
+      "quelle": "b718b677"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.0": {
+      "text": "détartrage",
+      "quelle": "b21c83a7"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.1": {
+      "text": "nettoyage dentaire",
+      "quelle": "353d92b0"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.2": {
+      "text": "faire nettoyer ses dents",
+      "quelle": "fe039559"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.3": {
+      "text": "détartrage dentaire",
+      "quelle": "38f3b80b"
+    },
+    "leistung.professionelle-zahnreinigung.synonyme.4": {
+      "text": "polissage des dents",
+      "quelle": "bef4c022"
+    },
+    "leistung.professionelle-zahnreinigung.teaser": {
+      "text": "Lors du détartrage et polissage professionnel, nous éliminons la plaque et les taches aux endroits que vous ne pouvez pas atteindre chez vous. Cela prévient les caries et les inflammations gingivales, et vos dents paraissent nettement plus lisses et plus claires.",
+      "quelle": "5ab2d066"
+    },
+    "leistung.prophylaxe-4-0.dauer": {
+      "text": "50 à 70 minutes",
+      "quelle": "6b29391f"
+    },
+    "leistung.prophylaxe-4-0.faq.0.antwort": {
+      "text": "Le jet de poudre atteint aussi les espaces interdentaires et les poches parodontales, difficiles d'accès avec les instruments manuels. Il use en outre moins l'émail des dents. Pour vous, la sensation est celle d'un jet d'eau tiède plutôt que d'un grattage.",
+      "quelle": "01dda35d"
+    },
+    "leistung.prophylaxe-4-0.faq.0.frage": {
+      "text": "Pourquoi le jet de poudre est-il préférable au détartrage classique par grattage ?",
+      "quelle": "0b95d1a3"
+    },
+    "leistung.prophylaxe-4-0.faq.1.antwort": {
+      "text": "Justement, c'est idéal dans ce cas. La poudre d'érythritol utilisée est très fine et appliquée avec de l'eau à température corporelle. Beaucoup de personnes ayant des collets dentaires sensibles trouvent ce procédé nettement plus agréable que le nettoyage classique.",
+      "quelle": "97ba2d49"
+    },
+    "leistung.prophylaxe-4-0.faq.1.frage": {
+      "text": "Est-ce adapté aussi pour les dents sensibles ?",
+      "quelle": "15a6f79a"
+    },
+    "leistung.prophylaxe-4-0.faq.2.antwort": {
+      "text": "Oui. Ce procédé a été spécialement conçu aussi pour les surfaces d'implants et les restaurations, et n'endommage ni la céramique ni le titane. Indiquez-nous tout de même les travaux que vous avez en bouche – nous adaptons la poudre et la pression en conséquence.",
+      "quelle": "b52a70dc"
+    },
+    "leistung.prophylaxe-4-0.faq.2.frage": {
+      "text": "Est-ce que cela fonctionne aussi avec des implants, des couronnes et des facettes ?",
+      "quelle": "d0486174"
+    },
+    "leistung.prophylaxe-4-0.kasse": {
+      "text": "En tant que prestation privée, elle ne figure pas dans le catalogue des caisses légales allemandes. Les assurances privées remboursent généralement le traitement en totalité.",
+      "quelle": "3a13f5f8"
+    },
+    "leistung.prophylaxe-4-0.kosten": {
+      "text": "170 à 260 € par heure de traitement",
+      "quelle": "8508faec"
+    },
+    "leistung.prophylaxe-4-0.kurz": {
+      "text": "Nettoyage dentaire selon le protocole GBT, sans grattage, avec un aéropolissage tiède.",
+      "quelle": "ecf35d61"
+    },
+    "leistung.prophylaxe-4-0.name": {
+      "text": "Prophylaxie 4.0",
+      "quelle": "2b844c99"
+    },
+    "leistung.prophylaxe-4-0.patientenfrage": {
+      "text": "Quelle est la différence entre la Prophylaxie 4.0 et un détartrage classique ?",
+      "quelle": "c189bebc"
+    },
+    "leistung.prophylaxe-4-0.synonyme.0": {
+      "text": "GBT",
+      "quelle": "d4e95ea8"
+    },
+    "leistung.prophylaxe-4-0.synonyme.1": {
+      "text": "Guided Biofilm Therapy",
+      "quelle": "630f4b14"
+    },
+    "leistung.prophylaxe-4-0.synonyme.2": {
+      "text": "Airflow",
+      "quelle": "7f919233"
+    },
+    "leistung.prophylaxe-4-0.synonyme.3": {
+      "text": "EMS",
+      "quelle": "f241bcec"
+    },
+    "leistung.prophylaxe-4-0.synonyme.4": {
+      "text": "nettoyage dentaire en douceur",
+      "quelle": "ecc30265"
+    },
+    "leistung.prophylaxe-4-0.teaser": {
+      "text": "La Prophylaxie 4.0 est notre concept de nettoyage selon le protocole GBT. Plutôt que de gratter avec des instruments manuels tranchants, nous éliminons les dépôts grâce à un aéropolissage fin et tiède. C'est plus minutieux, plus doux pour l'émail et les gencives, et pour la plupart des personnes, nettement plus agréable.",
+      "quelle": "b6303e74"
+    },
+    "leistung.retainer.dauer": {
+      "text": "1 rendez-vous, puis contrôles réguliers",
+      "quelle": "f906e372"
+    },
+    "leistung.retainer.faq.0.antwort": {
+      "text": "Oui, si vous souhaitez que le résultat reste stable durablement. Les forces de rappel diminuent avec les années, mais ne disparaissent jamais complètement. Une contention collée ne gêne pas au quotidien et nécessite seulement un contrôle régulier.",
+      "quelle": "a90129be"
+    },
+    "leistung.retainer.faq.0.frage": {
+      "text": "Dois-je vraiment garder ma contention pour toujours ?",
+      "quelle": "bd497b3b"
+    },
+    "leistung.retainer.kasse": {
+      "text": "En général, il s'agit d'une prestation privée.",
+      "quelle": "f03e7eed"
+    },
+    "leistung.retainer.kosten": {
+      "text": "250 à 600 € par mâchoire",
+      "quelle": "396a2f19"
+    },
+    "leistung.retainer.kurz": {
+      "text": "La stabilisation après un traitement orthodontique – sans elle, les dents reviennent en arrière.",
+      "quelle": "5942f7b2"
+    },
+    "leistung.retainer.name": {
+      "text": "Contention",
+      "quelle": "fc8b7eab"
+    },
+    "leistung.retainer.patientenfrage": {
+      "text": "Combien de temps dois-je porter une contention ?",
+      "quelle": "537839ce"
+    },
+    "leistung.retainer.synonyme.0": {
+      "text": "fil de contention",
+      "quelle": "36c2c3ce"
+    },
+    "leistung.retainer.synonyme.1": {
+      "text": "contention après appareil dentaire",
+      "quelle": "cb816359"
+    },
+    "leistung.retainer.synonyme.2": {
+      "text": "les dents bougent après appareil",
+      "quelle": "e5eb3396"
+    },
+    "leistung.retainer.teaser": {
+      "text": "Une contention fixe le résultat du traitement de façon durable. Il s'agit le plus souvent d'un fil fin collé à l'intérieur des dents de devant, invisible de l'extérieur. Il existe aussi des gouttières amovibles à porter la nuit.",
+      "quelle": "7908aad2"
+    },
+    "leistung.smile-design.dauer": {
+      "text": "2 rendez-vous de 60 à 90 minutes",
+      "quelle": "1c9b176a"
+    },
+    "leistung.smile-design.faq.0.antwort": {
+      "text": "L'aperçu numérique montre très précisément la forme, la longueur et les proportions. Le mock-up rend le résultat encore plus concret : nous appliquons directement sur vos dents la forme prévue, sous forme d'une fine couche de résine, sans meulage. Vous voyez et sentez alors le résultat sur votre propre visage.",
+      "quelle": "69d18ca1"
+    },
+    "leistung.smile-design.faq.0.frage": {
+      "text": "Dans quelle mesure l'aperçu est-il réaliste ?",
+      "quelle": "f0f618c3"
+    },
+    "leistung.smile-design.faq.1.antwort": {
+      "text": "C'est justement à cela que sert cette étape. Tant qu'aucune dent n'a été meulée, chaque modification reste possible sans perte. Nous ajustons la planification jusqu'à ce que vous soyez satisfait(e) – le traitement à proprement parler ne commence qu'ensuite.",
+      "quelle": "3699d7f8"
+    },
+    "leistung.smile-design.faq.1.frage": {
+      "text": "Que se passe-t-il si le résultat ne me plaît pas ?",
+      "quelle": "fb5f2aee"
+    },
+    "leistung.smile-design.kasse": {
+      "text": "Prestation privée.",
+      "quelle": "6449329c"
+    },
+    "leistung.smile-design.kosten": {
+      "text": "250 à 600 € pour la planification, généralement déduits en cas de réalisation",
+      "quelle": "f64b17e3"
+    },
+    "leistung.smile-design.kurz": {
+      "text": "Voir votre nouveau sourire à l'écran avant même la première intervention.",
+      "quelle": "917a2bfe"
+    },
+    "leistung.smile-design.name": {
+      "text": "Smile Design numérique",
+      "quelle": "5b3ce40b"
+    },
+    "leistung.smile-design.patientenfrage": {
+      "text": "Puis-je voir à l'avance à quoi ressembleront mes dents après le traitement ?",
+      "quelle": "11efa0cc"
+    },
+    "leistung.smile-design.synonyme.0": {
+      "text": "DSD",
+      "quelle": "07d87dcc"
+    },
+    "leistung.smile-design.synonyme.1": {
+      "text": "Relooking du sourire",
+      "quelle": "aa6320bd"
+    },
+    "leistung.smile-design.synonyme.2": {
+      "text": "Simulation du sourire",
+      "quelle": "9bb6d4b5"
+    },
+    "leistung.smile-design.synonyme.3": {
+      "text": "Planification esthétique dentaire",
+      "quelle": "089eef93"
+    },
+    "leistung.smile-design.synonyme.4": {
+      "text": "Mock-up",
+      "quelle": "966de24f"
+    },
+    "leistung.smile-design.teaser": {
+      "text": "Avec le Smile Design numérique, nous planifions votre sourire à partir de photos, de vidéos et d'un scan 3D – en tenant compte de la forme de votre visage, de la ligne de vos lèvres et de votre expression. Vous voyez le résultat à l'avance à l'écran et pouvez même le tester en bouche sous forme de provisoire avant de vous décider.",
+      "quelle": "90dabf24"
+    },
+    "leistung.sofortimplantate.dauer": {
+      "text": "Une intervention de 60 à 120 minutes",
+      "quelle": "8321e619"
+    },
+    "leistung.sofortimplantate.faq.0.antwort": {
+      "text": "Il faut que l'alvéole ne soit pas enflammée et qu'il y ait suffisamment d'os stable pour que l'implant tienne bien. En cas d'inflammation aiguë, le tissu doit d'abord cicatriser. L'imagerie 3D montre au préalable ce qui est possible.",
+      "quelle": "a4c9957e"
+    },
+    "leistung.sofortimplantate.faq.0.frage": {
+      "text": "Pour qui un implant immédiat est-il envisageable ?",
+      "quelle": "3128d4f5"
+    },
+    "leistung.sofortimplantate.faq.1.antwort": {
+      "text": "Dans la zone des dents de devant, nous posons en général immédiatement une prothèse provisoire, sans mise en charge complète. Vous ne quittez donc pas le cabinet avec un espace visible.",
+      "quelle": "0e92f6fc"
+    },
+    "leistung.sofortimplantate.faq.1.frage": {
+      "text": "Aurai-je tout de suite une dent visible ?",
+      "quelle": "180b8b96"
+    },
+    "leistung.sofortimplantate.kasse": {
+      "text": "Comme pour l'implant classique : forfait uniquement pour la prothèse dentaire.",
+      "quelle": "3c549647"
+    },
+    "leistung.sofortimplantate.kosten": {
+      "text": "2 000 à 3 800 € pose comprise",
+      "quelle": "8cd1fe60"
+    },
+    "leistung.sofortimplantate.kurz": {
+      "text": "Extraction et pose de l'implant en une seule séance.",
+      "quelle": "6ba14cc7"
+    },
+    "leistung.sofortimplantate.name": {
+      "text": "Implants immédiats",
+      "quelle": "1341da33"
+    },
+    "leistung.sofortimplantate.patientenfrage": {
+      "text": "Puis-je recevoir un implant immédiatement après l'extraction d'une dent ?",
+      "quelle": "3a830609"
+    },
+    "leistung.sofortimplantate.synonyme.0": {
+      "text": "implant immédiat",
+      "quelle": "8624fbf2"
+    },
+    "leistung.sofortimplantate.synonyme.1": {
+      "text": "implant dentaire immédiat",
+      "quelle": "3b4296b0"
+    },
+    "leistung.sofortimplantate.synonyme.2": {
+      "text": "extraction et implant le même jour",
+      "quelle": "75aef986"
+    },
+    "leistung.sofortimplantate.teaser": {
+      "text": "Sous certaines conditions, l'implant peut être posé directement dans l'alvéole après l'extraction de la dent. Cela évite une intervention supplémentaire, raccourcit le traitement global et préserve l'os ainsi que le contour de la gencive.",
+      "quelle": "c502b6c4"
+    },
+    "leistung.teilprothese.dauer": {
+      "text": "4 à 6 rendez-vous sur environ 6 semaines",
+      "quelle": "4ac78b8f"
+    },
+    "leistung.teilprothese.faq.0.antwort": {
+      "text": "Une prothèse bien ajustée tient très bien au maxillaire supérieur grâce à un effet de succion. Au maxillaire inférieur, la stabilité est naturellement plus délicate – mais deux implants avec des attachements à bouton-pression suffisent déjà à apporter une sécurité considérable.",
+      "quelle": "e687106f"
+    },
+    "leistung.teilprothese.faq.0.frage": {
+      "text": "Est-ce que la prothèse bouge en parlant ou en mangeant ?",
+      "quelle": "8bc0a1b7"
+    },
+    "leistung.teilprothese.faq.1.antwort": {
+      "text": "En général deux à quatre semaines. Au début, la prononciation et la perception du goût changent. Nous prévoyons systématiquement des contrôles pour corriger rapidement les points de pression.",
+      "quelle": "08541478"
+    },
+    "leistung.teilprothese.faq.1.frage": {
+      "text": "Combien de temps dure la période d'adaptation ?",
+      "quelle": "61bcf566"
+    },
+    "leistung.teilprothese.kasse": {
+      "text": "La caisse d'assurance maladie légale allemande verse une participation forfaitaire. En cas de faible revenu, une prise en charge complète du traitement standard est possible dans le cadre du régime pour cas de rigueur.",
+      "quelle": "634c3d1c"
+    },
+    "leistung.teilprothese.kosten": {
+      "text": "900 à 4.500 € selon le type",
+      "quelle": "497cbaab"
+    },
+    "leistung.teilprothese.kurz": {
+      "text": "Un remplacement amovible lorsque plusieurs dents, voire toutes, sont manquantes.",
+      "quelle": "7bf02f1d"
+    },
+    "leistung.teilprothese.name": {
+      "text": "Prothèses et prothèses partielles",
+      "quelle": "b30a474f"
+    },
+    "leistung.teilprothese.patientenfrage": {
+      "text": "Combien coûte une prothèse dentaire et tient-elle bien pendant les repas ?",
+      "quelle": "cea7f570"
+    },
+    "leistung.teilprothese.synonyme.0": {
+      "text": "Prothèse dentaire",
+      "quelle": "eaa4499f"
+    },
+    "leistung.teilprothese.synonyme.1": {
+      "text": "Fausses dents",
+      "quelle": "f2ba7712"
+    },
+    "leistung.teilprothese.synonyme.2": {
+      "text": "Prothèse télescopique",
+      "quelle": "5aed7f42"
+    },
+    "leistung.teilprothese.synonyme.3": {
+      "text": "Prothèse complète",
+      "quelle": "753cd35c"
+    },
+    "leistung.teilprothese.synonyme.4": {
+      "text": "Dentier",
+      "quelle": "77ad52c6"
+    },
+    "leistung.teilprothese.teaser": {
+      "text": "Lorsque les bridges ne suffisent plus pour combler de grandes lacunes dentaires, une prothèse amovible restaure la fonction masticatoire et l'esthétique. Les prothèses télescopiques et à attachement modernes se passent de crochets métalliques visibles.",
+      "quelle": "15a2601f"
+    },
+    "leistung.veneers.ablauf.0.dauer": {
+      "text": "60 min",
+      "quelle": "def4536f"
+    },
+    "leistung.veneers.ablauf.0.text": {
+      "text": "Nous photographions et scannons vos dents, puis discutons de ce qui vous dérange. Sur écran, vous visualisez un aperçu du résultat possible.",
+      "quelle": "1a99acdb"
+    },
+    "leistung.veneers.ablauf.0.titel": {
+      "text": "Analyse et planification",
+      "quelle": "62d6aa62"
+    },
+    "leistung.veneers.ablauf.1.dauer": {
+      "text": "90 min",
+      "quelle": "02edd6c2"
+    },
+    "leistung.veneers.ablauf.1.text": {
+      "text": "Selon la situation initiale, très peu ou pas d'émail dentaire n'est retiré. Vous recevez des facettes provisoires pour tester la forme et la longueur au quotidien.",
+      "quelle": "a0d46491"
+    },
+    "leistung.veneers.ablauf.1.titel": {
+      "text": "Préparation des dents",
+      "quelle": "b72286c7"
+    },
+    "leistung.veneers.ablauf.2.dauer": {
+      "text": "90 min.",
+      "quelle": "02edd6c2"
+    },
+    "leistung.veneers.ablauf.2.text": {
+      "text": "Les facettes définitives sont essayées, vérifiées au niveau de la teinte et de l'ajustement, puis collées de façon durable.",
+      "quelle": "c6e9ce0b"
+    },
+    "leistung.veneers.ablauf.2.titel": {
+      "text": "Pose",
+      "quelle": "4ed247a2"
+    },
+    "leistung.veneers.dauer": {
+      "text": "2 à 3 rendez-vous sur environ 3 semaines",
+      "quelle": "24a1b381"
+    },
+    "leistung.veneers.faq.0.antwort": {
+      "text": "Nettement moins qu'avant. Pour des facettes classiques, environ un demi-millimètre d'émail est retiré. Dans les cas adaptés, nous travaillons avec des facettes sans préparation, sans meulage du tout. Ce qui est possible dans votre cas dépend de la position et de la forme initiale des dents – nous clarifions cela avant tout premier geste.",
+      "quelle": "90d3767e"
+    },
+    "leistung.veneers.faq.0.frage": {
+      "text": "Faut-il beaucoup meuler la dent saine ?",
+      "quelle": "0308382d"
+    },
+    "leistung.veneers.faq.1.antwort": {
+      "text": "Avec un bon entretien et des contrôles réguliers, les facettes en céramique durent en général de dix à quinze ans, souvent plus. Ce qui les menace le plus, c'est le grincement des dents la nuit – c'est pourquoi nous le vérifions au préalable et vous équipons si besoin d'une gouttière.",
+      "quelle": "f09f1f32"
+    },
+    "leistung.veneers.faq.1.frage": {
+      "text": "Combien de temps durent les facettes ?",
+      "quelle": "bbc7df22"
+    },
+    "leistung.veneers.faq.2.antwort": {
+      "text": "Avec une planification soignée, non. La céramique a une transparence proche de celle de l'émail naturel. L'essentiel est que la forme, la longueur et la teinte s'accordent à votre visage – c'est pourquoi nous travaillons avec un aperçu et un provisoire avant que rien ne soit définitif.",
+      "quelle": "d144d879"
+    },
+    "leistung.veneers.faq.2.frage": {
+      "text": "Voit-on que ce sont des facettes ?",
+      "quelle": "4ecb4f60"
+    },
+    "leistung.veneers.faq.3.antwort": {
+      "text": "Si de l'émail a été retiré, la restauration est définitive – la dent aura alors toujours besoin d'un revêtement. Les facettes sans préparation, en revanche, peuvent en principe être retirées. Nous vous indiquons clairement au préalable quelle solution est envisageable dans votre cas.",
+      "quelle": "fe8a934e"
+    },
+    "leistung.veneers.faq.3.frage": {
+      "text": "Peut-on faire retirer des facettes ?",
+      "quelle": "be9dae75"
+    },
+    "leistung.veneers.kasse": {
+      "text": "Les facettes purement esthétiques sont une prestation privée et ne sont pas prises en charge par l'assurance maladie légale allemande. En cas d'indication médicale avérée – par exemple après un accident – une partie des frais peut être remboursée.",
+      "quelle": "1729bdc0"
+    },
+    "leistung.veneers.kosten": {
+      "text": "900 à 1 800 € par dent, selon le matériau et la complexité",
+      "quelle": "af7ff516"
+    },
+    "leistung.veneers.kurz": {
+      "text": "De fines facettes en céramique qui modifient la forme et la couleur des dents visibles.",
+      "quelle": "b10e1cbd"
+    },
+    "leistung.veneers.name": {
+      "text": "Facettes",
+      "quelle": "7bd00f2b"
+    },
+    "leistung.veneers.patientenfrage": {
+      "text": "Combien coûtent les facettes et combien de temps durent-elles ?",
+      "quelle": "0fec6411"
+    },
+    "leistung.veneers.synonyme.0": {
+      "text": "coques dentaires",
+      "quelle": "f07742fb"
+    },
+    "leistung.veneers.synonyme.1": {
+      "text": "facettes céramique",
+      "quelle": "da1dcf31"
+    },
+    "leistung.veneers.synonyme.2": {
+      "text": "facette dentaire",
+      "quelle": "f95cb7e6"
+    },
+    "leistung.veneers.synonyme.3": {
+      "text": "Hollywood Smile",
+      "quelle": "9ce7455a"
+    },
+    "leistung.veneers.synonyme.4": {
+      "text": "facettes sans meulage",
+      "quelle": "8d327f04"
+    },
+    "leistung.veneers.teaser": {
+      "text": "Les facettes sont de fines coques en céramique collées sur la face avant des dents antérieures. Elles corrigent les colorations, les petits espaces, les bords ébréchés et les légers défauts d'alignement – généralement en deux à trois rendez-vous.",
+      "quelle": "195a36ee"
+    },
+    "leistung.weisheitszaehne.dauer": {
+      "text": "30 à 90 minutes pour les quatre",
+      "quelle": "4140359b"
+    },
+    "leistung.weisheitszaehne.faq.0.antwort": {
+      "text": "En général deux à trois jours. Le gonflement et la tension sont les plus forts le deuxième jour, puis s'atténuent. Si possible, prévoyez l'intervention avant un week-end libre.",
+      "quelle": "bedeaab4"
+    },
+    "leistung.weisheitszaehne.faq.0.frage": {
+      "text": "Combien de temps suis-je en arrêt de travail après l'intervention ?",
+      "quelle": "90259830"
+    },
+    "leistung.weisheitszaehne.faq.1.antwort": {
+      "text": "Les deux sont possibles. Les quatre en une seule séance ne demandent qu'un seul temps de convalescence – c'est ce que choisissent la plupart des patients, souvent sous sédation. Une extraction dent par dent est plus douce si vous ne pouvez pas vous absenter longtemps de votre travail ou en cas d'antécédents médicaux.",
+      "quelle": "145991e1"
+    },
+    "leistung.weisheitszaehne.faq.1.frage": {
+      "text": "Les quatre en une fois ou une à une ?",
+      "quelle": "c7f4f61b"
+    },
+    "leistung.weisheitszaehne.faq.2.antwort": {
+      "text": "Dans la mâchoire inférieure, un nerf passe près des racines. C'est justement pour cela que, dans les cas délicats, nous réalisons au préalable une image en 3D qui montre la distance au millimètre près. Une sensation d'engourdissement temporaire est rare, une sensation durable très rare – nous discutons de votre risque individuel avant l'intervention.",
+      "quelle": "3bae26e8"
+    },
+    "leistung.weisheitszaehne.faq.2.frage": {
+      "text": "Un nerf peut-il être touché pendant l'intervention ?",
+      "quelle": "2d36a725"
+    },
+    "leistung.weisheitszaehne.kasse": {
+      "text": "L'extraction est prise en charge par la caisse en cas d'indication médicale. Une extraction purement préventive, sans anomalie constatée, ainsi que la sédation, restent à votre charge.",
+      "quelle": "8e5548f6"
+    },
+    "leistung.weisheitszaehne.kosten": {
+      "text": "Prise en charge par la caisse en cas d'indication, sédation en supplément de 250 à 600 €",
+      "quelle": "94ee2dd2"
+    },
+    "leistung.weisheitszaehne.kurz": {
+      "text": "Une intervention de routine bien planifiée – possible sous sédation consciente sur demande.",
+      "quelle": "87bdbfe1"
+    },
+    "leistung.weisheitszaehne.name": {
+      "text": "Extraction des dents de sagesse",
+      "quelle": "ba585258"
+    },
+    "leistung.weisheitszaehne.patientenfrage": {
+      "text": "Faut-il toujours retirer les dents de sagesse, et combien de temps faut-il s'arrêter après ?",
+      "quelle": "608542d4"
+    },
+    "leistung.weisheitszaehne.synonyme.0": {
+      "text": "opération dents de sagesse",
+      "quelle": "31c82ea2"
+    },
+    "leistung.weisheitszaehne.synonyme.1": {
+      "text": "extraction dent de sagesse",
+      "quelle": "9afd71b1"
+    },
+    "leistung.weisheitszaehne.synonyme.2": {
+      "text": "dent de sagesse inflammation",
+      "quelle": "c015de36"
+    },
+    "leistung.weisheitszaehne.synonyme.3": {
+      "text": "enlever dent de sagesse",
+      "quelle": "48ff5a30"
+    },
+    "leistung.weisheitszaehne.teaser": {
+      "text": "Les dents de sagesse ne doivent pas systématiquement être retirées. Mais si elles sont mal positionnées, enflammées ou menacent les dents voisines, l'extraction est recommandée. Une radiographie 3D permet de connaître précisément leur position par rapport au nerf avant l'intervention.",
+      "quelle": "cd1664cb"
+    },
+    "leistung.wurzelkanalbehandlung.dauer": {
+      "text": "1 à 2 rendez-vous de 60 à 120 minutes",
+      "quelle": "a5630eb7"
+    },
+    "leistung.wurzelkanalbehandlung.faq.0.antwort": {
+      "text": "Cette réputation date d'une époque sans anesthésiques modernes. Aujourd'hui, la dent est bien anesthésiée pendant le traitement. Ce qui fait mal, c'est en général l'inflammation elle-même, avant l'intervention – le traitement met fin à cette douleur.",
+      "quelle": "fa7dfb26"
+    },
+    "leistung.wurzelkanalbehandlung.faq.0.frage": {
+      "text": "Un traitement de canal fait-il mal ?",
+      "quelle": "3da40b33"
+    },
+    "leistung.wurzelkanalbehandlung.faq.1.antwort": {
+      "text": "Pour un premier traitement sous microscope, les études montrent des taux de succès d'environ 85 à 95 pour cent. En cas de retraitement, ils sont plus faibles. Personne ne peut vous donner de garantie sérieuse – nous vous indiquons honnêtement, avant de commencer, quelles sont les perspectives dans votre cas.",
+      "quelle": "38630158"
+    },
+    "leistung.wurzelkanalbehandlung.faq.1.frage": {
+      "text": "Quelles sont les chances de succès ?",
+      "quelle": "ba6af60b"
+    },
+    "leistung.wurzelkanalbehandlung.faq.2.antwort": {
+      "text": "Pour les molaires, presque toujours. Une dent traitée devient plus fragile et se fracture facilement sans couronne. Pour les dents antérieures avec peu de perte de substance, une obturation suffit souvent.",
+      "quelle": "45d38abf"
+    },
+    "leistung.wurzelkanalbehandlung.faq.2.frage": {
+      "text": "La dent a-t-elle besoin d'une couronne ensuite ?",
+      "quelle": "705032fa"
+    },
+    "leistung.wurzelkanalbehandlung.faq.3.antwort": {
+      "text": "La dent naturelle possède un appareil de soutien qu'aucun implant ne reproduit – c'est pourquoi nous essayons d'abord de la conserver. Mais si la dent est très endommagée ou a déjà été traitée plusieurs fois sans succès, un implant peut être la solution la plus stable. Nous vous présentons les deux options, avec les coûts et le pronostic de chacune.",
+      "quelle": "28367ea3"
+    },
+    "leistung.wurzelkanalbehandlung.faq.3.frage": {
+      "text": "Un implant ne serait-il pas plus judicieux ?",
+      "quelle": "e48f35d2"
+    },
+    "leistung.wurzelkanalbehandlung.kasse": {
+      "text": "La caisse légale prend en charge le traitement des dents antérieures et, sous certaines conditions, des molaires. Les prestations supplémentaires comme le microscope et la préparation mécanisée restent à votre charge.",
+      "quelle": "e9666512"
+    },
+    "leistung.wurzelkanalbehandlung.kosten": {
+      "text": "300 à 1.200 € pour les procédés élargis",
+      "quelle": "83303a6a"
+    },
+    "leistung.wurzelkanalbehandlung.kurz": {
+      "text": "Sauver sa propre dent quand le nerf est enflammé.",
+      "quelle": "644b9ac6"
+    },
+    "leistung.wurzelkanalbehandlung.name": {
+      "text": "Traitement de canal",
+      "quelle": "27a8058f"
+    },
+    "leistung.wurzelkanalbehandlung.patientenfrage": {
+      "text": "Un traitement de canal est-il douloureux et sauve-t-il vraiment la dent ?",
+      "quelle": "4eae690c"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.0": {
+      "text": "Traitement de racine",
+      "quelle": "fb3517f4"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.1": {
+      "text": "Endodontie",
+      "quelle": "5ae69202"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.2": {
+      "text": "Canal dentaire",
+      "quelle": "d5faf687"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.3": {
+      "text": "Nerf de la dent enflammé",
+      "quelle": "d162586b"
+    },
+    "leistung.wurzelkanalbehandlung.synonyme.4": {
+      "text": "Résection apicale",
+      "quelle": "965c1bc9"
+    },
+    "leistung.wurzelkanalbehandlung.teaser": {
+      "text": "Lors d'un traitement de canal, le tissu enflammé est retiré de l'intérieur de la dent, le système canalaire est nettoyé puis obturé de façon étanche. Grâce au microscope et à la préparation mécanisée, même les canaux difficiles et courbés peuvent aujourd'hui être traités de manière fiable.",
+      "quelle": "a195b150"
+    },
+    "leistung.zahnarztangst.dauer": {
+      "text": "Premier entretien de 30 à 45 minutes, sans soin",
+      "quelle": "7e8f42b7"
+    },
+    "leistung.zahnarztangst.faq.0.antwort": {
+      "text": "Non. Le premier rendez-vous est un entretien : vous ne vous installez pas dans le fauteuil si vous ne le souhaitez pas. Nous regardons ensemble ce dont vous avez besoin et définissons la suite. Rien ne se passe sans vous prévenir.",
+      "quelle": "9ae1a2c9"
+    },
+    "leistung.zahnarztangst.faq.0.frage": {
+      "text": "Dois-je me faire soigner dès le premier rendez-vous ?",
+      "quelle": "be3148db"
+    },
+    "leistung.zahnarztangst.faq.1.antwort": {
+      "text": "Non. Beaucoup de nos patientes et patients reviennent après des années d'absence. Nous établissons un bilan, nous ne jugeons pas – et nous vous disons honnêtement, sans dramatiser, ce qu'il y a à faire.",
+      "quelle": "7430b7aa"
+    },
+    "leistung.zahnarztangst.faq.1.frage": {
+      "text": "Vais-je être jugé pour mes longues années sans soins ?",
+      "quelle": "bf206099"
+    },
+    "leistung.zahnarztangst.faq.2.antwort": {
+      "text": "Alors nous nous arrêtons. Nous convenons à l'avance d'un signe de la main qui permet une pause immédiate. Retrouver ce contrôle fait, pour beaucoup, toute la différence.",
+      "quelle": "0e1391e1"
+    },
+    "leistung.zahnarztangst.faq.2.frage": {
+      "text": "Et si je n'en peux plus en plein milieu du soin ?",
+      "quelle": "6a6f710a"
+    },
+    "leistung.zahnarztangst.kasse": {
+      "text": "Le traitement dentaire est pris en charge par la caisse, la sédation et l'anesthésie générale sont le plus souvent à la charge du patient.",
+      "quelle": "7c3cacfd"
+    },
+    "leistung.zahnarztangst.kosten": {
+      "text": "Consultation prise en charge par la caisse, sédation entre 250 et 600 €",
+      "quelle": "0011144c"
+    },
+    "leistung.zahnarztangst.kurz": {
+      "text": "Pour celles et ceux qui repoussent ce rendez-vous depuis des années.",
+      "quelle": "531d8000"
+    },
+    "leistung.zahnarztangst.name": {
+      "text": "Traitement en cas de peur du dentiste",
+      "quelle": "b44ebcfc"
+    },
+    "leistung.zahnarztangst.patientenfrage": {
+      "text": "J'ai très peur du dentiste : comment se déroule le premier rendez-vous ?",
+      "quelle": "61880409"
+    },
+    "leistung.zahnarztangst.synonyme.0": {
+      "text": "peur du dentiste",
+      "quelle": "965b32e1"
+    },
+    "leistung.zahnarztangst.synonyme.1": {
+      "text": "phobie dentaire",
+      "quelle": "251e5c6e"
+    },
+    "leistung.zahnarztangst.synonyme.2": {
+      "text": "patient anxieux",
+      "quelle": "d13da4fd"
+    },
+    "leistung.zahnarztangst.synonyme.3": {
+      "text": "panique chez le dentiste",
+      "quelle": "550e1886"
+    },
+    "leistung.zahnarztangst.teaser": {
+      "text": "La peur du dentiste n'est pas un défaut de caractère, mais une réaction très fréquente et qui se traite bien. Chez nous, c'est vous qui donnez le rythme : le premier rendez-vous est un entretien, sans soin. Tout le reste n'a lieu que si vous êtes d'accord.",
+      "quelle": "529b0a7e"
+    },
+    "leistung.zahnaufhellung.dauer": {
+      "text": "60 à 90 minutes au cabinet, 10 à 14 jours à domicile",
+      "quelle": "bd676f43"
+    },
+    "leistung.zahnaufhellung.faq.0.antwort": {
+      "text": "Réalisé dans les règles de l'art, non. Le produit actif pénètre dans la dent et y décompose les molécules colorées, sans attaquer la substance dentaire. L'important est que les dents et les gencives soient saines au préalable – c'est pourquoi nous examinons toujours votre bouche et réalisons un nettoyage professionnel avant tout blanchiment.",
+      "quelle": "890c25e6"
+    },
+    "leistung.zahnaufhellung.faq.0.frage": {
+      "text": "Le blanchiment abîme-t-il l'émail dentaire ?",
+      "quelle": "4d36eefd"
+    },
+    "leistung.zahnaufhellung.faq.1.antwort": {
+      "text": "La céramique et la résine ne réagissent pas au produit de blanchiment. Si vous avez des couronnes ou des plombages visibles, nous en tenons compte dans la planification : le blanchiment est réalisé d'abord, puis les restaurations sont adaptées à la nouvelle teinte.",
+      "quelle": "dc262322"
+    },
+    "leistung.zahnaufhellung.faq.1.frage": {
+      "text": "Pourquoi mes couronnes et mes plombages ne s'éclaircissent-ils pas ?",
+      "quelle": "f369f700"
+    },
+    "leistung.zahnaufhellung.faq.2.antwort": {
+      "text": "En général, entre un et trois ans. Le café, le thé, le vin rouge et le tabac réduisent nettement cette durée. Grâce à une retouche avec votre gouttière personnalisée, vous maintenez le résultat à moindre coût.",
+      "quelle": "3971ac3e"
+    },
+    "leistung.zahnaufhellung.faq.2.frage": {
+      "text": "Combien de temps le résultat dure-t-il ?",
+      "quelle": "22ce45dd"
+    },
+    "leistung.zahnaufhellung.faq.3.antwort": {
+      "text": "Une sensibilité passagère au froid peut apparaître, elle disparaît généralement en un à deux jours. Nous utilisons des gels au nitrate de potassium et au fluor qui atténuent nettement cet effet.",
+      "quelle": "56aedd06"
+    },
+    "leistung.zahnaufhellung.faq.3.frage": {
+      "text": "Mes dents deviendront-elles sensibles après ?",
+      "quelle": "274050f6"
+    },
+    "leistung.zahnaufhellung.kasse": {
+      "text": "Prestation privée, non prise en charge par les caisses.",
+      "quelle": "acf1bb88"
+    },
+    "leistung.zahnaufhellung.kosten": {
+      "text": "350 à 650 € pour les deux mâchoires",
+      "quelle": "df41b02b"
+    },
+    "leistung.zahnaufhellung.kurz": {
+      "text": "Des dents plusieurs teintes plus claires – de façon contrôlée et sans agresser l'émail.",
+      "quelle": "0b5437d6"
+    },
+    "leistung.zahnaufhellung.name": {
+      "text": "Blanchiment des dents (bleaching)",
+      "quelle": "883f0fab"
+    },
+    "leistung.zahnaufhellung.patientenfrage": {
+      "text": "Le blanchiment abîme-t-il mes dents ?",
+      "quelle": "255ba52a"
+    },
+    "leistung.zahnaufhellung.synonyme.0": {
+      "text": "Blanchiment dentaire",
+      "quelle": "1ba11f46"
+    },
+    "leistung.zahnaufhellung.synonyme.1": {
+      "text": "Blanchir les dents",
+      "quelle": "c9e5d7fc"
+    },
+    "leistung.zahnaufhellung.synonyme.2": {
+      "text": "dents blanches",
+      "quelle": "c23c9c9b"
+    },
+    "leistung.zahnaufhellung.synonyme.3": {
+      "text": "blanchiment à domicile",
+      "quelle": "eb0acdd3"
+    },
+    "leistung.zahnaufhellung.synonyme.4": {
+      "text": "blanchiment au cabinet dentaire",
+      "quelle": "f402a3fc"
+    },
+    "leistung.zahnaufhellung.teaser": {
+      "text": "Lors du blanchiment, nous éclaircissons les dents avec un gel actif qui dissout les pigments colorés à l'intérieur de la dent. Selon la teinte de départ, plusieurs nuances plus claires sont possibles. Au cabinet, cela se fait en une séance ; avec des gouttières à domicile, c'est un peu plus lent et plus doux.",
+      "quelle": "30971d10"
+    },
+    "leistung.zahnbruecken.dauer": {
+      "text": "2 à 3 rendez-vous sur environ 3 semaines",
+      "quelle": "24a1b381"
+    },
+    "leistung.zahnbruecken.faq.0.antwort": {
+      "text": "Si les dents voisines sont saines et intactes, l'implant est souvent préférable, car il préserve les tissus dentaires sains. Si les dents voisines nécessitent de toute façon une couronne, le bridge est souvent la solution la plus judicieuse et la plus économique. Nous vous présentons les deux options, avec leurs coûts et leurs conséquences, avant que vous ne décidiez.",
+      "quelle": "9ead2232"
+    },
+    "leistung.zahnbruecken.faq.0.frage": {
+      "text": "Bridge ou implant ?",
+      "quelle": "985d948b"
+    },
+    "leistung.zahnbruecken.faq.1.antwort": {
+      "text": "Dans certains cas, au niveau des dents de devant, oui – avec un bridge collé, fixé uniquement par une ailette à l'arrière d'une dent voisine. C'est une bonne solution intermédiaire, notamment pour les jeunes patients dont une dent ne s'est pas formée.",
+      "quelle": "65c4fbe0"
+    },
+    "leistung.zahnbruecken.faq.1.frage": {
+      "text": "Peut-on poser un bridge sans tailler les dents ?",
+      "quelle": "bfd0c08c"
+    },
+    "leistung.zahnbruecken.kasse": {
+      "text": "Forfait de la caisse légale allemande pour les soins de base, majoré avec le carnet de bonus.",
+      "quelle": "296753b6"
+    },
+    "leistung.zahnbruecken.kosten": {
+      "text": "1.200 à 2.800 € selon la portée et le matériau",
+      "quelle": "704d88bf"
+    },
+    "leistung.zahnbruecken.kurz": {
+      "text": "Combler un espace en s'appuyant sur les dents voisines pour soutenir la prothèse.",
+      "quelle": "c490e987"
+    },
+    "leistung.zahnbruecken.name": {
+      "text": "Bridges dentaires",
+      "quelle": "c22f8fe3"
+    },
+    "leistung.zahnbruecken.patientenfrage": {
+      "text": "Bridge ou implant : quelle est la meilleure solution pour une dent manquante ?",
+      "quelle": "da3b10de"
+    },
+    "leistung.zahnbruecken.synonyme.0": {
+      "text": "Bridge dentaire",
+      "quelle": "fa7b5124"
+    },
+    "leistung.zahnbruecken.synonyme.1": {
+      "text": "Combler un espace entre les dents",
+      "quelle": "ad7a1bc9"
+    },
+    "leistung.zahnbruecken.synonyme.2": {
+      "text": "Prothèse dentaire fixe",
+      "quelle": "b3254739"
+    },
+    "leistung.zahnbruecken.synonyme.3": {
+      "text": "Bridge collé",
+      "quelle": "d47411d9"
+    },
+    "leistung.zahnbruecken.teaser": {
+      "text": "Un bridge remplace une ou plusieurs dents manquantes en prenant appui sur les dents voisines. Il est fixe, supporte une charge immédiatement et ne nécessite pas d'intervention chirurgicale – contrairement à un implant, il faut cependant tailler les dents voisines.",
+      "quelle": "e4a94168"
+    },
+    "leistung.zahnentfernung.dauer": {
+      "text": "20 à 60 minutes",
+      "quelle": "27ed65c7"
+    },
+    "leistung.zahnentfernung.faq.0.antwort": {
+      "text": "Pendant 24 heures : pas de tabac, pas d'alcool, pas de café, pas de produits laitiers, ne pas rincer la bouche et pas de sport. La chaleur et les efforts physiques favorisent les saignements. Refroidissez de l'extérieur, par intervalles.",
+      "quelle": "37e3813f"
+    },
+    "leistung.zahnentfernung.faq.0.frage": {
+      "text": "Que ne dois-je pas faire après l'intervention ?",
+      "quelle": "ee777174"
+    },
+    "leistung.zahnentfernung.faq.1.antwort": {
+      "text": "Dans la zone visible, c'est souvent le cas, avec une prothèse provisoire. Dans la zone des dents postérieures, cela dépend du risque de déplacement de la dent antagoniste. Idéalement, nous planifions avec vous la solution définitive avant même l'extraction.",
+      "quelle": "00618a8f"
+    },
+    "leistung.zahnentfernung.faq.1.frage": {
+      "text": "Faut-il combler l'espace tout de suite ?",
+      "quelle": "89a5acac"
+    },
+    "leistung.zahnentfernung.kasse": {
+      "text": "L'extraction est prise en charge par la caisse. Les mesures de préservation osseuse restent à votre charge.",
+      "quelle": "73a335e1"
+    },
+    "leistung.zahnentfernung.kosten": {
+      "text": "Prise en charge par la caisse, mesures complémentaires selon le cas",
+      "quelle": "b1dd9cf2"
+    },
+    "leistung.zahnentfernung.kurz": {
+      "text": "Quand une dent ne peut plus être sauvée – avec ménagement et en pensant à la suite.",
+      "quelle": "646ea072"
+    },
+    "leistung.zahnentfernung.name": {
+      "text": "Extraction dentaire",
+      "quelle": "db88ece6"
+    },
+    "leistung.zahnentfernung.patientenfrage": {
+      "text": "Que faut-il faire après une extraction dentaire ?",
+      "quelle": "17061719"
+    },
+    "leistung.zahnentfernung.synonyme.0": {
+      "text": "Extraction dentaire",
+      "quelle": "e7772455"
+    },
+    "leistung.zahnentfernung.synonyme.1": {
+      "text": "Extraction",
+      "quelle": "854a6d78"
+    },
+    "leistung.zahnentfernung.synonyme.2": {
+      "text": "Dent arrachée",
+      "quelle": "25befa1b"
+    },
+    "leistung.zahnentfernung.synonyme.3": {
+      "text": "Perte de dent",
+      "quelle": "f6f6d133"
+    },
+    "leistung.zahnentfernung.teaser": {
+      "text": "Il arrive qu'une dent soit si abîmée qu'il ne soit plus utile de la conserver. Nous l'extrayons avec le plus grand ménagement possible, en préservant l'alvéole osseuse – ce qui facilite considérablement une future pose d'implant.",
+      "quelle": "1fdb10a5"
+    },
+    "leistung.zahnimplantate.ablauf.0.dauer": {
+      "text": "45 min",
+      "quelle": "d96be374"
+    },
+    "leistung.zahnimplantate.ablauf.0.text": {
+      "text": "Une imagerie 3D (cone beam) montre au millimètre près le volume osseux et le trajet des nerfs. Nous planifions ensuite sur ordinateur la position et la longueur de l'implant.",
+      "quelle": "de9a677f"
+    },
+    "leistung.zahnimplantate.ablauf.0.titel": {
+      "text": "Planification avec imagerie 3D",
+      "quelle": "b8cabcab"
+    },
+    "leistung.zahnimplantate.ablauf.1.dauer": {
+      "text": "30 – 90 min",
+      "quelle": "3b853aa6"
+    },
+    "leistung.zahnimplantate.ablauf.1.text": {
+      "text": "Sous anesthésie locale – ou en sédation consciente sur demande – l'implant est inséré dans l'os de la mâchoire. La plupart des patients trouvent cela moins éprouvant qu'une extraction dentaire.",
+      "quelle": "063e76e3"
+    },
+    "leistung.zahnimplantate.ablauf.1.titel": {
+      "text": "Pose de l'implant",
+      "quelle": "47a36e2d"
+    },
+    "leistung.zahnimplantate.ablauf.2.dauer": {
+      "text": "3 – 6 mois",
+      "quelle": "617e9dc9"
+    },
+    "leistung.zahnimplantate.ablauf.2.text": {
+      "text": "L'os se soude fermement à la surface de l'implant. Pendant cette période, vous portez une prothèse provisoire qui vous permet de manger et de sourire normalement.",
+      "quelle": "1123bff9"
+    },
+    "leistung.zahnimplantate.ablauf.2.titel": {
+      "text": "Cicatrisation",
+      "quelle": "d0a18a85"
+    },
+    "leistung.zahnimplantate.ablauf.3.dauer": {
+      "text": "2 rendez-vous",
+      "quelle": "8f016911"
+    },
+    "leistung.zahnimplantate.ablauf.3.text": {
+      "text": "Une fois la cicatrisation terminée, la prothèse est posée – réalisée dans notre propre laboratoire de maîtrise et adaptée à la teinte de vos dents.",
+      "quelle": "8bb903d6"
+    },
+    "leistung.zahnimplantate.ablauf.3.titel": {
+      "text": "Pose de la couronne",
+      "quelle": "bf49b755"
+    },
+    "leistung.zahnimplantate.dauer": {
+      "text": "Intervention 30 à 90 minutes, traitement complet 3 à 6 mois",
+      "quelle": "aa351ae9"
+    },
+    "leistung.zahnimplantate.faq.0.antwort": {
+      "text": "Pendant l'intervention, vous ne ressentez rien grâce à l'anesthésie locale. Ensuite, une légère douleur et un gonflement peuvent survenir pendant un à trois jours – comparable à une extraction dentaire et facilement maîtrisable avec des antalgiques courants. Si vous êtes très anxieux, l'intervention peut se faire sous sédation consciente.",
+      "quelle": "c62f4a14"
+    },
+    "leistung.zahnimplantate.faq.0.frage": {
+      "text": "La pose est-elle douloureuse ?",
+      "quelle": "82172ff0"
+    },
+    "leistung.zahnimplantate.faq.1.antwort": {
+      "text": "Après dix ans, plus de quatre-vingt-dix pour cent des implants sont encore fonctionnels. Le suivi régulier, des gencives saines et l'absence de tabac sont déterminants. Le tabac augmente nettement le risque de perte de l'implant.",
+      "quelle": "6e17511e"
+    },
+    "leistung.zahnimplantate.faq.1.frage": {
+      "text": "Combien de temps dure un implant ?",
+      "quelle": "ec48515c"
+    },
+    "leistung.zahnimplantate.faq.2.antwort": {
+      "text": "Il n'existe pas d'âge maximal. Ce qui compte, c'est l'état de santé général et la qualité osseuse, pas l'année de naissance. Il existe cependant une limite inférieure : chez les adolescents, on attend la fin de la croissance de la mâchoire.",
+      "quelle": "bd848069"
+    },
+    "leistung.zahnimplantate.faq.2.frage": {
+      "text": "Suis-je trop âgé pour un implant ?",
+      "quelle": "5ffddde3"
+    },
+    "leistung.zahnimplantate.faq.3.antwort": {
+      "text": "Il est alors possible de reconstruire l'os – selon l'ampleur, en même temps que la pose de l'implant ou lors d'une intervention préalable. L'imagerie 3D montre précisément ce qui est nécessaire dans votre cas.",
+      "quelle": "ff52c7a7"
+    },
+    "leistung.zahnimplantate.faq.3.frage": {
+      "text": "Que se passe-t-il si l'os est insuffisant ?",
+      "quelle": "6194626b"
+    },
+    "leistung.zahnimplantate.faq.4.antwort": {
+      "text": "Oui, en céramique de zircone. Ils sont blancs, bien tolérés par les tissus et constituent une option pour les personnes intolérantes au titane ou ayant des gencives fines dans la zone visible. Toutes les situations ne s'y prêtent pas – nous en discutons lors de la planification.",
+      "quelle": "613f8e8c"
+    },
+    "leistung.zahnimplantate.faq.4.frage": {
+      "text": "Existe-t-il des implants sans métal ?",
+      "quelle": "bdd58882"
+    },
+    "leistung.zahnimplantate.kasse": {
+      "text": "La caisse légale verse un forfait pour la prothèse posée sur l'implant, mais pas pour l'implant lui-même. Ce forfait correspond à celui du traitement de référence comparable.",
+      "quelle": "b57e3059"
+    },
+    "leistung.zahnimplantate.kosten": {
+      "text": "1.800 à 3.500 € par implant, couronne comprise",
+      "quelle": "239fe240"
+    },
+    "leistung.zahnimplantate.kurz": {
+      "text": "Une racine dentaire artificielle en titane – solidement ancrée, sans devoir tailler les dents voisines.",
+      "quelle": "f49d471c"
+    },
+    "leistung.zahnimplantate.name": {
+      "text": "Implants dentaires",
+      "quelle": "4594839f"
+    },
+    "leistung.zahnimplantate.patientenfrage": {
+      "text": "Comment se déroule la pose d'un implant et est-ce douloureux ?",
+      "quelle": "28f10855"
+    },
+    "leistung.zahnimplantate.synonyme.0": {
+      "text": "Implant dentaire",
+      "quelle": "8128ca75"
+    },
+    "leistung.zahnimplantate.synonyme.1": {
+      "text": "racine dentaire artificielle",
+      "quelle": "2030e608"
+    },
+    "leistung.zahnimplantate.synonyme.2": {
+      "text": "prix implant dentaire",
+      "quelle": "9ebc0742"
+    },
+    "leistung.zahnimplantate.synonyme.3": {
+      "text": "implant en titane",
+      "quelle": "7ad29c69"
+    },
+    "leistung.zahnimplantate.synonyme.4": {
+      "text": "implant en céramique",
+      "quelle": "add152a7"
+    },
+    "leistung.zahnimplantate.teaser": {
+      "text": "Un implant remplace la racine dentaire et porte une couronne, un bridge ou une prothèse. Il transmet les forces masticatoires à l'os de la mâchoire et le maintient ainsi actif – un avantage qu'aucune autre solution ne peut offrir. Les dents voisines restent intactes.",
+      "quelle": "9072c1c0"
+    },
+    "leistung.zahnschmuck.dauer": {
+      "text": "20 minutes",
+      "quelle": "94e96abd"
+    },
+    "leistung.zahnschmuck.faq.0.antwort": {
+      "text": "Non, s'il est posé et entretenu correctement. La dent n'est pas endommagée. Il est important de bien brosser autour du bijou pour éviter l'accumulation de plaque.",
+      "quelle": "84641fd6"
+    },
+    "leistung.zahnschmuck.faq.0.frage": {
+      "text": "Le bijou dentaire abîme-t-il la dent ?",
+      "quelle": "68b5ed94"
+    },
+    "leistung.zahnschmuck.kasse": {
+      "text": "Prestation privée.",
+      "quelle": "6449329c"
+    },
+    "leistung.zahnschmuck.kosten": {
+      "text": "60 à 150 € selon le bijou",
+      "quelle": "298d235f"
+    },
+    "leistung.zahnschmuck.kurz": {
+      "text": "Petit cristal ou ornement doré, collé sans perçage.",
+      "quelle": "c9c33a87"
+    },
+    "leistung.zahnschmuck.name": {
+      "text": "Bijou dentaire",
+      "quelle": "af47c5a8"
+    },
+    "leistung.zahnschmuck.patientenfrage": {
+      "text": "Faut-il percer la dent pour poser un bijou dentaire ?",
+      "quelle": "2ead2c19"
+    },
+    "leistung.zahnschmuck.synonyme.0": {
+      "text": "Dental Jewelry",
+      "quelle": "0b3839c3"
+    },
+    "leistung.zahnschmuck.synonyme.1": {
+      "text": "Cristal dentaire",
+      "quelle": "55d5c56c"
+    },
+    "leistung.zahnschmuck.synonyme.2": {
+      "text": "Skyce",
+      "quelle": "2691833e"
+    },
+    "leistung.zahnschmuck.synonyme.3": {
+      "text": "Twinkles",
+      "quelle": "1020d6e8"
+    },
+    "leistung.zahnschmuck.teaser": {
+      "text": "Le bijou dentaire est collé selon le même procédé qu'un appareil dentaire – sans perçage et sans perte de substance dentaire. Il peut être retiré à tout moment, sans laisser de trace.",
+      "quelle": "2d67a07a"
+    },
+    "leistung.zahnvorsorge.dauer": {
+      "text": "20 à 30 minutes",
+      "quelle": "ae398166"
+    },
+    "leistung.zahnvorsorge.faq.0.antwort": {
+      "text": "Pour le carnet de bonus, un rendez-vous par année civile suffit pour les adultes. D'un point de vue médical, nous recommandons deux rendez-vous par an : les caries et les inflammations des gencives se développent souvent en quelques mois et ne font pas mal pendant longtemps.",
+      "quelle": "904ba3d3"
+    },
+    "leistung.zahnvorsorge.faq.0.frage": {
+      "text": "Une fois par an suffit-il ?",
+      "quelle": "62684d20"
+    },
+    "leistung.zahnvorsorge.faq.1.antwort": {
+      "text": "Pas systématiquement. Nous ne faisons une radiographie qu'en cas de suspicion précise ou si la dernière remonte à longtemps – généralement tous les deux ans. Chaque radiographie vous est expliquée et justifiée au préalable.",
+      "quelle": "220952a4"
+    },
+    "leistung.zahnvorsorge.faq.1.frage": {
+      "text": "Fait-on une radiographie à cette occasion ?",
+      "quelle": "a01655fc"
+    },
+    "leistung.zahnvorsorge.faq.2.antwort": {
+      "text": "Non. Nous ne jugeons pas, nous établissons un diagnostic. De nombreuses personnes viennent nous voir après une longue pause, et nous examinons ensemble calmement ce qui est utile maintenant – dans un ordre qui vous convient.",
+      "quelle": "fd7f4cfb"
+    },
+    "leistung.zahnvorsorge.faq.2.frage": {
+      "text": "Je n'ai pas vu de dentiste depuis des années. Vais-je avoir des ennuis ?",
+      "quelle": "51055b39"
+    },
+    "leistung.zahnvorsorge.kasse": {
+      "text": "La caisse d'assurance maladie légale prend en charge intégralement deux contrôles par an. Les deux rendez-vous doivent être inscrits dans le carnet de bonus.",
+      "quelle": "10fe275d"
+    },
+    "leistung.zahnvorsorge.kosten": {
+      "text": "Pour les assurés du régime légal, sans participation aux frais",
+      "quelle": "2101b709"
+    },
+    "leistung.zahnvorsorge.kurz": {
+      "text": "Le rendez-vous de contrôle semestriel – court, indolore et la meilleure protection contre des traitements coûteux.",
+      "quelle": "5532a012"
+    },
+    "leistung.zahnvorsorge.name": {
+      "text": "Contrôle dentaire",
+      "quelle": "39d07f1f"
+    },
+    "leistung.zahnvorsorge.patientenfrage": {
+      "text": "Que se passe-t-il lors du contrôle dentaire de prévention ?",
+      "quelle": "97224f6b"
+    },
+    "leistung.zahnvorsorge.synonyme.0": {
+      "text": "Contrôle",
+      "quelle": "e68c26b1"
+    },
+    "leistung.zahnvorsorge.synonyme.1": {
+      "text": "Check-up",
+      "quelle": "53907f73"
+    },
+    "leistung.zahnvorsorge.synonyme.2": {
+      "text": "Carnet de bonus",
+      "quelle": "0b46d0c1"
+    },
+    "leistung.zahnvorsorge.synonyme.3": {
+      "text": "Contrôle dentaire",
+      "quelle": "99fda186"
+    },
+    "leistung.zahnvorsorge.synonyme.4": {
+      "text": "Rendez-vous de contrôle dentaire",
+      "quelle": "f7a6a5e8"
+    },
+    "leistung.zahnvorsorge.teaser": {
+      "text": "Lors du contrôle, nous examinons systématiquement les dents, les gencives et les muqueuses. Les caries débutantes et les inflammations des gencives peuvent ainsi être traitées tant que l'intervention reste simple – et l'inscription dans le carnet de bonus vous assure une prise en charge plus élevée par la caisse pour les prothèses dentaires.",
+      "quelle": "8c341706"
+    },
     "standort.berlin-charlottenburg.anfahrt.oepnv.0": {
       "text": "Métro U1 Uhlandstraße (3 minutes à pied)",
       "quelle": "3a60c240"

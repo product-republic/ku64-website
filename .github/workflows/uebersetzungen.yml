@@ -119,7 +119,17 @@ jobs:
         if: steps.rueckstand.outputs.zu_tun == 'ja'
         run: npm run build
 
+      # Darf fehlschlagen, ohne den Lauf rot zu färben.
+      #
+      # „GitHub Actions is not permitted to create or approve pull requests"
+      # ist keine Aussage über die Übersetzung, sondern über eine Einstellung:
+      # Settings → Actions → General → Workflow permissions. Ist sie nicht
+      # gesetzt, wird der Zweig trotzdem gepusht – die Arbeit ist also da und
+      # nur der Umschlag fehlt. Den Lauf deswegen als gescheitert zu melden,
+      # hieße jemanden zu einer Fehlersuche zu schicken, wo kein Fehler ist.
       - name: Als Pull Request vorlegen
+        id: pr
+        continue-on-error: true
         if: steps.rueckstand.outputs.zu_tun == 'ja'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -156,3 +166,30 @@ jobs:
             Der Stand vor diesem Lauf steht in der Zusammenfassung des Laufs,
             unter „Rückstand ermitteln".
           delete-branch: true
+
+      # Sagen, wo die Arbeit liegt – auch und gerade dann, wenn kein Pull
+      # Request entstehen durfte.
+      - name: Ergebnis vermerken
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        run: |
+          zweig="uebersetzungen/${{ github.ref_name }}"
+          if [ "${{ steps.pr.outcome }}" = "success" ]; then
+            echo "### Übersetzungen liegen als Pull Request vor" >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo '### Übersetzungen liegen auf dem Zweig `'"$zweig"'`'
+              echo
+              echo 'Ein Pull Request konnte nicht angelegt werden. Das liegt an'
+              echo 'einer Einstellung, nicht an der Übersetzung:'
+              echo
+              echo '> Settings → Actions → General → Workflow permissions →'
+              echo '> „Allow GitHub Actions to create and approve pull requests"'
+              echo
+              echo 'Bis dahin lässt sich der Zweig von Hand zusammenführen:'
+              echo
+              echo '```'
+              echo "git fetch origin $zweig"
+              echo "git checkout FETCH_HEAD -- src/inhalte/en.json src/inhalte/fr.json"
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
