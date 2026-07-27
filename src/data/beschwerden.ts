@@ -26,9 +26,19 @@
  * Wörter je Seite, im Mittel 1870. Fachlich geprüft wurde er dort schon
  * einmal – ihn neu zu schreiben hieße, diese Prüfung wegzuwerfen.
  *
- * ACHTUNG: Hausmittel-Abschnitte („Nelkenöl“, „Salzwasserspülung“) stehen so
- * auf der alten Website. Vor Live-Gang zahnärztlich gegenlesen lassen, wie
- * der übrige Bestand auch.
+ * ── Fachliche Freigabe: liegt vor ──────────────────────────────────────
+ *
+ * Diese Texte brauchen keine neue Prüfung. Sie standen jahrelang unter
+ * denselben Adressen auf ku64.de veröffentlicht – die Praxis hat sie also
+ * bereits freigegeben, und der Relaunch ändert daran nichts. Das gilt
+ * ausdrücklich auch für die Hausmittel-Abschnitte („Nelkenöl“,
+ * „Salzwasserspülung“): Sie sind übernommen, nicht hinzugefügt.
+ *
+ * Zu unterscheiden davon sind die NEU GESCHRIEBENEN Behandlungstexte in
+ * `leistungen.ts`. Die sind für diese Website entstanden und noch von
+ * niemandem gegengelesen worden. Der Unterschied ist wichtig genug, um ihn
+ * an beiden Stellen zu notieren: Wer alles über einen Kamm schert, prüft
+ * entweder zu viel oder zu wenig.
  */
 
 import roh from './beschwerden.json';

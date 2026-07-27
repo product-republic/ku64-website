@@ -389,7 +389,7 @@ export const WEITERLEITUNGEN: Weiterleitung[] = [
   { von: '/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/', nach: '/leistungen/wurzelkanalbehandlung/', regel: 'LEISTUNG' },
   { von: '/leistungen/ganzheitliche-zahnmedizin/', nach: '/leistungen/', regel: 'LEISTUNG' },
   { von: '/leistungen/ganzheitliche-zahnmedizin/bisshebung/', nach: '/leistungen/cmd-behandlung/', regel: 'LEISTUNG' },
-  { von: '/leistungen/ganzheitliche-zahnmedizin/dentosophie/', nach: '/leistungen/', regel: 'LEISTUNG' },
+  { von: '/leistungen/ganzheitliche-zahnmedizin/dentosophie/', nach: '/leistungen/dentosophie/', regel: 'LEISTUNG' },
   { von: '/leistungen/ganzheitliche-zahnmedizin/erstuntersuchung/', nach: '/leistungen/zahnvorsorge/', regel: 'LEISTUNG' },
   { von: '/leistungen/ganzheitliche-zahnmedizin/karies-risiko-bestimmung/', nach: '/leistungen/zahnvorsorge/', regel: 'LEISTUNG' },
   { von: '/leistungen/ganzheitliche-zahnmedizin/kariesbehandlung/', nach: '/leistungen/karies-behandlung/', regel: 'LEISTUNG' },

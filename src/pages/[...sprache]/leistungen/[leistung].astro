@@ -15,6 +15,7 @@ import FaqBlock from '../../../components/FaqBlock.astro';
 import Bild from '../../../components/Bild.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import { LEISTUNGEN } from '../../../data/leistungen';
+import { veroeffentlichbar } from '../../../data/team';
 import { beschwerdenZuBehandlung } from '../../../data/beschwerden';
 import { bereichsbild } from '../../../data/bildbedarf';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
@@ -34,6 +35,17 @@ const wo = daten.standorte.filter((s) => leistung.verfuegbar.includes(s.slug));
 const nicht = daten.standorte.filter((s) => !leistung.verfuegbar.includes(s.slug));
 
 const beschwerden = beschwerdenZuBehandlung(leistung.slug);
+
+/*
+ * Wer die Behandlung durchführt.
+ *
+ * Nur wenige Behandlungen führen das Feld – siehe Kommentar in
+ * leistungen.ts. Wo es steht, ist es die Antwort auf die Frage, die auf
+ * dieser Seite sonst offen bliebe: „Wer macht das bei euch?"
+ */
+const behandelnde = (leistung.behandler ?? [])
+  .map((slug) => veroeffentlichbar().find((m) => m.slug === slug))
+  .filter((m) => m !== undefined);
 
 const verwandte = leistung.related
   .map((s) => daten.leistung(s))
@@ -186,6 +198,33 @@ const schema = [
   }
 
   {
+    behandelnde.length > 0 && (
+      <section class="abschnitt flaeche-warm">
+        <div class="huelle">
+          <h2 class="bh-titel">
+            {behandelnde.length === 1 ? 'Ihre Ansprechperson' : 'Ihre Ansprechpersonen'}
+          </h2>
+          <div class="bh-liste">
+            {behandelnde.map((m) => {
+              /* Der Standort im Verweis ist der, an dem die Person arbeitet –
+                 sonst führt der Klick auf eine Seite, die es nicht gibt. */
+              const wo = m!.standorte[0]!;
+              const ort = daten.standorte.find((s) => s.slug === wo);
+              return (
+                <a href={`/${wo}/team/${m!.slug}/`} class="bh-karte">
+                  <span class="bh-name">{m!.name}</span>
+                  {m!.funktion && <span class="bh-funktion">{m!.funktion}</span>}
+                  {ort && <span class="bh-ort">KU64 {ort.name}</span>}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
     beschwerden.length > 0 && (
       /*
        * Der Rückweg. Die Beschwerdeseiten verweisen hierher, weil jemand mit
@@ -211,6 +250,49 @@ const schema = [
 </Basis>
 
 <style>
+  .bh-titel {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-5);
+  }
+
+  .bh-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
+    gap: var(--raum-4);
+    max-width: 52rem;
+  }
+
+  .bh-karte {
+    display: grid;
+    gap: var(--raum-1);
+    padding: var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    background: var(--flaeche);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .bh-karte:hover {
+    border-color: var(--akzent);
+  }
+
+  .bh-name {
+    font-weight: 600;
+  }
+
+  .bh-funktion {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .bh-ort {
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+    margin-block-start: var(--raum-2);
+  }
+
   .fuehrt-titel {
     font-size: var(--t-lg);
     margin-block-end: var(--raum-4);

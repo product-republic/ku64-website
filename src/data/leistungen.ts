@@ -6,10 +6,20 @@
  * nicht verfügbar, wird sie dort NICHT als Seite erzeugt – stattdessen verweist
  * die Standort-Übersicht auf den nächstgelegenen Standort, der sie anbietet.
  *
- * ACHTUNG – fachliche Freigabe: Die Texte sind neu geschrieben und bewusst
- * patientenverständlich gehalten. Vor Veröffentlichung müssen sie zahnärztlich
- * geprüft und gegen das Heilmittelwerbegesetz (HWG) abgeglichen werden.
- * Insbesondere Aussagen zu Erfolgsaussichten, Haltbarkeit und Preisen.
+ * ACHTUNG – fachliche Freigabe steht AUS: Die Texte dieser Datei sind NEU
+ * GESCHRIEBEN und bewusst patientenverständlich gehalten. Vor Veröffentlichung
+ * müssen sie zahnärztlich geprüft und gegen das Heilmittelwerbegesetz (HWG)
+ * abgeglichen werden. Insbesondere Aussagen zu Erfolgsaussichten, Haltbarkeit
+ * und Preisen.
+ *
+ * Das betrifft NICHT die übernommenen Inhalte: Die Beschwerdeseiten
+ * (`beschwerden.ts`), die Blogbeiträge, die Personenprofile und die
+ * Dentosophie-Seite standen bereits auf ku64.de veröffentlicht und sind damit
+ * freigegeben. Einzelne Einträge dieser Datei, die aus dem Altbestand
+ * stammen, sind an Ort und Stelle als solche vermerkt.
+ *
+ * Der Unterschied entscheidet über den Aufwand: 36 neu geschriebene
+ * Behandlungstexte zu prüfen ist eine Sitzung, alles zu prüfen wären Wochen.
  *
  * ACHTUNG – Verfügbarkeit: Die Zuordnung `verfuegbar` ist eine begründete
  * Annahme auf Basis der öffentlich auffindbaren Angaben. Falsche Angaben führen
@@ -60,6 +70,16 @@ export interface Leistung {
   /** Trägt die gesetzliche Kasse etwas bei? Häufigste Patientenfrage überhaupt. */
   kasse?: string;
   verfuegbar: string[];
+  /**
+   * Wer diese Behandlung durchführt – Slugs aus `team.ts`.
+   *
+   * Nur setzen, wo es wirklich an bestimmten Personen hängt. Eine
+   * professionelle Zahnreinigung macht das Prophylaxeteam, und die
+   * namentliche Aufzählung wäre eine Liste, die bei jeder Einstellung
+   * veraltet. Dentosophie dagegen machen zwei Menschen, und wer danach
+   * sucht, sucht sie.
+   */
+  behandler?: string[];
   related: string[];
   ablauf?: AblaufSchritt[];
   faq: FaqEintrag[];
@@ -1120,6 +1140,91 @@ export const LEISTUNGEN: Leistung[] = [
         frage: 'Wie lange dauert die Behandlung?',
         antwort:
           'Erste Besserung berichten viele nach wenigen Wochen mit Schiene. Bis zur Stabilisierung vergehen meist drei bis sechs Monate. Bei ausgeprägten Fällen arbeiten wir mit Physiotherapie zusammen.',
+      },
+    ],
+  },
+  {
+    /*
+     * Übernommen von /leistungen/ganzheitliche-zahnmedizin/dentosophie/.
+     *
+     * Der Text stand dort veröffentlicht und ist damit fachlich freigegeben –
+     * anders als die neu geschriebenen Behandlungstexte dieser Datei. Gekürzt
+     * wurde er trotzdem: Auf der alten Seite standen zwischen den fachlichen
+     * Abschnitten Praxiswerbung („7 Tage die Woche geöffnet",
+     * „Prophylaxe-Shop"), die auf einer Behandlungsseite nichts zu suchen hat.
+     *
+     * Die Adresse ist neu (/leistungen/dentosophie/ statt unter
+     * „ganzheitliche-zahnmedizin"), die alte leitet hierher weiter.
+     */
+    slug: 'dentosophie',
+    name: 'Dentosophie',
+    kategorie: 'funktion',
+    kurz: 'Atmung, Zungenlage und Biss ins Gleichgewicht bringen – ohne Zahnspange.',
+    teaser:
+      'Dentosophie setzt dort an, wo viele Beschwerden entstehen: bei Atmung, Zungenlage, Mundschluss, Kauen und Schlucken. Mit einem weichen Trainingsgerät und begleitenden Übungen verändern sich unbewusste Muster Schritt für Schritt – bei Kindern wie bei Erwachsenen.',
+    synonyme: [
+      'Dentosophie',
+      'Balancer',
+      'Aktivator',
+      'myofunktionelle Therapie',
+      'Mundatmung',
+      'Zungenlage',
+      'Schluckmuster',
+      'ganzheitliche Kieferorthopädie',
+      'Zahnspange ohne Draht',
+    ],
+    patientenfrage: 'Kann man Zahnfehlstellungen auch ohne feste Zahnspange behandeln?',
+    dauer: 'Etwa sechs bis zwölf Monate, mit regelmäßigen Kontrollterminen',
+    kasse:
+      'Die gesetzliche Krankenkasse übernimmt die Dentosophie in der Regel nicht. Bei privater Versicherung und Zahnzusatzversicherungen hängt es vom Tarif ab – wir besprechen Ablauf und Kosten vor Beginn.',
+    verfuegbar: KUDAMM_POTSDAM,
+    /* Zwei Menschen, eine je Standort – siehe Feldkommentar oben. */
+    behandler: ['clara-constanze-meinberg', 'dr-elisabeth-futterlieb'],
+    related: ['cmd-behandlung', 'knirscherschiene', 'aligner'],
+    ablauf: [
+      {
+        titel: 'Befund und Gespräch',
+        text: 'Wir sehen uns an, wie Atmung, Zungenlage, Mundschluss, Kauen und Schlucken zusammenspielen – und was davon aus dem Takt geraten ist.',
+        dauer: '60 Minuten',
+      },
+      {
+        titel: 'Der Balancer',
+        text: 'Ein weiches Trainingsgerät in Gebissform. Es unterstützt die richtige Zungenlage, fördert das physiologische Schlucken und begünstigt die Nasenatmung.',
+      },
+      {
+        titel: 'Übungen für zu Hause',
+        text: 'Myofunktionelle Übungen gegen das Muskelungleichgewicht. Die aktive Mitarbeit ist Teil des Konzepts – neue Bewegungsmuster übt man ein, sie stellen sich nicht ein.',
+      },
+      {
+        titel: 'Regelmäßige Kontrolle',
+        text: 'Über sechs bis zwölf Monate begleiten wir die Veränderung und passen Gerät und Übungen an.',
+      },
+    ],
+    faq: [
+      {
+        frage: 'Für wen ist Dentosophie geeignet?',
+        antwort:
+          'Für Kinder und Jugendliche in der Entwicklung ebenso wie für Erwachsene. Sie ist ein sanfter Ansatz überall dort, wo funktionelle Auffälligkeiten eine Rolle spielen: Mundatmung, falsche Zungenlage, auffälliges Schlucken, Knirschen, Pressen oder Kieferfehlstellungen. Oft wird sie begleitend zu anderen zahnärztlichen Maßnahmen eingesetzt.',
+      },
+      {
+        frage: 'Was ist der Balancer?',
+        antwort:
+          'Ein elastisches Trainingsgerät in Gebissform aus Kunststoff. Er unterstützt Zungenfunktion, Lippenschluss, Schlucken und Nasenatmung. Getragen wird er in der Therapiephase regelmäßig, zusammen mit den begleitenden Übungen.',
+      },
+      {
+        frage: 'Wie lange dauert eine Dentosophie-Behandlung?',
+        antwort:
+          'Das hängt von Befund, Alter und Therapieziel ab. In der Regel umfasst sie einen Zeitraum von etwa sechs bis zwölf Monaten. Im Einzelfall kann eine längere Begleitung sinnvoll sein.',
+      },
+      {
+        frage: 'Übernimmt die Krankenkasse die Kosten?',
+        antwort:
+          'Gesetzliche Krankenkassen übernehmen die Dentosophie in der Regel nicht. Bei privat Versicherten und privaten Zahnzusatzversicherungen hängt die Kostenübernahme vom jeweiligen Tarif ab. Wir beraten Sie vor Beginn der Behandlung ausführlich zu Ablauf und Kosten.',
+      },
+      {
+        frage: 'Wann ist Dentosophie sinnvoll, wann eine Zahnspange?',
+        antwort:
+          'Dentosophie arbeitet an der Funktion, eine Zahnspange an der Stellung. Wo eine Fehlstellung durch ein ungünstiges Muster entstanden ist – Mundatmung, falsches Schlucken –, setzt die Dentosophie an der Ursache an. Wo die Stellung selbst das Problem ist, führt kein Weg an einer kieferorthopädischen Behandlung vorbei. Was in Ihrem Fall zutrifft, klärt der Befund.',
       },
     ],
   },

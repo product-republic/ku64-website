@@ -12,6 +12,7 @@ import { inhalte } from '../../../../i18n/daten';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import Bild from '../../../../components/Bild.astro';
+import { veroeffentlichbar } from '../../../../data/team';
 import FaqBlock from '../../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
@@ -39,6 +40,19 @@ const { standort: standortSlug, leistung: leistungSlug } = Astro.params;
 const standort = daten.standort(standortSlug!)!;
 const leistung = daten.leistungen.find((l) => l.slug === leistungSlug)!;
 const kategorie = daten.kategorie(leistung.kategorie)!;
+
+/*
+ * Wer diese Behandlung HIER durchführt.
+ *
+ * Gefiltert auf den Standort: Clara-Constanze Meinberg macht Dentosophie am
+ * Kurfürstendamm, Dr. Elisabeth Futterlieb in Potsdam. Auf der Potsdamer
+ * Seite beide zu nennen hieße, jemanden anzukündigen, den man dort nicht
+ * antrifft – und genau das ist der Fehler, den diese Website nicht machen
+ * soll.
+ */
+const behandelnde = (leistung.behandler ?? [])
+  .map((slug) => veroeffentlichbar().find((m) => m.slug === slug))
+  .filter((m) => m !== undefined && m.standorte.includes(standort.slug));
 
 const pfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
 const ortsname = standort.ortsname;
@@ -276,6 +290,28 @@ const schema = [
       )
     }
 
+    {
+      behandelnde.length > 0 && (
+        <section class="abschnitt flaeche-warm">
+          <div class="huelle">
+            <h2 class="bh-titel">
+              {behandelnde.length === 1
+                ? `Ihre Ansprechperson in ${standort.ort}`
+                : `Ihre Ansprechpersonen in ${standort.ort}`}
+            </h2>
+            <div class="bh-liste">
+              {behandelnde.map((m) => (
+                <a href={`/${standort.slug}/team/${m!.slug}/`} class="bh-karte">
+                  <span class="bh-name">{m!.name}</span>
+                  {m!.funktion && <span class="bh-funktion">{m!.funktion}</span>}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
     <TerminBand standort={standort} anlass={leistung.name} />
   </article>
 </Basis>
@@ -313,6 +349,43 @@ const schema = [
   .kopfbild {
     margin-block: var(--raum-6) 0;
     max-width: 46rem;
+  }
+
+  .bh-titel {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-5);
+  }
+
+  .bh-liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
+    gap: var(--raum-4);
+    max-width: 52rem;
+  }
+
+  .bh-karte {
+    display: grid;
+    gap: var(--raum-1);
+    padding: var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    background: var(--flaeche);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .bh-karte:hover {
+    border-color: var(--akzent);
+  }
+
+  .bh-name {
+    font-weight: 600;
+  }
+
+  .bh-funktion {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
   }
 
   .eckdaten {
