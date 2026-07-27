@@ -111,6 +111,17 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
     <nav class="haupt" aria-label={t('geruest.hauptnavigation')}>
       <ul class="haupt-liste">
+        {/*
+          Ein einziges Feld, das wandert – nicht eines je Punkt, das ein- und
+          ausblendet. Genau das ist der Unterschied zwischen „springt" und
+          „fließt": Beim Ein-/Ausblenden gibt es einen Moment, in dem beide
+          Felder halb da sind; beim Wandern gibt es immer genau eines.
+
+          Es liegt hinter den Beschriftungen und wird von JavaScript
+          positioniert. Ohne JavaScript bleibt es unsichtbar, und die alten
+          Flächen je Punkt übernehmen – siehe Stil unten.
+        */}
+        <span class="haupt-laeufer" aria-hidden="true"></span>
         {
           punkte.map((p) => (
             <li>
@@ -510,10 +521,93 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   .haupt-liste {
+    position: relative;
     display: flex;
     gap: var(--raum-1);
     list-style: none;
     padding: 0;
+  }
+
+  /*
+   * Das wandernde Feld.
+   *
+   * Verschoben wird mit `translate3d` – das übernimmt die Grafikkarte. Die
+   * BREITE dagegen wird echt gesetzt und nicht über `scaleX` erzeugt.
+   *
+   * Der erste Versuch tat genau das, und das Ergebnis war lehrreich: Ein
+   * Rahmen von einem Pixel, um den Faktor 132 in die Breite gezogen, ist ein
+   * 132 Pixel breiter Balken. Er lag über der Beschriftung „Behandlungen",
+   * und die war nicht mehr zu lesen. `scaleX` skaliert alles mit – Rahmen,
+   * Rundung, Schatten.
+   *
+   * Eine Breitenänderung an einem absolut positionierten Element kostet nur
+   * dieses eine Element ein neues Layout, nicht die Kopfleiste. Das ist der
+   * Preis, und er ist bei einem Element pro Bild nicht messbar.
+   */
+  .haupt-laeufer {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    /* Hinter den Beschriftungen, nicht darüber. */
+    z-index: 0;
+    inline-size: var(--b, 0);
+    border-radius: var(--radius-voll);
+    /*
+     * Getönt, nicht weiß.
+     *
+     * Der erste Versuch nahm `--scheibe-flaeche` – dieselbe Farbe wie die
+     * alten Einzelflächen. Auf der hellen Kopfleiste ist das Weiß auf Weiß:
+     * Die Mechanik lief einwandfrei, zu sehen war nichts. Eine Glasfläche
+     * braucht etwas, wogegen sie sich abhebt, und auf hellem Grund ist das
+     * ein Hauch Dunkel, kein weiterer Hauch Hell.
+     */
+    background: color-mix(in oklab, var(--tinte) 7%, transparent);
+    border: 1px solid color-mix(in oklab, var(--tinte) 6%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(16px) saturate(var(--glas-saettigung));
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      inset 0 -1px 0 rgb(255 255 255 / 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(var(--x, 0), 0, 0);
+    transition:
+      transform var(--zeit-lang) var(--kurve-feder),
+      inline-size var(--zeit-lang) var(--kurve-feder),
+      opacity var(--zeit) var(--kurve-weich);
+  }
+
+  /* Die Beschriftungen gehören über das Feld. */
+  .haupt-liste li {
+    position: relative;
+    z-index: 1;
+  }
+
+  .haupt-laeufer[data-sichtbar] {
+    opacity: 1;
+  }
+
+  /*
+   * Der aktive Punkt behält seine Fläche. Der Läufer ist nur für den Zeiger.
+   *
+   * Der erste Versuch nahm dem aktiven Punkt die Fläche weg, damit nie zwei
+   * Markierungen gleichzeitig zu sehen sind. Das Ergebnis: „Behandlungen"
+   * war unlesbar. Seine Fläche ist dunkel und seine Schrift deshalb weiß –
+   * ohne Fläche stand weiße Schrift auf weißem Grund.
+   *
+   * Beide dürfen also gleichzeitig da sein, und sie sagen auch
+   * Verschiedenes: Die dunkle Pille heißt „hier bin ich", das Glasfeld heißt
+   * „hier zeige ich gerade hin". Über dem aktiven Punkt erscheint der Läufer
+   * gar nicht erst – dort wäre er eine Doppelung.
+   */
+  .haupt-link.ist-aktiv::after {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .haupt-laeufer {
+      transition: opacity var(--zeit) var(--kurve-weich);
+    }
   }
 
   /*
@@ -1083,4 +1177,76 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       /* Fehlerhafte Daten: Punkt bleibt neutral. */
     }
   }
+
+  /* ── Das wandernde Feld im Hauptmenü ──────────────────────────────────
+   *
+   * Es folgt dem Zeiger von Punkt zu Punkt und kehrt beim Verlassen zum
+   * aktiven Punkt zurück. Gemessen wird gegen die Liste, nicht gegen das
+   * Fenster – so stimmt die Rechnung auch, wenn der Kopf beim Scrollen
+   * andockt und sich dabei verschiebt.
+   */
+  (() => {
+    const liste = document.querySelector<HTMLElement>('.haupt-liste');
+    const laeufer = liste?.querySelector<HTMLElement>('.haupt-laeufer');
+    if (!liste || !laeufer) return;
+
+    const links = [...liste.querySelectorAll<HTMLElement>('.haupt-link')];
+    if (links.length === 0) return;
+
+    let zuletzt: HTMLElement | null = null;
+
+    const stellen = (ziel: HTMLElement) => {
+      const l = liste.getBoundingClientRect();
+      const z = ziel.getBoundingClientRect();
+      laeufer.style.setProperty('--x', `${z.left - l.left}px`);
+      laeufer.style.setProperty('--b', `${z.width}px`);
+    };
+
+    const zeigen = (ziel: HTMLElement) => {
+      /* Über dem aktiven Punkt nicht – dort steht schon seine eigene Fläche. */
+      if (ziel.classList.contains('ist-aktiv')) {
+        verbergen();
+        return;
+      }
+      /*
+       * Beim ersten Erscheinen erst setzen, dann einblenden – sonst gleitet
+       * das Feld sichtbar von der linken Kante herbei, weil es vorher bei
+       * Null stand. Danach soll es gleiten, das ist ja der Sinn.
+       */
+      const warVerborgen = !laeufer.hasAttribute('data-sichtbar');
+      if (warVerborgen) {
+        const alteUebergang = laeufer.style.transition;
+        laeufer.style.transition = 'none';
+        stellen(ziel);
+        /* Layout erzwingen, damit die Sprungposition gilt, bevor der
+           Übergang zurückkommt. */
+        void laeufer.offsetWidth;
+        laeufer.style.transition = alteUebergang;
+      } else {
+        stellen(ziel);
+      }
+      laeufer.dataset.sichtbar = '';
+      zuletzt = ziel;
+    };
+
+    const verbergen = () => {
+      delete laeufer.dataset.sichtbar;
+      zuletzt = null;
+    };
+
+    for (const link of links) {
+      link.addEventListener('pointerenter', () => zeigen(link));
+      link.addEventListener('focus', () => zeigen(link));
+    }
+    liste.addEventListener('pointerleave', verbergen);
+    liste.addEventListener('focusout', (e) => {
+      if (!liste.contains(e.relatedTarget as Node)) verbergen();
+    });
+
+    /* Die Breite der Punkte ändert sich mit der Fenstergröße und mit der
+       Sprache. Ohne Beobachter säße das Feld danach neben seinem Punkt. */
+    const nachmessen = () => { if (zuletzt) stellen(zuletzt); };
+    new ResizeObserver(nachmessen).observe(liste);
+    document.fonts?.ready.then(nachmessen);
+  })();
 </script>

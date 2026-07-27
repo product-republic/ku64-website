@@ -684,11 +684,24 @@ a:hover {
  * zeigen eine flache, ruhige Fläche. Ein gewölbter Knopf mit gelbem Schein
  * darunter war die auffälligere, aber nicht die bessere Lösung.
  */
+/*
+ * Die primäre Schaltfläche bleibt deckend – und bekommt trotzdem Glas.
+ *
+ * „Termin buchen" ist die eine Handlung, um die es auf dieser Website geht.
+ * Sie durchscheinend zu machen hieße, sie schwächer zu machen als alles
+ * andere. Der Weichzeichner wirkt hier deshalb nicht durch die Fläche,
+ * sondern am RAND: eine helle Innenkante oben, eine dunklere unten. Das ist
+ * dieselbe Physik – Licht, das sich in einer Kante bricht – nur ohne die
+ * Fläche aufzugeben.
+ */
 .knopf-primaer {
   background: var(--knopf-flaeche);
   color: var(--knopf-schrift);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    inset 0 -1px 0 rgb(0 0 0 / 0.22),
     0 1px 2px rgb(20 16 14 / 0.12),
     0 8px 20px -10px rgb(20 16 14 / 0.4);
 }
@@ -726,13 +739,36 @@ a:hover {
   background: #fff;
 }
 
+/*
+ * Die sekundäre Schaltfläche ist Glas.
+ *
+ * Bisher war sie eine durchscheinende Fläche mit einer Lichtkante – das
+ * sieht nach Glas aus, ist aber keines. Glas erkennt man daran, dass der
+ * Hintergrund VERSCHWIMMT.
+ *
+ * Drei Dinge machen den Unterschied, und alle drei sind nötig:
+ *
+ *   1. `backdrop-filter: blur()` – der Weichzeichner selbst. Präfixierte
+ *      Fassung ZUERST, gültige danach: Minifizierer behalten die letzte von
+ *      zwei gleichwertigen Deklarationen, und die präfixierte ist in
+ *      aktuellen Browsern kein Alias mehr, sondern unbekannt. Genau daran
+ *      ist auf dieser Website schon einmal das gesamte Glas gescheitert.
+ *   2. `saturate()` – ohne Sättigung wird der weichgezeichnete Untergrund
+ *      grau und das Glas wirkt schmutzig.
+ *   3. Die Lichtkante oben und der weiche Schatten unten. Sie geben der
+ *      Fläche Dicke; ohne sie liegt sie flach auf der Seite statt darüber.
+ */
 .knopf-sekundaer {
   background: var(--scheibe-flaeche);
   color: var(--tinte);
   border: 1px solid var(--scheibe-rand);
+  -webkit-backdrop-filter: blur(20px) saturate(var(--glas-saettigung));
+  backdrop-filter: blur(20px) saturate(var(--glas-saettigung));
   box-shadow:
     inset 0 1px 0 var(--glas-glanz),
-    0 1px 2px rgb(20 16 14 / 0.05);
+    inset 0 -1px 0 rgb(255 255 255 / 0.14),
+    0 1px 2px rgb(20 16 14 / 0.06),
+    0 6px 18px -8px rgb(20 16 14 / 0.22);
 }
 
 /* Ruhig bleiben beim Überfahren: dunklere Kante statt Farbwechsel. Ein

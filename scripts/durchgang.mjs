@@ -148,8 +148,22 @@ for (const geraet of GERAETE) {
         else await seite.keyboard.press('Escape');
       }
 
-      const ruf = await seite.$('.berater-ruf, [id="berater-ruf"], .berater button');
-      if (ruf && (await ruf.isVisible())) {
+      /*
+       * `.berater .ruf` und nicht `.berater-ruf`.
+       *
+       * Der falsche Selektor stand hier zwei Läufe lang und traf nichts. Weil
+       * die Prüfung nur läuft, WENN das Element gefunden wird, meldete der
+       * Durchgang jedes Mal „keine Beanstandung" – ohne den Berater je
+       * angefasst zu haben. Ein Test, der bei fehlendem Element schweigt,
+       * ist schlimmer als keiner: Er sagt „geprüft", wo „übersprungen"
+       * stünde.
+       *
+       * Deshalb jetzt: Fehlt der Knopf, ist das selbst eine Beanstandung.
+       */
+      const ruf = await seite.$('.berater .ruf');
+      if (!ruf) {
+        melden(`Berater-Knopf fehlt (${zustand})`, '');
+      } else if (await ruf.isVisible()) {
         await ruf.click();
         await seite.waitForTimeout(250);
         const offen = await seite.evaluate(
