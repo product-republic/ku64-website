@@ -66,6 +66,11 @@ const kombinationen = {
   titel={t('fehler.seitentitel')}
   description={t('fehler.beschreibung')}
   pfad="/404/"
+  {/* Es gibt keine Route /404/ – die Seite wird als 404.html gebaut und für
+      jede unbekannte Adresse ausgeliefert. Der Sprachwähler zeigt deshalb
+      auf die Startseite der jeweiligen Sprache statt auf eine zweite Seite,
+      die es nicht gibt. */}
+  sprachwahlPfad="/"
   noindex={true}
 >
   <section class="abschnitt">

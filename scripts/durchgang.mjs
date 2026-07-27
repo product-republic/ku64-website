@@ -52,8 +52,22 @@ const SEITEN = [
   ['/suche/', 'Suche'],
   ['/ki-transparenz/', 'KI-Transparenz'],
   ['/notfall/', 'Notfall'],
+  /*
+   * Die anderen Sprachen sind hier nicht der Vollständigkeit halber.
+   *
+   * Übersetzung verändert die Länge, und Länge ist das, was hier gemessen
+   * wird. „Termin buchen" wird zu „Book an appointment" – das hat den Kopf
+   * auf dem Telefon schon einmal um acht Pixel überlaufen lassen. Geprüft
+   * werden deshalb die Seiten mit den längsten Beschriftungen: Kopf und
+   * Fußzeile überall, dazu Team und Rechtstext, wo die Sätze am längsten
+   * sind.
+   */
   ['/en/potsdam/', 'Standort englisch'],
+  ['/en/potsdam/team/', 'Team englisch'],
+  ['/en/datenschutz/', 'Datenschutz englisch'],
   ['/fr/leistungen/', 'Behandlungen französisch'],
+  ['/fr/potsdam/team/', 'Team französisch'],
+  ['/fr/datenschutz/', 'Datenschutz französisch'],
 ];
 
 const GERAETE = [

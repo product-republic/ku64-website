@@ -47,6 +47,20 @@ interface Props {
   ogLeistung?: string;
   /** Seiten, die nicht in den Index sollen (z. B. Danke-Seiten). */
   noindex?: boolean;
+  /**
+   * Wohin der Sprachwähler zeigt, wenn es die Seite unter diesem Pfad gar
+   * nicht gibt.
+   *
+   * Genau ein Fall: die Fehlerseite. Sie wird als `404.html` gebaut und vom
+   * Server für jede unbekannte Adresse ausgeliefert – eine Route `/404/`
+   * existiert nicht. Der Sprachwähler zeigte deshalb auf `/en/404/` und
+   * `/fr/404/`, also auf nichts. Dass man dort trotzdem landet, ist Zufall:
+   * Der Server antwortet auf beides mit derselben Fehlerseite.
+   *
+   * Von einer Seite, die es nicht gibt, ist die Startseite der Sprache das
+   * ehrlichere Ziel. Der Canonical bleibt davon unberührt.
+   */
+  sprachwahlPfad?: string;
 }
 
 const {
@@ -59,6 +73,7 @@ const {
   bild,
   ogLeistung,
   noindex = false,
+  sprachwahlPfad,
 } = Astro.props;
 
 /*
@@ -104,7 +119,9 @@ const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
  * passende Sprache am ehesten weiterhilft: Sie ist vollständig, und in einer
  * Berliner Praxis wird deutsch gesprochen.
  */
-const alternates = sprachfassungen(pfad).map((f) => ({
+const sprachziel = sprachwahlPfad ?? pfad;
+
+const alternates = sprachfassungen(sprachziel).map((f) => ({
   hreflang: f.sprache.bcp47,
   href: kanonisch(f.pfad),
 }));
@@ -159,7 +176,7 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     <meta property="og:image:alt" content={`${titel} – KU64`} />
     <meta property="og:locale" content={sprachinfo.ogLocale} />
     {
-      sprachfassungen(pfad)
+      sprachfassungen(sprachziel)
         .filter((f) => f.sprache.code !== sprache)
         .map((f) => <meta property="og:locale:alternate" content={f.sprache.ogLocale} />)
     }
@@ -227,7 +244,7 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
       )
     }
 
-    <Navigation standort={standort} pfad={pfad} />
+    <Navigation standort={standort} pfad={sprachziel} />
 
     {brotkrumen.length > 0 && <Brotkrumen punkte={brotkrumen} />}
 
