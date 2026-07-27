@@ -877,6 +877,26 @@
       "text": "Phone",
       "quelle": "9efa9d9c"
     },
+    "ui.kontakt.beraterText": {
+      "text": "Our digital assistant answers questions about treatments, costs and what happens next – by text or by voice.",
+      "quelle": "d44da413"
+    },
+    "ui.kontakt.emailText": {
+      "text": "For anything that is not urgent. Please do not send us health data by unencrypted email.",
+      "quelle": "30fcf3f3"
+    },
+    "ui.kontakt.telefonText": {
+      "text": "The fastest way – especially if you are in pain or it is urgent.",
+      "quelle": "a5f0607a"
+    },
+    "ui.kontakt.termineText": {
+      "text": "See available slots and book directly, around the clock.",
+      "quelle": "05facd08"
+    },
+    "ui.kontakt.vorspann": {
+      "text": "Choose whichever way suits you best. They all reach the same team.",
+      "quelle": "9d1f7297"
+    },
     "ui.leistung.ablauf": {
       "text": "How the treatment works",
       "quelle": "118a0fdf"
@@ -1001,9 +1021,17 @@
       "text": "Call us",
       "quelle": "542e8108"
     },
+    "ui.standort.aufKarteAnsehen": {
+      "text": "Open in maps",
+      "quelle": "4bce2d87"
+    },
     "ui.standort.barrierefrei": {
       "text": "step-free access",
       "quelle": "9858ed34"
+    },
+    "ui.standort.galerieHinweis": {
+      "text": "Photographs of this practice – in the order you will see the rooms when you visit.",
+      "quelle": "dd968d95"
     },
     "ui.standort.geoeffnet": {
       "text": "Open now",
@@ -1017,13 +1045,45 @@
       "text": "closed",
       "quelle": "d266c7e1"
     },
+    "ui.standort.kartenHinweis": {
+      "text": "Map services are third-party providers. We do not embed them directly, so that simply reading this page sends no data to anyone else.",
+      "quelle": "e53070d4"
+    },
     "ui.standort.route": {
       "text": "Get directions",
       "quelle": "aea4bcc6"
     },
+    "ui.standort.soFindenSieUns": {
+      "text": "How to find us",
+      "quelle": "56fee222"
+    },
+    "ui.standort.tageWoche": {
+      "text": "days a week",
+      "quelle": "cda6c7aa"
+    },
+    "ui.standort.zahnaerzteLabel": {
+      "text": "dentists",
+      "quelle": "740fbae5"
+    },
     "ui.standort.zuletztGewaehlt": {
       "text": "last selected",
       "quelle": "7d75258a"
+    },
+    "ui.standorte.matrixBeschriftung": {
+      "text": "Availability of treatments by KU64 location",
+      "quelle": "2409c1ae"
+    },
+    "ui.standorte.matrixTitel": {
+      "text": "Which treatment is available where?",
+      "quelle": "45512f60"
+    },
+    "ui.standorte.matrixVorspann": {
+      "text": "Not every treatment is offered at every location. This overview tells you where to go before you pick up the phone.",
+      "quelle": "a4fe5597"
+    },
+    "ui.standorte.vorspann": {
+      "text": "Each location has its own character and its own range of treatments. Choose yours – we then show you only what is actually possible there.",
+      "quelle": "93b1d095"
     },
     "ui.standortwahl.hinweis": {
       "text": "Opening hours, phone numbers and the range of treatments differ from location to location – so we would rather ask than guess.",

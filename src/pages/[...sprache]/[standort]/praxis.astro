@@ -21,12 +21,14 @@ import Bild from '../../../components/Bild.astro';
 import { STANDORTE } from '../../../data/standorte';
 import { raumbilderFuer } from '../../../data/medien';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
+import { texte } from '../../../i18n/katalog';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const standort = daten.standort(Astro.params.standort!)!;
@@ -70,7 +72,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
             <div>
               <dt>Behandelnde</dt>
               <dd>{anzahlZahnaerzte(standort.slug)}</dd>
-              <p>Zahnärztinnen und Zahnärzte</p>
+              <p>{t('standort.zahnaerzteLabel')}</p>
             </div>
           )
         }
@@ -82,7 +84,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         <div>
           <dt>Geöffnet</dt>
           <dd>{standort.oeffnungszeiten.filter((z) => z.von).length}</dd>
-          <p>Tage in der Woche</p>
+          <p>{t('standort.tageWoche')}</p>
         </div>
       </dl>
     </div>
@@ -94,8 +96,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         <div class="huelle">
           <h2>Die Räume</h2>
           <p class="abschnitt-text">
-            Aufnahmen aus dieser Praxis – in der Reihenfolge, in der Sie sie beim
-            Besuch sehen.
+            {t('standort.galerieHinweis')}
           </p>
           <div class="raeume">
             {raeume.map((schluessel, i) => (

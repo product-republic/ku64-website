@@ -3,12 +3,14 @@ import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../../lib/seo';
+import { texte } from '../../i18n/katalog';
 
 export function getStaticPaths() {
   return sprachpfade();
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const pfad = '/standorte/';
@@ -51,8 +53,7 @@ const schema = [
     <div class="huelle">
       <h1>{daten.standorte.length} Standorte in Berlin und Potsdam</h1>
       <p class="unter">
-        Jeder Standort hat einen eigenen Charakter und ein eigenes Behandlungsangebot.
-        Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.
+        {t('standorte.vorspann')}
       </p>
 
       <div class="raster">
@@ -88,16 +89,15 @@ const schema = [
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
-      <h2>Welche Behandlung gibt es wo?</h2>
+      <h2>{t('standorte.matrixTitel')}</h2>
       <p class="unter">
-        Nicht jede Behandlung wird an jedem Standort angeboten. Diese Übersicht zeigt
-        Ihnen vor dem Anruf, wohin Sie müssen.
+        {t('standorte.matrixVorspann')}
       </p>
 
       <div class="tabelle-huelle">
         <table class="vergleich">
           <caption class="nur-screenreader">
-            Verfügbarkeit der Behandlungen je KU64-Standort
+            {t('standorte.matrixBeschriftung')}
           </caption>
           <thead>
             <tr>

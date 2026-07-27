@@ -433,6 +433,26 @@
       "text": "Téléphone",
       "quelle": "9efa9d9c"
     },
+    "ui.kontakt.beraterText": {
+      "text": "Notre assistant numérique répond aux questions sur les soins, les coûts et le déroulement – par écrit ou de vive voix.",
+      "quelle": "d44da413"
+    },
+    "ui.kontakt.emailText": {
+      "text": "Pour tout ce qui n’est pas urgent. Merci de ne pas nous envoyer de données de santé par courriel non chiffré.",
+      "quelle": "30fcf3f3"
+    },
+    "ui.kontakt.telefonText": {
+      "text": "Le plus rapide – surtout en cas de douleur ou d’urgence.",
+      "quelle": "a5f0607a"
+    },
+    "ui.kontakt.termineText": {
+      "text": "Consultez les créneaux libres et réservez directement, à toute heure.",
+      "quelle": "05facd08"
+    },
+    "ui.kontakt.vorspann": {
+      "text": "Choisissez le moyen qui vous convient le mieux. Tous mènent à la même équipe.",
+      "quelle": "9d1f7297"
+    },
     "ui.leistung.ablauf": {
       "text": "Le déroulement du traitement",
       "quelle": "118a0fdf"
@@ -557,9 +577,17 @@
       "text": "Appelez-nous",
       "quelle": "542e8108"
     },
+    "ui.standort.aufKarteAnsehen": {
+      "text": "Voir sur la carte",
+      "quelle": "4bce2d87"
+    },
     "ui.standort.barrierefrei": {
       "text": "accès de plain-pied",
       "quelle": "9858ed34"
+    },
+    "ui.standort.galerieHinweis": {
+      "text": "Photographies de ce cabinet – dans l’ordre où vous découvrirez les pièces lors de votre visite.",
+      "quelle": "dd968d95"
     },
     "ui.standort.geoeffnet": {
       "text": "Ouvert maintenant",
@@ -573,13 +601,45 @@
       "text": "fermé",
       "quelle": "d266c7e1"
     },
+    "ui.standort.kartenHinweis": {
+      "text": "Les services de cartographie sont des prestataires tiers. Nous ne les intégrons pas directement, afin que la simple consultation de cette page ne transmette aucune donnée à des tiers.",
+      "quelle": "e53070d4"
+    },
     "ui.standort.route": {
       "text": "Itinéraire",
       "quelle": "aea4bcc6"
     },
+    "ui.standort.soFindenSieUns": {
+      "text": "Comment nous trouver",
+      "quelle": "56fee222"
+    },
+    "ui.standort.tageWoche": {
+      "text": "jours par semaine",
+      "quelle": "cda6c7aa"
+    },
+    "ui.standort.zahnaerzteLabel": {
+      "text": "dentistes",
+      "quelle": "740fbae5"
+    },
     "ui.standort.zuletztGewaehlt": {
       "text": "dernier choix",
       "quelle": "7d75258a"
+    },
+    "ui.standorte.matrixBeschriftung": {
+      "text": "Disponibilité des soins par cabinet KU64",
+      "quelle": "2409c1ae"
+    },
+    "ui.standorte.matrixTitel": {
+      "text": "Quel soin est proposé où ?",
+      "quelle": "45512f60"
+    },
+    "ui.standorte.matrixVorspann": {
+      "text": "Tous les soins ne sont pas proposés dans chaque cabinet. Ce tableau vous indique où aller avant même de téléphoner.",
+      "quelle": "a4fe5597"
+    },
+    "ui.standorte.vorspann": {
+      "text": "Chaque cabinet a son caractère et sa propre offre de soins. Choisissez le vôtre : nous ne vous montrerons ensuite que ce qui y est réellement possible.",
+      "quelle": "93b1d095"
     },
     "ui.standortwahl.hinweis": {
       "text": "Les horaires, les numéros de téléphone et les soins proposés varient d’un cabinet à l’autre : nous préférons vous demander plutôt que de deviner.",

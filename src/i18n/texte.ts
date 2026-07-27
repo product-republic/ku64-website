@@ -142,6 +142,34 @@ export const TEXTE = {
     'Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch gerne bei Ihnen zurück.',
   'standortwahl.hinweis':
     'Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
+
+  // ── Standortseiten ──────────────────────────────────────────────────
+  'standort.zahnaerzteLabel': 'Zahnärztinnen und Zahnärzte',
+  'standort.tageWoche': 'Tage in der Woche',
+  'standort.galerieHinweis':
+    'Aufnahmen aus dieser Praxis – in der Reihenfolge, in der Sie sie beim Besuch sehen.',
+  'standort.soFindenSieUns': 'So finden Sie uns',
+  'standort.aufKarteAnsehen': 'Auf der Karte ansehen',
+  'standort.kartenHinweis':
+    'Die Kartendienste sind externe Anbieter. Wir betten sie nicht direkt ein, damit beim bloßen Lesen dieser Seite keine Daten an Dritte fließen.',
+
+  // ── Standortübersicht ───────────────────────────────────────────────
+  'standorte.vorspann':
+    'Jeder Standort hat einen eigenen Charakter und ein eigenes Behandlungsangebot. Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.',
+  'standorte.matrixTitel': 'Welche Behandlung gibt es wo?',
+  'standorte.matrixVorspann':
+    'Nicht jede Behandlung wird an jedem Standort angeboten. Diese Übersicht zeigt Ihnen vor dem Anruf, wohin Sie müssen.',
+  'standorte.matrixBeschriftung': 'Verfügbarkeit der Behandlungen je KU64-Standort',
+
+  // ── Kontakt ─────────────────────────────────────────────────────────
+  'kontakt.vorspann':
+    'Wählen Sie den Weg, der Ihnen am angenehmsten ist. Alle führen zum selben Team.',
+  'kontakt.telefonText': 'Der schnellste Weg – besonders bei Schmerzen oder wenn es dringend ist.',
+  'kontakt.termineText': 'Freie Termine sehen und direkt buchen, rund um die Uhr.',
+  'kontakt.emailText':
+    'Für alles, was nicht eilt. Bitte schicken Sie uns keine Gesundheitsdaten per unverschlüsselter E-Mail.',
+  'kontakt.beraterText':
+    'Unser digitaler Berater beantwortet Fragen zu Behandlungen, Kosten und Abläufen – per Text oder Sprache.',
 } as const;
 
 export type TextSchluessel = keyof typeof TEXTE;

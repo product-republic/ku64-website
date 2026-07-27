@@ -5,12 +5,14 @@ import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
+import { texte } from '../../../i18n/katalog';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const standort = daten.standort(Astro.params.standort!)!;
@@ -54,7 +56,7 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
 >
   <section class="abschnitt">
     <div class="huelle">
-      <h1>So finden Sie uns</h1>
+      <h1>{t('standort.soFindenSieUns')}</h1>
       <p class="unter">
         KU64 {standort.name} liegt in der {standort.strasse}
         {standort.bezirk && <> in {standort.ort}-{standort.bezirk}</>}.
@@ -73,12 +75,11 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
               Route planen
             </a>
             <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
-              Auf der Karte ansehen
+              {t('standort.aufKarteAnsehen')}
             </a>
           </div>
           <p class="klein">
-            Die Kartendienste sind externe Anbieter. Wir betten sie nicht direkt ein, damit
-            beim bloßen Lesen dieser Seite keine Daten an Dritte fließen.
+            {t('standort.kartenHinweis')}
           </p>
         </div>
 
