@@ -94,19 +94,23 @@ if (team.length > 0) {
 >
   <section class="abschnitt">
     <div class="huelle">
-      <h1>Das Team in {standort.ort}</h1>
+      <h1>{t('teamliste.dasTeamIn', { ort: standort.ort })}</h1>
 
       {
         team.length > 0 ? (
           <>
             <p class="unter">
               {anzahlZahnaerzte(standort.slug)
-                ? `${anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte und insgesamt ${team.length} Menschen bei KU64 ${standort.name}.`
-                : `Das Team bei KU64 ${standort.name}.`}
+                ? t('teamliste.zusammensetzung', {
+                    zahnaerzte: anzahlZahnaerzte(standort.slug),
+                    gesamt: team.length,
+                    name: standort.name,
+                  })
+                : t('teamliste.dasTeamBei', { name: standort.name })}
             </p>
-            <div class="filter" role="group" aria-label="Team filtern" hidden>
+            <div class="filter" role="group" aria-label={t('teamliste.filtern')} hidden>
               <div class="filter-zeile">
-                <span class="filter-titel" id="f-bereich">Bereich</span>
+                <span class="filter-titel" id="f-bereich">{t('teamliste.bereich')}</span>
                 <div class="chips" data-feld="bereich" aria-labelledby="f-bereich">
                   <button type="button" class="chip" data-wert="" aria-pressed="true">{t('teamliste.alle')}<span class="chip-zahl">{team.length}</span>
                   </button>
@@ -120,10 +124,10 @@ if (team.length > 0) {
 
               {fachgebiete.length > 1 && (
                 <div class="filter-zeile">
-                  <span class="filter-titel" id="f-fach">Behandlungsart</span>
+                  <span class="filter-titel" id="f-fach">{t('teamliste.behandlungsart')}</span>
                   <div class="chips" data-feld="fach" aria-labelledby="f-fach">
                     <button type="button" class="chip" data-wert="" aria-pressed="true">
-                      Alle
+                      {t('teamliste.alle')}
                     </button>
                     {fachgebiete.map((k) => (
                       <button type="button" class="chip" data-wert={k.wert} aria-pressed="false">
@@ -138,7 +142,7 @@ if (team.length > 0) {
             </div>
 
             <p class="filter-leer" hidden>
-              Mit dieser Auswahl steht niemand in {standort.ort}.
+              {t('teamliste.niemand', { ort: standort.ort })}
               <button type="button" class="filter-zuruecksetzen">{t('teamliste.auswahlAufheben')}</button>
             </p>
 
@@ -172,7 +176,7 @@ if (team.length > 0) {
                   <p class="funktion">{m.funktion}</p>
                   {m.vorstellung && <p class="text">{m.vorstellung}</p>}
                   {m.sprachen && m.sprachen.length > 0 && (
-                    <p class="sprachen">Spricht {m.sprachen.join(', ')}</p>
+                    <p class="sprachen">{t('teamliste.spricht', { sprachen: m.sprachen.join(', ') })}</p>
                   )}
                   {m.schwerpunkte && m.schwerpunkte.length > 0 && (
                     <ul class="schwerpunkte">
@@ -201,16 +205,15 @@ if (team.length > 0) {
         ) : (
           /* Ehrlicher Zwischenstand statt einer erfundenen Teamliste. */
           <div class="offen">
-            <p class="unter">
-              Die Vorstellung unseres Teams in {standort.ort} bereiten wir gerade auf –
-              mit Fotos und Schwerpunkten der einzelnen Behandelnden.
-            </p>
+            <p class="unter">{t('teamliste.inArbeit', { ort: standort.ort })}</p>
             <p class="text">
               {anzahlZahnaerzte(standort.slug)
-                ? `Bei KU64 ${standort.name} behandeln ${anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte.`
-                : `Bei KU64 ${standort.name} behandelt Sie ein festes, eingespieltes Team.`}{' '}
-              Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen
-              Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.
+                ? t('teamliste.behandelnZahl', {
+                    name: standort.name,
+                    anzahl: anzahlZahnaerzte(standort.slug),
+                  })
+                : t('teamliste.behandelnTeam', { name: standort.name })}{' '}
+              {t('teamliste.rufenSieAn')}
             </p>
             <div class="offen-knoepfe">
               <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-primaer">

@@ -2685,30 +2685,6 @@
       "text": "Opening hours for the KiezPraxis are not yet confirmed – please check before publication.",
       "quelle": "f4aaeaf5"
     },
-    "ui.allgemein.absenden": {
-      "text": "Send",
-      "quelle": "d595515b"
-    },
-    "ui.allgemein.fehler": {
-      "text": "Something went wrong. Please try again.",
-      "quelle": "159582a2"
-    },
-    "ui.allgemein.mehr": {
-      "text": "More",
-      "quelle": "03d3839d"
-    },
-    "ui.allgemein.pflichtfeld": {
-      "text": "Required field",
-      "quelle": "d89aa4a8"
-    },
-    "ui.allgemein.schliessen": {
-      "text": "Close",
-      "quelle": "e1cab4a5"
-    },
-    "ui.allgemein.zurueck": {
-      "text": "Back",
-      "quelle": "7ca3460c"
-    },
     "ui.fehler.suchen": {
       "text": "Search treatments",
       "quelle": "f9ef7d33"
@@ -2724,10 +2700,6 @@
     "ui.fuss.aktuellGewaehlt": {
       "text": "(currently selected)",
       "quelle": "05cdde05"
-    },
-    "ui.fuss.anamnese": {
-      "text": "Digital medical history form",
-      "quelle": "a9d6bcd2"
     },
     "ui.fuss.barrierefreiheit": {
       "text": "Accessibility",
@@ -2809,10 +2781,6 @@
       "text": "You are here",
       "quelle": "4232d848"
     },
-    "ui.geruest.startseite": {
-      "text": "Home",
-      "quelle": "8bd72e71"
-    },
     "ui.geruest.zumInhalt": {
       "text": "Skip to content",
       "quelle": "60ca65f1"
@@ -2837,45 +2805,13 @@
       "text": "Phone",
       "quelle": "9efa9d9c"
     },
-    "ui.kontakt.beraterText": {
-      "text": "Our digital assistant answers questions about treatments, costs and what happens next – by text or by voice.",
-      "quelle": "d44da413"
-    },
-    "ui.kontakt.emailText": {
-      "text": "For anything that is not urgent. Please do not send us health data by unencrypted email.",
-      "quelle": "30fcf3f3"
-    },
-    "ui.kontakt.telefonText": {
-      "text": "The fastest way – especially if you are in pain or it is urgent.",
-      "quelle": "a5f0607a"
-    },
-    "ui.kontakt.termineText": {
-      "text": "See available slots and book directly, around the clock.",
-      "quelle": "05facd08"
-    },
-    "ui.kontakt.vorspann": {
-      "text": "Choose whichever way suits you best. They all reach the same team.",
-      "quelle": "9d1f7297"
-    },
     "ui.leistung.ablauf": {
       "text": "How the treatment works",
       "quelle": "118a0fdf"
     },
-    "ui.leistung.andereBezeichnungen": {
-      "text": "Also known as",
-      "quelle": "510e0e45"
-    },
     "ui.leistung.dauer": {
       "text": "Duration",
       "quelle": "d0c110d2"
-    },
-    "ui.leistung.faq": {
-      "text": "Frequently asked questions",
-      "quelle": "5e46dd30"
-    },
-    "ui.leistung.hierNichtVerfuegbar": {
-      "text": "We do not offer this treatment at this location. You will find it here:",
-      "quelle": "00cc42f6"
     },
     "ui.leistung.kasse": {
       "text": "Health insurance",
@@ -2884,14 +2820,6 @@
     "ui.leistung.kosten": {
       "text": "Cost",
       "quelle": "0f3e02f3"
-    },
-    "ui.leistung.mehrErfahren": {
-      "text": "Read more",
-      "quelle": "7977c838"
-    },
-    "ui.leistung.verwandt": {
-      "text": "This might suit you as well",
-      "quelle": "60be0c21"
     },
     "ui.nav.andererStandort": {
       "text": "A different location",
@@ -2925,10 +2853,6 @@
       "text": "Choose location",
       "quelle": "190c5686"
     },
-    "ui.nav.standortWechseln": {
-      "text": "Change location",
-      "quelle": "45f4c033"
-    },
     "ui.nav.team": {
       "text": "Team",
       "quelle": "2329c92c"
@@ -2937,10 +2861,6 @@
       "text": "Book an appointment",
       "quelle": "57146cdd"
     },
-    "ui.nav.termine": {
-      "text": "Appointments",
-      "quelle": "5f1e529b"
-    },
     "ui.nav.ueberKu64": {
       "text": "About KU64",
       "quelle": "92039106"
@@ -2948,10 +2868,6 @@
     "ui.nav.waehlerHinweis": {
       "text": "When you switch, we show you the details of the location you choose. Not every treatment is offered at every location.",
       "quelle": "f7fa2655"
-    },
-    "ui.sprache.aktuell": {
-      "text": "Current language: {sprache}",
-      "quelle": "2ef18a2c"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Close notice",
@@ -2977,17 +2893,9 @@
       "text": "Continue in {sprache}",
       "quelle": "b8138759"
     },
-    "ui.standort.anrufen": {
-      "text": "Call us",
-      "quelle": "542e8108"
-    },
     "ui.standort.aufKarteAnsehen": {
       "text": "Open in maps",
       "quelle": "4bce2d87"
-    },
-    "ui.standort.barrierefrei": {
-      "text": "step-free access",
-      "quelle": "9858ed34"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographs of this practice – in the order you will see the rooms when you visit.",
@@ -2997,21 +2905,9 @@
       "text": "Open now",
       "quelle": "55a568db"
     },
-    "ui.standort.geschlossen": {
-      "text": "Currently closed",
-      "quelle": "24d49955"
-    },
-    "ui.standort.geschlossenAmTag": {
-      "text": "closed",
-      "quelle": "d266c7e1"
-    },
     "ui.standort.kartenHinweis": {
       "text": "Map services are third-party providers. We do not embed them directly, so that simply reading this page sends no data to anyone else.",
       "quelle": "e53070d4"
-    },
-    "ui.standort.route": {
-      "text": "Get directions",
-      "quelle": "aea4bcc6"
     },
     "ui.standort.soFindenSieUns": {
       "text": "How to find us",
@@ -3024,10 +2920,6 @@
     "ui.standort.zahnaerzteLabel": {
       "text": "dentists",
       "quelle": "740fbae5"
-    },
-    "ui.standort.zuletztGewaehlt": {
-      "text": "last selected",
-      "quelle": "7d75258a"
     },
     "ui.standorte.matrixBeschriftung": {
       "text": "Availability of treatments by KU64 location",

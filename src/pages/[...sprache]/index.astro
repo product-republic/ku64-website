@@ -51,7 +51,7 @@ const t = texte(daten.sprache);
 ---
 
 <Basis
-  titel="Zahnarzt in Berlin und Potsdam"
+  titel={t('start.seitentitel')}
   description={`KU64 – Die Zahnspezialisten an ${daten.standorte.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Behandlungen, die dort angeboten werden.`}
   pfad="/"
   schema={[schemaOrganisation(), schemaFaq(faq)]}

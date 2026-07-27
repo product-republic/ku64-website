@@ -9,9 +9,11 @@
  * einem anderen Standort landet, ohne es zu merken.
  */
 import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
 import type { Leistung } from '../data/leistungen';
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 interface Props {
@@ -56,13 +58,13 @@ const ziel = verfuegbarHier
       <ul class="fakten">
         {leistung.dauer && (
           <li>
-            <span class="fakt-titel">Dauer</span>
+            <span class="fakt-titel">{t('karte.dauer')}</span>
             {leistung.dauer}
           </li>
         )}
         {leistung.kosten && (
           <li>
-            <span class="fakt-titel">Kosten</span>
+            <span class="fakt-titel">{t('karte.kosten')}</span>
             {leistung.kosten}
           </li>
         )}

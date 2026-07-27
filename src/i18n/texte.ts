@@ -23,7 +23,6 @@ export const TEXTE = {
   'geruest.menueSchliessen': 'Menü schließen',
   'geruest.mobileNavigation': 'Mobile Navigation',
   'geruest.sieSindHier': 'Sie befinden sich hier',
-  'geruest.startseite': 'Startseite',
   'geruest.rechtliches': 'Rechtliches',
   'geruest.aktuell': 'aktuell',
 
@@ -33,10 +32,8 @@ export const TEXTE = {
   'nav.team': 'Team',
   'nav.anfahrt': 'Anfahrt',
   'nav.kontakt': 'Kontakt',
-  'nav.termine': 'Termine',
   'nav.standorte': 'Standorte',
   'nav.standortWaehlen': 'Bitte wählen Sie Ihren Standort für passende Angaben.',
-  'nav.standortWechseln': 'Standort wechseln',
   'nav.andererStandort': 'Anderer Standort',
   'nav.standortWaehlenKurz': 'Standort wählen',
   'nav.ueberKu64': 'Über KU64',
@@ -50,6 +47,7 @@ export const TEXTE = {
    * möchten Sie teeth whitening lassen?" – ein Satz, der nie ein Baustein
    * war. Der Sprachwächter konnte ihn nicht vermissen.
    */
+  'leistung.oder': 'oder',
   'leistung.dauer': 'Dauer',
   'leistung.kosten': 'Kosten',
   'leistung.verfuegbarAn': 'Verfügbar an',
@@ -68,19 +66,10 @@ export const TEXTE = {
   'leistung.passtDazu': 'Passt dazu',
   'leistung.ansprechperson': 'Ihre Ansprechperson',
   'leistung.ansprechpersonen': 'Ihre Ansprechpersonen',
-  'leistung.ansprechpersonIn': 'Ihre Ansprechperson in {ort}',
-  'leistung.ansprechpersonenIn': 'Ihre Ansprechpersonen in {ort}',
   'leistung.beschwerdenHierher': 'Beschwerden, die hierher führen',
   'leistung.terminFuer': 'Termin für {name}',
   'leistung.onlineBuchen': 'Online buchen',
-  'leistung.fragenVorab':
-    'Fragen vorab? Unser digitaler Berater antwortet rund um die Uhr – auch zu {name}.',
-  'leistung.sieSehenAngabenFuer': 'Sie sehen gerade die Angaben für',
-  'leistung.auchHier':
-    'Diese Behandlung bieten wir auch hier an – falls Ihnen ein anderer Standort besser passt:',
   'leistung.ergaenzend': 'Ergänzend – an anderen Standorten',
-  'leistung.hierNicht':
-    'Diese Behandlung wird an unserem Standort {ort} nicht angeboten. Wir sagen Ihnen offen, wo Sie sie bekommen.',
   'leistung.inOrt': 'in {ort}',
   'leistung.termin': 'Termin',
   'leistung.anAnderenStandorten': '{name} an anderen KU64-Standorten',
@@ -100,13 +89,67 @@ export const TEXTE = {
   'krume.leistungen': 'Leistungen',
   'krume.beschwerden': 'Beschwerden',
   'krume.team': 'Team',
+  'blog.aufDieserSeite': 'Auf dieser Seite',
+  'blog.weiterlesen': 'Weiterlesen',
+  'orte.seitentitel': 'Unsere Standorte',
+  'orte.beschreibung':
+    'KU64 an {anzahl} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.',
+  'orte.behandlungen': 'Behandlungen',
+  'orte.nichtVerfuegbar': 'nicht verfügbar',
   'krume.blog': 'Blog',
+  'fuss.behandlungsbereiche': 'Behandlungsbereiche',
+  'fuss.haeufigGesucht': 'Häufig gesucht',
+  'fuss.unsereStandorte': 'Unsere Standorte',
+  'fuss.aktuellGewaehlt': '(aktuell gewählt)',
+  'fuss.impressum': 'Impressum',
+  'fuss.datenschutz': 'Datenschutz',
+  'fuss.kiTransparenz': 'KI-Transparenz',
+  'fuss.barrierefreiheit': 'Barrierefreiheit',
+  'fuss.cookieEinstellungen': 'Cookie-Einstellungen',
+  'fuss.oeffnungszeitenVon': 'Sprechzeiten KU64 {name}',
+  'praxis.behandlungen': 'Behandlungen',
+  'praxis.behandelnde': 'Behandelnde',
+  'praxis.ausFachbereichen': 'aus {anzahl} Fachbereichen',
+  'karte.dauer': 'Dauer',
+  'karte.kosten': 'Kosten',
+  'start.seitentitel': 'Zahnarzt in Berlin und Potsdam',
+  'anamnesez.beschreibung':
+    'Den Anamnesebogen vorab digital ausfüllen – an allen KU64-Standorten in Berlin und Potsdam.',
+  'anamnesez.woTermin': 'Wo haben Sie Ihren Termin?',
+  'notfallz.seitentitel': 'Zahnärztlicher Notfall',
+  'suchez.beschreibung':
+    'Behandlungen, Beschwerden, Standorte und Menschen bei KU64 finden – mit den Wörtern, die Sie verwenden.',
+  'kontaktz.beschreibung':
+    'So erreichen Sie KU64 – alle Standorte in Berlin und Potsdam mit Telefonnummern, Adressen und Sprechzeiten.',
+  'blogz.nachStandort': 'Beiträge nach Standort',
+  'beschwerde.herkunft':
+    'Dieser Text stammt aus dem Bestand der Praxis und ersetzt keine Untersuchung: Was Ihre Beschwerden verursacht, lässt sich erst am Behandlungsstuhl feststellen.',
+  'laecheln.beschreibung':
+    'Laden Sie ein Foto hoch und sehen Sie eine unverbindliche Visualisierung Ihres Lächelns. Ihr Bild wird nicht gespeichert.',
+  'laecheln.fotoWaehlen': 'Foto auswählen oder hierher ziehen',
+  'laecheln.adressePlatzhalter': 'ihre@adresse.de',
+  'laecheln.vergleich': 'Vergleich zwischen Ausgangsfoto und Visualisierung',
+  'standortwahl.bitteWaehlen': 'Bitte wählen Sie Ihren Standort',
+  'beratungz.beschreibung':
+    'Sprechen oder schreiben Sie mit unserem digitalen Berater – rund um die Uhr, zu Behandlungen, Kosten und Abläufen bei KU64.',
+  'ki.beschreibung':
+    'Welche KI-Systeme auf dieser Website arbeiten, wofür, mit welchen Daten – und wie Sie stattdessen einen Menschen erreichen.',
+  'notfallz.beschreibungLang':
+    'Akute Zahnschmerzen, Schwellung oder ein ausgeschlagener Zahn? Hier finden Sie sofort die richtige Nummer und die wichtigsten Sofortmaßnahmen.',
+  'krume.kontakt': 'Kontakt',
+  'krume.notfall': 'Notfall',
+  'krume.ueberKu64': 'Über KU64',
+  'krume.cookieEinstellungen': 'Cookie-Einstellungen',
+  'krume.laechelnVorschau': 'Lächeln-Vorschau',
+  'krume.digitaleAnamnese': 'Digitale Anamnese',
+  'krume.diePraxis': 'Die Praxis',
+  'krume.anfahrt': 'Anfahrt',
+  'krume.weitere': 'Weitere',
   'krume.suche': 'Suche',
   'krume.datenschutz': 'Datenschutz',
   'krume.impressum': 'Impressum',
   'krume.barrierefreiheit': 'Barrierefreiheit',
   'krume.kiTransparenz': 'KI-Transparenz',
-  'krume.cookies': 'Cookies',
   'krume.karriere': 'Karriere',
   'krume.standorte': 'Standorte',
   'krume.digitaleBeratung': 'Digitale Beratung',
@@ -209,6 +252,14 @@ export const TEXTE = {
   'beratung.wasDerBeraterNicht': 'Was der Berater nicht tut',
   'beratung.welchesSystemHierArbeitet': 'Welches System hier arbeitet',
   'beratung.zuWelchemStandortHaben': 'Zu welchem Standort haben Sie Fragen?',
+  'karriere.seitentitel': 'Karriere bei KU64',
+  'karriere.beschreibung':
+    'Offene Stellen und Initiativbewerbung bei KU64 in Berlin und Potsdam.',
+  'karriere.portalHinweis':
+    'Sie erreichen alle Ausschreibungen direkt im {portal} – oder Sie schreiben uns einfach, welcher Bereich und welcher Standort Sie interessieren.',
+  'karriere.stellenportal': 'Stellenportal',
+  'karriere.eineStelle': 'Eine offene Stelle',
+  'karriere.mehrereStellen': '{anzahl} offene Stellen',
   'karriere.arbeitenBeiKu64': 'Arbeiten bei KU64',
   'karriere.bewerbungSenden': 'Bewerbung senden',
   'karriere.dieAusschreibungenLiegenBei': 'Die Ausschreibungen liegen bei Personio. Erst wenn Sie eine davon öffnen, verlassen Sie diese Website – auf dieser Seite wird keine Verbindung dorthin aufgebaut.',
@@ -377,10 +428,25 @@ export const TEXTE = {
   'leistuebersicht.alleBehandlungen': 'Alle Behandlungen',
   'leistuebersicht.behandlungSuchen': 'Behandlung suchen',
   'leistuebersicht.zuIhrerSucheHaben': 'Zu Ihrer Suche haben wir nichts gefunden. Fragen Sie gern unseren digitalen Berater.',
+  'leistuebersicht.platzhalter': 'Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching',
+  'leistuebersicht.platzhalterOrt':
+    'Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching, Angst',
+  'leistuebersicht.zuFachbereich': 'Zu einem Fachbereich springen',
+  'leistuebersicht.vorspann':
+    '{anzahl} Behandlungen in {bereiche} Fachbereichen. Zu jeder sehen Sie, an welchen unserer {standorte} Standorte sie angeboten wird.',
+  'leistuebersicht.nichtsGefundenHier':
+    'Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.',
+  'leistuebersicht.anAnderenStandorten': 'An anderen KU64-Standorten',
+  'leistuebersicht.anderswoText':
+    'Diese Behandlungen gibt es in {ort} nicht. Damit Sie nicht vergeblich suchen, führen wir Sie direkt zum richtigen Standort.',
   'standorte.behandlung': 'Behandlung',
   'start.digitaleAnamnese': 'Digitale Anamnese',
   'start.digitalerBerater': 'Digitaler Berater',
   'start.ku64DieZahnspezialisten': 'KU64 · Die Zahnspezialisten',
+  'terminez.beschreibung':
+    'Online-Termin bei KU64 – wählen Sie Ihren Standort in Berlin oder Potsdam.',
+  'terminez.anWelchemStandort': 'An welchem Standort möchten Sie einen Termin?',
+  'krume.termine': 'Termine',
   'terminez.terminBuchen': 'Termin buchen',
 
   'beschwseite.aufDieserSeite': 'Auf dieser Seite',
@@ -392,7 +458,24 @@ export const TEXTE = {
   'blogseite.termin': 'Termin',
   'blogseite.terminBuchen': 'Termin buchen',
   'ortblog.alleBeitraegeAnsehen': 'Alle Beiträge ansehen',
+  'person.terminIn': 'Termin in {ort}',
+  'person.behandeltAuchAn': '{name} behandelt auch an',
   'person.medizinischeLeitung': 'Medizinische Leitung',
+  'teamliste.dasTeamIn': 'Das Team in {ort}',
+  'teamliste.zusammensetzung':
+    '{zahnaerzte} Zahnärztinnen und Zahnärzte und insgesamt {gesamt} Menschen bei KU64 {name}.',
+  'teamliste.dasTeamBei': 'Das Team bei KU64 {name}.',
+  'teamliste.filtern': 'Team filtern',
+  'teamliste.bereich': 'Bereich',
+  'teamliste.behandlungsart': 'Behandlungsart',
+  'teamliste.niemand': 'Mit dieser Auswahl steht niemand in {ort}.',
+  'teamliste.spricht': 'Spricht {sprachen}',
+  'teamliste.inArbeit':
+    'Die Vorstellung unseres Teams in {ort} bereiten wir gerade auf – mit Fotos und Schwerpunkten der einzelnen Behandelnden.',
+  'teamliste.behandelnZahl': 'Bei KU64 {name} behandeln {anzahl} Zahnärztinnen und Zahnärzte.',
+  'teamliste.behandelnTeam': 'Bei KU64 {name} behandelt Sie ein festes, eingespieltes Team.',
+  'teamliste.rufenSieAn':
+    'Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.',
   'teamliste.alle': 'Alle',
   'teamliste.auswahlAufheben': 'Auswahl aufheben',
   'teamliste.behandlungenAnsehen': 'Behandlungen ansehen',
@@ -422,16 +505,29 @@ export const TEXTE = {
   'bf.einSprunglinkFuehrtDirekt': 'Ein Sprunglink führt direkt zum Inhalt, ohne die Navigation durchlaufen zu müssen',
   'bf.leichteSpracheUndGebaerdensprachvideos': 'Leichte Sprache und Gebärdensprachvideos sind noch nicht verfügbar',
   'bf.schriftgroessenSkalierenMitIhren': 'Schriftgrößen skalieren mit Ihren Browsereinstellungen, Text bleibt bis 200 % lesbar',
+  'bf.beschreibung':
+    'Wie zugänglich diese Website und unsere Praxen sind – und was noch offen ist.',
+  'bf.screenreaderTest':
+    'Ein vollständiger Test mit Screenreadern (NVDA, VoiceOver) steht noch aus',
+  'bf.etwasGefunden': 'Etwas gefunden, das nicht funktioniert?',
   'bf.statusmeldungenWerdenScreenreadernAngekuendigt': 'Statusmeldungen werden Screenreadern angekündigt',
   'bf.wasNochOffenIst': 'Was noch offen ist',
   'bf.wasUmgesetztIst': 'Was umgesetzt ist',
   'bf.zugaenglichkeitUnsererPraxen': 'Zugänglichkeit unserer Praxen',
-  'ck.dieseWebsiteSetzt': 'Diese Website setzt',
+  'ck.seitentitel': 'Cookie-Einstellungen',
+  'ck.beschreibung':
+    'Diese Website setzt keine Analyse- oder Werbe-Cookies. Was tatsächlich gespeichert wird und wie Sie es löschen.',
+  'ck.einleitung':
+    '<strong>Diese Website setzt keine Analyse- oder Werbe-Cookies</strong> – keine Analyse-Cookies, keine Werbe-Cookies und keine Zählpixel. Es gibt deshalb auch kein Einwilligungsbanner, das Sie wegklicken müssten.',
+  'ck.zweiAngaben':
+    'Zwei Angaben liegen im lokalen Speicher Ihres Browsers. Sie erreichen unseren Server nie und dienen ausschließlich Ihrer Bequemlichkeit:',
+  'ck.drittanbieterText':
+    'Erst wenn Sie es ausdrücklich auslösen: beim Laden des Doctolib-Terminkalenders, beim Öffnen der digitalen Anamnese, beim Nutzen des Sprachberaters oder der Lächeln-Vorschau. Vorher passiert nichts. Details stehen in der {verweis}.',
+  'ck.datenschutzerklaerung': 'Datenschutzerklärung',
+  'ck.loeschen': 'Löschen',
   'ck.einKlickGenuegtDanach': 'Ein Klick genügt – danach ist der lokale Speicher dieser Website leer.',
-  'ck.esGibtDeshalbAuch': '. Es gibt deshalb auch kein Einwilligungsbanner, das Sie wegklicken müssten.',
   'ck.gespeicherteAngabenLoeschen': 'Gespeicherte Angaben löschen',
   'ck.ihrZuletztGewaehlterStandort': '– Ihr zuletzt gewählter Standort, damit wir Ihnen beim nächsten Besuch die passenden Angaben anbieten können. Es findet keine automatische Weiterleitung statt.',
-  'ck.keineAnalyseCookiesKeine': 'keine Analyse-Cookies, keine Werbe-Cookies und keine Zählpixel',
   'ck.nurVorhandenWennSie': '– nur vorhanden, wenn Sie einen eingebetteten Dienst geladen und angekreuzt haben, dass wir uns Ihre Entscheidung merken sollen. Solange Sie das nicht tun, wird nichts gespeichert.',
   'ck.wannDochDrittanbieterIns': 'Wann doch Drittanbieter ins Spiel kommen',
   'ck.wasTatsaechlichGespeichertWird': 'Was tatsächlich gespeichert wird',
@@ -542,38 +638,11 @@ export const TEXTE = {
   'ds.8Kontaktaufnahme': '8. Kontaktaufnahme',
   'ds.9IhreRechte': '9. Ihre Rechte',
   'ds.beidesKoennenSieJederzeit': 'Beides können Sie jederzeit über die Einstellungen Ihres Browsers löschen. Es handelt sich um keine personenbezogenen Daten im engeren Sinne und um keine Nutzerprofile.',
-  'ds.biometrischesDatum': 'biometrisches Datum',
-  'ds.damitWirIhnenBeim': ', damit wir Ihnen beim nächsten Besuch die passenden Angaben anbieten können. Es findet keine automatische Weiterleitung statt.',
   'ds.dasErgebnisWirdIhnen': 'Das Ergebnis wird Ihnen angezeigt und an die von Ihnen angegebene Adresse gesendet. Die Adresse wird für diesen einen Versand verwendet und danach nicht gespeichert.',
-  'ds.derAnamnesebogenWirdVon': 'Der Anamnesebogen wird von Nelly Solutions bereitgestellt. Diese Website leitet Sie lediglich dorthin weiter und verarbeitet selbst',
-  'ds.derTechnischeTeilBeschreibt': 'Der technische Teil beschreibt exakt das Verhalten dieser Website. Vor Veröffentlichung muss die Erklärung um die Angaben der Praxis ergänzt und anwaltlich geprüft werden. Die mit',
-  'ds.dieTerminbuchungLaeuftUeber': 'Die Terminbuchung läuft über Doctolib. Der Kalender ist auf dieser Website',
-  'ds.dieseWebsiteSetztVon': 'Diese Website setzt von sich aus keine Cookies zu Analyse- oder Marketingzwecken und bindet keine Zählpixel ein.',
-  'ds.einGesichtsfotoIstEin': 'Ein Gesichtsfoto ist ein',
-  'ds.esFindetKeinAufruf': 'Es findet kein Aufruf an Google Fonts oder ein anderes Schriften-Netzwerk statt. Ihre IP-Adresse wird dafür nicht an Dritte übermittelt.',
-  'ds.fallsSieAngekreuztHaben': ', falls Sie angekreuzt haben, dass wir uns diese merken sollen.',
-  'ds.ihrFotoWirdAn': 'Ihr Foto wird an unseren Server übertragen und dort ausschließlich im Arbeitsspeicher gehalten. Es wird',
-  'ds.ihreAngabenFliessenDirekt': '. Ihre Angaben fließen direkt vom Formular in unser Praxisverwaltungssystem.',
-  'ds.ihreEntscheidungZurTerminbuchung': 'Ihre Entscheidung zur Terminbuchung',
-  'ds.ihreFrageWirdAn': 'Ihre Frage wird an unseren Server und von dort an Anthropic übermittelt, um die Antwort zu erzeugen. Der Gesprächsverlauf existiert ausschließlich in Ihrem Browserfenster und geht beim Schließen verloren. Wir speichern weder Fragen noch Antworten und legen keine Gesprächsprotokolle an. Zur Missbrauchsabwehr zählen wir kurzzeitig Anfragen je IP-Adresse im Arbeitsspeicher.',
-  'ds.ihrenZuletztGewaehltenStandort': 'Ihren zuletzt gewählten Standort',
-  'ds.keineAnalyseWerkzeugeKeine': 'Keine Analyse-Werkzeuge, keine Werbe-Cookies.',
-  'ds.keineGesundheitsdaten': 'keine Gesundheitsdaten',
-  'ds.markiertenStellenSindNoch': 'markierten Stellen sind noch zu befüllen.',
   'ds.nachAbschlussDerAnfrage': 'Nach Abschluss der Anfrage sind Foto und Ergebnis auf unserem Server nicht mehr vorhanden.',
-  'ds.nichtAufEinenDatentraeger': 'nicht auf einen Datenträger geschrieben',
-  'ds.nichtEingebettet': 'nicht eingebettet',
-  'ds.schriftenWerdenSelbstAusgeliefert': 'Schriften werden selbst ausgeliefert.',
-  'ds.undInKeineDatenbank': 'und in keine Datenbank aufgenommen.',
   'imp.angabenNach5Ddg': 'Angaben nach § 5 DDG',
-  'imp.bereitUnd': 'bereit und',
   'imp.berufsrechtlicheAngaben': 'Berufsrechtliche Angaben',
-  'imp.dieEuropaeischeKommissionStellt': 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind',
-  'imp.einImpressumBestehtAus': 'Ein Impressum besteht aus Tatsachenangaben, die nur die Praxis liefern kann. Alle mit',
-  'imp.markiertenFelderSindVor': 'markierten Felder sind vor dem Live-Gang zu befüllen und rechtlich zu prüfen.',
   'imp.verantwortlichFuerDenInhalt': 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV',
-  'imp.verliehenIn': ', verliehen in',
-  'imp.verpflichtetAnStreitbeilegungsverfahrenVor': 'verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
 
   'nav.terminBuchen': 'Termin buchen',
   'nav.suchen': 'Suchen',
@@ -591,33 +660,19 @@ export const TEXTE = {
   'fuss.cookieEinstellungen': 'Cookie-Einstellungen',
   'fuss.karriere': 'Karriere',
   'fuss.notfall': 'Zahnärztlicher Notfall',
-  'fuss.anamnese': 'Digitale Anamnese',
   'fuss.laechelnVorschau': 'Lächeln-Vorschau',
 
   // ── Standorte und Zeiten ────────────────────────────────────────────
   'standort.geoeffnet': 'Jetzt geöffnet',
-  'standort.geschlossen': 'Gerade geschlossen',
-  'standort.geschlossenAmTag': 'geschlossen',
-  'standort.barrierefrei': 'barrierefreier Zugang',
-  'standort.zuletztGewaehlt': 'zuletzt gewählt',
-  'standort.anrufen': 'Anrufen',
-  'standort.route': 'Route planen',
 
   // ── Behandlungen ────────────────────────────────────────────────────
   'leistung.dauer': 'Dauer',
   'leistung.kosten': 'Kosten',
   'leistung.kasse': 'Krankenkasse',
   'leistung.ablauf': 'So läuft die Behandlung ab',
-  'leistung.faq': 'Häufige Fragen',
-  'leistung.andereBezeichnungen': 'Auch bekannt als',
-  'leistung.verwandt': 'Das könnte ebenfalls passen',
-  'leistung.hierNichtVerfuegbar':
-    'Diese Behandlung bieten wir an diesem Standort nicht an. Sie finden sie hier:',
-  'leistung.mehrErfahren': 'Mehr erfahren',
 
   // ── Sprache ─────────────────────────────────────────────────────────
   'sprache.waehlen': 'Sprache wählen',
-  'sprache.aktuell': 'Aktuelle Sprache: {sprache}',
   'sprache.hinweisTitel': 'Wir haben auf {sprache} umgestellt',
   'sprache.hinweisText':
     'Ihr Browser ist auf {sprache} eingestellt, deshalb sehen Sie diese Seite auf {sprache}.',
@@ -627,12 +682,6 @@ export const TEXTE = {
     'Diese Sprachfassung wird gerade aufgebaut. Einzelne Abschnitte erscheinen noch auf Deutsch.',
 
   // ── Allgemein ───────────────────────────────────────────────────────
-  'allgemein.mehr': 'Mehr',
-  'allgemein.schliessen': 'Schließen',
-  'allgemein.zurueck': 'Zurück',
-  'allgemein.absenden': 'Absenden',
-  'allgemein.pflichtfeld': 'Pflichtfeld',
-  'allgemein.fehler': 'Da ist etwas schiefgegangen. Bitte versuchen Sie es noch einmal.',
 
   // ── Startseite ──────────────────────────────────────────────────────
   'start.ueberschrift': 'Wo dürfen wir Sie behandeln?',
@@ -695,6 +744,10 @@ export const TEXTE = {
     'Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede Behandlung wird an jedem Standort angeboten.',
   'fuss.ohneStandort':
     'Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren Standort – Sprechzeiten und Behandlungsangebot unterscheiden sich.',
+  'termin.terminBei': 'Termin bei KU64 {name}',
+  'termin.anlassBei': '{anlass} bei KU64 {name}',
+  'termin.barrierefreierZugang': 'barrierefreier Zugang',
+  'termin.onlineWaehlen': 'Online-Termin wählen',
   'termin.vorspann':
     'Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch gerne bei Ihnen zurück.',
   'standortwahl.hinweis':
@@ -735,14 +788,6 @@ export const TEXTE = {
   'standorte.matrixBeschriftung': 'Verfügbarkeit der Behandlungen je KU64-Standort',
 
   // ── Kontakt ─────────────────────────────────────────────────────────
-  'kontakt.vorspann':
-    'Wählen Sie den Weg, der Ihnen am angenehmsten ist. Alle führen zum selben Team.',
-  'kontakt.telefonText': 'Der schnellste Weg – besonders bei Schmerzen oder wenn es dringend ist.',
-  'kontakt.termineText': 'Freie Termine sehen und direkt buchen, rund um die Uhr.',
-  'kontakt.emailText':
-    'Für alles, was nicht eilt. Bitte schicken Sie uns keine Gesundheitsdaten per unverschlüsselter E-Mail.',
-  'kontakt.beraterText':
-    'Unser digitaler Berater beantwortet Fragen zu Behandlungen, Kosten und Abläufen – per Text oder Sprache.',
 } as const;
 
 export type TextSchluessel = keyof typeof TEXTE;

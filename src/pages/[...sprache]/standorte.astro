@@ -17,7 +17,7 @@ const t = texte(daten.sprache);
 const pfad = '/standorte/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Standorte', pfad },
+  { name: t('krume.standorte'), pfad },
 ];
 
 /* Vergleichstabelle: Welche Leistung gibt es wo? Genau die Information, die
@@ -44,8 +44,8 @@ const schema = [
 ---
 
 <Basis
-  titel="Unsere Standorte"
-  description={`KU64 an ${daten.standorte.length} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.`}
+  titel={t('orte.seitentitel')}
+  description={t('orte.beschreibung', { anzahl: daten.standorte.length })}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={schema}
@@ -75,7 +75,7 @@ const schema = [
                   {s.besonderheiten.slice(0, 3).map((b) => <li>{b}</li>)}
                 </ul>
                 <dl class="fakten">
-                  <div><dt>Behandlungen</dt><dd>{anzahl}</dd></div>
+                  <div><dt>{t('orte.behandlungen')}</dt><dd>{anzahl}</dd></div>
                   <div><dt>Geöffnet</dt><dd>{tage} Tage/Woche</dd></div>
                   <div><dt>Seit</dt><dd>{s.eroeffnet.slice(0, 4)}</dd></div>
                 </dl>
@@ -123,7 +123,7 @@ const schema = [
                           <span aria-hidden="true">✓</span>
                         </a>
                       ) : (
-                        <span aria-label="nicht verfügbar">–</span>
+                        <span aria-label={t('orte.nichtVerfuegbar')}>–</span>
                       )}
                     </td>
                   ))}

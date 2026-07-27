@@ -76,7 +76,7 @@ const proStandort = daten.standorte
 
       {
         proStandort.length > 0 && (
-          <nav class="filter" aria-label="Beiträge nach Standort">
+          <nav class="filter" aria-label="{t('blogz.nachStandort')}">
             <span class="filter-titel">{t('blogliste.nachStandort')}</span>
             {proStandort.map((x) => (
               <a href={`/${x.standort.slug}/blog/`} class="filter-knopf">

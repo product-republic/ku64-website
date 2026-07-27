@@ -197,7 +197,7 @@ const schema = [
         <aside class="spalte">
           {
             marken.length > 0 && (
-              <nav class="gliederung" aria-label="Auf dieser Seite">
+              <nav class="gliederung" aria-label={t('blog.aufDieserSeite')}>
                 <p class="spalte-titel">{t('blogseite.aufDieserSeite')}</p>
                 <ul>
                   {marken.map((m) => (
@@ -223,7 +223,7 @@ const schema = [
       weitere.length > 0 && (
         <section class="abschnitt flaeche-warm">
           <div class="huelle-weit">
-            <h2 class="weiter-titel">Weiterlesen</h2>
+            <h2 class="weiter-titel">{t('blog.weiterlesen')}</h2>
             <div class="raster">
               {weitere.map((b) => (
                 <BlogKarte beitrag={b} />

@@ -15,13 +15,13 @@ export function getStaticPaths() {
 const pfad = '/anamnese/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Digitale Anamnese', pfad },
+  { name: t('krume.digitaleAnamnese'), pfad },
 ];
 ---
 
 <Basis
   titel="Digitale Anamnese"
-  description="Den Anamnesebogen vorab digital ausfüllen – an allen KU64-Standorten in Berlin und Potsdam."
+  description={t('anamnesez.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
@@ -30,7 +30,7 @@ const brotkrumen = [
     <div class="huelle">
       <h1>{t('anamnesez.digitaleAnamnese')}</h1>
       <p class="unter">{t('anamnesez.fuenfMinutenZuHause')}</p>
-      <Standortwahl ziel="anamnese" titel="Wo haben Sie Ihren Termin?" />
+      <Standortwahl ziel="anamnese" titel={t('anamnesez.woTermin')} />
     </div>
   </section>
 </Basis>

@@ -46,6 +46,20 @@ const KEIN_TEXT = [
   /^(https?:|mailto:|tel:|#|\/|\.\/|\.\.\/)/,
   /^[a-z0-9-]+$/,
   /^var\(|^calc\(|^rgb|^clamp\(/,
+  /*
+   * Auszeichnung ist kein Text.
+   *
+   * Die Suche nach Zeichenketten in Ausdrücken greift auch über Tag-Grenzen
+   * hinweg: In `class:list={['knopf', 'gross', …]}` steht zwischen dem
+   * zweiten und dem dritten Anführungszeichen der ganze Rest der Zeile,
+   * Auszeichnung inklusive. So entstanden vierzig Meldungen, hinter denen
+   * kein einziger deutscher Satz stand – und eine Liste, die zu neunzig
+   * Prozent aus Fehlalarm besteht, liest irgendwann niemand mehr.
+   *
+   * Echter Anzeigetext enthält keine spitzen Klammern, keine geschweiften
+   * und kein Gleichheitszeichen zwischen Wörtern.
+   */
+  /[<>]|=["'{]|\{[a-z]/i,
 ];
 
 async function dateien(ordner, treffer = []) {

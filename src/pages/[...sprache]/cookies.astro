@@ -15,29 +15,26 @@ export function getStaticPaths() {
 const pfad = '/cookies/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Cookie-Einstellungen', pfad },
+  { name: t('krume.cookieEinstellungen'), pfad },
 ];
 ---
 
 <Basis
   titel="Cookie-Einstellungen"
-  description="Diese Website setzt keine Analyse- oder Werbe-Cookies. Was tatsächlich gespeichert wird und wie Sie es löschen."
+  description={t('ck.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
 >
   <div class="huelle abschnitt">
-    <h1>Cookie-Einstellungen</h1>
+    <h1>{t('ck.seitentitel')}</h1>
       <Vorrangklausel />
 
     <div class="fliesstext">
-      <p>{t('ck.dieseWebsiteSetzt')}<strong>{t('ck.keineAnalyseCookiesKeine')}</strong>{t('ck.esGibtDeshalbAuch')}</p>
+      <p set:html={t('ck.einleitung')} />
 
       <h2>{t('ck.wasTatsaechlichGespeichertWird')}</h2>
-      <p>
-        Zwei Angaben liegen im lokalen Speicher Ihres Browsers. Sie erreichen unseren Server
-        nie und dienen ausschließlich Ihrer Bequemlichkeit:
-      </p>
+      <p>{t('ck.zweiAngaben')}</p>
       <ul>
         <li>
           <strong>ku64:standort</strong>{t('ck.ihrZuletztGewaehlterStandort')}</li>
@@ -46,14 +43,13 @@ const brotkrumen = [
       </ul>
 
       <h2>{t('ck.wannDochDrittanbieterIns')}</h2>
-      <p>
-        Erst wenn Sie es ausdrücklich auslösen: beim Laden des Doctolib-Terminkalenders,
-        beim Öffnen der digitalen Anamnese, beim Nutzen des Sprachberaters oder der
-        Lächeln-Vorschau. Vorher passiert nichts. Details stehen in der
-        <a href="/datenschutz/">Datenschutzerklärung</a>.
-      </p>
+      <p
+        set:html={t('ck.drittanbieterText', {
+          verweis: `<a href="/datenschutz/">${t('ck.datenschutzerklaerung')}</a>`,
+        })}
+      />
 
-      <h2>Löschen</h2>
+      <h2>{t('ck.loeschen')}</h2>
       <p>{t('ck.einKlickGenuegtDanach')}</p>
       <p>
         <button type="button" class="knopf knopf-primaer" id="loeschen">{t('ck.gespeicherteAngabenLoeschen')}</button>

@@ -8,6 +8,8 @@
  * Kontakt ohne Einwilligung und kein Ladeballast.
  */
 import type { Standort } from '../data/standorte';
+import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
 
 interface Props {
   standort: Standort;
@@ -16,27 +18,29 @@ interface Props {
 }
 
 const { standort, anlass } = Astro.props;
+const t = texte(inhalte(Astro).sprache);
 ---
 
 <section class="band" aria-labelledby="band-titel">
   <div class="huelle band-inner">
     <div>
       <h2 id="band-titel">
-        {anlass ? `${anlass} bei KU64 ${standort.name}` : `Termin bei KU64 ${standort.name}`}
+        {
+          anlass
+            ? t('termin.anlassBei', { anlass, name: standort.name })
+            : t('termin.terminBei', { name: standort.name })
+        }
       </h2>
-      <p>
-        Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch
-        gerne bei Ihnen zurück.
-      </p>
+      <p>{t('termin.vorspann')}</p>
       <p class="feindaten">
         {standort.strasse}, {standort.plz} {standort.ort}
-        {standort.anfahrt.barrierefrei && <> · barrierefreier Zugang</>}
+        {standort.anfahrt.barrierefrei && <> · {t('termin.barrierefreierZugang')}</>}
       </p>
     </div>
 
     <div class="band-knoepfe">
       <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer knopf-gross">
-        Online-Termin wählen
+        {t('termin.onlineWaehlen')}
       </a>
       <a
         href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}

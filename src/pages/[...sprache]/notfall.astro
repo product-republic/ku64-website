@@ -23,7 +23,7 @@ const t = texte(daten.sprache);
 const pfad = '/notfall/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Notfall', pfad },
+  { name: t('krume.notfall'), pfad },
 ];
 
 const faq = [
@@ -64,8 +64,8 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
 ---
 
 <Basis
-  titel="Zahnärztlicher Notfall"
-  description="Akute Zahnschmerzen, Schwellung oder ein ausgeschlagener Zahn? Hier finden Sie sofort die richtige Nummer und die wichtigsten Sofortmaßnahmen."
+  titel={t('notfallz.seitentitel')}
+  description={t('notfallz.beschreibungLang')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}

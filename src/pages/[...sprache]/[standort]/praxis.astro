@@ -39,7 +39,7 @@ const gruppen = daten.gruppen(standort.slug);
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
-  { name: 'Die Praxis', pfad },
+  { name: t('krume.diePraxis'), pfad },
 ];
 
 const raeume = raumbilderFuer(standort.slug);
@@ -70,14 +70,14 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         {
           anzahlZahnaerzte(standort.slug) > 0 && (
             <div>
-              <dt>Behandelnde</dt>
+              <dt>{t('praxis.behandelnde')}</dt>
               <dd>{anzahlZahnaerzte(standort.slug)}</dd>
               <p>{t('standort.zahnaerzteLabel')}</p>
             </div>
           )
         }
         <div>
-          <dt>Behandlungen</dt>
+          <dt>{t('praxis.behandlungen')}</dt>
           <dd>{alleHier.length}</dd>
           <p>aus {gruppen.length} Fachbereichen</p>
         </div>

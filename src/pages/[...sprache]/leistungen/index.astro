@@ -47,7 +47,7 @@ const schema = [
 ---
 
 <Basis
-  titel="Alle Behandlungen"
+  titel={t('leistuebersicht.alleBehandlungen')}
   description={`${daten.leistungen.length} Behandlungen bei KU64 – von Prophylaxe bis Implantologie. Mit Übersicht, welche Behandlung an welchem Standort angeboten wird.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -57,8 +57,11 @@ const schema = [
     <div class="huelle">
       <h1>{t('leistuebersicht.alleBehandlungen')}</h1>
       <p class="unter">
-        {daten.leistungen.length} Behandlungen in {gruppen.length} Fachbereichen. Zu jeder sehen
-        Sie, an welchen unserer {daten.standorte.length} Standorte sie angeboten wird.
+        {t('leistuebersicht.vorspann', {
+          anzahl: daten.leistungen.length,
+          bereiche: gruppen.length,
+          standorte: daten.standorte.length,
+        })}
       </p>
 
       <div class="suche">
@@ -68,11 +71,11 @@ const schema = [
           <path d="M13.8 13.8 18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
         </svg>
         <input type="search" id="q" autocomplete="off"
-               placeholder="Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching" />
+               placeholder={t('leistuebersicht.platzhalter')} />
       </div>
       <p class="treffer" role="status" aria-live="polite"></p>
 
-      <nav class="sprung" aria-label="Zu einem Fachbereich springen">
+      <nav class="sprung" aria-label={t('leistuebersicht.zuFachbereich')}>
         {gruppen.map((g) => <a href={`#${g.kategorie.slug}`}>{g.kategorie.name}</a>)}
       </nav>
     </div>

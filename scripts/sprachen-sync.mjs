@@ -81,6 +81,11 @@ for (const sprache of SPRACHEN) {
 
   if (aufraeumen && verwaist.length) {
     for (const k of verwaist) delete katalog.eintraege[k];
+    /* Sofort schreiben und nicht erst nach der Übersetzung: Aufräumen
+       braucht keinen Schlüssel, und mit `--trocken` käme es sonst nie auf
+       die Platte – die Einträge blieben stehen und die Abdeckung sähe
+       besser aus, als sie ist. */
+    await katalogSchreiben(pfad, katalog);
     console.log(`[sync] ${verwaist.length} verwaiste Einträge entfernt`);
   }
 

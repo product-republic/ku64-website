@@ -34,7 +34,7 @@ const t = texte(daten.sprache);
 const pfad = '/beratung/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Digitale Beratung', pfad },
+  { name: t('krume.digitaleBeratung'), pfad },
 ];
 
 const system = kiSystem('sprachberater')!;
@@ -70,7 +70,7 @@ const faq = [
 
 <Basis
   titel="Digitale Beratung"
-  description="Sprechen oder schreiben Sie mit unserem digitalen Berater – rund um die Uhr, zu Behandlungen, Kosten und Abläufen bei KU64."
+  description={t('beratungz.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}

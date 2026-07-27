@@ -149,7 +149,7 @@ const schema = [
 
         <div class="kopf-knoepfe">
           <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">
-            Termin in {standort.ort}
+            {t('person.terminIn', { ort: standort.ort })}
           </a>
           <a
             href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}
@@ -162,7 +162,7 @@ const schema = [
         {
           person.standorte.length > 1 && (
             <p class="auch">
-              {person.name.split(' ').slice(-1)} behandelt auch an{' '}
+              {t('person.behandeltAuchAn', { name: person.name.split(' ').slice(-1).join('') })}{' '}
               {person.standorte
                 .filter((s) => s !== standort.slug)
                 .map((s) => {

@@ -21,7 +21,7 @@ const pfad = `/${standort.slug}/anfahrt/`;
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
-  { name: 'Anfahrt', pfad },
+  { name: t('krume.anfahrt'), pfad },
 ];
 
 const faq = [
@@ -82,9 +82,9 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
         </div>
 
         <div class="karte">
-          <h2>Sprechzeiten</h2>
+          <h2>{t('standort.sprechzeiten')}</h2>
           <table class="zeiten">
-            <caption class="nur-screenreader">Öffnungszeiten</caption>
+            <caption class="nur-screenreader">{t('fuss.oeffnungszeiten')}</caption>
             <tbody>
               {
                 standort.oeffnungszeiten.map((z) => (

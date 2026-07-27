@@ -58,7 +58,7 @@ const suchindex = alleHier.map((l) => ({
       </p>
 
       <div class="suche">
-        <label for="q" class="nur-screenreader">Behandlung suchen</label>
+        <label for="q" class="nur-screenreader">{t('leistuebersicht.behandlungSuchen')}</label>
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
           <circle cx="9" cy="9" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7" />
           <path d="M13.8 13.8 18 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
@@ -66,13 +66,13 @@ const suchindex = alleHier.map((l) => ({
         <input
           type="search"
           id="q"
-          placeholder="Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching, Angst"
+          placeholder={t('leistuebersicht.platzhalterOrt')}
           autocomplete="off"
         />
       </div>
       <p class="treffer" role="status" aria-live="polite"></p>
 
-      <nav class="sprung" aria-label="Zu einem Fachbereich springen">
+      <nav class="sprung" aria-label={t('leistuebersicht.zuFachbereich')}>
         {gruppen.map((g) => <a href={`#${g.kategorie.slug}`}>{g.kategorie.name}</a>)}
       </nav>
     </div>
@@ -97,21 +97,15 @@ const suchindex = alleHier.map((l) => ({
       ))
     }
 
-    <p class="leer" hidden>
-      Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen
-      Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.
-    </p>
+    <p class="leer" hidden>{t('leistuebersicht.nichtsGefundenHier')}</p>
   </div>
 
   {
     nichtHier.length > 0 && (
       <section class="abschnitt woanders-bereich">
         <div class="huelle">
-          <h2>An anderen KU64-Standorten</h2>
-          <p class="unter">
-            Diese Behandlungen gibt es in {standort.ort} nicht. Damit Sie nicht vergeblich
-            suchen, führen wir Sie direkt zum richtigen Standort.
-          </p>
+          <h2>{t('leistuebersicht.anAnderenStandorten')}</h2>
+          <p class="unter">{t('leistuebersicht.anderswoText', { ort: standort.ort })}</p>
           <div class="raster">
             {nichtHier.map((l) => (
               <LeistungKarte leistung={l} standortSlug={standort.slug} kompakt />

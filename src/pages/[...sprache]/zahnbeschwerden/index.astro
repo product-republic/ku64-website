@@ -110,7 +110,7 @@ const gruppen = [
     eintraege: g.slugs.map((s) => BESCHWERDEN.find((b) => b.slug === s)).filter(Boolean),
   })).filter((g) => g.eintraege.length > 0),
   ...(uebrig.length
-    ? [{ name: 'Weitere', frage: 'Sonstiges', slugs: [], eintraege: uebrig }]
+    ? [{ name: t('krume.weitere'), frage: 'Sonstiges', slugs: [], eintraege: uebrig }]
     : []),
 ];
 

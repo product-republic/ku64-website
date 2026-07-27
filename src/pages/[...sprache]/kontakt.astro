@@ -17,13 +17,13 @@ const t = texte(daten.sprache);
 const pfad = '/kontakt/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Kontakt', pfad },
+  { name: t('krume.kontakt'), pfad },
 ];
 ---
 
 <Basis
   titel="Kontakt"
-  description="So erreichen Sie KU64 – alle Standorte in Berlin und Potsdam mit Telefonnummern, Adressen und Sprechzeiten."
+  description={t('kontaktz.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), schemaOrganisation()]}
@@ -41,7 +41,7 @@ const brotkrumen = [
             <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="tel">{s.telefon}</a>
             <a href={`mailto:${s.email}`} class="mail">{s.email}</a>
             <table class="zeiten">
-              <caption class="nur-screenreader">Sprechzeiten KU64 {s.name}</caption>
+              <caption class="nur-screenreader">{t('fuss.oeffnungszeitenVon', { name: s.name })}</caption>
               <tbody>
                 {s.oeffnungszeiten.map((z) => (
                   <tr>

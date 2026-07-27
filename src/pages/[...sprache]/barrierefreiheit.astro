@@ -17,13 +17,13 @@ const t = texte(daten.sprache);
 const pfad = '/barrierefreiheit/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Barrierefreiheit', pfad },
+  { name: t('krume.barrierefreiheit'), pfad },
 ];
 ---
 
 <Basis
   titel="Barrierefreiheit"
-  description="Wie zugänglich diese Website und unsere Praxen sind – und was noch offen ist."
+  description={t('bf.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
@@ -50,7 +50,7 @@ const brotkrumen = [
 
       <h2>{t('bf.wasNochOffenIst')}</h2>
       <ul>
-        <li>Ein vollständiger Test mit Screenreadern (NVDA, VoiceOver) steht noch aus</li>
+        <li>{t('bf.screenreaderTest')}</li>
         <li>{t('bf.alternativtexteFuerBildmaterialWerden')}</li>
         <li>{t('bf.dieTerminbuchungVonDoctolib')}</li>
         <li>{t('bf.leichteSpracheUndGebaerdensprachvideos')}</li>
@@ -68,7 +68,7 @@ const brotkrumen = [
         ))}
       </ul>
 
-      <h2>Etwas gefunden, das nicht funktioniert?</h2>
+      <h2>{t('bf.etwasGefunden')}</h2>
       <p>{t('bf.bitteSagenSieUns')}</p>
       <p><a href="/kontakt/" class="knopf knopf-primaer">{t('bf.barriereMelden')}</a></p>
     </div>

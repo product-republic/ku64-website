@@ -21,7 +21,7 @@ const t = texte(daten.sprache);
 const pfad = '/laecheln-vorschau/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Lächeln-Vorschau', pfad },
+  { name: t('krume.laechelnVorschau'), pfad },
 ];
 
 const faq = [
@@ -55,7 +55,7 @@ const faq = [
 
 <Basis
   titel="Lächeln-Vorschau"
-  description="Laden Sie ein Foto hoch und sehen Sie eine unverbindliche Visualisierung Ihres Lächelns. Ihr Bild wird nicht gespeichert."
+  description={t('laecheln.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
@@ -79,7 +79,7 @@ const faq = [
           <legend><span class="nr">1</span>{t('laecheln.fotoAuswaehlen')}</legend>
 
           <div class="ablage" id="ablage" tabindex="0" role="button"
-               aria-label="Foto auswählen oder hierher ziehen">
+               aria-label={t('laecheln.fotoWaehlen')}>
             <input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/webp" required hidden />
             <div class="ablage-leer" id="ablageLeer">
               <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
@@ -119,7 +119,7 @@ const faq = [
           <label class="feld">
             <span>E-Mail-Adresse</span>
             <input type="email" name="email" id="email" required autocomplete="email"
-                   placeholder="ihre@adresse.de" />
+                   placeholder={t('laecheln.adressePlatzhalter')} />
           </label>
 
           <label class="feld">
@@ -176,7 +176,7 @@ const faq = [
               <img id="bildNachher" alt="Visualisierung Ihres Lächelns" />
             </div>
             <input type="range" id="regler" min="0" max="100" value="50"
-                   aria-label="Vergleich zwischen Ausgangsfoto und Visualisierung" />
+                   aria-label={t('laecheln.vergleich')} />
             <span class="griff" id="griff" aria-hidden="true"></span>
             <span class="etikett etikett-links">{t('laecheln.ihrFoto')}</span>
             <span class="etikett etikett-rechts">Visualisierung</span>

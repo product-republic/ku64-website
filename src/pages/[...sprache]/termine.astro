@@ -15,13 +15,13 @@ export function getStaticPaths() {
 const pfad = '/termine/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Termine', pfad },
+  { name: t('krume.termine'), pfad },
 ];
 ---
 
 <Basis
-  titel="Termin buchen"
-  description="Online-Termin bei KU64 – wählen Sie Ihren Standort in Berlin oder Potsdam."
+  titel={t('terminez.terminBuchen')}
+  description={t('terminez.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
@@ -29,7 +29,7 @@ const brotkrumen = [
   <section class="abschnitt">
     <div class="huelle">
       <h1>{t('terminez.terminBuchen')}</h1>
-      <Standortwahl ziel="termine" titel="An welchem Standort möchten Sie einen Termin?" />
+      <Standortwahl ziel="termine" titel={t('terminez.anWelchemStandort')} />
     </div>
   </section>
 </Basis>

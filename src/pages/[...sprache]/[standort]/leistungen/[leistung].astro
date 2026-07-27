@@ -142,7 +142,8 @@ const schema = [
           <div>
             <dt>{t('leistung.termin')}</dt>
             <dd>
-              <a href={`/${standort.slug}/termine/`}>{t('leistung.onlineBuchen')}</a> oder{' '}
+              <a href={`/${standort.slug}/termine/`}>{t('leistung.onlineBuchen')}</a>{' '}
+              {t('leistung.oder')}{' '}
               <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>
             </dd>
           </div>

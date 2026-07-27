@@ -196,7 +196,7 @@ const schema = [
            * Bei 1870 Wörtern im Mittel ist das kein Zierrat: Ohne sie ist die
            * Seite ein Textblock, dessen Ende man nicht absehen kann.
            */
-          <nav class="gliederung" aria-label="Auf dieser Seite">
+          <nav class="gliederung" aria-label={t('blog.aufDieserSeite')}>
             <p class="gliederung-titel">{t('beschwseite.aufDieserSeite')}</p>
             <ul>
               {gliederung.map((g) => (
@@ -243,11 +243,7 @@ const schema = [
 
   <section class="abschnitt-eng">
     <div class="huelle">
-      <p class="herkunft">
-        Dieser Text stammt aus dem Bestand der Praxis und ersetzt keine
-        Untersuchung: Was Ihre Beschwerden verursacht, lässt sich erst am
-        Behandlungsstuhl feststellen.
-      </p>
+      <p class="herkunft">{t('beschwerde.herkunft')}</p>
     </div>
   </section>
 </Basis>

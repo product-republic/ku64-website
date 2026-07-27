@@ -1,7 +1,9 @@
 ---
 import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 /**
  * Standortwahl für standortfreie Seiten (/termine/, /anamnese/).
@@ -17,15 +19,13 @@ interface Props {
   titel?: string;
 }
 
-const { ziel, titel = 'Bitte wählen Sie Ihren Standort' } = Astro.props;
+const { ziel, titel } = Astro.props;
+const ueberschrift = titel ?? t('standortwahl.bitteWaehlen');
 ---
 
 <div class="wahl">
-  <h2>{titel}</h2>
-  <p class="hinweis-text">
-    Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort –
-    deshalb fragen wir lieber, statt zu raten.
-  </p>
+  <h2>{ueberschrift}</h2>
+  <p class="hinweis-text">{t('standortwahl.hinweis')}</p>
 
   <div class="raster" id="wahlRaster">
     {

@@ -2681,30 +2681,6 @@
       "text": "Les horaires de la KiezPraxis ne sont pas encore confirmés – merci de les vérifier avant publication.",
       "quelle": "f4aaeaf5"
     },
-    "ui.allgemein.absenden": {
-      "text": "Envoyer",
-      "quelle": "d595515b"
-    },
-    "ui.allgemein.fehler": {
-      "text": "Une erreur s'est produite. Veuillez réessayer.",
-      "quelle": "159582a2"
-    },
-    "ui.allgemein.mehr": {
-      "text": "Plus",
-      "quelle": "03d3839d"
-    },
-    "ui.allgemein.pflichtfeld": {
-      "text": "Champ obligatoire",
-      "quelle": "d89aa4a8"
-    },
-    "ui.allgemein.schliessen": {
-      "text": "Fermer",
-      "quelle": "e1cab4a5"
-    },
-    "ui.allgemein.zurueck": {
-      "text": "Retour",
-      "quelle": "7ca3460c"
-    },
     "ui.fehler.suchen": {
       "text": "Rechercher un soin",
       "quelle": "f9ef7d33"
@@ -2720,10 +2696,6 @@
     "ui.fuss.aktuellGewaehlt": {
       "text": "(actuellement sélectionné)",
       "quelle": "05cdde05"
-    },
-    "ui.fuss.anamnese": {
-      "text": "Questionnaire médical en ligne",
-      "quelle": "a9d6bcd2"
     },
     "ui.fuss.barrierefreiheit": {
       "text": "Accessibilité",
@@ -2805,10 +2777,6 @@
       "text": "Vous êtes ici",
       "quelle": "4232d848"
     },
-    "ui.geruest.startseite": {
-      "text": "Accueil",
-      "quelle": "8bd72e71"
-    },
     "ui.geruest.zumInhalt": {
       "text": "Aller au contenu",
       "quelle": "60ca65f1"
@@ -2833,45 +2801,13 @@
       "text": "Téléphone",
       "quelle": "9efa9d9c"
     },
-    "ui.kontakt.beraterText": {
-      "text": "Notre assistant numérique répond aux questions sur les soins, les coûts et le déroulement – par écrit ou de vive voix.",
-      "quelle": "d44da413"
-    },
-    "ui.kontakt.emailText": {
-      "text": "Pour tout ce qui n’est pas urgent. Merci de ne pas nous envoyer de données de santé par courriel non chiffré.",
-      "quelle": "30fcf3f3"
-    },
-    "ui.kontakt.telefonText": {
-      "text": "Le plus rapide – surtout en cas de douleur ou d’urgence.",
-      "quelle": "a5f0607a"
-    },
-    "ui.kontakt.termineText": {
-      "text": "Consultez les créneaux libres et réservez directement, à toute heure.",
-      "quelle": "05facd08"
-    },
-    "ui.kontakt.vorspann": {
-      "text": "Choisissez le moyen qui vous convient le mieux. Tous mènent à la même équipe.",
-      "quelle": "9d1f7297"
-    },
     "ui.leistung.ablauf": {
       "text": "Le déroulement du traitement",
       "quelle": "118a0fdf"
     },
-    "ui.leistung.andereBezeichnungen": {
-      "text": "Également appelé",
-      "quelle": "510e0e45"
-    },
     "ui.leistung.dauer": {
       "text": "Durée",
       "quelle": "d0c110d2"
-    },
-    "ui.leistung.faq": {
-      "text": "Questions fréquentes",
-      "quelle": "5e46dd30"
-    },
-    "ui.leistung.hierNichtVerfuegbar": {
-      "text": "Nous ne proposons pas ce traitement dans ce cabinet. Vous le trouverez ici :",
-      "quelle": "00cc42f6"
     },
     "ui.leistung.kasse": {
       "text": "Assurance maladie",
@@ -2880,14 +2816,6 @@
     "ui.leistung.kosten": {
       "text": "Tarif",
       "quelle": "0f3e02f3"
-    },
-    "ui.leistung.mehrErfahren": {
-      "text": "En savoir plus",
-      "quelle": "7977c838"
-    },
-    "ui.leistung.verwandt": {
-      "text": "Cela pourrait aussi vous convenir",
-      "quelle": "60be0c21"
     },
     "ui.nav.andererStandort": {
       "text": "Un autre cabinet",
@@ -2921,10 +2849,6 @@
       "text": "Choisir un cabinet",
       "quelle": "190c5686"
     },
-    "ui.nav.standortWechseln": {
-      "text": "Changer de cabinet",
-      "quelle": "45f4c033"
-    },
     "ui.nav.team": {
       "text": "Équipe",
       "quelle": "2329c92c"
@@ -2933,10 +2857,6 @@
       "text": "Prendre rendez-vous",
       "quelle": "57146cdd"
     },
-    "ui.nav.termine": {
-      "text": "Rendez-vous",
-      "quelle": "5f1e529b"
-    },
     "ui.nav.ueberKu64": {
       "text": "À propos de KU64",
       "quelle": "92039106"
@@ -2944,10 +2864,6 @@
     "ui.nav.waehlerHinweis": {
       "text": "En changeant de cabinet, vous verrez les informations de celui que vous choisissez. Tous les soins ne sont pas proposés dans chaque cabinet.",
       "quelle": "f7fa2655"
-    },
-    "ui.sprache.aktuell": {
-      "text": "Langue actuelle : {sprache}",
-      "quelle": "2ef18a2c"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Fermer l'avis",
@@ -2973,17 +2889,9 @@
       "text": "Continuer en {sprache}",
       "quelle": "b8138759"
     },
-    "ui.standort.anrufen": {
-      "text": "Appelez-nous",
-      "quelle": "542e8108"
-    },
     "ui.standort.aufKarteAnsehen": {
       "text": "Voir sur la carte",
       "quelle": "4bce2d87"
-    },
-    "ui.standort.barrierefrei": {
-      "text": "accès de plain-pied",
-      "quelle": "9858ed34"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographies de ce cabinet – dans l’ordre où vous découvrirez les pièces lors de votre visite.",
@@ -2993,21 +2901,9 @@
       "text": "Ouvert maintenant",
       "quelle": "55a568db"
     },
-    "ui.standort.geschlossen": {
-      "text": "Actuellement fermé",
-      "quelle": "24d49955"
-    },
-    "ui.standort.geschlossenAmTag": {
-      "text": "fermé",
-      "quelle": "d266c7e1"
-    },
     "ui.standort.kartenHinweis": {
       "text": "Les services de cartographie sont des prestataires tiers. Nous ne les intégrons pas directement, afin que la simple consultation de cette page ne transmette aucune donnée à des tiers.",
       "quelle": "e53070d4"
-    },
-    "ui.standort.route": {
-      "text": "Itinéraire",
-      "quelle": "aea4bcc6"
     },
     "ui.standort.soFindenSieUns": {
       "text": "Comment nous trouver",
@@ -3020,10 +2916,6 @@
     "ui.standort.zahnaerzteLabel": {
       "text": "dentistes",
       "quelle": "740fbae5"
-    },
-    "ui.standort.zuletztGewaehlt": {
-      "text": "dernier choix",
-      "quelle": "7d75258a"
     },
     "ui.standorte.matrixBeschriftung": {
       "text": "Disponibilité des soins par cabinet KU64",

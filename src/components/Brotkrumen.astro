@@ -1,11 +1,15 @@
 ---
+import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
+
 interface Props {
   punkte: { name: string; pfad: string }[];
 }
 const { punkte } = Astro.props;
+const t = texte(inhalte(Astro).sprache);
 ---
 
-<nav class="brotkrumen" aria-label="Sie befinden sich hier">
+<nav class="brotkrumen" aria-label={t('geruest.sieSindHier')}>
   <div class="huelle">
     <ol>
       {

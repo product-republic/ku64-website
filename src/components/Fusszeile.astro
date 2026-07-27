@@ -77,7 +77,7 @@ const t = texte(daten.sprache);
 
       {/* Spalte 2: Behandlungsbereiche */}
       <div class="fuss-block">
-        <p class="fuss-titel">Behandlungsbereiche</p>
+        <p class="fuss-titel">{t('fuss.behandlungsbereiche')}</p>
         <ul>
           {
             kategorien.map((k) => (
@@ -91,7 +91,7 @@ const t = texte(daten.sprache);
 
       {/* Spalte 3: Häufig gesucht */}
       <div class="fuss-block">
-        <p class="fuss-titel">Häufig gesucht</p>
+        <p class="fuss-titel">{t('fuss.haeufigGesucht')}</p>
         <ul>
           {
             beliebt.map((l) => (
@@ -113,7 +113,7 @@ const t = texte(daten.sprache);
 
       {/* Spalte 4: Standorte + Service */}
       <div class="fuss-block">
-        <p class="fuss-titel">Unsere Standorte</p>
+        <p class="fuss-titel">{t('fuss.unsereStandorte')}</p>
         <ul>
           {
             daten.standorte.map((s) => (
@@ -125,7 +125,7 @@ const t = texte(daten.sprache);
                 >
                   {s.name}
                   {s.slug === standort?.slug && (
-                    <span class="nur-screenreader"> (aktuell gewählt)</span>
+                    <span class="nur-screenreader"> {t('fuss.aktuellGewaehlt')}</span>
                   )}
                 </a>
               </li>
@@ -156,13 +156,13 @@ const t = texte(daten.sprache);
 
     <div class="fuss-unten">
       <p>© {jahr} KU64 – Die Zahnspezialisten</p>
-      <nav aria-label="Rechtliches">
+      <nav aria-label={t('geruest.rechtliches')}>
         <ul>
-          <li><a href="/impressum/">Impressum</a></li>
-          <li><a href="/datenschutz/">Datenschutz</a></li>
-          <li><a href="/ki-transparenz/">KI-Transparenz</a></li>
-          <li><a href="/barrierefreiheit/">Barrierefreiheit</a></li>
-          <li><a href="/cookies/">Cookie-Einstellungen</a></li>
+          <li><a href="/impressum/">{t('fuss.impressum')}</a></li>
+          <li><a href="/datenschutz/">{t('fuss.datenschutz')}</a></li>
+          <li><a href="/ki-transparenz/">{t('fuss.kiTransparenz')}</a></li>
+          <li><a href="/barrierefreiheit/">{t('fuss.barrierefreiheit')}</a></li>
+          <li><a href="/cookies/">{t('fuss.cookieEinstellungen')}</a></li>
         </ul>
       </nav>
     </div>

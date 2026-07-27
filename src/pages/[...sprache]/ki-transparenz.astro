@@ -33,13 +33,13 @@ const t = texte(daten.sprache);
 const pfad = '/ki-transparenz/';
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'KI-Transparenz', pfad },
+  { name: t('krume.kiTransparenz'), pfad },
 ];
 ---
 
 <Basis
   titel="KI-Transparenz"
-  description="Welche KI-Systeme auf dieser Website arbeiten, wofür, mit welchen Daten – und wie Sie stattdessen einen Menschen erreichen."
+  description={t('ki.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}

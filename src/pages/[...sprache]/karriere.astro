@@ -56,13 +56,17 @@ const stellenSchema = (stellen ?? []).map((stelle) => ({
 }));
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
-  { name: 'Karriere', pfad },
+  { name: t('krume.karriere'), pfad },
 ];
+
+const portalVerweis =
+  `<a href="https://ku64.jobs.personio.de/" target="_blank" rel="noopener noreferrer">` +
+  `${t('karriere.stellenportal')}</a>`;
 ---
 
 <Basis
-  titel="Karriere bei KU64"
-  description="Offene Stellen und Initiativbewerbung bei KU64 in Berlin und Potsdam."
+  titel={t('karriere.seitentitel')}
+  description={t('karriere.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen), ...stellenSchema]}
@@ -79,14 +83,9 @@ const brotkrumen = [
         stellen === null && (
           <div class="hinweis offen">
             <strong>{t('karriere.dieStellenuebersichtIstGerade')}</strong>
-            <p>
-              Sie erreichen alle Ausschreibungen direkt im{' '}
-              <a href="https://ku64.jobs.personio.de/" target="_blank" rel="noopener noreferrer">
-                Stellenportal
-              </a>{' '}
-              – oder Sie schreiben uns einfach, welcher Bereich und welcher Standort Sie
-              interessieren.
-            </p>
+            {/* Der Verweis steht mitten im Satz – deshalb ganzer Satz im
+                Katalog, Auszeichnung als Platzhalter. Siehe texte.ts. */}
+            <p set:html={t('karriere.portalHinweis', { portal: portalVerweis })} />
           </div>
         )
       }
@@ -105,8 +104,8 @@ const brotkrumen = [
           <>
             <h2 id="stellen">
               {stellen.length === 1
-                ? 'Eine offene Stelle'
-                : `${stellen.length} offene Stellen`}
+                ? t('karriere.eineStelle')
+                : t('karriere.mehrereStellen', { anzahl: stellen.length })}
             </h2>
 
             <div class="stellen" id="stellen-liste">
