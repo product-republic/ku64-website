@@ -3,6 +3,7 @@ import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
+import Bild from '../../../components/Bild.astro';
 import { STANDORTE } from '../../../data/standorte';
 import { teamAn, gruppenAn, anzahlBehandelnde } from '../../../data/team';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
@@ -69,17 +70,12 @@ if (team.length > 0) {
             <div class="raster">
               {team.map((m) => (
                 <article class="karte person">
-                  {/* Porträts brauchen einen beschreibenden Alternativtext –
-                      ein leeres alt macht die Person für Screenreader unsichtbar. */}
-                  {m.foto && (
-                    <img
-                      src={m.foto}
-                      alt={`${m.name}, ${m.funktion} bei KU64 ${standort.name}`}
-                      width="320"
-                      height="320"
-                      loading="lazy"
-                    />
-                  )}
+                  {/* Über das Bildverzeichnis, nicht über einen Pfad aus den
+                      Teamdaten: So gilt für Porträts dieselbe Nachweispflicht
+                      wie für jedes andere Bild – Alternativtext, Herkunft,
+                      Einwilligung. Fehlt der Nachweis, erscheint die Kachel
+                      ohne Bild statt mit einem Platzhalter. */}
+                  <Bild schluessel={`team-${m.slug}`} klasse="portraet" />
                   <h2>{m.name}</h2>
                   <p class="funktion">{m.funktion}</p>
                   {m.vorstellung && <p class="text">{m.vorstellung}</p>}
@@ -141,7 +137,8 @@ if (team.length > 0) {
     font-size: var(--t-lg);
     color: var(--tinte-weich);
   }
-  .person img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); margin-block-end: var(--raum-4); }
+  .person :global(.portraet) { margin-block-end: var(--raum-4); border-radius: var(--radius-lg); }
+  .person :global(.portraet img) { width: 100%; aspect-ratio: 1; object-fit: cover; }
   .person h2 { font-size: var(--t-lg); }
   .funktion { font-size: var(--t-sm); color: var(--akzent-schrift); font-weight: 600; margin-block: var(--raum-1) var(--raum-3); }
   .text { color: var(--tinte-weich); line-height: var(--zeile-weit); max-width: var(--breite-text); }

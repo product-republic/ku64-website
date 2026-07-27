@@ -36,7 +36,6 @@ const { ziel, titel = 'Bitte wählen Sie Ihren Standort' } = Astro.props;
           style={`--akzent:${s.akzent}`}
           data-slug={s.slug}
         >
-          <span class="band" aria-hidden="true" />
           <span class="zuletzt-marke marke marke-erfolg" hidden>zuletzt gewählt</span>
           <h3>KU64 {s.name}</h3>
           <address>{s.strasse}, {s.plz} {s.ort}</address>
@@ -68,8 +67,11 @@ const { ziel, titel = 'Bitte wählen Sie Ihren Standort' } = Astro.props;
   .wahl { padding-block: var(--raum-6); }
   h2 { font-size: var(--t-xl); margin-block-end: var(--raum-3); }
   .hinweis-text { max-width: var(--breite-text); margin-block-end: var(--raum-6); color: var(--tinte-weich); }
-  .ziel { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
-  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  .ziel { text-decoration: none; overflow: hidden; }
+  /* Das gelbe Band über jeder Karte ist entfallen. Vier Karten nebeneinander
+     ergaben vier gelbe Balken – eine Auszeichnung, die alles auszeichnet,
+     zeichnet nichts aus. Die Karten unterscheiden sich jetzt durch das, was
+     auf ihnen steht. */
   .zuletzt-marke { align-self: flex-start; margin-block-end: var(--raum-2); }
   .ziel h3 { font-size: var(--t-lg); }
   address { font-style: normal; margin-block: var(--raum-2); font-size: var(--t-sm); color: var(--tinte-leise); }

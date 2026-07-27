@@ -43,8 +43,9 @@ const brotkrumen = [
           automatische Weiterleitung statt.
         </li>
         <li>
-          <strong>ku64:doctolib-ok</strong> – nur vorhanden, wenn Sie beim Laden des
-          Terminkalenders angekreuzt haben, dass wir uns Ihre Entscheidung merken sollen.
+          <strong>ku64:einwilligung</strong> – nur vorhanden, wenn Sie einen eingebetteten
+          Dienst geladen und angekreuzt haben, dass wir uns Ihre Entscheidung merken
+          sollen. Solange Sie das nicht tun, wird nichts gespeichert.
         </li>
       </ul>
 
@@ -73,6 +74,9 @@ const brotkrumen = [
     const ergebnis = document.getElementById('ergebnis');
     try {
       localStorage.removeItem('ku64:standort');
+      localStorage.removeItem('ku64:einwilligung');
+      /* Der alte Schlüssel aus der Zeit, als der Terminkalender eingebettet
+         werden sollte. Wer ihn noch hat, soll ihn hier loswerden können. */
       localStorage.removeItem('ku64:doctolib-ok');
       if (ergebnis) ergebnis.textContent = 'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht.';
     } catch {

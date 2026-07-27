@@ -10,6 +10,8 @@
 import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import Bild from '../../components/Bild.astro';
+import { standortbildFuer } from '../../data/medien';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -83,7 +85,8 @@ const gesamtLeistungen = daten.leistungen.length;
                 class="s-karte karte karte-klickbar einblenden"
                 style={`--akzent:${s.akzent}`}
               >
-                <span class="s-band" aria-hidden="true" />
+                {/* Der Raum, den man betritt – statt eines gelben Balkens. */}
+                <Bild schluessel={standortbildFuer(s.slug) ?? ''} klasse="s-bild" />
                 <h2>
                   <a href={`/${s.slug}/`} class="karte-link">
                     KU64 {s.name}
@@ -272,15 +275,22 @@ const gesamtLeistungen = daten.leistungen.length;
 
   .s-karte {
     overflow: hidden;
-    padding-block-start: calc(var(--raum-5) + 4px);
+    /* Das Bild sitzt in der Kartenkante, nicht im Innenabstand – deshalb
+       liegt der Abstand hier nicht oben, sondern das Bild zieht sich mit
+       negativem Rand über die Polsterung hinaus. */
+    padding-block-start: 0;
   }
 
-  .s-band {
-    position: absolute;
-    inset-inline: 0;
-    top: 0;
-    height: 4px;
-    background: var(--akzent);
+  .s-karte :global(.s-bild) {
+    margin: calc(var(--raum-5) * -1) calc(var(--raum-5) * -1) var(--raum-5);
+    border-radius: 0;
+  }
+
+  .s-karte :global(.s-bild img) {
+    width: 100%;
+    /* Breites Format: Es geht um den Raumeindruck, nicht um Einzelheiten. */
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
   }
 
   .s-karte h2 {

@@ -86,6 +86,94 @@ export function kopfvideoFuer(standortSlug: string): Kopfvideo | undefined {
 }
 
 /**
+ * Standbild für Standorte ohne eigenes Kopfvideo.
+ *
+ * Wilmersdorf hat kein Video – aber eine Außenansicht, und die beantwortet
+ * am Kopf der Standortseite die wichtigste Frage überhaupt: Ist das das
+ * Haus, vor dem ich gleich stehe? Ein Foto ist hier nicht der Notbehelf für
+ * ein fehlendes Video, sondern für diesen Standort die bessere Antwort.
+ *
+ * Der Wert ist ein Schlüssel aus dem Bildverzeichnis, kein Pfad: Damit gilt
+ * auch am Seitenkopf die Nachweispflicht aus `src/lib/bilder.ts`.
+ */
+export const KOPFBILDER: Record<string, string> = {
+  wilmersdorf: 'wilmersdorf-aussenansicht',
+};
+
+/**
+ * Ein Motiv je Standort für die Karten auf der Startseite.
+ *
+ * BILDER.md führt das unter „hohe Priorität“: Vier Standortkarten
+ * nebeneinander waren bis eben vier Textblöcke mit einem gelben Balken
+ * darüber – gleich aussehend, gleich laut, unterscheidbar nur durch die
+ * Adresse. Vier Räume nebeneinander unterscheiden sich in einer halben
+ * Sekunde.
+ *
+ * Genommen ist jeweils der Empfang, weil das der Raum ist, den man als
+ * Erstes betritt – bei Wilmersdorf die Außenansicht, weil es dort nur die
+ * gibt und sie beim Ankommen ohnehin mehr hilft.
+ */
+export const STANDORTBILDER: Record<string, string> = {
+  'berlin-charlottenburg': 'kudamm-empfang',
+  berlinmitte: 'berlinmitte-empfang',
+  potsdam: 'potsdam-empfang',
+  wilmersdorf: 'wilmersdorf-aussenansicht',
+};
+
+export function standortbildFuer(standortSlug: string): string | undefined {
+  return STANDORTBILDER[standortSlug];
+}
+
+/**
+ * Die Räume eines Standorts, in der Reihenfolge, in der man sie durchläuft:
+ * Ankommen, Warten, Weg zur Behandlung, Behandlung, Labor.
+ *
+ * Diese Reihenfolge ist nicht Dekoration. Wer vor dem ersten Termin
+ * nachsieht, sucht keinen Gestaltungsüberblick, sondern will wissen, was auf
+ * ihn zukommt – und zwar der Reihe nach.
+ *
+ * Was hier fehlt, fehlt wirklich: Für Wilmersdorf gibt es außer der
+ * Außenansicht keine Aufnahme, und dann steht dort eben nur die eine. Ein
+ * Bild vom Kurfürstendamm an dieser Stelle wäre genau der Fehler, den der
+ * ganze Umbau abstellen soll.
+ */
+export const RAUMBILDER: Record<string, string[]> = {
+  'berlin-charlottenburg': [
+    'kudamm-empfang',
+    'kudamm-wartebereich',
+    'kudamm-flur',
+    'kudamm-behandlungszimmer',
+    'kudamm-meisterlabor',
+  ],
+  berlinmitte: ['berlinmitte-empfang', 'berlinmitte-wartebereich', 'berlinmitte-praxis'],
+  potsdam: ['potsdam-empfang', 'potsdam-wartebereich'],
+  wilmersdorf: ['wilmersdorf-aussenansicht'],
+};
+
+export function raumbilderFuer(standortSlug: string): string[] {
+  return RAUMBILDER[standortSlug] ?? [];
+}
+
+export type Kopfmedium =
+  | { art: 'video'; video: Kopfvideo }
+  | { art: 'bild'; schluessel: string };
+
+/**
+ * Was am Kopf dieses Standorts steht – Video, Bild oder nichts.
+ *
+ * Die Seite muss das vor dem Rendern wissen: Über einem Medium steht heller
+ * Text auf einem Schleier, ohne Medium dunkler Text auf heller Fläche. Das
+ * ist keine Kleinigkeit, sondern der Unterschied zwischen lesbar und nicht.
+ */
+export function kopfmediumFuer(standortSlug: string): Kopfmedium | undefined {
+  const video = kopfvideoFuer(standortSlug);
+  if (video) return { art: 'video', video };
+  const schluessel = KOPFBILDER[standortSlug];
+  if (schluessel) return { art: 'bild', schluessel };
+  return undefined;
+}
+
+/**
  * Videos, die zu einer Behandlung gehören statt zu einem Ort.
  * Noch nicht eingebunden – erst mit den Seiten, auf die sie gehören.
  */

@@ -176,13 +176,11 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     justify-content: space-between;
     gap: var(--raum-3);
     padding: var(--raum-4) var(--raum-5);
-    background: linear-gradient(
-      135deg,
-      color-mix(in oklab, var(--akzent) 94%, white),
-      var(--akzent)
-    );
-    color: var(--akzent-kontrast);
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.12);
+    /* Ruhiger Kopf statt gelber Fläche: Das Fenster liegt über der Seite und
+       war vorher das lauteste Element darauf. */
+    background: var(--knopf-flaeche);
+    color: var(--knopf-schrift);
+    box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.08);
   }
 
   .f-titel {
@@ -241,10 +239,13 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     border-end-start-radius: var(--radius-sm);
   }
 
+  /* Eigene Nachrichten dunkel, Antworten hell – wie in jedem Messenger.
+     Gelb trug hier zusätzlich das Problem, dass die Schrift darauf schwarz
+     sein musste und die Blase damit wie eine Warnung aussah. */
   .blase-ich {
     align-self: flex-end;
-    background: var(--akzent);
-    color: var(--akzent-kontrast);
+    background: var(--knopf-flaeche);
+    color: var(--knopf-schrift);
     border-end-end-radius: var(--radius-sm);
   }
 
@@ -357,8 +358,8 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     height: 2.75rem;
     flex-shrink: 0;
     border-radius: var(--radius);
-    background: var(--akzent);
-    color: var(--akzent-kontrast);
+    background: var(--knopf-flaeche);
+    color: var(--knopf-schrift);
     transition: opacity var(--zeit-schnell) var(--kurve);
   }
 

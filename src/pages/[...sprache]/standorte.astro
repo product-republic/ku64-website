@@ -62,7 +62,6 @@ const schema = [
             const tage = s.oeffnungszeiten.filter((z) => z.von).length;
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
-                <span class="band" aria-hidden="true" />
                 <h2>
                   <a href={`/${s.slug}/`} class="karte-link">KU64 {s.name}</a>
                 </h2>
@@ -146,7 +145,8 @@ const schema = [
     color: var(--tinte-weich);
   }
   .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
-  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
+     Eine Auszeichnung auf jeder Karte zeichnet keine aus. */
   .ort h2 { font-size: var(--t-xl); }
   .ort h2 a { text-decoration: none; }
   address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }

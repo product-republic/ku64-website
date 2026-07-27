@@ -266,10 +266,29 @@ a:hover {
 
 /* ─────────────────────────── Zugänglichkeit ─────────────────────────── */
 
+/**
+ * Fokusring.
+ *
+ * Nicht mehr gelb. Gelb auf Weiß erreicht 1,5:1 – WCAG 2.2 verlangt für die
+ * Fokusanzeige 3:1 gegen den Untergrund, und wer mit der Tastatur bedient,
+ * verliert bei einem so schwachen Ring die Stelle. Stattdessen ein dunkler
+ * Ring mit heller Aura: Der dunkle Teil trägt auf hellem Grund, die Aura
+ * hebt ihn auf dunklem Grund und auf Bildern ab. Ein Ring für alle Fälle,
+ * statt vier Sonderregeln.
+ */
 :focus-visible {
-  outline: 3px solid var(--akzent);
+  outline: 3px solid var(--tinte);
   outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgb(255 255 255 / 0.85);
   border-radius: var(--radius-sm);
+}
+
+/* Auf Medien und dunklen Flächen umgekehrt: heller Ring, dunkle Aura. */
+.auf-medium :focus-visible,
+.knopf-hell:focus-visible,
+.knopf-sekundaer-auf-medium:focus-visible {
+  outline-color: #fff;
+  box-shadow: 0 0 0 6px rgb(12 10 9 / 0.75);
 }
 
 /* Kein Fokusring bei reiner Mausbedienung, aber immer bei Tastatur. */
@@ -295,8 +314,10 @@ a:hover {
   left: var(--raum-3);
   z-index: calc(var(--z-nav) + 1);
   padding: var(--raum-3) var(--raum-5);
-  background: var(--akzent);
-  color: var(--akzent-kontrast);
+  /* Dunkel wie die Hauptschaltfläche: Der Sprunglink ist das erste Element,
+     das bei Tastaturbedienung erscheint – er muss vor allem gut lesbar sein. */
+  background: var(--knopf-flaeche);
+  color: var(--knopf-schrift);
   border-radius: var(--radius);
   font-weight: 600;
   text-decoration: none;
@@ -581,30 +602,56 @@ a:hover {
   }
 }
 
+/**
+ * Die Hauptschaltfläche: eine fast schwarze Pille.
+ *
+ * Sie ersetzt die gelbe Fläche – siehe die Begründung bei `--knopf-flaeche`
+ * in tokens.css. Gestalterisch folgt sie den Entwürfen; sachlich löst sie
+ * zwei Probleme auf einmal:
+ *
+ *   Kontrast. Schwarz auf Weiß steht bei 16:1, die gelbe Fläche brauchte
+ *   schwarze Schrift und blieb trotzdem eine grelle Fläche.
+ *
+ *   Rangfolge. Wenn Gelb nur noch selten vorkommt, sieht man wieder, wo es
+ *   vorkommt. Vorher war die halbe Seite Signalfarbe.
+ *
+ * Kein Farbverlauf mehr und kein farbiger Schlagschatten: Die Vorlagen
+ * zeigen eine flache, ruhige Fläche. Ein gewölbter Knopf mit gelbem Schein
+ * darunter war die auffälligere, aber nicht die bessere Lösung.
+ */
 .knopf-primaer {
-  /* Leichter Verlauf plus Lichtkante oben: der Knopf wirkt gewölbt statt flach. */
-  background: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--akzent) 92%, white),
-    var(--akzent)
-  );
-  color: var(--akzent-kontrast);
+  background: var(--knopf-flaeche);
+  color: var(--knopf-schrift);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.32),
-    0 1px 2px rgb(20 16 14 / 0.16),
-    0 6px 16px -6px color-mix(in oklab, var(--akzent) 55%, transparent);
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 1px 2px rgb(20 16 14 / 0.12),
+    0 8px 20px -10px rgb(20 16 14 / 0.4);
 }
 
 .knopf-primaer:hover {
-  background: linear-gradient(
-    to bottom,
-    var(--akzent),
-    color-mix(in oklab, var(--akzent) 86%, black)
-  );
+  background: var(--knopf-flaeche-aktiv);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.26),
-    0 2px 4px rgb(20 16 14 / 0.18),
-    0 12px 26px -8px color-mix(in oklab, var(--akzent) 60%, transparent);
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 2px 4px rgb(20 16 14 / 0.14),
+    0 14px 28px -12px rgb(20 16 14 / 0.45);
+}
+
+/**
+ * Dieselbe Pille für dunkle Gründe – auf Foto, Video oder dunkler Fläche.
+ * Dort wäre die schwarze Pille unsichtbar; im Entwurf mit dem Foto ist die
+ * Hauptschaltfläche deshalb weiß.
+ */
+.knopf-hell {
+  background: var(--knopf-hell-flaeche);
+  color: var(--knopf-hell-schrift);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    0 2px 6px rgb(0 0 0 / 0.24),
+    0 14px 30px -14px rgb(0 0 0 / 0.5);
+}
+
+.knopf-hell:hover {
+  background: #fff;
 }
 
 .knopf-sekundaer {
@@ -616,9 +663,26 @@ a:hover {
     0 1px 2px rgb(20 16 14 / 0.05);
 }
 
+/* Ruhig bleiben beim Überfahren: dunklere Kante statt Farbwechsel. Ein
+   Textwechsel nach Rot sah aus wie eine Warnung, wo nur ein Zeiger steht. */
 .knopf-sekundaer:hover {
-  border-color: color-mix(in oklab, var(--akzent) 55%, transparent);
-  color: var(--akzent-schrift);
+  border-color: color-mix(in oklab, var(--tinte) 28%, transparent);
+  color: var(--tinte);
+}
+
+/* Auf dunklem Grund: gläsern und hell umrandet statt weißer Fläche. */
+.knopf-sekundaer-auf-medium {
+  background: rgb(255 255 255 / 0.12);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border: 1px solid rgb(255 255 255 / 0.45);
+  color: var(--auf-medium-schrift);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.28);
+}
+
+.knopf-sekundaer-auf-medium:hover {
+  background: rgb(255 255 255 / 0.2);
+  border-color: rgb(255 255 255 / 0.7);
 }
 
 .knopf-leise {
@@ -628,7 +692,7 @@ a:hover {
 }
 
 .knopf-leise:hover {
-  color: var(--akzent-schrift);
+  color: var(--tinte);
 }
 
 .knopf-gross {
@@ -662,6 +726,106 @@ a:hover {
 
 .glas-stark {
   background: var(--glas-flaeche-stark);
+}
+
+/**
+ * Glas, auf dem Text steht.
+ *
+ * VORGABE: Es darf nicht passieren, dass sich zwei Ebenen so treffen, dass
+ * der Text unleserlich wird. Im Zweifel höhere Unschärfe.
+ *
+ * Genau das macht diese Klasse: mehr Unschärfe und eine dichtere Fläche als
+ * beim Zierglas. Sie gehört auf jede durchscheinende Fläche, in der Fließtext
+ * oder eine Überschrift steht – nicht auf reine Zierflächen, denn Unschärfe
+ * kostet Rechenzeit.
+ *
+ * `contain: paint` hilft dabei doppelt: Der Browser weiß, dass nichts über
+ * den Rand hinausragt, und kann die unscharfe Ebene zwischenspeichern statt
+ * sie bei jedem Bild neu zu rechnen.
+ */
+.glas-lesbar {
+  background: var(--glas-text-flaeche);
+  backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.25);
+  -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.25);
+  border: 1px solid var(--glas-rand);
+  contain: paint;
+  box-shadow:
+    inset 0 1px 0 var(--glas-glanz),
+    var(--schatten);
+}
+
+/**
+ * Wo der Browser keine Rückwärts-Unschärfe kann, wird die Fläche deckend.
+ *
+ * Ohne diese Regel läge auf älteren Browsern durchscheinendes Weiß direkt auf
+ * einem Videobild – der Fall, in dem Schrift tatsächlich verschwindet. Eine
+ * deckende Fläche sieht dort weniger nach Glas aus und ist lesbar; das ist
+ * die richtige Reihenfolge.
+ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glas-lesbar,
+  .glas {
+    background: var(--flaeche);
+  }
+}
+
+/**
+ * Inhalt, der direkt auf Bild oder Video liegt.
+ *
+ * Kein Glas, sondern ein Schleier: Über einem laufenden Video ändert sich der
+ * Untergrund fortwährend, und keine noch so dichte Glasfläche macht Schrift
+ * darüber dauerhaft lesbar – im einen Bild steht sie auf Dunkelheit, im
+ * nächsten auf einer weißen Wand. Ein Verlauf von unten ist die verlässliche
+ * Lösung: Er ist an der Stelle am dichtesten, an der die Schrift steht.
+ *
+ * Die Schriftfarben sind fest weiß, nicht `--tinte`: Der Schleier ist immer
+ * dunkel, auch im hellen Modus.
+ */
+.auf-medium {
+  position: relative;
+  isolation: isolate;
+  color: var(--auf-medium-schrift);
+}
+
+.auf-medium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--schleier-auf-medium);
+}
+
+.auf-medium > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Auf dem Schleier haben Überschrift und Fließtext dieselbe Farbe – der
+   sonst übliche Grauton für Nebentext fällt hier zu weit ab. */
+/* Alles außer Schaltflächen: Die tragen ihre eigene Schriftfarbe, und diese
+   Regel wäre sonst spezifischer als `.knopf-hell` – weiße Schrift auf weißer
+   Pille, also unlesbar. Genau der Fall, den die Vorgabe meint: zwei Ebenen,
+   die sich treffen und einander aufheben. */
+.auf-medium h1,
+.auf-medium h2,
+.auf-medium p,
+.auf-medium dt,
+.auf-medium dd,
+.auf-medium a:not(.knopf) {
+  color: var(--auf-medium-schrift);
+}
+
+.auf-medium .leise,
+.auf-medium .mikro {
+  color: var(--auf-medium-schrift-leise);
+}
+
+/* Ein zusätzlicher weicher Schatten unter der Schrift. Kaum sichtbar, aber er
+   trägt die Buchstaben über die hellste Stelle, die ein Video haben kann. */
+.auf-medium h1,
+.auf-medium .held-claim {
+  text-shadow: 0 1px 24px rgb(0 0 0 / 0.45);
 }
 
 /* ─────────────────────────── Karten ─────────────────────────── */
@@ -713,7 +877,7 @@ a:hover {
 .karte-klickbar:hover,
 .karte-klickbar:focus-within {
   transform: translate3d(0, -4px, 0);
-  border-color: color-mix(in oklab, var(--akzent) 40%, var(--scheibe-rand));
+  border-color: color-mix(in oklab, var(--tinte) 22%, var(--scheibe-rand));
 }
 
 .karte-klickbar:hover::before,

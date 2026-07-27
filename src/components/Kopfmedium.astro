@@ -1,0 +1,145 @@
+---
+/**
+ * Das Medium hinter dem Kopf einer Standortseite – Video oder Foto.
+ *
+ * ── Warum das eine eigene Komponente ist ────────────────────────────────
+ *
+ * `Kopfvideo.astro` zeigt eine Aufnahme IM Textfluss, als Figur mit fester
+ * Seitenverhältnis-Fläche. Hier liegt das Medium HINTER dem Text und füllt
+ * den ganzen Kopfbereich. Das sind zwei verschiedene Dinge mit zwei
+ * verschiedenen Anforderungen, und die zweite hat eine, die die erste nicht
+ * hat: Über diesem Medium steht Schrift.
+ *
+ * ── Lesbarkeit hat Vorrang ──────────────────────────────────────────────
+ *
+ * Ein laufendes Video wechselt seinen Untergrund fortwährend: Im einen Bild
+ * steht die Überschrift auf einer dunklen Wand, im nächsten auf einer weißen
+ * Fensterfront. Deshalb liegt zwischen Medium und Text immer ein Schleier
+ * (`.auf-medium` in global.css), und zusätzlich wird das Medium selbst
+ * leicht abgedunkelt und minimal weichgezeichnet.
+ *
+ * Die Weichzeichnung ist kein Effekt, sondern der eigentliche Trick: Sie
+ * nimmt dem Hintergrund die feine Struktur, an der sich Buchstabenkanten
+ * verlieren, und lässt Farbe und Stimmung stehen. Der Raum bleibt erkennbar,
+ * die Schrift bleibt lesbar.
+ *
+ * ── Ladeverhalten ───────────────────────────────────────────────────────
+ *
+ * Das Standbild steht sofort und trägt den Kopf allein; das Video lädt erst,
+ * wenn der Kopf wirklich sichtbar ist, und nur, wenn niemand Bewegung
+ * abbestellt hat. Auf einer langsamen Verbindung sieht man deshalb ein Foto
+ * statt eines grauen Kastens – und wartet auf nichts.
+ */
+import { kopfmediumFuer } from '../data/medien';
+import { getBild } from '../lib/bilder';
+
+interface Props {
+  standortSlug: string;
+}
+
+const { standortSlug } = Astro.props;
+const medium = kopfmediumFuer(standortSlug);
+const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
+---
+
+{
+  medium?.art === 'video' && (
+    <div class="kopfmedium">
+      <video
+        class="kopfmedium-video"
+        poster={medium.video.poster}
+        preload="none"
+        muted
+        loop
+        playsinline
+        /* Rein dekorativ: Was zu sehen ist, steht als Text daneben. Ein
+           Alternativtext hier würde Screenreadern dieselbe Information ein
+           zweites Mal vorlesen. */
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source src={medium.video.datei} type="video/mp4" />
+      </video>
+    </div>
+  )
+}
+
+{
+  medium?.art === 'bild' && bild && (
+    <div class="kopfmedium">
+      <img
+        class="kopfmedium-bild"
+        src={bild.pfad}
+        alt=""
+        width={bild.breite}
+        height={bild.hoehe}
+        /* Der Kopf ist der größte Inhaltsblock der Seite – dieses Bild soll
+           als erstes geladen werden, nicht als letztes. */
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+  )
+}
+
+{
+  medium?.art === 'video' && (
+    <script is:inline>
+      {`
+      (() => {
+        const v = document.querySelector('.kopfmedium-video');
+        if (!v) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        /* Auf schmalen Geräten bleibt es beim Standbild: Ein Kopfvideo über
+           Mobilfunk kostet Daten, die niemand für Dekoration ausgeben will. */
+        if (window.matchMedia('(max-width: 48rem)').matches) return;
+
+        const beobachter = new IntersectionObserver((eintraege) => {
+          for (const e of eintraege) {
+            if (!e.isIntersecting) { v.pause(); continue; }
+            v.play().catch(() => {
+              /* Abgelehntes Autoplay ist kein Fehler – das Standbild steht. */
+            });
+          }
+        }, { threshold: 0.2 });
+
+        beobachter.observe(v);
+      })();
+      `}
+    </script>
+  )
+}
+
+<style>
+  .kopfmedium {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    /* Der Schleier in `.auf-medium` liegt darüber; hier steht nur eine
+       Grundfarbe für den Moment, in dem noch nichts geladen ist. */
+    background: var(--flaeche-dunkel);
+  }
+
+  .kopfmedium-video,
+  .kopfmedium-bild {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Leicht weichgezeichnet und abgedunkelt – siehe Kopfkommentar: Das ist
+       die Maßnahme, die den Text trägt, nicht der Schleier allein. */
+    filter: blur(2px) brightness(0.82) saturate(0.95);
+    /* Die Weichzeichnung zieht sonst eine helle Kante am Rand nach innen. */
+    scale: 1.04;
+  }
+
+  /* Wer höheren Kontrast eingestellt hat, bekommt ein deutlich ruhigeres
+     Bild – dort zählt die Schrift, nicht die Stimmung. */
+  @media (prefers-contrast: more) {
+    .kopfmedium-video,
+    .kopfmedium-bild {
+      filter: blur(6px) brightness(0.55) saturate(0.8);
+    }
+  }
+</style>

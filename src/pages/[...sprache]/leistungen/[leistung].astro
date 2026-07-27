@@ -97,7 +97,6 @@ const schema = [
           wo.map((s) => (
             <a class="karte karte-klickbar ort" href={`/${s.slug}/leistungen/${leistung.slug}/`}
                style={`--akzent:${s.akzent}`}>
-              <span class="band" aria-hidden="true" />
               <h3>KU64 {s.name}</h3>
               <address>{s.strasse}, {s.plz} {s.ort}</address>
               <p class="tel">{s.telefon}</p>
@@ -187,7 +186,8 @@ const schema = [
   .wahl { background: transparent; }
   .unter { max-width: var(--breite-text); margin-block: var(--raum-3) var(--raum-6); color: var(--tinte-weich); }
   .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
-  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
+     Eine Auszeichnung auf jeder Karte zeichnet keine aus. */
   .ort h3 { font-size: var(--t-lg); }
   .ort address { font-style: normal; margin-block: var(--raum-2); font-size: var(--t-sm); color: var(--tinte-leise); }
   .tel { font-size: var(--t-sm); font-weight: 600; margin-block-end: var(--raum-4); }

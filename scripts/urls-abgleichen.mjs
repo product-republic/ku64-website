@@ -105,11 +105,36 @@ console.log(`[urls] Neue Website: ${vorhanden.size} Seiten`);
 
 // ── Abgleich ──────────────────────────────────────────────────────────
 
-const ergebnis = { vorhanden: [], weitergeleitet: [], tot: [] };
+const ergebnis = { vorhanden: [], weitergeleitet: [], bewusstOhne: [], tot: [] };
+
+/*
+ * Die Weiterleitungen der NEUEN Website.
+ *
+ * Sie stehen in `src/data/weiterleitungen.ts` und werden vom Node-Server als
+ * echter 301 ausgeliefert – im gebauten Ergebnis unter `dist/client` sind sie
+ * deshalb nicht als Dateien zu sehen. Ohne diesen Abgleich meldet die Prüfung
+ * weiterhin 90 Prozent Verluste, obwohl sie behoben sind.
+ */
+const { WEITERLEITUNGEN, OHNE_ZIEL } = await import('../src/data/weiterleitungen.ts');
+const neueZiele = new Map(WEITERLEITUNGEN.map((w) => [normieren(w.von), normieren(w.nach.split('#')[0])]));
+const bewusstOffen = new Set(OHNE_ZIEL.map((o) => normieren(o.von)));
 
 for (const [pfad, herkunft] of bestand) {
   if (vorhanden.has(pfad)) {
     ergebnis.vorhanden.push(pfad);
+    continue;
+  }
+  const neu = neueZiele.get(pfad);
+  if (neu && vorhanden.has(neu)) {
+    ergebnis.weitergeleitet.push({ pfad, ziel: neu });
+    continue;
+  }
+  /* Blog und Fachbeiträge: Für diese Inhalte gibt es auf der neuen Website
+     keine Entsprechung. Sie laufen bewusst in die Fehlerseite statt in eine
+     unpassende Weiterleitung – siehe die Begründung in weiterleitungen.ts.
+     Als Fehler zählen sie deshalb nicht, sichtbar bleiben sie trotzdem. */
+  if (bewusstOffen.has(pfad)) {
+    ergebnis.bewusstOhne.push({ pfad, herkunft });
     continue;
   }
   const ziel = weiterleitungsziele.get(pfad);
@@ -127,6 +152,7 @@ console.log(`
 [urls] Ergebnis
   vorhanden unter derselben Adresse : ${String(ergebnis.vorhanden.length).padStart(4)}  ${anteil(ergebnis.vorhanden.length)}
   über eine Weiterleitung erreichbar: ${String(ergebnis.weitergeleitet.length).padStart(4)}  ${anteil(ergebnis.weitergeleitet.length)}
+  bewusst ohne Ziel (Blog u. Ä.)    : ${String(ergebnis.bewusstOhne.length).padStart(4)}  ${anteil(ergebnis.bewusstOhne.length)}
   TOT                               : ${String(ergebnis.tot.length).padStart(4)}  ${anteil(ergebnis.tot.length)}`);
 
 if (ergebnis.tot.length) {

@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 import { SPRACHEN, QUELLSPRACHE } from './src/i18n/sprachen.ts';
+import { alsAstroRedirects } from './src/data/weiterleitungen.ts';
 
 const SITE = process.env.PUBLIC_SITE_URL || 'https://ku64.de';
 
@@ -19,6 +20,19 @@ export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
   trailingSlash: 'always',
+  /*
+   * Weiterleitungen des Altbestands.
+   *
+   * Die Liste steht als Daten in `src/data/weiterleitungen.ts`, damit sie
+   * gegengelesen und zusätzlich in einen Reverse Proxy übernommen werden
+   * kann – dort wäre es ein echter 301, hier bei statischer Ausgabe eine
+   * kleine Seite mit `meta refresh` und Canonical.
+   *
+   * Ohne sie liefen 90,8 Prozent aller Adressen ins Leere, die Google von
+   * der alten Website kennt. Das ist der teuerste einzelne Fehler, den ein
+   * Relaunch machen kann, und der am leichtesten vermeidbare.
+   */
+  redirects: alsAstroRedirects(),
   build: {
     inlineStylesheets: 'auto',
     format: 'directory',

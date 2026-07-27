@@ -84,7 +84,6 @@ const kombinationen = {
       <div class="raster">
         {daten.standorte.map((s) => (
           <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
-            <span class="band" aria-hidden="true" />
             <h3>KU64 {s.name}</h3>
             <address>{s.strasse}, {s.plz} {s.ort}</address>
           </a>
@@ -209,7 +208,8 @@ const kombinationen = {
   .ergebnisse a { display: block; padding: var(--raum-3); text-decoration: none; font-weight: 500; }
   .ergebnisse a:hover { color: var(--akzent-schrift); background: var(--flaeche-warm); }
   .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
-  .band { position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--akzent); }
+  /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
+     Eine Auszeichnung auf jeder Karte zeichnet keine aus. */
   .ort h3 { font-size: var(--t-md); }
   address { font-style: normal; margin-block-start: var(--raum-2); font-size: var(--t-sm); color: var(--tinte-leise); }
   .weiter { margin-block-start: var(--raum-7); font-size: var(--t-sm); color: var(--tinte-weich); }

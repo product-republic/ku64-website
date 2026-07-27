@@ -2,11 +2,14 @@
 /**
  * Praxisvorstellung je Standort.
  *
- * INHALTLICHE LÜCKE: Praxisfotos und Ausstattungsdetails liegen für diese
- * Session nicht vor (ku64.de war nicht abrufbar, siehe ANALYSE.md). Die Seite
- * ist strukturell fertig und zieht alles, was gesichert bekannt ist, aus
- * standorte.ts. Sobald Fotos und Ausstattungslisten vorliegen, werden sie in
- * `besonderheiten` bzw. als Bildergalerie ergänzt – ohne Änderung am Seitencode.
+ * Die Räume stehen als Bildstrecke in der Reihenfolge, in der man sie
+ * durchläuft – Ankommen, Warten, Weg, Behandlung, Labor. Welche Aufnahmen das
+ * je Standort sind, steht in `RAUMBILDER` (src/data/medien.ts); gibt es zu
+ * einem Standort nur eine, steht dort auch nur eine.
+ *
+ * OFFEN: Ausstattungsdetails je Standort (Geräte, Sedierungsverfahren). Sie
+ * gehören in `besonderheiten` in standorte.ts und brauchen keine Änderung an
+ * dieser Seite.
  */
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
@@ -14,7 +17,9 @@ import Basis from '../../../layouts/Basis.astro';
 import { anzahlBehandelnde } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
+import Bild from '../../../components/Bild.astro';
 import { STANDORTE } from '../../../data/standorte';
+import { raumbilderFuer } from '../../../data/medien';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -34,6 +39,8 @@ const brotkrumen = [
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
   { name: 'Die Praxis', pfad },
 ];
+
+const raeume = raumbilderFuer(standort.slug);
 
 const eroeffnetJahr = standort.eroeffnet.slice(0, 4);
 const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
@@ -80,6 +87,29 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
       </dl>
     </div>
   </section>
+
+  {
+    raeume.length > 0 && (
+      <section class="abschnitt">
+        <div class="huelle">
+          <h2>Die Räume</h2>
+          <p class="abschnitt-text">
+            Aufnahmen aus dieser Praxis – in der Reihenfolge, in der Sie sie beim
+            Besuch sehen.
+          </p>
+          <div class="raeume">
+            {raeume.map((schluessel, i) => (
+              <Bild
+                schluessel={schluessel}
+                klasse={i === 0 ? 'raum raum-gross' : 'raum'}
+                vorrang={i === 0}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
@@ -141,6 +171,41 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
 </Basis>
 
 <style>
+  /**
+   * Bildstrecke der Räume.
+   *
+   * Das erste Bild steht über die volle Breite, die übrigen zu zweit
+   * daneben. Grund: Das erste ist der Empfang – die Ansicht, die die Frage
+   * „wie sieht es da aus?“ tatsächlich beantwortet. Alle Bilder gleich groß
+   * zu setzen, macht aus einer Antwort eine Kachelwand.
+   */
+  .raeume {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+    gap: var(--raum-4);
+    margin-block-start: var(--raum-6);
+  }
+
+  .raeume :global(.raum-gross) {
+    grid-column: 1 / -1;
+  }
+
+  .raeume :global(.raum img) {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .raeume :global(.raum-gross img) {
+    aspect-ratio: 21 / 9;
+  }
+
+  @media (max-width: 40rem) {
+    .raeume :global(.raum-gross img) {
+      aspect-ratio: 3 / 2;
+    }
+  }
+
   h1 { max-width: 16ch; }
   .claim {
     max-width: var(--breite-text);

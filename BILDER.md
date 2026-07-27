@@ -10,21 +10,33 @@ durchgesetzt.
 
 ## 1. Aktueller Stand
 
-**Die Website enthält null Stock-Fotos und aktuell überhaupt keine Fotografie.**
+**Die Website enthält null Stock-Fotos – und seit dem 26. Juli echte Fotografie.**
 
-Das ist kein Versehen. Es liegen keine echten Praxisaufnahmen vor, und statt die
-Lücke mit Füllmaterial zu schließen, arbeitet das Layout mit Typografie,
-Farbflächen und Inline-SVG. Die Seiten funktionieren so – sie wirken nicht
-„unfertig ohne Bild“.
+Der frühere Zustand („überhaupt keine Fotografie“) hatte einen Grund, der weggefallen
+ist: ku64.de war nicht abrufbar. Jetzt ist es das, und der eigene Bestand der Praxis
+liegt vor.
 
-Bildhafte Elemente, die es gibt:
+| Element | Anzahl | Herkunft |
+|---|---:|---|
+| Praxisaufnahmen | 14 | eigene Aufnahmen der Praxis, aus ku64.de übernommen |
+| Kopfvideos je Standort | 3 | dieselbe Quelle, neu komprimiert |
+| Porträts des Teams | 100 | Teamübersicht des Kunden |
+| Vorschaubilder für Social Media | 150 | selbst erzeugt, rein typografisch |
+| Piktogramme, Pfeile, Haken | – | Inline-SVG, selbst gezeichnet |
+| Foto in der Lächeln-Vorschau | – | **Foto der Person selbst**, auf Einwilligung |
 
-| Element | Herkunft | Bezug |
-|---|---|---|
-| Vorschaubilder für Social Media (150 Stück) | selbst erzeugt, rein typografisch | zeigen echte Standortdaten der jeweiligen Seite |
-| Piktogramme, Pfeile, Haken | Inline-SVG, selbst gezeichnet | funktional |
-| Standort-Akzentfarben | Design-Tokens | Unterscheidung der Standorte |
-| Foto in der Lächeln-Vorschau | **Foto der Person selbst** | ihr eigenes Bild, auf Einwilligung |
+Die Übernahme ist nachvollziehbar und wiederholbar:
+
+```bash
+node analyse/altbestand/medien-holen.mjs --laden   # Bestand erfassen und laden
+node analyse/altbestand/team-holen.mjs             # Teamübersicht auswerten
+node analyse/altbestand/medien-auswahl.mjs         # Auswahl übernehmen und rechnen
+```
+
+**Drei Dateien wurden dabei aussortiert, obwohl ihr Name das Gegenteil sagt:** Zwei
+hießen `dentallabor…` und zeigten ein Stock-Motiv (ein Tablet mit dem Porträt einer
+lächelnden Frau), eine hieß `…palais-ritz` und war der Bildschirmabzug eines
+Zeitungsartikels. Der Dateiname ist kein Nachweis. Jedes Bild wurde angesehen.
 
 ---
 
@@ -94,23 +106,29 @@ Geschmacksfrage.
 
 Nach Wirkung sortiert. Alles hiervon ist **nur mit echten Fotos** zu füllen.
 
-### Hohe Priorität
+### Erledigt
 
-| Wo | Was | Warum |
+| Wo | Was | Stand |
 |---|---|---|
-| Standort-Startseiten (4×) | Außenansicht mit erkennbarem Eingang | Wiedererkennung beim Ankommen — besonders Potsdam im Palais Ritz |
-| Standort-Startseiten (4×) | Empfang / Wartebereich | Erste Frage von Angstpatienten: „Wie sieht es da aus?“ |
-| Teamseiten (4×) | Porträts der Behandelnden | Ohne echte Gesichter bleibt die Seite leer — siehe `src/data/team.ts` |
-| Startseite | ein Motiv je Standort für die Standortkarten | Vier Standorte visuell unterscheidbar machen |
+| Standort-Startseiten | Kopfmedium je Standort | Video für Kudamm, Mitte, Potsdam; Foto für Wilmersdorf |
+| Startseite | ein Motiv je Standort | vier Karten, vier Räume |
+| Praxisseiten | Bildstrecke der Räume | 5 (Kudamm), 3 (Mitte), 2 (Potsdam), 1 (Wilmersdorf) |
+| Teamseiten | Porträts der Behandelnden | 100 Porträts |
 
-### Mittlere Priorität
+### Was jetzt noch fehlt
 
-| Wo | Was |
-|---|---|
-| Praxisseiten | Behandlungszimmer, Prophylaxe-Bereich, Meisterlabor |
-| Angstfreie Behandlung | Ruheraum, Sedierungsplatz |
-| Kinderzahnheilkunde | Kinderbereich (nur mit Einwilligung der Eltern) |
-| Anfahrtsseiten | Eingangssituation, Parkmöglichkeit |
+| Wo | Was | Warum es zählt |
+|---|---|---|
+| Kurfürstendamm | Außenansicht mit Eingang | Der Bestand enthält keine – nur Innenaufnahmen |
+| Potsdam | Außenansicht Palais Ritz | Die einzige gefundene Datei war ein Zeitungs-Screenshot, also unbrauchbar |
+| Wilmersdorf | Empfang, Behandlungszimmer, Team | Von diesem Standort gibt es genau ein Bild, die Außenansicht |
+| Angstfreie Behandlung | Ruheraum, Sedierungsplatz | Die Seite spricht Menschen mit Angst an und zeigt ihnen bisher nichts |
+| Kinderzahnheilkunde | Kinderbereich | nur mit Einwilligung der Eltern |
+| Anfahrtsseiten | Eingangssituation, Parkmöglichkeit | die letzten fünfzig Meter sind die schwierigsten |
+
+Für Wilmersdorf ist das die auffälligste Lücke: Ein Standort mit einer einzigen
+Außenansicht und ohne Teamangaben wirkt neben den anderen dreien unfertig – und er ist
+der jüngste, also der, bei dem Wiedererkennung am meisten hilft.
 
 ### Kann generiert werden
 
