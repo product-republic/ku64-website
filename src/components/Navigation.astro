@@ -11,6 +11,7 @@ import { type Standort, istGeoeffnet } from '../data/standorte';
 import Sprachwahl from './Sprachwahl.astro';
 import Logo from './Logo.astro';
 import { texte } from '../i18n/katalog';
+import { sprachdefinition } from '../i18n/sprachen';
 
 const daten = inhalte(Astro);
 
@@ -25,6 +26,33 @@ const t = texte(daten.sprache);
 
 /** Basis für alle Links: innerhalb des Standorts bleiben. */
 const basis = standort ? `/${standort.slug}` : '';
+
+/*
+ * Die Suche liegt standortübergreifend unter `/suche/`, nicht unter
+ * `/potsdam/suche/`.
+ *
+ * Sie braucht keine eigene Fassung je Standort: Welcher Standort gewählt
+ * ist, liest sie aus dem Seitenkopf und richtet ihre Treffer danach. Vier
+ * gleiche Seiten dafür zu bauen, hieße vier Seiten um dieselbe Suchanfrage
+ * konkurrieren zu lassen.
+ *
+ * Der Sprachpräfix gehört dagegen davor – `/en/suche/` ist eine andere
+ * Seite als `/suche/`.
+ */
+const sprachbasis = sprachdefinition(daten.sprache).praefix
+  ? `/${sprachdefinition(daten.sprache).praefix}`
+  : '';
+
+/*
+ * Den Standort reicht der Verweis mit.
+ *
+ * Ohne ihn verliert man beim Klick auf die Lupe, wo man war: Wer von
+ * `/potsdam/` kommt, soll Treffer für Potsdam bekommen und nicht die
+ * allgemeine Fassung. Die Suchseite selbst bleibt dabei eine – der Standort
+ * steht in der Adresse, nicht im Pfad, und wird deshalb weder gebaut noch
+ * indexiert.
+ */
+const suchpfad = `${sprachbasis}/suche/${standort ? `?ort=${standort.slug}` : ''}`;
 
 const punkte = standort
   ? [
@@ -100,6 +128,21 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     </nav>
 
     <div class="kopf-aktionen">
+      {/*
+        Die Lupe steht als Verweis, nicht als Feld.
+
+        Ein Suchfeld im Kopf kostet auf jeder Seite Platz, den es an
+        neunundneunzig von hundert Stellen nicht braucht – und auf dem
+        Telefon nimmt es die halbe Zeile. Ein Verweis auf die Suchseite
+        kostet einen Klick und ist dafür überall gleich groß.
+      */}
+      <a href={suchpfad} class="lupe-link" aria-label={t('nav.suchen')}>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="M12.8 12.8 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </a>
+
       {
         standort && (
           <a
@@ -184,6 +227,15 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   <div class="mobilmenue" id="mobilmenue" hidden>
     <nav class="huelle" aria-label={t('geruest.mobileNavigation')}>
       <ul class="mobil-liste">
+        <li>
+          <a href={suchpfad} class="mobil-suche">
+            <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <path d="M12.8 12.8 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            {t('nav.suchen')}
+          </a>
+        </li>
         {
           punkte.map((p) => (
             <li>
@@ -472,6 +524,29 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Compositor; würde stattdessen der Hintergrund des Links selbst wechseln,
    * müsste der Browser die Fläche bei jedem Bild neu zeichnen.
    */
+  .lupe-link {
+    display: grid;
+    place-items: center;
+    inline-size: 2.4rem;
+    block-size: 2.4rem;
+    border-radius: var(--radius-voll);
+    color: var(--tinte-weich);
+    text-decoration: none;
+    transition: color var(--zeit-schnell) var(--kurve),
+      background-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .lupe-link:hover {
+    color: var(--tinte);
+    background: color-mix(in oklab, var(--tinte) 8%, transparent);
+  }
+
+  .mobil-suche {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-3);
+  }
+
   .haupt-link {
     position: relative;
     /* Eigener Stapelkontext, damit die Füllung mit z-index -1 hinter dem Text

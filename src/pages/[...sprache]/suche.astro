@@ -1,0 +1,612 @@
+---
+/**
+ * Die Suche.
+ *
+ * ── Zwei Sorten Eingabe, zwei Sorten Antwort ────────────────────────────
+ *
+ * „veneers" ist ein Stichwort. Darauf gehört eine Trefferliste – sofort,
+ * ohne Netz, ohne Wartezeit. Sie kommt aus dem Index (siehe
+ * `/suche-index.json`) und steht, bevor der Finger von der Taste ist.
+ *
+ * „was kostet eine krone wenn ich gesetzlich versichert bin" ist eine
+ * Frage. Darauf ist eine Trefferliste die falsche Antwort: Gesucht wird
+ * kein Dokument, sondern eine Auskunft. Dafür gibt es den digitalen
+ * Berater, und er wird hier angeboten – aber erst, wenn die Eingabe
+ * erkennbar eine Frage ist, und nie anstelle der Liste.
+ *
+ * Die Unterscheidung trifft `istFrage()` und nicht ein Modell: Sie muss bei
+ * jedem Tastendruck stattfinden, und eine Anfrage je Tastendruck an ein
+ * Sprachmodell wäre teuer, langsam und in einer Zahnarztpraxis
+ * datenschutzrechtlich heikel.
+ *
+ * ── Warum die Liste ohne KI auskommt ────────────────────────────────────
+ *
+ * Weil die Daten die Arbeit schon getan haben. Jede Behandlung führt ihre
+ * `synonyme` – die Wörter, die Patientinnen und Patienten wirklich
+ * benutzen –, die Beschwerdeseiten tragen die Symptome, und die
+ * Weiterleitungsliste kennt jede alte Adresse. Ein Sprachmodell müsste sich
+ * erarbeiten, was hier gepflegt ist.
+ *
+ * ── Ohne JavaScript ─────────────────────────────────────────────────────
+ *
+ * Bleibt die Seite ein Formular, das auf `?q=` sendet, und darunter stehen
+ * die Behandlungen nach Bereich. Nicht dasselbe, aber auch keine leere
+ * Seite: Man kommt an jedes Ziel, nur über einen Klick mehr.
+ */
+import { inhalte } from '../../i18n/daten';
+import { sprachpfade, sprachdefinition } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import { KATEGORIEN, LEISTUNGEN } from '../../data/leistungen';
+import { schemaBrotkrumen, kanonisch } from '../../lib/seo';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
+
+const daten = inhalte(Astro);
+/* Leer für Deutsch, sonst `/en` bzw. `/fr` – dieselbe Ableitung wie überall. */
+const rohPraefix = sprachdefinition(daten.sprache).praefix;
+const praefix = rohPraefix ? `/${rohPraefix}` : '';
+
+const pfad = '/suche/';
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Suche', pfad },
+];
+
+const bereiche = KATEGORIEN.map((k) => ({
+  kategorie: k,
+  leistungen: LEISTUNGEN.filter((l) => l.kategorie === k.slug),
+})).filter((g) => g.leistungen.length > 0);
+
+const schema = [
+  schemaBrotkrumen(brotkrumen),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: kanonisch('/'),
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: kanonisch('/suche/') + '?q={suchbegriff}' },
+      'query-input': 'required name=suchbegriff',
+    },
+  },
+];
+---
+
+<Basis
+  titel="Suche"
+  description="Behandlungen, Beschwerden, Standorte und Menschen bei KU64 finden – mit den Wörtern, die Sie verwenden."
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="abschnitt-eng">
+    <div class="huelle">
+      <h1>Suche</h1>
+      <p class="unter">
+        Behandlungen, Beschwerden, Standorte und Menschen. Sie können den
+        Fachbegriff eingeben – müssen aber nicht.
+      </p>
+
+      <form class="feld" role="search" method="get" action={`${praefix}/suche/`}>
+        <svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true" class="lupe">
+          <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="M12.8 12.8 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        <input
+          type="search"
+          name="q"
+          id="suchfeld"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="Zahnfleischbluten, PZR, Invisalign, Potsdam …"
+          aria-label="Suchbegriff"
+          enterkeyhint="search"
+        />
+        <button type="submit" class="knopf knopf-primaer knopf-klein">Suchen</button>
+      </form>
+
+      <p class="beispiele">
+        Zum Ausprobieren:
+        <button type="button" class="beispiel" data-frage="zahnfleischbluten">zahnfleischbluten</button>
+        <button type="button" class="beispiel" data-frage="pzr">pzr</button>
+        <button type="button" class="beispiel" data-frage="loch im zahn">loch im zahn</button>
+        <button type="button" class="beispiel" data-frage="zahnspange potsdam">zahnspange potsdam</button>
+      </p>
+    </div>
+  </section>
+
+  {/* Wird von der Suche gefüllt und ist ohne sie leer und unsichtbar. */}
+  <section class="abschnitt-eng ergebnisse" id="ergebnisse" hidden>
+    <div class="huelle">
+      <p class="zaehler" id="zaehler" role="status" aria-live="polite"></p>
+      <ul class="liste" id="liste"></ul>
+
+      <div class="frage-hinweis" id="frage-hinweis" hidden>
+        <p class="fh-titel">Das klingt nach einer Frage.</p>
+        <p class="fh-text">
+          Auf eine Frage ist eine Liste die falsche Antwort. Unser digitaler
+          Berater beantwortet sie Ihnen – und wenn Sie lieber mit einem
+          Menschen sprechen, steht die Nummer Ihres Standorts oben.
+        </p>
+        <button type="button" class="knopf knopf-primaer knopf-klein" id="fh-knopf">
+          Frage an den Berater
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {/*
+    Ohne JavaScript und vor der ersten Eingabe: die vollständige Liste nach
+    Bereich. Sie ist kein Notbehelf, sondern für alle nützlich, die nicht
+    wissen, wonach sie suchen sollen.
+  */}
+  <section class="abschnitt" id="uebersicht">
+    <div class="huelle-weit">
+      <h2 class="ue-titel">Alle Behandlungen nach Bereich</h2>
+      <div class="bereiche">
+        {
+          bereiche.map((g) => (
+            <div class="bereich">
+              <h3>{g.kategorie.name}</h3>
+              <ul>
+                {g.leistungen.map((l) => (
+                  <li>
+                    <a href={`${praefix}/leistungen/${l.slug}/`}>{l.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="ue-mehr">
+        Suchen Sie nach einem Symptom statt nach einer Behandlung?
+        <a href={`${praefix}/zahnbeschwerden/`}>Zu den Beschwerden</a>
+      </p>
+    </div>
+  </section>
+</Basis>
+
+<script>
+  import { suchen, istFrage, type Indexeintrag, type Trefferart } from '../../lib/suche-kern';
+
+  const feld = document.querySelector<HTMLInputElement>('#suchfeld');
+  const bereich = document.querySelector<HTMLElement>('#ergebnisse');
+  const liste = document.querySelector<HTMLUListElement>('#liste');
+  const zaehler = document.querySelector<HTMLElement>('#zaehler');
+  const uebersicht = document.querySelector<HTMLElement>('#uebersicht');
+  const fragenkasten = document.querySelector<HTMLElement>('#frage-hinweis');
+  const fragenknopf = document.querySelector<HTMLButtonElement>('#fh-knopf');
+
+  interface Indexdatei {
+    eintraege: Indexeintrag[];
+    standorte: { slug: string; name: string }[];
+  }
+
+  const MARKEN: Record<Trefferart, string> = {
+    leistung: 'Behandlung',
+    beschwerde: 'Beschwerde',
+    standort: 'Standort',
+    person: 'Team',
+    beitrag: 'Beitrag',
+    seite: 'Seite',
+  };
+
+  /*
+   * Standort und Sprache aus der Seite lesen, nicht aus der Adresse raten.
+   *
+   * Der Standort steht als Meta-Angabe im Kopf – dieselbe Quelle, aus der
+   * sich auch der Berater bedient. Der Sprachpräfix steckt im Pfad und ist
+   * genau dann vorhanden, wenn er zwei Buchstaben lang ist.
+   */
+  /*
+   * Der Standort kommt aus der Adresse, nicht aus dem Seitenkopf.
+   *
+   * Diese Seite gibt es nur einmal, also trägt sie keinen Standort im Kopf.
+   * Die Lupe im Menü hängt ihn als `?ort=` an – so behält die Suche, wo man
+   * herkam, ohne dass es vier Suchseiten braucht, die um dieselbe
+   * Suchanfrage konkurrieren.
+   */
+  const ausAdresseOrt = new URLSearchParams(location.search).get('ort');
+  const standort =
+    ausAdresseOrt ||
+    document.querySelector<HTMLMetaElement>('meta[name="ku64:standort"]')?.content ||
+    null;
+  const ersterTeil = location.pathname.split('/')[1] ?? '';
+  const praefix = /^[a-z]{2}$/.test(ersterTeil) ? `/${ersterTeil}` : '';
+
+  let daten: Indexdatei | null = null;
+  let laedt: Promise<Indexdatei> | null = null;
+
+  function indexHolen(): Promise<Indexdatei> {
+    if (daten) return Promise.resolve(daten);
+    if (!laedt) {
+      laedt = fetch('/suche-index.json')
+        .then((a) => a.json())
+        .then((d: Indexdatei) => {
+          daten = d;
+          return d;
+        });
+    }
+    return laedt;
+  }
+
+  /** Wohin ein Treffer führt – mit Standort, wenn es ihn dort gibt. */
+  function ziel(e: Indexeintrag): { pfad: string; stattdessen?: string } {
+    if ((e.art !== 'leistung' && e.art !== 'person') || !standort) {
+      return { pfad: praefix + e.pfad };
+    }
+    if (e.verfuegbar?.includes(standort)) {
+      const rest = e.art === 'leistung' ? `leistungen/${e.id}` : `team/${e.id}`;
+      return { pfad: `${praefix}/${standort}/${rest}/` };
+    }
+    const anderer = e.verfuegbar?.[0];
+    const name = daten?.standorte.find((s) => s.slug === anderer)?.name;
+    if (!anderer || !name) return { pfad: praefix + e.pfad };
+    const rest = e.art === 'leistung' ? `leistungen/${e.id}` : `team/${e.id}`;
+    return { pfad: `${praefix}/${anderer}/${rest}/`, stattdessen: name };
+  }
+
+  function ausgeben(frage: string) {
+    if (!bereich || !liste || !zaehler || !daten) return;
+
+    const treffer = suchen(daten.eintraege, frage, 12);
+
+    bereich.hidden = false;
+    if (uebersicht) uebersicht.hidden = true;
+    liste.replaceChildren();
+
+    if (treffer.length === 0) {
+      zaehler.textContent = `Nichts gefunden zu „${frage}“.`;
+    } else {
+      zaehler.textContent = `${treffer.length} ${treffer.length === 1 ? 'Ergebnis' : 'Ergebnisse'} zu „${frage}“`;
+    }
+
+    for (const t of treffer) {
+      const { pfad, stattdessen } = ziel(t.eintrag);
+
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = pfad;
+      a.className = 'treffer';
+
+      const marke = document.createElement('span');
+      marke.className = 'tr-marke';
+      marke.textContent = MARKEN[t.eintrag.art] ?? '';
+
+      const titel = document.createElement('span');
+      titel.className = 'tr-titel';
+      titel.textContent = t.eintrag.titel;
+
+      a.append(marke, titel);
+
+      if (t.eintrag.kurz) {
+        const kurz = document.createElement('span');
+        kurz.className = 'tr-kurz';
+        kurz.textContent = t.eintrag.kurz;
+        a.append(kurz);
+      }
+
+      /* „Gefunden über: PZR“ erklärt, warum dieser Treffer hier steht. Bei
+         einer Suche, die Synonyme kennt, ist das keine Spielerei: Sonst
+         sieht es aus, als hätte sie geraten. */
+      if (t.ueber) {
+        const ueber = document.createElement('span');
+        ueber.className = 'tr-ueber';
+        ueber.textContent = `gefunden über: ${t.ueber}`;
+        a.append(ueber);
+      }
+
+      if (stattdessen) {
+        /*
+         * Zwei Sätze für zwei Sachverhalte.
+         *
+         * „An Ihrem Standort nicht im Angebot" stimmt für eine Behandlung
+         * und ist bei einem Menschen schlicht falsch – niemand ist ein
+         * Angebot. Wer nicht in Potsdam arbeitet, arbeitet woanders, und
+         * genau das gehört dort hin.
+         */
+        const hinweis = document.createElement('span');
+        hinweis.className = 'tr-anderswo';
+        hinweis.textContent =
+          t.eintrag.art === 'person'
+            ? `Behandelt an: KU64 ${stattdessen}`
+            : `An Ihrem Standort nicht im Angebot – hier: KU64 ${stattdessen}`;
+        a.append(hinweis);
+      }
+
+      li.append(a);
+      liste.append(li);
+    }
+
+    /* Der Beraterhinweis kommt zusätzlich zur Liste, nie an ihrer Stelle. */
+    if (fragenkasten) fragenkasten.hidden = !istFrage(frage);
+  }
+
+  function leeren() {
+    if (bereich) bereich.hidden = true;
+    if (uebersicht) uebersicht.hidden = false;
+    if (fragenkasten) fragenkasten.hidden = true;
+  }
+
+  let zeitgeber: number | undefined;
+
+  function angestossen() {
+    const frage = feld?.value.trim() ?? '';
+    clearTimeout(zeitgeber);
+
+    if (frage.length < 2) {
+      leeren();
+      return;
+    }
+
+    /*
+     * 120 Millisekunden.
+     *
+     * Kurz genug, dass es sich wie sofort anfühlt; lang genug, dass beim
+     * Tippen eines langen Wortes nicht jede Zwischenstufe gerechnet wird.
+     * Das Rechnen selbst ist billig – teuer ist das Neuzeichnen der Liste.
+     */
+    zeitgeber = window.setTimeout(() => {
+      indexHolen().then(() => ausgeben(frage));
+    }, 120);
+  }
+
+  if (feld) {
+    feld.addEventListener('input', angestossen);
+    /* Beim ersten Anfassen schon laden, damit die erste Suche nicht auf das
+       Netz wartet. */
+    feld.addEventListener('focus', () => void indexHolen(), { once: true });
+
+    /* Ohne JavaScript sendet das Formular an ?q=; mit JavaScript soll es das
+       nicht, sonst lädt die Seite bei jedem Enter neu. */
+    feld.form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      angestossen();
+    });
+
+    /* Adresse mit ?q= – aus einem Lesezeichen oder von einer anderen Seite. */
+    const ausAdresse = new URLSearchParams(location.search).get('q');
+    if (ausAdresse) {
+      feld.value = ausAdresse;
+      indexHolen().then(() => ausgeben(ausAdresse.trim()));
+    }
+  }
+
+  for (const knopf of document.querySelectorAll<HTMLButtonElement>('.beispiel')) {
+    knopf.addEventListener('click', () => {
+      if (!feld) return;
+      feld.value = knopf.dataset.frage ?? '';
+      feld.focus();
+      angestossen();
+    });
+  }
+
+  /*
+   * Die Frage an den Berater weiterreichen.
+   *
+   * Der Berater hört auf ein Ereignis am Fenster – so muss die Suche nichts
+   * über sein Innenleben wissen und er nichts über die Suche.
+   */
+  fragenknopf?.addEventListener('click', () => {
+    dispatchEvent(
+      new CustomEvent('ku64:berater-fragen', { detail: { frage: feld?.value.trim() ?? '' } }),
+    );
+  });
+</script>
+
+<style>
+  .unter {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4) var(--raum-6);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+  }
+
+  .feld {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+    padding: var(--raum-2) var(--raum-2) var(--raum-2) var(--raum-4);
+    border-radius: var(--radius-voll);
+    border: 1px solid var(--linie);
+    background: var(--flaeche);
+    max-width: 42rem;
+    transition: border-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .feld:focus-within {
+    border-color: var(--akzent);
+  }
+
+  .lupe {
+    flex: none;
+    color: var(--tinte-leise);
+  }
+
+  .feld input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: none;
+    padding-block: var(--raum-3);
+    font: inherit;
+    font-size: var(--t-lg);
+    color: inherit;
+  }
+
+  .feld input:focus {
+    outline: none;
+  }
+
+  /* Das Kreuzchen von Safari und Chrome in einem runden Feld sitzt schief
+     und macht dasselbe wie die Rücktaste. */
+  .feld input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .beispiele {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-2);
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-sm);
+    color: var(--tinte-leise);
+  }
+
+  .beispiel {
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-voll);
+    border: 1px solid var(--linie);
+    background: none;
+    font: inherit;
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    cursor: pointer;
+  }
+
+  .beispiel:hover {
+    border-color: var(--akzent);
+    color: var(--tinte);
+  }
+
+  /* ── Ergebnisse ──────────────────────────────────────────────────────── */
+
+  .ergebnisse {
+    padding-block-start: 0;
+  }
+
+  .zaehler {
+    font-size: var(--t-sm);
+    color: var(--tinte-leise);
+    margin-block-end: var(--raum-4);
+  }
+
+  .liste {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-3);
+    max-width: 46rem;
+  }
+
+  .treffer {
+    display: grid;
+    gap: var(--raum-1);
+    padding: var(--raum-4) var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .treffer:hover {
+    border-color: var(--akzent);
+  }
+
+  .tr-marke {
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .tr-titel {
+    font-weight: 600;
+    line-height: var(--zeile-eng);
+  }
+
+  .tr-kurz {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .tr-ueber,
+  .tr-anderswo {
+    font-size: var(--t-xs);
+    color: var(--tinte-leise);
+  }
+
+  .tr-anderswo {
+    margin-block-start: var(--raum-2);
+    color: var(--akzent-schrift);
+  }
+
+  .frage-hinweis {
+    max-width: 46rem;
+    margin-block-start: var(--raum-6);
+    padding: var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+  }
+
+  .fh-titel {
+    font-weight: 600;
+  }
+
+  .fh-text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block: var(--raum-2) var(--raum-4);
+    max-width: 44ch;
+  }
+
+  /* ── Übersicht ───────────────────────────────────────────────────────── */
+
+  .ue-titel {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-6);
+  }
+
+  .bereiche {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+    gap: var(--raum-6) var(--raum-5);
+  }
+
+  .bereich h3 {
+    font-size: var(--t-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tinte-leise);
+    padding-block-end: var(--raum-2);
+    margin-block-end: var(--raum-3);
+    border-block-end: 1px solid var(--linie);
+  }
+
+  .bereich ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-2);
+  }
+
+  .bereich a {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    text-decoration: none;
+  }
+
+  .bereich a:hover {
+    color: var(--akzent);
+  }
+
+  .ue-mehr {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+    margin-block-start: var(--raum-8);
+    padding-block-start: var(--raum-5);
+    border-block-start: 1px solid var(--linie);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+  }
+</style>

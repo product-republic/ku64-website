@@ -511,6 +511,26 @@ const system = kiSystem('berater')!;
       }),
     );
 
+    /*
+     * Und andere Stellen können eine Frage mitgeben.
+     *
+     * Die Suche tut das: Wer dort etwas eintippt, das erkennbar eine Frage
+     * ist, bekommt einen Knopf, der genau diese Frage hierher weiterreicht.
+     * Über ein Ereignis am Fenster und nicht über einen direkten Aufruf –
+     * so muss die Suche nichts über den Berater wissen und er nichts über
+     * sie. Wer den Berater eines Tages austauscht, tauscht eine Datei.
+     *
+     * Die Frage wird eingetragen und abgeschickt, nicht nur eingetragen:
+     * Wer den Knopf „Frage an den Berater" drückt, hat die Frage schon
+     * gestellt. Ein zweites Mal auf Senden zu drücken wäre eine Hürde ohne
+     * Zweck.
+     */
+    addEventListener('ku64:berater-fragen', (e) => {
+      const frage = (e as CustomEvent<{ frage?: string }>).detail?.frage?.trim();
+      oeffnen();
+      if (frage) void fragen(frage);
+    });
+
     /* ── Darstellung ── */
 
     /** Escapen und danach nur ausgewähltes Markdown zulassen – nie innerHTML
