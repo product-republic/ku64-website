@@ -11,6 +11,7 @@
  * die Ordnung, in der jemand sucht, der keinen Fachbegriff hat.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { BESCHWERDEN, AKUT } from '../../../data/beschwerden';
@@ -21,6 +22,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 const pfad = '/zahnbeschwerden/';
 
 /*
@@ -113,8 +115,8 @@ const gruppen = [
 ];
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Beschwerden', pfad },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.beschwerden'), pfad },
 ];
 
 const schema = [

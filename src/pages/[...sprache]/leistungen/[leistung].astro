@@ -9,6 +9,7 @@
  * ohne den Fehler zu wiederholen, dass Leistungen ortlos beschrieben werden.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
@@ -25,6 +26,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const leistung = daten.leistung(Astro.params.leistung!)!;
@@ -52,8 +54,8 @@ const verwandte = leistung.related
   .filter((l): l is NonNullable<typeof l> => Boolean(l));
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Leistungen', pfad: '/leistungen/' },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.leistungen'), pfad: '/leistungen/' },
   { name: leistung.name, pfad },
 ];
 
@@ -76,7 +78,7 @@ const schema = [
 <Basis
   titel={leistung.name}
   description={descriptionKuerzen(
-    `${leistung.teaser} Verfügbar an ${wo.length} von ${daten.standorte.length} KU64-Standorten.`,
+    `${leistung.teaser} ${t('leistung.verfuegbarAn')}: ${t('leistung.vonStandorten', { wo: wo.length, gesamt: daten.standorte.length })}.`,
   )}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -101,11 +103,11 @@ const schema = [
       <Bild schluessel={bereichsbild(kategorie.slug)} klasse="kopfbild" vorrang />
 
       <dl class="eckdaten">
-        {leistung.dauer && <div><dt>Dauer</dt><dd>{leistung.dauer}</dd></div>}
-        {leistung.kosten && <div><dt>Kosten</dt><dd>{leistung.kosten}</dd></div>}
+        {leistung.dauer && <div><dt>{t('leistung.dauer')}</dt><dd>{leistung.dauer}</dd></div>}
+        {leistung.kosten && <div><dt>{t('leistung.kosten')}</dt><dd>{leistung.kosten}</dd></div>}
         <div>
-          <dt>Verfügbar an</dt>
-          <dd>{wo.length} von {daten.standorte.length} Standorten</dd>
+          <dt>{t('leistung.verfuegbarAn')}</dt>
+          <dd>{t('leistung.vonStandorten', { wo: wo.length, gesamt: daten.standorte.length })}</dd>
         </div>
       </dl>
     </div>
@@ -114,10 +116,9 @@ const schema = [
   {/* Die eigentliche Aufgabe dieser Seite: zum richtigen Standort führen. */}
   <section class="abschnitt wahl">
     <div class="huelle">
-      <h2>Wo möchten Sie {leistung.name.toLowerCase()} lassen?</h2>
+      <h2>{t('leistung.woLassen', { name: leistung.name.toLowerCase() })}</h2>
       <p class="unter">
-        Wählen Sie Ihren Standort – dort finden Sie Sprechzeiten, Telefonnummer und die
-        Terminbuchung für genau diese Behandlung.
+        {t('leistung.standortWaehlen')}
       </p>
 
       <div class="raster">
@@ -129,7 +130,7 @@ const schema = [
               <address>{s.strasse}, {s.plz} {s.ort}</address>
               <p class="tel">{s.telefon}</p>
               <span class="mehr">
-                {leistung.name} hier ansehen
+                {t('leistung.hierAnsehen', { name: leistung.name })}
                 <svg viewBox="0 0 16 12" width="15" height="11" aria-hidden="true">
                   <path d="M1 6h13M9.5 1.5 14 6l-4.5 4.5" fill="none" stroke="currentColor"
                         stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -143,9 +144,9 @@ const schema = [
       {
         nicht.length > 0 && (
           <p class="nicht-hinweis">
-            <strong>Nicht angeboten an:</strong>{' '}
-            {nicht.map((s) => `KU64 ${s.name}`).join(', ')}. Wir sagen das offen, damit Sie
-            nicht vergeblich dort anrufen.
+            <strong>{t('leistung.nichtAngebotenAn')}</strong>{' '}
+            {nicht.map((s) => `KU64 ${s.name}`).join(', ')}.{' '}
+            {t('leistung.nichtAngebotenHinweis')}
           </p>
         )
       }
@@ -156,7 +157,7 @@ const schema = [
     <div class="fliesstext">
       {leistung.kasse && (
         <>
-          <h2>Zahlt die Krankenkasse?</h2>
+          <h2>{t('leistung.kasse')}</h2>
           <p>{leistung.kasse}</p>
         </>
       )}
@@ -164,7 +165,7 @@ const schema = [
       {
         leistung.ablauf && leistung.ablauf.length > 0 && (
           <>
-            <h2>So läuft die Behandlung ab</h2>
+            <h2>{t('leistung.ablauf')}</h2>
             <ol>
               {leistung.ablauf.map((a) => (
                 <li>
@@ -177,18 +178,18 @@ const schema = [
         )
       }
 
-      <h2>Auch bekannt als</h2>
+      <h2>{t('leistung.synonyme')}</h2>
       <p>{leistung.synonyme.join(' · ')}</p>
     </div>
 
-    <FaqBlock titel={`${leistung.name}: häufige Fragen`} eintraege={leistung.faq} />
+    <FaqBlock titel={t('leistung.haeufigeFragen', { name: leistung.name })} eintraege={leistung.faq} />
   </div>
 
   {
     verwandte.length > 0 && (
       <section class="abschnitt flaeche-warm">
         <div class="huelle">
-          <h2>Passt dazu</h2>
+          <h2>{t('leistung.passtDazu')}</h2>
           <div class="raster">
             {verwandte.map((l) => <LeistungKarte leistung={l} standortSlug={null} />)}
           </div>
@@ -202,7 +203,7 @@ const schema = [
       <section class="abschnitt flaeche-warm">
         <div class="huelle">
           <h2 class="bh-titel">
-            {behandelnde.length === 1 ? 'Ihre Ansprechperson' : 'Ihre Ansprechpersonen'}
+            {behandelnde.length === 1 ? t('leistung.ansprechperson') : t('leistung.ansprechpersonen')}
           </h2>
           <div class="bh-liste">
             {behandelnde.map((m) => {
@@ -235,7 +236,7 @@ const schema = [
        */
       <section class="abschnitt-eng">
         <div class="huelle">
-          <h2 class="fuehrt-titel">Beschwerden, die hierher führen</h2>
+          <h2 class="fuehrt-titel">{t('leistung.beschwerdenHierher')}</h2>
           <ul class="fuehrt">
             {beschwerden.map((b) => (
               <li>

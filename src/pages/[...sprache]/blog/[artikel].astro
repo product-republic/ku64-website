@@ -24,6 +24,7 @@
  * wirkt; schmale Spalte, wo gelesen wird.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import BlogKarte from '../../../components/BlogKarte.astro';
@@ -45,6 +46,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 const beitrag = findeBeitrag(Astro.params.artikel!)!;
 const pfad = `/blog/${beitrag.slug}/`;
@@ -52,8 +54,8 @@ const minuten = lesedauer(beitrag);
 const marken = gliederung(beitrag);
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Blog', pfad: '/blog/' },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.blog'), pfad: '/blog/' },
   { name: beitrag.titel, pfad },
 ];
 

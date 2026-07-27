@@ -1,8 +1,12 @@
 ---
 import { sprachpfade } from '../../i18n/sprachen';
+import { spracheAusParameter } from '../../i18n/sprachen';
+import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
 import Standortwahl from '../../components/Standortwahl.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
+
+const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
 
 export function getStaticPaths() {
   return sprachpfade();
@@ -10,7 +14,7 @@ export function getStaticPaths() {
 
 const pfad = '/anamnese/';
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: 'Digitale Anamnese', pfad },
 ];
 ---

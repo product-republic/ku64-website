@@ -40,6 +40,66 @@ export const TEXTE = {
   'nav.andererStandort': 'Anderer Standort',
   'nav.standortWaehlenKurz': 'Standort wählen',
   'nav.ueberKu64': 'Über KU64',
+  /* ── Behandlungsseiten ────────────────────────────────────────────────
+   *
+   * Standen bis eben fest in den Vorlagen. Der Katalog meldete deshalb 99,9
+   * Prozent Übersetzung, und auf der englischen Seite stand trotzdem „Wo
+   * möchten Sie teeth whitening lassen?" – ein Satz, der nie ein Baustein
+   * war. Der Sprachwächter konnte ihn nicht vermissen.
+   */
+  'leistung.dauer': 'Dauer',
+  'leistung.kosten': 'Kosten',
+  'leistung.verfuegbarAn': 'Verfügbar an',
+  'leistung.vonStandorten': '{wo} von {gesamt} Standorten',
+  'leistung.woLassen': 'Wo möchten Sie {name} lassen?',
+  'leistung.standortWaehlen':
+    'Wählen Sie Ihren Standort – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung für genau diese Behandlung.',
+  'leistung.hierAnsehen': '{name} hier ansehen',
+  'leistung.nichtAngebotenAn': 'Nicht angeboten an:',
+  'leistung.nichtAngebotenHinweis':
+    'Wir sagen das offen, damit Sie nicht vergeblich dort anrufen.',
+  'leistung.kasse': 'Zahlt die Krankenkasse?',
+  'leistung.ablauf': 'So läuft die Behandlung ab',
+  'leistung.synonyme': 'Auch bekannt als',
+  'leistung.haeufigeFragen': '{name}: häufige Fragen',
+  'leistung.passtDazu': 'Passt dazu',
+  'leistung.ansprechperson': 'Ihre Ansprechperson',
+  'leistung.ansprechpersonen': 'Ihre Ansprechpersonen',
+  'leistung.ansprechpersonIn': 'Ihre Ansprechperson in {ort}',
+  'leistung.ansprechpersonenIn': 'Ihre Ansprechpersonen in {ort}',
+  'leistung.beschwerdenHierher': 'Beschwerden, die hierher führen',
+  'leistung.terminFuer': 'Termin für {name}',
+  'leistung.onlineBuchen': 'Online buchen',
+  'leistung.fragenVorab':
+    'Fragen vorab? Unser digitaler Berater antwortet rund um die Uhr – auch zu {name}.',
+  'leistung.sieSehenAngabenFuer': 'Sie sehen gerade die Angaben für',
+  'leistung.auchHier':
+    'Diese Behandlung bieten wir auch hier an – falls Ihnen ein anderer Standort besser passt:',
+  'leistung.ergaenzend': 'Ergänzend – an anderen Standorten',
+  'leistung.hierNicht':
+    'Diese Behandlung wird an unserem Standort {ort} nicht angeboten. Wir sagen Ihnen offen, wo Sie sie bekommen.',
+  'leistung.inOrt': 'in {ort}',
+  'leistung.termin': 'Termin',
+  'leistung.anAnderenStandorten': '{name} an anderen KU64-Standorten',
+  'leistung.sieSehenAngaben':
+    'Sie sehen gerade die Angaben für KU64 {ort}. Diese Behandlung bieten wir auch hier an – falls Ihnen ein anderer Standort besser passt:',
+  'leistung.beraterHinweisVor': 'Fragen vorab? Unser',
+  'leistung.beraterHinweisLink': 'digitaler Berater',
+  'leistung.beraterHinweisNach': 'antwortet rund um die Uhr – auch zu {name}.',
+  'leistung.ergaenzendText':
+    'Diese Behandlungen hängen mit {name} zusammen, werden bei KU64 {ort} aber nicht angeboten. Wir sagen Ihnen offen, wo Sie sie bekommen.',
+
+  /* ── Brotkrumen ───────────────────────────────────────────────────────
+   *
+   * Sie stehen auf jeder einzelnen Seite und waren auf jeder deutsch.
+   */
+  'krume.start': 'Start',
+  'krume.leistungen': 'Leistungen',
+  'krume.beschwerden': 'Beschwerden',
+  'krume.team': 'Team',
+  'krume.blog': 'Blog',
+  'krume.suche': 'Suche',
+
   'nav.terminBuchen': 'Termin buchen',
   'nav.suchen': 'Suchen',
 

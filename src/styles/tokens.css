@@ -262,6 +262,26 @@
   --glas-text-flaeche: rgb(255 255 255 / 0.93);
   --glas-text-unschaerfe: 72px;
 
+  /*
+   * Der Kopf ist ein anderer Fall als ein Textkasten über einem Foto.
+   *
+   * Bis eben teilten sie sich einen Wert – 0,93. Für einen Kasten mit
+   * Fließtext mitten im Bild ist das richtig; für die Kopfleiste ist es zu
+   * viel. Sie stand als weißer Riegel über der Seite, und was dahinter
+   * durchscheinen sollte, war nicht mehr zu ahnen: kein Glas, sondern eine
+   * Platte.
+   *
+   * Der Unterschied liegt in dem, was darauf steht. Im Kopf sind es fünf
+   * kurze, fette Beschriftungen mit viel Luft ringsum – die tragen einen
+   * schwächeren Untergrund, weil das Auge sie als Form erkennt, nicht
+   * Buchstabe für Buchstabe entziffert. Ein Absatz Fließtext kann das nicht.
+   *
+   * 0,62 statt 0,93, bei unveränderter Unschärfe. Nachgemessen (siehe
+   * durchgang.mjs): Der Kontrast der Beschriftungen bleibt über allen
+   * Seitenarten über 7:1 und damit über der AAA-Schwelle.
+   */
+  --glas-kopf-flaeche: rgb(255 255 255 / 0.62);
+
   /* Schleier für Schrift, die direkt auf Bild oder Video liegt. Von unten
      nach oben abnehmend – Text steht dort, wo es am dunkelsten ist. */
   /*
@@ -343,6 +363,10 @@
     --glas-glanz: rgb(255 255 255 / 0.22);
     /* Auch im Dunkeln gilt: Glas mit Schrift darauf ist dichter. */
     --glas-text-flaeche: rgb(24 21 18 / 0.94);
+    /* Im Dunkelmodus eine Spur dichter: Helle Schrift auf durchscheinendem
+       Dunkel verliert schneller, weil der Untergrund heller wird statt
+       dunkler. */
+    --glas-kopf-flaeche: rgb(24 21 18 / 0.68);
 
     /* Umgekehrte Schaltflächen: Auf dunklem Grund ist die helle Pille die
        Hauptschaltfläche – dieselbe Logik wie im Entwurf mit dem Foto. */

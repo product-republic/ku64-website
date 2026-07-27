@@ -3,6 +3,7 @@
  * Behandlungsübersicht eines Standorts – mit Sofortsuche.
  */
 import { inhalte } from '../../../../i18n/daten';
+import { texte } from '../../../../i18n/katalog';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
@@ -15,6 +16,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const standort = daten.standort(Astro.params.standort!)!;
@@ -25,9 +27,9 @@ const alleHier = daten.leistungenHier(standort.slug);
 const nichtHier = daten.leistungenAnderswo(standort.slug);
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
-  { name: 'Leistungen', pfad },
+  { name: t('krume.leistungen'), pfad },
 ];
 
 /* Suchindex für die Sofortsuche – enthält auch Synonyme, weil Menschen

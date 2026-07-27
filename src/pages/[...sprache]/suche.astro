@@ -34,6 +34,7 @@
  * Seite: Man kommt an jedes Ziel, nur über einen Klick mehr.
  */
 import { inhalte } from '../../i18n/daten';
+import { texte } from '../../i18n/katalog';
 import { sprachpfade, sprachdefinition } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { KATEGORIEN, LEISTUNGEN } from '../../data/leistungen';
@@ -44,14 +45,15 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 /* Leer für Deutsch, sonst `/en` bzw. `/fr` – dieselbe Ableitung wie überall. */
 const rohPraefix = sprachdefinition(daten.sprache).praefix;
 const praefix = rohPraefix ? `/${rohPraefix}` : '';
 
 const pfad = '/suche/';
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Suche', pfad },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.suche'), pfad },
 ];
 
 const bereiche = KATEGORIEN.map((k) => ({

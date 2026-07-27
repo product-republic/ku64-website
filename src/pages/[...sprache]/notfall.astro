@@ -6,6 +6,7 @@
  * Werbeblöcke davor.
  */
 import { inhalte } from '../../i18n/daten';
+import { texte } from '../../i18n/katalog';
 import { behandlungstage } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
@@ -16,11 +17,12 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const pfad = '/notfall/';
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: 'Notfall', pfad },
 ];
 

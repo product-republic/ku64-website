@@ -15,6 +15,7 @@
  * sind sie eine reine Konfigurationsänderung in Railway – kein Code-Deploy.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { STANDORTE } from '../../../data/standorte';
@@ -25,6 +26,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const standort = daten.standort(Astro.params.standort!)!;
@@ -35,7 +37,7 @@ const envName = `NELLY_URL_${standort.slug.toUpperCase().replace(/-/g, '_')}`;
 const nellyUrl = process.env[envName] || null;
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
   { name: 'Digitale Anamnese', pfad },
 ];

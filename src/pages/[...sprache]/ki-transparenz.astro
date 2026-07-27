@@ -17,6 +17,7 @@
  * überall; ein System, das dort steht, kann hier nicht vergessen werden.
  */
 import { inhalte } from '../../i18n/daten';
+import { texte } from '../../i18n/katalog';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { KI_SYSTEME } from '../../data/ki-systeme';
@@ -27,10 +28,11 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 const pfad = '/ki-transparenz/';
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: 'KI-Transparenz', pfad },
 ];
 ---

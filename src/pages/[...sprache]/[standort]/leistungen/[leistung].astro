@@ -9,6 +9,7 @@
  * – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung.
  */
 import { inhalte } from '../../../../i18n/daten';
+import { texte } from '../../../../i18n/katalog';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import Bild from '../../../../components/Bild.astro';
@@ -33,6 +34,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const { standort: standortSlug, leistung: leistungSlug } = Astro.params;
@@ -76,9 +78,9 @@ const auchAn = daten.standorte.filter(
 );
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
-  { name: 'Leistungen', pfad: `/${standort.slug}/leistungen/` },
+  { name: t('krume.leistungen'), pfad: `/${standort.slug}/leistungen/` },
   { name: leistung.name, pfad },
 ];
 
@@ -105,7 +107,7 @@ const schema = [
           {kategorie.name}
         </a>
 
-        <h1>{leistung.name} <span class="ort">in {ortsname}</span></h1>
+        <h1>{leistung.name} <span class="ort">{t('leistung.inOrt', { ort: ortsname })}</span></h1>
 
         <p class="teaser">{leistung.teaser}</p>
 
@@ -118,7 +120,7 @@ const schema = [
           {
             leistung.dauer && (
               <div>
-                <dt>Dauer</dt>
+                <dt>{t('leistung.dauer')}</dt>
                 <dd>{leistung.dauer}</dd>
               </div>
             )
@@ -126,7 +128,7 @@ const schema = [
           {
             leistung.kosten && (
               <div>
-                <dt>Kosten</dt>
+                <dt>{t('leistung.kosten')}</dt>
                 <dd>{leistung.kosten}</dd>
               </div>
             )
@@ -138,9 +140,9 @@ const schema = [
             </dd>
           </div>
           <div>
-            <dt>Termin</dt>
+            <dt>{t('leistung.termin')}</dt>
             <dd>
-              <a href={`/${standort.slug}/termine/`}>Online buchen</a> oder{' '}
+              <a href={`/${standort.slug}/termine/`}>{t('leistung.onlineBuchen')}</a> oder{' '}
               <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>
             </dd>
           </div>
@@ -155,7 +157,7 @@ const schema = [
         {
           leistung.kasse && (
             <section class="kasse" aria-labelledby="kasse-titel">
-              <h2 id="kasse-titel">Zahlt die Krankenkasse?</h2>
+              <h2 id="kasse-titel">{t('leistung.kasse')}</h2>
               <p>{leistung.kasse}</p>
             </section>
           )
@@ -164,7 +166,7 @@ const schema = [
         {
           leistung.ablauf && leistung.ablauf.length > 0 && (
             <section class="ablauf" aria-labelledby="ablauf-titel">
-              <h2 id="ablauf-titel">So läuft die Behandlung ab</h2>
+              <h2 id="ablauf-titel">{t('leistung.ablauf')}</h2>
               <ol class="schritte">
                 {leistung.ablauf.map((schritt, i) => (
                   <li class="einblenden">
@@ -194,11 +196,9 @@ const schema = [
         {
           auchAn.length > 0 && (
             <section class="auch-an" aria-labelledby="auch-titel">
-              <h2 id="auch-titel">{leistung.name} an anderen KU64-Standorten</h2>
+              <h2 id="auch-titel">{t('leistung.anAnderenStandorten', { name: leistung.name })}</h2>
               <p class="auch-text">
-                Sie sehen gerade die Angaben für <strong>KU64 {standort.name}</strong>. Diese
-                Behandlung bieten wir auch hier an – falls Ihnen ein anderer Standort besser
-                passt:
+                {t('leistung.sieSehenAngaben', { ort: standort.name })}
               </p>
               <ul class="auch-liste">
                 {auchAn.map((s) => (
@@ -233,7 +233,7 @@ const schema = [
               href={`/${standort.slug}/termine/`}
               class="knopf knopf-primaer knopf-gross kk-knopf"
             >
-              Termin für {leistung.name}
+              {t('leistung.terminFuer', { name: leistung.name })}
             </a>
             <a
               href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}
@@ -242,8 +242,9 @@ const schema = [
               {standort.telefon}
             </a>
             <p class="kk-hinweis">
-              Fragen vorab? Unser <button class="chat-oeffner" type="button">digitaler Berater</button>{' '}
-              antwortet rund um die Uhr – auch zu {leistung.name}.
+              {t('leistung.beraterHinweisVor')}{' '}
+              <button class="chat-oeffner" type="button">{t('leistung.beraterHinweisLink')}</button>{' '}
+              {t('leistung.beraterHinweisNach', { name: leistung.name })}
             </p>
           </div>
 
@@ -274,11 +275,9 @@ const schema = [
       verwandteWoanders.length > 0 && (
         <section class="abschnitt weiter">
           <div class="huelle">
-            <h2>Ergänzend – an anderen Standorten</h2>
+            <h2>{t('leistung.ergaenzend')}</h2>
             <p class="weiter-text">
-              Diese Behandlungen hängen mit {leistung.name} zusammen, werden bei KU64{' '}
-              {standort.name} aber nicht angeboten. Wir sagen Ihnen offen, wo Sie sie
-              bekommen.
+              {t('leistung.ergaenzendText', { name: leistung.name, ort: standort.name })}
             </p>
             <div class="raster">
               {verwandteWoanders.map((v) => (

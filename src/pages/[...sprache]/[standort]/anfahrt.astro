@@ -19,7 +19,7 @@ const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/anfahrt/`;
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
   { name: 'Anfahrt', pfad },
 ];

@@ -46,6 +46,7 @@
  * Website, und er gilt auch für Menschen.
  */
 import { inhalte } from '../../../../i18n/daten';
+import { texte } from '../../../../i18n/katalog';
 import { mitSprachen } from '../../../../i18n/sprachen';
 import Basis from '../../../../layouts/Basis.astro';
 import Bild from '../../../../components/Bild.astro';
@@ -70,6 +71,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 const standort = daten.standort(Astro.params.standort!)!;
 const person = veroeffentlichbar().find((m) => m.slug === Astro.params.person)!;
@@ -86,9 +88,9 @@ interface Profil {
 const pfad = `/${standort.slug}/team/${person.slug}/`;
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
-  { name: 'Team', pfad: `/${standort.slug}/team/` },
+  { name: t('krume.team'), pfad: `/${standort.slug}/team/` },
   { name: person.name, pfad },
 ];
 

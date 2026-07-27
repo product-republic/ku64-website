@@ -1,5 +1,6 @@
 ---
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { sprachpfade } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
@@ -9,12 +10,13 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const pfad = '/leistungen/';
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Leistungen', pfad },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.leistungen'), pfad },
 ];
 
 const gruppen = daten.kategorien.map((k) => ({

@@ -25,6 +25,7 @@
  * dorthin führt diese Seite.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
@@ -39,6 +40,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 const beschwerde = getBeschwerde(Astro.params.beschwerde!)!;
 const behandlungen = behandlungenZu(beschwerde.slug);
@@ -55,8 +57,8 @@ const bildschluessel = behandlungen[0] ? bereichsbild(behandlungen[0].kategorie)
 const pfad = `/zahnbeschwerden/${beschwerde.slug}/`;
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
-  { name: 'Beschwerden', pfad: '/zahnbeschwerden/' },
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.beschwerden'), pfad: '/zahnbeschwerden/' },
   { name: beschwerde.titel, pfad },
 ];
 

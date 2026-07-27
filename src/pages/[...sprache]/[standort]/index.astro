@@ -3,6 +3,7 @@
  * Startseite eines Standorts. Ab hier bleibt alles innerhalb dieses Standorts.
  */
 import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { anzahlZahnaerzte } from '../../../data/team';
@@ -19,6 +20,7 @@ export function getStaticPaths() {
 }
 
 const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 const standort = daten.standort(Astro.params.standort!)!;
@@ -34,7 +36,7 @@ const ortsname = standort.ortsname;
 const medium = kopfmediumFuer(standort.slug);
 
 const brotkrumen = [
-  { name: 'Start', pfad: '/' },
+  { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad },
 ];
 
