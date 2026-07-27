@@ -1,0 +1,154 @@
+# Hält die Sprachfassungen am deutschen Original.
+#
+# ── Warum das hier läuft und nicht auf einem Rechner ────────────────────────
+#
+# Übersetzt wird, was fehlt oder dessen deutsches Original sich geändert hat.
+# Erkannt wird das über den Fingerabdruck, den jeder Katalogeintrag mitführt –
+# der Wächter meldet veraltete Übersetzungen also längst. Ihm fehlte nur
+# jemand, der darauf reagiert.
+#
+# Auf einem Rechner hieße das: Jemand muss daran denken. Zwischen "Text auf
+# Deutsch geändert" und "jemand fällt auf, dass die englische Fassung noch den
+# alten Preis nennt" liegen sonst Wochen. Hier liegt dazwischen ein Lauf.
+#
+# ── Warum das Ergebnis eingecheckt wird ─────────────────────────────────────
+#
+# Eine Übersetzung, die bei jedem Deployment neu entsteht, ist bei jedem
+# Deployment anders. Für eine Zahnarztpraxis ist das nicht hinnehmbar: Angaben
+# zu Kosten, Kassenleistung und Behandlungsdauer müssen gegengelesen werden
+# können und dürfen sich nicht unbemerkt ändern. Übersetzt wird deshalb
+# einmal, das Ergebnis kommt als Pull Request und wird gelesen, bevor es gilt.
+#
+# ── Was eingerichtet sein muss ──────────────────────────────────────────────
+#
+#   Settings → Secrets and variables → Actions → New repository secret
+#   Name: ANTHROPIC_API_KEY
+#
+# Der Schlüssel steht damit an genau einer Stelle, ist für niemanden lesbar
+# und lässt sich jederzeit austauschen, ohne dass am Projekt etwas zu ändern
+# wäre.
+
+name: Übersetzungen nachziehen
+
+on:
+  # Nach jedem Zug auf die Arbeitszweige: Wer Deutsch ändert, bekommt die
+  # Übersetzung als Vorschlag zurück, ohne danach zu fragen.
+  push:
+    branches:
+      - main
+      - 'claude/**'
+    paths:
+      - 'src/i18n/texte.ts'
+      - 'src/data/**'
+      - 'src/i18n/felder.ts'
+  # Und von Hand, wenn jemand nachziehen will, ohne etwas geändert zu haben.
+  workflow_dispatch:
+    inputs:
+      sprache:
+        description: 'Nur eine Sprache (en, fr) – leer lassen für alle'
+        required: false
+        default: ''
+
+# Zwei Läufe gleichzeitig würden sich gegenseitig überschreiben.
+concurrency:
+  group: uebersetzungen-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  uebersetzen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      # Erst zeigen, was zu tun wäre. Steht hier "nichts", spart der Lauf sich
+      # den Rest – und das Protokoll sagt trotzdem, dass geprüft wurde.
+      - name: Rückstand ermitteln
+        id: rueckstand
+        run: |
+          npm run sprachen:sync -- --trocken | tee /tmp/rueckstand.txt
+          # Die Zusammenfassung lautet "en (English): 490 offen, 0 verwaist".
+          # Gesucht ist also eine Zahl größer null vor dem Wort "offen".
+          if grep -qE ':[[:space:]]*[1-9][0-9]* offen' /tmp/rueckstand.txt; then
+            echo "zu_tun=ja" >> "$GITHUB_OUTPUT"
+          else
+            echo "zu_tun=nein" >> "$GITHUB_OUTPUT"
+          fi
+          # Die Zusammenfassung als Notiz an den Lauf heften – so steht der
+          # Rückstand in der Übersicht und nicht nur im Protokoll.
+          {
+            echo '### Rückstand vor diesem Lauf'
+            echo '```'
+            grep -E '^\[sync\] (deutsche|[a-z]{2} )' /tmp/rueckstand.txt || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Übersetzen
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY fehlt. Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          if [ -n "${{ inputs.sprache }}" ]; then
+            npm run sprachen:sync -- --sprache=${{ inputs.sprache }}
+          else
+            npm run sprachen:sync
+          fi
+
+      # Der Build ist die Gegenprobe: Er bricht ab, wenn eine freigegebene
+      # Sprache eine Lücke hat. Eine Übersetzung, die den Build nicht besteht,
+      # soll gar nicht erst zur Prüfung vorgelegt werden.
+      - name: Gegenprobe
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        run: npm run build
+
+      - name: Als Pull Request vorlegen
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: uebersetzungen/${{ github.ref_name }}
+          base: ${{ github.ref_name }}
+          title: 'Übersetzungen nachgezogen'
+          commit-message: |
+            Übersetzungen nachgezogen
+
+            Automatisch erzeugt von npm run sprachen:sync. Übersetzt wurde nur,
+            was fehlte oder dessen deutsches Original sich seit der letzten
+            Übersetzung geändert hat – erkannt am Fingerabdruck.
+
+            Bitte gegenlesen, bevor das gilt: Angaben zu Kosten,
+            Kassenleistung und Behandlungsdauer sind heilmittelwerberechtlich
+            heikel und dürfen sich nicht unbemerkt verschieben.
+          body: |
+            ## Was hier drin ist
+
+            `npm run sprachen:sync` hat die Sprachfassungen an das deutsche
+            Original angeglichen. Übersetzt wurde ausschließlich, was fehlte
+            oder veraltet war.
+
+            ## Was zu prüfen ist
+
+            Nicht die Sprache – die stimmt in aller Regel. Zu prüfen sind die
+            **Aussagen**: Kosten, Kassenleistung, Behandlungsdauer,
+            Verfügbarkeit je Standort. Eine Übersetzung, die aus „in der Regel
+            nicht" ein „not covered" macht, ist sprachlich richtig und
+            fachlich eine andere Aussage.
+
+            ## Rückstand
+
+            Der Stand vor diesem Lauf steht in der Zusammenfassung des Laufs,
+            unter „Rückstand ermitteln".
+          delete-branch: true
