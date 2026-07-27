@@ -100,6 +100,27 @@ export const TEXTE = {
   'krume.blog': 'Blog',
   'krume.suche': 'Suche',
 
+  /* ── Fußzeile und Berater ─────────────────────────────────────────────
+   *
+   * Beide stehen auf JEDER Seite. Sie waren damit der Posten mit der
+   * größten Reichweite unter den fest verdrahteten Texten.
+   */
+  'fuss.service': 'Service',
+  'fuss.oeffnungszeiten': 'Öffnungszeiten',
+  'fuss.digitaleAnamnese': 'Digitale Anamnese',
+  'fuss.laechelnVorschau': 'Lächeln-Vorschau',
+  'fuss.beschwerdenAZ': 'Zahnbeschwerden A–Z',
+  'fuss.notfall': 'Zahnärztlicher Notfall',
+  'fuss.karriere': 'Karriere',
+
+  'berater.oeffnen': 'Fragen? Berater öffnen',
+  'berater.wieDasFunktioniert': 'Wie das funktioniert',
+  'berater.ihreFrage': 'Ihre Frage',
+  'berater.eingabeHinweis': 'Ihre Frage eingeben…',
+  'berater.standortWaehlen': 'Bitte Standort wählen',
+  'berater.schliessen': 'Berater schließen',
+  'berater.frageSenden': 'Frage senden',
+
   'nav.terminBuchen': 'Termin buchen',
   'nav.suchen': 'Suchen',
 

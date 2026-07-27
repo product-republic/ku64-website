@@ -5,7 +5,7 @@
  * nie als gleichrangige Kontaktmöglichkeit.
  */
 import { inhalte } from '../i18n/daten';
-import { type Standort } from '../data/standorte';
+import { type Standort, zeitLesbar } from '../data/standorte';
 import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
@@ -61,12 +61,12 @@ const t = texte(daten.sprache);
         {
           standort && (
             <table class="zeiten">
-              <caption class="nur-screenreader">Öffnungszeiten</caption>
+              <caption class="nur-screenreader">{t('fuss.oeffnungszeiten')}</caption>
               <tbody>
                 {standort.oeffnungszeiten.map((z) => (
                   <tr>
                     <th scope="row">{z.tag}</th>
-                    <td>{z.von && z.bis ? `${z.von} – ${z.bis}` : 'geschlossen'}</td>
+                    <td>{zeitLesbar(z)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -133,21 +133,21 @@ const t = texte(daten.sprache);
           }
         </ul>
 
-        <p class="fuss-titel fuss-titel-2">Service</p>
+        <p class="fuss-titel fuss-titel-2">{t('fuss.service')}</p>
         <ul>
-          <li><a href={`${basis}/termine/`}>Termin buchen</a></li>
-          <li><a href={`${basis}/anamnese/`}>Digitale Anamnese</a></li>
-          <li><a href="/laecheln-vorschau/">Lächeln-Vorschau</a></li>
+          <li><a href={`${basis}/termine/`}>{t('nav.terminBuchen')}</a></li>
+          <li><a href={`${basis}/anamnese/`}>{t('fuss.digitaleAnamnese')}</a></li>
+          <li><a href="/laecheln-vorschau/">{t('fuss.laechelnVorschau')}</a></li>
           {/* Der zweite Eingang in die Website: nicht „welche Behandlung?“,
               sondern „was habe ich?“. Steht bewusst nicht im Kopf – wer den
               Fachbegriff kennt, geht über die Behandlungen, und der Kopf
               gehört den fünf Wegen, die alle brauchen. */}
-          <li><a href="/zahnbeschwerden/">Zahnbeschwerden A–Z</a></li>
-          <li><a href="/notfall/">Zahnärztlicher Notfall</a></li>
-          <li><a href="/karriere/">Karriere</a></li>
+          <li><a href="/zahnbeschwerden/">{t('fuss.beschwerdenAZ')}</a></li>
+          <li><a href="/notfall/">{t('fuss.notfall')}</a></li>
+          <li><a href="/karriere/">{t('fuss.karriere')}</a></li>
           {/* Der Blog liegt standortfrei unter /blog/ – die Standortsicht
               darauf erreicht man über die Marken an den Beiträgen. */}
-          <li><a href={basis ? `${basis}/blog/` : '/blog/'}>Blog</a></li>
+          <li><a href={basis ? `${basis}/blog/` : '/blog/'}>{t('krume.blog')}</a></li>
         </ul>
       </div>
     </div>

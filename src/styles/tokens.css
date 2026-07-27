@@ -280,7 +280,24 @@
    * durchgang.mjs): Der Kontrast der Beschriftungen bleibt über allen
    * Seitenarten über 7:1 und damit über der AAA-Schwelle.
    */
-  --glas-kopf-flaeche: rgb(255 255 255 / 0.62);
+  --glas-kopf-flaeche: rgb(255 255 255 / 0.58);
+
+  /*
+   * Und ein eigener Weichzeichner, deutlich schwächer als der für Textkästen.
+   *
+   * Der Kopf lief mit 72 Pixeln – demselben Wert wie ein Kasten mit Fließtext
+   * über einem Foto. Bei diesem Radius bleibt von dem, was dahinter liegt,
+   * keine Struktur übrig: Alles wird zu einem gleichmäßigen Mittelwert, und
+   * ein gleichmäßiger Mittelwert sieht aus wie eine deckende Fläche. Genau
+   * deshalb war „kein Glas zu sehen" die richtige Beobachtung – der
+   * Weichzeichner war da, er hatte nur alles ausradiert.
+   *
+   * Bei 26 Pixeln bleiben Formen und Farben erkennbar. Text, der darunter
+   * durchscrollt, wird zu einem weichen Schleifen, eine gelbe Fläche zu einem
+   * gelben Hauch. Das ist Glas: Man sieht, DASS etwas dahinter ist, ohne
+   * lesen zu können, WAS.
+   */
+  --glas-kopf-unschaerfe: 26px;
 
   /* Schleier für Schrift, die direkt auf Bild oder Video liegt. Von unten
      nach oben abnehmend – Text steht dort, wo es am dunkelsten ist. */
@@ -366,7 +383,8 @@
     /* Im Dunkelmodus eine Spur dichter: Helle Schrift auf durchscheinendem
        Dunkel verliert schneller, weil der Untergrund heller wird statt
        dunkler. */
-    --glas-kopf-flaeche: rgb(24 21 18 / 0.68);
+    --glas-kopf-flaeche: rgb(24 21 18 / 0.62);
+    --glas-kopf-unschaerfe: 26px;
 
     /* Umgekehrte Schaltflächen: Auf dunklem Grund ist die helle Pille die
        Hauptschaltfläche – dieselbe Logik wie im Entwurf mit dem Foto. */

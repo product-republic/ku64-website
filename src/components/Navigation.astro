@@ -355,8 +355,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     z-index: 0;
     border-radius: inherit;
     background: var(--glas-kopf-flaeche);
-    -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
-    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(var(--glas-kopf-unschaerfe)) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(var(--glas-kopf-unschaerfe)) saturate(var(--glas-saettigung));
     pointer-events: none;
   }
 
@@ -652,7 +652,20 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     font-size: var(--t-sm);
     font-weight: 500;
     text-decoration: none;
-    color: var(--tinte-weich);
+    /*
+     * Volle Tinte statt der weichen.
+     *
+     * Gemessen mit durchsichtig gestellter Schrift: Unter der Kopfleiste des
+     * Blogbeitrags – dort liegt ein Foto darunter – kam der Untergrund auf
+     * rgb(148,166,149). Gegen die weiche Tinte ergibt das 3,5:1 und liegt
+     * damit unter den 4,5:1, die für Fließtext gelten.
+     *
+     * Der naheliegende Ausweg wäre gewesen, das Glas wieder dichter zu
+     * machen. Das hätte genau die Sichtbarkeit zurückgenommen, um die es
+     * hier geht. Dunklere Schrift löst dasselbe Problem, ohne etwas
+     * aufzugeben: gegen dieselben rgb(148,166,149) sind es dann 7,1:1.
+     */
+    color: var(--tinte);
     transition: color var(--zeit) var(--kurve-weich);
   }
 
@@ -750,7 +763,15 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     flex-wrap: wrap;
     padding: var(--raum-2) var(--raum-5);
     border-block-start: 1px solid var(--linie);
-    background: color-mix(in oklab, var(--flaeche) 45%, transparent);
+    /*
+     * Nur ein Hauch, kein zweiter Anstrich.
+     *
+     * Vorher 45 Prozent – zusammen mit den 58 der Glasfläche darunter ergab
+     * das rund 78 Prozent Deckung, und durch 78 Prozent Weiß sieht man
+     * nichts mehr. Die Leiste soll sich vom Menü darüber abheben, nicht das
+     * Glas ersetzen.
+     */
+    background: color-mix(in oklab, var(--flaeche) 16%, transparent);
     /* Die untere Rundung der Glaspille – siehe Begründung bei `.kopf-glas`. */
     border-end-start-radius: var(--radius-xl);
     border-end-end-radius: var(--radius-xl);
@@ -811,20 +832,45 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     transform: rotate(180deg);
   }
 
+  /*
+   * Die Liste wächst aus der Kopfleiste heraus – sie schwebt nicht davor.
+   *
+   * Vorher: ein eigener Kasten mit eigener Rundung, eigenem Rahmen und einem
+   * halben Zentimeter Luft darüber. Er sah aus wie ein Fenster einer anderen
+   * Anwendung, das zufällig über der Seite lag. Der Zwischenraum war das
+   * Schlimmste daran: Er machte aus einem Menü, das zum Kopf gehört, ein
+   * Etwas, das darunter klebt.
+   *
+   * Jetzt sitzt sie bündig an der Unterkante (`top: 100%`), hat oben keine
+   * Rundung und keinen Rahmen mehr und rundet nur noch unten – genau wie die
+   * Kopfleiste selbst, deren untere Ecken sie damit fortsetzt. Ihre Fläche
+   * ist dieselbe Glasfarbe, ihr Weichzeichner derselbe.
+   *
+   * Der Schatten bleibt: Er ist nicht Zierrat, sondern das, was die Fläche
+   * vom Inhalt darunter abhebt. Ohne ihn steht die Liste auf dem Text.
+   */
   .waehler-liste {
     position: absolute;
     inset-inline-end: 0;
-    top: calc(100% + 0.5rem);
+    top: 100%;
     z-index: var(--z-overlay);
     width: min(24rem, calc(100vw - 2rem));
-    padding: var(--raum-4);
-    /* Schwebendes Element über beliebigem Inhalt: echtes Glas. */
+    padding: var(--raum-5) var(--raum-4);
     background: var(--glas-flaeche-stark);
     -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
     backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
-    border-radius: var(--radius-xl);
-    box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);
+    border-block-start: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    border-end-start-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
+    /* Nur nach unten und zur Seite, nicht nach oben – nach oben schließt sie
+       an die Leiste an, und ein Schatten an einer Nahtstelle ist eine Fuge. */
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      0 18px 40px -20px rgb(20 16 14 / 0.3),
+      0 4px 12px -8px rgb(20 16 14 / 0.16);
   }
 
   /*

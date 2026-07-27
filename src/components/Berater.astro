@@ -21,6 +21,10 @@
  */
 import type { Standort } from '../data/standorte';
 import { kiSystem, WEG_ZUM_MENSCHEN } from '../data/ki-systeme';
+import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
+
+const t = texte(inhalte(Astro).sprache);
 
 interface Props {
   standort: Standort | null;
@@ -59,7 +63,7 @@ const system = kiSystem('berater')!;
         stroke-linejoin="round"
       />
     </svg>
-    <span class="ruf-text">Fragen? Berater öffnen</span>
+    <span class="ruf-text">{t('berater.oeffnen')}</span>
   </button>
 
   <div class="fenster" id="berater-fenster" role="dialog" aria-labelledby="berater-titel" hidden>
@@ -67,10 +71,10 @@ const system = kiSystem('berater')!;
       <div>
         <p class="f-titel" id="berater-titel">Digitaler Berater</p>
         <p class="f-unter">
-          {standort ? `KU64 ${standort.name}` : 'Bitte Standort wählen'}
+          {standort ? `KU64 ${standort.name}` : t('berater.standortWaehlen')}
         </p>
       </div>
-      <button class="f-zu" type="button" aria-label="Berater schließen">
+      <button class="f-zu" type="button" aria-label={t('berater.schliessen')}>
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
           <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
         </svg>
@@ -97,7 +101,7 @@ const system = kiSystem('berater')!;
           )
         }
         {' '}
-        <a href="/ki-transparenz/">Wie das funktioniert</a>
+        <a href="/ki-transparenz/">{t('berater.wieDasFunktioniert')}</a>
       </span>
     </p>
 
@@ -129,7 +133,7 @@ const system = kiSystem('berater')!;
         maxlength="2000"
         autocomplete="off"
       ></textarea>
-      <button type="submit" class="senden" aria-label="Frage senden">
+      <button type="submit" class="senden" aria-label={t('berater.frageSenden')}>
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
           <path
             d="M2 10 18 3l-5 15-3-6-8-2Z"
