@@ -6,6 +6,7 @@
  * Werbeblöcke davor.
  */
 import { inhalte } from '../../i18n/daten';
+import { behandlungstage } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
@@ -55,8 +56,8 @@ const faq = [
    ist im Notfall die relevanteste Sortierung. */
 const nachVerfuegbarkeit = [...daten.standorte].sort(
   (a, b) =>
-    b.oeffnungszeiten.filter((z) => z.von).length -
-    a.oeffnungszeiten.filter((z) => z.von).length,
+    behandlungstage(b) -
+    behandlungstage(a),
 );
 ---
 
@@ -84,7 +85,7 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
       <div class="nummern">
         {
           nachVerfuegbarkeit.map((s) => {
-            const tage = s.oeffnungszeiten.filter((z) => z.von).length;
+            const tage = behandlungstage(s);
             return (
               <a class="nummer" href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} style={`--akzent:${s.akzent}`}>
                 <span class="n-ort">KU64 {s.name}</span>

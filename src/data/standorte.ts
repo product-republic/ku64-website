@@ -1,11 +1,35 @@
 /**
  * Einzige Quelle für Standortdaten.
  *
- * ACHTUNG – Datenherkunft: Telefonnummern, Öffnungszeiten und Gründungsdaten
- * stammen aus öffentlichen Verzeichnissen (Doctolib, Gelbe Seiten, Presseportal),
- * weil ku64.de für diese Session nicht abrufbar war. Vor dem Live-Gang müssen
- * alle mit `zuPruefen: true` markierten Standorte gegen die Praxisdaten
- * abgeglichen werden. Siehe ANALYSE.md, Abschnitt "Offene Datenpunkte".
+ * ── Herkunft: jetzt ku64.de selbst ──────────────────────────────────────
+ *
+ * Ursprünglich stammten Telefonnummern und Öffnungszeiten aus öffentlichen
+ * Verzeichnissen (Doctolib, Gelbe Seiten, Presseportal), weil ku64.de nicht
+ * abrufbar war. Inzwischen ist es das, und alle vier Standorte sind gegen
+ * die dortigen Angaben abgeglichen – gegen die sichtbaren Zeiten und gegen
+ * die strukturierten Daten im Seitenkopf.
+ *
+ * Dabei kamen drei Fehler heraus, und zwar keine kleinen:
+ *
+ *   1. Die KiezPraxis in Wilmersdorf hatte die Nummer des Kurfürstendamms.
+ *      Sie hat eine eigene: 030 439742530, dazu eine eigene Adresse
+ *      kiezpraxis@ku64.de.
+ *   2. Ihre Öffnungszeiten waren frei erfunden (Mo–Do 8–19, Fr 8–16).
+ *      Tatsächlich: Mo, Mi, Fr 8–20, Di und Do 8–14, Samstag nach
+ *      Vereinbarung.
+ *   3. Potsdam versprach feste Wochenendzeiten (Sa 9–19, So 10–18). Dort
+ *      gilt am Wochenende „nach Vereinbarung". Wer sich darauf verlassen
+ *      hätte, wäre vor einer verschlossenen Tür gestanden – mit Schmerzen,
+ *      an einem Sonntag.
+ *
+ * Kurfürstendamm und Berlin-Mitte stimmten.
+ *
+ * ── Was weiterhin zu bestätigen ist ─────────────────────────────────────
+ *
+ * Die Gründungsdaten. Sie stehen in keiner strukturierten Quelle und
+ * stammen aus Presseberichten. Sie erscheinen nur auf „Über KU64" und
+ * richten niemanden falsch – deshalb kein `zuPruefen` mehr, sondern dieser
+ * Absatz.
  */
 
 export type Wochentag = 'Mo' | 'Di' | 'Mi' | 'Do' | 'Fr' | 'Sa' | 'So';
@@ -14,6 +38,17 @@ export interface Oeffnungszeit {
   tag: Wochentag;
   von: string | null;
   bis: string | null;
+  /**
+   * „Nach Vereinbarung“ – geöffnet, aber nicht ohne Termin.
+   *
+   * Ein dritter Zustand neben „von–bis“ und „geschlossen“, und er ist
+   * notwendig: Potsdam und die KiezPraxis behandeln am Wochenende
+   * beziehungsweise am Samstag, aber nur mit Voranmeldung. Als feste Zeit
+   * dargestellt wäre das ein Versprechen, das die Praxis nicht gibt; als
+   * „geschlossen“ eine Auskunft, die Menschen abhält, die einen Termin
+   * bekommen hätten.
+   */
+  nachVereinbarung?: boolean;
 }
 
 export interface Standort {
@@ -88,6 +123,7 @@ export interface Standort {
   zuPruefen: boolean;
 }
 
+/** Kurfürstendamm und Berlin-Mitte: auch am Wochenende zu festen Zeiten. */
 const ZEITEN_LANG: Oeffnungszeit[] = [
   { tag: 'Mo', von: '08:00', bis: '20:00' },
   { tag: 'Di', von: '08:00', bis: '20:00' },
@@ -96,6 +132,25 @@ const ZEITEN_LANG: Oeffnungszeit[] = [
   { tag: 'Fr', von: '08:00', bis: '20:00' },
   { tag: 'Sa', von: '09:00', bis: '19:00' },
   { tag: 'So', von: '10:00', bis: '18:00' },
+];
+
+/**
+ * Potsdam: unter der Woche wie die anderen, am Wochenende nach Vereinbarung.
+ *
+ * Bis eben stand hier ZEITEN_LANG, und die Seite versprach damit feste
+ * Wochenendzeiten. Auf ku64.de/potsdam/ steht wörtlich „Samstag: nach
+ * Vereinbarung / Sonntag: nach Vereinbarung“. Der Unterschied ist keine
+ * Feinheit: Wer sich auf 10 Uhr am Sonntag verlassen hätte, wäre mit
+ * Schmerzen vor einer verschlossenen Tür gestanden.
+ */
+const ZEITEN_POTSDAM: Oeffnungszeit[] = [
+  { tag: 'Mo', von: '08:00', bis: '20:00' },
+  { tag: 'Di', von: '08:00', bis: '20:00' },
+  { tag: 'Mi', von: '08:00', bis: '20:00' },
+  { tag: 'Do', von: '08:00', bis: '20:00' },
+  { tag: 'Fr', von: '08:00', bis: '20:00' },
+  { tag: 'Sa', von: null, bis: null, nachVereinbarung: true },
+  { tag: 'So', von: null, bis: null, nachVereinbarung: true },
 ];
 
 export const STANDORTE: Standort[] = [
@@ -150,14 +205,14 @@ export const STANDORTE: Standort[] = [
       { label: 'Kieferorthopädie', slug: 'ku64-kieferorthopaedie', stadt: 'berlin' },
     ],
     akzent: '#FFCC00',
-    zuPruefen: true,
+    zuPruefen: false,
   },
   {
     slug: 'potsdam',
     name: 'Potsdam',
     nameLang: 'KU64 Potsdam – Zahnarzt im Palais Ritz',
     claim:
-      'Zahnmedizin im denkmalgeschützten Palais Ritz: das volle Spektrum, sieben Tage die Woche, direkt an der Berliner Straße.',
+      'Zahnmedizin im denkmalgeschützten Palais Ritz: das volle Spektrum, direkt an der Berliner Straße.',
     strasse: 'Berliner Straße 139',
     plz: '14467',
     ort: 'Potsdam',
@@ -167,11 +222,11 @@ export const STANDORTE: Standort[] = [
     telefonRaw: '+493319822 2280',
     email: 'potsdam@ku64.de',
     geo: { lat: 52.3944, lng: 13.0817 },
-    oeffnungszeiten: ZEITEN_LANG,
+    oeffnungszeiten: ZEITEN_POTSDAM,
     eroeffnet: '2019',
     besonderheiten: [
       'Praxis im denkmalgeschützten Palais Ritz – historische Hülle, moderne Zahnmedizin',
-      'Sieben Tage die Woche geöffnet, auch am Wochenende',
+      'Montag bis Freitag von 8 bis 20 Uhr, am Wochenende nach Vereinbarung',
       'Vollständiges Behandlungsspektrum von Prophylaxe bis Implantologie',
       'Eigene Oralchirurgie für Weisheitszähne und operative Eingriffe',
       'Digitale Anamnese vorab von zu Hause – ohne Papier im Wartezimmer',
@@ -187,7 +242,7 @@ export const STANDORTE: Standort[] = [
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten', stadt: 'potsdam' }],
     akzent: '#FFCC00',
-    zuPruefen: true,
+    zuPruefen: false,
   },
   {
     slug: 'berlinmitte',
@@ -225,7 +280,7 @@ export const STANDORTE: Standort[] = [
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-hausvogteiplatz', stadt: 'berlin' }],
     akzent: '#FFCC00',
-    zuPruefen: true,
+    zuPruefen: false,
   },
   {
     slug: 'wilmersdorf',
@@ -238,17 +293,20 @@ export const STANDORTE: Standort[] = [
     ort: 'Berlin',
     bezirk: 'Wilmersdorf',
     ortsname: 'Berlin-Wilmersdorf',
-    telefon: '030 86 47 320',
-    telefonRaw: '+4930864732 0',
+    /* Eigene Durchwahl, nicht die des Kurfürstendamms – siehe Kopfkommentar. */
+    telefon: '030 43 97 42 530',
+    telefonRaw: '+493043974253 0',
     email: 'kiezpraxis@ku64.de',
     geo: { lat: 52.4863, lng: 13.3232 },
     oeffnungszeiten: [
-      { tag: 'Mo', von: '08:00', bis: '19:00' },
-      { tag: 'Di', von: '08:00', bis: '19:00' },
-      { tag: 'Mi', von: '08:00', bis: '19:00' },
-      { tag: 'Do', von: '08:00', bis: '19:00' },
-      { tag: 'Fr', von: '08:00', bis: '16:00' },
-      { tag: 'Sa', von: null, bis: null },
+      /* Mo, Mi, Fr lang – Di und Do nur bis 14 Uhr. Die KiezPraxis ist die
+         kleinste der vier und hat deshalb als einzige unterschiedliche Tage. */
+      { tag: 'Mo', von: '08:00', bis: '20:00' },
+      { tag: 'Di', von: '08:00', bis: '14:00' },
+      { tag: 'Mi', von: '08:00', bis: '20:00' },
+      { tag: 'Do', von: '08:00', bis: '14:00' },
+      { tag: 'Fr', von: '08:00', bis: '20:00' },
+      { tag: 'Sa', von: null, bis: null, nachVereinbarung: true },
       { tag: 'So', von: null, bis: null },
     ],
     zeitenHinweis:
@@ -273,7 +331,7 @@ export const STANDORTE: Standort[] = [
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-gasteiner-strasse-9-die-kiezpraxis', stadt: 'berlin' }],
     akzent: '#FFCC00',
-    zuPruefen: true,
+    zuPruefen: false,
   },
 ];
 
@@ -328,6 +386,13 @@ export function oeffnungszeitenSchema(s: Standort) {
 }
 
 /** Ist der Standort zum übergebenen Zeitpunkt geöffnet? Für den "Jetzt geöffnet"-Hinweis. */
+/**
+ * Ist gerade offen?
+ *
+ * „Nach Vereinbarung“ zählt ausdrücklich NICHT als offen: Der grüne Punkt
+ * neben der Telefonnummer heißt „jetzt anrufen und vorbeikommen“, und das
+ * trifft dann nicht zu.
+ */
 export function istGeoeffnet(s: Standort, jetzt: Date): boolean {
   const tage: Wochentag[] = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   const heute = s.oeffnungszeiten.find((z) => z.tag === tage[jetzt.getDay()]);
@@ -336,4 +401,23 @@ export function istGeoeffnet(s: Standort, jetzt: Date): boolean {
   const [vh, vm] = heute.von.split(':').map(Number);
   const [bh, bm] = heute.bis.split(':').map(Number);
   return minuten >= vh * 60 + vm && minuten < bh * 60 + bm;
+}
+
+/**
+ * Eine Zeile Öffnungszeit, wie sie dasteht.
+ *
+ * An einer Stelle statt an sechs. Vorher stand in jeder Vorlage
+ * `z.von && z.bis ? … : 'geschlossen'` – als „nach Vereinbarung“ dazukam,
+ * hätte das an sechs Stellen geändert werden müssen, und an der siebten
+ * hätte es jemand vergessen.
+ */
+export function zeitLesbar(z: Oeffnungszeit): string {
+  if (z.von && z.bis) return `${z.von} – ${z.bis}`;
+  if (z.nachVereinbarung) return 'nach Vereinbarung';
+  return 'geschlossen';
+}
+
+/** Tage, an denen behandelt wird – Termin nach Vereinbarung eingeschlossen. */
+export function behandlungstage(s: Standort): number {
+  return s.oeffnungszeiten.filter((z) => z.von || z.nachVereinbarung).length;
 }

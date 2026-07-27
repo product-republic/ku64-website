@@ -1,5 +1,6 @@
 ---
 import { inhalte } from '../../i18n/daten';
+import { behandlungstage } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../../lib/seo';
@@ -60,7 +61,7 @@ const schema = [
         {
           daten.standorte.map((s) => {
             const anzahl = daten.leistungenHier(s.slug).length;
-            const tage = s.oeffnungszeiten.filter((z) => z.von).length;
+            const tage = behandlungstage(s);
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
                 <h2>

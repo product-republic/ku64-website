@@ -18,7 +18,7 @@ import { anzahlZahnaerzte } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import Bild from '../../../components/Bild.astro';
-import { STANDORTE } from '../../../data/standorte';
+import { STANDORTE, behandlungstage } from '../../../data/standorte';
 import { raumbilderFuer } from '../../../data/medien';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
@@ -83,7 +83,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         </div>
         <div>
           <dt>Geöffnet</dt>
-          <dd>{standort.oeffnungszeiten.filter((z) => z.von).length}</dd>
+          <dd>{behandlungstage(standort)}</dd>
           <p>{t('standort.tageWoche')}</p>
         </div>
       </dl>
