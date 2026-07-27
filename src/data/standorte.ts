@@ -99,6 +99,19 @@ const ZEITEN_LANG: Oeffnungszeit[] = [
 ];
 
 export const STANDORTE: Standort[] = [
+  /*
+   * Die Reihenfolge dieser Liste ist die Reihenfolge überall: auf der
+   * Startseite, in der Fußzeile, im Standortwähler, in der Sitemap.
+   *
+   * Sie folgt nicht der Geografie und nicht dem Alphabet, sondern der
+   * Bedeutung für die Praxis: Der Kurfürstendamm ist die Hauptpraxis,
+   * Potsdam die zweite vollwertige Adresse, Berlin-Mitte die Boutique-Praxis,
+   * die KiezPraxis in Wilmersdorf die jüngste und kleinste.
+   *
+   * Wer hier umsortiert, sortiert die gesamte Website um – das ist Absicht.
+   * Vier Standorte an sechs Stellen einzeln zu sortieren wäre die
+   * zuverlässigste Art, dass sie irgendwann verschieden sortiert sind.
+   */
   {
     slug: 'berlin-charlottenburg',
     name: 'Kurfürstendamm',
@@ -136,6 +149,43 @@ export const STANDORTE: Standort[] = [
       { label: 'Zahnmedizin', slug: 'ku64-berlin', stadt: 'berlin' },
       { label: 'Kieferorthopädie', slug: 'ku64-kieferorthopaedie', stadt: 'berlin' },
     ],
+    akzent: '#FFCC00',
+    zuPruefen: true,
+  },
+  {
+    slug: 'potsdam',
+    name: 'Potsdam',
+    nameLang: 'KU64 Potsdam – Zahnarzt im Palais Ritz',
+    claim:
+      'Zahnmedizin im denkmalgeschützten Palais Ritz: das volle Spektrum, sieben Tage die Woche, direkt an der Berliner Straße.',
+    strasse: 'Berliner Straße 139',
+    plz: '14467',
+    ort: 'Potsdam',
+    bezirk: 'Berliner Vorstadt',
+    ortsname: 'Potsdam',
+    telefon: '0331 98 22 22 80',
+    telefonRaw: '+493319822 2280',
+    email: 'potsdam@ku64.de',
+    geo: { lat: 52.3944, lng: 13.0817 },
+    oeffnungszeiten: ZEITEN_LANG,
+    eroeffnet: '2019',
+    besonderheiten: [
+      'Praxis im denkmalgeschützten Palais Ritz – historische Hülle, moderne Zahnmedizin',
+      'Sieben Tage die Woche geöffnet, auch am Wochenende',
+      'Vollständiges Behandlungsspektrum von Prophylaxe bis Implantologie',
+      'Eigene Oralchirurgie für Weisheitszähne und operative Eingriffe',
+      'Digitale Anamnese vorab von zu Hause – ohne Papier im Wartezimmer',
+    ],
+    anfahrt: {
+      oepnv: [
+        'Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 Gehminuten)',
+        'Bus 693 Schloss Cecilienhof',
+        'S-Bahn S7 Potsdam Griebnitzsee (mit Bus 10 Minuten)',
+      ],
+      parken: 'Eigene Parkplätze am Haus sowie Parkmöglichkeiten in der Berliner Straße.',
+      barrierefrei: true,
+    },
+    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten', stadt: 'potsdam' }],
     akzent: '#FFCC00',
     zuPruefen: true,
   },
@@ -222,43 +272,6 @@ export const STANDORTE: Standort[] = [
         'Bitte melden Sie sich vorab, wenn Sie einen barrierefreien Zugang benötigen – wir finden gemeinsam eine Lösung oder vermitteln an den Kurfürstendamm.',
     },
     doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-berlin-gasteiner-strasse-9-die-kiezpraxis', stadt: 'berlin' }],
-    akzent: '#FFCC00',
-    zuPruefen: true,
-  },
-  {
-    slug: 'potsdam',
-    name: 'Potsdam',
-    nameLang: 'KU64 Potsdam – Zahnarzt im Palais Ritz',
-    claim:
-      'Zahnmedizin im denkmalgeschützten Palais Ritz: das volle Spektrum, sieben Tage die Woche, direkt an der Berliner Straße.',
-    strasse: 'Berliner Straße 139',
-    plz: '14467',
-    ort: 'Potsdam',
-    bezirk: 'Berliner Vorstadt',
-    ortsname: 'Potsdam',
-    telefon: '0331 98 22 22 80',
-    telefonRaw: '+493319822 2280',
-    email: 'potsdam@ku64.de',
-    geo: { lat: 52.3944, lng: 13.0817 },
-    oeffnungszeiten: ZEITEN_LANG,
-    eroeffnet: '2019',
-    besonderheiten: [
-      'Praxis im denkmalgeschützten Palais Ritz – historische Hülle, moderne Zahnmedizin',
-      'Sieben Tage die Woche geöffnet, auch am Wochenende',
-      'Vollständiges Behandlungsspektrum von Prophylaxe bis Implantologie',
-      'Eigene Oralchirurgie für Weisheitszähne und operative Eingriffe',
-      'Digitale Anamnese vorab von zu Hause – ohne Papier im Wartezimmer',
-    ],
-    anfahrt: {
-      oepnv: [
-        'Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 Gehminuten)',
-        'Bus 693 Schloss Cecilienhof',
-        'S-Bahn S7 Potsdam Griebnitzsee (mit Bus 10 Minuten)',
-      ],
-      parken: 'Eigene Parkplätze am Haus sowie Parkmöglichkeiten in der Berliner Straße.',
-      barrierefrei: true,
-    },
-    doctolib: [{ label: 'Zahnmedizin', slug: 'ku64-die-zahnspezialisten', stadt: 'potsdam' }],
     akzent: '#FFCC00',
     zuPruefen: true,
   },

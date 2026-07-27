@@ -244,7 +244,18 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       inset 0 1px 0 var(--glas-glanz),
       inset 0 -1px 0 var(--glas-rand-unten),
       var(--schatten);
-    overflow: hidden;
+    /*
+     * KEIN `overflow: hidden` hier.
+     *
+     * Es stand hier, um die Standortleiste in die runden Ecken der Pille zu
+     * zwingen – und schnitt dabei den Standortwähler ab. Der klappt nach
+     * unten aus der Pille heraus; geklippt sah es aus, als reagiere der
+     * Klick überhaupt nicht. Ein `<details>`, das sich öffnet und nichts
+     * zeigt, ist von einem kaputten Knopf nicht zu unterscheiden.
+     *
+     * Die Ecken macht jetzt die Leiste selbst rund. Das ist eine Zeile mehr
+     * und kostet keine Funktion.
+     */
   }
 
   .logo {
@@ -405,6 +416,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     padding: var(--raum-2) var(--raum-5);
     border-block-start: 1px solid var(--linie);
     background: color-mix(in oklab, var(--flaeche) 45%, transparent);
+    /* Die untere Rundung der Glaspille – siehe Begründung bei `.kopf-glas`. */
+    border-end-start-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
   }
 
 

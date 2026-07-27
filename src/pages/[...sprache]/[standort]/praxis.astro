@@ -14,7 +14,7 @@
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { anzahlBehandelnde } from '../../../data/team';
+import { anzahlZahnaerzte } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import Bild from '../../../components/Bild.astro';
@@ -66,10 +66,10 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
           <p>{jahre > 0 ? `${jahre} Jahre in ${standort.ort}` : `neu in ${standort.ort}`}</p>
         </div>
         {
-          anzahlBehandelnde(standort.slug) && (
+          anzahlZahnaerzte(standort.slug) > 0 && (
             <div>
               <dt>Behandelnde</dt>
-              <dd>{anzahlBehandelnde(standort.slug)}</dd>
+              <dd>{anzahlZahnaerzte(standort.slug)}</dd>
               <p>Zahnärztinnen und Zahnärzte</p>
             </div>
           )

@@ -5,7 +5,7 @@
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { anzahlBehandelnde } from '../../../data/team';
+import { anzahlZahnaerzte } from '../../../data/team';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
@@ -138,10 +138,12 @@ const schema = [
           </dd>
         </div>
         {
-          anzahlBehandelnde(standort.slug) && (
+          /* `> 0` und nicht die bloße Zahl: `0 && …` ergibt in JSX die 0,
+             und die wird ausgegeben. */
+          anzahlZahnaerzte(standort.slug) > 0 && (
             <div>
               <dt>Behandelnde</dt>
-              <dd>{anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte</dd>
+              <dd>{anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte</dd>
             </div>
           )
         }

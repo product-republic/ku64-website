@@ -5,7 +5,7 @@ import Basis from '../../../../layouts/Basis.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import Bild from '../../../../components/Bild.astro';
 import { STANDORTE } from '../../../../data/standorte';
-import { teamAn, gruppenAn, anzahlBehandelnde } from '../../../../data/team';
+import { teamAn, gruppenAn, anzahlZahnaerzte } from '../../../../data/team';
 import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
 import profile from '../../../../data/profile.json';
 
@@ -64,9 +64,9 @@ if (team.length > 0) {
         team.length > 0 ? (
           <>
             <p class="unter">
-              {anzahlBehandelnde(standort.slug)
-                ? `${anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte behandeln bei KU64 ${standort.name}.`
-                : `Die Behandelnden bei KU64 ${standort.name}.`}
+              {anzahlZahnaerzte(standort.slug)
+                ? `${anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte und insgesamt ${team.length} Menschen bei KU64 ${standort.name}.`
+                : `Das Team bei KU64 ${standort.name}.`}
             </p>
             <div class="raster">
               {team.map((m) => {
@@ -130,8 +130,8 @@ if (team.length > 0) {
               mit Fotos und Schwerpunkten der einzelnen Behandelnden.
             </p>
             <p class="text">
-              {anzahlBehandelnde(standort.slug)
-                ? `Bei KU64 ${standort.name} behandeln ${anzahlBehandelnde(standort.slug)} Zahnärztinnen und Zahnärzte.`
+              {anzahlZahnaerzte(standort.slug)
+                ? `Bei KU64 ${standort.name} behandeln ${anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte.`
                 : `Bei KU64 ${standort.name} behandelt Sie ein festes, eingespieltes Team.`}{' '}
               Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen
               Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.

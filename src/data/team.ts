@@ -350,11 +350,34 @@ export function anzahlAn(standortSlug: string, gruppe?: Teamgruppe): number {
   return gruppe ? liste.filter((m) => m.gruppe === gruppe).length : liste.length;
 }
 
-/** Behandelnde: Zahnärztinnen und Zahnärzte plus Dentalhygiene. */
+/**
+ * Behandelnde: Zahnärztinnen und Zahnärzte plus Dentalhygiene.
+ *
+ * ── Warum es diese Funktion und `anzahlZahnaerzte` getrennt gibt ─────────
+ *
+ * Weil sonst eine Falschangabe entsteht, und zwar eine, die niemandem
+ * auffällt, der die Praxis nicht kennt. „100+ Zahnärztinnen und Zahnärzte"
+ * stand auf der Seite, während es 38 sind – die 100 war die gesamte
+ * Belegschaft samt Prophylaxe, Assistenz, Empfang und Verwaltung.
+ *
+ * Die Zahl war richtig, die Beschriftung nicht. Das ist die gefährlichere
+ * Sorte Fehler: Eine falsche Zahl fällt beim Nachrechnen auf, eine falsche
+ * Beschriftung nie.
+ *
+ * Deshalb hat jede Zählung ab hier genau eine Bedeutung, und die steht im
+ * Namen. Wer eine Zahl auf eine Seite schreibt, muss die Funktion wählen,
+ * die zu seiner Beschriftung passt.
+ */
 export function anzahlBehandelnde(standortSlug: string): number {
   return teamAn(standortSlug).filter(
     (m) => m.gruppe === 'zahnaerzte' || m.gruppe === 'dentalhygiene',
   ).length;
+}
+
+/** Nur Zahnärztinnen und Zahnärzte – nicht Dentalhygiene, nicht Prophylaxe. */
+export function anzahlZahnaerzte(standortSlug?: string): number {
+  const liste = standortSlug ? teamAn(standortSlug) : veroeffentlichbar();
+  return liste.filter((m) => m.gruppe === 'zahnaerzte').length;
 }
 
 /** Gesamtzahl über alle Standorte, ohne Doppelzählung bei Mehrfacheinsatz. */

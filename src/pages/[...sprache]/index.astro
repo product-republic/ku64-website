@@ -267,10 +267,33 @@ const gesamtLeistungen = daten.leistungen.length;
     color: var(--tinte-weich);
   }
 
+  /*
+   * Vier Standorte, eine Reihe.
+   *
+   * `auto-fit` mit 20 rem Mindestbreite ergab bei üblichen Fensterbreiten drei
+   * Karten und eine allein darunter. Das liest sich wie eine Rangfolge, die es
+   * nicht gibt: drei richtige Praxen und ein Nachzügler.
+   *
+   * Deshalb fest vier Spalten, sobald der Platz reicht, und darunter in zwei
+   * klaren Stufen: zwei mal zwei, dann untereinander. Kein Zustand, in dem
+   * eine Karte allein steht.
+   */
   .standort-raster {
     display: grid;
     gap: var(--raum-5);
-    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (max-width: 78rem) {
+    .standort-raster {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 38rem) {
+    .standort-raster {
+      grid-template-columns: 1fr;
+    }
   }
 
   .s-karte {
