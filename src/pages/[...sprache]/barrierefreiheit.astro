@@ -3,6 +3,7 @@ import { inhalte } from '../../i18n/daten';
 import { texte } from '../../i18n/katalog';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -29,36 +30,33 @@ const brotkrumen = [
 >
   <div class="huelle abschnitt">
     <h1>Barrierefreiheit</h1>
+      <Vorrangklausel />
 
     <div class="fliesstext">
-      <p>
-        Diese Website soll für alle nutzbar sein – auch mit Screenreader, nur mit der
-        Tastatur, bei eingeschränktem Sehvermögen oder wenn Bewegung auf dem Bildschirm
-        Beschwerden auslöst. Hier steht ehrlich, was umgesetzt ist und was noch nicht.
-      </p>
+      <p>{t('bf.dieseWebsiteSollFuer')}</p>
 
-      <h2>Was umgesetzt ist</h2>
+      <h2>{t('bf.wasUmgesetztIst')}</h2>
       <ul>
-        <li>Alle Funktionen sind mit der Tastatur bedienbar, mit sichtbarem Fokusrahmen</li>
-        <li>Ein Sprunglink führt direkt zum Inhalt, ohne die Navigation durchlaufen zu müssen</li>
+        <li>{t('bf.alleFunktionenSindMit')}</li>
+        <li>{t('bf.einSprunglinkFuehrtDirekt')}</li>
         <li>Semantisches HTML: Überschriftenhierarchie, Landmarken, beschriftete Formulare</li>
-        <li>Aufklappbare Inhalte funktionieren auch ohne JavaScript</li>
-        <li>Bewegte Effekte werden bei aktivierter Systemeinstellung „Bewegung reduzieren“ abgeschaltet</li>
-        <li>Ein dunkles Farbschema wird automatisch übernommen, wenn Ihr System es vorgibt</li>
-        <li>Schriftgrößen skalieren mit Ihren Browsereinstellungen, Text bleibt bis 200 % lesbar</li>
-        <li>Bedienelemente sind mindestens 44 × 44 Pixel groß</li>
-        <li>Statusmeldungen werden Screenreadern angekündigt</li>
+        <li>{t('bf.aufklappbareInhalteFunktionierenAuch')}</li>
+        <li>{t('bf.bewegteEffekteWerdenBei')}</li>
+        <li>{t('bf.einDunklesFarbschemaWird')}</li>
+        <li>{t('bf.schriftgroessenSkalierenMitIhren')}</li>
+        <li>{t('bf.bedienelementeSindMindestens44')}</li>
+        <li>{t('bf.statusmeldungenWerdenScreenreadernAngekuendigt')}</li>
       </ul>
 
-      <h2>Was noch offen ist</h2>
+      <h2>{t('bf.wasNochOffenIst')}</h2>
       <ul>
         <li>Ein vollständiger Test mit Screenreadern (NVDA, VoiceOver) steht noch aus</li>
-        <li>Alternativtexte für Bildmaterial werden ergänzt, sobald die Bilder vorliegen</li>
-        <li>Die Terminbuchung von Doctolib ist ein Fremdsystem, dessen Zugänglichkeit wir nicht steuern</li>
-        <li>Leichte Sprache und Gebärdensprachvideos sind noch nicht verfügbar</li>
+        <li>{t('bf.alternativtexteFuerBildmaterialWerden')}</li>
+        <li>{t('bf.dieTerminbuchungVonDoctolib')}</li>
+        <li>{t('bf.leichteSpracheUndGebaerdensprachvideos')}</li>
       </ul>
 
-      <h2>Zugänglichkeit unserer Praxen</h2>
+      <h2>{t('bf.zugaenglichkeitUnsererPraxen')}</h2>
       <ul>
         {daten.standorte.map((s) => (
           <li>
@@ -71,12 +69,8 @@ const brotkrumen = [
       </ul>
 
       <h2>Etwas gefunden, das nicht funktioniert?</h2>
-      <p>
-        Bitte sagen Sie uns Bescheid – das hilft uns mehr als jede Selbsteinschätzung.
-        Beschreiben Sie kurz, welche Seite und welches Hilfsmittel betroffen sind. Wir
-        melden uns zurück und beheben, was sich beheben lässt.
-      </p>
-      <p><a href="/kontakt/" class="knopf knopf-primaer">Barriere melden</a></p>
+      <p>{t('bf.bitteSagenSieUns')}</p>
+      <p><a href="/kontakt/" class="knopf knopf-primaer">{t('bf.barriereMelden')}</a></p>
     </div>
   </div>
 </Basis>

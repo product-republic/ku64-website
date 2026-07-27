@@ -14,6 +14,7 @@ import { sprachpfade } from '../../i18n/sprachen';
 import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
+import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
@@ -39,16 +40,13 @@ const brotkrumen = [
 >
   <div class="huelle abschnitt">
     <h1>Datenschutzerklärung</h1>
+      <Vorrangklausel />
 
     <div class="hinweis hinweis-warnung entwurf">
-      <strong>Entwurfsfassung.</strong> Der technische Teil beschreibt exakt das Verhalten
-      dieser Website. Vor Veröffentlichung muss die Erklärung um die Angaben der Praxis
-      ergänzt und anwaltlich geprüft werden. Die mit
-      <code>[…]</code> markierten Stellen sind noch zu befüllen.
-    </div>
+      <strong>Entwurfsfassung.</strong>{t('ds.derTechnischeTeilBeschreibt')}<code>[…]</code>{t('ds.markiertenStellenSindNoch')}</div>
 
     <div class="fliesstext">
-      <h2>1. Verantwortlicher</h2>
+      <h2>{t('ds.1Verantwortlicher')}</h2>
       <p>
         <code>[Vollständiger Name der Praxis / des Trägers, Anschrift, Telefon, E-Mail,
         gesetzliche Vertretung]</code>
@@ -57,7 +55,7 @@ const brotkrumen = [
         Datenschutzbeauftragte oder Datenschutzbeauftragter: <code>[Name, Kontakt]</code>
       </p>
 
-      <h2>2. Was beim Aufruf dieser Website passiert</h2>
+      <h2>{t('ds.2WasBeimAufruf')}</h2>
       <p>
         Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren
         Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem.
@@ -66,42 +64,25 @@ const brotkrumen = [
         <code>[Anzahl Tage]</code>.
       </p>
       <p>
-        <strong>Keine Analyse-Werkzeuge, keine Werbe-Cookies.</strong> Diese Website setzt
-        von sich aus keine Cookies zu Analyse- oder Marketingzwecken und bindet keine
-        Zählpixel ein.
-      </p>
+        <strong>{t('ds.keineAnalyseWerkzeugeKeine')}</strong>{t('ds.dieseWebsiteSetztVon')}</p>
       <p>
-        <strong>Schriften werden selbst ausgeliefert.</strong> Es findet kein Aufruf an
-        Google Fonts oder ein anderes Schriften-Netzwerk statt. Ihre IP-Adresse wird dafür
-        nicht an Dritte übermittelt.
-      </p>
+        <strong>{t('ds.schriftenWerdenSelbstAusgeliefert')}</strong>{t('ds.esFindetKeinAufruf')}</p>
 
-      <h2>3. Lokale Speicherung im Browser</h2>
+      <h2>{t('ds.3LokaleSpeicherungIm')}</h2>
       <p>
         Wir speichern in Ihrem Browser (localStorage) zwei Angaben, die unseren Server nie
         erreichen:
       </p>
       <ul>
         <li>
-          <strong>Ihren zuletzt gewählten Standort</strong>, damit wir Ihnen beim nächsten
-          Besuch die passenden Angaben anbieten können. Es findet keine automatische
-          Weiterleitung statt.
-        </li>
+          <strong>{t('ds.ihrenZuletztGewaehltenStandort')}</strong>{t('ds.damitWirIhnenBeim')}</li>
         <li>
-          <strong>Ihre Entscheidung zur Terminbuchung</strong>, falls Sie angekreuzt haben,
-          dass wir uns diese merken sollen.
-        </li>
+          <strong>{t('ds.ihreEntscheidungZurTerminbuchung')}</strong>{t('ds.fallsSieAngekreuztHaben')}</li>
       </ul>
-      <p>
-        Beides können Sie jederzeit über die Einstellungen Ihres Browsers löschen. Es
-        handelt sich um keine personenbezogenen Daten im engeren Sinne und um keine
-        Nutzerprofile.
-      </p>
+      <p>{t('ds.beidesKoennenSieJederzeit')}</p>
 
       <h2 id="doctolib">4. Online-Terminbuchung (Doctolib)</h2>
-      <p>
-        Die Terminbuchung läuft über Doctolib. Der Kalender ist auf dieser Website
-        <strong>nicht eingebettet</strong>: Sie werden über einen Verweis dorthin
+      <p>{t('ds.dieTerminbuchungLaeuftUeber')}<strong>{t('ds.nichtEingebettet')}</strong>: Sie werden über einen Verweis dorthin
         geleitet und erkennen am Wechsel der Adresse, dass Sie sich ab dann auf
         doctolib.de befinden. Solange Sie auf unserer Seite bleiben, findet keinerlei
         Verbindung zu Doctolib statt – auch kein Vorabladen im Hintergrund.
@@ -116,11 +97,7 @@ const brotkrumen = [
       </p>
 
       <h2 id="anamnese">5. Digitale Anamnese (Nelly Solutions)</h2>
-      <p>
-        Der Anamnesebogen wird von Nelly Solutions bereitgestellt. Diese Website leitet Sie
-        lediglich dorthin weiter und verarbeitet selbst <strong>keine Gesundheitsdaten</strong>.
-        Ihre Angaben fließen direkt vom Formular in unser Praxisverwaltungssystem.
-      </p>
+      <p>{t('ds.derAnamnesebogenWirdVon')}<strong>{t('ds.keineGesundheitsdaten')}</strong>{t('ds.ihreAngabenFliessenDirekt')}</p>
       <p>
         Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h
         DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der
@@ -130,12 +107,7 @@ const brotkrumen = [
 
       <h2 id="berater">6. Digitaler Berater (Text und Sprache)</h2>
       <p>
-        <strong>Textchat.</strong> Ihre Frage wird an unseren Server und von dort an Anthropic
-        übermittelt, um die Antwort zu erzeugen. Der Gesprächsverlauf existiert
-        ausschließlich in Ihrem Browserfenster und geht beim Schließen verloren. Wir
-        speichern weder Fragen noch Antworten und legen keine Gesprächsprotokolle an. Zur
-        Missbrauchsabwehr zählen wir kurzzeitig Anfragen je IP-Adresse im Arbeitsspeicher.
-      </p>
+        <strong>Textchat.</strong>{t('ds.ihreFrageWirdAn')}</p>
       <p>
         <strong>Sprachberater.</strong> Der Sprachdialog läuft über ElevenLabs. Das Mikrofon
         wird erst nach Ihrer ausdrücklichen Freigabe aktiviert. Ihre Stimme wird zur
@@ -151,31 +123,19 @@ const brotkrumen = [
       </p>
 
       <h2 id="laecheln">7. Lächeln-Vorschau (Foto-Upload)</h2>
-      <p>
-        Ein Gesichtsfoto ist ein <strong>biometrisches Datum</strong> und damit eine besondere
+      <p>{t('ds.einGesichtsfotoIstEin')}<strong>{t('ds.biometrischesDatum')}</strong> und damit eine besondere
         Kategorie personenbezogener Daten nach Art. 9 DSGVO. Wir verarbeiten es
         ausschließlich auf Grundlage Ihrer ausdrücklichen, vorher erteilten Einwilligung
         (Art. 9 Abs. 2 lit. a DSGVO).
       </p>
       <p>So läuft die Verarbeitung konkret ab:</p>
       <ul>
-        <li>
-          Ihr Foto wird an unseren Server übertragen und dort ausschließlich im
-          Arbeitsspeicher gehalten. Es wird <strong>nicht auf einen Datenträger geschrieben</strong>
-          und in keine Datenbank aufgenommen.
-        </li>
+        <li>{t('ds.ihrFotoWirdAn')}<strong>{t('ds.nichtAufEinenDatentraeger')}</strong>{t('ds.undInKeineDatenbank')}</li>
         <li>
           Zur Analyse und Bilderzeugung wird es an Google (Gemini) übermittelt.
         </li>
-        <li>
-          Das Ergebnis wird Ihnen angezeigt und an die von Ihnen angegebene Adresse
-          gesendet. Die Adresse wird für diesen einen Versand verwendet und danach nicht
-          gespeichert.
-        </li>
-        <li>
-          Nach Abschluss der Anfrage sind Foto und Ergebnis auf unserem Server nicht mehr
-          vorhanden.
-        </li>
+        <li>{t('ds.dasErgebnisWirdIhnen')}</li>
+        <li>{t('ds.nachAbschlussDerAnfrage')}</li>
       </ul>
       <p>
         Die erzeugte Darstellung ist eine unverbindliche Illustration und kein
@@ -184,7 +144,7 @@ const brotkrumen = [
         Auftragsverarbeitungsvertrag mit Google: <code>[Status ergänzen]</code>.
       </p>
 
-      <h2>8. Kontaktaufnahme</h2>
+      <h2>{t('ds.8Kontaktaufnahme')}</h2>
       <p>
         Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung
         Ihres Anliegens (Art. 6 Abs. 1 lit. b und f DSGVO). Bitte senden Sie uns keine
@@ -192,7 +152,7 @@ const brotkrumen = [
         vertraulich.
       </p>
 
-      <h2>9. Ihre Rechte</h2>
+      <h2>{t('ds.9IhreRechte')}</h2>
       <p>
         Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung
         (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20)
@@ -205,7 +165,7 @@ const brotkrumen = [
         <code>[zuständige Aufsichtsbehörde eintragen]</code>.
       </p>
 
-      <h2>10. Änderungen</h2>
+      <h2>{t('ds.10Aenderungen')}</h2>
       <p>
         Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert.
         Stand: <code>[Datum bei Veröffentlichung eintragen]</code>.

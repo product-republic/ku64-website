@@ -11,6 +11,7 @@ import { sprachpfade } from '../../i18n/sprachen';
 import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
+import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
@@ -36,15 +37,13 @@ const brotkrumen = [
 >
   <div class="huelle abschnitt">
     <h1>Impressum</h1>
+      <Vorrangklausel />
 
     <div class="hinweis hinweis-warnung entwurf">
-      <strong>Entwurfsfassung.</strong> Ein Impressum besteht aus Tatsachenangaben, die nur
-      die Praxis liefern kann. Alle mit <code>[…]</code> markierten Felder sind vor dem
-      Live-Gang zu befüllen und rechtlich zu prüfen.
-    </div>
+      <strong>Entwurfsfassung.</strong>{t('imp.einImpressumBestehtAus')}<code>[…]</code>{t('imp.markiertenFelderSindVor')}</div>
 
     <div class="fliesstext">
-      <h2>Angaben nach § 5 DDG</h2>
+      <h2>{t('imp.angabenNach5Ddg')}</h2>
       <p>
         <code>[Vollständiger Name der Praxis / Gesellschaft]</code><br />
         <code>[Rechtsform]</code><br />
@@ -68,10 +67,9 @@ const brotkrumen = [
       <h2>Umsatzsteuer-Identifikationsnummer</h2>
       <p><code>[USt-IdNr. nach § 27a UStG, falls vorhanden]</code></p>
 
-      <h2>Berufsrechtliche Angaben</h2>
+      <h2>{t('imp.berufsrechtlicheAngaben')}</h2>
       <p>
-        Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>, verliehen in
-        <code>[Land]</code><br />
+        Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>{t('imp.verliehenIn')}<code>[Land]</code><br />
         Zuständige Kammer: <code>[Zahnärztekammer, Anschrift, Website]</code><br />
         Zuständige Kassenzahnärztliche Vereinigung: <code>[…]</code><br />
         Aufsichtsbehörde: <code>[…]</code>
@@ -88,15 +86,11 @@ const brotkrumen = [
         Räumlicher Geltungsbereich: <code>[…]</code>
       </p>
 
-      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <h2>{t('imp.verantwortlichFuerDenInhalt')}</h2>
       <p><code>[Name, Anschrift]</code></p>
 
       <h2>Streitbeilegung</h2>
-      <p>
-        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit.
-        Wir sind <code>[nicht]</code> bereit und <code>[nicht]</code> verpflichtet, an
-        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-      </p>
+      <p>{t('imp.dieEuropaeischeKommissionStellt')}<code>[nicht]</code>{t('imp.bereitUnd')}<code>[nicht]</code>{t('imp.verpflichtetAnStreitbeilegungsverfahrenVor')}</p>
       <p>
         Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der
         zuständigen Zahnärztekammer zur Verfügung: <code>[Anschrift]</code>.

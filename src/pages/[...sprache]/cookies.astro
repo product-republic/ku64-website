@@ -3,6 +3,7 @@ import { sprachpfade } from '../../i18n/sprachen';
 import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
+import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
@@ -27,33 +28,24 @@ const brotkrumen = [
 >
   <div class="huelle abschnitt">
     <h1>Cookie-Einstellungen</h1>
+      <Vorrangklausel />
 
     <div class="fliesstext">
-      <p>
-        Diese Website setzt <strong>keine Analyse-Cookies, keine Werbe-Cookies und keine
-        Zählpixel</strong>. Es gibt deshalb auch kein Einwilligungsbanner, das Sie
-        wegklicken müssten.
-      </p>
+      <p>{t('ck.dieseWebsiteSetzt')}<strong>{t('ck.keineAnalyseCookiesKeine')}</strong>{t('ck.esGibtDeshalbAuch')}</p>
 
-      <h2>Was tatsächlich gespeichert wird</h2>
+      <h2>{t('ck.wasTatsaechlichGespeichertWird')}</h2>
       <p>
         Zwei Angaben liegen im lokalen Speicher Ihres Browsers. Sie erreichen unseren Server
         nie und dienen ausschließlich Ihrer Bequemlichkeit:
       </p>
       <ul>
         <li>
-          <strong>ku64:standort</strong> – Ihr zuletzt gewählter Standort, damit wir Ihnen
-          beim nächsten Besuch die passenden Angaben anbieten können. Es findet keine
-          automatische Weiterleitung statt.
-        </li>
+          <strong>ku64:standort</strong>{t('ck.ihrZuletztGewaehlterStandort')}</li>
         <li>
-          <strong>ku64:einwilligung</strong> – nur vorhanden, wenn Sie einen eingebetteten
-          Dienst geladen und angekreuzt haben, dass wir uns Ihre Entscheidung merken
-          sollen. Solange Sie das nicht tun, wird nichts gespeichert.
-        </li>
+          <strong>ku64:einwilligung</strong>{t('ck.nurVorhandenWennSie')}</li>
       </ul>
 
-      <h2>Wann doch Drittanbieter ins Spiel kommen</h2>
+      <h2>{t('ck.wannDochDrittanbieterIns')}</h2>
       <p>
         Erst wenn Sie es ausdrücklich auslösen: beim Laden des Doctolib-Terminkalenders,
         beim Öffnen der digitalen Anamnese, beim Nutzen des Sprachberaters oder der
@@ -62,11 +54,9 @@ const brotkrumen = [
       </p>
 
       <h2>Löschen</h2>
-      <p>Ein Klick genügt – danach ist der lokale Speicher dieser Website leer.</p>
+      <p>{t('ck.einKlickGenuegtDanach')}</p>
       <p>
-        <button type="button" class="knopf knopf-primaer" id="loeschen">
-          Gespeicherte Angaben löschen
-        </button>
+        <button type="button" class="knopf knopf-primaer" id="loeschen">{t('ck.gespeicherteAngabenLoeschen')}</button>
       </p>
       <p class="ergebnis" id="ergebnis" role="status" aria-live="polite"></p>
     </div>

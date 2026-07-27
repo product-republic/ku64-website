@@ -1,0 +1,71 @@
+---
+/**
+ * „Rechtsverbindlich ist die deutsche Fassung."
+ *
+ * ── Warum es diesen Hinweis gibt ────────────────────────────────────────
+ *
+ * Eine Datenschutzerklärung ist keine Beschreibung, sondern eine Erklärung
+ * mit Rechtsfolgen. Wird sie in drei Sprachen geführt, gibt es drei Texte,
+ * die auseinanderlaufen können – spätestens dann, wenn einer geändert und
+ * ein anderer vergessen wird. Genau dafür ist die Vorrangklausel da: Sie
+ * beantwortet die Frage „welcher gilt?", bevor sie gestellt wird.
+ *
+ * Sie ersetzt keine Übersetzung. Wer die Erklärung nicht auf Deutsch lesen
+ * kann, soll sie trotzdem verstehen können – das ist der ganze Zweck der
+ * Übersetzung. Die Klausel sagt nur, dass die deutsche Fassung im
+ * Streitfall den Ausschlag gibt.
+ *
+ * ── Warum nur in den übersetzten Fassungen ──────────────────────────────
+ *
+ * Auf der deutschen Seite wäre der Satz „rechtsverbindlich ist die deutsche
+ * Fassung" eine Selbstauskunft ohne Adressat. Er erscheint deshalb nur
+ * dort, wo es etwas klarzustellen gibt.
+ *
+ * ── Warum sichtbar und nicht im Kleingedruckten ─────────────────────────
+ *
+ * Weil ein Vorbehalt, den man suchen muss, keiner ist. Er steht über dem
+ * Text, nicht darunter – vor dem, worauf er sich bezieht.
+ */
+import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
+import { QUELLSPRACHE } from '../i18n/sprachen';
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const zeigen = daten.sprache !== QUELLSPRACHE;
+---
+
+{
+  zeigen && (
+    <aside class="vorrang" role="note">
+      <p class="vorrang-titel">{t('recht.vorrangTitel')}</p>
+      <p class="vorrang-text">{t('recht.vorrangText')}</p>
+    </aside>
+  )
+}
+
+<style>
+  .vorrang {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-5) var(--raum-7);
+    padding: var(--raum-4) var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    /* Getönt, nicht weiß: Der Hinweis gehört nicht zum Fließtext, sondern
+       steht über ihm. Eine weiße Fläche auf weißem Grund ist kein Kasten. */
+    background: color-mix(in oklab, var(--akzent) 8%, var(--flaeche-warm));
+  }
+
+  .vorrang-titel {
+    font-weight: 600;
+    font-size: var(--t-sm);
+  }
+
+  .vorrang-text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-start: var(--raum-2);
+  }
+</style>
