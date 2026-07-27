@@ -208,6 +208,13 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           </>
         )
       }
+      {/* Auf schmalen Bildschirmen steht die Sprachwahl hier statt in der
+          Leiste: Dort drängte sie sich als dritte Zeile unter Ort und
+          Wähler und machte den Kopf höher als den Inhalt darüber. */}
+      <div class="mobil-sprache">
+        <p class="mobil-titel">{t('sprache.waehlen')}</p>
+        <Sprachwahl pfad={pfad} />
+      </div>
     </nav>
   </div>
 </header>
@@ -384,6 +391,46 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     .standortleiste-inner {
       transition: none;
     }
+  }
+
+  /*
+   * Schmale Bildschirme: Der Ort steht unter dem Logo, die Leiste trägt nur
+   * noch den Wechsel.
+   *
+   * Auf dem Telefon war der Kopf dreizeilig – Logo mit Schaltflächen, dann
+   * „Sie sehen KU64 Potsdam, Berliner Straße 139, 14467 Potsdam" mit dem
+   * Wähler daneben, dann noch die Sprachwahl. Zusammen höher als der erste
+   * Inhaltsblock. Dieselbe Angabe passt unter das Logo in eine Zeile.
+   */
+  @media (max-width: 52rem) {
+    .logo-ort {
+      max-height: 1.4em;
+      opacity: 1;
+    }
+
+    /* Die ausgeschriebene Fassung in der Leiste ist damit doppelt. */
+    .wo-bin-ich {
+      display: none;
+    }
+
+    /* Die Sprachwahl steht im Menü, nicht in der Leiste. */
+    .standortleiste-inner > :global(.sprachwahl) {
+      display: none;
+    }
+
+    .standortleiste-inner {
+      justify-content: flex-start;
+    }
+  }
+
+  .mobil-sprache {
+    margin-block-start: var(--raum-6);
+    padding-block-start: var(--raum-5);
+    border-block-start: 1px solid var(--linie);
+  }
+
+  .mobil-sprache :global(.sprachwahl) {
+    margin-block-start: var(--raum-3);
   }
 
   .haupt {
@@ -800,9 +847,11 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * meisten Menschen die Seite auf dem Handy öffnen.
    */
   @media (max-width: 26rem) {
-    .logo-ort {
-      display: none;
-    }
+    /* Der Ort bleibt auch hier stehen – er ist auf dem Telefon die einzige
+       Stelle, an der steht, in welcher Praxis man gerade ist. Früher stand
+       er hier auf `display: none`, weil daneben noch die ausgeschriebene
+       Fassung in der Leiste stand. Die gibt es auf schmalen Bildschirmen
+       nicht mehr. */
 
     .logo {
       padding-inline-start: 0.5rem;
