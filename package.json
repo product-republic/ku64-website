@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "og:bilder": "node --experimental-strip-types scripts/og-bilder.mjs",
     "bilder:liste": "node --experimental-strip-types --no-warnings scripts/bilder-liste.mjs",
+    "durchgang": "node scripts/durchgang.mjs",
     "build": "npm run daten:pruefen && npm run bilder:liste && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen",
     "build:schnell": "astro build",
     "preview": "astro preview",

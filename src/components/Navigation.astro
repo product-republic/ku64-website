@@ -920,6 +920,19 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     .telefon-nr {
       display: none;
     }
+
+    /*
+     * Die Lupe verschwindet aus der Kopfleiste.
+     *
+     * Gemessen bei 390 px Fensterbreite lief der Kopf 14 Pixel über den Rand
+     * – und ein Kopf, der übersteht, macht die ganze Seite seitlich
+     * schiebbar. Verloren geht nichts: Im Mobilmenü steht „Suchen" als
+     * erster Eintrag, und dort hat es mehr Platz und einen Namen statt eines
+     * Symbols.
+     */
+    .lupe-link {
+      display: none;
+    }
     .standortleiste-inner {
       font-size: 0.7rem;
     }
