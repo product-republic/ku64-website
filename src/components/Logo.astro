@@ -2,18 +2,39 @@
 /**
  * Wort-Bild-Marke KU64 – Die Zahnspezialisten.
  *
- * Die Pfade stammen unverändert aus der Originaldatei der Praxis
- * (ku64-die-zahnspezialisten-berlin.svg). Nachgezeichnet wurde nichts: Eine
- * Marke, die man nachbaut, ist irgendwann nicht mehr dieselbe.
+ * ── Herkunft: die Originaldatei der Praxis ──────────────────────────────
  *
- * Geändert wurde ausschließlich die Farbgebung: Die Originaldatei trägt eine
- * einzige, fest eingetragene Farbe für alle drei Teile. Hier sind es drei –
- * „KU“ und „64“ in Hausrot, der Zusatz in Schwarz. Die Aufteilung steht
- * unten im Stilblock samt Begründung; die Pfade selbst sind unangetastet.
+ * Pfade und Farben stammen unverändert aus der offiziellen SVG-Datei
+ * (Illustrator-Export, viewBox 0 0 267 83.4). Nachgezeichnet wurde nichts:
+ * Eine Marke, die man nachbaut, ist irgendwann nicht mehr dieselbe.
+ *
+ * ── Was daran anders ist als vorher ─────────────────────────────────────
+ *
+ * Das „KU“ ist GELB, nicht rot. Die vorherige Fassung hatte es rot – eine
+ * Annahme aus einer einfarbigen Exportdatei, in der alle drei Teile
+ * dieselbe Farbe trugen. Die Originaldatei benennt sie einzeln:
+ *
+ *     KU                   #FFCC00   das Gelb der Praxisräume
+ *     64                   #B71E3F   Hausrot
+ *     Die Zahnspezialisten Schwarz
+ *
+ * Das Gelb ist dasselbe, das am Kurfürstendamm von der Decke kommt. Die
+ * Marke zitiert den Raum – deshalb ist sie zweifarbig und nicht einfarbig.
+ *
+ * ── Gelb auf Weiß, und was daraus folgt ─────────────────────────────────
+ *
+ * #FFCC00 auf Weiß erreicht 1,7:1. Für Fließtext wäre das unzulässig; für
+ * eine Wort-Bild-Marke ist es zulässig (WCAG 1.4.3 nimmt Logotypen
+ * ausdrücklich aus) und hier auch richtig, weil die Buchstaben groß und
+ * fett sind und die Form die Lesbarkeit trägt, nicht der Kontrast.
+ *
+ * Verlassen darf man sich darauf trotzdem nicht: Deshalb steht das Logo im
+ * Kopf auf einer helleren Glasfläche, und der barrierefreie Name kommt aus
+ * `aria-label`, nicht aus der Farbe.
  *
  * Als Inline-SVG statt als `<img>`: kein zusätzlicher Netzwerkabruf vor dem
- * ersten Bild, keine Layoutverschiebung und eben die Farbvererbung. Die Datei
- * ist rund 4 kB, das trägt das HTML.
+ * ersten Bild, keine Layoutverschiebung, und die Farben lassen sich für
+ * dunkle Untergründe umstellen.
  */
 interface Props {
   /** Höhe in der Textmaßeinheit, damit das Logo mit der Schrift skaliert. */
@@ -29,7 +50,7 @@ const { hoehe = '1.9rem', dekorativ = false, titel = 'KU64 – Die Zahnspezialis
 
 <svg
   class="logo-marke"
-  viewBox="0 0 280.6 96.3"
+  viewBox="0 0 267 83.4"
   style={`height:${hoehe}`}
   role={dekorativ ? 'presentation' : 'img'}
   aria-label={dekorativ ? undefined : titel}
@@ -37,56 +58,57 @@ const { hoehe = '1.9rem', dekorativ = false, titel = 'KU64 – Die Zahnspezialis
   focusable="false"
 >
   {!dekorativ && <title>{titel}</title>}
-  {/* KU */}
-  <path class="logo-ku" d="M24.7,66.6V34.9l19.9,31.6H64L41.7,33.3L62.3,7.2H43.9L24.7,33.1V7.2H8v59.3L24.7,66.6L24.7,66.6z M68.1,43.2 c0,8,2.3,14.1,6.8,18.2s11.3,6.1,20.3,6.1c9.4,0,16.5-2,21.5-6c4.9-4,7.4-9.9,7.4-17.5V7.2h-16v35.3c0,4.2-1,7.4-3.1,9.7 s-5,3.4-8.8,3.4s-6.7-1.1-8.6-3.3s-2.9-5.5-2.9-9.8V7.2H68.1V43.2"></path>
-  {/* 64 */}
-  <path class="logo-64" d="M157.6,34.6c4.3-1.3,8.7-2,13.1-2c5.8,0,10.8,1.4,14.8,4.1c4,2.7,6,6.1,6,10.1c0,3.9-1.9,7.2-5.7,9.9 c-3.8,2.8-8.6,4.2-14.2,4.2c-7,0-13.2-2-18.5-5.9s-8.3-8.7-9-14.3C148.8,38,153.3,35.9,157.6,34.6L157.6,34.6z M195.8,17 c-4.1-3.4-8.2-5.9-12.5-7.5s-9-2.4-14-2.4c-9.9,0-18,2.8-24.2,8.4s-9.3,12.8-9.3,21.7c0,8.8,3.4,16.1,10.1,22 c6.7,5.9,15.3,8.8,25.7,8.8c8.4,0,15.1-2,20.2-5.9c5.1-3.9,7.7-9.1,7.7-15.4c0-6.2-2.7-11.2-8.2-15.2c-5.4-4-12.4-6-20.8-6 c-4.6,0-8.9,0.6-13.1,1.7c-4.2,1.1-8.6,2.8-13.2,5.2c0.9-5.6,3.7-10.1,8.2-13.4s10.3-4.9,17.2-4.9c3.8,0,7.5,0.7,11.2,2.1 c3.7,1.4,7.3,3.4,10.6,6.1L195.8,17L195.8,17z M257.4,17.7v27.6h-34.7L257.4,17.7L257.4,17.7z M265.2,66.6V52.4h9.7v-7.1h-9.7V8.4 h-7.7l-46.4,36.9v7.1h46.4v14.2H265.2"></path>
+
   {/* DIE ZAHNSPEZIALISTEN */}
-  <path class="logo-wort" d="M7.9,80.4v9.7h4.3c1.6,0,2.9-0.4,3.9-1.3s1.4-2,1.4-3.5S17,82.7,16,81.8s-2.3-1.4-3.8-1.4H7.9L7.9,80.4z M15,82.8c0.7,0.6,1,1.5,1,2.5c0,1.1-0.3,1.9-1,2.5s-1.6,0.9-2.7,0.9H9.4v-6.9h2.8C13.4,81.8,14.3,82.2,15,82.8L15,82.8z M25,90.2 v-9.8h-1.6v9.8H25L25,90.2z M41.5,90.2v-1.4h-8v-3.1h5v-1.4h-5v-2.4H41v-1.4h-9.1v9.7L41.5,90.2L41.5,90.2z M66.2,90.2v-1.4h-6.3 l6.4-8.3h-8.5v1.4h5.7l-6.3,8.3H66.2L66.2,90.2z M75.7,82.7l1.9,3.7h-3.8L75.7,82.7L75.7,82.7z M71.8,90.2l1.3-2.5h5.1l1.3,2.5h1.6 l-5-9.7h-1l-5,9.7H71.8L71.8,90.2z M94.4,85.7v4.5H96v-9.7h-1.5v3.8h-6.8v-3.8h-1.5v9.7h1.5v-4.5H94.4L94.4,85.7z M104.3,90.2v-6.8 l6.2,6.8h0.8v-9.7h-1.5v6.8l-6.2-6.8h-0.8v9.7H104.3L104.3,90.2z M119.8,90.1c0.9,0.3,1.9,0.4,2.8,0.4c1.3,0,2.3-0.3,3.1-0.9 c0.8-0.6,1.2-1.4,1.2-2.3c0-1-0.4-1.8-1.2-2.3c-0.8-0.5-2-0.8-3.5-0.8c-1.1,0-1.9-0.1-2.4-0.3c-0.5-0.2-0.7-0.5-0.7-0.9 s0.2-0.8,0.7-1c0.5-0.3,1-0.4,1.8-0.4c0.6,0,1.3,0.1,2,0.3c0.7,0.2,1.4,0.5,2,1l0.8-1.3c-0.7-0.5-1.5-0.8-2.3-1s-1.6-0.4-2.4-0.4 c-1.2,0-2.2,0.3-2.9,0.8c-0.7,0.5-1.1,1.2-1.1,2c0,0.9,0.3,1.5,1,1.9s1.9,0.6,3.6,0.6c1,0,1.8,0.2,2.3,0.5s0.7,0.7,0.7,1.2 c0,0.6-0.3,1-0.8,1.4s-1.2,0.5-2.1,0.5c-0.7,0-1.5-0.1-2.3-0.4c-0.8-0.2-1.5-0.6-2.2-1l-0.7,1.3C118.1,89.4,118.9,89.8,119.8,90.1 L119.8,90.1z M134.7,81.9h5.6c0.5,0,0.9,0.1,1.1,0.3c0.3,0.2,0.4,0.6,0.4,1s-0.1,0.8-0.4,1c-0.3,0.2-0.7,0.3-1.2,0.3h-5.6 L134.7,81.9L134.7,81.9z M140.4,85.9c0.9,0,1.6-0.3,2.2-0.8c0.6-0.5,0.8-1.2,0.8-2c0-0.9-0.3-1.5-0.8-2c-0.6-0.5-1.3-0.7-2.4-0.7 h-7.1v9.7h1.5v-4.3h5.8V85.9z M158.7,90.2v-1.4h-8v-3.1h5v-1.4h-5v-2.4h7.6v-1.4h-9.1v9.7L158.7,90.2L158.7,90.2z M172.1,90.2v-1.4 h-6.3l6.4-8.3h-8.5v1.4h5.7l-6.3,8.3H172.1L172.1,90.2z M179.6,90.2v-9.8H178v9.8H179.6L179.6,90.2z M190.1,82.7l1.9,3.7h-3.8 L190.1,82.7L190.1,82.7z M186.2,90.2l1.3-2.5h5.1l1.3,2.5h1.6l-5-9.7h-1l-4.9,9.7H186.2L186.2,90.2z M209.2,90.2v-1.4H202v-8.3 h-1.5v9.7L209.2,90.2L209.2,90.2z M216,90.2v-9.8h-1.6v9.8H216L216,90.2z M224.6,90.1c0.9,0.3,1.9,0.4,2.8,0.4 c1.3,0,2.3-0.3,3.1-0.9s1.2-1.4,1.2-2.3c0-1-0.4-1.8-1.2-2.3s-2-0.8-3.5-0.8c-1.1,0-1.9-0.1-2.4-0.3c-0.5-0.2-0.7-0.5-0.7-0.9 s0.2-0.8,0.7-1c0.4-0.3,1-0.4,1.8-0.4c0.6,0,1.3,0.1,2,0.3c0.7,0.2,1.4,0.5,2,1l0.8-1.3c-0.7-0.5-1.5-0.8-2.3-1s-1.6-0.4-2.4-0.4 c-1.2,0-2.2,0.3-2.9,0.8s-1.1,1.2-1.1,2c0,0.9,0.3,1.5,1,1.9s1.9,0.6,3.6,0.6c1,0,1.8,0.2,2.3,0.5s0.7,0.7,0.7,1.2 c0,0.6-0.3,1-0.8,1.4s-1.2,0.5-2.1,0.5c-0.7,0-1.5-0.1-2.3-0.4c-0.8-0.2-1.5-0.6-2.2-1L222,89C222.8,89.4,223.7,89.8,224.6,90.1 L224.6,90.1z M241.8,90.2v-8.4h4.1v-1.4h-9.7v1.4h4.1v8.4H241.8L241.8,90.2z M260.5,90.2v-1.4h-8v-3.1h5v-1.4h-5v-2.4h7.6v-1.4H251 v9.7L260.5,90.2L260.5,90.2z M267.7,90.2v-6.8l6.2,6.8h0.8v-9.7h-1.5v6.8l-6.2-6.8h-0.8v9.7H267.7"></path>
+  <path
+    class="logo-wort"
+    d="M0,73.3v9.7h4.3c1.6,0,2.9-.4,3.9-1.3,1-.9,1.4-2,1.4-3.5s-.5-2.6-1.5-3.5-2.3-1.4-3.8-1.4c0,0-4.3,0-4.3,0ZM7.1,75.7c.7.6,1,1.5,1,2.5s-.3,1.9-1,2.5-1.6.9-2.7.9H1.5v-6.9h2.8c1.2,0,2.1.4,2.8,1h0ZM17.1,83.1v-9.8h-1.6v9.8h1.6ZM33.6,83.1v-1.4h-8v-3.1h5v-1.4h-5v-2.4h7.5v-1.4h-9.1v9.7s9.6,0,9.6,0ZM58.3,83.1v-1.4h-6.3l6.4-8.3h-8.5v1.4h5.7l-6.3,8.3s9,0,9,0ZM67.8,75.6l1.9,3.7h-3.8l1.9-3.7h0ZM63.9,83.1l1.3-2.5h5.1l1.3,2.5h1.6l-5-9.7h-1l-5,9.7s1.7,0,1.7,0ZM86.5,78.6v4.5h1.6v-9.7h-1.5v3.8h-6.8v-3.8h-1.5v9.7h1.5v-4.5h6.7ZM96.4,83.1v-6.8l6.2,6.8h.8v-9.7h-1.5v6.8l-6.2-6.8h-.8v9.7h1.5ZM111.9,83c.9.3,1.9.4,2.8.4,1.3,0,2.3-.3,3.1-.9.8-.6,1.2-1.4,1.2-2.3s-.4-1.8-1.2-2.3c-.8-.5-2-.8-3.5-.8s-1.9,0-2.4-.3c-.5-.2-.7-.5-.7-.9s.2-.8.7-1c.5-.3,1-.4,1.8-.4s1.3,0,2,.3c.7.2,1.4.5,2,1l.8-1.3c-.7-.5-1.5-.8-2.3-1s-1.6-.4-2.4-.4c-1.2,0-2.2.3-2.9.8-.7.5-1.1,1.2-1.1,2s.3,1.5,1,1.9,1.9.6,3.6.6,1.8.2,2.3.5.7.7.7,1.2-.3,1-.8,1.4-1.2.5-2.1.5-1.5,0-2.3-.4c-.8-.2-1.5-.6-2.2-1l-.7,1.3c.9.4,1.7.8,2.6,1.1h0ZM126.8,74.8h5.6c.5,0,.9,0,1.1.3.3.2.4.6.4,1s-.1.8-.4,1c-.3.2-.7.3-1.2.3h-5.6v-2.6h0ZM132.5,78.8c.9,0,1.6-.3,2.2-.8.6-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.7-2.4-.7h-7.1v9.7h1.5v-4.3h5.8ZM150.8,83.1v-1.4h-8v-3.1h5v-1.4h-5v-2.4h7.6v-1.4h-9.1v9.7s9.5,0,9.5,0ZM164.2,83.1v-1.4h-6.3l6.4-8.3h-8.5v1.4h5.7l-6.3,8.3h9ZM171.7,83.1v-9.8h-1.6v9.8h1.6ZM182.2,75.6l1.9,3.7h-3.8l1.9-3.7h0ZM178.3,83.1l1.3-2.5h5.1l1.3,2.5h1.6l-5-9.7h-1l-4.9,9.7h1.6,0ZM201.3,83.1v-1.4h-7.2v-8.3h-1.5v9.7s8.7,0,8.7,0ZM208.1,83.1v-9.8h-1.6v9.8h1.6ZM216.7,83c.9.3,1.9.4,2.8.4,1.3,0,2.3-.3,3.1-.9s1.2-1.4,1.2-2.3-.4-1.8-1.2-2.3-2-.8-3.5-.8-1.9,0-2.4-.3c-.5-.2-.7-.5-.7-.9s.2-.8.7-1c.4-.3,1-.4,1.8-.4s1.3,0,2,.3c.7.2,1.4.5,2,1l.8-1.3c-.7-.5-1.5-.8-2.3-1s-1.6-.4-2.4-.4c-1.2,0-2.2.3-2.9.8s-1.1,1.2-1.1,2,.3,1.5,1,1.9,1.9.6,3.6.6,1.8.2,2.3.5.7.7.7,1.2-.3,1-.8,1.4-1.2.5-2.1.5-1.5,0-2.3-.4c-.8-.2-1.5-.6-2.2-1l-.7,1.3c.8.4,1.7.8,2.6,1.1h0ZM233.9,83.1v-8.4h4.1v-1.4h-9.7v1.4h4.1v8.4h1.5,0ZM252.6,83.1v-1.4h-8v-3.1h5v-1.4h-5v-2.4h7.6v-1.4h-9.1v9.7s9.5,0,9.5,0ZM259.8,83.1v-6.8l6.2,6.8h.8v-9.7h-1.5v6.8l-6.2-6.8h-.8v9.7h1.5"
+  ></path>
+
+  {/* KU */}
+  <path
+    class="logo-ku"
+    d="M16.8,59.5v-31.7l19.9,31.6h19.4l-22.3-33.2L54.4.1h-18.4l-19.2,25.9V.1H.1v59.3h16.7s0,0,0,.1ZM60.2,36.1c0,8,2.3,14.1,6.8,18.2s11.3,6.1,20.3,6.1,16.5-2,21.5-6c4.9-4,7.4-9.9,7.4-17.5V.1h-16v35.3c0,4.2-1,7.4-3.1,9.7s-5,3.4-8.8,3.4-6.7-1.1-8.6-3.3-2.9-5.5-2.9-9.8V.1h-16.6v36"
+  ></path>
+
+  {/* 64 */}
+  <path
+    class="logo-64"
+    d="M149.7,27.5c4.3-1.3,8.7-2,13.1-2s10.8,1.4,14.8,4.1c4,2.7,6,6.1,6,10.1s-1.9,7.2-5.7,9.9c-3.8,2.8-8.6,4.2-14.2,4.2s-13.2-2-18.5-5.9-8.3-8.7-9-14.3c4.7-2.7,9.2-4.8,13.5-6.1h0ZM187.9,9.9c-4.1-3.4-8.2-5.9-12.5-7.5S166.4,0,161.4,0C151.5,0,143.4,2.8,137.2,8.4c-6.2,5.6-9.3,12.8-9.3,21.7s3.4,16.1,10.1,22c6.7,5.9,15.3,8.8,25.7,8.8s15.1-2,20.2-5.9c5.1-3.9,7.7-9.1,7.7-15.4s-2.7-11.2-8.2-15.2c-5.4-4-12.4-6-20.8-6s-8.9.6-13.1,1.7c-4.2,1.1-8.6,2.8-13.2,5.2.9-5.6,3.7-10.1,8.2-13.4s10.3-4.9,17.2-4.9,7.5.7,11.2,2.1c3.7,1.4,7.3,3.4,10.6,6.1l4.4-5.3h0ZM249.5,10.6v27.6h-34.7l34.7-27.6h0ZM257.3,59.5v-14.2h9.7v-7.1h-9.7V1.3h-7.7l-46.4,36.9v7.1h46.4v14.2h7.7"
+  ></path>
 </svg>
 
 <style>
   /**
-   * Die Marke ist dreifarbig, nicht einfarbig.
-   *
-   * VORGABE: „KU“ rot – auf dunklem Grund weiß –, „64“ rot, „Die
-   * Zahnspezialisten“ schwarz. Alles in einer Farbe war zu hart.
-   *
-   * Der Zusatz trägt deshalb bewusst NICHT das Rot: Er ist die leise Zeile
-   * unter dem Namen, und in Rot gesetzt wäre er genauso laut wie die Marke
-   * selbst. Zusätzlich ist er klein – Rot in 7 px Höhe liest sich schlechter
-   * als Schwarz, weil dünne rote Striche auf Weiß ausfransen.
-   *
-   * Umgesetzt über eigene Klassen statt über `currentColor`: Das Logo hat
-   * jetzt eigene Farben und erbt sie nicht mehr aus der Umgebung.
+   * Die Farben stehen in der Originaldatei und werden hier nicht neu
+   * erfunden – sie sind nur benannt, damit man sie beim Lesen wiedererkennt.
    */
   .logo-marke {
     display: block;
     width: auto;
   }
 
-  .logo-ku,
+  .logo-ku {
+    fill: #fc0;
+  }
+
   .logo-64 {
-    fill: var(--ku-rot);
+    fill: #b71e3f;
   }
 
   .logo-wort {
-    fill: var(--ku-schwarz);
+    fill: #000;
   }
 
   /**
    * Auf dunklem Grund – dunkle Fläche, Foto, Video, dunkler Modus.
    *
-   * Dort steht „KU“ in Weiß: Rot auf Schwarz erreicht 2,3:1 und wäre für den
-   * prägendsten Teil der Marke zu wenig. Die „64“ bleibt rot, aber in der
-   * helleren Fassung (4,6:1 auf Schwarz) – sonst verlöre die Marke genau das
-   * Merkmal, an dem man sie erkennt.
+   * Das Gelb bleibt: Auf Dunkel ist es das kontraststärkste der drei und
+   * genau der Teil, an dem man die Marke erkennt. Das Hausrot dagegen
+   * erreicht auf Schwarz nur 2,3:1 und weicht deshalb auf die hellere
+   * Hausfassung aus. Der schwarze Zusatz wird weiß – schwarz auf schwarz
+   * wäre keine Zurückhaltung, sondern Abwesenheit.
    */
-  :global(.auf-medium) .logo-ku,
-  :global(.dunkel) .logo-ku {
-    fill: #fff;
-  }
-
   :global(.auf-medium) .logo-64,
   :global(.dunkel) .logo-64 {
     fill: var(--ku-rot-hell);
@@ -98,9 +120,6 @@ const { hoehe = '1.9rem', dekorativ = false, titel = 'KU64 – Die Zahnspezialis
   }
 
   @media (prefers-color-scheme: dark) {
-    .logo-ku {
-      fill: #fff;
-    }
     .logo-64 {
       fill: var(--ku-rot-hell);
     }

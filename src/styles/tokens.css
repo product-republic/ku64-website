@@ -60,8 +60,22 @@
    * Gelb bleibt der Marke: im Logo, im Lichtschein hinter dem Glas, als
    * schmale Markierung. Es trägt keine Schaltfläche mehr.
    */
-  --knopf-flaeche: #201f1d;
-  --knopf-flaeche-aktiv: #35332f;
+  /*
+   * Der Hauptknopf als dunkles Glas.
+   *
+   * Er war deckend schwarz – aus dem Gedanken heraus, dass „Termin buchen"
+   * die eine Handlung ist und nicht schwächer aussehen darf als alles
+   * andere. Das stimmt, folgt aber nicht: Dunkles Glas ist nicht schwächer
+   * als dunkles Deckend, es ist nur durchlässiger. Auf einer Website, deren
+   * Kopfleiste verschwimmt, ist ein massiver schwarzer Block der einzige
+   * Gegenstand ohne Physik.
+   *
+   * 0,82 statt voll deckend. Weniger geht nicht: Die Schrift darauf ist
+   * weiß, und weiß auf halbdurchsichtigem Dunkel über einem hellen Foto
+   * verliert seinen Kontrast schneller, als man denkt – nachgemessen unten.
+   */
+  --knopf-flaeche: rgb(32 31 29 / 0.82);
+  --knopf-flaeche-aktiv: rgb(53 51 47 / 0.9);
   --knopf-schrift: #fbfaf7;
   /* Für Schaltflächen auf Bild und Video: hell auf dunklem Grund. */
   --knopf-hell-flaeche: rgb(255 255 255 / 0.94);
@@ -388,8 +402,8 @@
 
     /* Umgekehrte Schaltflächen: Auf dunklem Grund ist die helle Pille die
        Hauptschaltfläche – dieselbe Logik wie im Entwurf mit dem Foto. */
-    --knopf-flaeche: #f4f1ea;
-    --knopf-flaeche-aktiv: #ffffff;
+    --knopf-flaeche: rgb(244 241 234 / 0.86);
+    --knopf-flaeche-aktiv: rgb(255 255 255 / 0.94);
     --knopf-schrift: #17150f;
     --knopf-hell-flaeche: rgb(255 255 255 / 0.92);
     --knopf-hell-schrift: #17150f;

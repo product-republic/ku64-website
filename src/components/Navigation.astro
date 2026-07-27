@@ -1106,8 +1106,35 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     }
 
     .kopf-aktionen .knopf {
-      padding-inline: var(--raum-4);
+      padding-inline: var(--raum-3);
       font-size: var(--t-xs);
+    }
+
+    /*
+     * Der Kopf muss schrumpfen können, nicht nur schmaler aussehen.
+     *
+     * Auf Englisch heißt der Knopf „Book an appointment" statt „Termin
+     * buchen" – sechs Zeichen mehr, und der Kopf lief bei 390 Pixeln um acht
+     * darüber hinaus. Feste Abstände zu verkleinern reicht dagegen nicht:
+     * Ein Flex-Element mit `white-space: nowrap` schiebt hinaus, statt sich
+     * zu fügen, solange ihm niemand `min-width: 0` erlaubt.
+     *
+     * Die Beschriftung wird dann notfalls abgeschnitten. Das ist der
+     * richtige Ausgang: Ein Knopf, dessen Text am Rand endet, ist bedienbar;
+     * eine Seite, die sich seitlich schieben lässt, ist es nicht.
+     */
+    .kopf-aktionen {
+      min-width: 0;
+    }
+
+    .kopf-aktionen .knopf {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .logo {
+      min-width: 0;
     }
   }
 </style>
