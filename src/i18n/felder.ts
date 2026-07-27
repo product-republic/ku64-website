@@ -20,10 +20,27 @@ export interface Feldspec {
   texte?: string[];
   /** Felder, die eine Liste von Texten enthalten. */
   listen?: string[];
-  /** Felder mit einer Liste gleichförmiger Objekte. */
-  objektlisten?: Record<string, string[]>;
+  /**
+   * Felder mit einer Liste gleichförmiger Objekte.
+   *
+   * Kurzform: eine Liste von Feldnamen, wenn die Objekte nur Texte enthalten
+   * (`faq: ['frage', 'antwort']`). Ausführliche Form: eine eigene Feldspec,
+   * wenn die Objekte selbst wieder Listen oder Objektlisten enthalten.
+   *
+   * Die ausführliche Form kam mit den Beschwerdeseiten dazu: Dort steht in
+   * jedem Abschnitt eine Liste von Blöcken, und in manchen Blöcken wieder
+   * eine Liste von Punkten. Zwei Ebenen tief – und ohne Rekursion hätte es
+   * dafür einen zweiten Mechanismus gebraucht, der irgendwann von diesem
+   * hier abweicht.
+   */
+  objektlisten?: Record<string, string[] | Feldspec>;
   /** Verschachtelte Objekte mit eigener Beschreibung. */
   objekte?: Record<string, Feldspec>;
+}
+
+/** Kurzform in die ausführliche übersetzen. */
+function alsSpec(wert: string[] | Feldspec): Feldspec {
+  return Array.isArray(wert) ? { texte: wert } : wert;
 }
 
 export const SPEC_LEISTUNG: Feldspec = {
@@ -52,6 +69,56 @@ export const SPEC_STANDORT: Feldspec = {
       texte: ['parken', 'barrierefreiHinweis'],
       listen: ['oepnv'],
     },
+  },
+};
+
+/**
+ * Behandlerprofil.
+ *
+ * `name` bleibt außen vor – ein Name wird nicht übersetzt. Die
+ * Funktionsbezeichnung schon: „Fachzahnärztin für Kieferorthopädie" ist eine
+ * Berufsangabe und keine Anrede.
+ */
+export const SPEC_PERSON: Feldspec = {
+  texte: ['funktion'],
+  listen: ['vorstellung'],
+  objektlisten: {
+    abschnitte: {
+      texte: ['titel'],
+      listen: ['zeilen'],
+    },
+  },
+};
+
+/** Blogbeitrag. Datum, Standorte und Bildpfade bleiben, wie sie sind. */
+export const SPEC_BEITRAG: Feldspec = {
+  texte: ['titel', 'anriss'],
+  objektlisten: {
+    bloecke: {
+      texte: ['text'],
+      listen: ['punkte'],
+    },
+  },
+};
+
+/** Beschwerdeseite – zwei Ebenen tief, siehe Kommentar bei `objektlisten`. */
+export const SPEC_BESCHWERDE: Feldspec = {
+  texte: ['titel', 'beschreibung'],
+  objektlisten: {
+    einstieg: {
+      texte: ['text'],
+      listen: ['punkte'],
+    },
+    abschnitte: {
+      texte: ['titel'],
+      objektlisten: {
+        bloecke: {
+          texte: ['text'],
+          listen: ['punkte'],
+        },
+      },
+    },
+    faq: ['frage', 'antwort'],
   },
 };
 
@@ -84,16 +151,12 @@ export function sammeln(objekt: unknown, spec: Feldspec, praefix: string): Recor
     }
   }
 
-  for (const [feld, unterfelder] of Object.entries(spec.objektlisten ?? {})) {
+  for (const [feld, roh] of Object.entries(spec.objektlisten ?? {})) {
+    const unterspec = alsSpec(roh);
     const wert = o[feld];
     if (Array.isArray(wert)) {
       wert.forEach((eintrag, i) => {
-        for (const uf of unterfelder) {
-          const text = (eintrag as Beliebig)?.[uf];
-          if (typeof text === 'string' && text.trim() !== '') {
-            aus[`${praefix}.${feld}.${i}.${uf}`] = text;
-          }
-        }
+        Object.assign(aus, sammeln(eintrag, unterspec, `${praefix}.${feld}.${i}`));
       });
     }
   }
@@ -138,19 +201,13 @@ export function anwenden<T>(
     }
   }
 
-  for (const [feld, unterfelder] of Object.entries(spec.objektlisten ?? {})) {
+  for (const [feld, roh] of Object.entries(spec.objektlisten ?? {})) {
+    const unterspec = alsSpec(roh);
     const wert = o[feld];
     if (Array.isArray(wert)) {
-      kopie[feld] = wert.map((eintrag, i) => {
-        const neu: Beliebig = { ...(eintrag as Beliebig) };
-        for (const uf of unterfelder) {
-          const text = neu[uf];
-          if (typeof text === 'string' && text.trim() !== '') {
-            neu[uf] = hole(`${praefix}.${feld}.${i}.${uf}`, text);
-          }
-        }
-        return neu;
-      });
+      kopie[feld] = wert.map((eintrag, i) =>
+        anwenden(eintrag, unterspec, `${praefix}.${feld}.${i}`, hole),
+      );
     }
   }
 

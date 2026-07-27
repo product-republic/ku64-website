@@ -75,7 +75,10 @@ const t = texte(daten.sprache);
 
 const standort = daten.standort(Astro.params.standort!)!;
 const person = veroeffentlichbar().find((m) => m.slug === Astro.params.person)!;
-const profil = (profile as Record<string, Profil>)[person.slug];
+/* Über `daten`: Werdegang und Vorstellung sind lange Fließtexte und standen
+   auf der englischen Seite auf Deutsch. `profile` bleibt importiert, weil
+   getStaticPaths die rohen Slugs braucht – dort gibt es noch keine Sprache. */
+const profil = daten.person(person.slug) as Profil;
 
 interface Profil {
   name: string;

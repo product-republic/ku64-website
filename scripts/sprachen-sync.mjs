@@ -40,8 +40,44 @@ const aufraeumen = args.includes('--aufraeumen');
 const nurSprache = args.find((a) => a.startsWith('--sprache='))?.split('=')[1];
 
 const MODELL = process.env.UEBERSETZUNG_MODELL || 'claude-sonnet-5';
-/** Kleine Bündel: Ein Fehlschlag kostet dann wenig, und die Antwort bleibt gültiges JSON. */
-const BUENDEL = 20;
+
+/*
+ * Gebündelt wird nach Zeichen, nicht nach Anzahl.
+ *
+ * Zwanzig Oberflächentexte sind zusammen dreihundert Zeichen; zwanzig
+ * Absätze einer Beschwerdeseite sind zwanzigtausend. Bei fester Stückzahl
+ * läuft das zweite Bündel in die Ausgabegrenze, die Antwort bricht mitten
+ * im JSON ab, und der ganze Lauf endet mit „Antwort war kein gültiges
+ * JSON" – nach einer halben Stunde und mit dem Rest unübersetzt.
+ *
+ * 12.000 Zeichen deutscher Text ergeben grob 4000 Token Eingabe und selten
+ * mehr als 6000 Token Ausgabe. Bei 16.000 erlaubten passt das mit Abstand.
+ */
+const BUENDEL_ZEICHEN = 12000;
+/** Auch kurze Texte werden nicht beliebig viele auf einmal – die Antwort soll überschaubar bleiben. */
+const BUENDEL_MAX = 25;
+
+/** Teilt die offenen Schlüssel in Bündel, die zusammen unter der Grenze bleiben. */
+function buendeln(schluessel, laenge) {
+  const buendel = [];
+  let aktuell = [];
+  let zeichen = 0;
+
+  for (const k of schluessel) {
+    const l = laenge(k);
+    /* Ein einzelner Text über der Grenze bekommt sein eigenes Bündel – ihn
+       zu teilen wäre falsch, er gehört als Ganzes übersetzt. */
+    if (aktuell.length > 0 && (zeichen + l > BUENDEL_ZEICHEN || aktuell.length >= BUENDEL_MAX)) {
+      buendel.push(aktuell);
+      aktuell = [];
+      zeichen = 0;
+    }
+    aktuell.push(k);
+    zeichen += l;
+  }
+  if (aktuell.length) buendel.push(aktuell);
+  return buendel;
+}
 
 const quelle = quelltexte();
 const schluessel = Object.keys(quelle);
@@ -95,9 +131,32 @@ for (const sprache of SPRACHEN) {
     continue;
   }
 
-  for (let i = 0; i < offen.length; i += BUENDEL) {
-    const teil = offen.slice(i, i + BUENDEL);
-    const ergebnis = await uebersetzen(teil, sprache);
+  const buendel = buendeln(offen, (k) => quelle[k].length);
+  const gesamtZeichen = offen.reduce((n, k) => n + quelle[k].length, 0);
+  console.log(
+    `[sync] ${sprache.code}: ${buendel.length} Bündel, ` +
+      `${Math.round(gesamtZeichen / 1000)} Tausend Zeichen`,
+  );
+
+  let fertig = 0;
+  let uebersprungen = 0;
+
+  for (const [nr, teil] of buendel.entries()) {
+    let ergebnis;
+    try {
+      ergebnis = await uebersetzen(teil, sprache);
+    } catch (fehler) {
+      /*
+       * Ein Bündel, das scheitert, darf nicht den ganzen Lauf mitnehmen.
+       *
+       * Beim nächsten Aufruf steht es wieder in der Liste der offenen
+       * Schlüssel – der Fingerabdruck sorgt dafür. Gemeldet wird es
+       * trotzdem, damit niemand ein stilles Loch für Vollständigkeit hält.
+       */
+      console.error(`[sync] Bündel ${nr + 1} übersprungen: ${fehler.message.split('\n')[0]}`);
+      uebersprungen += teil.length;
+      continue;
+    }
 
     for (const [k, text] of Object.entries(ergebnis)) {
       katalog.eintraege[k] = { text, quelle: fingerabdruck(quelle[k]) };
@@ -106,8 +165,14 @@ for (const sprache of SPRACHEN) {
     // Nach jedem Bündel schreiben: Bricht der Lauf ab, ist die Arbeit bis
     // hierhin gesichert und der nächste Aufruf setzt genau dort fort.
     await katalogSchreiben(pfad, katalog);
-    console.log(
-      `[sync] ${sprache.code}: ${Math.min(i + BUENDEL, offen.length)}/${offen.length} übersetzt`,
+    fertig += teil.length;
+    console.log(`[sync] ${sprache.code}: ${fertig}/${offen.length} übersetzt`);
+  }
+
+  if (uebersprungen > 0) {
+    console.error(
+      `[sync] ${sprache.code}: ${uebersprungen} Texte blieben offen. ` +
+        'Erneut aufrufen – der Lauf setzt genau dort fort.',
     );
   }
 
@@ -135,7 +200,7 @@ async function uebersetzen(keys, sprache) {
 
   const antwort = await client.messages.create({
     model: MODELL,
-    max_tokens: 8000,
+    max_tokens: 16000,
     system: [
       {
         type: 'text',

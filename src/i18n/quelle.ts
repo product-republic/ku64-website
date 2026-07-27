@@ -15,8 +15,19 @@
 
 import { KATEGORIEN, LEISTUNGEN } from '../data/leistungen.ts';
 import { STANDORTE } from '../data/standorte.ts';
-import { sammeln, SPEC_KATEGORIE, SPEC_LEISTUNG, SPEC_STANDORT } from './felder.ts';
+import {
+  sammeln,
+  SPEC_BESCHWERDE,
+  SPEC_BEITRAG,
+  SPEC_KATEGORIE,
+  SPEC_LEISTUNG,
+  SPEC_PERSON,
+  SPEC_STANDORT,
+} from './felder.ts';
 import { TEXTE } from './texte.ts';
+import profile from '../data/profile.json' with { type: 'json' };
+import beitraege from '../data/blog.json' with { type: 'json' };
+import beschwerden from '../data/beschwerden.json' with { type: 'json' };
 
 export function quelltexte(): Record<string, string> {
   const aus: Record<string, string> = {};
@@ -34,6 +45,26 @@ export function quelltexte(): Record<string, string> {
     Object.assign(aus, sammeln(s, SPEC_STANDORT, `standort.${s.slug}`));
   }
 
+  /*
+   * Und die langen Inhalte: Behandlerprofile, Blogbeiträge,
+   * Beschwerdeseiten.
+   *
+   * Sie standen bis eben nicht hier – und weil der Wächter nur zählt, was
+   * hier steht, meldete er 100 Prozent, während die englische
+   * Beschwerdeseite dreitausend Wörter Deutsch zeigte. Das ist derselbe
+   * blinde Fleck wie bei den Oberflächentexten, nur eine Ebene größer:
+   * 6062 Texte, gut eine Million Zeichen.
+   */
+  for (const [slug, person] of Object.entries(profile)) {
+    Object.assign(aus, sammeln(person, SPEC_PERSON, `person.${slug}`));
+  }
+  for (const b of beitraege) {
+    Object.assign(aus, sammeln(b, SPEC_BEITRAG, `beitrag.${b.slug}`));
+  }
+  for (const b of beschwerden) {
+    Object.assign(aus, sammeln(b, SPEC_BESCHWERDE, `beschwerde.${b.slug}`));
+  }
+
   return aus;
 }
 
@@ -47,6 +78,26 @@ export function quelltexte(): Record<string, string> {
 export function kontextFuer(schluessel: string): string {
   if (schluessel.startsWith('ui.')) {
     return 'Oberflächentext einer Website (Schaltfläche, Navigationspunkt oder kurzer Hinweis). Muss kurz bleiben, damit das Layout nicht bricht.';
+  }
+  if (schluessel.startsWith('person.')) {
+    const feld = schluessel.split('.').slice(2).join('.');
+    if (feld.startsWith('abschnitte') && feld.includes('zeilen'))
+      return 'Zeile aus dem Werdegang einer zahnärztlichen Fachkraft: Zeitraum, Tätigkeit, Ort. Jahreszahlen und Eigennamen von Praxen, Universitäten und Städten bleiben unverändert.';
+    if (feld.startsWith('abschnitte'))
+      return 'Überschrift über dem Werdegang oder den Schwerpunkten einer Person, z. B. "Werdegang von …". Der Name darin bleibt unverändert.';
+    if (feld.startsWith('vorstellung'))
+      return 'Absatz, in dem sich eine Zahnärztin oder ein Zahnarzt den Patientinnen und Patienten selbst vorstellt. Erste Person, persönlicher Ton – der bleibt erhalten.';
+    return 'Funktionsbezeichnung in einer Zahnarztpraxis, z. B. "Fachzahnärztin für Kieferorthopädie". Deutsche Fachzahnarzt-Titel haben in anderen Ländern nicht immer eine Entsprechung – dann die gebräuchliche Umschreibung wählen, nicht erfinden.';
+  }
+  if (schluessel.startsWith('beitrag.')) {
+    return 'Abschnitt aus einem Beitrag im Blog einer Zahnarztpraxis. Ton wie im Deutschen: informativ, ohne Werbesprache. Namen von Personen, Praxen und Veranstaltungen bleiben unverändert.';
+  }
+  if (schluessel.startsWith('beschwerde.')) {
+    const feld = schluessel.split('.').slice(2).join('.');
+    if (feld === 'beschreibung')
+      return 'Kurzbeschreibung einer Seite für Suchmaschinen. Höchstens 160 Zeichen, sonst wird sie abgeschnitten. Enthaltene Telefonnummern und Symbole bleiben unverändert.';
+    if (feld.startsWith('faq')) return 'Frage oder Antwort zu einer Zahnbeschwerde.';
+    return 'Abschnitt einer Seite über eine Zahnbeschwerde – was sie verursacht, was man tun kann, wann man zum Zahnarzt sollte. Der Text stammt aus dem Bestand der Praxis und ist fachlich freigegeben: sinngemäß übersetzen, aber keine Aussage abschwächen, verstärken oder hinzufügen.';
   }
   if (schluessel.startsWith('leistung.')) {
     const feld = schluessel.split('.').slice(2).join('.');

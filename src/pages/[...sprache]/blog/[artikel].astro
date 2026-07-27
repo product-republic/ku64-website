@@ -32,7 +32,6 @@ import TerminBand from '../../../components/TerminBand.astro';
 import Lesefortschritt from '../../../components/Lesefortschritt.astro';
 import {
   BEITRAEGE,
-  beitrag as findeBeitrag,
   datumLesbar,
   lesedauer,
   gliederung,
@@ -48,7 +47,9 @@ export function getStaticPaths() {
 const daten = inhalte(Astro);
 const t = texte(daten.sprache);
 
-const beitrag = findeBeitrag(Astro.params.artikel!)!;
+/* Über `daten`, nicht über den direkten Import: Sonst steht der Beitrag auf
+   der englischen Seite auf Deutsch – klaglos und ohne Fehlermeldung. */
+const beitrag = daten.beitrag(Astro.params.artikel!)!;
 const pfad = `/blog/${beitrag.slug}/`;
 const minuten = lesedauer(beitrag);
 const marken = gliederung(beitrag);
@@ -64,12 +65,13 @@ const orte = beitrag.standorte
   .filter((s) => s !== undefined);
 
 /* Weiterlesen: Beiträge mit gemeinsamem Standort, sonst die neuesten. */
+const alleBeitraege = daten.beitraege;
 const weitere = (
   beitrag.standorte.length
-    ? BEITRAEGE.filter(
+    ? alleBeitraege.filter(
         (b) => b.slug !== beitrag.slug && b.standorte.some((s) => beitrag.standorte.includes(s)),
       )
-    : BEITRAEGE.filter((b) => b.slug !== beitrag.slug)
+    : alleBeitraege.filter((b) => b.slug !== beitrag.slug)
 ).slice(0, 3);
 
 const schema = [

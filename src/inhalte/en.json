@@ -337,6 +337,142 @@
       "text": "Temporomandibular dysfunction (TMD) occurs when the teeth, jaw joints and chewing muscles don't work together properly. The symptoms often show up far from the jaw – as headaches, ringing in the ears or neck tension. We measure your jaw function systematically and treat the underlying cause.",
       "quelle": "b6977c0d"
     },
+    "leistung.dentosophie.ablauf.0.dauer": {
+      "text": "60 minutes",
+      "quelle": "f379bf19"
+    },
+    "leistung.dentosophie.ablauf.0.text": {
+      "text": "We look at how breathing, tongue position, lip closure, chewing and swallowing work together – and what has fallen out of sync.",
+      "quelle": "35f37196"
+    },
+    "leistung.dentosophie.ablauf.0.titel": {
+      "text": "Examination and consultation",
+      "quelle": "514a43c4"
+    },
+    "leistung.dentosophie.ablauf.1.text": {
+      "text": "A soft, mouthguard-shaped training appliance. It supports correct tongue position, encourages a natural swallowing pattern and promotes nasal breathing.",
+      "quelle": "813f99d0"
+    },
+    "leistung.dentosophie.ablauf.1.titel": {
+      "text": "The Balancer",
+      "quelle": "fb25a932"
+    },
+    "leistung.dentosophie.ablauf.2.text": {
+      "text": "Myofunctional exercises to correct the muscle imbalance. Active participation is part of the concept – new movement patterns are practised, not acquired on their own.",
+      "quelle": "e06765a1"
+    },
+    "leistung.dentosophie.ablauf.2.titel": {
+      "text": "Exercises for home",
+      "quelle": "083adc45"
+    },
+    "leistung.dentosophie.ablauf.3.text": {
+      "text": "Over six to twelve months, we monitor the progress and adjust the appliance and exercises as needed.",
+      "quelle": "02c03422"
+    },
+    "leistung.dentosophie.ablauf.3.titel": {
+      "text": "Regular check-ups",
+      "quelle": "8fb33a5f"
+    },
+    "leistung.dentosophie.dauer": {
+      "text": "About six to twelve months, with regular check-up appointments",
+      "quelle": "b1c04796"
+    },
+    "leistung.dentosophie.faq.0.antwort": {
+      "text": "For children and adolescents during development, as well as for adults. It is a gentle approach wherever functional issues play a role: mouth breathing, incorrect tongue position, abnormal swallowing, grinding, clenching or jaw misalignment. It is often used alongside other dental treatments.",
+      "quelle": "f3f75e79"
+    },
+    "leistung.dentosophie.faq.0.frage": {
+      "text": "Who is Dentosophie suitable for?",
+      "quelle": "d0b02f18"
+    },
+    "leistung.dentosophie.faq.1.antwort": {
+      "text": "An elastic training device shaped like a dental arch, made of plastic. It supports tongue function, lip closure, swallowing and nasal breathing. During the therapy phase, it is worn regularly together with the accompanying exercises.",
+      "quelle": "7c1dd1f0"
+    },
+    "leistung.dentosophie.faq.1.frage": {
+      "text": "What is the Balancer?",
+      "quelle": "e625aaba"
+    },
+    "leistung.dentosophie.faq.2.antwort": {
+      "text": "This depends on the findings, age and treatment goal. As a rule, it takes around six to twelve months. In individual cases, longer-term support may be advisable.",
+      "quelle": "49a5dde1"
+    },
+    "leistung.dentosophie.faq.2.frage": {
+      "text": "How long does Dentosophie treatment take?",
+      "quelle": "4a7b9ee7"
+    },
+    "leistung.dentosophie.faq.3.antwort": {
+      "text": "Statutory health insurers in Germany generally do not cover Dentosophie. For privately insured patients and those with private supplementary dental insurance, cover depends on the specific policy. We will advise you in detail about the process and costs before treatment begins.",
+      "quelle": "5292a2a2"
+    },
+    "leistung.dentosophie.faq.3.frage": {
+      "text": "Does health insurance cover the cost?",
+      "quelle": "a67f9dd1"
+    },
+    "leistung.dentosophie.faq.4.antwort": {
+      "text": "Dentosophie works on function, while a brace works on position. Where a misalignment has developed due to an unfavourable pattern – mouth breathing, incorrect swallowing – Dentosophie addresses the cause. Where the position itself is the problem, orthodontic treatment is unavoidable. Which applies in your case will become clear from the examination.",
+      "quelle": "c74ad3f2"
+    },
+    "leistung.dentosophie.faq.4.frage": {
+      "text": "When does Dentosophie make sense, and when is a brace needed?",
+      "quelle": "d2e06ef5"
+    },
+    "leistung.dentosophie.kasse": {
+      "text": "Statutory health insurance in Germany does not usually cover Dentosophy. For private insurance and supplementary dental insurance, it depends on the tariff – we will discuss the process and costs with you before starting.",
+      "quelle": "ad7215a9"
+    },
+    "leistung.dentosophie.kurz": {
+      "text": "Bringing breathing, tongue position and bite into balance – without braces.",
+      "quelle": "f97223dd"
+    },
+    "leistung.dentosophie.name": {
+      "text": "Dentosophy",
+      "quelle": "6a8afb65"
+    },
+    "leistung.dentosophie.patientenfrage": {
+      "text": "Can misaligned teeth be treated without fixed braces?",
+      "quelle": "27752a0f"
+    },
+    "leistung.dentosophie.synonyme.0": {
+      "text": "Dentosophy",
+      "quelle": "6a8afb65"
+    },
+    "leistung.dentosophie.synonyme.1": {
+      "text": "Balancer",
+      "quelle": "cacc6ffb"
+    },
+    "leistung.dentosophie.synonyme.2": {
+      "text": "activator",
+      "quelle": "d7e8446c"
+    },
+    "leistung.dentosophie.synonyme.3": {
+      "text": "myofunctional therapy",
+      "quelle": "932ff53e"
+    },
+    "leistung.dentosophie.synonyme.4": {
+      "text": "mouth breathing",
+      "quelle": "86ccc5bd"
+    },
+    "leistung.dentosophie.synonyme.5": {
+      "text": "tongue posture",
+      "quelle": "6435dc67"
+    },
+    "leistung.dentosophie.synonyme.6": {
+      "text": "swallowing pattern",
+      "quelle": "bb9189c6"
+    },
+    "leistung.dentosophie.synonyme.7": {
+      "text": "holistic orthodontics",
+      "quelle": "0904b67e"
+    },
+    "leistung.dentosophie.synonyme.8": {
+      "text": "braces without wires",
+      "quelle": "ff98da1d"
+    },
+    "leistung.dentosophie.teaser": {
+      "text": "Dentosophy addresses the root of many problems: breathing, tongue position, lip closure, chewing and swallowing. A soft training appliance, combined with exercises, gradually helps change unconscious patterns – in children and adults alike.",
+      "quelle": "05595428"
+    },
     "leistung.dvt-3d-roentgen.dauer": {
       "text": "10 to 20 seconds scan time",
       "quelle": "0239d36e"
@@ -2606,8 +2742,8 @@
       "quelle": "e69ab05a"
     },
     "standort.potsdam.besonderheiten.1": {
-      "text": "Open seven days a week, weekends included",
-      "quelle": "bc52cb0e"
+      "text": "Monday to Friday from 8am to 8pm, weekends by appointment",
+      "quelle": "aaaf79e9"
     },
     "standort.potsdam.besonderheiten.2": {
       "text": "The full range of treatments, from prophylaxis to implantology",
@@ -2622,8 +2758,8 @@
       "quelle": "10f17fef"
     },
     "standort.potsdam.claim": {
-      "text": "Dentistry in the listed Palais Ritz: the full range of treatments, seven days a week, right on Berliner Straße.",
-      "quelle": "2420e516"
+      "text": "Dentistry in the listed Palais Ritz: the full range of care, right on Berliner Straße.",
+      "quelle": "22d532fd"
     },
     "standort.potsdam.doctolib.0.label": {
       "text": "Dentistry",
@@ -2685,6 +2821,694 @@
       "text": "Opening hours for the KiezPraxis are not yet confirmed – please check before publication.",
       "quelle": "f4aaeaf5"
     },
+    "ui.anamnese.absendenFertig": {
+      "text": "Submit – done",
+      "quelle": "91d42e61"
+    },
+    "ui.anamnese.allergienGegenBetaeubungsmittelOder": {
+      "text": "Allergies to anaesthetics or antibiotics",
+      "quelle": "434e01b7"
+    },
+    "ui.anamnese.anAllenKu64Standorten": {
+      "text": "At all KU64 locations",
+      "quelle": "a9973a5f"
+    },
+    "ui.anamnese.anamnesebogenOeffnen": {
+      "text": "Open medical history form",
+      "quelle": "4be063d7"
+    },
+    "ui.anamnese.anamneseVorabAusfuellen": {
+      "text": "Fill in medical history beforehand",
+      "quelle": "fd131d6f"
+    },
+    "ui.anamnese.angabenMachen": {
+      "text": "Provide details",
+      "quelle": "46dd474b"
+    },
+    "ui.anamnese.bisphosphonateOderOsteoporoseTherapie": {
+      "text": "Bisphosphonates or osteoporosis therapy",
+      "quelle": "696cfa21"
+    },
+    "ui.anamnese.bitteUnbedingtAngeben": {
+      "text": "Please be sure to mention this",
+      "quelle": "11d10b99"
+    },
+    "ui.anamnese.blutverduennendeMedikamente": {
+      "text": "Blood-thinning medication",
+      "quelle": "a1e0fcab"
+    },
+    "ui.anamnese.dasSolltenSieBereithalten": {
+      "text": "What you should have ready",
+      "quelle": "7ff9a9ba"
+    },
+    "ui.anamnese.diesePunkteAendernKonkret": {
+      "text": "These points directly affect how we're allowed to treat you – please mention them even if they seem minor to you:",
+      "quelle": "2a9c939c"
+    },
+    "ui.anamnese.formularOeffnen": {
+      "text": "Open form",
+      "quelle": "e20e32d0"
+    },
+    "ui.anamnese.fragenZurDigitalenAnamnese": {
+      "text": "Questions about the digital medical history",
+      "quelle": "1efe74d0"
+    },
+    "ui.anamnese.herzklappenersatzOderHerzerkrankungen": {
+      "text": "Heart valve replacement or heart conditions",
+      "quelle": "a4977978"
+    },
+    "ui.anamnese.ihreAngabenGehenVerschluesselt": {
+      "text": "Your details are sent encrypted to our practice system. Everything is ready when you arrive for your appointment.",
+      "quelle": "2024679f"
+    },
+    "ui.anamnese.marcumarOderAntikoagulanzienAusweis": {
+      "text": "Marcumar or anticoagulant card",
+      "quelle": "e2f035d8"
+    },
+    "ui.anamnese.medikamentenplanFallsVorhanden": {
+      "text": "Medication plan, if you have one",
+      "quelle": "c3fb09a3"
+    },
+    "ui.anamnese.mitDemOeffnenWechseln": {
+      "text": "By opening this, you'll be taken to Nelly Solutions, our provider for digital patient forms. Their privacy notice applies in addition to",
+      "quelle": "d6b48e6e"
+    },
+    "ui.anamnese.nochNichtFreigeschaltet": {
+      "text": "Not yet activated.",
+      "quelle": "3df239df"
+    },
+    "ui.anamnese.oeffnetInNeuemTab": {
+      "text": "(opens in a new tab at Nelly Solutions)",
+      "quelle": "5e9c96c7"
+    },
+    "ui.anamnese.schwangerschaftOderStillzeit": {
+      "text": "Pregnancy or breastfeeding",
+      "quelle": "922250fc"
+    },
+    "ui.anamnese.sieBrauchenWederKonto": {
+      "text": "You won't need an account or an app – a link is all it takes.",
+      "quelle": "ce9d188b"
+    },
+    "ui.anamnese.vorbefundeOderRoentgenbilderAnderer": {
+      "text": "Previous findings or X-rays from other practices",
+      "quelle": "d4f878f8"
+    },
+    "ui.anamnese.vorerkrankungenMedikamenteAllergienHalten": {
+      "text": "Pre-existing conditions, medication, allergies. Please have your medication plan ready if you take anything regularly.",
+      "quelle": "2fa772c2"
+    },
+    "ui.anamnesez.beschreibung": {
+      "text": "Fill in the medical history form online in advance – at all KU64 locations in Berlin and Potsdam.",
+      "quelle": "9f4e437e"
+    },
+    "ui.anamnesez.digitaleAnamnese": {
+      "text": "Online medical history",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.anamnesez.fuenfMinutenZuHause": {
+      "text": "Five minutes at home instead of a clipboard in the waiting room – at all our practices.",
+      "quelle": "fed7da06"
+    },
+    "ui.anamnesez.woTermin": {
+      "text": "Where is your appointment?",
+      "quelle": "d86f774c"
+    },
+    "ui.anfahrt.mitDemAuto": {
+      "text": "By car",
+      "quelle": "7bc13792"
+    },
+    "ui.anfahrt.mitOeffentlichenVerkehrsmitteln": {
+      "text": "By public transport",
+      "quelle": "4e27720c"
+    },
+    "ui.anfahrt.routePlanen": {
+      "text": "Plan your route",
+      "quelle": "aea4bcc6"
+    },
+    "ui.berater.begruessung": {
+      "text": "Hello! I answer your questions about treatments, costs and procedures at KU64. What would you like to know?",
+      "quelle": "14ca48e0"
+    },
+    "ui.berater.begruessungOrt": {
+      "text": "Hello! I answer your questions about treatments, costs and procedures at KU64 {ort}. What would you like to know?",
+      "quelle": "dd7b63a5"
+    },
+    "ui.berater.eingabeHinweis": {
+      "text": "Type your question…",
+      "quelle": "045b7143"
+    },
+    "ui.berater.frageSenden": {
+      "text": "Send question",
+      "quelle": "61723a3d"
+    },
+    "ui.berater.ihreFrage": {
+      "text": "Your question",
+      "quelle": "6101c0da"
+    },
+    "ui.berater.keineDiagnosen": {
+      "text": "I don't give diagnoses and don't need any personal details from you. If you're in severe pain, please call us directly.",
+      "quelle": "705a580d"
+    },
+    "ui.berater.keineDiagnosenOrt": {
+      "text": "I don't give diagnoses and don't need any personal details from you. If you're in severe pain, please call us directly on {telefon}.",
+      "quelle": "59c31472"
+    },
+    "ui.berater.menschUnter": {
+      "text": "To speak to a person, call {telefon}.",
+      "quelle": "820bf594"
+    },
+    "ui.berater.oeffnen": {
+      "text": "Questions? Open advisor",
+      "quelle": "005b32ab"
+    },
+    "ui.berater.schliessen": {
+      "text": "Close advisor",
+      "quelle": "ee12ab86"
+    },
+    "ui.berater.standortWaehlen": {
+      "text": "Please choose a location",
+      "quelle": "49db019a"
+    },
+    "ui.berater.wieDasFunktioniert": {
+      "text": "How this works",
+      "quelle": "4e9d29a0"
+    },
+    "ui.beratung.allgemeinNochUnentschieden": {
+      "text": "General / still undecided",
+      "quelle": "e3f03827"
+    },
+    "ui.beratung.beiStarkenSchmerzenSchwellung": {
+      "text": "For severe pain, facial swelling or fever: please call us directly. For breathing or swallowing difficulties, call 112.",
+      "quelle": "8fe94029"
+    },
+    "ui.beratung.bereitKlickenSieUm": {
+      "text": "Ready. Click to start the conversation.",
+      "quelle": "5b0dfb02"
+    },
+    "ui.beratung.chatOeffnen": {
+      "text": "Open chat",
+      "quelle": "7eb9fb8e"
+    },
+    "ui.beratung.derChatUntenRechts": {
+      "text": "The chat at the bottom right answers the same questions – in text form, no microphone needed.",
+      "quelle": "834777c2"
+    },
+    "ui.beratung.fragenZuEinerBehandlung": {
+      "text": "Questions about a treatment, costs or the process? Just ask out loud – the assistant answers in natural language and knows what each practice offers.",
+      "quelle": "d08ce9de"
+    },
+    "ui.beratung.fragenZurDigitalenBeratung": {
+      "text": "Questions about the digital consultation",
+      "quelle": "6452be28"
+    },
+    "ui.beratung.gespraechStarten": {
+      "text": "Start conversation",
+      "quelle": "3a3d1810"
+    },
+    "ui.beratung.ihrBrowserFragtDanach": {
+      "text": "Your browser will then ask for permission to use the microphone. Nothing happens without your consent.",
+      "quelle": "23fa63db"
+    },
+    "ui.beratung.keineDiagnoseUndKeine": {
+      "text": "No diagnosis and no assessment of symptoms",
+      "quelle": "03967f0b"
+    },
+    "ui.beratung.keineTerminbuchungUndKeine": {
+      "text": "No appointment booking and no collection of personal data",
+      "quelle": "637ae879"
+    },
+    "ui.beratung.keineZusagenZuBehandlungsergebnissen": {
+      "text": "No promises about treatment outcomes",
+      "quelle": "5769c42b"
+    },
+    "ui.beratung.lieberMitEinemMenschen": {
+      "text": "Prefer to speak to a person?",
+      "quelle": "bfd8082c"
+    },
+    "ui.beratung.lieberSchreiben": {
+      "text": "Prefer to write?",
+      "quelle": "4c5262e2"
+    },
+    "ui.beratung.rundUmDieUhr": {
+      "text": "Around the clock",
+      "quelle": "88af7e73"
+    },
+    "ui.beratung.selbstverstaendlichRufenSieDen": {
+      "text": "Of course. Call the location nearest to you:",
+      "quelle": "d7d56091"
+    },
+    "ui.beratung.sprechenSieMitUnserem": {
+      "text": "Talk to our digital adviser",
+      "quelle": "3511c337"
+    },
+    "ui.beratung.wasDerBeraterNicht": {
+      "text": "What the adviser does not do",
+      "quelle": "94d4a205"
+    },
+    "ui.beratung.welchesSystemHierArbeitet": {
+      "text": "Which system is working here",
+      "quelle": "3b15e603"
+    },
+    "ui.beratung.zuWelchemStandortHaben": {
+      "text": "Which location is your question about?",
+      "quelle": "4c9b02f3"
+    },
+    "ui.beratungz.beschreibung": {
+      "text": "Speak or chat with our digital adviser – around the clock, about treatments, costs and processes at KU64.",
+      "quelle": "c7d7de41"
+    },
+    "ui.beschw.dannLesenSieHier": {
+      "text": "Then there's no need to read on. We keep time free for pain patients at every practice.",
+      "quelle": "67074ccb"
+    },
+    "ui.beschw.dieseTexteStammenAus": {
+      "text": "These texts come from the practice's own material. They don't replace an examination: what's causing your symptoms can only be determined in the dental chair.",
+      "quelle": "94035059"
+    },
+    "ui.beschw.kannAkutSein": {
+      "text": "Can be urgent",
+      "quelle": "ccbd22f5"
+    },
+    "ui.beschw.starkeSchmerzenOderEine": {
+      "text": "Severe pain or an injury?",
+      "quelle": "bdc6eb9c"
+    },
+    "ui.beschw.wasHabenSie": {
+      "text": "What's wrong?",
+      "quelle": "c1d78b22"
+    },
+    "ui.beschwerde.herkunft": {
+      "text": "This text comes from the practice's own material and is no substitute for an examination: only a check-up in the chair can show what is causing your symptoms.",
+      "quelle": "ec6f0736"
+    },
+    "ui.beschwseite.aufDieserSeite": {
+      "text": "On this page",
+      "quelle": "88204195"
+    },
+    "ui.beschwseite.wasBeiEinemZahnnotfall": {
+      "text": "What to do in a dental emergency →",
+      "quelle": "eb74640f"
+    },
+    "ui.beschwseite.wasDagegenHilft": {
+      "text": "What helps",
+      "quelle": "e3bcfd26"
+    },
+    "ui.beschwseite.wirHaltenAnJedem": {
+      "text": "At every location, we keep time free for patients in pain.",
+      "quelle": "17467662"
+    },
+    "ui.bf.alleFunktionenSindMit": {
+      "text": "All functions can be operated using the keyboard, with a visible focus outline",
+      "quelle": "fafaca00"
+    },
+    "ui.bf.alternativtexteFuerBildmaterialWerden": {
+      "text": "Alt text for images will be added once the images are available",
+      "quelle": "ef2c409e"
+    },
+    "ui.bf.aufklappbareInhalteFunktionierenAuch": {
+      "text": "Expandable content also works without JavaScript",
+      "quelle": "9b73ec59"
+    },
+    "ui.bf.barriereMelden": {
+      "text": "Report a barrier",
+      "quelle": "0d5aac88"
+    },
+    "ui.bf.bedienelementeSindMindestens44": {
+      "text": "Interactive elements are at least 44 × 44 pixels in size",
+      "quelle": "da6d3345"
+    },
+    "ui.bf.beschreibung": {
+      "text": "How accessible this website and our practices are – and what's still outstanding.",
+      "quelle": "9283bb30"
+    },
+    "ui.bf.bewegteEffekteWerdenBei": {
+      "text": "Animated effects are switched off when the 'Reduce motion' system setting is enabled",
+      "quelle": "32b6b7e2"
+    },
+    "ui.bf.bitteSagenSieUns": {
+      "text": "Please let us know – this helps us more than any self-assessment could. Briefly describe which page and which assistive technology are affected. We'll get back to you and fix what can be fixed.",
+      "quelle": "ede28602"
+    },
+    "ui.bf.dieseWebsiteSollFuer": {
+      "text": "This website is meant to be usable by everyone – including with a screen reader, using only the keyboard, with limited vision, or when on-screen motion causes discomfort. Here you'll find an honest account of what has been implemented and what hasn't.",
+      "quelle": "08ffdf94"
+    },
+    "ui.bf.dieTerminbuchungVonDoctolib": {
+      "text": "Doctolib's appointment booking is a third-party system, and we have no control over its accessibility",
+      "quelle": "c945a7fe"
+    },
+    "ui.bf.einDunklesFarbschemaWird": {
+      "text": "A dark colour scheme is applied automatically if your system requests it",
+      "quelle": "a7133ec5"
+    },
+    "ui.bf.einSprunglinkFuehrtDirekt": {
+      "text": "A skip link takes you straight to the content, without having to go through the navigation",
+      "quelle": "5b3ae353"
+    },
+    "ui.bf.etwasGefunden": {
+      "text": "Found something that doesn't work?",
+      "quelle": "8d991796"
+    },
+    "ui.bf.leichteSpracheUndGebaerdensprachvideos": {
+      "text": "Easy Read and sign language videos are not yet available",
+      "quelle": "c3cc6eb7"
+    },
+    "ui.bf.schriftgroessenSkalierenMitIhren": {
+      "text": "Text size follows your browser settings, staying readable up to 200%",
+      "quelle": "1e533b5b"
+    },
+    "ui.bf.screenreaderTest": {
+      "text": "Full testing with screen readers (NVDA, VoiceOver) is still pending",
+      "quelle": "bb82ca3c"
+    },
+    "ui.bf.statusmeldungenWerdenScreenreadernAngekuendigt": {
+      "text": "Status messages are announced to screen readers",
+      "quelle": "51174460"
+    },
+    "ui.bf.wasNochOffenIst": {
+      "text": "What's still outstanding",
+      "quelle": "7fad6a5c"
+    },
+    "ui.bf.wasUmgesetztIst": {
+      "text": "What's been implemented",
+      "quelle": "fe8ee992"
+    },
+    "ui.bf.zugaenglichkeitUnsererPraxen": {
+      "text": "Accessibility of our practices",
+      "quelle": "00dcd8a7"
+    },
+    "ui.blog.aufDieserSeite": {
+      "text": "On this page",
+      "quelle": "88204195"
+    },
+    "ui.blog.weiterlesen": {
+      "text": "Read more",
+      "quelle": "3fb16c9e"
+    },
+    "ui.blogliste.beitragLesen": {
+      "text": "Read article →",
+      "quelle": "518e3908"
+    },
+    "ui.blogliste.nachStandort": {
+      "text": "By location:",
+      "quelle": "7b59b11c"
+    },
+    "ui.blogliste.neuesterBeitrag": {
+      "text": "Latest article",
+      "quelle": "0b0d7f34"
+    },
+    "ui.blogliste.zahnmedizinischerBlog": {
+      "text": "Dental blog",
+      "quelle": "61ea82a4"
+    },
+    "ui.blogseite.aufDieserSeite": {
+      "text": "On this page",
+      "quelle": "88204195"
+    },
+    "ui.blogseite.fragenZuDiesemThema": {
+      "text": "We're happy to answer questions on this topic in person.",
+      "quelle": "1aec95cf"
+    },
+    "ui.blogseite.termin": {
+      "text": "Appointment",
+      "quelle": "12c12fbc"
+    },
+    "ui.blogseite.terminBuchen": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.blogz.nachStandort": {
+      "text": "Articles by location",
+      "quelle": "9f3ee4ba"
+    },
+    "ui.ck.beschreibung": {
+      "text": "This website does not use analytics or advertising cookies. What's actually stored and how to delete it.",
+      "quelle": "fb73fcda"
+    },
+    "ui.ck.datenschutzerklaerung": {
+      "text": "privacy policy",
+      "quelle": "24f50bb8"
+    },
+    "ui.ck.drittanbieterText": {
+      "text": "Only when you actively trigger it: when loading the Doctolib appointment calendar, opening the digital medical history form, or using the voice assistant or smile preview. Nothing happens before that. Details are in the {verweis}.",
+      "quelle": "336ba397"
+    },
+    "ui.ck.einKlickGenuegtDanach": {
+      "text": "One click is all it takes – afterwards, this website's local storage is empty.",
+      "quelle": "d756a1bd"
+    },
+    "ui.ck.einleitung": {
+      "text": "<strong>This website does not use analytics or advertising cookies</strong> – no analytics cookies, no advertising cookies and no tracking pixels. That's why there's no consent banner for you to click away either.",
+      "quelle": "2a11cb13"
+    },
+    "ui.ck.gespeicherteAngabenLoeschen": {
+      "text": "Delete stored information",
+      "quelle": "43cf4080"
+    },
+    "ui.ck.ihrZuletztGewaehlterStandort": {
+      "text": "– the location you last chose, so we can show you the right information next time you visit. No automatic redirect takes place.",
+      "quelle": "be96cd2d"
+    },
+    "ui.ck.loeschen": {
+      "text": "Delete",
+      "quelle": "57def7c0"
+    },
+    "ui.ck.nurVorhandenWennSie": {
+      "text": "– only present if you've loaded an embedded service and ticked that we should remember your choice. As long as you don't, nothing is stored.",
+      "quelle": "d7a535dd"
+    },
+    "ui.ck.seitentitel": {
+      "text": "Cookie settings",
+      "quelle": "8ade692f"
+    },
+    "ui.ck.wannDochDrittanbieterIns": {
+      "text": "When third parties do come into play",
+      "quelle": "3c0091c6"
+    },
+    "ui.ck.wasTatsaechlichGespeichertWird": {
+      "text": "What is actually stored",
+      "quelle": "c9260bde"
+    },
+    "ui.ck.zweiAngaben": {
+      "text": "Two pieces of information are held in your browser's local storage. They never reach our server and are purely for your convenience:",
+      "quelle": "4aa34230"
+    },
+    "ui.ds.10Aenderungen": {
+      "text": "10. Changes",
+      "quelle": "e797ba3a"
+    },
+    "ui.ds.1Verantwortlicher": {
+      "text": "1. Data controller",
+      "quelle": "96bc02df"
+    },
+    "ui.ds.2WasBeimAufruf": {
+      "text": "2. What happens when you visit this website",
+      "quelle": "7a5ec84a"
+    },
+    "ui.ds.3LokaleSpeicherungIm": {
+      "text": "3. Local storage in your browser",
+      "quelle": "9b1268f9"
+    },
+    "ui.ds.4Doctolib": {
+      "text": "4. Online appointment booking (Doctolib)",
+      "quelle": "6d40c3ab"
+    },
+    "ui.ds.5Anamnese": {
+      "text": "5. Digital medical history form (Nelly Solutions)",
+      "quelle": "482e70f4"
+    },
+    "ui.ds.6Berater": {
+      "text": "6. Digital adviser (text and voice)",
+      "quelle": "cce54266"
+    },
+    "ui.ds.7Laecheln": {
+      "text": "7. Smile preview (photo upload)",
+      "quelle": "55c5d735"
+    },
+    "ui.ds.8Kontaktaufnahme": {
+      "text": "8. Getting in touch",
+      "quelle": "c1155912"
+    },
+    "ui.ds.9IhreRechte": {
+      "text": "9. Your rights",
+      "quelle": "a7ded7cb"
+    },
+    "ui.ds.aenderungenText": {
+      "text": "We update this notice whenever the website or the legal situation changes. Last updated: <code>[enter date on publication]</code>.",
+      "quelle": "ffba5898"
+    },
+    "ui.ds.anamneseEins": {
+      "text": "The medical history form is provided by Nelly Solutions. This website merely redirects you there and does not process any <strong>health data</strong> itself. Your details go directly from the form into our practice management system.",
+      "quelle": "ba04eddd"
+    },
+    "ui.ds.anamneseZwei": {
+      "text": "The legal basis for processing your health data is Art. 9(2)(h) GDPR in conjunction with § 630f BGB (documentation requirement). Retention period of patient records: <code>[usually 10 years – please confirm]</code>. Data processing agreement with Nelly Solutions: <code>[status to be added]</code>.",
+      "quelle": "3457b6df"
+    },
+    "ui.ds.beidesKoennenSieJederzeit": {
+      "text": "You can delete both at any time via your browser settings. This is not personal data in the strict sense, nor a user profile.",
+      "quelle": "035256b6"
+    },
+    "ui.ds.beraterHinweis": {
+      "text": "The adviser is instructed not to ask for health data or make diagnoses. Please still avoid sharing sensitive details with it – for anything medical, your personal appointment is the right place. Legal basis: Art. 6(1)(f) GDPR. Data processing agreements: <code>[add status]</code>.",
+      "quelle": "9a4c8cf5"
+    },
+    "ui.ds.beraterSprache": {
+      "text": "<strong>Voice adviser.</strong> The voice dialogue runs via ElevenLabs. The microphone is only activated after your explicit permission. Your voice is processed to generate the answer; we do not make any permanent recording.",
+      "quelle": "ea8801d9"
+    },
+    "ui.ds.beraterText": {
+      "text": "<strong>Text chat.</strong> Your question is sent to our server and from there to Anthropic to generate the answer. The conversation history exists only in your browser window and is lost when you close it. We do not store questions or answers and keep no conversation logs. To prevent misuse, we briefly count requests per IP address in memory.",
+      "quelle": "b7ef5b09"
+    },
+    "ui.ds.beschreibung": {
+      "text": "How this website handles your data – clearly and transparently.",
+      "quelle": "3309452f"
+    },
+    "ui.ds.beschwerdeText": {
+      "text": "You may also lodge a complaint with a supervisory authority – the competent one is either where you live or where the practice is based: <code>[enter competent supervisory authority]</code>.",
+      "quelle": "2f1dc21a"
+    },
+    "ui.ds.dasErgebnisWirdIhnen": {
+      "text": "The result is shown to you and sent to the address you provide. The address is used only for this one email and is not stored afterwards.",
+      "quelle": "e0e309d0"
+    },
+    "ui.ds.datenschutzbeauftragter": {
+      "text": "Data Protection Officer: <code>[Name, contact details]</code>",
+      "quelle": "f4f95c77"
+    },
+    "ui.ds.doctolibEins": {
+      "text": "Appointment booking is handled via Doctolib. The calendar is <strong>not embedded</strong> on this website: you are taken there via a link, and the change in web address shows you that you are then on doctolib.de. As long as you remain on our site, no connection to Doctolib is made – not even loading in the background.",
+      "quelle": "029152df"
+    },
+    "ui.ds.doctolibZwei": {
+      "text": "Only once you are on Doctolib's site will your IP address and browser data be processed there and cookies set. Doctolib is responsible for this; Doctolib's privacy policy applies. Because nothing is embedded on our site, no consent under § 25(1) TDDDG is required here. Data processing agreement for appointment management: <code>[status to be added]</code>.",
+      "quelle": "a2e9cef1"
+    },
+    "ui.ds.entwurf": {
+      "text": "<strong>Draft version.</strong> The technical part describes exactly how this website behaves. Before publication, this policy must be completed with the practice's details and reviewed by a solicitor. Sections marked with <code>[…]</code> still need to be filled in.",
+      "quelle": "4575d06b"
+    },
+    "ui.ds.keineAnalyse": {
+      "text": "<strong>No analytics tools, no advertising cookies.</strong> This website does not set any cookies for analytics or marketing purposes and does not include any tracking pixels.",
+      "quelle": "bba197dc"
+    },
+    "ui.ds.kontaktText": {
+      "text": "When you call or write to us, we process your details to handle your enquiry (Art. 6(1)(b) and (f) GDPR). Please do not send us health data by unencrypted email – this route is not technically confidential.",
+      "quelle": "37f7a94e"
+    },
+    "ui.ds.laechelnAblauf": {
+      "text": "Here is exactly how the processing works:",
+      "quelle": "7b179b9d"
+    },
+    "ui.ds.laechelnEins": {
+      "text": "A photo of your face is <strong>biometric data</strong> and therefore a special category of personal data under Art. 9 GDPR. We process it only on the basis of your explicit, prior consent (Art. 9(2)(a) GDPR).",
+      "quelle": "654f8109"
+    },
+    "ui.ds.laechelnGoogle": {
+      "text": "For analysis and image generation, it is sent to Google (Gemini).",
+      "quelle": "f13ad419"
+    },
+    "ui.ds.laechelnSchluss": {
+      "text": "The generated image is a non-binding illustration and not a treatment outcome. You can withdraw your consent at any time with effect for the future; since nothing is stored, there is nothing left to delete afterwards. Data processing agreement with Google: <code>[add status]</code>.",
+      "quelle": "aad69f88"
+    },
+    "ui.ds.laechelnSpeicher": {
+      "text": "Your photo is transferred to our server and held there only in working memory. It is <strong>never written to storage</strong> and is not added to any database.",
+      "quelle": "1b8d1100"
+    },
+    "ui.ds.lokalEinleitung": {
+      "text": "We store two pieces of information in your browser (localStorage) that never reach our server:",
+      "quelle": "f9d08a36"
+    },
+    "ui.ds.lokalStandort": {
+      "text": "<strong>Your most recently selected location</strong>, so we can show you the right details on your next visit. There is no automatic redirection.",
+      "quelle": "9a765988"
+    },
+    "ui.ds.lokalTermin": {
+      "text": "<strong>Your choice regarding appointment booking</strong>, if you have ticked the box asking us to remember it.",
+      "quelle": "fefb4112"
+    },
+    "ui.ds.nachAbschlussDerAnfrage": {
+      "text": "Once your enquiry is complete, the photo and result are no longer kept on our server.",
+      "quelle": "ee063677"
+    },
+    "ui.ds.rechteText": {
+      "text": "You have the right to access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and objection (Art. 21 GDPR). You may withdraw any consent given at any time with effect for the future.",
+      "quelle": "b57a02e3"
+    },
+    "ui.ds.schriften": {
+      "text": "<strong>Fonts are served locally.</strong> No connection is made to Google Fonts or any other font network. Your IP address is therefore not shared with third parties.",
+      "quelle": "0f7e6bd2"
+    },
+    "ui.ds.seitentitel": {
+      "text": "Privacy Policy",
+      "quelle": "24f50bb8"
+    },
+    "ui.ds.serverdaten": {
+      "text": "When you visit a page, your browser sends technically necessary data to our server: IP address, time, page requested, browser type and operating system. This data is required to deliver the page to you. The legal basis is Art. 6(1)(f) GDPR. Server logs are kept for: <code>[number of days]</code>.",
+      "quelle": "2417ea87"
+    },
+    "ui.ds.verantwortlicherAngaben": {
+      "text": "<code>[Full name of the practice / operator, address, phone, email, legal representation]</code>",
+      "quelle": "d46bdf35"
+    },
+    "ui.fehler.alleBehandlungen": {
+      "text": "All treatments",
+      "quelle": "694db5ee"
+    },
+    "ui.fehler.alleBehandlungenIn": {
+      "text": "All treatments in {ort}",
+      "quelle": "036776d6"
+    },
+    "ui.fehler.alleStandorte": {
+      "text": "All locations",
+      "quelle": "c5be1351"
+    },
+    "ui.fehler.beiStandort": {
+      "text": "{name} at KU64 {ort}",
+      "quelle": "1e0cd561"
+    },
+    "ui.fehler.beraterFragen": {
+      "text": "Ask an advisor",
+      "quelle": "c7a9cedf"
+    },
+    "ui.fehler.beschreibung": {
+      "text": "This page no longer exists. Here's where to find what you were looking for.",
+      "quelle": "28a42b80"
+    },
+    "ui.fehler.gibtEsNichtIn": {
+      "text": "{name} is not offered in {ort}",
+      "quelle": "be7b1d2c"
+    },
+    "ui.fehler.nichtsDabei": {
+      "text": "Nothing here?",
+      "quelle": "4f318d14"
+    },
+    "ui.fehler.nirgends": {
+      "text": "We currently don't offer this treatment at any location. Please call us – we'll tell you who can help.",
+      "quelle": "82299dc2"
+    },
+    "ui.fehler.notfall": {
+      "text": "Emergency",
+      "quelle": "75c3c7ff"
+    },
+    "ui.fehler.oderStandort": {
+      "text": "Or go straight to your practice",
+      "quelle": "2236cc0f"
+    },
+    "ui.fehler.platzhalter": {
+      "text": "e.g. implant, whitening, toothache",
+      "quelle": "c9fd4008"
+    },
+    "ui.fehler.seitentitel": {
+      "text": "Page not found",
+      "quelle": "52d56493"
+    },
+    "ui.fehler.stattdessenDort": {
+      "text": "We don't offer this treatment at this location. You can get it at {wo} – you'll find opening hours, phone number and online booking there.",
+      "quelle": "9ebdd242"
+    },
     "ui.fehler.suchen": {
       "text": "Search treatments",
       "quelle": "f9ef7d33"
@@ -2696,6 +3520,10 @@
     "ui.fehler.titel": {
       "text": "This page does not exist",
       "quelle": "59a255f5"
+    },
+    "ui.fehler.und": {
+      "text": "and",
+      "quelle": "5ad4af9a"
     },
     "ui.fuss.aktuellGewaehlt": {
       "text": "(currently selected)",
@@ -2709,6 +3537,10 @@
       "text": "Areas of treatment",
       "quelle": "a8728901"
     },
+    "ui.fuss.beschwerdenAZ": {
+      "text": "Dental issues A–Z",
+      "quelle": "0afdf788"
+    },
     "ui.fuss.cookieEinstellungen": {
       "text": "Cookie settings",
       "quelle": "8ade692f"
@@ -2716,6 +3548,10 @@
     "ui.fuss.datenschutz": {
       "text": "Privacy",
       "quelle": "f95b3d96"
+    },
+    "ui.fuss.digitaleAnamnese": {
+      "text": "Digital medical history",
+      "quelle": "a9d6bcd2"
     },
     "ui.fuss.haeufigGesucht": {
       "text": "Frequently searched",
@@ -2729,6 +3565,10 @@
       "text": "Careers",
       "quelle": "bed1a24e"
     },
+    "ui.fuss.kiTransparenz": {
+      "text": "AI transparency",
+      "quelle": "5528b9bc"
+    },
     "ui.fuss.laechelnVorschau": {
       "text": "Smile preview",
       "quelle": "50789e23"
@@ -2740,6 +3580,10 @@
     "ui.fuss.oeffnungszeiten": {
       "text": "Opening hours",
       "quelle": "92e62cdb"
+    },
+    "ui.fuss.oeffnungszeitenVon": {
+      "text": "Opening hours KU64 {name}",
+      "quelle": "c3c354cc"
     },
     "ui.fuss.ohneStandort": {
       "text": "Dentistry at four locations in Berlin and Potsdam. Please choose your practice – opening hours and the range of treatments differ.",
@@ -2785,13 +3629,173 @@
       "text": "Skip to content",
       "quelle": "60ca65f1"
     },
+    "ui.imp.angabenNach5Ddg": {
+      "text": "Information under § 5 DDG",
+      "quelle": "4628d2d4"
+    },
+    "ui.imp.anschrift": {
+      "text": "<code>[Full name of the practice / company]</code><br /><code>[Legal form]</code><br /><code>[Street, house number]</code><br /><code>[Postcode, town]</code>",
+      "quelle": "7effb441"
+    },
+    "ui.imp.berufsAngaben": {
+      "text": "Professional title: <code>[e.g. dentist]</code>, awarded in <code>[Country]</code><br />Competent chamber: <code>[Dental chamber, address, website]</code><br />Competent Association of Statutory Health Insurance Dentists: <code>[…]</code><br />Supervisory authority: <code>[…]</code>",
+      "quelle": "9fa611f4"
+    },
+    "ui.imp.berufsrechtlicheAngaben": {
+      "text": "Professional regulatory information",
+      "quelle": "635bf4ab"
+    },
+    "ui.imp.berufsRegeln": {
+      "text": "The following professional regulations apply: Dental Practitioners Act (ZHG), professional code of conduct of the competent dental chamber, Schedule of Fees for Dentists (GOZ), Health Professions Act of the federal state. Available at <code>[Reference]</code>.",
+      "quelle": "0bd6e3ba"
+    },
+    "ui.imp.beschreibung": {
+      "text": "Provider identification and professional regulatory information.",
+      "quelle": "55cb362f"
+    },
+    "ui.imp.bildnachweise": {
+      "text": "Picture credits",
+      "quelle": "682f1ad9"
+    },
+    "ui.imp.bildnachweiseAngabe": {
+      "text": "<code>[Copyright holders and licences of the images used]</code>",
+      "quelle": "3200ad6b"
+    },
+    "ui.imp.entwurf": {
+      "text": "<strong>Draft version.</strong> A legal notice consists of factual information about the practice. Fields marked with <code>[…]</code> are to be completed by the practice before publication.",
+      "quelle": "84434d29"
+    },
+    "ui.imp.haftpflicht": {
+      "text": "Professional indemnity insurance",
+      "quelle": "98036bb4"
+    },
+    "ui.imp.haftpflichtAngabe": {
+      "text": "<code>[Name and address of the insurer]</code><br />Geographical scope: <code>[…]</code>",
+      "quelle": "cc48bab9"
+    },
+    "ui.imp.kontakt": {
+      "text": "Phone: <code>[Number]</code><br />Email: <code>[Address]</code>",
+      "quelle": "bbcf3fd1"
+    },
+    "ui.imp.register": {
+      "text": "Register entry",
+      "quelle": "07e35466"
+    },
+    "ui.imp.registerAngabe": {
+      "text": "Register court: <code>[…]</code><br />Register number: <code>[…]</code>",
+      "quelle": "8f5a057a"
+    },
+    "ui.imp.schlichtungsstelle": {
+      "text": "For disputes arising from a treatment relationship, the arbitration board of the responsible dental association is available: <code>[Address]</code>.",
+      "quelle": "2fb60a32"
+    },
+    "ui.imp.seitentitel": {
+      "text": "Legal notice",
+      "quelle": "c702dc58"
+    },
+    "ui.imp.streitbeilegung": {
+      "text": "Dispute resolution",
+      "quelle": "6138259e"
+    },
+    "ui.imp.streitbeilegungText": {
+      "text": "The European Commission provides a platform for online dispute resolution. We are <code>[not]</code> willing and <code>[not]</code> obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
+      "quelle": "e6df6eb7"
+    },
+    "ui.imp.ustId": {
+      "text": "VAT identification number",
+      "quelle": "d3dfdf45"
+    },
+    "ui.imp.ustIdAngabe": {
+      "text": "<code>[VAT ID under § 27a UStG, if applicable]</code>",
+      "quelle": "b6e92f67"
+    },
+    "ui.imp.verantwortlichAngabe": {
+      "text": "<code>[Name, address]</code>",
+      "quelle": "2225af5d"
+    },
+    "ui.imp.verantwortlichFuerDenInhalt": {
+      "text": "Responsible for content under § 18(2) MStV",
+      "quelle": "719784ea"
+    },
+    "ui.imp.vertretung": {
+      "text": "Authorised representatives",
+      "quelle": "d74d025a"
+    },
+    "ui.imp.vertretungAngabe": {
+      "text": "<code>[Names of management / partners]</code>",
+      "quelle": "09069ae6"
+    },
+    "ui.karriere.arbeitenBeiKu64": {
+      "text": "Working at KU64",
+      "quelle": "e748afed"
+    },
+    "ui.karriere.beschreibung": {
+      "text": "Current vacancies and speculative applications at KU64 in Berlin and Potsdam.",
+      "quelle": "0a899ec0"
+    },
+    "ui.karriere.bewerbungSenden": {
+      "text": "Send application",
+      "quelle": "2c83c895"
+    },
+    "ui.karriere.dieAusschreibungenLiegenBei": {
+      "text": "The vacancies are listed on Personio. Only when you open one of them do you leave this website – no connection to it is made from this page.",
+      "quelle": "d1b1bdab"
+    },
+    "ui.karriere.dieStellenuebersichtIstGerade": {
+      "text": "The list of vacancies is temporarily unavailable.",
+      "quelle": "8f968599"
+    },
+    "ui.karriere.eineStelle": {
+      "text": "One vacancy",
+      "quelle": "b125c8c0"
+    },
+    "ui.karriere.initiativBewerben": {
+      "text": "Speculative application",
+      "quelle": "ca1e05d2"
+    },
+    "ui.karriere.mehrereStellen": {
+      "text": "{anzahl} vacancies",
+      "quelle": "a97747c9"
+    },
+    "ui.karriere.portalHinweis": {
+      "text": "You can find all our vacancies directly in the {portal} – or simply write to us and tell us which area and location interest you.",
+      "quelle": "1ba7e628"
+    },
+    "ui.karriere.seitentitel": {
+      "text": "Careers at KU64",
+      "quelle": "2d55e894"
+    },
+    "ui.karriere.stellenportal": {
+      "text": "job portal",
+      "quelle": "4c71c300"
+    },
+    "ui.karriere.ueberInitiativbewerbungenFreuenWir": {
+      "text": "We're still glad to receive speculative applications – we also hire good people outside of advertised vacancies.",
+      "quelle": "9030ebcb"
+    },
+    "ui.karriere.zurAusschreibung": {
+      "text": "View vacancy",
+      "quelle": "0cba277d"
+    },
+    "ui.karriere.zurzeitIstKeineStelle": {
+      "text": "No vacancies are currently advertised.",
+      "quelle": "38d24671"
+    },
     "ui.karte.behandlungen": {
       "text": "Treatments",
       "quelle": "4d3e5232"
     },
+    "ui.karte.dauer": {
+      "text": "Duration",
+      "quelle": "d0c110d2"
+    },
     "ui.karte.geoeffnet": {
       "text": "Open",
       "quelle": "2562ba58"
+    },
+    "ui.karte.kosten": {
+      "text": "Cost",
+      "quelle": "0f3e02f3"
     },
     "ui.karte.standortAnsehen": {
       "text": "View this location",
@@ -2805,13 +3809,489 @@
       "text": "Phone",
       "quelle": "9efa9d9c"
     },
+    "ui.ki.beschreibung": {
+      "text": "Which AI systems on this website do what, using which data – and how to reach a human instead.",
+      "quelle": "1d8aad5c"
+    },
+    "ui.kitrans.beidesBeantwortetEinMensch": {
+      "text": ". A person answers both.",
+      "quelle": "78ae7cd0"
+    },
+    "ui.kitrans.dasIstKeineAusweichloesung": {
+      "text": "This isn't a fallback option, but the normal way. Call the location nearest to you:",
+      "quelle": "e6b369a3"
+    },
+    "ui.kitrans.dieseAngabenSetzenArtikel": {
+      "text": "This information implements Article 50 of Regulation (EU) 2024/1689 on artificial intelligence. The article requires three things: anyone interacting with an AI system must be informed of this no later than the first interaction. Generated content must be marked as such in a machine-readable way. And altered images of people must also be visibly marked.",
+      "quelle": "6acda934"
+    },
+    "ui.kitrans.dreiSystemeUndWir": {
+      "text": "Three systems, and for each we state what it does, who operates it and what happens with your input. You don't need to use any of them: whatever they can answer, someone on the phone can answer too.",
+      "quelle": "8d742e38"
+    },
+    "ui.kitrans.erBleibtDamitAuch": {
+      "text": ". It therefore remains in place even if the image leaves this website – by email, forwarded, saved.",
+      "quelle": "e289c854"
+    },
+    "ui.kitrans.fuerDieLaechelnVorschau": {
+      "text": "For the smile preview, this specifically means: the notice appears in a strip on the image and additionally within the image file itself, as an IPTC entry",
+      "quelle": "3e47e62f"
+    },
+    "ui.kitrans.oderSchriftlichUeberDas": {
+      "text": "Or in writing via the",
+      "quelle": "5f774b49"
+    },
+    "ui.kitrans.rechtlicherRahmen": {
+      "text": "Legal framework",
+      "quelle": "48156867"
+    },
+    "ui.kitrans.wasNichtPassiert": {
+      "text": "What doesn't happen",
+      "quelle": "449ac475"
+    },
+    "ui.kitrans.wasUebertragenWird": {
+      "text": "What is transmitted",
+      "quelle": "134725ec"
+    },
+    "ui.kitrans.welcheDiensteBeimAufruf": {
+      "text": ". Which services are loaded when the page is accessed, in the",
+      "quelle": "d1f526ae"
+    },
+    "ui.kitrans.wennSieMitEinem": {
+      "text": "If you'd like to speak to a person",
+      "quelle": "259e48d8"
+    },
+    "ui.kitrans.wieIhreDatenVerarbeitet": {
+      "text": "How your data is processed is explained in the",
+      "quelle": "20c57f5c"
+    },
+    "ui.kitrans.woAufDieserWebsite": {
+      "text": "Where AI is used on this website",
+      "quelle": "c088b18a"
+    },
+    "ui.kitrans.woSieIhmBegegnen": {
+      "text": "Where you encounter it",
+      "quelle": "e7933cc7"
+    },
+    "ui.kontakt.anfahrtAnsehen": {
+      "text": "View directions",
+      "quelle": "149272d1"
+    },
+    "ui.kontakt.beiAkutenBeschwerden": {
+      "text": "For acute problems",
+      "quelle": "765a10e7"
+    },
+    "ui.kontakt.chatOeffnen": {
+      "text": "Open chat",
+      "quelle": "7eb9fb8e"
+    },
+    "ui.kontakt.derSchnellsteWegBesonders": {
+      "text": "The quickest way – especially if you're in pain or it's urgent.",
+      "quelle": "a5f0607a"
+    },
+    "ui.kontakt.fragenVorab": {
+      "text": "Questions beforehand",
+      "quelle": "e86248da"
+    },
+    "ui.kontakt.freieTermineSehenUnd": {
+      "text": "See available appointments and book directly, any time of day.",
+      "quelle": "05facd08"
+    },
+    "ui.kontakt.fuerAllesWasNicht": {
+      "text": "For anything that isn't urgent. Please don't send us any health data by unencrypted email.",
+      "quelle": "30fcf3f3"
+    },
+    "ui.kontakt.onlineBuchen": {
+      "text": "Book online",
+      "quelle": "03ecc07b"
+    },
+    "ui.kontakt.rufenSieBitteAn": {
+      "text": "please call us instead of writing. If you have breathing or swallowing difficulties, severe swelling or a high fever, call the emergency services on 112. More on this at",
+      "quelle": "d32df7b5"
+    },
+    "ui.kontakt.unserDigitalerBeraterBeantwortet": {
+      "text": "Our digital assistant answers questions about treatments, costs and procedures – by text or voice.",
+      "quelle": "d44da413"
+    },
+    "ui.kontakt.waehlenSieDenWeg": {
+      "text": "Choose whichever way suits you best. They all lead to the same team.",
+      "quelle": "9d1f7297"
+    },
+    "ui.kontakt.zurTerminbuchung": {
+      "text": "Book an appointment",
+      "quelle": "a62fa687"
+    },
+    "ui.kontaktz.akuteBeschwerden": {
+      "text": "Sudden discomfort?",
+      "quelle": "47ea7cc8"
+    },
+    "ui.kontaktz.beschreibung": {
+      "text": "How to reach KU64 – all locations in Berlin and Potsdam with phone numbers, addresses and opening hours.",
+      "quelle": "d602f067"
+    },
+    "ui.kontaktz.bitteRufenSieAn": {
+      "text": "Please call rather than write. For breathing or swallowing difficulties, dial 112. More at",
+      "quelle": "8bb373a9"
+    },
+    "ui.kontaktz.jederStandortHatEigene": {
+      "text": "Each practice has its own opening hours and phone number. Choose the one nearest to you.",
+      "quelle": "469494a0"
+    },
+    "ui.kontaktz.terminBuchen": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.krume.anfahrt": {
+      "text": "Directions",
+      "quelle": "fc83faa7"
+    },
+    "ui.krume.barrierefreiheit": {
+      "text": "Accessibility",
+      "quelle": "2151accf"
+    },
+    "ui.krume.beschwerden": {
+      "text": "Concerns",
+      "quelle": "8d8ad863"
+    },
+    "ui.krume.blog": {
+      "text": "Blog",
+      "quelle": "c79c4311"
+    },
+    "ui.krume.cookieEinstellungen": {
+      "text": "Cookie settings",
+      "quelle": "8ade692f"
+    },
+    "ui.krume.datenschutz": {
+      "text": "Privacy policy",
+      "quelle": "f95b3d96"
+    },
+    "ui.krume.diePraxis": {
+      "text": "The practice",
+      "quelle": "e5c83200"
+    },
+    "ui.krume.digitaleAnamnese": {
+      "text": "Digital medical history",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.krume.digitaleBeratung": {
+      "text": "Digital consultation",
+      "quelle": "4e315ae6"
+    },
+    "ui.krume.impressum": {
+      "text": "Legal notice",
+      "quelle": "c702dc58"
+    },
+    "ui.krume.karriere": {
+      "text": "Careers",
+      "quelle": "bed1a24e"
+    },
+    "ui.krume.kiTransparenz": {
+      "text": "AI transparency",
+      "quelle": "5528b9bc"
+    },
+    "ui.krume.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.krume.laechelnVorschau": {
+      "text": "Smile preview",
+      "quelle": "50789e23"
+    },
+    "ui.krume.leistungen": {
+      "text": "Treatments",
+      "quelle": "16a48bdd"
+    },
+    "ui.krume.notfall": {
+      "text": "Emergency",
+      "quelle": "75c3c7ff"
+    },
+    "ui.krume.standorte": {
+      "text": "Locations",
+      "quelle": "aae6c265"
+    },
+    "ui.krume.start": {
+      "text": "Home",
+      "quelle": "0ae8097f"
+    },
+    "ui.krume.suche": {
+      "text": "Search",
+      "quelle": "e849ad81"
+    },
+    "ui.krume.team": {
+      "text": "Team",
+      "quelle": "2329c92c"
+    },
+    "ui.krume.termine": {
+      "text": "Appointments",
+      "quelle": "5f1e529b"
+    },
+    "ui.krume.ueberKu64": {
+      "text": "About KU64",
+      "quelle": "92039106"
+    },
+    "ui.krume.weitere": {
+      "text": "More",
+      "quelle": "dec8352a"
+    },
+    "ui.laecheln.adressePlatzhalter": {
+      "text": "your@address.com",
+      "quelle": "6d8e8165"
+    },
+    "ui.laecheln.anderesFotoProbieren": {
+      "text": "Try another photo",
+      "quelle": "ae9647ef"
+    },
+    "ui.laecheln.beratungsterminVereinbaren": {
+      "text": "Book a consultation",
+      "quelle": "464fe584"
+    },
+    "ui.laecheln.beschreibung": {
+      "text": "Upload a photo and see a non-binding visualisation of your smile. Your image will not be saved.",
+      "quelle": "ff4e5815"
+    },
+    "ui.laecheln.dasIstKeinBehandlungsergebnis": {
+      "text": "This is not a treatment result.",
+      "quelle": "32d79e42"
+    },
+    "ui.laecheln.deutlichLaechelnSodassDie": {
+      "text": "Smile clearly so the upper teeth are visible",
+      "quelle": "7f559698"
+    },
+    "ui.laecheln.dieBerechnungDauertEtwa": {
+      "text": "The calculation takes about 15 to 40 seconds.",
+      "quelle": "179b35d7"
+    },
+    "ui.laecheln.dieDarstellungIstEine": {
+      "text": "This image is an illustration, not a promise. Only a personal examination can show whether and how something similar could be achieved. Your tooth structure, gums and jaw determine this – not a picture.",
+      "quelle": "d78330e7"
+    },
+    "ui.laecheln.dieVerbindlichePlanungMit": {
+      "text": "The binding plan with a preview in your own mouth.",
+      "quelle": "7a161779"
+    },
+    "ui.laecheln.digitalesSmileDesign": {
+      "text": "Digital Smile Design",
+      "quelle": "5b3ce40b"
+    },
+    "ui.laecheln.einVeraendertesLaechelnEntsteht": {
+      "text": "A changed smile can be achieved in different ways, depending on your starting point. These treatments are most commonly considered:",
+      "quelle": "12c36245"
+    },
+    "ui.laecheln.fotoAuswaehlen": {
+      "text": "Choose photo",
+      "quelle": "fe7cdad0"
+    },
+    "ui.laecheln.fotoHierherZiehen": {
+      "text": "Drag photo here",
+      "quelle": "21dd176f"
+    },
+    "ui.laecheln.fotoWaehlen": {
+      "text": "Choose a photo or drag it here",
+      "quelle": "a42e48ae"
+    },
+    "ui.laecheln.fotoWirdAnalysiert": {
+      "text": "Analysing photo…",
+      "quelle": "2ee6ec3b"
+    },
+    "ui.laecheln.fragenZurLaechelnVorschau": {
+      "text": "Questions about the smile preview",
+      "quelle": "df549687"
+    },
+    "ui.laecheln.frontalInDieKamera": {
+      "text": "Face the camera directly, head straight",
+      "quelle": "65249dbd"
+    },
+    "ui.laecheln.gleichmaessigesLichtKeinHartes": {
+      "text": "Even lighting, no harsh backlight",
+      "quelle": "5cd24505"
+    },
+    "ui.laecheln.ichBinVolljaehrigUnd": {
+      "text": "I am an adult and the photo shows myself. I do not upload photos of other people.",
+      "quelle": "f9ed607d"
+    },
+    "ui.laecheln.ichWilligeAusdruecklichEin": {
+      "text": "I expressly consent to my photo being processed to create a non-binding smile preview. I understand that this is biometric data. I can withdraw this consent at any time. Details in the",
+      "quelle": "0b01ffc4"
+    },
+    "ui.laecheln.ihreVorschauErscheintHier": {
+      "text": "Your preview will appear here.",
+      "quelle": "7a8745b3"
+    },
+    "ui.laecheln.ihrFoto": {
+      "text": "Your photo",
+      "quelle": "73a1a9ec"
+    },
+    "ui.laecheln.ihrWunschstandort": {
+      "text": "Your preferred location",
+      "quelle": "6c1a5711"
+    },
+    "ui.laecheln.jpegPngOderWebp": {
+      "text": "JPEG, PNG or WebP · maximum 8 MB",
+      "quelle": "8d6a81bb"
+    },
+    "ui.laecheln.keineFilterKeineBeauty": {
+      "text": "No filters, no beauty modes from camera apps",
+      "quelle": "0ad07397"
+    },
+    "ui.laecheln.keramikschalenFuerFormUnd": {
+      "text": "Ceramic veneers for the shape and colour of the front teeth.",
+      "quelle": "323dcbf7"
+    },
+    "ui.laecheln.ladenSieEinPortraetfoto": {
+      "text": "Upload a portrait photo. We analyse the shape, colour and smile line of your teeth in relation to your face and show you a visualisation – in your browser and, if you like, by email.",
+      "quelle": "b6cd27d1"
+    },
+    "ui.laecheln.mehrereNuancenHellerOhne": {
+      "text": "Several shades lighter, without damaging the enamel.",
+      "quelle": "53f69344"
+    },
+    "ui.laecheln.nichtsVorDemMund": {
+      "text": "Nothing in front of the mouth – no hand, no mask",
+      "quelle": "bd5f56e4"
+    },
+    "ui.laecheln.nochNichtEntschieden": {
+      "text": "Not yet decided",
+      "quelle": "4bd9a5a1"
+    },
+    "ui.laecheln.oderKlickenZumAuswaehlen": {
+      "text": "or click to select",
+      "quelle": "860f5dbd"
+    },
+    "ui.laecheln.sehenSieIhrLaecheln": {
+      "text": "See your smile before you decide",
+      "quelle": "89e5657a"
+    },
+    "ui.laecheln.unsichtbareSchienen": {
+      "text": "Invisible aligners",
+      "quelle": "60a21398"
+    },
+    "ui.laecheln.unverbindlicheIllustrationKeinBehandlungsergebnis": {
+      "text": "Non-binding illustration, not a treatment outcome and not medical advice.",
+      "quelle": "e673ce81"
+    },
+    "ui.laecheln.unverbindlicheVisualisierung": {
+      "text": "Non-binding visualisation",
+      "quelle": "409cea35"
+    },
+    "ui.laecheln.vergleich": {
+      "text": "Comparison of the original photo and the visualisation",
+      "quelle": "a1942f5d"
+    },
+    "ui.laecheln.vorschauErstellen": {
+      "text": "Create preview",
+      "quelle": "1c4a9104"
+    },
+    "ui.laecheln.wasDanachMoeglichIst": {
+      "text": "What's possible afterwards",
+      "quelle": "0c6d3073"
+    },
+    "ui.laecheln.wasMachtEinGutes": {
+      "text": "What makes a good photo?",
+      "quelle": "94af78ab"
+    },
+    "ui.laecheln.wohinDuerfenWirDas": {
+      "text": "Where shall we send the result?",
+      "quelle": "73263dc8"
+    },
+    "ui.laecheln.zahnstellungKorrigierenOhneFeste": {
+      "text": "Correct tooth position without a fixed brace.",
+      "quelle": "9dab9bdc"
+    },
+    "ui.leistuebersicht.alleBehandlungen": {
+      "text": "All treatments",
+      "quelle": "694db5ee"
+    },
+    "ui.leistuebersicht.anAnderenStandorten": {
+      "text": "At other KU64 locations",
+      "quelle": "3eb3a3e2"
+    },
+    "ui.leistuebersicht.anderswoText": {
+      "text": "These treatments aren't offered in {ort}. So you don't search in vain, we'll take you straight to the right location.",
+      "quelle": "8d2d64d0"
+    },
+    "ui.leistuebersicht.behandlungSuchen": {
+      "text": "Search for a treatment",
+      "quelle": "f9ef7d33"
+    },
+    "ui.leistuebersicht.nichtsGefundenHier": {
+      "text": "We didn't find anything for your search here. Feel free to ask our digital advisor or give us a call – we'll let you know if we can help.",
+      "quelle": "8aa00c4b"
+    },
+    "ui.leistuebersicht.platzhalter": {
+      "text": "Complaint or treatment – e.g. cavity, whitening",
+      "quelle": "c1ae5f52"
+    },
+    "ui.leistuebersicht.platzhalterOrt": {
+      "text": "Complaint or treatment – e.g. cavity, whitening, anxiety",
+      "quelle": "5bf6ddfd"
+    },
+    "ui.leistuebersicht.vorspann": {
+      "text": "{anzahl} treatments across {bereiche} specialist areas. For each one, you can see which of our {standorte} locations offer it.",
+      "quelle": "bac1987d"
+    },
+    "ui.leistuebersicht.zuFachbereich": {
+      "text": "Jump to a specialist area",
+      "quelle": "1e0ba286"
+    },
+    "ui.leistuebersicht.zuIhrerSucheHaben": {
+      "text": "We didn't find anything for your search. Feel free to ask our digital advisor.",
+      "quelle": "f280d36f"
+    },
     "ui.leistung.ablauf": {
       "text": "How the treatment works",
       "quelle": "118a0fdf"
     },
+    "ui.leistung.anAnderenStandorten": {
+      "text": "{name} at other KU64 locations",
+      "quelle": "68901fbb"
+    },
+    "ui.leistung.ansprechperson": {
+      "text": "Your contact",
+      "quelle": "e2ee8c48"
+    },
+    "ui.leistung.ansprechpersonen": {
+      "text": "Your contacts",
+      "quelle": "6afec13b"
+    },
+    "ui.leistung.beraterHinweisLink": {
+      "text": "digital adviser",
+      "quelle": "ffcf1c13"
+    },
+    "ui.leistung.beraterHinweisNach": {
+      "text": "answers round the clock – including questions about {name}.",
+      "quelle": "5b3b5f85"
+    },
+    "ui.leistung.beraterHinweisVor": {
+      "text": "Questions beforehand? Our",
+      "quelle": "c4a28330"
+    },
+    "ui.leistung.beschwerdenHierher": {
+      "text": "Symptoms that bring people here",
+      "quelle": "7bedf2e3"
+    },
     "ui.leistung.dauer": {
       "text": "Duration",
       "quelle": "d0c110d2"
+    },
+    "ui.leistung.ergaenzend": {
+      "text": "Also available – at other locations",
+      "quelle": "4ab513c1"
+    },
+    "ui.leistung.ergaenzendText": {
+      "text": "These treatments are related to {name}, but aren't offered at KU64 {ort}. We'll tell you openly where you can get them.",
+      "quelle": "30713afa"
+    },
+    "ui.leistung.haeufigeFragen": {
+      "text": "{name}: frequently asked questions",
+      "quelle": "f85cc41f"
+    },
+    "ui.leistung.hierAnsehen": {
+      "text": "View {name} here",
+      "quelle": "64d45dd2"
+    },
+    "ui.leistung.inOrt": {
+      "text": "in {ort}",
+      "quelle": "2e0c3cfd"
     },
     "ui.leistung.kasse": {
       "text": "Health insurance",
@@ -2820,6 +4300,58 @@
     "ui.leistung.kosten": {
       "text": "Cost",
       "quelle": "0f3e02f3"
+    },
+    "ui.leistung.nichtAngebotenAn": {
+      "text": "Not offered at:",
+      "quelle": "2b77e445"
+    },
+    "ui.leistung.nichtAngebotenHinweis": {
+      "text": "We say this openly so you don't call there for nothing.",
+      "quelle": "ddfe64c4"
+    },
+    "ui.leistung.oder": {
+      "text": "or",
+      "quelle": "d2b98839"
+    },
+    "ui.leistung.onlineBuchen": {
+      "text": "Book online",
+      "quelle": "03ecc07b"
+    },
+    "ui.leistung.passtDazu": {
+      "text": "Goes well with",
+      "quelle": "1dcd8bf2"
+    },
+    "ui.leistung.sieSehenAngaben": {
+      "text": "You're currently viewing information for KU64 {ort}. We also offer this treatment here – in case another location suits you better:",
+      "quelle": "04fc3fed"
+    },
+    "ui.leistung.standortWaehlen": {
+      "text": "Choose your location – you'll find opening hours, phone number and online booking for this exact treatment there.",
+      "quelle": "bf6d8fbf"
+    },
+    "ui.leistung.synonyme": {
+      "text": "Also known as",
+      "quelle": "510e0e45"
+    },
+    "ui.leistung.termin": {
+      "text": "Appointment",
+      "quelle": "12c12fbc"
+    },
+    "ui.leistung.terminFuer": {
+      "text": "Appointment for {name}",
+      "quelle": "c0045891"
+    },
+    "ui.leistung.verfuegbarAn": {
+      "text": "Available at",
+      "quelle": "36da2519"
+    },
+    "ui.leistung.vonStandorten": {
+      "text": "{wo} of {gesamt} locations",
+      "quelle": "52670215"
+    },
+    "ui.leistung.woLassen": {
+      "text": "Where would you like to have {name} done?",
+      "quelle": "d5d795ef"
     },
     "ui.nav.andererStandort": {
       "text": "A different location",
@@ -2841,6 +4373,10 @@
       "text": "Practice",
       "quelle": "6955fe52"
     },
+    "ui.nav.sieSehen": {
+      "text": "You are viewing",
+      "quelle": "072ed7cb"
+    },
     "ui.nav.standorte": {
       "text": "Locations",
       "quelle": "aae6c265"
@@ -2852,6 +4388,10 @@
     "ui.nav.standortWaehlenKurz": {
       "text": "Choose location",
       "quelle": "190c5686"
+    },
+    "ui.nav.suchen": {
+      "text": "Search",
+      "quelle": "9afccf3d"
     },
     "ui.nav.team": {
       "text": "Team",
@@ -2868,6 +4408,274 @@
     "ui.nav.waehlerHinweis": {
       "text": "When you switch, we show you the details of the location you choose. Not every treatment is offered at every location.",
       "quelle": "f7fa2655"
+    },
+    "ui.nav.zurStartseite": {
+      "text": "KU64, back to homepage",
+      "quelle": "f958f1e0"
+    },
+    "ui.nav.zurStartseiteOrt": {
+      "text": "KU64 {ort}, back to homepage",
+      "quelle": "003adc3b"
+    },
+    "ui.notfall.112Anrufen": {
+      "text": "Call 112",
+      "quelle": "6ae1f6a0"
+    },
+    "ui.notfall.anrufenUndSituationSchildern": {
+      "text": "Call and describe the situation",
+      "quelle": "6826ad75"
+    },
+    "ui.notfall.aRztlicherBereitschaftsdienstBundesweit": {
+      "text": ". National out-of-hours medical service:",
+      "quelle": "fc6475a4"
+    },
+    "ui.notfall.atemnotSchluckbeschwerdenOderStarke": {
+      "text": "Difficulty breathing, swallowing, or severe swelling of the neck?",
+      "quelle": "35c2ab25"
+    },
+    "ui.notfall.aufDerAnderenSeite": {
+      "text": "Chew on the other side",
+      "quelle": "bf5f54b5"
+    },
+    "ui.notfall.ausgeschlagenerZahn": {
+      "text": "Knocked-out tooth",
+      "quelle": "834ab981"
+    },
+    "ui.notfall.ausserhalbUnsererSprechzeiten": {
+      "text": "Outside our opening hours:",
+      "quelle": "3ceabca2"
+    },
+    "ui.notfall.beiAtemOderSchluckproblemen": {
+      "text": "Breathing or swallowing problems: call 112",
+      "quelle": "24557016"
+    },
+    "ui.notfall.beiFieberOderRascher": {
+      "text": "Fever or rapid swelling: call us at once",
+      "quelle": "442dbe44"
+    },
+    "ui.notfall.beiSchmerzAufKa": {
+      "text": "Pain from cold: nerve is involved, come promptly",
+      "quelle": "f34bfa31"
+    },
+    "ui.notfall.bereichGutSauberHalten": {
+      "text": "Keep the area clean",
+      "quelle": "bd119ad3"
+    },
+    "ui.notfall.blutungNachEinemEingriff": {
+      "text": "Bleeding after a procedure",
+      "quelle": "282e7d9e"
+    },
+    "ui.notfall.bruchstuCkAufbewahrenFeucht": {
+      "text": "Keep the fragment, keep it moist",
+      "quelle": "01ae5255"
+    },
+    "ui.notfall.dasIstEinMedizinischer": {
+      "text": "This is a medical emergency. Call the emergency services at once – don't wait for a dental appointment.",
+      "quelle": "721c40fa"
+    },
+    "ui.notfall.dieseHinweiseErsetzenKeine": {
+      "text": "These notes don't replace an examination. They're meant to help until your appointment – not to replace it.",
+      "quelle": "3b522005"
+    },
+    "ui.notfall.haUfigeFragenIm": {
+      "text": "Common emergency questions",
+      "quelle": "921aae7a"
+    },
+    "ui.notfall.hoRtEsNicht": {
+      "text": "If it doesn't stop: call us",
+      "quelle": "8ba9b822"
+    },
+    "ui.notfall.immerAbklaRenLassen": {
+      "text": "Always have it checked, even without severe pain",
+      "quelle": "e39cefc4"
+    },
+    "ui.notfall.innerhalbDerErstenStunde": {
+      "text": "Come to us within the first hour",
+      "quelle": "1728af3b"
+    },
+    "ui.notfall.inZahnrettungsboxSonstKalte": {
+      "text": "In a tooth-rescue box, otherwise cold UHT milk, or saliva",
+      "quelle": "1711aab6"
+    },
+    "ui.notfall.keineWaRmeKein": {
+      "text": "No heat, no alcohol",
+      "quelle": "8c4c5ec1"
+    },
+    "ui.notfall.kopfHochKoRperliche": {
+      "text": "Keep your head up, avoid physical exertion",
+      "quelle": "99a32a1f"
+    },
+    "ui.notfall.kopfHochlagernAuchBeim": {
+      "text": "Keep your head raised, even when sleeping",
+      "quelle": "7ac968f0"
+    },
+    "ui.notfall.kroneOderFuLlung": {
+      "text": "Lost crown or filling",
+      "quelle": "f8421517"
+    },
+    "ui.notfall.kuHlenNichtWa": {
+      "text": "Cool it, don't warm it",
+      "quelle": "95318e3e"
+    },
+    "ui.notfall.nichtSaUbernNicht": {
+      "text": "Don't clean it, don't scrub it, don't put it in water",
+      "quelle": "92439c7e"
+    },
+    "ui.notfall.nichtSpuLenNicht": {
+      "text": "Don't rinse, don't spit, don't check it",
+      "quelle": "2e1b7aaa"
+    },
+    "ui.notfall.rufenSieUnsAn": {
+      "text": "Call us – we'll keep a slot free",
+      "quelle": "6812dfcc"
+    },
+    "ui.notfall.sauberesTuchOderMulltupfer": {
+      "text": "Bite firmly on a clean cloth or gauze for 20 minutes",
+      "quelle": "ac3adaa9"
+    },
+    "ui.notfall.scharfeKanteMitWachs": {
+      "text": "Cover sharp edges with wax or chewing gum",
+      "quelle": "5650937d"
+    },
+    "ui.notfall.schmerzmittelNachPackungsbeilageNie": {
+      "text": "Take painkillers as directed, never place on the gum",
+      "quelle": "c8fbbfff"
+    },
+    "ui.notfall.schwellungImGesicht": {
+      "text": "Facial swelling",
+      "quelle": "21eb2eca"
+    },
+    "ui.notfall.sofortmassnahmen": {
+      "text": "Immediate steps",
+      "quelle": "9da9936c"
+    },
+    "ui.notfall.starkeSchmerzen": {
+      "text": "Severe pain",
+      "quelle": "ef0266da"
+    },
+    "ui.notfall.teilAufbewahrenUndMitbringen": {
+      "text": "Keep the piece and bring it with you",
+      "quelle": "537048ef"
+    },
+    "ui.notfall.vonAussenKuHlen": {
+      "text": "Cool from outside, with a cloth in between, at intervals",
+      "quelle": "94dac1c9"
+    },
+    "ui.notfall.zahnAbgebrochen": {
+      "text": "Broken tooth",
+      "quelle": "9676b92a"
+    },
+    "ui.notfall.zahnaRztlicherNotdienstBerlin": {
+      "text": "dental emergency service Berlin on",
+      "quelle": "3eb3d4af"
+    },
+    "ui.notfall.zahnaRztlicherNotfall": {
+      "text": "Dental emergency",
+      "quelle": "90db9ee1"
+    },
+    "ui.notfall.zahnNurAnDer": {
+      "text": "Hold the tooth by the crown only, never the root",
+      "quelle": "a2b2335a"
+    },
+    "ui.notfall.zeitnahTerminVereinbarenMeist": {
+      "text": "Book an appointment soon – usually not an emergency",
+      "quelle": "577f2b08"
+    },
+    "ui.notfallz.beschreibungLang": {
+      "text": "Sudden toothache, swelling or a knocked-out tooth? Find the right number here straight away, plus key first steps.",
+      "quelle": "222aa890"
+    },
+    "ui.notfallz.seitentitel": {
+      "text": "Dental emergency",
+      "quelle": "90db9ee1"
+    },
+    "ui.ort.anfahrtParken": {
+      "text": "Getting here & parking",
+      "quelle": "38e2c0a8"
+    },
+    "ui.ort.detaillierteAnfahrt": {
+      "text": "Detailed directions",
+      "quelle": "162d0313"
+    },
+    "ui.ort.mitDemAuto": {
+      "text": "By car",
+      "quelle": "7bc13792"
+    },
+    "ui.ort.nichtAnDiesemStandort": {
+      "text": "Not at this location",
+      "quelle": "53fd3d34"
+    },
+    "ui.ort.oeffentlicheVerkehrsmittel": {
+      "text": "Public transport",
+      "quelle": "d47a542c"
+    },
+    "ui.ort.terminBuchen": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.ort.wasDiesenStandortAusmacht": {
+      "text": "What makes this location special",
+      "quelle": "e06123d9"
+    },
+    "ui.ortblog.alleBeitraegeAnsehen": {
+      "text": "View all articles",
+      "quelle": "7fd8af29"
+    },
+    "ui.orte.behandlungen": {
+      "text": "Treatments",
+      "quelle": "4d3e5232"
+    },
+    "ui.orte.beschreibung": {
+      "text": "KU64 at {anzahl} locations in Berlin and Potsdam. Compare which treatment is offered at which location.",
+      "quelle": "4832349b"
+    },
+    "ui.orte.nichtVerfuegbar": {
+      "text": "not available",
+      "quelle": "bb4f1fa8"
+    },
+    "ui.orte.seitentitel": {
+      "text": "Our Locations",
+      "quelle": "2041aab5"
+    },
+    "ui.person.behandeltAuchAn": {
+      "text": "{name} also treats at",
+      "quelle": "5ab4068f"
+    },
+    "ui.person.medizinischeLeitung": {
+      "text": "Medical director",
+      "quelle": "84cf4f13"
+    },
+    "ui.person.terminIn": {
+      "text": "Appointment in {ort}",
+      "quelle": "896a0d98"
+    },
+    "ui.praxis.ausFachbereichen": {
+      "text": "from {anzahl} specialisms",
+      "quelle": "e62d82cb"
+    },
+    "ui.praxis.behandelnde": {
+      "text": "Practitioners",
+      "quelle": "ba6934cd"
+    },
+    "ui.praxis.behandlungen": {
+      "text": "Treatments",
+      "quelle": "4d3e5232"
+    },
+    "ui.praxis.dieRaeume": {
+      "text": "The rooms",
+      "quelle": "4355f066"
+    },
+    "ui.praxis.wasDiesenStandortAusmacht": {
+      "text": "What makes this location special",
+      "quelle": "e06123d9"
+    },
+    "ui.recht.vorrangText": {
+      "text": "This translation is provided for clarity. In the event of any discrepancy between language versions, the German text applies.",
+      "quelle": "a25f66e2"
+    },
+    "ui.recht.vorrangTitel": {
+      "text": "The German version is legally binding",
+      "quelle": "a7904df0"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Close notice",
@@ -2893,33 +4701,89 @@
       "text": "Continue in {sprache}",
       "quelle": "b8138759"
     },
+    "ui.standort.adresse": {
+      "text": "Address",
+      "quelle": "1f2a8a8e"
+    },
+    "ui.standort.angebotHier": {
+      "text": "Everything we offer at this location – {anzahl} treatments across {bereiche} specialist areas. Treatments not available here are clearly marked, with a link to the right location.",
+      "quelle": "39e7aedd"
+    },
     "ui.standort.aufKarteAnsehen": {
       "text": "Open in maps",
       "quelle": "4bce2d87"
+    },
+    "ui.standort.barrierefreiheit": {
+      "text": "Accessibility:",
+      "quelle": "689345af"
+    },
+    "ui.standort.barrierefreiJa": {
+      "text": "The practice has step-free access.",
+      "quelle": "f6bdc2d5"
+    },
+    "ui.standort.behandelnde": {
+      "text": "Our team",
+      "quelle": "ba6934cd"
+    },
+    "ui.standort.behandlungenIn": {
+      "text": "Treatments in {ort}",
+      "quelle": "6f3f59e2"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographs of this practice – in the order you will see the rooms when you visit.",
       "quelle": "dd968d95"
     },
     "ui.standort.geoeffnet": {
-      "text": "Open now",
-      "quelle": "55a568db"
+      "text": "Open",
+      "quelle": "2562ba58"
     },
     "ui.standort.kartenHinweis": {
       "text": "Map services are third-party providers. We do not embed them directly, so that simply reading this page sends no data to anyone else.",
       "quelle": "e53070d4"
     },
+    "ui.standort.nichtHierText": {
+      "text": "We do not offer these treatments in {ort}. So you don't call in vain, you can see straight away which KU64 location offers them.",
+      "quelle": "e3fb21ff"
+    },
+    "ui.standort.oeffnungszeitenVon": {
+      "text": "Opening hours of KU64 {name}",
+      "quelle": "69d8580f"
+    },
+    "ui.standort.siebenTage": {
+      "text": "Seven days a week",
+      "quelle": "01ac7b06"
+    },
     "ui.standort.soFindenSieUns": {
       "text": "How to find us",
       "quelle": "56fee222"
+    },
+    "ui.standort.sprechzeiten": {
+      "text": "Opening hours",
+      "quelle": "981dc8e7"
     },
     "ui.standort.tageWoche": {
       "text": "days a week",
       "quelle": "cda6c7aa"
     },
+    "ui.standort.telefon": {
+      "text": "Phone",
+      "quelle": "9efa9d9c"
+    },
+    "ui.standort.xTageWoche": {
+      "text": "{anzahl} days a week",
+      "quelle": "43d6a4a0"
+    },
+    "ui.standort.zahnaerzteAnzahl": {
+      "text": "{anzahl} dentists",
+      "quelle": "b3dec805"
+    },
     "ui.standort.zahnaerzteLabel": {
       "text": "dentists",
       "quelle": "740fbae5"
+    },
+    "ui.standorte.behandlung": {
+      "text": "Treatment",
+      "quelle": "2e14fc5d"
     },
     "ui.standorte.matrixBeschriftung": {
       "text": "Availability of treatments by KU64 location",
@@ -2936,6 +4800,10 @@
     "ui.standorte.vorspann": {
       "text": "Each location has its own character and its own range of treatments. Choose yours – we then show you only what is actually possible there.",
       "quelle": "93b1d095"
+    },
+    "ui.standortwahl.bitteWaehlen": {
+      "text": "Please choose your location",
+      "quelle": "a4e68af7"
     },
     "ui.standortwahl.hinweis": {
       "text": "Opening hours, phone numbers and the range of treatments differ from location to location – so we would rather ask than guess.",
@@ -2957,9 +4825,21 @@
       "text": "Questions about a treatment, costs or what happens next? Write to our assistant or talk to it – around the clock.",
       "quelle": "856d2390"
     },
+    "ui.start.digitaleAnamnese": {
+      "text": "Digital medical history",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.start.digitalerBerater": {
+      "text": "Digital advisor",
+      "quelle": "10770ef3"
+    },
     "ui.start.digitalTitel": {
       "text": "Digital, before you arrive",
       "quelle": "8526c44e"
+    },
+    "ui.start.ku64DieZahnspezialisten": {
+      "text": "KU64 · Die Zahnspezialisten",
+      "quelle": "defc4bf6"
     },
     "ui.start.laechelnKnopf": {
       "text": "Try it out",
@@ -2968,6 +4848,10 @@
     "ui.start.laechelnText": {
       "text": "Upload a photo and see how your smile could look after a cosmetic treatment. Your picture is not stored.",
       "quelle": "475fe91e"
+    },
+    "ui.start.seitentitel": {
+      "text": "Dentist in Berlin and Potsdam",
+      "quelle": "77314d11"
     },
     "ui.start.ueberschrift": {
       "text": "Where may we treat you?",
@@ -2997,9 +4881,257 @@
       "text": "Back to that practice",
       "quelle": "d0c63f92"
     },
+    "ui.suche.alleBehandlungenNachBereich": {
+      "text": "All treatments by area",
+      "quelle": "f16a17e0"
+    },
+    "ui.suche.aufEineFrageIst": {
+      "text": "A list is the wrong answer to a question. Our digital adviser can answer it for you – and if you'd rather speak to a person, your local number is above.",
+      "quelle": "caf296cf"
+    },
+    "ui.suche.behandlungenBeschwerdenStandorteUnd": {
+      "text": "Treatments, symptoms, locations and people. Feel free to use the technical term – or not.",
+      "quelle": "74da0841"
+    },
+    "ui.suche.dasKlingtNachEiner": {
+      "text": "That sounds like a question.",
+      "quelle": "0366ec92"
+    },
+    "ui.suche.frageAnDenBerater": {
+      "text": "Ask the adviser",
+      "quelle": "76f9f9e7"
+    },
+    "ui.suche.lochImZahn": {
+      "text": "hole in tooth",
+      "quelle": "32f450ca"
+    },
+    "ui.suche.suchenSieNachEinem": {
+      "text": "Looking for a symptom rather than a treatment?",
+      "quelle": "cd0e2099"
+    },
+    "ui.suche.zahnspangePotsdam": {
+      "text": "braces potsdam",
+      "quelle": "ab6d7530"
+    },
+    "ui.suche.zuDenBeschwerden": {
+      "text": "To the symptoms",
+      "quelle": "29a640f3"
+    },
+    "ui.suche.zumAusprobieren": {
+      "text": "Try it out:",
+      "quelle": "74f92674"
+    },
+    "ui.suchez.beschreibung": {
+      "text": "Find treatments, symptoms, locations and people at KU64 – using your own words.",
+      "quelle": "fa985357"
+    },
+    "ui.teamliste.alle": {
+      "text": "All",
+      "quelle": "44e25a93"
+    },
+    "ui.teamliste.auswahlAufheben": {
+      "text": "Clear selection",
+      "quelle": "af69d294"
+    },
+    "ui.teamliste.behandelnTeam": {
+      "text": "At KU64 {name}, you're treated by a fixed, well-established team.",
+      "quelle": "b85b9e06"
+    },
+    "ui.teamliste.behandelnZahl": {
+      "text": "At KU64 {name}, {anzahl} dentists provide treatment.",
+      "quelle": "61ece96b"
+    },
+    "ui.teamliste.behandlungenAnsehen": {
+      "text": "View treatments",
+      "quelle": "0df54964"
+    },
+    "ui.teamliste.behandlungsart": {
+      "text": "Type of treatment",
+      "quelle": "194e0d97"
+    },
+    "ui.teamliste.bereich": {
+      "text": "Area",
+      "quelle": "63891143"
+    },
+    "ui.teamliste.dasTeamBei": {
+      "text": "The team at KU64 {name}.",
+      "quelle": "73bf04a7"
+    },
+    "ui.teamliste.dasTeamIn": {
+      "text": "The team in {ort}",
+      "quelle": "52fd1600"
+    },
+    "ui.teamliste.filtern": {
+      "text": "Filter team",
+      "quelle": "96054218"
+    },
+    "ui.teamliste.inArbeit": {
+      "text": "We're currently preparing the introduction of our team in {ort} – with photos and each practitioner's focus areas.",
+      "quelle": "c669ba2a"
+    },
+    "ui.teamliste.niemand": {
+      "text": "No one matches this selection in {ort}.",
+      "quelle": "678c106c"
+    },
+    "ui.teamliste.profilAnsehen": {
+      "text": "View profile",
+      "quelle": "30c504b9"
+    },
+    "ui.teamliste.rufenSieAn": {
+      "text": "If you have questions about a particular person or area of expertise, please call us – we'll tell you exactly who can help with your query.",
+      "quelle": "6e1d5df9"
+    },
+    "ui.teamliste.spricht": {
+      "text": "Speaks {sprachen}",
+      "quelle": "6d88e552"
+    },
+    "ui.teamliste.zusammensetzung": {
+      "text": "{zahnaerzte} dentists and {gesamt} people in total at KU64 {name}.",
+      "quelle": "84d8c624"
+    },
+    "ui.termin.anlassBei": {
+      "text": "{anlass} at KU64 {name}",
+      "quelle": "72ee765c"
+    },
+    "ui.termin.barrierefreierZugang": {
+      "text": "step-free access",
+      "quelle": "9858ed34"
+    },
+    "ui.termin.onlineWaehlen": {
+      "text": "Book online appointment",
+      "quelle": "57e71174"
+    },
+    "ui.termin.terminBei": {
+      "text": "Appointment at KU64 {name}",
+      "quelle": "b24a64cb"
+    },
     "ui.termin.vorspann": {
       "text": "Book online in under a minute – or give us a call. We are also happy to call you back.",
       "quelle": "93e55c49"
+    },
+    "ui.termine.akuteSchmerzen": {
+      "text": "In acute pain?",
+      "quelle": "6c23cd0d"
+    },
+    "ui.termine.anDiesemStandortGibt": {
+      "text": "This location has separate calendars. Please choose the right area so you're taken straight to the right team.",
+      "quelle": "1e5cb592"
+    },
+    "ui.termine.bitteRufenSieAn": {
+      "text": "Please call us instead of booking online. We keep appointments free for urgent cases and can assess how urgent yours is over the phone.",
+      "quelle": "dfa7d92b"
+    },
+    "ui.termine.denAnamnesebogenFuellenSie": {
+      "text": "You can fill in the medical history form from home, at all KU64 locations. It saves time in the waiting room and lets you check your medication list at your leisure.",
+      "quelle": "c710650b"
+    },
+    "ui.termine.doctolibIstEinEigenstaendiger": {
+      "text": "Doctolib is an independent service. Your IP address is only transmitted and cookies only set once you arrive there – not on this page. More on this in our",
+      "quelle": "508f507d"
+    },
+    "ui.termine.fragenZurTerminbuchung": {
+      "text": "Questions about booking",
+      "quelle": "ad337a5a"
+    },
+    "ui.termine.lieberOhneOnlinePortal": {
+      "text": "Prefer not to use an online portal?",
+      "quelle": "7b93ee25"
+    },
+    "ui.termine.oeffnetDenKalenderBei": {
+      "text": "Opens the Doctolib calendar in a new tab",
+      "quelle": "3848d474"
+    },
+    "ui.termine.onlineBuchen": {
+      "text": "Book online",
+      "quelle": "03ecc07b"
+    },
+    "ui.termine.schildernSieKurzIhr": {
+      "text": "Tell us briefly what you need – we'll get back to you, usually the same or next working day.",
+      "quelle": "4c9ce6f9"
+    },
+    "ui.termine.vorDemTerminAnamnese": {
+      "text": "Before your appointment: fill in your medical history online",
+      "quelle": "89e80b87"
+    },
+    "ui.termine.wannSieUnsErreichen": {
+      "text": "When you can reach us",
+      "quelle": "a10e283b"
+    },
+    "ui.termine.wasTunImNotfall": {
+      "text": "What to do in an emergency",
+      "quelle": "4d5efa51"
+    },
+    "ui.termine.zurDigitalenAnamnese": {
+      "text": "Go to the online medical history form",
+      "quelle": "2eb3b587"
+    },
+    "ui.terminez.anWelchemStandort": {
+      "text": "Which location would you like your appointment at?",
+      "quelle": "94498b93"
+    },
+    "ui.terminez.beschreibung": {
+      "text": "Book an appointment online at KU64 – choose your location in Berlin or Potsdam.",
+      "quelle": "ff55c9ca"
+    },
+    "ui.terminez.terminBuchen": {
+      "text": "Book an appointment",
+      "quelle": "57146cdd"
+    },
+    "ui.ueber.angstErnstNehmen": {
+      "text": "Taking fear seriously",
+      "quelle": "eb4cd12d"
+    },
+    "ui.ueber.anVierStandorten": {
+      "text": "at four locations",
+      "quelle": "d78af490"
+    },
+    "ui.ueber.ehrlichStattWerbend": {
+      "text": "Honest, not salesy",
+      "quelle": "90e9f7fd"
+    },
+    "ui.ueber.imTeam": {
+      "text": "In the team",
+      "quelle": "2be88930"
+    },
+    "ui.ueber.inBerlinUndPotsdam": {
+      "text": "in Berlin and Potsdam",
+      "quelle": "9540453d"
+    },
+    "ui.ueber.mitProphylaxeAssistenzEmpfang": {
+      "text": "with preventive care, assistance, reception and administration",
+      "quelle": "da18d291"
+    },
+    "ui.ueber.sehrVieleMenschenSchieben": {
+      "text": "Many people put off going to the dentist. With us, the first appointment is a conversation, not treatment. You set the pace, and an agreed hand signal can pause things at any time.",
+      "quelle": "94c9b3be"
+    },
+    "ui.ueber.spezialisierungUnterEinemDach": {
+      "text": "Specialisation under one roof",
+      "quelle": "d03d10f7"
+    },
+    "ui.ueber.ueberKu64": {
+      "text": "About KU64",
+      "quelle": "92039106"
+    },
+    "ui.ueber.unsereStandorte": {
+      "text": "Our locations",
+      "quelle": "2041aab5"
+    },
+    "ui.ueber.vonProphylaxeUeberKieferorthopaedie": {
+      "text": "From preventive care to orthodontics to oral surgery – for most treatments, you don't need to change practice. What one location doesn't cover, another does.",
+      "quelle": "ca1347dd"
+    },
+    "ui.ueber.wirSagenOffenWas": {
+      "text": "We tell you openly what a treatment costs, what your insurer covers and what it doesn't – and if a treatment isn't offered at a location at all. Better one sentence too many than a wasted call.",
+      "quelle": "067084c6"
+    },
+    "ui.ueber.wofuerWirStehen": {
+      "text": "What we stand for",
+      "quelle": "8ff748a0"
+    },
+    "ui.ueber.zahnaerztinnenUndZahnaerzte": {
+      "text": "Dentists",
+      "quelle": "740fbae5"
     }
   }
 }

@@ -23,8 +23,11 @@ import {
 import {
   anwenden,
   fingerabdruck,
+  SPEC_BESCHWERDE,
+  SPEC_BEITRAG,
   SPEC_KATEGORIE,
   SPEC_LEISTUNG,
+  SPEC_PERSON,
   SPEC_STANDORT,
 } from './felder';
 import { TEXTE, type TextSchluessel } from './texte';
@@ -160,4 +163,45 @@ export function standortIn(s: Standort, sprache: Sprache): Standort {
 
 export function standorteIn(liste: Standort[], sprache: Sprache): Standort[] {
   return sprache === QUELLSPRACHE ? liste : liste.map((s) => standortIn(s, sprache));
+}
+
+/* ── Die langen Inhalte ────────────────────────────────────────────────
+ *
+ * Profile, Blogbeiträge und Beschwerdeseiten. Sie stehen als JSON in
+ * src/data/ und wurden bis eben unübersetzt in die Seiten gereicht – auf
+ * der englischen Beschwerdeseite standen dreitausend Wörter Deutsch, und
+ * kein Wächter sah es, weil sie nicht in der Quellfassung standen.
+ *
+ * Die Typen bleiben absichtlich weit: Diese Daten kommen aus JSON-Dateien,
+ * die aus dem Altbestand erzeugt werden. Eine Typdefinition dafür wäre eine
+ * zweite Stelle, an der etwas veralten kann.
+ */
+
+export function personIn<T>(slug: string, person: T, sprache: Sprache): T {
+  if (sprache === QUELLSPRACHE) return person;
+  return gepuffert(`p:${sprache}:${slug}`, () =>
+    anwenden(person, SPEC_PERSON, `person.${slug}`, nachschlagen(sprache)),
+  );
+}
+
+export function beitragIn<T extends { slug: string }>(beitrag: T, sprache: Sprache): T {
+  if (sprache === QUELLSPRACHE) return beitrag;
+  return gepuffert(`b:${sprache}:${beitrag.slug}`, () =>
+    anwenden(beitrag, SPEC_BEITRAG, `beitrag.${beitrag.slug}`, nachschlagen(sprache)),
+  );
+}
+
+export function beitraegeIn<T extends { slug: string }>(liste: T[], sprache: Sprache): T[] {
+  return sprache === QUELLSPRACHE ? liste : liste.map((b) => beitragIn(b, sprache));
+}
+
+export function beschwerdeIn<T extends { slug: string }>(b: T, sprache: Sprache): T {
+  if (sprache === QUELLSPRACHE) return b;
+  return gepuffert(`bs:${sprache}:${b.slug}`, () =>
+    anwenden(b, SPEC_BESCHWERDE, `beschwerde.${b.slug}`, nachschlagen(sprache)),
+  );
+}
+
+export function beschwerdenIn<T extends { slug: string }>(liste: T[], sprache: Sprache): T[] {
+  return sprache === QUELLSPRACHE ? liste : liste.map((b) => beschwerdeIn(b, sprache));
 }

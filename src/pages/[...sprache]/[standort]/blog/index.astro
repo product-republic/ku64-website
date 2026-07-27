@@ -19,7 +19,7 @@ import Basis from '../../../../layouts/Basis.astro';
 import BlogKarte from '../../../../components/BlogKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { STANDORTE } from '../../../../data/standorte';
-import { beitraegeAn, nachJahren } from '../../../../lib/blog';
+import { nachJahren } from '../../../../lib/blog';
 import { schemaBrotkrumen } from '../../../../lib/seo';
 
 export function getStaticPaths() {
@@ -31,7 +31,9 @@ const t = texte(daten.sprache);
 
 const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/blog/`;
-const beitraege = beitraegeAn(standort.slug);
+/* Erst filtern, dann übersetzen: Der Standortbezug steckt in `standorte`
+   und ist sprachneutral. */
+const beitraege = daten.beitraege.filter((b) => b.standorte.includes(standort.slug));
 const jahre = nachJahren(beitraege);
 
 const brotkrumen = [

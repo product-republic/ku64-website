@@ -14,7 +14,7 @@ import { inhalte } from '../../../i18n/daten';
 import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { BESCHWERDEN, AKUT } from '../../../data/beschwerden';
+import { AKUT } from '../../../data/beschwerden';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -96,18 +96,21 @@ const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
   },
 ];
 
+/* Über `daten`, damit die Titel in der Sprache der Seite stehen. */
+const alleBeschwerden = daten.beschwerden;
+
 const einsortiert = new Set(GRUPPEN.flatMap((g) => g.slugs));
 /*
  * Was in keiner Gruppe steht, verschwindet nicht – es bekommt eine eigene.
  * Sonst fällt beim nächsten übernommenen Text eine Seite lautlos aus der
  * Übersicht, und niemand merkt es, bis Google es merkt.
  */
-const uebrig = BESCHWERDEN.filter((b) => !einsortiert.has(b.slug));
+const uebrig = alleBeschwerden.filter((b) => !einsortiert.has(b.slug));
 
 const gruppen = [
   ...GRUPPEN.map((g) => ({
     ...g,
-    eintraege: g.slugs.map((s) => BESCHWERDEN.find((b) => b.slug === s)).filter(Boolean),
+    eintraege: g.slugs.map((s) => alleBeschwerden.find((b) => b.slug === s)).filter(Boolean),
   })).filter((g) => g.eintraege.length > 0),
   ...(uebrig.length
     ? [{ name: t('krume.weitere'), frage: 'Sonstiges', slugs: [], eintraege: uebrig }]
@@ -126,7 +129,7 @@ const schema = [
     '@type': 'CollectionPage',
     name: 'Zahnbeschwerden',
     url: kanonisch(pfad),
-    hasPart: BESCHWERDEN.map((b) => ({
+    hasPart: alleBeschwerden.map((b) => ({
       '@type': 'MedicalWebPage',
       name: b.titel,
       url: kanonisch(`/zahnbeschwerden/${b.slug}/`),
@@ -142,7 +145,7 @@ function kurz(titel: string): string {
 
 <Basis
   titel="Zahnbeschwerden"
-  description={`Von der Beschwerde zur Behandlung: ${BESCHWERDEN.length} Erklärungen zu Zahnschmerzen, Zahnfleisch, Mundgeruch und Zahnstellung – und was KU64 dagegen tut.`}
+  description={`Von der Beschwerde zur Behandlung: ${alleBeschwerden.length} Erklärungen zu Zahnschmerzen, Zahnfleisch, Mundgeruch und Zahnstellung – und was KU64 dagegen tut.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={schema}
@@ -153,7 +156,7 @@ function kurz(titel: string): string {
       <h1>{t('beschw.wasHabenSie')}</h1>
       <p class="anriss">
         Für den Weg andersherum: nicht von der Behandlung zur Beschwerde,
-        sondern von dem, was Sie merken, zu dem, was hilft. {BESCHWERDEN.length}{' '}
+        sondern von dem, was Sie merken, zu dem, was hilft. {alleBeschwerden.length}{' '}
         Beschwerden, jeweils mit den Behandlungen, die dafür in Frage kommen.
       </p>
 

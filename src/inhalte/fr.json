@@ -337,6 +337,142 @@
       "text": "Un dysfonctionnement temporo-mandibulaire apparaît lorsque les dents, les articulations de la mâchoire et les muscles masticateurs ne s'accordent plus entre eux. Les symptômes se manifestent souvent loin de la mâchoire – maux de tête, acouphènes ou tensions dans la nuque. Nous mesurons la fonction de manière systématique et traitons la cause.",
       "quelle": "b6977c0d"
     },
+    "leistung.dentosophie.ablauf.0.dauer": {
+      "text": "60 minutes",
+      "quelle": "f379bf19"
+    },
+    "leistung.dentosophie.ablauf.0.text": {
+      "text": "Nous observons comment respiration, position de la langue, fermeture de la bouche, mastication et déglutition s'articulent entre elles – et ce qui a perdu son équilibre.",
+      "quelle": "35f37196"
+    },
+    "leistung.dentosophie.ablauf.0.titel": {
+      "text": "Bilan et entretien",
+      "quelle": "514a43c4"
+    },
+    "leistung.dentosophie.ablauf.1.text": {
+      "text": "Un appareil d'entraînement souple en forme de gouttière dentaire. Il favorise la bonne position de la langue, encourage une déglutition physiologique et facilite la respiration nasale.",
+      "quelle": "813f99d0"
+    },
+    "leistung.dentosophie.ablauf.1.titel": {
+      "text": "Le rééducateur",
+      "quelle": "fb25a932"
+    },
+    "leistung.dentosophie.ablauf.2.text": {
+      "text": "Des exercices myofonctionnels contre le déséquilibre musculaire. La participation active fait partie du concept : les nouveaux schémas de mouvement s'acquièrent par l'entraînement, ils ne s'installent pas d'eux-mêmes.",
+      "quelle": "e06765a1"
+    },
+    "leistung.dentosophie.ablauf.2.titel": {
+      "text": "Exercices à la maison",
+      "quelle": "083adc45"
+    },
+    "leistung.dentosophie.ablauf.3.text": {
+      "text": "Pendant six à douze mois, nous accompagnons l'évolution et adaptons l'appareil ainsi que les exercices.",
+      "quelle": "02c03422"
+    },
+    "leistung.dentosophie.ablauf.3.titel": {
+      "text": "Contrôle régulier",
+      "quelle": "8fb33a5f"
+    },
+    "leistung.dentosophie.dauer": {
+      "text": "Environ six à douze mois, avec des rendez-vous de contrôle réguliers",
+      "quelle": "b1c04796"
+    },
+    "leistung.dentosophie.faq.0.antwort": {
+      "text": "Aux enfants et adolescents en développement, tout comme aux adultes. C'est une approche douce partout où des troubles fonctionnels jouent un rôle : respiration buccale, mauvaise position de la langue, déglutition atypique, grincement, serrement des dents ou mauvaise position des mâchoires. Elle est souvent utilisée en complément d'autres traitements dentaires.",
+      "quelle": "f3f75e79"
+    },
+    "leistung.dentosophie.faq.0.frage": {
+      "text": "À qui s'adresse la dentosophie ?",
+      "quelle": "d0b02f18"
+    },
+    "leistung.dentosophie.faq.1.antwort": {
+      "text": "Un appareil d'entraînement élastique en forme de gouttière, en matière plastique. Il soutient la fonction de la langue, la fermeture des lèvres, la déglutition et la respiration nasale. Il se porte régulièrement pendant la phase de thérapie, avec les exercices d'accompagnement.",
+      "quelle": "7c1dd1f0"
+    },
+    "leistung.dentosophie.faq.1.frage": {
+      "text": "Qu'est-ce que le Balancer ?",
+      "quelle": "e625aaba"
+    },
+    "leistung.dentosophie.faq.2.antwort": {
+      "text": "Cela dépend du diagnostic, de l'âge et de l'objectif thérapeutique. En règle générale, il s'étend sur environ six à douze mois. Dans certains cas, un suivi plus long peut être utile.",
+      "quelle": "49a5dde1"
+    },
+    "leistung.dentosophie.faq.2.frage": {
+      "text": "Combien de temps dure un traitement de dentosophie ?",
+      "quelle": "4a7b9ee7"
+    },
+    "leistung.dentosophie.faq.3.antwort": {
+      "text": "Les caisses d'assurance maladie légales ne prennent généralement pas en charge la dentosophie. Pour les personnes assurées à titre privé et les assurances dentaires complémentaires privées, la prise en charge dépend du tarif concerné. Nous vous conseillons en détail sur le déroulement et les coûts avant le début du traitement.",
+      "quelle": "5292a2a2"
+    },
+    "leistung.dentosophie.faq.3.frage": {
+      "text": "La caisse d'assurance maladie prend-elle en charge les frais ?",
+      "quelle": "a67f9dd1"
+    },
+    "leistung.dentosophie.faq.4.antwort": {
+      "text": "La dentosophie agit sur la fonction, un appareil dentaire sur la position. Là où une malposition résulte d'un schéma défavorable – respiration buccale, déglutition atypique –, la dentosophie s'attaque à la cause. Là où c'est la position elle-même qui pose problème, un traitement orthodontique reste indispensable. Le diagnostic permet de déterminer ce qui s'applique à votre cas.",
+      "quelle": "c74ad3f2"
+    },
+    "leistung.dentosophie.faq.4.frage": {
+      "text": "Quand la dentosophie est-elle indiquée, quand faut-il un appareil dentaire ?",
+      "quelle": "d2e06ef5"
+    },
+    "leistung.dentosophie.kasse": {
+      "text": "En règle générale, la caisse d'assurance maladie légale allemande ne prend pas en charge la dentosophie. Pour les assurés privés et les complémentaires dentaires, cela dépend du contrat – nous en discutons avec vous, ainsi que du déroulement et des coûts, avant de commencer.",
+      "quelle": "ad7215a9"
+    },
+    "leistung.dentosophie.kurz": {
+      "text": "Rééquilibrer la respiration, la position de la langue et l'occlusion – sans appareil dentaire.",
+      "quelle": "f97223dd"
+    },
+    "leistung.dentosophie.name": {
+      "text": "Dentosophie",
+      "quelle": "6a8afb65"
+    },
+    "leistung.dentosophie.patientenfrage": {
+      "text": "Peut-on corriger les malpositions dentaires sans appareil dentaire fixe ?",
+      "quelle": "27752a0f"
+    },
+    "leistung.dentosophie.synonyme.0": {
+      "text": "dentosophie",
+      "quelle": "6a8afb65"
+    },
+    "leistung.dentosophie.synonyme.1": {
+      "text": "rééducateur",
+      "quelle": "cacc6ffb"
+    },
+    "leistung.dentosophie.synonyme.2": {
+      "text": "activateur",
+      "quelle": "d7e8446c"
+    },
+    "leistung.dentosophie.synonyme.3": {
+      "text": "thérapie myofonctionnelle",
+      "quelle": "932ff53e"
+    },
+    "leistung.dentosophie.synonyme.4": {
+      "text": "respiration buccale",
+      "quelle": "86ccc5bd"
+    },
+    "leistung.dentosophie.synonyme.5": {
+      "text": "position de la langue",
+      "quelle": "6435dc67"
+    },
+    "leistung.dentosophie.synonyme.6": {
+      "text": "déglutition atypique",
+      "quelle": "bb9189c6"
+    },
+    "leistung.dentosophie.synonyme.7": {
+      "text": "orthodontie douce",
+      "quelle": "0904b67e"
+    },
+    "leistung.dentosophie.synonyme.8": {
+      "text": "appareil dentaire sans fil",
+      "quelle": "ff98da1d"
+    },
+    "leistung.dentosophie.teaser": {
+      "text": "La dentosophie agit là où naissent de nombreux troubles : la respiration, la position de la langue, la fermeture de la bouche, la mastication et la déglutition. Grâce à un appareil d'entraînement souple et à des exercices d'accompagnement, les schémas inconscients évoluent pas à pas – chez l'enfant comme chez l'adulte.",
+      "quelle": "05595428"
+    },
     "leistung.dvt-3d-roentgen.dauer": {
       "text": "10 à 20 secondes de prise de vue",
       "quelle": "0239d36e"
@@ -348,6 +484,10 @@
     "leistung.dvt-3d-roentgen.faq.0.frage": {
       "text": "Quelle est l'exposition aux radiations ?",
       "quelle": "6a5b5dbd"
+    },
+    "leistung.dvt-3d-roentgen.faq.1.antwort": {
+      "text": "Oui. Vous recevez les données sous forme numérique si vous le souhaitez – par exemple pour un second avis ou pour les médecins spécialistes qui vous suivent également.",
+      "quelle": "5fc672a7"
     },
     "leistung.dvt-3d-roentgen.faq.1.frage": {
       "text": "Puis-je emporter l'image avec moi ?",
@@ -2602,8 +2742,8 @@
       "quelle": "e69ab05a"
     },
     "standort.potsdam.besonderheiten.1": {
-      "text": "Ouvert sept jours sur sept, week-end compris",
-      "quelle": "bc52cb0e"
+      "text": "Du lundi au vendredi de 8 à 20 heures, le week-end sur rendez-vous",
+      "quelle": "aaaf79e9"
     },
     "standort.potsdam.besonderheiten.2": {
       "text": "Toute la gamme des soins, de la prophylaxie à l'implantologie",
@@ -2618,8 +2758,8 @@
       "quelle": "10f17fef"
     },
     "standort.potsdam.claim": {
-      "text": "La dentisterie dans le Palais Ritz classé monument historique : toute la gamme des soins, sept jours sur sept, sur la Berliner Straße.",
-      "quelle": "2420e516"
+      "text": "La médecine dentaire dans le Palais Ritz, classé monument historique : toute la palette de soins, directement sur la Berliner Straße.",
+      "quelle": "22d532fd"
     },
     "standort.potsdam.doctolib.0.label": {
       "text": "Dentisterie",
@@ -2681,6 +2821,694 @@
       "text": "Les horaires de la KiezPraxis ne sont pas encore confirmés – merci de les vérifier avant publication.",
       "quelle": "f4aaeaf5"
     },
+    "ui.anamnese.absendenFertig": {
+      "text": "Envoyer – terminé",
+      "quelle": "91d42e61"
+    },
+    "ui.anamnese.allergienGegenBetaeubungsmittelOder": {
+      "text": "Allergies aux anesthésiants ou antibiotiques",
+      "quelle": "434e01b7"
+    },
+    "ui.anamnese.anAllenKu64Standorten": {
+      "text": "Dans tous les sites KU64",
+      "quelle": "a9973a5f"
+    },
+    "ui.anamnese.anamnesebogenOeffnen": {
+      "text": "Ouvrir le questionnaire médical",
+      "quelle": "4be063d7"
+    },
+    "ui.anamnese.anamneseVorabAusfuellen": {
+      "text": "Remplir le questionnaire à l'avance",
+      "quelle": "fd131d6f"
+    },
+    "ui.anamnese.angabenMachen": {
+      "text": "Renseigner les informations",
+      "quelle": "46dd474b"
+    },
+    "ui.anamnese.bisphosphonateOderOsteoporoseTherapie": {
+      "text": "Bisphosphonates ou traitement de l'ostéoporose",
+      "quelle": "696cfa21"
+    },
+    "ui.anamnese.bitteUnbedingtAngeben": {
+      "text": "À indiquer impérativement",
+      "quelle": "11d10b99"
+    },
+    "ui.anamnese.blutverduennendeMedikamente": {
+      "text": "Médicaments anticoagulants",
+      "quelle": "a1e0fcab"
+    },
+    "ui.anamnese.dasSolltenSieBereithalten": {
+      "text": "Ce qu'il faut prévoir",
+      "quelle": "7ff9a9ba"
+    },
+    "ui.anamnese.diesePunkteAendernKonkret": {
+      "text": "Ces éléments changent concrètement la façon dont nous pouvons vous soigner – merci de les mentionner même s'ils vous semblent secondaires :",
+      "quelle": "2a9c939c"
+    },
+    "ui.anamnese.formularOeffnen": {
+      "text": "Ouvrir le formulaire",
+      "quelle": "e20e32d0"
+    },
+    "ui.anamnese.fragenZurDigitalenAnamnese": {
+      "text": "Questions sur le questionnaire médical en ligne",
+      "quelle": "1efe74d0"
+    },
+    "ui.anamnese.herzklappenersatzOderHerzerkrankungen": {
+      "text": "Valve cardiaque artificielle ou maladies cardiaques",
+      "quelle": "a4977978"
+    },
+    "ui.anamnese.ihreAngabenGehenVerschluesselt": {
+      "text": "Vos informations sont transmises de façon cryptée à notre système. Tout sera déjà prêt pour votre rendez-vous.",
+      "quelle": "2024679f"
+    },
+    "ui.anamnese.marcumarOderAntikoagulanzienAusweis": {
+      "text": "Carte de traitement Marcumar ou anticoagulants",
+      "quelle": "e2f035d8"
+    },
+    "ui.anamnese.medikamentenplanFallsVorhanden": {
+      "text": "Liste des médicaments, si disponible",
+      "quelle": "c3fb09a3"
+    },
+    "ui.anamnese.mitDemOeffnenWechseln": {
+      "text": "En ouvrant ce lien, vous accédez à Nelly Solutions, notre prestataire pour les formulaires patients numériques. Sa politique de confidentialité s'applique en complément de",
+      "quelle": "d6b48e6e"
+    },
+    "ui.anamnese.nochNichtFreigeschaltet": {
+      "text": "Pas encore activé.",
+      "quelle": "3df239df"
+    },
+    "ui.anamnese.oeffnetInNeuemTab": {
+      "text": "(ouvre un nouvel onglet chez Nelly Solutions)",
+      "quelle": "5e9c96c7"
+    },
+    "ui.anamnese.schwangerschaftOderStillzeit": {
+      "text": "Grossesse ou allaitement",
+      "quelle": "922250fc"
+    },
+    "ui.anamnese.sieBrauchenWederKonto": {
+      "text": "Pas besoin de compte ni d'application : un lien suffit.",
+      "quelle": "ce9d188b"
+    },
+    "ui.anamnese.vorbefundeOderRoentgenbilderAnderer": {
+      "text": "Antécédents ou radiographies d'autres cabinets",
+      "quelle": "d4f878f8"
+    },
+    "ui.anamnese.vorerkrankungenMedikamenteAllergienHalten": {
+      "text": "Antécédents médicaux, médicaments, allergies. Ayez votre liste de médicaments à portée de main si vous en prenez régulièrement.",
+      "quelle": "2fa772c2"
+    },
+    "ui.anamnesez.beschreibung": {
+      "text": "Remplissez le questionnaire médical en ligne à l'avance – dans tous les cabinets KU64 à Berlin et Potsdam.",
+      "quelle": "9f4e437e"
+    },
+    "ui.anamnesez.digitaleAnamnese": {
+      "text": "Anamnèse en ligne",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.anamnesez.fuenfMinutenZuHause": {
+      "text": "Cinq minutes chez vous plutôt qu'un formulaire en salle d'attente – dans tous nos cabinets.",
+      "quelle": "fed7da06"
+    },
+    "ui.anamnesez.woTermin": {
+      "text": "Où avez-vous rendez-vous ?",
+      "quelle": "d86f774c"
+    },
+    "ui.anfahrt.mitDemAuto": {
+      "text": "En voiture",
+      "quelle": "7bc13792"
+    },
+    "ui.anfahrt.mitOeffentlichenVerkehrsmitteln": {
+      "text": "En transports en commun",
+      "quelle": "4e27720c"
+    },
+    "ui.anfahrt.routePlanen": {
+      "text": "Planifier l'itinéraire",
+      "quelle": "aea4bcc6"
+    },
+    "ui.berater.begruessung": {
+      "text": "Bonjour ! Je réponds à vos questions sur les traitements, les coûts et le déroulement chez KU64. Que souhaitez-vous savoir ?",
+      "quelle": "14ca48e0"
+    },
+    "ui.berater.begruessungOrt": {
+      "text": "Bonjour ! Je réponds à vos questions sur les traitements, les coûts et le déroulement chez KU64 {ort}. Que souhaitez-vous savoir ?",
+      "quelle": "dd7b63a5"
+    },
+    "ui.berater.eingabeHinweis": {
+      "text": "Saisissez votre question…",
+      "quelle": "045b7143"
+    },
+    "ui.berater.frageSenden": {
+      "text": "Envoyer la question",
+      "quelle": "61723a3d"
+    },
+    "ui.berater.ihreFrage": {
+      "text": "Votre question",
+      "quelle": "6101c0da"
+    },
+    "ui.berater.keineDiagnosen": {
+      "text": "Je ne pose pas de diagnostic et n'ai besoin d'aucune donnée personnelle de votre part. En cas de fortes douleurs, appelez-nous directement.",
+      "quelle": "705a580d"
+    },
+    "ui.berater.keineDiagnosenOrt": {
+      "text": "Je ne pose pas de diagnostic et n'ai besoin d'aucune donnée personnelle de votre part. En cas de fortes douleurs, appelez-nous directement au {telefon}.",
+      "quelle": "59c31472"
+    },
+    "ui.berater.menschUnter": {
+      "text": "Vous pouvez joindre un interlocuteur au {telefon}.",
+      "quelle": "820bf594"
+    },
+    "ui.berater.oeffnen": {
+      "text": "Des questions ? Ouvrir l'assistant",
+      "quelle": "005b32ab"
+    },
+    "ui.berater.schliessen": {
+      "text": "Fermer l'assistant",
+      "quelle": "ee12ab86"
+    },
+    "ui.berater.standortWaehlen": {
+      "text": "Veuillez choisir un site",
+      "quelle": "49db019a"
+    },
+    "ui.berater.wieDasFunktioniert": {
+      "text": "Comment ça marche",
+      "quelle": "4e9d29a0"
+    },
+    "ui.beratung.allgemeinNochUnentschieden": {
+      "text": "Général / pas encore décidé",
+      "quelle": "e3f03827"
+    },
+    "ui.beratung.beiStarkenSchmerzenSchwellung": {
+      "text": "En cas de douleurs intenses, de gonflement du visage ou de fièvre : appelez-nous directement. En cas de difficultés respiratoires ou de déglutition, contactez le 112.",
+      "quelle": "8fe94029"
+    },
+    "ui.beratung.bereitKlickenSieUm": {
+      "text": "Prêt. Cliquez pour démarrer la conversation.",
+      "quelle": "5b0dfb02"
+    },
+    "ui.beratung.chatOeffnen": {
+      "text": "Ouvrir le chat",
+      "quelle": "7eb9fb8e"
+    },
+    "ui.beratung.derChatUntenRechts": {
+      "text": "Le chat en bas à droite répond aux mêmes questions – par écrit, sans micro.",
+      "quelle": "834777c2"
+    },
+    "ui.beratung.fragenZuEinerBehandlung": {
+      "text": "Des questions sur un traitement, les coûts ou le déroulement ? Posez-les à voix haute – le conseiller répond en langage naturel et connaît l'offre de chaque cabinet.",
+      "quelle": "d08ce9de"
+    },
+    "ui.beratung.fragenZurDigitalenBeratung": {
+      "text": "Questions sur le conseil numérique",
+      "quelle": "6452be28"
+    },
+    "ui.beratung.gespraechStarten": {
+      "text": "Démarrer la conversation",
+      "quelle": "3a3d1810"
+    },
+    "ui.beratung.ihrBrowserFragtDanach": {
+      "text": "Votre navigateur vous demandera ensuite l'autorisation d'accéder au microphone. Sans votre accord, rien ne se passe.",
+      "quelle": "23fa63db"
+    },
+    "ui.beratung.keineDiagnoseUndKeine": {
+      "text": "Aucun diagnostic ni évaluation de symptômes",
+      "quelle": "03967f0b"
+    },
+    "ui.beratung.keineTerminbuchungUndKeine": {
+      "text": "Aucune prise de rendez-vous ni collecte de données personnelles",
+      "quelle": "637ae879"
+    },
+    "ui.beratung.keineZusagenZuBehandlungsergebnissen": {
+      "text": "Aucun engagement sur les résultats d'un traitement",
+      "quelle": "5769c42b"
+    },
+    "ui.beratung.lieberMitEinemMenschen": {
+      "text": "Vous préférez parler à quelqu'un ?",
+      "quelle": "bfd8082c"
+    },
+    "ui.beratung.lieberSchreiben": {
+      "text": "Vous préférez écrire ?",
+      "quelle": "4c5262e2"
+    },
+    "ui.beratung.rundUmDieUhr": {
+      "text": "24 heures sur 24",
+      "quelle": "88af7e73"
+    },
+    "ui.beratung.selbstverstaendlichRufenSieDen": {
+      "text": "Bien sûr. Appelez le cabinet le plus proche de chez vous :",
+      "quelle": "d7d56091"
+    },
+    "ui.beratung.sprechenSieMitUnserem": {
+      "text": "Parlez avec notre conseiller numérique",
+      "quelle": "3511c337"
+    },
+    "ui.beratung.wasDerBeraterNicht": {
+      "text": "Ce que le conseiller ne fait pas",
+      "quelle": "94d4a205"
+    },
+    "ui.beratung.welchesSystemHierArbeitet": {
+      "text": "Quel système fonctionne ici",
+      "quelle": "3b15e603"
+    },
+    "ui.beratung.zuWelchemStandortHaben": {
+      "text": "Sur quel cabinet portent vos questions ?",
+      "quelle": "4c9b02f3"
+    },
+    "ui.beratungz.beschreibung": {
+      "text": "Parlez ou écrivez à notre conseiller numérique – 24h/24, sur les traitements, les coûts et le déroulement chez KU64.",
+      "quelle": "c7d7de41"
+    },
+    "ui.beschw.dannLesenSieHier": {
+      "text": "Alors ne lisez pas plus loin. Nous réservons des créneaux pour les patients en urgence dans chaque cabinet.",
+      "quelle": "67074ccb"
+    },
+    "ui.beschw.dieseTexteStammenAus": {
+      "text": "Ces textes proviennent de la documentation du cabinet. Ils ne remplacent pas un examen : la cause de vos symptômes ne peut être déterminée qu'au fauteuil.",
+      "quelle": "94035059"
+    },
+    "ui.beschw.kannAkutSein": {
+      "text": "Peut être une urgence",
+      "quelle": "ccbd22f5"
+    },
+    "ui.beschw.starkeSchmerzenOderEine": {
+      "text": "Douleurs intenses ou une blessure ?",
+      "quelle": "bdc6eb9c"
+    },
+    "ui.beschw.wasHabenSie": {
+      "text": "Quels sont vos symptômes ?",
+      "quelle": "c1d78b22"
+    },
+    "ui.beschwerde.herkunft": {
+      "text": "Ce texte provient de la documentation du cabinet et ne remplace pas un examen : seule une consultation permet de déterminer l'origine de vos symptômes.",
+      "quelle": "ec6f0736"
+    },
+    "ui.beschwseite.aufDieserSeite": {
+      "text": "Sur cette page",
+      "quelle": "88204195"
+    },
+    "ui.beschwseite.wasBeiEinemZahnnotfall": {
+      "text": "Que faire en cas d'urgence dentaire →",
+      "quelle": "eb74640f"
+    },
+    "ui.beschwseite.wasDagegenHilft": {
+      "text": "Ce qui peut aider",
+      "quelle": "e3bcfd26"
+    },
+    "ui.beschwseite.wirHaltenAnJedem": {
+      "text": "Dans chaque cabinet, nous réservons des créneaux pour les urgences douloureuses.",
+      "quelle": "17467662"
+    },
+    "ui.bf.alleFunktionenSindMit": {
+      "text": "Toutes les fonctions sont accessibles au clavier, avec un cadre de focus visible",
+      "quelle": "fafaca00"
+    },
+    "ui.bf.alternativtexteFuerBildmaterialWerden": {
+      "text": "Les textes alternatifs des images seront ajoutés dès que les images seront disponibles",
+      "quelle": "ef2c409e"
+    },
+    "ui.bf.aufklappbareInhalteFunktionierenAuch": {
+      "text": "Les contenus dépliables fonctionnent aussi sans JavaScript",
+      "quelle": "9b73ec59"
+    },
+    "ui.bf.barriereMelden": {
+      "text": "Signaler un obstacle",
+      "quelle": "0d5aac88"
+    },
+    "ui.bf.bedienelementeSindMindestens44": {
+      "text": "Les éléments interactifs mesurent au moins 44 × 44 pixels",
+      "quelle": "da6d3345"
+    },
+    "ui.bf.beschreibung": {
+      "text": "Dans quelle mesure ce site et nos cabinets sont accessibles – et ce qui reste à faire.",
+      "quelle": "9283bb30"
+    },
+    "ui.bf.bewegteEffekteWerdenBei": {
+      "text": "Les effets animés sont désactivés si le paramètre système « Réduire les animations » est activé",
+      "quelle": "32b6b7e2"
+    },
+    "ui.bf.bitteSagenSieUns": {
+      "text": "Merci de nous le signaler – cela nous aide plus que toute auto-évaluation. Décrivez brièvement la page et l'outil concernés. Nous vous répondrons et corrigerons ce qui peut l'être.",
+      "quelle": "ede28602"
+    },
+    "ui.bf.dieseWebsiteSollFuer": {
+      "text": "Ce site doit être utilisable par tous – avec un lecteur d'écran, uniquement au clavier, en cas de vision réduite ou si les mouvements à l'écran provoquent des gênes. Voici, en toute transparence, ce qui est déjà accessible et ce qui ne l'est pas encore.",
+      "quelle": "08ffdf94"
+    },
+    "ui.bf.dieTerminbuchungVonDoctolib": {
+      "text": "La prise de rendez-vous Doctolib est un système externe dont nous ne maîtrisons pas l'accessibilité",
+      "quelle": "c945a7fe"
+    },
+    "ui.bf.einDunklesFarbschemaWird": {
+      "text": "Un thème sombre est appliqué automatiquement si votre système le demande",
+      "quelle": "a7133ec5"
+    },
+    "ui.bf.einSprunglinkFuehrtDirekt": {
+      "text": "Un lien d'accès rapide mène directement au contenu, sans passer par la navigation",
+      "quelle": "5b3ae353"
+    },
+    "ui.bf.etwasGefunden": {
+      "text": "Vous avez trouvé un problème ?",
+      "quelle": "8d991796"
+    },
+    "ui.bf.leichteSpracheUndGebaerdensprachvideos": {
+      "text": "Le langage simplifié et les vidéos en langue des signes ne sont pas encore disponibles",
+      "quelle": "c3cc6eb7"
+    },
+    "ui.bf.schriftgroessenSkalierenMitIhren": {
+      "text": "La taille du texte s'adapte aux réglages de votre navigateur, lisible jusqu'à 200 %",
+      "quelle": "1e533b5b"
+    },
+    "ui.bf.screenreaderTest": {
+      "text": "Un test complet avec lecteurs d'écran (NVDA, VoiceOver) reste à effectuer",
+      "quelle": "bb82ca3c"
+    },
+    "ui.bf.statusmeldungenWerdenScreenreadernAngekuendigt": {
+      "text": "Les messages d'état sont annoncés aux lecteurs d'écran",
+      "quelle": "51174460"
+    },
+    "ui.bf.wasNochOffenIst": {
+      "text": "Ce qui reste à faire",
+      "quelle": "7fad6a5c"
+    },
+    "ui.bf.wasUmgesetztIst": {
+      "text": "Ce qui est déjà en place",
+      "quelle": "fe8ee992"
+    },
+    "ui.bf.zugaenglichkeitUnsererPraxen": {
+      "text": "Accessibilité de nos cabinets",
+      "quelle": "00dcd8a7"
+    },
+    "ui.blog.aufDieserSeite": {
+      "text": "Sur cette page",
+      "quelle": "88204195"
+    },
+    "ui.blog.weiterlesen": {
+      "text": "Lire la suite",
+      "quelle": "3fb16c9e"
+    },
+    "ui.blogliste.beitragLesen": {
+      "text": "Lire l'article →",
+      "quelle": "518e3908"
+    },
+    "ui.blogliste.nachStandort": {
+      "text": "Par cabinet :",
+      "quelle": "7b59b11c"
+    },
+    "ui.blogliste.neuesterBeitrag": {
+      "text": "Dernier article",
+      "quelle": "0b0d7f34"
+    },
+    "ui.blogliste.zahnmedizinischerBlog": {
+      "text": "Blog dentaire",
+      "quelle": "61ea82a4"
+    },
+    "ui.blogseite.aufDieserSeite": {
+      "text": "Sur cette page",
+      "quelle": "88204195"
+    },
+    "ui.blogseite.fragenZuDiesemThema": {
+      "text": "Pour toute question à ce sujet, nous vous répondons volontiers en personne.",
+      "quelle": "1aec95cf"
+    },
+    "ui.blogseite.termin": {
+      "text": "Rendez-vous",
+      "quelle": "12c12fbc"
+    },
+    "ui.blogseite.terminBuchen": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.blogz.nachStandort": {
+      "text": "Articles par cabinet",
+      "quelle": "9f3ee4ba"
+    },
+    "ui.ck.beschreibung": {
+      "text": "Ce site n'utilise ni cookies d'analyse ni cookies publicitaires. Ce qui est réellement enregistré et comment le supprimer.",
+      "quelle": "fb73fcda"
+    },
+    "ui.ck.datenschutzerklaerung": {
+      "text": "politique de confidentialité",
+      "quelle": "24f50bb8"
+    },
+    "ui.ck.drittanbieterText": {
+      "text": "Seulement si vous le déclenchez vous-même : au chargement du calendrier de rendez-vous Doctolib, à l'ouverture de l'anamnèse numérique, en utilisant le conseiller vocal ou l'aperçu du sourire. Avant cela, rien ne se passe. Les détails figurent dans la {verweis}.",
+      "quelle": "336ba397"
+    },
+    "ui.ck.einKlickGenuegtDanach": {
+      "text": "Un clic suffit – ensuite, le stockage local de ce site est vide.",
+      "quelle": "d756a1bd"
+    },
+    "ui.ck.einleitung": {
+      "text": "<strong>Ce site n'utilise ni cookies d'analyse ni cookies publicitaires</strong> – pas de cookies d'analyse, pas de cookies publicitaires et pas de pixels espions. Il n'y a donc pas de bandeau de consentement à fermer.",
+      "quelle": "2a11cb13"
+    },
+    "ui.ck.gespeicherteAngabenLoeschen": {
+      "text": "Supprimer les informations enregistrées",
+      "quelle": "43cf4080"
+    },
+    "ui.ck.ihrZuletztGewaehlterStandort": {
+      "text": "– le dernier cabinet que vous avez choisi, afin de vous proposer les informations adaptées lors de votre prochaine visite. Aucune redirection automatique n'a lieu.",
+      "quelle": "be96cd2d"
+    },
+    "ui.ck.loeschen": {
+      "text": "Supprimer",
+      "quelle": "57def7c0"
+    },
+    "ui.ck.nurVorhandenWennSie": {
+      "text": "– présent uniquement si vous avez chargé un service intégré et coché que nous devons mémoriser votre choix. Tant que vous ne le faites pas, rien n'est enregistré.",
+      "quelle": "d7a535dd"
+    },
+    "ui.ck.seitentitel": {
+      "text": "Paramètres des cookies",
+      "quelle": "8ade692f"
+    },
+    "ui.ck.wannDochDrittanbieterIns": {
+      "text": "Quand des tiers entrent en jeu",
+      "quelle": "3c0091c6"
+    },
+    "ui.ck.wasTatsaechlichGespeichertWird": {
+      "text": "Ce qui est réellement enregistré",
+      "quelle": "c9260bde"
+    },
+    "ui.ck.zweiAngaben": {
+      "text": "Deux informations sont conservées dans le stockage local de votre navigateur. Elles n'atteignent jamais notre serveur et servent uniquement votre confort :",
+      "quelle": "4aa34230"
+    },
+    "ui.ds.10Aenderungen": {
+      "text": "10. Modifications",
+      "quelle": "e797ba3a"
+    },
+    "ui.ds.1Verantwortlicher": {
+      "text": "1. Responsable du traitement",
+      "quelle": "96bc02df"
+    },
+    "ui.ds.2WasBeimAufruf": {
+      "text": "2. Ce qui se passe lors de la visite du site",
+      "quelle": "7a5ec84a"
+    },
+    "ui.ds.3LokaleSpeicherungIm": {
+      "text": "3. Stockage local dans le navigateur",
+      "quelle": "9b1268f9"
+    },
+    "ui.ds.4Doctolib": {
+      "text": "4. Prise de rendez-vous en ligne (Doctolib)",
+      "quelle": "6d40c3ab"
+    },
+    "ui.ds.5Anamnese": {
+      "text": "5. Questionnaire médical numérique (Nelly Solutions)",
+      "quelle": "482e70f4"
+    },
+    "ui.ds.6Berater": {
+      "text": "6. Assistant numérique (texte et voix)",
+      "quelle": "cce54266"
+    },
+    "ui.ds.7Laecheln": {
+      "text": "7. Aperçu du sourire (envoi de photo)",
+      "quelle": "55c5d735"
+    },
+    "ui.ds.8Kontaktaufnahme": {
+      "text": "8. Nous contacter",
+      "quelle": "c1155912"
+    },
+    "ui.ds.9IhreRechte": {
+      "text": "9. Vos droits",
+      "quelle": "a7ded7cb"
+    },
+    "ui.ds.aenderungenText": {
+      "text": "Nous adaptons cette déclaration en cas d'évolution du site ou du cadre juridique. Dernière mise à jour : <code>[date de publication à indiquer]</code>.",
+      "quelle": "ffba5898"
+    },
+    "ui.ds.anamneseEins": {
+      "text": "Le questionnaire médical est fourni par Nelly Solutions. Ce site se contente de vous y rediriger et ne traite lui-même <strong>aucune donnée de santé</strong>. Vos informations sont transmises directement du formulaire vers notre logiciel de gestion de cabinet.",
+      "quelle": "ba04eddd"
+    },
+    "ui.ds.anamneseZwei": {
+      "text": "La base juridique du traitement de vos données de santé est l'art. 9, al. 2, let. h du RGPD, en lien avec le § 630f du Code civil allemand (BGB, obligation de documentation). Durée de conservation du dossier patient : <code>[généralement 10 ans – à confirmer]</code>. Contrat de sous-traitance avec Nelly Solutions : <code>[statut à compléter]</code>.",
+      "quelle": "3457b6df"
+    },
+    "ui.ds.beidesKoennenSieJederzeit": {
+      "text": "Vous pouvez supprimer les deux à tout moment via les paramètres de votre navigateur. Il ne s'agit pas de données personnelles au sens strict ni de profils d'utilisateurs.",
+      "quelle": "035256b6"
+    },
+    "ui.ds.beraterHinweis": {
+      "text": "L'assistant a pour consigne de ne collecter aucune donnée de santé ni de poser de diagnostic. Merci toutefois de ne lui communiquer aucune information sensible – pour tout ce qui concerne votre santé, le rendez-vous en personne reste le bon cadre. Base légale : art. 6, al. 1, let. f RGPD. Contrats de sous-traitance : <code>[statut à compléter]</code>.",
+      "quelle": "9a4c8cf5"
+    },
+    "ui.ds.beraterSprache": {
+      "text": "<strong>Assistant vocal.</strong> Le dialogue vocal passe par ElevenLabs. Le microphone n'est activé qu'après votre autorisation explicite. Votre voix est traitée pour générer la réponse ; nous n'en réalisons aucun enregistrement durable.",
+      "quelle": "ea8801d9"
+    },
+    "ui.ds.beraterText": {
+      "text": "<strong>Chat texte.</strong> Votre question est transmise à notre serveur, puis à Anthropic afin de générer la réponse. L'historique de la conversation n'existe que dans votre fenêtre de navigateur et disparaît à sa fermeture. Nous ne conservons ni les questions ni les réponses et ne créons aucun journal de conversation. Pour prévenir les abus, nous comptons brièvement les requêtes par adresse IP en mémoire vive.",
+      "quelle": "b7ef5b09"
+    },
+    "ui.ds.beschreibung": {
+      "text": "Comment ce site traite vos données – de façon concrète et compréhensible.",
+      "quelle": "3309452f"
+    },
+    "ui.ds.beschwerdeText": {
+      "text": "Vous pouvez également déposer une réclamation auprès d'une autorité de contrôle – celle compétente est celle de votre lieu de résidence ou du siège du cabinet : <code>[autorité de contrôle compétente à indiquer]</code>.",
+      "quelle": "2f1dc21a"
+    },
+    "ui.ds.dasErgebnisWirdIhnen": {
+      "text": "Le résultat vous est affiché et envoyé à l'adresse que vous avez indiquée. Cette adresse n'est utilisée que pour cet envoi, puis elle n'est pas conservée.",
+      "quelle": "e0e309d0"
+    },
+    "ui.ds.datenschutzbeauftragter": {
+      "text": "Délégué(e) à la protection des données : <code>[Nom, coordonnées]</code>",
+      "quelle": "f4f95c77"
+    },
+    "ui.ds.doctolibEins": {
+      "text": "La prise de rendez-vous se fait via Doctolib. Le calendrier n'est <strong>pas intégré</strong> à ce site : vous êtes redirigé vers Doctolib via un lien, et le changement d'adresse vous indique que vous vous trouvez alors sur doctolib.de. Tant que vous restez sur notre site, aucune connexion avec Doctolib n'est établie – y compris aucun chargement préalable en arrière-plan.",
+      "quelle": "029152df"
+    },
+    "ui.ds.doctolibZwei": {
+      "text": "Ce n'est que sur le site de Doctolib que votre adresse IP et les données de votre navigateur y sont traitées et que des cookies sont déposés. Doctolib en est responsable ; sa politique de confidentialité s'applique. Comme nous n'intégrons rien, aucun consentement au sens de l'art. 25, al. 1 du TDDDG n'est requis sur notre site. Contrat de sous-traitance pour la gestion des rendez-vous : <code>[statut à compléter]</code>.",
+      "quelle": "a2e9cef1"
+    },
+    "ui.ds.entwurf": {
+      "text": "<strong>Version provisoire.</strong> La partie technique décrit exactement le fonctionnement de ce site. Avant publication, cette déclaration doit être complétée par les informations du cabinet et vérifiée par un avocat. Les passages marqués <code>[…]</code> restent à compléter.",
+      "quelle": "4575d06b"
+    },
+    "ui.ds.keineAnalyse": {
+      "text": "<strong>Aucun outil d'analyse, aucun cookie publicitaire.</strong> Ce site n'utilise de lui-même aucun cookie à des fins d'analyse ou de marketing et n'intègre aucun pixel de suivi.",
+      "quelle": "bba197dc"
+    },
+    "ui.ds.kontaktText": {
+      "text": "Lorsque vous nous appelez ou nous écrivez, nous traitons vos informations pour traiter votre demande (art. 6, al. 1, let. b et f RGPD). Merci de ne pas nous transmettre de données de santé par e-mail non chiffré – ce canal n'est techniquement pas confidentiel.",
+      "quelle": "37f7a94e"
+    },
+    "ui.ds.laechelnAblauf": {
+      "text": "Voici concrètement comment se déroule le traitement :",
+      "quelle": "7b179b9d"
+    },
+    "ui.ds.laechelnEins": {
+      "text": "Une photo de visage est une <strong>donnée biométrique</strong>, donc une catégorie particulière de données personnelles au sens de l'art. 9 RGPD. Nous la traitons uniquement sur la base de votre consentement explicite et préalable (art. 9, al. 2, let. a RGPD).",
+      "quelle": "654f8109"
+    },
+    "ui.ds.laechelnGoogle": {
+      "text": "Elle est transmise à Google (Gemini) pour l'analyse et la génération d'image.",
+      "quelle": "f13ad419"
+    },
+    "ui.ds.laechelnSchluss": {
+      "text": "L'image générée est une illustration sans engagement et ne constitue pas un résultat de traitement. Vous pouvez retirer votre consentement à tout moment, avec effet pour l'avenir ; comme rien n'est stocké, il n'y a alors rien à supprimer. Contrat de sous-traitance avec Google : <code>[statut à compléter]</code>.",
+      "quelle": "aad69f88"
+    },
+    "ui.ds.laechelnSpeicher": {
+      "text": "Votre photo est transmise à notre serveur et n'y est conservée qu'en mémoire vive. Elle n'est <strong>jamais enregistrée sur un support de stockage</strong> ni intégrée à une base de données.",
+      "quelle": "1b8d1100"
+    },
+    "ui.ds.lokalEinleitung": {
+      "text": "Nous enregistrons dans votre navigateur (localStorage) deux informations qui n'atteignent jamais notre serveur :",
+      "quelle": "f9d08a36"
+    },
+    "ui.ds.lokalStandort": {
+      "text": "<strong>Le dernier site choisi</strong>, afin de pouvoir vous proposer les informations correspondantes lors de votre prochaine visite. Aucune redirection automatique n'a lieu.",
+      "quelle": "9a765988"
+    },
+    "ui.ds.lokalTermin": {
+      "text": "<strong>Votre choix concernant la prise de rendez-vous</strong>, si vous avez coché que nous devons nous en souvenir.",
+      "quelle": "fefb4112"
+    },
+    "ui.ds.nachAbschlussDerAnfrage": {
+      "text": "Une fois la demande terminée, la photo et le résultat ne sont plus présents sur notre serveur.",
+      "quelle": "ee063677"
+    },
+    "ui.ds.rechteText": {
+      "text": "Vous disposez d'un droit d'accès (art. 15), de rectification (art. 16), d'effacement (art. 17), de limitation du traitement (art. 18), de portabilité des données (art. 20) et d'opposition (art. 21 RGPD). Vous pouvez retirer à tout moment un consentement donné, avec effet pour l'avenir.",
+      "quelle": "b57a02e3"
+    },
+    "ui.ds.schriften": {
+      "text": "<strong>Les polices sont hébergées par nos soins.</strong> Aucun appel n'est effectué vers Google Fonts ou un autre réseau de polices. Votre adresse IP n'est donc transmise à aucun tiers pour cela.",
+      "quelle": "0f7e6bd2"
+    },
+    "ui.ds.seitentitel": {
+      "text": "Politique de confidentialité",
+      "quelle": "24f50bb8"
+    },
+    "ui.ds.serverdaten": {
+      "text": "Lorsque vous consultez une page, votre navigateur transmet à notre serveur des données techniquement nécessaires : adresse IP, date et heure, adresse consultée, type de navigateur et système d'exploitation. Ces données sont nécessaires pour l'affichage de la page. La base juridique est l'art. 6, al. 1, let. f du RGPD. Durée de conservation des journaux du serveur : <code>[nombre de jours]</code>.",
+      "quelle": "2417ea87"
+    },
+    "ui.ds.verantwortlicherAngaben": {
+      "text": "<code>[Nom complet du cabinet / de l'organisme responsable, adresse, téléphone, e-mail, représentation légale]</code>",
+      "quelle": "d46bdf35"
+    },
+    "ui.fehler.alleBehandlungen": {
+      "text": "Tous les traitements",
+      "quelle": "694db5ee"
+    },
+    "ui.fehler.alleBehandlungenIn": {
+      "text": "Tous les soins à {ort}",
+      "quelle": "036776d6"
+    },
+    "ui.fehler.alleStandorte": {
+      "text": "Tous les cabinets",
+      "quelle": "c5be1351"
+    },
+    "ui.fehler.beiStandort": {
+      "text": "{name} chez KU64 {ort}",
+      "quelle": "1e0cd561"
+    },
+    "ui.fehler.beraterFragen": {
+      "text": "Demander conseil",
+      "quelle": "c7a9cedf"
+    },
+    "ui.fehler.beschreibung": {
+      "text": "Cette page n'existe plus. Vous trouverez ici ce que vous cherchiez.",
+      "quelle": "28a42b80"
+    },
+    "ui.fehler.gibtEsNichtIn": {
+      "text": "{name} n'existe pas à {ort}",
+      "quelle": "be7b1d2c"
+    },
+    "ui.fehler.nichtsDabei": {
+      "text": "Rien ne correspond ?",
+      "quelle": "4f318d14"
+    },
+    "ui.fehler.nirgends": {
+      "text": "Nous ne proposons actuellement ce traitement dans aucun de nos cabinets. Appelez-nous – nous vous indiquerons qui peut vous aider.",
+      "quelle": "82299dc2"
+    },
+    "ui.fehler.notfall": {
+      "text": "Urgence",
+      "quelle": "75c3c7ff"
+    },
+    "ui.fehler.oderStandort": {
+      "text": "Ou accédez directement à votre cabinet",
+      "quelle": "2236cc0f"
+    },
+    "ui.fehler.platzhalter": {
+      "text": "p. ex. implant, blanchiment, douleur dentaire",
+      "quelle": "c9fd4008"
+    },
+    "ui.fehler.seitentitel": {
+      "text": "Page introuvable",
+      "quelle": "52d56493"
+    },
+    "ui.fehler.stattdessenDort": {
+      "text": "Nous ne proposons pas ce traitement dans ce cabinet. Vous pouvez l'obtenir chez {wo} – vous y trouverez les horaires, le numéro de téléphone et la prise de rendez-vous.",
+      "quelle": "9ebdd242"
+    },
     "ui.fehler.suchen": {
       "text": "Rechercher un soin",
       "quelle": "f9ef7d33"
@@ -2692,6 +3520,10 @@
     "ui.fehler.titel": {
       "text": "Cette page n’existe pas",
       "quelle": "59a255f5"
+    },
+    "ui.fehler.und": {
+      "text": "et",
+      "quelle": "5ad4af9a"
     },
     "ui.fuss.aktuellGewaehlt": {
       "text": "(actuellement sélectionné)",
@@ -2705,6 +3537,10 @@
       "text": "Domaines de traitement",
       "quelle": "a8728901"
     },
+    "ui.fuss.beschwerdenAZ": {
+      "text": "Problèmes dentaires A–Z",
+      "quelle": "0afdf788"
+    },
     "ui.fuss.cookieEinstellungen": {
       "text": "Paramètres des cookies",
       "quelle": "8ade692f"
@@ -2712,6 +3548,10 @@
     "ui.fuss.datenschutz": {
       "text": "Protection des données",
       "quelle": "f95b3d96"
+    },
+    "ui.fuss.digitaleAnamnese": {
+      "text": "Anamnèse numérique",
+      "quelle": "a9d6bcd2"
     },
     "ui.fuss.haeufigGesucht": {
       "text": "Recherches fréquentes",
@@ -2725,6 +3565,10 @@
       "text": "Carrières",
       "quelle": "bed1a24e"
     },
+    "ui.fuss.kiTransparenz": {
+      "text": "Transparence IA",
+      "quelle": "5528b9bc"
+    },
     "ui.fuss.laechelnVorschau": {
       "text": "Aperçu du sourire",
       "quelle": "50789e23"
@@ -2736,6 +3580,10 @@
     "ui.fuss.oeffnungszeiten": {
       "text": "Horaires d'ouverture",
       "quelle": "92e62cdb"
+    },
+    "ui.fuss.oeffnungszeitenVon": {
+      "text": "Horaires KU64 {name}",
+      "quelle": "c3c354cc"
     },
     "ui.fuss.ohneStandort": {
       "text": "Des soins dentaires dans quatre cabinets à Berlin et Potsdam. Choisissez le vôtre : les horaires et les soins proposés diffèrent.",
@@ -2781,13 +3629,173 @@
       "text": "Aller au contenu",
       "quelle": "60ca65f1"
     },
+    "ui.imp.angabenNach5Ddg": {
+      "text": "Mentions selon l'art. 5 DDG",
+      "quelle": "4628d2d4"
+    },
+    "ui.imp.anschrift": {
+      "text": "<code>[Nom complet du cabinet / de la société]</code><br /><code>[Forme juridique]</code><br /><code>[Rue, numéro]</code><br /><code>[Code postal, ville]</code>",
+      "quelle": "7effb441"
+    },
+    "ui.imp.berufsAngaben": {
+      "text": "Titre professionnel : <code>[p. ex. chirurgien-dentiste]</code>, décerné en <code>[Pays]</code><br />Ordre compétent : <code>[Ordre des chirurgiens-dentistes, adresse, site web]</code><br />Union des chirurgiens-dentistes conventionnés compétente : <code>[…]</code><br />Autorité de surveillance : <code>[…]</code>",
+      "quelle": "9fa611f4"
+    },
+    "ui.imp.berufsrechtlicheAngaben": {
+      "text": "Informations professionnelles réglementaires",
+      "quelle": "635bf4ab"
+    },
+    "ui.imp.berufsRegeln": {
+      "text": "Les réglementations professionnelles suivantes s'appliquent : loi sur l'art dentaire (ZHG), règlement professionnel de l'ordre des chirurgiens-dentistes compétent, barème des honoraires dentaires (GOZ), loi sur les professions de santé du Land. Consultables sous <code>[Référence]</code>.",
+      "quelle": "0bd6e3ba"
+    },
+    "ui.imp.beschreibung": {
+      "text": "Identification de l'éditeur et informations légales professionnelles.",
+      "quelle": "55cb362f"
+    },
+    "ui.imp.bildnachweise": {
+      "text": "Crédits photographiques",
+      "quelle": "682f1ad9"
+    },
+    "ui.imp.bildnachweiseAngabe": {
+      "text": "<code>[Auteurs et licences des images utilisées]</code>",
+      "quelle": "3200ad6b"
+    },
+    "ui.imp.entwurf": {
+      "text": "<strong>Version provisoire.</strong> Des mentions légales se composent d'informations factuelles sur le cabinet. Les champs marqués par <code>[…]</code> doivent être complétés par le cabinet avant publication.",
+      "quelle": "84434d29"
+    },
+    "ui.imp.haftpflicht": {
+      "text": "Assurance responsabilité civile professionnelle",
+      "quelle": "98036bb4"
+    },
+    "ui.imp.haftpflichtAngabe": {
+      "text": "<code>[Nom et adresse de l'assureur]</code><br />Zone de couverture géographique : <code>[…]</code>",
+      "quelle": "cc48bab9"
+    },
+    "ui.imp.kontakt": {
+      "text": "Téléphone : <code>[Numéro]</code><br />E-mail : <code>[Adresse]</code>",
+      "quelle": "bbcf3fd1"
+    },
+    "ui.imp.register": {
+      "text": "Immatriculation",
+      "quelle": "07e35466"
+    },
+    "ui.imp.registerAngabe": {
+      "text": "Tribunal d'immatriculation : <code>[…]</code><br />Numéro d'immatriculation : <code>[…]</code>",
+      "quelle": "8f5a057a"
+    },
+    "ui.imp.schlichtungsstelle": {
+      "text": "En cas de litige lié à une relation de traitement, l'organe de conciliation de l'ordre des chirurgiens-dentistes compétent est à votre disposition : <code>[Adresse]</code>.",
+      "quelle": "2fb60a32"
+    },
+    "ui.imp.seitentitel": {
+      "text": "Mentions légales",
+      "quelle": "c702dc58"
+    },
+    "ui.imp.streitbeilegung": {
+      "text": "Règlement des litiges",
+      "quelle": "6138259e"
+    },
+    "ui.imp.streitbeilegungText": {
+      "text": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges. Nous <code>[ne sommes pas]</code> disposés et <code>[ne sommes pas]</code> tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.",
+      "quelle": "e6df6eb7"
+    },
+    "ui.imp.ustId": {
+      "text": "Numéro de TVA intracommunautaire",
+      "quelle": "d3dfdf45"
+    },
+    "ui.imp.ustIdAngabe": {
+      "text": "<code>[N° de TVA selon § 27a UStG, le cas échéant]</code>",
+      "quelle": "b6e92f67"
+    },
+    "ui.imp.verantwortlichAngabe": {
+      "text": "<code>[Nom, adresse]</code>",
+      "quelle": "2225af5d"
+    },
+    "ui.imp.verantwortlichFuerDenInhalt": {
+      "text": "Responsable du contenu selon l'art. 18 al. 2 MStV",
+      "quelle": "719784ea"
+    },
+    "ui.imp.vertretung": {
+      "text": "Représentants légaux",
+      "quelle": "d74d025a"
+    },
+    "ui.imp.vertretungAngabe": {
+      "text": "<code>[Noms de la direction / des associés]</code>",
+      "quelle": "09069ae6"
+    },
+    "ui.karriere.arbeitenBeiKu64": {
+      "text": "Travailler chez KU64",
+      "quelle": "e748afed"
+    },
+    "ui.karriere.beschreibung": {
+      "text": "Postes à pourvoir et candidature spontanée chez KU64 à Berlin et Potsdam.",
+      "quelle": "0a899ec0"
+    },
+    "ui.karriere.bewerbungSenden": {
+      "text": "Envoyer une candidature",
+      "quelle": "2c83c895"
+    },
+    "ui.karriere.dieAusschreibungenLiegenBei": {
+      "text": "Les offres d'emploi se trouvent chez Personio. Ce n'est qu'en ouvrant l'une d'elles que vous quittez ce site – aucune connexion n'est établie vers Personio sur cette page.",
+      "quelle": "d1b1bdab"
+    },
+    "ui.karriere.dieStellenuebersichtIstGerade": {
+      "text": "La liste des offres d'emploi est momentanément inaccessible.",
+      "quelle": "8f968599"
+    },
+    "ui.karriere.eineStelle": {
+      "text": "Un poste à pourvoir",
+      "quelle": "b125c8c0"
+    },
+    "ui.karriere.initiativBewerben": {
+      "text": "Candidature spontanée",
+      "quelle": "ca1e05d2"
+    },
+    "ui.karriere.mehrereStellen": {
+      "text": "{anzahl} postes à pourvoir",
+      "quelle": "a97747c9"
+    },
+    "ui.karriere.portalHinweis": {
+      "text": "Vous trouverez toutes les offres directement sur {portal} – ou écrivez-nous simplement pour nous indiquer le domaine et le cabinet qui vous intéressent.",
+      "quelle": "1ba7e628"
+    },
+    "ui.karriere.seitentitel": {
+      "text": "Carrière chez KU64",
+      "quelle": "2d55e894"
+    },
+    "ui.karriere.stellenportal": {
+      "text": "Portail des offres d'emploi",
+      "quelle": "4c71c300"
+    },
+    "ui.karriere.ueberInitiativbewerbungenFreuenWir": {
+      "text": "Les candidatures spontanées sont toujours les bienvenues – nous recrutons aussi de bons profils en dehors des offres publiées.",
+      "quelle": "9030ebcb"
+    },
+    "ui.karriere.zurAusschreibung": {
+      "text": "Voir l'offre",
+      "quelle": "0cba277d"
+    },
+    "ui.karriere.zurzeitIstKeineStelle": {
+      "text": "Aucun poste n'est actuellement à pourvoir.",
+      "quelle": "38d24671"
+    },
     "ui.karte.behandlungen": {
       "text": "Soins",
       "quelle": "4d3e5232"
     },
+    "ui.karte.dauer": {
+      "text": "Durée",
+      "quelle": "d0c110d2"
+    },
     "ui.karte.geoeffnet": {
       "text": "Ouvert",
       "quelle": "2562ba58"
+    },
+    "ui.karte.kosten": {
+      "text": "Coût",
+      "quelle": "0f3e02f3"
     },
     "ui.karte.standortAnsehen": {
       "text": "Voir ce cabinet",
@@ -2801,13 +3809,489 @@
       "text": "Téléphone",
       "quelle": "9efa9d9c"
     },
+    "ui.ki.beschreibung": {
+      "text": "Quels systèmes d'IA fonctionnent sur ce site, pour quoi faire, avec quelles données – et comment joindre une personne à la place.",
+      "quelle": "1d8aad5c"
+    },
+    "ui.kitrans.beidesBeantwortetEinMensch": {
+      "text": ". Une personne répond dans les deux cas.",
+      "quelle": "78ae7cd0"
+    },
+    "ui.kitrans.dasIstKeineAusweichloesung": {
+      "text": "Ce n'est pas une solution de repli, mais la voie normale. Appelez le cabinet le plus proche de chez vous :",
+      "quelle": "e6b369a3"
+    },
+    "ui.kitrans.dieseAngabenSetzenArtikel": {
+      "text": "Ces informations mettent en œuvre l'article 50 du règlement (UE) 2024/1689 sur l'intelligence artificielle. Cet article exige trois choses : toute personne interagissant avec un système d'IA doit en être informée au plus tard lors de la première interaction. Les contenus générés doivent être signalés comme tels de façon lisible par machine. Et les images de personnes modifiées doivent aussi porter une mention visible.",
+      "quelle": "6acda934"
+    },
+    "ui.kitrans.dreiSystemeUndWir": {
+      "text": "Trois systèmes, et pour chacun, nous indiquons ce qu'il fait, qui l'exploite et ce qu'il advient de vos données saisies. Vous n'êtes obligé d'en utiliser aucun : tout ce qu'ils répondent, quelqu'un vous le dira aussi au téléphone.",
+      "quelle": "8d742e38"
+    },
+    "ui.kitrans.erBleibtDamitAuch": {
+      "text": ". Elle reste donc présente même si l'image quitte ce site – par e-mail, transférée, enregistrée.",
+      "quelle": "e289c854"
+    },
+    "ui.kitrans.fuerDieLaechelnVorschau": {
+      "text": "Pour l'aperçu du sourire, cela signifie concrètement : la mention figure dans un bandeau sur l'image et aussi dans le fichier image lui-même, sous forme de donnée IPTC",
+      "quelle": "3e47e62f"
+    },
+    "ui.kitrans.oderSchriftlichUeberDas": {
+      "text": "Ou par écrit via le",
+      "quelle": "5f774b49"
+    },
+    "ui.kitrans.rechtlicherRahmen": {
+      "text": "Cadre juridique",
+      "quelle": "48156867"
+    },
+    "ui.kitrans.wasNichtPassiert": {
+      "text": "Ce qui ne se passe pas",
+      "quelle": "449ac475"
+    },
+    "ui.kitrans.wasUebertragenWird": {
+      "text": "Ce qui est transmis",
+      "quelle": "134725ec"
+    },
+    "ui.kitrans.welcheDiensteBeimAufruf": {
+      "text": ". Quels services sont chargés à l'ouverture, dans les",
+      "quelle": "d1f526ae"
+    },
+    "ui.kitrans.wennSieMitEinem": {
+      "text": "Si vous souhaitez parler à une personne",
+      "quelle": "259e48d8"
+    },
+    "ui.kitrans.wieIhreDatenVerarbeitet": {
+      "text": "Le traitement de vos données est décrit dans la",
+      "quelle": "20c57f5c"
+    },
+    "ui.kitrans.woAufDieserWebsite": {
+      "text": "Où l'IA intervient sur ce site",
+      "quelle": "c088b18a"
+    },
+    "ui.kitrans.woSieIhmBegegnen": {
+      "text": "Où vous le rencontrez",
+      "quelle": "e7933cc7"
+    },
+    "ui.kontakt.anfahrtAnsehen": {
+      "text": "Voir l'itinéraire",
+      "quelle": "149272d1"
+    },
+    "ui.kontakt.beiAkutenBeschwerden": {
+      "text": "En cas de douleurs aiguës",
+      "quelle": "765a10e7"
+    },
+    "ui.kontakt.chatOeffnen": {
+      "text": "Ouvrir le chat",
+      "quelle": "7eb9fb8e"
+    },
+    "ui.kontakt.derSchnellsteWegBesonders": {
+      "text": "Le moyen le plus rapide, surtout en cas de douleurs ou d'urgence.",
+      "quelle": "a5f0607a"
+    },
+    "ui.kontakt.fragenVorab": {
+      "text": "Questions préalables",
+      "quelle": "e86248da"
+    },
+    "ui.kontakt.freieTermineSehenUnd": {
+      "text": "Voyez les créneaux libres et réservez directement, 24h/24.",
+      "quelle": "05facd08"
+    },
+    "ui.kontakt.fuerAllesWasNicht": {
+      "text": "Pour tout ce qui n'est pas urgent. Merci de ne pas nous envoyer de données de santé par e-mail non chiffré.",
+      "quelle": "30fcf3f3"
+    },
+    "ui.kontakt.onlineBuchen": {
+      "text": "Réserver en ligne",
+      "quelle": "03ecc07b"
+    },
+    "ui.kontakt.rufenSieBitteAn": {
+      "text": "merci de nous appeler plutôt que d'écrire. En cas de difficultés respiratoires ou de déglutition, de forte enflure ou de fièvre élevée, appelez les urgences au 112. Plus d'informations sur",
+      "quelle": "d32df7b5"
+    },
+    "ui.kontakt.unserDigitalerBeraterBeantwortet": {
+      "text": "Notre assistant numérique répond aux questions sur les traitements, les coûts et le déroulement, par texte ou vocalement.",
+      "quelle": "d44da413"
+    },
+    "ui.kontakt.waehlenSieDenWeg": {
+      "text": "Choisissez la voie qui vous convient le mieux. Toutes mènent à la même équipe.",
+      "quelle": "9d1f7297"
+    },
+    "ui.kontakt.zurTerminbuchung": {
+      "text": "Prendre rendez-vous",
+      "quelle": "a62fa687"
+    },
+    "ui.kontaktz.akuteBeschwerden": {
+      "text": "Douleurs aiguës ?",
+      "quelle": "47ea7cc8"
+    },
+    "ui.kontaktz.beschreibung": {
+      "text": "Comment joindre KU64 – tous les cabinets à Berlin et Potsdam avec numéros, adresses et horaires.",
+      "quelle": "d602f067"
+    },
+    "ui.kontaktz.bitteRufenSieAn": {
+      "text": "Merci de nous appeler plutôt que d'écrire. En cas de difficulté à respirer ou à avaler, composez le 112. Plus d'informations sur",
+      "quelle": "8bb373a9"
+    },
+    "ui.kontaktz.jederStandortHatEigene": {
+      "text": "Chaque cabinet a ses propres horaires et son propre numéro. Choisissez celui qui est le plus proche de chez vous.",
+      "quelle": "469494a0"
+    },
+    "ui.kontaktz.terminBuchen": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.krume.anfahrt": {
+      "text": "Accès",
+      "quelle": "fc83faa7"
+    },
+    "ui.krume.barrierefreiheit": {
+      "text": "Accessibilité",
+      "quelle": "2151accf"
+    },
+    "ui.krume.beschwerden": {
+      "text": "Symptômes",
+      "quelle": "8d8ad863"
+    },
+    "ui.krume.blog": {
+      "text": "Blog",
+      "quelle": "c79c4311"
+    },
+    "ui.krume.cookieEinstellungen": {
+      "text": "Paramètres des cookies",
+      "quelle": "8ade692f"
+    },
+    "ui.krume.datenschutz": {
+      "text": "Confidentialité",
+      "quelle": "f95b3d96"
+    },
+    "ui.krume.diePraxis": {
+      "text": "Le cabinet",
+      "quelle": "e5c83200"
+    },
+    "ui.krume.digitaleAnamnese": {
+      "text": "Anamnèse numérique",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.krume.digitaleBeratung": {
+      "text": "Conseil numérique",
+      "quelle": "4e315ae6"
+    },
+    "ui.krume.impressum": {
+      "text": "Mentions légales",
+      "quelle": "c702dc58"
+    },
+    "ui.krume.karriere": {
+      "text": "Carrière",
+      "quelle": "bed1a24e"
+    },
+    "ui.krume.kiTransparenz": {
+      "text": "Transparence IA",
+      "quelle": "5528b9bc"
+    },
+    "ui.krume.kontakt": {
+      "text": "Contact",
+      "quelle": "42ec9773"
+    },
+    "ui.krume.laechelnVorschau": {
+      "text": "Aperçu du sourire",
+      "quelle": "50789e23"
+    },
+    "ui.krume.leistungen": {
+      "text": "Prestations",
+      "quelle": "16a48bdd"
+    },
+    "ui.krume.notfall": {
+      "text": "Urgence",
+      "quelle": "75c3c7ff"
+    },
+    "ui.krume.standorte": {
+      "text": "Sites",
+      "quelle": "aae6c265"
+    },
+    "ui.krume.start": {
+      "text": "Accueil",
+      "quelle": "0ae8097f"
+    },
+    "ui.krume.suche": {
+      "text": "Recherche",
+      "quelle": "e849ad81"
+    },
+    "ui.krume.team": {
+      "text": "Équipe",
+      "quelle": "2329c92c"
+    },
+    "ui.krume.termine": {
+      "text": "Rendez-vous",
+      "quelle": "5f1e529b"
+    },
+    "ui.krume.ueberKu64": {
+      "text": "À propos de KU64",
+      "quelle": "92039106"
+    },
+    "ui.krume.weitere": {
+      "text": "Plus",
+      "quelle": "dec8352a"
+    },
+    "ui.laecheln.adressePlatzhalter": {
+      "text": "votre@adresse.fr",
+      "quelle": "6d8e8165"
+    },
+    "ui.laecheln.anderesFotoProbieren": {
+      "text": "Essayer une autre photo",
+      "quelle": "ae9647ef"
+    },
+    "ui.laecheln.beratungsterminVereinbaren": {
+      "text": "Prendre rendez-vous pour un conseil",
+      "quelle": "464fe584"
+    },
+    "ui.laecheln.beschreibung": {
+      "text": "Téléchargez une photo et visualisez votre sourire, sans engagement. Votre image n'est pas conservée.",
+      "quelle": "ff4e5815"
+    },
+    "ui.laecheln.dasIstKeinBehandlungsergebnis": {
+      "text": "Ceci n'est pas un résultat de traitement.",
+      "quelle": "32d79e42"
+    },
+    "ui.laecheln.deutlichLaechelnSodassDie": {
+      "text": "Sourire largement, de façon à voir les dents du haut",
+      "quelle": "7f559698"
+    },
+    "ui.laecheln.dieBerechnungDauertEtwa": {
+      "text": "Le calcul dure environ 15 à 40 secondes.",
+      "quelle": "179b35d7"
+    },
+    "ui.laecheln.dieDarstellungIstEine": {
+      "text": "Cette image est une illustration, pas un engagement. Seul un examen personnel permet de savoir si et comment un résultat similaire peut être obtenu. C'est l'état de vos dents, de vos gencives et de votre mâchoire qui en décide, pas une image.",
+      "quelle": "d78330e7"
+    },
+    "ui.laecheln.dieVerbindlichePlanungMit": {
+      "text": "La planification définitive avec aperçu directement dans votre bouche.",
+      "quelle": "7a161779"
+    },
+    "ui.laecheln.digitalesSmileDesign": {
+      "text": "Smile design numérique",
+      "quelle": "5b3ce40b"
+    },
+    "ui.laecheln.einVeraendertesLaechelnEntsteht": {
+      "text": "Un sourire transformé s'obtient de différentes façons selon la situation de départ. Voici les traitements les plus fréquemment envisagés :",
+      "quelle": "12c36245"
+    },
+    "ui.laecheln.fotoAuswaehlen": {
+      "text": "Choisir une photo",
+      "quelle": "fe7cdad0"
+    },
+    "ui.laecheln.fotoHierherZiehen": {
+      "text": "Glisser la photo ici",
+      "quelle": "21dd176f"
+    },
+    "ui.laecheln.fotoWaehlen": {
+      "text": "Choisir une photo ou la glisser ici",
+      "quelle": "a42e48ae"
+    },
+    "ui.laecheln.fotoWirdAnalysiert": {
+      "text": "Analyse de la photo en cours…",
+      "quelle": "2ee6ec3b"
+    },
+    "ui.laecheln.fragenZurLaechelnVorschau": {
+      "text": "Questions sur l'aperçu du sourire",
+      "quelle": "df549687"
+    },
+    "ui.laecheln.frontalInDieKamera": {
+      "text": "De face, tête droite",
+      "quelle": "65249dbd"
+    },
+    "ui.laecheln.gleichmaessigesLichtKeinHartes": {
+      "text": "Lumière homogène, sans contre-jour marqué",
+      "quelle": "5cd24505"
+    },
+    "ui.laecheln.ichBinVolljaehrigUnd": {
+      "text": "Je suis majeur(e) et la photo me représente moi-même. Je ne télécharge pas de photos d'autres personnes.",
+      "quelle": "f9ed607d"
+    },
+    "ui.laecheln.ichWilligeAusdruecklichEin": {
+      "text": "Je consens expressément à ce que ma photo soit traitée pour créer un aperçu non contractuel de mon sourire. J'ai conscience qu'il s'agit d'une donnée biométrique. Je peux retirer ce consentement à tout moment. Détails dans la",
+      "quelle": "0b01ffc4"
+    },
+    "ui.laecheln.ihreVorschauErscheintHier": {
+      "text": "Votre aperçu apparaîtra ici.",
+      "quelle": "7a8745b3"
+    },
+    "ui.laecheln.ihrFoto": {
+      "text": "Votre photo",
+      "quelle": "73a1a9ec"
+    },
+    "ui.laecheln.ihrWunschstandort": {
+      "text": "Le lieu de votre choix",
+      "quelle": "6c1a5711"
+    },
+    "ui.laecheln.jpegPngOderWebp": {
+      "text": "JPEG, PNG ou WebP · 8 Mo maximum",
+      "quelle": "8d6a81bb"
+    },
+    "ui.laecheln.keineFilterKeineBeauty": {
+      "text": "Pas de filtres, pas de mode beauté de l'appli photo",
+      "quelle": "0ad07397"
+    },
+    "ui.laecheln.keramikschalenFuerFormUnd": {
+      "text": "Facettes en céramique pour la forme et la couleur des dents de devant.",
+      "quelle": "323dcbf7"
+    },
+    "ui.laecheln.ladenSieEinPortraetfoto": {
+      "text": "Téléchargez une photo de portrait. Nous analysons la forme, la couleur et la ligne du sourire de vos dents par rapport à votre visage et vous montrons une visualisation – dans le navigateur et, si vous le souhaitez, par e-mail.",
+      "quelle": "b6cd27d1"
+    },
+    "ui.laecheln.mehrereNuancenHellerOhne": {
+      "text": "Plusieurs teintes plus claires, sans agresser l'émail.",
+      "quelle": "53f69344"
+    },
+    "ui.laecheln.nichtsVorDemMund": {
+      "text": "Rien devant la bouche – ni main, ni masque",
+      "quelle": "bd5f56e4"
+    },
+    "ui.laecheln.nochNichtEntschieden": {
+      "text": "Pas encore décidé",
+      "quelle": "4bd9a5a1"
+    },
+    "ui.laecheln.oderKlickenZumAuswaehlen": {
+      "text": "ou cliquez pour sélectionner",
+      "quelle": "860f5dbd"
+    },
+    "ui.laecheln.sehenSieIhrLaecheln": {
+      "text": "Voyez votre sourire avant de vous décider",
+      "quelle": "89e5657a"
+    },
+    "ui.laecheln.unsichtbareSchienen": {
+      "text": "Gouttières invisibles",
+      "quelle": "60a21398"
+    },
+    "ui.laecheln.unverbindlicheIllustrationKeinBehandlungsergebnis": {
+      "text": "Illustration sans engagement, ni résultat de traitement ni conseil médical.",
+      "quelle": "e673ce81"
+    },
+    "ui.laecheln.unverbindlicheVisualisierung": {
+      "text": "Visualisation sans engagement",
+      "quelle": "409cea35"
+    },
+    "ui.laecheln.vergleich": {
+      "text": "Comparaison entre la photo initiale et la visualisation",
+      "quelle": "a1942f5d"
+    },
+    "ui.laecheln.vorschauErstellen": {
+      "text": "Créer l'aperçu",
+      "quelle": "1c4a9104"
+    },
+    "ui.laecheln.wasDanachMoeglichIst": {
+      "text": "Ce qui est possible ensuite",
+      "quelle": "0c6d3073"
+    },
+    "ui.laecheln.wasMachtEinGutes": {
+      "text": "Qu'est-ce qu'une bonne photo ?",
+      "quelle": "94af78ab"
+    },
+    "ui.laecheln.wohinDuerfenWirDas": {
+      "text": "Où pouvons-nous envoyer le résultat ?",
+      "quelle": "73263dc8"
+    },
+    "ui.laecheln.zahnstellungKorrigierenOhneFeste": {
+      "text": "Corriger l'alignement des dents sans appareil fixe.",
+      "quelle": "9dab9bdc"
+    },
+    "ui.leistuebersicht.alleBehandlungen": {
+      "text": "Tous les traitements",
+      "quelle": "694db5ee"
+    },
+    "ui.leistuebersicht.anAnderenStandorten": {
+      "text": "Dans d'autres sites KU64",
+      "quelle": "3eb3a3e2"
+    },
+    "ui.leistuebersicht.anderswoText": {
+      "text": "Ces traitements ne sont pas proposés à {ort}. Pour éviter une recherche inutile, nous vous orientons directement vers le bon site.",
+      "quelle": "8d2d64d0"
+    },
+    "ui.leistuebersicht.behandlungSuchen": {
+      "text": "Rechercher un traitement",
+      "quelle": "f9ef7d33"
+    },
+    "ui.leistuebersicht.nichtsGefundenHier": {
+      "text": "Aucun résultat ici pour votre recherche. N'hésitez pas à demander à notre conseiller numérique ou à nous appeler – nous vous dirons si nous pouvons vous aider.",
+      "quelle": "8aa00c4b"
+    },
+    "ui.leistuebersicht.platzhalter": {
+      "text": "Problème ou traitement – ex. carie, blanchiment",
+      "quelle": "c1ae5f52"
+    },
+    "ui.leistuebersicht.platzhalterOrt": {
+      "text": "Problème ou traitement – ex. carie, blanchiment, peur du dentiste",
+      "quelle": "5bf6ddfd"
+    },
+    "ui.leistuebersicht.vorspann": {
+      "text": "{anzahl} traitements dans {bereiche} domaines. Pour chacun, vous voyez dans lequel de nos {standorte} sites il est proposé.",
+      "quelle": "bac1987d"
+    },
+    "ui.leistuebersicht.zuFachbereich": {
+      "text": "Aller à un domaine",
+      "quelle": "1e0ba286"
+    },
+    "ui.leistuebersicht.zuIhrerSucheHaben": {
+      "text": "Aucun résultat pour votre recherche. N'hésitez pas à demander à notre conseiller numérique.",
+      "quelle": "f280d36f"
+    },
     "ui.leistung.ablauf": {
       "text": "Le déroulement du traitement",
       "quelle": "118a0fdf"
     },
+    "ui.leistung.anAnderenStandorten": {
+      "text": "{name} dans d'autres sites KU64",
+      "quelle": "68901fbb"
+    },
+    "ui.leistung.ansprechperson": {
+      "text": "Votre contact",
+      "quelle": "e2ee8c48"
+    },
+    "ui.leistung.ansprechpersonen": {
+      "text": "Vos contacts",
+      "quelle": "6afec13b"
+    },
+    "ui.leistung.beraterHinweisLink": {
+      "text": "conseiller numérique",
+      "quelle": "ffcf1c13"
+    },
+    "ui.leistung.beraterHinweisNach": {
+      "text": "répond 24 heures sur 24 – aussi sur {name}.",
+      "quelle": "5b3b5f85"
+    },
+    "ui.leistung.beraterHinweisVor": {
+      "text": "Des questions au préalable ? Notre",
+      "quelle": "c4a28330"
+    },
+    "ui.leistung.beschwerdenHierher": {
+      "text": "Symptômes qui mènent ici",
+      "quelle": "7bedf2e3"
+    },
     "ui.leistung.dauer": {
       "text": "Durée",
       "quelle": "d0c110d2"
+    },
+    "ui.leistung.ergaenzend": {
+      "text": "En complément – dans d'autres cabinets",
+      "quelle": "4ab513c1"
+    },
+    "ui.leistung.ergaenzendText": {
+      "text": "Ces traitements sont liés à {name}, mais ne sont pas proposés chez KU64 {ort}. Nous vous disons franchement où vous pouvez les obtenir.",
+      "quelle": "30713afa"
+    },
+    "ui.leistung.haeufigeFragen": {
+      "text": "FAQ : {name}",
+      "quelle": "f85cc41f"
+    },
+    "ui.leistung.hierAnsehen": {
+      "text": "Voir {name} ici",
+      "quelle": "64d45dd2"
+    },
+    "ui.leistung.inOrt": {
+      "text": "à {ort}",
+      "quelle": "2e0c3cfd"
     },
     "ui.leistung.kasse": {
       "text": "Assurance maladie",
@@ -2816,6 +4300,58 @@
     "ui.leistung.kosten": {
       "text": "Tarif",
       "quelle": "0f3e02f3"
+    },
+    "ui.leistung.nichtAngebotenAn": {
+      "text": "Non proposé à :",
+      "quelle": "2b77e445"
+    },
+    "ui.leistung.nichtAngebotenHinweis": {
+      "text": "Nous vous le disons clairement, pour éviter un appel inutile.",
+      "quelle": "ddfe64c4"
+    },
+    "ui.leistung.oder": {
+      "text": "ou",
+      "quelle": "d2b98839"
+    },
+    "ui.leistung.onlineBuchen": {
+      "text": "Réserver",
+      "quelle": "03ecc07b"
+    },
+    "ui.leistung.passtDazu": {
+      "text": "Idéal avec",
+      "quelle": "1dcd8bf2"
+    },
+    "ui.leistung.sieSehenAngaben": {
+      "text": "Vous consultez actuellement les informations pour KU64 {ort}. Ce traitement est aussi proposé ici – si un autre site vous convient mieux :",
+      "quelle": "04fc3fed"
+    },
+    "ui.leistung.standortWaehlen": {
+      "text": "Choisissez votre cabinet : vous y trouverez les horaires, le numéro de téléphone et la prise de rendez-vous pour ce traitement précis.",
+      "quelle": "bf6d8fbf"
+    },
+    "ui.leistung.synonyme": {
+      "text": "Aussi appelé",
+      "quelle": "510e0e45"
+    },
+    "ui.leistung.termin": {
+      "text": "Rendez-vous",
+      "quelle": "12c12fbc"
+    },
+    "ui.leistung.terminFuer": {
+      "text": "RDV pour {name}",
+      "quelle": "c0045891"
+    },
+    "ui.leistung.verfuegbarAn": {
+      "text": "Disponible à",
+      "quelle": "36da2519"
+    },
+    "ui.leistung.vonStandorten": {
+      "text": "{wo} sur {gesamt} cabinets",
+      "quelle": "52670215"
+    },
+    "ui.leistung.woLassen": {
+      "text": "Où souhaitez-vous faire {name} ?",
+      "quelle": "d5d795ef"
     },
     "ui.nav.andererStandort": {
       "text": "Un autre cabinet",
@@ -2837,6 +4373,10 @@
       "text": "Le cabinet",
       "quelle": "6955fe52"
     },
+    "ui.nav.sieSehen": {
+      "text": "Vous voyez",
+      "quelle": "072ed7cb"
+    },
     "ui.nav.standorte": {
       "text": "Nos cabinets",
       "quelle": "aae6c265"
@@ -2848,6 +4388,10 @@
     "ui.nav.standortWaehlenKurz": {
       "text": "Choisir un cabinet",
       "quelle": "190c5686"
+    },
+    "ui.nav.suchen": {
+      "text": "Rechercher",
+      "quelle": "9afccf3d"
     },
     "ui.nav.team": {
       "text": "Équipe",
@@ -2864,6 +4408,274 @@
     "ui.nav.waehlerHinweis": {
       "text": "En changeant de cabinet, vous verrez les informations de celui que vous choisissez. Tous les soins ne sont pas proposés dans chaque cabinet.",
       "quelle": "f7fa2655"
+    },
+    "ui.nav.zurStartseite": {
+      "text": "KU64, à l'accueil",
+      "quelle": "f958f1e0"
+    },
+    "ui.nav.zurStartseiteOrt": {
+      "text": "KU64 {ort}, à l'accueil",
+      "quelle": "003adc3b"
+    },
+    "ui.notfall.112Anrufen": {
+      "text": "Appeler le 112",
+      "quelle": "6ae1f6a0"
+    },
+    "ui.notfall.anrufenUndSituationSchildern": {
+      "text": "Appeler et décrire la situation",
+      "quelle": "6826ad75"
+    },
+    "ui.notfall.aRztlicherBereitschaftsdienstBundesweit": {
+      "text": ". Service de garde médical dans toute l'Allemagne :",
+      "quelle": "fc6475a4"
+    },
+    "ui.notfall.atemnotSchluckbeschwerdenOderStarke": {
+      "text": "Difficultés à respirer, à avaler ou forte enflure au niveau du cou ?",
+      "quelle": "35c2ab25"
+    },
+    "ui.notfall.aufDerAnderenSeite": {
+      "text": "Mâcher de l'autre côté",
+      "quelle": "bf5f54b5"
+    },
+    "ui.notfall.ausgeschlagenerZahn": {
+      "text": "Dent arrachée",
+      "quelle": "834ab981"
+    },
+    "ui.notfall.ausserhalbUnsererSprechzeiten": {
+      "text": "En dehors de nos horaires d'ouverture :",
+      "quelle": "3ceabca2"
+    },
+    "ui.notfall.beiAtemOderSchluckproblemen": {
+      "text": "En cas de troubles respiratoires ou de déglutition : 112",
+      "quelle": "24557016"
+    },
+    "ui.notfall.beiFieberOderRascher": {
+      "text": "En cas de fièvre ou d'aggravation rapide, appelez aussitôt",
+      "quelle": "442dbe44"
+    },
+    "ui.notfall.beiSchmerzAufKa": {
+      "text": "Douleur au froid : le nerf est touché, venez rapidement",
+      "quelle": "f34bfa31"
+    },
+    "ui.notfall.bereichGutSauberHalten": {
+      "text": "Gardez la zone bien propre",
+      "quelle": "bd119ad3"
+    },
+    "ui.notfall.blutungNachEinemEingriff": {
+      "text": "Saignement après une intervention",
+      "quelle": "282e7d9e"
+    },
+    "ui.notfall.bruchstuCkAufbewahrenFeucht": {
+      "text": "Conservez le fragment, gardez-le humide",
+      "quelle": "01ae5255"
+    },
+    "ui.notfall.dasIstEinMedizinischer": {
+      "text": "C'est une urgence médicale. Appelez aussitôt les secours – n'attendez pas un rendez-vous chez le dentiste.",
+      "quelle": "721c40fa"
+    },
+    "ui.notfall.dieseHinweiseErsetzenKeine": {
+      "text": "Ces conseils ne remplacent pas un examen. Ils servent à patienter jusqu'au rendez-vous, pas à le remplacer.",
+      "quelle": "3b522005"
+    },
+    "ui.notfall.haUfigeFragenIm": {
+      "text": "Questions fréquentes en urgence",
+      "quelle": "921aae7a"
+    },
+    "ui.notfall.hoRtEsNicht": {
+      "text": "Si cela ne cesse pas : appelez",
+      "quelle": "8ba9b822"
+    },
+    "ui.notfall.immerAbklaRenLassen": {
+      "text": "Faites toujours vérifier, même sans forte douleur",
+      "quelle": "e39cefc4"
+    },
+    "ui.notfall.innerhalbDerErstenStunde": {
+      "text": "Venez nous voir dans l'heure qui suit",
+      "quelle": "1728af3b"
+    },
+    "ui.notfall.inZahnrettungsboxSonstKalte": {
+      "text": "Dans une boîte de conservation dentaire, sinon du lait entier froid, à défaut de la salive",
+      "quelle": "1711aab6"
+    },
+    "ui.notfall.keineWaRmeKein": {
+      "text": "Pas de chaleur, pas d'alcool",
+      "quelle": "8c4c5ec1"
+    },
+    "ui.notfall.kopfHochKoRperliche": {
+      "text": "Gardez la tête surélevée, évitez les efforts physiques",
+      "quelle": "99a32a1f"
+    },
+    "ui.notfall.kopfHochlagernAuchBeim": {
+      "text": "Surélevez la tête, même pendant le sommeil",
+      "quelle": "7ac968f0"
+    },
+    "ui.notfall.kroneOderFuLlung": {
+      "text": "Couronne ou plombage perdu",
+      "quelle": "f8421517"
+    },
+    "ui.notfall.kuHlenNichtWa": {
+      "text": "Refroidissez, ne chauffez pas",
+      "quelle": "95318e3e"
+    },
+    "ui.notfall.nichtSaUbernNicht": {
+      "text": "Ne nettoyez pas, ne frottez pas, ne mettez pas dans l'eau",
+      "quelle": "92439c7e"
+    },
+    "ui.notfall.nichtSpuLenNicht": {
+      "text": "Ne rincez pas, ne crachez pas, ne regardez pas de plus près",
+      "quelle": "2e1b7aaa"
+    },
+    "ui.notfall.rufenSieUnsAn": {
+      "text": "Appelez-nous – nous vous réservons un créneau",
+      "quelle": "6812dfcc"
+    },
+    "ui.notfall.sauberesTuchOderMulltupfer": {
+      "text": "Mordre fort sur un linge propre ou une compresse, 20 minutes",
+      "quelle": "ac3adaa9"
+    },
+    "ui.notfall.scharfeKanteMitWachs": {
+      "text": "Couvrir le bord tranchant avec de la cire ou un chewing-gum",
+      "quelle": "5650937d"
+    },
+    "ui.notfall.schmerzmittelNachPackungsbeilageNie": {
+      "text": "Antalgique selon la notice, jamais posé sur la gencive",
+      "quelle": "c8fbbfff"
+    },
+    "ui.notfall.schwellungImGesicht": {
+      "text": "Gonflement du visage",
+      "quelle": "21eb2eca"
+    },
+    "ui.notfall.sofortmassnahmen": {
+      "text": "Gestes immédiats",
+      "quelle": "9da9936c"
+    },
+    "ui.notfall.starkeSchmerzen": {
+      "text": "Douleurs intenses",
+      "quelle": "ef0266da"
+    },
+    "ui.notfall.teilAufbewahrenUndMitbringen": {
+      "text": "Conserver le fragment et l'apporter",
+      "quelle": "537048ef"
+    },
+    "ui.notfall.vonAussenKuHlen": {
+      "text": "Refroidir de l'extérieur, avec un linge entre les deux, par intervalles",
+      "quelle": "94dac1c9"
+    },
+    "ui.notfall.zahnAbgebrochen": {
+      "text": "Dent cassée",
+      "quelle": "9676b92a"
+    },
+    "ui.notfall.zahnaRztlicherNotdienstBerlin": {
+      "text": "service de garde dentaire Berlin au",
+      "quelle": "3eb3d4af"
+    },
+    "ui.notfall.zahnaRztlicherNotfall": {
+      "text": "Urgence dentaire",
+      "quelle": "90db9ee1"
+    },
+    "ui.notfall.zahnNurAnDer": {
+      "text": "Ne tenir la dent que par la couronne, jamais par la racine",
+      "quelle": "a2b2335a"
+    },
+    "ui.notfall.zeitnahTerminVereinbarenMeist": {
+      "text": "Prendre rendez-vous rapidement – rarement une urgence",
+      "quelle": "577f2b08"
+    },
+    "ui.notfallz.beschreibungLang": {
+      "text": "Douleurs dentaires aiguës, gonflement ou dent cassée ? Trouvez ici immédiatement le bon numéro et les premiers gestes à faire.",
+      "quelle": "222aa890"
+    },
+    "ui.notfallz.seitentitel": {
+      "text": "Urgence dentaire",
+      "quelle": "90db9ee1"
+    },
+    "ui.ort.anfahrtParken": {
+      "text": "Accès & stationnement",
+      "quelle": "38e2c0a8"
+    },
+    "ui.ort.detaillierteAnfahrt": {
+      "text": "Itinéraire détaillé",
+      "quelle": "162d0313"
+    },
+    "ui.ort.mitDemAuto": {
+      "text": "En voiture",
+      "quelle": "7bc13792"
+    },
+    "ui.ort.nichtAnDiesemStandort": {
+      "text": "Pas à cet emplacement",
+      "quelle": "53fd3d34"
+    },
+    "ui.ort.oeffentlicheVerkehrsmittel": {
+      "text": "Transports en commun",
+      "quelle": "d47a542c"
+    },
+    "ui.ort.terminBuchen": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.ort.wasDiesenStandortAusmacht": {
+      "text": "Ce qui distingue ce cabinet",
+      "quelle": "e06123d9"
+    },
+    "ui.ortblog.alleBeitraegeAnsehen": {
+      "text": "Voir tous les articles",
+      "quelle": "7fd8af29"
+    },
+    "ui.orte.behandlungen": {
+      "text": "Traitements",
+      "quelle": "4d3e5232"
+    },
+    "ui.orte.beschreibung": {
+      "text": "KU64 sur {anzahl} sites à Berlin et Potsdam. Avec un comparatif des traitements proposés selon le site.",
+      "quelle": "4832349b"
+    },
+    "ui.orte.nichtVerfuegbar": {
+      "text": "non disponible",
+      "quelle": "bb4f1fa8"
+    },
+    "ui.orte.seitentitel": {
+      "text": "Nos sites",
+      "quelle": "2041aab5"
+    },
+    "ui.person.behandeltAuchAn": {
+      "text": "{name} reçoit aussi à",
+      "quelle": "5ab4068f"
+    },
+    "ui.person.medizinischeLeitung": {
+      "text": "Direction médicale",
+      "quelle": "84cf4f13"
+    },
+    "ui.person.terminIn": {
+      "text": "Rendez-vous à {ort}",
+      "quelle": "896a0d98"
+    },
+    "ui.praxis.ausFachbereichen": {
+      "text": "de {anzahl} spécialités",
+      "quelle": "e62d82cb"
+    },
+    "ui.praxis.behandelnde": {
+      "text": "Praticiens",
+      "quelle": "ba6934cd"
+    },
+    "ui.praxis.behandlungen": {
+      "text": "Traitements",
+      "quelle": "4d3e5232"
+    },
+    "ui.praxis.dieRaeume": {
+      "text": "Les espaces",
+      "quelle": "4355f066"
+    },
+    "ui.praxis.wasDiesenStandortAusmacht": {
+      "text": "Ce qui distingue ce cabinet",
+      "quelle": "e06123d9"
+    },
+    "ui.recht.vorrangText": {
+      "text": "Cette traduction facilite la compréhension. En cas de divergence entre les versions linguistiques, le texte allemand prévaut.",
+      "quelle": "a25f66e2"
+    },
+    "ui.recht.vorrangTitel": {
+      "text": "La version allemande fait foi",
+      "quelle": "a7904df0"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Fermer l'avis",
@@ -2889,33 +4701,89 @@
       "text": "Continuer en {sprache}",
       "quelle": "b8138759"
     },
+    "ui.standort.adresse": {
+      "text": "Adresse",
+      "quelle": "1f2a8a8e"
+    },
+    "ui.standort.angebotHier": {
+      "text": "Tout ce que nous proposons dans ce cabinet – {anzahl} soins dans {bereiche} domaines. Les soins non disponibles ici sont clairement indiqués, avec un lien vers le bon cabinet.",
+      "quelle": "39e7aedd"
+    },
     "ui.standort.aufKarteAnsehen": {
       "text": "Voir sur la carte",
       "quelle": "4bce2d87"
+    },
+    "ui.standort.barrierefreiheit": {
+      "text": "Accessibilité :",
+      "quelle": "689345af"
+    },
+    "ui.standort.barrierefreiJa": {
+      "text": "Le cabinet est accessible sans obstacles.",
+      "quelle": "f6bdc2d5"
+    },
+    "ui.standort.behandelnde": {
+      "text": "Praticiens",
+      "quelle": "ba6934cd"
+    },
+    "ui.standort.behandlungenIn": {
+      "text": "Soins à {ort}",
+      "quelle": "6f3f59e2"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographies de ce cabinet – dans l’ordre où vous découvrirez les pièces lors de votre visite.",
       "quelle": "dd968d95"
     },
     "ui.standort.geoeffnet": {
-      "text": "Ouvert maintenant",
-      "quelle": "55a568db"
+      "text": "Ouvert",
+      "quelle": "2562ba58"
     },
     "ui.standort.kartenHinweis": {
       "text": "Les services de cartographie sont des prestataires tiers. Nous ne les intégrons pas directement, afin que la simple consultation de cette page ne transmette aucune donnée à des tiers.",
       "quelle": "e53070d4"
     },
+    "ui.standort.nichtHierText": {
+      "text": "Nous ne proposons pas ces soins à {ort}. Pour éviter un appel inutile, vous voyez ici directement dans quel cabinet KU64 les obtenir.",
+      "quelle": "e3fb21ff"
+    },
+    "ui.standort.oeffnungszeitenVon": {
+      "text": "Horaires d'ouverture de KU64 {name}",
+      "quelle": "69d8580f"
+    },
+    "ui.standort.siebenTage": {
+      "text": "Sept jours sur sept",
+      "quelle": "01ac7b06"
+    },
     "ui.standort.soFindenSieUns": {
       "text": "Comment nous trouver",
       "quelle": "56fee222"
+    },
+    "ui.standort.sprechzeiten": {
+      "text": "Heures de consultation",
+      "quelle": "981dc8e7"
     },
     "ui.standort.tageWoche": {
       "text": "jours par semaine",
       "quelle": "cda6c7aa"
     },
+    "ui.standort.telefon": {
+      "text": "Téléphone",
+      "quelle": "9efa9d9c"
+    },
+    "ui.standort.xTageWoche": {
+      "text": "{anzahl} jours par semaine",
+      "quelle": "43d6a4a0"
+    },
+    "ui.standort.zahnaerzteAnzahl": {
+      "text": "{anzahl} dentistes",
+      "quelle": "b3dec805"
+    },
     "ui.standort.zahnaerzteLabel": {
       "text": "dentistes",
       "quelle": "740fbae5"
+    },
+    "ui.standorte.behandlung": {
+      "text": "Traitement",
+      "quelle": "2e14fc5d"
     },
     "ui.standorte.matrixBeschriftung": {
       "text": "Disponibilité des soins par cabinet KU64",
@@ -2932,6 +4800,10 @@
     "ui.standorte.vorspann": {
       "text": "Chaque cabinet a son caractère et sa propre offre de soins. Choisissez le vôtre : nous ne vous montrerons ensuite que ce qui y est réellement possible.",
       "quelle": "93b1d095"
+    },
+    "ui.standortwahl.bitteWaehlen": {
+      "text": "Veuillez choisir votre cabinet",
+      "quelle": "a4e68af7"
     },
     "ui.standortwahl.hinweis": {
       "text": "Les horaires, les numéros de téléphone et les soins proposés varient d’un cabinet à l’autre : nous préférons vous demander plutôt que de deviner.",
@@ -2953,9 +4825,21 @@
       "text": "Des questions sur un soin, les coûts ou le déroulement ? Écrivez à notre assistant ou parlez-lui – à toute heure.",
       "quelle": "856d2390"
     },
+    "ui.start.digitaleAnamnese": {
+      "text": "Anamnèse numérique",
+      "quelle": "a9d6bcd2"
+    },
+    "ui.start.digitalerBerater": {
+      "text": "Conseiller numérique",
+      "quelle": "10770ef3"
+    },
     "ui.start.digitalTitel": {
       "text": "Numérique, avant votre venue",
       "quelle": "8526c44e"
+    },
+    "ui.start.ku64DieZahnspezialisten": {
+      "text": "KU64 · Die Zahnspezialisten",
+      "quelle": "defc4bf6"
     },
     "ui.start.laechelnKnopf": {
       "text": "Essayer",
@@ -2964,6 +4848,10 @@
     "ui.start.laechelnText": {
       "text": "Envoyez une photo et voyez à quoi pourrait ressembler votre sourire après un soin esthétique. Votre image n’est pas conservée.",
       "quelle": "475fe91e"
+    },
+    "ui.start.seitentitel": {
+      "text": "Dentiste à Berlin et Potsdam",
+      "quelle": "77314d11"
     },
     "ui.start.ueberschrift": {
       "text": "Où pouvons-nous vous soigner ?",
@@ -2993,9 +4881,257 @@
       "text": "Y retourner",
       "quelle": "d0c63f92"
     },
+    "ui.suche.alleBehandlungenNachBereich": {
+      "text": "Tous les traitements par domaine",
+      "quelle": "f16a17e0"
+    },
+    "ui.suche.aufEineFrageIst": {
+      "text": "Une liste n'est pas la bonne réponse à une question. Notre conseiller numérique y répond – et si vous préférez parler à quelqu'un, le numéro de votre cabinet se trouve en haut.",
+      "quelle": "caf296cf"
+    },
+    "ui.suche.behandlungenBeschwerdenStandorteUnd": {
+      "text": "Traitements, symptômes, cabinets et équipe. Vous pouvez utiliser le terme médical – mais ce n'est pas obligatoire.",
+      "quelle": "74da0841"
+    },
+    "ui.suche.dasKlingtNachEiner": {
+      "text": "Cela ressemble à une question.",
+      "quelle": "0366ec92"
+    },
+    "ui.suche.frageAnDenBerater": {
+      "text": "Question au conseiller",
+      "quelle": "76f9f9e7"
+    },
+    "ui.suche.lochImZahn": {
+      "text": "trou dans la dent",
+      "quelle": "32f450ca"
+    },
+    "ui.suche.suchenSieNachEinem": {
+      "text": "Vous cherchez un symptôme plutôt qu'un traitement ?",
+      "quelle": "cd0e2099"
+    },
+    "ui.suche.zahnspangePotsdam": {
+      "text": "appareil dentaire potsdam",
+      "quelle": "ab6d7530"
+    },
+    "ui.suche.zuDenBeschwerden": {
+      "text": "Voir les symptômes",
+      "quelle": "29a640f3"
+    },
+    "ui.suche.zumAusprobieren": {
+      "text": "À essayer :",
+      "quelle": "74f92674"
+    },
+    "ui.suchez.beschreibung": {
+      "text": "Trouvez traitements, symptômes, cabinets et équipe chez KU64 – avec vos propres mots.",
+      "quelle": "fa985357"
+    },
+    "ui.teamliste.alle": {
+      "text": "Tous",
+      "quelle": "44e25a93"
+    },
+    "ui.teamliste.auswahlAufheben": {
+      "text": "Réinitialiser la sélection",
+      "quelle": "af69d294"
+    },
+    "ui.teamliste.behandelnTeam": {
+      "text": "À KU64 {name}, une équipe stable et rodée vous reçoit.",
+      "quelle": "b85b9e06"
+    },
+    "ui.teamliste.behandelnZahl": {
+      "text": "À KU64 {name}, {anzahl} dentistes vous reçoivent.",
+      "quelle": "61ece96b"
+    },
+    "ui.teamliste.behandlungenAnsehen": {
+      "text": "Voir les traitements",
+      "quelle": "0df54964"
+    },
+    "ui.teamliste.behandlungsart": {
+      "text": "Type de traitement",
+      "quelle": "194e0d97"
+    },
+    "ui.teamliste.bereich": {
+      "text": "Domaine",
+      "quelle": "63891143"
+    },
+    "ui.teamliste.dasTeamBei": {
+      "text": "L'équipe de KU64 {name}.",
+      "quelle": "73bf04a7"
+    },
+    "ui.teamliste.dasTeamIn": {
+      "text": "L'équipe à {ort}",
+      "quelle": "52fd1600"
+    },
+    "ui.teamliste.filtern": {
+      "text": "Filtrer l'équipe",
+      "quelle": "96054218"
+    },
+    "ui.teamliste.inArbeit": {
+      "text": "Nous préparons actuellement la présentation de notre équipe à {ort}, avec photos et spécialités de chaque praticien.",
+      "quelle": "c669ba2a"
+    },
+    "ui.teamliste.niemand": {
+      "text": "Aucun résultat pour cette sélection à {ort}.",
+      "quelle": "678c106c"
+    },
+    "ui.teamliste.profilAnsehen": {
+      "text": "Voir le profil",
+      "quelle": "30c504b9"
+    },
+    "ui.teamliste.rufenSieAn": {
+      "text": "Pour toute question sur une personne ou une spécialité, n'hésitez pas à nous appeler – nous vous indiquerons qui contacter.",
+      "quelle": "6e1d5df9"
+    },
+    "ui.teamliste.spricht": {
+      "text": "Parle {sprachen}",
+      "quelle": "6d88e552"
+    },
+    "ui.teamliste.zusammensetzung": {
+      "text": "{zahnaerzte} dentistes et {gesamt} personnes au total chez KU64 {name}.",
+      "quelle": "84d8c624"
+    },
+    "ui.termin.anlassBei": {
+      "text": "{anlass} chez KU64 {name}",
+      "quelle": "72ee765c"
+    },
+    "ui.termin.barrierefreierZugang": {
+      "text": "accès sans obstacles",
+      "quelle": "9858ed34"
+    },
+    "ui.termin.onlineWaehlen": {
+      "text": "Choisir un rendez-vous en ligne",
+      "quelle": "57e71174"
+    },
+    "ui.termin.terminBei": {
+      "text": "Rendez-vous chez KU64 {name}",
+      "quelle": "b24a64cb"
+    },
     "ui.termin.vorspann": {
       "text": "Réservez en ligne en moins d’une minute – ou appelez-nous. Nous vous rappelons volontiers.",
       "quelle": "93e55c49"
+    },
+    "ui.termine.akuteSchmerzen": {
+      "text": "Douleurs aiguës ?",
+      "quelle": "6c23cd0d"
+    },
+    "ui.termine.anDiesemStandortGibt": {
+      "text": "Ce cabinet dispose de plusieurs agendas séparés. Merci de choisir le bon domaine pour accéder directement à l'équipe soignante concernée.",
+      "quelle": "1e5cb592"
+    },
+    "ui.termine.bitteRufenSieAn": {
+      "text": "Merci de nous appeler plutôt que de réserver en ligne. Nous réservons des créneaux pour les urgences et évaluons la gravité par téléphone.",
+      "quelle": "dfa7d92b"
+    },
+    "ui.termine.denAnamnesebogenFuellenSie": {
+      "text": "Vous remplissez le questionnaire médical tranquillement chez vous – dans tous les cabinets KU64. Cela vous fait gagner du temps en salle d'attente et vous laisse le temps de vérifier vos médicaments.",
+      "quelle": "c710650b"
+    },
+    "ui.termine.doctolibIstEinEigenstaendiger": {
+      "text": "Doctolib est un service indépendant. Ce n'est qu'une fois sur ce site que votre adresse IP est transmise et des cookies déposés – rien de tel ne se passe sur cette page. Plus d'informations dans notre",
+      "quelle": "508f507d"
+    },
+    "ui.termine.fragenZurTerminbuchung": {
+      "text": "Questions sur la prise de rendez-vous",
+      "quelle": "ad337a5a"
+    },
+    "ui.termine.lieberOhneOnlinePortal": {
+      "text": "Vous préférez sans portail en ligne ?",
+      "quelle": "7b93ee25"
+    },
+    "ui.termine.oeffnetDenKalenderBei": {
+      "text": "Ouvre l'agenda Doctolib dans un nouvel onglet",
+      "quelle": "3848d474"
+    },
+    "ui.termine.onlineBuchen": {
+      "text": "Réserver en ligne",
+      "quelle": "03ecc07b"
+    },
+    "ui.termine.schildernSieKurzIhr": {
+      "text": "Décrivez brièvement votre demande – nous vous répondrons, en général le jour même ou le jour ouvré suivant.",
+      "quelle": "4c9ce6f9"
+    },
+    "ui.termine.vorDemTerminAnamnese": {
+      "text": "Avant le rendez-vous : remplir l'anamnèse en ligne",
+      "quelle": "89e80b87"
+    },
+    "ui.termine.wannSieUnsErreichen": {
+      "text": "Quand nous joindre",
+      "quelle": "a10e283b"
+    },
+    "ui.termine.wasTunImNotfall": {
+      "text": "Que faire en cas d'urgence",
+      "quelle": "4d5efa51"
+    },
+    "ui.termine.zurDigitalenAnamnese": {
+      "text": "Vers l'anamnèse en ligne",
+      "quelle": "2eb3b587"
+    },
+    "ui.terminez.anWelchemStandort": {
+      "text": "Dans quel site souhaitez-vous un rendez-vous ?",
+      "quelle": "94498b93"
+    },
+    "ui.terminez.beschreibung": {
+      "text": "Rendez-vous en ligne chez KU64 – choisissez votre site à Berlin ou Potsdam.",
+      "quelle": "ff55c9ca"
+    },
+    "ui.terminez.terminBuchen": {
+      "text": "Prendre rendez-vous",
+      "quelle": "57146cdd"
+    },
+    "ui.ueber.angstErnstNehmen": {
+      "text": "Prendre la peur au sérieux",
+      "quelle": "eb4cd12d"
+    },
+    "ui.ueber.anVierStandorten": {
+      "text": "dans quatre cabinets",
+      "quelle": "d78af490"
+    },
+    "ui.ueber.ehrlichStattWerbend": {
+      "text": "Honnête, pas commercial",
+      "quelle": "90e9f7fd"
+    },
+    "ui.ueber.imTeam": {
+      "text": "Dans l'équipe",
+      "quelle": "2be88930"
+    },
+    "ui.ueber.inBerlinUndPotsdam": {
+      "text": "à Berlin et à Potsdam",
+      "quelle": "9540453d"
+    },
+    "ui.ueber.mitProphylaxeAssistenzEmpfang": {
+      "text": "avec prophylaxie, assistance, accueil et administration",
+      "quelle": "da18d291"
+    },
+    "ui.ueber.sehrVieleMenschenSchieben": {
+      "text": "Beaucoup de personnes repoussent leur visite chez le dentiste. Chez nous, le premier rendez-vous est un entretien, pas un soin. Vous décidez du rythme, et un signe convenu permet d'interrompre à tout moment.",
+      "quelle": "94c9b3be"
+    },
+    "ui.ueber.spezialisierungUnterEinemDach": {
+      "text": "Spécialisation sous un même toit",
+      "quelle": "d03d10f7"
+    },
+    "ui.ueber.ueberKu64": {
+      "text": "À propos de KU64",
+      "quelle": "92039106"
+    },
+    "ui.ueber.unsereStandorte": {
+      "text": "Nos cabinets",
+      "quelle": "2041aab5"
+    },
+    "ui.ueber.vonProphylaxeUeberKieferorthopaedie": {
+      "text": "De la prophylaxie à l'orthodontie en passant par la chirurgie orale – pour la plupart des soins, pas besoin de changer de cabinet. Ce qu'un site ne propose pas, un autre le prend en charge.",
+      "quelle": "ca1347dd"
+    },
+    "ui.ueber.wirSagenOffenWas": {
+      "text": "Nous disons clairement ce que coûte un soin, ce que la caisse prend en charge ou non – et si un soin n'est pas proposé à un site donné. Mieux vaut une phrase de trop qu'un appel inutile.",
+      "quelle": "067084c6"
+    },
+    "ui.ueber.wofuerWirStehen": {
+      "text": "Nos valeurs",
+      "quelle": "8ff748a0"
+    },
+    "ui.ueber.zahnaerztinnenUndZahnaerzte": {
+      "text": "Dentistes",
+      "quelle": "740fbae5"
     }
   }
 }

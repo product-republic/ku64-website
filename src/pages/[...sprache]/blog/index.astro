@@ -26,7 +26,7 @@ import { texte } from '../../../i18n/katalog';
 import { sprachpfade } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import BlogKarte from '../../../components/BlogKarte.astro';
-import { BEITRAEGE, nachJahren, datumLesbar, lesedauer } from '../../../lib/blog';
+import { nachJahren, datumLesbar, lesedauer } from '../../../lib/blog';
 import { schemaBrotkrumen } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -47,21 +47,24 @@ const brotkrumen = [
  * Raster. Zweimal derselbe Beitrag auf einer Seite sieht nicht nach
  * Betonung aus, sondern nach Fehler.
  */
-const leitbeitrag = BEITRAEGE[0];
-const jahre = nachJahren(BEITRAEGE.slice(1));
+/* Über `daten`, nicht über den direkten Import – sonst steht der Blog auf
+   der englischen Seite auf Deutsch. */
+const beitraege = daten.beitraege;
+const leitbeitrag = beitraege[0];
+const jahre = nachJahren(beitraege.slice(1));
 
 /* Wie viele Beiträge tragen welchen Standort? Steht als Filterleiste oben. */
 const proStandort = daten.standorte
   .map((s) => ({
     standort: s,
-    anzahl: BEITRAEGE.filter((b) => b.standorte.includes(s.slug)).length,
+    anzahl: beitraege.filter((b) => b.standorte.includes(s.slug)).length,
   }))
   .filter((x) => x.anzahl > 0);
 ---
 
 <Basis
   titel="Zahnmedizinischer Blog"
-  description={`${BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von ${jahre[jahre.length - 1]?.jahr} bis ${jahre[0]?.jahr}.`}
+  description={`${beitraege.length} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von ${jahre[jahre.length - 1]?.jahr} bis ${jahre[0]?.jahr}.`}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
@@ -70,7 +73,7 @@ const proStandort = daten.standorte
     <div class="huelle-weit">
       <h1>{t('blogliste.zahnmedizinischerBlog')}</h1>
       <p class="unter">
-        {BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
+        {beitraege.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
         passiert – von {jahre[jahre.length - 1]?.jahr} bis {leitbeitrag?.jahr}.
       </p>
 

@@ -24,8 +24,24 @@ import {
   type Leistung,
 } from '../data/leistungen';
 import { STANDORTE, getStandort, type Standort } from '../data/standorte';
-import { kategorieIn, leistungIn, leistungenIn, standortIn, standorteIn } from './katalog';
+import { BESCHWERDEN, getBeschwerde, type Beschwerde } from '../data/beschwerden';
+import { BEITRAEGE, beitrag as beitragRoh, type Beitrag } from '../lib/blog';
+import profile from '../data/profile.json';
+import {
+  beitraegeIn,
+  beitragIn,
+  beschwerdeIn,
+  beschwerdenIn,
+  kategorieIn,
+  leistungIn,
+  leistungenIn,
+  personIn,
+  standortIn,
+  standorteIn,
+} from './katalog';
 import { spracheAusParameter, type Sprache } from './sprachen';
+
+type Profil = (typeof profile)[keyof typeof profile];
 
 export interface Inhalte {
   sprache: Sprache;
@@ -39,6 +55,17 @@ export interface Inhalte {
   leistungenAnderswo(standortSlug: string): Leistung[];
   verwandte(leistung: Leistung, standortSlug: string): Leistung[];
   gruppen(standortSlug: string): { kategorie: Kategorie; leistungen: Leistung[] }[];
+  /* ── Die langen Inhalte ──────────────────────────────────────────────
+   *
+   * Auch sie gehören hierher und nicht in einen direkten Import. Wer
+   * `profile.json` selbst importiert, bekommt Deutsch – auf jeder Seite,
+   * in jeder Sprache, ohne Fehlermeldung. Genau das war der Zustand.
+   */
+  person(slug: string): Profil | undefined;
+  beitraege: Beitrag[];
+  beitrag(slug: string): Beitrag | undefined;
+  beschwerden: Beschwerde[];
+  beschwerde(slug: string): Beschwerde | undefined;
 }
 
 /** Nur das Nötige aus dem Astro-Objekt – so ist die Funktion auch testbar. */
@@ -82,5 +109,23 @@ export function inhalte(astro: MitParametern): Inhalte {
         kategorie: kategorieIn(g.kategorie, sprache),
         leistungen: leistungenIn(g.leistungen, sprache),
       })),
+    person: (slug) => {
+      const p = (profile as Record<string, Profil>)[slug];
+      return p ? personIn(slug, p, sprache) : undefined;
+    },
+    get beitraege() {
+      return beitraegeIn(BEITRAEGE, sprache);
+    },
+    beitrag: (slug) => {
+      const b = beitragRoh(slug);
+      return b ? beitragIn(b, sprache) : undefined;
+    },
+    get beschwerden() {
+      return beschwerdenIn(BESCHWERDEN, sprache);
+    },
+    beschwerde: (slug) => {
+      const b = getBeschwerde(slug);
+      return b ? beschwerdeIn(b, sprache) : undefined;
+    },
   };
 }
