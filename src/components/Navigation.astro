@@ -61,6 +61,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
 <header class="kopf">
   <div class="kopf-glas">
+    {/* Die Glasfläche ist eine eigene Ebene und nicht der Hintergrund der
+        Pille. Grund steht bei `.kopf-glasflaeche` im Stilteil. */}
+    <div class="kopf-glasflaeche" aria-hidden="true"></div>
     <div class="kopf-inner">
     <a
       href={standort ? `${basis}/` : '/'}
@@ -231,19 +234,53 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * standen die Punkte auf Tuchfühlung.
    */
   .kopf-glas {
+    position: relative;
     max-width: min(100rem, calc(100vw - 2 * var(--rand)));
     margin-inline: auto;
     margin-block-start: var(--raum-3);
     border-radius: var(--radius-xl);
-    /* Dichteste Stufe: Unter dieser Fläche scrollt der ganze Inhalt durch. */
-    background: var(--glas-text-flaeche);
-    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
-    -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
     box-shadow:
       inset 0 1px 0 var(--glas-glanz),
       inset 0 -1px 0 var(--glas-rand-unten),
       var(--schatten);
+  /*
+   * Warum das Glas eine eigene Ebene ist und nicht der Hintergrund der Pille
+   *
+   * Ein Element mit `backdrop-filter` wird zur „Backdrop Root": Alles, was
+   * darin liegt und selbst `backdrop-filter` trägt, sieht als Hintergrund nur
+   * noch den Inhalt dieser Wurzel – nicht mehr die Seite dahinter.
+   *
+   * Genau das ist beim Standortwähler passiert. Er lag in der Pille, hatte
+   * seinen eigenen Weichzeichner und filterte damit nichts als die Pille.
+   * Sichtbar war eine halbdurchsichtige Fläche, durch die die Überschrift
+   * scharf hindurchstand. Das ist kein Glas, sondern Milchfolie: Glas
+   * erkennt man daran, dass der Hintergrund verschwimmt, nicht daran, dass er
+   * blasser wird.
+   *
+   * Die Fläche liegt deshalb als eigene Ebene IN der Pille, nicht ALS Pille.
+   * Damit hat der Wähler keinen gefilterten Vorfahren mehr und sein eigener
+   * Weichzeichner greift auf die Seite zu.
+   */
+  .kopf-glasflaeche {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background: var(--glas-text-flaeche);
+    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
+    -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
+    pointer-events: none;
+  }
+
+  /* Beide Zeilen liegen über der Glasfläche. */
+  .kopf-inner,
+  .standortleiste-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .kopf-glas {
     /*
      * KEIN `overflow: hidden` hier.
      *
@@ -475,6 +512,21 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);
   }
 
+  /*
+   * Ohne Weichzeichner deckend.
+   *
+   * Der Glaseffekt lebt davon, dass der Hintergrund verschwimmt. Kann der
+   * Browser das nicht, bleibt von "durchscheinend plus unscharf" nur
+   * "durchscheinend" übrig – und dann steht die Überschrift der Seite scharf
+   * durch das Menü. Bei Dekoration wäre das hinnehmbar; bei einer Liste, aus
+   * der jemand seinen Standort wählt, nicht.
+   */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .waehler-liste {
+      background: var(--flaeche);
+    }
+  }
+
   .waehler-hinweis {
     margin-bottom: var(--raum-3);
     color: var(--tinte-leise);
@@ -699,14 +751,46 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     if (menue) menue.hidden = offen;
   });
 
-  // Standortwähler bei Klick außerhalb schließen.
-  const waehler = document.querySelector<HTMLDetailsElement>('.waehler');
+  /*
+   * Standortwähler schließen, sobald man woanders hinklickt.
+   *
+   * Zwei Dinge waren hier falsch. Erstens war der Wähler beim Laden der Seite
+   * einmal abgefragt und in einer Variablen festgehalten – wird das Markup
+   * später ersetzt, zeigt die Variable auf ein Element, das nicht mehr in der
+   * Seite steht, und das Schließen greift ins Leere. Jetzt wird bei jedem
+   * Klick neu gesucht.
+   *
+   * Zweitens zählte nur der Klick als "außerhalb". Wer mit der Tastatur
+   * weiterspringt oder das Fenster wechselt, ließ den Wähler offen stehen.
+   */
+  function waehlerZu() {
+    for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
+      d.open = false;
+    }
+  }
+
   document.addEventListener('click', (e) => {
-    if (waehler?.open && !waehler.contains(e.target as Node)) waehler.open = false;
+    const ziel = e.target as Node;
+    for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
+      if (!d.contains(ziel)) d.open = false;
+    }
   });
+
+  /* Der Fokus wandert aus dem Wähler heraus – etwa mit der Tabulatortaste. */
+  document.addEventListener('focusin', (e) => {
+    const ziel = e.target as Node;
+    for (const d of document.querySelectorAll<HTMLDetailsElement>('.waehler[open]')) {
+      if (!d.contains(ziel)) d.open = false;
+    }
+  });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && waehler?.open) waehler.open = false;
+    if (e.key === 'Escape') waehlerZu();
   });
+
+  /* Beim Scrollen mitgehen zu lassen wäre störend – beim Verlassen der Seite
+     oder beim Wechsel in ein anderes Fenster aber nicht. */
+  window.addEventListener('blur', waehlerZu);
 
   /*
    * Öffnungsstatus im Browser neu berechnen. Die Seite ist statisch, der

@@ -75,7 +75,7 @@ const gesamtLeistungen = daten.leistungen.length;
   </section>
 
   <section class="abschnitt">
-    <div class="huelle">
+    <div class="huelle-weit">
       <div class="standort-raster">
         {
           daten.standorte.map((s) => {
@@ -338,9 +338,16 @@ const gesamtLeistungen = daten.leistungen.length;
     line-height: var(--zeile-normal);
   }
 
+  /*
+   * Drei Angaben nebeneinander, solange sie hineinpassen.
+   *
+   * Feste drei Spalten schnitten die Telefonnummer ab, sobald die Karte
+   * schmal wurde. `auto-fit` mit Mindestbreite bricht stattdessen um – eine
+   * Telefonnummer in zwei Zeilen ist lesbar, eine abgeschnittene nicht.
+   */
   .s-fakten {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(6.5rem, 100%), 1fr));
     gap: var(--raum-3);
     margin-block: var(--raum-5) var(--raum-4);
     padding-block-start: var(--raum-4);

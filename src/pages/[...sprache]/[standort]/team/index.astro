@@ -5,7 +5,7 @@ import Basis from '../../../../layouts/Basis.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import Bild from '../../../../components/Bild.astro';
 import { STANDORTE } from '../../../../data/standorte';
-import { teamAn, gruppenAn, anzahlZahnaerzte } from '../../../../data/team';
+import { teamAn, gruppenAn, anzahlZahnaerzte, fachgebieteVon, GRUPPENNAMEN } from '../../../../data/team';
 import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
 import profile from '../../../../data/profile.json';
 
@@ -25,6 +25,40 @@ const brotkrumen = [
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
   { name: 'Team', pfad },
 ];
+
+/*
+ * Filter: Bereich und Behandlungsart.
+ *
+ * Beides wird aus dem Team dieses Standorts errechnet, nicht fest verdrahtet.
+ * Angeboten wird nur, was hier auch jemanden ergibt – ein Filter, der zu null
+ * Treffern führt, ist ein Versprechen, das die Seite nicht hält.
+ *
+ * Die Behandlungsart kommt aus der Funktionsbezeichnung, die die Praxis
+ * selbst führt („Fachzahnärztin für Kieferorthopädie"). Wer dort kein
+ * Fachgebiet nennt – Assistenz, Empfang, Verwaltung – bekommt keines
+ * zugeordnet und erscheint nur unter „Alle".
+ */
+const kategorieVonLeistung = (slug: string) => daten.leistung(slug)?.kategorie;
+
+const mitFach = team.map((m) => ({
+  mitglied: m,
+  fach: fachgebieteVon(m, kategorieVonLeistung),
+}));
+
+const bereiche = [...new Set(team.map((m) => m.gruppe))].map((g) => ({
+  wert: g,
+  name: GRUPPENNAMEN[g],
+  anzahl: team.filter((m) => m.gruppe === g).length,
+}));
+
+const fachgebiete = daten.kategorien
+  .map((k) => ({
+    wert: k.slug,
+    name: k.name,
+    anzahl: mitFach.filter((e) => e.fach.includes(k.slug)).length,
+  }))
+  .filter((k) => k.anzahl > 0)
+  .sort((a, b) => b.anzahl - a.anzahl);
 
 const schema: Record<string, unknown>[] = [schemaBrotkrumen(brotkrumen)];
 
@@ -68,14 +102,57 @@ if (team.length > 0) {
                 ? `${anzahlZahnaerzte(standort.slug)} Zahnärztinnen und Zahnärzte und insgesamt ${team.length} Menschen bei KU64 ${standort.name}.`
                 : `Das Team bei KU64 ${standort.name}.`}
             </p>
-            <div class="raster">
-              {team.map((m) => {
+            <div class="filter" role="group" aria-label="Team filtern" hidden>
+              <div class="filter-zeile">
+                <span class="filter-titel" id="f-bereich">Bereich</span>
+                <div class="chips" data-feld="bereich" aria-labelledby="f-bereich">
+                  <button type="button" class="chip" data-wert="" aria-pressed="true">
+                    Alle <span class="chip-zahl">{team.length}</span>
+                  </button>
+                  {bereiche.map((b) => (
+                    <button type="button" class="chip" data-wert={b.wert} aria-pressed="false">
+                      {b.name} <span class="chip-zahl">{b.anzahl}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {fachgebiete.length > 1 && (
+                <div class="filter-zeile">
+                  <span class="filter-titel" id="f-fach">Behandlungsart</span>
+                  <div class="chips" data-feld="fach" aria-labelledby="f-fach">
+                    <button type="button" class="chip" data-wert="" aria-pressed="true">
+                      Alle
+                    </button>
+                    {fachgebiete.map((k) => (
+                      <button type="button" class="chip" data-wert={k.wert} aria-pressed="false">
+                        {k.name} <span class="chip-zahl">{k.anzahl}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <p class="filter-stand" role="status" aria-live="polite" data-vorlage={`{n} von ${team.length}`}></p>
+            </div>
+
+            <p class="filter-leer" hidden>
+              Mit dieser Auswahl steht niemand in {standort.ort}.
+              <button type="button" class="filter-zuruecksetzen">Auswahl aufheben</button>
+            </p>
+
+            <div class="raster" id="teamraster">
+              {mitFach.map(({ mitglied: m, fach }) => {
                 /* Verlinkt wird nur, wo es auch etwas zu lesen gibt. Eine
                    Kachel, die auf eine Seite mit dem eigenen Inhalt der
                    Kachel führt, ist ein enttäuschter Klick. */
                 const hatProfil = m.slug in profile;
                 return (
-                <article class:list={['karte', 'person', { 'person-klickbar': hatProfil }]}>
+                <article
+                  class:list={['karte', 'person', { 'person-klickbar': hatProfil }]}
+                  data-bereich={m.gruppe}
+                  data-fach={fach.join(' ')}
+                >
                   {/* Über das Bildverzeichnis, nicht über einen Pfad aus den
                       Teamdaten: So gilt für Porträts dieselbe Nachweispflicht
                       wie für jedes andere Bild – Alternativtext, Herkunft,
@@ -153,7 +230,163 @@ if (team.length > 0) {
   <TerminBand standort={standort} />
 </Basis>
 
+<script>
+  /*
+   * Filtern im Browser, nicht auf dem Server.
+   *
+   * Alle Personen stehen im Quelltext – auch ohne JavaScript ist die Seite
+   * vollständig, nur ohne Filterleiste. Deshalb wird die Leiste erst hier
+   * sichtbar geschaltet: Ein Filter, der nicht filtert, ist schlimmer als
+   * keiner.
+   */
+  const leiste = document.querySelector<HTMLElement>('.filter');
+  const raster = document.getElementById('teamraster');
+
+  if (leiste && raster) {
+    leiste.hidden = false;
+
+    const karten = [...raster.querySelectorAll<HTMLElement>('[data-bereich]')];
+    const stand = leiste.querySelector<HTMLElement>('.filter-stand');
+    const leer = document.querySelector<HTMLElement>('.filter-leer');
+    const auswahl: Record<string, string> = { bereich: '', fach: '' };
+
+    function anwenden() {
+      let sichtbar = 0;
+      for (const karte of karten) {
+        const passtBereich = !auswahl.bereich || karte.dataset.bereich === auswahl.bereich;
+        const passtFach =
+          !auswahl.fach || (karte.dataset.fach ?? '').split(' ').includes(auswahl.fach);
+        const zeigen = passtBereich && passtFach;
+        karte.hidden = !zeigen;
+        if (zeigen) sichtbar++;
+      }
+
+      if (stand?.dataset.vorlage) {
+        stand.textContent =
+          auswahl.bereich || auswahl.fach
+            ? stand.dataset.vorlage.replace('{n}', String(sichtbar))
+            : '';
+      }
+      if (leer) leer.hidden = sichtbar > 0;
+    }
+
+    for (const gruppe of leiste.querySelectorAll<HTMLElement>('.chips')) {
+      const feld = gruppe.dataset.feld!;
+      gruppe.addEventListener('click', (e) => {
+        const knopf = (e.target as HTMLElement).closest<HTMLButtonElement>('.chip');
+        if (!knopf) return;
+        /* Nochmals auf denselben Wert klicken hebt ihn auf – das erwartet
+           man von einem Schalter, und es erspart den Weg über "Alle". */
+        const wert = knopf.dataset.wert ?? '';
+        auswahl[feld] = auswahl[feld] === wert && wert !== '' ? '' : wert;
+        for (const k of gruppe.querySelectorAll<HTMLButtonElement>('.chip')) {
+          k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === auswahl[feld]));
+        }
+        anwenden();
+      });
+    }
+
+    document.querySelector('.filter-zuruecksetzen')?.addEventListener('click', () => {
+      auswahl.bereich = '';
+      auswahl.fach = '';
+      for (const k of leiste.querySelectorAll<HTMLButtonElement>('.chip')) {
+        k.setAttribute('aria-pressed', String((k.dataset.wert ?? '') === ''));
+      }
+      anwenden();
+    });
+  }
+</script>
+
 <style>
+  /* Die Leiste erscheint erst, wenn das Skript sie einschaltet – ohne
+     JavaScript steht das vollständige Team da, nur ohne Filter. */
+  .filter[hidden] { display: none; }
+
+  .filter {
+    display: grid;
+    gap: var(--raum-4);
+    margin-block: var(--raum-6);
+    padding-block-end: var(--raum-5);
+    border-block-end: 1px solid var(--linie);
+  }
+
+  .filter-zeile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--raum-3) var(--raum-4);
+  }
+
+  .filter-titel {
+    flex-shrink: 0;
+    min-width: 8rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-voll);
+    background: var(--flaeche);
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background-color var(--zeit-schnell) var(--kurve),
+      border-color var(--zeit-schnell) var(--kurve),
+      color var(--zeit-schnell) var(--kurve);
+  }
+
+  .chip:hover { border-color: var(--tinte-leise); color: var(--tinte); }
+
+  /* Der gewählte Zustand steht im aria-pressed und wird daraus gestaltet –
+     so können Anzeige und Vorlesesoftware nicht auseinanderlaufen. */
+  .chip[aria-pressed='true'] {
+    background: var(--knopf-flaeche);
+    border-color: var(--knopf-flaeche);
+    color: var(--knopf-schrift);
+  }
+
+  .chip-zahl {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85em;
+    opacity: 0.65;
+  }
+
+  .filter-stand {
+    font-size: var(--t-sm);
+    color: var(--tinte-leise);
+    min-height: 1.2em;
+  }
+
+  .filter-leer {
+    margin-block: var(--raum-6);
+    color: var(--tinte-weich);
+  }
+
+  .filter-zuruecksetzen {
+    margin-inline-start: var(--raum-2);
+    color: var(--akzent-schrift);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .person[hidden] { display: none; }
   h1 { max-width: 16ch; }
   .unter {
     max-width: var(--breite-text);

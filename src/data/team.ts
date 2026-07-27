@@ -430,3 +430,60 @@ export function ungueltigeStandorte(): { slug: string; standort: string }[] {
       .map((standort) => ({ slug: m.slug, standort })),
   );
 }
+
+// ─────────────────────── Fachgebiete aus der Funktionsbezeichnung ───────────────────────
+
+/**
+ * Welche Behandlungsarten macht diese Person?
+ *
+ * ── Warum das abgeleitet und nicht gepflegt wird ─────────────────────────
+ *
+ * Das Feld `schwerpunkte` gibt es seit Beginn, und es ist bei allen 100
+ * veröffentlichten Personen leer. Ein Filter, der sich darauf stützt, hätte
+ * für jede Auswahl null Treffer – also gäbe es ihn faktisch nicht.
+ *
+ * Was es gibt, ist `funktion`, und zwar bei allen hundert. Diese Angaben
+ * stammen von der Praxis selbst und benennen das Fachgebiet ausdrücklich:
+ * „Fachzahnärztin für Kieferorthopädie", „Zahnarzt für Ästhetik und
+ * Endodontologie", „Kinder- und Jugendzahnärztin". Wer so über sich schreibt,
+ * hat die Zuordnung bereits vorgenommen.
+ *
+ * Diese Ableitung liest also aus, was dasteht. Sie erfindet nichts: Steht im
+ * Titel kein Fachgebiet, bekommt die Person keines zugeordnet und taucht
+ * unter „Alle" auf, nicht unter einem geratenen Bereich.
+ *
+ * `schwerpunkte` bleibt die stärkere Quelle. Sobald jemand sie pflegt –
+ * etwa aus dem geplanten Standort-Dashboard –, gilt die Pflege und nicht die
+ * Ableitung.
+ */
+const FACHWORTE: { muster: RegExp; kategorie: string }[] = [
+  { muster: /kieferorthop|zahnspange|aligner|invisalign/i, kategorie: 'kieferorthopaedie' },
+  { muster: /oralchirurg|mkg|kieferchirurg/i, kategorie: 'chirurgie' },
+  { muster: /implantolog|implantat/i, kategorie: 'implantologie' },
+  { muster: /endodont|wurzel/i, kategorie: 'zahnerhalt' },
+  { muster: /parodont/i, kategorie: 'zahnerhalt' },
+  { muster: /ästhet|aesthet|veneer|bleaching|smile/i, kategorie: 'aesthetik' },
+  { muster: /prothet|zahnersatz|restaurativ/i, kategorie: 'zahnersatz' },
+  { muster: /kinder|jugend/i, kategorie: 'kinder' },
+  { muster: /prophylax|dentalhygien|zahnreinigung/i, kategorie: 'vorsorge' },
+  { muster: /funktion|cmd|knirsch|schnarch/i, kategorie: 'funktion' },
+  { muster: /angst|hypnose|narkose|sedier/i, kategorie: 'angst' },
+];
+
+/**
+ * Kategorie-Slugs, unter denen diese Person zu finden sein soll.
+ *
+ * Zurückgegeben werden Kategorien und keine einzelnen Behandlungen: Ein
+ * Filter mit 35 Einträgen ist keiner. Wer „Kieferorthopädie" wählt, meint
+ * das Fachgebiet und nicht die feste Zahnspange im Besonderen.
+ */
+export function fachgebieteVon(m: TeamMitglied, kategorieVonLeistung: (slug: string) => string | undefined): string[] {
+  const gepflegt = (m.schwerpunkte ?? [])
+    .map(kategorieVonLeistung)
+    .filter((k): k is string => Boolean(k));
+  if (gepflegt.length) return [...new Set(gepflegt)];
+
+  const text = `${m.funktion ?? ''} ${m.vorstellung ?? ''}`;
+  const gefunden = FACHWORTE.filter((f) => f.muster.test(text)).map((f) => f.kategorie);
+  return [...new Set(gefunden)];
+}
