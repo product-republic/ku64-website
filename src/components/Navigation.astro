@@ -412,18 +412,33 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     gap: 0;
   }
 
+  /*
+   * Der Ortsname sitzt unter der Marke – und nicht breiter als sie.
+   *
+   * „KURFÜRSTENDAMM" ist vierzehn Zeichen lang und lief damit deutlich über
+   * das Logo hinaus. Das sah nicht nach Zusatz aus, sondern nach zweiter
+   * Zeile eines längeren Namens.
+   *
+   * Die Breite ist an das Logo gebunden: 1,75rem Höhe bei einem
+   * Seitenverhältnis von 267:83,4 ergeben rund 5,6rem. Damit der längste
+   * Ortsname hineinpasst, sind Schriftgrad und Laufweite entsprechend
+   * gesetzt – enger als vorher, aber immer noch gesperrt genug, um als
+   * Auszeichnung gelesen zu werden.
+   */
   .logo-ort {
-    font-size: 0.62rem;
+    font-size: 0.54rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.045em;
     text-transform: uppercase;
     color: var(--tinte-leise);
+    max-width: 5.6rem;
     /* Nimmt keinen Platz, solange die Leiste die Angabe trägt. */
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition:
       max-height var(--zeit) var(--kurve),
+      margin-block-start var(--zeit) var(--kurve),
       opacity var(--zeit) var(--kurve);
   }
 
@@ -432,7 +447,38 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
      einem Bauteil zuzuordnen, und die Regel greift nie. */
   .kopf:global(.ist-angedockt) .logo-ort {
     max-height: 1.4em;
+    /* Der Abstand gehört in den ausgeklappten Zustand, nicht in die
+       Grundregel: Ein Außenabstand verschwindet nicht mit `max-height: 0`
+       und ließe im eingeklappten Zustand eine Lücke stehen. */
+    margin-block-start: 0.3rem;
     opacity: 1;
+  }
+
+  /*
+   * Steht der Ort unter dem Logo, schrumpft die Leiste darunter.
+   *
+   * Sie verschwindet NICHT – das war der erste Versuch, und er machte den
+   * Standortwähler unerreichbar: eingeklappt trug die Leiste
+   * `pointer-events: none`, und wer nach dem Scrollen den Standort wechseln
+   * wollte, klickte ins Nichts.
+   *
+   * Stattdessen wird sie flacher: weniger Polsterung, kleinere Schrift. Sie
+   * bleibt sichtbar und bedienbar, nimmt aber nur noch halb so viel Höhe.
+   * Was doppelt dastünde, entfällt trotzdem – die ausgeschriebene Ortsangabe
+   * steht ja jetzt unter dem Logo.
+   */
+  .kopf:global(.ist-angedockt) .standortleiste-inner {
+    padding-block: 0.3rem;
+    font-size: var(--t-xs);
+  }
+
+  .kopf:global(.ist-angedockt) .waehler summary,
+  .kopf:global(.ist-angedockt) :global(.sprachwahl) {
+    font-size: var(--t-xs);
+  }
+
+  .kopf:global(.ist-angedockt) :global(.sprachwahl a) {
+    padding-block: 0.2rem;
   }
 
   /* Die Leiste klappt ein – Höhe, Polsterung und Trennlinie zugleich, sonst

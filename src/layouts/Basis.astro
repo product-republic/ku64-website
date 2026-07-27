@@ -209,8 +209,21 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     <a class="sprunglink" href="#inhalt">{t('geruest.zumInhalt')}</a>
 
     {
+      /*
+       * Der Aufbauhinweis.
+       *
+       * Er stand hier ohne jeden Stil – roher Text über der Kopfleiste, wie
+       * ein Versehen. Jetzt ist er ein schmaler Streifen in der warmen
+       * Flächenfarbe, der zum Kopf gehört statt darüber zu liegen.
+       *
+       * Er verschwindet von selbst: Sobald eine Sprachfassung freigegeben
+       * ist, greift die Bedingung nicht mehr. Er ist die Folge eines
+       * Zustands, nicht ein Element, das jemand entfernen muss.
+       */
       !sprachinfo.freigegeben && (
-        <p class="sprache-aufbau">{t('sprache.unvollstaendig')}</p>
+        <p class="sprache-aufbau">
+          <span class="sprache-aufbau-inhalt">{t('sprache.unvollstaendig')}</span>
+        </p>
       )
     }
 
@@ -241,3 +254,7 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     </script>
   </body>
 </html>
+
+<style>
+  .sprache-aufbau { padding-block: 0.45rem; }
+</style>
