@@ -73,3 +73,46 @@ export function datumLesbar(datum: string | null): string {
     year: 'numeric',
   });
 }
+
+/**
+ * Lesedauer in Minuten.
+ *
+ * 200 Wörter je Minute – der übliche Wert für deutschen Fließtext, eher
+ * vorsichtig gewählt. Die Zahl hat keinen Wert an sich; sie beantwortet die
+ * Frage „fange ich das jetzt an oder später?“, und die will niemand mit
+ * einer Nachkommastelle beantwortet bekommen. Deshalb aufgerundet und
+ * mindestens eine Minute.
+ */
+export function lesedauer(b: Beitrag): number {
+  const woerter = b.bloecke
+    .map((x) => x.text ?? (x.punkte ?? []).join(' '))
+    .join(' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(woerter / 200));
+}
+
+/**
+ * Gliederung aus den Überschriften des Beitrags.
+ *
+ * Nur h2 – eine Gliederung, die jede Zwischenüberschrift aufführt, ist
+ * keine mehr. Beiträge mit weniger als drei Überschriften bekommen keine:
+ * Bei zwei Sprungmarken ist Scrollen schneller als Zielen.
+ */
+export function gliederung(b: Beitrag): { titel: string; anker: string }[] {
+  const h2 = b.bloecke.filter((x) => x.art === 'h2' && x.text);
+  if (h2.length < 3) return [];
+  return h2.map((x) => ({ titel: x.text!, anker: anker(x.text!) }));
+}
+
+/** Sprungmarke aus einer Überschrift – Umlaute ausgeschrieben. */
+export function anker(titel: string): string {
+  return titel
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}

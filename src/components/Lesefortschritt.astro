@@ -1,0 +1,114 @@
+---
+/**
+ * Der Lesefortschritt als wachsende Linie am oberen Rand.
+ *
+ * ── Was er misst ────────────────────────────────────────────────────────
+ *
+ * Den Fortschritt IM TEXT, nicht auf der Seite. Das ist der Unterschied
+ * zwischen einer Anzeige, der man glaubt, und einer, die einen ärgert: Wer
+ * bei 100 Prozent ankommt und noch drei Bildschirme „Weiterlesen“,
+ * Terminband und Fußzeile vor sich hat, hat gelernt, dass die Linie lügt.
+ *
+ * Gemessen wird deshalb gegen das Element mit `data-lesetext` – vom Beginn
+ * des Textes bis zu seinem Ende, nicht bis zum Seitenende.
+ *
+ * ── Warum kein Scroll-Handler ───────────────────────────────────────────
+ *
+ * Weil er es doch ist – aber ein passiver, der nichts tut außer eine
+ * Custom Property zu setzen. Die Breite ergibt sich daraus in CSS über
+ * `scaleX`, das die Grafikkarte übernimmt. Ein Scroll-Handler, der
+ * `width` setzt, erzwingt bei jedem Rad-Tick ein neues Layout der ganzen
+ * Seite; einer, der `transform` setzt, nicht.
+ *
+ * `scroll-timeline` wäre die reine Lehre und käme ganz ohne JavaScript
+ * aus – nur unterstützt sie in Safari noch niemand, und ein
+ * Lesefortschritt, der auf dem iPhone fehlt, ist auf der Hälfte der
+ * Besuche nicht da.
+ *
+ * ── Wer ihn nicht bekommt ───────────────────────────────────────────────
+ *
+ * Wer `prefers-reduced-motion` gesetzt hat: Eine Linie, die sich bei jeder
+ * Bewegung mitbewegt, ist genau das, was diese Einstellung meint.
+ */
+---
+
+<div class="lesefortschritt" aria-hidden="true"><span class="balken"></span></div>
+
+<style>
+  .lesefortschritt {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 3px;
+    z-index: 60;
+    pointer-events: none;
+    /* Erst sichtbar, wenn wirklich gelesen wird – ein Strich, der beim
+       Ankommen schon da ist, sieht aus wie ein Ladebalken, der hängt. */
+    opacity: 0;
+    transition: opacity var(--zeit) var(--kurve-weich);
+  }
+
+  .lesefortschritt[data-laeuft] {
+    opacity: 1;
+  }
+
+  .balken {
+    display: block;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--akzent) 70%, transparent),
+      var(--akzent)
+    );
+    transform: scaleX(var(--anteil, 0));
+    transform-origin: left center;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lesefortschritt {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const leiste = document.querySelector<HTMLElement>('.lesefortschritt');
+  const text = document.querySelector<HTMLElement>('[data-lesetext]');
+
+  if (leiste && text) {
+    let angefordert = false;
+
+    const messen = () => {
+      angefordert = false;
+
+      const kasten = text.getBoundingClientRect();
+      const sichtbar = window.innerHeight;
+
+      /*
+       * Null, solange der Textanfang noch unter dem Fenster liegt; eins,
+       * sobald das Textende oben durch ist. Bezugsgröße ist die Strecke, die
+       * der Text durch das Fenster zurücklegt – nicht seine Höhe. Bei einem
+       * Text, der kürzer ist als das Fenster, wäre die sonst negativ.
+       */
+      const strecke = kasten.height - sichtbar + sichtbar * 0.4;
+      const gelaufen = -kasten.top + sichtbar * 0.4;
+      const anteil = strecke > 0 ? Math.min(1, Math.max(0, gelaufen / strecke)) : 0;
+
+      leiste.style.setProperty('--anteil', String(anteil));
+      /* Nicht anzeigen, solange nichts zu zeigen ist. */
+      if (anteil > 0.005) leiste.setAttribute('data-laeuft', '');
+      else leiste.removeAttribute('data-laeuft');
+    };
+
+    const anstoßen = () => {
+      if (angefordert) return;
+      angefordert = true;
+      requestAnimationFrame(messen);
+    };
+
+    addEventListener('scroll', anstoßen, { passive: true });
+    addEventListener('resize', anstoßen, { passive: true });
+    messen();
+  }
+</script>

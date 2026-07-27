@@ -7,7 +7,7 @@
  * geht, ohne den Beitrag zu öffnen – und mit einem Klick alles zu diesem
  * Standort finden.
  */
-import { datumLesbar, type Beitrag } from '../lib/blog';
+import { datumLesbar, lesedauer, type Beitrag } from '../lib/blog';
 import { STANDORTE } from '../data/standorte';
 
 interface Props {
@@ -43,7 +43,11 @@ const marken = beitrag.standorte
   }
 
   <div class="b-inhalt">
-    {beitrag.datum && <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>}
+    <p class="b-zeile">
+      {beitrag.datum && <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>}
+      {beitrag.datum && <span class="b-punkt">·</span>}
+      <span>{lesedauer(beitrag)} Min.</span>
+    </p>
 
     <h3>
       <a href={`/blog/${beitrag.slug}/`} class="b-link">{beitrag.titel}</a>
@@ -91,12 +95,20 @@ const marken = beitrag.standorte
     padding: var(--raum-5);
   }
 
-  time {
+  .b-zeile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-2);
     font-size: var(--t-xs);
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--tinte-leise);
+  }
+
+  .b-punkt {
+    opacity: 0.5;
   }
 
   h3 {

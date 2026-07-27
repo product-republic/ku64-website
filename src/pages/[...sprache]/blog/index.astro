@@ -8,6 +8,13 @@
  * und eine von 2026 sind zwei verschiedene Aussagen. Eine durchlaufende
  * Liste verwischt genau das.
  *
+ * ── Warum ein Leitbeitrag ───────────────────────────────────────────────
+ *
+ * Weil dreißig gleich große Kacheln keine Aussage machen. Der neueste
+ * Beitrag steht groß und über die volle Breite; erst darunter beginnt das
+ * Raster. Das kostet nichts und beantwortet die Frage, mit der jemand auf
+ * eine Blogübersicht kommt: „Gibt es hier etwas Neues?“
+ *
  * ── Warum die Standort-Marken ───────────────────────────────────────────
  *
  * Sie sind automatisch aus dem Text erkannt (siehe `blog-holen.mjs`) und
@@ -18,7 +25,7 @@ import { inhalte } from '../../../i18n/daten';
 import { sprachpfade } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import BlogKarte from '../../../components/BlogKarte.astro';
-import { BEITRAEGE, nachJahren } from '../../../lib/blog';
+import { BEITRAEGE, nachJahren, datumLesbar, lesedauer } from '../../../lib/blog';
 import { schemaBrotkrumen } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -33,7 +40,13 @@ const brotkrumen = [
   { name: 'Blog', pfad },
 ];
 
-const jahre = nachJahren();
+/*
+ * Der neueste Beitrag steht groß oben und danach nicht noch einmal im
+ * Raster. Zweimal derselbe Beitrag auf einer Seite sieht nicht nach
+ * Betonung aus, sondern nach Fehler.
+ */
+const leitbeitrag = BEITRAEGE[0];
+const jahre = nachJahren(BEITRAEGE.slice(1));
 
 /* Wie viele Beiträge tragen welchen Standort? Steht als Filterleiste oben. */
 const proStandort = daten.standorte
@@ -52,11 +65,11 @@ const proStandort = daten.standorte
   schema={[schemaBrotkrumen(brotkrumen)]}
 >
   <section class="abschnitt">
-    <div class="huelle">
+    <div class="huelle-weit">
       <h1>Zahnmedizinischer Blog</h1>
       <p class="unter">
         {BEITRAEGE.length} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns
-        passiert – von {jahre[jahre.length - 1]?.jahr} bis {jahre[0]?.jahr}.
+        passiert – von {jahre[jahre.length - 1]?.jahr} bis {leitbeitrag?.jahr}.
       </p>
 
       {
@@ -72,13 +85,44 @@ const proStandort = daten.standorte
           </nav>
         )
       }
+
+      {
+        leitbeitrag && (
+          <a class="leit" href={`/blog/${leitbeitrag.slug}/`}>
+            {leitbeitrag.bild && (
+              <img
+                class="leit-bild"
+                src={leitbeitrag.bild.pfad}
+                alt=""
+                width={leitbeitrag.bild.breite}
+                height={leitbeitrag.bild.hoehe}
+                fetchpriority="high"
+                decoding="async"
+              />
+            )}
+            <div class="leit-text">
+              <p class="leit-zeile">
+                <span class="leit-neu">Neuester Beitrag</span>
+                {leitbeitrag.datum && (
+                  <time datetime={leitbeitrag.datum}>{datumLesbar(leitbeitrag.datum)}</time>
+                )}
+                <span class="punkt">·</span>
+                <span>{lesedauer(leitbeitrag)} Min.</span>
+              </p>
+              <h2 class="leit-titel">{leitbeitrag.titel}</h2>
+              {leitbeitrag.anriss && <p class="leit-anriss">{leitbeitrag.anriss}…</p>}
+              <span class="leit-mehr">Beitrag lesen →</span>
+            </div>
+          </a>
+        )
+      }
     </div>
   </section>
 
   {
-    jahre.map(({ jahr, beitraege }, i) => (
+    jahre.map(({ jahr, beitraege }) => (
       <section class="abschnitt jahr-block">
-        <div class="huelle">
+        <div class="huelle-weit">
           <h2 class="jahr-titel" id={`jahr-${jahr}`}>
             {jahr ?? 'Ohne Datum'}
             <span class="jahr-anzahl">
@@ -86,8 +130,8 @@ const proStandort = daten.standorte
             </span>
           </h2>
           <div class="raster">
-            {beitraege.map((b, j) => (
-              <BlogKarte beitrag={b} vorrang={i === 0 && j === 0} />
+            {beitraege.map((b) => (
+              <BlogKarte beitrag={b} />
             ))}
           </div>
         </div>
@@ -138,6 +182,93 @@ const proStandort = daten.standorte
   .anzahl {
     font-size: var(--t-xs);
     color: var(--tinte-leise);
+  }
+
+  /* ── Leitbeitrag ─────────────────────────────────────────────────────── */
+
+  .leit {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: stretch;
+    margin-block-start: var(--raum-7);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--linie);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--zeit) var(--kurve-feder),
+      border-color var(--zeit) var(--kurve-weich);
+  }
+
+  .leit:hover {
+    transform: translate3d(0, -3px, 0);
+    border-color: color-mix(in oklab, var(--tinte) 25%, var(--linie));
+  }
+
+  .leit-bild {
+    width: 100%;
+    height: 100%;
+    /* Mindesthöhe statt Seitenverhältnis: Die übernommenen Beitragsbilder
+       haben unterschiedliche Formate, und ein Verhältnis, das für Querformat
+       stimmt, schneidet Hochformat in der Mitte durch. */
+    min-height: clamp(14rem, 24vw, 20rem);
+    object-fit: cover;
+  }
+
+  .leit-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--raum-3);
+    padding: clamp(var(--raum-5), 3vw, var(--raum-8));
+  }
+
+  .leit-zeile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-2);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .leit-neu {
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-voll);
+    background: color-mix(in oklab, var(--akzent) 14%, transparent);
+    color: var(--akzent-schrift);
+  }
+
+  .punkt {
+    opacity: 0.5;
+  }
+
+  .leit-titel {
+    font-size: clamp(var(--t-xl), 2.4vw, var(--t-2xl));
+    line-height: var(--zeile-eng);
+    text-wrap: balance;
+  }
+
+  .leit-anriss {
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+    max-width: 46ch;
+  }
+
+  .leit-mehr {
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--akzent-schrift);
+  }
+
+  @media (max-width: 52rem) {
+    .leit {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Die Jahresblöcke stehen enger beieinander als gewöhnliche Abschnitte –

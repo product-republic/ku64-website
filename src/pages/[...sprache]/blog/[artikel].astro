@@ -9,13 +9,34 @@
  * Der Text kommt als Folge einfacher Blöcke aus `blog.json` – Überschrift,
  * Absatz, Liste. Kein HTML aus fremder Quelle: Was übernommen wurde, ist
  * reiner Text, und die Gestaltung macht diese Seite.
+ *
+ * ── Warum der Kopf über die volle Breite geht ───────────────────────────
+ *
+ * Vorher stand hier eine schmale Spalte: Datum, Überschrift, darunter ein
+ * Bild in derselben Breite, darunter der Text. Auf einem breiten Bildschirm
+ * waren zwei Drittel der Fläche leer, und das Beitragsbild – oft das
+ * einzige echte Foto der Seite – war so groß wie eine Briefmarke.
+ *
+ * Jetzt trägt das Bild den Kopf über die volle Breite und die Überschrift
+ * steht darin. Der Lesetext bleibt schmal, denn dafür gibt es einen Grund
+ * (über 75 Zeichen je Zeile verliert das Auge den Anschluss) – die frei
+ * werdende Spalte daneben bekommt die Gliederung. Breite Fläche, wo sie
+ * wirkt; schmale Spalte, wo gelesen wird.
  */
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import BlogKarte from '../../../components/BlogKarte.astro';
 import TerminBand from '../../../components/TerminBand.astro';
-import { BEITRAEGE, beitrag as findeBeitrag, datumLesbar } from '../../../lib/blog';
+import Lesefortschritt from '../../../components/Lesefortschritt.astro';
+import {
+  BEITRAEGE,
+  beitrag as findeBeitrag,
+  datumLesbar,
+  lesedauer,
+  gliederung,
+  anker,
+} from '../../../lib/blog';
 import { STANDORTE } from '../../../data/standorte';
 import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
 
@@ -27,6 +48,8 @@ const daten = inhalte(Astro);
 
 const beitrag = findeBeitrag(Astro.params.artikel!)!;
 const pfad = `/blog/${beitrag.slug}/`;
+const minuten = lesedauer(beitrag);
+const marken = gliederung(beitrag);
 
 const brotkrumen = [
   { name: 'Start', pfad: '/' },
@@ -58,6 +81,7 @@ const schema = [
     author: { '@type': 'Organization', name: 'KU64 – Die Zahnspezialisten' },
     publisher: { '@type': 'Organization', name: 'KU64 – Die Zahnspezialisten' },
     mainEntityOfPage: kanonisch(pfad),
+    wordCount: minuten * 200,
   },
 ];
 ---
@@ -69,50 +93,90 @@ const schema = [
   brotkrumen={brotkrumen}
   schema={schema}
 >
-  <article>
-    <section class="abschnitt">
-      <div class="huelle kopf">
-        {beitrag.datum && <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>}
-        <h1>{beitrag.titel}</h1>
-        {
-          orte.length > 0 && (
-            <p class="orte">
-              {orte.map((s) => (
-                <a href={`/${s!.slug}/blog/`} class="marke">
-                  {s!.name}
-                </a>
-              ))}
-            </p>
-          )
-        }
-      </div>
-    </section>
+  <Lesefortschritt />
 
+  <article>
     {
-      beitrag.bild && (
-        <section class="abschnitt-eng">
-          <div class="huelle">
-            <img
-              class="titelbild"
-              src={beitrag.bild.pfad}
-              alt=""
-              width={beitrag.bild.breite}
-              height={beitrag.bild.hoehe}
-              fetchpriority="high"
-              decoding="async"
-            />
+      beitrag.bild ? (
+        /*
+         * Mit Bild: Der Kopf IST das Bild. Der Verlauf darüber ist keine
+         * Verzierung, sondern die Bedingung dafür, dass weiße Schrift auf
+         * einem beliebigen Foto lesbar bleibt – bei Motiven, die man nicht
+         * ausgesucht hat, ist das nicht selbstverständlich.
+         */
+        <header class="bildkopf">
+          <img
+            src={beitrag.bild.pfad}
+            alt=""
+            width={beitrag.bild.breite}
+            height={beitrag.bild.hoehe}
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="bildkopf-text">
+            <div class="huelle-weit">
+              <p class="zeile">
+                {beitrag.datum && (
+                  <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>
+                )}
+                <span class="punkt">·</span>
+                <span>{minuten} Min. Lesezeit</span>
+              </p>
+              <h1>{beitrag.titel}</h1>
+              {orte.length > 0 && (
+                <p class="orte">
+                  {orte.map((s) => (
+                    <a href={`/${s!.slug}/blog/`} class="ort-marke">
+                      {s!.name}
+                    </a>
+                  ))}
+                </p>
+              )}
+            </div>
           </div>
-        </section>
+        </header>
+      ) : (
+        <header class="textkopf abschnitt">
+          <div class="huelle-weit">
+            <p class="zeile zeile-dunkel">
+              {beitrag.datum && (
+                <time datetime={beitrag.datum}>{datumLesbar(beitrag.datum)}</time>
+              )}
+              <span class="punkt">·</span>
+              <span>{minuten} Min. Lesezeit</span>
+            </p>
+            <h1>{beitrag.titel}</h1>
+            {orte.length > 0 && (
+              <p class="orte">
+                {orte.map((s) => (
+                  <a href={`/${s!.slug}/blog/`} class="marke">
+                    {s!.name}
+                  </a>
+                ))}
+              </p>
+            )}
+          </div>
+        </header>
       )
     }
 
     <section class="abschnitt">
-      <div class="huelle">
-        <div class="text">
+      <div class="huelle koerper">
+        {/* data-lesetext: der Bezug für die Fortschrittslinie – siehe dort. */}
+        <div class="text" data-lesetext>
           {
-            beitrag.bloecke.map((b) =>
+            /*
+             * Kein eigener Anriss über dem Text.
+             *
+             * Der Anriss IST der erste Absatz, auf 220 Zeichen gekürzt – so
+             * entsteht er in blog-holen.mjs. Beides untereinander gesetzt
+             * ergibt denselben Satz zweimal, einmal mit Auslassungspunkten.
+             * Stattdessen bekommt der erste Absatz die Vorspann-Auszeichnung:
+             * derselbe Text, den man aus der Kachel kennt, nur vollständig.
+             */
+            beitrag.bloecke.map((b, i) =>
               b.art === 'h2' ? (
-                <h2>{b.text}</h2>
+                <h2 id={anker(b.text!)}>{b.text}</h2>
               ) : b.art === 'h3' ? (
                 <h3>{b.text}</h3>
               ) : b.art === 'liste' ? (
@@ -122,18 +186,43 @@ const schema = [
                   ))}
                 </ul>
               ) : (
-                <p>{b.text}</p>
+                <p class:list={[{ vorspann: i === 0 }]}>{b.text}</p>
               ),
             )
           }
         </div>
+
+        <aside class="spalte">
+          {
+            marken.length > 0 && (
+              <nav class="gliederung" aria-label="Auf dieser Seite">
+                <p class="spalte-titel">Auf dieser Seite</p>
+                <ul>
+                  {marken.map((m) => (
+                    <li>
+                      <a href={`#${m.anker}`}>{m.titel}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )
+          }
+
+          <div class="quelle">
+            <p class="spalte-titel">Termin</p>
+            <p class="quelle-text">
+              Fragen zu diesem Thema beantworten wir am besten persönlich.
+            </p>
+            <a href="/termine/" class="knopf knopf-sekundaer knopf-klein">Termin buchen</a>
+          </div>
+        </aside>
       </div>
     </section>
 
     {
       weitere.length > 0 && (
         <section class="abschnitt flaeche-warm">
-          <div class="huelle">
+          <div class="huelle-weit">
             <h2 class="weiter-titel">Weiterlesen</h2>
             <div class="raster">
               {weitere.map((b) => (
@@ -150,20 +239,138 @@ const schema = [
 </Basis>
 
 <style>
-  .kopf {
-    max-width: var(--breite-text);
+  /* ── Kopf mit Bild ───────────────────────────────────────────────────── */
+
+  /*
+   * Feste Höhe, nicht Mindesthöhe.
+   *
+   * Mit `min-height` bestimmte das Bild die Höhe: Die übernommenen Motive
+   * sind 1400 Pixel breit und unterschiedlich hoch, und ein hochformatiges
+   * füllte den ganzen Bildschirm – die Überschrift stand unterhalb des
+   * sichtbaren Bereichs. Ein Kopf, dessen Überschrift man wegscrollen muss,
+   * um sie zu sehen, ist kein Kopf.
+   *
+   * Jetzt gibt der Rahmen die Höhe vor und das Bild füllt sie mit `cover`.
+   * Was dabei beschnitten wird, ist der Rand – bei einem Beitragsbild ist
+   * die Mitte das Motiv.
+   */
+  .bildkopf {
+    position: relative;
+    isolation: isolate;
+    /* Randlos: Der Kopf gehört zum Bildschirm, nicht in die Hülle. */
+    margin-block-end: 0;
+    height: clamp(19rem, 40vw, 30rem);
+    display: grid;
+    /*
+     * Eine Zeile mit genau der Höhe des Rahmens.
+     *
+     * Ohne sie richtet sich die Zeile nach dem höchsten Kind. Das ist das
+     * Bild mit seiner Naturhöhe – 1280 × 720 auf 1440 Pixel Breite ergibt
+     * 810 Pixel, und der Textkasten lag mit seiner Überschrift 300 Pixel
+     * unterhalb des Rahmens, wo `overflow: hidden` ihn abschnitt: Bild
+     * sichtbar, Überschrift weg.
+     *
+     * `minmax(0, 1fr)` und nicht `1fr`: Ein einfaches `1fr` heißt
+     * `minmax(auto, 1fr)`, und dieses `auto` ist die Größe des Inhalts –
+     * also wieder 810 Pixel. Die Null nimmt der Zeile diesen Boden.
+     */
+    grid-template-rows: minmax(0, 1fr);
+    overflow: hidden;
   }
 
-  time {
+  .bildkopf img {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bildkopf-text {
+    grid-area: 1 / 1;
+    display: flex;
+    align-items: flex-end;
+    padding-block: var(--raum-6);
+    /*
+     * Zwei Verläufe übereinander: unten dicht für die Schrift, oben ein
+     * schwacher, damit die Kopfleiste nicht auf einem hellen Motiv
+     * verschwindet. Ein einzelner Verlauf über die ganze Höhe würde das
+     * Bild flau machen.
+     */
+    background:
+      linear-gradient(to top, rgb(0 0 0 / 0.88) 0%, rgb(0 0 0 / 0.62) 30%, rgb(0 0 0 / 0.2) 58%, transparent 78%),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.3), transparent 22%);
+    color: #fff;
+  }
+
+  /*
+   * Zusätzlich ein Schatten hinter der Schrift.
+   *
+   * Der Verlauf allein reicht nicht: Diese Beitragsbilder sind übernommen,
+   * nicht ausgesucht, und mehrere tragen selbst Schrift – auf dem
+   * Jubiläumsbild steht in grünen Großbuchstaben „ZAHNARZTPRAXIS ALS
+   * ERLEBNIS“ genau dort, wo die Überschrift liegt. Zwei Schriften
+   * übereinander liest man nicht; ein Schatten trennt sie.
+   */
+  .bildkopf-text :is(h1, .zeile, .ort-marke) {
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.55);
+  }
+
+  .bildkopf h1 {
+    color: #fff;
+    max-width: 22ch;
+    margin-block: var(--raum-3) var(--raum-4);
+    text-wrap: balance;
+    /* Bei sehr langen Titeln lieber eine Stufe kleiner als aus dem Kopf
+       herauslaufen. */
+    font-size: clamp(var(--t-xl), 3.4vw, var(--t-3xl));
+  }
+
+  .bildkopf .zeile {
+    color: rgb(255 255 255 / 0.85);
+  }
+
+  .ort-marke {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-voll);
+    border: 1px solid rgb(255 255 255 / 0.45);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .ort-marke:hover {
+    background: rgb(255 255 255 / 0.16);
+  }
+
+  /* ── Kopf ohne Bild ──────────────────────────────────────────────────── */
+
+  .textkopf h1 {
+    max-width: 24ch;
+    margin-block: var(--raum-3) var(--raum-4);
+    text-wrap: balance;
+  }
+
+  .zeile-dunkel {
+    color: var(--tinte-leise);
+  }
+
+  /* ── Gemeinsames ─────────────────────────────────────────────────────── */
+
+  .zeile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--raum-2);
     font-size: var(--t-xs);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--tinte-leise);
   }
 
-  h1 {
-    margin-block: var(--raum-3) var(--raum-4);
+  .punkt {
+    opacity: 0.5;
   }
 
   .orte {
@@ -176,24 +383,50 @@ const schema = [
     text-decoration: none;
   }
 
-  .titelbild {
-    width: 100%;
-    max-height: 34rem;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
+  /* ── Textkörper mit Nebenspalte ──────────────────────────────────────── */
+
+  /*
+   * Zwei Spalten, beide mit fester Obergrenze und dazwischen der Rest.
+   *
+   * Mit `1fr` für den Text stand zwischen Textende und Nebenspalte ein
+   * handbreiter leerer Streifen: Die Spalte war so breit wie der Platz, der
+   * Text darin aber auf 42rem gedeckelt. Sichtbar war nicht die Deckelung,
+   * sondern das Loch. Jetzt bekommt die Spalte genau die Breite des Textes,
+   * und der Zwischenraum liegt dort, wo Zwischenraum hingehört.
+   */
+  .koerper {
+    display: grid;
+    grid-template-columns: minmax(0, var(--breite-text)) minmax(13rem, 19rem);
+    justify-content: space-between;
+    gap: clamp(var(--raum-6), 4vw, var(--raum-8));
+    align-items: start;
   }
 
   /* Der Lesetext ist bewusst schmal: Über 75 Zeichen je Zeile verliert das
-     Auge beim Zeilenwechsel den Anschluss. */
+     Auge beim Zeilenwechsel den Anschluss. Die gewonnene Breite geht in die
+     Nebenspalte, nicht in längere Zeilen. */
   .text {
     max-width: var(--breite-text);
     display: grid;
     gap: var(--raum-4);
   }
 
+  /* Der Anriss als Vorspann: eine Spur größer, dunkler, ohne Einzug. So
+     sieht man auf den ersten Blick, worum es geht, ohne den ersten Absatz
+     lesen zu müssen – und es ist derselbe Text wie in der Kachel, aus der
+     man kommt. */
+  .vorspann {
+    font-size: var(--t-lg);
+    line-height: var(--zeile-weit);
+    color: var(--tinte);
+    padding-block-end: var(--raum-4);
+    border-block-end: 1px solid var(--linie);
+  }
+
   .text h2 {
     font-size: var(--t-xl);
     margin-block-start: var(--raum-5);
+    scroll-margin-block-start: 7rem;
   }
 
   .text h3 {
@@ -214,8 +447,88 @@ const schema = [
     line-height: var(--zeile-normal);
   }
 
+  .spalte {
+    position: sticky;
+    inset-block-start: 7rem;
+    display: grid;
+    gap: var(--raum-6);
+  }
+
+  .spalte-titel {
+    font-size: var(--t-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tinte-leise);
+    margin-block-end: var(--raum-3);
+  }
+
+  .gliederung {
+    padding-inline-start: var(--raum-5);
+    border-inline-start: 1px solid var(--linie);
+  }
+
+  .gliederung ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-2);
+  }
+
+  .gliederung a {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    text-decoration: none;
+    line-height: var(--zeile-normal);
+  }
+
+  .gliederung a:hover {
+    color: var(--akzent);
+  }
+
+  .quelle {
+    padding: var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+  }
+
+  .quelle-text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-4);
+  }
+
   .weiter-titel {
     font-size: var(--t-xl);
     margin-block-end: var(--raum-5);
+  }
+
+  .raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
+    gap: var(--raum-5);
+  }
+
+  @media (max-width: 62rem) {
+    .koerper {
+      grid-template-columns: 1fr;
+    }
+
+    /*
+     * Auf schmalen Geräten steht die Nebenspalte hinter dem Text und klebt
+     * nicht. Eine klebende Spalte, die ein Drittel des Bildschirms einnimmt,
+     * ist keine Hilfe, sondern ein Hindernis.
+     */
+    .spalte {
+      position: static;
+    }
+
+    .gliederung {
+      padding-inline-start: 0;
+      padding-block-start: var(--raum-5);
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--linie);
+    }
   }
 </style>
