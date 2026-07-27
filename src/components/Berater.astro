@@ -133,8 +133,8 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
      * bleibt trotzdem lesbar, weil die Schrift in Tinte steht.
      */
     background: var(--glas-flaeche-stark);
-    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
     -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
     color: var(--tinte);
     font-weight: 600;
@@ -162,8 +162,8 @@ const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
     height: min(34rem, calc(100dvh - 6rem));
     /* Schwebt über der Seite – hier ist echtes Glas richtig. */
     background: var(--glas-flaeche-stark);
-    backdrop-filter: blur(30px) saturate(var(--glas-saettigung));
     -webkit-backdrop-filter: blur(30px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(30px) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
     border-radius: var(--radius-xl);
     box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);

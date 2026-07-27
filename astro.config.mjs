@@ -77,7 +77,27 @@ export default defineConfig({
   },
   vite: {
     build: {
-      cssMinify: 'lightningcss',
+      /*
+       * KEIN LightningCSS.
+       *
+       * Es war hier eingestellt und hat die Website einen sichtbaren Fehler
+       * gekostet: Ohne Angabe von Ziel-Browsern nimmt es sehr alte an und
+       * ersetzt moderne Eigenschaften durch ihre `-webkit-`-Fassung. So kam
+       * `backdrop-filter` im gebauten CSS nur noch präfixiert an – und das
+       * ist in aktuellen Browsern kein Alias mehr, sondern eine unbekannte
+       * Eigenschaft, die verworfen wird.
+       *
+       * Gemessen: elf von vierzehn Glasflächen hatten dadurch keinen
+       * Weichzeichner. Durchscheinend, aber gestochen scharf – also kein
+       * Glas, sondern Folie. Der Kopf über einem Foto sah aus wie ein
+       * weißer Kasten mit einem scharfen Bild dahinter.
+       *
+       * Ziel-Browser ließen sich angeben, aber das ist eine zweite Stelle,
+       * an der etwas veralten kann. esbuild minimiert ohne umzuschreiben und
+       * ist bei diesem Stylesheet nur wenige Kilobyte schlechter. Das ist
+       * der bessere Tausch.
+       */
+      cssMinify: true,
     },
   },
 });

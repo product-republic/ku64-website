@@ -350,8 +350,8 @@ a:hover {
   }
 
   .glas {
-    backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
@@ -361,8 +361,8 @@ a:hover {
   .glas,
   .karte,
   .knopf {
-    backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border: 1px solid CanvasText;
   }
   body::before {
@@ -713,8 +713,8 @@ a:hover {
  */
 .knopf-hell {
   background: var(--knopf-hell-flaeche);
-  backdrop-filter: blur(30px) saturate(1.4);
   -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  backdrop-filter: blur(30px) saturate(1.4);
   color: var(--knopf-hell-schrift);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.8),
@@ -765,8 +765,8 @@ a:hover {
     rgb(255 255 255 / 0.28),
     rgb(255 255 255 / 0.18)
   );
-  backdrop-filter: blur(30px) saturate(1.5);
   -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  backdrop-filter: blur(30px) saturate(1.5);
   /*
    * KEINE Kontur.
    *
@@ -831,8 +831,8 @@ a:hover {
 
 .glas {
   background: var(--glas-flaeche);
-  backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
   -webkit-backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
+  backdrop-filter: blur(var(--glas-unschaerfe)) saturate(var(--glas-saettigung));
   border: 1px solid var(--glas-rand);
   /* Die helle Kante oben und die dunkle unten erzeugen den Eindruck einer
      Materialdicke – ohne sie wirkt Unschärfe allein nur wie Milchglas. */
@@ -863,8 +863,8 @@ a:hover {
  */
 .glas-lesbar {
   background: var(--glas-text-flaeche);
-  backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.25);
   -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.25);
+  backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(1.25);
   border: 1px solid var(--glas-rand);
   contain: paint;
   box-shadow:

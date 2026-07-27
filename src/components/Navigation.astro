@@ -78,7 +78,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       <Logo hoehe="1.75rem" dekorativ />
       {/* Erscheint erst beim Scrollen, wenn die Standortleiste einklappt –
           bis dahin steht der Ort ausgeschrieben in der Leiste darunter. */}
-      {standort && <span class="logo-ort">KU64 {standort.name}</span>}
+      {standort && <span class="logo-ort">{standort.name}</span>}
     </a>
 
     <nav class="haupt" aria-label={t('geruest.hauptnavigation')}>
@@ -285,8 +285,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     z-index: 0;
     border-radius: inherit;
     background: var(--glas-text-flaeche);
-    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
     -webkit-backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(var(--glas-text-unschaerfe)) saturate(var(--glas-saettigung));
     pointer-events: none;
   }
 
@@ -368,6 +368,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   /* Die Leiste klappt ein – Höhe, Polsterung und Trennlinie zugleich, sonst
      bleibt ein Strich ohne Inhalt stehen. */
   .kopf:global(.ist-angedockt) .standortleiste-inner {
+    overflow: hidden;
     /* `min-height` muss mit weg: Es schlägt `max-height`, und die Leiste
        bliebe sonst als 40 Pixel hohe leere Fläche stehen. */
     min-height: 0;
@@ -518,7 +519,18 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     border-end-start-radius: var(--radius-xl);
     border-end-end-radius: var(--radius-xl);
     max-height: 8rem;
-    overflow: hidden;
+    /*
+     * KEIN `overflow: hidden` im ausgeklappten Zustand.
+     *
+     * Für die Einklapp-Bewegung braucht es eine Begrenzung – aber der
+     * Standortwähler hängt aus dieser Leiste nach unten heraus. Geklippt
+     * öffnet er sich und zeigt nichts. Genau dieser Fehler steckte vorher
+     * eine Ebene höher in `.kopf-glas`; beim Einbauen der Bewegung habe ich
+     * ihn hier neu erzeugt.
+     *
+     * Geklippt wird deshalb nur, während eingeklappt wird – dann gibt es
+     * ohnehin nichts zu zeigen.
+     */
     transition:
       max-height var(--zeit) var(--kurve),
       padding-block var(--zeit) var(--kurve),
@@ -572,8 +584,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     padding: var(--raum-4);
     /* Schwebendes Element über beliebigem Inhalt: echtes Glas. */
     background: var(--glas-flaeche-stark);
-    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
     -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
     border-radius: var(--radius-xl);
     box-shadow: inset 0 1px 0 var(--glas-glanz), var(--schatten-lg);
@@ -700,8 +712,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   .mobilmenue {
     border-top: 1px solid var(--glas-rand-unten);
     background: var(--glas-flaeche-stark);
-    backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
     -webkit-backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
     padding-block: var(--raum-5);
     max-height: calc(100dvh - 8rem);
     overflow-y: auto;
