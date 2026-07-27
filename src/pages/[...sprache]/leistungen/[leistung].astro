@@ -14,6 +14,7 @@ import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import { LEISTUNGEN } from '../../../data/leistungen';
+import { beschwerdenZuBehandlung } from '../../../data/beschwerden';
 import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -29,6 +30,8 @@ const pfad = `/leistungen/${leistung.slug}/`;
 
 const wo = daten.standorte.filter((s) => leistung.verfuegbar.includes(s.slug));
 const nicht = daten.standorte.filter((s) => !leistung.verfuegbar.includes(s.slug));
+
+const beschwerden = beschwerdenZuBehandlung(leistung.slug);
 
 const verwandte = leistung.related
   .map((s) => daten.leistung(s))
@@ -168,9 +171,61 @@ const schema = [
       </section>
     )
   }
+
+  {
+    beschwerden.length > 0 && (
+      /*
+       * Der Rückweg. Die Beschwerdeseiten verweisen hierher, weil jemand mit
+       * einem Symptom sucht – hier steht die Gegenrichtung, für alle, die
+       * über den Fachbegriff gekommen sind und wissen wollen, ob das ihr
+       * Problem überhaupt ist. Beide Richtungen zusammen machen aus zwei
+       * Listen ein Netz.
+       */
+      <section class="abschnitt-eng">
+        <div class="huelle">
+          <h2 class="fuehrt-titel">Beschwerden, die hierher führen</h2>
+          <ul class="fuehrt">
+            {beschwerden.map((b) => (
+              <li>
+                <a href={`/zahnbeschwerden/${b.slug}/`}>{b.titel}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
 </Basis>
 
 <style>
+  .fuehrt-titel {
+    font-size: var(--t-lg);
+    margin-block-end: var(--raum-4);
+  }
+
+  .fuehrt {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--raum-2) var(--raum-3);
+  }
+
+  .fuehrt a {
+    display: inline-block;
+    padding: var(--raum-2) var(--raum-4);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    text-decoration: none;
+  }
+
+  .fuehrt a:hover {
+    border-color: var(--akzent);
+    color: var(--tinte);
+  }
+
   .kopf {
     background: linear-gradient(to bottom, color-mix(in oklab, var(--akzent) 7%, var(--flaeche)), var(--flaeche));
     border-bottom: 1px solid var(--linie);

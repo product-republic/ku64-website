@@ -1,0 +1,328 @@
+---
+/**
+ * Beschwerdeübersicht – der zweite Eingang in die Website.
+ *
+ * Der erste ist `/leistungen/`: Wer weiß, was er will, sucht dort nach dem
+ * Namen der Behandlung. Diese Seite ist für alle anderen – und das sind
+ * mehr. Sie fragt nicht „welche Behandlung?“, sondern „was haben Sie?“.
+ *
+ * Sortiert nicht nach Fachgebiet, sondern nach dem Ort im Mund und der Art
+ * der Beschwerde: Zahn, Zahnfleisch, Mund, Zahnstellung, Vorsorge. Das ist
+ * die Ordnung, in der jemand sucht, der keinen Fachbegriff hat.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import { BESCHWERDEN, AKUT } from '../../../data/beschwerden';
+import { schemaBrotkrumen, kanonisch } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return mitSprachen([{ params: {} }]);
+}
+
+const daten = inhalte(Astro);
+const pfad = '/zahnbeschwerden/';
+
+/*
+ * Die Gruppen sind von Hand gesetzt, nicht abgeleitet.
+ *
+ * Abgeleitet würde heißen: nach dem Wort im Slug sortieren – und dann läge
+ * „Zahnstein“ bei „Zahnschmerzen“, weil beide mit „Zahn“ anfangen, obwohl
+ * das eine eine Vorsorgefrage ist und das andere ein Notfall.
+ */
+const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
+  {
+    name: 'Schmerzen',
+    frage: 'Es tut weh',
+    slugs: [
+      'zahnschmerzen',
+      'druckschmerz',
+      'schmerzempfindliche-zaehne',
+      'vereiterter-zahn',
+      'zahnwurzelentzuendung',
+      'weisheitszahn-op',
+    ],
+  },
+  {
+    name: 'Zahnfleisch',
+    frage: 'Etwas stimmt mit dem Zahnfleisch nicht',
+    slugs: [
+      'zahnfleischbluten',
+      'zahnfleischentzuendung',
+      'zahnfleischrueckgang',
+      'zahnfleischtaschen',
+      'zahn-locker',
+    ],
+  },
+  {
+    name: 'Zahnsubstanz',
+    frage: 'Am Zahn selbst',
+    slugs: [
+      'karies-symptome',
+      'loch-im-zahn',
+      'zahn-abgebrochen',
+      'zahnerosion-behandeln',
+      'zahnschmelzdefekte',
+      'kreidezaehne',
+    ],
+  },
+  {
+    name: 'Aussehen',
+    frage: 'Die Zähne gefallen mir nicht',
+    slugs: ['gelbe-zaehne', 'zahnverfaerbung', 'zahnstein-entfernen-behandeln', 'schiefe-zaehne'],
+  },
+  {
+    name: 'Mund und Atem',
+    frage: 'Im Mund',
+    slugs: [
+      'mundgeruch-was-tun',
+      'mundtrockenheit',
+      'mundpilz-mundsoor',
+      'mundschleimhautentzuendung',
+      'zahngifte',
+    ],
+  },
+  {
+    name: 'Kinder und Zahnspange',
+    frage: 'Bei Kindern, mit Spange',
+    slugs: ['kreuzbiss-kinder', 'sport-mit-zahnspange'],
+  },
+  {
+    name: 'Vorbeugen',
+    frage: 'Damit es gar nicht erst so weit kommt',
+    slugs: ['ernaehrung-gesunde-zaehne', 'zahnarzt-schwangerschaft'],
+  },
+];
+
+const einsortiert = new Set(GRUPPEN.flatMap((g) => g.slugs));
+/*
+ * Was in keiner Gruppe steht, verschwindet nicht – es bekommt eine eigene.
+ * Sonst fällt beim nächsten übernommenen Text eine Seite lautlos aus der
+ * Übersicht, und niemand merkt es, bis Google es merkt.
+ */
+const uebrig = BESCHWERDEN.filter((b) => !einsortiert.has(b.slug));
+
+const gruppen = [
+  ...GRUPPEN.map((g) => ({
+    ...g,
+    eintraege: g.slugs.map((s) => BESCHWERDEN.find((b) => b.slug === s)).filter(Boolean),
+  })).filter((g) => g.eintraege.length > 0),
+  ...(uebrig.length
+    ? [{ name: 'Weitere', frage: 'Sonstiges', slugs: [], eintraege: uebrig }]
+    : []),
+];
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Beschwerden', pfad },
+];
+
+const schema = [
+  schemaBrotkrumen(brotkrumen),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Zahnbeschwerden',
+    url: kanonisch(pfad),
+    hasPart: BESCHWERDEN.map((b) => ({
+      '@type': 'MedicalWebPage',
+      name: b.titel,
+      url: kanonisch(`/zahnbeschwerden/${b.slug}/`),
+    })),
+  },
+];
+
+/** Der Titel ohne den redaktionellen Vorspann („Ein heikles Thema: …“). */
+function kurz(titel: string): string {
+  return titel.replace(/^[^:]{0,40}:\s*/, '').replace(/\s*[–-]\s*.*$/, '');
+}
+---
+
+<Basis
+  titel="Zahnbeschwerden"
+  description={`Von der Beschwerde zur Behandlung: ${BESCHWERDEN.length} Erklärungen zu Zahnschmerzen, Zahnfleisch, Mundgeruch und Zahnstellung – und was KU64 dagegen tut.`}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="abschnitt-eng">
+    <div class="huelle">
+      <span class="marke marke-akzent">Beschwerden</span>
+      <h1>Was haben Sie?</h1>
+      <p class="anriss">
+        Für den Weg andersherum: nicht von der Behandlung zur Beschwerde,
+        sondern von dem, was Sie merken, zu dem, was hilft. {BESCHWERDEN.length}{' '}
+        Beschwerden, jeweils mit den Behandlungen, die dafür in Frage kommen.
+      </p>
+
+      <aside class="akut glas">
+        <p class="akut-titel">Starke Schmerzen oder eine Verletzung?</p>
+        <p class="akut-text">
+          Dann lesen Sie hier nicht weiter. Wir halten an jedem Standort Zeiten
+          für Schmerzpatientinnen und -patienten frei.
+        </p>
+        <div class="akut-nummern">
+          {
+            daten.standorte.map((s) => (
+              <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="akut-nummer">
+                <span class="akut-ort">{s.name}</span>
+                <span class="zahl">{s.telefon}</span>
+              </a>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {
+    gruppen.map((g) => (
+      <section class="abschnitt gruppe">
+        <div class="huelle">
+          <h2>{g.frage}</h2>
+          <div class="raster">
+            {g.eintraege.map((b) => (
+              <a href={`/zahnbeschwerden/${b!.slug}/`} class="karte">
+                <span class="karte-titel">{kurz(b!.titel)}</span>
+                {b!.beschreibung && <span class="karte-text">{b!.beschreibung}</span>}
+                {AKUT.has(b!.slug) && <span class="karte-akut">Kann akut sein</span>}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="abschnitt-eng">
+    <div class="huelle">
+      <p class="herkunft">
+        Diese Texte stammen aus dem Bestand der Praxis. Sie ersetzen keine
+        Untersuchung: Was Ihre Beschwerden verursacht, lässt sich erst am
+        Behandlungsstuhl feststellen.
+      </p>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .anriss {
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+    max-width: 46rem;
+    margin-block-start: var(--raum-4);
+  }
+
+  .akut {
+    margin-block-start: var(--raum-7);
+    padding: var(--raum-6);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--linie);
+  }
+
+  .akut-titel {
+    font-weight: 600;
+    font-size: var(--t-lg);
+  }
+
+  .akut-text {
+    color: var(--tinte-weich);
+    margin-block-start: var(--raum-2);
+    max-width: 40rem;
+  }
+
+  .akut-nummern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+    gap: var(--raum-3);
+    margin-block-start: var(--raum-5);
+  }
+
+  .akut-nummer {
+    display: grid;
+    gap: 0.1rem;
+    padding: var(--raum-3) var(--raum-4);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .akut-nummer:hover {
+    border-color: var(--akzent);
+  }
+
+  .akut-ort {
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+  }
+
+  .akut-nummer .zahl {
+    font-weight: 600;
+  }
+
+  .gruppe + .gruppe {
+    padding-block-start: 0;
+  }
+
+  .gruppe h2 {
+    font-size: var(--t-xl);
+    margin-block-end: var(--raum-5);
+  }
+
+  .raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+    gap: var(--raum-4);
+  }
+
+  .karte {
+    display: grid;
+    align-content: start;
+    gap: var(--raum-2);
+    padding: var(--raum-5);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--zeit-schnell), transform var(--zeit-schnell);
+  }
+
+  .karte:hover {
+    border-color: var(--akzent);
+    transform: translateY(-2px);
+  }
+
+  .karte-titel {
+    font-weight: 600;
+    line-height: var(--zeile-eng);
+  }
+
+  .karte-text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    /* Zwei Zeilen: Die Beschreibungen der alten Seite sind unterschiedlich
+       lang, und Karten unterschiedlicher Höhe in einem Raster sehen aus wie
+       ein Fehler. */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .karte-akut {
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+    margin-block-start: var(--raum-1);
+  }
+
+  .herkunft {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    max-width: 44rem;
+    padding-block-start: var(--raum-5);
+    border-block-start: 1px solid var(--linie);
+  }
+</style>

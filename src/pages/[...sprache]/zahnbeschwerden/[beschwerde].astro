@@ -1,0 +1,441 @@
+---
+/**
+ * Eine Beschwerde – von der Frage zur Behandlung.
+ *
+ * ── Die Reihenfolge ist die ganze Gestaltung ────────────────────────────
+ *
+ * Wer hier ankommt, hat ein Symptom eingetippt und weiß nicht, was er hat.
+ * Also in dieser Reihenfolge:
+ *
+ *   1. Bei akuten Beschwerden zuerst die Telefonnummer. Wer Schmerzen hat,
+ *      liest keine 1800 Wörter.
+ *   2. Der Text der Praxis, unverändert und vollständig.
+ *   3. Die häufigen Fragen.
+ *   4. Erst dann: welche Behandlung hilft, und wo es sie gibt.
+ *
+ * Die Behandlungen ans Ende zu setzen, ist gegen jeden Instinkt und
+ * trotzdem richtig. Eine Seite, die auf die Frage „habe ich Karies?“ mit
+ * „buchen Sie eine Kariesbehandlung“ anfängt, beantwortet die Frage nicht,
+ * und Google merkt das an der Verweildauer.
+ *
+ * ── Warum ohne Standort ─────────────────────────────────────────────────
+ *
+ * Siehe `src/data/beschwerden.ts`: Zahnfleischbluten ist in Potsdam
+ * dasselbe wie am Kurfürstendamm. Standortscharf ist die Behandlung, und
+ * dorthin führt diese Seite.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import FaqBlock from '../../../components/FaqBlock.astro';
+import LeistungKarte from '../../../components/LeistungKarte.astro';
+import { BESCHWERDEN, getBeschwerde, behandlungenZu, AKUT } from '../../../data/beschwerden';
+import { schemaFaq, schemaBrotkrumen, descriptionKuerzen, kanonisch } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return mitSprachen(BESCHWERDEN.map((b) => ({ params: { beschwerde: b.slug } })));
+}
+
+const daten = inhalte(Astro);
+
+const beschwerde = getBeschwerde(Astro.params.beschwerde!)!;
+const behandlungen = behandlungenZu(beschwerde.slug);
+const istAkut = AKUT.has(beschwerde.slug);
+const pfad = `/zahnbeschwerden/${beschwerde.slug}/`;
+
+const brotkrumen = [
+  { name: 'Start', pfad: '/' },
+  { name: 'Beschwerden', pfad: '/zahnbeschwerden/' },
+  { name: beschwerde.titel, pfad },
+];
+
+/*
+ * Die Gliederung entsteht aus den Überschriften der Seite selbst, nicht aus
+ * einer zweiten gepflegten Liste. Nur h2 – eine Gliederung, die jede
+ * Zwischenüberschrift aufführt, ist keine mehr.
+ */
+const gliederung = beschwerde.abschnitte
+  .filter((a) => a.ebene === 'h2')
+  .map((a) => ({ titel: a.titel, anker: anker(a.titel) }));
+
+function anker(titel: string): string {
+  return titel
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: beschwerde.titel,
+    description: beschwerde.beschreibung,
+    url: kanonisch(pfad),
+    /* Was hier beschrieben wird, ist ein Befund – und die Behandlungen, die
+       darauf folgen, sind seine möglichen Antworten. Genau dafür gibt es
+       diese beiden Felder; sie sind der Grund, warum diese Seite in der
+       Suche als Gesundheitsinhalt und nicht als Werbetext erkannt wird. */
+    about: { '@type': 'MedicalCondition', name: beschwerde.titel },
+    mainContentOfPage: {
+      '@type': 'WebPageElement',
+      cssSelector: '.beschwerde-text',
+    },
+    ...(behandlungen.length && {
+      significantLink: behandlungen.map((l) => kanonisch(`/leistungen/${l.slug}/`)),
+    }),
+  },
+  ...(beschwerde.faq.length ? [schemaFaq(beschwerde.faq)] : []),
+  schemaBrotkrumen(brotkrumen),
+];
+---
+
+<Basis
+  titel={beschwerde.titel}
+  description={descriptionKuerzen(
+    beschwerde.beschreibung ||
+      beschwerde.einstieg.find((b) => b.text)?.text ||
+      beschwerde.titel,
+  )}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={schema}
+>
+  <section class="abschnitt-eng">
+    <div class="huelle">
+      <a href="/zahnbeschwerden/" class="marke marke-akzent">Beschwerden</a>
+      <h1>{beschwerde.titel}</h1>
+      {beschwerde.beschreibung && <p class="anriss">{beschwerde.beschreibung}</p>}
+
+      {
+        istAkut && (
+          /*
+           * Der Kasten steht über dem Text, nicht darunter. Wer mit akuten
+           * Schmerzen sucht, soll nicht erst scrollen müssen – und wer nur
+           * nachlesen will, überliest ihn in einer Sekunde.
+           */
+          <aside class="akut glas">
+            <p class="akut-titel">Akute Beschwerden? Rufen Sie an.</p>
+            <p class="akut-text">
+              Wir halten an jedem Standort Zeiten für Schmerzpatientinnen und
+              -patienten frei.
+            </p>
+            <div class="akut-nummern">
+              {daten.standorte.map((s) => (
+                <a href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} class="akut-nummer">
+                  <span class="akut-ort">{s.name}</span>
+                  <span class="zahl">{s.telefon}</span>
+                </a>
+              ))}
+            </div>
+            <a href="/notfall/" class="akut-mehr">Was bei einem Zahnnotfall zu tun ist →</a>
+          </aside>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="abschnitt anschluss">
+    <div class="huelle inhalt">
+      <div class="beschwerde-text">
+        {/*
+          Absatz oder Aufzählung – mehr Sorten gibt es in diesen Texten
+          nicht, und eine dritte hinzuzuerfinden hieße, den Text
+          umzuschreiben.
+        */}
+        {
+          beschwerde.einstieg.map((b) =>
+            b.art === 'liste' ? (
+              <ul>{(b.punkte ?? []).map((p) => <li>{p}</li>)}</ul>
+            ) : (
+              <p>{b.text}</p>
+            ),
+          )
+        }
+
+        {
+          beschwerde.abschnitte.map((a) => (
+            <>
+              {a.ebene === 'h2' ? (
+                <h2 id={anker(a.titel)}>{a.titel}</h2>
+              ) : (
+                <h3>{a.titel}</h3>
+              )}
+              {a.bloecke.map((b) =>
+                b.art === 'liste' ? (
+                  <ul>{(b.punkte ?? []).map((p) => <li>{p}</li>)}</ul>
+                ) : (
+                  <p>{b.text}</p>
+                ),
+              )}
+            </>
+          ))
+        }
+      </div>
+
+      {
+        gliederung.length > 2 && (
+          /*
+           * Steht als zweite Spalte neben dem Text und klebt beim Scrollen.
+           * Bei 1870 Wörtern im Mittel ist das kein Zierrat: Ohne sie ist die
+           * Seite ein Textblock, dessen Ende man nicht absehen kann.
+           */
+          <nav class="gliederung" aria-label="Auf dieser Seite">
+            <p class="gliederung-titel">Auf dieser Seite</p>
+            <ul>
+              {gliederung.map((g) => (
+                <li>
+                  <a href={`#${g.anker}`}>{g.titel}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    beschwerde.faq.length > 0 && (
+      <section class="abschnitt-eng">
+        <div class="huelle fragen">
+          <FaqBlock titel="Häufig gefragt" eintraege={beschwerde.faq} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    behandlungen.length > 0 && (
+      <section class="abschnitt weiter">
+        <div class="huelle">
+          <h2>Was dagegen hilft</h2>
+          <p class="weiter-text">
+            {behandlungen.length === 1
+              ? 'Die Behandlung, die hier in Frage kommt – mit den Standorten, an denen es sie gibt:'
+              : 'Die Behandlungen, die hier in Frage kommen – jeweils mit den Standorten, an denen es sie gibt:'}
+          </p>
+          <div class="raster">
+            {behandlungen.map((l) => (
+              <LeistungKarte leistung={l} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="abschnitt-eng">
+    <div class="huelle">
+      <p class="herkunft">
+        Dieser Text stammt aus dem Bestand der Praxis. Er ersetzt keine
+        Untersuchung: Was Ihre Beschwerden verursacht, lässt sich erst am
+        Behandlungsstuhl feststellen.
+      </p>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .anriss {
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+    max-width: 46rem;
+    margin-block-start: var(--raum-4);
+  }
+
+  /* ── Akutkasten ──────────────────────────────────────────────────────── */
+
+  .akut {
+    margin-block-start: var(--raum-7);
+    padding: var(--raum-6);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--linie);
+  }
+
+  .akut-titel {
+    font-weight: 600;
+    font-size: var(--t-lg);
+  }
+
+  .akut-text {
+    color: var(--tinte-weich);
+    margin-block-start: var(--raum-2);
+  }
+
+  .akut-nummern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+    gap: var(--raum-3);
+    margin-block-start: var(--raum-5);
+  }
+
+  .akut-nummer {
+    display: grid;
+    gap: 0.1rem;
+    padding: var(--raum-3) var(--raum-4);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--linie);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .akut-nummer:hover {
+    border-color: var(--akzent);
+  }
+
+  .akut-ort {
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+  }
+
+  .akut-nummer .zahl {
+    font-weight: 600;
+  }
+
+  .akut-mehr {
+    display: inline-block;
+    margin-block-start: var(--raum-4);
+    font-size: var(--t-sm);
+  }
+
+  /* ── Text und Gliederung ─────────────────────────────────────────────── */
+
+  /*
+   * Der Kopfbereich bringt seinen eigenen Abstand nach unten mit. Zwei
+   * Abstände hintereinander ergeben auf Seiten ohne Vorspann ein leeres
+   * Drittel Bildschirm, bevor der Text anfängt.
+   */
+  .anschluss {
+    padding-block-start: 0;
+  }
+
+  .inhalt {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 18rem);
+    gap: clamp(var(--raum-6), 5vw, var(--raum-9));
+    align-items: start;
+  }
+
+  .beschwerde-text {
+    max-width: 42rem;
+  }
+
+  .beschwerde-text :global(h2) {
+    font-size: var(--t-2xl);
+    margin-block: var(--raum-8) var(--raum-4);
+    /* Damit der Sprung aus der Gliederung nicht unter der Kopfleiste landet. */
+    scroll-margin-block-start: 7rem;
+  }
+
+  .beschwerde-text :global(h2:first-child) {
+    margin-block-start: 0;
+  }
+
+  .beschwerde-text :global(h3) {
+    font-size: var(--t-lg);
+    margin-block: var(--raum-6) var(--raum-3);
+  }
+
+  .beschwerde-text :global(p) {
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+    margin-block-end: var(--raum-4);
+  }
+
+  .beschwerde-text :global(ul) {
+    display: grid;
+    gap: var(--raum-2);
+    padding-inline-start: 1.2rem;
+    margin-block-end: var(--raum-5);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  .gliederung {
+    position: sticky;
+    inset-block-start: 7rem;
+    padding-inline-start: var(--raum-5);
+    border-inline-start: 1px solid var(--linie);
+  }
+
+  .gliederung-titel {
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--tinte-weich);
+    margin-block-end: var(--raum-3);
+  }
+
+  .gliederung ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-2);
+  }
+
+  .gliederung a {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    text-decoration: none;
+    line-height: var(--zeile-normal);
+  }
+
+  .gliederung a:hover {
+    color: var(--akzent);
+  }
+
+  /* Die Fragenlisten dieser Seiten haben bis zu zehn Einträge – über die
+     volle Breite gesetzt wäre jede Frage eine einzelne lange Zeile. */
+  .fragen {
+    max-width: 46rem;
+    margin-inline: 0;
+  }
+
+  /* ── Weiterführendes ─────────────────────────────────────────────────── */
+
+  .weiter-text {
+    color: var(--tinte-weich);
+    max-width: 44rem;
+    margin-block: var(--raum-3) var(--raum-6);
+  }
+
+  .raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+    gap: var(--raum-5);
+  }
+
+  .herkunft {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    max-width: 44rem;
+    padding-block-start: var(--raum-5);
+    border-block-start: 1px solid var(--linie);
+  }
+
+  @media (max-width: 62rem) {
+    .inhalt {
+      grid-template-columns: 1fr;
+    }
+
+    /*
+     * Auf schmalen Geräten wandert die Gliederung nach oben und klebt nicht:
+     * Ein klebendes Element, das ein Drittel des Bildschirms einnimmt, ist
+     * keine Hilfe, sondern ein Hindernis.
+     */
+    .gliederung {
+      position: static;
+      order: -1;
+      padding-inline-start: 0;
+      padding-block-end: var(--raum-5);
+      border-inline-start: 0;
+      border-block-end: 1px solid var(--linie);
+    }
+  }
+</style>
