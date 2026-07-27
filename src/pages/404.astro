@@ -105,10 +105,13 @@ const kombinationen = {
         ))}
       </div>
 
+      {/* `{' '}` nach jedem Trennpunkt: Ohne ihn klebt der nächste Verweis
+          am Punkt, weil der Zeilenumbruch im Markup dort keinen Abstand
+          hinterlässt. */}
       <p class="weiter">
-        {t('fehler.nichtsDabei')} <a href="/leistungen/">{t('fehler.alleBehandlungen')}</a> ·
-        <a href="/standorte/">{t('fehler.alleStandorte')}</a> ·
-        <a href="/notfall/">{t('fehler.notfall')}</a> ·
+        {t('fehler.nichtsDabei')} <a href="/leistungen/">{t('fehler.alleBehandlungen')}</a> ·{' '}
+        <a href="/standorte/">{t('fehler.alleStandorte')}</a> ·{' '}
+        <a href="/notfall/">{t('fehler.notfall')}</a> ·{' '}
         <button type="button" class="chat-oeffner leise">{t('fehler.beraterFragen')}</button>
       </p>
       </div>
