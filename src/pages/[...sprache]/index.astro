@@ -13,6 +13,7 @@ import Basis from '../../layouts/Basis.astro';
 import Bild from '../../components/Bild.astro';
 import Kopfmedium from '../../components/Kopfmedium.astro';
 import { standortbildFuer } from '../../data/medien';
+import { oeffnungstageText } from '../../data/standorte';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
 import { texte } from '../../i18n/katalog';
 
@@ -123,7 +124,7 @@ const ueberschrift = t('start.ueberschrift');
                   </div>
                   <div>
                     <dt>{t('karte.geoeffnet')}</dt>
-                    <dd>{t('karte.tageWoche', { anzahl: s.oeffnungszeiten.filter((z) => z.von).length })}</dd>
+                    <dd>{oeffnungstageText(s)}</dd>
                   </div>
                   <div>
                     <dt>{t('karte.telefon')}</dt>

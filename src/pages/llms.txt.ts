@@ -9,7 +9,7 @@
  */
 
 import type { APIRoute } from 'astro';
-import { STANDORTE } from '../data/standorte';
+import { STANDORTE, oeffnungstageText } from '../data/standorte';
 import { KATEGORIEN, LEISTUNGEN, leistungenFuerStandort } from '../data/leistungen';
 
 export const GET: APIRoute = ({ site }) => {
@@ -32,9 +32,9 @@ export const GET: APIRoute = ({ site }) => {
 
   for (const s of STANDORTE) {
     const anzahl = leistungenFuerStandort(s.slug).length;
-    const tage = s.oeffnungszeiten.filter((z) => z.von).length;
+    const tage = oeffnungstageText(s);
     zeilen.push(
-      `- [KU64 ${s.name}](${basis}/${s.slug}/): ${s.strasse}, ${s.plz} ${s.ort}. Telefon ${s.telefon}. ${tage} Tage/Woche geöffnet. ${anzahl} Leistungen. ${s.claim}`,
+      `- [KU64 ${s.name}](${basis}/${s.slug}/): ${s.strasse}, ${s.plz} ${s.ort}. Telefon ${s.telefon}. ${tage}. ${anzahl} Leistungen. ${s.claim}`,
     );
   }
 

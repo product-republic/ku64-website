@@ -18,7 +18,7 @@ import { anzahlZahnaerzte } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import Bild from '../../../components/Bild.astro';
-import { STANDORTE, behandlungstage } from '../../../data/standorte';
+import { STANDORTE, oeffnungstage, oeffnungsZusatz } from '../../../data/standorte';
 import { raumbilderFuer } from '../../../data/medien';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
@@ -83,8 +83,10 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
         </div>
         <div>
           <dt>Geöffnet</dt>
-          <dd>{behandlungstage(standort)}</dd>
-          <p>{t('standort.tageWoche')}</p>
+          <dd>{oeffnungstage(standort)}</dd>
+          {/* Der Zusatz gehört zwingend dazu: „7“ allein wäre für Potsdam das
+              Versprechen fester Wochenendzeiten, die es dort nicht gibt. */}
+          <p>{oeffnungsZusatz(standort) ?? t('standort.tageWoche')}</p>
         </div>
       </dl>
     </div>

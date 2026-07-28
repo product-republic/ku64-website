@@ -79,6 +79,29 @@ export interface Standort {
   email: string;
   geo: { lat: number; lng: number };
   oeffnungszeiten: Oeffnungszeit[];
+  /**
+   * Wie viele Tage die Woche dieser Standort geöffnet ist – als Angabe, nicht
+   * als Rechnung.
+   *
+   * Das war vorher eine Formel, und zwar zwei verschiedene: Die Notfallseite
+   * zählte „fest ODER nach Vereinbarung“, Startseite und llms.txt nur „fest“.
+   * Für Potsdam stand deshalb an einer Stelle „7 Tage/Woche geöffnet“ und an
+   * der anderen „5“ – auf derselben Website, im selben Build, und über die
+   * strukturierten Daten auch bei Google.
+   *
+   * Eine Formel kann den Fall aber gar nicht lösen, weil er keine
+   * Rechenfrage ist: Potsdam behandelt Sa und So nach Vereinbarung und zählt
+   * sie mit, die KiezPraxis behandelt samstags nach Vereinbarung und zählt
+   * ihn bewusst NICHT mit – dort sind es fünf Tage, und der Samstag wird
+   * gesondert genannt. Beides ist richtig, weil es zwei verschiedene
+   * Aussagen der Praxis sind.
+   *
+   * Deshalb steht die Zahl hier, einmal, und alle Seiten lesen sie. Der
+   * Datenwächter prüft nur noch, dass sie zwischen den fest geöffneten und
+   * allen behandelten Tagen liegt – das fängt Tippfehler, ohne die
+   * redaktionelle Entscheidung zu überschreiben.
+   */
+  oeffnungsangabe: { tage: number; zusatz?: string };
   /** Frei formulierter Hinweis, falls die Zeiten Ausnahmen haben. */
   zeitenHinweis?: string;
   eroeffnet: string;
@@ -169,6 +192,7 @@ export const STANDORTE: Standort[] = [
    */
   {
     slug: 'berlin-charlottenburg',
+    oeffnungsangabe: { tage: 7 },
     name: 'Kurfürstendamm',
     nameLang: 'KU64 Berlin Charlottenburg – Kurfürstendamm',
     claim:
@@ -209,6 +233,7 @@ export const STANDORTE: Standort[] = [
   },
   {
     slug: 'potsdam',
+    oeffnungsangabe: { tage: 7, zusatz: 'Sa + So nach Vereinbarung' },
     name: 'Potsdam',
     nameLang: 'KU64 Potsdam – Zahnarzt im Palais Ritz',
     claim:
@@ -246,6 +271,7 @@ export const STANDORTE: Standort[] = [
   },
   {
     slug: 'berlinmitte',
+    oeffnungsangabe: { tage: 7 },
     name: 'Berlin-Mitte',
     nameLang: 'KU64 Berlin-Mitte – Hausvogteiplatz',
     claim:
@@ -284,6 +310,7 @@ export const STANDORTE: Standort[] = [
   },
   {
     slug: 'wilmersdorf',
+    oeffnungsangabe: { tage: 5, zusatz: 'Sa nach Vereinbarung' },
     name: 'Wilmersdorf',
     nameLang: 'KU64 – DIE KIEZPRAXIS in Berlin-Wilmersdorf',
     claim:
@@ -417,7 +444,55 @@ export function zeitLesbar(z: Oeffnungszeit): string {
   return 'geschlossen';
 }
 
-/** Tage, an denen behandelt wird – Termin nach Vereinbarung eingeschlossen. */
-export function behandlungstage(s: Standort): number {
-  return s.oeffnungszeiten.filter((z) => z.von || z.nachVereinbarung).length;
+/**
+ * Tage, an denen ein Termin möglich ist – die EINE Zählung für die ganze Seite.
+ *
+ * ── Warum das eine eigene Funktion ist ────────────────────────────────────
+ *
+ * Es gab zwei Zählungen, und sie widersprachen sich öffentlich. Die
+ * Notfallseite rechnete „fest ODER nach Vereinbarung“, Startseite und
+ * llms.txt nur „fest“. Für Potsdam stand deshalb an einer Stelle „7
+ * Tage/Woche geöffnet“ und an der anderen „5“ – auf derselben Website, im
+ * selben Build, und über die strukturierten Daten auch bei Google.
+ *
+ * Die Zählung ist jetzt: ein Tag zählt, wenn an ihm behandelt wird. Ob mit
+ * festen Zeiten oder nach Vereinbarung, ist eine Frage der Zusatzangabe,
+ * nicht des Zählens – wer sonntags einen Termin bekommt, für den ist
+ * sonntags offen.
+ *
+ * ── Warum die Zahl allein nicht reicht ────────────────────────────────────
+ *
+ * „7 Tage/Woche geöffnet“ ohne Zusatz wäre für Potsdam ein Versprechen, das
+ * die Praxis nicht gibt: Wer samstags mit Schmerzen und ohne Termin
+ * hinfährt, steht vor einer verschlossenen Tür. Deshalb gibt
+ * `oeffnungstageText()` die Einschränkung immer mit aus, wo es eine gibt.
+ * Die Zahl allein ist nirgends zu verwenden.
+ */
+export function oeffnungstage(s: Standort): number {
+  return s.oeffnungsangabe.tage;
+}
+
+/** Die Tage, an denen nur nach Vereinbarung behandelt wird. */
+export function tageNachVereinbarung(s: Standort): Wochentag[] {
+  return s.oeffnungszeiten.filter((z) => !z.von && z.nachVereinbarung).map((z) => z.tag);
+}
+
+/**
+ * Die Angabe, wie sie überall erscheint – Zahl plus Einschränkung.
+ *
+ * Kurfürstendamm und Berlin-Mitte haben auch am Wochenende feste Zeiten;
+ * dort steht schlicht „7 Tage/Woche“. Potsdam behandelt Sa und So nach
+ * Vereinbarung und zählt sie mit: „7 Tage/Woche · Sa + So nach Vereinbarung“.
+ * Die KiezPraxis zählt ihren Samstag bewusst nicht mit: „5 Tage/Woche · Sa
+ * nach Vereinbarung“.
+ */
+/** Nur die Einschränkung, ohne Zahl – für Stellen, die beides getrennt zeigen. */
+export function oeffnungsZusatz(s: Standort): string | undefined {
+  const { tage, zusatz } = s.oeffnungsangabe;
+  return zusatz ? `Tage/Woche · ${zusatz}` : `Tage/Woche`;
+}
+
+export function oeffnungstageText(s: Standort): string {
+  const { tage, zusatz } = s.oeffnungsangabe;
+  return zusatz ? `${tage} Tage/Woche · ${zusatz}` : `${tage} Tage/Woche`;
 }
