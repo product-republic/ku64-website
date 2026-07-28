@@ -27,8 +27,111 @@ import nodemailer from 'nodemailer';
 
 export const prerender = false;
 
-const BILD_MODELL = process.env.NANO_BANANA_MODELL || 'gemini-3-pro-image-preview';
-const ANALYSE_MODELL = process.env.GEMINI_ANALYSE_MODELL || 'gemini-3-flash';
+/*
+ * Modellnamen als Liste, nicht als einzelner Wert.
+ *
+ * ── Warum ───────────────────────────────────────────────────────────────
+ *
+ * Hier stand `gemini-3-flash` als fester Name. Den gibt es unter diesem
+ * Namen nicht, und die Antwort darauf ist ein 404 – für die Person vor dem
+ * Bildschirm: „Bei der Verarbeitung ist ein Fehler aufgetreten." Eine
+ * Zeichenkette legt eine ganze Funktion still, und man sieht es erst, wenn
+ * jemand sie benutzt.
+ *
+ * Modellnamen bei Google veralten planmäßig: Vorschaumodelle tragen
+ * `-preview` im Namen und verlieren es beim Wechsel in den Regelbetrieb,
+ * alte Fassungen werden abgeschaltet. Ein einzelner fester Name ist deshalb
+ * eine Zeitbombe mit einem Ablaufdatum, das niemand kennt.
+ *
+ * Der Reihe nach probiert: Ein Name, den es nicht gibt, ergibt 404 – das
+ * ist eindeutig von einem echten Fehler zu unterscheiden, und dann kommt
+ * der nächste dran. Der erste, der antwortet, wird gemerkt.
+ *
+ * Vorn steht jeweils der Wert aus der Umgebung, falls einer gesetzt ist.
+ * Damit lässt sich ein neues Modell einschalten, ohne neu zu bauen.
+ */
+const BILD_MODELLE = [
+  process.env.NANO_BANANA_MODELL,
+  'gemini-3-pro-image-preview',
+  'gemini-2.5-flash-image',
+  'gemini-2.0-flash-preview-image-generation',
+].filter((m): m is string => Boolean(m));
+
+const ANALYSE_MODELLE = [
+  process.env.GEMINI_ANALYSE_MODELL,
+  'gemini-3-flash-preview',
+  'gemini-2.5-flash',
+  'gemini-2.0-flash',
+].filter((m): m is string => Boolean(m));
+
+/** Einmal gefunden, bleibt gefunden – sonst kostet jede Anfrage neue 404er. */
+const gemerkt = new Map<string, string>();
+
+function istNichtGefunden(e: unknown): boolean {
+  const text = e instanceof Error ? e.message : String(e);
+  return /\b404\b|NOT_FOUND|is not found for API version/i.test(text);
+}
+
+/**
+ * Ruft `arbeit` mit dem ersten Modell auf, das es wirklich gibt.
+ *
+ * Ein Fehler, der kein 404 ist – aufgebrauchtes Kontingent, gesperrter
+ * Schlüssel, Netz –, wird sofort weitergereicht: Dagegen hilft kein anderes
+ * Modell, und stur weiterzuprobieren würde den Fehler nur verschleiern.
+ */
+async function mitModell<T>(
+  art: string,
+  kandidaten: string[],
+  arbeit: (modell: string) => Promise<T>,
+): Promise<T> {
+  const bekannt = gemerkt.get(art);
+  if (bekannt) return arbeit(bekannt);
+
+  let letzter: unknown;
+  for (const modell of kandidaten) {
+    try {
+      const ergebnis = await arbeit(modell);
+      gemerkt.set(art, modell);
+      if (modell !== kandidaten[0]) {
+        console.warn(`[laecheln] ${art}: ${kandidaten[0]} gibt es nicht, nutze ${modell}`);
+      }
+      return ergebnis;
+    } catch (e) {
+      if (!istNichtGefunden(e)) throw e;
+      letzter = e;
+    }
+  }
+
+  /* Alle durch. Damit die nächste Korrektur kein Raten ist, steht danach im
+     Protokoll, was der Schlüssel tatsächlich anbietet. */
+  await verfuegbareModelleMelden();
+  throw letzter instanceof Error
+    ? letzter
+    : new Error(`Kein Modell für ${art} verfügbar: ${kandidaten.join(', ')}`);
+}
+
+/** Listet einmalig, was das Konto kann – nur ins Protokoll, nie an den Browser. */
+let bereitsGemeldet = false;
+async function verfuegbareModelleMelden(): Promise<void> {
+  if (bereitsGemeldet) return;
+  bereitsGemeldet = true;
+  try {
+    const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models', {
+      headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY ?? '' },
+    });
+    const daten = (await res.json()) as {
+      models?: { name?: string; supportedGenerationMethods?: string[] }[];
+    };
+    const namen = (daten.models ?? [])
+      .filter((m) => m.supportedGenerationMethods?.includes('generateContent'))
+      .map((m) => m.name?.replace(/^models\//, ''))
+      .filter(Boolean);
+    console.error(`[laecheln] Verfügbar für diesen Schlüssel: ${namen.join(', ')}`);
+  } catch (e) {
+    console.error('[laecheln] Modellliste nicht abrufbar:', e instanceof Error ? e.message : e);
+  }
+}
+
 const MAX_BYTES = 8 * 1024 * 1024;
 const ERLAUBTE_TYPEN = ['image/jpeg', 'image/png', 'image/webp'];
 
@@ -116,15 +219,16 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     /* Schritt 1: Analyse. Bewusst beschreibend statt diagnostisch – das Modell
        soll ästhetische Merkmale benennen, keine Befunde stellen. */
-    const analyseAntwort = await ai.models.generateContent({
-      model: ANALYSE_MODELL,
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            { inlineData: { mimeType: foto.type, data: base64 } },
-            {
-              text: `Du unterstützt eine Zahnarztpraxis bei einer unverbindlichen ästhetischen Vorschau.
+    const analyseAntwort = await mitModell('Analyse', ANALYSE_MODELLE, (modell) =>
+      ai.models.generateContent({
+        model: modell,
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { inlineData: { mimeType: foto.type, data: base64 } },
+              {
+                text: `Du unterstützt eine Zahnarztpraxis bei einer unverbindlichen ästhetischen Vorschau.
 
 Beschreibe anhand des Fotos in 3 bis 4 Sätzen auf Deutsch, welche Merkmale des Lächelns und der Gesichtsproportionen für eine ästhetische Zahnbehandlung relevant wären: Zahnform, Zahnfarbe im Verhältnis zum Hauttyp, Verlauf der Lachlinie, Symmetrie, Gesichtsform.
 
@@ -134,11 +238,12 @@ STRENGE REGELN:
 - Nenne KEINE konkrete Behandlungsempfehlung als Zusage, sondern höchstens, welcher Behandlungsbereich üblicherweise dazu passt.
 - Schreibe sachlich, freundlich und ohne Superlative.
 - Wenn auf dem Bild kein Gesicht oder kein Lächeln erkennbar ist, sage das genau so und beschreibe nichts weiter.`,
-            },
-          ],
-        },
-      ],
-    });
+              },
+            ],
+          },
+        ],
+      }),
+    );
 
     const analyse = analyseAntwort.text?.trim() || '';
 
@@ -155,15 +260,16 @@ STRENGE REGELN:
     /* Schritt 2: Visualisierung. Der Prompt betont ausdrücklich, dass
        ausschließlich die Zähne verändert werden – Gesichtszüge, Hautbild und
        Identität bleiben unangetastet. Alles andere wäre unehrlich. */
-    const bildAntwort = await ai.models.generateContent({
-      model: BILD_MODELL,
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            { inlineData: { mimeType: foto.type, data: base64 } },
-            {
-              text: `Bearbeite dieses Porträt so, dass ausschließlich die Zähne natürlich verbessert wirken: gleichmäßige Zahnstellung, harmonische Zahnform und eine natürliche, zum Hautton passende Zahnfarbe.
+    const bildAntwort = await mitModell('Bild', BILD_MODELLE, (modell) =>
+      ai.models.generateContent({
+        model: modell,
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { inlineData: { mimeType: foto.type, data: base64 } },
+              {
+                text: `Bearbeite dieses Porträt so, dass ausschließlich die Zähne natürlich verbessert wirken: gleichmäßige Zahnstellung, harmonische Zahnform und eine natürliche, zum Hautton passende Zahnfarbe.
 
 UNBEDINGT EINHALTEN:
 - Verändere NICHTS außer den Zähnen. Gesichtszüge, Hautbild, Hautton, Augen, Lippenform, Frisur, Kleidung und Hintergrund bleiben exakt wie im Original.
@@ -171,11 +277,12 @@ UNBEDINGT EINHALTEN:
 - Das Ergebnis muss natürlich aussehen, nicht künstlich weiß und nicht überzeichnet. Leichte Unregelmäßigkeiten erhalten den realistischen Eindruck.
 - Keine Schönheitsfilter, keine Verschlankung, keine Faltenglättung, keine Veränderung des Alters.
 - Fotorealistische Qualität, gleiche Belichtung und Bildschärfe wie im Original.`,
-            },
-          ],
-        },
-      ],
-    });
+              },
+            ],
+          },
+        ],
+      }),
+    );
 
     const bildTeil = bildAntwort.candidates?.[0]?.content?.parts?.find((p) => p.inlineData);
     const ergebnisBase64 = bildTeil?.inlineData?.data;
