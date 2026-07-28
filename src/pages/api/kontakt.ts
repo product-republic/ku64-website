@@ -93,13 +93,28 @@ export const POST: APIRoute = async ({ request }) => {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_VON } = process.env;
 
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-    console.warn('[kontakt] SMTP nicht eingerichtet – Nachricht konnte nicht zugestellt werden.');
-    return antwort(
-      {
-        fehler: `Der Versand ist gerade nicht möglich. Bitte rufen Sie uns an: ${standort.telefon}.`,
-      },
-      503,
-    );
+    /*
+     * Kein Postausgang eingerichtet – aber deshalb muss die Nachricht nicht
+     * verloren gehen.
+     *
+     * Ein Formular, das immer scheitert, ist schlechter als keines: Wer es
+     * ausfüllt, hat die Zeit investiert und steht mit einer Fehlermeldung da.
+     * Stattdessen bekommt der Browser hier eine fertige `mailto:`-Adresse mit
+     * Betreff und Text – ein Klick, und die Nachricht liegt im eigenen
+     * E-Mail-Programm, adressiert an den richtigen Standort.
+     *
+     * Sobald SMTP_HOST, SMTP_USER und SMTP_PASS gesetzt sind, entfällt dieser
+     * Weg von selbst.
+     */
+    console.warn('[kontakt] SMTP nicht eingerichtet – Ausweichweg über das E-Mail-Programm.');
+    const koerper = [`Name: ${name}`, `E-Mail: ${email}`, '', nachricht].join('\n');
+    return antwort({
+      mailto: `mailto:${standort.email}?subject=${encodeURIComponent(
+        `Anfrage über die Website – ${name}`,
+      )}&body=${encodeURIComponent(koerper)}`,
+      hinweis:
+        'Der automatische Versand ist noch nicht eingerichtet. Ihre Nachricht ist aber fertig – ein Klick öffnet sie in Ihrem E-Mail-Programm.',
+    });
   }
 
   try {

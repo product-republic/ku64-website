@@ -194,7 +194,17 @@ const brotkrumen = [
         });
         const daten = await antwort.json();
 
-        if (antwort.ok) {
+        if (antwort.ok && daten.mailto) {
+          /* Kein Postausgang eingerichtet: Die Nachricht ist fertig und wird
+             im E-Mail-Programm geöffnet, statt verloren zu gehen. */
+          rueckmeldung.textContent = daten.hinweis + ' ';
+          const knopf2 = document.createElement('a');
+          knopf2.href = daten.mailto;
+          knopf2.className = 'knopf knopf-primaer';
+          knopf2.textContent = 'Nachricht im E-Mail-Programm öffnen';
+          rueckmeldung.appendChild(knopf2);
+          rueckmeldung.className = 'rueckmeldung gut';
+        } else if (antwort.ok) {
           rueckmeldung.textContent = daten.hinweis ?? 'Ihre Nachricht ist eingegangen.';
           rueckmeldung.className = 'rueckmeldung gut';
           formular.reset();

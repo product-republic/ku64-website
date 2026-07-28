@@ -336,6 +336,40 @@ const faq = [
 
     mikro?.addEventListener('click', () => (gespraech ? beenden() : starten()));
 
+    /*
+     * Verfügbarkeit beim Laden prüfen, nicht erst beim Klick.
+     *
+     * Solange der Sprachdienst nicht angeschlossen ist, antwortet der
+     * Endpunkt mit `demo: true`. Das erfuhr bisher nur, wer auf „Gespräch
+     * starten" geklickt hatte – also alle, die es benutzen wollten. Ein
+     * Knopf, der aussieht wie ein Angebot und keines ist, ist schlechter als
+     * ein Hinweis an derselben Stelle.
+     *
+     * Die Abfrage ist billig: eine Zeile JSON, kein SDK, keine 450 KB.
+     */
+    async function verfuegbarkeitPruefen() {
+      if (!mikro) return;
+      try {
+        const res = await fetch('/api/voice-token/');
+        const daten = await res.json();
+        if (!daten.demo) return;
+
+        mikro.disabled = true;
+        mikro.setAttribute('aria-disabled', 'true');
+        const text = document.getElementById('mikroText');
+        if (text) text.textContent = 'Noch nicht verfügbar';
+        setzeZustand(
+          'Der Sprachberater wird gerade eingerichtet. Bis dahin beantwortet der Chatberater dieselben Fragen – schriftlich, sofort und ebenfalls rund um die Uhr.',
+          'bereit',
+        );
+      } catch {
+        /* Netzfehler: Knopf aktiv lassen. Ein Versuch, der eine Fehlermeldung
+           bringt, ist besser als ein Knopf, den wir grundlos sperren. */
+      }
+    }
+
+    verfuegbarkeitPruefen();
+
     const steuerung = new AbortController();
 
     // Beim Verlassen der Seite sauber auflegen – sonst laufen Sprachminuten weiter.
