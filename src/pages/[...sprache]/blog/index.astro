@@ -255,8 +255,11 @@ const proStandort = daten.standorte
     color: var(--akzent-schrift);
   }
 
+  /* Der Trenner zwischen Datum und Lesedauer stand auf `opacity: 0.5` und
+     kam damit auf 1,92:1. Ein Zeichen, das man nicht lesen kann, trennt
+     auch nichts – der leise Ton allein reicht als Abstufung. */
   .punkt {
-    opacity: 0.5;
+    color: var(--tinte-leise);
   }
 
   .leit-titel {

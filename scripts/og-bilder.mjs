@@ -2,9 +2,29 @@
  * Erzeugt die Vorschaubilder für Social Media und Messenger (OpenGraph).
  *
  * Warum selbst erzeugt statt Stock: Diese Bilder zeigen ausschließlich echte
- * Daten der jeweiligen Seite – Standortname, Adresse, Behandlung, Telefonnummer.
- * Sie sind rein typografisch. Es wird keine Fotografie erfunden, keine Praxis
- * nachgestellt und kein Mensch abgebildet, den es nicht gibt.
+ * Daten der jeweiligen Seite – Standortname, Adresse, Behandlung,
+ * Telefonnummer – auf echten Fotos der jeweiligen Praxis. Es wird keine
+ * Fotografie erfunden, keine Praxis nachgestellt und kein Mensch abgebildet,
+ * den es nicht gibt.
+ *
+ * ── Warum jetzt mit Foto ────────────────────────────────────────────────
+ *
+ * Vorher war die Karte rein typografisch: dunkler Verlauf, zwei Kreise als
+ * Motiv. Das war sauber und sagte nichts. Ein geteilter Link ist für viele
+ * der erste Kontakt mit der Praxis überhaupt – in einem Chat steht die
+ * Karte größer da als jedes Suchergebnis. Der Raum, den man betritt,
+ * beantwortet dort mehr als jede Zeile Text.
+ *
+ * Genommen wird das Foto, das zur Seite gehört: der eigene Standort für die
+ * Standortseiten und die Behandlungen dort, der Kurfürstendamm für alles
+ * Übrige. Kein Motiv, das es nicht gibt.
+ *
+ * ── Und warum die Farben jetzt stimmen ──────────────────────────────────
+ *
+ * Der Akzent stand auf #e8532e – ein Orange, das auf der ganzen Website
+ * nirgends vorkommt. Die Wortmarke ist zweifarbig: KU in #FFCC00, die 64 in
+ * Hausrot. Auf dunklem Grund nimmt sie dieselbe helle Fassung wie das Logo
+ * über Bild und Video (siehe Logo.astro).
  *
  * Läuft VOR dem Astro-Build, damit die Dateien unter public/og/ liegen und
  * regulär mit ausgeliefert werden.
@@ -92,53 +112,96 @@ function umbrechen(text, maxZeichen, maxZeilen = 3) {
   return zeilen;
 }
 
-function svgBauen({ titel, unterzeile, fusszeile, akzent }) {
-  const maxZeichen = titel.length > 40 ? 26 : 20;
+/* Die Markenfarben, wie in tokens.css. Auf dunklem Grund trägt die 64 die
+   hellere Fassung – genau wie das Logo über Bild und Video. */
+const GELB = '#FFCC00';
+const ROT_HELL = '#C2264A';
+
+function svgBauen({ titel, unterzeile, fusszeile }) {
+  const maxZeichen = titel.length > 40 ? 24 : 18;
   const zeilen = umbrechen(titel, maxZeichen, 3);
-  const groesse = zeilen.length >= 3 ? 62 : zeilen.length === 2 ? 74 : 86;
-  const startY = 300 - ((zeilen.length - 1) * groesse * 1.12) / 2;
+  const groesse = zeilen.length >= 3 ? 60 : zeilen.length === 2 ? 72 : 84;
+  const startY = 318 - ((zeilen.length - 1) * groesse * 1.1) / 2;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${BREITE}" height="${HOEHE}">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1b1512"/>
-      <stop offset="100%" stop-color="#0d0a08"/>
+    <!--
+      Der Schleier ist keine Verzierung, sondern die Bedingung dafür, dass
+      weiße Schrift auf einem beliebigen Foto lesbar bleibt. Links dicht,
+      damit der Text trägt; rechts offen, damit der Raum sichtbar bleibt.
+    -->
+    <linearGradient id="schleier" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0d0a08" stop-opacity="0.94"/>
+      <stop offset="52%" stop-color="#0d0a08" stop-opacity="0.78"/>
+      <stop offset="100%" stop-color="#0d0a08" stop-opacity="0.30"/>
+    </linearGradient>
+    <linearGradient id="fuss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0a08" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0d0a08" stop-opacity="0.72"/>
     </linearGradient>
   </defs>
 
-  <rect width="${BREITE}" height="${HOEHE}" fill="url(#g)"/>
+  <rect width="${BREITE}" height="${HOEHE}" fill="url(#schleier)"/>
+  <rect x="0" y="${HOEHE - 190}" width="${BREITE}" height="190" fill="url(#fuss)"/>
 
-  <!-- Akzentbalken des Standorts -->
-  <rect x="0" y="0" width="${BREITE}" height="10" fill="${akzent}"/>
+  <!-- Markenband oben. Gelb, nicht Orange – siehe Kopfkommentar. -->
+  <rect x="0" y="0" width="${BREITE}" height="10" fill="${GELB}"/>
 
-  <!-- Zurückhaltendes geometrisches Motiv statt eines Fotos -->
-  <circle cx="1060" cy="512" r="230" fill="none" stroke="${akzent}" stroke-width="1.5" opacity="0.22"/>
-  <circle cx="1060" cy="512" r="150" fill="none" stroke="${akzent}" stroke-width="1.5" opacity="0.14"/>
-
-  <text x="80" y="118" font-family="Inter" font-weight="700" font-size="40" fill="${akzent}" letter-spacing="-1.6">KU64</text>
-  <text x="196" y="118" font-family="Inter" font-size="17" fill="#8f857d" letter-spacing="3">DIE ZAHNSPEZIALISTEN</text>
+  <text x="80" y="120" font-family="Inter" font-weight="800" font-size="42" letter-spacing="-1.8"><tspan fill="${GELB}">KU</tspan><tspan fill="${ROT_HELL}">64</tspan></text>
+  <!-- 218, nicht 200: Bei 200 stieß „DIE" direkt an die 64 und die Wortmarke
+       las sich als ein einziges Wort. -->
+  <text x="218" y="120" font-family="Inter" font-weight="600" font-size="17" fill="#d8d2cb" letter-spacing="3.4">DIE ZAHNSPEZIALISTEN</text>
 
   ${zeilen
     .map(
       (z, i) =>
-        `<text x="80" y="${startY + i * groesse * 1.12}" font-family="Inter" font-weight="700" font-size="${groesse}" fill="#f5f1ed" letter-spacing="${(groesse * -0.035).toFixed(1)}">${esc(z)}</text>`,
+        `<text x="80" y="${startY + i * groesse * 1.1}" font-family="Inter" font-weight="700" font-size="${groesse}" fill="#ffffff" letter-spacing="${(groesse * -0.03).toFixed(1)}">${esc(z)}</text>`,
     )
     .join('\n  ')}
 
   ${
     unterzeile
-      ? `<text x="80" y="${startY + zeilen.length * groesse * 1.12 + 34}" font-family="Inter" font-size="30" fill="#c4bab2">${esc(unterzeile)}</text>`
+      ? `<text x="80" y="${startY + zeilen.length * groesse * 1.1 + 26}" font-family="Inter" font-weight="500" font-size="30" fill="#e8e2da">${esc(unterzeile)}</text>`
       : ''
   }
 
-  <rect x="80" y="536" width="52" height="3" fill="${akzent}"/>
-  ${fusszeile ? `<text x="80" y="580" font-family="Inter" font-size="23" fill="#8f857d">${esc(fusszeile)}</text>` : ''}
+  <rect x="80" y="538" width="52" height="4" fill="${GELB}"/>
+  ${fusszeile ? `<text x="80" y="582" font-family="Inter" font-size="23" fill="#cdc6be">${esc(fusszeile)}</text>` : ''}
 </svg>`;
 }
 
+/*
+ * Jedes Foto wird EINMAL auf Kartenformat gebracht und abgedunkelt, nicht
+ * einmal je Bild. Bei 153 Karten aus einer Handvoll Motiven ist das der
+ * Unterschied zwischen zehn Sekunden und zwei Minuten Bauzeit.
+ */
+const grundlagen = new Map();
+
+function grundlage(fotoName) {
+  if (!grundlagen.has(fotoName)) {
+    const quelle = path.join(WURZEL, 'public', 'medien', `${fotoName}.jpg`);
+    if (!existsSync(quelle)) throw new Error(`Foto für Vorschaubild fehlt: ${quelle}`);
+    grundlagen.set(
+      fotoName,
+      sharp(quelle)
+        .resize(BREITE, HOEHE, { fit: 'cover', position: 'centre' })
+        .modulate({ brightness: 0.86 })
+        .toBuffer(),
+    );
+  }
+  return grundlagen.get(fotoName);
+}
+
 async function bildSchreiben(datei, daten) {
-  const puffer = await sharp(Buffer.from(svgBauen(daten)))
-    .png({ compressionLevel: 9, palette: true })
+  /*
+   * JPEG statt PNG. Ein Foto als PNG wiegt gut ein halbes Megabyte; bei 153
+   * Karten wären das über 70 MB im Auslieferungsordner. Bei 84 Prozent
+   * Qualität sind es rund 90 kB, und ein Unterschied ist auf einer Karte,
+   * die im Chat 500 Pixel breit steht, nicht zu sehen.
+   */
+  const puffer = await sharp(await grundlage(daten.foto))
+    .composite([{ input: Buffer.from(svgBauen(daten)) }])
+    .jpeg({ quality: 84, progressive: true, mozjpeg: true })
     .toBuffer();
 
   await writeFile(path.join(ZIEL, datei), puffer);
@@ -159,17 +222,38 @@ async function main() {
   let anzahl = 0;
   let pruefPuffer = null;
 
+  /*
+   * Welches Foto zu welchem Standort gehört.
+   *
+   * Für drei Standorte gibt es das Kopfvideo und damit ein Standbild aus
+   * den eigenen Räumen. Wilmersdorf hat bisher nur die Außenansicht – das
+   * ist ehrlicher als ein fremder Innenraum, und sobald die Praxis die
+   * fehlenden Fotos liefert (siehe BILDER-BEDARF.md), steht hier ein Raum.
+   */
+  const FOTO_JE_STANDORT = {
+    'berlin-charlottenburg': 'kopf-berlin-charlottenburg',
+    berlinmitte: 'kopf-berlinmitte',
+    potsdam: 'kopf-potsdam',
+    wilmersdorf: 'wilmersdorf-aussenansicht',
+  };
+
+  /* Die gelbe Höhle am Kurfürstendamm steht für die Marke, nicht für eine
+     Adresse – dasselbe Bild wie im Kopf der Startseite. */
+  const FOTO_STANDARD = 'kopf-berlin-charlottenburg';
+
   // Standardbild für alle Seiten ohne eigenes Motiv
-  pruefPuffer = await bildSchreiben('ku64-standard.png', {
+  pruefPuffer = await bildSchreiben('ku64-standard.jpg', {
     titel: 'Zahnmedizin in Berlin und Potsdam',
     unterzeile: `${STANDORTE.length} Standorte · ${LEISTUNGEN.length} Behandlungen`,
     fusszeile: 'ku64.de',
-    akzent: '#e8532e',
+    foto: FOTO_STANDARD,
   });
   anzahl++;
 
   for (const s of STANDORTE) {
-    await bildSchreiben(`standort-${s.slug}.png`, {
+    const foto = FOTO_JE_STANDORT[s.slug] ?? FOTO_STANDARD;
+
+    await bildSchreiben(`standort-${s.slug}.jpg`, {
       // `ortsname` statt Ort und Bezirk zusammenzusetzen: Die Regel ergibt in
       // Berlin "Berlin-Charlottenburg", in Potsdam aber
       // "Potsdam-Berliner Vorstadt". Auf den Seiten war das längst behoben,
@@ -178,7 +262,7 @@ async function main() {
       titel: `Ihr Zahnarzt in ${s.ortsname}`,
       unterzeile: `KU64 ${s.name}`,
       fusszeile: `${s.strasse}, ${s.plz} ${s.ort} · ${s.telefon}`,
-      akzent: s.akzent,
+      foto,
     });
     anzahl++;
 
@@ -186,11 +270,11 @@ async function main() {
     // das, was beim Teilen sichtbar werden soll.
     for (const l of LEISTUNGEN) {
       if (!l.verfuegbar.includes(s.slug)) continue;
-      await bildSchreiben(`${s.slug}--${l.slug}.png`, {
+      await bildSchreiben(`${s.slug}--${l.slug}.jpg`, {
         titel: l.name,
         unterzeile: `bei KU64 ${s.name}`,
         fusszeile: `${s.strasse}, ${s.plz} ${s.ort} · ${s.telefon}`,
-        akzent: s.akzent,
+        foto,
       });
       anzahl++;
     }
@@ -201,28 +285,57 @@ async function main() {
     const orte = l.verfuegbar
       .map((slug) => STANDORTE.find((s) => s.slug === slug)?.name)
       .filter(Boolean);
-    await bildSchreiben(`leistung-${l.slug}.png`, {
+    await bildSchreiben(`leistung-${l.slug}.jpg`, {
       titel: l.name,
       unterzeile: 'KU64 – Die Zahnspezialisten',
       fusszeile: orte.length ? `Verfügbar an: ${orte.join(', ')}` : 'Bitte sprechen Sie uns an',
-      akzent: '#e8532e',
+      foto: FOTO_STANDARD,
     });
     anzahl++;
   }
 
-  // Prüfung: Ist überhaupt Text im Bild gelandet? Ohne Schriften wäre die
-  // Kachel einfarbig und der Fehler würde erst beim Teilen auffallen.
-  const werte = await sharp(pruefPuffer).stats();
-  const varianz = werte.channels.reduce((summe, k) => summe + k.stdev, 0);
+  /*
+   * Prüfung: Ist überhaupt Text im Bild gelandet?
+   *
+   * Vorher wurde die Varianz der fertigen Kachel gemessen. Das ging, solange
+   * der Untergrund ein glatter Verlauf war – fehlten die Schriften, war die
+   * Kachel fast einfarbig und fiel auf.
+   *
+   * Mit einem Foto darunter ist die Varianz IMMER hoch. Dieselbe Prüfung
+   * hätte ab sofort jede leere Kachel durchgewinkt und dabei weiterhin
+   * „in Ordnung" gemeldet. Gemessen wird deshalb die Textebene allein, auf
+   * flachem Grund: Ohne Schriften bleibt sie leer, mit Schriften nicht.
+   */
+  const nurText = await sharp(
+    Buffer.from(
+      svgBauen({
+        titel: 'Zahnmedizin in Berlin und Potsdam',
+        unterzeile: 'Prüfzeile',
+        fusszeile: 'ku64.de',
+      }),
+    ),
+  )
+    .flatten({ background: '#0d0a08' })
+    .extract({ left: 60, top: 180, width: 1080, height: 260 })
+    .stats();
+
+  const varianz = nurText.channels.reduce((summe, k) => summe + k.stdev, 0);
 
   if (varianz < 20) {
     throw new Error(
-      `OG-Bilder sind praktisch leer (Varianz ${varianz.toFixed(1)}). ` +
+      `Die Textebene der OG-Bilder ist leer (Varianz ${varianz.toFixed(1)}). ` +
         'Vermutlich fehlen fontconfig oder die Schriftdateien im Build-Image.',
     );
   }
 
-  console.log(`[og] ${anzahl} Vorschaubilder erzeugt (Prüfvarianz ${varianz.toFixed(1)})`);
+  /* Damit der Wert nicht nur dasteht: Das fertige Bild darf nicht größer
+     sein als das, was Messenger und Netzwerke noch laden. */
+  const kb = Math.round(pruefPuffer.length / 1024);
+  if (kb > 400) throw new Error(`Vorschaubild zu schwer: ${kb} kB`);
+
+  console.log(
+    `[og] ${anzahl} Vorschaubilder erzeugt (Textvarianz ${varianz.toFixed(1)}, Standardkarte ${kb} kB)`,
+  );
 }
 
 main().catch((e) => {

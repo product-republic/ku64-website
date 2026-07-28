@@ -26,6 +26,7 @@
     "weiterleitungen:planen": "OHNE_WEITERLEITUNGEN=1 astro build && node --experimental-strip-types --no-warnings analyse/altbestand/weiterleitungen-planen.mjs",
     "klickpfad": "node scripts/klickpfad.mjs",
     "formulare:pruefen": "node scripts/formulare-pruefen.mjs",
+    "kontrast:pruefen": "node scripts/kontrast-pruefen.mjs",
     "verweise:pruefen": "node scripts/verweise-pruefen.mjs",
     "ids:pruefen": "node scripts/ids-pruefen.mjs",
     "barrierefrei:pruefen": "node scripts/barrierefrei-pruefen.mjs"

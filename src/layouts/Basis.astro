@@ -91,17 +91,21 @@ const t = texte(sprache);
 /*
  * Vorschaubild ableiten. Die Dateien werden von scripts/og-bilder.mjs aus
  * denselben Daten erzeugt wie die Seiten – sie zeigen ausschließlich echte
- * Angaben (Standort, Adresse, Telefon, Behandlung) und keine Fotografie.
+ * Angaben (Standort, Adresse, Telefon, Behandlung) auf einem echten Foto
+ * des jeweiligen Standorts.
+ *
+ * JPEG, nicht PNG: Seit die Karten ein Foto tragen, wäre PNG ein halbes
+ * Megabyte je Karte.
  */
 const ogPfad =
   bild ??
   (standort && ogLeistung
-    ? `/og/${standort.slug}--${ogLeistung}.png`
+    ? `/og/${standort.slug}--${ogLeistung}.jpg`
     : standort
-      ? `/og/standort-${standort.slug}.png`
+      ? `/og/standort-${standort.slug}.jpg`
       : ogLeistung
-        ? `/og/leistung-${ogLeistung}.png`
-        : '/og/ku64-standard.png');
+        ? `/og/leistung-${ogLeistung}.jpg`
+        : '/og/ku64-standard.jpg');
 
 const seitentitel = titelBauen(titel, standort ? `KU64 ${standort.name}` : 'KU64');
 const beschreibung = descriptionKuerzen(description);

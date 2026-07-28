@@ -91,9 +91,27 @@ const fassungen = SPRACHEN.map((s) => ({
     color: var(--knopf-schrift);
   }
 
-  /* Sprachen im Aufbau bleiben erreichbar, treten aber zurück. */
-  .sprachwahl a[data-freigegeben='nein'] {
-    opacity: 0.5;
+  /*
+   * Sprachen im Aufbau treten zurück – über die Farbe, nicht über die
+   * Deckkraft.
+   *
+   * Hier stand `opacity: 0.5`. Das blendet nicht nur ab, es rechnet den
+   * Kontrast herunter: aus dem leisen Ton wurden 1,92:1, also weit unter
+   * den 4,5:1 für normalen Text. Zurücktreten heißt leiser, nicht
+   * unleserlich – gerade bei einem Bedienelement, das man treffen soll.
+   *
+   * Der leise Ton allein reicht als Unterschied: Die gewählte Sprache steht
+   * auf dunklem Grund, die freigegebenen in voller Tinte, die im Aufbau
+   * leise. Drei Stufen, alle lesbar.
+   */
+   * `:not([aria-current])` ist nicht kosmetisch: Auf /en/ ist Englisch
+   * zugleich die gewählte Sprache UND eine im Aufbau. Ohne die Einschränkung
+   * gewinnt die leise Farbe gegen die helle Schrift des dunklen Feldes –
+   * dunkel auf dunkel, 1,82:1. Die erste Fassung dieser Korrektur hatte
+   * genau das gebaut.
+   */
+  .sprachwahl a[data-freigegeben='nein']:not([aria-current='true']) {
+    color: var(--tinte-leise);
   }
 
   /* Der ausgeschriebene Name steht Screenreadern immer zur Verfügung –
