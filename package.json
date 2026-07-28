@@ -11,7 +11,7 @@
     "build": "npm run daten:pruefen && npm run bilder:liste && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen && npm run verweise:pruefen && npm run ids:pruefen && npm run barrierefrei:pruefen && npm run sitemap:liste",
     "build:schnell": "astro build",
     "preview": "astro preview",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "node ./server/index.mjs",
     "check": "astro check",
     "bilder:pruefen": "node scripts/bilder-pruefen.mjs",
     "glas:pruefen": "node scripts/glas-pruefen.mjs",

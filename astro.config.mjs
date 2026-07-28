@@ -19,7 +19,13 @@ const IM_AUFBAU = SPRACHEN.filter((s) => !s.freigegeben && s.praefix !== '');
 export default defineConfig({
   site: SITE,
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  /*
+   * Middleware statt Standalone: Der mitgelieferte Server setzt keinen
+   * einzigen Sicherheitskopf und liefert auch gehashte Dateien mit
+   * `max-age=0` aus. Die Auslieferung steht deshalb in server/index.mjs –
+   * dort mit Begründung je Kopf.
+   */
+  adapter: node({ mode: 'middleware' }),
   trailingSlash: 'always',
   /*
    * Weiterleitungen des Altbestands.
