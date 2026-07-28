@@ -161,6 +161,23 @@ function aufloesen(pfad) {
   return null;
 }
 
+/*
+ * Weiterleitungen für Adressen mit Dateiendung.
+ *
+ * Astros Router arbeitet mit Routen, nicht mit Dateinamen – `/sitemap.xml`
+ * lässt sich dort nicht als Weiterleitung eintragen, weil die Adresse wie
+ * eine Datei aussieht und nie eine Route wird. Die Eintragung in
+ * weiterleitungen.ts blieb deshalb wirkungslos, und die Adresse antwortete
+ * mit 404.
+ *
+ * Sie ist aber die, die Suchmaschinen und Werkzeuge blind ausprobieren.
+ * Deshalb hier, wo der Dateiname noch ein Dateiname ist.
+ */
+const DATEI_WEITERLEITUNGEN = {
+  '/sitemap.xml': '/sitemap-index.xml',
+  '/sitemap_index.xml': '/sitemap-index.xml',
+};
+
 const server = createServer((anfrage, antwort) => {
   koepfe(antwort);
 
@@ -176,16 +193,37 @@ const server = createServer((anfrage, antwort) => {
     return;
   }
 
+  const ziel = DATEI_WEITERLEITUNGEN[pfad];
+  if (ziel) {
+    antwort.statusCode = 301;
+    antwort.setHeader('Location', ziel);
+    antwort.setHeader('Cache-Control', 'public, max-age=86400');
+    antwort.end();
+    return;
+  }
+
   const datei = aufloesen(pfad);
 
   if (!datei) {
-    /* Unbekannte Adresse: die gestaltete Fehlerseite, mit richtigem Status. */
-    const fehlerseite = join(WURZEL, '404.html');
-    antwort.statusCode = 404;
-    antwort.setHeader('Content-Type', TYPEN['.html']);
-    antwort.setHeader('Cache-Control', 'no-store');
-    if (existsSync(fehlerseite)) createReadStream(fehlerseite).pipe(antwort);
-    else antwort.end('Not found');
+    /*
+     * Keine Datei – aber noch kein Fehler.
+     *
+     * Die Weiterleitungen des Altbestands entstehen im Middleware-Betrieb
+     * nicht als Dateien, sondern als Routen des Adapters. Wer hier sofort mit
+     * 404 antwortete, würde alle 587 Adressen der alten Website ins Leere
+     * laufen lassen – und zwar unbemerkt, weil die Seite selbst funktioniert.
+     *
+     * Deshalb zuerst der Adapter, und erst wenn auch der nichts kennt, die
+     * gestaltete Fehlerseite.
+     */
+    astro(anfrage, antwort, () => {
+      const fehlerseite = join(WURZEL, '404.html');
+      antwort.statusCode = 404;
+      antwort.setHeader('Content-Type', TYPEN['.html']);
+      antwort.setHeader('Cache-Control', 'no-store');
+      if (existsSync(fehlerseite)) createReadStream(fehlerseite).pipe(antwort);
+      else antwort.end('Not found');
+    });
     return;
   }
 
