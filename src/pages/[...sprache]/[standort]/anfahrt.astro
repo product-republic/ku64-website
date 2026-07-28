@@ -4,7 +4,7 @@ import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import { STANDORTE, zeitLesbar } from '../../../data/standorte';
-import { schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
+import { schemaBrotkrumen } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
 
 export function getStaticPaths() {
@@ -24,19 +24,31 @@ const brotkrumen = [
   { name: t('krume.anfahrt'), pfad },
 ];
 
-const faq = [
-  {
-    frage: `Wie komme ich mit Bus und Bahn zu KU64 ${standort.name}?`,
-    antwort: standort.anfahrt.oepnv.join('. ') + '.',
-  },
-  { frage: 'Wo kann ich parken?', antwort: standort.anfahrt.parken },
-  {
-    frage: 'Ist die Praxis barrierefrei?',
-    antwort: standort.anfahrt.barrierefrei
-      ? 'Ja, die Praxis ist barrierefrei zugänglich.'
-      : (standort.anfahrt.barrierefreiHinweis ?? 'Bitte sprechen Sie uns vorab an.'),
-  },
-];
+/*
+ * Kein FAQ mehr auf dieser Seite.
+ *
+ * Es stellte drei Fragen – wie komme ich hin, wo parke ich, ist es
+ * barrierefrei – und beantwortete sie mit genau denselben Sätzen, die zwanzig
+ * Zeilen darüber schon standen. Auf einer Seite mit 134 Wörtern war damit die
+ * Hälfte des Textes eine Wiederholung ihrer selbst, und weil die Vorlage auf
+ * allen vier Standorten dieselbe ist, auch eine Wiederholung der anderen drei.
+ *
+ * Was hier stattdessen steht, kommt aus den Standortdaten und ist an jedem Ort
+ * ein anderer Text: welche Linie, wie viele Minuten, welches Parkhaus.
+ */
+
+/* Die nächstgelegene Verbindung – für den Satz, der die Anreise in einer Zeile
+   beantwortet. Der erste Eintrag ist immer der kürzeste Weg. */
+const naechste = standort.anfahrt.oepnv[0] ?? '';
+const gehminuten = naechste.match(/(\d+)\s*Gehminuten/)?.[1];
+const direktDavor = /direkt vor der Tür/i.test(naechste);
+
+/* Der Hinweis auf eine Begleitung gilt nur, wo hier auch sediert wird. An
+   einem Standort ohne Narkose wäre er eine Warnung vor etwas, das es dort
+   gar nicht gibt. */
+const sedierungHier = daten
+  .leistungenHier(standort.slug)
+  .filter((l) => ['behandlung-in-narkose', 'lachgas'].includes(l.slug));
 
 /* Kartenlink statt eingebetteter Karte: Eine Google-Maps-Einbettung würde ohne
    Einwilligung Daten an Google senden. Der Link tut es erst auf Klick. */
@@ -52,7 +64,7 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}
-  schema={[schemaBrotkrumen(brotkrumen), schemaFaq(faq)]}
+  schema={[schemaBrotkrumen(brotkrumen)]}
 >
   <section class="abschnitt">
     <div class="huelle">
@@ -102,6 +114,21 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
         </div>
       </div>
 
+      <p class="anreise">
+        {
+          direktDavor
+            ? `Der nächste Bahnhof liegt direkt vor der Tür – näher geht es in ${standort.ort} nicht.`
+            : gehminuten
+              ? `Vom nächsten Bahnhof sind es ${gehminuten} Gehminuten. Wer knapp dran ist, plant sie besser ein als die Parkplatzsuche.`
+              : `Die Praxis liegt in der ${standort.strasse} in ${standort.ort}.`
+        }{' '}
+        {
+          standort.anfahrt.barrierefrei
+            ? 'Der Zugang ist barrierefrei.'
+            : 'Der Zugang ist nicht durchgehend barrierefrei – dazu unten mehr.'
+        }
+      </p>
+
       <div class="raster-zwei">
         <section>
           <h2>{t('anfahrt.mitOeffentlichenVerkehrsmitteln')}</h2>
@@ -124,6 +151,43 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
           </p>
         </section>
       </div>
+
+      {/*
+        Kein allgemeiner Ratgeber-Block.
+
+        Hier stand kurz ein Abschnitt „Wenn es knapp wird" mit drei
+        allgemeinen Hinweisen. Er war auf allen vier Standorten wortgleich und
+        hat die Ähnlichkeit der Seiten von 38,7 auf 45 Prozent GESTEIGERT –
+        Text hinzufügen hilft nur, wenn er sich unterscheidet.
+
+        Was bleibt, gilt nur hier: die eigene Nummer, die eigene Verbindung,
+        und der Hinweis auf die Begleitung nur dort, wo überhaupt in Narkose
+        oder mit Lachgas behandelt wird.
+      */}
+      <section class="hinweise">
+        <h2>Bevor Sie losfahren</h2>
+        <ul class="wege">
+          <li>
+            Verspätung? Ein Anruf unter{' '}
+            <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>{' '}
+            genügt – oft lässt sich der Termin drehen, statt ihn zu verlieren.
+          </li>
+          {
+            sedierungHier.length > 0 && (
+              <li>
+                Nach {sedierungHier.map((l) => l.name).join(' oder ')} dürfen Sie
+                nicht selbst fahren. Planen Sie eine Begleitung ein – oder kommen
+                Sie mit {naechste.split('(')[0].trim()}.
+              </li>
+            )
+          }
+          {
+            !standort.anfahrt.barrierefrei && (
+              <li>{standort.anfahrt.barrierefreiHinweis}</li>
+            )
+          }
+        </ul>
+      </section>
     </div>
   </section>
 
@@ -131,6 +195,14 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
 </Basis>
 
 <style>
+  .anreise {
+    max-width: var(--breite-text);
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+    margin-block: var(--raum-5) var(--raum-7);
+  }
+  .hinweise { margin-block-start: var(--raum-8); }
+
   h1 { max-width: 16ch; }
   .unter {
     max-width: var(--breite-text);

@@ -110,10 +110,6 @@ const faq = [
     frage: `Wie komme ich zu KU64 ${standort.name}?`,
     antwort: `${standort.anfahrt.oepnv.join('. ')}. ${standort.anfahrt.parken} Die Adresse lautet ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
   },
-  {
-    frage: 'Ich habe starke Schmerzen – wen rufe ich an?',
-    antwort: `Bitte ${standort.telefon} statt online zu buchen. Wir halten an diesem Standort Zeiten für Schmerzpatientinnen und -patienten frei und schätzen am Telefon ein, wie dringend es ist.`,
-  },
 ];
 ------
 
@@ -179,7 +175,13 @@ const faq = [
         }
       </div>
 
-      <p class="klein">{t('termine.doctolibIstEinEigenstaendiger')}<a href="/datenschutz/#doctolib">Datenschutzerklärung</a>.
+      {/* Die Erklärung, warum der Kalender bei Doctolib liegt und was dabei
+          übertragen wird, steht auf /termine/. Sie ist an allen vier
+          Standorten dieselbe – viermal derselbe Absatz machte die Seiten zu
+          45 Prozent textgleich. */}
+      <p class="klein">
+        Der Kalender liegt bei Doctolib, einem eigenständigen Dienst.
+        <a href="/termine/#doctolib">Was dabei übertragen wird</a>
       </p>
     </section>
 

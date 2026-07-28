@@ -56,6 +56,7 @@ const faq = [
       'Rufen Sie den Standort an, statt online zu buchen. Wir halten an jedem Standort Zeiten für Schmerzpatientinnen und -patienten frei und können am Telefon einschätzen, wie dringend es ist. Außerhalb der Sprechzeiten hilft die Notfallseite weiter.',
   },
   {
+    id: 'doctolib',
     frage: 'Warum werde ich zu Doctolib weitergeleitet?',
     antwort:
       'Der Kalender liegt bei Doctolib, einem eigenständigen Dienst. Wir betten ihn bewusst nicht in diese Seite ein – so werden beim bloßen Lesen keine Daten an Dritte übertragen. Erst wenn Sie den Kalender öffnen, werden Ihre IP-Adresse übermittelt und Cookies gesetzt.',
@@ -117,7 +118,7 @@ const faq = [
       <h2>Fragen zur Terminbuchung</h2>
       {
         faq.map((f) => (
-          <details>
+          <details id={f.id}>
             <summary>{f.frage}</summary>
             <p>{f.antwort}</p>
           </details>
