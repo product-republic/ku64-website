@@ -189,7 +189,79 @@ const faq = [
     </section>
 
     {/* Weg 2: Ohne Drittanbieter */}
-    <aside class="weg weg-schmal">
+  </div>
+
+  {/*
+    Was sich hier buchen lässt – und was nicht.
+
+    Das ist der Unterschied, der auf einer Terminseite zählt und der an jedem
+    Standort ein anderer ist. Ohne ihn waren die vier Seiten untereinander zu
+    45 Prozent textgleich; mit ihm steht auf jeder etwas, das anderswo falsch
+    wäre. Und er erspart genau den Anruf, der mit „das machen wir hier leider
+    nicht" endet.
+  */}
+  <section class="abschnitt">
+    <div class="huelle eng">
+      <h2>Was Sie hier buchen können</h2>
+      <p class="text">
+        An diesem Standort werden {alleHier.length} der {daten.leistungen.length} KU64-Leistungen
+        erbracht{
+          nichtHier.length === 0
+            ? ' – es gibt keine Ausnahme. Was bei KU64 möglich ist, ist hier möglich.'
+            : `, ${nichtHier.length} nicht.`
+        }
+      </p>
+      {
+        nichtHier.length > 0 && (
+          <>
+            <p class="text">
+              Nicht buchbar sind hier:{' '}
+              {nichtHier.slice(0, 6).map((l, i, arr) => (
+                <>
+                  {i > 0 && (i === arr.length - 1 ? ' und ' : ', ')}
+                  <strong>{l.name}</strong>
+                </>
+              ))}
+              {nichtHier.length > 6 && ` sowie ${nichtHier.length - 6} weitere`}. Dafür ist ein
+              anderes KU64-Haus zuständig; unter {standort.telefon} sagen wir Ihnen,
+              welches.
+            </p>
+            <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">
+              Alle {alleHier.length} Leistungen in {standort.ort}
+            </a>
+          </>
+        )
+      }
+    </div>
+  </section>
+
+  {/* Der Hinweis auf die digitale Anamnese stand hier viermal wortgleich und
+      steht ohnehin auf /anamnese/. Der Weg dorthin führt jetzt über den
+      Werkzeugbereich. */}
+
+  <div class="huelle">
+    <section class="faq-bereich">
+      <h2>Fragen zu diesem Standort</h2>
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.frage}</summary>
+            <p>{f.antwort}</p>
+          </details>
+        ))
+      }
+      <p class="klein">
+        Allgemeine Fragen zur Terminbuchung – absagen, verschieben, was zum
+        ersten Termin mitzubringen ist – beantworten wir gesammelt unter
+        <a href="/termine/">Termin buchen</a>.
+      </p>
+    </section>
+  </div>
+  {/* Anrufen, Schreiben, Akutfall und die Sprechzeiten: Bedienelemente.
+      Bei Kurfürstendamm und Berlin-Mitte ist die Tabelle zwangsläufig
+      identisch, weil beide Häuser dieselben Zeiten haben – das zu variieren
+      wäre gelogen. Siehe Kommentar am Slot in Basis.astro. */}
+    <aside class="weg weg-schmal" slot="werkzeuge">
       <h2>{t('termine.lieberOhneOnlinePortal')}</h2>
 
       <div class="karte kontakt">
@@ -224,78 +296,7 @@ const faq = [
         <a href="/notfall/" class="knopf knopf-sekundaer">{t('termine.wasTunImNotfall')}</a>
       </div>
     </aside>
-  </div>
 
-  {/*
-    Was sich hier buchen lässt – und was nicht.
-
-    Das ist der Unterschied, der auf einer Terminseite zählt und der an jedem
-    Standort ein anderer ist. Ohne ihn waren die vier Seiten untereinander zu
-    45 Prozent textgleich; mit ihm steht auf jeder etwas, das anderswo falsch
-    wäre. Und er erspart genau den Anruf, der mit „das machen wir hier leider
-    nicht" endet.
-  */}
-  <section class="abschnitt">
-    <div class="huelle eng">
-      <h2>Was Sie hier buchen können</h2>
-      <p class="text">
-        An diesem Standort werden {alleHier.length} der {daten.leistungen.length} KU64-Leistungen
-        erbracht{
-          nichtHier.length === 0
-            ? ' – es gibt keine Ausnahme. Was bei KU64 möglich ist, ist hier möglich.'
-            : `, ${nichtHier.length} nicht.`
-        }
-      </p>
-      {
-        nichtHier.length > 0 && (
-          <>
-            <p class="text">
-              Nicht buchbar sind hier:{' '}
-              {nichtHier.slice(0, 6).map((l, i, arr) => (
-                <>
-                  {i > 0 && (i === arr.length - 1 ? ' und ' : ', ')}
-                  <strong>{l.name}</strong>
-                </>
-              ))}
-              {nichtHier.length > 6 && ` sowie ${nichtHier.length - 6} weitere`}. Diese
-              Leistungen bekommen Sie an einem anderen KU64-Standort – am schnellsten
-              klären wir am Telefon, welcher für Sie der nächste ist.
-            </p>
-            <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">
-              Alle {alleHier.length} Leistungen in {standort.ort}
-            </a>
-          </>
-        )
-      }
-    </div>
-  </section>
-
-  <section class="abschnitt flaeche-warm">
-    <div class="huelle">
-      <h2>{t('termine.vorDemTerminAnamnese')}</h2>
-      <p class="unter">{t('termine.denAnamnesebogenFuellenSie')}</p>
-      <a href={`/${standort.slug}/anamnese/`} class="knopf knopf-primaer knopf-gross">{t('termine.zurDigitalenAnamnese')}</a>
-    </div>
-  </section>
-
-  <div class="huelle">
-    <section class="faq-bereich">
-      <h2>Fragen zu diesem Standort</h2>
-      {
-        faq.map((f) => (
-          <details>
-            <summary>{f.frage}</summary>
-            <p>{f.antwort}</p>
-          </details>
-        ))
-      }
-      <p class="klein">
-        Allgemeine Fragen zur Terminbuchung – absagen, verschieben, was zum
-        ersten Termin mitzubringen ist – beantworten wir gesammelt unter
-        <a href="/termine/">Termin buchen</a>.
-      </p>
-    </section>
-  </div>
 </Basis>
 
 

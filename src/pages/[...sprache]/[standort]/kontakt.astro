@@ -139,29 +139,25 @@ const nichtHier = daten.leistungenAnderswo(standort.slug);
             An diesem Standort werden {alleHier.length} der {daten.leistungen.length}
             KU64-Leistungen erbracht{nichtHier.length === 0
               ? '. Es gibt keine Ausnahme – was bei KU64 möglich ist, ist hier möglich.'
-              : `; ${nichtHier.length} nicht.`}
+              : `, ${nichtHier.length} nicht.`}
           </p>
           {
             nichtHier.length > 0 && (
               <p class="text">
-                Rufen Sie trotzdem hier an, wenn Sie unsicher sind. Wir sagen Ihnen,
-                welches Haus für Ihr Anliegen das richtige ist, statt Sie erst
-                herkommen zu lassen.
+                Nicht hier:{' '}
+                {nichtHier.slice(0, 5).map((l, i, arr) => (
+                  <>
+                    {i > 0 && (i === arr.length - 1 ? ' und ' : ', ')}
+                    <strong>{l.name}</strong>
+                  </>
+                ))}
+                {nichtHier.length > 5 && ` sowie ${nichtHier.length - 5} weitere`}.
               </p>
             )
           }
-          <p class="text">
-            {
-              anmeldung.length > 3
-                ? `Das Anmeldeteam ist hier ${anmeldung.length} Personen stark – zu den Stoßzeiten am Morgen sind mehrere Leitungen besetzt.`
-                : 'Die Anmeldung ist mit wenigen Personen besetzt. Wenn niemand abnimmt, wird gerade behandelt – wir rufen zurück.'
-            }
-          </p>
           <p class="text klein">
-            Welcher Weg für welches Anliegen der richtige ist – Termin, Rezept,
-            Unterlagen, Beschwerde –, steht gesammelt unter{' '}
-            <a href="/kontakt/#schreiben">Kontakt</a>. Dort finden Sie auch das
-            Formular.
+            Welcher Weg für welches Anliegen der richtige ist, steht gesammelt unter{' '}
+            <a href="/kontakt/#schreiben">Kontakt</a> – dort auch das Formular.
           </p>
         </div>
       </div>
@@ -176,44 +172,51 @@ const nichtHier = daten.leistungenAnderswo(standort.slug);
         )
       }
 
-      <div class="raster-zwei unten">
-        <div>
-          <h2>So kommen Sie ins Haus</h2>
-          <ul class="anfahrt-kurz">
-            {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
-            <li>{standort.anfahrt.parken}</li>
-            <li>
-              {
-                standort.anfahrt.barrierefrei
-                  ? 'Der Zugang ist barrierefrei. Sagen Sie vorab Bescheid, wenn Sie Unterstützung brauchen – dann bereiten wir alles vor.'
-                  : (standort.anfahrt.barrierefreiHinweis ??
-                    'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.')
-              }
-            </li>
-          </ul>
-          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">Anfahrt im Detail</a>
-        </div>
-
-        <div>
-          <h2>Sprechzeiten</h2>
-          <p class="klein">{oeffnungstageText(standort)}</p>
-          <table class="zeiten">
-            <caption class="nur-screenreader">Sprechzeiten KU64 {standort.name}</caption>
-            <tbody>
-              {
-                standort.oeffnungszeiten.map((z) => (
-                  <tr>
-                    <th scope="row">{z.tag}</th>
-                    <td>{zeitLesbar(z)}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   </section>
+  {/* Anfahrt in Kürze und Sprechzeiten: Bedienelemente, keine Aussagen über
+      diesen Ort. Siehe Kommentar am Slot in Basis.astro. */}
+  <section class="abschnitt flaeche-warm" slot="werkzeuge">
+    <div class="huelle">
+        <div class="raster-zwei unten">
+          <div>
+            <h2>So kommen Sie ins Haus</h2>
+            <ul class="anfahrt-kurz">
+              {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
+              <li>{standort.anfahrt.parken}</li>
+              <li>
+                {
+                  standort.anfahrt.barrierefrei
+                    ? 'Der Zugang ist barrierefrei. Sagen Sie vorab Bescheid, wenn Sie Unterstützung brauchen – dann bereiten wir alles vor.'
+                    : (standort.anfahrt.barrierefreiHinweis ??
+                      'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.')
+                }
+              </li>
+            </ul>
+            <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">Anfahrt im Detail</a>
+          </div>
+  
+          <div>
+            <h2>Sprechzeiten</h2>
+            <p class="klein">{oeffnungstageText(standort)}</p>
+            <table class="zeiten">
+              <caption class="nur-screenreader">Sprechzeiten KU64 {standort.name}</caption>
+              <tbody>
+                {
+                  standort.oeffnungszeiten.map((z) => (
+                    <tr>
+                      <th scope="row">{z.tag}</th>
+                      <td>{zeitLesbar(z)}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </section>
+
 </Basis>
 
 <style>

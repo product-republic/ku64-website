@@ -15,7 +15,7 @@ import Basis from '../../../../layouts/Basis.astro';
 import Bild from '../../../../components/Bild.astro';
 import { veroeffentlichbar } from '../../../../data/team';
 import FaqBlock from '../../../../components/FaqBlock.astro';
-import LeistungKarte from '../../../../components/LeistungKarte.astro';
+import LeistungsListe from '../../../../components/LeistungsListe.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { alleKombinationen } from '../../../../data/leistungen';
 import { fassungIstEigenstaendig } from '../../../../data/standortfassungen';
@@ -289,11 +289,12 @@ const schema = [
             <p class="weiter-text">
               {t('leistung.ergaenzendText', { name: leistung.name, ort: standort.name })}
             </p>
-            <div class="raster">
-              {verwandteWoanders.map((v) => (
-                <LeistungKarte leistung={v.leistung} standortSlug={standort.slug} />
-              ))}
-            </div>
+            {/* Namen statt Teaser – siehe Kommentar auf der globalen Fassung. */}
+            <LeistungsListe
+              leistungen={verwandteWoanders.map((v) => v.leistung)}
+              standortSlug={standort.slug}
+              nichtHier
+            />
           </div>
         </section>
       )

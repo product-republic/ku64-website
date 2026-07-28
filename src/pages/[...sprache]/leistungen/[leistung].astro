@@ -14,7 +14,7 @@ import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import Bild from '../../../components/Bild.astro';
-import LeistungKarte from '../../../components/LeistungKarte.astro';
+import LeistungsListe from '../../../components/LeistungsListe.astro';
 import { LEISTUNGEN } from '../../../data/leistungen';
 import { veroeffentlichbar } from '../../../data/team';
 import { beschwerdenZuBehandlung } from '../../../data/beschwerden';
@@ -190,9 +190,19 @@ const schema = [
       <section class="abschnitt flaeche-warm">
         <div class="huelle">
           <h2>{t('leistung.passtDazu')}</h2>
-          <div class="raster">
-            {verwandte.map((l) => <LeistungKarte leistung={l} standortSlug={null} />)}
-          </div>
+          {/*
+            Namen statt Teaser – aus demselben Grund wie auf der Standortseite.
+
+            Die Karte gab den Teaser der verwandten Leistung aus. Damit stand
+            auf der Seite zum 3D-Röntgen der Einleitungstext des Knochenaufbaus,
+            auf der zum Bleaching der von Veneers, und so weiter. Gemessen
+            lagen dadurch Seiten zu VÖLLIG VERSCHIEDENEN Themen bei 36 Prozent
+            Textgleichheit – ohne dass sie inhaltlich etwas gemeinsam hätten.
+
+            Ein Verweis braucht den Namen und das Ziel. Was die verwandte
+            Leistung ist, steht auf ihrer eigenen Seite.
+          */}
+          <LeistungsListe leistungen={verwandte} standortSlug={null} />
         </div>
       </section>
     )

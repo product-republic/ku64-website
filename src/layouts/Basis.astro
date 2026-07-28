@@ -308,6 +308,22 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     </main>
 
     {/*
+      Wiederkehrende Werkzeuge – neben dem Inhalt, nicht darin.
+
+      Sprechzeitentabelle, Anruf- und Schreiben-Karten, Kartenlinks: Das sind
+      Bedienelemente, keine Aussagen. Sie stehen auf jeder Standortseite und
+      sind dort weitgehend gleich – bei Kurfürstendamm und Berlin-Mitte sogar
+      zwangsläufig identisch, weil beide Häuser dieselben Sprechzeiten haben.
+      Das ist keine Dublette, sondern die Wahrheit; sie zu variieren wäre
+      gelogen.
+
+      Als Teil von <main> zählten sie trotzdem als Seiteninhalt und machten
+      Seiten ähnlich, die inhaltlich verschieden sind. Hier stehen sie als
+      ergänzender Bereich – sichtbar wie vorher, aber richtig ausgezeichnet.
+    */}
+    <slot name="werkzeuge" />
+
+    {/*
       Der Terminaufruf steht NEBEN dem Inhalt, nicht darin.
 
       Er ist auf 243 Seiten derselbe: Adresse, Telefonnummer, „Online-Termin

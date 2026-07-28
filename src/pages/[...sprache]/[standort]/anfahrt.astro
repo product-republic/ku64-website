@@ -74,45 +74,6 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
         {standort.bezirk && <> in {standort.ort}-{standort.bezirk}</>}.
       </p>
 
-      <div class="raster-zwei oben">
-        <div class="karte adresse">
-          <h2>Adresse</h2>
-          <address>
-            <strong>KU64 {standort.name}</strong><br />
-            {standort.strasse}<br />
-            {standort.plz} {standort.ort}
-          </address>
-          <div class="adresse-knoepfe">
-            <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">{t('anfahrt.routePlanen')}</a>
-            <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
-              {t('standort.aufKarteAnsehen')}
-            </a>
-          </div>
-          <p class="klein">
-            {t('standort.kartenHinweis')}
-          </p>
-        </div>
-
-        <div class="karte">
-          <h2>{t('standort.sprechzeiten')}</h2>
-          <table class="zeiten">
-            <caption class="nur-screenreader">{t('fuss.oeffnungszeiten')}</caption>
-            <tbody>
-              {
-                standort.oeffnungszeiten.map((z) => (
-                  <tr>
-                    <th scope="row">{z.tag}</th>
-                    <td>{zeitLesbar(z)}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-          <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-sekundaer">
-            {standort.telefon}
-          </a>
-        </div>
-      </div>
 
       <p class="anreise">
         {
@@ -188,6 +149,52 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
           }
         </ul>
       </section>
+    </div>
+  </section>
+
+  {/* Adresse, Kartenlinks und Sprechzeiten sind Bedienelemente, keine
+      Aussagen über diesen Ort – siehe Kommentar am Slot in Basis.astro. */}
+  <section class="abschnitt flaeche-warm" slot="werkzeuge">
+    <div class="huelle">
+        <div class="raster-zwei oben">
+          <div class="karte adresse">
+            <h2>Adresse</h2>
+            <address>
+              <strong>KU64 {standort.name}</strong><br />
+              {standort.strasse}<br />
+              {standort.plz} {standort.ort}
+            </address>
+            <div class="adresse-knoepfe">
+              <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">{t('anfahrt.routePlanen')}</a>
+              <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
+                {t('standort.aufKarteAnsehen')}
+              </a>
+            </div>
+            <p class="klein">
+              {t('standort.kartenHinweis')}
+            </p>
+          </div>
+  
+          <div class="karte">
+            <h2>{t('standort.sprechzeiten')}</h2>
+            <table class="zeiten">
+              <caption class="nur-screenreader">{t('fuss.oeffnungszeiten')}</caption>
+              <tbody>
+                {
+                  standort.oeffnungszeiten.map((z) => (
+                    <tr>
+                      <th scope="row">{z.tag}</th>
+                      <td>{zeitLesbar(z)}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+            <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="knopf knopf-sekundaer">
+              {standort.telefon}
+            </a>
+          </div>
+        </div>
     </div>
   </section>
 
