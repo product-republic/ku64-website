@@ -142,7 +142,7 @@ export function standortbildFuer(standortSlug: string): string | undefined {
 
 /**
  * Die Räume eines Standorts, in der Reihenfolge, in der man sie durchläuft:
- * Ankommen, Warten, Weg zur Behandlung, Behandlung, Labor.
+ * Ankommen, Warten, Weg zur Leistung, Leistung, Labor.
  *
  * Diese Reihenfolge ist nicht Dekoration. Wer vor dem ersten Termin
  * nachsieht, sucht keinen Gestaltungsüberblick, sondern will wissen, was auf
@@ -190,7 +190,7 @@ export function kopfmediumFuer(standortSlug: string): Kopfmedium | undefined {
 }
 
 /**
- * Videos, die zu einer Behandlung gehören statt zu einem Ort.
+ * Videos, die zu einer Leistung gehören statt zu einem Ort.
  * Noch nicht eingebunden – erst mit den Seiten, auf die sie gehören.
  */
 export const BEHANDLUNGSVIDEOS = [

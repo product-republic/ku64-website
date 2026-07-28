@@ -44,10 +44,34 @@ interface Props {
   schema?: Record<string, unknown>[];
   /** OG-Bild relativ zur Domain. Wird sonst aus Standort und Leistung abgeleitet. */
   bild?: string;
-  /** Leistungs-Slug, damit das Vorschaubild die konkrete Behandlung zeigt. */
+  /** Leistungs-Slug, damit das Vorschaubild die konkrete Leistung zeigt. */
   ogLeistung?: string;
   /** Seiten, die nicht in den Index sollen (z. B. Danke-Seiten). */
   noindex?: boolean;
+  /**
+   * Canonical auf eine ANDERE Seite – für Fassungen, die dieselbe Aussage
+   * treffen wie eine Hauptseite.
+   *
+   * Der Fall, für den es das gibt: Eine Leistung hat eine ausführliche Seite
+   * unter `/leistungen/<slug>/` und je Standort eine Fassung darunter. Solange
+   * die Standortfassung nichts erzählt, was nur dort gilt, sind das zwei
+   * Seiten mit demselben Inhalt. Gemessen lagen die Standortfassungen
+   * untereinander bei bis zu 77,8 Prozent Textgleichheit – und jede verwies
+   * per Canonical auf sich selbst, meldete Google also: „Ich bin ein
+   * Original.“ Vier Originale derselben Aussage schwächen sich gegenseitig.
+   *
+   * Hier zeigt die Fassung stattdessen auf die Hauptseite. Für Besucher ändert
+   * sich nichts: Die Seite bleibt erreichbar, verlinkt und im Menü.
+   *
+   * Ausdrücklich KEIN zusätzliches `noindex`. Beides zusammen ist ein
+   * Widerspruch – `noindex` sagt „vergiss diese Seite“, Canonical sagt „zähle
+   * sie zu jener“. Google folgt dann keinem von beiden verlässlich.
+   *
+   * Sobald eine Standortfassung eigene Substanz hat – wer dort behandelt,
+   * welche Geräte dort stehen, wie der Ablauf dort aussieht –, entfällt die
+   * Angabe und die Seite steht wieder für sich.
+   */
+  kanonischStatt?: string;
   /**
    * Wohin der Sprachwähler zeigt, wenn es die Seite unter diesem Pfad gar
    * nicht gibt.
@@ -74,6 +98,7 @@ const {
   bild,
   ogLeistung,
   noindex = false,
+  kanonischStatt,
   sprachwahlPfad,
 } = Astro.props;
 
@@ -109,7 +134,7 @@ const ogPfad =
 
 const seitentitel = titelBauen(titel, standort ? `KU64 ${standort.name}` : 'KU64');
 const beschreibung = descriptionKuerzen(description);
-const canonical = kanonisch(pfadInSprache(pfad, sprache));
+const canonical = kanonisch(pfadInSprache(kanonischStatt ?? pfad, sprache));
 const ogBild = new URL(ogPfad, Astro.site ?? 'https://ku64.de').href;
 
 /*

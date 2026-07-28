@@ -41,12 +41,13 @@ const suchindex = alleHier.map((l) => ({
 ---
 
 <Basis
-  titel={`Behandlungen in ${standort.ort}`}
-  description={`Alle ${alleHier.length} Behandlungen bei KU64 ${standort.name} – von Prophylaxe bis Implantologie. Mit Dauer, Kosten und Kassenangaben je Behandlung.`}
+  titel={`Leistungen in ${standort.ort}`}
+  description={`Alle ${alleHier.length} Leistungen bei KU64 ${standort.name} – von Prophylaxe bis Implantologie. Mit Dauer, Kosten und Kassenangaben je Leistung.`}
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
+  noindex
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
@@ -162,7 +163,7 @@ const suchindex = alleHier.map((l) => ({
       if (leer) leer.hidden = sichtbar > 0;
       if (treffer) {
         treffer.textContent = frage
-          ? `${sichtbar} ${sichtbar === 1 ? 'Behandlung' : 'Behandlungen'} gefunden`
+          ? `${sichtbar} ${sichtbar === 1 ? 'Leistung' : 'Leistungen'} gefunden`
           : '';
       }
     }, 120);

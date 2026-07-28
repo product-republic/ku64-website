@@ -4,6 +4,7 @@ import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 import { SPRACHEN, QUELLSPRACHE } from './src/i18n/sprachen.ts';
 import { alsAstroRedirects } from './src/data/weiterleitungen.ts';
+import { ausSitemapAusschliessen } from './src/data/standortfassungen.ts';
 
 const SITE = process.env.PUBLIC_SITE_URL || 'https://ku64.de';
 
@@ -103,7 +104,13 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/api/') &&
         !page.includes('?') &&
-        !IM_AUFBAU.some((s) => new URL(page).pathname.startsWith(`/${s.praefix}/`)),
+        !IM_AUFBAU.some((s) => new URL(page).pathname.startsWith(`/${s.praefix}/`)) &&
+        /* Seiten, die per Canonical auf eine andere zeigen oder `noindex`
+           tragen, gehören nicht in die Sitemap. Eine Sitemap sagt „das hier
+           ist das Original“ – beides zusammen ist ein Widerspruch, den die
+           Search Console als Fehler meldet. Welche das sind und warum, steht
+           in src/data/standortfassungen.ts. */
+        !ausSitemapAusschliessen(new URL(page).pathname),
       i18n: {
         defaultLocale: QUELLSPRACHE,
         locales: Object.fromEntries(FREIGEGEBEN.map((s) => [s.praefix || s.code, s.bcp47])),

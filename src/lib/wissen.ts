@@ -32,7 +32,7 @@ export function standortWissen(s: Standort): string {
     `Seite: /${s.slug}/`,
     `Terminbuchung: /${s.slug}/termine/`,
     '',
-    `### An diesem Standort verfügbare Behandlungen (${leistungen.length})`,
+    `### An diesem Standort verfügbare Leistungen (${leistungen.length})`,
     ...leistungen.map(
       (l) =>
         `- ${l.name} (/${s.slug}/leistungen/${l.slug}/): ${l.kurz} Dauer: ${l.dauer ?? 'k. A.'}. Kosten: ${l.kosten ?? 'k. A.'}. Kasse: ${l.kasse ?? 'k. A.'}`,
@@ -60,7 +60,7 @@ export function nichtVerfuegbarWissen(s: Standort): string {
   ].join('\n');
 }
 
-/** Ausführliches Wissen zu einzelnen Behandlungen, inklusive FAQ. */
+/** Ausführliches Wissen zu einzelnen Leistungen, inklusive FAQ. */
 export function leistungWissen(slugs?: string[]): string {
   const auswahl = slugs ? LEISTUNGEN.filter((l) => slugs.includes(l.slug)) : LEISTUNGEN;
 
@@ -105,9 +105,9 @@ Du bist freundlich, ruhig und klar. Du sprichst Deutsch, per Sie, in kurzen Sät
 # Standortkontext
 ${
   standort
-    ? `Die Person sieht gerade die Seite von **KU64 ${standort.name}** in ${standort.ort}. Beziehe dich auf DIESEN Standort: dessen Adresse, Telefonnummer, Öffnungszeiten und Behandlungsangebot.
+    ? `Die Person sieht gerade die Seite von **KU64 ${standort.name}** in ${standort.ort}. Beziehe dich auf DIESEN Standort: dessen Adresse, Telefonnummer, Öffnungszeiten und Leistungsangebot.
 
-WICHTIGSTE REGEL: Wenn nach einer Behandlung gefragt wird, die es an diesem Standort nicht gibt, sage das offen und nenne den Standort, an dem es sie gibt – mit Link. Tue niemals so, als sei sie hier verfügbar. Wechsle die Person aber auch nicht stillschweigend zu einem anderen Standort, sondern lass ihr die Wahl.`
+WICHTIGSTE REGEL: Wenn nach einer Leistung gefragt wird, die es an diesem Standort nicht gibt, sage das offen und nenne den Standort, an dem es sie gibt – mit Link. Tue niemals so, als sei sie hier verfügbar. Wechsle die Person aber auch nicht stillschweigend zu einem anderen Standort, sondern lass ihr die Wahl.`
     : 'Es ist noch kein Standort gewählt. Frage höflich nach dem gewünschten Standort, bevor du Angaben zu Öffnungszeiten, Telefon oder Verfügbarkeit machst – die unterscheiden sich je Standort.'
 }
 

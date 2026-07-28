@@ -18,7 +18,7 @@ const { standort } = Astro.props;
 
 const basis = standort ? `/${standort.slug}` : '';
 
-/* Im Standortkontext die dort meistgesuchten Behandlungen, sonst eine
+/* Im Standortkontext die dort meistgesuchten Leistungen, sonst eine
    standortübergreifende Auswahl. */
 const beliebt = standort
   ? daten.leistungenHier(standort.slug).slice(0, 8)
@@ -75,7 +75,7 @@ const t = texte(daten.sprache);
         }
       </div>
 
-      {/* Spalte 2: Behandlungsbereiche */}
+      {/* Spalte 2: Leistungsbereiche */}
       <div class="fuss-block">
         <p class="fuss-titel">{t('fuss.behandlungsbereiche')}</p>
         <ul>
@@ -138,9 +138,9 @@ const t = texte(daten.sprache);
           <li><a href={`${basis}/termine/`}>{t('nav.terminBuchen')}</a></li>
           <li><a href={`${basis}/anamnese/`}>{t('fuss.digitaleAnamnese')}</a></li>
           <li><a href="/laecheln-vorschau/">{t('fuss.laechelnVorschau')}</a></li>
-          {/* Der zweite Eingang in die Website: nicht „welche Behandlung?“,
+          {/* Der zweite Eingang in die Website: nicht „welche Leistung?“,
               sondern „was habe ich?“. Steht bewusst nicht im Kopf – wer den
-              Fachbegriff kennt, geht über die Behandlungen, und der Kopf
+              Fachbegriff kennt, geht über die Leistungen, und der Kopf
               gehört den fünf Wegen, die alle brauchen. */}
           <li><a href="/zahnbeschwerden/">{t('fuss.beschwerdenAZ')}</a></li>
           <li><a href="/notfall/">{t('fuss.notfall')}</a></li>

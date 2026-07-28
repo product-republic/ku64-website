@@ -4,7 +4,7 @@
  *
  * Der Anspruch war, dass es möglichst keine Sackgassen gibt. Wo eine Adresse
  * trotzdem ins Leere läuft, soll sie nicht mit einer Entschuldigung enden,
- * sondern mit einem Weg: Suche über alle Behandlungen plus Standortwahl.
+ * sondern mit einem Weg: Suche über alle Leistungen plus Standortwahl.
  */
 import { inhalte } from '../i18n/daten';
 import Basis from '../layouts/Basis.astro';
@@ -21,7 +21,7 @@ const suchindex = daten.leistungen.map((l) => ({
 }));
 
 /*
- * Der wichtigste 404-Fall überhaupt: jemand ruft eine Behandlung an einem
+ * Der wichtigste 404-Fall überhaupt: jemand ruft eine Leistung an einem
  * Standort auf, der sie nicht anbietet – über einen alten Link, ein
  * Suchergebnis oder geratene Adresse. Statt einer allgemeinen Fehlerseite
  * bekommt diese Person eine präzise Antwort: Hier nicht, dort schon.
@@ -86,7 +86,7 @@ const kombinationen = {
         Dass immer nur eine sichtbar ist, weiß der Quelltext nicht.
 
         Jetzt gibt es eine, und das Skript schreibt ihren Text um, wenn die
-        Adresse eine Behandlung an einem Standort meint, der sie nicht
+        Adresse eine Leistung an einem Standort meint, der sie nicht
         anbietet.
       */}
       <h1 id="titel">{t('fehler.titel')}</h1>
@@ -136,7 +136,7 @@ const kombinationen = {
 </Basis>
 
 <script is:inline define:vars={{ suchindex, kombinationen, skripttexte }} data-astro-rerun>
-  /* ── Fall 1: Behandlung an einem Standort, der sie nicht anbietet ── */
+  /* ── Fall 1: Leistung an einem Standort, der sie nicht anbietet ── */
 
   const teile = location.pathname.split('/').filter(Boolean);
 
@@ -167,7 +167,7 @@ const kombinationen = {
           })
         : skripttexte.nirgends;
 
-      // Zuerst die Standorte, an denen es die Behandlung gibt …
+      // Zuerst die Standorte, an denen es die Leistung gibt …
       for (const slug of leistung.verfuegbar) {
         const a = document.createElement('a');
         a.href = `/${slug}/leistungen/${teile[2]}/`;
@@ -192,7 +192,7 @@ const kombinationen = {
     }
   }
 
-  /* ── Fall 2: alles Übrige – Suche über alle Behandlungen ── */
+  /* ── Fall 2: alles Übrige – Suche über alle Leistungen ── */
 
   const feld = document.getElementById('q');
   const liste = document.getElementById('ergebnisse');

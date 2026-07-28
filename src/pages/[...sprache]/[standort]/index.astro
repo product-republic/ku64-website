@@ -7,7 +7,7 @@ import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { anzahlZahnaerzte } from '../../../data/team';
-import LeistungKarte from '../../../components/LeistungKarte.astro';
+import LeistungsListe from '../../../components/LeistungsListe.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import Kopfmedium from '../../../components/Kopfmedium.astro';
@@ -59,11 +59,11 @@ const faq = [
         'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.'),
   },
   {
-    frage: `Welche Behandlungen bietet KU64 ${standort.name} an?`,
+    frage: `Welche Leistungen bietet KU64 ${standort.name} an?`,
     antwort: `An diesem Standort behandeln wir ${alleHier.length} Leistungen aus ${gruppen.length} Fachbereichen, darunter ${alleHier
       .slice(0, 5)
       .map((l) => l.name)
-      .join(', ')}. Nicht jede Behandlung wird an jedem KU64-Standort angeboten – auf dieser Seite sehen Sie ausschließlich das Angebot in ${standort.ort}.`,
+      .join(', ')}. Nicht jede Leistung wird an jedem KU64-Standort angeboten – auf dieser Seite sehen Sie ausschließlich das Angebot in ${standort.ort}.`,
   },
   {
     frage: 'Nehmen Sie neue Patientinnen und Patienten auf?',
@@ -81,7 +81,7 @@ const schema = [
 
 <Basis
   titel={`Zahnarzt ${ortsname}`}
-  description={`${standort.claim} KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}. ${alleHier.length} Behandlungen, Online-Termin und digitale Anamnese.`}
+  description={`${standort.claim} KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}. ${alleHier.length} Leistungen, Online-Termin und digitale Anamnese.`}
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -186,18 +186,23 @@ const schema = [
         {t('standort.angebotHier', { anzahl: alleHier.length, bereiche: gruppen.length })}
       </p>
 
+      {/*
+        Namen statt Teaser.
+
+        Die Beschreibung einer Leistung steht auf ihrer eigenen Seite. Stand sie
+        zusätzlich hier, war diese Seite zu 83 Prozent textgleich mit der
+        eigenen Leistungsübersicht und bis zu 70,8 Prozent mit den Standort-
+        seiten der anderen Praxen. Vier Seiten, die dasselbe sagen, nützen
+        keiner davon – und der Platz fehlte dem, was diesen Standort wirklich
+        unterscheidet.
+      */}
       {
         gruppen.map((g) => (
           <div class="gruppe" id={g.kategorie.slug}>
             <div class="gruppe-kopf">
               <h3>{g.kategorie.name}</h3>
-              <p>{g.kategorie.beschreibung}</p>
             </div>
-            <div class="raster">
-              {g.leistungen.map((l) => (
-                <LeistungKarte leistung={l} standortSlug={standort.slug} />
-              ))}
-            </div>
+            <LeistungsListe leistungen={g.leistungen} standortSlug={standort.slug} />
           </div>
         ))
       }
@@ -213,11 +218,7 @@ const schema = [
           <p class="abschnitt-text">
             {t('standort.nichtHierText', { ort: standort.ort })}
           </p>
-          <div class="raster">
-            {nichtHier.map((l) => (
-              <LeistungKarte leistung={l} standortSlug={standort.slug} kompakt />
-            ))}
-          </div>
+          <LeistungsListe leistungen={nichtHier} standortSlug={standort.slug} nichtHier />
         </div>
       </section>
     )

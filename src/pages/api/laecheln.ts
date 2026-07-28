@@ -11,7 +11,7 @@
  * 3. Es wird keine Datenbank geschrieben, kein Log mit Bildinhalt, keine
  *    E-Mail-Adresse gespeichert – die Adresse dient nur dem einmaligen Versand.
  * 4. Die Vorschau ist ausdrücklich KEIN Behandlungsergebnis. Nach § 11 HWG
- *    darf mit Vorher-Nachher-Darstellungen nicht für Behandlungen geworben
+ *    darf mit Vorher-Nachher-Darstellungen nicht für Leistungen geworben
  *    werden; die Ausgabe wird deshalb als unverbindliche Illustration
  *    gekennzeichnet und enthält keine Heilversprechen.
  * 5. Fotos von Minderjährigen sind ausgeschlossen (Bestätigung im Formular).
@@ -235,7 +235,7 @@ Beschreibe anhand des Fotos in 3 bis 4 Sätzen auf Deutsch, welche Merkmale des 
 STRENGE REGELN:
 - Stelle KEINE medizinische Diagnose. Keine Aussagen über Karies, Parodontitis, Kiefergelenke oder andere Erkrankungen.
 - Bewerte NICHT die Person, ihr Aussehen oder ihre Attraktivität.
-- Nenne KEINE konkrete Behandlungsempfehlung als Zusage, sondern höchstens, welcher Behandlungsbereich üblicherweise dazu passt.
+- Nenne KEINE konkrete Behandlungsempfehlung als Zusage, sondern höchstens, welcher Leistungsbereich üblicherweise dazu passt.
 - Schreibe sachlich, freundlich und ohne Superlative.
 - Wenn auf dem Bild kein Gesicht oder kein Lächeln erkennbar ist, sage das genau so und beschreibe nichts weiter.`,
               },

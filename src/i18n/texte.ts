@@ -27,7 +27,7 @@ export const TEXTE = {
   'geruest.aktuell': 'aktuell',
 
   // ── Navigation ──────────────────────────────────────────────────────
-  'nav.behandlungen': 'Behandlungen',
+  'nav.behandlungen': 'Leistungen',
   'nav.praxis': 'Praxis',
   'nav.team': 'Team',
   'nav.anfahrt': 'Anfahrt',
@@ -40,7 +40,7 @@ export const TEXTE = {
   'nav.zurStartseiteOrt': 'KU64 {ort}, zur Startseite',
   'nav.zurStartseite': 'KU64, zur Startseite',
   'nav.sieSehen': 'Sie sehen',
-  /* ── Behandlungsseiten ────────────────────────────────────────────────
+  /* ── Leistungsseiten ────────────────────────────────────────────────
    *
    * Standen bis eben fest in den Vorlagen. Der Katalog meldete deshalb 99,9
    * Prozent Übersetzung, und auf der englischen Seite stand trotzdem „Wo
@@ -54,13 +54,13 @@ export const TEXTE = {
   'leistung.vonStandorten': '{wo} von {gesamt} Standorten',
   'leistung.woLassen': 'Wo möchten Sie {name} lassen?',
   'leistung.standortWaehlen':
-    'Wählen Sie Ihren Standort – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung für genau diese Behandlung.',
+    'Wählen Sie Ihren Standort – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung für genau diese Leistung.',
   'leistung.hierAnsehen': '{name} hier ansehen',
   'leistung.nichtAngebotenAn': 'Nicht angeboten an:',
   'leistung.nichtAngebotenHinweis':
     'Wir sagen das offen, damit Sie nicht vergeblich dort anrufen.',
   'leistung.kasse': 'Zahlt die Krankenkasse?',
-  'leistung.ablauf': 'So läuft die Behandlung ab',
+  'leistung.ablauf': 'So läuft es ab',
   'leistung.synonyme': 'Auch bekannt als',
   'leistung.haeufigeFragen': '{name}: häufige Fragen',
   'leistung.passtDazu': 'Passt dazu',
@@ -74,12 +74,12 @@ export const TEXTE = {
   'leistung.termin': 'Termin',
   'leistung.anAnderenStandorten': '{name} an anderen KU64-Standorten',
   'leistung.sieSehenAngaben':
-    'Sie sehen gerade die Angaben für KU64 {ort}. Diese Behandlung bieten wir auch hier an – falls Ihnen ein anderer Standort besser passt:',
+    'Sie sehen gerade die Angaben für KU64 {ort}. Diese Leistung bieten wir auch hier an – falls Ihnen ein anderer Standort besser passt:',
   'leistung.beraterHinweisVor': 'Fragen vorab? Unser',
   'leistung.beraterHinweisLink': 'digitaler Berater',
   'leistung.beraterHinweisNach': 'antwortet rund um die Uhr – auch zu {name}.',
   'leistung.ergaenzendText':
-    'Diese Behandlungen hängen mit {name} zusammen, werden bei KU64 {ort} aber nicht angeboten. Wir sagen Ihnen offen, wo Sie sie bekommen.',
+    'Diese Leistungen hängen mit {name} zusammen, werden bei KU64 {ort} aber nicht angeboten. Wir sagen Ihnen offen, wo Sie sie bekommen.',
 
   /* ── Brotkrumen ───────────────────────────────────────────────────────
    *
@@ -93,11 +93,11 @@ export const TEXTE = {
   'blog.weiterlesen': 'Weiterlesen',
   'orte.seitentitel': 'Unsere Standorte',
   'orte.beschreibung':
-    'KU64 an {anzahl} Standorten in Berlin und Potsdam. Mit Vergleich, welche Behandlung an welchem Standort angeboten wird.',
-  'orte.behandlungen': 'Behandlungen',
+    'KU64 an {anzahl} Standorten in Berlin und Potsdam. Mit Vergleich, welche Leistung an welchem Standort angeboten wird.',
+  'orte.behandlungen': 'Leistungen',
   'orte.nichtVerfuegbar': 'nicht verfügbar',
   'krume.blog': 'Blog',
-  'fuss.behandlungsbereiche': 'Behandlungsbereiche',
+  'fuss.behandlungsbereiche': 'Leistungsbereiche',
   'fuss.haeufigGesucht': 'Häufig gesucht',
   'fuss.unsereStandorte': 'Unsere Standorte',
   'fuss.aktuellGewaehlt': '(aktuell gewählt)',
@@ -107,7 +107,7 @@ export const TEXTE = {
   'fuss.barrierefreiheit': 'Barrierefreiheit',
   'fuss.cookieEinstellungen': 'Cookie-Einstellungen',
   'fuss.oeffnungszeitenVon': 'Sprechzeiten KU64 {name}',
-  'praxis.behandlungen': 'Behandlungen',
+  'praxis.behandlungen': 'Leistungen',
   'praxis.behandelnde': 'Behandelnde',
   'praxis.ausFachbereichen': 'aus {anzahl} Fachbereichen',
   'karte.dauer': 'Dauer',
@@ -118,7 +118,7 @@ export const TEXTE = {
   'anamnesez.woTermin': 'Wo haben Sie Ihren Termin?',
   'notfallz.seitentitel': 'Zahnärztlicher Notfall',
   'suchez.beschreibung':
-    'Behandlungen, Beschwerden, Standorte und Menschen bei KU64 finden – mit den Wörtern, die Sie verwenden.',
+    'Leistungen, Beschwerden, Standorte und Menschen bei KU64 finden – mit den Wörtern, die Sie verwenden.',
   'kontaktz.beschreibung':
     'So erreichen Sie KU64 – alle Standorte in Berlin und Potsdam mit Telefonnummern, Adressen und Sprechzeiten.',
   'blogz.nachStandort': 'Beiträge nach Standort',
@@ -131,7 +131,7 @@ export const TEXTE = {
   'laecheln.vergleich': 'Vergleich zwischen Ausgangsfoto und Visualisierung',
   'standortwahl.bitteWaehlen': 'Bitte wählen Sie Ihren Standort',
   'beratungz.beschreibung':
-    'Sprechen oder schreiben Sie mit unserem digitalen Berater – rund um die Uhr, zu Behandlungen, Kosten und Abläufen bei KU64.',
+    'Sprechen oder schreiben Sie mit unserem digitalen Berater – rund um die Uhr, zu Leistungen, Kosten und Abläufen bei KU64.',
   'ki.beschreibung':
     'Welche KI-Systeme auf dieser Website arbeiten, wofür, mit welchen Daten – und wie Sie stattdessen einen Menschen erreichen.',
   'notfallz.beschreibungLang':
@@ -209,9 +209,9 @@ export const TEXTE = {
      die Nummer an anderer Stelle. */
   'berater.menschUnter': 'Einen Menschen erreichen Sie unter {telefon}.',
   'berater.begruessungOrt':
-    'Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen bei KU64 {ort}. Was möchten Sie wissen?',
+    'Guten Tag! Ich beantworte Ihre Fragen zu Leistungen, Kosten und Abläufen bei KU64 {ort}. Was möchten Sie wissen?',
   'berater.begruessung':
-    'Guten Tag! Ich beantworte Ihre Fragen zu Behandlungen, Kosten und Abläufen bei KU64. Was möchten Sie wissen?',
+    'Guten Tag! Ich beantworte Ihre Fragen zu Leistungen, Kosten und Abläufen bei KU64. Was möchten Sie wissen?',
   'berater.keineDiagnosenOrt':
     'Ich stelle keine Diagnosen und brauche keine persönlichen Daten von Ihnen. Bei starken Schmerzen rufen Sie uns bitte direkt an unter {telefon}.',
   'berater.keineDiagnosen':
@@ -266,7 +266,7 @@ export const TEXTE = {
   'beratung.bereitKlickenSieUm': 'Bereit. Klicken Sie, um das Gespräch zu starten.',
   'beratung.chatOeffnen': 'Chat öffnen',
   'beratung.derChatUntenRechts': 'Der Chat unten rechts beantwortet dieselben Fragen – in Textform, ohne Mikrofon.',
-  'beratung.fragenZuEinerBehandlung': 'Fragen zu einer Behandlung, zu Kosten oder zum Ablauf? Stellen Sie sie laut – der Berater antwortet in natürlicher Sprache und kennt das Angebot jedes Standorts.',
+  'beratung.fragenZuEinerBehandlung': 'Fragen zu einer Leistung, zu Kosten oder zum Ablauf? Stellen Sie sie laut – der Berater antwortet in natürlicher Sprache und kennt das Angebot jedes Standorts.',
   'beratung.fragenZurDigitalenBeratung': 'Fragen zur digitalen Beratung',
   'beratung.gespraechStarten': 'Gespräch starten',
   'beratung.ihrBrowserFragtDanach': 'Ihr Browser fragt danach nach der Erlaubnis für das Mikrofon. Ohne Ihre Zustimmung passiert nichts.',
@@ -320,7 +320,7 @@ export const TEXTE = {
   'laecheln.dieDarstellungIstEine': 'Die Darstellung ist eine Illustration und keine Zusage. Ob und wie sich etwas Ähnliches umsetzen lässt, kann nur eine persönliche Untersuchung zeigen. Ihre Zahnsubstanz, Ihr Zahnfleisch und Ihre Kieferverhältnisse entscheiden darüber – nicht ein Bild.',
   'laecheln.dieVerbindlichePlanungMit': 'Die verbindliche Planung mit Vorschau im eigenen Mund.',
   'laecheln.digitalesSmileDesign': 'Digitales Smile Design',
-  'laecheln.einVeraendertesLaechelnEntsteht': 'Ein verändertes Lächeln entsteht je nach Ausgangslage über verschiedene Wege. Diese Behandlungen kommen dafür am häufigsten infrage:',
+  'laecheln.einVeraendertesLaechelnEntsteht': 'Ein verändertes Lächeln entsteht je nach Ausgangslage über verschiedene Wege. Diese Leistungen kommen dafür am häufigsten infrage:',
   'laecheln.fotoAuswaehlen': 'Foto auswählen',
   'laecheln.fotoHierherZiehen': 'Foto hierher ziehen',
   'laecheln.fotoWirdAnalysiert': 'Foto wird analysiert…',
@@ -349,13 +349,13 @@ export const TEXTE = {
   'laecheln.wasMachtEinGutes': 'Was macht ein gutes Foto aus?',
   'laecheln.wohinDuerfenWirDas': 'Wohin dürfen wir das Ergebnis senden?',
   'laecheln.zahnstellungKorrigierenOhneFeste': 'Zahnstellung korrigieren, ohne feste Spange.',
-  'suche.alleBehandlungenNachBereich': 'Alle Behandlungen nach Bereich',
+  'suche.alleBehandlungenNachBereich': 'Alle Leistungen nach Bereich',
   'suche.aufEineFrageIst': 'Auf eine Frage ist eine Liste die falsche Antwort. Unser digitaler Berater beantwortet sie Ihnen – und wenn Sie lieber mit einem Menschen sprechen, steht die Nummer Ihres Standorts oben.',
-  'suche.behandlungenBeschwerdenStandorteUnd': 'Behandlungen, Beschwerden, Standorte und Menschen. Sie können den Fachbegriff eingeben – müssen aber nicht.',
+  'suche.behandlungenBeschwerdenStandorteUnd': 'Leistungen, Beschwerden, Standorte und Menschen. Sie können den Fachbegriff eingeben – müssen aber nicht.',
   'suche.dasKlingtNachEiner': 'Das klingt nach einer Frage.',
   'suche.frageAnDenBerater': 'Frage an den Berater',
   'suche.lochImZahn': 'loch im zahn',
-  'suche.suchenSieNachEinem': 'Suchen Sie nach einem Symptom statt nach einer Behandlung?',
+  'suche.suchenSieNachEinem': 'Suchen Sie nach einem Symptom statt nach einer Leistung?',
   'suche.zahnspangePotsdam': 'zahnspange potsdam',
   'suche.zuDenBeschwerden': 'Zu den Beschwerden',
   'suche.zumAusprobieren': 'Zum Ausprobieren:',
@@ -369,8 +369,8 @@ export const TEXTE = {
   'ueber.spezialisierungUnterEinemDach': 'Spezialisierung unter einem Dach',
   'ueber.ueberKu64': 'Über KU64',
   'ueber.unsereStandorte': 'Unsere Standorte',
-  'ueber.vonProphylaxeUeberKieferorthopaedie': 'Von Prophylaxe über Kieferorthopädie bis zur Oralchirurgie – für die meisten Behandlungen müssen Sie die Praxis nicht wechseln. Was ein Standort nicht abdeckt, übernimmt ein anderer.',
-  'ueber.wirSagenOffenWas': 'Wir sagen offen, was eine Behandlung kostet, was die Kasse übernimmt und was nicht – und auch, wenn eine Behandlung an einem Standort gar nicht angeboten wird. Lieber ein Satz zu viel als ein vergeblicher Anruf.',
+  'ueber.vonProphylaxeUeberKieferorthopaedie': 'Von Prophylaxe über Kieferorthopädie bis zur Oralchirurgie – für die meisten Leistungen müssen Sie die Praxis nicht wechseln. Was ein Standort nicht abdeckt, übernimmt ein anderer.',
+  'ueber.wirSagenOffenWas': 'Wir sagen offen, was eine Leistung kostet, was die Kasse übernimmt und was nicht – und auch, wenn eine Leistung an einem Standort gar nicht angeboten wird. Lieber ein Satz zu viel als ein vergeblicher Anruf.',
   'ueber.wofuerWirStehen': 'Wofür wir stehen',
   'ueber.zahnaerztinnenUndZahnaerzte': 'Zahnärztinnen und Zahnärzte',
 
@@ -411,7 +411,7 @@ export const TEXTE = {
   'kontakt.fuerAllesWasNicht': 'Für alles, was nicht eilt. Bitte schicken Sie uns keine Gesundheitsdaten per unverschlüsselter E-Mail.',
   'kontakt.onlineBuchen': 'Online buchen',
   'kontakt.rufenSieBitteAn': 'rufen Sie bitte an, statt zu schreiben. Bei Atem- oder Schluckbeschwerden, starker Schwellung oder hohem Fieber wählen Sie den Rettungsdienst unter 112. Mehr dazu unter',
-  'kontakt.unserDigitalerBeraterBeantwortet': 'Unser digitaler Berater beantwortet Fragen zu Behandlungen, Kosten und Abläufen – per Text oder Sprache.',
+  'kontakt.unserDigitalerBeraterBeantwortet': 'Unser digitaler Berater beantwortet Fragen zu Leistungen, Kosten und Abläufen – per Text oder Sprache.',
   'kontakt.waehlenSieDenWeg': 'Wählen Sie den Weg, der Ihnen am angenehmsten ist. Alle führen zum selben Team.',
   'kontakt.zurTerminbuchung': 'Zur Terminbuchung',
   'ort.anfahrtParken': 'Anfahrt & Parken',
@@ -454,21 +454,21 @@ export const TEXTE = {
   'kontaktz.bitteRufenSieAn': 'Bitte rufen Sie an, statt zu schreiben. Bei Atem- oder Schluckbeschwerden wählen Sie 112. Mehr unter',
   'kontaktz.jederStandortHatEigene': 'Jeder Standort hat eigene Sprechzeiten und eine eigene Nummer. Wählen Sie den, der Ihnen am nächsten liegt.',
   'kontaktz.terminBuchen': 'Termin buchen',
-  'leistuebersicht.alleBehandlungen': 'Alle Behandlungen',
-  'leistuebersicht.behandlungSuchen': 'Behandlung suchen',
+  'leistuebersicht.alleBehandlungen': 'Alle Leistungen',
+  'leistuebersicht.behandlungSuchen': 'Leistung suchen',
   'leistuebersicht.zuIhrerSucheHaben': 'Zu Ihrer Suche haben wir nichts gefunden. Fragen Sie gern unseren digitalen Berater.',
-  'leistuebersicht.platzhalter': 'Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching',
+  'leistuebersicht.platzhalter': 'Beschwerde oder Leistung – z. B. Loch im Zahn, Bleaching',
   'leistuebersicht.platzhalterOrt':
-    'Beschwerde oder Behandlung – z. B. Loch im Zahn, Bleaching, Angst',
+    'Beschwerde oder Leistung – z. B. Loch im Zahn, Bleaching, Angst',
   'leistuebersicht.zuFachbereich': 'Zu einem Fachbereich springen',
   'leistuebersicht.vorspann':
-    '{anzahl} Behandlungen in {bereiche} Fachbereichen. Zu jeder sehen Sie, an welchen unserer {standorte} Standorte sie angeboten wird.',
+    '{anzahl} Leistungen in {bereiche} Fachbereichen. Zu jeder sehen Sie, an welchen unserer {standorte} Standorte sie angeboten wird.',
   'leistuebersicht.nichtsGefundenHier':
     'Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.',
   'leistuebersicht.anAnderenStandorten': 'An anderen KU64-Standorten',
   'leistuebersicht.anderswoText':
-    'Diese Behandlungen gibt es in {ort} nicht. Damit Sie nicht vergeblich suchen, führen wir Sie direkt zum richtigen Standort.',
-  'standorte.behandlung': 'Behandlung',
+    'Diese Leistungen gibt es in {ort} nicht. Damit Sie nicht vergeblich suchen, führen wir Sie direkt zum richtigen Standort.',
+  'standorte.behandlung': 'Leistung',
   'start.digitaleAnamnese': 'Digitale Anamnese',
   'start.digitalerBerater': 'Digitaler Berater',
   'start.ku64DieZahnspezialisten': 'KU64 · Die Zahnspezialisten',
@@ -496,7 +496,7 @@ export const TEXTE = {
   'teamliste.dasTeamBei': 'Das Team bei KU64 {name}.',
   'teamliste.filtern': 'Team filtern',
   'teamliste.bereich': 'Bereich',
-  'teamliste.behandlungsart': 'Behandlungsart',
+  'teamliste.behandlungsart': 'Leistungsart',
   'teamliste.niemand': 'Mit dieser Auswahl steht niemand in {ort}.',
   'teamliste.spricht': 'Spricht {sprachen}',
   'teamliste.inArbeit':
@@ -507,7 +507,7 @@ export const TEXTE = {
     'Wenn Sie zu einer bestimmten Person oder einem Fachgebiet Fragen haben, rufen Sie uns gern an – wir sagen Ihnen genau, wer für Ihr Anliegen zuständig ist.',
   'teamliste.alle': 'Alle',
   'teamliste.auswahlAufheben': 'Auswahl aufheben',
-  'teamliste.behandlungenAnsehen': 'Behandlungen ansehen',
+  'teamliste.behandlungenAnsehen': 'Leistungen ansehen',
   'teamliste.profilAnsehen': 'Profil ansehen',
 
   /* ── Rechtstexte ──────────────────────────────────────────────────────
@@ -678,7 +678,7 @@ export const TEXTE = {
 
   // ── Fußzeile ────────────────────────────────────────────────────────
   'fuss.unsereStandorte': 'Unsere Standorte',
-  'fuss.behandlungsbereiche': 'Behandlungsbereiche',
+  'fuss.behandlungsbereiche': 'Leistungsbereiche',
   'fuss.haeufigGesucht': 'Häufig gesucht',
   'fuss.service': 'Service',
   'fuss.oeffnungszeiten': 'Öffnungszeiten',
@@ -694,11 +694,11 @@ export const TEXTE = {
   // ── Standorte und Zeiten ────────────────────────────────────────────
   'standort.geoeffnet': 'Jetzt geöffnet',
 
-  // ── Behandlungen ────────────────────────────────────────────────────
+  // ── Leistungen ────────────────────────────────────────────────────
   'leistung.dauer': 'Dauer',
   'leistung.kosten': 'Kosten',
   'leistung.kasse': 'Krankenkasse',
-  'leistung.ablauf': 'So läuft die Behandlung ab',
+  'leistung.ablauf': 'So läuft es ab',
 
   // ── Sprache ─────────────────────────────────────────────────────────
   'sprache.waehlen': 'Sprache wählen',
@@ -716,14 +716,14 @@ export const TEXTE = {
   // ── Startseite ──────────────────────────────────────────────────────
   'start.ueberschrift': 'Wo dürfen wir Sie behandeln?',
   'start.vorspann':
-    '{anzahl} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen Sie ausschließlich Behandlungen, Sprechzeiten und Kontaktdaten dieses Standorts. Kein Wechsel ohne Ihr Zutun.',
+    '{anzahl} Standorte in Berlin und Potsdam. Wählen Sie Ihren – danach sehen Sie ausschließlich Leistungen, Sprechzeiten und Kontaktdaten dieses Standorts. Kein Wechsel ohne Ihr Zutun.',
   'start.zuletztWaren': 'Zuletzt waren Sie bei {standort}.',
   'start.zuletztZurueck': 'Dorthin zurück',
   'start.warumTitel': 'Warum diese Website nach Standort aufgebaut ist',
   'start.warumEins':
-    'Eine Zahnarztpraxis mit mehreren Häusern hat ein Problem, das Patientinnen und Patienten oft erst spät bemerkt: Nicht jede Behandlung wird überall angeboten. Wer nach „Implantat Potsdam“ sucht und auf einer allgemeinen Leistungsseite landet, liest im Zweifel über eine Praxis, die 30 Kilometer entfernt liegt.',
+    'Eine Zahnarztpraxis mit mehreren Häusern hat ein Problem, das Patientinnen und Patienten oft erst spät bemerkt: Nicht jede Leistung wird überall angeboten. Wer nach „Implantat Potsdam“ sucht und auf einer allgemeinen Leistungsseite landet, liest im Zweifel über eine Praxis, die 30 Kilometer entfernt liegt.',
   'start.warumZwei':
-    'Deshalb gehört bei uns jede Behandlungsseite zu genau einem Standort – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung. Gibt es eine Behandlung an Ihrem Standort nicht, sagen wir das offen und verlinken gezielt dorthin, wo Sie sie bekommen. {anzahl} Behandlungen, jeweils dort beschrieben, wo sie stattfinden.',
+    'Deshalb gehört bei uns jede Leistungsseite zu genau einem Standort – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung. Gibt es eine Behandlung an Ihrem Standort nicht, sagen wir das offen und verlinken gezielt dorthin, wo Sie sie bekommen. {anzahl} Leistungen, jeweils dort beschrieben, wo sie stattfinden.',
   'start.digitalTitel': 'Digital, bevor Sie ankommen',
   'start.laechelnText':
     'Foto hochladen und sehen, wie Ihr Lächeln nach einer ästhetischen Behandlung aussehen könnte. Ihr Bild wird dabei nicht gespeichert.',
@@ -732,11 +732,11 @@ export const TEXTE = {
     'Den Anamnesebogen bequem von zu Hause ausfüllen – an jedem Standort. Kein Klemmbrett im Wartezimmer.',
   'start.anamneseKnopf': 'Bogen öffnen',
   'start.beraterText':
-    'Fragen zu Behandlung, Kosten oder Ablauf? Schreiben oder sprechen Sie mit unserem Assistenten – rund um die Uhr.',
+    'Fragen zu einer Leistung, zu Kosten oder zum Ablauf? Schreiben oder sprechen Sie mit unserem Assistenten – rund um die Uhr.',
   'start.beraterKnopf': 'Gespräch starten',
 
   // ── Standortkarte ───────────────────────────────────────────────────
-  'karte.behandlungen': 'Behandlungen',
+  'karte.behandlungen': 'Leistungen',
   'karte.geoeffnet': 'Geöffnet',
   'karte.telefon': 'Telefon',
   'karte.tageWoche': '{anzahl} Tage/Woche',
@@ -745,15 +745,15 @@ export const TEXTE = {
   // ── Fehlerseite ─────────────────────────────────────────────────────
   'fehler.titel': 'Diese Seite gibt es nicht',
   'fehler.text':
-    'Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach Ihrer Behandlung – oder gehen Sie zu Ihrem Standort.',
-  'fehler.suchen': 'Behandlung suchen',
+    'Vielleicht wurde sie beim Umbau der Website umbenannt. Suchen Sie hier direkt nach Ihrer Leistung – oder gehen Sie zu Ihrem Standort.',
+  'fehler.suchen': 'Leistung suchen',
   'fehler.seitentitel': 'Seite nicht gefunden',
   'fehler.beschreibung':
     'Diese Seite gibt es nicht mehr. Hier finden Sie, wonach Sie gesucht haben.',
   'fehler.platzhalter': 'z. B. Implantat, Bleaching, Zahnschmerzen',
   'fehler.oderStandort': 'Oder direkt zu Ihrem Standort',
   'fehler.nichtsDabei': 'Nichts dabei?',
-  'fehler.alleBehandlungen': 'Alle Behandlungen',
+  'fehler.alleBehandlungen': 'Alle Leistungen',
   'fehler.alleStandorte': 'Alle Standorte',
   'fehler.notfall': 'Notfall',
   'fehler.beraterFragen': 'Berater fragen',
@@ -762,18 +762,18 @@ export const TEXTE = {
      kennt die aufgerufene Adresse zur Buildzeit nicht. */
   'fehler.gibtEsNichtIn': '{name} gibt es in {ort} nicht',
   'fehler.stattdessenDort':
-    'Diese Behandlung bieten wir an diesem Standort nicht an. Sie bekommen sie bei {wo} – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung.',
+    'Diese Leistung bieten wir an diesem Standort nicht an. Sie bekommen sie bei {wo} – dort finden Sie Sprechzeiten, Telefonnummer und die Terminbuchung.',
   'fehler.nirgends':
-    'Diese Behandlung bieten wir derzeit an keinem Standort an. Rufen Sie uns gern an – wir sagen Ihnen, wer Ihnen weiterhelfen kann.',
+    'Diese Leistung bieten wir derzeit an keinem Standort an. Rufen Sie uns gern an – wir sagen Ihnen, wer Ihnen weiterhelfen kann.',
   'fehler.beiStandort': '{name} bei KU64 {ort}',
-  'fehler.alleBehandlungenIn': 'Alle Behandlungen in {ort}',
+  'fehler.alleBehandlungenIn': 'Alle Leistungen in {ort}',
   'fehler.und': 'und',
 
   // ── Bausteine ───────────────────────────────────────────────────────
   'nav.waehlerHinweis':
-    'Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede Behandlung wird an jedem Standort angeboten.',
+    'Beim Wechsel zeigen wir Ihnen die Angaben des gewählten Standorts. Nicht jede Leistung wird an jedem Standort angeboten.',
   'fuss.ohneStandort':
-    'Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren Standort – Sprechzeiten und Behandlungsangebot unterscheiden sich.',
+    'Zahnmedizin an vier Standorten in Berlin und Potsdam. Bitte wählen Sie Ihren Standort – Sprechzeiten und Leistungsangebot unterscheiden sich.',
   'termin.terminBei': 'Termin bei KU64 {name}',
   'termin.anlassBei': '{anlass} bei KU64 {name}',
   'termin.barrierefreierZugang': 'barrierefreier Zugang',
@@ -781,17 +781,17 @@ export const TEXTE = {
   'termin.vorspann':
     'Buchen Sie online in unter einer Minute – oder rufen Sie uns an. Wir melden uns auch gerne bei Ihnen zurück.',
   'standortwahl.hinweis':
-    'Sprechzeiten, Telefonnummern und das Behandlungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
+    'Sprechzeiten, Telefonnummern und das Leistungsangebot unterscheiden sich je Standort – deshalb fragen wir lieber, statt zu raten.',
 
   // ── Standortseiten ──────────────────────────────────────────────────
   'standort.ihrZahnarztIn': 'Ihr Zahnarzt in {ort}',
-  'standort.behandlungenAnsehen': '{anzahl} Behandlungen ansehen',
-  'standort.alleBehandlungenAnsehen': 'Alle {anzahl} Behandlungen ansehen',
+  'standort.behandlungenAnsehen': '{anzahl} Leistungen ansehen',
+  'standort.alleBehandlungenAnsehen': 'Alle {anzahl} Leistungen ansehen',
   'standort.fachbereicheUnterEinemDach':
-    '{anzahl} Fachbereiche unter einem Dach – Sie müssen für die meisten Behandlungen nicht die Praxis wechseln.',
-  'standort.behandlungenBeiKu64': 'Behandlungen bei KU64 {name}',
+    '{anzahl} Fachbereiche unter einem Dach – Sie müssen für die meisten Leistungen nicht die Praxis wechseln.',
+  'standort.behandlungenBeiKu64': 'Leistungen bei KU64 {name}',
   'standort.leistungenVorspann':
-    '{anzahl} Behandlungen in {bereiche} Fachbereichen – alle hier in {ort} verfügbar. Zu jeder Behandlung finden Sie Dauer, Kostenrahmen und was die Krankenkasse übernimmt.',
+    '{anzahl} Leistungen in {bereiche} Fachbereichen – alle hier in {ort} verfügbar. Zu jeder Leistung finden Sie Dauer, Kostenrahmen und was die Krankenkasse übernimmt.',
   'standort.terminBeiKu64': 'Termin bei KU64 {name}',
   'standort.termineVorspann':
     '{adresse}. Buchen Sie online oder rufen Sie uns an – beides führt zum selben Terminkalender.',
@@ -800,7 +800,7 @@ export const TEXTE = {
   'standort.anamneseInArbeit':
     'Die digitale Anamnese für KU64 {name} wird gerade eingerichtet. Bis dahin füllen Sie den Bogen wie gewohnt vor Ort aus – oder Sie rufen an, dann schicken wir ihn Ihnen vorab zu.',
   'standort.blogAusOrt': 'Blog aus {ort}',
-  'praxis.anzahlBehandlungen': '{anzahl} Behandlungen',
+  'praxis.anzahlBehandlungen': '{anzahl} Leistungen',
   'standort.blogAnzahl': '{anzahl} {wort} mit Bezug zu KU64 {name}.',
   'standort.blogBeitrag': 'Beitrag',
   'standort.blogBeitraege': 'Beiträge',
@@ -816,12 +816,12 @@ export const TEXTE = {
   'karriere.vorspann':
     '{anzahl} Standorte, alle Fachbereiche unter einem Dach und ein eigenes Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.',
   'blogz.vorspann':
-    '{anzahl} Beiträge zu Behandlungen, Vorsorge und dem, was bei uns passiert – von {von} bis {bis}.',
+    '{anzahl} Beiträge zu Leistungen, Vorsorge und dem, was bei uns passiert – von {von} bis {bis}.',
   'blogz.beschreibung':
-    '{anzahl} Beiträge zu Behandlungen, Vorsorge und dem Alltag bei KU64 – von {von} bis {bis}.',
+    '{anzahl} Beiträge zu Leistungen, Vorsorge und dem Alltag bei KU64 – von {von} bis {bis}.',
   'notfallz.brandenburg': ', Brandenburg unter ',
   'beschwerde.uebersichtVorspann':
-    'Für den Weg andersherum: nicht von der Behandlung zur Beschwerde, sondern von dem, was Sie merken, zu dem, was hilft. {anzahl} Beschwerden, jeweils mit den Behandlungen, die dafür in Frage kommen.',
+    'Für den Weg andersherum: nicht von der Leistung zur Beschwerde, sondern von dem, was Sie merken, zu dem, was hilft. {anzahl} Beschwerden, jeweils mit den Leistungen, die dafür in Frage kommen.',
   'berater.grenzen':
     'Keine medizinische Beratung, keine verbindlichen Preise, keine Terminbuchung. Kein Gesprächsinhalt wird dauerhaft gespeichert. {verweis}',
   'berater.datenschutz': 'Datenschutz',
@@ -832,11 +832,11 @@ export const TEXTE = {
   'standort.xTageWoche': '{anzahl} Tage die Woche',
   'standort.behandelnde': 'Behandelnde',
   'standort.zahnaerzteAnzahl': '{anzahl} Zahnärztinnen und Zahnärzte',
-  'standort.behandlungenIn': 'Behandlungen in {ort}',
+  'standort.behandlungenIn': 'Leistungen in {ort}',
   'standort.angebotHier':
-    'Alles, was wir an diesem Standort anbieten – {anzahl} Behandlungen in {bereiche} Fachbereichen. Behandlungen, die es hier nicht gibt, weisen wir offen aus und verlinken zum passenden Standort.',
+    'Alles, was wir an diesem Standort anbieten – {anzahl} Leistungen in {bereiche} Fachbereichen. Leistungen, die es hier nicht gibt, weisen wir offen aus und verlinken zum passenden Standort.',
   'standort.nichtHierText':
-    'Diese Behandlungen bieten wir in {ort} nicht an. Damit Sie nicht vergeblich anrufen, sehen Sie hier direkt, an welchem KU64-Standort Sie sie bekommen.',
+    'Diese Leistungen bieten wir in {ort} nicht an. Damit Sie nicht vergeblich anrufen, sehen Sie hier direkt, an welchem KU64-Standort Sie sie bekommen.',
   'standort.barrierefreiheit': 'Barrierefreiheit:',
   'standort.barrierefreiJa': 'Die Praxis ist barrierefrei zugänglich.',
   'standort.sprechzeiten': 'Sprechzeiten',
@@ -852,11 +852,11 @@ export const TEXTE = {
 
   // ── Standortübersicht ───────────────────────────────────────────────
   'standorte.vorspann':
-    'Jeder Standort hat einen eigenen Charakter und ein eigenes Behandlungsangebot. Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.',
-  'standorte.matrixTitel': 'Welche Behandlung gibt es wo?',
+    'Jeder Standort hat einen eigenen Charakter und ein eigenes Leistungsangebot. Wählen Sie Ihren – danach zeigen wir Ihnen ausschließlich, was dort möglich ist.',
+  'standorte.matrixTitel': 'Welche Leistung gibt es wo?',
   'standorte.matrixVorspann':
-    'Nicht jede Behandlung wird an jedem Standort angeboten. Diese Übersicht zeigt Ihnen vor dem Anruf, wohin Sie müssen.',
-  'standorte.matrixBeschriftung': 'Verfügbarkeit der Behandlungen je KU64-Standort',
+    'Nicht jede Leistung wird an jedem Standort angeboten. Diese Übersicht zeigt Ihnen vor dem Anruf, wohin Sie müssen.',
+  'standorte.matrixBeschriftung': 'Verfügbarkeit der Leistungen je KU64-Standort',
 
   // ── Kontakt ─────────────────────────────────────────────────────────
 } as const;

@@ -189,7 +189,7 @@ export const STANDORTE: Standort[] = [
       'Eigenes zahntechnisches Meisterlabor im Haus',
       'Sieben Tage die Woche geöffnet – auch sonntags',
       'Eigene Kieferorthopädie mit separater Terminvergabe',
-      'Behandlung von Angstpatientinnen und -patienten inklusive Sedierung',
+      'Leistung von Angstpatientinnen und -patienten inklusive Sedierung',
     ],
     anfahrt: {
       oepnv: [
@@ -227,7 +227,7 @@ export const STANDORTE: Standort[] = [
     besonderheiten: [
       'Praxis im denkmalgeschützten Palais Ritz – historische Hülle, moderne Zahnmedizin',
       'Montag bis Freitag von 8 bis 20 Uhr, am Wochenende nach Vereinbarung',
-      'Vollständiges Behandlungsspektrum von Prophylaxe bis Implantologie',
+      'Vollständiges Leistungsspektrum von Prophylaxe bis Implantologie',
       'Eigene Oralchirurgie für Weisheitszähne und operative Eingriffe',
       'Digitale Anamnese vorab von zu Hause – ohne Papier im Wartezimmer',
     ],

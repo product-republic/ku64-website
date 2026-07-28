@@ -1,0 +1,112 @@
+---
+/**
+ * Reine Namensliste der Leistungen – ohne Beschreibungstexte.
+ *
+ * Warum es diese Komponente gibt: Die Standortseite hat bis eben dieselben
+ * Teaser ausgegeben wie die Leistungsübersicht und wie die Leistungsseiten
+ * selbst. Gemessen waren `/berlin-charlottenburg/` und
+ * `/berlin-charlottenburg/leistungen/` dadurch zu 83 Prozent textgleich, und
+ * die vier Standortseiten untereinander bis zu 70,8 Prozent. Für Google sind
+ * das vier Seiten, die im Wesentlichen dasselbe sagen – und keine davon
+ * gewinnt.
+ *
+ * Die Beschreibung einer Leistung gehört auf die Seite dieser Leistung. Die
+ * Standortseite beantwortet eine andere Frage: „Was gibt es hier?“ Dafür
+ * reicht der Name mit Link. Was diesen Standort ausmacht – Räume, Team,
+ * Anfahrt, Sprechzeiten – bekommt dadurch den Platz, der ihm zusteht.
+ *
+ * `nichtHier` kehrt die Aussage um: Diese Leistungen gibt es an diesem
+ * Standort nicht, und der Link führt gezielt dorthin, wo es sie gibt – nicht
+ * ins Leere und nicht unbemerkt an einen anderen Ort.
+ */
+import { inhalte } from '../i18n/daten';
+import type { Leistung } from '../data/leistungen';
+
+const daten = inhalte(Astro);
+
+interface Props {
+  leistungen: Leistung[];
+  /** Standort, in dessen Zusammenhang die Liste steht. */
+  standortSlug: string | null;
+  /** Liste der Leistungen, die es hier NICHT gibt. Zeigt den Ausweichort an. */
+  nichtHier?: boolean;
+}
+
+const { leistungen, standortSlug, nichtHier = false } = Astro.props;
+
+/* Ausweichstandort für eine Leistung, die es hier nicht gibt: die Hauptpraxis,
+   wenn sie sie anbietet, sonst der erste Standort mit diesem Angebot. */
+function ausweichZu(l: Leistung) {
+  const slug = l.verfuegbar.find((s) => s === 'berlin-charlottenburg') ?? l.verfuegbar[0];
+  return slug ? daten.standort(slug) : undefined;
+}
+
+function ziel(l: Leistung) {
+  if (!nichtHier) {
+    return standortSlug ? `/${standortSlug}/leistungen/${l.slug}/` : `/leistungen/${l.slug}/`;
+  }
+  const ort = ausweichZu(l);
+  return ort ? `/${ort.slug}/leistungen/${l.slug}/` : `/leistungen/${l.slug}/`;
+}
+---
+
+<ul class:list={['leistungsliste', { woanders: nichtHier }]}>
+  {
+    leistungen.map((l) => {
+      const ort = nichtHier ? ausweichZu(l) : undefined;
+      return (
+        <li>
+          <a href={ziel(l)}>{l.name}</a>
+          {ort && <span class="wo">{ort.name}</span>}
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .leistungsliste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--raum-2xs) var(--raum-m);
+  }
+
+  .leistungsliste li {
+    border-bottom: 1px solid color-mix(in oklab, var(--tinte) 12%, transparent);
+    padding: var(--raum-2xs) 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--raum-2xs);
+  }
+
+  .leistungsliste a {
+    color: inherit;
+    text-decoration: none;
+    /* Die Fläche ist der Link, nicht nur das Wort – auf dem Telefon zählt das. */
+    flex: 1 1 auto;
+    padding-block: 0.15rem;
+  }
+
+  .leistungsliste a:hover,
+  .leistungsliste a:focus-visible {
+    color: var(--akzent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Der Ausweichort steht rechts und leise: Er ist eine Zusatzangabe, keine
+     Überschrift. Ohne ihn wüsste niemand, wohin der Link führt. */
+  .wo {
+    font-size: var(--t-xs);
+    color: var(--tinte-weich);
+    white-space: nowrap;
+  }
+
+  .woanders a {
+    color: var(--tinte-weich);
+  }
+</style>

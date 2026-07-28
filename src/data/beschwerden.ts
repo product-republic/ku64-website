@@ -145,7 +145,7 @@ export function behandlungenZu(slug: string): Leistung[] {
 /**
  * Beschwerden, die zu einer Behandlung führen – die Gegenrichtung.
  *
- * Damit auch die Behandlungsseite auf die Beschwerden verweisen kann, über
+ * Damit auch die Leistungsseite auf die Beschwerden verweisen kann, über
  * die man auf sie stößt. Das ist die Verlinkung, die eine Website zusammen
  * hält: vom Symptom zur Behandlung zum Standort und zurück.
  */

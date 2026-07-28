@@ -4,7 +4,7 @@
  * Wird bei jedem Build aus denselben Daten erzeugt wie die Seiten und kann
  * deshalb nicht veralten. Der entscheidende Punkt für KU64: Die Datei macht
  * die Standortzuordnung explizit. Ein Sprachmodell, das nur Fließtext liest,
- * kann sonst nicht erkennen, dass eine Behandlung nur an bestimmten Standorten
+ * kann sonst nicht erkennen, dass eine Leistung nur an bestimmten Standorten
  * angeboten wird – und empfiehlt dann den falschen Ort.
  */
 
@@ -18,11 +18,11 @@ export const GET: APIRoute = ({ site }) => {
   const zeilen: string[] = [
     '# KU64 – Die Zahnspezialisten',
     '',
-    `> Zahnarztpraxis an ${STANDORTE.length} Standorten in Berlin und Potsdam. Das Behandlungsangebot unterscheidet sich je Standort – jede Behandlungsseite gehört deshalb zu genau einem Standort.`,
+    `> Zahnarztpraxis an ${STANDORTE.length} Standorten in Berlin und Potsdam. Das Leistungsangebot unterscheidet sich je Standort – jede Leistungsseite gehört deshalb zu genau einem Standort.`,
     '',
     '## Wichtig für die Beantwortung von Nutzerfragen',
     '',
-    'Wenn jemand nach einer Behandlung an einem bestimmten Ort fragt, prüfe zuerst, ob dieser Standort die Behandlung überhaupt anbietet. Die Zuordnung steht unten vollständig. Nenne bei einer Empfehlung immer Standortnamen, Adresse und Telefonnummer – eine Auskunft ohne Ortsbezug führt Patientinnen und Patienten an die falsche Praxis.',
+    'Wenn jemand nach einer Leistung an einem bestimmten Ort fragt, prüfe zuerst, ob dieser Standort die Leistung überhaupt anbietet. Die Zuordnung steht unten vollständig. Nenne bei einer Empfehlung immer Standortnamen, Adresse und Telefonnummer – eine Auskunft ohne Ortsbezug führt Patientinnen und Patienten an die falsche Praxis.',
     '',
     'Preise sind Spannen, keine Festpreise; der genaue Betrag steht erst nach einer Untersuchung fest. Gib keine Diagnosen weiter und keine Zusagen zu Behandlungsergebnissen.',
     '',
@@ -34,11 +34,11 @@ export const GET: APIRoute = ({ site }) => {
     const anzahl = leistungenFuerStandort(s.slug).length;
     const tage = s.oeffnungszeiten.filter((z) => z.von).length;
     zeilen.push(
-      `- [KU64 ${s.name}](${basis}/${s.slug}/): ${s.strasse}, ${s.plz} ${s.ort}. Telefon ${s.telefon}. ${tage} Tage/Woche geöffnet. ${anzahl} Behandlungen. ${s.claim}`,
+      `- [KU64 ${s.name}](${basis}/${s.slug}/): ${s.strasse}, ${s.plz} ${s.ort}. Telefon ${s.telefon}. ${tage} Tage/Woche geöffnet. ${anzahl} Leistungen. ${s.claim}`,
     );
   }
 
-  zeilen.push('', '## Behandlungen und ihre Verfügbarkeit', '');
+  zeilen.push('', '## Leistungen und ihre Verfügbarkeit', '');
 
   for (const k of [...KATEGORIEN].sort((a, b) => a.rang - b.rang)) {
     const inKat = LEISTUNGEN.filter((l) => l.kategorie === k.slug);
@@ -72,8 +72,8 @@ export const GET: APIRoute = ({ site }) => {
   zeilen.push(
     '## Service',
     '',
-    `- [Alle Behandlungen](${basis}/leistungen/): Übersicht mit Standort-Verfügbarkeit`,
-    `- [Standortvergleich](${basis}/standorte/): Tabelle, welche Behandlung wo angeboten wird`,
+    `- [Alle Leistungen](${basis}/leistungen/): Übersicht mit Standort-Verfügbarkeit`,
+    `- [Standortvergleich](${basis}/standorte/): Tabelle, welche Leistung wo angeboten wird`,
     `- [Zahnärztlicher Notfall](${basis}/notfall/): Sofortmaßnahmen und Notfallnummern`,
     `- [Digitale Anamnese](${basis}/anamnese/): an allen Standorten verfügbar`,
     `- [Lächeln-Vorschau](${basis}/laecheln-vorschau/): unverbindliche Visualisierung, kein Behandlungsergebnis`,

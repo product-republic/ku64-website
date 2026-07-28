@@ -3,7 +3,7 @@
  * Praxisvorstellung je Standort.
  *
  * Die Räume stehen als Bildstrecke in der Reihenfolge, in der man sie
- * durchläuft – Ankommen, Warten, Weg, Behandlung, Labor. Welche Aufnahmen das
+ * durchläuft – Ankommen, Warten, Weg, Leistung, Labor. Welche Aufnahmen das
  * je Standort sind, steht in `RAUMBILDER` (src/data/medien.ts); gibt es zu
  * einem Standort nur eine, steht dort auch nur eine.
  *
@@ -50,7 +50,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
 
 <Basis
   titel={`Die Praxis in ${standort.ort}`}
-  description={`KU64 ${standort.name}: ${standort.claim} Seit ${eroeffnetJahr} in ${standort.ort}, ${alleHier.length} Behandlungen aus ${gruppen.length} Fachbereichen.`}
+  description={`KU64 ${standort.name}: ${standort.claim} Seit ${eroeffnetJahr} in ${standort.ort}, ${alleHier.length} Leistungen aus ${gruppen.length} Fachbereichen.`}
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}

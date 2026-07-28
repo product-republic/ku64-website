@@ -150,8 +150,8 @@ function fehler(nachricht: string, status: number) {
 /** Demo-Modus ohne API-Key – damit die Testumgebung trotzdem etwas zeigt. */
 function demoAntwort(standort: string | null) {
   const text = standort
-    ? `Der digitale Berater läuft in dieser Testumgebung noch ohne KI-Schlüssel. Sobald ANTHROPIC_API_KEY gesetzt ist, beantworte ich hier jede Frage zu Behandlungen, Kosten und Abläufen bei KU64 ${standort} – auf Basis der echten Praxisdaten. Bis dahin: Alle Behandlungen dieses Standorts finden Sie unter /${standort}/leistungen/.`
-    : 'Der digitale Berater läuft in dieser Testumgebung noch ohne KI-Schlüssel. Bitte wählen Sie zunächst Ihren Standort – dann kann ich Ihnen zu Behandlungen, Kosten und Terminen genau dort weiterhelfen.';
+    ? `Der digitale Berater läuft in dieser Testumgebung noch ohne KI-Schlüssel. Sobald ANTHROPIC_API_KEY gesetzt ist, beantworte ich hier jede Frage zu Leistungen, Kosten und Abläufen bei KU64 ${standort} – auf Basis der echten Praxisdaten. Bis dahin: Alle Leistungen dieses Standorts finden Sie unter /${standort}/leistungen/.`
+    : 'Der digitale Berater läuft in dieser Testumgebung noch ohne KI-Schlüssel. Bitte wählen Sie zunächst Ihren Standort – dann kann ich Ihnen zu Leistungen, Kosten und Terminen genau dort weiterhelfen.';
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream({

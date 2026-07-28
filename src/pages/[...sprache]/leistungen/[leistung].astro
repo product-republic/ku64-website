@@ -3,7 +3,7 @@
  * Standortübergreifende Leistungsseite.
  *
  * Diese Seite ist ein Wegweiser, KEIN Ersatz für die Standortseite: Sie
- * erklärt die Behandlung allgemein und führt dann sofort zu dem Standort,
+ * erklärt die Leistung allgemein und führt dann sofort zu dem Standort,
  * an dem man sie bekommt. Damit bleibt die alte URL-Struktur /leistungen/…
  * erhalten – es entstehen keine toten Links aus Suchergebnissen und Backlinks –
  * ohne den Fehler zu wiederholen, dass Leistungen ortlos beschrieben werden.
@@ -41,7 +41,7 @@ const beschwerden = beschwerdenZuBehandlung(leistung.slug);
 /*
  * Wer die Behandlung durchführt.
  *
- * Nur wenige Behandlungen führen das Feld – siehe Kommentar in
+ * Nur wenige Leistungen führen das Feld – siehe Kommentar in
  * leistungen.ts. Wo es steht, ist es die Antwort auf die Frage, die auf
  * dieser Seite sonst offen bliebe: „Wer macht das bei euch?"
  */
@@ -92,9 +92,9 @@ const schema = [
       <p class="teaser">{leistung.teaser}</p>
 
       {/*
-        Ein Bild je Bereich, nicht je Behandlung.
+        Ein Bild je Bereich, nicht je Leistung.
 
-        35 Behandlungen einzeln zu bebildern hieße 35 Fototermine, und im
+        35 Leistungen einzeln zu bebildern hieße 35 Fototermine, und im
         Bild unterscheidet sich eine professionelle Zahnreinigung nicht von
         einer Prophylaxe 4.0. Solange das Foto fehlt, steht hier ein
         benannter Platzhalter statt einer leeren Stelle – siehe

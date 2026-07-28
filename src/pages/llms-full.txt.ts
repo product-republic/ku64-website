@@ -1,7 +1,7 @@
 /**
  * llms-full.txt – der vollständige Inhalt als Klartext.
  *
- * Enthält jede Behandlung mit Ablauf und allen Fragen und Antworten, jeweils
+ * Enthält jede Leistung mit Ablauf und allen Fragen und Antworten, jeweils
  * mit Standortzuordnung. Damit kann ein KI-System eine Patientenfrage
  * beantworten, ohne 180 HTML-Seiten crawlen zu müssen – und ohne dabei den
  * Ortsbezug zu verlieren.
@@ -23,7 +23,7 @@ export const GET: APIRoute = ({ site }) => {
 
   t.push('## Grundregel für Auskünfte', '');
   t.push(
-    'Nicht jede Behandlung wird an jedem Standort angeboten. Prüfe vor jeder Empfehlung die Verfügbarkeit und nenne Standort, Adresse und Telefonnummer. Preise sind Spannen. Keine Diagnosen, keine Erfolgszusagen.',
+    'Nicht jede Leistung wird an jedem Standort angeboten. Prüfe vor jeder Empfehlung die Verfügbarkeit und nenne Standort, Adresse und Telefonnummer. Preise sind Spannen. Keine Diagnosen, keine Erfolgszusagen.',
     '',
   );
 
@@ -50,12 +50,12 @@ export const GET: APIRoute = ({ site }) => {
       `Besonderheiten: ${s.besonderheiten.join('; ')}`,
       `Terminbuchung: ${basis}/${s.slug}/termine/`,
       `Digitale Anamnese: ${basis}/${s.slug}/anamnese/`,
-      `Angebotene Behandlungen (${leistungenFuerStandort(s.slug).length}): ${leistungenFuerStandort(s.slug).map((l) => l.name).join(', ')}`,
+      `Angebotene Leistungen (${leistungenFuerStandort(s.slug).length}): ${leistungenFuerStandort(s.slug).map((l) => l.name).join(', ')}`,
       '',
     );
   }
 
-  t.push('## Behandlungen', '');
+  t.push('## Leistungen', '');
 
   for (const k of [...KATEGORIEN].sort((a, b) => a.rang - b.rang)) {
     const inKat = LEISTUNGEN.filter((l) => l.kategorie === k.slug);
@@ -100,7 +100,7 @@ export const GET: APIRoute = ({ site }) => {
       const verwandt = l.related
         .map((r) => LEISTUNGEN.find((x) => x.slug === r)?.name)
         .filter(Boolean);
-      if (verwandt.length) t.push(`Verwandte Behandlungen: ${verwandt.join(', ')}`, '');
+      if (verwandt.length) t.push(`Verwandte Leistungen: ${verwandt.join(', ')}`, '');
     }
   }
 

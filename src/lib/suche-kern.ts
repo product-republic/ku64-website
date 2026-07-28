@@ -4,7 +4,7 @@
  * ── Warum getrennt ──────────────────────────────────────────────────────
  *
  * Weil dieser Teil im Browser läuft. `suche.ts` baut den Index und braucht
- * dafür den vollständigen Behandlungskatalog, die Standorte, die
+ * dafür den vollständigen Leistungskatalog, die Standorte, die
  * Beschwerdeseiten und den Blog – zusammen weit über hundert Kilobyte, die
  * niemand herunterladen soll, um „veneers" zu tippen.
  *
@@ -16,15 +16,15 @@
 /**
  * Was für ein Ding gefunden wurde.
  *
- * Steht im Ergebnis als Marke – „Behandlung", „Beschwerde", „Person". Ohne
- * sie sähen ein Fachbeitrag über Veneers und die Behandlungsseite dazu in
+ * Steht im Ergebnis als Marke – „Leistung", „Beschwerde", „Person". Ohne
+ * sie sähen ein Fachbeitrag über Veneers und die Leistungsseite dazu in
  * der Liste gleich aus, und man klickt den falschen an.
  */
 export type Trefferart = 'leistung' | 'standort' | 'seite' | 'beschwerde' | 'person' | 'beitrag';
 
 export interface Indexeintrag {
   art: Trefferart;
-  /** Slug der Behandlung bzw. des Standorts; bei Seiten der Pfad. */
+  /** Slug der Leistung bzw. des Standorts; bei Seiten der Pfad. */
   id: string;
   titel: string;
   /** Eine Zeile zur Einordnung im Ergebnis. */
@@ -35,7 +35,7 @@ export interface Indexeintrag {
   stark: string[];
   /** Wörter mit niedrigem Gewicht: Kurztext, Teaser, Frage. */
   schwach: string[];
-  /** Nur bei Behandlungen: an welchen Standorten es sie gibt. */
+  /** Nur bei Leistungen: an welchen Standorten es sie gibt. */
   verfuegbar?: string[];
   /** Sortierhilfe bei Gleichstand – kleiner ist wichtiger. */
   rang: number;
@@ -52,7 +52,7 @@ export interface Indexeintrag {
  * Mobilgeräten viele.
  *
  * Dass dabei „Bär" und „Bar" zusammenfallen, ist der Preis. Bei 35
- * Behandlungen kostet er nichts.
+ * Leistungen kostet er nichts.
  */
 export function normieren(text: string): string {
   return text

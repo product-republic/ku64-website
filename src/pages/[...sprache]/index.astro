@@ -28,10 +28,10 @@ const faq = [
     frage: 'Wie viele KU64-Standorte gibt es?',
     antwort: `KU64 ist an ${daten.standorte.length} Standorten vertreten: ${daten.standorte.map(
       (s) => `${s.name} (${s.strasse}, ${s.plz} ${s.ort})`,
-    ).join(', ')}. Das Behandlungsangebot unterscheidet sich je Standort.`,
+    ).join(', ')}. Das Leistungsangebot unterscheidet sich je Standort.`,
   },
   {
-    frage: 'Bietet jeder Standort alle Behandlungen an?',
+    frage: 'Bietet jeder Standort alle Leistungen an?',
     antwort:
       'Nein. Die Hauptpraxis am Kurfürstendamm bietet das breiteste Spektrum inklusive Vollnarkose, Kieferorthopädie und All-on-4. Potsdam deckt das volle Standardspektrum inklusive Implantologie und Oralchirurgie ab. Auf jeder Standortseite sehen Sie ausschließlich das, was dort tatsächlich angeboten wird – und wohin Sie für alles Übrige gehen.',
   },
@@ -58,7 +58,7 @@ const ueberschrift = t('start.ueberschrift');
 
 <Basis
   titel={t('start.seitentitel')}
-  description={`KU64 – Die Zahnspezialisten an ${daten.standorte.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Behandlungen, die dort angeboten werden.`}
+  description={`KU64 – Die Zahnspezialisten an ${daten.standorte.length} Standorten in Berlin und Potsdam. Wählen Sie Ihren Standort und sehen Sie genau die Leistungen, die dort angeboten werden.`}
   pfad="/"
   schema={[schemaOrganisation(), schemaFaq(faq)]}
 >

@@ -87,7 +87,7 @@ export function schemaStandort(s: Standort, leistungen: Leistung[]) {
 }
 
 /**
- * Eine Behandlung an einem konkreten Standort. Der Ortsbezug im Schema ist
+ * Eine Leistung an einem konkreten Standort. Der Ortsbezug im Schema ist
  * entscheidend – ohne ihn ordnet die Suchmaschine die Leistung keinem
  * Standort zu und spielt im Zweifel den falschen aus.
  */

@@ -1,11 +1,11 @@
 ---
 /**
- * Eine Behandlung an einem konkreten Standort.
+ * Eine Leistung an einem konkreten Standort.
  *
  * Das ist die Seite, die die Struktur der alten Website repariert: Dort lagen
  * Leistungen standortübergreifend unter /leistungen/, sodass jemand mit
- * Standort Potsdam beim Klick auf eine Behandlung unbemerkt Inhalte einer
- * anderen Praxis las. Hier gehört jede Behandlungsseite eindeutig zu einem Ort
+ * Standort Potsdam beim Klick auf eine Leistung unbemerkt Inhalte einer
+ * anderen Praxis las. Hier gehört jede Leistungsseite eindeutig zu einem Ort
  * – mit dessen Adresse, Telefonnummer, Sprechzeiten und Terminbuchung.
  */
 import { inhalte } from '../../../../i18n/daten';
@@ -18,6 +18,7 @@ import FaqBlock from '../../../../components/FaqBlock.astro';
 import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { alleKombinationen } from '../../../../data/leistungen';
+import { fassungIstEigenstaendig } from '../../../../data/standortfassungen';
 import { bereichsbild } from '../../../../data/bildbedarf';
 import {
   schemaLeistung,
@@ -44,7 +45,7 @@ const leistung = daten.leistungen.find((l) => l.slug === leistungSlug)!;
 const kategorie = daten.kategorie(leistung.kategorie)!;
 
 /*
- * Wer diese Behandlung HIER durchführt.
+ * Wer diese Leistung HIER durchführt.
  *
  * Gefiltert auf den Standort: Clara-Constanze Meinberg macht Dentosophie am
  * Kurfürstendamm, Dr. Elisabeth Futterlieb in Potsdam. Auf der Potsdamer
@@ -70,7 +71,7 @@ const verwandte = daten.verwandte(leistung, standort.slug);
 const verwandteHier = verwandte.filter((v) => v.amStandort);
 const verwandteWoanders = verwandte.filter((v) => !v.amStandort);
 
-/* An welchen anderen Standorten gibt es diese Behandlung auch? Wichtig für
+/* An welchen anderen Standorten gibt es diese Leistung auch? Wichtig für
    Menschen, denen ein anderer Standort besser passt – und für Suchmaschinen,
    die so das vollständige Bild bekommen. */
 const auchAn = daten.standorte.filter(
@@ -99,6 +100,14 @@ const schema = [
   brotkrumen={brotkrumen}
   schema={schema}
   ogLeistung={leistung.slug}
+  kanonischStatt={
+    /* Solange diese Fassung nichts erzählt, was nur an diesem Standort gilt,
+       ist sie dieselbe Aussage wie die Hauptseite – und zeigt dorthin.
+       Bedingung und Begründung: src/data/standortfassungen.ts */
+    fassungIstEigenstaendig(standort.slug, leistung.slug)
+      ? undefined
+      : `/leistungen/${leistung.slug}/`
+  }
 >
   <article>
     <header class="kopfbereich abschnitt-eng">

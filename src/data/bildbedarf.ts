@@ -56,7 +56,7 @@ export interface Bildbedarf {
    *
    * Schlüssel aus `src/lib/bilder.ts`. Gesetzt wird das nur, wo das
    * vorhandene Bild ehrlich passt – das Meisterlabor steht für Zahnersatz,
-   * der Wartebereich für die angstfreie Behandlung. NICHT gesetzt wird es,
+   * der Wartebereich für die angstfreie Leistung. NICHT gesetzt wird es,
    * wo es in die Irre führen würde: Die Außenansicht der KiezPraxis unter
    * der Überschrift „Empfang" wäre eine Falschaussage, kein Notbehelf.
    *
@@ -68,9 +68,9 @@ export interface Bildbedarf {
 }
 
 /**
- * Motive je Behandlungsbereich statt je Behandlung.
+ * Motive je Leistungsbereich statt je Leistung.
  *
- * 35 Behandlungen einzeln zu bebildern hieße 35 Fototermine. Die Bereiche
+ * 35 Leistungen einzeln zu bebildern hieße 35 Fototermine. Die Bereiche
  * sind zehn, und innerhalb eines Bereichs sieht die Situation im Raum
  * ohnehin gleich aus: Eine Prophylaxesitzung unterscheidet sich im Bild
  * nicht danach, ob sie „professionelle Zahnreinigung“ oder „Prophylaxe 4.0“

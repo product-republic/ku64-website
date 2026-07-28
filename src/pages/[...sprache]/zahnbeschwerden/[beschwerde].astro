@@ -1,6 +1,6 @@
 ---
 /**
- * Eine Beschwerde – von der Frage zur Behandlung.
+ * Eine Beschwerde – von der Frage zur Leistung.
  *
  * ── Die Reihenfolge ist die ganze Gestaltung ────────────────────────────
  *
@@ -11,9 +11,9 @@
  *      liest keine 1800 Wörter.
  *   2. Der Text der Praxis, unverändert und vollständig.
  *   3. Die häufigen Fragen.
- *   4. Erst dann: welche Behandlung hilft, und wo es sie gibt.
+ *   4. Erst dann: welche Leistung hilft, und wo es sie gibt.
  *
- * Die Behandlungen ans Ende zu setzen, ist gegen jeden Instinkt und
+ * Die Leistungen ans Ende zu setzen, ist gegen jeden Instinkt und
  * trotzdem richtig. Eine Seite, die auf die Frage „habe ich Karies?“ mit
  * „buchen Sie eine Kariesbehandlung“ anfängt, beantwortet die Frage nicht,
  * und Google merkt das an der Verweildauer.
@@ -21,7 +21,7 @@
  * ── Warum ohne Standort ─────────────────────────────────────────────────
  *
  * Siehe `src/data/beschwerden.ts`: Zahnfleischbluten ist in Potsdam
- * dasselbe wie am Kurfürstendamm. Standortscharf ist die Behandlung, und
+ * dasselbe wie am Kurfürstendamm. Standortscharf ist die Leistung, und
  * dorthin führt diese Seite.
  */
 import { inhalte } from '../../../i18n/daten';
@@ -50,11 +50,11 @@ const behandlungen = behandlungenZu(beschwerde.slug);
 const istAkut = AKUT.has(beschwerde.slug);
 
 /*
- * Das Bild kommt vom Bereich der Behandlung, die hier hilft.
+ * Das Bild kommt vom Bereich der Leistung, die hier hilft.
  *
  * Eine Beschwerde hat kein eigenes Motiv – „Zahnfleischbluten" fotografiert
  * man nicht. Was sich zeigen lässt, ist die Situation, in der geholfen wird,
- * und die gehört zum Bereich der Behandlung.
+ * und die gehört zum Bereich der Leistung.
  */
 const bildschluessel = behandlungen[0] ? bereichsbild(behandlungen[0].kategorie) : null;
 const pfad = `/zahnbeschwerden/${beschwerde.slug}/`;
@@ -123,7 +123,7 @@ const schema = [
     name: beschwerde.titel,
     description: beschwerde.beschreibung,
     url: kanonisch(pfad),
-    /* Was hier beschrieben wird, ist ein Befund – und die Behandlungen, die
+    /* Was hier beschrieben wird, ist ein Befund – und die Leistungen, die
        darauf folgen, sind seine möglichen Antworten. Genau dafür gibt es
        diese beiden Felder; sie sind der Grund, warum diese Seite in der
        Suche als Gesundheitsinhalt und nicht als Werbetext erkannt wird. */
@@ -264,8 +264,8 @@ const schema = [
           <h2>{t('beschwseite.wasDagegenHilft')}</h2>
           <p class="weiter-text">
             {behandlungen.length === 1
-              ? 'Die Behandlung, die hier in Frage kommt – mit den Standorten, an denen es sie gibt:'
-              : 'Die Behandlungen, die hier in Frage kommen – jeweils mit den Standorten, an denen es sie gibt:'}
+              ? 'Die Leistung, die hier in Frage kommt – mit den Standorten, an denen es sie gibt:'
+              : 'Die Leistungen, die hier in Frage kommen – jeweils mit den Standorten, an denen es sie gibt:'}
           </p>
           <div class="raster">
             {behandlungen.map((l) => (

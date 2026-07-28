@@ -6,12 +6,12 @@
  * Eine Suchmaschine einzubinden hieße: ein zweites Datenmodell, ein zweiter
  * Ort, an dem etwas veralten kann, und ein Dienst mehr, an den bei jedem
  * Tastendruck Daten von Patientinnen und Patienten fließen. Der Bestand hier
- * ist klein und vollständig bekannt – 35 Behandlungen, 4 Standorte, ein gutes
+ * ist klein und vollständig bekannt – 35 Leistungen, 4 Standorte, ein gutes
  * Dutzend weitere Seiten. Dafür ist ein eigener Index kleiner als die
  * Anbindung eines fremden.
  *
  * Er wird beim Bauen aus denselben Dateien erzeugt wie die Seiten. Eine
- * Behandlung, die es nicht mehr gibt, verschwindet damit aus der Suche, ohne
+ * Leistung, die es nicht mehr gibt, verschwindet damit aus der Suche, ohne
  * dass jemand daran denken muss.
  *
  * ── Was diese Suche kann, was eine Volltextsuche nicht kann ─────────────
@@ -23,13 +23,13 @@
  *
  * Diese hier weiß es, weil die Daten es wissen:
  *
- *   `synonyme`      führt je Behandlung die Wörter, die Patientinnen und
+ *   `synonyme`      führt je Leistung die Wörter, die Patientinnen und
  *                   Patienten tatsächlich verwenden – „PZR", „Hollywood
  *                   Smile", „Zähne bleichen".
  *   `patientenfrage` ist die Frage, die jemand wirklich eintippt.
  *   `alteAdressen`  enthält unter `/zahnbeschwerden/…` genau die Beschwerden,
  *                   nach denen auf der alten Website gesucht wurde – und die
- *                   Zuordnung zur Behandlung ist dort schon gepflegt.
+ *                   Zuordnung zur Leistung ist dort schon gepflegt.
  *
  * Die dritte Quelle ist der eigentliche Gewinn: Sie ist nicht für die Suche
  * angelegt worden, sie fällt aus der Weiterleitungsarbeit ab. Wer eine alte
@@ -38,7 +38,7 @@
  * ── Standort ────────────────────────────────────────────────────────────
  *
  * Steht ein Standort fest, führt jeder Treffer dorthin. Bietet der Standort
- * die Behandlung nicht an, sagt der Treffer das – und nennt den Standort, der
+ * die Leistung nicht an, sagt der Treffer das – und nennt den Standort, der
  * sie anbietet. Das ist dieselbe Regel wie überall auf dieser Website: lieber
  * ein ehrliches „hier nicht, aber dort" als ein Link, hinter dem nichts ist.
  */
@@ -83,7 +83,7 @@ function ausSlug(pfad: string): string {
 // ── Index bauen ───────────────────────────────────────────────────────
 
 /**
- * Statische Seiten, die keine Behandlung und kein Standort sind.
+ * Statische Seiten, die keine Leistung und kein Standort sind.
  *
  * Von Hand, weil es wenige sind und weil jede einen anderen Grund hat,
  * gefunden zu werden. „Notfall" muss unter „schmerzen" und „zahn
@@ -219,7 +219,7 @@ const SEITEN: Seiteneintrag[] = [
 ];
 
 /**
- * Beschwerdebegriffe je Behandlung.
+ * Beschwerdebegriffe je Leistung.
  *
  * Zwei Quellen, beide schon vorhanden: `BESCHWERDEN_GEPLANT` (was als eigene
  * Seite kommen soll) und die Adressen unter `/zahnbeschwerden/` aus
@@ -353,8 +353,8 @@ export function indexBauen(sprache: Sprache = QUELLSPRACHE): Indexeintrag[] {
   /*
    * Blogbeiträge – ganz hinten im Rang.
    *
-   * Sie sollen gefunden werden, aber nie vor einer Behandlung stehen: Wer
-   * „veneers" sucht, will die Behandlung, nicht einen Beitrag darüber.
+   * Sie sollen gefunden werden, aber nie vor einer Leistung stehen: Wer
+   * „veneers" sucht, will die Leistung, nicht einen Beitrag darüber.
    */
   for (const b of beitraegeIn(BEITRAEGE, sprache)) {
     eintraege.push({
@@ -382,7 +382,7 @@ export interface Ergebnis {
   art: Trefferart;
   ueber?: string;
   /**
-   * Gesetzt, wenn es die Behandlung am gewählten Standort NICHT gibt. Enthält
+   * Gesetzt, wenn es die Leistung am gewählten Standort NICHT gibt. Enthält
    * den Namen des Standorts, der sie anbietet.
    */
   stattdessen?: string;
@@ -391,7 +391,7 @@ export interface Ergebnis {
 /**
  * Aus einem Treffer den Weg machen, den diese Person gehen soll.
  *
- * Ohne Standort führt eine Behandlung auf die allgemeine Seite. Mit Standort
+ * Ohne Standort führt eine Leistung auf die allgemeine Seite. Mit Standort
  * auf die Fassung dieses Standorts – und wenn es sie dort nicht gibt, sagt das
  * Ergebnis es, statt ins Leere zu zeigen.
  */

@@ -1,5 +1,5 @@
 /**
- * Leistungskatalog – einzige Quelle für alle Behandlungsseiten.
+ * Leistungskatalog – einzige Quelle für alle Leistungsseiten.
  *
  * Jede Leistung × jeder Standort, an dem sie angeboten wird, ergibt eine eigene
  * URL: /<standort>/leistungen/<leistung>/. Ist eine Leistung an einem Standort
@@ -1151,7 +1151,7 @@ export const LEISTUNGEN: Leistung[] = [
      * anders als die neu geschriebenen Behandlungstexte dieser Datei. Gekürzt
      * wurde er trotzdem: Auf der alten Seite standen zwischen den fachlichen
      * Abschnitten Praxiswerbung („7 Tage die Woche geöffnet",
-     * „Prophylaxe-Shop"), die auf einer Behandlungsseite nichts zu suchen hat.
+     * „Prophylaxe-Shop"), die auf einer Leistungsseite nichts zu suchen hat.
      *
      * Die Adresse ist neu (/leistungen/dentosophie/ statt unter
      * „ganzheitliche-zahnmedizin"), die alte leitet hierher weiter.

@@ -21,7 +21,7 @@
  *
  * ── Warum die Liste ohne KI auskommt ────────────────────────────────────
  *
- * Weil die Daten die Arbeit schon getan haben. Jede Behandlung führt ihre
+ * Weil die Daten die Arbeit schon getan haben. Jede Leistung führt ihre
  * `synonyme` – die Wörter, die Patientinnen und Patienten wirklich
  * benutzen –, die Beschwerdeseiten tragen die Symptome, und die
  * Weiterleitungsliste kennt jede alte Adresse. Ein Sprachmodell müsste sich
@@ -30,7 +30,7 @@
  * ── Ohne JavaScript ─────────────────────────────────────────────────────
  *
  * Bleibt die Seite ein Formular, das auf `?q=` sendet, und darunter stehen
- * die Behandlungen nach Bereich. Nicht dasselbe, aber auch keine leere
+ * die Leistungen nach Bereich. Nicht dasselbe, aber auch keine leere
  * Seite: Man kommt an jedes Ziel, nur über einen Klick mehr.
  */
 import { inhalte } from '../../i18n/daten';
@@ -170,7 +170,7 @@ const schema = [
   }
 
   const MARKEN: Record<Trefferart, string> = {
-    leistung: 'Behandlung',
+    leistung: 'Leistung',
     beschwerde: 'Beschwerde',
     standort: 'Standort',
     person: 'Team',
@@ -325,7 +325,7 @@ const schema = [
           /*
            * Zwei Sätze für zwei Sachverhalte.
            *
-           * „An Ihrem Standort nicht im Angebot" stimmt für eine Behandlung
+           * „An Ihrem Standort nicht im Angebot" stimmt für eine Leistung
            * und ist bei einem Menschen schlicht falsch – niemand ist ein
            * Angebot. Wer nicht in Potsdam arbeitet, arbeitet woanders, und
            * genau das gehört dort hin.
