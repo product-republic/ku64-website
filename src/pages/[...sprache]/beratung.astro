@@ -179,8 +179,21 @@ const faq = [
 </Basis>
 
 <script>
-  import { Conversation } from '@elevenlabs/client';
   import { beimSeitenaufbau } from '../../lib/seitenaufbau';
+
+  /*
+   * Das ElevenLabs-SDK wird NICHT hier oben geladen.
+   *
+   * Es wiegt 450 KB – mehr als der gesamte Rest der Website zusammen. Fest
+   * eingebunden lud es jeder, der diese Seite öffnet, auch wer nur die
+   * Fragen darunter liest oder lieber tippt. Geholt wird es deshalb erst in
+   * dem Moment, in dem jemand wirklich sprechen will (siehe `starten`).
+   *
+   * Diese Typen sind reine Typangaben und verschwinden beim Übersetzen –
+   * sie ziehen nichts in das Bündel.
+   */
+  type SDK = typeof import('@elevenlabs/client');
+  type Gespraech = Awaited<ReturnType<SDK['Conversation']['startSession']>>;
 
   /*
    * Nach jedem Seitenaufbau neu binden.
@@ -206,7 +219,7 @@ const faq = [
     const fehlerbox = document.getElementById('fehlerbox')!;
     const standortWahl = document.getElementById('standortWahl') as HTMLSelectElement;
 
-    let gespraech: Awaited<ReturnType<typeof Conversation.startSession>> | null = null;
+    let gespraech: Gespraech | null = null;
 
     // Auf einer Standortseite gelandet? Dann diesen Standort vorauswählen.
     try {
@@ -242,7 +255,16 @@ const faq = [
       setzeZustand('Verbindung wird aufgebaut…', 'verbindet');
 
       try {
-        // Mikrofon-Erlaubnis zuerst – bevor irgendetwas an ElevenLabs geht.
+        /* Jetzt erst die 450 KB holen – und zwar parallel zur
+           Mikrofonabfrage, die ohnehin auf eine Entscheidung wartet. Bis
+           jemand „Zulassen" geklickt hat, ist das SDK meistens schon da. */
+        const sdk = import('@elevenlabs/client');
+        /* Die Ablehnung wird unten beim `await` behandelt. Dieser leere
+           Fänger sorgt nur dafür, dass ein früher Ausstieg (Demo-Betrieb)
+           keine unbehandelte Ablehnung hinterlässt. */
+        sdk.catch(() => {});
+
+        // Mikrofon-Erlaubnis, bevor irgendetwas an ElevenLabs geht.
         await navigator.mediaDevices.getUserMedia({ audio: true });
 
         const slug = standortWahl.value;
@@ -258,6 +280,8 @@ const faq = [
         if (!res.ok || !daten.signedUrl) {
           throw new Error(daten.fehler || 'Verbindung fehlgeschlagen.');
         }
+
+        const { Conversation } = await sdk;
 
         gespraech = await Conversation.startSession({
           signedUrl: daten.signedUrl,
