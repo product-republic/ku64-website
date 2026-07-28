@@ -46,6 +46,46 @@ export default defineConfig({
    * `npm run weiterleitungen:planen` macht genau das.
    */
   redirects: process.env.OHNE_WEITERLEITUNGEN ? {} : alsAstroRedirects(),
+  /*
+   * Hinter welchen Adressen diese Anwendung erreichbar ist.
+   *
+   * ── Warum das nicht optional ist ────────────────────────────────────────
+   *
+   * Astro prüft bei jedem POST mit Formulardaten, ob der `Origin`-Kopf zur
+   * eigenen Adresse passt – ein Schutz gegen Cross-Site Request Forgery, und
+   * ein richtiger. Verglichen wird der Kopf mit `Astro.url`.
+   *
+   * `Astro.url` baut der Node-Adapter aus dem, was am Socket ankommt. Auf
+   * Railway steht davor ein Reverse Proxy: Der Browser spricht per HTTPS mit
+   * dem Proxy, der Proxy per HTTP mit uns, und die echte Adresse steht in
+   * `X-Forwarded-Host` und `X-Forwarded-Proto`. Diesen Köpfen glaubt Astro
+   * aus gutem Grund nicht von allein – wer sie fälschen kann, könnte sonst
+   * `Astro.url` beliebig setzen (Host Header Injection).
+   *
+   * Ohne diese Liste ignoriert Astro sie also und setzt `Astro.url` auf
+   * `http://localhost:4321`. Der Browser schickt `https://…railway.app`.
+   * Beides passt nicht zusammen, und jeder Formularversand der eigenen Seite
+   * endet mit 403 – gemessen an der Lächeln-Vorschau, die deshalb „Failed to
+   * fetch" zeigte.
+   *
+   * Hier stehen deshalb die Adressen, unter denen die Anwendung wirklich
+   * läuft, und nur die. `{}` (alles erlauben) wäre die Abkürzung und würde
+   * genau den Schutz aufheben, um den es geht.
+   *
+   * localhost und 127.0.0.1 stehen mit dabei, weil Klickpfad und Durchgang
+   * gegen den gebauten Server auf dem eigenen Rechner laufen. Ohne sie
+   * scheitern dieselben Formulare dort – und zwar erst in der Prüfung, nicht
+   * schon beim Bauen.
+   */
+  security: {
+    allowedDomains: [
+      { hostname: 'ku64.de', protocol: 'https' },
+      { hostname: '**.ku64.de', protocol: 'https' },
+      { hostname: '**.up.railway.app', protocol: 'https' },
+      { hostname: 'localhost' },
+      { hostname: '127.0.0.1' },
+    ],
+  },
   build: {
     inlineStylesheets: 'auto',
     format: 'directory',
