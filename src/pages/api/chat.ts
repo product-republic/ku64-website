@@ -15,6 +15,8 @@ import Anthropic from '@anthropic-ai/sdk';
 import { systemPrompt } from '../../lib/wissen';
 import { STANDORT_SLUGS } from '../../data/standorte';
 
+import { drosseln, zuVieleAnfragen } from '../../lib/drosselung';
+
 export const prerender = false;
 
 const MODELL = process.env.CHAT_MODELL || 'claude-sonnet-5';
@@ -45,6 +47,17 @@ function limitUeberschritten(ip: string): boolean {
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
+  /*
+   * Drosselung zuerst – vor dem Lesen des Körpers und lange vor dem Modell.
+   *
+   * Jede Antwort kostet Tokens. Ohne Begrenzung genügt eine Schleife, um eine
+   * Rechnung zu erzeugen, die niemand bemerkt, bis sie kommt. Zwanzig
+   * Nachrichten in fünf Minuten sind für ein Gespräch reichlich und für ein
+   * Skript nichts.
+   */
+  const drossel = drosseln(request, 'chat', { anzahl: 20, fensterSekunden: 300 });
+  if (!drossel.erlaubt) return zuVieleAnfragen(drossel);
+
   let daten: { nachrichten?: Nachricht[]; standort?: string | null };
 
   try {

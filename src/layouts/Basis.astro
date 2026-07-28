@@ -185,7 +185,19 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
 
     <title>{seitentitel}</title>
     <meta name="description" content={beschreibung} />
-    <link rel="canonical" href={canonical} />
+    {/*
+      Kein Canonical auf Seiten, die selbst nicht in den Index sollen.
+
+      `noindex` sagt „vergiss diese Seite", ein Canonical sagt „das Original
+      steht dort". Beides zusammen ist ein Widerspruch, dem Google nicht
+      verlässlich folgt. Betroffen waren die Fehlerseite – die zeigte per
+      Canonical auf sich selbst – sowie die gefilterten Listen je Standort.
+
+      Sprachen im Aufbau behalten ihr Canonical: Dort ist `noindex` eine
+      vorübergehende Entscheidung, und die Zuordnung soll stimmen, sobald sie
+      freigegeben werden.
+    */}
+    {!noindex && <link rel="canonical" href={canonical} />}
     {nichtIndexieren && <meta name="robots" content="noindex, follow" />}
 
     {
@@ -224,6 +236,9 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    {/* Ohne diese Zeile findet kein Leseprogramm den Feed – er existiert dann
+        zwar, aber nur für den, der die Adresse schon kennt. */}
+    <link rel="alternate" type="application/rss+xml" title="KU64 – Blog" href="/rss.xml" />
 
     {/* Standortbezug maschinenlesbar – auch für den Chatbot auf der Seite. */}
     {standort && <meta name="ku64:standort" content={standort.slug} />}

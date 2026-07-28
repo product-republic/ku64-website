@@ -61,9 +61,157 @@ const brotkrumen = [
       </div>
     </div>
   </section>
+
+  {/*
+    Das Formular, das zwei andere Seiten versprechen.
+
+    Die Barrierefreiheitserklärung nennt diesen Weg, um eine Barriere zu
+    melden, die KI-Transparenzseite als schriftliche Alternative zum Berater.
+    Beide verwiesen hierher, wo bis eben nur Adressen standen – wer das
+    Telefon nicht benutzen kann, fand ausgerechnet den Weg nicht, der ihm
+    zusteht.
+
+    Es funktioniert ohne JavaScript: Ohne Skript ist es ein gewöhnlicher
+    Formularversand mit eigener Antwortseite. Das Skript darüber ersetzt nur
+    den Seitenwechsel durch eine Rückmeldung an Ort und Stelle.
+  */}
+  <section class="abschnitt flaeche-warm" id="schreiben">
+    <div class="huelle eng">
+      <h2>Schreiben Sie uns</h2>
+      <p class="unter">
+        Für alles, was keinen Termin braucht: Rückfragen, Unterlagen, Lob,
+        Beschwerden – und um eine Barriere auf dieser Website zu melden.
+      </p>
+
+      <form id="kontaktformular" method="post" action="/api/kontakt/" novalidate>
+        <p class="feld">
+          <label for="k-standort">An welchen Standort?</label>
+          <select id="k-standort" name="standort">
+            {daten.standorte.map((s) => (
+              <option value={s.slug}>KU64 {s.name} – {s.ort}</option>
+            ))}
+          </select>
+        </p>
+
+        <p class="feld">
+          <label for="k-name">Ihr Name</label>
+          <input id="k-name" name="name" type="text" autocomplete="name" required />
+        </p>
+
+        <p class="feld">
+          <label for="k-email">E-Mail-Adresse</label>
+          <input id="k-email" name="email" type="email" autocomplete="email" required />
+          <span class="hilfe">Damit wir Ihnen antworten können.</span>
+        </p>
+
+        <p class="feld">
+          <label for="k-nachricht">Ihr Anliegen</label>
+          <textarea id="k-nachricht" name="nachricht" rows="6" required></textarea>
+          <span class="hilfe">
+            Bitte keine Befunde oder Beschwerden – eine E-Mail ist dafür nicht
+            sicher genug. Rufen Sie in dem Fall an, dann klären wir es direkt.
+          </span>
+        </p>
+
+        {/* Für Menschen unsichtbar. Wer es ausfüllt, arbeitet Formulare
+            automatisch ab – siehe src/pages/api/kontakt.ts. */}
+        <p class="honigtopf" aria-hidden="true">
+          <label for="k-website">Website</label>
+          <input id="k-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </p>
+
+        <button type="submit" class="knopf knopf-primaer knopf-gross">Nachricht senden</button>
+
+        {/* `aria-live`: Die Rückmeldung erscheint ohne Seitenwechsel und muss
+            deshalb angesagt werden, sonst bemerkt sie niemand, der nicht
+            hinsieht. */}
+        <p class="rueckmeldung" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </Basis>
 
+<script>
+  /*
+    Fortschrittliche Verbesserung: Ohne dieses Skript sendet das Formular ganz
+    normal und der Server antwortet mit JSON. Mit ihm bleibt man auf der Seite.
+  */
+  function formularVerdrahten() {
+    const formular = document.querySelector<HTMLFormElement>('#kontaktformular');
+    if (!formular || formular.dataset.verdrahtet) return;
+    formular.dataset.verdrahtet = 'ja';
+
+    const rueckmeldung = formular.querySelector<HTMLElement>('.rueckmeldung');
+    const knopf = formular.querySelector<HTMLButtonElement>('button[type=submit]');
+
+    formular.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!rueckmeldung || !knopf) return;
+
+      knopf.disabled = true;
+      rueckmeldung.textContent = 'Wird gesendet …';
+      rueckmeldung.className = 'rueckmeldung';
+
+      try {
+        const antwort = await fetch(formular.action, {
+          method: 'POST',
+          body: new FormData(formular),
+        });
+        const daten = await antwort.json();
+
+        if (antwort.ok) {
+          rueckmeldung.textContent = daten.hinweis ?? 'Ihre Nachricht ist eingegangen.';
+          rueckmeldung.className = 'rueckmeldung gut';
+          formular.reset();
+        } else {
+          rueckmeldung.textContent = daten.fehler ?? 'Das hat nicht geklappt.';
+          rueckmeldung.className = 'rueckmeldung schlecht';
+        }
+      } catch {
+        rueckmeldung.textContent =
+          'Die Verbindung kam nicht zustande. Bitte rufen Sie uns an – die Nummern stehen oben.';
+        rueckmeldung.className = 'rueckmeldung schlecht';
+      } finally {
+        knopf.disabled = false;
+      }
+    });
+  }
+
+  formularVerdrahten();
+  document.addEventListener('astro:page-load', formularVerdrahten);
+</script>
+
 <style>
+  .eng { max-width: 44rem; }
+  .feld { display: grid; gap: var(--raum-2); margin-block-end: var(--raum-5); }
+  .feld label { font-weight: 600; }
+  .feld input, .feld textarea, .feld select {
+    font: inherit;
+    padding: var(--raum-3);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-s, 6px);
+    background: var(--flaeche, #fff);
+    color: inherit;
+    width: 100%;
+  }
+  .feld input:focus-visible, .feld textarea:focus-visible, .feld select:focus-visible {
+    outline: 2px solid var(--akzent);
+    outline-offset: 2px;
+  }
+  .hilfe { font-size: var(--t-sm); color: var(--tinte-weich); }
+  /* Nicht `display: none`: Ein Feld, das der Browser gar nicht rendert, füllt
+     auch kein Skript aus – und genau darauf zielt der Honigtopf. */
+  .honigtopf {
+    position: absolute;
+    inset-inline-start: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .rueckmeldung { margin-block-start: var(--raum-4); font-weight: 600; }
+  .rueckmeldung.gut { color: var(--gut, #2C6B4C); }
+  .rueckmeldung.schlecht { color: var(--fehler, #B02A1B); }
+
   .unter { max-width: var(--breite-text); margin-block: var(--raum-4) var(--raum-7); font-size: var(--t-lg); color: var(--tinte-weich); }
   .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
   /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
