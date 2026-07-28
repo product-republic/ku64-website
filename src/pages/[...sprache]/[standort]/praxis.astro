@@ -139,17 +139,25 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
       <p class="unter">
         {t('standort.fachbereicheUnterEinemDach', { anzahl: gruppen.length })}
       </p>
-      <div class="raster">
+      {/*
+        Namen und Anzahl, nicht die Beschreibung des Fachbereichs.
+
+        Die Beschreibungen waren auf allen vier Praxisseiten dieselben – 246
+        Wörter, wortgleich, was zwei Praxisseiten auf 60,5 Prozent
+        Textgleichheit brachte. Was ein Fachbereich ist, gehört auf die
+        Leistungsübersicht. Was diese Praxis daraus anbietet, gehört hierher –
+        und das ist die Zahl dahinter.
+      */}
+      <ul class="bereiche">
         {
           gruppen.map((g) => (
-            <a class="karte karte-klickbar bereich" href={`/${standort.slug}/leistungen/#${g.kategorie.slug}`}>
-              <h3>{g.kategorie.name}</h3>
-              <p>{g.kategorie.beschreibung}</p>
-              <span class="anzahl">{t('praxis.anzahlBehandlungen', { anzahl: g.leistungen.length })}</span>
-            </a>
+            <li>
+              <a href={`/${standort.slug}/leistungen/#${g.kategorie.slug}`}>{g.kategorie.name}</a>
+              <span class="anzahl">{g.leistungen.length}</span>
+            </li>
           ))
         }
-      </div>
+      </ul>
     </div>
   </section>
 
@@ -173,6 +181,34 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
 </Basis>
 
 <style>
+  .bereiche {
+    list-style: none;
+    margin: var(--raum-5) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 0 var(--raum-m);
+  }
+  .bereiche li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--raum-2);
+    padding-block: var(--raum-2);
+    border-bottom: 1px solid var(--linie);
+  }
+  .bereiche a { color: inherit; text-decoration: none; flex: 1 1 auto; }
+  .bereiche a:hover, .bereiche a:focus-visible {
+    color: var(--akzent-schrift);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .bereiche .anzahl {
+    font-variant-numeric: tabular-nums;
+    color: var(--tinte-weich);
+    font-size: var(--t-sm);
+  }
+
   /**
    * Bildstrecke der Räume.
    *

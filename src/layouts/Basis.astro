@@ -212,10 +212,16 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     }
     <meta name="twitter:card" content="summary_large_image" />
 
-    <meta name="theme-color" content="#e8532e" media="(prefers-color-scheme: light)" />
+    {/* Hausrot, nicht das Orange von vorher: #e8532e kommt auf der Website
+        nirgends vor. Die Originaldatei der Marke nennt Gelb #FFCC00 für das
+        KU und Hausrot #B71E3F für die 64. Gelb als Leiste hinter weißer
+        Systemschrift wäre unlesbar – deshalb das Rot. */}
+    <meta name="theme-color" content="#B71E3F" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#16120f" media="(prefers-color-scheme: dark)" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {/* Fallback für Browser und Dienste, die blind /favicon.ico anfragen. */}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 

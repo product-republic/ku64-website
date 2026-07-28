@@ -1,9 +1,36 @@
 ---
+/**
+ * Kontakt zu einem Standort.
+ *
+ * ── Was hier vorher schiefging ──────────────────────────────────────────
+ *
+ * Die Seite bestand aus vier Kanal-Kacheln – anrufen, online buchen,
+ * schreiben, fragen –, und die waren auf allen vier Standorten wortgleich.
+ * Bei 153 Wörtern Gesamtumfang blieben nach Abzug von Adresse, Telefonnummer
+ * und E-Mail kaum drei eigene Sätze übrig. Gemessen waren zwei
+ * Standortkontaktseiten zu 58,9 Prozent identisch.
+ *
+ * Das Problem war nicht die Formulierung, sondern die Auswahl: Es stand
+ * nichts auf der Seite, was nur für diesen Ort gilt.
+ *
+ * ── Was jetzt darauf steht ──────────────────────────────────────────────
+ *
+ * Jeder Standort hat eine eigene E-Mail-Adresse – die KiezPraxis sogar eine
+ * eigene Identität als kiezpraxis@ku64.de. Jeder hat eine eigene Anfahrt,
+ * eigene Parkmöglichkeiten, eigene Sprechzeiten. Und an jedem sitzen andere
+ * Menschen an der Anmeldung; die stehen in den Teamdaten und werden hier
+ * namentlich genannt.
+ *
+ * Das ist kein Füllmaterial, sondern die Antwort auf die Frage, die jemand
+ * vor dem Anruf tatsächlich hat: Wen erreiche ich, wann, und wie komme ich
+ * hin.
+ */
 import { inhalte } from '../../../i18n/daten';
 import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE, zeitLesbar } from '../../../data/standorte';
+import { STANDORTE, zeitLesbar, oeffnungstageText } from '../../../data/standorte';
+import { veroeffentlichbar } from '../../../data/team';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 
 export function getStaticPaths() {
@@ -13,7 +40,6 @@ export function getStaticPaths() {
 const daten = inhalte(Astro);
 const t = texte(daten.sprache);
 
-
 const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/kontakt/`;
 
@@ -22,11 +48,35 @@ const brotkrumen = [
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
   { name: t('krume.kontakt'), pfad },
 ];
+
+/* Wer hier an der Anmeldung steht. Aus den Teamdaten, nicht aus einer
+   Annahme – und deshalb an jedem Standort andere Namen. */
+const anmeldung = veroeffentlichbar().filter(
+  (p) => p.standorte.includes(standort.slug) && ['empfang', 'verwaltung'].includes(p.gruppe),
+);
+
+/* Sprechzeiten in Worten. Gruppiert nach Schlusszeit, damit „Mo, Mi, Fr bis
+   20 Uhr, Di und Do bis 14 Uhr“ herauskommt statt fünf Einzeltagen. */
+const werktags = standort.oeffnungszeiten.filter((z) => z.von && !['Sa', 'So'].includes(z.tag));
+const nachEnde = new Map<string, string[]>();
+for (const z of werktags) {
+  nachEnde.set(z.bis!, [...(nachEnde.get(z.bis!) ?? []), z.tag]);
+}
+const erreichbar = [...nachEnde.entries()]
+  .sort((a, b) => b[1].length - a[1].length)
+  .map(([bis, tage]) => `${tage.join(', ')} bis ${bis} Uhr`)
+  .join(', ');
+
+const wochenende = standort.oeffnungszeiten.filter((z) => z.nachVereinbarung).map((z) => z.tag);
+
+/* Die eigene Adresse ist eine echte Unterscheidung: Wer an die allgemeine
+   Adresse schreibt, landet am Kurfürstendamm – auch wenn es um Potsdam geht. */
+const eigeneAdresse = standort.email !== 'info@ku64.de';
 ---
 
 <Basis
   titel={`Kontakt ${standort.ort}`}
-  description={`Kontakt zu KU64 ${standort.name}: ${standort.telefon}, ${standort.email}, ${standort.strasse}, ${standort.plz} ${standort.ort}.`}
+  description={`So erreichen Sie KU64 ${standort.name}: ${standort.telefon}, ${standort.email}, ${standort.strasse}, ${standort.plz} ${standort.ort}. Mit Sprechzeiten, Anfahrt und Parkmöglichkeiten.`}
   standort={standort}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -35,51 +85,111 @@ const brotkrumen = [
   <section class="abschnitt">
     <div class="huelle">
       <h1>Kontakt zu KU64 {standort.name}</h1>
-      <p class="unter">{t('kontakt.waehlenSieDenWeg')}</p>
+      <p class="unter">
+        {standort.strasse}, {standort.plz} {standort.ort}. Telefon{' '}
+        <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`}>{standort.telefon}</a>, E-Mail{' '}
+        <a href={`mailto:${standort.email}`}>{standort.email}</a>.
+      </p>
 
-      <div class="raster">
-        <div class="karte weg">
-          <h2>Anrufen</h2>
-          <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="gross">
-            {standort.telefon}
-          </a>
-          <p class="text">{t('kontakt.derSchnellsteWegBesonders')}</p>
+      <div class="raster-zwei">
+        <div>
+          <h2>Wann Sie uns hier erreichen</h2>
+          <p class="text">
+            Die Anmeldung in {standort.ort} ist {erreichbar} besetzt.
+            {
+              wochenende.length > 0 && (
+                <>
+                  {' '}
+                  {wochenende.join(' und ')} behandeln wir nach Vereinbarung – dafür brauchen
+                  Sie einen Termin, den Sie unter der Nummer oben bekommen.
+                </>
+              )
+            }
+          </p>
+          {standort.zeitenHinweis && <p class="text"><em>{standort.zeitenHinweis}</em></p>}
+
+          {
+            anmeldung.length > 0 ? (
+              <p class="text">
+                Am anderen Ende sitzt das Anmeldeteam dieses Hauses – unter anderem{' '}
+                {anmeldung.slice(0, 3).map((p, i, arr) => (
+                  <>
+                    {i > 0 && (i === arr.length - 1 ? ' und ' : ', ')}
+                    <strong>{p.name}</strong>
+                  </>
+                ))}
+                . Sie kennen die Sprechstundenpläne hier und können einschätzen, wie dringend
+                etwas ist.
+              </p>
+            ) : (
+              <p class="text">
+                Die KiezPraxis ist klein – Sie sprechen mit jemandem, der Sie beim nächsten
+                Besuch wiedererkennt. Wenn gerade behandelt wird, rufen wir zurück.
+              </p>
+            )
+          }
         </div>
 
-        <div class="karte weg">
-          <h2>{t('kontakt.onlineBuchen')}</h2>
-          <p class="text">{t('kontakt.freieTermineSehenUnd')}</p>
-          <a href={`/${standort.slug}/termine/`} class="knopf knopf-primaer">{t('kontakt.zurTerminbuchung')}</a>
-        </div>
-
-        <div class="karte weg">
-          <h2>Schreiben</h2>
-          <a href={`mailto:${standort.email}`} class="gross klein-gross">{standort.email}</a>
-          <p class="text">{t('kontakt.fuerAllesWasNicht')}</p>
-        </div>
-
-        <div class="karte weg">
-          <h2>{t('kontakt.fragenVorab')}</h2>
-          <p class="text">{t('kontakt.unserDigitalerBeraterBeantwortet')}</p>
-          <button type="button" class="knopf knopf-sekundaer chat-oeffner">{t('kontakt.chatOeffnen')}</button>
+        <div>
+          <h2>Welcher Weg wofür</h2>
+          <dl class="wege">
+            <dt>Termin, Absage, Verschiebung</dt>
+            <dd>
+              <a href={`/${standort.slug}/termine/`}>Online buchen</a> oder anrufen – beides
+              führt in denselben Kalender.
+            </dd>
+            <dt>Starke Schmerzen, Schwellung, Unfall</dt>
+            <dd>
+              Bitte anrufen, nicht schreiben. Wir halten hier Zeiten frei.{' '}
+              <a href="/notfall/">Was im Notfall zu tun ist</a>
+            </dd>
+            <dt>Rezept, Bescheinigung, Unterlagen</dt>
+            <dd>
+              Schriftlich an <a href={`mailto:${standort.email}`}>{standort.email}</a> – mit
+              Namen und Geburtsdatum, sonst dürfen wir nichts herausgeben.
+            </dd>
+            <dt>Frage zu einer Leistung oder zu Kosten</dt>
+            <dd>
+              Der <button type="button" class="chat-oeffner text-knopf">digitale Berater</button>{' '}
+              antwortet rund um die Uhr und kennt das Angebot dieses Standorts.
+            </dd>
+          </dl>
         </div>
       </div>
 
+      {
+        eigeneAdresse && (
+          <p class="hinweis">
+            <strong>{standort.email} führt direkt hierher.</strong> Post an die allgemeine
+            Adresse landet am Kurfürstendamm und muss von dort weitergereicht werden – das
+            kostet einen Tag.
+          </p>
+        )
+      }
+
       <div class="raster-zwei unten">
         <div>
-          <h2>Adresse</h2>
-          <address>
-            <strong>KU64 {standort.name}</strong><br />
-            {standort.strasse}<br />
-            {standort.plz} {standort.ort}
-          </address>
-          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">{t('kontakt.anfahrtAnsehen')}</a>
+          <h2>So kommen Sie ins Haus</h2>
+          <ul class="anfahrt-kurz">
+            {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
+            <li>{standort.anfahrt.parken}</li>
+            <li>
+              {
+                standort.anfahrt.barrierefrei
+                  ? 'Der Zugang ist barrierefrei. Sagen Sie vorab Bescheid, wenn Sie Unterstützung brauchen – dann bereiten wir alles vor.'
+                  : (standort.anfahrt.barrierefreiHinweis ??
+                    'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.')
+              }
+            </li>
+          </ul>
+          <a href={`/${standort.slug}/anfahrt/`} class="knopf knopf-sekundaer">Anfahrt im Detail</a>
         </div>
 
         <div>
-          <h2>{t('standort.sprechzeiten')}</h2>
+          <h2>Sprechzeiten</h2>
+          <p class="klein">{oeffnungstageText(standort)}</p>
           <table class="zeiten">
-            <caption class="nur-screenreader">{t('fuss.oeffnungszeiten')}</caption>
+            <caption class="nur-screenreader">Sprechzeiten KU64 {standort.name}</caption>
             <tbody>
               {
                 standort.oeffnungszeiten.map((z) => (
@@ -91,12 +201,7 @@ const brotkrumen = [
               }
             </tbody>
           </table>
-          {standort.zeitenHinweis && <p class="hinweis hinweis-warnung">{standort.zeitenHinweis}</p>}
         </div>
-      </div>
-
-      <div class="hinweis notfall">
-        <strong>{t('kontakt.beiAkutenBeschwerden')}</strong>{t('kontakt.rufenSieBitteAn')}<a href="/notfall/">Notfall</a>.
       </div>
     </div>
   </section>
@@ -111,16 +216,61 @@ const brotkrumen = [
     color: var(--tinte-weich);
   }
   h2 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
-  .gross { display: block; font-size: var(--t-xl); font-weight: 700; color: var(--akzent-schrift); text-decoration: none; margin-block-end: var(--raum-3); }
-  .klein-gross { font-size: var(--t-md); word-break: break-all; }
-  .text { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); margin-block-end: var(--raum-4); }
-  .weg { justify-content: flex-start; }
-  .weg .knopf { margin-block-start: auto; align-self: flex-start; }
+  .text {
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    margin-block-end: var(--raum-4);
+    max-width: 48ch;
+  }
+  .text strong { color: var(--tinte); }
+
+  .wege { margin: 0; }
+  .wege dt { font-weight: 600; margin-block-start: var(--raum-4); }
+  .wege dt:first-child { margin-block-start: 0; }
+  .wege dd {
+    margin: var(--raum-2) 0 0;
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+  }
+
+  /* Sieht aus wie ein Verweis, ist aber eine Schaltfläche – der Berater ist
+     kein Ziel, sondern öffnet sich auf dieser Seite. */
+  .text-knopf {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--akzent-schrift);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+  .anfahrt-kurz {
+    list-style: none;
+    margin: 0 0 var(--raum-4);
+    padding: 0;
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-normal);
+    display: grid;
+    gap: var(--raum-2);
+  }
+  .anfahrt-kurz li { padding-inline-start: 1.1em; position: relative; }
+  .anfahrt-kurz li::before {
+    content: '–';
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--akzent-schrift);
+  }
+
+  .hinweis { margin-block: var(--raum-6); }
   .unten { margin-block: var(--raum-8) var(--raum-6); }
-  address { font-style: normal; line-height: var(--zeile-weit); color: var(--tinte-weich); margin-block-end: var(--raum-4); }
+  .klein { font-size: var(--t-sm); color: var(--tinte-weich); margin-block-end: var(--raum-3); }
   .zeiten { width: 100%; max-width: 22rem; border-collapse: collapse; }
   .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); text-align: start; }
   .zeiten th { font-weight: 600; width: 4rem; }
   .zeiten td { font-variant-numeric: tabular-nums; color: var(--tinte-weich); }
-  .notfall { border-color: var(--fehler); background: var(--fehler-flaeche); }
 </style>
