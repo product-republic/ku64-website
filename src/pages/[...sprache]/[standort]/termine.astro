@@ -50,27 +50,72 @@ const brotkrumen = [
   { name: t('krume.termine'), pfad },
 ];
 
+/*
+ * Nur Fragen, die HIER anders beantwortet werden als anderswo.
+ *
+ * Vorher standen an dieser Stelle vier allgemeine Fragen – wie buche ich,
+ * was bei Schmerzen, kann ich absagen, was mitbringen. Sie waren auf allen
+ * vier Standortseiten wortgleich; gemessen waren 306 von 339 Wörtern
+ * identisch, die Seiten damit untereinander zu 66 Prozent gleich.
+ *
+ * Allgemeine Fragen gehören auf eine allgemeine Seite. Sie stehen jetzt auf
+ * /termine/ und werden von hier verlinkt. Was bleibt, ist das, was sich von
+ * Standort zu Standort tatsächlich unterscheidet – und das kommt aus den
+ * Standortdaten, nicht aus einer Vorlage.
+ */
+const wochentags = standort.oeffnungszeiten.filter((z) => z.von && !['Sa', 'So'].includes(z.tag));
+const abweichend = wochentags.filter((z) => z.bis !== wochentags[0]?.bis);
+const wochenende = standort.oeffnungszeiten.filter((z) => z.nachVereinbarung).map((z) => z.tag);
+
 const faq = [
+  /* Nur der Kurfürstendamm führt zwei getrennte Kalender. Wer das nicht
+     weiß, bucht die Kieferorthopädie im Zahnmedizin-Kalender und bekommt
+     einen Termin, der ihm nicht hilft. */
+  ...(standort.doctolib.length > 1
+    ? [
+        {
+          frage: `Warum gibt es bei KU64 ${standort.name} zwei Terminkalender?`,
+          antwort: `Zahnmedizin und Kieferorthopädie werden hier von getrennten Teams behandelt und haben deshalb je einen eigenen Kalender: ${standort.doctolib
+            .map((d) => d.label)
+            .join(' und ')}. Wählen Sie den Kalender, der zu Ihrem Anliegen passt – bei Unsicherheit rufen Sie an, wir ordnen es zu.`,
+        },
+      ]
+    : []),
+
+  /* Sprechzeiten, die vom Üblichen abweichen – bei der KiezPraxis enden
+     Dienstag und Donnerstag mittags. Das steht sonst nur in der Tabelle. */
+  ...(abweichend.length > 0
+    ? [
+        {
+          frage: `Bis wann kann ich in ${standort.ort} einen Termin bekommen?`,
+          antwort: `${wochentags
+            .map((z) => `${z.tag} bis ${z.bis} Uhr`)
+            .join(', ')}. Die kürzeren Tage sind fest so gelegt – ein Abendtermin ist an ihnen nicht möglich, dafür an den übrigen.`,
+        },
+      ]
+    : []),
+
+  /* Wochenende nach Vereinbarung: Wer das als „geschlossen" liest, ruft
+     nicht an – und wer es als feste Zeit liest, steht vor der Tür. */
+  ...(wochenende.length > 0
+    ? [
+        {
+          frage: `Kann ich bei KU64 ${standort.name} am Wochenende einen Termin bekommen?`,
+          antwort: `${wochenende.join(' und ')} behandeln wir nach Vereinbarung. Das heißt: nicht ohne Termin, aber sehr wohl möglich – rufen Sie unter ${standort.telefon} an, dann klären wir es.`,
+        },
+      ]
+    : []),
+
   {
-    frage: `Wie buche ich einen Termin bei KU64 ${standort.name}?`,
-    antwort: `Online über die Terminbuchung auf dieser Seite oder telefonisch unter ${standort.telefon}. Für die Online-Buchung brauchen Sie nur wenige Angaben; den Anamnesebogen füllen Sie danach bequem digital aus.`,
+    frage: `Wie komme ich zu KU64 ${standort.name}?`,
+    antwort: `${standort.anfahrt.oepnv.join('. ')}. ${standort.anfahrt.parken} Die Adresse lautet ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
   },
   {
-    frage: 'Was mache ich, wenn ich starke Schmerzen habe?',
-    antwort: `Rufen Sie uns bitte direkt an unter ${standort.telefon} statt online zu buchen. Wir halten Termine für Akutfälle frei und können am Telefon einschätzen, wie dringend es ist.`,
-  },
-  {
-    frage: 'Kann ich einen Termin wieder absagen?',
-    antwort:
-      'Ja. Bitte sagen Sie spätestens 24 Stunden vorher ab, telefonisch oder über den Link in Ihrer Bestätigungsmail. So kann jemand anderes den Termin bekommen.',
-  },
-  {
-    frage: 'Was muss ich zum ersten Termin mitbringen?',
-    antwort:
-      'Ihre Versichertenkarte, gegebenenfalls Bonusheft und Allergiepass sowie eine Liste Ihrer Medikamente. Den Anamnesebogen können Sie vorab digital ausfüllen – dann geht es vor Ort direkt los.',
+    frage: 'Ich habe starke Schmerzen – wen rufe ich an?',
+    antwort: `Bitte ${standort.telefon} statt online zu buchen. Wir halten an diesem Standort Zeiten für Schmerzpatientinnen und -patienten frei und schätzen am Telefon ein, wie dringend es ist.`,
   },
 ];
----
+------
 
 <Basis
   titel={`Termin in ${standort.ort}`}
@@ -186,7 +231,7 @@ const faq = [
 
   <div class="huelle">
     <section class="faq-bereich">
-      <h2>{t('termine.fragenZurTerminbuchung')}</h2>
+      <h2>Fragen zu diesem Standort</h2>
       {
         faq.map((f) => (
           <details>
@@ -195,6 +240,11 @@ const faq = [
           </details>
         ))
       }
+      <p class="klein">
+        Allgemeine Fragen zur Terminbuchung – absagen, verschieben, was zum
+        ersten Termin mitzubringen ist – beantworten wir gesammelt unter
+        <a href="/termine/">Termin buchen</a>.
+      </p>
     </section>
   </div>
 </Basis>

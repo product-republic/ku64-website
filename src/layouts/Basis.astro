@@ -286,6 +286,21 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
       <slot />
     </main>
 
+    {/*
+      Der Terminaufruf steht NEBEN dem Inhalt, nicht darin.
+
+      Er ist auf 243 Seiten derselbe: Adresse, Telefonnummer, „Online-Termin
+      wählen“, „Anamnese vorab ausfüllen“. Als <section> im Hauptinhalt zählte
+      dieser Block als Seiteninhalt – auf der Kontaktseite eines Standorts mit
+      rund 160 Wörtern waren das fünfzehn Prozent der Seite, und zwar
+      dieselben fünfzehn Prozent wie auf den drei anderen.
+
+      <aside> außerhalb von <main> ist hier nicht der Trick, sondern die
+      richtige Auszeichnung: ergänzender, seitenübergreifend wiederkehrender
+      Inhalt. Sichtbar ändert sich nichts, er steht weiterhin am Seitenende.
+    */}
+    <slot name="abschluss" />
+
     <Fusszeile standort={standort} />
 
     <Berater standort={standort} />
