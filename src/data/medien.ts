@@ -35,6 +35,12 @@ export interface Kopfvideo {
   datei: string;
   /** Standbild, das vor dem Abspielen steht. Ohne das bleibt der Kopf grau. */
   poster: string;
+  /**
+   * Sekunde, bei der das Video einsetzt – dieselbe, aus der das Standbild
+   * stammt. Ohne sie springt das Bild in dem Moment, in dem es sich zu
+   * bewegen anfängt.
+   */
+  beginn?: number;
   megabyte: number;
   /** Beschreibt, was zu sehen ist – für Menschen, die das Video nicht sehen. */
   beschreibung: string;
@@ -56,6 +62,16 @@ export const KOPFVIDEOS: Kopfvideo[] = [
     quelle: 'kudamm720p-full-compressed.mp4',
     datei: '/medien/kopf-berlin-charlottenburg.mp4',
     poster: '/medien/kopf-berlin-charlottenburg.jpg',
+    /*
+     * Das Standbild ist nicht das erste Bild des Videos.
+     *
+     * Das erste Bild zeigt das Dach des Hauses – ein Bürogebäude von außen,
+     * bei dem niemand an eine Zahnarztpraxis denkt. Der Rundgang wird erst
+     * nach ein paar Sekunden zu dem, wofür KU64 bekannt ist: die gelbe Höhle
+     * von Graft. Genau diese Sekunde ist das Standbild, und dort beginnt
+     * auch das Video – sonst spränge das Bild beim Anlaufen.
+     */
+    beginn: 10.8,
     megabyte: 5.6,
     beschreibung: 'Rundgang durch die Praxis am Kurfürstendamm',
   },

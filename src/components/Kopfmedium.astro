@@ -48,6 +48,7 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
       <video
         class="kopfmedium-video"
         poster={medium.video.poster}
+        data-beginn={medium.video.beginn}
         preload="none"
         muted
         loop
@@ -95,9 +96,18 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
            Mobilfunk kostet Daten, die niemand für Dekoration ausgeben will. */
         if (window.matchMedia('(max-width: 48rem)').matches) return;
 
+        /* Dort einsetzen, wo das Standbild aufhört – sonst springt das Bild
+           in dem Moment, in dem es sich zu bewegen anfängt. */
+        const beginn = Number(v.dataset.beginn || 0);
+        let gesetzt = false;
+
         const beobachter = new IntersectionObserver((eintraege) => {
           for (const e of eintraege) {
             if (!e.isIntersecting) { v.pause(); continue; }
+            if (beginn > 0 && !gesetzt) {
+              gesetzt = true;
+              try { v.currentTime = beginn; } catch {}
+            }
             v.play().catch(() => {
               /* Abgelehntes Autoplay ist kein Fehler – das Standbild steht. */
             });
@@ -105,6 +115,11 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
         }, { threshold: 0.2 });
 
         beobachter.observe(v);
+
+        /* Beim Seitenwechsel tauscht der ClientRouter den Körper aus. Das
+           Video ist dann weg, der Beobachter aber nicht: Er hält weiter ein
+           Element fest, das niemand mehr sieht. Bei jedem Wechsel einen mehr. */
+        document.addEventListener('astro:before-swap', () => beobachter.disconnect(), { once: true });
       })();
       `}
     </script>

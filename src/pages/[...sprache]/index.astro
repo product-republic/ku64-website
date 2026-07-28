@@ -11,6 +11,7 @@ import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import Bild from '../../components/Bild.astro';
+import Kopfmedium from '../../components/Kopfmedium.astro';
 import { standortbildFuer } from '../../data/medien';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
 import { texte } from '../../i18n/katalog';
@@ -48,6 +49,11 @@ const faq = [
 
 const gesamtLeistungen = daten.leistungen.length;
 const t = texte(daten.sprache);
+
+/* Die Länge des Satzes bestimmt seine Schriftgröße im Kopf – siehe die
+   Erklärung bei `h1` weiter unten. Sie kommt aus dem Text selbst, damit sie
+   in jeder Sprache stimmt, ohne dass jemand daran denken muss. */
+const ueberschrift = t('start.ueberschrift');
 ---
 
 <Basis
@@ -56,10 +62,24 @@ const t = texte(daten.sprache);
   pfad="/"
   schema={[schemaOrganisation(), schemaFaq(faq)]}
 >
-  <section class="held">
-    <div class="huelle">
+  <section class="held held-medium auf-medium">
+    {/*
+      Das Kopfmedium der Startseite ist der Kurfürstendamm.
+
+      Das ist eine bewusste Ausnahme von der Regel, dass diese Seite keinen
+      Standort vorwegnimmt: Sie zeigt ihn als BILD, nicht als Auswahl. Die
+      gelbe Höhle am Ku'damm ist seit zwanzig Jahren das, woran man KU64
+      erkennt – sie steht hier für die Marke, nicht für eine Adresse.
+      Verlinkt wird von hier aus nichts; die Wahl trifft man weiter unten
+      an vier gleichrangigen Karten.
+    */}
+    <Kopfmedium standortSlug="berlin-charlottenburg" />
+    {/* Der weite Rahmen, nicht der normale: Die Überschrift soll über die
+        ganze Seite laufen. Der Fließtext darunter bleibt schmal – eine Zeile
+        über 1300 Pixel liest niemand gern. */}
+    <div class="huelle-weit">
       <p class="held-marke">{t('start.ku64DieZahnspezialisten')}</p>
-      <h1>{t('start.ueberschrift')}</h1>
+      <h1 style={`--zeichen:${ueberschrift.length}`}>{ueberschrift}</h1>
       <p class="held-text">{t('start.vorspann', { anzahl: daten.standorte.length })}</p>
 
       {/* Zuletzt gewählter Standort – ein Angebot, keine Umleitung. */}
@@ -203,13 +223,28 @@ const t = texte(daten.sprache);
 </script>
 
 <style>
+  /*
+   * Der Kopf der Startseite steht auf einem Medium, nicht auf einem Verlauf.
+   *
+   * Vorher lag hier ein heller Gelbverlauf: sauber, aber er zeigte nichts.
+   * Wer zum ersten Mal kommt, will vor allem eines wissen – wie sieht es da
+   * aus? Der Rundgang durch die Praxis beantwortet das in zwei Sekunden und
+   * besser als jeder Satz darüber.
+   */
   .held {
-    padding-block: clamp(var(--raum-8), 10vw, var(--raum-10)) var(--raum-7);
-    background: linear-gradient(
-      160deg,
-      color-mix(in oklab, var(--ku-gelb) 8%, var(--flaeche)),
-      var(--flaeche) 65%
-    );
+    position: relative;
+    padding-block: clamp(var(--raum-9), 15vw, 13rem) clamp(var(--raum-7), 8vw, var(--raum-9));
+    border-end-start-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .held-medium .held-marke {
+    color: var(--auf-medium-schrift-leise);
+  }
+
+  .held-medium .held-text {
+    color: var(--auf-medium-schrift);
   }
 
   .held-marke {
@@ -220,10 +255,74 @@ const t = texte(daten.sprache);
     color: var(--akzent-schrift);
   }
 
+  /*
+   * Auf dem Telefon bricht die Überschrift nach vierzehn Zeichen um – sonst
+   * stünden dort drei Wörter je Zeile und die Zeile wäre schmaler als der
+   * Daumen.
+   *
+   * `text-wrap: balance` verteilt den Rest gleichmäßig – etwa auf
+   * Französisch, wo derselbe Satz länger ist.
+   */
   h1 {
     font-size: var(--t-4xl);
     margin-block: var(--raum-4);
     max-width: 14ch;
+    text-wrap: balance;
+  }
+
+  /*
+   * Auf dem Schreibtisch läuft die Überschrift in EINER Zeile über die
+   * ganze Breite.
+   *
+   * ── Warum nicht einfach eine große Schrift ──────────────────────────
+   *
+   * Weil „groß" und „über die ganze Breite" nicht dasselbe sind. Mit einer
+   * festen Größe passiert je nach Sprache eines von beidem Falschen: Der
+   * deutsche Satz („Wo dürfen wir Sie behandeln?") bricht nach „Sie" um und
+   * die zweite Zeile besteht aus einem Wort; der englische („Where may we
+   * treat you?") ist fünf Zeichen kürzer und hört weit vor dem rechten Rand
+   * auf. Eine Größe, die für alle drei Sprachen stimmt, gibt es nicht.
+   *
+   * ── Wie es hier gelöst ist ──────────────────────────────────────────
+   *
+   * Die Größe wird aus der Breite geteilt durch die Zeichenzahl bestimmt,
+   * statt geraten. `--zeichen` steht im Markup und ist die Länge des Satzes
+   * in der Sprache, die gerade gilt – ohne Zutun, weil sie aus dem Text
+   * selbst kommt.
+   *
+   * Der Faktor 0,53 ist die mittlere Zeichenbreite dieser Schrift, gemessen
+   * bei 100 px: deutsch 50,3 px, englisch und französisch je 51,9 px. 0,53
+   * liegt knapp darüber und lässt damit den Rest Luft, den Zeichenzahl als
+   * Näherung braucht.
+   *
+   * `100cqi` ist die INNENbreite der Hülle, nicht die des Fensters. Damit
+   * stimmt die Rechnung auch dort, wo beides auseinanderläuft: ab 1600 px
+   * wächst das Fenster weiter, die Hülle nicht mehr.
+   *
+   * Die 7,5 rem sind die Obergrenze – nicht die gewünschte Größe, sondern
+   * die Stelle, an der eine Überschrift aufhört, eine zu sein. Erreicht wird
+   * sie nur vom kürzesten der drei Sätze auf sehr breiten Schirmen.
+   *
+   * Ergebnis, gemessen von 960 bis 2560 px in allen drei Sprachen: überall
+   * eine Zeile, überall 95 bis 98 Prozent der Breite gefüllt.
+   */
+  @media (min-width: 60rem) {
+    .huelle-weit {
+      container-type: inline-size;
+    }
+
+    h1 {
+      max-width: none;
+      font-size: min(7.5rem, 100cqi / (var(--zeichen, 28) * 0.53));
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      /*
+       * Hier KEIN `balance`: Es verteilt gleichmäßig auf zwei Zeilen, auch
+       * wenn eine gereicht hätte. Genau das war der Fehler – die
+       * Überschrift stand groß da und trotzdem nur über der halben Seite.
+       */
+      text-wrap: initial;
+    }
   }
 
   .held-text {
