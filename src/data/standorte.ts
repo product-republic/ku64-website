@@ -102,6 +102,34 @@ export interface Standort {
    * redaktionelle Entscheidung zu überschreiben.
    */
   oeffnungsangabe: { tage: number; zusatz?: string };
+  /**
+   * Portrait dieses Hauses – der Text, der es von den anderen unterscheidet.
+   *
+   * ── Warum es das gibt ───────────────────────────────────────────────────
+   *
+   * Die Standortseiten waren untereinander zu über 40 Prozent textgleich, bei
+   * rund 200 Wörtern Umfang. Der Grund war nicht die Formulierung, sondern das
+   * Fehlen von Inhalt: Auf keiner Seite stand etwas, das nur für diesen Ort
+   * gilt. Adresse, Öffnungszeiten und Telefonnummer allein reichen nicht, um
+   * vier Häuser zu unterscheiden – sie sind zu kurz.
+   *
+   * ── Was hier stehen darf ────────────────────────────────────────────────
+   *
+   * Nur Nachprüfbares. Jeder Satz stützt sich auf eine dieser Quellen:
+   *
+   *   · die Daten dieser Datei (Adresse, Zeiten, Anfahrt, Eröffnung)
+   *   · die Verfügbarkeitsmatrix in leistungen.ts (was es hier gibt, was nicht)
+   *   · team.ts (wie viele Menschen hier arbeiten)
+   *   · Geografie, die jeder auf einer Karte nachsehen kann
+   *
+   * Ausdrücklich NICHT: Zahl der Behandlungszimmer, Ausstattung, Wartezeiten,
+   * Beschreibungen der Innenräume. Das weiß nur die Praxis, und Erfundenes auf
+   * einer Arztseite ist schlimmer als eine kurze Seite.
+   *
+   * Wo eine Zahl steht, die sich ändern kann, steht sie als Platzhalter im
+   * Text und wird beim Ausspielen ersetzt – sonst altert der Absatz still.
+   */
+  portrait: { titel: string; text: string }[];
   /** Frei formulierter Hinweis, falls die Zeiten Ausnahmen haben. */
   zeitenHinweis?: string;
   eroeffnet: string;
@@ -193,6 +221,24 @@ export const STANDORTE: Standort[] = [
   {
     slug: 'berlin-charlottenburg',
     oeffnungsangabe: { tage: 7 },
+    portrait: [
+      {
+        titel: 'Warum die Praxis so groß ist',
+        text: 'Der Kurfürstendamm ist das Haus, aus dem die anderen drei hervorgegangen sind. Seit {jahr} liegt die Praxis an der Ecke zur Leibnizstraße, wenige Schritte vom Adenauerplatz – eine Lage, die weniger mit Prestige zu tun hat als mit Erreichbarkeit: Der Kurfürstendamm ist eine der wenigen Berliner Achsen, an der Bus, U-Bahn und Auto gleichermaßen ankommen. Aus dieser Erreichbarkeit folgt der Zuschnitt. Ein Haus, in dem alle {anzahl} Leistungen unter einem Dach liegen, funktioniert nur, wenn Menschen aus dem ganzen Stadtgebiet es ohne Umsteigen erreichen.',
+      },
+      {
+        titel: 'Alles an einem Ort – und was das praktisch heißt',
+        text: 'Dies ist der einzige KU64-Standort, an dem es keine Lücke im Angebot gibt: Alle {anzahl} Leistungen aus {bereiche} Fachbereichen werden hier erbracht. Für Patientinnen und Patienten heißt das vor allem eines: Wenn während einer Behandlung ein anderes Fachgebiet gebraucht wird – die Wurzelbehandlung wird zur Chirurgie, die Krone braucht Kieferorthopädie davor –, findet der nächste Schritt im selben Haus statt, oft am selben Tag. Wo dieses Fachgebiet erst gesucht werden muss, vergehen Wochen. Dazu kommt das zahntechnische Meisterlabor im Haus: Kronen, Brücken und Schienen entstehen hier, nicht in einem auswärtigen Labor.',
+      },
+      {
+        titel: 'Zwei Kalender, ein Grund',
+        text: 'Am Kurfürstendamm gibt es als einzigem Standort zwei getrennte Terminkalender – einen für Zahnmedizin, einen für Kieferorthopädie. Das ist keine Verwaltungsvorliebe: Eine kieferorthopädische Kontrolle dauert zehn Minuten, eine chirurgische Sitzung anderthalb Stunden. In einem gemeinsamen Kalender verdrängen die langen Termine die kurzen, und wer nur die Spange nachziehen lassen will, wartet drei Wochen. Wählen Sie den Kalender, der zu Ihrem Anliegen passt – bei Unsicherheit hilft ein Anruf.',
+      },
+      {
+        titel: 'Sieben Tage, auch sonntags',
+        text: 'Dieser Standort behandelt an sieben Tagen zu festen Zeiten, samstags von 9 bis 19 und sonntags von 10 bis 18 Uhr – ohne Voranmeldungspflicht am Wochenende, anders als in Potsdam und in der KiezPraxis. Für Berufstätige ist das der eigentliche Grund, hierher zu kommen: Ein Termin am Sonntagvormittag kostet keinen Urlaubstag. Für Schmerzfälle ist es der zweite: An sieben Tagen ist jemand da, der einschätzen kann, ob es bis Montag Zeit hat.',
+      },
+    ],
     name: 'Kurfürstendamm',
     nameLang: 'KU64 Berlin Charlottenburg – Kurfürstendamm',
     claim:
@@ -234,6 +280,24 @@ export const STANDORTE: Standort[] = [
   {
     slug: 'potsdam',
     oeffnungsangabe: { tage: 7, zusatz: 'Sa + So nach Vereinbarung' },
+    portrait: [
+      {
+        titel: 'Zahnmedizin im Palais Ritz',
+        text: 'Die Potsdamer Praxis liegt seit {jahr} in der Berliner Straße 139, im denkmalgeschützten Palais Ritz in der Berliner Vorstadt – zwischen Glienicker Brücke und Innenstadt, wenige Minuten vom Neuen Garten. Ein denkmalgeschütztes Haus setzt einer Zahnarztpraxis Grenzen: Wände lassen sich nicht beliebig versetzen, Leitungen nicht beliebig führen. Was hier entstanden ist, musste sich in eine vorhandene Struktur fügen statt umgekehrt.',
+      },
+      {
+        titel: 'Was hier möglich ist',
+        text: '{anzahl} der {gesamt} KU64-Leistungen werden in Potsdam erbracht, darunter die vollständige Implantologie mit eigener Oralchirurgie und 3D-Röntgen. Drei Leistungen bleiben dem Kurfürstendamm vorbehalten: feste Zähne an einem Tag, die feste Zahnspange und die Behandlung in Vollnarkose. Das sagen wir hier, damit niemand für einen dieser drei Fälle nach Potsdam fährt und dann weitergeschickt wird. Die Wege zwischen den Häusern sind eingespielt – wer hier anfängt und für einen Schritt nach Berlin muss, wird nicht neu untersucht.',
+      },
+      {
+        titel: 'Wer hier behandelt',
+        text: 'In Potsdam arbeiten {behandelnde} Menschen, davon {zahnaerzte} zahnärztlich. Die medizinische Leitung liegt bei Nils Radsack, Zahnarzt für Zahnästhetik und Endodontologie. Ein Team dieser Größe hat einen Vorteil, den ein großes Haus nicht bieten kann: Sie treffen bei jedem Termin auf dieselben Gesichter, und Ihre Vorgeschichte muss nicht bei jedem Besuch neu erzählt werden.',
+      },
+      {
+        titel: 'Wochenende nach Vereinbarung – was das bedeutet',
+        text: 'Montag bis Freitag ist von 8 bis 20 Uhr geöffnet. Samstag und Sonntag behandeln wir ebenfalls, aber nur mit Termin. Der Unterschied ist wichtig genug, um ihn auszusprechen: „Geschlossen" wäre falsch – es gibt Wochenendtermine, und viele bekommen sie. „Geöffnet" wäre es aber auch, denn wer ohne Anmeldung samstags vor der Tür steht, steht vor einer verschlossenen. Ein Anruf unter der Woche klärt es.',
+      },
+    ],
     name: 'Potsdam',
     nameLang: 'KU64 Potsdam – Zahnarzt im Palais Ritz',
     claim:
@@ -272,6 +336,24 @@ export const STANDORTE: Standort[] = [
   {
     slug: 'berlinmitte',
     oeffnungsangabe: { tage: 7 },
+    portrait: [
+      {
+        titel: 'Am Hausvogteiplatz',
+        text: 'Die Praxis in Mitte liegt seit {jahr} am Hausvogteiplatz 14, zwischen Gendarmenmarkt und Spittelmarkt. Der U-Bahnhof Hausvogteiplatz liegt direkt vor der Tür – das ist unter den vier Standorten die kürzeste Anreise, die es gibt, und der Grund, warum diese Praxis anders getaktet ist als die anderen: Wer in der Mittagspause kommt, rechnet mit Minuten, nicht mit Fußwegen.',
+      },
+      {
+        titel: 'Ein bewusst kleineres Angebot',
+        text: 'Am Hausvogteiplatz werden {anzahl} der {gesamt} KU64-Leistungen erbracht, mit Schwerpunkt auf ästhetischer Zahnmedizin, Prophylaxe und Zahnerhalt. {fehlend} Leistungen gibt es hier nicht – darunter Zahnimplantate, Knochenaufbau und die Kieferorthopädie. Das ist eine Entscheidung, keine Lücke: Implantologie und Chirurgie brauchen Geräte und ein Team, das täglich damit arbeitet. Beides in einem Boutique-Haus vorzuhalten, hieße, es selten zu benutzen. Wer eines dieser Themen hat, ist am Kurfürstendamm besser aufgehoben – und wird von hier gezielt dorthin begleitet, nicht weggeschickt.',
+      },
+      {
+        titel: 'Wer hier behandelt',
+        text: 'Am Hausvogteiplatz arbeiten {behandelnde} Menschen, davon {zahnaerzte} zahnärztlich. Bei dieser Größe behandelt Sie in der Regel dieselbe Person, die Sie beim ersten Termin gesehen hat.',
+      },
+      {
+        titel: 'Sieben Tage, mit einer Einschränkung',
+        text: 'Auch hier wird an sieben Tagen behandelt, samstags von 9 bis 19 und sonntags von 10 bis 18 Uhr. Eine Anmerkung gehört dazu, und sie steht auch auf der Kontaktseite: Die Sprechzeiten am Hausvogteiplatz können im Einzelfall von denen der Hauptpraxis abweichen. Wenn Sie weit anreisen, lassen Sie sich den Termin vorher bestätigen.',
+      },
+    ],
     name: 'Berlin-Mitte',
     nameLang: 'KU64 Berlin-Mitte – Hausvogteiplatz',
     claim:
@@ -311,6 +393,24 @@ export const STANDORTE: Standort[] = [
   {
     slug: 'wilmersdorf',
     oeffnungsangabe: { tage: 5, zusatz: 'Sa nach Vereinbarung' },
+    portrait: [
+      {
+        titel: 'Die KiezPraxis',
+        text: 'Die jüngste der vier Praxen hat im Januar 2026 in der Gasteiner Straße 9 eröffnet, im Wilmersdorfer Kiez zwischen Blissestraße und Fehrbelliner Platz. Sie heißt KiezPraxis, weil sie eine ist: kein Haus, in das man aus der ganzen Stadt fährt, sondern eines, zu dem man zu Fuß geht. Vom U-Bahnhof Blissestraße sind es vier Minuten.',
+      },
+      {
+        titel: 'Klein, mit dem Kurfürstendamm im Rücken',
+        text: 'Hier werden {anzahl} der {gesamt} KU64-Leistungen erbracht – Vorsorge, Prophylaxe, Zahnerhalt, Kinderzahnheilkunde und die häufigsten Formen von Zahnersatz. {fehlend} Leistungen gibt es nicht vor Ort, darunter Implantologie, Kieferorthopädie und das digitale Smile Design. Die KiezPraxis ist eine Tochterpraxis des Kurfürstendamms und arbeitet nach denselben Standards; was hier nicht möglich ist, wird dort gemacht, mit denselben Unterlagen und ohne neue Erstuntersuchung.',
+      },
+      {
+        titel: 'Zwei kurze Tage in der Woche',
+        text: 'Montag, Mittwoch und Freitag ist von 8 bis 20 Uhr geöffnet, Dienstag und Donnerstag nur bis 14 Uhr. Diese beiden kurzen Tage sind fest so gelegt – an ihnen gibt es keinen Abendtermin, dafür an den drei langen. Samstags behandeln wir nach Vereinbarung. Gezählt wird die KiezPraxis deshalb als Fünf-Tage-Praxis, obwohl der Samstag dazukommt: Wer sich auf eine Sechs-Tage-Angabe verlässt und ohne Termin kommt, steht vor der Tür.',
+      },
+      {
+        titel: 'Zum Zugang, offen gesagt',
+        text: 'Die KiezPraxis ist als einziger der vier Standorte nicht durchgehend barrierefrei zugänglich. Wir schreiben das hin, statt es zu verschweigen: Melden Sie sich bitte vorher, wenn Sie einen barrierefreien Zugang brauchen. Dann finden wir eine Lösung oder vereinbaren den Termin am Kurfürstendamm, der vollständig barrierefrei ist. Was wir nicht tun, ist Sie herkommen zu lassen und es vor Ort herausfinden zu lassen.',
+      },
+    ],
     name: 'Wilmersdorf',
     nameLang: 'KU64 – DIE KIEZPRAXIS in Berlin-Wilmersdorf',
     claim:
@@ -468,6 +568,20 @@ export function zeitLesbar(z: Oeffnungszeit): string {
  * `oeffnungstageText()` die Einschränkung immer mit aus, wo es eine gibt.
  * Die Zahl allein ist nirgends zu verwenden.
  */
+/**
+ * Platzhalter im Portrait mit den Zahlen des Standorts füllen.
+ *
+ * Im Text steht `{anzahl}`, nicht die Zahl selbst. Der Grund ist derselbe wie
+ * bei der Zahl der Zahnärztinnen, die früher fest in den Standortdaten stand:
+ * Solche Zahlen altern lautlos. Kommt eine Leistung dazu, bleibt die alte Zahl
+ * im Fließtext stehen – und niemand sucht sie dort.
+ */
+export function portraitFuellen(text: string, werte: Record<string, string | number>): string {
+  return text.replace(/\{(\w+)\}/g, (ganz, name) =>
+    name in werte ? String(werte[name]) : ganz,
+  );
+}
+
 export function oeffnungstage(s: Standort): number {
   return s.oeffnungsangabe.tage;
 }

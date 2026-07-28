@@ -72,6 +72,9 @@ const wochenende = standort.oeffnungszeiten.filter((z) => z.nachVereinbarung).ma
 /* Die eigene Adresse ist eine echte Unterscheidung: Wer an die allgemeine
    Adresse schreibt, landet am Kurfürstendamm – auch wenn es um Potsdam geht. */
 const eigeneAdresse = standort.email !== 'info@ku64.de';
+
+const alleHier = daten.leistungenHier(standort.slug);
+const nichtHier = daten.leistungenAnderswo(standort.slug);
 ---
 
 <Basis
@@ -131,29 +134,35 @@ const eigeneAdresse = standort.email !== 'info@ku64.de';
         </div>
 
         <div>
-          <h2>Welcher Weg wofür</h2>
-          <dl class="wege">
-            <dt>Termin, Absage, Verschiebung</dt>
-            <dd>
-              <a href={`/${standort.slug}/termine/`}>Online buchen</a> oder anrufen – beides
-              führt in denselben Kalender.
-            </dd>
-            <dt>Starke Schmerzen, Schwellung, Unfall</dt>
-            <dd>
-              Bitte anrufen, nicht schreiben. Wir halten hier Zeiten frei.{' '}
-              <a href="/notfall/">Was im Notfall zu tun ist</a>
-            </dd>
-            <dt>Rezept, Bescheinigung, Unterlagen</dt>
-            <dd>
-              Schriftlich an <a href={`mailto:${standort.email}`}>{standort.email}</a> – mit
-              Namen und Geburtsdatum, sonst dürfen wir nichts herausgeben.
-            </dd>
-            <dt>Frage zu einer Leistung oder zu Kosten</dt>
-            <dd>
-              Der <button type="button" class="chat-oeffner text-knopf">digitale Berater</button>{' '}
-              antwortet rund um die Uhr und kennt das Angebot dieses Standorts.
-            </dd>
-          </dl>
+          <h2>Was hier vor Ort möglich ist</h2>
+          <p class="text">
+            An diesem Standort werden {alleHier.length} der {daten.leistungen.length}
+            KU64-Leistungen erbracht{nichtHier.length === 0
+              ? '. Es gibt keine Ausnahme – was bei KU64 möglich ist, ist hier möglich.'
+              : `; ${nichtHier.length} nicht.`}
+          </p>
+          {
+            nichtHier.length > 0 && (
+              <p class="text">
+                Rufen Sie trotzdem hier an, wenn Sie unsicher sind. Wir sagen Ihnen,
+                welches Haus für Ihr Anliegen das richtige ist, statt Sie erst
+                herkommen zu lassen.
+              </p>
+            )
+          }
+          <p class="text">
+            {
+              anmeldung.length > 3
+                ? `Das Anmeldeteam ist hier ${anmeldung.length} Personen stark – zu den Stoßzeiten am Morgen sind mehrere Leitungen besetzt.`
+                : 'Die Anmeldung ist mit wenigen Personen besetzt. Wenn niemand abnimmt, wird gerade behandelt – wir rufen zurück.'
+            }
+          </p>
+          <p class="text klein">
+            Welcher Weg für welches Anliegen der richtige ist – Termin, Rezept,
+            Unterlagen, Beschwerde –, steht gesammelt unter{' '}
+            <a href="/kontakt/#schreiben">Kontakt</a>. Dort finden Sie auch das
+            Formular.
+          </p>
         </div>
       </div>
 

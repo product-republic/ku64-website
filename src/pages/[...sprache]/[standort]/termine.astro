@@ -44,6 +44,9 @@ const t = texte(daten.sprache);
 const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/termine/`;
 
+const alleHier = daten.leistungenHier(standort.slug);
+const nichtHier = daten.leistungenAnderswo(standort.slug);
+
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
   { name: `KU64 ${standort.name}`, pfad: `/${standort.slug}/` },
@@ -223,6 +226,50 @@ const faq = [
     </aside>
   </div>
 
+  {/*
+    Was sich hier buchen lässt – und was nicht.
+
+    Das ist der Unterschied, der auf einer Terminseite zählt und der an jedem
+    Standort ein anderer ist. Ohne ihn waren die vier Seiten untereinander zu
+    45 Prozent textgleich; mit ihm steht auf jeder etwas, das anderswo falsch
+    wäre. Und er erspart genau den Anruf, der mit „das machen wir hier leider
+    nicht" endet.
+  */}
+  <section class="abschnitt">
+    <div class="huelle eng">
+      <h2>Was Sie hier buchen können</h2>
+      <p class="text">
+        An diesem Standort werden {alleHier.length} der {daten.leistungen.length} KU64-Leistungen
+        erbracht{
+          nichtHier.length === 0
+            ? ' – es gibt keine Ausnahme. Was bei KU64 möglich ist, ist hier möglich.'
+            : `, ${nichtHier.length} nicht.`
+        }
+      </p>
+      {
+        nichtHier.length > 0 && (
+          <>
+            <p class="text">
+              Nicht buchbar sind hier:{' '}
+              {nichtHier.slice(0, 6).map((l, i, arr) => (
+                <>
+                  {i > 0 && (i === arr.length - 1 ? ' und ' : ', ')}
+                  <strong>{l.name}</strong>
+                </>
+              ))}
+              {nichtHier.length > 6 && ` sowie ${nichtHier.length - 6} weitere`}. Diese
+              Leistungen bekommen Sie an einem anderen KU64-Standort – am schnellsten
+              klären wir am Telefon, welcher für Sie der nächste ist.
+            </p>
+            <a href={`/${standort.slug}/leistungen/`} class="knopf knopf-sekundaer">
+              Alle {alleHier.length} Leistungen in {standort.ort}
+            </a>
+          </>
+        )
+      }
+    </div>
+  </section>
+
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
       <h2>{t('termine.vorDemTerminAnamnese')}</h2>
@@ -253,6 +300,9 @@ const faq = [
 
 
 <style>
+  .eng { max-width: var(--breite-text); }
+  .text { line-height: var(--zeile-weit); margin-block-end: var(--raum-4); }
+
   .kopf {
     background: linear-gradient(to bottom, color-mix(in oklab, var(--akzent) 8%, var(--flaeche)), var(--flaeche));
     border-bottom: 1px solid var(--linie);

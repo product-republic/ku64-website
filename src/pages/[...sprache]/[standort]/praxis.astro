@@ -14,11 +14,11 @@
 import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { anzahlZahnaerzte } from '../../../data/team';
+import { anzahlZahnaerzte, veroeffentlichbar } from '../../../data/team';
 import TerminBand from '../../../components/TerminBand.astro';
 import LeistungKarte from '../../../components/LeistungKarte.astro';
 import Bild from '../../../components/Bild.astro';
-import { STANDORTE, oeffnungstage, oeffnungsZusatz } from '../../../data/standorte';
+import { STANDORTE, oeffnungstage, oeffnungsZusatz, portraitFuellen } from '../../../data/standorte';
 import { raumbilderFuer } from '../../../data/medien';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
@@ -35,6 +35,18 @@ const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/praxis/`;
 const alleHier = daten.leistungenHier(standort.slug);
 const gruppen = daten.gruppen(standort.slug);
+
+/* Zahlen für die Platzhalter im Portrait – aus den Daten, nicht aus dem Text.
+   Siehe portraitFuellen() in standorte.ts. */
+const portraitWerte = {
+  jahr: standort.eroeffnet.slice(0, 4),
+  anzahl: alleHier.length,
+  gesamt: daten.leistungen.length,
+  fehlend: daten.leistungen.length - alleHier.length,
+  bereiche: gruppen.length,
+  behandelnde: veroeffentlichbar().filter((m) => m.standorte.includes(standort.slug)).length,
+  zahnaerzte: anzahlZahnaerzte(standort.slug),
+};
 
 const brotkrumen = [
   { name: t('krume.start'), pfad: '/' },
@@ -114,6 +126,29 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
     )
   }
 
+  {/*
+    Das Portrait dieses Hauses.
+
+    Vier Abschnitte, die nur hier gelten – Lage, Angebot samt seinen Lücken,
+    Team und Zeiten. Jeder Satz stützt sich auf die Daten dieser Website oder
+    auf Geografie, die sich auf einer Karte nachsehen lässt. Ohne diesen Text
+    waren die vier Praxisseiten bei rund 200 Wörtern untereinander zu 44
+    Prozent gleich; Adresse und Öffnungszeiten allein unterscheiden vier
+    Häuser nicht.
+  */}
+  <section class="abschnitt">
+    <div class="huelle portrait">
+      {
+        standort.portrait.map((teil) => (
+          <article>
+            <h2>{teil.titel}</h2>
+            <p>{portraitFuellen(teil.text, portraitWerte)}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
   <section class="abschnitt flaeche-warm">
     <div class="huelle">
       <h2>{t('praxis.wasDiesenStandortAusmacht')}</h2>
@@ -181,6 +216,10 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
 </Basis>
 
 <style>
+  .portrait { display: grid; gap: var(--raum-7); max-width: var(--breite-text); }
+  .portrait h2 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
+  .portrait p { line-height: var(--zeile-weit); }
+
   .bereiche {
     list-style: none;
     margin: var(--raum-5) 0 0;

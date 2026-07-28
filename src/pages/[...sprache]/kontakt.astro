@@ -75,6 +75,41 @@ const brotkrumen = [
     Formularversand mit eigener Antwortseite. Das Skript darüber ersetzt nur
     den Seitenwechsel durch eine Rückmeldung an Ort und Stelle.
   */}
+  {/*
+    Welcher Weg wofür – einmal, für alle Standorte.
+
+    Stand bis eben auf allen vier Standort-Kontaktseiten wortgleich und machte
+    sie damit zu 41 Prozent textgleich. Die Zuordnung „welches Anliegen gehört
+    auf welchen Kanal" ist an jedem Standort dieselbe; nur die Nummer und die
+    Adresse unterscheiden sich, und die stehen dort.
+  */}
+  <section class="abschnitt">
+    <div class="huelle eng">
+      <h2>Welcher Weg wofür</h2>
+      <dl class="wege">
+        <dt>Termin, Absage, Verschiebung</dt>
+        <dd>Online buchen oder anrufen – beides führt in denselben Kalender.</dd>
+        <dt>Starke Schmerzen, Schwellung, Unfall</dt>
+        <dd>
+          Bitte anrufen, nicht schreiben. An jedem Standort sind Zeiten für
+          Schmerzfälle frei. <a href="/notfall/">Was im Notfall zu tun ist</a>
+        </dd>
+        <dt>Rezept, Bescheinigung, Unterlagen</dt>
+        <dd>
+          Schriftlich an die Adresse Ihres Standorts – mit Namen und Geburtsdatum,
+          sonst dürfen wir nichts herausgeben.
+        </dd>
+        <dt>Frage zu einer Leistung oder zu Kosten</dt>
+        <dd>
+          Der <button type="button" class="chat-oeffner text-knopf">digitale Berater</button>{' '}
+          antwortet rund um die Uhr und kennt das Angebot jedes Standorts.
+        </dd>
+        <dt>Alles andere</dt>
+        <dd>Das Formular unten. Wir antworten in der Regel am selben oder nächsten Werktag.</dd>
+      </dl>
+    </div>
+  </section>
+
   <section class="abschnitt flaeche-warm" id="schreiben">
     <div class="huelle eng">
       <h2>Schreiben Sie uns</h2>
@@ -182,6 +217,16 @@ const brotkrumen = [
 </script>
 
 <style>
+  .wege { margin: 0; max-width: var(--breite-text); }
+  .wege dt { font-weight: 600; margin-block-start: var(--raum-4); }
+  .wege dt:first-child { margin-block-start: 0; }
+  .wege dd { margin: var(--raum-2) 0 0; color: var(--tinte-weich); line-height: var(--zeile-normal); }
+  .text-knopf {
+    background: none; border: 0; padding: 0; font: inherit;
+    color: var(--akzent-schrift); text-decoration: underline;
+    text-underline-offset: 0.2em; cursor: pointer;
+  }
+
   .eng { max-width: 44rem; }
   .feld { display: grid; gap: var(--raum-2); margin-block-end: var(--raum-5); }
   .feld label { font-weight: 600; }
