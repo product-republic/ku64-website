@@ -582,6 +582,36 @@ export function portraitFuellen(text: string, werte: Record<string, string | num
   );
 }
 
+/**
+ * Luftlinie zwischen zwei Standorten, in Kilometern.
+ *
+ * Für den Satz auf der Anfahrtsseite: „Die nächste andere KU64-Praxis ist X,
+ * etwa N Kilometer entfernt." Das ist eine Angabe, die an jedem Standort eine
+ * andere ist und die jemand tatsächlich braucht – etwa wenn hier eine
+ * Leistung nicht angeboten wird.
+ *
+ * Luftlinie, nicht Fahrstrecke: Eine Fahrstrecke hinge vom Verkehrsmittel ab
+ * und wäre ohne Routendienst geraten. „Etwa" steht deshalb davor.
+ */
+export function entfernungKm(a: Standort, b: Standort): number {
+  const R = 6371;
+  const bogen = (g: number) => (g * Math.PI) / 180;
+  const dLat = bogen(b.geo.lat - a.geo.lat);
+  const dLng = bogen(b.geo.lng - a.geo.lng);
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(bogen(a.geo.lat)) * Math.cos(bogen(b.geo.lat)) * Math.sin(dLng / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(h)) * 10) / 10;
+}
+
+/** Der nächstgelegene andere Standort. */
+export function naechsterStandort(s: Standort): { standort: Standort; km: number } {
+  const andere = STANDORTE.filter((x) => x.slug !== s.slug)
+    .map((x) => ({ standort: x, km: entfernungKm(s, x) }))
+    .sort((a, b) => a.km - b.km);
+  return andere[0];
+}
+
 export function oeffnungstage(s: Standort): number {
   return s.oeffnungsangabe.tage;
 }

@@ -188,6 +188,42 @@ const faq = [
       </p>
     </section>
 
+
+    {/*
+      Telefon und Akutfall bleiben im Inhalt, direkt neben der Online-Buchung.
+
+      Sie standen kurz im Werkzeugbereich unterhalb des FAQ – gemessen war das
+      besser, gelesen war es schlechter: Auf einer Terminseite gehört die
+      Nummer nach oben, gerade für jemanden mit Schmerzen. Beide Karten tragen
+      ohnehin die Telefonnummer dieses Standorts und unterscheiden sich damit.
+    */}
+    <aside class="weg weg-schmal">
+      <div class="karte kontakt">
+        <p class="k-titel">Anrufen</p>
+        <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="k-nummer">
+          {standort.telefon}
+        </a>
+        <table class="zeiten">
+          <caption class="nur-screenreader">{t('termine.wannSieUnsErreichen')}</caption>
+          <tbody>
+            {
+              standort.oeffnungszeiten.map((z) => (
+                <tr>
+                  <th scope="row">{z.tag}</th>
+                  <td>{zeitLesbar(z)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="karte kontakt akut">
+        <p class="k-titel">{t('termine.akuteSchmerzen')}</p>
+        <p class="k-text">{t('termine.bitteRufenSieAn')}</p>
+        <a href="/notfall/" class="knopf knopf-sekundaer">{t('termine.wasTunImNotfall')}</a>
+      </div>
+    </aside>
+
     {/* Weg 2: Ohne Drittanbieter */}
   </div>
 
@@ -264,25 +300,6 @@ const faq = [
     <aside class="weg weg-schmal" slot="werkzeuge">
       <h2>{t('termine.lieberOhneOnlinePortal')}</h2>
 
-      <div class="karte kontakt">
-        <p class="k-titel">Anrufen</p>
-        <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="k-nummer">
-          {standort.telefon}
-        </a>
-        <table class="zeiten">
-          <caption class="nur-screenreader">{t('termine.wannSieUnsErreichen')}</caption>
-          <tbody>
-            {
-              standort.oeffnungszeiten.map((z) => (
-                <tr>
-                  <th scope="row">{z.tag}</th>
-                  <td>{zeitLesbar(z)}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
 
       <div class="karte kontakt">
         <p class="k-titel">Schreiben</p>
@@ -290,11 +307,6 @@ const faq = [
         <a href={`mailto:${standort.email}`} class="knopf knopf-sekundaer">{standort.email}</a>
       </div>
 
-      <div class="karte kontakt akut">
-        <p class="k-titel">{t('termine.akuteSchmerzen')}</p>
-        <p class="k-text">{t('termine.bitteRufenSieAn')}</p>
-        <a href="/notfall/" class="knopf knopf-sekundaer">{t('termine.wasTunImNotfall')}</a>
-      </div>
     </aside>
 
 </Basis>

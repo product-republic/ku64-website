@@ -3,7 +3,7 @@ import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
-import { STANDORTE, zeitLesbar } from '../../../data/standorte';
+import { STANDORTE, zeitLesbar, naechsterStandort } from '../../../data/standorte';
 import { schemaBrotkrumen } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
 
@@ -40,6 +40,8 @@ const brotkrumen = [
 /* Die nächstgelegene Verbindung – für den Satz, der die Anreise in einer Zeile
    beantwortet. Der erste Eintrag ist immer der kürzeste Weg. */
 const naechste = standort.anfahrt.oepnv[0] ?? '';
+const nachbar = naechsterStandort(standort);
+const nichtHier = daten.leistungenAnderswo(standort.slug);
 const gehminuten = naechste.match(/(\d+)\s*Gehminuten/)?.[1];
 const direktDavor = /direkt vor der Tür/i.test(naechste);
 
@@ -90,17 +92,58 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
         }
       </p>
 
+      {/* Adresse und Routenknöpfe gehören auf eine Anfahrtsseite nach oben.
+          Sie standen kurz im Werkzeugbereich unter dem Inhalt – gemessen war
+          das besser, gelesen war es unbrauchbar. Die Adresse unterscheidet
+          sich ohnehin je Standort. */}
+      <div class="raster-zwei oben">
+        <div class="karte adresse">
+            <h2>Adresse</h2>
+            <address>
+              <strong>KU64 {standort.name}</strong><br />
+              {standort.strasse}<br />
+              {standort.plz} {standort.ort}
+            </address>
+            <div class="adresse-knoepfe">
+              <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">{t('anfahrt.routePlanen')}</a>
+              <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
+                {t('standort.aufKarteAnsehen')}
+              </a>
+            </div>
+            <p class="klein">
+              {t('standort.kartenHinweis')}
+            </p>
+          </div>
+  
+        </div>
+
+
       <div class="raster-zwei">
         <section>
           <h2>{t('anfahrt.mitOeffentlichenVerkehrsmitteln')}</h2>
+          {/* Die Verbindungen zuerst als Satz, dann als Liste. Die
+              Liniennummern sind das, was diesen Ort von jedem anderen
+              unterscheidet – als bloße Aufzählung gingen sie unter. */}
+          <p class="text">
+            {standort.ort} erreichen Sie über {standort.anfahrt.oepnv.length}{' '}
+            {standort.anfahrt.oepnv.length === 1 ? 'Verbindung' : 'Verbindungen'}. Die
+            kürzeste: {naechste}.
+          </p>
           <ul class="wege">
-            {standort.anfahrt.oepnv.map((o) => <li>{o}</li>)}
+            {standort.anfahrt.oepnv.slice(1).map((o) => <li>{o}</li>)}
           </ul>
         </section>
 
         <section>
           <h2>{t('anfahrt.mitDemAuto')}</h2>
-          <p class="text">{standort.anfahrt.parken}</p>
+          <p class="text">
+            {standort.anfahrt.parken}{' '}
+            {
+              /\beigene\b/i.test(standort.anfahrt.parken)
+                ? 'Sie müssen also nicht suchen – rechnen Sie die Parkplatzsuche nicht mit ein.'
+                : 'Rechnen Sie die Parkplatzsuche mit ein; mit Bus und Bahn sind Sie hier meist schneller.'
+            }
+          </p>
 
           <h2 class="abstand">Barrierefreiheit</h2>
           <p class="text">
@@ -125,6 +168,21 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
         und der Hinweis auf die Begleitung nur dort, wo überhaupt in Narkose
         oder mit Lachgas behandelt wird.
       */}
+      <section class="hinweise">
+        <h2>Wenn ein anderes Haus näher liegt</h2>
+        <p class="text">
+          Die nächste andere KU64-Praxis ist <a href={`/${nachbar.standort.slug}/`}>
+          KU64 {nachbar.standort.name}</a> in der {nachbar.standort.strasse},
+          {' '}{nachbar.standort.plz} {nachbar.standort.ort} – etwa {nachbar.km} Kilometer
+          Luftlinie von hier.
+          {
+            nichtHier.length > 0
+              ? ` Dort und an den übrigen Standorten bekommen Sie auch die ${nichtHier.length} Leistungen, die es in ${standort.ort} nicht gibt.`
+              : ` Hier in ${standort.ort} wird allerdings das vollständige Angebot erbracht – ein Wechsel lohnt sich nur, wenn die Anfahrt für Sie kürzer ist.`
+          }
+        </p>
+      </section>
+
       <section class="hinweise">
         <h2>Bevor Sie losfahren</h2>
         <ul class="wege">
@@ -157,24 +215,6 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
   <section class="abschnitt flaeche-warm" slot="werkzeuge">
     <div class="huelle">
         <div class="raster-zwei oben">
-          <div class="karte adresse">
-            <h2>Adresse</h2>
-            <address>
-              <strong>KU64 {standort.name}</strong><br />
-              {standort.strasse}<br />
-              {standort.plz} {standort.ort}
-            </address>
-            <div class="adresse-knoepfe">
-              <a href={routeZiel} class="knopf knopf-primaer" rel="noopener" target="_blank">{t('anfahrt.routePlanen')}</a>
-              <a href={kartenZiel} class="knopf knopf-sekundaer" rel="noopener" target="_blank">
-                {t('standort.aufKarteAnsehen')}
-              </a>
-            </div>
-            <p class="klein">
-              {t('standort.kartenHinweis')}
-            </p>
-          </div>
-  
           <div class="karte">
             <h2>{t('standort.sprechzeiten')}</h2>
             <table class="zeiten">
