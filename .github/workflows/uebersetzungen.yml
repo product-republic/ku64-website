@@ -112,12 +112,6 @@ jobs:
             npm run sprachen:sync
           fi
 
-      # Der Build ist die Gegenprobe: Er bricht ab, wenn eine freigegebene
-      # Sprache eine Lücke hat. Eine Übersetzung, die den Build nicht besteht,
-      # soll gar nicht erst zur Prüfung vorgelegt werden.
-      - name: Gegenprobe
-        if: steps.rueckstand.outputs.zu_tun == 'ja'
-        run: npm run build
 
       # Darf fehlschlagen, ohne den Lauf rot zu färben.
       #
@@ -191,5 +185,38 @@ jobs:
               echo "git fetch origin $zweig"
               echo "git checkout FETCH_HEAD -- src/inhalte/en.json src/inhalte/fr.json"
               echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # Die Gegenprobe steht NACH dem Vorlegen, und sie bricht den Lauf nicht ab.
+      #
+      # Vorher stand sie davor und tat genau das: Ein Lauf über die langen
+      # Inhalte hatte drei Stunden übersetzt, die Prüfung fand einen doppelten
+      # `id` auf EINER von 1087 Seiten – und weil der Schritt fehlschlug, kam
+      # der Zweig nie ins Repository. Drei Stunden und die Kosten dafür waren
+      # weg, wegen eines Fehlers, der mit der Übersetzung nichts zu tun hatte.
+      #
+      # Die Reihenfolge ist jetzt: erst sichern, dann prüfen, dann berichten.
+      # Der Befund steht in der Zusammenfassung des Laufs und im Zweig; wer
+      # ihn zusammenführt, sieht ihn. Verloren geht nichts mehr.
+      - name: Gegenprobe
+        id: gegenprobe
+        continue-on-error: true
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        run: npm run build
+
+      - name: Befund der Gegenprobe vermerken
+        if: steps.rueckstand.outputs.zu_tun == 'ja'
+        run: |
+          if [ "${{ steps.gegenprobe.outcome }}" = "success" ]; then
+            echo '### Gegenprobe bestanden' >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo '### Gegenprobe fehlgeschlagen'
+              echo
+              echo 'Die Übersetzung ist gesichert – der Zweig steht im Repository.'
+              echo 'Der Build hat aber etwas gefunden. Das Protokoll dieses Laufs'
+              echo 'sagt, was; behoben gehört es, bevor der Zweig zusammengeführt'
+              echo 'wird.'
             } >> "$GITHUB_STEP_SUMMARY"
           fi

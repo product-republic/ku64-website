@@ -78,10 +78,32 @@ const brotkrumen = [
  */
 const stufen = ebenenGeradeziehen(beschwerde.abschnitte.map((a) => alsStufe(a.ebene)));
 
+/*
+ * Sprungmarken, je Seite eindeutig.
+ *
+ * Zwei Abschnitte können denselben Anker ergeben – und das hängt an der
+ * Sprache. Auf `/fr/zahnbeschwerden/karies-symptome/` wurden aus zwei
+ * verschiedenen deutschen Überschriften zwei gleiche französische, und
+ * damit zweimal derselbe `id`. Im Deutschen fiel nichts auf.
+ *
+ * Gezählt wird deshalb hier, an einer Stelle, die Gliederung und
+ * Überschriften gemeinsam benutzen: Der zweite bekommt eine `-2`.
+ */
+const marken = new Map<number, string>();
+{
+  const vergeben = new Map<string, number>();
+  beschwerde.abschnitte.forEach((a, i) => {
+    const basis = anker(a.titel);
+    const wievielt = (vergeben.get(basis) ?? 0) + 1;
+    vergeben.set(basis, wievielt);
+    marken.set(i, wievielt === 1 ? basis : `${basis}-${wievielt}`);
+  });
+}
+
 const gliederung = beschwerde.abschnitte
-  .map((a, i) => ({ a, stufe: stufen[i] }))
+  .map((a, i) => ({ a, i, stufe: stufen[i] }))
   .filter(({ stufe }) => stufe === 2)
-  .map(({ a }) => ({ titel: a.titel, anker: anker(a.titel) }));
+  .map(({ a, i }) => ({ titel: a.titel, anker: marken.get(i)! }));
 
 function anker(titel: string): string {
   return titel
@@ -185,7 +207,7 @@ const schema = [
           beschwerde.abschnitte.map((a, i) => (
             <>
               {stufen[i] === 2 ? (
-                <h2 id={anker(a.titel)}>{a.titel}</h2>
+                <h2 id={marken.get(i)}>{a.titel}</h2>
               ) : stufen[i] === 3 ? (
                 <h3>{a.titel}</h3>
               ) : (
