@@ -49,6 +49,8 @@
  * nicht verlässlich folgt.
  */
 
+import { TEAM } from './team';
+
 /** Schlüssel: `<standort-slug>/<leistung-slug>`. */
 export type Standortfassung = `${string}/${string}`;
 
@@ -98,6 +100,15 @@ export function ausSitemapAusschliessen(pfad: string): boolean {
   // /<ort>/leistungen/<slug>/ – nur, wenn die Fassung nicht für sich steht
   const treffer = p.match(/^\/([a-z-]+)\/leistungen\/([a-z0-9-]+)\/$/);
   if (treffer) return !fassungIstEigenstaendig(treffer[1], treffer[2]);
+
+  /* Behandlerprofil am Zweitstandort. Das Profil gehört zum Hauptstandort –
+     dem ersten Eintrag in `standorte`. Die Person bleibt an beiden Standorten
+     in der Teamübersicht sichtbar; nur die Adresse zählt einfach. */
+  const profil = p.match(/^\/([a-z-]+)\/team\/([a-z0-9-]+)\/$/);
+  if (profil) {
+    const person = TEAM.find((t) => t.slug === profil[2]);
+    if (person && person.standorte[0] !== profil[1]) return true;
+  }
 
   return false;
 }

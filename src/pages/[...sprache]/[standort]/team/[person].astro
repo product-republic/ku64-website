@@ -137,6 +137,28 @@ const schema = [
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={schema}
+  kanonischStatt={
+    /*
+      Wer an zwei Standorten arbeitet, hat ein Profil – nicht zwei.
+
+      Betrifft aktuell zwei Personen. Ihr Profil wurde an beiden Standorten
+      ausgespielt und war dort zu 77,8 Prozent textgleich: derselbe Werdegang,
+      dieselben Schwerpunkte, getauscht war die Adresse. Für Google waren das
+      zwei Originale derselben Person.
+
+      Der Hauptstandort ist der erste Eintrag in `standorte` – bei beiden
+      Kurfürstendamm. Das Profil dort ist das kanonische, die Fassung am
+      zweiten Standort verweist darauf.
+
+      Was ausdrücklich bleibt: Die Person wird an jedem ihrer Standorte in der
+      Teamübersicht gezeigt und ist dort verlinkt. Wer in Potsdam behandelt,
+      gehört auf die Potsdamer Teamseite – die Frage ist nur, welche Adresse
+      Google als die eine zählt.
+    */
+    person.standorte[0] === standort.slug
+      ? undefined
+      : `/${person.standorte[0]}/team/${person.slug}/`
+  }
 >
   <section class="abschnitt">
     <div class="huelle kopf">
