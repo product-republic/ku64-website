@@ -101,7 +101,55 @@ const CSP = [
   "object-src 'none'",
 ].join('; ');
 
-function koepfe(antwort) {
+/*
+ * ── Was indexiert werden darf, und was nicht ─────────────────────────────
+ *
+ * Diese Anwendung läuft derzeit unter einer Railway-Adresse, während die
+ * alte Website weiter unter ku64.de steht. Ohne Vorkehrung ist die Vorschau
+ * für Suchmaschinen eine ganz normale Website – geprüft und bestätigt:
+ * `robots.txt` erlaubte alles, es gab keinen `X-Robots-Tag`, und das
+ * Canonical zeigte auf die Railway-Adresse selbst.
+ *
+ * Das ist kein theoretisches Risiko. Wird die Vorschau indexiert, steht der
+ * vollständige Inhalt der Praxis ein zweites Mal im Netz, unter einer
+ * fremden Domain, in direkter Konkurrenz zum Original – und wenn die neue
+ * Seite später auf ku64.de umzieht, konkurriert sie mit ihrer eigenen
+ * Vorschau um dieselben Suchbegriffe.
+ *
+ * Die Regel steht deshalb am Server, nicht in einer Seite: Sie greift für
+ * HTML, für die Sitemap, für Vorschaubilder, für alles.
+ *
+ * Entscheidend ist der Host, nicht ein Schalter: Was unter ku64.de
+ * ausgeliefert wird, ist die Website. Alles andere ist eine Vorschau. Damit
+ * schaltet sich die Sperre beim Umzug von selbst ab, und niemand muss daran
+ * denken – die häufigste Ursache dafür, dass ein `noindex` nach dem
+ * Livegang stehen bleibt und eine Website monatelang unsichtbar macht.
+ */
+const OEFFENTLICHE_HOSTS = new Set(
+  (process.env.OEFFENTLICHE_HOSTS ?? 'ku64.de,www.ku64.de')
+    .split(',')
+    .map((h) => h.trim().toLowerCase())
+    .filter(Boolean),
+);
+
+function istVorschau(anfrage) {
+  const roh = anfrage.headers['x-forwarded-host'] ?? anfrage.headers.host ?? '';
+  const host = String(roh)
+    .split(',')[0]
+    .trim()
+    .toLowerCase()
+    .replace(/:\d+$/, '');
+  return !OEFFENTLICHE_HOSTS.has(host);
+}
+
+function koepfe(antwort, vorschau) {
+  if (vorschau) {
+    /* `noindex` allein genügt nicht: `nofollow` hält Suchmaschinen davon ab,
+       den 85.000 internen Verweisen zu folgen und so doch einen Bestand
+       aufzubauen; `noarchive` verhindert eine zwischengespeicherte Fassung,
+       die auch nach dem Abschalten noch abrufbar wäre. */
+    antwort.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
+  }
   antwort.setHeader('Content-Security-Policy', CSP);
   /* Zwei Jahre, Unterdomains eingeschlossen. Erst setzen, wenn die Domain
      dauerhaft auf HTTPS läuft – das tut sie. */
@@ -179,9 +227,33 @@ const DATEI_WEITERLEITUNGEN = {
 };
 
 const server = createServer((anfrage, antwort) => {
-  koepfe(antwort);
+  const vorschau = istVorschau(anfrage);
+  koepfe(antwort, vorschau);
 
   const pfad = (anfrage.url ?? '/').split('?')[0];
+
+  /*
+   * Auf einer Vorschau-Adresse eine eigene robots.txt.
+   *
+   * Der Kopf `X-Robots-Tag` wirkt erst, wenn eine Seite abgerufen wurde –
+   * die robots.txt verhindert den Abruf. Beides zusammen, weil beides
+   * verschiedene Lücken schließt: Ein Crawler, der die robots.txt ignoriert,
+   * bekommt trotzdem den Kopf; und ein Bot, der nur die robots.txt liest,
+   * fängt gar nicht erst an.
+   *
+   * Die gebaute robots.txt bleibt unangetastet – sie ist die für ku64.de.
+   */
+  if (vorschau && pfad === '/robots.txt') {
+    antwort.statusCode = 200;
+    antwort.setHeader('Content-Type', TYPEN['.txt']);
+    antwort.setHeader('Cache-Control', 'no-store');
+    antwort.end(
+      '# Vorschau des Neubaus – nicht die Website.\n' +
+        '# Die Inhalte gehoeren zu https://ku64.de/ und stehen dort.\n\n' +
+        'User-agent: *\nDisallow: /\n',
+    );
+    return;
+  }
 
   /* Endpunkte und alles, was Astro zur Laufzeit beantwortet, gehen an den
      Adapter – mit den Köpfen, die oben schon gesetzt sind. */
