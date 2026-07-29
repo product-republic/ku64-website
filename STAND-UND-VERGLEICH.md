@@ -5,6 +5,71 @@ nicht geschätzt. Wo etwas nicht messbar war, steht das dabei.
 
 ---
 
+## Für wen welches Kapitel
+
+Dieses Dokument ist für drei Leserkreise geschrieben. Niemand muss alles
+lesen.
+
+| | Kapitel | Warum |
+|---|---|---|
+| **Praxisinhaber** | Kurzfassung, 1, 5, 6, 9, 10 | Ziel, Risiko, Prognose, was von der Praxis gebraucht wird |
+| **Marketing / Kaufmännische Leitung** | Kurzfassung, 4, 5, 7, 9 | Vergleich, Textrisiko, Messbarkeit, Prognose |
+| **Agentur / Technik** | alles, besonders 0, 2, 3, 4, 11 | Methodik, Messwerte, Prüfkette, Rohdaten |
+
+---
+
+## Kurzfassung
+
+**Was gebaut wurde.** Ein vollständiger Neubau der Website mit einer anderen
+Grundordnung: Jede Behandlung gehört zu einem Standort statt zu keinem. 1.084
+Seiten, drei Sprachen, vierzehn automatische Prüfungen, kein Drittanbieter,
+kein Cookie.
+
+**Was messbar besser ist.**
+
+| | vorher | nachher |
+|---|---:|---:|
+| Tote Adressen aus dem Altbestand | *90,8 % wären es geworden* | **0 von 552** |
+| HTML je Seite (Median) | 224 kB | **45 kB** |
+| Skripte je Seite | 26 | **5** |
+| Anfragen an fremde Server | 660 | **0** |
+| Sprünge in der Überschriftengliederung | 15 | **0** |
+| Örtliche Landeseiten je Behandlung | 1 | **bis zu 4** |
+| Englische Seiten | 54 | **361** |
+| Ladezeit mobil (LCP) | *nicht erhoben* | **1,0–1,7 s** |
+
+**Was schlechter ist — und zwar deutlich.** Die Behandlungstexte sind von 74
+auf 37 Seiten und von 170.785 auf 20.650 Wörter geschrumpft. Ballast
+herausgerechnet: rund 1.600 Wörter eigener Inhalt je Behandlungsseite vorher,
+rund 195 jetzt. Zu Implantaten hatte die alte Website neun Seiten — Kosten,
+Haltbarkeit, Rauchen, Periimplantitis, Sinuslift —, also genau die Fragen,
+mit denen Menschen mit Behandlungsabsicht suchen. Die neue hat zwei.
+
+**Das ist der Punkt, an dem dieser Umbau Sichtbarkeit verlieren kann.**
+Kapitel 5 rechnet es vor und sagt, was dagegen zu tun ist.
+
+**Was inhaltlich veraltet ist.** Auf der heute laufenden Website werden in
+Blogbeiträgen mindestens neun Personen namentlich als Teil der Praxis
+vorgestellt, die dort nicht mehr arbeiten — darunter ein ausführliches
+Fachzitat von Dr. Matthias Leyh im Präsens. Die Personen*seiten* sind sauber;
+die *Texte* sind es nicht. Kapitel 6 listet jeden Fall.
+
+**Was jetzt gebraucht wird.**
+
+| Von wem | Was | Wirkung |
+|---|---|---|
+| Praxis | 24 Fotos | Standorte zeigen derzeit Videostandbilder |
+| Praxis | fachliche Freigabe der 36 Behandlungstexte | ohne sie kann kein Text ausgebaut werden |
+| Praxis | zwölf Behandlungstexte ausbauen | das größte inhaltliche Risiko |
+| Praxis | eine Stunde Durchsicht der Personennennungen | Kapitel 6 |
+| Praxis | Impressum und Datenschutz befüllen | beides sind Entwürfe |
+| Betrieb | eine Berechtigung bei GitHub, zwei Schlüssel | Übersetzungslauf und Sprachberater |
+
+**Der Hebel liegt nicht mehr in der Technik.** Er liegt in zwölf
+Behandlungstexten, vierundzwanzig Fotos und einer Stunde Durchsicht.
+
+---
+
 ## 0. Wie diese Zahlen zustande kommen — bitte zuerst lesen
 
 Ein Relaunch-Bericht, der „übersichtlicher", „moderner" und „schneller"
@@ -317,7 +382,7 @@ nicht gab.
 
 ### 3.7 Die Prüfkette
 
-Vierzehn Prüfungen laufen bei jedem Bau oder gegen die laufende Seite. Jede
+Fünfzehn Prüfungen laufen bei jedem Bau oder gegen die laufende Seite. Jede
 ist entstanden, weil ein Fehler durchgerutscht ist — und jede wurde
 absichtlich einmal zum Fehlschlagen gebracht, bevor ihr geglaubt wurde.
 
@@ -336,6 +401,7 @@ absichtlich einmal zum Fehlschlagen gebracht, bevor ihr geglaubt wurde.
 | `klickpfad` | alles, was nur bis zum ersten Seitenwechsel funktioniert |
 | `formulare:pruefen` | Formulare, die hinter dem Reverse Proxy abgewiesen werden |
 | `indexierung:pruefen` | offene Vorschau — und vergessenes `noindex` nach dem Livegang |
+| `personen:pruefen` | Namen ehemaliger Kolleginnen und Kollegen im Fließtext |
 | `durchgang` | Überlauf, abgeschnittene Überschriften, Browserfehler |
 
 ---
@@ -509,7 +575,127 @@ rechnen. Mit ihnen ist die neue Struktur der alten in beiden Disziplinen
 
 ---
 
-## 6. Analytics und Anbindung ans Dashboard
+## 6. Sind die Inhalte aktuell? Der Personenabgleich
+
+Die Frage der Praxis war konkret: Stehen auf der Website noch Menschen, die
+nicht mehr da sind — Matthias Leyh, Birte Habedank, „oder oder". Die Antwort
+ist nachprüfbar, und sie fällt in zwei Teile.
+
+### 6.1 Die Personenseiten: sauber
+
+`src/data/team.ts` führt 139 Menschen. 99 sind bestätigt und erscheinen auf
+der Website; **40 stehen auf `bestaetigt: false`** und erscheinen nirgends —
+sie behalten nur die Weiterleitung ihrer alten Adresse, damit Suchtreffer und
+Lesezeichen aus Jahren nicht ins Leere laufen.
+
+Stichprobe auf der **heute laufenden** Website:
+
+| Adresse auf ku64.de | Status |
+|---|---|
+| `/team/zahnaerzte/dr-birte-habedank/` | 301 → weitergeleitet |
+| `/team/zahnaerzte/dr-matthias-leyh/` | 301 → `/team/` |
+| `/potsdam/team/dr-birte-habedank/` | 301 → weitergeleitet |
+| `/team/zahnaerzte/dr-stephan-ziegler/` | 200 (Gründungspartner, aktuell) |
+
+Die Personenseiten sind also auf beiden Fassungen in Ordnung. Wer gegangen
+ist, hat keine Seite mehr.
+
+### 6.2 Die Texte: nicht sauber
+
+Was das Team-Register nicht abdeckt, sind **Namen im Fließtext**. Blogbeiträge
+von 2019 bis 2024 stellen Kolleginnen und Kollegen namentlich vor — und diese
+Sätze wissen nichts vom Register.
+
+**Auf der heute laufenden Website nachgeprüft:**
+
+| Seite auf ku64.de | Status | dort namentlich genannt |
+|---|---|---|
+| `/blog/neuigkeiten-aus-der-praxis/` | 200 | Dr. Matthias Leyh, Dr. Eva Schneider |
+| `/blog/social-media-2024/` | 200 | Dr. Alexandra Wolff, Dr. Bahaa Youssef, Dr. Benedikt Straub |
+| `/blog/social-media-2023/` | 200 | Dr. Jan Wagner |
+
+Alle diese Beiträge sind heute abrufbar. Alle genannten Personen stehen in
+keinem aktuellen Register. Der Beitrag über Matthias Leyh zitiert ihn mit
+einer ausführlichen fachlichen Aussage — im Präsens, als „Zahnarzt für
+Zahnästhetik bei KU64".
+
+**Und das ist beim Umbau mitgekommen.** Die Blogbeiträge wurden 1:1
+übernommen, weil sie inhaltlich wertvoll sind. Damit steht dasselbe auch auf
+der neuen Fassung.
+
+### 6.3 Die vollständige Liste
+
+`npm run personen:pruefen` durchsucht alle Inhaltsquellen — Blog,
+Beschwerdeseiten, Behandlerprofile, Leistungstexte, Standortdaten,
+Oberflächentexte — und unterscheidet drei Fälle.
+
+**Nennungen ausdrücklich als ehemalig geführter Personen — 3:**
+
+| Name | Wo |
+|---|---|
+| Alexandra Sophia Fischer | Behandlerprofil (Grußformel im eigenen Text) |
+| Frederike Brüning | Blog: „Herzlich Willkommen Kinderzahnärztin …" |
+| Dominik Demski | Blog: „Unser Ausbildungsleiter …" |
+
+**Als KU64-zugehörig vorgestellt, in keinem Register — 12** (davon 9 nach
+Durchsicht plausibel ehemalige Kolleginnen und Kollegen):
+
+| Name | Zusammenhang |
+|---|---|
+| Dr. Matthias Leyh | ausführliches Fachzitat, „Zahnarzt für Zahnästhetik bei KU64" |
+| Dr. Eva Schneider | „unsere Zahnärztin und Endo-Spezialistin" |
+| Dr. Benedikt Straub | „Unser KU64-Beauty-Experte" |
+| Dr. Bahaa Youssef | „Unser Kinderzahnarzt" |
+| Dr. Alexandra Wolff | „unserer Mitarbeiterinnen und Mitarbeiter" |
+| Dr. Jan Wagner | „Unsere Implantologen" |
+| Dr. Jameela Abdul Haq | „unsere Kinderzahnärztin … seit 2021 unser Team" |
+| Dr. Yevgeni Viktorov | „KU64-Zahnarzt und -Parodontologe" |
+| Dr. Elham Andabili-Barthel | Partnerschaft, Zugehörigkeit unklar |
+| Prof. Dr. Anabel Ternes | extern (SRH Institut) — Fehltreffer |
+| Dr. Frederike Arnold-Brüning | fremde Praxis im Lebenslauf — Fehltreffer |
+| „Dr. Mathers Institutes" | Fortbildungsanbieter — Fehltreffer |
+
+**Ohne KU64-Bezug — 14.** Referenten, Doktorväter, frühere Arbeitgeber in
+Lebensläufen. Die sind in Ordnung und werden nur gezählt, nicht gemeldet.
+
+### 6.4 Ein Nebenbefund: derselbe Mensch, zwei Schreibweisen
+
+Ein Blogbeitrag zitiert **„Dr. Stefan Ziegler"**. Im Team steht
+**„Dr. Stephan Ziegler"** — Geschäftsführender Gründungspartner. Das ist
+dieselbe Person mit zwei Schreibweisen des Vornamens. Für Suchmaschinen sind
+das zwei Menschen, und für die Praxis ist es der Name des Gründers.
+
+### 6.5 Was zu tun ist
+
+Diese Prüfung entscheidet nichts — sie legt eine Liste vor. Ob eine Nennung
+bleibt, gekürzt oder ersetzt wird, weiß nur die Praxis. Drei Wege, je nach
+Fall:
+
+1. **Bleiben lassen.** Ein Rückblick auf 2019 darf Menschen nennen, die
+   damals da waren — wenn erkennbar ist, dass es ein Rückblick ist. Bei
+   Beiträgen mit Jahreszahl im Titel ist das gegeben.
+2. **Zeitform ändern.** Aus „Unser Kinderzahnarzt Dr. X empfiehlt" wird
+   „Damals empfahl unser Kinderzahnarzt Dr. X" — oder der Name entfällt und
+   die fachliche Aussage bleibt.
+3. **Entfernen.** Bei Zitaten, die wie eine gegenwärtige Aussage der Praxis
+   wirken, und bei Personen, die ausdrücklich als aktuelles Teammitglied
+   vorgestellt werden.
+
+**Der dringlichste Fall ist Matthias Leyh**, weil dort ein langes fachliches
+Zitat im Präsens steht und die genannte Patientin namentlich vorkommt.
+
+**Aufwand:** Es sind neun Stellen in vier Blogbeiträgen. Eine Stunde
+Durchsicht durch jemanden, der weiß, wer noch da ist — danach eine halbe
+Stunde Umsetzung.
+
+**Und danach bleibt es sauber:** `npm run personen:pruefen` läuft künftig
+mit. Wer aus dem Team ausscheidet und in `team.ts` auf `bestaetigt: false`
+gesetzt wird, taucht ab diesem Moment in der Liste auf, wenn sein Name noch
+irgendwo im Text steht.
+
+---
+
+## 7. Analytics und Anbindung ans Dashboard
 
 **Stand heute: Es gibt keine Messung.** Kein Analysewerkzeug, kein Cookie,
 kein Zählpixel, kein Drittanbieter. Der Server schreibt bewusst keine Adressen
@@ -521,7 +707,7 @@ deshalb gibt es auch kein Einwilligungsbanner. Ein nachträglich eingebautes
 Google Analytics würde diese Zusage brechen, ein Banner erzwingen und damit
 die erste Sekunde jedes Besuchs kosten.
 
-### 6.1 Was gemessen werden soll
+### 7.1 Was gemessen werden soll
 
 Nicht „Besucher". Die Fragen, die die Praxis wirklich hat:
 
@@ -540,7 +726,7 @@ Die fünfte Zeile ist die wertvollste. Eine Liste der Suchanfragen ohne
 Treffer ist die direkteste Aussage darüber, was auf der Website fehlt — und
 sie kostet nichts als das Mitzählen.
 
-### 6.2 Vorschlag: eigene Messung, serverseitig, ohne Cookies
+### 7.2 Vorschlag: eigene Messung, serverseitig, ohne Cookies
 
 Die Website liefert alles vom eigenen Server aus. Dann kann sie dort auch
 zählen, ohne dass ein Byte an Dritte geht.
@@ -567,7 +753,7 @@ hängt davon ab, was dort schon steht.
 mehrere Seiten. Dafür bräuchte es eine Kennung je Gerät — und damit die
 Einwilligung, die wir gerade nicht brauchen.
 
-### 6.3 Alternative, falls mehr gewünscht ist
+### 7.3 Alternative, falls mehr gewünscht ist
 
 **Plausible oder Matomo, selbst gehostet.** Beide messen ohne Cookies und
 gelten in Deutschland überwiegend als einwilligungsfrei, wenn sie auf eigener
@@ -582,7 +768,7 @@ kommt ein Skript auf jede Seite, das heute nicht da ist.
 US-Datentransfer, und für eine Praxis mit vier Standorten liefert es keine
 Antwort, die die eigene Zählung nicht auch gäbe.
 
-### 6.4 Was zuerst gebraucht wird — auch ohne Analytics
+### 7.4 Was zuerst gebraucht wird — auch ohne Analytics
 
 Zwei Dinge, die mehr bringen als jedes Werkzeug und heute noch fehlen:
 
@@ -595,7 +781,7 @@ Zwei Dinge, die mehr bringen als jedes Werkzeug und heute noch fehlen:
 
 ---
 
-## 7. Wie man künftig Änderungen macht
+## 8. Wie man künftig Änderungen macht
 
 Die Website hat kein Redaktionssystem. Das ist eine Entscheidung, keine
 Auslassung: Ein Redaktionssystem, in dem dieselbe Angabe an vier Stellen
@@ -605,7 +791,7 @@ Stattdessen gibt es **Datendateien**. Eine Änderung dort zieht überall nach �
 Seiten, Navigation, Vergleichstabellen, Sitemap, Vorschaubilder, strukturierte
 Daten und die Antworten des Chat-Beraters.
 
-### 7.1 Wo was steht
+### 8.1 Wo was steht
 
 | Ich möchte ändern … | Datei |
 |---|---|
@@ -630,7 +816,7 @@ Vergleichstabelle, der Sitemap-Eintrag, das Vorschaubild fürs Teilen, der
 Eintrag in der Wissensbasis des Beraters — und die englische und französische
 Fassung, sobald der nächtliche Übersetzungslauf durch ist.
 
-### 7.2 Der Weg einer Änderung
+### 8.2 Der Weg einer Änderung
 
 ```
 1. Datei ändern
@@ -646,7 +832,7 @@ zeigt; wenn ein Bild fehlt; wenn ein Text unübersetzt bleibt; wenn ein
 Kontrast unter die Norm fällt. **Man kann die Website nicht kaputt
 veröffentlichen, ohne dass es vorher jemand sagt.**
 
-### 7.3 Wer kann was ohne Entwickler
+### 8.3 Wer kann was ohne Entwickler
 
 | Aufgabe | Nötige Kenntnis |
 |---|---|
@@ -661,7 +847,7 @@ veröffentlichen, ohne dass es vorher jemand sagt.**
 Für alles in der oberen Gruppe reicht ein Texteditor und die Bereitschaft,
 Anführungszeichen stehen zu lassen. Die Prüfungen fangen den Rest.
 
-### 7.4 Übersetzungen
+### 8.4 Übersetzungen
 
 Ein Arbeitsablauf bei GitHub übersetzt nachts, was auf Deutsch neu
 dazugekommen ist, und legt das Ergebnis als Pull Request vor. Niemand muss
@@ -669,16 +855,16 @@ daran denken.
 
 **Das funktioniert derzeit nicht vollständig:** Der Lauf braucht die
 Berechtigung, Pull Requests anzulegen. Sie ist in den Repository-Einstellungen
-noch nicht gesetzt (Kapitel 9).
+noch nicht gesetzt (Kapitel 10).
 
 ---
 
-## 8. Was sich prognostizieren lässt
+## 9. Was sich prognostizieren lässt
 
 Zahlen zu versprechen wäre unseriös. Was sich begründen lässt, sind
 Richtungen und Größenordnungen — jeweils mit dem Mechanismus dahinter.
 
-### 8.1 Was mit hoher Sicherheit eintritt
+### 9.1 Was mit hoher Sicherheit eintritt
 
 **Kein Einbruch durch verlorene Adressen.** 0 von 552 Altadressen laufen ins
 Leere. Der typische Verlauf nach einem Relaunch ohne diese Arbeit — 30 bis
@@ -696,7 +882,7 @@ Core Web Vitals liegen im grünen Bereich. Da Google die Ladeerfahrung als
 Rankingfaktor führt und mobile Abbrüche stark mit der Ladezeit korrelieren,
 wirkt das in beide Richtungen — Sichtbarkeit und Abschlussquote.
 
-### 8.2 Was wahrscheinlich ist, aber von der Praxis abhängt
+### 9.2 Was wahrscheinlich ist, aber von der Praxis abhängt
 
 **Örtliche Sichtbarkeit je Standort.** Wo bisher eine Seite für „Zahnimplantate"
 stand, stehen künftig bis zu vier, jede mit eigener Adresse, eigener
@@ -711,14 +897,14 @@ Seiten eigenen Inhalt tragen — nicht dieselben Sätze viermal.
 **Weniger Anrufe für Routinefragen.** Öffnungszeiten, Anfahrt, Kosten,
 Ablauf — vier Standorte, drei Sprachen, dazu Chat und Suche. Wie stark, hängt
 davon ab, wie sichtbar die Selbstbedienung ist. Messbar wird es erst mit
-Kapitel 6.
+Kapitel 7.
 
 **Internationale Patienten.** Von 54 englischen Seiten auf 361, dazu 361 auf
 Französisch. Ob daraus Termine werden, entscheidet sich am Standort
 Kurfürstendamm und nicht an der Website — aber die Website steht dem jetzt
 nicht mehr im Weg.
 
-### 8.3 Was gegen den Erfolg arbeitet
+### 9.3 Was gegen den Erfolg arbeitet
 
 **Der Textverlust bei den Behandlungen** (Kapitel 5). Von ~1.600 auf ~195
 Wörter eigenen Inhalt je Behandlungsseite. Fachliche Suchanfragen mit
@@ -734,7 +920,7 @@ die Außenansicht.
 **Die noch nicht fachlich freigegebenen Texte.** Sie stehen live, sobald die
 Seite live geht.
 
-### 8.4 Eine ehrliche Gesamteinschätzung
+### 9.4 Eine ehrliche Gesamteinschätzung
 
 Wenn die Seite so live geht, wie sie heute ist:
 
@@ -755,7 +941,7 @@ Behandlungstexten und vierundzwanzig Fotos.
 
 ---
 
-## 9. Was offen ist
+## 10. Was offen ist
 
 ### Bei der Entwicklung
 
@@ -773,6 +959,7 @@ Behandlungstexten und vierundzwanzig Fotos.
 | **24 Fotos** (Liste in `BILDER-BEDARF.md`) | Standorte zeigen derzeit Videostandbilder |
 | **Fachliche Freigabe der 36 Behandlungstexte** | ohne sie kann kein Text ausgebaut werden |
 | **Zwölf Behandlungstexte ausbauen** | das größte inhaltliche Risiko, Kapitel 5 |
+| **Neun Personennennungen durchsehen** | Kapitel 6 – eine Stunde, betrifft auch die heute laufende Website |
 | **Verfügbarkeit je Standort bestätigen** | die Zuordnung stammt aus dem Altbestand |
 | **Eine Preisquelle statt zweier** | 13 Behandlungen führen Kosten im Text *und* einen Preisrahmen |
 | **Impressum und Datenschutz befüllen** | beide sind Entwürfe mit Platzhaltern und deshalb `noindex` |
@@ -785,13 +972,13 @@ Behandlungstexten und vierundzwanzig Fotos.
 | **GitHub → Actions → „Allow GitHub Actions to create and approve pull requests"** | der nächtliche Übersetzungslauf kann sein Ergebnis nicht vorlegen |
 | **ElevenLabs-Schlüssel und Agent-ID** | Sprachberater sagt „noch nicht verbunden" |
 | **Lächeln-Vorschau einmal durchlaufen lassen** | ob der Gemini-Schlüssel trägt, ist ungetestet |
-| **Search Console und Business Profile** | Kapitel 6.4 |
+| **Search Console und Business Profile** | Kapitel 8.4 |
 
 ---
 
-## 10. Anhang
+## 11. Anhang
 
-### 10.1 Woher die Zahlen stammen
+### 11.1 Woher die Zahlen stammen
 
 | Zahl | Quelle |
 |---|---|
@@ -804,7 +991,7 @@ Behandlungstexten und vierundzwanzig Fotos.
 | Interne Verweise | `npm run verweise:pruefen` |
 | Sprachstand | `npm run sprachen:pruefen` |
 
-### 10.2 Die Erhebung wiederholen
+### 11.2 Die Erhebung wiederholen
 
 ```bash
 npm run build
@@ -815,7 +1002,7 @@ node analyse/vergleich/erheben.mjs http://127.0.0.1:4321
 Das Skript schreibt `analyse/vergleich/erhebung.json`. Alle Tabellen dieses
 Dokuments lassen sich daraus nachrechnen.
 
-### 10.3 Bekannte Grenzen dieser Analyse
+### 11.3 Bekannte Grenzen dieser Analyse
 
 1. **Core Web Vitals der alten Website fehlen.** Aus dieser Arbeitsumgebung
    nicht erhebbar. Ein PageSpeed-Lauf auf `ku64.de` schließt die Lücke.
