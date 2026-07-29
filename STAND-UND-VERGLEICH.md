@@ -22,7 +22,7 @@ lesen.
 
 **Was gebaut wurde.** Ein vollständiger Neubau der Website mit einer anderen
 Grundordnung: Jede Behandlung gehört zu einem Standort statt zu keinem. 1.084
-Seiten, drei Sprachen, vierzehn automatische Prüfungen, kein Drittanbieter,
+Seiten, drei Sprachen, fünfzehn automatische Prüfungen, kein Drittanbieter,
 kein Cookie.
 
 **Was messbar besser ist.**
