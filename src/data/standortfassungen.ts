@@ -92,8 +92,31 @@ export function fassungIstEigenstaendig(standortSlug: string, leistungSlug: stri
  *     Text trugen; der Inhalt steht jetzt auf `/anamnese/`
  *   · der Blog je Standort – dieselben Beiträge, nur gefiltert
  */
+/**
+ * Seiten, die selbst `noindex` tragen.
+ *
+ * Impressum und Datenschutzerklärung sind ENTWÜRFE mit Platzhaltern, bis die
+ * Praxis die Pflichtangaben liefert – deshalb tragen sie `noindex`, und
+ * deshalb dürfen sie auch nicht in der Sitemap stehen. Beides zusammen wäre
+ * ein Widerspruch mit Ansage: Die Sitemap sagt „bitte aufnehmen", die Seite
+ * sagt „bitte nicht".
+ *
+ * Sobald die Angaben vorliegen und das `noindex` in der jeweiligen Seite
+ * fällt, gehört der Eintrag hier ebenfalls weg. Damit das niemand vergisst,
+ * prüft `scripts/sitemap-liste.mjs` jede Sitemap-Adresse gegen das gebaute
+ * HTML und bricht ab, wenn beides auseinanderläuft – in beide Richtungen.
+ */
+const NOINDEX_SEITEN = ['/impressum/', '/datenschutz/'];
+
 export function ausSitemapAusschliessen(pfad: string): boolean {
   const p = pfad.replace(/^https?:\/\/[^/]+/, '');
+
+  if (NOINDEX_SEITEN.includes(p)) return true;
+
+  /* Teamübersicht eines Standorts ohne eigenes Team – dort steht nichts, was
+     man indexieren könnte, und die Seite sagt das selbst per `noindex`. */
+  const teamUebersicht = p.match(/^\/([a-z-]+)\/team\/$/);
+  if (teamUebersicht && !TEAM.some((t) => t.standorte.includes(teamUebersicht[1]))) return true;
 
   // /<ort>/leistungen/  und  /<ort>/blog/  und  /<ort>/anamnese/
   if (/^\/[a-z-]+\/(leistungen|blog|anamnese)\/$/.test(p)) return true;

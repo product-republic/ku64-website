@@ -1,0 +1,50 @@
+{
+ "erhobenAm": "2026-07-29T18:38:43.355Z",
+ "ergebnisse": [
+  {
+   "name": "Startseite",
+   "alt": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://ku64.de/\nCall log:\n\u001b[2m  - navig"
+   },
+   "neu": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://web-production-4452b1.up.railway"
+   }
+  },
+  {
+   "name": "Standort Potsdam",
+   "alt": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://ku64.de/potsdam/\nCall log:\n\u001b[2m "
+   },
+   "neu": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://web-production-4452b1.up.railway"
+   }
+  },
+  {
+   "name": "Eine Behandlung",
+   "alt": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://ku64.de/leistungen/zahnimplantat"
+   },
+   "neu": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://web-production-4452b1.up.railway"
+   }
+  },
+  {
+   "name": "Team",
+   "alt": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://ku64.de/team/\nCall log:\n\u001b[2m  - "
+   },
+   "neu": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://web-production-4452b1.up.railway"
+   }
+  },
+  {
+   "name": "Blogübersicht",
+   "alt": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://ku64.de/blog/\nCall log:\n\u001b[2m  - "
+   },
+   "neu": {
+    "fehler": "page.goto: net::ERR_CONNECTION_RESET at https://web-production-4452b1.up.railway"
+   }
+  }
+ ]
+}

@@ -43,6 +43,44 @@ const adressen = [...roh.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const basis = adressen[0]?.match(/^https?:\/\/[^/]+/)?.[0] ?? 'https://ku64.de';
 const pfade = adressen.map((a) => a.replace(basis, '')).sort();
 
+/*
+ * Steht in der Sitemap etwas, das die Seite selbst nicht indexiert haben
+ * will?
+ *
+ * Das ist ein Widerspruch mit Ansage: Die Sitemap sagt „bitte aufnehmen",
+ * die Seite sagt „bitte nicht". Die Search Console meldet das als Fehler,
+ * und sie hat recht – eine der beiden Angaben ist falsch, und welche, weiß
+ * sie nicht.
+ *
+ * Gefunden hat es diese Prüfung bei /impressum/, /datenschutz/ und
+ * /wilmersdorf/team/: alle drei tragen `noindex, follow` und standen
+ * trotzdem in der Liste. Geprüft wird gegen das gebaute HTML, nicht gegen
+ * eine zweite Liste im Quelltext – zwei Listen laufen auseinander.
+ */
+const widersprueche = [];
+for (const p of pfade) {
+  const datei = path.join(WURZEL, 'dist', 'client', p.replace(/^\//, ''), 'index.html');
+  if (!existsSync(datei)) continue;
+  const html = await readFile(datei, 'utf8');
+  if (/<meta[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
+    widersprueche.push(p);
+  }
+}
+
+if (widersprueche.length) {
+  console.error(
+    `\n[sitemap] ABBRUCH: ${widersprueche.length} Adresse(n) stehen in der Sitemap` +
+      ' und tragen zugleich noindex:',
+  );
+  for (const p of widersprueche) console.error(`    ${p}`);
+  console.error(
+    '\n          Entweder gehört die Seite in den Index – dann muss das noindex weg –,\n' +
+      '          oder sie gehört nicht in die Sitemap. Der Filter dafür steht in\n' +
+      '          astro.config.mjs bei der Sitemap-Integration.',
+  );
+  process.exit(1);
+}
+
 /** Der letzte Abschnitt einer Adresse, lesbar gemacht. */
 function beschriftung(pfad) {
   const teile = pfad.replace(/^\/|\/$/g, '').split('/');

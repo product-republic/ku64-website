@@ -4,14 +4,14 @@
 > `dist/client/sitemap-0.xml`, also aus derselben Datei, die Google
 > bekommt. Neu schreiben mit `npm run sitemap:liste`.
 
-**210 Seiten**, Stand des letzten Bauvorgangs.
+**207 Seiten**, Stand des letzten Bauvorgangs.
 
 ## Für Suchmaschinen
 
 | Datei | Zweck |
 |---|---|
 | `https://ku64.de/sitemap-index.xml` | **Diese Adresse in die Google Search Console eintragen.** Sie verweist auf alle weiteren. |
-| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 210 Adressen |
+| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 207 Adressen |
 | `https://ku64.de/robots.txt` | Verweist ebenfalls auf die Sitemap – Suchmaschinen finden sie so auch ohne Eintragung |
 
 **Englisch und Französisch stehen absichtlich nicht drin.** Beide Fassungen
@@ -171,7 +171,7 @@ stehen sie ohne weiteres Zutun drin.
 
 </details>
 
-### KU64 Wilmersdorf — 6 Seiten
+### KU64 Wilmersdorf — 5 Seiten
 
 <details>
 <summary><strong>Übersicht</strong> – 1 Seite</summary>
@@ -190,26 +190,17 @@ stehen sie ohne weiteres Zutun drin.
 
 </details>
 
-<details>
-<summary><strong>Team</strong> – 1 Seite</summary>
 
-- [Team](https://ku64.de/wilmersdorf/team/)  `/wilmersdorf/team/`
-
-</details>
-
-
-## Standortübergreifend — 115 Seiten
+## Standortübergreifend — 113 Seiten
 
 <details>
-<summary><strong>Hauptseiten</strong> – 16 Seiten</summary>
+<summary><strong>Hauptseiten</strong> – 14 Seiten</summary>
 
 - [Startseite](https://ku64.de/)  `/`
 - [Anamnese](https://ku64.de/anamnese/)  `/anamnese/`
 - [Barrierefreiheit](https://ku64.de/barrierefreiheit/)  `/barrierefreiheit/`
 - [Beratung](https://ku64.de/beratung/)  `/beratung/`
 - [Cookies](https://ku64.de/cookies/)  `/cookies/`
-- [Datenschutz](https://ku64.de/datenschutz/)  `/datenschutz/`
-- [Impressum](https://ku64.de/impressum/)  `/impressum/`
 - [Karriere](https://ku64.de/karriere/)  `/karriere/`
 - [Ki transparenz](https://ku64.de/ki-transparenz/)  `/ki-transparenz/`
 - [Kontakt](https://ku64.de/kontakt/)  `/kontakt/`
