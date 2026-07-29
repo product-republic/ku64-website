@@ -77,7 +77,7 @@ wird.
 ## Was schon da ist
 
 0 von 24 angemeldeten Motiven liegen vor.
-Dazu kommen 111 weitere Aufnahmen, die bereits im Bildverzeichnis stehen – darunter alle
+Dazu kommen 110 weitere Aufnahmen, die bereits im Bildverzeichnis stehen – darunter alle
 Porträts des Teams und die Räume am Kurfürstendamm.
 
 _Noch keines._
