@@ -33,9 +33,90 @@ const brotkrumen = [
       <Standortwahl ziel="anamnese" titel={t('anamnesez.woTermin')} />
     </div>
   </section>
+
+  {/*
+    Diese Seite war eine reine Standortabfrage mit 90 Wörtern – und
+    gleichzeitig das Canonical-Ziel der vier Standortfassungen, die zu 90,2
+    Prozent identisch waren. Eine Hauptseite, die dünner ist als die Seiten,
+    die auf sie zeigen, ist die falsche Hauptseite.
+
+    Was überall gleich gilt, steht deshalb hier: Ablauf, was bereitzuhalten
+    ist, was unbedingt genannt werden muss, wer die Daten verarbeitet. Die
+    Standortseiten tragen, was nur dort gilt – ob die Anamnese dort schon
+    freigeschaltet ist und an welche Nummer man sich sonst wendet.
+  */}
+  <section class="abschnitt flaeche-warm">
+    <div class="huelle eng">
+      <h2>In drei Schritten</h2>
+      <ol class="schritte">
+        <li>
+          <strong>Formular öffnen.</strong> Sie brauchen weder Konto noch App –
+          ein Link genügt, und er läuft im Browser Ihres Telefons genauso wie am
+          Rechner.
+        </li>
+        <li>
+          <strong>Angaben machen.</strong> Vorerkrankungen, Medikamente,
+          Allergien. Rechnen Sie mit fünf Minuten; halten Sie Ihren
+          Medikamentenplan bereit, falls Sie regelmäßig etwas einnehmen.
+        </li>
+        <li>
+          <strong>Absenden.</strong> Ihre Angaben gehen verschlüsselt in unser
+          Praxissystem. Beim Termin ist alles da, und Sie starten direkt.
+        </li>
+      </ol>
+
+      <h2>Was Sie bereithalten sollten</h2>
+      <ul class="liste">
+        <li>Versichertenkarte</li>
+        <li>Medikamentenplan, falls Sie regelmäßig etwas einnehmen</li>
+        <li>Allergiepass</li>
+        <li>Bonusheft, wenn es um Zahnersatz geht</li>
+        <li>Name und Anschrift Ihrer Hausärztin oder Ihres Hausarztes</li>
+      </ul>
+
+      <h2>Diese fünf Angaben ändern die Behandlung</h2>
+      <p>
+        Bitte nennen Sie sie in jedem Fall – auch wenn Sie sicher sind, dass wir
+        sie schon kennen. Sie entscheiden über Betäubung, Blutstillung und
+        Vorsichtsmaßnahmen, und eine fehlende Angabe fällt erst auf, wenn sie
+        gebraucht wird.
+      </p>
+      <ul class="liste">
+        <li><strong>Blutverdünner</strong> – auch niedrig dosiertes ASS</li>
+        <li><strong>Bisphosphonate</strong>, auch wenn die Einnahme Jahre zurückliegt</li>
+        <li><strong>Herzklappenersatz</strong> oder eine durchgemachte Endokarditis</li>
+        <li><strong>Diabetes</strong> und eine bestehende <strong>Schwangerschaft</strong></li>
+        <li><strong>Allergien gegen Betäubungsmittel</strong> oder Latex</li>
+      </ul>
+
+      <h2>Wer die Daten verarbeitet</h2>
+      <p>
+        Der Bogen läuft über Nelly Solutions, einen auf Praxisanamnesen
+        spezialisierten Dienst mit Serverstandort in der EU. Ihre Angaben gehen
+        verschlüsselt direkt in unser Praxissystem und werden dort behandelt wie
+        jede andere Patientenakte. Einzelheiten stehen in der{' '}
+        <a href="/datenschutz/">Datenschutzerklärung</a>.
+      </p>
+      <p>
+        Wenn Sie das nicht möchten, ist das kein Problem: Der Bogen liegt an
+        jedem Standort auch auf Papier bereit. Die digitale Fassung spart Zeit im
+        Wartezimmer, sie ist keine Voraussetzung für einen Termin.
+      </p>
+    </div>
+  </section>
 </Basis>
 
 <style>
+  .eng { max-width: var(--breite-text); }
+  .eng h2 { font-size: var(--t-lg); margin-block: var(--raum-7) var(--raum-3); }
+  .eng h2:first-child { margin-block-start: 0; }
+  .eng p { line-height: var(--zeile-weit); }
+  .schritte { padding-inline-start: 1.2em; display: grid; gap: var(--raum-3); }
+  .schritte li { line-height: var(--zeile-weit); }
+  .liste { list-style: none; padding: 0; display: grid; gap: var(--raum-2); }
+  .liste li { padding-inline-start: 1.1em; position: relative; line-height: var(--zeile-normal); }
+  .liste li::before { content: "–"; position: absolute; inset-inline-start: 0; color: var(--akzent-schrift); }
+
   .unter {
     max-width: var(--breite-text);
     margin-block: var(--raum-4) var(--raum-5);

@@ -50,6 +50,7 @@
  */
 
 import { TEAM } from './team';
+import { profilEigenstaendig } from './profiltiefe';
 
 /** Schlüssel: `<standort-slug>/<leistung-slug>`. */
 export type Standortfassung = `${string}/${string}`;
@@ -108,6 +109,9 @@ export function ausSitemapAusschliessen(pfad: string): boolean {
   if (profil) {
     const person = TEAM.find((t) => t.slug === profil[2]);
     if (person && person.standorte[0] !== profil[1]) return true;
+    /* Profile ohne eigene Substanz zeigen auf die Teamübersicht und gehören
+       damit nicht in die Sitemap – siehe src/data/profiltiefe.ts */
+    if (person && !profilEigenstaendig(person.slug)) return true;
   }
 
   return false;

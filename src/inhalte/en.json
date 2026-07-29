@@ -213,6 +213,10 @@
       "text": "360°zahn – dentist in Düsseldorf",
       "quelle": "4ad85ef2"
     },
+    "beitrag.360zahn-aus-duesseldorf.titel": {
+      "text": "Rhineland innovation spirit that connects – dental greetings go out to 360°zahn from Düsseldorf",
+      "quelle": "b6fcedbd"
+    },
     "beitrag.architektur-design.anriss": {
       "text": "October 2013",
       "quelle": "d0a6d8b3"
@@ -645,6 +649,18 @@
       "text": "Architecture and design at KU64",
       "quelle": "140dca2a"
     },
+    "beitrag.box-legende-axel-schulz-sagt-karies-den-kampf-an.anriss": {
+      "text": "December 2023",
+      "quelle": "0897a0d0"
+    },
+    "beitrag.box-legende-axel-schulz-sagt-karies-den-kampf-an.bloecke.0.text": {
+      "text": "December 2023",
+      "quelle": "0897a0d0"
+    },
+    "beitrag.box-legende-axel-schulz-sagt-karies-den-kampf-an.bloecke.1.text": {
+      "text": "Since 2009, KU64 has been working towards a cavity-free school in Paternoster, South Africa, and supporting the dental health of around 180 children at the local primary school and nursery.",
+      "quelle": "8624dea8"
+    },
     "beitrag.box-legende-axel-schulz-sagt-karies-den-kampf-an.bloecke.10.text": {
       "text": "Photo: https://robertkujas.de/",
       "quelle": "f671fd96"
@@ -681,13 +697,17 @@
       "text": "@axelschulz",
       "quelle": "36bb5c3c"
     },
+    "beitrag.box-legende-axel-schulz-sagt-karies-den-kampf-an.titel": {
+      "text": "Boxing Legend Axel Schulz Takes on Tooth Decay",
+      "quelle": "634ab54d"
+    },
     "beitrag.boys-day-in-der-zahnarztpraxis-ku64-3.anriss": {
-      "text": "You are currently viewing placeholder content from YouTube. To access the actual content, click the button below. Please note that this will share data with third parties.",
-      "quelle": "addff07b"
+      "text": "For Boys' Day, boys spent a day following everyday life at the dental practice – from preventive care to chairside assistance to dental technology.",
+      "quelle": "f753e17b"
     },
     "beitrag.boys-day-in-der-zahnarztpraxis-ku64-3.bloecke.0.text": {
-      "text": "You are currently viewing placeholder content from YouTube. To access the actual content, click the button below. Please note that this will share data with third parties.",
-      "quelle": "addff07b"
+      "text": "For Boys' Day, boys spent a day following everyday life at the dental practice – from preventive care to chairside assistance to dental technology.",
+      "quelle": "f753e17b"
     },
     "beitrag.boys-day-in-der-zahnarztpraxis-ku64-3.bloecke.1.text": {
       "text": "Boys IN a women's domain: dental nurse (formerly\ndental assistant)\nat the dentist's",
@@ -1163,7 +1183,7 @@
     },
     "beitrag.flowable-injection-technique.bloecke.72.text": {
       "text": "Berliner Str. 139\n14467 Potsdam\n0331 98 22 22 80",
-      "quelle": "4d7bdcde"
+      "quelle": "d906a9e2"
     },
     "beitrag.flowable-injection-technique.bloecke.73.text": {
       "text": "KU64 Berlin-Mitte",
@@ -3842,8 +3862,8 @@
       "quelle": "794e2090"
     },
     "beitrag.mundpilz-hausmittel.bloecke.73.text": {
-      "text": "✅ Generally sensible",
-      "quelle": "409563a1"
+      "text": "Rather sensible",
+      "quelle": "17b7837e"
     },
     "beitrag.mundpilz-hausmittel.bloecke.74.text": {
       "text": "⚠️ Only with caution",
@@ -3992,6 +4012,18 @@
     "beitrag.neuigkeiten-aus-der-praxis.bloecke.10.text": {
       "text": "May 2020",
       "quelle": "d7e83612"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.100.text": {
+      "text": "According to Hillegaart and Strauss, the restaurant within the walk-through three-dimensional sculpture by Munich architects Schmidhuber and Kaindltrans is to be “transformed into an abstract landscape of colour and nature”. Alongside this prestigious project in the Far East, the two designers from Cottbus also provided the concepts for the sculptural interior of the new children's dental practice run by KU64 on Kurfürstendamm in Berlin.",
+      "quelle": "e1c4c1a4"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.101.text": {
+      "text": "For the graffiti-style colourful drawings, Hillegaart and Strauss drew inspiration from themes such as pirates, the jungle, and also the world of healthy teeth. They created an unusual, fear-free world where children and teenagers enjoy spending time and being treated. Hillegaart and Strauss, who have already completed more than 1,000 projects worldwide, draw their ideas from all over the world.",
+      "quelle": "7843f9dd"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.102.text": {
+      "text": "“We draw our inspiration from our work, our travels and our meetings,” says Hillegaart. A project in Tokyo might influence the next one in Lübbenau or Senftenberg – or indeed Berlin.",
+      "quelle": "0c4bf538"
     },
     "beitrag.neuigkeiten-aus-der-praxis.bloecke.11.text": {
       "text": "WE HAVE REOPENED FOR YOU!",
@@ -4305,9 +4337,81 @@
       "text": "KU64 TAKES PART IN BERLIN SHARES",
       "quelle": "fda659c4"
     },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.82.text": {
+      "text": "August 2012",
+      "quelle": "3d386b85"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.83.text": {
+      "text": "KU64 has a heart for social projects: we're taking part in BERLIN TEILT. Last year, the project was recognised as one of 100 IDEEN FÜR DEUTSCHLAND. Through BERLIN TEILT, people can donate time, money and goods.",
+      "quelle": "987bfd94"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.84.text": {
+      "text": "Our donation goes in full to the children's hospice BERLINER HERZ. Due to a new inpatient building near Strausberger Platz, the need for support is enormous.",
+      "quelle": "b087bf93"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.85.text": {
+      "text": "WHAT KU64 SHARES: For every professional dental cleaning booked and carried out through BERLIN TEILT, the dental specialists at KU64 donate one Euro to the children's hospice Berliner Herz, and for every 10th professional dental cleaning booked and carried out, we give a child in their care a premium children's preventive treatment worth 29 Euros, plus a check-up at KU64!",
+      "quelle": "c746c37c"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.86.text": {
+      "text": "OUR KUH-64 HAS A NAME",
+      "quelle": "e091fe81"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.87.text": {
+      "text": "November 2010",
+      "quelle": "1341c116"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.88.text": {
+      "text": "Christian Larisch is THE GODFATHER. Yesterday, Sunday, he presented our KUH-64 with her name tag reading “Luise KUHschinzki” and she beamed with joy.",
+      "quelle": "6178312a"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.89.text": {
+      "text": "Christian claimed his prize (a professional teeth cleaning) on the spot and then cuddled with Luise!",
+      "quelle": "c3a8b555"
+    },
     "beitrag.neuigkeiten-aus-der-praxis.bloecke.9.text": {
       "text": "Covid-19 Update",
       "quelle": "4cc12268"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.90.text": {
+      "text": "You can see her: daily from 8am to 8pm, and on Saturdays and Sundays from 9am to 7pm!",
+      "quelle": "41803b5f"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.91.text": {
+      "text": "KU64 NOW USES IPADS",
+      "quelle": "31351e35"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.92.text": {
+      "text": "August 2010",
+      "quelle": "3b38685f"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.93.text": {
+      "text": "From now on, the KU64 practice is equipped with iPads. This allows patients to enter their details directly into the digital medical history form.",
+      "quelle": "a299b2b4"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.94.text": {
+      "text": "This means the data is entered into patient records faster and without transcription errors, and it's environmentally friendly too – we save on paper! Short waiting times are also made more pleasant with a bit of high-tech.",
+      "quelle": "585dbd97"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.95.text": {
+      "text": "KU64 – ARCHITECTS AT THE EXPO IN SHANGHAI",
+      "quelle": "f487ce43"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.96.text": {
+      "text": "May 2010",
+      "quelle": "d1e5ee09"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.97.text": {
+      "text": "A touch of the Far East in Berlin: KU64 designers created the restaurant of the German Pavilion at Expo 2010 in Shanghai. The interior designers of the Berlin dental practice KU64, Markus Hillegaart and Thomas Strauss, are causing a stir…",
+      "quelle": "b65ea6f5"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.98.text": {
+      "text": "…with the design of the restaurant in the German Pavilion at Expo 2010 in Shanghai.",
+      "quelle": "b0886c56"
+    },
+    "beitrag.neuigkeiten-aus-der-praxis.bloecke.99.text": {
+      "text": "“The German Pavilion is called ‘Balancity’ – a made-up word combining balance and city, meant to represent a city in balance between innovation and tradition, urban life and nature,” says Markus Hillegaart about this prestigious project.",
+      "quelle": "411bade5"
     },
     "beitrag.neuigkeiten-aus-der-praxis.titel": {
       "text": "News from your dental practice KU64 in Berlin",
@@ -4511,7 +4615,7 @@
     },
     "beitrag.referral-growth-culture-award-2026.bloecke.32.text": {
       "text": "Berliner Str. 139\n14467 Potsdam\n0331 98 22 22 80",
-      "quelle": "4d7bdcde"
+      "quelle": "d906a9e2"
     },
     "beitrag.referral-growth-culture-award-2026.bloecke.33.text": {
       "text": "KU64 Berlin-Mitte",
@@ -4741,6 +4845,14 @@
       "text": "Social Media - 2023",
       "quelle": "1d92c24a"
     },
+    "beitrag.social-media-2024.anriss": {
+      "text": "A great and successful year has come to an end for KU64! We would like to sincerely thank all our patients for that. A special thank you goes to our wonderful team. Here's a look bac",
+      "quelle": "aab23127"
+    },
+    "beitrag.social-media-2024.bloecke.0.text": {
+      "text": "What happened on our social media channels in December",
+      "quelle": "d49da637"
+    },
     "beitrag.social-media-2024.bloecke.1.text": {
       "text": "A wonderful and successful year has come to an end for KU64! We would like to thank all our patients most sincerely. Special thanks go to our fantastic team. Here is a look back at the December highlights on our social media channels.",
       "quelle": "9c0ae61f"
@@ -4749,9 +4861,85 @@
       "text": "New offer: tooth jewellery days",
       "quelle": "eef6ff42"
     },
+    "beitrag.social-media-2024.bloecke.100.text": {
+      "text": "If you'd also like to stay up to date at all times, follow KU64 – your dental specialists in Berlin and Potsdam – on social media. There, we regularly and exclusively inform you about current offers, discount promotions and events for our patients. So what are you waiting for? Subscribe to us on Facebook, X, Instagram, Youtube and TikTok.",
+      "quelle": "ec17a376"
+    },
+    "beitrag.social-media-2024.bloecke.101.text": {
+      "text": "What happened on our social media channels in February",
+      "quelle": "cb8bc562"
+    },
+    "beitrag.social-media-2024.bloecke.102.text": {
+      "text": "It was high time for our annual kick-off meeting, which we traditionally celebrate at the start of every new year. We look back on the past year, honour our staff, congratulate long-serving team members and celebrate the achievements of our now three practices. This year we welcomed our whole team to the Alice Rooftop in Charlottenburg and were able to mark the first anniversary of our new practice in Mitte! There was one highlight after another, and, quite by the way, there was even a marriage proposal. Curious? You'll find our photos and videos of it all on social media.",
+      "quelle": "e13ed107"
+    },
+    "beitrag.social-media-2024.bloecke.103.text": {
+      "text": "On 10 February, it finally began: the long-planned charity trip to South Africa set off punctually from Berlin Hauptbahnhof. After a 4.5-hour train journey and an 11.5-hour flight, our team, led by Dr Stephan Ziegler and guest of honour Axel Schulz, arrived safely in Paternoster. The village, with around 2,000 residents, lies about 150 kilometres north of Cape Town, right on the coast.",
+      "quelle": "cf736657"
+    },
+    "beitrag.social-media-2024.bloecke.104.text": {
+      "text": "Since 2009, KU64 has been committed to a caries-free school and to the dental health of children at the local primary school and nursery here. Five packed days awaited us, during which our team gave their all and treated a total of 127 children – that's every current class at the school. We were visited by a South African newspaper and interested tourists along the way. Axel Schulz pitched in with real energy, sterilising medical equipment, and was also a wonderful source of moral support for the sometimes very nervous kids. And of course, there was a bit of boxing training with Axel to lighten the mood in between.",
+      "quelle": "da362eaf"
+    },
+    "beitrag.social-media-2024.bloecke.105.text": {
+      "text": "All of this, dear readers, you could have followed in detail on our social media channels through our extensive coverage. You would also have heard about it on the podcast Schüchtern bis Nüchtern on Schlagerradio, where our paediatric dentist Dr Alexandra Wolf spoke at length about the trip to South Africa.",
+      "quelle": "3559e196"
+    },
+    "beitrag.social-media-2024.bloecke.106.text": {
+      "text": "As a subscriber, you also wouldn't have missed our Valentine's Day offer. Sadly, without following us, you missed out on our exclusive LOVE EDITION from Curaprox (two toothbrushes that form a heart together) or a special-price whitening treatment for a dazzling smile on date night.",
+      "quelle": "44518a17"
+    },
+    "beitrag.social-media-2024.bloecke.107.text": {
+      "text": "Otherwise, as you know, celebrities are always coming and going at our practice, and in February we had the honour of welcoming Wolfgang Joop for treatment.",
+      "quelle": "03398db9"
+    },
+    "beitrag.social-media-2024.bloecke.108.text": {
+      "text": "More photos, videos and information about the continuation of our charity work in Zambia, Zimbabwe, Botswana and Namibia, our training trip to see dental aesthetics guru Christian Coachman in Miami, new team members, everything about our children's practice, and much more, were all shared throughout the month on our newsfeed.",
+      "quelle": "b9c5c654"
+    },
+    "beitrag.social-media-2024.bloecke.109.text": {
+      "text": "If you'd like to stay up to date from now on, follow KU64 – your dental specialists in Berlin and Potsdam – on social media straight away. There, we regularly share exclusive news about current offers, discount promotions and events for our patients. So what are you waiting for? Subscribe to us on Facebook, X, Instagram, YouTube and TikTok.",
+      "quelle": "9b04aca2"
+    },
     "beitrag.social-media-2024.bloecke.11.text": {
       "text": "Speaking of Christmas: if you don't just love decorating your home for the festive season but are also as keen on tooth jewellery as we are, we now have something special for you. From now on, KU64 offers sparkling highlights for your smile – professional, individual and stylish! Our special tooth jewellery days are the new trend, much like our popular Bleaching Days and Beauty Days.",
       "quelle": "0c57d028"
+    },
+    "beitrag.social-media-2024.bloecke.110.text": {
+      "text": "What happened on our social media channels in January",
+      "quelle": "f46f2030"
+    },
+    "beitrag.social-media-2024.bloecke.111.text": {
+      "text": "What would we be without our wonderful team! And the talents of our fantastic staff extend far beyond the world of dentistry.",
+      "quelle": "80e69ca8"
+    },
+    "beitrag.social-media-2024.bloecke.112.text": {
+      "text": "Take Dr Elisabeth Futterlieb, for example. She's a dentist in our Potsdam team, and also a passionate painter. Her impressive works will grace our premises until the end of February. From abstract plays of colour to expressive portraits – let yourself be enchanted by her art, which we've also shared extensively on our social media channels over the past few months. Had you already been one of our subscribers, you could even have bid on one of her paintings in a charity auction in aid of our project in South Africa. On social media, we followed the artist as she personally handed over the painting to the highest bidder.",
+      "quelle": "219bd0d4"
+    },
+    "beitrag.social-media-2024.bloecke.113.text": {
+      "text": "Our brilliant experts also impress on a professional level and are regularly asked to contribute to specialist publications. Right now, for example, our dental hygienist, trainer and prophylaxis lecturer Adina Mauder! Her cases are truly impressive and feature in the latest global publication by 'GBT by EMS', showcasing the world's best before-and-after dental cleaning cases. You can also see it on our social media channels.",
+      "quelle": "85692eda"
+    },
+    "beitrag.social-media-2024.bloecke.114.text": {
+      "text": "Did you know that we offer exciting discovery tours for nursery and Year 1 children? On this tour, the kids can not only meet our XXL mascot KROKO but also have loads of fun! In about an hour, there's plenty of learning, toothbrushing practice, and dancing and singing with Kroko! In January, we presented the whole programme with photos and videos on social media. If you'd like to bring your nursery or Year 1 class along, just drop us a line. You'll find all the information about our children's dentists here.",
+      "quelle": "0a2f7626"
+    },
+    "beitrag.social-media-2024.bloecke.115.text": {
+      "text": "There was plenty to celebrate last month too, as we documented with lots of photos on social media. Many long-standing staff anniversaries, a warm welcome for several new colleagues, and something we're especially proud of: one year of KU64 in Berlin-Mitte! A special thank you to the dedicated staff who made KU64 Berlin-Mitte such a success and built up what is now our third location.",
+      "quelle": "97b5aaa7"
+    },
+    "beitrag.social-media-2024.bloecke.116.text": {
+      "text": "Of course, we also advertise our job openings on social media, as we're always looking for talented and dedicated staff. We're currently urgently looking for dental nurses (m/f/d) for chairside assistance or for reception and the phones. Take a look at our careers page.",
+      "quelle": "628601c1"
+    },
+    "beitrag.social-media-2024.bloecke.117.text": {
+      "text": "Our practice lead Dr Stephan Ziegler, co-founder of the renowned Berlin dental practice KU64, shares his insights in an interview with the dental insurance comparison website www.test-zahnzusatzversicherung.de. In it, Dr Ziegler highlights not only the outstanding design of the practice but also the special atmosphere, which aims to offer patients of all ages a holistic feel-good experience and reduce dental anxiety from the outset. Dental aesthetics is also one of his particular areas of interest, and he speaks enthusiastically about the many possibilities offered by modern veneers, and why supplementary dental insurance can protect against high treatment costs in the future! You can find the full interview here: https://www.test-zahnzusatzversicherung.de/zahnaerzte/dr-stephan-ziegler/",
+      "quelle": "d65422bc"
+    },
+    "beitrag.social-media-2024.bloecke.118.text": {
+      "text": "Don't want to miss any of this? Follow KU64 – your dental specialists in Berlin and Potsdam – on social media. It's the only place where we regularly share exclusive news about current offers, discount promotions and events for our patients. So subscribe to us straight away on Facebook, Twitter (X), Instagram, YouTube and TikTok.",
+      "quelle": "8d04600a"
     },
     "beitrag.social-media-2024.bloecke.12.text": {
       "text": "Our glitter queen, orthodontic dental assistant Evgenia, is a true expert in this field. She and her team offer excellent advice and take the time to understand your wishes! This naturally includes professional application: tooth jewellery by an expert – safe and gentle! Our tip: a professional dental cleaning before the application makes both your teeth and the jewellery shine even more.",
@@ -4813,17 +5001,117 @@
       "text": "Dentures without impressions or waiting time",
       "quelle": "2b342ac9"
     },
+    "beitrag.social-media-2024.bloecke.26.text": {
+      "text": "When it comes to dental prosthetics, we of course rely on the latest technology too. Because only high-quality, precisely fitted dental prosthetics let you keep your smile and enjoy eating and drinking without hindrance.",
+      "quelle": "1f783121"
+    },
+    "beitrag.social-media-2024.bloecke.27.text": {
+      "text": "The process of making and fitting dental prosthetics is very stressful for many patients. But we make it as easy as possible for you. Did you know that with us, you can get your dental prosthetics in a single appointment, with no impression and no waiting time for fabrication? This is made possible by our ultra-modern CEREC system, which revolutionises your visit to the dentist – lightning-fast, precise and thoroughly pleasant.",
+      "quelle": "cc0e9c8b"
+    },
+    "beitrag.social-media-2024.bloecke.28.text": {
+      "text": "First, your mouth is scanned by the Dentsply Sirona Primescan, with no impression required. It captures all the necessary information for making the dental prosthetics in an instant. The CEREC Primemill then receives this data and produces the custom-made crowns and inlays directly on site. For you, this means: no waiting time, no additional visit, but rather your dental prosthetics and smile – all on the same day! We presented this technology in detail on social media.",
+      "quelle": "77edbda9"
+    },
+    "beitrag.social-media-2024.bloecke.29.text": {
+      "text": "Ready to experience the dental visit of the future? Get your smile back – book your appointment now! Our dental aesthetics specialists are always on hand with advice and support – for a smile that impresses.",
+      "quelle": "82bdfb11"
+    },
     "beitrag.social-media-2024.bloecke.3.text": {
       "text": "December started with good news for dental health. We informed you in detail that, from 1 January 2025, the use of amalgam for dental fillings will be banned across the EU. We have known for a long time that amalgam is harmful, and we stopped using it in our practice almost 20 years ago! What was once criticised is now being celebrated as the right decision.",
       "quelle": "61f2c9ac"
+    },
+    "beitrag.social-media-2024.bloecke.30.text": {
+      "text": "Better White Saturday than Black Friday",
+      "quelle": "8b2793c9"
+    },
+    "beitrag.social-media-2024.bloecke.31.text": {
+      "text": "As we all know, Black Friday always comes at the end of November. Retailers and service providers celebrate once a year with a huge round of discounts. But we have something better to offer: we celebrate twice a month, namely White Saturday! There, you get teeth whitening at the special price of 349 Euro. You would have known this long ago if you were already a follower. You can read about it again on our bleaching page.",
+      "quelle": "19a97ab3"
+    },
+    "beitrag.social-media-2024.bloecke.32.text": {
+      "text": "As you can see, it would have been worth staying up to date. If you don't want to miss anything from now on, follow KU64 – your dental specialists in Berlin and Potsdam – on social media. As a subscriber, you'll regularly receive exclusive information about our current offers, discount promotions and events. You can find us on Facebook, Instagram, Linkedin, Youtube, TikTok and Spotify.",
+      "quelle": "3e58dce4"
+    },
+    "beitrag.social-media-2024.bloecke.33.text": {
+      "text": "What happened on our social media channels this autumn",
+      "quelle": "35db9b59"
+    },
+    "beitrag.social-media-2024.bloecke.34.text": {
+      "text": "This year Berlin was blessed with a beautiful golden autumn once again. In September and October, we enjoyed many sunny days that made the whole city shine. We put that energy to good use at our main practice on the Ku'damm and did some more building work. Experience dentistry at the highest level in our new premium area! Here we offer aesthetic dentistry of the very highest standard.",
+      "quelle": "162b97f1"
+    },
+    "beitrag.social-media-2024.bloecke.35.text": {
+      "text": "New premium area and green practice",
+      "quelle": "681422d2"
+    },
+    "beitrag.social-media-2024.bloecke.36.text": {
+      "text": "On social media, you could already follow the building work and admire the finished rooms in detail – hanging gardens included. The luxurious atmosphere, created by our award-winning architects GRAFT, makes your visit a real experience. With its own entrance, a stylish waiting lounge and first-class service, a visit to us becomes a truly indulgent experience. See for yourself and book your next appointment right away.",
+      "quelle": "208594ac"
+    },
+    "beitrag.social-media-2024.bloecke.37.text": {
+      "text": "You, our patients, are naturally at the centre of everything we do, but environmental concerns are also a firm part of our company policy. As one of the largest and most modern dental practices in Europe, we have relied on innovation and high-tech solutions for years, alongside digitalisation, resource savings, energy efficiency, recycling and environmental awareness. That's why we've held the “Die Grüne Praxis” quality seal for years. Did you miss this on social media? Here's an overview of what we've been practising every day for years.",
+      "quelle": "3165fae9"
+    },
+    "beitrag.social-media-2024.bloecke.38.text": {
+      "text": "iMac donations for Berlin school classes",
+      "quelle": "d4a8775a"
+    },
+    "beitrag.social-media-2024.bloecke.39.text": {
+      "text": "Our social media channels are worthwhile for all age groups, as we offer tailored content for people of every generation. Young people are especially close to our hearts. That's why you could have learned about our school campaign on social media in good time: “Grab an iMac for your school class!” Our IT department reset old iMacs and got them ready to use again – perfect for browsing, research, homework or even asking ChatGPT questions.",
+      "quelle": "7fe23102"
     },
     "beitrag.social-media-2024.bloecke.4.text": {
       "text": "If you still have amalgam fillings, we can remove them safely using our special triple protection method, freeing you from harmful mercury. Throughout the treatment, we protect you from the dangerous vapours and particles that can be released during removal. Your new filling is made from high-quality composite resin, which matches your natural tooth colour for a bright smile and is completely safe for your health. It's a good idea to book an appointment soon.",
       "quelle": "7e42447b"
     },
+    "beitrag.social-media-2024.bloecke.40.text": {
+      "text": "The campaign was a complete success. Several schools from across Berlin took part. Best of all, no school goes away empty-handed. Every participating school receives at least two working iMacs. The first handover already took place at Albert-Einstein-Gymnasium in Britz/Neukölln, with 18 iMacs at once. Our head of training, Dominik Demski, carried out the handover. The next schools will be informed and supplied step by step. We're looking forward to the handovers still to come.",
+      "quelle": "ad365071"
+    },
+    "beitrag.social-media-2024.bloecke.41.text": {
+      "text": "Art on the Ku'damm and in Potsdam",
+      "quelle": "7defbe38"
+    },
+    "beitrag.social-media-2024.bloecke.42.text": {
+      "text": "Regular patients know that our practices in Berlin and Potsdam are meant to be places where patients feel at ease. We also create a very special atmosphere through regular exhibition openings and art shows. This autumn, there were two exhibition openings you could register for via social media:",
+      "quelle": "58911a84"
+    },
+    "beitrag.social-media-2024.bloecke.43.text": {
+      "text": "On 12.09.2024, our KU64-Zahnarzt-Potsdam branch turned into the coolest gallery in town. At a unique exhibition opening, our paediatric dentist and creative all-rounder Dr. Elisabeth Futterlieb presented her fascinating artworks. Did you miss the exhibition on the Ku'damm 6 months ago? No problem, now you have another chance to experience these masterpieces up close. The pictures will stay with us for the coming months and can be admired – and bought directly – at any time during our opening hours.",
+      "quelle": "3759b393"
+    },
+    "beitrag.social-media-2024.bloecke.44.text": {
+      "text": "Artist Sabrina Seligsohn is once again honouring us on the Ku'damm with her art. The exhibition opening in October was a real highlight – the painter took us and our guests into a completely new world with her pictures. Everyone was delighted! Thank you also to everyone who attended for the huge interest. And for anyone who missed the opening: the exhibition runs until 31 January 2025 – every single day, even on Sundays. A truly non-stop art experience. As always, you'll find impressions from the opening evening on our social media channels.",
+      "quelle": "e1660c63"
+    },
+    "beitrag.social-media-2024.bloecke.45.text": {
+      "text": "KU64 expertise in South Korea",
+      "quelle": "2a260231"
+    },
+    "beitrag.social-media-2024.bloecke.46.text": {
+      "text": "There was also coverage of our wonderful children's and adolescent dentist and Lufthansa flight attendant, Dr. Alexandra Wolf. She is deeply committed to our heartfelt project in South Africa. An interview with her was published in the renowned “PJ – Prophylaxe Journal – Parodontologie und präventive Zahnheilkunde”, which you can read as an e-paper.",
+      "quelle": "c4a0aa87"
+    },
+    "beitrag.social-media-2024.bloecke.47.text": {
+      "text": "Otherwise, you missed important health information, everything about pain-free preventive care, our usual seven-day-a-week summer opening hours, our back-to-school campaign and much more on our channels. So, as always, here's the important reminder: if you want to stay up to date at all times, follow KU64 – your dental specialists in Berlin and Potsdam – on social media right away. There, our subscribers regularly receive exclusive information about our current offers, discount promotions and events for KU64 patients. So subscribe to us now! You can find us on Facebook, X, Instagram, Youtube, TikTok and Spotify.",
+      "quelle": "2ce2d923"
+    },
+    "beitrag.social-media-2024.bloecke.48.text": {
+      "text": "Training courses, promotions and much more",
+      "quelle": "ee95e8a9"
+    },
+    "beitrag.social-media-2024.bloecke.49.text": {
+      "text": "Was there anything else? Yes, quite a lot. Wouldn't you have liked to see the wonderful impressions from our receptionists' inspiring team trip to Bad Saarow, from which everyone came back full of energy to improve our service for you even further? Or our preventive care experts on a training trip to Milan, where they picked up the latest tips for pain-free, efficient teeth cleaning, periodontitis pre-treatment and everything to do with saving teeth? A team of ours also took part in the 50th Berlin Marathon, and there are great video impressions of it on social media.",
+      "quelle": "29a29b4b"
+    },
     "beitrag.social-media-2024.bloecke.5.text": {
       "text": "A dentist between the treatment chair and the aircraft",
       "quelle": "0ae6c326"
+    },
+    "beitrag.social-media-2024.bloecke.50.text": {
+      "text": "Last but not least, our channels regularly feature discount promotions like our Bleaching Days, the latest offers from our preventive care shop on the Ku'damm, important health information about new and established treatment methods, and much more.",
+      "quelle": "b6f1e59b"
     },
     "beitrag.social-media-2024.bloecke.51.text": {
       "text": "As you can see, it was an eventful autumn and you missed quite a bit. If you want to stay up to date from now on, simply follow KU64 – your dental specialists in Berlin and Potsdam – on social media. There, our subscribers regularly receive exclusive information about our current offers, discount campaigns and events. You can find us on Facebook, X, Instagram, Youtube, TikTok and Spotify.",
@@ -5017,6 +5305,30 @@
       "text": "Our celebrity ambassador Axel Schulz was a guest on the MDR talk show “Riverboat”, where he talked about our charity trip this year. If you're quick, you can still catch the show on the ARD Mediathek. It would have been better if you'd already been following us on social media – then you'd have received the information on the very day it aired.",
       "quelle": "abe25956"
     },
+    "beitrag.social-media-2024.bloecke.95.text": {
+      "text": "Meanwhile, regional media naturally also report on our commitment in South Africa, and reporters are regularly on site during all our charity trips. We always share this on social media, such as the wonderful report on Netwerk24. And for many other reports, such as the current one in the journal of the Zahnärztekammer Berlin, you'll also find the links in our timelines.",
+      "quelle": "69c8f9c1"
+    },
+    "beitrag.social-media-2024.bloecke.96.text": {
+      "text": "We also support our patients with important advice via social media. Last month, we shared a lot of important information about root canal treatment. Severe pain, swelling and sensitivity to pressure are signs of an inflamed tooth root – but don't worry, we're here to help! Our experienced endodontists are on hand to assess the symptoms and carry out a tailored root canal treatment. If you missed all this, you can read it again on our website.",
+      "quelle": "ca892024"
+    },
+    "beitrag.social-media-2024.bloecke.97.text": {
+      "text": "If you were already a subscriber, you would have learned much more, for example about our Bleaching Days, our business teeth straightening designed especially for busy professionals with little time, or our nearly invisible braces for kids & teens.",
+      "quelle": "6f47ba81"
+    },
+    "beitrag.social-media-2024.bloecke.98.text": {
+      "text": "Was there anything else? Oh yes, Easter! Of course, we also offered opening hours around the holidays and shared the exact details on social media.",
+      "quelle": "6b834bc7"
+    },
+    "beitrag.social-media-2024.bloecke.99.text": {
+      "text": "By the way, Dr. Stephan Ziegler & Partner has been around for 32 years now! Our boss spent 14 years at the DIE ANDERE PRAXIS location (1990–2005) in Wilmersdorf, and about 19 years ago we ceremonially opened KU64 at Kurfürstendamm 64. In October 2019, the KU64 family grew larger. We opened KU64 Potsdam in the Potsdam medical centre Palais Ritz. In January 2023, our new practice in Berlin-Mitte at Hausvogteiplatz 14 was added. We're now honouring our long-standing success story with a short and worthwhile film on our Youtube channel.",
+      "quelle": "5b1ee416"
+    },
+    "beitrag.social-media-2024.titel": {
+      "text": "Social Media - 2024",
+      "quelle": "1892ba6b"
+    },
     "beitrag.social-media-april-2025.anriss": {
       "text": "The KU64 team was ready for anything on social media in April. This includes not only our regular training sessions but, of course, our special opening hours over the Easter holidays. No w",
       "quelle": "62a65d1f"
@@ -5077,6 +5389,22 @@
       "text": "Bleaching queen and bootcamp craze",
       "quelle": "5fbe41f7"
     },
+    "beitrag.social-media-ferbruar-2025.bloecke.10.text": {
+      "text": "Every year in February, it's time for our kick-off meeting! This year was especially exciting, as 2025 marks KU64's 20th anniversary. To celebrate, we're inviting all our staff on a Mediterranean cruise! So at this year's kick-off, we once again rode the waves of the past year and set sail for 2025. There were plenty of great speakers and exciting stories about the upcoming practice trip. Ahoy – see you on board in June!",
+      "quelle": "1d9d6a01"
+    },
+    "beitrag.social-media-ferbruar-2025.bloecke.11.text": {
+      "text": "What's better than a private view? A double private view! There was art and emotion at KU64 on 28 February 2025, with the opening of an exhibition by two exceptional artists: Zoia Bakal – Dolce Vita. Her paintings dance with the joy of life and capture the magic of the moment. A feast for the senses! Rusu Sergiu Sergo – Ex Loco. His works burst with power and dynamism – whether on canvas or as sculpture. Pure energy in artistic form! If you missed the private view, feel free to watch our video about it. The double exhibition can be admired until the end of May.",
+      "quelle": "8923981e"
+    },
+    "beitrag.social-media-ferbruar-2025.bloecke.12.text": {
+      "text": "Follow KU64 now",
+      "quelle": "b68cb294"
+    },
+    "beitrag.social-media-ferbruar-2025.bloecke.13.text": {
+      "text": "You'll definitely want to make sure you don't miss anything about your dental practice from now on! Follow KU64 – your dental specialists in Berlin and Potsdam – on social media. As a follower, you'll regularly receive exclusive information about our current offers, discount promotions and events. You can find us on Facebook, Instagram, LinkedIn, YouTube, TikTok and Spotify.",
+      "quelle": "cca14c50"
+    },
     "beitrag.social-media-ferbruar-2025.bloecke.2.text": {
       "text": "Do you enjoy coffee, tea or red wine, but not the stains they leave on your teeth? No problem! Our bleaching queen Evgenia will conjure up a beaming smile for you again! We use the vegan bleaching product FLÄSH for this, with long-lasting results. It brightens teeth gently and safely – with no stress at all for your tooth enamel! Want to see how a bleaching treatment actually works? Then head over to our social media channels, where we shared a behind-the-scenes video in February. All the information and appointments can be found on our bleaching page.",
       "quelle": "5e4e4e58"
@@ -5112,6 +5440,78 @@
     "beitrag.social-media-ferbruar-2025.titel": {
       "text": "What happened on our social media channels in February",
       "quelle": "cb8bc562"
+    },
+    "beitrag.social-media-januar-2025.anriss": {
+      "text": "We started 2025 full of joy and confidence! Because alongside the trust and loyalty of our patients, we rely on our wonderful team. It is the heart of our practice, which m",
+      "quelle": "6bfc28fa"
+    },
+    "beitrag.social-media-januar-2025.bloecke.0.text": {
+      "text": "We started 2025 full of joy and confidence! Alongside the trust and loyalty of our patients, we rely on our wonderful team. It is the heart of our practice, making all the great things that happen here every day possible through dedication and passion. We shared plenty of this on our social media channels in January.",
+      "quelle": "d1de3763"
+    },
+    "beitrag.social-media-januar-2025.bloecke.1.text": {
+      "text": "A dental paradise of the highest class",
+      "quelle": "2eca636e"
+    },
+    "beitrag.social-media-januar-2025.bloecke.10.text": {
+      "text": "Frivolous myths and divine fun",
+      "quelle": "16209389"
+    },
+    "beitrag.social-media-januar-2025.bloecke.11.text": {
+      "text": "As mentioned at the start, we would be nothing without you, but also nothing without our fantastic team. And that deserves to be celebrated too. Our team evenings are legendary, as you'd already know if you followed us on social media. In January, it was finally time again, and what a brilliant evening it was at KU64 on Berlin's Ku'damm! Feel free to take a look at our posts about it.",
+      "quelle": "4ef0add4"
+    },
+    "beitrag.social-media-januar-2025.bloecke.12.text": {
+      "text": "Our colleague Dr Dr Wegner not only entertained us with frivolous tales from Greek mythology, but downright bowled us over. Zeus, the Casanova of Olympus, Aphrodite, the goddess of love, and Hermes, the winged trickster – they all showed us that drama and passion aren't inventions of modern times. Whether divine affairs, cursed heroes or epic misunderstandings – these myths would probably stand a good chance on Netflix today too!",
+      "quelle": "53807396"
+    },
+    "beitrag.social-media-januar-2025.bloecke.13.text": {
+      "text": "But the best part? We laughed until we cried, marvelled together and grew even closer as a team. It doesn't always have to be a dry training session! Because even though we save teeth and create smiles during the day, we mustn't forget how important it is to have fun together. Who needs ambrosia when you can experience an evening like that? Thanks to Dr Dr Wegner for the divine input and to the whole team for the heavenly atmosphere.",
+      "quelle": "06154a50"
+    },
+    "beitrag.social-media-januar-2025.bloecke.14.text": {
+      "text": "Follow KU64 now",
+      "quelle": "b68cb294"
+    },
+    "beitrag.social-media-januar-2025.bloecke.15.text": {
+      "text": "You surely don't want to miss anything from now on when it comes to your dental practice! Follow KU64 – your dental specialists in Berlin and Potsdam – on social media today. As a subscriber, you'll regularly receive exclusive information about our current offers, discount promotions and events. You can find us on Facebook, Instagram, Linkedin, Youtube, TikTok and Spotify.",
+      "quelle": "cca14c50"
+    },
+    "beitrag.social-media-januar-2025.bloecke.2.text": {
+      "text": "In January, with lots of pictures and our video “A Day at KU64”, you were able to take another virtual tour through our extraordinary world spanning almost 3,000 square metres, floating somewhere between a dental spa and a wellness oasis – combining the best of both worlds: pure relaxation and state-of-the-art dentistry!",
+      "quelle": "11a28d11"
+    },
+    "beitrag.social-media-januar-2025.bloecke.3.text": {
+      "text": "In our unique feel-good atmosphere, expertise meets elegance. From specialised dentists to caring preventive care assistants and first-class laboratory staff, we offer everything your smile could wish for – all under one roof! Immerse yourself in the world of tomorrow's high-tech dentistry, where innovative technology and first-class care combine to create an incomparable experience. Because at KU64, it's not just about dental health, but about a smile that truly comes from the heart!",
+      "quelle": "366adc06"
+    },
+    "beitrag.social-media-januar-2025.bloecke.4.text": {
+      "text": "But better than social media posts is experiencing it all in person. So the best thing to do is book an appointment with our dentists now!",
+      "quelle": "326a7bac"
+    },
+    "beitrag.social-media-januar-2025.bloecke.5.text": {
+      "text": "Gently and safely to brilliantly white teeth",
+      "quelle": "6d6a85da"
+    },
+    "beitrag.social-media-januar-2025.bloecke.6.text": {
+      "text": "In January, we also took a closer look at the topic of bleaching on our social media channels. Do you love coffee, tea or red wine, but not the marks they leave on your teeth? No problem! Our bleaching queen Evgenia will conjure up a brilliantly white smile for you again! Whether it's a natural fresh-white or Hollywood glamour, we'll get your desired shade just right. For this, we use the bleaching material FLÄSH, which comes from Germany, is 100% vegan and was developed without animal testing. As a bonus, it also delivers a long-lasting result.",
+      "quelle": "bd00f9aa"
+    },
+    "beitrag.social-media-januar-2025.bloecke.7.text": {
+      "text": "Why choose bleaching at KU64? Our method is gentle and safe – no stress for your tooth enamel! Trust our professionals with years of experience. Since you missed all this on social media, you'll find more information and a making-of video here.",
+      "quelle": "aa95c6b0"
+    },
+    "beitrag.social-media-januar-2025.bloecke.8.text": {
+      "text": "Saving a child's smile",
+      "quelle": "4b0ddf74"
+    },
+    "beitrag.social-media-januar-2025.bloecke.9.text": {
+      "text": "Not having a brilliantly white smile can already be an issue for our youngest patients. In January, social media offered a small glimpse into the wonderful work of our paediatric dentists. A severely damaged milk tooth in a 5-year-old? No reason to worry! With a white milk tooth crown, our specialists were able to save it and ensure it stays pain-free and functional in the mouth until the natural tooth change (at around 11-12 years). The result? A happy child, no toothache and a healthy smile. Do you have questions about children's teeth or how we can help? We're here for you!",
+      "quelle": "4d6d7715"
+    },
+    "beitrag.social-media-januar-2025.titel": {
+      "text": "What happened on our social media channels in January",
+      "quelle": "f46f2030"
     },
     "beitrag.social-media-maerz-2025.anriss": {
       "text": "In March, we took you along on social media for a charity trip to an orphanage in Tehran, where everything revolved around proper dental care. There were beaming children’s faces at KU64 on Ku’damm t",
@@ -5879,7 +6279,7 @@
     },
     "beitrag.zahnfuellung-rausgefallen.bloecke.82.text": {
       "text": "Berliner Str. 139\n14467 Potsdam\n0331 98 22 22 80",
-      "quelle": "4d7bdcde"
+      "quelle": "d906a9e2"
     },
     "beitrag.zahnfuellung-rausgefallen.bloecke.83.text": {
       "text": "KU64 Berlin-Mitte",
@@ -6183,7 +6583,7 @@
     },
     "beitrag.zahnprothese-reinigen.bloecke.72.text": {
       "text": "Berliner Str. 139\n14467 Potsdam\n0331 98 22 22 80",
-      "quelle": "4d7bdcde"
+      "quelle": "d906a9e2"
     },
     "beitrag.zahnprothese-reinigen.bloecke.73.text": {
       "text": "KU64 Berlin-Mitte",
@@ -6862,8 +7262,8 @@
       "quelle": "40a4c242"
     },
     "beschwerde.druckschmerz.beschreibung": {
-      "text": "Treat pressure pain in a tooth and book an appointment online or ☎ 0331 98 22 22 80 ✅ short waiting time ✅ friendly & pain-free treatment",
-      "quelle": "e1d551be"
+      "text": "Treat pressure pain in a tooth and book online or call ☎ 0331 98 22 22 80 short wait friendly & pain-free treatment",
+      "quelle": "b5186dfe"
     },
     "beschwerde.druckschmerz.einstieg.0.text": {
       "text": "You may know the situation: you take a satisfying bite of your food, and suddenly a sharp pain shoots through your tooth. What lies behind this kind of toothache? We explain the causes, symptoms and treatment options, so you can smile without pain again soon.",
@@ -7066,8 +7466,8 @@
       "quelle": "77298646"
     },
     "beschwerde.ernaehrung-gesunde-zaehne.beschreibung": {
-      "text": "How your diet can help keep your teeth strong and healthy ☎ 030-8647320 ✅ short waiting times ✅ pain-free treatment",
-      "quelle": "155e5076"
+      "text": "How your diet can help you achieve strong, healthy teeth ☎ 030-8647320 short wait pain-free treatment",
+      "quelle": "88e3a67a"
     },
     "beschwerde.ernaehrung-gesunde-zaehne.einstieg.0.text": {
       "text": "[ The best foods with calcium & co. ]",
@@ -7354,8 +7754,8 @@
       "quelle": "8ab56a66"
     },
     "beschwerde.gelbe-zaehne.beschreibung": {
-      "text": "Do you have yellow teeth despite thorough brushing? Find out more about the causes and treatment options. Book an appointment online now or call ☎ 0331 98 22 22 80",
-      "quelle": "f7a8a981"
+      "text": "Yellow teeth despite thorough brushing? Find out more about the causes and treatment options. Book online now or call ☎ 0331 98 22 22 80",
+      "quelle": "e2e8e143"
     },
     "beschwerde.gelbe-zaehne.einstieg.0.text": {
       "text": "[ What to do about tooth discolouration? ]",
@@ -8798,8 +9198,8 @@
       "quelle": "9147f47e"
     },
     "beschwerde.kreuzbiss-kinder.beschreibung": {
-      "text": "Crooked chewing, a lisp or headaches? Find out all about the causes, types and treatment of crossbite in children. ✅ Book an appointment at KU64 now",
-      "quelle": "e26b4efa"
+      "text": "Crooked chewing, a lisp or headaches? Find out all about the causes, types and treatment of crossbite in children. Book an appointment at KU64 now",
+      "quelle": "7ca75e35"
     },
     "beschwerde.kreuzbiss-kinder.einstieg.0.text": {
       "text": "A crossbite in children is more common than many parents think, and has more far-reaching consequences than it might seem at first glance. If left untreated, it can put a strain not only on the teeth and jaw but on the whole body – from posture to sleep. The good news: with the right treatment at the right time, a crossbite in children can be corrected very well.",
@@ -10374,8 +10774,8 @@
       "quelle": "3b7dbb5d"
     },
     "beschwerde.mundpilz-mundsoor.beschreibung": {
-      "text": "White patches, burning or trouble swallowing? Find out about the causes, contagiousness and treatment of oral thrush. ✅ Book an appointment at KU64 now",
-      "quelle": "ff417ee1"
+      "text": "White patches, burning or difficulty swallowing? Find out about the causes, contagiousness and treatment of oral thrush. Book an appointment at KU64 now",
+      "quelle": "41595876"
     },
     "beschwerde.mundpilz-mundsoor.einstieg.0.text": {
       "text": "White patches in the mouth, a burning tongue or pain when swallowing? Oral thrush often develops when the immune system is weakened or after taking antibiotics, and it can also affect babies. At KU64, we identify the cause, explain it to you clearly and start the right treatment.",
@@ -10853,6 +11253,74 @@
       "text": "Causes of xerostomia: what leads to dry mouth?",
       "quelle": "b56c287c"
     },
+    "beschwerde.mundtrockenheit.abschnitte.10.bloecke.0.text": {
+      "text": "Just as varied as the causes of xerostomia are, so too are the ways you can stimulate or maintain saliva production and prevent dry mouth. And the best part: many of these measures can easily be worked into your daily routine – after a short period of getting used to them, they’ll come naturally! Let’s start with the best tips:",
+      "quelle": "e90c9bff"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.10.titel": {
+      "text": "Preventing dry mouth: tips for healthy saliva production",
+      "quelle": "26c7d3ca"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.11.bloecke.0.text": {
+      "text": "Drink enough water: The simplest and most effective way to prevent dry mouth is to drink water regularly and in sufficient amounts. What counts as “enough” depends on the specific circumstances. As a rule of thumb, around 1.5 to 2 litres of water a day is recommended. If you sweat a lot, for example due to physical activity or the heat, or eat a lot of salty or sugary foods, your fluid needs are higher than on a cool day with little activity and plenty of fruit and vegetables on your plate. If you find it hard to drink enough, it can help to always keep a glass of water within reach. Experiment with flavours, for example by adding mint, cucumber or berries to your water. A timer can also help you build a healthy routine.",
+      "quelle": "9cc44c32"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.11.bloecke.1.text": {
+      "text": "Avoid dehydrating drinks: Alcohol and caffeinated drinks such as coffee and tea have a diuretic effect and draw fluid out of the body. Make sure to drink enough water to compensate for this fluid loss. It’s best to consume dehydrating drinks only in moderation to prevent dry mouth.",
+      "quelle": "f72a3096"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.11.titel": {
+      "text": "1. Watch your fluid intake",
+      "quelle": "b732abf6"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.12.bloecke.0.text": {
+      "text": "Dental care products for sensitive mucous membranes: Use mild toothpastes and alcohol-free mouthwashes to protect your mucous membranes. There are special products for people with dry mucous membranes that support the oral flora and provide moisture.",
+      "quelle": "797ff924"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.12.bloecke.1.text": {
+      "text": "Regular brushing and flossing: Thorough oral hygiene helps remove plaque and bacteria, which can settle more easily when the mouth is dry. Evening dental care is especially important, as saliva flow is lower during sleep than when awake.",
+      "quelle": "159b5454"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.12.titel": {
+      "text": "2. The right oral hygiene",
+      "quelle": "b573ae47"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.13.bloecke.0.text": {
+      "text": "Avoid sugary and very salty foods: Sugar and salt can make dry mouth worse (and promote tooth decay). Aim for a balanced, healthy diet with plenty of water and fresh foods such as fruit and vegetables – this benefits your oral health too!",
+      "quelle": "dc44f270"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.13.bloecke.1.text": {
+      "text": "Say “yes” to water-rich foods: Foods with a high water content, such as cucumber, watermelon or citrus fruits, can help moisten the mouth and stimulate saliva production.",
+      "quelle": "bab69038"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.13.titel": {
+      "text": "3. Adjust your diet",
+      "quelle": "3cbd8f06"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.14.bloecke.0.text": {
+      "text": "Sugar-free chewing gum or sweets: Sugar-free chewing gum or sweets are an easy way to stimulate saliva flow.",
+      "quelle": "a9751fea"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.14.bloecke.1.text": {
+      "text": "Encourage regular chewing: Firm foods such as apples or carrots, which require thorough chewing, can also boost saliva flow and moisten the mucous membranes. So reach for the right snack in between meals!",
+      "quelle": "ebf0211e"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.14.titel": {
+      "text": "4. Stimulate saliva flow through chewing",
+      "quelle": "96956487"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.15.bloecke.0.text": {
+      "text": "Reduce stress: Chronic stress can affect saliva production. Relaxation techniques such as yoga, meditation or breathing exercises can help lower stress levels and bring more balance. Even a few minutes a day can make a noticeable difference!",
+      "quelle": "bede032b"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.15.bloecke.1.text": {
+      "text": "Take conscious breaks: If you need to talk a lot, for example for work, it helps to take deliberate breaks so your mouth can rest and recover.",
+      "quelle": "e7e439e6"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.15.titel": {
+      "text": "5. Stress management and relaxation techniques",
+      "quelle": "7cea7209"
+    },
     "beschwerde.mundtrockenheit.abschnitte.16.bloecke.0.text": {
       "text": "Early detection and treatment: Regular dental check-ups help to spot signs of dry mouth early and take targeted action. At KU64 Berlin, we're happy to advise you on which special products or therapies are best suited to prevent dry mouth in your case.",
       "quelle": "7e99b12f"
@@ -11009,13 +11477,45 @@
       "text": "Problems with chewing and swallowing: Saliva is important for softening food and making swallowing and digestion easier. When saliva is lacking, chewing and swallowing can become uncomfortable, difficult or even painful, especially with dry or firm food.",
       "quelle": "b72f015f"
     },
+    "beschwerde.mundtrockenheit.abschnitte.7.bloecke.1.text": {
+      "text": "Hoarse voice and difficulty speaking: Dry mouth can have a negative effect on the voice and make speaking harder. This is because the dryness often spreads down into the throat: the lack of moisture makes not only the lips and tongue but also the vocal cords less flexible.",
+      "quelle": "e32225df"
+    },
     "beschwerde.mundtrockenheit.abschnitte.7.titel": {
       "text": "2. Difficulty speaking and swallowing",
       "quelle": "578943c8"
     },
+    "beschwerde.mundtrockenheit.abschnitte.8.bloecke.0.text": {
+      "text": "Bad breath (halitosis): The lack of saliva reduces the mouth’s natural cleaning mechanisms. This makes it easier for bacteria to settle – and they cause bad breath.",
+      "quelle": "48fb8cd9"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.8.bloecke.1.text": {
+      "text": "Changes in taste perception: Many people affected report that their sense of taste is impaired and that they perceive sweet or sour foods less strongly. This can also lead to a changed appetite for certain foods.",
+      "quelle": "0e5535fc"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.8.titel": {
+      "text": "3. Bad breath and changes in taste",
+      "quelle": "01041eca"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.9.bloecke.0.text": {
+      "text": "Increased risk of tooth decay and gum disease: Saliva protects the teeth from bacteria and neutralises acids. Without enough saliva, the risk of tooth decay and gum disease rises significantly.",
+      "quelle": "15c96b5d"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.9.bloecke.1.text": {
+      "text": "Inflammation and infections: A dry oral mucosa is more prone to irritation and infection, as the protective film that wards off bacteria is missing. Fungal infections also occur more often.",
+      "quelle": "47eb40e6"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.9.bloecke.2.text": {
+      "text": "Dry mouth brings with it numerous complaints that can noticeably reduce your quality of life. If you regularly experience these symptoms, please get in touch with us so your doctor can identify the causes and treat your dry mouth well and quickly.",
+      "quelle": "11e18471"
+    },
+    "beschwerde.mundtrockenheit.abschnitte.9.titel": {
+      "text": "Long-term consequences of xerostomia for oral health",
+      "quelle": "cbfcb4d9"
+    },
     "beschwerde.mundtrockenheit.beschreibung": {
-      "text": "Treat dry mouth and book an appointment online or ☎ 0331 98 22 22 80 ✅ short waiting time ✅ friendly & pain-free treatment",
-      "quelle": "3584b360"
+      "text": "Treat dry mouth and book your appointment online or call ☎ 0331 98 22 22 80 short wait times friendly & pain-free treatment",
+      "quelle": "2837581c"
     },
     "beschwerde.mundtrockenheit.einstieg.0.text": {
       "text": "A long, hot day, no water to hand – most people know the unpleasant feeling of a dry mouth. However, persistent dry mouth (xerostomia) is more than just unpleasant: it can seriously harm your teeth and your general health. Xerostomia often causes problems with swallowing and speaking. Those affected also suffer more often from tooth decay and gum disease.",
@@ -11614,8 +12114,8 @@
       "quelle": "6703441e"
     },
     "beschwerde.sport-mit-zahnspange.beschreibung": {
-      "text": "Custom sports mouthguards for braces from the professionals | KU64 Berlin ☎ 030-8647320 ✅ easy appointment booking ✅ short waiting times",
-      "quelle": "6aae5fc9"
+      "text": "Custom sports mouthguards for braces from the professionals | KU64 Berlin ☎ 030-8647320 easy booking short waiting times",
+      "quelle": "8f7ec64b"
     },
     "beschwerde.sport-mit-zahnspange.einstieg.0.text": {
       "text": "Sport is an essential part of life for many people – as a balance to work, to reduce stress and, not least, to stay fit. For those wearing braces, sporting activity can come with some extra challenges when it comes to reliably protecting teeth and braces. Here you can find out how to choose the best mouthguard and what to look out for.",
@@ -12898,8 +13398,8 @@
       "quelle": "6b2e94dd"
     },
     "beschwerde.zahn-locker.abschnitte.29.bloecke.1.text": {
-      "text": "Book your appointment now online, by email at info@ku64.de, or call us: ☎ 0331 98 22 22 80 – we're happy to help.",
-      "quelle": "1f74b9a5"
+      "text": "Book your appointment now online, by email at info@ku64.de or give us a call: ☎ 0331 98 22 22 80 – we're happy to help.",
+      "quelle": "0dcd3a05"
     },
     "beschwerde.zahn-locker.abschnitte.29.titel": {
       "text": "Centrally located practices with flexible opening hours",
@@ -12978,8 +13478,8 @@
       "quelle": "b4956af0"
     },
     "beschwerde.zahn-locker.beschreibung": {
-      "text": "Loose tooth? We explain the causes and what helps now. Book an appointment online or call ☎ 0331 98 22 22 80 ✅ short waiting times ✅ friendly & pain-free treatment",
-      "quelle": "c0c60e3a"
+      "text": "Loose tooth? We explain the causes and what helps now. Book an appointment online or call ☎ 0331 98 22 22 80 short waiting times friendly & pain-free treatment",
+      "quelle": "48cd50b2"
     },
     "beschwerde.zahn-locker.einstieg.0.text": {
       "text": "Loose teeth are always worrying for those affected – whether the wobbling appears suddenly or develops gradually. The causes range from gum inflammation and periodontitis to teeth grinding or injuries. What matters is this: with the right care and early support from your dentist, more serious damage can often be avoided.",
@@ -13177,9 +13677,85 @@
       "text": "How does tooth erosion develop? Causes and risk factors you should know",
       "quelle": "031eab1e"
     },
+    "beschwerde.zahnerosion-behandeln.abschnitte.10.bloecke.0.text": {
+      "text": "If the tooth enamel is very badly worn or the dentine has already been exposed, restoring the function and appearance of your teeth may only be possible with dental restorations. There are several options here:",
+      "quelle": "0749c362"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.10.bloecke.1.punkte.0": {
+      "text": "Crowns: A crown is placed over the affected tooth. This protects it completely and restores its stability.",
+      "quelle": "ec26acd5"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.10.bloecke.1.punkte.1": {
+      "text": "Veneers: These thin shells made of ceramic or composite are applied to the front teeth. This way, veneers can improve worn teeth both visually and functionally.",
+      "quelle": "7f941f0e"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.10.bloecke.1.punkte.2": {
+      "text": "Inlays or onlays: These solutions replace damaged areas of the chewing surfaces and provide long-term protection.",
+      "quelle": "b439324b"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.10.bloecke.2.text": {
+      "text": "Which treatment method makes the most sense depends on the individual condition of your teeth. An early diagnosis by your dentist and a personal treatment plan are essential to restore and preserve your dental health and to prevent further damage.",
+      "quelle": "679a48d7"
+    },
     "beschwerde.zahnerosion-behandeln.abschnitte.10.titel": {
       "text": "Dental restorations for advanced tooth erosion",
       "quelle": "94375aff"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.11.bloecke.0.text": {
+      "text": "As with other dental problems, the same applies to tooth erosion: targeted prevention is not to be underestimated. With the right oral care and a mindful lifestyle, you can strengthen and protect your tooth enamel. Alongside choosing suitable foods and drinks, your daily oral care routine and regular dental check-ups also play a key role in avoiding long-term damage.",
+      "quelle": "627f7e5b"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.11.bloecke.1.text": {
+      "text": "As with other dental problems, the same applies to tooth erosion: targeted prevention is not to be underestimated. With the right oral care and a mindful lifestyle, you can strengthen and protect your tooth enamel. Alongside choosing suitable foods and drinks, your daily oral care routine and regular dental check-ups also play a key role in avoiding long-term damage.",
+      "quelle": "627f7e5b"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.11.titel": {
+      "text": "Prevention & care: tips to keep your teeth and enamel healthy",
+      "quelle": "448e54ae"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.12.bloecke.0.text": {
+      "text": "A mindful diet can go a long way in preventing tooth erosion:",
+      "quelle": "3a897424"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.12.bloecke.1.punkte.0": {
+      "text": "Choose low-acid alternatives: Instead of acidic drinks such as fizzy drinks or fruit juices, opt for water or unsweetened tea more often.",
+      "quelle": "f3b83d82"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.12.bloecke.1.punkte.1": {
+      "text": "Say yes to dairy products: Milk, cheese and yoghurt contain calcium and phosphate, which strengthen tooth enamel.",
+      "quelle": "70bd91f9"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.12.bloecke.1.punkte.2": {
+      "text": "Neutralise acids: After eating or drinking something acidic, you can rinse your mouth with water or chew sugar-free gum to stimulate saliva flow and neutralise the acids.",
+      "quelle": "7d17cc86"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.12.titel": {
+      "text": "1. The right foods and drinks",
+      "quelle": "b6e55dcc"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.13.bloecke.0.text": {
+      "text": "The way you brush your teeth also has a big influence on how long your tooth enamel stays healthy and intact:",
+      "quelle": "ec36a833"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.13.bloecke.1.punkte.0": {
+      "text": "Use fluoride toothpaste: Fluoride helps remineralise the tooth surface and makes it more resistant to acids.",
+      "quelle": "618b2cc0"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.13.bloecke.1.punkte.1": {
+      "text": "Use a gentle brushing technique: Use a toothbrush with soft bristles and avoid scrubbing hard, so as not to put extra strain on the enamel.",
+      "quelle": "21ecdb47"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.13.bloecke.1.punkte.2": {
+      "text": "Wait after acidic food or drink: Don't brush your teeth right after eating or drinking something acidic. Wait at least 30 minutes to allow the enamel to stabilise.",
+      "quelle": "01466e93"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.13.titel": {
+      "text": "2. Proper brushing",
+      "quelle": "85fdf60a"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.14.titel": {
+      "text": "3. Special recommendations for children",
+      "quelle": "fa1b75fe"
     },
     "beschwerde.zahnerosion-behandeln.abschnitte.15.bloecke.1.text": {
       "text": "With these simple measures, you can help prevent tooth erosion and contribute to stable, healthy tooth substance in the long term. Why not book a check-up at our Berlin practice today?",
@@ -13338,8 +13914,8 @@
       "quelle": "c90ebe1c"
     },
     "beschwerde.zahnerosion-behandeln.beschreibung": {
-      "text": "Treating tooth erosion at KU64 Berlin: book an appointment online or call ☎ 0331 98 22 22 80 ✅ short waiting time ✅ pain-free treatment",
-      "quelle": "01068354"
+      "text": "Treating tooth erosion at KU64 Berlin: book an appointment online or call ☎ 0331 98 22 22 80 short waiting times pain-free treatment",
+      "quelle": "a6381102"
     },
     "beschwerde.zahnerosion-behandeln.einstieg.0.text": {
       "text": "[ When tooth enamel can no longer protect ]",
@@ -14241,6 +14817,30 @@
       "text": "Causes of receding gums",
       "quelle": "4d23bcad"
     },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.2": {
+      "text": "Provide individual advice: Based on the patient's oral health, the dentist can give specific recommendations for improving oral hygiene and address risk factors.",
+      "quelle": "60e29df0"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.3": {
+      "text": "Develop treatment plans: If needed, the dentist can create tailored treatment plans to stop gum recession and restore gum health.",
+      "quelle": "079f4222"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.21.bloecke.0.text": {
+      "text": "Gum recession is a common topic in dentistry, and there are numerous myths and misconceptions that often give those affected false information. It is important to dispel these myths in order to have a correct understanding of the causes, symptoms and treatments.",
+      "quelle": "c1b7e12e"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.21.titel": {
+      "text": "Myths and misconceptions about gum recession",
+      "quelle": "56501de4"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.22.bloecke.0.text": {
+      "text": "A widespread myth is that gums grow back on their own once they have receded. In fact, gum recession is irreversible damage to the tissue. While the gum does not grow back by itself, certain treatment methods such as gum grafts can help replace the receded tissue and protect the tooth neck. Early diagnosis and treatment are crucial to stop the progression of gum recession and maintain oral health.",
+      "quelle": "8e2d7808"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.22.titel": {
+      "text": "Misconception: Gums grow back on their own",
+      "quelle": "3f4b897a"
+    },
     "beschwerde.zahnfleischrueckgang.abschnitte.23.bloecke.0.text": {
       "text": "Another myth is that gum recession is exclusively a problem for older people. In fact, gum recession can affect people of any age, including young adults. Factors such as incorrect oral hygiene, genetic predisposition, smoking and certain medical conditions can increase the risk of gum recession even in younger people. It is important to maintain good oral hygiene and attend regular dental check-ups regardless of age, so that gum problems can be identified and treated early.",
       "quelle": "e6b9eda2"
@@ -14741,13 +15341,77 @@
       "text": "What costs are involved in treating gum pockets?",
       "quelle": "e924cf64"
     },
+    "beschwerde.zahnfleischtaschen.faq.4.antwort": {
+      "text": "Yes, some home remedies can support the treatment of periodontal pockets, but should not replace professional treatment. These include:\nSalt water rinses: Reduce inflammation and fight bacteria.\nTea tree oil: Has antibacterial properties and can be used as a mouth rinse.\nAloe vera: Promotes healing of the gums.\nGarlic: Has antimicrobial effects and can relieve inflammation. It is important to consult your dentist before using home remedies.",
+      "quelle": "432657f3"
+    },
     "beschwerde.zahnfleischtaschen.faq.4.frage": {
       "text": "Are there any home remedies to support the treatment of gum pockets?",
       "quelle": "5d00e2e7"
     },
+    "beschwerde.zahnfleischtaschen.faq.5.antwort": {
+      "text": "The duration of periodontal therapy depends on the severity of the gum disease. Simple scaling and root planing can be completed in one session, while more advanced treatments may require several sessions or even surgical procedures. Overall, therapy can take from a few weeks to several months to achieve full healing and stabilisation of the gums.",
+      "quelle": "aae7f7b4"
+    },
+    "beschwerde.zahnfleischtaschen.faq.5.frage": {
+      "text": "How long does periodontal therapy take?",
+      "quelle": "32ff1c2e"
+    },
+    "beschwerde.zahnfleischtaschen.faq.6.antwort": {
+      "text": "In the early stages (gingivitis), periodontal pockets can be fully healed by treating the inflammation and improving oral hygiene. In more advanced stages (periodontitis), healing can be more difficult, and it may be necessary to partially reverse the damage. However, with the right treatment and care, it is possible to stop the progression of the disease and stabilise the gums.",
+      "quelle": "913d6268"
+    },
+    "beschwerde.zahnfleischtaschen.faq.6.frage": {
+      "text": "Can periodontal pockets be completely healed?",
+      "quelle": "248f34ca"
+    },
+    "beschwerde.zahnfleischtaschen.faq.7.antwort": {
+      "text": "To help prevent periodontal pockets, the following foods and drinks should be avoided or reduced:\nSugary foods and drinks: Promote bacterial growth and plaque formation.\nStarchy foods: Can easily turn into sticky deposits that encourage plaque.\nAcidic foods: Can attack tooth enamel and irritate the gums.\nTobacco and alcohol: Can weaken the gums and hinder healing. Instead, fibre-rich foods, green vegetables and water should be favoured to support oral health.",
+      "quelle": "cf1c4c2a"
+    },
+    "beschwerde.zahnfleischtaschen.faq.7.frage": {
+      "text": "Which foods should be avoided to prevent periodontal pockets?",
+      "quelle": "4d6c2031"
+    },
+    "beschwerde.zahnfleischtaschen.faq.8.antwort": {
+      "text": "Hormonal changes, such as those occurring during puberty, pregnancy or menopause, can increase the sensitivity of the gums and raise the risk of inflammation. This can encourage the formation of periodontal pockets. Women should pay particular attention to thorough oral hygiene during these life stages and attend regular dental check-ups to detect and treat gum disease early.",
+      "quelle": "e5c7679f"
+    },
+    "beschwerde.zahnfleischtaschen.faq.8.frage": {
+      "text": "How do hormones affect periodontal pockets?",
+      "quelle": "31b3620b"
+    },
     "beschwerde.zahnfleischtaschen.titel": {
       "text": "Gum pockets – causes, treatment and prevention",
       "quelle": "5065bb49"
+    },
+    "beschwerde.zahngifte.abschnitte.0.bloecke.0.text": {
+      "text": "Dental toxins can work gradually and cause health problems that are not initially linked to the teeth. They can spread from the teeth to other parts of the body and encourage disease.",
+      "quelle": "bd7f2e58"
+    },
+    "beschwerde.zahngifte.abschnitte.0.titel": {
+      "text": "When teeth cause illness: what are dental toxins?",
+      "quelle": "d846d822"
+    },
+    "beschwerde.zahngifte.abschnitte.1.bloecke.0.text": {
+      "text": "In dentistry, dental toxins refers to harmful or toxic substances that arise directly or indirectly from problems in the mouth, often caused by bacteria. Common causes of dental toxins include:",
+      "quelle": "96d76897"
+    },
+    "beschwerde.zahngifte.abschnitte.1.bloecke.1.punkte.0": {
+      "text": "Dead teeth: When a tooth has died, bacteria and toxins can build up in the tooth tissue and enter the body.",
+      "quelle": "69a76adb"
+    },
+    "beschwerde.zahngifte.abschnitte.1.bloecke.1.punkte.1": {
+      "text": "Tooth decay: Untreated tooth decay leads to bacterial infections that release harmful metabolic products.",
+      "quelle": "0fc71026"
+    },
+    "beschwerde.zahngifte.abschnitte.1.bloecke.1.punkte.2": {
+      "text": "Inflammation in the gums: Chronic gum inflammation (periodontitis) can release toxins and inflammatory mediators into the bloodstream. These are substances that promote or cause inflammation.",
+      "quelle": "6ce51eae"
+    },
+    "beschwerde.zahngifte.abschnitte.1.titel": {
+      "text": "Definition and origin of dental toxins",
+      "quelle": "503b5d88"
     },
     "beschwerde.zahngifte.abschnitte.10.bloecke.0.text": {
       "text": "A reliable diagnosis begins with a thorough examination of your mouth and a detailed analysis of possible triggers. We use the following methods for this:",
@@ -14881,9 +15545,29 @@
       "text": "Conclusion",
       "quelle": "9cfa76bb"
     },
+    "beschwerde.zahngifte.abschnitte.2.bloecke.0.text": {
+      "text": "Dental toxins don't just act within the tooth or the mouth itself – they can have a systemic effect on the whole body. Via the bloodstream, they reach other parts of the body and can weaken the immune system.",
+      "quelle": "a595b838"
+    },
+    "beschwerde.zahngifte.abschnitte.2.bloecke.1.text": {
+      "text": "There is therefore a close connection between dental health and general health. With modern dentistry, regular teeth cleaning and targeted diagnostics, sources of risk from dental toxins can be identified early and treated effectively. Feel free to visit us at our practice on Kurfürstendamm in Berlin for our Prophylaxis 4.0, or if you would like personal advice and further information!",
+      "quelle": "c52f137c"
+    },
+    "beschwerde.zahngifte.abschnitte.2.titel": {
+      "text": "Why dental toxins put a strain on the body",
+      "quelle": "a28daaca"
+    },
+    "beschwerde.zahngifte.abschnitte.3.bloecke.0.text": {
+      "text": "Dental toxins can show themselves in various ways – particularly when they don't just affect the mouth but spread to other parts of the body. The symptoms often remain unspecific for a long time, which makes diagnosis more difficult. From gum problems to chronic illnesses: the effects are far-reaching and often affect quite different parts of the body as well as the immune system.",
+      "quelle": "c6b444d3"
+    },
     "beschwerde.zahngifte.abschnitte.3.bloecke.1.text": {
       "text": "The symptoms of dental toxin exposure can be divided into acute and chronic complaints:",
       "quelle": "502a9059"
+    },
+    "beschwerde.zahngifte.abschnitte.3.titel": {
+      "text": "Strain on the immune system: recognising the symptoms",
+      "quelle": "35f2e2fd"
     },
     "beschwerde.zahngifte.abschnitte.4.bloecke.0.punkte.0": {
       "text": "Pain in the mouth, particularly with dead teeth or untreated tooth decay",
@@ -14985,6 +15669,18 @@
       "text": "Common conditions",
       "quelle": "e69e2057"
     },
+    "beschwerde.zahngifte.beschreibung": {
+      "text": "Do you have symptoms of dental toxins? Book an appointment online now or call ☎ 0331 98 22 22 80 short waiting time friendly & pain-free treatment",
+      "quelle": "b0982a2c"
+    },
+    "beschwerde.zahngifte.einstieg.0.text": {
+      "text": "Headaches, tiredness or persistent tension – many people suffer from such complaints without knowing their cause. It can lie where you would least expect it: in a tooth. Dental toxins, caused by tooth decay, dead teeth or inflammation, can affect the whole body and lead to illness in the long term.",
+      "quelle": "6467721d"
+    },
+    "beschwerde.zahngifte.einstieg.1.text": {
+      "text": "We explain how dental toxins affect the body, what symptoms they can cause and what treatment options dentistry offers. You will also learn how the health of your teeth is connected to your overall wellbeing and what you can do to prevent complaints caused by diseased teeth and dental toxins.",
+      "quelle": "9368f07c"
+    },
     "beschwerde.zahngifte.faq.0.antwort": {
       "text": "Yes, dental toxins can also be problematic for dental restorations and may threaten their durability or function. If dental toxins cause the gums to become inflamed, the foundation for restorations such as crowns, bridges or implants is weakened. The surrounding tissue loses stability, which can cause the restoration to become loose and, in the worst case, be lost.",
       "quelle": "ed103b2b"
@@ -15008,6 +15704,10 @@
     "beschwerde.zahngifte.faq.2.frage": {
       "text": "How well can dental toxins be treated?",
       "quelle": "c82b364d"
+    },
+    "beschwerde.zahngifte.titel": {
+      "text": "How dental toxins affect the body – causes, symptoms and treatment",
+      "quelle": "fe252a97"
     },
     "beschwerde.zahnschmelzdefekte.abschnitte.0.bloecke.0.text": {
       "text": "Enamel defects are damage to or malformations of tooth enamel, the outer protective layer of the teeth. Tooth enamel is the hardest tissue in the human body and protects the sensitive inner structures of the teeth from damage caused by chewing, cold, heat and chemical substances. Although extremely resilient, this enamel cannot regenerate itself. Damage to the enamel, whether caused by external influences or genetic factors, leads to increased tooth sensitivity and a higher risk of tooth decay or other dental conditions.",
@@ -15413,6 +16113,106 @@
       "text": "Swelling",
       "quelle": "0608a4e7"
     },
+    "beschwerde.zahnschmerzen.abschnitte.3.bloecke.0.text": {
+      "text": "One form of dental pain is when the teeth themselves don't hurt, but react sensitively to hot, cold, sour or sweet food and drink. In this case, the problems are triggered by the tooth surface coming into contact with food and drink.",
+      "quelle": "f0fc5d2d"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.3.titel": {
+      "text": "Sensitivity",
+      "quelle": "db86ed0f"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.4.bloecke.0.text": {
+      "text": "Chewing food is often experienced as painful when there are dental problems, especially when the painful tooth is exposed to pressure while biting. In teeth that also hurt at rest, this is often noticeably intensified by the chewing motion.",
+      "quelle": "eba08e42"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.4.titel": {
+      "text": "Pain when chewing",
+      "quelle": "63361d5b"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.0.text": {
+      "text": "Just as varied as the form and severity of toothache are its causes. Accordingly, they can be resolved very easily, or only with extensive treatment. The most common causes are:",
+      "quelle": "30ebc16a"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.1.text": {
+      "text": "Tooth decay is one of the most common dental diseases and is caused by inadequate oral hygiene. It is therefore also one of the main causes of toothache. Plaque and bacteria on the teeth produce acids that attack the tooth enamel and cause tooth decay.",
+      "quelle": "317df2ee"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.10.text": {
+      "text": "Our periodontology experts will advise you in detail on the condition and improvement of your gum health.",
+      "quelle": "b64d91b6"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.11.text": {
+      "text": "A dental abscess is a collection of pus made up of bacteria and tissue in the tooth or around the root. This leads to the formation of a focus of inflammation, sometimes with blistering, and can cause severe pain. An abscess must be surgically removed, though this is an entirely routine procedure that is quick and straightforward.",
+      "quelle": "c990df81"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.12.text": {
+      "text": "When the gums recede, the tooth necks can become exposed and react sensitively to touch. Gum recession is caused by incorrect or excessive dental care, but is also a common problem in older age. Oral surgery can sometimes alleviate this through a gum graft. General measures such as adjusting one's diet and using a fluoride toothpaste can also reduce discomfort caused by exposed tooth necks.",
+      "quelle": "ead8dba3"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.2.text": {
+      "text": "With our caries risk assessment, we can identify at an early stage whether you already have tooth decay in its early stages. This gives us enough time to adjust your oral hygiene and remove plaque regularly, before the teeth suffer serious damage.",
+      "quelle": "6e23c6ed"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.3.text": {
+      "text": "Root inflammation can occur when an infection reaches the tooth and inflames the tissue around the root. This leads to very severe toothache, which can radiate into the jaw and cheeks. It must be treated immediately by a dentist.",
+      "quelle": "113ef3d7"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.4.text": {
+      "text": "A root canal treatment is carried out as part of endodontics, in order to preserve the tooth for as long as possible. The earlier it is started, the better the chances of healing and of saving the natural tooth, so that no dental prosthesis becomes necessary.",
+      "quelle": "296fafe1"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.5.text": {
+      "text": "Dental misalignments, such as a crooked bite or jaw problems, can cause excessive pressure on certain teeth and lead to toothache. Conversely, correcting misalignments with braces can also cause pain, especially at the start, but this is a normal side effect and should disappear as the teeth gradually adjust.",
+      "quelle": "3912ef4a"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.6.text": {
+      "text": "It is important to note that toothache can also be a symptom of other, very serious conditions, such as teeth grinding/bruxism, sinus infections or even a heart attack. Migraine patients, too, often complain of toothache caused by radiating headaches. Inflammation in other parts of the body, such as the sinuses or the middle ear, can sometimes also radiate pain into the mouth and jawbone. Last but not least, toothache is among the side effects of some drug therapies and radiation treatments.",
+      "quelle": "c3f38025"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.7.text": {
+      "text": "With persistent or severe toothache, it is therefore important to see a dentist to determine the reason and the exact cause, and to receive appropriate treatment. This is the only way to make sure there is no serious underlying condition.",
+      "quelle": "f6e6f6a5"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.8.text": {
+      "text": "Gum inflammation, also known as gingivitis, occurs when the gums are irritated by bacteria. If left untreated, gum inflammation such as gingivitis can progress to periodontitis and cause toothache.",
+      "quelle": "99ccfa42"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.bloecke.9.text": {
+      "text": "Periodontitis is an inflammation of the gums and the surrounding tissue. It is caused by an infection with bacteria, which can lead to gum inflammation. Besides inadequate oral hygiene and poor dietary habits, overly intensive dental care can also trigger inflammation of the gums.",
+      "quelle": "d2d002f9"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.5.titel": {
+      "text": "Causes of toothache",
+      "quelle": "1832338f"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.6.bloecke.0.text": {
+      "text": "If you have persistent pain in the mouth that lasts for a longer period, it is essential to see a dentist. Our dental practice offers a range of professional treatment methods to effectively relieve toothache and permanently address its causes. It is also important to tailor the therapy to the different needs of adults and children so that it can take full effect. During your consultation, we will explain whether and which therapy is suitable for you. This includes, among others:",
+      "quelle": "afa2fafb"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.6.titel": {
+      "text": "Professional treatment methods",
+      "quelle": "7ef58376"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.7.bloecke.0.text": {
+      "text": "During a root canal treatment, the dentist removes the infected tissue from inside the tooth, thoroughly cleans the canal and then fills it to preserve the tooth. This is the treatment of choice when an inflamed root is the cause of your toothache. You will receive a local anaesthetic, so the treatment is pain-free for you.",
+      "quelle": "84d250af"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.7.titel": {
+      "text": "Root canal treatment",
+      "quelle": "27a8058f"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.8.bloecke.0.text": {
+      "text": "With tooth decay, parts of the tooth are often so damaged that the diseased tooth material must be removed. Our thorough and comprehensive treatment of tooth decay also prevents it from spreading further. First, the damaged area of the tooth is removed, and then a filling made of tooth-coloured material, such as composite resin, is applied to restore the tooth structure aesthetically and prevent further pain.",
+      "quelle": "cd845fe3"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.8.bloecke.1.text": {
+      "text": "If the tooth is too badly damaged to be repaired with a filling, our experts will provide you with comprehensive advice on the options for dental prosthetics. These range from inlays to crowns and veneers to implants, and we will discuss with you in detail which options we can offer and in which cases you may incur costs that are not covered by health insurance. If you have supplementary dental insurance, you can clarify before starting treatment which additional costs it covers, for example for medically indicated dental implants.",
+      "quelle": "1caa993a"
+    },
+    "beschwerde.zahnschmerzen.abschnitte.8.titel": {
+      "text": "Filling therapy and dental prosthetics",
+      "quelle": "a36d73cf"
+    },
     "beschwerde.zahnschmerzen.abschnitte.9.bloecke.0.text": {
       "text": "With periodontitis, treatment focuses on cleaning the gum pockets, removing plaque and bacteria, and thorough follow-up care to stop the inflammation and preserve the tissues that support the teeth. We have specially trained periodontology specialists in-house for this, who know exactly what needs to be done.",
       "quelle": "731c0683"
@@ -15426,8 +16226,8 @@
       "quelle": "4a904caf"
     },
     "beschwerde.zahnschmerzen.einstieg.0.text": {
-      "text": "[ Fast relief and professional treatment ]",
-      "quelle": "e4a9b6f8"
+      "text": "What helps now",
+      "quelle": "1b027fc4"
     },
     "beschwerde.zahnschmerzen.einstieg.1.text": {
       "text": "Don't take pain in your teeth and mouth lightly! The causes need not always be serious. However, it's important to have professionals check whether a serious dental condition might be present. A thorough medical history along with numerous tests to assess the risk of the most common dental conditions are the foundation of our holistic approach to dentistry. This way, we can not only help with acute complaints but also identify at an early stage whether there is a potential risk of disease affecting your teeth.",
@@ -21114,8 +21914,8 @@
       "quelle": "891efbc8"
     },
     "person.dr-elisabeth-futterlieb.vorstellung.2": {
-      "text": "Yes, you read that correctly… thanks to my competence in both fields, I can not only offer you high-quality dental care, but also bring an extra touch of aesthetics to our range of treatments through my trained artistic eye.",
-      "quelle": "c47f8801"
+      "text": "Yes, you read that correctly…thanks to my dual background, I can offer you not only high-quality dental care, but also bring an extra touch of aesthetics to our range of treatments through my trained artistic eye.",
+      "quelle": "f315ae6a"
     },
     "person.dr-elisabeth-futterlieb.vorstellung.3": {
       "text": "My aim is also for my patients, and especially the younger ones among them, to feel comfortable and well looked after during treatment with me.",
@@ -21542,8 +22342,8 @@
       "quelle": "10dc57ae"
     },
     "person.dr-jonathan-botmann.vorstellung.19": {
-      "text": "My day-to-day treatment work includes:",
-      "quelle": "9ac614b2"
+      "text": "My day-to-day work covers:",
+      "quelle": "32125695"
     },
     "person.dr-jonathan-botmann.vorstellung.2": {
       "text": "I became a dentist because two things drive me: the enjoyment of precise, modern dentistry and a real passion for helping people. It matters to me that you feel seen, understood and taken seriously. For me, good treatment always comes from an open conversation, a clear plan and genuine teamwork – between you, me and our treatment team.",
@@ -24497,9 +25297,109 @@
       "text": "2004-2007 Vocational training at Deutsche Telekom AG as an IT systems electronics technician",
       "quelle": "e1284520"
     },
+    "person.marcel-baer.abschnitte.0.zeilen.1": {
+      "text": "2008 – 2012 IT and server administrator at various Berlin companies (including T-Online, avocis, etc.)",
+      "quelle": "18bf0e5e"
+    },
+    "person.marcel-baer.abschnitte.0.zeilen.2": {
+      "text": "Since 10/2012 IT and technology manager at Die Zahnspezialisten von KU64",
+      "quelle": "102e4985"
+    },
+    "person.marcel-baer.abschnitte.1.titel": {
+      "text": "Area of focus",
+      "quelle": "61069709"
+    },
+    "person.marcel-baer.abschnitte.1.zeilen.0": {
+      "text": "Managing all kinds of technology such as VMware, Hyper-V, Avaya phone systems, Watchguard firewalls, HP & Avaya network switches, storage management with Synology, overseeing AD & Group Policy management from Microsoft, and managing Sharepoint 2013",
+      "quelle": "4a5048b5"
+    },
+    "person.marcel-baer.abschnitte.1.zeilen.1": {
+      "text": "as well as optimisation and further development, antivirus management through ESET, and administration of Windows and Mac clients.",
+      "quelle": "0a995882"
+    },
+    "person.marcel-baer.abschnitte.1.zeilen.2": {
+      "text": "I'm also in charge at KU64 of the multimedia set-up for children (Playstation, kids' cinema, etc.) and for adults (films during treatment, cinema glasses during bleaching, etc.), and I'm driving forward the digitalisation of the practice!",
+      "quelle": "2e0f5ce0"
+    },
     "person.marcel-baer.funktion": {
       "text": "IT & Technology",
       "quelle": "148cc1b4"
+    },
+    "person.marlies-vlahek.funktion": {
+      "text": "Orthodontic dental assistant",
+      "quelle": "9b440723"
+    },
+    "person.marlies-vlahek.vorstellung.0": {
+      "text": "Born in 1989",
+      "quelle": "df57c852"
+    },
+    "person.marlies-vlahek.vorstellung.1": {
+      "text": "2 daughters",
+      "quelle": "f251be49"
+    },
+    "person.marlies-vlahek.vorstellung.2": {
+      "text": "I successfully completed my training as a dental assistant in the summer of 2008. From then on, I decided to work in orthodontics.",
+      "quelle": "a18708b5"
+    },
+    "person.marlies-vlahek.vorstellung.3": {
+      "text": "I've been part of the KU64 team since January 2015 and I'm very happy here.",
+      "quelle": "b1cb8d10"
+    },
+    "person.marlies-vlahek.vorstellung.4": {
+      "text": "My main tasks include chairside assistance in the orthodontics department at KU64, as well as some office work.",
+      "quelle": "9f257e96"
+    },
+    "person.marlies-vlahek.vorstellung.5": {
+      "text": "I love seeing both young and old smile happily.",
+      "quelle": "2e3a532e"
+    },
+    "person.maryam-karimi.funktion": {
+      "text": "Dental Hygienist and Whitening Specialist",
+      "quelle": "468f8e52"
+    },
+    "person.maryam-karimi.vorstellung.0": {
+      "text": "Dear patients,",
+      "quelle": "6b696201"
+    },
+    "person.maryam-karimi.vorstellung.1": {
+      "text": "I have been working as a dental and surgical assistant since 2003. In 2011, I completed my further training as a preventive care assistant.",
+      "quelle": "07e5713e"
+    },
+    "person.maryam-karimi.vorstellung.2": {
+      "text": "Thanks to my many years of experience in surgical treatment, particularly in periodontology, it is important to me to explain the connection between oral hygiene and overall health and wellbeing.",
+      "quelle": "be6769e0"
+    },
+    "person.maryam-karimi.vorstellung.3": {
+      "text": "Preventive care is about more than just a beautiful, radiant smile. If you'd like to know why, book an appointment with me.",
+      "quelle": "23f25d98"
+    },
+    "person.maryam-karimi.vorstellung.4": {
+      "text": "I look forward to your visit!",
+      "quelle": "6cd166bc"
+    },
+    "person.melanie-ruedel.funktion": {
+      "text": "Dental Hygienist & Whitening Specialist",
+      "quelle": "09c7163d"
+    },
+    "person.melanie-ruedel.vorstellung.0": {
+      "text": "Born in 1984",
+      "quelle": "e457d031"
+    },
+    "person.melanie-ruedel.vorstellung.1": {
+      "text": "When I did my school work placement in a dental practice back in year 9, I knew that I wanted to train as a dental assistant.",
+      "quelle": "4ffb7cef"
+    },
+    "person.melanie-ruedel.vorstellung.2": {
+      "text": "In 2001, I began my training as a dental hygienist and successfully completed it in June 2004. I have worked in this profession ever since, mainly in chairside assistance, and I really enjoy finding new challenges and continuing my professional development.",
+      "quelle": "4d2b9b5c"
+    },
+    "person.melanie-ruedel.vorstellung.3": {
+      "text": "I'm glad to be able to actively support the team at KU64 (dentists in Berlin-Charlottenburg). I'm responsible for preventive care and professional teeth whitening (bleaching) in the KU64 SMILE lounge – I'd be happy to advise and treat you!",
+      "quelle": "a7435b7b"
+    },
+    "person.melanie-ruedel.vorstellung.4": {
+      "text": "Yours, Melanie Rüdel",
+      "quelle": "85d72951"
     },
     "person.melissa-albalizade.funktion": {
       "text": "Preventive dental care specialist for children and adults & whitening specialist",
@@ -25862,8 +26762,8 @@
       "quelle": "fd718d06"
     },
     "standort.berlin-charlottenburg.besonderheiten.4": {
-      "text": "Treatment for anxious patients, including sedation",
-      "quelle": "b93a0734"
+      "text": "Care for anxious patients, including sedation",
+      "quelle": "6198747d"
     },
     "standort.berlin-charlottenburg.claim": {
       "text": "The main practice: every dental specialisation under one roof, seven days a week.",
@@ -25954,8 +26854,8 @@
       "quelle": "aaaf79e9"
     },
     "standort.potsdam.besonderheiten.2": {
-      "text": "The full range of treatments, from prophylaxis to implantology",
-      "quelle": "44c22ff8"
+      "text": "Full range of treatments from preventive care to implantology",
+      "quelle": "1d90ec0b"
     },
     "standort.potsdam.besonderheiten.3": {
       "text": "In-house oral surgery for wisdom teeth and surgical procedures",
@@ -26041,13 +26941,13 @@
       "text": "At all KU64 locations",
       "quelle": "a9973a5f"
     },
-    "ui.anamnese.anamneseVorabAusfuellen": {
-      "text": "Fill in medical history beforehand",
-      "quelle": "fd131d6f"
-    },
     "ui.anamnese.anamnesebogenOeffnen": {
       "text": "Open medical history form",
       "quelle": "4be063d7"
+    },
+    "ui.anamnese.anamneseVorabAusfuellen": {
+      "text": "Fill in medical history beforehand",
+      "quelle": "fd131d6f"
     },
     "ui.anamnese.angabenMachen": {
       "text": "Provide details",
@@ -26154,12 +27054,12 @@
       "quelle": "aea4bcc6"
     },
     "ui.berater.begruessung": {
-      "text": "Hello! I answer your questions about treatments, costs and procedures at KU64. What would you like to know?",
-      "quelle": "14ca48e0"
+      "text": "Hello! I'll answer your questions about treatments, costs and procedures at KU64. What would you like to know?",
+      "quelle": "74f6bc15"
     },
     "ui.berater.begruessungOrt": {
-      "text": "Hello! I answer your questions about treatments, costs and procedures at KU64 {ort}. What would you like to know?",
-      "quelle": "dd7b63a5"
+      "text": "Hello! I'll answer your questions about treatments, costs and procedures at KU64 {ort}. What would you like to know?",
+      "quelle": "0919d008"
     },
     "ui.berater.datenschutz": {
       "text": "Privacy",
@@ -26230,8 +27130,8 @@
       "quelle": "834777c2"
     },
     "ui.beratung.fragenZuEinerBehandlung": {
-      "text": "Questions about a treatment, costs or the process? Just ask out loud – the assistant answers in natural language and knows what each practice offers.",
-      "quelle": "d08ce9de"
+      "text": "Questions about a treatment, costs or procedure? Just ask out loud – the adviser replies in natural language and knows each location's range of services.",
+      "quelle": "ba95570b"
     },
     "ui.beratung.fragenZurDigitalenBeratung": {
       "text": "Questions about the digital consultation",
@@ -26290,8 +27190,8 @@
       "quelle": "4c9b02f3"
     },
     "ui.beratungz.beschreibung": {
-      "text": "Speak or chat with our digital adviser – around the clock, about treatments, costs and processes at KU64.",
-      "quelle": "c7d7de41"
+      "text": "Talk or write with our digital adviser – around the clock, about treatments, costs and procedures at KU64.",
+      "quelle": "cdded148"
     },
     "ui.beschw.dannLesenSieHier": {
       "text": "Then there's no need to read on. We keep time free for pain patients at every practice.",
@@ -26318,8 +27218,8 @@
       "quelle": "ec6f0736"
     },
     "ui.beschwerde.uebersichtVorspann": {
-      "text": "For the route the other way round: not from the treatment to the symptom, but from what you notice to what helps. {anzahl} symptoms, each with the treatments that come into question for them.",
-      "quelle": "05051c0e"
+      "text": "For the other way round: not from treatment to complaint, but from what you notice to what helps. {anzahl} complaints, each with the treatments that may help.",
+      "quelle": "befb4564"
     },
     "ui.beschwseite.aufDieserSeite": {
       "text": "On this page",
@@ -26369,13 +27269,13 @@
       "text": "Please let us know – this helps us more than any self-assessment could. Briefly describe which page and which assistive technology are affected. We'll get back to you and fix what can be fixed.",
       "quelle": "ede28602"
     },
-    "ui.bf.dieTerminbuchungVonDoctolib": {
-      "text": "Doctolib's appointment booking is a third-party system, and we have no control over its accessibility",
-      "quelle": "c945a7fe"
-    },
     "ui.bf.dieseWebsiteSollFuer": {
       "text": "This website is meant to be usable by everyone – including with a screen reader, using only the keyboard, with limited vision, or when on-screen motion causes discomfort. Here you'll find an honest account of what has been implemented and what hasn't.",
       "quelle": "08ffdf94"
+    },
+    "ui.bf.dieTerminbuchungVonDoctolib": {
+      "text": "Doctolib's appointment booking is a third-party system, and we have no control over its accessibility",
+      "quelle": "c945a7fe"
     },
     "ui.bf.einDunklesFarbschemaWird": {
       "text": "A dark colour scheme is applied automatically if your system requests it",
@@ -26458,16 +27358,16 @@
       "quelle": "57146cdd"
     },
     "ui.blogz.beschreibung": {
-      "text": "{anzahl} posts on treatments, prevention and everyday life at KU64 – from {von} to {bis}.",
-      "quelle": "454ccaf3"
+      "text": "{anzahl} articles on treatments, prevention and everyday life at KU64 – from {von} to {bis}.",
+      "quelle": "84207bca"
     },
     "ui.blogz.nachStandort": {
       "text": "Articles by location",
       "quelle": "9f3ee4ba"
     },
     "ui.blogz.vorspann": {
-      "text": "{anzahl} posts on treatments, prevention and what goes on here – from {von} to {bis}.",
-      "quelle": "6953971e"
+      "text": "{anzahl} articles on treatments, prevention and life at our practice – from {von} to {bis}.",
+      "quelle": "af5e35ef"
     },
     "ui.ck.beschreibung": {
       "text": "This website does not use analytics or advertising cookies. What's actually stored and how to delete it.",
@@ -26683,11 +27583,11 @@
     },
     "ui.fehler.alleBehandlungen": {
       "text": "All treatments",
-      "quelle": "694db5ee"
+      "quelle": "ca53ed21"
     },
     "ui.fehler.alleBehandlungenIn": {
       "text": "All treatments in {ort}",
-      "quelle": "036776d6"
+      "quelle": "bee7568b"
     },
     "ui.fehler.alleStandorte": {
       "text": "All locations",
@@ -26714,8 +27614,8 @@
       "quelle": "4f318d14"
     },
     "ui.fehler.nirgends": {
-      "text": "We currently don't offer this treatment at any location. Please call us – we'll tell you who can help.",
-      "quelle": "82299dc2"
+      "text": "We don't currently offer this treatment at any location. Please give us a call – we'll tell you who can help.",
+      "quelle": "5f2ababd"
     },
     "ui.fehler.notfall": {
       "text": "Emergency",
@@ -26734,16 +27634,16 @@
       "quelle": "52d56493"
     },
     "ui.fehler.stattdessenDort": {
-      "text": "We don't offer this treatment at this location. You can get it at {wo} – you'll find opening hours, phone number and online booking there.",
-      "quelle": "9ebdd242"
+      "text": "We don't offer this treatment at this location. You can get it at {wo} – there you'll find opening hours, phone number and appointment booking.",
+      "quelle": "cc7e4c97"
     },
     "ui.fehler.suchen": {
-      "text": "Search treatments",
-      "quelle": "f9ef7d33"
+      "text": "Search treatment",
+      "quelle": "0f5689be"
     },
     "ui.fehler.text": {
-      "text": "It may have been renamed when the website was rebuilt. Search for your treatment directly here – or go to your location.",
-      "quelle": "39869b99"
+      "text": "Perhaps it was renamed when the website was restructured. Search directly for your treatment here – or go to your location.",
+      "quelle": "f43b12fa"
     },
     "ui.fehler.titel": {
       "text": "This page does not exist",
@@ -26762,8 +27662,8 @@
       "quelle": "2151accf"
     },
     "ui.fuss.behandlungsbereiche": {
-      "text": "Areas of treatment",
-      "quelle": "a8728901"
+      "text": "Treatment areas",
+      "quelle": "d3b37c18"
     },
     "ui.fuss.beschwerdenAZ": {
       "text": "Dental issues A–Z",
@@ -26814,8 +27714,8 @@
       "quelle": "c3c354cc"
     },
     "ui.fuss.ohneStandort": {
-      "text": "Dentistry at four locations in Berlin and Potsdam. Please choose your practice – opening hours and the range of treatments differ.",
-      "quelle": "48ef0626"
+      "text": "Dentistry at four locations in Berlin and Potsdam. Please choose your location – opening hours and treatments on offer differ.",
+      "quelle": "7b443aa5"
     },
     "ui.fuss.service": {
       "text": "Service",
@@ -26869,13 +27769,13 @@
       "text": "Professional title: <code>[e.g. dentist]</code>, awarded in <code>[Country]</code><br />Competent chamber: <code>[Dental chamber, address, website]</code><br />Competent Association of Statutory Health Insurance Dentists: <code>[…]</code><br />Supervisory authority: <code>[…]</code>",
       "quelle": "9fa611f4"
     },
-    "ui.imp.berufsRegeln": {
-      "text": "The following professional regulations apply: Dental Practitioners Act (ZHG), professional code of conduct of the competent dental chamber, Schedule of Fees for Dentists (GOZ), Health Professions Act of the federal state. Available at <code>[Reference]</code>.",
-      "quelle": "0bd6e3ba"
-    },
     "ui.imp.berufsrechtlicheAngaben": {
       "text": "Professional regulatory information",
       "quelle": "635bf4ab"
+    },
+    "ui.imp.berufsRegeln": {
+      "text": "The following professional regulations apply: Dental Practitioners Act (ZHG), professional code of conduct of the competent dental chamber, Schedule of Fees for Dentists (GOZ), Health Professions Act of the federal state. Available at <code>[Reference]</code>.",
+      "quelle": "0bd6e3ba"
     },
     "ui.imp.beschreibung": {
       "text": "Provider identification and professional regulatory information.",
@@ -27015,7 +27915,7 @@
     },
     "ui.karte.behandlungen": {
       "text": "Treatments",
-      "quelle": "4d3e5232"
+      "quelle": "16a48bdd"
     },
     "ui.karte.dauer": {
       "text": "Duration",
@@ -27146,8 +28046,8 @@
       "quelle": "d32df7b5"
     },
     "ui.kontakt.unserDigitalerBeraterBeantwortet": {
-      "text": "Our digital assistant answers questions about treatments, costs and procedures – by text or voice.",
-      "quelle": "d44da413"
+      "text": "Our digital adviser answers questions about treatments, costs and procedures – by text or voice.",
+      "quelle": "9e38ad8c"
     },
     "ui.kontakt.waehlenSieDenWeg": {
       "text": "Choose whichever way suits you best. They all lead to the same team.",
@@ -27310,8 +28210,8 @@
       "quelle": "5b3ce40b"
     },
     "ui.laecheln.einVeraendertesLaechelnEntsteht": {
-      "text": "A changed smile can be achieved in different ways, depending on your starting point. These treatments are most commonly considered:",
-      "quelle": "12c36245"
+      "text": "Depending on your starting point, a changed smile can come about in different ways. These treatments are most commonly involved:",
+      "quelle": "b8b2b78a"
     },
     "ui.laecheln.fotoAuswaehlen": {
       "text": "Choose photo",
@@ -27349,6 +28249,10 @@
       "text": "I expressly consent to my photo being processed to create a non-binding smile preview. I understand that this is biometric data. I can withdraw this consent at any time. Details in the",
       "quelle": "0b01ffc4"
     },
+    "ui.laecheln.ihreVorschauErscheintHier": {
+      "text": "Your preview will appear here.",
+      "quelle": "7a8745b3"
+    },
     "ui.laecheln.ihrFoto": {
       "text": "Your photo",
       "quelle": "73a1a9ec"
@@ -27356,10 +28260,6 @@
     "ui.laecheln.ihrWunschstandort": {
       "text": "Your preferred location",
       "quelle": "6c1a5711"
-    },
-    "ui.laecheln.ihreVorschauErscheintHier": {
-      "text": "Your preview will appear here.",
-      "quelle": "7a8745b3"
     },
     "ui.laecheln.jpegPngOderWebp": {
       "text": "JPEG, PNG or WebP · maximum 8 MB",
@@ -27435,19 +28335,19 @@
     },
     "ui.leistuebersicht.alleBehandlungen": {
       "text": "All treatments",
-      "quelle": "694db5ee"
+      "quelle": "ca53ed21"
     },
     "ui.leistuebersicht.anAnderenStandorten": {
       "text": "At other KU64 locations",
       "quelle": "3eb3a3e2"
     },
     "ui.leistuebersicht.anderswoText": {
-      "text": "These treatments aren't offered in {ort}. So you don't search in vain, we'll take you straight to the right location.",
-      "quelle": "8d2d64d0"
+      "text": "These treatments aren't available in {ort}. So you don't search in vain, we'll take you straight to the right location.",
+      "quelle": "3d5d4811"
     },
     "ui.leistuebersicht.behandlungSuchen": {
-      "text": "Search for a treatment",
-      "quelle": "f9ef7d33"
+      "text": "Search treatments",
+      "quelle": "0f5689be"
     },
     "ui.leistuebersicht.nichtsGefundenHier": {
       "text": "We didn't find anything for your search here. Feel free to ask our digital advisor or give us a call – we'll let you know if we can help.",
@@ -27455,15 +28355,15 @@
     },
     "ui.leistuebersicht.platzhalter": {
       "text": "Complaint or treatment – e.g. cavity, whitening",
-      "quelle": "c1ae5f52"
+      "quelle": "8315f431"
     },
     "ui.leistuebersicht.platzhalterOrt": {
       "text": "Complaint or treatment – e.g. cavity, whitening, anxiety",
-      "quelle": "5bf6ddfd"
+      "quelle": "6cb66d9c"
     },
     "ui.leistuebersicht.vorspann": {
       "text": "{anzahl} treatments across {bereiche} specialist areas. For each one, you can see which of our {standorte} locations offer it.",
-      "quelle": "bac1987d"
+      "quelle": "cc4c2f12"
     },
     "ui.leistuebersicht.zuFachbereich": {
       "text": "Jump to a specialist area",
@@ -27474,8 +28374,8 @@
       "quelle": "f280d36f"
     },
     "ui.leistung.ablauf": {
-      "text": "How the treatment works",
-      "quelle": "118a0fdf"
+      "text": "How it works",
+      "quelle": "0d5143b1"
     },
     "ui.leistung.anAnderenStandorten": {
       "text": "{name} at other KU64 locations",
@@ -27514,8 +28414,8 @@
       "quelle": "4ab513c1"
     },
     "ui.leistung.ergaenzendText": {
-      "text": "These treatments are related to {name}, but aren't offered at KU64 {ort}. We'll tell you openly where you can get them.",
-      "quelle": "30713afa"
+      "text": "These treatments are related to {name} but aren't offered at KU64 {ort}. We'll tell you honestly where to find them.",
+      "quelle": "4ec1ffa9"
     },
     "ui.leistung.haeufigeFragen": {
       "text": "{name}: frequently asked questions",
@@ -27558,12 +28458,12 @@
       "quelle": "1dcd8bf2"
     },
     "ui.leistung.sieSehenAngaben": {
-      "text": "You're currently viewing information for KU64 {ort}. We also offer this treatment here – in case another location suits you better:",
-      "quelle": "04fc3fed"
+      "text": "You're currently viewing details for KU64 {ort}. We also offer this treatment here – if another location suits you better:",
+      "quelle": "27fbc464"
     },
     "ui.leistung.standortWaehlen": {
-      "text": "Choose your location – you'll find opening hours, phone number and online booking for this exact treatment there.",
-      "quelle": "bf6d8fbf"
+      "text": "Choose your location – you'll find opening hours, phone number and booking for this treatment there.",
+      "quelle": "905ecd1a"
     },
     "ui.leistung.synonyme": {
       "text": "Also known as",
@@ -27598,8 +28498,8 @@
       "quelle": "fc83faa7"
     },
     "ui.nav.behandlungen": {
-      "text": "Treatments",
-      "quelle": "4d3e5232"
+      "text": "Services",
+      "quelle": "16a48bdd"
     },
     "ui.nav.kontakt": {
       "text": "Contact",
@@ -27613,6 +28513,10 @@
       "text": "You are viewing",
       "quelle": "072ed7cb"
     },
+    "ui.nav.standorte": {
+      "text": "Locations",
+      "quelle": "aae6c265"
+    },
     "ui.nav.standortWaehlen": {
       "text": "Please choose your location so we can show you the right details.",
       "quelle": "e7e441b6"
@@ -27620,10 +28524,6 @@
     "ui.nav.standortWaehlenKurz": {
       "text": "Choose location",
       "quelle": "190c5686"
-    },
-    "ui.nav.standorte": {
-      "text": "Locations",
-      "quelle": "aae6c265"
     },
     "ui.nav.suchen": {
       "text": "Search",
@@ -27642,8 +28542,8 @@
       "quelle": "92039106"
     },
     "ui.nav.waehlerHinweis": {
-      "text": "When you switch, we show you the details of the location you choose. Not every treatment is offered at every location.",
-      "quelle": "f7fa2655"
+      "text": "When you switch, we'll show you the details for the chosen location. Not every treatment is offered at every location.",
+      "quelle": "22819dc2"
     },
     "ui.nav.zurStartseite": {
       "text": "KU64, back to homepage",
@@ -27657,13 +28557,13 @@
       "text": "Call 112",
       "quelle": "6ae1f6a0"
     },
-    "ui.notfall.aRztlicherBereitschaftsdienstBundesweit": {
-      "text": ". National out-of-hours medical service:",
-      "quelle": "fc6475a4"
-    },
     "ui.notfall.anrufenUndSituationSchildern": {
       "text": "Call and describe the situation",
       "quelle": "6826ad75"
+    },
+    "ui.notfall.aRztlicherBereitschaftsdienstBundesweit": {
+      "text": ". National out-of-hours medical service:",
+      "quelle": "fc6475a4"
     },
     "ui.notfall.atemnotSchluckbeschwerdenOderStarke": {
       "text": "Difficulty breathing, swallowing, or severe swelling of the neck?",
@@ -27725,13 +28625,13 @@
       "text": "Always have it checked, even without severe pain",
       "quelle": "e39cefc4"
     },
-    "ui.notfall.inZahnrettungsboxSonstKalte": {
-      "text": "In a tooth-rescue box, otherwise cold UHT milk, or saliva",
-      "quelle": "1711aab6"
-    },
     "ui.notfall.innerhalbDerErstenStunde": {
       "text": "Come to us within the first hour",
       "quelle": "1728af3b"
+    },
+    "ui.notfall.inZahnrettungsboxSonstKalte": {
+      "text": "In a tooth-rescue box, otherwise cold UHT milk, or saliva",
+      "quelle": "1711aab6"
     },
     "ui.notfall.keineWaRmeKein": {
       "text": "No heat, no alcohol",
@@ -27801,10 +28701,6 @@
       "text": "Broken tooth",
       "quelle": "9676b92a"
     },
-    "ui.notfall.zahnNurAnDer": {
-      "text": "Hold the tooth by the crown only, never the root",
-      "quelle": "a2b2335a"
-    },
     "ui.notfall.zahnaRztlicherNotdienstBerlin": {
       "text": "dental emergency service Berlin on",
       "quelle": "3eb3d4af"
@@ -27812,6 +28708,10 @@
     "ui.notfall.zahnaRztlicherNotfall": {
       "text": "Dental emergency",
       "quelle": "90db9ee1"
+    },
+    "ui.notfall.zahnNurAnDer": {
+      "text": "Hold the tooth by the crown only, never the root",
+      "quelle": "a2b2335a"
     },
     "ui.notfall.zeitnahTerminVereinbarenMeist": {
       "text": "Book an appointment soon – usually not an emergency",
@@ -27866,12 +28766,12 @@
       "quelle": "908a7147"
     },
     "ui.orte.behandlungen": {
-      "text": "Treatments",
-      "quelle": "4d3e5232"
+      "text": "Services",
+      "quelle": "16a48bdd"
     },
     "ui.orte.beschreibung": {
-      "text": "KU64 at {anzahl} locations in Berlin and Potsdam. Compare which treatment is offered at which location.",
-      "quelle": "4832349b"
+      "text": "KU64 at {anzahl} locations in Berlin and Potsdam. With a comparison of which treatment is offered where.",
+      "quelle": "f4b89ffc"
     },
     "ui.orte.nichtVerfuegbar": {
       "text": "not available",
@@ -27899,7 +28799,7 @@
     },
     "ui.praxis.anzahlBehandlungen": {
       "text": "{anzahl} treatments",
-      "quelle": "3a8efc12"
+      "quelle": "a5708fbd"
     },
     "ui.praxis.ausFachbereichen": {
       "text": "from {anzahl} specialisms",
@@ -27910,8 +28810,8 @@
       "quelle": "ba6934cd"
     },
     "ui.praxis.behandlungen": {
-      "text": "Treatments",
-      "quelle": "4d3e5232"
+      "text": "Services",
+      "quelle": "16a48bdd"
     },
     "ui.praxis.dieRaeume": {
       "text": "The rooms",
@@ -27963,7 +28863,7 @@
     },
     "ui.standort.alleBehandlungenAnsehen": {
       "text": "View all {anzahl} treatments",
-      "quelle": "63766520"
+      "quelle": "fa4fccdf"
     },
     "ui.standort.anamneseInArbeit": {
       "text": "The digital medical history form for KU64 {name} is being set up. Until then you fill in the form on site as usual – or give us a call and we will send it to you in advance.",
@@ -27974,20 +28874,20 @@
       "quelle": "1278339a"
     },
     "ui.standort.angebotHier": {
-      "text": "Everything we offer at this location – {anzahl} treatments across {bereiche} specialist areas. Treatments not available here are clearly marked, with a link to the right location.",
-      "quelle": "39e7aedd"
+      "text": "Everything we offer at this practice – {anzahl} treatments across {bereiche} specialist areas. Treatments not available here are clearly marked, with a link to the right practice.",
+      "quelle": "fc189e3d"
     },
     "ui.standort.aufKarteAnsehen": {
       "text": "Open in maps",
       "quelle": "4bce2d87"
     },
-    "ui.standort.barrierefreiJa": {
-      "text": "The practice has step-free access.",
-      "quelle": "f6bdc2d5"
-    },
     "ui.standort.barrierefreiheit": {
       "text": "Accessibility:",
       "quelle": "689345af"
+    },
+    "ui.standort.barrierefreiJa": {
+      "text": "The practice has step-free access.",
+      "quelle": "f6bdc2d5"
     },
     "ui.standort.behandelnde": {
       "text": "Our team",
@@ -27995,15 +28895,15 @@
     },
     "ui.standort.behandlungenAnsehen": {
       "text": "View {anzahl} treatments",
-      "quelle": "9bb58644"
+      "quelle": "e9f32c2b"
     },
     "ui.standort.behandlungenBeiKu64": {
       "text": "Treatments at KU64 {name}",
-      "quelle": "e62fb735"
+      "quelle": "1cf79eca"
     },
     "ui.standort.behandlungenIn": {
       "text": "Treatments in {ort}",
-      "quelle": "6f3f59e2"
+      "quelle": "c8030cbf"
     },
     "ui.standort.blogAnzahl": {
       "text": "{anzahl} {wort} relating to KU64 {name}.",
@@ -28026,8 +28926,8 @@
       "quelle": "1bda9bd7"
     },
     "ui.standort.fachbereicheUnterEinemDach": {
-      "text": "{anzahl} specialisations under one roof – for most treatments you do not have to change practice.",
-      "quelle": "b371a272"
+      "text": "{anzahl} specialist areas under one roof – for most treatments, you won't need to change practice.",
+      "quelle": "d346dac7"
     },
     "ui.standort.galerieHinweis": {
       "text": "Photographs of this practice – in the order you will see the rooms when you visit.",
@@ -28046,12 +28946,12 @@
       "quelle": "e53070d4"
     },
     "ui.standort.leistungenVorspann": {
-      "text": "{anzahl} treatments across {bereiche} specialisations – all available here in {ort}. For every treatment you will find the duration, the cost range and what statutory insurance covers.",
-      "quelle": "6fb42b6e"
+      "text": "{anzahl} treatments across {bereiche} specialist areas – all available here in {ort}. For each treatment, you'll find the duration, cost range and what your health insurance covers.",
+      "quelle": "56ab7e9e"
     },
     "ui.standort.nichtHierText": {
-      "text": "We do not offer these treatments in {ort}. So you don't call in vain, you can see straight away which KU64 location offers them.",
-      "quelle": "e3fb21ff"
+      "text": "We don't offer these treatments in {ort}. So you don't call in vain, you can see straight away which KU64 practice offers them.",
+      "quelle": "f1681968"
     },
     "ui.standort.oeffnungszeitenVon": {
       "text": "Opening hours of KU64 {name}",
@@ -28099,31 +28999,31 @@
     },
     "ui.standorte.behandlung": {
       "text": "Treatment",
-      "quelle": "2e14fc5d"
+      "quelle": "1d2b7b1e"
     },
     "ui.standorte.matrixBeschriftung": {
-      "text": "Availability of treatments by KU64 location",
-      "quelle": "2409c1ae"
+      "text": "Availability of treatments by KU64 practice",
+      "quelle": "dbaae32f"
     },
     "ui.standorte.matrixTitel": {
       "text": "Which treatment is available where?",
-      "quelle": "45512f60"
+      "quelle": "8e71847f"
     },
     "ui.standorte.matrixVorspann": {
-      "text": "Not every treatment is offered at every location. This overview tells you where to go before you pick up the phone.",
-      "quelle": "a4fe5597"
+      "text": "Not every treatment is offered at every practice. This overview shows you where to go before you call.",
+      "quelle": "629b2ee6"
     },
     "ui.standorte.vorspann": {
-      "text": "Each location has its own character and its own range of treatments. Choose yours – we then show you only what is actually possible there.",
-      "quelle": "93b1d095"
+      "text": "Each practice has its own character and its own range of treatments. Choose yours – we'll then show you only what's available there.",
+      "quelle": "94c3b142"
     },
     "ui.standortwahl.bitteWaehlen": {
       "text": "Please choose your location",
       "quelle": "a4e68af7"
     },
     "ui.standortwahl.hinweis": {
-      "text": "Opening hours, phone numbers and the range of treatments differ from location to location – so we would rather ask than guess.",
-      "quelle": "0da8332f"
+      "text": "Opening hours, phone numbers and treatments on offer differ by location – so we'd rather ask than guess.",
+      "quelle": "e38fb170"
     },
     "ui.start.anamneseKnopf": {
       "text": "Open the form",
@@ -28138,12 +29038,8 @@
       "quelle": "3a3d1810"
     },
     "ui.start.beraterText": {
-      "text": "Questions about a treatment, costs or what happens next? Write to our assistant or talk to it – around the clock.",
-      "quelle": "856d2390"
-    },
-    "ui.start.digitalTitel": {
-      "text": "Digital, before you arrive",
-      "quelle": "8526c44e"
+      "text": "Questions about a treatment, costs or how it works? Write to or speak with our assistant – around the clock.",
+      "quelle": "793601b7"
     },
     "ui.start.digitaleAnamnese": {
       "text": "Digital medical history",
@@ -28152,6 +29048,10 @@
     "ui.start.digitalerBerater": {
       "text": "Digital advisor",
       "quelle": "10770ef3"
+    },
+    "ui.start.digitalTitel": {
+      "text": "Digital, before you arrive",
+      "quelle": "8526c44e"
     },
     "ui.start.ku64DieZahnspezialisten": {
       "text": "KU64 · Die Zahnspezialisten",
@@ -28174,20 +29074,20 @@
       "quelle": "7522822b"
     },
     "ui.start.vorspann": {
-      "text": "{anzahl} locations in Berlin and Potsdam. Choose yours – from then on you will only see the treatments, opening hours and contact details of that practice. Nothing changes without your say-so.",
-      "quelle": "b05c4238"
+      "text": "{anzahl} locations in Berlin and Potsdam. Choose yours – from then on, you'll see only that location's treatments, opening hours and contact details. No switching without your say-so.",
+      "quelle": "8ad9d277"
     },
     "ui.start.warumEins": {
-      "text": "A dental practice with several houses has a problem that patients often notice too late: not every treatment is offered everywhere. Search for “implant Potsdam”, land on a general treatment page, and you may well be reading about a practice 30 kilometres away.",
-      "quelle": "4175db07"
+      "text": "A dental practice with several sites has a problem patients often notice too late: not every treatment is offered everywhere. If you search for “implant Potsdam” and land on a general treatments page, you might well end up reading about a practice 30 kilometres away.",
+      "quelle": "4d453028"
     },
     "ui.start.warumTitel": {
       "text": "Why this website is organised by location",
       "quelle": "f31946b9"
     },
     "ui.start.warumZwei": {
-      "text": "That is why every treatment page here belongs to exactly one location – with its address, phone number, opening hours and booking. If a treatment is not available at your practice, we say so plainly and link you to the one where you can get it. {anzahl} treatments, each described where it actually takes place.",
-      "quelle": "26c433f1"
+      "text": "That's why, with us, every treatment page belongs to exactly one location – with its address, phone number, opening hours and appointment booking. If a treatment isn't available at your location, we say so plainly and link you to where you can get it. {anzahl} treatments, each described where it actually takes place.",
+      "quelle": "988477f9"
     },
     "ui.start.zuletztWaren": {
       "text": "Last time you were at {standort}.",
@@ -28199,15 +29099,15 @@
     },
     "ui.suche.alleBehandlungenNachBereich": {
       "text": "All treatments by area",
-      "quelle": "f16a17e0"
+      "quelle": "7e421911"
     },
     "ui.suche.aufEineFrageIst": {
       "text": "A list is the wrong answer to a question. Our digital adviser can answer it for you – and if you'd rather speak to a person, your local number is above.",
       "quelle": "caf296cf"
     },
     "ui.suche.behandlungenBeschwerdenStandorteUnd": {
-      "text": "Treatments, symptoms, locations and people. Feel free to use the technical term – or not.",
-      "quelle": "74da0841"
+      "text": "Treatments, complaints, locations and people. You can use the technical term – but you don't have to.",
+      "quelle": "08ea0174"
     },
     "ui.suche.dasKlingtNachEiner": {
       "text": "That sounds like a question.",
@@ -28223,7 +29123,7 @@
     },
     "ui.suche.suchenSieNachEinem": {
       "text": "Looking for a symptom rather than a treatment?",
-      "quelle": "cd0e2099"
+      "quelle": "a53ed364"
     },
     "ui.suche.zahnspangePotsdam": {
       "text": "braces potsdam",
@@ -28238,8 +29138,8 @@
       "quelle": "74f92674"
     },
     "ui.suchez.beschreibung": {
-      "text": "Find treatments, symptoms, locations and people at KU64 – using your own words.",
-      "quelle": "fa985357"
+      "text": "Find treatments, complaints, locations and people at KU64 – using the words you'd actually use.",
+      "quelle": "0b14c0e2"
     },
     "ui.suchindex.anamnese": {
       "text": "Medical history form",
@@ -28363,11 +29263,11 @@
     },
     "ui.teamliste.behandlungenAnsehen": {
       "text": "View treatments",
-      "quelle": "0df54964"
+      "quelle": "1eec34cb"
     },
     "ui.teamliste.behandlungsart": {
-      "text": "Type of treatment",
-      "quelle": "194e0d97"
+      "text": "Treatment type",
+      "quelle": "e96f76ec"
     },
     "ui.teamliste.bereich": {
       "text": "Area",
@@ -28497,13 +29397,13 @@
       "text": "Book an appointment",
       "quelle": "57146cdd"
     },
-    "ui.ueber.anVierStandorten": {
-      "text": "at four locations",
-      "quelle": "d78af490"
-    },
     "ui.ueber.angstErnstNehmen": {
       "text": "Taking fear seriously",
       "quelle": "eb4cd12d"
+    },
+    "ui.ueber.anVierStandorten": {
+      "text": "at four locations",
+      "quelle": "d78af490"
     },
     "ui.ueber.ehrlichStattWerbend": {
       "text": "Honest, not salesy",
@@ -28554,12 +29454,12 @@
       "quelle": "2041aab5"
     },
     "ui.ueber.vonProphylaxeUeberKieferorthopaedie": {
-      "text": "From preventive care to orthodontics to oral surgery – for most treatments, you don't need to change practice. What one location doesn't cover, another does.",
-      "quelle": "ca1347dd"
+      "text": "From prevention to orthodontics to oral surgery – for most treatments, you won't need to change practice. What one location doesn't cover, another does.",
+      "quelle": "d6ded404"
     },
     "ui.ueber.wirSagenOffenWas": {
-      "text": "We tell you openly what a treatment costs, what your insurer covers and what it doesn't – and if a treatment isn't offered at a location at all. Better one sentence too many than a wasted call.",
-      "quelle": "067084c6"
+      "text": "We tell you honestly what a treatment costs, what your health insurance covers and what it doesn't – and also if a treatment isn't offered at a particular location. Better one sentence too many than a wasted call.",
+      "quelle": "08152260"
     },
     "ui.ueber.wofuerWirStehen": {
       "text": "What we stand for",

@@ -53,6 +53,7 @@ import Bild from '../../../../components/Bild.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { STANDORTE } from '../../../../data/standorte';
 import { TEAM, veroeffentlichbar } from '../../../../data/team';
+import { profilEigenstaendig } from '../../../../data/profiltiefe';
 import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
 import profile from '../../../../data/profile.json';
 
@@ -155,9 +156,19 @@ const schema = [
       gehört auf die Potsdamer Teamseite – die Frage ist nur, welche Adresse
       Google als die eine zählt.
     */
-    person.standorte[0] === standort.slug
-      ? undefined
-      : `/${person.standorte[0]}/team/${person.slug}/`
+    /*
+      Zwei Gründe, auf eine andere Seite zu zeigen – in dieser Reihenfolge:
+
+      1. Zweitstandort: Das Profil gehört zum Hauptstandort.
+      2. Zu wenig Eigenes: Steht auf der Seite nichts, was die Kachel in der
+         Übersicht nicht auch zeigt, ist der Klick ein enttäuschter. Dann
+         zählt die Übersicht. Bedingung: src/data/profiltiefe.ts
+    */
+    person.standorte[0] !== standort.slug
+      ? `/${person.standorte[0]}/team/${person.slug}/`
+      : profilEigenstaendig(person.slug)
+        ? undefined
+        : `/${standort.slug}/team/`
   }
 >
   <section class="abschnitt">
