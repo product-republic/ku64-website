@@ -319,7 +319,7 @@ const schema = [
             erlauben="fullscreen; xr-spatial-tracking; gyroscope; accelerometer; vr"
           >
             {rundgang.standbild ? (
-              <Bild slot="vorschau" schluessel={rundgang.standbild} alt="" />
+              <Bild slot="vorschau" schluessel={rundgang.standbild} />
             ) : (
               <div slot="vorschau" class="rundgang-ersatz" />
             )}

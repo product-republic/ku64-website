@@ -81,7 +81,7 @@ const ziel = `/laecheln-vorschau/?standort=${encodeURIComponent(standort.slug)}#
     <div class="smile-bild">
       {
         bild ? (
-          <Bild schluessel={bild} alt="" />
+          <Bild schluessel={bild} />
         ) : (
           /* Kein grauer Kasten, solange die echten Fotos fehlen: eine Fläche
              in Markenfarben mit dem Namen des Standorts. */

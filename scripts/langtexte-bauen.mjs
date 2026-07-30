@@ -125,6 +125,34 @@ for (const e of alt) {
     continue;
   }
 
+  /*
+   * Dasselbe eine Ebene tiefer: `/leistungen/<behandlung>/<unterthema>/` ohne
+   * Weiterleitung, weil die Adresse unverändert gilt.
+   *
+   * Fünf Unterthemen sind genau so durchgefallen, nachdem
+   * `weiterleitungen-nachziehen.mjs` ihre Einträge entfernt hatte – zu Recht
+   * entfernt, denn eine Weiterleitung auf sich selbst wäre eine Schleife. Nur
+   * hieß das für diesen Generator „kein Ziel", also „zusammengefaltet", und er
+   * legte sie als neue Seiten neben die Behandlung, zu der sie gehören.
+   *
+   * Zwei Regeln, die einander widersprachen. Der Fehler lag in der Annahme,
+   * eine fehlende Weiterleitung bedeute Verlust. Sie kann auch bedeuten: nichts
+   * zu tun.
+   */
+  if (!ziel && tiefe(e.pfad) === 3) {
+    const teile = e.pfad.split('/').filter(Boolean);
+    if (NEUE_SLUGS.has(teile[1])) {
+      faelle.push({
+        art: 'UNTERTHEMA',
+        alt: e.pfad,
+        leistung: teile[1],
+        slug: teile[2],
+        eintrag: e,
+      });
+      continue;
+    }
+  }
+
   /* Kein Ziel oder Ziel ist die Übersicht bzw. ein Anker darin:
      zusammengefaltet – bekommt eine eigene Seite. */
   if (!ziel || ziel === '/leistungen/' || ziel.startsWith('/leistungen/#')) {
@@ -138,7 +166,36 @@ for (const e of alt) {
     continue;
   }
 
+  const zielTeile = ziel.split('/').filter(Boolean);
   const zielSlug = eigenSlug(ziel);
+
+  /*
+   * Zeigt die Weiterleitung schon auf eine Unterseite, dann steht die
+   * Zuordnung dort – und muss nicht neu abgeleitet werden.
+   *
+   * Das ist die Lehre aus einem Lauf, der sich selbst zerlegt hat:
+   * `weiterleitungen-nachziehen.mjs` biegt die Ziele auf die
+   * wiederhergestellten Seiten um, also von `/leistungen/zahnimplantate/` auf
+   * `/leistungen/zahnimplantate/zahnimplantat-kosten/`. Beim nächsten Lauf war
+   * `eigenSlug(ziel)` dann „zahnimplantat-kosten", und weil der eigene Slug
+   * derselbe ist, wurde die Regel unten zu HAUPTSEITE – aus 37 Hauptseiten und
+   * 31 Unterthemen wurden 60 und 3.
+   *
+   * Ein Skript, das beim zweiten Lauf etwas anderes ergibt als beim ersten,
+   * ist keine Zuordnung, sondern ein Zufall. Deshalb wird der Fall
+   * `/leistungen/<behandlung>/<unterthema>/` zuerst geprüft: Er sagt
+   * ausdrücklich, was gemeint ist, und sagt es bei jedem Lauf gleich.
+   */
+  if (zielTeile.length === 3 && zielTeile[0] === 'leistungen') {
+    faelle.push({
+      art: 'UNTERTHEMA',
+      alt: e.pfad,
+      leistung: zielTeile[1],
+      slug: zielTeile[2],
+      eintrag: e,
+    });
+    continue;
+  }
 
   /* Tiefer als drei Ebenen UND der eigene Slug ist nicht der Zielslug:
      eigene Frage, eigene Seite. */
@@ -338,7 +395,6 @@ for (const f of faelle) {
 /* ── Bericht ─────────────────────────────────────────────────────────── */
 
 const summe = (o) => Object.values(o).reduce((s, x) => s + x.woerter, 0);
-const gesamtWoerter = summe(langtexte.leistungen) + summe(langtexte.unterthemen) + summe(langtexte.kategorien) + summe(langtexte.neu);
 
 console.log(
   `[langtexte] ${alt.length} alte Leistungsseiten eingeordnet\n` +
@@ -346,7 +402,14 @@ console.log(
     `            ${Object.keys(langtexte.unterthemen).length} Unterthemen   ${summe(langtexte.unterthemen).toLocaleString('de-DE').padStart(8)} Wörter\n` +
     `            ${Object.keys(langtexte.neu).length} neue Seiten   ${summe(langtexte.neu).toLocaleString('de-DE').padStart(8)} Wörter\n` +
     `            ${'—'.repeat(24)}\n` +
-    `            ${(summe(langtexte.leistungen) + summe(langtexte.unterthemen) + summe(langtexte.neu)).toLocaleString('de-DE').padStart(38)} Wörter`,
+    `            ${Object.keys(langtexte.kategorien).length} Kategorietexte ${summe(langtexte.kategorien).toLocaleString('de-DE').padStart(8)} Wörter\n` +
+    `            ${'—'.repeat(24)}\n` +
+    `            ${(
+      summe(langtexte.leistungen) +
+      summe(langtexte.unterthemen) +
+      summe(langtexte.kategorien) +
+      summe(langtexte.neu)
+    ).toLocaleString('de-DE').padStart(38)} Wörter`,
 );
 
 console.log('\n[langtexte] Unterthemen, die eine eigene Seite zurückbekommen:');
