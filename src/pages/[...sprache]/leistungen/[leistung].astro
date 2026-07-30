@@ -201,7 +201,7 @@ const schema = [
       eigenerText && (
         <section class="ausfuehrlich" aria-labelledby="ausfuehrlich-titel">
           <h2 id="ausfuehrlich-titel">{t('leistung.ausfuehrlich', { name: leistung.name })}</h2>
-          <Langtext langtext={eigenerText} />
+          <Langtext langtext={eigenerText} sprache={daten.sprache} />
         </section>
       )
     }

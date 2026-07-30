@@ -115,7 +115,7 @@ const suchindex = alleHier.map((l) => ({
           {kategorietext(g.kategorie.slug) && (
             <details class="kategorie-text">
               <summary>{t('leistuebersicht.mehrZu', { name: g.kategorie.name })}</summary>
-              <Langtext langtext={kategorietext(g.kategorie.slug)!} titel={null} />
+              <Langtext langtext={kategorietext(g.kategorie.slug)!} sprache={daten.sprache} titel={null} />
             </details>
           )}
         </section>

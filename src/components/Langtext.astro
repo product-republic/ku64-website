@@ -43,9 +43,20 @@
  * ist keine.
  */
 import type { Langtext } from '../lib/langtexte';
+import { texte } from '../i18n/katalog';
+import type { Sprache } from '../i18n/sprachen';
 
 interface Props {
   langtext: Langtext;
+  /**
+   * Sprache der umgebenden Seite.
+   *
+   * Nötig, weil dieser Baustein zwei eigene Zeichenketten setzt – die
+   * Überschrift des Inhaltsverzeichnisses und die Quellenangabe. Sie standen
+   * hier fest auf Deutsch und erschienen damit auf 195 englischen und 195
+   * französischen Seiten unübersetzt.
+   */
+  sprache: Sprache;
   /**
    * Überschrift über dem Ganzen. `null` lässt sie weg – richtig auf einer
    * Unterthemenseite, wo der Langtext der Hauptinhalt ist und keine
@@ -69,11 +80,14 @@ interface Props {
 
 const {
   langtext,
+  sprache,
   titel = null,
   abZuVerzeichnis = 4,
   herkunftZeigen = false,
   basisStufe = 3,
 } = Astro.props;
+
+const t = texte(sprache);
 
 /**
  * Eine Kennung je Abschnitt, aus seiner Überschrift.
@@ -215,7 +229,7 @@ function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
     verzeichnis.length > 0 && (
       <nav class="langtext-inhalt" aria-labelledby={`${eigenId}-titel`}>
         <p class="langtext-inhalt-titel" id={`${eigenId}-titel`}>
-          Auf dieser Seite
+          {t('langtext.aufDieserSeite')}
         </p>
         <ol>
           {verzeichnis.map((a) => (
@@ -265,10 +279,13 @@ function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
 
   {
     herkunftZeigen && (
-      <p class="langtext-herkunft">
-        Übernommen von <code>{langtext.herkunft}</code> – {langtext.woerter.toLocaleString('de-DE')}{' '}
-        Wörter, wortgleich. Fachliche Freigabe durch die Praxis steht aus.
-      </p>
+      <p
+        class="langtext-herkunft"
+        set:html={t('langtext.herkunft', {
+          adresse: `<code>${langtext.herkunft}</code>`,
+          woerter: langtext.woerter.toLocaleString('de-DE'),
+        })}
+      />
     )
   }
 </div>

@@ -54,6 +54,21 @@
  */
 import { DIENSTE, KATEGORIE_NAMEN, VERZEICHNIS_FASSUNG, type Kategorie } from '../data/dienste';
 import { MESSKENNUNG } from '../data/messung';
+import { texte } from '../i18n/katalog';
+import { spracheAusParameter } from '../i18n/sprachen';
+
+/*
+ * Die Sprache kommt aus der Adresse, nicht als Eigenschaft.
+ *
+ * Der Dialog steht im Basislayout und damit auf jeder der 1.507 Seiten. Ihn
+ * überall mit einer Sprache zu versorgen hieße, sie durch jede Seite
+ * durchzureichen – und die eine Seite, die es vergisst, zeigt dann Deutsch.
+ * Genau dieser Fall war der Befund: 1.004 englische und französische Seiten
+ * mit einem deutschen Einwilligungsdialog. Eine Zustimmung zu einem Text, den
+ * man nicht lesen kann, ist nach Artikel 4 Nr. 11 DSGVO keine informierte
+ * Einwilligung.
+ */
+const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
 
 /* Nur Kategorien, in denen wirklich ein aktiver Dienst steht. Eine
    Kategorie ohne Dienst wäre eine Frage ohne Gegenstand. */
@@ -71,14 +86,14 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
   noetig && (
     <dialog class="einwilligung" id="einwilligung" aria-labelledby="ew-titel">
       <form method="dialog" class="ew-inhalt">
-        <h2 id="ew-titel">Was darf geladen werden?</h2>
+        <h2 id="ew-titel">{t('ew.titel')}</h2>
 
-        <p class="ew-vorspann">
-          Diese Website funktioniert ohne alles, was hier steht. Für einzelne Funktionen
-          werden aber Daten an andere Unternehmen übertragen – Sie entscheiden, für welche.
-          Ihre Entscheidung gilt sechs Monate und lässt sich jederzeit auf{' '}
-          <a href="/cookies/">Cookie-Einstellungen</a> ändern.
-        </p>
+        <p
+          class="ew-vorspann"
+          set:html={t('ew.vorspann', {
+            verweis: `<a href="/cookies/">${t('ew.cookieEinstellungen')}</a>`,
+          })}
+        />
 
         <ul class="ew-liste">
           {kategorien.map((k) => (
@@ -103,31 +118,31 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
 
         {ohneAvVertrag.length > 0 && (
           <p class="ew-vorbehalt">
-            <strong>Hinweis der Praxis:</strong> Für{' '}
-            {ohneAvVertrag.map((d) => d.name).join(', ')} liegt der
-            Auftragsverarbeitungsvertrag noch nicht bestätigt vor. Solange das so ist,
-            werden diese Dienste auch bei Zustimmung nicht geladen.
+            <strong>{t('ew.hinweisPraxis')}</strong>{' '}
+            {t('ew.avOffen', { dienste: ohneAvVertrag.map((d) => d.name).join(', ') })}
           </p>
         )}
 
         {/* Ablehnen links, damit es zuerst gelesen wird. Beide gleich groß. */}
         <div class="ew-knoepfe">
           <button type="button" class="knopf ew-knopf" data-ew="ablehnen">
-            Nur das Notwendige
+            {t('ew.nurNotwendig')}
           </button>
           <button type="button" class="knopf ew-knopf" data-ew="auswahl">
-            Auswahl speichern
+            {t('ew.auswahlSpeichern')}
           </button>
           <button type="button" class="knopf knopf-primaer ew-knopf" data-ew="alles">
-            Alles erlauben
+            {t('ew.allesErlauben')}
           </button>
         </div>
 
-        <p class="ew-fuss">
-          Was genau übertragen wird, steht im{' '}
-          <a href="/cookies/">Verzeichnis der Dienste</a> und in der{' '}
-          <a href="/datenschutz/">Datenschutzerklärung</a>.
-        </p>
+        <p
+          class="ew-fuss"
+          set:html={t('ew.fuss', {
+            verzeichnis: `<a href="/cookies/#verzeichnis">${t('ew.verzeichnis')}</a>`,
+            datenschutz: `<a href="/datenschutz/">${t('ck.datenschutzerklaerung')}</a>`,
+          })}
+        />
       </form>
     </dialog>
   )

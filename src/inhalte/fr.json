@@ -27898,24 +27898,24 @@
       "quelle": "af5e35ef"
     },
     "ui.ck.beschreibung": {
-      "text": "Ce site n'utilise ni cookies d'analyse ni cookies publicitaires. Ce qui est réellement enregistré et comment le supprimer.",
-      "quelle": "fb73fcda"
+      "text": "L’affichage d’une page ne transmet rien à des tiers. Quels services existent, ce qu’ils transmettent, et comment modifier votre sélection à tout moment.",
+      "quelle": "a9cdf380"
     },
     "ui.ck.datenschutzerklaerung": {
       "text": "politique de confidentialité",
       "quelle": "24f50bb8"
     },
     "ui.ck.drittanbieterText": {
-      "text": "Seulement si vous le déclenchez vous-même : au chargement du calendrier de rendez-vous Doctolib, à l'ouverture de l'anamnèse numérique, en utilisant le conseiller vocal ou l'aperçu du sourire. Avant cela, rien ne se passe. Les détails figurent dans la {verweis}.",
-      "quelle": "336ba397"
+      "text": "Uniquement lorsque vous le déclenchez ou y consentez : au lancement de la visite à 360°, au chargement de la carte avec calcul d’itinéraire, lors de la recherche, du chat ou de l’aperçu du sourire – et pour les statistiques de visite, si vous les autorisez. Ce qui est transmis exactement figure ci-dessous pour chaque service et dans la {verweis}.",
+      "quelle": "06fd4933"
     },
     "ui.ck.einKlickGenuegtDanach": {
       "text": "Un clic suffit – ensuite, le stockage local de ce site est vide.",
       "quelle": "d756a1bd"
     },
     "ui.ck.einleitung": {
-      "text": "<strong>Ce site n'utilise ni cookies d'analyse ni cookies publicitaires</strong> – pas de cookies d'analyse, pas de cookies publicitaires et pas de pixels espions. Il n'y a donc pas de bandeau de consentement à fermer.",
-      "quelle": "2a11cb13"
+      "text": "<strong>L’affichage d’une page ne transmet rien à des tiers.</strong> Aucune police depuis un serveur externe, aucun pixel de mesure, aucun script qui se charge sans qu’on le demande. Quelque chose ne s’ajoute qu’avec votre accord – et vous décidez groupe par groupe. Refuser est aussi rapide qu’accepter.",
+      "quelle": "0d62e235"
     },
     "ui.ck.gespeicherteAngabenLoeschen": {
       "text": "Supprimer les informations enregistrées",
@@ -27946,8 +27946,28 @@
       "quelle": "c9260bde"
     },
     "ui.ck.zweiAngaben": {
-      "text": "Deux informations sont conservées dans le stockage local de votre navigateur. Elles n'atteignent jamais notre serveur et servent uniquement votre confort :",
-      "quelle": "4aa34230"
+      "text": "Deux informations se trouvent dans le stockage local de votre navigateur, indépendamment de tout consentement. Elles n’atteignent jamais notre serveur :",
+      "quelle": "968ee1df"
+    },
+    "ui.dritt.laden": {
+      "text": "Charger {titel}",
+      "quelle": "145e46eb"
+    },
+    "ui.dritt.ladenName": {
+      "text": "Charger {titel} – cela transmet des données à {anbieter}",
+      "quelle": "cd7e2bfd"
+    },
+    "ui.dritt.nochNichtFrei": {
+      "text": "Pas encore autorisé : pour {dienst}, le contrat de sous-traitance avec {anbieter} n’est pas confirmé. Jusque-là, ce contenu ne sera pas chargé, même en cliquant.",
+      "quelle": "5a76844e"
+    },
+    "ui.dritt.wasUebertragen": {
+      "text": "Ce qui est transmis",
+      "quelle": "6852ac25"
+    },
+    "ui.dritt.wirdGeladen": {
+      "text": "Chargé uniquement lorsque vous cliquez. Cela transmet {daten} à {anbieter}.",
+      "quelle": "6be2e27e"
     },
     "ui.ds.10Aenderungen": {
       "text": "10. Modifications",
@@ -28046,8 +28066,8 @@
       "quelle": "4575d06b"
     },
     "ui.ds.keineAnalyse": {
-      "text": "<strong>Aucun outil d'analyse, aucun cookie publicitaire.</strong> Ce site n'utilise de lui-même aucun cookie à des fins d'analyse ou de marketing et n'intègre aucun pixel de suivi.",
-      "quelle": "bba197dc"
+      "text": "<strong>Rien ne s’exécute sans qu’on le demande.</strong> L’affichage d’une page ne charge aucun outil d’analyse et n’intègre aucun pixel de mesure. Nous ne tenons de statistiques de visite que si vous y consentez expressément – quelles données vont à qui figure dans le registre des services ci-dessous. Ce site ne dépose aucun cookie publicitaire, pas même avec consentement.",
+      "quelle": "d74c2abc"
     },
     "ui.ds.kontaktText": {
       "text": "Lorsque vous nous appelez ou nous écrivez, nous traitons vos informations pour traiter votre demande (art. 6, al. 1, let. b et f RGPD). Merci de ne pas nous transmettre de données de santé par e-mail non chiffré – ce canal n'est techniquement pas confidentiel.",
@@ -28108,6 +28128,46 @@
     "ui.ds.verantwortlicherAngaben": {
       "text": "<code>[Nom complet du cabinet / de l'organisme responsable, adresse, téléphone, e-mail, représentation légale]</code>",
       "quelle": "d46bdf35"
+    },
+    "ui.ew.allesErlauben": {
+      "text": "Tout autoriser",
+      "quelle": "945c2a88"
+    },
+    "ui.ew.auswahlSpeichern": {
+      "text": "Enregistrer la sélection",
+      "quelle": "7ad34839"
+    },
+    "ui.ew.avOffen": {
+      "text": "Pour {dienste}, le contrat de sous-traitance n’est pas encore confirmé. Tant que ce n’est pas le cas, ces services ne seront pas chargés, même avec votre accord.",
+      "quelle": "f649d9e1"
+    },
+    "ui.ew.cookieEinstellungen": {
+      "text": "Paramètres des cookies",
+      "quelle": "8ade692f"
+    },
+    "ui.ew.fuss": {
+      "text": "Ce qui est transmis exactement figure dans le {verzeichnis} et dans la {datenschutz}.",
+      "quelle": "6e4a90ec"
+    },
+    "ui.ew.hinweisPraxis": {
+      "text": "Information du cabinet :",
+      "quelle": "00b4e920"
+    },
+    "ui.ew.nurNotwendig": {
+      "text": "Strictement nécessaire",
+      "quelle": "498fb2c0"
+    },
+    "ui.ew.titel": {
+      "text": "Que pouvons-nous charger ?",
+      "quelle": "e342a049"
+    },
+    "ui.ew.verzeichnis": {
+      "text": "registre des services",
+      "quelle": "7e6e1888"
+    },
+    "ui.ew.vorspann": {
+      "text": "Ce site fonctionne sans rien de ce qui est indiqué ici. Certaines fonctions transmettent toutefois des données à d’autres entreprises – c’est vous qui décidez lesquelles. Votre choix est valable six mois et peut être modifié à tout moment sous {verweis}.",
+      "quelle": "aa1f3e10"
     },
     "ui.faq.anamnese.datensicherheit.antwort": {
       "text": "L'anamnèse se fait via Nelly Solutions, un prestataire spécialisé dans les cabinets dentaires, dont les serveurs sont situés dans l'UE. Les données sont transmises de façon chiffrée directement dans notre logiciel de gestion du cabinet. Ce site lui-même n'enregistre aucune donnée de santé – il vous redirige simplement vers le formulaire.",
@@ -29212,6 +29272,14 @@
     "ui.laecheln.zahnstellungKorrigierenOhneFeste": {
       "text": "Corriger l'alignement des dents sans appareil fixe.",
       "quelle": "9dab9bdc"
+    },
+    "ui.langtext.aufDieserSeite": {
+      "text": "Sur cette page",
+      "quelle": "88204195"
+    },
+    "ui.langtext.herkunft": {
+      "text": "Repris de {adresse} – {woerter} mots, à l’identique. La validation professionnelle par le cabinet est encore en attente.",
+      "quelle": "7d304f33"
     },
     "ui.leistuebersicht.alleBehandlungen": {
       "text": "Toutes les prestations",

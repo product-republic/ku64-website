@@ -43,6 +43,8 @@
  * Liste aller Bedienelemente nicht unterscheidbar.
  */
 import { DIENSTE } from '../data/dienste';
+import { texte } from '../i18n/katalog';
+import { spracheAusParameter } from '../i18n/sprachen';
 
 interface Props {
   /** Slug aus `dienste.ts`. Ein Dienst ohne Eintrag ist ein Baufehler. */
@@ -71,6 +73,9 @@ const {
   erlauben,
 } = Astro.props;
 
+/* Sprache aus der Adresse – wie im Auswahldialog, aus demselben Grund. */
+const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
+
 const d = DIENSTE.find((x) => x.slug === slug);
 
 /*
@@ -96,7 +101,7 @@ if (d.stand !== 'aktiv') {
 }
 
 /* Der Name der Schaltfläche nennt Dienst und Folge – siehe Kopfkommentar. */
-const knopfName = `${titel} laden – dabei werden Daten an ${d.anbieter.split(',')[0]} übertragen`;
+const knopfName = t('dritt.ladenName', { titel, anbieter: d.anbieter.split(',')[0] });
 
 /* Ohne bestätigten AV-Vertrag wird nicht geladen, auch nicht auf Klick.
    Eine Einwilligung ersetzt keinen Vertrag. */
@@ -125,21 +130,21 @@ const gesperrt = !d.avVertrag;
       {
         gesperrt ? (
           <p class="dritt-text">
-            Noch nicht freigegeben: Für {d.name} liegt der Auftragsverarbeitungsvertrag mit{' '}
-            {d.anbieter.split(',')[0]} nicht bestätigt vor. Bis dahin wird dieser Inhalt auch
-            auf Klick nicht geladen.
+            {t('dritt.nochNichtFrei', { dienst: d.name, anbieter: d.anbieter.split(',')[0] })}
           </p>
         ) : (
           <>
             <p class="dritt-text">
-              Wird erst auf Ihren Klick geladen. Dabei werden{' '}
-              {d.daten.slice(0, 2).join(' und ')} an {d.anbieter.split(',')[0]} übertragen.
+              {t('dritt.wirdGeladen', {
+                daten: d.daten.slice(0, 2).join(' und '),
+                anbieter: d.anbieter.split(',')[0],
+              })}
             </p>
             <button type="button" class="knopf knopf-primaer" data-rolle="freigeben" aria-label={knopfName}>
-              {titel} laden
+              {t('dritt.laden', { titel })}
             </button>
             <p class="dritt-fein">
-              <a href="/cookies/">Was dabei übertragen wird</a>
+              <a href="/cookies/#verzeichnis">{t('dritt.wasUebertragen')}</a>
             </p>
           </>
         )

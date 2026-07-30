@@ -565,15 +565,46 @@ export const TEXTE = {
   'bf.wasNochOffenIst': 'Was noch offen ist',
   'bf.wasUmgesetztIst': 'Was umgesetzt ist',
   'bf.zugaenglichkeitUnsererPraxen': 'Zugänglichkeit unserer Praxen',
+  /* ── Auswahldialog, Langtext, Sperrhinweis ───────────────────────────
+   *
+   * Diese Texte standen als deutsche Zeichenketten in Einwilligung.astro,
+   * Langtext.astro und Drittinhalt.astro – und damit auf 1.004 englischen und
+   * französischen Seiten auf Deutsch. Bei einem Einwilligungsdialog ist das
+   * nicht nur unschön: Eine Zustimmung zu einem Text, den man nicht lesen
+   * kann, ist nach Artikel 4 Nr. 11 DSGVO keine informierte Einwilligung.
+   */
+  'ew.titel': 'Was darf geladen werden?',
+  'ew.vorspann':
+    'Diese Website funktioniert ohne alles, was hier steht. Für einzelne Funktionen werden aber Daten an andere Unternehmen übertragen – Sie entscheiden, für welche. Ihre Entscheidung gilt sechs Monate und lässt sich jederzeit unter {verweis} ändern.',
+  'ew.hinweisPraxis': 'Hinweis der Praxis:',
+  'ew.avOffen':
+    'Für {dienste} liegt der Auftragsverarbeitungsvertrag noch nicht bestätigt vor. Solange das so ist, werden diese Dienste auch bei Zustimmung nicht geladen.',
+  'ew.nurNotwendig': 'Nur das Notwendige',
+  'ew.auswahlSpeichern': 'Auswahl speichern',
+  'ew.allesErlauben': 'Alles erlauben',
+  'ew.fuss': 'Was genau übertragen wird, steht im {verzeichnis} und in der {datenschutz}.',
+  'ew.verzeichnis': 'Verzeichnis der Dienste',
+  'ew.cookieEinstellungen': 'Cookie-Einstellungen',
+  'langtext.aufDieserSeite': 'Auf dieser Seite',
+  'langtext.herkunft':
+    'Übernommen von {adresse} – {woerter} Wörter, wortgleich. Fachliche Freigabe durch die Praxis steht aus.',
+  'dritt.wirdGeladen':
+    'Wird erst auf Ihren Klick geladen. Dabei werden {daten} an {anbieter} übertragen.',
+  'dritt.laden': '{titel} laden',
+  'dritt.ladenName':
+    '{titel} laden – dabei werden Daten an {anbieter} übertragen',
+  'dritt.wasUebertragen': 'Was dabei übertragen wird',
+  'dritt.nochNichtFrei':
+    'Noch nicht freigegeben: Für {dienst} liegt der Auftragsverarbeitungsvertrag mit {anbieter} nicht bestätigt vor. Bis dahin wird dieser Inhalt auch auf Klick nicht geladen.',
   'ck.seitentitel': 'Cookie-Einstellungen',
   'ck.beschreibung':
-    'Diese Website setzt keine Analyse- oder Werbe-Cookies. Was tatsächlich gespeichert wird und wie Sie es löschen.',
+    'Beim Seitenaufruf wird nichts an Dritte übertragen. Welche Dienste es gibt, was sie übertragen, und wie Sie Ihre Auswahl jederzeit ändern.',
   'ck.einleitung':
-    '<strong>Diese Website setzt keine Analyse- oder Werbe-Cookies</strong> – keine Analyse-Cookies, keine Werbe-Cookies und keine Zählpixel. Es gibt deshalb auch kein Einwilligungsbanner, das Sie wegklicken müssten.',
+    '<strong>Beim Aufruf einer Seite wird nichts an Dritte übertragen.</strong> Keine Schriften von fremden Servern, kein Zählpixel, kein Skript, das ungefragt lädt. Erst wenn Sie zustimmen, kommt etwas hinzu – und Sie entscheiden für jede Gruppe einzeln. Ablehnen geht genauso schnell wie Annehmen.',
   'ck.zweiAngaben':
-    'Zwei Angaben liegen im lokalen Speicher Ihres Browsers. Sie erreichen unseren Server nie und dienen ausschließlich Ihrer Bequemlichkeit:',
+    'Zwei Angaben liegen im lokalen Speicher Ihres Browsers, unabhängig von jeder Zustimmung. Sie erreichen unseren Server nie:',
   'ck.drittanbieterText':
-    'Erst wenn Sie es ausdrücklich auslösen: beim Laden des Doctolib-Terminkalenders, beim Öffnen der digitalen Anamnese, beim Nutzen des Sprachberaters oder der Lächeln-Vorschau. Vorher passiert nichts. Details stehen in der {verweis}.',
+    'Erst wenn Sie es auslösen oder ihm zustimmen: beim Starten des 360°-Rundgangs, beim Laden der Karte mit Routenplanung, bei der Suche, beim Chat oder bei der Lächeln-Vorschau – und bei der Besuchsstatistik, wenn Sie sie erlauben. Was dabei genau übertragen wird, steht unten bei jedem Dienst einzeln und in der {verweis}.',
   'ck.datenschutzerklaerung': 'Datenschutzerklärung',
   'ck.loeschen': 'Löschen',
   'ck.einKlickGenuegtDanach': 'Ein Klick genügt – danach ist der lokale Speicher dieser Website leer.',
@@ -639,7 +670,7 @@ export const TEXTE = {
   'ds.serverdaten':
     'Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem. Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle: <code>[Anzahl Tage]</code>.',
   'ds.keineAnalyse':
-    '<strong>Keine Analyse-Werkzeuge, keine Werbe-Cookies.</strong> Diese Website setzt von sich aus keine Cookies zu Analyse- oder Marketingzwecken und bindet keine Zählpixel ein.',
+    '<strong>Nichts läuft ungefragt.</strong> Beim Aufruf einer Seite wird kein Analyse-Werkzeug geladen und kein Zählpixel eingebunden. Eine Besuchsstatistik führen wir nur, wenn Sie ausdrücklich zustimmen – welche Daten dabei an wen gehen, steht unten im Verzeichnis der Dienste. Werbe-Cookies setzt diese Website nicht, auch nicht mit Zustimmung.',
   'ds.schriften':
     '<strong>Schriften werden selbst ausgeliefert.</strong> Es findet kein Aufruf an Google Fonts oder ein anderes Schriften-Netzwerk statt. Ihre IP-Adresse wird dafür nicht an Dritte übermittelt.',
   'ds.lokalEinleitung':

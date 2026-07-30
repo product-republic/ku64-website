@@ -27998,24 +27998,24 @@
       "quelle": "af5e35ef"
     },
     "ui.ck.beschreibung": {
-      "text": "This website does not use analytics or advertising cookies. What's actually stored and how to delete it.",
-      "quelle": "fb73fcda"
+      "text": "Loading a page transfers nothing to third parties. Which services exist, what they transfer, and how to change your selection at any time.",
+      "quelle": "a9cdf380"
     },
     "ui.ck.datenschutzerklaerung": {
       "text": "privacy policy",
       "quelle": "24f50bb8"
     },
     "ui.ck.drittanbieterText": {
-      "text": "Only when you actively trigger it: when loading the Doctolib appointment calendar, opening the digital medical history form, or using the voice assistant or smile preview. Nothing happens before that. Details are in the {verweis}.",
-      "quelle": "336ba397"
+      "text": "Only when you trigger it or agree to it: when starting the 360° tour, when loading the map with route planning, when using the search, the chat or the smile preview – and for visitor statistics, if you allow them. Exactly what is transferred is listed below for each service individually and in the {verweis}.",
+      "quelle": "06fd4933"
     },
     "ui.ck.einKlickGenuegtDanach": {
       "text": "One click is all it takes – afterwards, this website's local storage is empty.",
       "quelle": "d756a1bd"
     },
     "ui.ck.einleitung": {
-      "text": "<strong>This website does not use analytics or advertising cookies</strong> – no analytics cookies, no advertising cookies and no tracking pixels. That's why there's no consent banner for you to click away either.",
-      "quelle": "2a11cb13"
+      "text": "<strong>Loading a page transfers nothing to third parties.</strong> No fonts from external servers, no tracking pixel, no script that loads unasked. Something is only added once you agree – and you decide for each group separately. Declining is just as quick as accepting.",
+      "quelle": "0d62e235"
     },
     "ui.ck.gespeicherteAngabenLoeschen": {
       "text": "Delete stored information",
@@ -28046,8 +28046,28 @@
       "quelle": "c9260bde"
     },
     "ui.ck.zweiAngaben": {
-      "text": "Two pieces of information are held in your browser's local storage. They never reach our server and are purely for your convenience:",
-      "quelle": "4aa34230"
+      "text": "Two entries sit in your browser’s local storage, independently of any consent. They never reach our server:",
+      "quelle": "968ee1df"
+    },
+    "ui.dritt.laden": {
+      "text": "Load {titel}",
+      "quelle": "145e46eb"
+    },
+    "ui.dritt.ladenName": {
+      "text": "Load {titel} – this transfers data to {anbieter}",
+      "quelle": "cd7e2bfd"
+    },
+    "ui.dritt.nochNichtFrei": {
+      "text": "Not yet cleared: for {dienst}, the data processing agreement with {anbieter} has not been confirmed. Until it is, this content will not be loaded even on click.",
+      "quelle": "5a76844e"
+    },
+    "ui.dritt.wasUebertragen": {
+      "text": "What is transferred",
+      "quelle": "6852ac25"
+    },
+    "ui.dritt.wirdGeladen": {
+      "text": "Loaded only when you click. Doing so transfers {daten} to {anbieter}.",
+      "quelle": "6be2e27e"
     },
     "ui.ds.10Aenderungen": {
       "text": "10. Changes",
@@ -28146,8 +28166,8 @@
       "quelle": "4575d06b"
     },
     "ui.ds.keineAnalyse": {
-      "text": "<strong>No analytics tools, no advertising cookies.</strong> This website does not set any cookies for analytics or marketing purposes and does not include any tracking pixels.",
-      "quelle": "bba197dc"
+      "text": "<strong>Nothing runs unasked.</strong> Loading a page loads no analytics tool and embeds no tracking pixel. We keep visitor statistics only if you expressly agree – which data goes to whom is set out in the register of services below. This website sets no advertising cookies, not even with consent.",
+      "quelle": "d74c2abc"
     },
     "ui.ds.kontaktText": {
       "text": "When you call or write to us, we process your details to handle your enquiry (Art. 6(1)(b) and (f) GDPR). Please do not send us health data by unencrypted email – this route is not technically confidential.",
@@ -28208,6 +28228,46 @@
     "ui.ds.verantwortlicherAngaben": {
       "text": "<code>[Full name of the practice / operator, address, phone, email, legal representation]</code>",
       "quelle": "d46bdf35"
+    },
+    "ui.ew.allesErlauben": {
+      "text": "Allow everything",
+      "quelle": "945c2a88"
+    },
+    "ui.ew.auswahlSpeichern": {
+      "text": "Save selection",
+      "quelle": "7ad34839"
+    },
+    "ui.ew.avOffen": {
+      "text": "For {dienste}, the data processing agreement has not yet been confirmed. Until it is, these services will not be loaded even if you agree.",
+      "quelle": "f649d9e1"
+    },
+    "ui.ew.cookieEinstellungen": {
+      "text": "Cookie settings",
+      "quelle": "8ade692f"
+    },
+    "ui.ew.fuss": {
+      "text": "Exactly what is transferred is set out in the {verzeichnis} and in the {datenschutz}.",
+      "quelle": "6e4a90ec"
+    },
+    "ui.ew.hinweisPraxis": {
+      "text": "Note from the practice:",
+      "quelle": "00b4e920"
+    },
+    "ui.ew.nurNotwendig": {
+      "text": "Essential only",
+      "quelle": "498fb2c0"
+    },
+    "ui.ew.titel": {
+      "text": "What may we load?",
+      "quelle": "e342a049"
+    },
+    "ui.ew.verzeichnis": {
+      "text": "register of services",
+      "quelle": "7e6e1888"
+    },
+    "ui.ew.vorspann": {
+      "text": "This website works without anything listed here. Some functions do however transfer data to other companies – you decide which. Your choice is valid for six months and can be changed at any time under {verweis}.",
+      "quelle": "aa1f3e10"
     },
     "ui.faq.anamnese.datensicherheit.antwort": {
       "text": "The medical history form is handled by Nelly Solutions, a provider specialising in dental practices, with servers located in the EU. The data is transmitted encrypted directly into our practice management system. This website itself stores no health data – it only forwards you to the form.",
@@ -29312,6 +29372,14 @@
     "ui.laecheln.zahnstellungKorrigierenOhneFeste": {
       "text": "Correct tooth position without a fixed brace.",
       "quelle": "9dab9bdc"
+    },
+    "ui.langtext.aufDieserSeite": {
+      "text": "On this page",
+      "quelle": "88204195"
+    },
+    "ui.langtext.herkunft": {
+      "text": "Taken from {adresse} – {woerter} words, verbatim. Professional sign-off by the practice is still pending.",
+      "quelle": "7d304f33"
     },
     "ui.leistuebersicht.alleBehandlungen": {
       "text": "All treatments",
