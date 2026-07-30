@@ -181,6 +181,34 @@
     margin: 2.4rem 0 0.7rem;
   }
 
+  /*
+   * Die vierte Ebene trägt kein eigenes Gewicht mehr, sondern eine Farbe.
+   *
+   * Bei 1,08 rem für h3 bliebe für h4 nur noch Fließtextgröße – zwei
+   * Überschriften, die gleich groß und gleich fett sind, sind keine zwei
+   * Ebenen. Der Unterschied kommt deshalb aus dem Ton und aus dem Abstand
+   * darüber, nicht aus einem weiteren Punkt Schriftgrad.
+   */
+  h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    /*
+     * Die Variable und kein fester Wert. Der erste Versuch stand auf
+     * #3f3f3a – im hellen Modus ein zurückgenommenes Grau, im dunklen
+     * 1,74:1 gegen den dunklen Grund und damit unlesbar. Die
+     * Kontrastprüfung hat es in beiden dunklen Ansichten gemeldet. Ein
+     * fester Farbwert in einem Dokument mit zwei Modi ist immer in einem
+     * von beiden falsch.
+     *
+     * ACHTUNG: Dieses CSS steht in einer Zeichenkette mit Backticks.
+     * Ein Backtick in einem Kommentar beendet sie – der erste Versuch
+     * dieser Korrektur hat damit die Datei zerlegt.
+     */
+    color: var(--tinte-weich);
+    margin: 1.9rem 0 0.55rem;
+  }
+
   p { margin: 0 0 1.05rem; max-width: 68ch; }
   strong { font-weight: 680; }
 
@@ -341,7 +369,7 @@
        messbar besser ist.") – sie sind Überschriften, auch wenn sie im
        Markdown keine sind. Absätze, die außer dem fetten Satz nichts
        enthalten, sind genau diese Fälle. */
-    h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+    h1, h2, h3, h4 { break-after: avoid; break-inside: avoid; }
     p:has(> strong:only-child) { break-after: avoid; break-inside: avoid; }
 
     /* Keine Tabelle mitten durchgeschnitten. Passt eine doch nicht auf eine
@@ -405,7 +433,7 @@
 <p><strong>Technisch ist der Neubau der alten Website in jeder messbaren Hinsicht überlegen</strong> — ein Fünftel des Gewichts, kein Drittanbieter beim Seitenaufruf, keine tote Adresse aus dem Altbestand, Barrierefreiheit auf 100.</p>
 <p><strong>Der Textverlust ist behoben, und zwar messbar:</strong> Die Behandlungsseiten hatten 89 Prozent ihres Umfangs verloren. Der Originaltext ist von ku64.de geholt und wieder eingebaut — <strong>129.172 statt 18.444 Wörter, also 109,8 Prozent des Altbestands.</strong> Zu Zahnimplantaten stehen 3.156 Wörter auf der Hauptseite statt 722, dazu vier eigene Seiten für Kosten, Haltbarkeit, Rauchen und die Frage Implantat oder Brücke.</p>
 <p><strong>Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:</strong> 116 örtliche Behandlungsseiten existieren, und <strong>keine einzige</strong> ist zur Indexierung angemeldet — für Google gibt es weiterhin genau eine Seite je Behandlung. Der Grund ist derselbe: Es gibt noch keine örtlichen Inhalte.</p>
-<p><strong>Zwei Livegang-Sperren sind noch offen</strong> — Impressum und Datenschutzerklärung sind Entwürfe mit Platzhaltern, und die Preisangaben sind aus Fotos einer gedruckten Auswertung abgetippt und nicht gegengeprüft.</p>
+<p><strong>Zwei Livegang-Sperren sind noch offen.</strong> Bei den Rechtstexten sind es inzwischen sechs Felder statt fünfunddreißig: Name, Anschrift, Vertretung, Kammer, Aufsichtsbehörde, Schlichtungsstelle, Datenschutzbeauftragter und alles Übrige sind aus dem heutigen Impressum übernommen und tragen jeweils ihre Herkunft. Was noch fehlt — Rechtsform, Registereintrag, Umsatzsteuer-Identnummer und die Berufshaftpflicht — <strong>steht auch auf der heutigen Seite nicht</strong>; der Neubau erbt hier keine Lücke, er macht eine sichtbar. Dazu die Preisangaben, die aus Fotos einer gedruckten Auswertung abgetippt und nicht gegengeprüft sind.</p>
 <p><strong>Der Hebel liegt nicht in der Technik.</strong> Er liegt in vierundzwanzig Fotos, einer fachlichen Freigabe, einer Stunde Personendurchsicht und zwei Formularen mit Pflichtangaben. Dazu die Übersetzung des wiederhergestellten Textes — 114.894 Wörter je Sprache, der einzige Punkt, an dem die neue Website in Englisch und Französisch noch nicht besser ist als die alte.</p>
 <hr />
 <h2 id="kurzfassung">Kurzfassung</h2>
@@ -434,7 +462,7 @@
 <p><strong>Was inhaltlich veraltet ist.</strong> In sechs Blogbeiträgen werden mindestens zehn Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr arbeiten — im Präsens, darunter ein ausführliches Fachzitat. <strong>Kapitel 7.</strong></p>
 <p><strong>Was jetzt gebraucht wird.</strong></p>
 <div class="tabelle"><table><thead><tr><th>Von wem</th><th>Was</th><th>Aufwand</th><th>Wirkung</th></tr></thead><tbody>
-<tr><td>Praxis</td><td>Impressum und Datenschutz befüllen</td><td>1–2 Std.</td><td><strong>Livegang-Sperre</strong></td></tr>
+<tr><td>Praxis</td><td>sechs Rechtsangaben nachreichen (Rechtsform, Register, USt-IdNr., Haftpflicht)</td><td>30 Min.</td><td><strong>Livegang-Sperre</strong></td></tr>
 <tr><td>Praxis</td><td>Preisangaben gegen die Originalauswertung prüfen</td><td>2 Std.</td><td><strong>Livegang-Sperre</strong></td></tr>
 <tr><td>Praxis</td><td>fachliche Freigabe der 36 Behandlungstexte</td><td>1 Tag</td><td>Voraussetzung für alles Weitere</td></tr>
 <tr><td>Technik</td><td>114.894 Wörter nach EN und FR übersetzen</td><td>läuft</td><td>letzter Punkt ohne Vorsprung</td></tr>
@@ -550,6 +578,52 @@
 <tr><td>hreflang-Angaben je Seite</td><td>2,7</td></tr>
 </tbody></table></div>
 <p><strong>Die alte Website war handwerklich gepflegt.</strong> Wer sie betreut hat, hat sauber gearbeitet. Ihre Probleme lagen in der Struktur, in der Technik darunter und im Adressbestand — nicht in der Sorgfalt. Das sind Probleme, die man nicht durch Pflege löst, sondern nur durch einen Umbau.</p>
+<h3 id="26-was-fehlt-nachgemessen-am-30072026">2.6 Was fehlt — nachgemessen am 30.07.2026</h3>
+<p>Der Abschnitt davor zählt auf, was stimmt. Dieser zählt auf, was nicht da ist. Beides gehört in denselben Bericht.</p>
+<p><strong>Wie gemessen wurde.</strong> Aus dem ausgelieferten HTML von sieben Seiten (Startseite, Team, Kontakt, Impressum, Datenschutzerklärung und zwei Behandlungsseiten), abgerufen am 30.07.2026, sowie aus dem Crawl vom 26.07.2026. Wo eine Aussage einen Browser gebraucht hätte, steht das ausdrücklich dabei.</p>
+<h4 id="vier-pflichtangaben-stehen-nicht-im-impressum">Vier Pflichtangaben stehen nicht im Impressum</h4>
+<div class="tabelle"><table><thead><tr><th>Angabe</th><th>Rechtsgrundlage</th><th>Auf ku64.de</th></tr></thead><tbody>
+<tr><td>Registergericht</td><td>§ 5 Abs. 1 Nr. 4 DDG</td><td>steht nicht da</td></tr>
+<tr><td>Registernummer</td><td>§ 5 Abs. 1 Nr. 4 DDG</td><td>steht nicht da</td></tr>
+<tr><td>Umsatzsteuer-Identnummer</td><td>§ 5 Abs. 1 Nr. 6 DDG</td><td>steht nicht da</td></tr>
+<tr><td>Berufshaftpflicht mit räumlichem Geltungsbereich</td><td>§ 2 Abs. 1 Nr. 11 DL-InfoV</td><td>steht nicht da</td></tr>
+</tbody></table></div>
+<p>Geprüft durch Volltextsuche im ausgelieferten HTML: Die Wörter „Registergericht", „Registernummer", „USt", „Umsatzsteuer", „Haftpflicht" und „Versicher" kommen auf <a class="pfad" href="https://web-production-4452b1.up.railway.app/impressum/"><code>/impressum/</code></a> <strong>kein einziges Mal</strong> vor.</p>
+<p>Alle vier gelten „soweit vorhanden" beziehungsweise für Dienstleistungen. Das ist keine Formalie: Gibt es sie, müssen sie dastehen; gibt es sie nicht, ist die richtige Antwort ein ausdrückliches „besteht nicht" und nicht das Weglassen. Zur Rechtsform steht auf der Seite „ist ein MVZ" — das ist eine Versorgungsform, keine Rechtsform.</p>
+<p><strong>Für den Neubau heißt das:</strong> Diese Angaben konnten nicht übernommen werden, weil es sie nirgends gibt. Sie stehen dort jetzt als sichtbarer Platzhalter und werden bei jedem Bau gezählt (<code>npm run recht:pruefen</code>), statt lautlos zu fehlen.</p>
+<h4 id="eine-übertragung-an-einen-dritten-vor-jeder-einwilligung">Eine Übertragung an einen Dritten vor jeder Einwilligung</h4>
+<p>Ganz oben im <code>&lt;body&gt;</code> der Startseite, unmittelbar hinter dem Sprunglink:</p>
+<pre><code>&lt;img src="https://www.doctolib.de/external_button/doctolib-white-transparent.png"
+     alt="Doctolib Logo"/&gt;</code></pre>
+<p>Ein Bild von einem fremden Server, ohne Bedingung, ohne Aufschub. Jeder Aufruf der Startseite übermittelt die IP-Adresse der Besucherin an Doctolib, bevor irgendetwas gefragt wurde.</p>
+<p><strong>Das ist ausdrücklich kein Versäumnis der Einwilligungslösung.</strong> Die Installation nutzt Borlabs Cookie, und die arbeitet an den geprüften Stellen korrekt: Die beiden HubSpot-Skripte stehen als <code>type='text/template'</code> im Quelltext und laufen erst nach Zustimmung, die YouTube-Vorschau ist eine Attrappe, die erst auf Klick lädt. Ein Einwilligungswerkzeug blockiert Skripte und Rahmen — ein <code>&lt;img src&gt;</code> ist beides nicht und rutscht deshalb hindurch.</p>
+<p>Genau dagegen ist im Neubau <code>dienste-pruefen.mjs</code> gebaut: Es liest das gebaute HTML und meldet jeden fremden Host, gleich in welchem Attribut er steht. Ein Logo aus fremder Quelle käme dort nicht durch.</p>
+<h4 id="fast-die-hälfte-aller-internen-verweise-geht-über-eine-weiterleitung">Fast die Hälfte aller internen Verweise geht über eine Weiterleitung</h4>
+<p>Von 662 gecrawlten Adressen antworten 315 mit einer Weiterleitung — und <strong>alle 315 sind aus einer internen Seite verlinkt</strong>, nicht etwa nur von außen aufgerufen. Bei <strong>103 davon leitet auch das Ziel wieder um</strong>, es handelt sich also um Ketten.</p>
+<div class="tabelle"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>gecrawlte Adressen</td><td>662</td></tr>
+<tr><td>davon Weiterleitung (301)</td><td><strong>315 (48 %)</strong></td></tr>
+<tr><td>davon aus einer internen Seite verlinkt</td><td><strong>315 (100 %)</strong></td></tr>
+<tr><td>Weiterleitungsketten</td><td><strong>103</strong></td></tr>
+</tbody></table></div>
+<p>Beispiele: <a class="pfad" href="https://web-production-4452b1.up.railway.app/ahmet-turan/"><code>/ahmet-turan/</code></a> → <a class="pfad" href="https://ku64.de/team/zahnaerzte/ahmet-turan/"><code>/team/zahnaerzte/ahmet-turan/</code></a>, <a class="pfad" href="https://web-production-4452b1.up.railway.app/anamnese-2/"><code>/anamnese-2/</code></a> → <a class="pfad" href="https://web-production-4452b1.up.railway.app/potsdam/anamnese/"><code>/potsdam/anamnese/</code></a>, <a class="pfad" href="https://web-production-4452b1.up.railway.app/berlinmitte-2/"><code>/berlinmitte-2/</code></a> → <a class="pfad" href="https://web-production-4452b1.up.railway.app/berlinmitte/"><code>/berlinmitte/</code></a>. Die Muster <code>-2</code>, <code>-2-2</code> und die Namen ohne Bereich verraten die Herkunft: Es sind Adressen aus früheren Umbauten, die im Menü und in den Texten stehen geblieben sind.</p>
+<p>Jede Weiterleitung kostet einen zusätzlichen Umlauf, und eine Kette zwei. Für Suchmaschinen verdünnt sie die Verweiskraft, für Besucher verlängert sie die Wartezeit.</p>
+<h4 id="fünf-tote-verweise-zwei-davon-auf-menschen">Fünf tote Verweise, zwei davon auf Menschen</h4>
+<div class="tabelle"><table><thead><tr><th>Adresse</th><th>Was dort stünde</th></tr></thead><tbody>
+<tr><td><a class="pfad" href="https://ku64.de/team/verwaltung/jana-jain/"><code>/team/verwaltung/jana-jain/</code></a></td><td>eine Mitarbeiterin</td></tr>
+<tr><td><a class="pfad" href="https://web-production-4452b1.up.railway.app/teams/cigdem-korur/"><code>/teams/cigdem-korur/</code></a></td><td>eine Mitarbeiterin</td></tr>
+<tr><td><a class="pfad" href="https://web-production-4452b1.up.railway.app/leistungen/beauty-cosmetics/"><code>/leistungen/beauty-cosmetics/</code></a></td><td>ein Leistungsbereich</td></tr>
+<tr><td><a class="pfad" href="https://ku64.de/en/leistungen/prophylaxe-4-0/prophylaxeshop/"><code>/en/leistungen/prophylaxe-4-0/prophylaxeshop/</code></a></td><td>der Shop, englisch</td></tr>
+<tr><td><code>/blog/unterstue]zung-fuer-berliner-heimkinder/</code></td><td>ein Beitrag — die eckige Klammer steht wirklich in der Adresse</td></tr>
+</tbody></table></div>
+<h4 id="zwei-themen-gibt-es-gar-nicht">Zwei Themen gibt es gar nicht</h4>
+<p>Eine Volltextsuche über alle 341 erreichbaren Adressen findet <strong>keine Seite</strong> mit „preis", „kosten" (außer einer einzigen Unterseite zu Implantatkosten), „honorar" oder „notfall" im Pfad. Weder eine Preisorientierung noch eine Notfallseite.</p>
+<p>Bei einer Zahnarztpraxis sind das die beiden Fragen, die Menschen nachts um halb elf stellen.</p>
+<h4 id="englisch-deckt-ein-drittel-ab-französisch-gibt-es-nicht">Englisch deckt ein Drittel ab, Französisch gibt es nicht</h4>
+<p>Von 662 Adressen liegen 509 auf Deutsch und 153 auf Englisch — das sind <strong>30 Prozent</strong>. Eine französische Fassung existiert nicht. Das Impressum nennt einen russischen Übersetzer; russische Seiten hat der Crawl keine gefunden.</p>
+<h4 id="was-das-zusammen-bedeutet">Was das zusammen bedeutet</h4>
+<p>Nichts davon ist Schlamperei im Detail. Alternativtexte, Bildmaße, Canonical, hreflang und Descriptions sind vollständig — siehe 2.5. Es ist das, was eine über Jahre gewachsene Installation mit einer Website macht: Adressen wandern, die alten bleiben verlinkt; ein Werkzeug blockiert Skripte, und ein Bild rutscht daneben durch; Pflichtangaben, die einmal gefehlt haben, fehlen weiter, weil niemand sie zählt.</p>
+<p>Der Unterschied im Neubau ist nicht Sorgfalt, sondern Zählbarkeit: Für jeden dieser sechs Punkte gibt es dort eine Prüfung, die den Bau abbricht.</p>
 <hr />
 <h2 id="3-die-neue-website">3. Die neue Website</h2>
 <h3 id="31-umfang-in-zahlen">3.1 Umfang in Zahlen</h3>
@@ -632,7 +706,7 @@
 <tr><td>Sprachfassungen EN/FR, nicht gegengelesen</td><td class="zahl">722</td><td>Rückstand</td></tr>
 <tr><td>örtliche Behandlungsfassungen ohne eigenen Inhalt</td><td class="zahl">116</td><td><strong>Rückstand — Kapitel 6</strong></td></tr>
 <tr><td>Behandlerprofile ohne eigene Substanz</td><td class="zahl">26</td><td>Absicht</td></tr>
-<tr><td>Entwürfe (Impressum, Datenschutz)</td><td class="zahl">2</td><td>Rückstand</td></tr>
+<tr><td>Entwürfe (Impressum, Datenschutz)</td><td class="zahl">2</td><td>24 von 30 Angaben belegt; die sechs offenen fehlen auch heute</td></tr>
 <tr><td>Teamübersicht ohne Team (Wilmersdorf)</td><td class="zahl">1</td><td>Datenlücke</td></tr>
 </tbody></table></div>
 <p>Ein Praxisinhaber, der später in der Search Console 207 statt 341 Seiten sieht, muss das vorher wissen. Deshalb steht es hier und nicht im Anhang.</p>
@@ -867,6 +941,7 @@ Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistung
 <tr><td>YouTube</td><td>Einbettungen</td><td><strong>nein</strong></td></tr>
 </tbody></table></div>
 <p>Dieselbe Messkennung weiterzuverwenden ist die richtige Entscheidung: Ein neues Datenkonto zerschneidet die Zeitreihe, und genau die will man beim Relaunch sehen.</p>
+<p><strong>Ein sechster Dienst steht in keiner dieser Zeilen und lädt trotzdem.</strong> Das Doctolib-Logo im Seitenkopf ist ein <code>&lt;img src="https://www.doctolib.de/…"&gt;</code> ohne jede Bedingung — Einzelheiten in 2.6. Die Einwilligungslösung der alten Seite blockiert Skripte und Rahmen sauber; ein Bild ist beides nicht. Übernommen wird es nicht: Im Neubau ist das Doctolib-Zeichen eine eigene Datei.</p>
 <p><strong>Der Tag Manager kommt nicht mit,</strong> und das ist die wichtigste Zeile in diesem Kapitel. Er ist eine Fernbedienung: Wer Zugriff hat, kann jederzeit weitere Skripte nachladen, ohne dass es in einem Verzeichnis auftaucht. Damit wäre jede Zusage dieser Website über Drittanbieter hinfällig. Analytics wird stattdessen direkt geladen — ein Dienst, ein Eintrag, nachprüfbar.</p>
 <p><strong>HubSpot stand auf keiner Liste</strong> und lief trotzdem: Es setzt eine dauerhafte Besucherkennung und ordnet Seitenaufrufe einer Person zu, sobald sie einmal ein Formular ausgefüllt hat. Bei einer Zahnarztpraxis ist das ein Gesundheitsbezug im Sinne von Artikel 9 DSGVO. Die Praxis löst den Vertrag im September auf; übernommen wird nichts.</p>
 <h3 id="7b2-das-verzeichnis-ist-die-architektur-nicht-der-banner">7b.2 Das Verzeichnis ist die Architektur, nicht der Banner</h3>
@@ -1009,7 +1084,7 @@ Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistung
 <tr><td>Acht Belegseiten wiederherstellen</td><td>1 Tag</td></tr>
 <tr><td>24 Fotos</td><td>Fotograf</td></tr>
 <tr><td>Fachliche Freigabe der Behandlungstexte</td><td>1 Tag Praxis</td></tr>
-<tr><td>Impressum und Datenschutz befüllen</td><td>1–2 Std. Praxis, ggf. anwaltliche Prüfung</td></tr>
+<tr><td>Sechs Rechtsangaben nachreichen</td><td>30 Min. Praxis, ggf. anwaltliche Prüfung</td></tr>
 <tr><td>Preisangaben gegenprüfen</td><td>2 Std. Praxis</td></tr>
 <tr><td>Personennennungen durchsehen</td><td>1,5 Std.</td></tr>
 <tr><td>Serverseitige Zählung und Dashboard</td><td>1–2 Tage Entwicklung</td></tr>

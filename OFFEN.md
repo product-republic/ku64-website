@@ -137,7 +137,47 @@ Ohne das schiebt der Übersetzungslauf seinen Zweig zwar, kann aber keinen
 Pull Request daraus machen. Die Arbeit ist dann da und nur der Umschlag
 fehlt.
 
-### 7. Noch nicht gebaut
+### 7. Sechs Rechtsangaben, die es heute auch nicht gibt
+
+`npm run recht:pruefen` zählt sie bei jedem Bau. Stand: 24 Angaben belegt,
+sechs offen.
+
+| Feld | Was gebraucht wird |
+|---|---|
+| `rechtsform` | Rechtsform der Gesellschaft. Die heutige Seite sagt „ist ein MVZ" – das ist eine Versorgungsform, keine Rechtsform. |
+| `registergericht` | Registergericht |
+| `registernummer` | Registernummer |
+| `ustId` | USt-IdNr. nach § 27a UStG **oder** die Bestätigung, dass keine besteht. Zahnärztliche Heilbehandlung ist nach § 4 Nr. 14 UStG steuerfrei – „haben wir nicht" ist eine gültige Antwort. |
+| `versicherer` | Berufshaftpflicht: Name und Anschrift |
+| `versicherungGeltungsbereich` | räumlicher Geltungsbereich der Versicherung |
+
+**Wichtig zur Einordnung:** Diese sechs Angaben stehen nicht auf ku64.de.
+Nicht unvollständig, sondern gar nicht – das heutige Impressum nennt weder
+einen Registereintrag noch eine Versicherung. Sie konnten deshalb nicht
+übernommen werden, und der Neubau erbt hier keine Lücke, er macht eine
+sichtbar.
+
+§ 5 DDG verlangt Register und Umsatzsteuer-Identnummer, soweit vorhanden;
+§ 2 DL-InfoV verlangt bei Dienstleistungen die Berufshaftpflicht mit
+räumlichem Geltungsbereich. „Soweit vorhanden" heißt: Gibt es sie, müssen
+sie dastehen. Gibt es sie nicht, ist die richtige Antwort ein ausdrückliches
+„besteht nicht" – nicht das Weglassen.
+
+Eine siebte Frage hängt daran und ist keine Angabe, sondern eine
+Entscheidung: Die heutige Seite nennt für alles die Zahnärztekammer Berlin
+und die KZV Berlin. Für Potsdam gilt Brandenburger Landesrecht. Ob es dafür
+einen eigenen Impressumsblock braucht, hängt daran, ob Potsdam derselbe
+Rechtsträger ist.
+
+Alles Übrige ist belegt und trägt in `src/data/traeger.ts` seine Herkunft:
+28 von 35 Platzhaltern kamen aus ku64.de/impressum und
+/datenschutzerklaerung, dazu die Aufsichtsbehörde aus dem öffentlichen
+Register, die Aufbewahrungsfrist aus § 630f Abs. 3 BGB und die
+Speicherdauer der Serverprotokolle aus dem eigenen Code.
+
+---
+
+### 8. Noch nicht gebaut
 
 - **Preisseite** – siehe Punkt 4, blockiert durch die Quellenfrage.
 - **Newsletter-Panel** mit Auswahl der Interessen und Double-Opt-in.

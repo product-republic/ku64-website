@@ -36,9 +36,15 @@ Implantat oder Brücke.
 Indexierung angemeldet — für Google gibt es weiterhin genau eine Seite je
 Behandlung. Der Grund ist derselbe: Es gibt noch keine örtlichen Inhalte.
 
-**Zwei Livegang-Sperren sind noch offen** — Impressum und
-Datenschutzerklärung sind Entwürfe mit Platzhaltern, und die Preisangaben
-sind aus Fotos einer gedruckten Auswertung abgetippt und nicht gegengeprüft.
+**Zwei Livegang-Sperren sind noch offen.** Bei den Rechtstexten sind es
+inzwischen sechs Felder statt fünfunddreißig: Name, Anschrift, Vertretung,
+Kammer, Aufsichtsbehörde, Schlichtungsstelle, Datenschutzbeauftragter und
+alles Übrige sind aus dem heutigen Impressum übernommen und tragen jeweils
+ihre Herkunft. Was noch fehlt — Rechtsform, Registereintrag,
+Umsatzsteuer-Identnummer und die Berufshaftpflicht — **steht auch auf der
+heutigen Seite nicht**; der Neubau erbt hier keine Lücke, er macht eine
+sichtbar. Dazu die Preisangaben, die aus Fotos einer gedruckten Auswertung
+abgetippt und nicht gegengeprüft sind.
 
 **Der Hebel liegt nicht in der Technik.** Er liegt in vierundzwanzig Fotos,
 einer fachlichen Freigabe, einer Stunde Personendurchsicht und zwei Formularen
@@ -134,7 +140,7 @@ arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 
 | Von wem | Was | Aufwand | Wirkung |
 |---|---|---|---|
-| Praxis | Impressum und Datenschutz befüllen | 1–2 Std. | **Livegang-Sperre** |
+| Praxis | sechs Rechtsangaben nachreichen (Rechtsform, Register, USt-IdNr., Haftpflicht) | 30 Min. | **Livegang-Sperre** |
 | Praxis | Preisangaben gegen die Originalauswertung prüfen | 2 Std. | **Livegang-Sperre** |
 | Praxis | fachliche Freigabe der 36 Behandlungstexte | 1 Tag | Voraussetzung für alles Weitere |
 | Technik | 114.894 Wörter nach EN und FR übersetzen | läuft | letzter Punkt ohne Vorsprung |
@@ -367,6 +373,129 @@ sauber gearbeitet. Ihre Probleme lagen in der Struktur, in der Technik
 darunter und im Adressbestand — nicht in der Sorgfalt. Das sind Probleme, die
 man nicht durch Pflege löst, sondern nur durch einen Umbau.
 
+### 2.6 Was fehlt — nachgemessen am 30.07.2026
+
+Der Abschnitt davor zählt auf, was stimmt. Dieser zählt auf, was nicht da
+ist. Beides gehört in denselben Bericht.
+
+**Wie gemessen wurde.** Aus dem ausgelieferten HTML von sieben Seiten
+(Startseite, Team, Kontakt, Impressum, Datenschutzerklärung und zwei
+Behandlungsseiten), abgerufen am 30.07.2026, sowie aus dem Crawl vom
+26.07.2026. Wo eine Aussage einen Browser gebraucht hätte, steht das
+ausdrücklich dabei.
+
+#### Vier Pflichtangaben stehen nicht im Impressum
+
+| Angabe | Rechtsgrundlage | Auf ku64.de |
+|---|---|---|
+| Registergericht | § 5 Abs. 1 Nr. 4 DDG | steht nicht da |
+| Registernummer | § 5 Abs. 1 Nr. 4 DDG | steht nicht da |
+| Umsatzsteuer-Identnummer | § 5 Abs. 1 Nr. 6 DDG | steht nicht da |
+| Berufshaftpflicht mit räumlichem Geltungsbereich | § 2 Abs. 1 Nr. 11 DL-InfoV | steht nicht da |
+
+Geprüft durch Volltextsuche im ausgelieferten HTML: Die Wörter
+„Registergericht", „Registernummer", „USt", „Umsatzsteuer", „Haftpflicht"
+und „Versicher" kommen auf `/impressum/` **kein einziges Mal** vor.
+
+Alle vier gelten „soweit vorhanden" beziehungsweise für Dienstleistungen.
+Das ist keine Formalie: Gibt es sie, müssen sie dastehen; gibt es sie nicht,
+ist die richtige Antwort ein ausdrückliches „besteht nicht" und nicht das
+Weglassen. Zur Rechtsform steht auf der Seite „ist ein MVZ" — das ist eine
+Versorgungsform, keine Rechtsform.
+
+**Für den Neubau heißt das:** Diese Angaben konnten nicht übernommen werden,
+weil es sie nirgends gibt. Sie stehen dort jetzt als sichtbarer Platzhalter
+und werden bei jedem Bau gezählt (`npm run recht:pruefen`), statt lautlos zu
+fehlen.
+
+#### Eine Übertragung an einen Dritten vor jeder Einwilligung
+
+Ganz oben im `<body>` der Startseite, unmittelbar hinter dem Sprunglink:
+
+```html
+<img src="https://www.doctolib.de/external_button/doctolib-white-transparent.png"
+     alt="Doctolib Logo"/>
+```
+
+Ein Bild von einem fremden Server, ohne Bedingung, ohne Aufschub. Jeder
+Aufruf der Startseite übermittelt die IP-Adresse der Besucherin an Doctolib,
+bevor irgendetwas gefragt wurde.
+
+**Das ist ausdrücklich kein Versäumnis der Einwilligungslösung.** Die
+Installation nutzt Borlabs Cookie, und die arbeitet an den geprüften Stellen
+korrekt: Die beiden HubSpot-Skripte stehen als `type='text/template'` im
+Quelltext und laufen erst nach Zustimmung, die YouTube-Vorschau ist eine
+Attrappe, die erst auf Klick lädt. Ein Einwilligungswerkzeug blockiert
+Skripte und Rahmen — ein `<img src>` ist beides nicht und rutscht deshalb
+hindurch.
+
+Genau dagegen ist im Neubau `dienste-pruefen.mjs` gebaut: Es liest das
+gebaute HTML und meldet jeden fremden Host, gleich in welchem Attribut er
+steht. Ein Logo aus fremder Quelle käme dort nicht durch.
+
+#### Fast die Hälfte aller internen Verweise geht über eine Weiterleitung
+
+Von 662 gecrawlten Adressen antworten 315 mit einer Weiterleitung — und
+**alle 315 sind aus einer internen Seite verlinkt**, nicht etwa nur von
+außen aufgerufen. Bei **103 davon leitet auch das Ziel wieder um**, es
+handelt sich also um Ketten.
+
+| | |
+|---|---:|
+| gecrawlte Adressen | 662 |
+| davon Weiterleitung (301) | **315 (48 %)** |
+| davon aus einer internen Seite verlinkt | **315 (100 %)** |
+| Weiterleitungsketten | **103** |
+
+Beispiele: `/ahmet-turan/` → `/team/zahnaerzte/ahmet-turan/`,
+`/anamnese-2/` → `/potsdam/anamnese/`, `/berlinmitte-2/` → `/berlinmitte/`.
+Die Muster `-2`, `-2-2` und die Namen ohne Bereich verraten die Herkunft: Es
+sind Adressen aus früheren Umbauten, die im Menü und in den Texten stehen
+geblieben sind.
+
+Jede Weiterleitung kostet einen zusätzlichen Umlauf, und eine Kette zwei.
+Für Suchmaschinen verdünnt sie die Verweiskraft, für Besucher verlängert sie
+die Wartezeit.
+
+#### Fünf tote Verweise, zwei davon auf Menschen
+
+| Adresse | Was dort stünde |
+|---|---|
+| `/team/verwaltung/jana-jain/` | eine Mitarbeiterin |
+| `/teams/cigdem-korur/` | eine Mitarbeiterin |
+| `/leistungen/beauty-cosmetics/` | ein Leistungsbereich |
+| `/en/leistungen/prophylaxe-4-0/prophylaxeshop/` | der Shop, englisch |
+| `/blog/unterstue]zung-fuer-berliner-heimkinder/` | ein Beitrag — die eckige Klammer steht wirklich in der Adresse |
+
+#### Zwei Themen gibt es gar nicht
+
+Eine Volltextsuche über alle 341 erreichbaren Adressen findet **keine Seite**
+mit „preis", „kosten" (außer einer einzigen Unterseite zu
+Implantatkosten), „honorar" oder „notfall" im Pfad. Weder eine
+Preisorientierung noch eine Notfallseite.
+
+Bei einer Zahnarztpraxis sind das die beiden Fragen, die Menschen nachts um
+halb elf stellen.
+
+#### Englisch deckt ein Drittel ab, Französisch gibt es nicht
+
+Von 662 Adressen liegen 509 auf Deutsch und 153 auf Englisch — das sind
+**30 Prozent**. Eine französische Fassung existiert nicht. Das Impressum
+nennt einen russischen Übersetzer; russische Seiten hat der Crawl keine
+gefunden.
+
+#### Was das zusammen bedeutet
+
+Nichts davon ist Schlamperei im Detail. Alternativtexte, Bildmaße, Canonical,
+hreflang und Descriptions sind vollständig — siehe 2.5. Es ist das, was eine
+über Jahre gewachsene Installation mit einer Website macht: Adressen wandern,
+die alten bleiben verlinkt; ein Werkzeug blockiert Skripte, und ein Bild
+rutscht daneben durch; Pflichtangaben, die einmal gefehlt haben, fehlen
+weiter, weil niemand sie zählt.
+
+Der Unterschied im Neubau ist nicht Sorgfalt, sondern Zählbarkeit: Für jeden
+dieser sechs Punkte gibt es dort eine Prüfung, die den Bau abbricht.
+
 ---
 
 ## 3. Die neue Website
@@ -507,7 +636,7 @@ Drittel an.** Das ist zum Teil Absicht und zum Teil ein offener Punkt:
 | Sprachfassungen EN/FR, nicht gegengelesen | 722 | Rückstand |
 | örtliche Behandlungsfassungen ohne eigenen Inhalt | 116 | **Rückstand — Kapitel 6** |
 | Behandlerprofile ohne eigene Substanz | 26 | Absicht |
-| Entwürfe (Impressum, Datenschutz) | 2 | Rückstand |
+| Entwürfe (Impressum, Datenschutz) | 2 | 24 von 30 Angaben belegt; die sechs offenen fehlen auch heute |
 | Teamübersicht ohne Team (Wilmersdorf) | 1 | Datenlücke |
 
 Ein Praxisinhaber, der später in der Search Console 207 statt 341 Seiten
@@ -1117,6 +1246,13 @@ Dieselbe Messkennung weiterzuverwenden ist die richtige Entscheidung: Ein
 neues Datenkonto zerschneidet die Zeitreihe, und genau die will man beim
 Relaunch sehen.
 
+**Ein sechster Dienst steht in keiner dieser Zeilen und lädt trotzdem.** Das
+Doctolib-Logo im Seitenkopf ist ein `<img src="https://www.doctolib.de/…">`
+ohne jede Bedingung — Einzelheiten in 2.6. Die Einwilligungslösung der alten
+Seite blockiert Skripte und Rahmen sauber; ein Bild ist beides nicht.
+Übernommen wird es nicht: Im Neubau ist das Doctolib-Zeichen eine eigene
+Datei.
+
 **Der Tag Manager kommt nicht mit,** und das ist die wichtigste Zeile in
 diesem Kapitel. Er ist eine Fernbedienung: Wer Zugriff hat, kann jederzeit
 weitere Skripte nachladen, ohne dass es in einem Verzeichnis auftaucht. Damit
@@ -1433,7 +1569,7 @@ Code. Das ist ein offener Punkt.
 | Acht Belegseiten wiederherstellen | 1 Tag |
 | 24 Fotos | Fotograf |
 | Fachliche Freigabe der Behandlungstexte | 1 Tag Praxis |
-| Impressum und Datenschutz befüllen | 1–2 Std. Praxis, ggf. anwaltliche Prüfung |
+| Sechs Rechtsangaben nachreichen | 30 Min. Praxis, ggf. anwaltliche Prüfung |
 | Preisangaben gegenprüfen | 2 Std. Praxis |
 | Personennennungen durchsehen | 1,5 Std. |
 | Serverseitige Zählung und Dashboard | 1–2 Tage Entwicklung |

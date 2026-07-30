@@ -30,9 +30,25 @@
  * Ausgabestelle einen sichtbaren Platzhalter UND lässt sich zählen –
  * `npm run recht:pruefen` sagt, wie viele Felder noch fehlen und welche.
  *
- * Was hier offen steht, steht nicht auf ku64.de und ist auch sonst nirgends
- * öffentlich: Registereintrag, Umsatzsteuer-Identnummer und
- * Berufshaftpflicht sind Angaben, die nur die Praxis selbst hat.
+ * ── Was noch offen ist, fehlt heute schon ──────────────────────────────
+ *
+ * Die sechs verbliebenen Felder – Rechtsform, Registergericht,
+ * Registernummer, USt-IdNr. und die beiden zur Berufshaftpflicht – stehen
+ * NICHT auf ku64.de. Nicht unvollständig, sondern gar nicht: Das heutige
+ * Impressum nennt weder einen Registereintrag noch eine Versicherung.
+ *
+ * Das ist der Grund, warum sie hier nicht einfach übernommen werden
+ * konnten – und zugleich ein Befund über den Bestand. § 5 DDG verlangt
+ * Register und Umsatzsteuer-Identnummer, soweit vorhanden; § 2 DL-InfoV
+ * verlangt bei Dienstleistungen die Berufshaftpflicht mit räumlichem
+ * Geltungsbereich. „Soweit vorhanden" heißt: Wenn es sie gibt, müssen sie
+ * dastehen; wenn nicht, ist die richtige Antwort ein ausdrückliches
+ * „besteht nicht" und kein Weglassen.
+ *
+ * Der Neubau ist damit an dieser Stelle nicht schlechter als der Bestand,
+ * sondern ehrlicher: Was fehlt, steht sichtbar als Platzhalter da und wird
+ * bei jedem Bau gezählt, statt lautlos zu fehlen. Aufgenommen als offener
+ * Punkt in OFFEN.md.
  */
 
 /** Eine belegte Angabe – mit der Quelle, aus der sie stammt. */
@@ -210,7 +226,7 @@ export const TRAEGER = {
    * nicht dort: Es sind Vertragstatsachen, keine Ladevorgänge.
    */
   avDoctolib: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026' },
-  avNelly: { offen: 'Auftragsverarbeitungsvertrag mit Nelly Solutions – Stand ergänzen' },
+  avNelly: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026' },
 
   aufsichtsbehoerde: {
     wert:
