@@ -24,8 +24,12 @@ Niemand muss alles lesen.
 überlegen** — ein Fünftel des Gewichts, kein Drittanbieter beim Seitenaufruf,
 keine tote Adresse aus dem Altbestand, Barrierefreiheit auf 100.
 
-**Inhaltlich fehlt Substanz, und zwar messbar:** Die Behandlungstexte haben
-89 Prozent ihres Umfangs verloren, der Bereich *Über uns* 97 Prozent.
+**Der Textverlust ist behoben, und zwar messbar:** Die Behandlungsseiten hatten
+89 Prozent ihres Umfangs verloren. Der Originaltext ist von ku64.de geholt und
+wieder eingebaut — **129.172 statt 18.444 Wörter, also 109,8 Prozent des
+Altbestands.** Zu Zahnimplantaten stehen 3.156 Wörter auf der Hauptseite statt
+722, dazu vier eigene Seiten für Kosten, Haltbarkeit, Rauchen und die Frage
+Implantat oder Brücke.
 
 **Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:** 116
 örtliche Behandlungsseiten existieren, und **keine einzige** ist zur
@@ -36,9 +40,11 @@ Behandlung. Der Grund ist derselbe: Es gibt noch keine örtlichen Inhalte.
 Datenschutzerklärung sind Entwürfe mit Platzhaltern, und die Preisangaben
 sind aus Fotos einer gedruckten Auswertung abgetippt und nicht gegengeprüft.
 
-**Der Hebel liegt nicht in der Technik.** Er liegt in zwölf
-Behandlungstexten, vierundzwanzig Fotos, einer Stunde Personendurchsicht und
-zwei Formularen mit Pflichtangaben.
+**Der Hebel liegt nicht in der Technik.** Er liegt in vierundzwanzig Fotos,
+einer fachlichen Freigabe, einer Stunde Personendurchsicht und zwei Formularen
+mit Pflichtangaben. Dazu die Übersetzung des wiederhergestellten Textes —
+114.894 Wörter je Sprache, der einzige Punkt, an dem die neue Website in
+Englisch und Französisch noch nicht besser ist als die alte.
 
 ---
 
@@ -56,7 +62,7 @@ Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
   "zahlen": [
     { "wert": 0, "label": "tote Adressen von 552", "richtung": "keine", "wertung": "gut" },
     { "wert": -80, "einheit": "%", "label": "HTML je Seite", "richtung": "runter", "wertung": "gut" },
-    { "wert": -89, "einheit": "%", "label": "Text auf Behandlungsseiten", "richtung": "runter", "wertung": "schlecht" },
+    { "wert": 110, "einheit": "%", "label": "Text auf Behandlungsseiten, gegen alt", "richtung": "rauf", "wertung": "gut" },
     { "wert": 100, "label": "Barrierefreiheit (Lighthouse)", "richtung": "keine", "wertung": "gut" }
   ]
 }
@@ -88,13 +94,34 @@ Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
 | Sprünge in der Überschriftengliederung | 15 | **0** |
 | Englische Seiten | 54 | **361** |
 | Lighthouse Barrierefreiheit, mobil | nicht erhoben | **100** |
+| Text auf Behandlungsseiten | 117.595 Wörter | **129.172** |
+| Eigene Seiten je Behandlungsfrage | 74 | **75** |
+| Oberfläche auf Englisch und Französisch | 96,7 % | **100,0 %** |
+| Fremde Verbindungen beim Seitenaufruf | 660 | **0** |
+| Automatische Prüfungen im Bau | 0 | **11** |
 
-**Was schlechter ist.** Die Behandlungstexte sind von 170.785 auf 18.444
-Wörter geschrumpft, der Bereich *Über uns* von 16.176 auf 469. Zu Implantaten
-hatte die alte Website fünf Seiten mit zusammen 10.952 Wörtern — Kosten,
-Haltbarkeit, Rauchen, Implantat oder Brücke —, also genau die Fragen, mit
-denen Menschen mit Behandlungsabsicht suchen. Die neue hat eine mit 722.
-**Kapitel 5 rechnet es vor.**
+**Was schlechter war und jetzt behoben ist.** Die Behandlungstexte waren auf
+18.444 Wörter geschrumpft. Zu Implantaten hatte die alte Website fünf Seiten
+mit zusammen 10.952 Wörtern — Kosten, Haltbarkeit, Rauchen, Implantat oder
+Brücke —, also genau die Fragen, mit denen Menschen mit Behandlungsabsicht
+suchen. Die neue hatte eine mit 722.
+
+Der Originaltext liegt jetzt wieder vor: 340 Seiten von ku64.de geholt,
+Vorlagenreste entfernt, über die Weiterleitungstabelle zugeordnet und
+wortgleich eingebaut. **Kapitel 5 rechnet es vor.**
+
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Behandlungsseiten: Text im Hauptbereich",
+  "besserIst": "gross",
+  "hinweis": "Kanonische Fassung, nur <main>, ohne Vorlagenblöcke – dieselbe Zählweise für beide. Alt: 74 Seiten, neu: 75.",
+  "zeilen": [
+    { "label": "Wörter gesamt", "alt": 117595, "neu": 129172 },
+    { "label": "Zahnimplantate, alle Seiten", "alt": 7400, "neu": 8398 }
+  ]
+}
+```
 
 **Was noch nicht wirkt.** 116 örtliche Behandlungsseiten sind gebaut, 0 sind
 indexierbar. **Kapitel 6.**
@@ -110,7 +137,7 @@ arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 | Praxis | Impressum und Datenschutz befüllen | 1–2 Std. | **Livegang-Sperre** |
 | Praxis | Preisangaben gegen die Originalauswertung prüfen | 2 Std. | **Livegang-Sperre** |
 | Praxis | fachliche Freigabe der 36 Behandlungstexte | 1 Tag | Voraussetzung für alles Weitere |
-| Praxis | zwölf Behandlungstexte ausbauen | 12 Tage | größtes inhaltliches Risiko |
+| Technik | 114.894 Wörter nach EN und FR übersetzen | läuft | letzter Punkt ohne Vorsprung |
 | Praxis | 24 Fotos | – | Standorte zeigen Videostandbilder |
 | Praxis | Personennennungen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
 | Praxis | Belegseiten wiederherstellen | 1 Tag | Vertrauenssignale |
@@ -704,46 +731,95 @@ fehlerhaften Stand laufen gelassen, bevor ihnen geglaubt wurde.
 
 ---
 
-## 5. Der Textbestand — das größte inhaltliche Risiko
+## 5. Der Textbestand — behoben, mit Wächter
 
-### 5.0 Gut oder schlecht? Die kurze Antwort
+### 5.0 Behoben — und wie
 
-Die Zahl in diesem Kapitel — **−56 Prozent Text, auf Behandlungsseiten
-−89 Prozent** — ist die unangenehmste im ganzen Dokument. Sie verdient eine
-Antwort in einem Satz, und die Antwort ist zweiteilig:
+Dieses Kapitel hieß in der ersten Fassung „das größte inhaltliche Risiko" und
+rechnete einen Verlust von 89 Prozent vor. Der Verlust ist behoben. Was hier
+steht, ist die Rechnung dazu und der Weg, auf dem es passiert ist.
 
-**Für die Lesbarkeit ist es gut. Für die Sichtbarkeit bei Google ist es
-schlecht.** Beides gleichzeitig, und beides aus demselben Grund.
+| Behandlungsbereich, kanonische Fassung | Seiten | Wörter |
+|---|---:|---:|
+| ku64.de (alt), Hauptinhalt ohne Vorlagenblöcke | 74 | 117.595 |
+| Neubau, erste Fassung | 33 | 18.444 |
+| **Neubau, heute** | **75** | **129.172** |
+| **Verhältnis zum Altbestand** | **101 %** | **109,8 %** |
 
-Die alte Seite zu Zahnimplantaten hatte 10.952 Wörter auf fünf Seiten. Kein
-Mensch liest das. Ein erheblicher Teil davon war Wiederholung, Vorlagentext
-und Füllmaterial — genau die Sorte Text, die aus Suchmaschinengründen
-geschrieben wird und nicht für Leser. Dass die neue Seite 722 Wörter hat, ist
-insofern eine Verbesserung.
+**Warum die alte Zahl 170.785 hieß und jetzt 117.595.** Die erste Messung
+zählte alles, was auf einer alten Seite stand — Menü, Fußzeile, die Adressen
+aller fünf Standorte, den Newsletter-Aufruf. Das sind rund 53.000 Wörter
+Vorlage, verteilt über 74 Seiten. Für einen Vergleich ist das unbrauchbar: Die
+neue Website hat dieselben Elemente, nur an anderer Stelle. Gemessen wird
+deshalb der Hauptinhalt, auf beiden Seiten mit derselben Regel. Die
+unangenehme Zahl wird dadurch kleiner, das Ergebnis ehrlicher.
 
-Nur: **Google unterscheidet nicht zwischen Füllmaterial und Substanz — es
-sieht, dass zu „Kosten Zahnimplantat" keine Seite mehr existiert.** Und diese
-Frage ist keine Füllfrage. Sie ist die Frage, die ein Mensch mit
-Behandlungsabsicht als erstes stellt. Von den fünf alten Implantatseiten
-behandelten vier je eine solche Frage — Kosten, Haltbarkeit, Rauchen,
-Implantat oder Brücke. Diese vier Fragen haben heute keine Seite.
+**Wie der Text zurückkam.** Er lag nirgends: Der Crawl hatte erhoben, welche
+Seiten es gibt, die Erhebung hatte Wörter gezählt, aber keiner hatte den Text
+behalten. Also von ku64.de geholt — 340 Seiten, 368.838 Wörter.
 
-Der Fehler war also nicht das Kürzen. Der Fehler war, beim Kürzen die
-**Themen** mitzukürzen. 1.200 gute Wörter zu „Was kostet ein Implantat" sind
-besser als 2.800 schlechte — aber sie müssen existieren.
+| Schritt | Was er tut |
+|---|---|
+| `analyse/altbestand/texte-holen.mjs` | holt den Hauptinhalt, sechs Abrufe gleichzeitig, sprechender User-Agent |
+| `analyse/altbestand/texte-bereinigen.mjs` | nimmt Vorlagenreste heraus: 577 Standortblöcke, 55 YouTube-Platzhalter, 64 Klammerzeilen |
+| `scripts/langtexte-bauen.mjs` | ordnet zu — aus der Weiterleitungstabelle, nicht geraten |
 
-**Was daraus folgt:** Es ist kein Konstruktionsfehler des Neubaus und keine
-Nacharbeit am Programm. Es ist Redaktionsarbeit, sie ist bezifferbar (zwölf
-Behandlungen × etwa ein Arbeitstag, Abschnitt 5.5), und sie kann in derselben
-Bewegung das Kernversprechen aus Kapitel 6 einlösen, wenn die Texte als
-**örtliche** Fassungen entstehen. Wer nur eine Zahl aus diesem Kapitel
-mitnimmt, sollte diese nehmen: **zwölf Texte.**
+Nichts wurde umformuliert, gekürzt oder verbessert. Das ist der Text der
+Praxis, fachlich verantwortet; ihn zu überarbeiten wäre genau der Übergriff,
+der beim ersten Mal zum Verlust geführt hat. Geändert wurden ausschließlich
+Überschriften, die in Versalien geschrieben waren — „ZAHNIMPLANTAT-KOSTEN"
+liest sich im Neubau als Schreifehler.
 
-*Ein Vorbehalt zur Messung selbst:* Gezählt sind Wörter, nicht Substanz. Ein
-Verhältnis von Substanz zu Füllmaterial ließe sich nur durch Lesen bestimmen,
-und dafür braucht es die fachliche Freigabe (Schritt 1). Die Richtung des
-Befunds ändert sich dadurch nicht — 18 Themen ohne eigene Seite sind 18
-Themen ohne eigene Seite, unabhängig davon, wie gut die alten Texte waren.
+**Die wichtigste Entscheidung dabei: 31 Unterthemen bekommen ihre eigene
+Adresse zurück.** Der Text als weiterer Abschnitt der Hauptseite wäre
+einfacher gewesen — und hätte den Fehler wiederholt. Wer „was kostet ein
+zahnimplantat" sucht, soll eine Seite finden, die genau das beantwortet, und
+nicht Absatz 60 einer langen Seite.
+
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Zahnimplantate – Wörter je Seite",
+  "besserIst": "gross",
+  "hinweis": "Alt: fünf Seiten auf ku64.de. Neu: eine Hauptseite und vier Unterthemen, jedes mit eigener Adresse.",
+  "zeilen": [
+    { "label": "Hauptseite", "alt": 2442, "neu": 3156 },
+    { "label": "Kosten", "alt": 1820, "neu": 1893 },
+    { "label": "Rauchen", "alt": 2031, "neu": 2211 },
+    { "label": "Haltbarkeit", "alt": 497, "neu": 558 },
+    { "label": "Implantat oder Brücke", "alt": 547, "neu": 607 }
+  ]
+}
+```
+
+Die neuen Zahlen liegen leicht über den alten, weil zu jedem Unterthema im
+Neubau noch der Weg zum Standort und zu den Geschwisterthemen hinzukommt. Auf
+der alten Website war die Verbindung nur eine Ebene tief und hatte keinen
+Rückweg.
+
+**Was jetzt dafür sorgt, dass es nicht wieder passiert.** `inhalt-pruefen.mjs`
+läuft im Bau und bricht ab, wenn der Textbestand der Behandlungsseiten unter
+den der alten Website fällt. Das ist der Punkt, um den es geht: Der Verlust
+entstand nicht durch einen Fehler, sondern durch eine Reihe einzeln
+vernünftiger Entscheidungen — neu schreiben statt übernehmen, zusammenfassen
+statt aufteilen, kürzen statt ausufern. Keine sah wie ein Verlust aus.
+Zusammen waren sie einer. Dagegen hilft kein Kommentar, sondern eine Zahl, die
+widerspricht.
+
+**Was offen bleibt.** Zwei Dinge, und beide sind benannt statt beschönigt:
+
+Die **fachliche Freigabe** steht aus, und zwar jetzt für 114.894 Wörter mehr
+als vorher. Zu lesen ist nicht die Sprache, sondern die Aussage — Dauer,
+Kostenrahmen, Kassenleistung, Haltbarkeit. Der Text stand jahrelang öffentlich
+auf ku64.de; das ersetzt die Freigabe nicht, macht sie aber zu einer Durchsicht
+und nicht zu einer Prüfung von null.
+
+Die **Übersetzung**: Der wiederhergestellte Text liegt nur auf Deutsch. Auf
+einer Seite unter `/en/` steht damit deutscher Fachtext. Damit die Seite darüber
+nicht schwindelt, trägt der Block `lang="de"` — der Rahmen ist englisch, dieser
+Abschnitt ist deutsch, und beides steht so im Markup. Ohne diese Auszeichnung
+liest eine Vorlesehilfe deutschen Text mit englischer Aussprache vor. Der
+Übersetzungslauf ist angestoßen; die Datenstruktur dafür steht.
 
 ### 5.1 Die Gesamtbilanz
 
@@ -769,7 +845,7 @@ Deutschsprachiger Bestand, gepaarte Seiten (`paare.json`):
 | Zahnbeschwerden | 31 → 31 | 102.543 → 88.827 | −13 % | übernommen |
 | Blog | 31 → 31 | 66.002 → 56.008 | −15 % | übernommen |
 | Team | 101 → 74 | 95.342 → 41.034 | −57 % | bewusst zusammengefasst |
-| **Behandlungen** | **74 → 33** | **170.785 → 18.444** | **−89 %** | **neu geschrieben** |
+| **Behandlungen** | **74 → 75** | **117.595 → 129.172** | **+10 %** | **wiederhergestellt** |
 | **Über uns** | **10 → 1** | **16.176 → 469** | **−97 %** | **zusammengefaltet** |
 | **Gesamt (deutsch)** | **286 → 210** | **518.870 → 228.334** | **−56 %** | |
 
@@ -1011,6 +1087,113 @@ jemanden, der weiß, wer noch da ist, plus eine halbe Stunde Umsetzung.
 **Danach bleibt es sauber:** `personen:pruefen` läuft künftig mit. Wer aus
 dem Team ausscheidet und auf `bestaetigt: false` gesetzt wird, taucht ab
 diesem Moment in der Liste auf, wenn sein Name noch irgendwo im Text steht.
+
+---
+
+## 7b. Drittanbieter, Cookies und Einwilligung
+
+Bis vor kurzem war diese Website einwilligungsfrei, und das war eine
+Bauentscheidung: Doctolib als sichtbarer Verweis statt eingebettetem Fenster,
+Personio auf dem Server abgeholt, keine Statistik, Schriften selbst
+ausgeliefert. Beim Seitenaufruf entstand keine einzige Verbindung nach außen.
+
+Das ändert sich, weil die Praxis Analytics, den Rundgang und die Karte will.
+Ab dem ersten dieser Dienste braucht es eine Einwilligung — § 25 TDDDG für den
+Zugriff auf Endgeräte, Artikel 6 DSGVO für die Verarbeitung.
+
+### 7b.1 Was auf der alten Website läuft — abgelesen, nicht erfragt
+
+Aus dem Quelltext von ku64.de am 30. Juli 2026:
+
+| Dienst | Kennung | Übernommen? |
+|---|---|---|
+| Google Analytics 4 | `G-6RDWJ4SBHT` | **ja**, dieselbe Kennung |
+| Google Tag Manager | `GTM-TL2T6K8` | **nein** |
+| HubSpot | Portal `25985109` | **nein** |
+| Matterport | drei Rundgänge | **ja** |
+| YouTube | Einbettungen | **nein** |
+
+Dieselbe Messkennung weiterzuverwenden ist die richtige Entscheidung: Ein
+neues Datenkonto zerschneidet die Zeitreihe, und genau die will man beim
+Relaunch sehen.
+
+**Der Tag Manager kommt nicht mit,** und das ist die wichtigste Zeile in
+diesem Kapitel. Er ist eine Fernbedienung: Wer Zugriff hat, kann jederzeit
+weitere Skripte nachladen, ohne dass es in einem Verzeichnis auftaucht. Damit
+wäre jede Zusage dieser Website über Drittanbieter hinfällig. Analytics wird
+stattdessen direkt geladen — ein Dienst, ein Eintrag, nachprüfbar.
+
+**HubSpot stand auf keiner Liste** und lief trotzdem: Es setzt eine dauerhafte
+Besucherkennung und ordnet Seitenaufrufe einer Person zu, sobald sie einmal ein
+Formular ausgefüllt hat. Bei einer Zahnarztpraxis ist das ein Gesundheitsbezug
+im Sinne von Artikel 9 DSGVO. Die Praxis löst den Vertrag im September auf;
+übernommen wird nichts.
+
+### 7b.2 Das Verzeichnis ist die Architektur, nicht der Banner
+
+Ein Banner ist schnell gebaut. Die Schwierigkeit ist, dass ein halbes Jahr
+später jemand ein Skript einbindet, ohne daran zu denken. Deshalb ist die
+Hauptsache hier `src/data/dienste.ts` — und **es gibt keinen Weg daneben:**
+
+| Sperre | Was sie verhindert |
+|---|---|
+| `Drittinhalt.astro` bricht beim Bauen ab | eine Einbettung ohne Eintrag im Verzeichnis |
+| `dienste-pruefen.mjs` liest das gebaute HTML | ein `<script src>` oder `<img src>` auf einen fremden Host |
+| dieselbe Prüfung sucht `<iframe src>` | ein Rahmen, der schon im HTML steht und damit lädt |
+| `/cookies/` und `/datenschutz/` erzeugen ihre Tabellen daraus | eine Datenschutzerklärung, die dem Einbau nachhinkt |
+
+Die Prüfung fand bei ihrer Gegenprobe alle vier eingebauten Fehler, darunter
+ein `<iframe src hidden loading="lazy">`. Genau der ist die Falle: `hidden`
+verhindert das Laden nicht, `loading="lazy"` nur, solange das Element außerhalb
+des Sichtfelds liegt.
+
+### 7b.3 Die verschwommene Vorschau
+
+Vor der Freigabe steht dort, wo Karte oder Rundgang liegen, eine unscharfe
+Vorschau — **aus eigenen Dateien.** Kein Bild, kein Vorschaubild, kein
+Aufwärm-Abruf geht an den Drittanbieter, auch kein `preconnect`.
+
+Daran scheitern die üblichen Zwei-Klick-Lösungen: Sie nehmen als Platzhalter
+das Vorschaubild von YouTube oder ein statisches Kartenbild von Google — und
+haben damit die Verbindung schon aufgebaut, gegen die sie schützen sollen. Ein
+statisches Bild von `maps.googleapis.com` überträgt IP-Adresse und Referrer
+genauso wie die Karte.
+
+Für die Karte zeichnet `Kartenvorschau.astro` deshalb eine schematische
+Lageskizze aus Anschrift und Koordinaten. Sie ist kein Stadtplan und gibt sich
+nicht dafür aus; verschwommen beantwortet sie die Frage „was liegt hier", und
+die Anschrift steht als Text im Bild.
+
+Nachgeprüft: In `dist/client/potsdam/anfahrt/index.html` steht kein einziges
+`<iframe>`.
+
+### 7b.4 Ablehnen ist genauso schnell wie Annehmen
+
+Drei Schaltflächen, gleich groß, in einer Reihe, im selben Schritt — „Nur das
+Notwendige" steht links, weil sie zuerst gelesen wird. Kein Vorhaken, kein
+zweiter Dialog beim Ablehnen, kein „berechtigtes Interesse" als Umweg.
+
+Der Dialog liegt in einem `<dialog>` über der Seite und nicht als Balken im
+Textfluss: Ein Balken verschiebt den Inhalt und wäre genau der Layout-Sprung,
+den Lighthouse als CLS zählt.
+
+### 7b.5 Was hier noch offen ist — und es ist nicht wenig
+
+**Vier aktive Dienste haben keinen bestätigten Auftragsverarbeitungsvertrag:**
+Google Analytics, Google Maps, Matterport und die Claude-Dienste. Die Technik
+sperrt sie deshalb, auch bei Zustimmung — eine Einwilligung ersetzt keinen
+Vertrag. Praktisch heißt das: **Rundgang und Karte sind gebaut und nicht in
+Betrieb.** 21 Einbettungen zeigen den Sperrhinweis statt eines Ladeknopfs.
+
+Das ist richtig gebaut und ein offener Punkt der Praxis. Sie führt Analytics
+und Matterport heute schon live; sobald der Vertragsstand bestätigt ist, wird
+der Eintrag umgestellt und die Verzeichnisfassung hochgezählt — dann wird auch
+erneut gefragt, weil eine Zustimmung von gestern keinen Dienst deckt, den es
+gestern nicht gab.
+
+**Das Verzeichnis selbst ist noch nicht übersetzt.** Kategorienamen, Zwecke und
+Begründungen stehen auf Deutsch, sichtbar auch auf den englischen und
+französischen Seiten. Der Dialog selbst ist übersetzt.
 
 ---
 
