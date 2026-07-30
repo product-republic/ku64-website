@@ -13753,13 +13753,37 @@
       "text": "2. Proper brushing",
       "quelle": "85fdf60a"
     },
+    "beschwerde.zahnerosion-behandeln.abschnitte.14.bloecke.0.text": {
+      "text": "In children, tooth enamel is particularly sensitive because it has not yet fully matured. As parents, you should therefore:",
+      "quelle": "dfb78a3b"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.14.bloecke.1.punkte.0": {
+      "text": "keep an eye on the amount and frequency of acidic drinks.",
+      "quelle": "5e4e6668"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.14.bloecke.1.punkte.1": {
+      "text": "give your children a fluoride toothpaste suited to their age.",
+      "quelle": "7f6323cf"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.14.bloecke.1.punkte.2": {
+      "text": "schedule regular dental check-ups so that the condition of the teeth can be assessed early.",
+      "quelle": "943f7de7"
+    },
     "beschwerde.zahnerosion-behandeln.abschnitte.14.titel": {
       "text": "3. Special recommendations for children",
       "quelle": "fa1b75fe"
     },
+    "beschwerde.zahnerosion-behandeln.abschnitte.15.bloecke.0.text": {
+      "text": "For adults and children alike, the dental check-up is an essential part of prevention. Regular examinations help to detect the first signs of dental erosion early. Your dentist can give you individual recommendations on care and diet and, if necessary, carry out preventive treatments, for example with fluoride varnishes.",
+      "quelle": "778cf07a"
+    },
     "beschwerde.zahnerosion-behandeln.abschnitte.15.bloecke.1.text": {
       "text": "With these simple measures, you can help prevent tooth erosion and contribute to stable, healthy tooth substance in the long term. Why not book a check-up at our Berlin practice today?",
       "quelle": "7232c01d"
+    },
+    "beschwerde.zahnerosion-behandeln.abschnitte.15.titel": {
+      "text": "4. Regular check-ups and individual advice",
+      "quelle": "b4bb58ea"
     },
     "beschwerde.zahnerosion-behandeln.abschnitte.2.bloecke.0.text": {
       "text": "Many foods and drinks we consume daily contain acids that can attack the teeth. These include, in particular:",
@@ -14805,9 +14829,69 @@
       "text": "Surgical procedures to correct gum recession and restore bone structure. Techniques such as bone augmentation and soft tissue grafts are used.",
       "quelle": "740f1881"
     },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.4.text": {
+      "text": "In cases where conservative treatments are not sufficient, surgical procedures may be necessary to treat the receding gums and restore oral health.",
+      "quelle": "f67d39eb"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.5.text": {
+      "text": "One of the most common surgical treatments for receding gums is a gum graft. Healthy tissue is taken from another site in the mouth and transplanted onto the affected areas. This helps to rebuild the gum, protect the exposed tooth necks and improve the aesthetic appearance.",
+      "quelle": "860b933e"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.6.text": {
+      "text": "In this operation, the gum is surgically lifted in order to clean the underlying structures and restore the bone. After cleaning, the gum is placed back over the teeth to support healing.",
+      "quelle": "7c869263"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.7.text": {
+      "text": "If the receding gums are accompanied by bone loss, bone augmentation may be necessary. Bone substitute materials are used to regenerate the bone tissue and ensure the stability of the teeth.",
+      "quelle": "909adc84"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.8.text": {
+      "text": "Modern regenerative techniques, such as the use of growth hormones or biocompatible membranes, can be applied to encourage the natural healing and regeneration of the tissue.",
+      "quelle": "8a3a8d17"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.17.bloecke.9.text": {
+      "text": "Surgical procedures require careful planning and aftercare to ensure that the new tissue integrates well and that oral health is preserved in the long term. The choice of the right surgical technique depends on the patient's individual situation and on the dentist's recommendations.",
+      "quelle": "fc207fbb"
+    },
     "beschwerde.zahnfleischrueckgang.abschnitte.17.titel": {
       "text": "Further treatment options for gum recession:",
       "quelle": "3c134e57"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.18.bloecke.0.text": {
+      "text": "Preventing receding gums is essential for maintaining the health of the gums and teeth in the long term. A combination of good oral hygiene, regular dental check-ups and healthy habits allows many of the risk factors for receding gums to be controlled effectively.",
+      "quelle": "fab2dd3d"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.18.titel": {
+      "text": "Preventing receding gums",
+      "quelle": "7c7fd0a0"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.0.text": {
+      "text": "Thorough and correct oral hygiene is the most important step in preventing receding gums. Here are some basic tips for keeping your gums healthy:",
+      "quelle": "e4b423cb"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.1.punkte.0": {
+      "text": "Brush regularly: Brush your teeth at least twice a day with a soft toothbrush and fluoride toothpaste. Be sure to use gentle, circular movements and to clean all tooth surfaces thoroughly.",
+      "quelle": "5c14a4a5"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.1.punkte.1": {
+      "text": "Use dental floss: Using dental floss daily helps to remove plaque and food debris from between the teeth, where the toothbrush cannot reach. This prevents the build-up of bacteria and the formation of tartar.",
+      "quelle": "7bbabdae"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.1.punkte.2": {
+      "text": "Mouthwashes: Antiseptic mouthwashes can help to reduce bacteria in the mouth and improve oral hygiene. Choose a mouthwash that has been developed specifically to support gum health.",
+      "quelle": "5304adaa"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.1.punkte.3": {
+      "text": "Soft toothbrushes: Use a toothbrush with soft bristles so that you do not injure the gums. Hard bristles can irritate the gums and contribute to recession.",
+      "quelle": "b427e7b9"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.bloecke.1.punkte.4": {
+      "text": "Gentle brushing technique: Avoid aggressive brushing. Instead, use gentle, circular movements to remove plaque effectively without damaging the gums.",
+      "quelle": "f405b896"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.19.titel": {
+      "text": "Correct oral hygiene",
+      "quelle": "9f8e499b"
     },
     "beschwerde.zahnfleischrueckgang.abschnitte.2.bloecke.0.text": {
       "text": "Receding gums can be caused by a variety of factors, both mechanical and biological in nature. The most common causes range from incorrect oral hygiene to serious gum disease such as periodontitis. Gum recession is not just an aesthetic issue – it also has a significant impact on dental health. Without the protective gum tissue, the sensitive tooth necks become exposed, which can lead to increased sensitivity, decay and, in the worst case, tooth loss.",
@@ -14817,6 +14901,18 @@
       "text": "Causes of receding gums",
       "quelle": "4d23bcad"
     },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.0.text": {
+      "text": "Regular visits to the dentist are essential for detecting and treating receding gums at an early stage. During these visits, the dentist can:",
+      "quelle": "554816fd"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.0": {
+      "text": "Detect early signs: Dentists can identify signs of receding gums and periodontitis at an early stage and recommend appropriate measures.",
+      "quelle": "14728a4b"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.1": {
+      "text": "Carry out professional dental cleanings: Professional dental cleanings remove stubborn plaque and tartar that build up despite regular oral hygiene.",
+      "quelle": "9cdd0d91"
+    },
     "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.2": {
       "text": "Provide individual advice: Based on the patient's oral health, the dentist can give specific recommendations for improving oral hygiene and address risk factors.",
       "quelle": "60e29df0"
@@ -14824,6 +14920,10 @@
     "beschwerde.zahnfleischrueckgang.abschnitte.20.bloecke.1.punkte.3": {
       "text": "Develop treatment plans: If needed, the dentist can create tailored treatment plans to stop gum recession and restore gum health.",
       "quelle": "079f4222"
+    },
+    "beschwerde.zahnfleischrueckgang.abschnitte.20.titel": {
+      "text": "Regular dental visits",
+      "quelle": "92c149fa"
     },
     "beschwerde.zahnfleischrueckgang.abschnitte.21.bloecke.0.text": {
       "text": "Gum recession is a common topic in dentistry, and there are numerous myths and misconceptions that often give those affected false information. It is important to dispel these myths in order to have a correct understanding of the causes, symptoms and treatments.",
@@ -17321,6 +17421,14 @@
       "text": "Recognising and preventing a root canal infection in time",
       "quelle": "cacd0651"
     },
+    "kategorie.aesthetik-medizin.beschreibung": {
+      "text": "Treatments to the face rather than the teeth: smoothing expression lines and restoring volume – performed by doctors, without surgery.",
+      "quelle": "ee38da42"
+    },
+    "kategorie.aesthetik-medizin.name": {
+      "text": "Aesthetic Medicine",
+      "quelle": "123e80c3"
+    },
     "kategorie.aesthetik.beschreibung": {
       "text": "Treatments that are about how your teeth look: colour, shape, position and how they work together with your face.",
       "quelle": "021e0eb7"
@@ -17400,6 +17508,118 @@
     "kategorie.zahnersatz.name": {
       "text": "Dental restorations",
       "quelle": "59942be3"
+    },
+    "kisystem.berater.anbieter": {
+      "text": "Anthropic PBC, processing in the European Union",
+      "quelle": "9bca6c9c"
+    },
+    "kisystem.berater.daten": {
+      "text": "Your question and the conversation so far in this session, plus which location you have selected.",
+      "quelle": "3793aa42"
+    },
+    "kisystem.berater.grenzen": {
+      "text": "Does not make a diagnosis, does not assess symptoms, does not quote binding prices and does not take appointments.",
+      "quelle": "18d4a420"
+    },
+    "kisystem.berater.modell": {
+      "text": "Claude Sonnet 5",
+      "quelle": "ef8ef06d"
+    },
+    "kisystem.berater.name": {
+      "text": "Digital adviser (chat)",
+      "quelle": "01858a8c"
+    },
+    "kisystem.berater.nichtDaten": {
+      "text": "No name, no email address, no telephone number. The conversation is not stored permanently and is not linked to a person.",
+      "quelle": "4230b54e"
+    },
+    "kisystem.berater.offenlegung": {
+      "text": "You are chatting with an AI system, not with a person.",
+      "quelle": "e5e27258"
+    },
+    "kisystem.berater.wo": {
+      "text": "As a button at the bottom right of every page.",
+      "quelle": "5b6a54bf"
+    },
+    "kisystem.berater.zweck": {
+      "text": "Answers questions about treatments, costs, procedures and locations in text form.",
+      "quelle": "44fc9e39"
+    },
+    "kisystem.laecheln-vorschau.anbieter": {
+      "text": "Google Ireland Limited",
+      "quelle": "1dfb0f3f"
+    },
+    "kisystem.laecheln-vorschau.daten": {
+      "text": "The photo that you upload yourself.",
+      "quelle": "cbc793a7"
+    },
+    "kisystem.laecheln-vorschau.grenzen": {
+      "text": "No promise of any result. A generated before-and-after depiction used as an advertising image would be unlawful under § 11 of the German Heilmittelwerbegesetz – the preview is expressly labelled as an illustration and is created only at your own request.",
+      "quelle": "03cc3bb6"
+    },
+    "kisystem.laecheln-vorschau.modell": {
+      "text": "Gemini 3 (image analysis and image generation)",
+      "quelle": "c99125e6"
+    },
+    "kisystem.laecheln-vorschau.name": {
+      "text": "Smile Preview",
+      "quelle": "50789e23"
+    },
+    "kisystem.laecheln-vorschau.nichtDaten": {
+      "text": "The photo is not stored and not used for training. Without your consent it is not transmitted at all.",
+      "quelle": "4add867d"
+    },
+    "kisystem.laecheln-vorschau.offenlegung": {
+      "text": "The generated image is an AI illustration and not a treatment result. It carries this notice visibly in the image and in machine-readable form in the file.",
+      "quelle": "2c30da09"
+    },
+    "kisystem.laecheln-vorschau.wo": {
+      "text": "On the “Smile Preview” page, only after your explicit consent.",
+      "quelle": "92aca499"
+    },
+    "kisystem.laecheln-vorschau.zweck": {
+      "text": "Creates a non-binding illustration from your own photo showing how an aesthetic treatment could look.",
+      "quelle": "a580cf85"
+    },
+    "kisystem.sprachberater.anbieter": {
+      "text": "ElevenLabs Inc.",
+      "quelle": "ad97a542"
+    },
+    "kisystem.sprachberater.daten": {
+      "text": "Your voice for the duration of the conversation, as well as the selected location.",
+      "quelle": "adec830a"
+    },
+    "kisystem.sprachberater.grenzen": {
+      "text": "Does not provide a diagnosis, does not accept appointment bookings and does not collect personal data.",
+      "quelle": "5243f159"
+    },
+    "kisystem.sprachberater.modell": {
+      "text": "ElevenLabs Conversational AI",
+      "quelle": "31e32058"
+    },
+    "kisystem.sprachberater.name": {
+      "text": "Voice adviser",
+      "quelle": "27ebbf07"
+    },
+    "kisystem.sprachberater.nichtDaten": {
+      "text": "No permanent recording, no attribution to an individual. The microphone is only requested after you click, and is released again when you hang up.",
+      "quelle": "11a7a381"
+    },
+    "kisystem.sprachberater.offenlegung": {
+      "text": "You are speaking to an AI system. The voice is synthetic.",
+      "quelle": "306ab73b"
+    },
+    "kisystem.sprachberater.wo": {
+      "text": "On the “Digital Consultation” page.",
+      "quelle": "f9855553"
+    },
+    "kisystem.sprachberater.zweck": {
+      "text": "Answers the same questions in conversation, with a synthetic voice in natural language.",
+      "quelle": "d59edc0b"
+    },
+    "kisystem.wegZumMenschen": {
+      "text": "You can reach a person on your location's phone number or via the contact form.",
+      "quelle": "da76e889"
     },
     "leistung.aligner.dauer": {
       "text": "6 to 18 months, depending on your starting position",
@@ -17853,6 +18073,66 @@
       "text": "Digital volume tomography shows the jaw, teeth and nerve pathways in three dimensions. It is used when a two-dimensional X-ray does not provide enough certainty – for example before implant placement or wisdom tooth surgery.",
       "quelle": "e727bfca"
     },
+    "leistung.faltenbehandlung.faq.0.antwort": {
+      "text": "Yes. The effect wears off on its own after a few months. If you do not have a follow-up treatment, everything returns to how it was before.",
+      "quelle": "b4497e90"
+    },
+    "leistung.faltenbehandlung.faq.0.frage": {
+      "text": "Is it reversible?",
+      "quelle": "022c123f"
+    },
+    "leistung.faltenbehandlung.faq.1.antwort": {
+      "text": "Because the same muscles that form wrinkles are also involved in chewing and speaking – and because the doctors here work with facial anatomy every day.",
+      "quelle": "8ca1e2cd"
+    },
+    "leistung.faltenbehandlung.faq.1.frage": {
+      "text": "Why at a dental practice?",
+      "quelle": "be035eb6"
+    },
+    "leistung.faltenbehandlung.kurz": {
+      "text": "Smoothing expression lines – without surgery, in a medical setting.",
+      "quelle": "4f56675e"
+    },
+    "leistung.faltenbehandlung.name": {
+      "text": "Wrinkle treatment",
+      "quelle": "50e160cb"
+    },
+    "leistung.faltenbehandlung.patientenfrage": {
+      "text": "How long does a wrinkle treatment last?",
+      "quelle": "c0724d5b"
+    },
+    "leistung.faltenbehandlung.synonyme.0": {
+      "text": "Wrinkle treatment",
+      "quelle": "50e160cb"
+    },
+    "leistung.faltenbehandlung.synonyme.1": {
+      "text": "Botox",
+      "quelle": "daf32401"
+    },
+    "leistung.faltenbehandlung.synonyme.2": {
+      "text": "Botulinum toxin",
+      "quelle": "4ff0db16"
+    },
+    "leistung.faltenbehandlung.synonyme.3": {
+      "text": "Smoothing wrinkles",
+      "quelle": "9a289b19"
+    },
+    "leistung.faltenbehandlung.synonyme.4": {
+      "text": "Forehead lines",
+      "quelle": "d576b30b"
+    },
+    "leistung.faltenbehandlung.synonyme.5": {
+      "text": "Crow's feet",
+      "quelle": "700562b9"
+    },
+    "leistung.faltenbehandlung.synonyme.6": {
+      "text": "Wrinkle treatment Berlin",
+      "quelle": "9335d5b5"
+    },
+    "leistung.faltenbehandlung.teaser": {
+      "text": "Wrinkles form where the face moves. A treatment with botulinum toxin relaxes individual muscles in a targeted way; the result lasts a few months and is reversible. Carried out by the practice's doctors.",
+      "quelle": "45a7b814"
+    },
     "leistung.feste-zahnspange.dauer": {
       "text": "12 to 30 months",
       "quelle": "48a9f2a3"
@@ -17964,6 +18244,98 @@
     "leistung.fissurenversiegelung.teaser": {
       "text": "The chewing surfaces of the permanent molars have deep grooves that a toothbrush can't reach. A thin coat of resin seals them – painless, no drilling, and done within minutes.",
       "quelle": "4bf84032"
+    },
+    "leistung.ganzheitliche-zahnmedizin.faq.0.antwort": {
+      "text": "The view is broader: alongside the findings on the tooth, it also covers the jaw joint, muscles, posture and material compatibility. The treatment itself follows the same dentistry.",
+      "quelle": "0856ab8d"
+    },
+    "leistung.ganzheitliche-zahnmedizin.faq.0.frage": {
+      "text": "What makes this different from a standard treatment?",
+      "quelle": "99461dc6"
+    },
+    "leistung.ganzheitliche-zahnmedizin.kurz": {
+      "text": "Looking at the mouth in the context of the rest of the body.",
+      "quelle": "fd8f6e71"
+    },
+    "leistung.ganzheitliche-zahnmedizin.name": {
+      "text": "Holistic Dentistry",
+      "quelle": "445b93bd"
+    },
+    "leistung.ganzheitliche-zahnmedizin.patientenfrage": {
+      "text": "Can teeth cause problems throughout the body?",
+      "quelle": "92ae6225"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.0": {
+      "text": "holistic dentistry",
+      "quelle": "0ab7165d"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.1": {
+      "text": "holistic dental care",
+      "quelle": "39dc7ca4"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.2": {
+      "text": "biological dentistry",
+      "quelle": "bcee11b2"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.3": {
+      "text": "dentistry and osteopathy",
+      "quelle": "34b2926e"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.4": {
+      "text": "material intolerance",
+      "quelle": "698c6de6"
+    },
+    "leistung.ganzheitliche-zahnmedizin.teaser": {
+      "text": "The jaw joint, teeth, muscles and posture are connected. Holistic dentistry does not always look for the cause where the pain is – and works together with osteopathy and physiotherapy where needed.",
+      "quelle": "016cfb20"
+    },
+    "leistung.hyaluron-lippen.faq.0.antwort": {
+      "text": "Hyaluronic acid is broken down by the body and can also be dissolved with an enzyme. That is why we work in small steps.",
+      "quelle": "6612ae38"
+    },
+    "leistung.hyaluron-lippen.faq.0.frage": {
+      "text": "What happens if I don't like it?",
+      "quelle": "f6879876"
+    },
+    "leistung.hyaluron-lippen.kurz": {
+      "text": "Volume with a substance the body produces itself.",
+      "quelle": "661508c1"
+    },
+    "leistung.hyaluron-lippen.name": {
+      "text": "Hyaluronic acid treatment",
+      "quelle": "8437c1ac"
+    },
+    "leistung.hyaluron-lippen.patientenfrage": {
+      "text": "How natural does a lip treatment with hyaluronic acid look?",
+      "quelle": "ea178a51"
+    },
+    "leistung.hyaluron-lippen.synonyme.0": {
+      "text": "Hyaluron",
+      "quelle": "4df61b75"
+    },
+    "leistung.hyaluron-lippen.synonyme.1": {
+      "text": "Hyaluronic acid",
+      "quelle": "3acb32a0"
+    },
+    "leistung.hyaluron-lippen.synonyme.2": {
+      "text": "Lip fillers",
+      "quelle": "c420ecba"
+    },
+    "leistung.hyaluron-lippen.synonyme.3": {
+      "text": "Lip augmentation",
+      "quelle": "ea406beb"
+    },
+    "leistung.hyaluron-lippen.synonyme.4": {
+      "text": "Volume build-up",
+      "quelle": "ec5061b3"
+    },
+    "leistung.hyaluron-lippen.synonyme.5": {
+      "text": "Nasolabial fold",
+      "quelle": "f697ad7f"
+    },
+    "leistung.hyaluron-lippen.teaser": {
+      "text": "Hyaluronic acid binds water and gives volume back – to the lips, the cheeks, individual lines. The body breaks it down again over the following months, which is why the result can be built up in stages.",
+      "quelle": "894d2d47"
     },
     "leistung.implantat-prophylaxe.dauer": {
       "text": "45 to 60 minutes",
@@ -18208,6 +18580,50 @@
     "leistung.keramik-kronen.teaser": {
       "text": "A crown covers the damaged tooth completely, restoring its shape and strength. All-ceramic crowns come very close to matching the translucency of natural teeth and need no metal core that might later show through as a dark rim.",
       "quelle": "665f8280"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.faq.0.antwort": {
+      "text": "Braces move teeth, not jaws. If the jaw itself is misaligned, they only shift the teeth within that misaligned position – the cause remains.",
+      "quelle": "44e835ce"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.faq.0.frage": {
+      "text": "Why aren't braces enough?",
+      "quelle": "ac06ed29"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.kurz": {
+      "text": "Braces and jaw surgery together, when the jaws are misaligned relative to each other.",
+      "quelle": "d1bb77a3"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.name": {
+      "text": "Combined orthodontic-surgical treatment",
+      "quelle": "93342f6d"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.patientenfrage": {
+      "text": "What happens if the upper and lower jaw do not fit together?",
+      "quelle": "a0e31805"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.0": {
+      "text": "combined orthodontic-surgical treatment",
+      "quelle": "6a44098d"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.1": {
+      "text": "dysgnathia",
+      "quelle": "cb8cd3d3"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.2": {
+      "text": "jaw misalignment surgery",
+      "quelle": "e78a3953"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.3": {
+      "text": "orthognathic surgery",
+      "quelle": "fa351c0e"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.4": {
+      "text": "jaw repositioning",
+      "quelle": "2011598b"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.teaser": {
+      "text": "Once the jaws have finished growing, a pronounced misalignment can no longer be corrected with braces alone. Orthodontics and maxillofacial surgery then work to a joint plan – first the teeth into position, then the jaws.",
+      "quelle": "8c7f838f"
     },
     "leistung.kinderprophylaxe.dauer": {
       "text": "30 minutes",
@@ -18644,6 +19060,54 @@
     "leistung.lachgas.teaser": {
       "text": "Nitrous oxide is breathed in through a small nasal mask and takes effect within a few minutes. You stay awake and responsive, but feel noticeably more relaxed. The effect wears off completely after a short time.",
       "quelle": "abf39f33"
+    },
+    "leistung.longevity.faq.0.antwort": {
+      "text": "A concept that organises the individual treatments: prophylaxis, early detection and tooth preservation in a sequence designed for decades.",
+      "quelle": "a856ee76"
+    },
+    "leistung.longevity.faq.0.frage": {
+      "text": "Is this a treatment or a concept?",
+      "quelle": "1cab28b8"
+    },
+    "leistung.longevity.kurz": {
+      "text": "Keeping your own teeth as long as possible – as a plan, not a hope.",
+      "quelle": "01ef8051"
+    },
+    "leistung.longevity.name": {
+      "text": "Longevity Dentistry",
+      "quelle": "21727993"
+    },
+    "leistung.longevity.patientenfrage": {
+      "text": "What can I do to keep my own teeth into old age?",
+      "quelle": "0b3a7bdc"
+    },
+    "leistung.longevity.synonyme.0": {
+      "text": "Longevity",
+      "quelle": "17cfb748"
+    },
+    "leistung.longevity.synonyme.1": {
+      "text": "Longevity dentistry",
+      "quelle": "21727993"
+    },
+    "leistung.longevity.synonyme.2": {
+      "text": "dental health in old age",
+      "quelle": "3791dc08"
+    },
+    "leistung.longevity.synonyme.3": {
+      "text": "keeping teeth long-term",
+      "quelle": "95ddfb08"
+    },
+    "leistung.longevity.synonyme.4": {
+      "text": "preventive dentistry",
+      "quelle": "572cd47b"
+    },
+    "leistung.longevity.synonyme.5": {
+      "text": "dentistry and life expectancy",
+      "quelle": "9e34e6d5"
+    },
+    "leistung.longevity.teaser": {
+      "text": "Teeth age too. The longevity concept treats dental health as something planned across decades: preserving tooth structure instead of replacing it later, and finding inflammation early, because it does not stay in the mouth.",
+      "quelle": "1e743507"
     },
     "leistung.parodontitis-behandlung.dauer": {
       "text": "2 to 4 appointments plus follow-up care",
@@ -19817,6 +20281,62 @@
       "text": "An implant replaces the tooth root and carries a crown, bridge or denture on top. It transfers chewing forces into the jawbone, keeping it active – an advantage no other type of denture can offer. The neighbouring teeth remain untouched.",
       "quelle": "9072c1c0"
     },
+    "leistung.zahnsanierung.faq.0.antwort": {
+      "text": "That depends on the findings and is planned before the first appointment. This is precisely the difference from treating tooth by tooth: you know from the outset how many sessions it will take.",
+      "quelle": "1deefb18"
+    },
+    "leistung.zahnsanierung.faq.0.frage": {
+      "text": "How long does a full dental restoration take?",
+      "quelle": "b14bffe3"
+    },
+    "leistung.zahnsanierung.faq.1.antwort": {
+      "text": "Yes. With an extensive restoration in particular, a great deal can be combined into one session – see Treatment under general anaesthesia.",
+      "quelle": "04e35af5"
+    },
+    "leistung.zahnsanierung.faq.1.frage": {
+      "text": "Can this also be done under general anaesthesia?",
+      "quelle": "621f2a1a"
+    },
+    "leistung.zahnsanierung.kurz": {
+      "text": "Treating several findings in one planned sequence – instead of tooth by tooth.",
+      "quelle": "f962ada8"
+    },
+    "leistung.zahnsanierung.name": {
+      "text": "Full dental restoration",
+      "quelle": "b3885bb8"
+    },
+    "leistung.zahnsanierung.patientenfrage": {
+      "text": "Can several damaged teeth be treated in one go?",
+      "quelle": "4cd688fb"
+    },
+    "leistung.zahnsanierung.synonyme.0": {
+      "text": "Full dental restoration",
+      "quelle": "b3885bb8"
+    },
+    "leistung.zahnsanierung.synonyme.1": {
+      "text": "Full mouth rehabilitation",
+      "quelle": "28163a60"
+    },
+    "leistung.zahnsanierung.synonyme.2": {
+      "text": "Complete restoration",
+      "quelle": "714d7531"
+    },
+    "leistung.zahnsanierung.synonyme.3": {
+      "text": "Getting all your teeth done",
+      "quelle": "eefc726c"
+    },
+    "leistung.zahnsanierung.synonyme.4": {
+      "text": "Full restoration",
+      "quelle": "f37fdafc"
+    },
+    "leistung.zahnsanierung.synonyme.5": {
+      "text": "Dental restoration under general anaesthesia",
+      "quelle": "c82d306c"
+    },
+    "leistung.zahnsanierung.teaser": {
+      "text": "When several teeth need work at the same time, the order matters. A full dental restoration plans all the steps in advance: what comes first, what can be combined in one session, what can wait – and what it all costs.",
+      "quelle": "dab37f0e"
+    },
     "leistung.zahnschmuck.dauer": {
       "text": "20 minutes",
       "quelle": "94e96abd"
@@ -19940,6 +20460,50 @@
     "leistung.zahnvorsorge.teaser": {
       "text": "At a check-up we systematically examine your teeth, gums and oral tissues. Early decay and gum inflammation can be treated while the effort is still small – and the entry in your bonus booklet secures you higher insurance contributions towards dentures.",
       "quelle": "8c341706"
+    },
+    "leistung.zornesfalte.faq.0.antwort": {
+      "text": "Yes. A single muscle is treated, not the whole face. The aim is to take away the unintentionally stern look – not your facial expressions.",
+      "quelle": "03db7408"
+    },
+    "leistung.zornesfalte.faq.0.frage": {
+      "text": "Will people still be able to tell when I'm happy?",
+      "quelle": "4d6b5d9a"
+    },
+    "leistung.zornesfalte.kurz": {
+      "text": "The line between the eyebrows that looks sterner than you feel.",
+      "quelle": "71ecd9ba"
+    },
+    "leistung.zornesfalte.name": {
+      "text": "Treating frown lines",
+      "quelle": "502e5e5f"
+    },
+    "leistung.zornesfalte.patientenfrage": {
+      "text": "Can the line between the eyebrows be treated?",
+      "quelle": "4bbad79a"
+    },
+    "leistung.zornesfalte.synonyme.0": {
+      "text": "frown line",
+      "quelle": "6a8e2d82"
+    },
+    "leistung.zornesfalte.synonyme.1": {
+      "text": "glabellar line",
+      "quelle": "46213775"
+    },
+    "leistung.zornesfalte.synonyme.2": {
+      "text": "line between the eyebrows",
+      "quelle": "d9679ee8"
+    },
+    "leistung.zornesfalte.synonyme.3": {
+      "text": "frown line removal",
+      "quelle": "cc86b19d"
+    },
+    "leistung.zornesfalte.synonyme.4": {
+      "text": "forehead line",
+      "quelle": "282153c7"
+    },
+    "leistung.zornesfalte.teaser": {
+      "text": "The frown line is caused by a small muscle between the eyebrows that engages when you concentrate. When it is relaxed selectively, your expression loses its stern look without your facial expressions disappearing.",
+      "quelle": "123941e1"
     },
     "person.abby-ferguson.abschnitte.0.titel": {
       "text": "Abby Ferguson's career",
@@ -27041,6 +27605,14 @@
       "text": "Where is your appointment?",
       "quelle": "d86f774c"
     },
+    "ui.anfahrt.karteFuss": {
+      "text": "The route is also described in words above – the map is an offer, not a requirement.",
+      "quelle": "bc706ed2"
+    },
+    "ui.anfahrt.karteMitRoute": {
+      "text": "Map with route planning",
+      "quelle": "bf1bf5ae"
+    },
     "ui.anfahrt.mitDemAuto": {
       "text": "By car",
       "quelle": "7bc13792"
@@ -27104,6 +27676,30 @@
     "ui.berater.standortWaehlen": {
       "text": "Please choose a location",
       "quelle": "49db019a"
+    },
+    "ui.berater.vorschlagAnfahrt": {
+      "text": "How do I get to you and can I park there?",
+      "quelle": "e274721d"
+    },
+    "ui.berater.vorschlagAngst": {
+      "text": "I'm afraid of the dentist – what happens at the first appointment?",
+      "quelle": "d57902cc"
+    },
+    "ui.berater.vorschlagImplantate": {
+      "text": "Which locations offer dental implants?",
+      "quelle": "a47a446e"
+    },
+    "ui.berater.vorschlagLeistungenOrt": {
+      "text": "Which services are available at KU64 {name}?",
+      "quelle": "9b371709"
+    },
+    "ui.berater.vorschlagWelcherStandort": {
+      "text": "Which location is right for me?",
+      "quelle": "a1e64e7f"
+    },
+    "ui.berater.vorschlagZahnreinigung": {
+      "text": "How much does a professional dental cleaning cost?",
+      "quelle": "82591451"
     },
     "ui.berater.wieDasFunktioniert": {
       "text": "How this works",
@@ -27200,6 +27796,38 @@
     "ui.beschw.dieseTexteStammenAus": {
       "text": "These texts come from the practice's own material. They don't replace an examination: what's causing your symptoms can only be determined in the dental chair.",
       "quelle": "94035059"
+    },
+    "ui.beschw.gruppeAussehen": {
+      "text": "I don't like how my teeth look",
+      "quelle": "37e2a862"
+    },
+    "ui.beschw.gruppeKinder": {
+      "text": "For children, with braces",
+      "quelle": "1c9561d8"
+    },
+    "ui.beschw.gruppeMund": {
+      "text": "In the mouth",
+      "quelle": "42530139"
+    },
+    "ui.beschw.gruppeSchmerzen": {
+      "text": "It hurts",
+      "quelle": "56cdca1c"
+    },
+    "ui.beschw.gruppeSonstiges": {
+      "text": "Other",
+      "quelle": "9fe55eb4"
+    },
+    "ui.beschw.gruppeVorbeugen": {
+      "text": "To stop it getting that far",
+      "quelle": "6f59e5cb"
+    },
+    "ui.beschw.gruppeZahnfleisch": {
+      "text": "Something is wrong with my gums",
+      "quelle": "cb3245a2"
+    },
+    "ui.beschw.gruppeZahnsubstanz": {
+      "text": "On the tooth itself",
+      "quelle": "eb8869c3"
     },
     "ui.beschw.kannAkutSein": {
       "text": "Can be urgent",
@@ -27581,6 +28209,334 @@
       "text": "<code>[Full name of the practice / operator, address, phone, email, legal representation]</code>",
       "quelle": "d46bdf35"
     },
+    "ui.faq.anamnese.datensicherheit.antwort": {
+      "text": "The medical history form is handled by Nelly Solutions, a provider specialising in dental practices, with servers located in the EU. The data is transmitted encrypted directly into our practice management system. This website itself stores no health data – it only forwards you to the form.",
+      "quelle": "a0485ff3"
+    },
+    "ui.faq.anamnese.datensicherheit.frage": {
+      "text": "Is my health data secure?",
+      "quelle": "9395ab70"
+    },
+    "ui.faq.anamnese.dauer.antwort": {
+      "text": "About five to ten minutes. You can pause in between and check your medication list without rushing – that is considerably easier at home than on a clipboard in the waiting room.",
+      "quelle": "4a2bf673"
+    },
+    "ui.faq.anamnese.dauer.frage": {
+      "text": "How long does it take to fill in?",
+      "quelle": "029b4465"
+    },
+    "ui.faq.anamnese.erneut.antwort": {
+      "text": "Lors des consultations suivantes, nous vous interrogeons sur les changements à intervalles plus espacés. Si quelque chose a changé chez vous – nouveaux médicaments, nouveau diagnostic, grossesse –, merci de nous le signaler dans tous les cas, y compris entre deux rendez-vous.",
+      "quelle": "01d000f7"
+    },
+    "ui.faq.anamnese.erneut.frage": {
+      "text": "I have been here before – do I have to fill it in again?",
+      "quelle": "0c93c29c"
+    },
+    "ui.faq.anamnese.mussDigital.antwort": {
+      "text": "No. If you prefer to fill it in on paper, just say so at your appointment – we of course still have the forms on site. Digital is an option, not a requirement.",
+      "quelle": "95200809"
+    },
+    "ui.faq.anamnese.mussDigital.frage": {
+      "text": "Do I have to do this digitally?",
+      "quelle": "a871aae6"
+    },
+    "ui.faq.anamnese.wasIstDas.antwort": {
+      "text": "The medical history form records your pre-existing conditions, medication, allergies and intolerances. This is not a formality: blood thinners, bisphosphonates, heart conditions or a pregnancy directly change how and with what we are allowed to treat you. Without this information we cannot carry out certain procedures safely.",
+      "quelle": "c0a1ff87"
+    },
+    "ui.faq.anamnese.wasIstDas.frage": {
+      "text": "What is a medical history form and why do you need it?",
+      "quelle": "2e356b17"
+    },
+    "ui.faq.beratung.aufzeichnung.antwort": {
+      "text": "For the duration of the conversation, your voice is processed in order to generate the response. No permanent recording takes place, and we do not link the conversation to any individual. You can hang up at any time.",
+      "quelle": "2f6210fa"
+    },
+    "ui.faq.beratung.aufzeichnung.frage": {
+      "text": "Is the conversation recorded?",
+      "quelle": "bd7f2bde"
+    },
+    "ui.faq.beratung.ersetztPraxis.antwort": {
+      "text": "No. The voice adviser explains treatments, procedures and cost ranges. It does not make a diagnosis and does not assess symptoms. Anything that concerns your specific case belongs in an in-person examination.",
+      "quelle": "6fc3098d"
+    },
+    "ui.faq.beratung.ersetztPraxis.frage": {
+      "text": "Does this replace a consultation at the practice?",
+      "quelle": "f3b6c90b"
+    },
+    "ui.faq.beratung.lieberSchreiben.antwort": {
+      "text": "Then use the chat at the bottom right – in terms of content it answers the same questions. Some people prefer typing, others prefer speaking; both are equally valid.",
+      "quelle": "6006229b"
+    },
+    "ui.faq.beratung.lieberSchreiben.frage": {
+      "text": "What if I would rather write?",
+      "quelle": "d6c62829"
+    },
+    "ui.faq.beratung.mensch.antwort": {
+      "text": "No. You are speaking to an AI system, and the voice is synthetically generated. To reach a human, please call your location's telephone number.",
+      "quelle": "e208ebef"
+    },
+    "ui.faq.beratung.mensch.frage": {
+      "text": "Am I speaking to a human?",
+      "quelle": "d4f7b34d"
+    },
+    "ui.faq.beratung.terminBuchen.antwort": {
+      "text": "No, the adviser does not take appointments and does not collect any personal data. It refers you to the appointment page for your location or to our telephone number.",
+      "quelle": "397cb011"
+    },
+    "ui.faq.beratung.terminBuchen.frage": {
+      "text": "Can I book an appointment through it?",
+      "quelle": "0457237b"
+    },
+    "ui.faq.haeufigGefragt": {
+      "text": "Frequently asked",
+      "quelle": "dd8fe5e6"
+    },
+    "ui.faq.laecheln.fotoGespeichert.antwort": {
+      "text": "No. Your photo is processed in memory only for as long as the calculation takes and is discarded afterwards. It is not saved to a hard drive, not written to a database and not used to train AI models. We also use your email address solely to send you this one result.",
+      "quelle": "87cf7034"
+    },
+    "ui.faq.laecheln.fotoGespeichert.frage": {
+      "text": "Is my photo stored?",
+      "quelle": "b6269ef6"
+    },
+    "ui.faq.laecheln.fuerKind.antwort": {
+      "text": "No. The preview is intended exclusively for adults and only for a photo of yourself. Please do not upload photos of other people.",
+      "quelle": "c372de89"
+    },
+    "ui.faq.laecheln.fuerKind.frage": {
+      "text": "Can I do this for my child?",
+      "quelle": "19b47187"
+    },
+    "ui.faq.laecheln.versprechen.antwort": {
+      "text": "No, explicitly not. The preview is a non-binding illustration of how a smile could look. What is actually possible in your case depends on tooth alignment, tooth structure, gums and jaw relations – this can only be assessed at an examination in person.",
+      "quelle": "56c82101"
+    },
+    "ui.faq.laecheln.versprechen.frage": {
+      "text": "Is the result a promise of treatment?",
+      "quelle": "954a072f"
+    },
+    "ui.faq.laecheln.welchesFoto.antwort": {
+      "text": "A frontal portrait in good, even light in which you are smiling and your upper teeth are visible. No strong backlighting, no beauty filters and, if possible, no mask or hand in front of your mouth.",
+      "quelle": "0a4f9e3e"
+    },
+    "ui.faq.laecheln.welchesFoto.frage": {
+      "text": "What kind of photo do I need?",
+      "quelle": "e7d840a1"
+    },
+    "ui.faq.laecheln.werSiehtEs.antwort": {
+      "text": "For the calculation, the image is transmitted to our AI service provider and processed there. No one on our team sees your photo unless you show it to us yourself at your appointment. Details are set out in our privacy policy.",
+      "quelle": "8392db7b"
+    },
+    "ui.faq.laecheln.werSiehtEs.frage": {
+      "text": "Who sees my photo?",
+      "quelle": "48d9b738"
+    },
+    "ui.faq.notfall.ausgeschlagenerZahn.antwort": {
+      "text": "Only touch the tooth by the crown, never by the root, and do not clean or scrub it. Place it in a tooth rescue box straight away; if there is none to hand, use cold long-life milk, or saliva if there is no alternative. Not water. Then come to us as quickly as possible – ideally within the first hour. In children this also applies to milk teeth: bring the tooth with you and we will decide.",
+      "quelle": "ed40a10c"
+    },
+    "ui.faq.notfall.ausgeschlagenerZahn.frage": {
+      "text": "What do I do with a knocked-out tooth?",
+      "quelle": "fb976f87"
+    },
+    "ui.faq.notfall.echterNotfall.antwort": {
+      "text": "With severe pain that cannot be controlled, with swelling in the face or neck, with a fever together with toothache, with bleeding that will not stop, and with a tooth knocked out or broken off in an accident. If you have difficulty breathing or swallowing, every minute counts – then call 112 immediately.",
+      "quelle": "34075c19"
+    },
+    "ui.faq.notfall.echterNotfall.frage": {
+      "text": "When is a dental problem a real emergency?",
+      "quelle": "62a436af"
+    },
+    "ui.faq.notfall.fuellungVerloren.antwort": {
+      "text": "Usually not acutely dangerous, but it should be treated soon so that the tooth does not break and tooth decay does not develop. Keep the crown and bring it with you – it can often be refitted. In the meantime, chew on the other side.",
+      "quelle": "824c93b7"
+    },
+    "ui.faq.notfall.fuellungVerloren.frage": {
+      "text": "A filling or crown has fallen out – is that urgent?",
+      "quelle": "f5b185b4"
+    },
+    "ui.faq.notfall.nachtsUndFeiertags.antwort": {
+      "text": "Several of our locations are open seven days a week, including at weekends. Outside our opening hours, the emergency dental service of the Kassenzahnärztliche Vereinigung can help – the numbers are listed below.",
+      "quelle": "5c7ea1a6"
+    },
+    "ui.faq.notfall.nachtsUndFeiertags.frage": {
+      "text": "Who can help at night and on public holidays?",
+      "quelle": "613e5818"
+    },
+    "ui.faq.notfall.schmerzenBisTermin.antwort": {
+      "text": "Cool the area from the outside with a cloth in between, not directly on the skin, and in intervals. Keep your head raised, including when sleeping. Over-the-counter painkillers such as ibuprofen can help – please only as stated in the package leaflet and not if you do not tolerate them. Never place a tablet directly on the gums; it chemically burns the mucous membrane. No heat, no alcohol.",
+      "quelle": "78f295e7"
+    },
+    "ui.faq.notfall.schmerzenBisTermin.frage": {
+      "text": "What helps with the pain until the appointment?",
+      "quelle": "a4d4a238"
+    },
+    "ui.faq.ort.barrierefrei.antwortJa": {
+      "text": "Yes, KU64 {name} has step-free access. Please get in touch in advance if you need particular support – then we can prepare everything.",
+      "quelle": "39c232d8"
+    },
+    "ui.faq.ort.barrierefrei.antwortRuecksprache": {
+      "text": "Please get in touch with us in advance and we will find a solution together.",
+      "quelle": "2a539009"
+    },
+    "ui.faq.ort.barrierefrei.frage": {
+      "text": "Is the practice in {ort} accessible?",
+      "quelle": "fcb7b829"
+    },
+    "ui.faq.ort.leistungen.antwort": {
+      "text": "At this location we offer {anzahl} treatments from {bereiche} specialist fields, including {beispiele}. Not every treatment is offered at every KU64 location – this page shows only the treatments available in {ort}.",
+      "quelle": "b12112fe"
+    },
+    "ui.faq.ort.leistungen.frage": {
+      "text": "What services does KU64 {name} offer?",
+      "quelle": "7db7be71"
+    },
+    "ui.faq.ort.neuePatienten.antwort": {
+      "text": "Yes. You can book an appointment online or call us. For your first appointment you can conveniently complete the medical history form digitally in advance – that saves time in the waiting room.",
+      "quelle": "f9129973"
+    },
+    "ui.faq.ort.neuePatienten.frage": {
+      "text": "Are you accepting new patients?",
+      "quelle": "ffbb4853"
+    },
+    "ui.faq.ort.oepnv.antwort": {
+      "text": "{oepnv}. The practice is located at {strasse}, {plz} {ort}.",
+      "quelle": "b4ad4ff9"
+    },
+    "ui.faq.ort.oepnv.frage": {
+      "text": "How do I get to KU64 {name} by public transport?",
+      "quelle": "d08ed9c8"
+    },
+    "ui.faq.ort.parken.frage": {
+      "text": "Can I park at KU64 {name}?",
+      "quelle": "45a9f4c6"
+    },
+    "ui.faq.ort.titel": {
+      "text": "Questions about KU64 {name}",
+      "quelle": "b0f57658"
+    },
+    "ui.faq.ortTermine.anfahrt.antwort": {
+      "text": "{oepnv}. {parken} The address is {strasse}, {plz} {ort}.",
+      "quelle": "749735b0"
+    },
+    "ui.faq.ortTermine.anfahrt.frage": {
+      "text": "How do I get to KU64 {name}?",
+      "quelle": "a59fe310"
+    },
+    "ui.faq.ortTermine.bisWann.antwort": {
+      "text": "{zeiten}. The shorter days are set that way – an evening appointment is not possible on those days, but it is on the others.",
+      "quelle": "f861cdff"
+    },
+    "ui.faq.ortTermine.bisWann.frage": {
+      "text": "How late can I get an appointment in {ort}?",
+      "quelle": "92f3f582"
+    },
+    "ui.faq.ortTermine.bisWannTag": {
+      "text": "{tag} until {bis}",
+      "quelle": "daf1fe5a"
+    },
+    "ui.faq.ortTermine.wochenende.antwort": {
+      "text": "{tage} we treat patients by prior arrangement. That means: not without an appointment, but quite possible – call us on {telefon} and we will sort it out.",
+      "quelle": "2d125d8c"
+    },
+    "ui.faq.ortTermine.wochenende.frage": {
+      "text": "Can I get an appointment at KU64 {name} at the weekend?",
+      "quelle": "be85c5e1"
+    },
+    "ui.faq.ortTermine.zweiKalender.antwort": {
+      "text": "Dentistry and orthodontics are handled here by separate teams and therefore each have their own calendar: {kalender}. Choose the calendar that matches your concern – if you are unsure, give us a call and we will assign it for you.",
+      "quelle": "02446bc5"
+    },
+    "ui.faq.ortTermine.zweiKalender.frage": {
+      "text": "Why does KU64 {name} have two appointment calendars?",
+      "quelle": "0a0b38d3"
+    },
+    "ui.faq.start.akuteSchmerzen.antwort": {
+      "text": "Call the location nearest to you. Several of our locations are open seven days a week, including at weekends. If you are in severe pain, say so straight away on the phone – we keep appointments free for urgent cases.",
+      "quelle": "44783114"
+    },
+    "ui.faq.start.akuteSchmerzen.frage": {
+      "text": "What do I do if I have acute toothache?",
+      "quelle": "57271e23"
+    },
+    "ui.faq.start.alleLeistungen.antwort": {
+      "text": "No. The main practice on Kurfürstendamm offers the widest range, including general anaesthesia, orthodontics and All-on-4. Potsdam covers the full standard range, including implantology and oral surgery. On each location page you will see only what is actually offered there – and where to go for everything else.",
+      "quelle": "aabdb112"
+    },
+    "ui.faq.start.alleLeistungen.frage": {
+      "text": "Does every location offer all treatments?",
+      "quelle": "3cc51ba9"
+    },
+    "ui.faq.start.terminBuchen.antwort": {
+      "text": "Online via your location's appointment page, or by phone. Before your first visit, you fill in the medical history form digitally in advance – this saves time on site, and you do not have to fill in anything on paper in the waiting room.",
+      "quelle": "8f41023a"
+    },
+    "ui.faq.start.terminBuchen.frage": {
+      "text": "How do I book an appointment?",
+      "quelle": "9453ce84"
+    },
+    "ui.faq.start.wieVieleStandorte.antwort": {
+      "text": "KU64 has {anzahl} locations: {standorte}. The range of treatments differs from location to location.",
+      "quelle": "3f330993"
+    },
+    "ui.faq.start.wieVieleStandorte.frage": {
+      "text": "How many KU64 locations are there?",
+      "quelle": "61adf62f"
+    },
+    "ui.faq.termine.absagen.antwort": {
+      "text": "Yes. Please cancel at least 24 hours in advance – by phone or via the link in your confirmation email. That way someone else can take the appointment, and in a fully booked practice that is the real reason for the deadline.",
+      "quelle": "e5f43628"
+    },
+    "ui.faq.termine.absagen.frage": {
+      "text": "Can I cancel or reschedule an appointment?",
+      "quelle": "08263fc5"
+    },
+    "ui.faq.termine.buchen.antwort": {
+      "text": "Online via your location's appointment calendar, or by phone. Both lead to the same calendar – there are no separate quotas. Online booking requires only a few details; you then complete the medical history form digitally.",
+      "quelle": "cc1b1444"
+    },
+    "ui.faq.termine.buchen.frage": {
+      "text": "How do I book an appointment at KU64?",
+      "quelle": "7ef6d218"
+    },
+    "ui.faq.termine.doctolib.antwort": {
+      "text": "The calendar is hosted by Doctolib, an independent service. We deliberately do not embed it in this page – that way no data is passed to third parties while you are simply reading. Only when you open the calendar is your IP address transmitted and cookies set.",
+      "quelle": "129701dc"
+    },
+    "ui.faq.termine.doctolib.frage": {
+      "text": "Why am I redirected to Doctolib?",
+      "quelle": "524d44b1"
+    },
+    "ui.faq.termine.mitbringen.antwort": {
+      "text": "Your health insurance card, your bonus booklet and allergy card if you have them, and a list of your medications. Blood thinners, bisphosphonates, a heart valve replacement, diabetes, pregnancy and allergies to anaesthetics matter most – these details change the treatment.",
+      "quelle": "0486f9dd"
+    },
+    "ui.faq.termine.mitbringen.frage": {
+      "text": "What do I need to bring to my first appointment?",
+      "quelle": "b900d32c"
+    },
+    "ui.faq.termine.ohnePortal.antwort": {
+      "text": "Yes, at any time by phone or email. Online booking is an option, not a requirement – your location's phone number is on its appointment page.",
+      "quelle": "1f95a699"
+    },
+    "ui.faq.termine.ohnePortal.frage": {
+      "text": "Can I get an appointment without the online portal?",
+      "quelle": "21c170b7"
+    },
+    "ui.faq.termine.starkeSchmerzen.antwort": {
+      "text": "Call the location instead of booking online. At every location we keep slots free for patients in pain, and on the phone we can assess how urgent it is. Outside opening hours, the emergency page can help.",
+      "quelle": "3e9141d3"
+    },
+    "ui.faq.termine.starkeSchmerzen.frage": {
+      "text": "What should I do if I am in severe pain?",
+      "quelle": "437dfbd8"
+    },
+    "ui.faq.titel": {
+      "text": "Common questions",
+      "quelle": "5e46dd30"
+    },
     "ui.fehler.alleBehandlungen": {
       "text": "All treatments",
       "quelle": "ca53ed21"
@@ -27949,6 +28905,10 @@
       "text": "Which AI systems on this website do what, using which data – and how to reach a human instead.",
       "quelle": "1d8aad5c"
     },
+    "ui.kitrans.anbieter": {
+      "text": "Provider",
+      "quelle": "e9a87779"
+    },
     "ui.kitrans.beidesBeantwortetEinMensch": {
       "text": ". A person answers both.",
       "quelle": "78ae7cd0"
@@ -27956,6 +28916,10 @@
     "ui.kitrans.dasIstKeineAusweichloesung": {
       "text": "This isn't a fallback option, but the normal way. Call the location nearest to you:",
       "quelle": "e6b369a3"
+    },
+    "ui.kitrans.datenschutzerklaerung": {
+      "text": "Privacy policy",
+      "quelle": "24f50bb8"
     },
     "ui.kitrans.dieseAngabenSetzenArtikel": {
       "text": "This information implements Article 50 of Regulation (EU) 2024/1689 on artificial intelligence. The article requires three things: anyone interacting with an AI system must be informed of this no later than the first interaction. Generated content must be marked as such in a machine-readable way. And altered images of people must also be visibly marked.",
@@ -27972,6 +28936,22 @@
     "ui.kitrans.fuerDieLaechelnVorschau": {
       "text": "For the smile preview, this specifically means: the notice appears in a strip on the image and additionally within the image file itself, as an IPTC entry",
       "quelle": "3e47e62f"
+    },
+    "ui.kitrans.grenzen": {
+      "text": "Limitations",
+      "quelle": "45aa6f50"
+    },
+    "ui.kitrans.kontaktformular": {
+      "text": "Contact form",
+      "quelle": "ba3c77a3"
+    },
+    "ui.kitrans.marke": {
+      "text": "Transparency",
+      "quelle": "ac69c45f"
+    },
+    "ui.kitrans.modell": {
+      "text": "Model",
+      "quelle": "0ecd2422"
     },
     "ui.kitrans.oderSchriftlichUeberDas": {
       "text": "Or in writing via the",
@@ -28513,6 +29493,10 @@
       "text": "Back to {name}",
       "quelle": "a6323cb6"
     },
+    "ui.liste.und": {
+      "text": "and",
+      "quelle": "5ad4af9a"
+    },
     "ui.nav.andererStandort": {
       "text": "A different location",
       "quelle": "7def3c51"
@@ -28773,6 +29757,14 @@
       "text": "Public transport",
       "quelle": "d47a542c"
     },
+    "ui.ort.rundgang": {
+      "text": "360° tour of the practice",
+      "quelle": "9ca69598"
+    },
+    "ui.ort.rundgangFuss": {
+      "text": "You can move freely through the rooms. The tour is only loaded once you start it.",
+      "quelle": "86b6e0d3"
+    },
     "ui.ort.terminBuchen": {
       "text": "Book an appointment",
       "quelle": "57146cdd"
@@ -28852,6 +29844,38 @@
     "ui.recht.vorrangTitel": {
       "text": "The German version is legally binding",
       "quelle": "a7904df0"
+    },
+    "ui.smile.augenbraue": {
+      "text": "Free and without obligation",
+      "quelle": "b3a9e6f9"
+    },
+    "ui.smile.hinweis": {
+      "text": "The preview is generated by an AI. It is not a treatment plan and not a promise of results. Your photo is processed only for the preview and is not used for training.",
+      "quelle": "6f4837f9"
+    },
+    "ui.smile.knopf": {
+      "text": "Upload a photo and try on a new smile",
+      "quelle": "14e914e9"
+    },
+    "ui.smile.schritt1": {
+      "text": "A photo from the front, in daylight, with your teeth visible.",
+      "quelle": "b0567163"
+    },
+    "ui.smile.schritt2": {
+      "text": "You choose what should change – colour, shape, position.",
+      "quelle": "fc1bceff"
+    },
+    "ui.smile.schritt3": {
+      "text": "You receive the preview by email and can bring it along.",
+      "quelle": "61a5ac46"
+    },
+    "ui.smile.titel": {
+      "text": "See your new smile before you decide",
+      "quelle": "f63d990e"
+    },
+    "ui.smile.vorspann": {
+      "text": "Upload a photo and try out how your teeth could look after treatment. You can then discuss the result with us in {ort} – or keep it to yourself.",
+      "quelle": "be1d8cc4"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Close notice",

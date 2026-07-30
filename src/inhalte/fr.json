@@ -10373,9 +10373,101 @@
       "text": "Comment bien appliquer le médicament et éviter les rechutes",
       "quelle": "1234dc98"
     },
+    "beschwerde.mundpilz-mundsoor.abschnitte.31.bloecke.0.text": {
+      "text": "Si vous souffrez d'un muguet buccal, une alimentation adaptée peut aider à ménager la muqueuse buccale et à ne pas aggraver davantage les symptômes. Lors de nos consultations, on nous demande souvent ce qu'il ne faut pas manger en cas de candidose buccale et ce qui aggrave le muguet buccal. En effet, ces aliments peuvent solliciter davantage la muqueuse irritée ou sont soupçonnés de favoriser la prolifération du champignon.",
+      "quelle": "aa109704"
+    },
     "beschwerde.mundpilz-mundsoor.abschnitte.31.titel": {
       "text": "Alimentation et vie quotidienne : ce qu'il vaut mieux éviter",
       "quelle": "0403d918"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.0": {
+      "text": "plats très chauds, piquants ou fortement épicés",
+      "quelle": "b24d19f9"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.1": {
+      "text": "alcool",
+      "quelle": "e14ab095"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.2": {
+      "text": "sucreries, gâteaux et boissons sucrées",
+      "quelle": "1d0bbc22"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.3": {
+      "text": "pain blanc et produits très transformés à base de farine blanche",
+      "quelle": "43790e4c"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.4": {
+      "text": "fruits séchés et jus de fruits",
+      "quelle": "14463fde"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.bloecke.0.punkte.5": {
+      "text": "produits contenant de la levure",
+      "quelle": "a7a996e1"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.32.titel": {
+      "text": "À éviter temporairement :",
+      "quelle": "f6b63a86"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.0": {
+      "text": "Aliments tièdes et mous",
+      "quelle": "898257b1"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.1": {
+      "text": "Légumes et pommes de terre",
+      "quelle": "4fb6c54f"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.2": {
+      "text": "Produits complets",
+      "quelle": "6611e6ba"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.3": {
+      "text": "Viande et poisson",
+      "quelle": "76c11985"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.4": {
+      "text": "Yaourt nature",
+      "quelle": "572ee79c"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.0.punkte.5": {
+      "text": "beaucoup d'eau ou des infusions non sucrées (p. ex. sauge ou camomille)",
+      "quelle": "1c1b30d2"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.1.text": {
+      "text": "En cas de candidose buccale, une réduction consciente du sucre et des produits très transformés peut avoir un effet favorable. Important : l'alimentation peut compléter le traitement médical, mais elle ne le remplace pas. De même, une hygiène bucco-dentaire soigneuse reste un élément central du traitement.",
+      "quelle": "0e67ed52"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.bloecke.2.text": {
+      "text": "Si vous ne savez pas quoi manger en cas de candidose buccale ou quelles habitudes influencent vos symptômes, nous vous conseillons volontiers individuellement chez KU64.",
+      "quelle": "c01c144c"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.33.titel": {
+      "text": "Sont recommandés :",
+      "quelle": "9e8f031a"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.34.bloecke.0.text": {
+      "text": "Même s'il n'est pas toujours possible d'éviter complètement le muguet buccal, vous pouvez nettement réduire le risque grâce à quelques mesures ciblées. L'essentiel est de soutenir l'équilibre de la flore buccale et d'éviter les facteurs déclenchants connus. Éliminer régulièrement les dépôts sur la langue peut aider à rendre plus difficile l'installation des levures. Une prothèse dentaire bien entretenue réduit les irritations et prévient une nouvelle infection. Vous évitez ainsi que des résidus de principes actifs ne sollicitent inutilement la muqueuse.",
+      "quelle": "76e21d24"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.34.titel": {
+      "text": "Prévention : comment réduire le risque de candidose buccale",
+      "quelle": "be58c48e"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.35.bloecke.0.punkte.0": {
+      "text": "Brossez-vous les dents régulièrement et soigneusement.",
+      "quelle": "94df4a20"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.35.bloecke.0.punkte.1": {
+      "text": "Nettoyez également la langue en douceur afin de réduire les dépôts.",
+      "quelle": "2c316618"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.35.bloecke.0.punkte.2": {
+      "text": "Veillez à un entretien doux mais rigoureux de la muqueuse buccale.",
+      "quelle": "b1ff0992"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.35.titel": {
+      "text": "Hygiène bucco-dentaire minutieuse",
+      "quelle": "2421a6e6"
     },
     "beschwerde.mundpilz-mundsoor.abschnitte.36.bloecke.0.punkte.0": {
       "text": "Nettoyez soigneusement vos prothèses dentaires amovibles tous les jours.",
@@ -10388,6 +10480,10 @@
     "beschwerde.mundpilz-mundsoor.abschnitte.36.bloecke.0.punkte.2": {
       "text": "Retirez si possible votre prothèse la nuit, afin que la muqueuse puisse se régénérer.",
       "quelle": "b0baf1a4"
+    },
+    "beschwerde.mundpilz-mundsoor.abschnitte.36.titel": {
+      "text": "Entretenir correctement prothèses et restaurations dentaires",
+      "quelle": "c7020cbf"
     },
     "beschwerde.mundpilz-mundsoor.abschnitte.37.bloecke.0.punkte.0": {
       "text": "Après l'utilisation d'un spray à base de cortisone ou d'un spray contre l'asthme, rincez-vous soigneusement la bouche à l'eau.",
@@ -10578,8 +10674,8 @@
       "quelle": "3b7dbb5d"
     },
     "beschwerde.mundpilz-mundsoor.beschreibung": {
-      "text": "Dépôts blancs, sensation de brûlure ou difficultés à avaler ? Découvrez les causes, la contagion et le traitement de la mycose buccale. ✅ Prenez rendez-vous chez KU64 dès maintenant",
-      "quelle": "ff417ee1"
+      "text": "Dépôts blancs, sensation de brûlure ou difficultés à avaler ? Informez-vous sur les causes, la contagion et le traitement du muguet buccal. Prenez rendez-vous dès maintenant chez KU64",
+      "quelle": "41595876"
     },
     "beschwerde.mundpilz-mundsoor.einstieg.0.text": {
       "text": "Des dépôts blanchâtres dans la bouche, une sensation de brûlure sur la langue ou des douleurs en avalant ? Le muguet buccal apparaît souvent en cas de défenses immunitaires affaiblies ou après la prise d'antibiotiques, et peut aussi toucher les bébés. Chez KU64, nous en déterminons la cause, vous conseillons de façon claire et engageons le traitement adapté.",
@@ -17225,6 +17321,14 @@
       "text": "Reconnaître et prévenir à temps une infection de la racine dentaire",
       "quelle": "cacd0651"
     },
+    "kategorie.aesthetik-medizin.beschreibung": {
+      "text": "Des traitements du visage plutôt que des dents : lisser les rides d'expression et redonner du volume – réalisés par un médecin, sans chirurgie.",
+      "quelle": "ee38da42"
+    },
+    "kategorie.aesthetik-medizin.name": {
+      "text": "Médecine esthétique",
+      "quelle": "123e80c3"
+    },
     "kategorie.aesthetik.beschreibung": {
       "text": "Les traitements qui concernent l'apparence de vos dents : couleur, forme, position et harmonie avec votre visage.",
       "quelle": "021e0eb7"
@@ -17304,6 +17408,118 @@
     "kategorie.zahnersatz.name": {
       "text": "Prothèses dentaires",
       "quelle": "59942be3"
+    },
+    "kisystem.berater.anbieter": {
+      "text": "Anthropic PBC, traitement dans l'Union européenne",
+      "quelle": "9bca6c9c"
+    },
+    "kisystem.berater.daten": {
+      "text": "Votre question et l'historique de la conversation de cette session, ainsi que l'indication du site que vous avez sélectionné.",
+      "quelle": "3793aa42"
+    },
+    "kisystem.berater.grenzen": {
+      "text": "N'établit aucun diagnostic, n'évalue aucun symptôme, ne communique aucun tarif ferme et ne prend pas de rendez-vous.",
+      "quelle": "18d4a420"
+    },
+    "kisystem.berater.modell": {
+      "text": "Claude Sonnet 5",
+      "quelle": "ef8ef06d"
+    },
+    "kisystem.berater.name": {
+      "text": "Conseiller numérique (chat)",
+      "quelle": "01858a8c"
+    },
+    "kisystem.berater.nichtDaten": {
+      "text": "Ni nom, ni adresse e-mail, ni numéro de téléphone. L'historique n'est pas conservé de façon permanente ni associé à une personne.",
+      "quelle": "4230b54e"
+    },
+    "kisystem.berater.offenlegung": {
+      "text": "Vous échangez avec un système d'IA, pas avec une personne.",
+      "quelle": "e5e27258"
+    },
+    "kisystem.berater.wo": {
+      "text": "Sous forme de bouton en bas à droite de chaque page.",
+      "quelle": "5b6a54bf"
+    },
+    "kisystem.berater.zweck": {
+      "text": "Répond par écrit aux questions sur les traitements, les coûts, le déroulement des soins et les sites.",
+      "quelle": "44fc9e39"
+    },
+    "kisystem.laecheln-vorschau.anbieter": {
+      "text": "Google Ireland Limited",
+      "quelle": "1dfb0f3f"
+    },
+    "kisystem.laecheln-vorschau.daten": {
+      "text": "La photo que vous importez vous-même.",
+      "quelle": "cbc793a7"
+    },
+    "kisystem.laecheln-vorschau.grenzen": {
+      "text": "Aucune promesse de résultat. Une représentation avant-après générée utilisée comme visuel publicitaire serait illicite selon le § 11 du Heilmittelwerbegesetz (loi allemande sur la publicité des produits de santé) – l'aperçu est expressément signalé comme une illustration et n'est créé qu'à votre propre demande.",
+      "quelle": "03cc3bb6"
+    },
+    "kisystem.laecheln-vorschau.modell": {
+      "text": "Gemini 3 (analyse et génération d'images)",
+      "quelle": "c99125e6"
+    },
+    "kisystem.laecheln-vorschau.name": {
+      "text": "Aperçu du sourire",
+      "quelle": "50789e23"
+    },
+    "kisystem.laecheln-vorschau.nichtDaten": {
+      "text": "La photo n'est ni conservée ni utilisée pour l'entraînement. Sans votre consentement, elle n'est même pas transmise.",
+      "quelle": "4add867d"
+    },
+    "kisystem.laecheln-vorschau.offenlegung": {
+      "text": "L'image générée est une illustration produite par IA et non un résultat de traitement. Elle porte cette mention de façon visible dans l'image et sous forme lisible par machine dans le fichier.",
+      "quelle": "2c30da09"
+    },
+    "kisystem.laecheln-vorschau.wo": {
+      "text": "Sur la page « Aperçu du sourire », uniquement après un consentement explicite.",
+      "quelle": "92aca499"
+    },
+    "kisystem.laecheln-vorschau.zweck": {
+      "text": "Génère, à partir de votre propre photo, une illustration sans engagement de ce à quoi pourrait ressembler un traitement esthétique.",
+      "quelle": "a580cf85"
+    },
+    "kisystem.sprachberater.anbieter": {
+      "text": "ElevenLabs Inc.",
+      "quelle": "ad97a542"
+    },
+    "kisystem.sprachberater.daten": {
+      "text": "Votre voix pendant la durée de la conversation ainsi que le site sélectionné.",
+      "quelle": "adec830a"
+    },
+    "kisystem.sprachberater.grenzen": {
+      "text": "Ne pose aucun diagnostic, ne prend aucun rendez-vous et ne collecte aucune donnée personnelle.",
+      "quelle": "5243f159"
+    },
+    "kisystem.sprachberater.modell": {
+      "text": "ElevenLabs Conversational AI",
+      "quelle": "31e32058"
+    },
+    "kisystem.sprachberater.name": {
+      "text": "Conseiller vocal",
+      "quelle": "27ebbf07"
+    },
+    "kisystem.sprachberater.nichtDaten": {
+      "text": "Aucun enregistrement durable, aucune attribution à une personne. Le microphone n'est demandé qu'après votre clic et libéré dès que vous raccrochez.",
+      "quelle": "11a7a381"
+    },
+    "kisystem.sprachberater.offenlegung": {
+      "text": "Vous parlez à un système d'IA. La voix est synthétique.",
+      "quelle": "306ab73b"
+    },
+    "kisystem.sprachberater.wo": {
+      "text": "Sur la page « Conseil numérique ».",
+      "quelle": "f9855553"
+    },
+    "kisystem.sprachberater.zweck": {
+      "text": "Répond aux mêmes questions à l'oral, avec une voix synthétique en langage naturel.",
+      "quelle": "d59edc0b"
+    },
+    "kisystem.wegZumMenschen": {
+      "text": "Vous pouvez joindre une personne au numéro de téléphone de votre cabinet ou via le formulaire de contact.",
+      "quelle": "da76e889"
     },
     "leistung.aligner.dauer": {
       "text": "6 à 18 mois, selon la situation de départ",
@@ -17757,6 +17973,66 @@
       "text": "La tomographie volumique numérique montre la mâchoire, les dents et le trajet des nerfs en trois dimensions. Elle est utilisée lorsqu'une image bidimensionnelle ne suffit pas – par exemple avant la pose d'implants ou l'extraction des dents de sagesse.",
       "quelle": "e727bfca"
     },
+    "leistung.faltenbehandlung.faq.0.antwort": {
+      "text": "Oui. L'effet se dissipe de lui-même au bout de quelques mois. Sans nouvelle séance, vous retrouvez votre état initial.",
+      "quelle": "b4497e90"
+    },
+    "leistung.faltenbehandlung.faq.0.frage": {
+      "text": "Est-ce réversible ?",
+      "quelle": "022c123f"
+    },
+    "leistung.faltenbehandlung.faq.1.antwort": {
+      "text": "Parce que les mêmes muscles qui forment les rides travaillent aussi lors de la mastication et de la parole – et parce que les médecins d'ici ont l'anatomie faciale sous les yeux tous les jours.",
+      "quelle": "8ca1e2cd"
+    },
+    "leistung.faltenbehandlung.faq.1.frage": {
+      "text": "Pourquoi dans un cabinet dentaire ?",
+      "quelle": "be035eb6"
+    },
+    "leistung.faltenbehandlung.kurz": {
+      "text": "Lisser les rides d'expression – sans chirurgie, dans un cadre médical.",
+      "quelle": "4f56675e"
+    },
+    "leistung.faltenbehandlung.name": {
+      "text": "Traitement des rides",
+      "quelle": "50e160cb"
+    },
+    "leistung.faltenbehandlung.patientenfrage": {
+      "text": "Combien de temps dure un traitement des rides ?",
+      "quelle": "c0724d5b"
+    },
+    "leistung.faltenbehandlung.synonyme.0": {
+      "text": "Traitement des rides",
+      "quelle": "50e160cb"
+    },
+    "leistung.faltenbehandlung.synonyme.1": {
+      "text": "Botox",
+      "quelle": "daf32401"
+    },
+    "leistung.faltenbehandlung.synonyme.2": {
+      "text": "Toxine botulique",
+      "quelle": "4ff0db16"
+    },
+    "leistung.faltenbehandlung.synonyme.3": {
+      "text": "Lisser les rides",
+      "quelle": "9a289b19"
+    },
+    "leistung.faltenbehandlung.synonyme.4": {
+      "text": "Rides du front",
+      "quelle": "d576b30b"
+    },
+    "leistung.faltenbehandlung.synonyme.5": {
+      "text": "Pattes d'oie",
+      "quelle": "700562b9"
+    },
+    "leistung.faltenbehandlung.synonyme.6": {
+      "text": "Traitement des rides Berlin",
+      "quelle": "9335d5b5"
+    },
+    "leistung.faltenbehandlung.teaser": {
+      "text": "Les rides apparaissent là où le visage bouge. Un traitement à la toxine botulique détend de façon ciblée certains muscles ; le résultat dure quelques mois et il est réversible. Réalisé par les médecins du cabinet.",
+      "quelle": "45a7b814"
+    },
     "leistung.feste-zahnspange.dauer": {
       "text": "12 à 30 mois",
       "quelle": "48a9f2a3"
@@ -17868,6 +18144,98 @@
     "leistung.fissurenversiegelung.teaser": {
       "text": "Les faces masticatoires des molaires définitives présentent des sillons profonds que la brosse à dents n'atteint pas. Un fin vernis en résine les obture – sans douleur, sans fraise, en quelques minutes.",
       "quelle": "4bf84032"
+    },
+    "leistung.ganzheitliche-zahnmedizin.faq.0.antwort": {
+      "text": "Le regard est plus large : au-delà du diagnostic dentaire, on prend en compte l'articulation temporo-mandibulaire, la musculature, la posture et la tolérance aux matériaux. Le traitement lui-même repose sur la même médecine dentaire.",
+      "quelle": "0856ab8d"
+    },
+    "leistung.ganzheitliche-zahnmedizin.faq.0.frage": {
+      "text": "En quoi cela diffère-t-il d'un traitement classique ?",
+      "quelle": "99461dc6"
+    },
+    "leistung.ganzheitliche-zahnmedizin.kurz": {
+      "text": "Considérer la bouche en lien avec le reste du corps.",
+      "quelle": "fd8f6e71"
+    },
+    "leistung.ganzheitliche-zahnmedizin.name": {
+      "text": "Dentisterie holistique",
+      "quelle": "445b93bd"
+    },
+    "leistung.ganzheitliche-zahnmedizin.patientenfrage": {
+      "text": "Les dents peuvent-elles provoquer des troubles dans tout le corps ?",
+      "quelle": "92ae6225"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.0": {
+      "text": "dentisterie holistique",
+      "quelle": "0ab7165d"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.1": {
+      "text": "médecine dentaire holistique",
+      "quelle": "39dc7ca4"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.2": {
+      "text": "dentisterie biologique",
+      "quelle": "bcee11b2"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.3": {
+      "text": "dentisterie et ostéopathie",
+      "quelle": "34b2926e"
+    },
+    "leistung.ganzheitliche-zahnmedizin.synonyme.4": {
+      "text": "intolérance aux matériaux",
+      "quelle": "698c6de6"
+    },
+    "leistung.ganzheitliche-zahnmedizin.teaser": {
+      "text": "L'articulation temporo-mandibulaire, les dents, la musculature et la posture sont liées. La dentisterie holistique ne cherche pas toujours la cause là où siège la douleur – et collabore si besoin avec l'ostéopathie et la physiothérapie.",
+      "quelle": "016cfb20"
+    },
+    "leistung.hyaluron-lippen.faq.0.antwort": {
+      "text": "L'acide hyaluronique est résorbé par le corps et peut en outre être dissous à l'aide d'une enzyme. C'est pourquoi nous procédons par petites étapes.",
+      "quelle": "6612ae38"
+    },
+    "leistung.hyaluron-lippen.faq.0.frage": {
+      "text": "Que se passe-t-il si le résultat ne me plaît pas ?",
+      "quelle": "f6879876"
+    },
+    "leistung.hyaluron-lippen.kurz": {
+      "text": "Du volume avec une substance que le corps produit lui-même.",
+      "quelle": "661508c1"
+    },
+    "leistung.hyaluron-lippen.name": {
+      "text": "Traitement à l'acide hyaluronique",
+      "quelle": "8437c1ac"
+    },
+    "leistung.hyaluron-lippen.patientenfrage": {
+      "text": "À quel point un traitement des lèvres à l'acide hyaluronique paraît-il naturel ?",
+      "quelle": "ea178a51"
+    },
+    "leistung.hyaluron-lippen.synonyme.0": {
+      "text": "hyaluron",
+      "quelle": "4df61b75"
+    },
+    "leistung.hyaluron-lippen.synonyme.1": {
+      "text": "acide hyaluronique",
+      "quelle": "3acb32a0"
+    },
+    "leistung.hyaluron-lippen.synonyme.2": {
+      "text": "gonfler les lèvres",
+      "quelle": "c420ecba"
+    },
+    "leistung.hyaluron-lippen.synonyme.3": {
+      "text": "injection des lèvres",
+      "quelle": "ea406beb"
+    },
+    "leistung.hyaluron-lippen.synonyme.4": {
+      "text": "apport de volume",
+      "quelle": "ec5061b3"
+    },
+    "leistung.hyaluron-lippen.synonyme.5": {
+      "text": "sillon nasogénien",
+      "quelle": "f697ad7f"
+    },
+    "leistung.hyaluron-lippen.teaser": {
+      "text": "L'acide hyaluronique retient l'eau et redonne du volume – aux lèvres, aux joues, dans certaines rides. Le corps le résorbe au fil des mois, ce qui permet de construire le résultat par étapes.",
+      "quelle": "894d2d47"
     },
     "leistung.implantat-prophylaxe.dauer": {
       "text": "45 à 60 minutes",
@@ -18112,6 +18480,50 @@
     "leistung.keramik-kronen.teaser": {
       "text": "Une couronne enveloppe entièrement la dent abîmée et lui redonne sa forme et sa résistance. La céramique intégrale se rapproche beaucoup de la transparence des dents naturelles et ne nécessite pas d'armature métallique, qui apparaîtrait plus tard comme un liseré sombre.",
       "quelle": "665f8280"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.faq.0.antwort": {
+      "text": "Un appareil orthodontique déplace les dents, pas les mâchoires. Si la mâchoire elle-même est mal positionnée, il ne déplace les dents qu'à l'intérieur de cette position erronée – la cause subsiste.",
+      "quelle": "44e835ce"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.faq.0.frage": {
+      "text": "Pourquoi un appareil orthodontique ne suffit-il pas ?",
+      "quelle": "ac06ed29"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.kurz": {
+      "text": "Appareil orthodontique et opération des mâchoires combinés, lorsque les mâchoires sont mal positionnées l'une par rapport à l'autre.",
+      "quelle": "d1bb77a3"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.name": {
+      "text": "Traitement combiné orthodontico-chirurgical",
+      "quelle": "93342f6d"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.patientenfrage": {
+      "text": "Que se passe-t-il si les mâchoires supérieure et inférieure ne s'emboîtent pas ?",
+      "quelle": "a0e31805"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.0": {
+      "text": "traitement combiné orthodontico-chirurgical",
+      "quelle": "6a44098d"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.1": {
+      "text": "dysgnathie",
+      "quelle": "cb8cd3d3"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.2": {
+      "text": "opération malposition des mâchoires",
+      "quelle": "e78a3953"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.3": {
+      "text": "ostéotomie de repositionnement",
+      "quelle": "fa351c0e"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.synonyme.4": {
+      "text": "repositionnement des mâchoires",
+      "quelle": "2011598b"
+    },
+    "leistung.kieferchirurgische-kombinationstherapie.teaser": {
+      "text": "Lorsque la croissance des mâchoires est terminée, un décalage important ne peut plus être corrigé par un appareil orthodontique seul. L'orthodontie et la chirurgie maxillo-faciale suivent alors un plan commun – d'abord les dents en position, puis les mâchoires.",
+      "quelle": "8c7f838f"
     },
     "leistung.kinderprophylaxe.dauer": {
       "text": "30 minutes",
@@ -18548,6 +18960,54 @@
     "leistung.lachgas.teaser": {
       "text": "Le gaz hilarant s'inhale par un petit masque nasal et agit en quelques minutes. Vous restez éveillé et conscient, mais ressentez la situation comme beaucoup plus détendue. L'effet disparaît complètement peu après.",
       "quelle": "abf39f33"
+    },
+    "leistung.longevity.faq.0.antwort": {
+      "text": "Un concept qui organise les différents traitements : prophylaxie, dépistage précoce et préservation des dents, dans un ordre conçu pour des décennies.",
+      "quelle": "a856ee76"
+    },
+    "leistung.longevity.faq.0.frage": {
+      "text": "Est-ce un traitement ou un concept ?",
+      "quelle": "1cab28b8"
+    },
+    "leistung.longevity.kurz": {
+      "text": "Garder ses propres dents le plus longtemps possible – un plan, pas un espoir.",
+      "quelle": "01ef8051"
+    },
+    "leistung.longevity.name": {
+      "text": "Dentisterie de la longévité",
+      "quelle": "21727993"
+    },
+    "leistung.longevity.patientenfrage": {
+      "text": "Que puis-je faire pour garder mes propres dents jusqu'à un âge avancé ?",
+      "quelle": "0b3a7bdc"
+    },
+    "leistung.longevity.synonyme.0": {
+      "text": "Longevity",
+      "quelle": "17cfb748"
+    },
+    "leistung.longevity.synonyme.1": {
+      "text": "dentisterie de la longévité",
+      "quelle": "21727993"
+    },
+    "leistung.longevity.synonyme.2": {
+      "text": "santé dentaire avec l'âge",
+      "quelle": "3791dc08"
+    },
+    "leistung.longevity.synonyme.3": {
+      "text": "garder ses dents longtemps",
+      "quelle": "95ddfb08"
+    },
+    "leistung.longevity.synonyme.4": {
+      "text": "dentisterie préventive",
+      "quelle": "572cd47b"
+    },
+    "leistung.longevity.synonyme.5": {
+      "text": "dentisterie et espérance de vie",
+      "quelle": "9e34e6d5"
+    },
+    "leistung.longevity.teaser": {
+      "text": "Les dents vieillissent avec nous. Le concept Longevity considère la santé dentaire comme quelque chose qui se planifie sur des décennies : préserver la substance dentaire plutôt que la remplacer plus tard, et détecter tôt les inflammations, parce qu'elles ne restent pas dans la bouche.",
+      "quelle": "1e743507"
     },
     "leistung.parodontitis-behandlung.dauer": {
       "text": "2 à 4 rendez-vous plus le suivi",
@@ -19721,6 +20181,62 @@
       "text": "Un implant remplace la racine dentaire et porte une couronne, un bridge ou une prothèse. Il transmet les forces masticatoires à l'os de la mâchoire et le maintient ainsi actif – un avantage qu'aucune autre solution ne peut offrir. Les dents voisines restent intactes.",
       "quelle": "9072c1c0"
     },
+    "leistung.zahnsanierung.faq.0.antwort": {
+      "text": "Cela dépend du diagnostic et se planifie avant le premier rendez-vous. C'est précisément là qu'est la différence avec un traitement dent par dent : vous savez dès le départ combien de séances seront nécessaires.",
+      "quelle": "1deefb18"
+    },
+    "leistung.zahnsanierung.faq.0.frage": {
+      "text": "Combien de temps dure une réhabilitation dentaire ?",
+      "quelle": "b14bffe3"
+    },
+    "leistung.zahnsanierung.faq.1.antwort": {
+      "text": "Oui. Pour une réhabilitation étendue en particulier, beaucoup de choses peuvent être regroupées en une seule séance – voir Traitement sous anesthésie générale.",
+      "quelle": "04e35af5"
+    },
+    "leistung.zahnsanierung.faq.1.frage": {
+      "text": "Est-ce également possible sous anesthésie générale ?",
+      "quelle": "621f2a1a"
+    },
+    "leistung.zahnsanierung.kurz": {
+      "text": "Traiter plusieurs problèmes dentaires selon un plan établi – plutôt que dent par dent.",
+      "quelle": "f962ada8"
+    },
+    "leistung.zahnsanierung.name": {
+      "text": "Réhabilitation dentaire",
+      "quelle": "b3885bb8"
+    },
+    "leistung.zahnsanierung.patientenfrage": {
+      "text": "Peut-on traiter plusieurs dents abîmées en une seule fois ?",
+      "quelle": "4cd688fb"
+    },
+    "leistung.zahnsanierung.synonyme.0": {
+      "text": "Réhabilitation dentaire",
+      "quelle": "b3885bb8"
+    },
+    "leistung.zahnsanierung.synonyme.1": {
+      "text": "Réhabilitation de la dentition",
+      "quelle": "28163a60"
+    },
+    "leistung.zahnsanierung.synonyme.2": {
+      "text": "Réhabilitation complète",
+      "quelle": "714d7531"
+    },
+    "leistung.zahnsanierung.synonyme.3": {
+      "text": "Faire refaire toutes ses dents",
+      "quelle": "eefc726c"
+    },
+    "leistung.zahnsanierung.synonyme.4": {
+      "text": "Réhabilitation totale",
+      "quelle": "f37fdafc"
+    },
+    "leistung.zahnsanierung.synonyme.5": {
+      "text": "Réhabilitation dentaire sous anesthésie générale",
+      "quelle": "c82d306c"
+    },
+    "leistung.zahnsanierung.teaser": {
+      "text": "Lorsque plusieurs dents nécessitent des soins en même temps, l'ordre des étapes est déterminant. Une réhabilitation dentaire planifie toutes les étapes à l'avance : ce qui vient en premier, ce qui peut être regroupé en une séance, ce qui peut attendre – et ce que cela coûte au total.",
+      "quelle": "dab37f0e"
+    },
     "leistung.zahnschmuck.dauer": {
       "text": "20 minutes",
       "quelle": "94e96abd"
@@ -19844,6 +20360,50 @@
     "leistung.zahnvorsorge.teaser": {
       "text": "Lors du contrôle, nous examinons systématiquement les dents, les gencives et les muqueuses. Les caries débutantes et les inflammations des gencives peuvent ainsi être traitées tant que l'intervention reste simple – et l'inscription dans le carnet de bonus vous assure une prise en charge plus élevée par la caisse pour les prothèses dentaires.",
       "quelle": "8c341706"
+    },
+    "leistung.zornesfalte.faq.0.antwort": {
+      "text": "Oui. Le traitement porte sur un seul muscle, pas sur le visage. L'objectif est de retirer cet air sévère involontaire – pas la mimique.",
+      "quelle": "03db7408"
+    },
+    "leistung.zornesfalte.faq.0.frage": {
+      "text": "Est-ce que ma joie se verra encore ensuite ?",
+      "quelle": "4d6b5d9a"
+    },
+    "leistung.zornesfalte.kurz": {
+      "text": "La ride entre les sourcils, qui donne un air plus sévère que ce que l'on ressent.",
+      "quelle": "71ecd9ba"
+    },
+    "leistung.zornesfalte.name": {
+      "text": "Traiter la ride du lion",
+      "quelle": "502e5e5f"
+    },
+    "leistung.zornesfalte.patientenfrage": {
+      "text": "Peut-on traiter la ride entre les sourcils ?",
+      "quelle": "4bbad79a"
+    },
+    "leistung.zornesfalte.synonyme.0": {
+      "text": "Ride du lion",
+      "quelle": "6a8e2d82"
+    },
+    "leistung.zornesfalte.synonyme.1": {
+      "text": "Ride de la glabelle",
+      "quelle": "46213775"
+    },
+    "leistung.zornesfalte.synonyme.2": {
+      "text": "Ride entre les sourcils",
+      "quelle": "d9679ee8"
+    },
+    "leistung.zornesfalte.synonyme.3": {
+      "text": "Supprimer la ride du lion",
+      "quelle": "cc86b19d"
+    },
+    "leistung.zornesfalte.synonyme.4": {
+      "text": "Ride du front",
+      "quelle": "282153c7"
+    },
+    "leistung.zornesfalte.teaser": {
+      "text": "La ride du lion est due à un petit muscle situé entre les sourcils, qui se contracte lorsqu'on se concentre. S'il est détendu de manière ciblée, le regard perd son expression sévère sans que la mimique disparaisse.",
+      "quelle": "123941e1"
     },
     "person.abby-ferguson.abschnitte.0.titel": {
       "text": "Parcours d'Abby Ferguson",
@@ -26945,6 +27505,14 @@
       "text": "Où avez-vous rendez-vous ?",
       "quelle": "d86f774c"
     },
+    "ui.anfahrt.karteFuss": {
+      "text": "L'itinéraire est également décrit en mots ci-dessus – la carte est une proposition, pas une condition.",
+      "quelle": "bc706ed2"
+    },
+    "ui.anfahrt.karteMitRoute": {
+      "text": "Carte avec calcul d'itinéraire",
+      "quelle": "bf1bf5ae"
+    },
     "ui.anfahrt.mitDemAuto": {
       "text": "En voiture",
       "quelle": "7bc13792"
@@ -27008,6 +27576,30 @@
     "ui.berater.standortWaehlen": {
       "text": "Veuillez choisir un site",
       "quelle": "49db019a"
+    },
+    "ui.berater.vorschlagAnfahrt": {
+      "text": "Comment venir chez vous et puis-je me garer ?",
+      "quelle": "e274721d"
+    },
+    "ui.berater.vorschlagAngst": {
+      "text": "J'ai peur du dentiste – comment se déroule le premier rendez-vous ?",
+      "quelle": "d57902cc"
+    },
+    "ui.berater.vorschlagImplantate": {
+      "text": "Quels cabinets proposent des implants dentaires ?",
+      "quelle": "a47a446e"
+    },
+    "ui.berater.vorschlagLeistungenOrt": {
+      "text": "Quelles prestations propose KU64 {name} ?",
+      "quelle": "9b371709"
+    },
+    "ui.berater.vorschlagWelcherStandort": {
+      "text": "Quel cabinet me convient le mieux ?",
+      "quelle": "a1e64e7f"
+    },
+    "ui.berater.vorschlagZahnreinigung": {
+      "text": "Combien coûte un nettoyage dentaire professionnel ?",
+      "quelle": "82591451"
     },
     "ui.berater.wieDasFunktioniert": {
       "text": "Comment ça marche",
@@ -27104,6 +27696,38 @@
     "ui.beschw.dieseTexteStammenAus": {
       "text": "Ces textes proviennent de la documentation du cabinet. Ils ne remplacent pas un examen : la cause de vos symptômes ne peut être déterminée qu'au fauteuil.",
       "quelle": "94035059"
+    },
+    "ui.beschw.gruppeAussehen": {
+      "text": "Mes dents ne me plaisent pas",
+      "quelle": "37e2a862"
+    },
+    "ui.beschw.gruppeKinder": {
+      "text": "Chez les enfants, avec un appareil dentaire",
+      "quelle": "1c9561d8"
+    },
+    "ui.beschw.gruppeMund": {
+      "text": "Dans la bouche",
+      "quelle": "42530139"
+    },
+    "ui.beschw.gruppeSchmerzen": {
+      "text": "J'ai mal",
+      "quelle": "56cdca1c"
+    },
+    "ui.beschw.gruppeSonstiges": {
+      "text": "Autres",
+      "quelle": "9fe55eb4"
+    },
+    "ui.beschw.gruppeVorbeugen": {
+      "text": "Pour éviter d'en arriver là",
+      "quelle": "6f59e5cb"
+    },
+    "ui.beschw.gruppeZahnfleisch": {
+      "text": "Quelque chose ne va pas avec les gencives",
+      "quelle": "cb3245a2"
+    },
+    "ui.beschw.gruppeZahnsubstanz": {
+      "text": "Sur la dent elle-même",
+      "quelle": "eb8869c3"
     },
     "ui.beschw.kannAkutSein": {
       "text": "Peut être une urgence",
@@ -27485,6 +28109,334 @@
       "text": "<code>[Nom complet du cabinet / de l'organisme responsable, adresse, téléphone, e-mail, représentation légale]</code>",
       "quelle": "d46bdf35"
     },
+    "ui.faq.anamnese.datensicherheit.antwort": {
+      "text": "L'anamnèse se fait via Nelly Solutions, un prestataire spécialisé dans les cabinets dentaires, dont les serveurs sont situés dans l'UE. Les données sont transmises de façon chiffrée directement dans notre logiciel de gestion du cabinet. Ce site lui-même n'enregistre aucune donnée de santé – il vous redirige simplement vers le formulaire.",
+      "quelle": "a0485ff3"
+    },
+    "ui.faq.anamnese.datensicherheit.frage": {
+      "text": "Mes données de santé sont-elles en sécurité ?",
+      "quelle": "9395ab70"
+    },
+    "ui.faq.anamnese.dauer.antwort": {
+      "text": "Environ cinq à dix minutes. Vous pouvez faire une pause en cours de route et consulter tranquillement votre liste de médicaments – c'est bien plus simple chez vous que sur un porte-bloc dans la salle d'attente.",
+      "quelle": "4a2bf673"
+    },
+    "ui.faq.anamnese.dauer.frage": {
+      "text": "Combien de temps faut-il pour le remplir ?",
+      "quelle": "029b4465"
+    },
+    "ui.faq.anamnese.erneut.antwort": {
+      "text": "Lors des consultations suivantes, nous vous interrogeons sur les changements à intervalles plus espacés. Si quelque chose a changé chez vous – nouveaux médicaments, nouveau diagnostic, grossesse –, merci de nous le signaler dans tous les cas, y compris entre deux rendez-vous.",
+      "quelle": "01d000f7"
+    },
+    "ui.faq.anamnese.erneut.frage": {
+      "text": "J'ai déjà consulté chez vous – dois-je le remplir à nouveau ?",
+      "quelle": "0c93c29c"
+    },
+    "ui.faq.anamnese.mussDigital.antwort": {
+      "text": "Non. Si vous préférez remplir le formulaire sur papier, dites-le simplement lors du rendez-vous – nous avons bien sûr toujours les questionnaires sur place. Le numérique est une possibilité, pas une condition.",
+      "quelle": "95200809"
+    },
+    "ui.faq.anamnese.mussDigital.frage": {
+      "text": "Suis-je obligé de le faire en ligne ?",
+      "quelle": "a871aae6"
+    },
+    "ui.faq.anamnese.wasIstDas.antwort": {
+      "text": "Le questionnaire médical recense vos antécédents médicaux, vos médicaments, vos allergies et vos intolérances. Ce n'est pas une formalité : les anticoagulants, les bisphosphonates, les maladies cardiaques ou une grossesse changent concrètement la manière dont nous pouvons traiter et avec quels produits. Sans ces informations, nous ne pouvons pas réaliser certaines interventions en toute sécurité.",
+      "quelle": "c0a1ff87"
+    },
+    "ui.faq.anamnese.wasIstDas.frage": {
+      "text": "Qu'est-ce qu'un questionnaire médical et pourquoi en avez-vous besoin ?",
+      "quelle": "2e356b17"
+    },
+    "ui.faq.beratung.aufzeichnung.antwort": {
+      "text": "Pendant la durée de la conversation, votre voix est traitée afin de générer la réponse. Aucun enregistrement durable n'a lieu et nous n'associons la conversation à aucune personne. Vous pouvez raccrocher à tout moment.",
+      "quelle": "2f6210fa"
+    },
+    "ui.faq.beratung.aufzeichnung.frage": {
+      "text": "La conversation est-elle enregistrée ?",
+      "quelle": "bd7f2bde"
+    },
+    "ui.faq.beratung.ersetztPraxis.antwort": {
+      "text": "Non. Le conseiller vocal explique les prestations, les déroulements et les fourchettes de coûts. Il ne pose aucun diagnostic et n'évalue aucun symptôme. Tout ce qui concerne votre cas précis relève d'un examen en personne.",
+      "quelle": "6fc3098d"
+    },
+    "ui.faq.beratung.ersetztPraxis.frage": {
+      "text": "Cela remplace-t-il une consultation au cabinet ?",
+      "quelle": "f3b6c90b"
+    },
+    "ui.faq.beratung.lieberSchreiben.antwort": {
+      "text": "Utilisez alors le chat en bas à droite – sur le fond, il répond aux mêmes questions. Certaines personnes préfèrent taper, d'autres parler ; les deux se valent.",
+      "quelle": "6006229b"
+    },
+    "ui.faq.beratung.lieberSchreiben.frage": {
+      "text": "Et si je préfère écrire ?",
+      "quelle": "d6c62829"
+    },
+    "ui.faq.beratung.mensch.antwort": {
+      "text": "Non. Vous parlez à un système d'IA et la voix est générée de façon synthétique. Pour joindre une personne, appelez le numéro de téléphone de votre site.",
+      "quelle": "e208ebef"
+    },
+    "ui.faq.beratung.mensch.frage": {
+      "text": "Est-ce que je parle à un humain ?",
+      "quelle": "d4f7b34d"
+    },
+    "ui.faq.beratung.terminBuchen.antwort": {
+      "text": "Non, le conseiller ne prend pas de rendez-vous et n'enregistre aucune donnée personnelle. Il vous renvoie vers la page de rendez-vous de votre cabinet ou vers notre numéro de téléphone.",
+      "quelle": "397cb011"
+    },
+    "ui.faq.beratung.terminBuchen.frage": {
+      "text": "Puis-je prendre rendez-vous par ce biais ?",
+      "quelle": "0457237b"
+    },
+    "ui.faq.haeufigGefragt": {
+      "text": "Fréquemment demandé",
+      "quelle": "dd8fe5e6"
+    },
+    "ui.faq.laecheln.fotoGespeichert.antwort": {
+      "text": "Non. Votre photo est traitée uniquement en mémoire vive pendant la durée du calcul, puis supprimée. Elle n'est pas enregistrée sur un disque dur, ni inscrite dans une base de données, ni utilisée pour l'entraînement de modèles d'IA. Votre adresse e-mail ne nous sert elle aussi qu'à cet unique envoi.",
+      "quelle": "87cf7034"
+    },
+    "ui.faq.laecheln.fotoGespeichert.frage": {
+      "text": "Ma photo est-elle enregistrée ?",
+      "quelle": "b6269ef6"
+    },
+    "ui.faq.laecheln.fuerKind.antwort": {
+      "text": "Non. L'aperçu est réservé aux personnes majeures et prévu uniquement pour une photo de vous-même. Merci de ne pas téléverser de photos d'autres personnes.",
+      "quelle": "c372de89"
+    },
+    "ui.faq.laecheln.fuerKind.frage": {
+      "text": "Puis-je le faire pour mon enfant ?",
+      "quelle": "19b47187"
+    },
+    "ui.faq.laecheln.versprechen.antwort": {
+      "text": "Non, expressément pas. L'aperçu est une illustration sans engagement de ce à quoi un sourire pourrait ressembler. Ce qui est réellement possible dans votre cas dépend de la position des dents, de la substance dentaire, de la gencive et des rapports entre les mâchoires – cela ne peut être évalué que lors d'un examen en personne.",
+      "quelle": "56c82101"
+    },
+    "ui.faq.laecheln.versprechen.frage": {
+      "text": "Le résultat est-il une promesse de traitement ?",
+      "quelle": "954a072f"
+    },
+    "ui.faq.laecheln.welchesFoto.antwort": {
+      "text": "Un portrait de face avec un bon éclairage uniforme, sur lequel vous souriez et où les dents du haut sont visibles. Pas de fort contre-jour, pas de filtres d'embellissement et si possible sans masque ni main devant la bouche.",
+      "quelle": "0a4f9e3e"
+    },
+    "ui.faq.laecheln.welchesFoto.frage": {
+      "text": "Quelle photo dois-je fournir ?",
+      "quelle": "e7d840a1"
+    },
+    "ui.faq.laecheln.werSiehtEs.antwort": {
+      "text": "Pour le calcul, l'image est transmise à notre prestataire d'IA et traitée chez lui. Personne de notre équipe ne voit votre photo, sauf si vous nous la montrez vous-même lors du rendez-vous. Les détails figurent dans notre politique de confidentialité.",
+      "quelle": "8392db7b"
+    },
+    "ui.faq.laecheln.werSiehtEs.frage": {
+      "text": "Qui voit ma photo ?",
+      "quelle": "48d9b738"
+    },
+    "ui.faq.notfall.ausgeschlagenerZahn.antwort": {
+      "text": "Ne touchez la dent que par la couronne, jamais par la racine, et ne la nettoyez ni ne la frottez. Placez-la aussitôt dans une boîte de conservation dentaire ; à défaut, dans du lait UHT froid, sinon dans de la salive. Pas dans l'eau. Puis venez chez nous au plus vite – idéalement dans la première heure. Chez les enfants, cela vaut aussi pour les dents de lait : apportez la dent, nous déciderons ensuite.",
+      "quelle": "ed40a10c"
+    },
+    "ui.faq.notfall.ausgeschlagenerZahn.frage": {
+      "text": "Que faire d'une dent expulsée ?",
+      "quelle": "fb976f87"
+    },
+    "ui.faq.notfall.echterNotfall.antwort": {
+      "text": "En cas de douleurs fortes et incontrôlables, de gonflement du visage ou du cou, de fièvre accompagnée de maux de dents, de saignement qui ne s'arrête pas, et en cas de dent expulsée ou cassée après un accident. En cas de difficultés à respirer ou à avaler, chaque minute compte – appelez alors immédiatement le 112.",
+      "quelle": "34075c19"
+    },
+    "ui.faq.notfall.echterNotfall.frage": {
+      "text": "Quand un problème dentaire est-il une véritable urgence ?",
+      "quelle": "62a436af"
+    },
+    "ui.faq.notfall.fuellungVerloren.antwort": {
+      "text": "En général pas dangereux dans l'immédiat, mais cela doit être traité rapidement pour éviter que la dent se casse ou qu'une carie se forme. Conservez la couronne et apportez-la – souvent, elle peut être remise en place. En attendant, mâchez de l'autre côté.",
+      "quelle": "824c93b7"
+    },
+    "ui.faq.notfall.fuellungVerloren.frage": {
+      "text": "Une obturation ou une couronne est tombée – est-ce urgent ?",
+      "quelle": "f5b185b4"
+    },
+    "ui.faq.notfall.nachtsUndFeiertags.antwort": {
+      "text": "Plusieurs de nos cabinets sont ouverts sept jours par semaine, y compris le week-end. En dehors de nos heures de consultation, le service dentaire d'urgence de la Kassenzahnärztliche Vereinigung prend le relais – les numéros figurent ci-dessous.",
+      "quelle": "5c7ea1a6"
+    },
+    "ui.faq.notfall.nachtsUndFeiertags.frage": {
+      "text": "Qui vous aide la nuit et les jours fériés ?",
+      "quelle": "613e5818"
+    },
+    "ui.faq.notfall.schmerzenBisTermin.antwort": {
+      "text": "Appliquez du froid depuis l'extérieur avec un linge entre les deux, jamais directement sur la peau, et par intervalles. Gardez la tête surélevée, également pour dormir. Les antalgiques sans ordonnance comme l'ibuprofène peuvent aider – uniquement selon la notice et pas si vous les tolérez mal. Ne posez jamais un comprimé directement sur la gencive, cela brûle la muqueuse. Pas de chaleur, pas d'alcool.",
+      "quelle": "78f295e7"
+    },
+    "ui.faq.notfall.schmerzenBisTermin.frage": {
+      "text": "Qu'est-ce qui soulage la douleur jusqu'au rendez-vous ?",
+      "quelle": "a4d4a238"
+    },
+    "ui.faq.ort.barrierefrei.antwortJa": {
+      "text": "Oui, KU64 {name} est accessible aux personnes à mobilité réduite. N'hésitez pas à nous contacter à l'avance si vous avez besoin d'une aide particulière – nous préparerons alors tout le nécessaire.",
+      "quelle": "39c232d8"
+    },
+    "ui.faq.ort.barrierefrei.antwortRuecksprache": {
+      "text": "Merci de nous contacter à l'avance, nous trouverons ensemble une solution.",
+      "quelle": "2a539009"
+    },
+    "ui.faq.ort.barrierefrei.frage": {
+      "text": "Le cabinet de {ort} est-il accessible aux personnes à mobilité réduite ?",
+      "quelle": "fcb7b829"
+    },
+    "ui.faq.ort.leistungen.antwort": {
+      "text": "Dans ce cabinet, nous proposons {anzahl} prestations issues de {bereiche} spécialités, dont {beispiele}. Toutes les prestations ne sont pas proposées dans chaque cabinet KU64 – cette page présente exclusivement l'offre de {ort}.",
+      "quelle": "b12112fe"
+    },
+    "ui.faq.ort.leistungen.frage": {
+      "text": "Quelles prestations propose KU64 {name} ?",
+      "quelle": "7db7be71"
+    },
+    "ui.faq.ort.neuePatienten.antwort": {
+      "text": "Oui. Vous pouvez prendre rendez-vous en ligne ou nous appeler. Pour le premier rendez-vous, vous remplissez le questionnaire médical tranquillement à l'avance, au format numérique – cela fait gagner du temps en salle d'attente.",
+      "quelle": "f9129973"
+    },
+    "ui.faq.ort.neuePatienten.frage": {
+      "text": "Acceptez-vous de nouveaux patients et patientes ?",
+      "quelle": "ffbb4853"
+    },
+    "ui.faq.ort.oepnv.antwort": {
+      "text": "{oepnv}. Le cabinet se trouve {strasse}, {plz} {ort}.",
+      "quelle": "b4ad4ff9"
+    },
+    "ui.faq.ort.oepnv.frage": {
+      "text": "Comment rejoindre KU64 {name} en transports en commun ?",
+      "quelle": "d08ed9c8"
+    },
+    "ui.faq.ort.parken.frage": {
+      "text": "Puis-je me garer à KU64 {name} ?",
+      "quelle": "45a9f4c6"
+    },
+    "ui.faq.ort.titel": {
+      "text": "Questions sur KU64 {name}",
+      "quelle": "b0f57658"
+    },
+    "ui.faq.ortTermine.anfahrt.antwort": {
+      "text": "{oepnv}. {parken} L'adresse est {strasse}, {plz} {ort}.",
+      "quelle": "749735b0"
+    },
+    "ui.faq.ortTermine.anfahrt.frage": {
+      "text": "Comment me rendre à KU64 {name} ?",
+      "quelle": "a59fe310"
+    },
+    "ui.faq.ortTermine.bisWann.antwort": {
+      "text": "{zeiten}. Les journées plus courtes sont fixées ainsi – un rendez-vous en soirée n'y est pas possible, mais il l'est les autres jours.",
+      "quelle": "f861cdff"
+    },
+    "ui.faq.ortTermine.bisWann.frage": {
+      "text": "Jusqu'à quelle heure puis-je obtenir un rendez-vous à {ort} ?",
+      "quelle": "92f3f582"
+    },
+    "ui.faq.ortTermine.bisWannTag": {
+      "text": "{tag} jusqu'à {bis}",
+      "quelle": "daf1fe5a"
+    },
+    "ui.faq.ortTermine.wochenende.antwort": {
+      "text": "{tage}, nous recevons sur rendez-vous. Cela signifie : pas sans rendez-vous, mais c'est tout à fait possible – appelez le {telefon}, nous verrons cela ensemble.",
+      "quelle": "2d125d8c"
+    },
+    "ui.faq.ortTermine.wochenende.frage": {
+      "text": "Puis-je obtenir un rendez-vous le week-end chez KU64 {name} ?",
+      "quelle": "be85c5e1"
+    },
+    "ui.faq.ortTermine.zweiKalender.antwort": {
+      "text": "La médecine dentaire et l'orthodontie sont assurées ici par des équipes distinctes et disposent donc chacune de son propre agenda : {kalender}. Choisissez l'agenda qui correspond à votre demande – en cas de doute, appelez-nous, nous vous orienterons.",
+      "quelle": "02446bc5"
+    },
+    "ui.faq.ortTermine.zweiKalender.frage": {
+      "text": "Pourquoi y a-t-il deux agendas chez KU64 {name} ?",
+      "quelle": "0a0b38d3"
+    },
+    "ui.faq.start.akuteSchmerzen.antwort": {
+      "text": "Appelez le site le plus proche de chez vous. Plusieurs de nos sites sont ouverts sept jours sur sept, y compris le week-end. En cas de fortes douleurs, dites-le directement au téléphone – nous gardons des rendez-vous disponibles pour les cas urgents.",
+      "quelle": "44783114"
+    },
+    "ui.faq.start.akuteSchmerzen.frage": {
+      "text": "Que faire en cas de douleurs dentaires aiguës ?",
+      "quelle": "57271e23"
+    },
+    "ui.faq.start.alleLeistungen.antwort": {
+      "text": "Non. Le cabinet principal du Kurfürstendamm propose l'éventail le plus large, y compris l'anesthésie générale, l'orthodontie et le All-on-4. Potsdam couvre l'ensemble des prestations standard, y compris l'implantologie et la chirurgie orale. Sur chaque page de site, vous ne voyez que ce qui y est réellement proposé – et où vous adresser pour tout le reste.",
+      "quelle": "aabdb112"
+    },
+    "ui.faq.start.alleLeistungen.frage": {
+      "text": "Chaque site propose-t-il toutes les prestations ?",
+      "quelle": "3cc51ba9"
+    },
+    "ui.faq.start.terminBuchen.antwort": {
+      "text": "En ligne via la page de rendez-vous de votre site ou par téléphone. Avant la première visite, vous remplissez le questionnaire médical au préalable sous forme numérique – cela fait gagner du temps sur place et vous n'avez rien à remplir sur papier dans la salle d'attente.",
+      "quelle": "8f41023a"
+    },
+    "ui.faq.start.terminBuchen.frage": {
+      "text": "Comment prendre rendez-vous ?",
+      "quelle": "9453ce84"
+    },
+    "ui.faq.start.wieVieleStandorte.antwort": {
+      "text": "KU64 est présent sur {anzahl} sites : {standorte}. L'offre de soins varie selon le site.",
+      "quelle": "3f330993"
+    },
+    "ui.faq.start.wieVieleStandorte.frage": {
+      "text": "Combien y a-t-il de sites KU64 ?",
+      "quelle": "61adf62f"
+    },
+    "ui.faq.termine.absagen.antwort": {
+      "text": "Oui. Merci d'annuler au plus tard 24 heures à l'avance – par téléphone ou via le lien dans votre e-mail de confirmation. Ainsi, quelqu'un d'autre peut obtenir ce créneau, et dans un cabinet complet, c'est là la véritable raison de ce délai.",
+      "quelle": "e5f43628"
+    },
+    "ui.faq.termine.absagen.frage": {
+      "text": "Puis-je annuler ou reporter un rendez-vous ?",
+      "quelle": "08263fc5"
+    },
+    "ui.faq.termine.buchen.antwort": {
+      "text": "En ligne via l'agenda de votre cabinet ou par téléphone. Les deux mènent au même agenda – il n'y a pas de contingents séparés. Pour la réservation en ligne, quelques informations suffisent ; vous remplissez ensuite le questionnaire médical par voie numérique.",
+      "quelle": "cc1b1444"
+    },
+    "ui.faq.termine.buchen.frage": {
+      "text": "Comment prendre rendez-vous chez KU64 ?",
+      "quelle": "7ef6d218"
+    },
+    "ui.faq.termine.doctolib.antwort": {
+      "text": "L'agenda est hébergé chez Doctolib, un service indépendant. Nous ne l'intégrons volontairement pas à cette page – ainsi, la simple lecture ne transmet aucune donnée à des tiers. Ce n'est qu'à l'ouverture de l'agenda que votre adresse IP est transmise et que des cookies sont déposés.",
+      "quelle": "129701dc"
+    },
+    "ui.faq.termine.doctolib.frage": {
+      "text": "Pourquoi suis-je redirigé vers Doctolib ?",
+      "quelle": "524d44b1"
+    },
+    "ui.faq.termine.mitbringen.antwort": {
+      "text": "Votre carte d'assuré, le cas échéant votre carnet de bonus et votre carte d'allergie, ainsi qu'une liste de vos médicaments. Sont surtout importants les anticoagulants, les bisphosphonates, une prothèse valvulaire cardiaque, le diabète, une grossesse et les allergies aux anesthésiques – ces informations modifient le traitement.",
+      "quelle": "0486f9dd"
+    },
+    "ui.faq.termine.mitbringen.frage": {
+      "text": "Que dois-je apporter au premier rendez-vous ?",
+      "quelle": "b900d32c"
+    },
+    "ui.faq.termine.ohnePortal.antwort": {
+      "text": "Oui, à tout moment par téléphone ou par e-mail. La réservation en ligne est une possibilité, pas une condition – le numéro de votre cabinet figure sur sa page de rendez-vous.",
+      "quelle": "1f95a699"
+    },
+    "ui.faq.termine.ohnePortal.frage": {
+      "text": "Puis-je aussi obtenir un rendez-vous sans portail en ligne ?",
+      "quelle": "21c170b7"
+    },
+    "ui.faq.termine.starkeSchmerzen.antwort": {
+      "text": "Appelez le cabinet au lieu de réserver en ligne. Dans chaque cabinet, nous gardons des créneaux libres pour les patientes et patients souffrant de douleurs et nous pouvons évaluer l'urgence par téléphone. En dehors des heures de consultation, la page d'urgence vous aide.",
+      "quelle": "3e9141d3"
+    },
+    "ui.faq.termine.starkeSchmerzen.frage": {
+      "text": "Que faire en cas de fortes douleurs ?",
+      "quelle": "437dfbd8"
+    },
+    "ui.faq.titel": {
+      "text": "Questions fréquentes",
+      "quelle": "5e46dd30"
+    },
     "ui.fehler.alleBehandlungen": {
       "text": "Toutes les prestations",
       "quelle": "ca53ed21"
@@ -27853,6 +28805,10 @@
       "text": "Quels systèmes d'IA fonctionnent sur ce site, pour quoi faire, avec quelles données – et comment joindre une personne à la place.",
       "quelle": "1d8aad5c"
     },
+    "ui.kitrans.anbieter": {
+      "text": "Fournisseur",
+      "quelle": "e9a87779"
+    },
     "ui.kitrans.beidesBeantwortetEinMensch": {
       "text": ". Une personne répond dans les deux cas.",
       "quelle": "78ae7cd0"
@@ -27860,6 +28816,10 @@
     "ui.kitrans.dasIstKeineAusweichloesung": {
       "text": "Ce n'est pas une solution de repli, mais la voie normale. Appelez le cabinet le plus proche de chez vous :",
       "quelle": "e6b369a3"
+    },
+    "ui.kitrans.datenschutzerklaerung": {
+      "text": "Politique de confidentialité",
+      "quelle": "24f50bb8"
     },
     "ui.kitrans.dieseAngabenSetzenArtikel": {
       "text": "Ces informations mettent en œuvre l'article 50 du règlement (UE) 2024/1689 sur l'intelligence artificielle. Cet article exige trois choses : toute personne interagissant avec un système d'IA doit en être informée au plus tard lors de la première interaction. Les contenus générés doivent être signalés comme tels de façon lisible par machine. Et les images de personnes modifiées doivent aussi porter une mention visible.",
@@ -27876,6 +28836,22 @@
     "ui.kitrans.fuerDieLaechelnVorschau": {
       "text": "Pour l'aperçu du sourire, cela signifie concrètement : la mention figure dans un bandeau sur l'image et aussi dans le fichier image lui-même, sous forme de donnée IPTC",
       "quelle": "3e47e62f"
+    },
+    "ui.kitrans.grenzen": {
+      "text": "Limites",
+      "quelle": "45aa6f50"
+    },
+    "ui.kitrans.kontaktformular": {
+      "text": "Formulaire de contact",
+      "quelle": "ba3c77a3"
+    },
+    "ui.kitrans.marke": {
+      "text": "Transparence",
+      "quelle": "ac69c45f"
+    },
+    "ui.kitrans.modell": {
+      "text": "Modèle",
+      "quelle": "0ecd2422"
     },
     "ui.kitrans.oderSchriftlichUeberDas": {
       "text": "Ou par écrit via le",
@@ -28417,6 +29393,10 @@
       "text": "Retour à {name}",
       "quelle": "a6323cb6"
     },
+    "ui.liste.und": {
+      "text": "et",
+      "quelle": "5ad4af9a"
+    },
     "ui.nav.andererStandort": {
       "text": "Un autre cabinet",
       "quelle": "7def3c51"
@@ -28677,6 +29657,14 @@
       "text": "Transports en commun",
       "quelle": "d47a542c"
     },
+    "ui.ort.rundgang": {
+      "text": "Visite à 360° du cabinet",
+      "quelle": "9ca69598"
+    },
+    "ui.ort.rundgangFuss": {
+      "text": "Vous vous déplacez librement dans les locaux. La visite ne se charge qu'au moment où vous la lancez.",
+      "quelle": "86b6e0d3"
+    },
     "ui.ort.terminBuchen": {
       "text": "Prendre rendez-vous",
       "quelle": "57146cdd"
@@ -28756,6 +29744,38 @@
     "ui.recht.vorrangTitel": {
       "text": "La version allemande fait foi",
       "quelle": "a7904df0"
+    },
+    "ui.smile.augenbraue": {
+      "text": "Gratuit et sans engagement",
+      "quelle": "b3a9e6f9"
+    },
+    "ui.smile.hinweis": {
+      "text": "L'aperçu est généré par une IA. Il ne constitue ni un plan de traitement ni une promesse de résultat. Votre photo est traitée uniquement pour l'aperçu et n'est pas utilisée pour l'entraînement.",
+      "quelle": "6f4837f9"
+    },
+    "ui.smile.knopf": {
+      "text": "Importer une photo et essayer un nouveau sourire",
+      "quelle": "14e914e9"
+    },
+    "ui.smile.schritt1": {
+      "text": "Une photo de face, à la lumière du jour, dents visibles.",
+      "quelle": "b0567163"
+    },
+    "ui.smile.schritt2": {
+      "text": "Vous choisissez ce qui doit changer – couleur, forme, position.",
+      "quelle": "fc1bceff"
+    },
+    "ui.smile.schritt3": {
+      "text": "Vous recevez l'aperçu par e-mail et pouvez l'apporter avec vous.",
+      "quelle": "61a5ac46"
+    },
+    "ui.smile.titel": {
+      "text": "Voyez votre nouveau sourire avant de vous décider",
+      "quelle": "f63d990e"
+    },
+    "ui.smile.vorspann": {
+      "text": "Importez une photo et essayez l'aspect que pourraient avoir vos dents après un traitement. Vous en discutez ensuite avec nous à {ort} – ou vous gardez le résultat pour vous.",
+      "quelle": "be1d8cc4"
     },
     "ui.sprache.hinweisSchliessen": {
       "text": "Fermer l'avis",
