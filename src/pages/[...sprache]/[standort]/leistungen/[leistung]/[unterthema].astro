@@ -72,7 +72,7 @@ const {
 
 const standort = daten.standort(standortSlug!)!;
 const leistung = daten.leistungen.find((l) => l.slug === leistungSlug)!;
-const thema = unterthema(leistungSlug!, unterthemaSlug!)!;
+const thema = unterthema(leistungSlug!, unterthemaSlug!, daten.sprache)!;
 
 const leistungPfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
 const pfad = `${leistungPfad}${thema.slug}/`;

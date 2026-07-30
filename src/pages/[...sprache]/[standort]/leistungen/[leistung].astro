@@ -73,8 +73,8 @@ const pfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
  * Redaktionsaufgabe (Kapitel 6 des Berichts). Sie wird nicht dadurch
  * gelöst, dass hier fünf Kopien desselben Absatzes entstehen.
  */
-const eigenerText = langtext(leistung.slug);
-const themen = unterthemen(leistung.slug);
+const eigenerText = langtext(leistung.slug, daten.sprache);
+const themen = unterthemen(leistung.slug, daten.sprache);
 const ortsname = standort.ortsname;
 
 /* Titel und Description tragen den Ortsbezug – das ist der Unterschied

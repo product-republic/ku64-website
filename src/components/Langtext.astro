@@ -104,10 +104,14 @@ const t = texte(sprache);
  * Abschnitt ist deutsch. Sobald die Übersetzung vorliegt, fällt das Attribut
  * weg, weil `sprache` dann zur Sprache des Textes passt.
  *
- * Das ist eine Notlösung mit Ansage, keine Erledigung. Die Übersetzung des
- * Korpus steht als eigene Aufgabe.
+ * Sobald eine Übersetzung vorliegt UND strukturell zum Original passt, meldet
+ * `lib/langtexte.ts` `uebersetzt: true`, und das Attribut fällt weg. Passt sie
+ * nicht – ein Abschnitt fehlt –, gilt weiter Deutsch samt Auszeichnung. Eine
+ * halbe Übersetzung ist ein stiller Textverlust, und der ist schlimmer als
+ * eine sichtbar fremde Sprache.
  */
-const textSpracheAbweichend = sprache !== 'de';
+const textSpracheAbweichend =
+  sprache !== 'de' && (langtext as { uebersetzt?: boolean }).uebersetzt !== true;
 
 /**
  * Eine Kennung je Abschnitt, aus seiner Überschrift.

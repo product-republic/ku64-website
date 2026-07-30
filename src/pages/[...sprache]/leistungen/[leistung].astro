@@ -50,8 +50,8 @@ const beschwerden = beschwerdenZuBehandlung(leistung.slug);
  * fünf Adressen lagen, die alle hierher verweisen. Genau der Fehler, den die
  * Wiederherstellung beheben soll, nur eine Ebene höher.
  */
-const eigenerText = langtext(leistung.slug);
-const themen = unterthemen(leistung.slug);
+const eigenerText = langtext(leistung.slug, daten.sprache);
+const themen = unterthemen(leistung.slug, daten.sprache);
 
 /*
  * Wer die Behandlung durchführt.

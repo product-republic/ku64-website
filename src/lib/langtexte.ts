@@ -26,6 +26,31 @@
  */
 
 import daten from '../inhalte/langtexte.json';
+import type { Sprache } from '../i18n/sprachen';
+
+/*
+ * Die Sprachfassungen des Korpus.
+ *
+ * Der deutsche Text ist die Quelle und liegt in `langtexte.json`. Die
+ * Übersetzungen liegen daneben, mit denselben Schlüsseln – nicht als
+ * Sprachebene INNERHALB der Datei.
+ *
+ * Der Grund ist die Größe: Der Korpus sind 114.894 Wörter je Sprache. In
+ * einer Datei wären das 3,5 Megabyte, die jede Seite beim Bauen einliest,
+ * auch die deutschen. Getrennt lädt Astro nur, was gebraucht wird.
+ *
+ * Der zweite Grund ist die Arbeitsteilung: Wer die deutsche Fassung
+ * korrigiert, soll die Übersetzungen nicht anfassen müssen – und `git diff`
+ * soll zeigen, welche Sprache sich geändert hat.
+ *
+ * Fehlt eine Fassung, gilt Deutsch. Das ist eine bewusste Entscheidung und
+ * keine Nachlässigkeit: Ein leerer Abschnitt wäre schlechter als ein
+ * deutscher, den man wenigstens durch einen Übersetzer schicken kann. Damit
+ * die Seite darüber nicht schwindelt, trägt der Block in diesem Fall
+ * `lang="de"` – siehe `Langtext.astro`.
+ */
+import * as en from '../inhalte/langtexte-en.json';
+import * as fr from '../inhalte/langtexte-fr.json';
 
 export type BlockArt = 'p' | 'li' | 'zeile';
 
@@ -63,10 +88,81 @@ export interface NeuesThema extends Langtext {
   ankerVorher: string | null;
 }
 
-const LEISTUNGEN = daten.leistungen as unknown as Record<string, Langtext>;
-const UNTERTHEMEN = daten.unterthemen as unknown as Record<string, Unterthema>;
-const NEUE = daten.neu as unknown as Record<string, NeuesThema>;
-const KATEGORIEN = (daten as { kategorien?: Record<string, Langtext> }).kategorien ?? {};
+type Bestandsdatei = {
+  leistungen?: Record<string, Langtext>;
+  unterthemen?: Record<string, Unterthema>;
+  kategorien?: Record<string, Langtext>;
+  neu?: Record<string, NeuesThema>;
+};
+
+const DEUTSCH = daten as unknown as Bestandsdatei;
+
+/*
+ * Die Übersetzungen als Nachschlagewerk, nach Bereich und Schlüssel.
+ *
+ * `import * as` liefert bei JSON ein Modulobjekt mit `default`; welche Form
+ * es hat, hängt an der Bündelung. Deshalb hier einmal auflösen und danach
+ * überall dieselbe Struktur.
+ */
+const auspacken = (m: unknown): Bestandsdatei => {
+  const o = m as { default?: Bestandsdatei } & Bestandsdatei;
+  return o.default ?? o;
+};
+
+const FASSUNGEN: Record<string, Bestandsdatei> = {
+  de: DEUTSCH,
+  en: auspacken(en),
+  fr: auspacken(fr),
+};
+
+const LEISTUNGEN = DEUTSCH.leistungen ?? {};
+const UNTERTHEMEN = DEUTSCH.unterthemen ?? {};
+const NEUE = DEUTSCH.neu ?? {};
+const KATEGORIEN = DEUTSCH.kategorien ?? {};
+
+/**
+ * Ein Eintrag in der gewünschten Sprache – oder auf Deutsch.
+ *
+ * Zusammengesetzt und nicht ersetzt: `herkunft` und `woerter` beziehen sich
+ * auf den deutschen Ursprung und bleiben die des Originals. Eine Übersetzung
+ * hat keine eigene Herkunft; sie hat dieselbe.
+ */
+function inSprache<T extends Langtext>(
+  bereich: keyof Bestandsdatei,
+  schluessel: string,
+  deutsch: T | undefined,
+  sprache: Sprache,
+): (T & { uebersetzt: boolean }) | undefined {
+  if (!deutsch) return undefined;
+  if (sprache === 'de') return { ...deutsch, uebersetzt: true };
+
+  const fassung = FASSUNGEN[sprache]?.[bereich] as Record<string, Langtext> | undefined;
+  const u = fassung?.[schluessel];
+
+  /*
+   * Eine Übersetzung gilt nur, wenn sie strukturell zum Original passt.
+   *
+   * Fehlt ein Abschnitt, ist ein Stück Text weg – und zwar unsichtbar, weil
+   * die Seite trotzdem baut. Bei einer Abweichung wird deshalb die deutsche
+   * Fassung gesetzt und `uebersetzt: false` gemeldet; `Langtext.astro`
+   * schreibt dann `lang="de"` an den Block, und `inhalt-pruefen.mjs` sieht
+   * die Lücke.
+   */
+  if (!u || u.abschnitte?.length !== deutsch.abschnitte.length) {
+    return { ...deutsch, uebersetzt: false };
+  }
+  const gleich = deutsch.abschnitte.every(
+    (a, i) => u.abschnitte[i]?.bloecke?.length === a.bloecke.length,
+  );
+  if (!gleich) return { ...deutsch, uebersetzt: false };
+
+  return {
+    ...deutsch,
+    titel: u.titel ?? deutsch.titel,
+    abschnitte: u.abschnitte,
+    uebersetzt: true,
+  };
+}
 
 /**
  * Ein Langtext ist nur brauchbar, wenn er wirklich Text enthält.
@@ -80,9 +176,10 @@ function brauchbar(l: Langtext | undefined): l is Langtext {
 }
 
 /** Der Langtext einer Behandlung – oder `undefined`. */
-export function langtext(leistungSlug: string): Langtext | undefined {
+export function langtext(leistungSlug: string, sprache: Sprache = 'de'): Langtext | undefined {
   const l = LEISTUNGEN[leistungSlug];
-  return brauchbar(l) ? l : undefined;
+  if (!brauchbar(l)) return undefined;
+  return inSprache('leistungen', leistungSlug, l, sprache);
 }
 
 /**
@@ -92,16 +189,24 @@ export function langtext(leistungSlug: string): Langtext | undefined {
  * was am ausführlichsten behandelt ist. Die alphabetische Reihenfolge wäre
  * eine Aussage über das Alphabet.
  */
-export function unterthemen(leistungSlug: string): Unterthema[] {
+export function unterthemen(leistungSlug: string, sprache: Sprache = 'de'): Unterthema[] {
   return Object.values(UNTERTHEMEN)
     .filter((u) => u.leistung === leistungSlug && brauchbar(u))
-    .sort((a, z) => z.woerter - a.woerter);
+    .sort((a, z) => z.woerter - a.woerter)
+    .map((u) => inSprache('unterthemen', `${u.leistung}/${u.slug}`, u, sprache)!)
+    .filter(Boolean);
 }
 
 /** Ein einzelnes Unterthema. */
-export function unterthema(leistungSlug: string, slug: string): Unterthema | undefined {
-  const u = UNTERTHEMEN[`${leistungSlug}/${slug}`];
-  return brauchbar(u) ? u : undefined;
+export function unterthema(
+  leistungSlug: string,
+  slug: string,
+  sprache: Sprache = 'de',
+): Unterthema | undefined {
+  const k = `${leistungSlug}/${slug}`;
+  const u = UNTERTHEMEN[k];
+  if (!brauchbar(u)) return undefined;
+  return inSprache('unterthemen', k, u, sprache);
 }
 
 /** Alle Unterthemen – für `getStaticPaths`. */
@@ -128,9 +233,10 @@ export function neueThemen(): NeuesThema[] {
  * Behandlungsseite – eine Seite „Zahnersatz" neben Kronen, Brücken und
  * Prothesen wäre eine sechste Behandlung, die es nicht gibt.
  */
-export function kategorietext(kategorieSlug: string): Langtext | undefined {
+export function kategorietext(kategorieSlug: string, sprache: Sprache = 'de'): Langtext | undefined {
   const k = KATEGORIEN[kategorieSlug];
-  return brauchbar(k) ? k : undefined;
+  if (!brauchbar(k)) return undefined;
+  return inSprache('kategorien', kategorieSlug, k, sprache);
 }
 
 /** Alle Kategorien mit Übersichtstext – für Prüfung und Bericht. */
@@ -172,6 +278,36 @@ export function bestand(): {
  * Der erste Absatz des ersten Abschnitts, auf Satzgrenze gekürzt. Kein
  * erfundener Teaser: Was in der Beschreibung steht, steht auch auf der Seite.
  */
+/**
+ * Wie viel des Korpus in einer Sprache vorliegt – für `inhalt-pruefen.mjs`
+ * und den Bericht. Eine Zahl, die man nachrechnen kann.
+ */
+export function abdeckung(sprache: Sprache): { themen: number; uebersetzt: number; woerter: number; woerterUebersetzt: number } {
+  const bereiche: [keyof Bestandsdatei, Record<string, Langtext>][] = [
+    ['leistungen', LEISTUNGEN],
+    ['unterthemen', UNTERTHEMEN as Record<string, Langtext>],
+    ['kategorien', KATEGORIEN],
+    ['neu', NEUE as Record<string, Langtext>],
+  ];
+  let themen = 0;
+  let uebersetzt = 0;
+  let woerter = 0;
+  let woerterUebersetzt = 0;
+  for (const [bereich, karte] of bereiche) {
+    for (const [schluessel, l] of Object.entries(karte)) {
+      if (!brauchbar(l)) continue;
+      themen++;
+      woerter += l.woerter;
+      const x = inSprache(bereich, schluessel, l, sprache);
+      if (x?.uebersetzt) {
+        uebersetzt++;
+        woerterUebersetzt += l.woerter;
+      }
+    }
+  }
+  return { themen, uebersetzt, woerter, woerterUebersetzt };
+}
+
 export function anriss(l: Langtext, zeichen = 155): string {
   const ersterAbsatz = l.abschnitte.flatMap((a) => a.bloecke).find((b) => b.art === 'p');
   if (!ersterAbsatz) return '';

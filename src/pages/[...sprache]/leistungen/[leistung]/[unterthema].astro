@@ -58,7 +58,7 @@ const t = texte(daten.sprache);
 const { leistung: leistungSlug, unterthema: unterthemaSlug } = Astro.params;
 
 const leistung = daten.leistung(leistungSlug!)!;
-const thema = unterthema(leistungSlug!, unterthemaSlug!)!;
+const thema = unterthema(leistungSlug!, unterthemaSlug!, daten.sprache)!;
 
 const leistungPfad = `/leistungen/${leistung.slug}/`;
 const pfad = `${leistungPfad}${thema.slug}/`;

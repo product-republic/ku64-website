@@ -1,0 +1,8 @@
+{
+  "sprache": "fr",
+  "hinweis": "Erzeugt von scripts/korpus-einspielen.mjs. Nicht von Hand bearbeiten. Solange ein Thema hier fehlt oder strukturell abweicht, setzt Langtext.astro die deutsche Fassung und zeichnet sie mit lang=\"de\" aus.",
+  "leistungen": {},
+  "unterthemen": {},
+  "kategorien": {},
+  "neu": {}
+}

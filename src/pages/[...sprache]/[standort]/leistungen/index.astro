@@ -112,10 +112,10 @@ const suchindex = alleHier.map((l) => ({
             zuerst eine Behandlung. Wer sich einlesen will, findet den Text
             darunter – und die Suchmaschine findet ihn überhaupt erst wieder.
           */}
-          {kategorietext(g.kategorie.slug) && (
+          {kategorietext(g.kategorie.slug, daten.sprache) && (
             <details class="kategorie-text">
               <summary>{t('leistuebersicht.mehrZu', { name: g.kategorie.name })}</summary>
-              <Langtext langtext={kategorietext(g.kategorie.slug)!} sprache={daten.sprache} titel={null} />
+              <Langtext langtext={kategorietext(g.kategorie.slug, daten.sprache)!} sprache={daten.sprache} titel={null} />
             </details>
           )}
         </section>

@@ -40,7 +40,8 @@
     "barrierefrei:pruefen": "node scripts/barrierefrei-pruefen.mjs",
     "dienste:pruefen": "node --experimental-strip-types --no-warnings scripts/dienste-pruefen.mjs",
     "inhalt:pruefen": "node --experimental-strip-types --no-warnings scripts/inhalt-pruefen.mjs",
-    "langtexte:bauen": "node scripts/langtexte-bauen.mjs"
+    "langtexte:bauen": "node scripts/langtexte-bauen.mjs",
+    "korpus:einspielen": "node scripts/korpus-einspielen.mjs"
   },
   "repository": {
     "type": "git",
