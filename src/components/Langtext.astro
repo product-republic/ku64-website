@@ -89,6 +89,26 @@ const {
 
 const t = texte(sprache);
 
+/*
+ * Der Langtext ist noch nicht übersetzt – und die Seite darf das nicht
+ * verschweigen.
+ *
+ * Die 114.894 Wörter aus dem Altbestand liegen nur auf Deutsch. Auf einer
+ * Seite unter /en/ steht damit deutscher Fachtext, während `<html lang="en-GB">`
+ * behauptet, alles hier sei Englisch. Das ist nicht nur ungenau, es hat
+ * Folgen: Eine Vorlesehilfe liest deutschen Text mit englischer Aussprache
+ * vor – unverständlich –, und Google bewertet eine Seite, deren Sprache nicht
+ * zur Auszeichnung passt, als minderwertig.
+ *
+ * `lang="de"` am Block sagt die Wahrheit: Der Rahmen ist englisch, dieser
+ * Abschnitt ist deutsch. Sobald die Übersetzung vorliegt, fällt das Attribut
+ * weg, weil `sprache` dann zur Sprache des Textes passt.
+ *
+ * Das ist eine Notlösung mit Ansage, keine Erledigung. Die Übersetzung des
+ * Korpus steht als eigene Aufgabe.
+ */
+const textSpracheAbweichend = sprache !== 'de';
+
 /**
  * Eine Kennung je Abschnitt, aus seiner Überschrift.
  *
@@ -222,7 +242,7 @@ function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
 }
 ---
 
-<div class="langtext">
+<div class="langtext" lang={textSpracheAbweichend ? 'de' : undefined}>
   {titel && <h2 class="langtext-titel">{titel}</h2>}
 
   {
