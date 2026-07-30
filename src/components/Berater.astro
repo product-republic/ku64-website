@@ -187,9 +187,31 @@ const wegZumMenschen = wegZumMenschenIn(daten.sprache);
 <style>
   .berater {
     position: fixed;
-    inset-block-end: var(--raum-5);
+    /*
+     * Über dem Einwilligungsband, nicht darunter.
+     *
+     * Beide sitzen unten rechts. `--ew-hoehe` setzt der Einwilligungsdialog
+     * selbst, gemessen an seinem eigenen Kasten – und er ändert sich, sobald
+     * jemand die Auswahl aufklappt. Ein geschätzter Zuschlag wäre entweder
+     * zu klein (dann liegt das Band auf dem Knopf) oder zu groß (dann
+     * schwebt der Knopf grundlos in der Mitte). Ist kein Band da, ist die
+     * Ersatzangabe 0 und es bleibt beim gewohnten Abstand.
+     *
+     * Gedeckelt bei 30 vh: Klappt jemand die Auswahl auf, wächst das Band
+     * auf drei Viertel des Bildschirms – ohne Deckel stünde der Knopf dann
+     * in der Bildmitte. Wer gerade einzeln auswählt, braucht den Berater
+     * nicht; das Band darf ihn in diesem einen Fall verdecken.
+     */
+    inset-block-end: calc(var(--raum-5) + min(var(--ew-hoehe, 0px), 30vh));
     inset-inline-end: var(--raum-5);
     z-index: var(--z-dialog);
+    transition: inset-block-end var(--zeit) var(--kurve);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .berater {
+      transition: none;
+    }
   }
 
   .ruf {
@@ -480,7 +502,7 @@ const wegZumMenschen = wegZumMenschenIn(daten.sprache);
   @media (max-width: 32rem) {
     .berater {
       inset-inline: var(--raum-4);
-      inset-block-end: var(--raum-4);
+      inset-block-end: calc(var(--raum-4) + min(var(--ew-hoehe, 0px), 30vh));
     }
     /*
      * `display: none` hätte den Knopf namenlos gemacht.

@@ -585,6 +585,11 @@ export const TEXTE = {
   'ew.fuss': 'Was genau übertragen wird, steht im {verzeichnis} und in der {datenschutz}.',
   'ew.verzeichnis': 'Verzeichnis der Dienste',
   'ew.cookieEinstellungen': 'Cookie-Einstellungen',
+  /* Der Aufklapper am Band: Wer nicht pauschal entscheiden will, wählt hier
+     einzeln. Er steht bewusst als dritte, leisere Möglichkeit neben zwei
+     gleich lauten – Ablehnen und Zustimmen müssen gleich schnell gehen. */
+  'ew.selbstWaehlen': 'Einzeln auswählen',
+  'ew.zurueck': 'Weniger anzeigen',
   'langtext.aufDieserSeite': 'Auf dieser Seite',
   'langtext.herkunft':
     'Übernommen von {adresse} – {woerter} Wörter, wortgleich. Fachliche Freigabe durch die Praxis steht aus.',

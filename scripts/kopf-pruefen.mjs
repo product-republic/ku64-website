@@ -178,6 +178,64 @@ for (const [breitenname, w, h] of BREITEN) {
     if (oben.fokussierbarOben) melde(wo, 'der kompakte Wähler nimmt den Fokus, obwohl er unsichtbar ist');
     if (oben.ueberlauf > 0) melde(wo, `${oben.ueberlauf} px seitlicher Überlauf (oben)`);
 
+    /*
+     * Der Wähler in der Leiste – klappt seine Liste ins Bild?
+     *
+     * Sie ist bis 24 rem breit und rechtsbündig. Hing sie am Knopf statt an
+     * der Pille, begann sie auf dem Telefon bei −199 px: Die Hälfte der
+     * Standorte lag außerhalb des Bildschirms, zu sehen war ein
+     * abgeschnittener Kasten. Aufgefallen ist das auf einem Foto vom
+     * Gerät, nicht in einer Prüfung – deshalb steht es jetzt hier.
+     */
+    if (oben.wahlUnten.sichtbar) {
+      await seite.evaluate(() => {
+        const d = document.querySelector('.waehler');
+        if (d) d.open = true;
+      });
+      await seite.waitForTimeout(250);
+
+      const unterListe = await seite.evaluate(() => {
+        const l = document.querySelector('.waehler .waehler-liste');
+        if (!l) return null;
+        const k = l.getBoundingClientRect();
+        const mitte = document.elementFromPoint(
+          Math.round(k.left + k.width / 2),
+          Math.round(k.top + 20),
+        );
+        return {
+          links: Math.round(k.left),
+          rechts: Math.round(k.right),
+          fenster: window.innerWidth,
+          obenauf: Boolean(mitte) && l.contains(mitte),
+          eintraege: l.querySelectorAll('.waehler-link').length,
+        };
+      });
+
+      if (!unterListe) melde(wo, 'der Wähler in der Leiste hat keine Liste');
+      else {
+        if (unterListe.links < -1) {
+          melde(wo, `die Liste in der Leiste beginnt bei ${unterListe.links} px – links aus dem Bild`);
+        }
+        if (unterListe.rechts > unterListe.fenster + 1) {
+          melde(
+            wo,
+            `die Liste in der Leiste endet bei ${unterListe.rechts} px – rechts aus dem Bild ` +
+              `(Fenster ${unterListe.fenster})`,
+          );
+        }
+        if (!unterListe.obenauf) melde(wo, 'die Liste in der Leiste ist offen, aber verdeckt');
+        if (unterListe.eintraege !== 4) {
+          melde(wo, `${unterListe.eintraege} Standorte in der Leistenliste statt 4`);
+        }
+      }
+
+      await seite.evaluate(() => {
+        const d = document.querySelector('.waehler');
+        if (d) d.open = false;
+      });
+      await seite.waitForTimeout(120);
+    }
+
     /* ── 2. Gescrollt ───────────────────────────────────────────────── */
 
     await scrollen(seite, 600);

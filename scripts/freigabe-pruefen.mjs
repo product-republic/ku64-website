@@ -65,6 +65,99 @@ const browser = await chromium.launch({
 const fehler = [];
 const melden = (fall, satz) => fehler.push(`${fall.name} (${fall.pfad}): ${satz}`);
 
+/*
+ * ── Das Band verdeckt die Seite nicht ─────────────────────────────────
+ *
+ * Die Einwilligung stand als Modal über der Seite. Am Schreibtisch ging
+ * das; auf dem Telefon sah man als Erstes eine Frage über eine Website,
+ * von der man noch nichts gesehen hatte – ein Foto vom Gerät hat es
+ * gezeigt, keine Prüfung.
+ *
+ * Gemessen wird deshalb, was der Mensch sieht: Wie viel vom Bildschirm
+ * bleibt für die Seite? Und liegt das Band auf dem Berater-Knopf, dem
+ * einzigen anderen Bedienelement da unten?
+ *
+ * Die Grenze von 35 Prozent ist keine Norm, sondern eine Entscheidung:
+ * Darüber ist es kein Band mehr, sondern ein Vorhang. Wer sie ändert,
+ * ändert sie hier – und merkt dabei, dass er sie ändert.
+ */
+const HOECHSTANTEIL = 0.35;
+
+for (const [breite, hoehe, geraet] of [
+  [390, 844, 'Telefon'],
+  [768, 1024, 'Tablet'],
+  [1280, 900, 'Schreibtisch'],
+]) {
+  const seite = await browser.newPage({ viewport: { width: breite, height: hoehe } });
+  await seite.goto(BASIS + '/', { waitUntil: 'networkidle' });
+  await seite.evaluate(() => document.fonts.ready);
+  await seite.waitForTimeout(350);
+
+  const band = await seite.evaluate(() => {
+    const d = document.querySelector('dialog.einwilligung');
+    if (!d) return null;
+    const k = d.getBoundingClientRect();
+    const ber = document.querySelector('.berater');
+    const bk = ber ? ber.getBoundingClientRect() : null;
+    /* Ein modaler Dialog liegt in der Top-Layer und hat einen ::backdrop –
+       erkennbar daran, dass die Seite darunter keine Klicks mehr annimmt. */
+    const mittePunkt = document.elementFromPoint(
+      Math.round(window.innerWidth / 2),
+      Math.round(window.innerHeight / 3),
+    );
+    return {
+      offen: d.open,
+      hoehe: Math.round(k.height),
+      anteil: k.height / window.innerHeight,
+      unten: Math.round(window.innerHeight - k.bottom),
+      seiteBedienbar: Boolean(mittePunkt) && !d.contains(mittePunkt),
+      beraterVerdeckt: bk ? bk.bottom > k.top + 2 : false,
+      knoepfe: d.querySelectorAll('[data-ew]').length,
+      ueberlauf: Math.max(0, document.documentElement.scrollWidth - window.innerWidth),
+    };
+  });
+
+  const wo = { name: `Einwilligungsband · ${geraet}`, pfad: '/' };
+
+  if (!band) melden(wo, 'es gibt gar kein Einwilligungsband');
+  else {
+    if (!band.offen) melden(wo, 'das Band steht beim ersten Aufruf nicht da');
+    if (band.anteil > HOECHSTANTEIL) {
+      melden(
+        wo,
+        `das Band nimmt ${Math.round(band.anteil * 100)} % der Höhe (${band.hoehe} px) – ` +
+          `erlaubt sind ${Math.round(HOECHSTANTEIL * 100)} %`,
+      );
+    }
+    if (band.unten > 24) melden(wo, `das Band schwebt ${band.unten} px über dem unteren Rand`);
+    if (!band.seiteBedienbar) {
+      melden(wo, 'die Seite ist hinter dem Band nicht anklickbar – es liegt als Modal davor');
+    }
+    if (band.beraterVerdeckt) melden(wo, 'das Band liegt auf dem Berater-Knopf');
+    if (band.ueberlauf > 0) melden(wo, `${band.ueberlauf} px seitlicher Überlauf durch das Band`);
+    /* Ablehnen und Zustimmen müssen beide da sein – und zwar sofort, nicht
+       erst hinter einem Aufklapper. Artikel 4 Nr. 11 DSGVO. */
+    if (band.knoepfe < 2) melden(wo, `nur ${band.knoepfe} Entscheidung(en) sichtbar`);
+
+    /*
+     * Auch der bestandene Fall wird gemeldet.
+     *
+     * Eine Prüfung, die nur bei Fehlern spricht, ist von einer Prüfung, die
+     * gar nicht läuft, nicht zu unterscheiden. Genau das ist hier schon
+     * passiert: Der erste Lauf dieses Abschnitts war grün, und ich konnte
+     * der Ausgabe nicht ansehen, ob er überhaupt stattgefunden hat.
+     */
+    console.log(
+      `[freigabe] Band ${geraet.padEnd(12)} ${String(band.hoehe).padStart(3)} px = ` +
+        `${String(Math.round(band.anteil * 100)).padStart(2)} % der Höhe, ` +
+        `Seite dahinter ${band.seiteBedienbar ? 'bedienbar' : 'GESPERRT'}, ` +
+        `Berater ${band.beraterVerdeckt ? 'VERDECKT' : 'frei'}`,
+    );
+  }
+
+  await seite.close();
+}
+
 for (const fall of FAELLE) {
   const seite = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 

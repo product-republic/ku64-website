@@ -1507,8 +1507,23 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     color: var(--tinte);
   }
 
+  /*
+   * KEIN `position: relative` – die Liste gehört an die Pille, nicht an den
+   * Knopf.
+   *
+   * Hier stand es, und damit war der Wähler selbst der Bezugskasten seiner
+   * aufklappenden Liste. Die ist bis 24 rem breit und richtet sich rechts
+   * aus; auf dem Telefon steht der Knopf aber links in der Leiste. Gemessen
+   * bei 390 px: Die Liste begann bei −187 px, bei 402 px sogar bei −199 –
+   * die Hälfte der Standorte lag außerhalb des Bildschirms und war weder zu
+   * sehen noch zu treffen.
+   *
+   * Ohne Positionierung ist der Bezug `.kopf-glas`, genau wie beim kompakten
+   * Wähler oben: rechtsbündig zur Pille, bündig unter ihr, in jeder Breite
+   * im Bild.
+   */
   .waehler {
-    position: relative;
+    position: static;
   }
 
   .waehler summary {

@@ -86,7 +86,63 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
   noetig && (
     <dialog class="einwilligung" id="einwilligung" aria-labelledby="ew-titel">
       <form method="dialog" class="ew-inhalt">
-        <h2 id="ew-titel">{t('ew.titel')}</h2>
+        {/*
+          Das Band im Ruhezustand: Frage, betroffene Dienste, zwei
+          Entscheidungen. Mehr braucht niemand, um Nein zu sagen.
+
+          Die Dienstenamen stehen hier statt einer Erklärung, weil sie die
+          Frage konkret machen: „Google Analytics · Doctolib · Matterport"
+          sagt mehr als „Wir verwenden Cookies, um Ihr Erlebnis zu
+          verbessern" – und es ist in jeder Sprache dasselbe.
+        */}
+        <div class="ew-band">
+          <div class="ew-frage">
+            <h2 id="ew-titel">{t('ew.titel')}</h2>
+            {/*
+              Nur die Dienste, über die hier entschieden wird.
+
+              `aktive` enthält auch die notwendigen – den gemerkten Standort
+              und die Einwilligung selbst. Sie in dieser Zeile zu nennen
+              wäre doppelt falsch: Sie stehen nicht zur Wahl, und sie
+              machten aus zwei Zeilen fünf. Gemessen: 226 px Bandhöhe statt
+              der nötigen.
+            */}
+            <p class="ew-dienstezeile">
+              {aktive
+                .filter((d) => kategorien.includes(d.kategorie))
+                .map((d) => d.name)
+                .join(' · ')}
+            </p>
+          </div>
+
+          {/* Ablehnen links, damit es zuerst gelesen wird. Beide gleich groß. */}
+          <div class="ew-knoepfe">
+            <button type="button" class="knopf ew-knopf" data-ew="ablehnen">
+              {t('ew.nurNotwendig')}
+            </button>
+            <button type="button" class="knopf knopf-primaer ew-knopf" data-ew="alles">
+              {t('ew.allesErlauben')}
+            </button>
+          </div>
+        </div>
+
+        {/*
+          Alles Weitere erst auf Wunsch.
+
+          Vorspann, Kategorien, Vorbehalt und Fußnote standen bisher
+          ungefragt da und füllten auf dem Telefon den halben Bildschirm.
+          Wer pauschal entscheidet, liest sie nicht; wer einzeln entscheidet,
+          braucht sie vollständig. Ein `<details>` bedient beide – und
+          braucht dafür keine Zeile JavaScript.
+        */}
+        <details class="ew-mehr">
+          <summary>
+            <span class="ew-mehr-auf">{t('ew.selbstWaehlen')}</span>
+            <span class="ew-mehr-zu">{t('ew.zurueck')}</span>
+            <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
+              <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+          </summary>
 
         <p
           class="ew-vorspann"
@@ -123,16 +179,9 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
           </p>
         )}
 
-        {/* Ablehnen links, damit es zuerst gelesen wird. Beide gleich groß. */}
-        <div class="ew-knoepfe">
-          <button type="button" class="knopf ew-knopf" data-ew="ablehnen">
-            {t('ew.nurNotwendig')}
-          </button>
+        <div class="ew-knoepfe ew-knoepfe-auswahl">
           <button type="button" class="knopf ew-knopf" data-ew="auswahl">
             {t('ew.auswahlSpeichern')}
-          </button>
-          <button type="button" class="knopf knopf-primaer ew-knopf" data-ew="alles">
-            {t('ew.allesErlauben')}
           </button>
         </div>
 
@@ -143,6 +192,7 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
             datenschutz: `<a href="/datenschutz/">${t('ck.datenschutzerklaerung')}</a>`,
           })}
         />
+        </details>
       </form>
     </dialog>
   )
@@ -239,56 +289,202 @@ const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notw
           document.dispatchEvent(new CustomEvent('ku64:einwilligung', { detail: null }));
         });
 
+        /*
+         * Der Berater weicht dem Band aus.
+         *
+         * Beide sitzen unten. Ohne diese Zeile liegt das Band auf dem
+         * Berater-Knopf, und der ist auf dem Telefon das einzige, was dort
+         * sonst steht. Gemessen statt geschätzt: Die Höhe des Bandes ändert
+         * sich, sobald jemand die Auswahl aufklappt.
+         */
+        function hoeheMelden() {
+          const h = dialog.open ? dialog.getBoundingClientRect().height : 0;
+          document.documentElement.style.setProperty('--ew-hoehe', h + 'px');
+        }
+
+        dialog.addEventListener('toggle', hoeheMelden);
+        if ('ResizeObserver' in window) new ResizeObserver(hoeheMelden).observe(dialog);
+
         const vorhanden = lesen();
         if (vorhanden) {
           anwenden(vorhanden);
         } else if (!dialog.open) {
-          dialog.showModal();
+          /*
+           * `show()` und nicht `showModal()` – Begründung ausführlich im
+           * Stilteil bei `.einwilligung`. Kurz: Geladen wird ohnehin nichts
+           * ohne Zustimmung, und eine Zustimmung, die man gibt, um die Seite
+           * überhaupt zu sehen, ist keine freiwillige.
+           */
+          dialog.show();
         }
+        hoeheMelden();
       })();
     </script>
   )
 }
 
 <style>
+  /*
+   * Ein Band unten, kein Vorhang.
+   *
+   * ── Warum kein Modal mehr ─────────────────────────────────────────────
+   *
+   * Der Dialog wurde mit `showModal()` geöffnet und lag mit abgedunkeltem
+   * Hintergrund über der Seite. Am Schreibtisch war das vertretbar, auf dem
+   * Telefon erschlug es alles: Wer die Adresse eingetippt hatte, sah als
+   * Erstes eine Frage über eine Website, von der er noch nichts gesehen
+   * hatte.
+   *
+   * Jetzt `show()` statt `showModal()`. Die Seite bleibt lesbar und
+   * bedienbar, das Band sitzt unten und nimmt rund ein Sechstel der Höhe.
+   *
+   * Das ist keine Aufweichung der Einwilligung, sondern ihre Voraussetzung:
+   * Geladen wird ohnehin nichts, bevor jemand zustimmt – dafür sorgen
+   * `Drittinhalt.astro` und `dienste-pruefen.mjs`, nicht dieser Dialog. Ein
+   * Modal erzwingt keine bessere Entscheidung, es erzwingt nur eine
+   * schnellere. Und eine Zustimmung, die man gibt, um weiterlesen zu
+   * können, ist nach Artikel 4 Nr. 11 DSGVO keine freiwillige.
+   *
+   * `<dialog>` bleibt trotzdem: Escape, Rolle und die Verwaltung von `open`
+   * kommen mit. Nur die Positionierung muss selbst kommen, denn ein
+   * nicht-modaler Dialog steht standardmäßig `position: absolute` im Fluss.
+   */
   .einwilligung {
+    position: fixed;
+    inset: auto 0 0 0;
     /* Kein Rand, kein Standard-Aussehen des Browsers. */
     border: 0;
-    padding: 0;
+    padding: 0 max(0.75rem, env(safe-area-inset-left))
+      max(0.75rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-right));
     background: transparent;
-    max-width: min(38rem, calc(100vw - 2rem));
-    /* Unten statt mittig: Auf dem Telefon ist die Mitte dort, wo gerade
-       gelesen wird. Unten liegt es im Daumenbereich und verdeckt weniger. */
-    margin: auto auto max(1rem, env(safe-area-inset-bottom)) auto;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100dvh;
+    z-index: var(--z-dialog);
     color: var(--tinte);
   }
 
-  .einwilligung::backdrop {
-    /* Kein schwarzer Vorhang: Die Seite soll lesbar bleiben, damit die
-       Entscheidung im Zusammenhang fällt und nicht unter Druck. */
-    background: color-mix(in oklab, var(--flaeche-dunkel) 45%, transparent);
-    backdrop-filter: blur(2px);
-  }
-
   .ew-inhalt {
-    background: var(--flaeche);
-    border: 1px solid var(--linie);
+    /* Mittig, aber nicht breiter als nötig – am Schreibtisch ein Band, kein
+       Balken über die ganze Fensterbreite. */
+    max-width: 52rem;
+    margin-inline: auto;
+    background: var(--glas-flaeche-stark);
+    -webkit-backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
+    border: 1px solid var(--glas-rand);
     border-radius: 14px;
-    padding: 1.5rem 1.5rem 1.25rem;
-    box-shadow: 0 18px 50px -12px rgb(0 0 0 / 0.28);
+    padding: 0.85rem 1rem;
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      0 18px 50px -12px rgb(0 0 0 / 0.28);
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
-    /* Sehr kleine Höhen: Der Dialog darf scrollen, statt abgeschnitten zu
-       werden – auf einem Telefon im Querformat ist das der Normalfall. */
-    max-height: min(80vh, 40rem);
+    gap: 0.6rem;
+    /*
+     * Aufgeklappt darf es scrollen, zugeklappt braucht es das nie.
+     *
+     * Die Obergrenze gilt dem aufgeklappten Zustand: Vier Kategorien mit
+     * Erklärung passen auf einem Telefon im Querformat nicht auf den
+     * Schirm. Zugeklappt bleibt das Band bei rund 120 px.
+     */
+    max-height: min(78dvh, 40rem);
     overflow-y: auto;
+  }
+
+  /* Ohne Weichzeichner deckend – sonst steht der Text der Seite scharf durch
+     das Band, und zwar genau dort, wo eine Entscheidung fällt. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .ew-inhalt {
+      background: var(--flaeche);
+    }
+  }
+
+  /*
+   * Frage links, Entscheidung rechts – solange Platz ist.
+   *
+   * Auf dem Telefon untereinander, aber die beiden Knöpfe bleiben in EINER
+   * Zeile nebeneinander: Ablehnen und Zustimmen müssen gleich schnell
+   * gehen, und zwei untereinander liest sich als Reihenfolge.
+   */
+  .ew-band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1.25rem;
+  }
+
+  .ew-frage {
+    min-width: 0;
+    flex: 1 1 14rem;
   }
 
   .ew-inhalt h2 {
     margin: 0;
-    font-size: 1.2rem;
-    line-height: 1.25;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .ew-dienstezeile {
+    /* 0,3 rem und nicht 0,15: Bei 0,15 blieben 2,4 px zwischen Überschrift
+       und Zeile, und `abschnitt-pruefen` verlangt mindestens 4 – zu Recht,
+       darunter klebt die Zeile an der Frage darüber. Gefunden im ersten
+       Lauf nach dem Umbau, auf allen 40 Ansichten. */
+    margin: 0.3rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--tinte-leise);
+  }
+
+  /*
+   * Der Aufklapper.
+   *
+   * Zwei Beschriftungen im Markup, immer genau eine sichtbar – so steht in
+   * beiden Zuständen das Richtige da, ohne dass JavaScript einen Text
+   * austauschen muss. Ein ausgetauschter Text überlebt den Seitenwechsel
+   * nicht; zwei Auszeichnungen tun es.
+   */
+  .ew-mehr > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    /* Zielgröße nach WCAG 2.5.8. */
+    min-block-size: 1.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--tinte-weich);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .ew-mehr > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .ew-mehr > summary:hover {
+    color: var(--tinte);
+  }
+
+  .ew-mehr > summary svg {
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .ew-mehr[open] > summary svg {
+    transform: rotate(180deg);
+  }
+
+  .ew-mehr-zu,
+  .ew-mehr[open] .ew-mehr-auf {
+    display: none;
+  }
+
+  .ew-mehr[open] .ew-mehr-zu {
+    display: inline;
+  }
+
+  .ew-mehr > *:not(summary) {
+    margin-block-start: 0.75rem;
   }
 
   .ew-vorspann,
