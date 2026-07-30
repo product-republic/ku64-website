@@ -1,0 +1,266 @@
+---
+/**
+ * Das Verzeichnis der Dienste als Tabelle – erzeugt, nicht geschrieben.
+ *
+ * ── Warum erzeugt ───────────────────────────────────────────────────────
+ *
+ * Eine Datenschutzerklärung veraltet nicht mit einem Knall, sondern
+ * schleichend: Jemand baut einen Dienst ein, und die Erklärung wird nicht
+ * angepasst. Sechs Monate später steht dort ein Text, der eine Aussage über
+ * Datenverarbeitung trifft, die nicht mehr stimmt – und das ist der Fall, den
+ * eine Aufsichtsbehörde als erstes findet.
+ *
+ * Hier kann das nicht passieren, weil es keinen zweiten Ort gibt: Die Tabelle
+ * kommt aus `dienste.ts`, und `dienste-pruefen.mjs` bricht den Bau ab, wenn
+ * ein fremder Host auftaucht, der dort nicht steht. Wer einen Dienst einbaut,
+ * bekommt seinen Eintrag in dieser Tabelle geschenkt – oder er kommt nicht
+ * durch den Bau.
+ *
+ * ── Warum auch die verworfenen drinstehen ───────────────────────────────
+ *
+ * Weil die Begründung der Teil ist, der Arbeit gemacht hat. „Google Fonts
+ * liegen auf unserem eigenen Server" ist eine Aussage, die jemand einmal
+ * getroffen hat und die jemand anders in zwei Jahren aus Unwissenheit
+ * zurücknimmt. Sie steht deshalb sichtbar da, mit dem Urteil des LG München
+ * dazu.
+ *
+ * Für Besucherinnen ist es außerdem die interessantere Information: Was NICHT
+ * passiert, steht in kaum einer Datenschutzerklärung.
+ */
+import { DIENSTE, KATEGORIE_NAMEN, type Kategorie } from '../data/dienste';
+
+interface Props {
+  /** Nur diese Kategorien zeigen. Ohne Angabe: alle. */
+  kategorien?: Kategorie[];
+  /** Verworfene Dienste mitzeigen. */
+  verworfeneZeigen?: boolean;
+  /** Überschriftenebene, damit die Gliederung der Seite stimmt. */
+  stufe?: 2 | 3;
+}
+
+const { kategorien, verworfeneZeigen = true, stufe = 3 } = Astro.props;
+
+const REIHENFOLGE: Kategorie[] = ['notwendig', 'funktion', 'statistik', 'ki'];
+const zeigen = kategorien ?? REIHENFOLGE;
+
+const gruppen = zeigen
+  .map((k) => ({
+    kategorie: k,
+    name: KATEGORIE_NAMEN[k].name,
+    erklaerung: KATEGORIE_NAMEN[k].erklaerung,
+    dienste: DIENSTE.filter(
+      (d) => d.kategorie === k && (d.stand !== 'verworfen' || verworfeneZeigen),
+    ).sort((a, z) => a.stand.localeCompare(z.stand) || a.name.localeCompare(z.name)),
+  }))
+  .filter((g) => g.dienste.length > 0);
+
+const STAND_TEXT = {
+  aktiv: 'in Betrieb',
+  geplant: 'beschlossen, noch nicht eingebaut',
+  verworfen: 'bewusst nicht eingebaut',
+};
+---
+
+{
+  gruppen.map((g) => (
+    <section class="dv-gruppe">
+      {stufe === 2 ? <h2>{g.name}</h2> : <h3>{g.name}</h3>}
+      <p class="dv-erklaerung">{g.erklaerung}</p>
+
+      {g.dienste.map((d) => (
+        <article class="dv-dienst" data-stand={d.stand}>
+          <p class="dv-kopf">
+            <strong>{d.name}</strong>
+            <span class="dv-stand">{STAND_TEXT[d.stand]}</span>
+          </p>
+
+          <p class="dv-zweck">{d.zweck}</p>
+
+          <dl class="dv-daten">
+            <dt>Anbieter</dt>
+            <dd>{d.anbieter}</dd>
+
+            <dt>Wo die Daten liegen</dt>
+            <dd>{d.land}</dd>
+
+            {d.stand !== 'verworfen' && (
+              <>
+                <dt>Rechtsgrundlage</dt>
+                <dd>{d.rechtsgrundlage}</dd>
+              </>
+            )}
+
+            {d.daten.length > 0 && (
+              <>
+                <dt>Was übertragen wird</dt>
+                <dd>
+                  <ul>
+                    {d.daten.map((x) => (
+                      <li>{x}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </>
+            )}
+
+            {d.ablagen.length > 0 && (
+              <>
+                <dt>Was auf Ihrem Gerät abgelegt wird</dt>
+                <dd>
+                  <ul class="dv-ablagen">
+                    {d.ablagen.map((a) => (
+                      <li>
+                        <code>{a.name}</code> ({a.art}) – {a.inhalt}{' '}
+                        <span class="dv-dauer">Dauer: {a.dauer}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </>
+            )}
+
+            {d.stand === 'aktiv' && d.kategorie !== 'notwendig' && (
+              <>
+                <dt>Auftragsverarbeitungsvertrag</dt>
+                <dd>
+                  {d.avVertrag ? (
+                    'liegt vor'
+                  ) : (
+                    /* Nicht beschönigen: Ohne Vertrag ist die Verarbeitung
+                       unzulässig, auch mit Einwilligung. Der Dienst wird
+                       deshalb auch bei Zustimmung nicht geladen – das steht
+                       so im Auswahldialog und muss hier genauso stehen. */
+                    <strong class="dv-offen">
+                      noch nicht bestätigt – dieser Dienst wird bis dahin auch bei Ihrer
+                      Zustimmung nicht geladen
+                    </strong>
+                  )}
+                </dd>
+              </>
+            )}
+
+            <dt>Warum {d.stand === 'verworfen' ? 'nicht' : 'überhaupt'}</dt>
+            <dd>{d.begruendung}</dd>
+
+            <dt>Hinweise des Anbieters</dt>
+            <dd>
+              {d.hinweise.startsWith('http') ? (
+                <a href={d.hinweise} rel="noopener nofollow" target="_blank">
+                  {d.hinweise.replace(/^https?:\/\//, '')}
+                </a>
+              ) : (
+                <a href={d.hinweise}>diese Website</a>
+              )}
+            </dd>
+          </dl>
+        </article>
+      ))}
+    </section>
+  ))
+}
+
+<style>
+  .dv-gruppe + .dv-gruppe {
+    margin-top: 2.4rem;
+  }
+
+  .dv-erklaerung {
+    max-width: var(--breite-text);
+    color: var(--tinte-weich);
+  }
+
+  .dv-dienst {
+    margin-top: 1.2rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--linie);
+    border-radius: 10px;
+    background: var(--flaeche);
+  }
+
+  /* Ein verworfener Dienst ist eine Begründung, kein Angebot – deshalb
+     zurückhaltender gesetzt, aber nicht versteckt. */
+  .dv-dienst[data-stand='verworfen'] {
+    background: transparent;
+    border-style: dashed;
+  }
+
+  .dv-kopf {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+    align-items: baseline;
+    margin: 0 0 0.4rem;
+  }
+
+  .dv-stand {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .dv-zweck {
+    margin: 0 0 0.8rem;
+    max-width: var(--breite-text);
+  }
+
+  .dv-daten {
+    display: grid;
+    gap: 0.15rem 1rem;
+    margin: 0;
+  }
+
+  @media (min-width: 40rem) {
+    .dv-daten {
+      grid-template-columns: minmax(11rem, 15rem) 1fr;
+    }
+  }
+
+  .dv-daten dt {
+    font-weight: 650;
+    font-size: 0.88rem;
+    /* Auf schmalen Geräten steht der Begriff über dem Wert; ohne diesen
+       Abstand klebt er am vorigen Eintrag. */
+    margin-top: 0.55rem;
+  }
+
+  @media (min-width: 40rem) {
+    .dv-daten dt {
+      margin-top: 0.35rem;
+    }
+  }
+
+  .dv-daten dd {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    max-width: var(--breite-text);
+  }
+
+  @media (min-width: 40rem) {
+    .dv-daten dd {
+      margin-top: 0.35rem;
+    }
+  }
+
+  .dv-daten ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .dv-ablagen li + li {
+    margin-top: 0.3rem;
+  }
+
+  .dv-dauer {
+    color: var(--tinte-leise);
+    font-size: 0.9em;
+  }
+
+  .dv-offen {
+    /* Gelb markiert, trägt keine Fläche – dieselbe Regel wie überall. */
+    display: inline-block;
+    border-left: 3px solid var(--gelb);
+    padding-left: 0.55rem;
+  }
+</style>

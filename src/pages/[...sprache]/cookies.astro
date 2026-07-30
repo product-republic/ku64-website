@@ -4,6 +4,7 @@ import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
+import Diensteverzeichnis from '../../components/Diensteverzeichnis.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
@@ -49,6 +50,23 @@ const brotkrumen = [
         })}
       />
 
+      {/*
+        Das Verzeichnis aller Dienste – erzeugt aus src/data/dienste.ts.
+
+        Es steht VOR dem Löschen-Knopf: Wer hierher kommt, will zuerst wissen,
+        was überhaupt läuft, und erst danach entscheiden. Ein Knopf über der
+        Information ist eine Entscheidung ohne Grundlage.
+      */}
+      <h2 id="verzeichnis">Alle Dienste im Einzelnen</h2>
+      <p>
+        Diese Übersicht ist nicht von Hand geschrieben, sondern entsteht aus dem
+        Verzeichnis, das die Website selbst führt. Ein Dienst, der hier fehlt, kann auf
+        dieser Website nicht eingebaut werden – der Bau bricht dann ab. Auch was
+        <strong>bewusst nicht</strong> eingebaut wurde, steht dabei, samt Begründung.
+      </p>
+
+      <Diensteverzeichnis stufe={3} />
+
       <h2>{t('ck.loeschen')}</h2>
       <p>{t('ck.einKlickGenuegtDanach')}</p>
       <p>
@@ -73,7 +91,19 @@ const brotkrumen = [
         /* Der alte Schlüssel aus der Zeit, als der Terminkalender eingebettet
            werden sollte. Wer ihn noch hat, soll ihn hier loswerden können. */
         localStorage.removeItem('ku64:doctolib-ok');
-        if (ergebnis) ergebnis.textContent = 'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht.';
+        if (ergebnis) {
+          ergebnis.textContent =
+            'Erledigt – alle lokal gespeicherten Angaben wurden gelöscht. Die Seite wird neu geladen, damit auch bereits gestartete Dienste wirklich aufhören.';
+        }
+        /*
+         * Neu laden, und zwar nicht aus Bequemlichkeit.
+         *
+         * Ein Skript, das schon läuft, lässt sich nicht zurücknehmen: Wer
+         * widerruft und danach dieselbe Seite mit laufendem Analytics sieht,
+         * hat einen Eintrag gelöscht und nicht widerrufen. Die kurze
+         * Verzögerung lässt die Bestätigung noch lesen.
+         */
+        setTimeout(() => location.reload(), 900);
       } catch {
         if (ergebnis) ergebnis.textContent = 'Ihr Browser erlaubt keinen Zugriff auf den lokalen Speicher – es ist ohnehin nichts gespeichert.';
       }

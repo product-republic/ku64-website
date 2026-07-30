@@ -16,6 +16,7 @@ import { texte } from '../../i18n/katalog';
 import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
+import Diensteverzeichnis from '../../components/Diensteverzeichnis.astro';
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
 
@@ -88,6 +89,35 @@ const brotkrumen = [
         <li>{t('ds.nachAbschlussDerAnfrage')}</li>
       </ul>
       <p set:html={t('ds.laechelnSchluss')} />
+
+      {/*
+        Das vollständige Verzeichnis, erzeugt aus src/data/dienste.ts.
+
+        Die Abschnitte darüber erklären die vier Verarbeitungen, die eigene
+        Erläuterung brauchen – Doctolib, Anamnese, Berater, Lächeln-Vorschau.
+        Was fehlte, war die Vollständigkeit: Google Analytics, Google Maps und
+        Matterport sind hinzugekommen, und eine handgeschriebene Erklärung
+        hinkt so einer Änderung immer nach.
+
+        Deshalb steht hier dieselbe Tabelle wie auf /cookies/. Doppelt ist sie
+        nicht: Es ist eine Quelle, an zwei Stellen gesetzt. Wer einen Dienst
+        einbaut, kann diesen Abschnitt nicht vergessen – dienste-pruefen.mjs
+        bricht den Bau ab, wenn ein fremder Host ohne Eintrag auftaucht.
+      */}
+      <h2 id="verzeichnis">Verzeichnis aller Dienste und Empfänger</h2>
+      <p>
+        Diese Übersicht entsteht aus dem Verzeichnis, das die Website selbst führt – sie
+        kann deshalb nicht veralten, während die Website sich ändert. Sie nennt zu jedem
+        Dienst Zweck, Anbieter, Empfängerland, Rechtsgrundlage, übertragene Daten und
+        Speicherdauer. Auch Dienste, die <strong>bewusst nicht</strong> eingebaut wurden,
+        stehen mit ihrer Begründung dabei.
+      </p>
+      <p>
+        Ihre Auswahl ändern oder widerrufen können Sie jederzeit auf{' '}
+        <a href="/cookies/">Cookie-Einstellungen</a>.
+      </p>
+
+      <Diensteverzeichnis stufe={3} />
 
       <h2>{t('ds.8Kontaktaufnahme')}</h2>
       <p>{t('ds.kontaktText')}</p>
