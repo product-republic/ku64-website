@@ -3,6 +3,8 @@ import { inhalte } from '../../i18n/daten';
 import { oeffnungstageTeile } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import Bild from '../../components/Bild.astro';
+import { standortbildFuer } from '../../data/medien';
 import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../../lib/seo';
 import { texte } from '../../i18n/katalog';
 
@@ -57,13 +59,18 @@ const schema = [
         {t('standorte.vorspann')}
       </p>
 
-      <div class="raster">
+      <div class="raster ortraster">
         {
           daten.standorte.map((s) => {
             const anzahl = daten.leistungenHier(s.slug).length;
             const tage = oeffnungstageTeile(s);
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
+                {/* Derselbe Raum wie auf der Startseite: der Empfang, bei
+                    Wilmersdorf die Außenansicht. Vier Textblöcke
+                    nebeneinander unterscheidet man an der Adresse, vier
+                    Räume in einer halben Sekunde. */}
+                <Bild schluessel={standortbildFuer(s.slug) ?? ''} klasse="ort-bild" />
                 <h2>
                   <a href={`/${s.slug}/`} class="karte-link">KU64 {s.name}</a>
                 </h2>
@@ -152,17 +159,74 @@ const schema = [
     font-size: var(--t-lg);
     color: var(--tinte-weich);
   }
-  .ort { overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
+  /*
+   * Vier Standorte, vier Spalten – nicht drei und einer darunter.
+   *
+   * `.raster` verteilt mit `auto-fit` und `minmax(18rem, 1fr)`. Bei 72 rem
+   * Satzspiegel passen davon rechnerisch drei, also stand der vierte allein
+   * in der zweiten Reihe. Für eine Übersicht, deren ganze Aussage „das sind
+   * unsere vier Standorte" lautet, ist das die falsche Anordnung: Drei und
+   * einer liest sich wie drei wichtige und ein nachgereichter.
+   *
+   * Ab 64 rem deshalb ausdrücklich vier gleiche Spalten. Darunter greift
+   * weiter die automatische Verteilung – zwei nebeneinander auf dem Tablet,
+   * einer auf dem Telefon.
+   */
+  @media (min-width: 64rem) {
+    .ortraster {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .ort {
+    overflow: hidden;
+    /* Das Bild sitzt in der Kartenkante – der Innenabstand oben entfällt und
+       wandert unter das Bild. */
+    padding-block-start: 0;
+  }
+
+  .ort :global(.ort-bild) {
+    margin: 0 calc(var(--raum-5) * -1) var(--raum-5);
+    border-radius: 0;
+  }
+
+  .ort :global(.ort-bild img) {
+    width: 100%;
+    /* Breites Format: Es geht um den Raumeindruck, nicht um Einzelheiten. */
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
   /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
      Eine Auszeichnung auf jeder Karte zeichnet keine aus. */
-  .ort h2 { font-size: var(--t-xl); }
+  /*
+   * Kleiner als eine normale Kartenüberschrift – wegen eines Wortes.
+   *
+   * „KU64 Kurfürstendamm" braucht bei `--t-xl` rund 208 px, die Karte in
+   * vier Spalten bietet 204. Die Überschrift brach daraufhin mitten im Wort:
+   * „Kurfürstenda / mm". `hyphens: auto` steht global und hätte sauber
+   * getrennt – nur liegt im Prüf-Chromium kein Trennwörterbuch, und was
+   * dort nicht trennt, trennt auch bei manchen Besuchern nicht.
+   *
+   * Eine Schriftgröße, die passt, ist verlässlicher als eine Trennung, die
+   * vielleicht greift.
+   */
+  .ort h2 { font-size: var(--t-lg); }
   .ort h2 a { text-decoration: none; }
   address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }
   .claim { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }
   .merkmale { margin-block-start: var(--raum-4); padding-inline-start: var(--raum-5); font-size: var(--t-xs); color: var(--tinte-weich); }
   .merkmale li + li { margin-block-start: var(--raum-1); }
+  /*
+   * Die Faktenreihe bricht in vier Spalten um.
+   *
+   * Drei feste Spalten in einer Karte von rund 250 px hießen 80 px je
+   * Angabe – „7 Tage/Woche Sa + So nach Vereinbarung" braucht mehr. `auto-fit`
+   * legt sie bei Bedarf untereinander, statt sie zu quetschen.
+   */
   .fakten {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--raum-3);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(6.5rem, 100%), 1fr));
+    gap: var(--raum-3);
     margin-block: var(--raum-5) var(--raum-3);
     padding-block-start: var(--raum-4); border-top: 1px solid var(--linie);
   }

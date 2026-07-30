@@ -342,6 +342,157 @@ for (const [breitenname, w, h] of BREITEN) {
   }
 }
 
+/* ── 5. Das große Behandlungsmenü ──────────────────────────────────────
+ *
+ * Es hängt an der Menüliste, die Glaspille ist aber ein anderer Kasten – und
+ * zwischen beiden liegt die Standortleiste, die beim Scrollen einklappt. Der
+ * Abstand steht deshalb als Zahl im Stilteil, einmal je Zustand. Zahlen im
+ * Stilteil driften; diese hier nicht.
+ */
+
+const MEGA_SEITEN = [
+  ['/potsdam/', 'Standort'],
+  ['/en/potsdam/', 'Standort (EN)'],
+  ['/fr/potsdam/', 'Standort (FR)'],
+  ['/leistungen/', 'ohne Standort'],
+];
+
+for (const [pfad, name] of MEGA_SEITEN) {
+  for (const breite of [1200, 1440, 1920]) {
+    const wo = `Mega · ${name} · ${breite}px`;
+    const seite = await browser.newPage({ viewport: { width: breite, height: 950 } });
+    await seite.goto(BASIS + pfad, { waitUntil: 'networkidle' });
+    await seite.evaluate(() => document.querySelector('[data-ew="ablehnen"]')?.click());
+    await seite.evaluate(() => document.fonts.ready);
+    await seite.waitForTimeout(200);
+    aufrufe++;
+
+    if (!(await seite.$('.mega'))) {
+      melde(wo, 'kein großes Behandlungsmenü im Kopf');
+      await seite.close();
+      continue;
+    }
+
+    for (const zustand of ['oben', 'gescrollt']) {
+      if (zustand === 'gescrollt') {
+        await scrollen(seite, 900);
+        await warteAufAngedockt(seite, true);
+        await seite.waitForTimeout(400);
+        await warteAufRuhe(seite, '.standortleiste');
+      }
+
+      const auf = await kopfKlick(seite, '.mega > summary');
+      if (!auf.ok) {
+        melde(wo, `das Menü lässt sich ${zustand} nicht öffnen: ${auf.grund}`);
+        continue;
+      }
+      await seite.waitForTimeout(250);
+
+      const m = await seite.evaluate(() => {
+        const feld = document.querySelector('.mega-feld');
+        const pille = document.querySelector('.kopf-glas');
+        if (!feld || !pille) return null;
+        const f = feld.getBoundingClientRect();
+        const p = pille.getBoundingClientRect();
+        const mitte = document.elementFromPoint(
+          Math.round(f.left + f.width / 2),
+          Math.round(f.top + 30),
+        );
+        return {
+          offen: Boolean(document.querySelector('.mega[open]')),
+          luft: Math.round(f.top - p.bottom),
+          rechts: Math.round(f.right),
+          fenster: window.innerWidth,
+          hoehe: Math.round(f.height),
+          verweise: document.querySelectorAll('.mega-block a').length,
+          bereiche: document.querySelectorAll('.mega-block').length,
+          alle: Boolean(document.querySelector('.mega-alle')),
+          obenauf: Boolean(mitte) && feld.contains(mitte),
+          ueberlauf: Math.max(0, document.documentElement.scrollWidth - window.innerWidth),
+        };
+      });
+
+      if (!m) {
+        melde(wo, `das Feld fehlt ${zustand} im Baum`);
+        continue;
+      }
+      if (!m.offen) melde(wo, `das Menü klappt ${zustand} nicht auf`);
+
+      /*
+       * Das Feld setzt an der Unterkante der Pille an – nicht darin.
+       *
+       * Negativ heißt: Es liegt über der Standortleiste und verdeckt genau
+       * die Angabe, in welcher Praxis man gerade ist. Mehr als 16 px heißt:
+       * Es schwebt frei und gehört sichtbar nicht mehr zum Kopf.
+       */
+      if (m.luft < 0 || m.luft > 16) {
+        melde(wo, `das Feld sitzt ${zustand} ${m.luft} px unter der Pille (erlaubt 0 bis 16)`);
+      }
+      if (m.rechts > m.fenster) {
+        melde(wo, `das Feld steht ${zustand} ${m.rechts - m.fenster} px über den rechten Rand`);
+      }
+      if (m.ueberlauf > 0) melde(wo, `${m.ueberlauf} px seitlicher Überlauf (${zustand}, offen)`);
+      if (!m.obenauf) melde(wo, `etwas liegt ${zustand} über dem geöffneten Feld`);
+      if (!m.alle) melde(wo, 'der Weg auf die Übersichtsseite fehlt im Feld');
+      if (m.bereiche < 8) melde(wo, `nur ${m.bereiche} Bereiche im Feld`);
+      if (m.verweise < 20) melde(wo, `nur ${m.verweise} Behandlungen im Feld`);
+
+      await kopfKlick(seite, '.mega > summary');
+      await seite.waitForTimeout(150);
+    }
+
+    await seite.close();
+  }
+}
+
+/* ── 6. Der angedockte Kopf über alle Schreibtischbreiten ──────────────
+ *
+ * Zwei Bedienelemente sind dazugekommen, und sie brauchen Platz, den es
+ * nicht überall gibt. Wo er fehlt, weichen Telefonnummer und Lupe; wo auch
+ * das nicht reicht, übernimmt der Menüknopf. Beide Grenzen stehen als Zahl
+ * im Stilteil – hier werden sie nachgemessen, auf Deutsch UND auf
+ * Französisch, weil dort dieselben Punkte 79 px mehr brauchen.
+ */
+
+const BREITENLAUF = [390, 780, 1000, 1088, 1184, 1185, 1300, 1344, 1345, 1440, 1920];
+
+for (const pfad of ['/potsdam/', '/fr/potsdam/']) {
+  for (const breite of BREITENLAUF) {
+    const wo = `Breitenlauf · ${pfad} · ${breite}px`;
+    const seite = await browser.newPage({ viewport: { width: breite, height: 950 } });
+    await seite.goto(BASIS + pfad, { waitUntil: 'networkidle' });
+    await seite.evaluate(() => document.querySelector('[data-ew="ablehnen"]')?.click());
+    await seite.waitForTimeout(150);
+    await scrollen(seite, 900);
+    await warteAufAngedockt(seite, true);
+    await seite.waitForTimeout(400);
+    aufrufe++;
+
+    const r = await seite.evaluate(() => {
+      const sicht = (auswahl) => {
+        const el = document.querySelector(auswahl);
+        if (!el) return false;
+        const s = getComputedStyle(el);
+        return s.display !== 'none' && s.visibility !== 'hidden' &&
+          el.getBoundingClientRect().width > 1;
+      };
+      return {
+        ueberlauf: Math.max(0, document.documentElement.scrollWidth - window.innerWidth),
+        sprache: sicht('.kopf-sprache'),
+        pin: sicht('.ort-kompakt'),
+        menue: sicht('.menue-knopf'),
+      };
+    });
+
+    if (r.ueberlauf > 0) melde(wo, `${r.ueberlauf} px seitlicher Überlauf im angedockten Kopf`);
+    if (!r.pin) melde(wo, 'kein Standortwähler im angedockten Kopf');
+    /* Die Sprachwahl darf im Menüknopf stecken – aber nicht nirgends. */
+    if (!r.sprache && !r.menue) melde(wo, 'angedockt weder Sprachwahl noch Menüknopf');
+
+    await seite.close();
+  }
+}
+
 await browser.close();
 
 console.log(`[kopf] ${aufrufe} Seitenaufrufe – oben, gescrollt, aufgeklappt und zurück`);
@@ -350,7 +501,9 @@ if (befunde.length === 0) {
   console.log(
     '[kopf] Die Leiste klappt ganz ein, Standortwähler und Sprachwahl stehen\n' +
       '       dann oben, die Liste klappt sichtbar auf, und der Ort steht in\n' +
-      '       jedem Zustand genau einmal da.',
+      '       jedem Zustand genau einmal da. Das große Behandlungsmenü setzt\n' +
+      '       an der Pille an und passt in jeder geprüften Breite ins Fenster –\n' +
+      '       auf Deutsch wie auf Französisch.',
   );
   process.exit(0);
 }

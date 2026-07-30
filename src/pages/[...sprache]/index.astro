@@ -430,7 +430,10 @@ const ueberschrift = t('start.ueberschrift');
   }
 
   .s-karte h2 {
-    font-size: var(--t-xl);
+    /* Dieselbe Größe wie auf der Standortübersicht, aus demselben Grund:
+       „KU64 Kurfürstendamm" passt bei `--t-xl` nicht in eine Spalte von
+       vieren und bricht mitten im Wort. Begründung dort ausführlich. */
+    font-size: var(--t-lg);
   }
 
   .s-karte h2 a {

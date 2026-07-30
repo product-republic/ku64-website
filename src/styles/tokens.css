@@ -322,7 +322,7 @@
    * durchgang.mjs): Der Kontrast der Beschriftungen bleibt über allen
    * Seitenarten über 7:1 und damit über der AAA-Schwelle.
    */
-  --glas-kopf-flaeche: rgb(255 255 255 / 0.58);
+  --glas-kopf-flaeche: rgb(255 255 255 / 0.52);
 
   /*
    * Und ein eigener Weichzeichner, deutlich schwächer als der für Textkästen.
@@ -338,8 +338,18 @@
    * durchscrollt, wird zu einem weichen Schleifen, eine gelbe Fläche zu einem
    * gelben Hauch. Das ist Glas: Man sieht, DASS etwas dahinter ist, ohne
    * lesen zu können, WAS.
+   *
+   * Nachjustiert auf 20 px und 0,52 Deckung: einen Hauch mehr vom Inhalt
+   * darunter, nicht mehr. Die beiden Werte gehören zusammen – weniger
+   * Weichzeichnung ohne weniger Deckung sieht nur unscharf aus, weniger
+   * Deckung ohne weniger Weichzeichnung nur blass. Zusammen sieht man, was
+   * durchläuft.
+   *
+   * Untergrenze ist nicht der Geschmack, sondern der Kontrast: Die
+   * Beschriftungen im Kopf müssen über allen Seitenarten lesbar bleiben.
+   * Nachgemessen mit `kontrast:pruefen` über 32 Seitenaufrufe.
    */
-  --glas-kopf-unschaerfe: 26px;
+  --glas-kopf-unschaerfe: 20px;
 
   /* Schleier für Schrift, die direkt auf Bild oder Video liegt. Von unten
      nach oben abnehmend – Text steht dort, wo es am dunkelsten ist. */
@@ -434,8 +444,9 @@
     /* Im Dunkelmodus eine Spur dichter: Helle Schrift auf durchscheinendem
        Dunkel verliert schneller, weil der Untergrund heller wird statt
        dunkler. */
-    --glas-kopf-flaeche: rgb(24 21 18 / 0.62);
-    --glas-kopf-unschaerfe: 26px;
+    /* Im dunklen Modus derselbe Schritt – siehe Begründung im hellen. */
+    --glas-kopf-flaeche: rgb(24 21 18 / 0.56);
+    --glas-kopf-unschaerfe: 20px;
 
     /* Umgekehrte Schaltflächen: Auf dunklem Grund ist die helle Pille die
        Hauptschaltfläche – dieselbe Logik wie im Entwurf mit dem Foto. */

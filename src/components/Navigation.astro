@@ -57,7 +57,7 @@ const suchpfad = `${sprachbasis}/suche/${standort ? `?ort=${standort.slug}` : ''
 
 const punkte = standort
   ? [
-      { name: t('nav.behandlungen'), pfad: `${basis}/leistungen/` },
+      { name: t('nav.behandlungen'), pfad: `${basis}/leistungen/`, mega: true },
       { name: t('nav.praxis'), pfad: `${basis}/praxis/` },
       { name: t('nav.team'), pfad: `${basis}/team/` },
       { name: t('nav.anfahrt'), pfad: `${basis}/anfahrt/` },
@@ -65,7 +65,7 @@ const punkte = standort
     ]
   : [
       { name: t('nav.standorte'), pfad: '/standorte/' },
-      { name: t('nav.behandlungen'), pfad: '/leistungen/' },
+      { name: t('nav.behandlungen'), pfad: '/leistungen/', mega: true },
       { name: t('nav.ueberKu64'), pfad: '/ueber-uns/' },
       { name: 'Blog', pfad: '/blog/' },
       { name: t('nav.kontakt'), pfad: '/kontakt/' },
@@ -73,15 +73,42 @@ const punkte = standort
 
 const aktiv = (ziel: string) => pfad === ziel || (ziel !== '/' && pfad.startsWith(ziel));
 
-/* Kategorien für das Leistungs-Flyout – nur, was es hier wirklich gibt. */
-const kategorienHier = standort
-  ? daten.kategorien.map((k) => ({
-      ...k,
-      anzahl: daten.leistungenHier(standort.slug).filter((l) => l.kategorie === k.slug).length,
-    }))
-      .filter((k) => k.anzahl > 0)
-      .sort((a, b) => a.rang - b.rang)
-  : [];
+/*
+ * Alle Behandlungen, nach Bereich gruppiert – für das große Menü.
+ *
+ * ── Warum die ganze Liste und nicht nur die Bereiche ────────────────────
+ *
+ * Vorher standen im Menü elf Bereichsnamen mit einer Zahl dahinter. Wer
+ * „Zahnimplantate" sucht, muss daraus erst raten, dass sie unter
+ * „Implantologie" stehen, dann klicken, dann suchen. Die Bereiche sind
+ * unsere Ordnung, nicht die Frage der Besucherin.
+ *
+ * Dreiundvierzig Behandlungen in elf Bereichen sind übersichtlich, wenn sie
+ * gruppiert und gesetzt sind – das ist der ganze Sinn eines großen Menüs.
+ * Auf dem Telefon klappt jeder Bereich einzeln auf, damit die Liste nicht
+ * zur Bildschirmwanderung wird.
+ *
+ * ── Nur, was es hier wirklich gibt ──────────────────────────────────────
+ *
+ * Steht ein Standort fest, zeigt das Menü ausschließlich dessen
+ * Behandlungen. Ein Menüpunkt, der auf eine Seite führt, die es an diesem
+ * Ort nicht gibt, ist schlimmer als ein fehlender.
+ */
+const leistungenImMenue = standort ? daten.leistungenHier(standort.slug) : daten.leistungen;
+
+const kategorienHier = daten.kategorien
+  .map((k) => ({
+    ...k,
+    leistungen: leistungenImMenue
+      .filter((l) => l.kategorie === k.slug)
+      .sort((a, b) => a.name.localeCompare(b.name, 'de')),
+  }))
+  .filter((k) => k.leistungen.length > 0)
+  .sort((a, b) => a.rang - b.rang);
+
+/* Die Adresse einer Behandlung – mit Standort davor, wenn einer feststeht.
+   Den Sprachpräfix setzt die Middleware, siehe src/middleware.ts. */
+const leistungspfad = (leistungsSlug: string) => `${basis}/leistungen/${leistungsSlug}/`;
 
 /* Der Öffnungsstatus wird beim Build berechnet und im Browser aktualisiert –
    sonst zeigt eine statische Seite dauerhaft den Stand des Build-Zeitpunkts. */
@@ -126,17 +153,59 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
         */}
         <span class="haupt-laeufer" aria-hidden="true"></span>
         {
-          punkte.map((p) => (
-            <li>
-              <a
-                href={p.pfad}
-                class:list={['haupt-link', { 'ist-aktiv': aktiv(p.pfad) }]}
-                aria-current={aktiv(p.pfad) ? 'page' : undefined}
-              >
-                {p.name}
-              </a>
-            </li>
-          ))
+          punkte.map((p) =>
+            p.mega ? (
+              /*
+                Ein `<details>` und kein Knopf mit `hidden`-Feld.
+                Ohne JavaScript klappt es trotzdem auf, und die Tastatur
+                bedient es ohne eine Zeile von uns. Der Weg auf die
+                Übersichtsseite geht nicht verloren – er steht als erste
+                Zeile im Feld, ausgeschrieben und mit Anzahl.
+              */
+              <li class="hat-mega">
+                <details class="mega">
+                  <summary class:list={['haupt-link', { 'ist-aktiv': aktiv(p.pfad) }]}>
+                    {p.name}
+                    <svg class="mega-pfeil" viewBox="0 0 12 8" width="9" height="6" aria-hidden="true">
+                      <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                  </summary>
+                  <div class="mega-feld">
+                    <a href={p.pfad} class="mega-alle">
+                      {t('standort.alleBehandlungenAnsehen', { anzahl: leistungenImMenue.length })}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                    <div class="mega-spalten">
+                      {kategorienHier.map((k) => (
+                        <div class="mega-block">
+                          <p class="mega-titel">
+                            <a href={`${p.pfad}#${k.slug}`}>{k.name}</a>
+                          </p>
+                          <ul>
+                            {k.leistungen.map((l) => (
+                              <li>
+                                <a href={leistungspfad(l.slug)}>{l.name}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </details>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={p.pfad}
+                  class:list={['haupt-link', { 'ist-aktiv': aktiv(p.pfad) }]}
+                  aria-current={aktiv(p.pfad) ? 'page' : undefined}
+                >
+                  {p.name}
+                </a>
+              </li>
+            ),
+          )
         }
       </ul>
     </nav>
@@ -291,16 +360,38 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       {
         kategorienHier.length > 0 && (
           <>
+            {/*
+              Auf dem Telefon dasselbe Angebot, nur anders gefaltet.
+
+              Alle dreiundvierzig Behandlungen untereinander wären eine
+              Bildschirmwanderung; elf Bereichsnamen mit einer Zahl dahinter
+              waren das Gegenteil und zwangen zu einem Klick ins Ungewisse.
+              Ein `<details>` je Bereich zeigt beides: die Ordnung sofort,
+              die Behandlungen auf einen Tipp – ohne Seitenwechsel.
+            */}
             <p class="mobil-titel">{t('nav.behandlungen')}</p>
-            <ul class="mobil-liste mobil-liste-klein">
+            <a href={`${basis}/leistungen/`} class="mobil-alle">
+              {t('standort.alleBehandlungenAnsehen', { anzahl: leistungenImMenue.length })}
+            </a>
+            <div class="mobil-bereiche">
               {kategorienHier.map((k) => (
-                <li>
-                  <a href={`${basis}/leistungen/#${k.slug}`}>
-                    {k.name} <span class="anzahl">{k.anzahl}</span>
-                  </a>
-                </li>
+                <details class="mobil-bereich">
+                  <summary>
+                    {k.name} <span class="anzahl">{k.leistungen.length}</span>
+                    <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
+                      <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                  </summary>
+                  <ul class="mobil-liste mobil-liste-klein">
+                    {k.leistungen.map((l) => (
+                      <li>
+                        <a href={leistungspfad(l.slug)}>{l.name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
               ))}
-            </ul>
+            </div>
           </>
         )
       }
@@ -342,6 +433,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    */
   .kopf-glas {
     position: relative;
+    /* Hält die Glasfläche mit `z-index: -1` innerhalb der Pille, statt sie
+       hinter die Seite fallen zu lassen. */
+    isolation: isolate;
     max-width: min(100rem, calc(100vw - 2 * var(--rand)));
     margin-inline: auto;
     margin-block-start: var(--raum-3);
@@ -385,7 +479,24 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   .kopf-glasflaeche {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    /*
+     * Hinter den Inhalt, nicht davor.
+     *
+     * Vorher lag sie auf `z-index: 0`, und beide Zeilen darüber brauchten
+     * deshalb `position: relative; z-index: 1`. Das hatte eine Nebenwirkung,
+     * die erst beim großen Menü auffiel: Ein aufklappendes Feld richtet
+     * sich am nächsten POSITIONIERTEN Vorfahren aus – und das war damit
+     * `.kopf-inner`, dessen Unterkante mitten in der Pille liegt. Der
+     * Abstand zur Pillenunterkante musste als Zahl geschätzt werden, einmal
+     * je Zustand, und war auf Englisch und Französisch prompt falsch: Dort
+     * ist die Standortleiste höher.
+     *
+     * Mit `z-index: -1` und dem Isolieren der Pille braucht keine der beiden
+     * Zeilen mehr eine eigene Ebene. Bezug für alles, was aufklappt, ist
+     * dann die Pille selbst, und `top: 100%` heißt schlicht „unter dem
+     * Kopf" – in jedem Zustand und in jeder Sprache, ohne eine einzige Zahl.
+     */
+    z-index: -1;
     border-radius: inherit;
     background: var(--glas-kopf-flaeche);
     -webkit-backdrop-filter: blur(var(--glas-kopf-unschaerfe)) saturate(var(--glas-saettigung));
@@ -393,12 +504,14 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     pointer-events: none;
   }
 
-  /* Beide Zeilen liegen über der Glasfläche. */
-  .kopf-inner,
-  .standortleiste-inner {
-    position: relative;
-    z-index: 1;
-  }
+  /*
+   * KEINE eigene Ebene für die beiden Zeilen.
+   *
+   * Sie liegen ohnehin über der Glasfläche, seit die auf `z-index: -1`
+   * steht. Und weil sie nicht mehr positioniert sind, ist der Bezug für
+   * alles, was aus dem Kopf herausklappt, die Pille – siehe Begründung bei
+   * `.kopf-glasflaeche`.
+   */
 
   .logo {
     display: flex;
@@ -772,12 +885,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Unterkante ist – eingeklappte Leiste – die Unterkante der Pille. Genau
    * dort soll die Liste ansetzen und deren Rundung fortsetzen.
    */
-  .kopf:global(.ist-angedockt) .kopf-inner {
-    /* Über der eingeklappten Leiste, sonst deckt deren Fläche die Liste ab.
-       Beide standen auf z-index: 1, und bei Gleichstand gewinnt das spätere
-       Element im Markup. */
-    z-index: 2;
-  }
+
 
   .kopf:global(.ist-angedockt) .wo-bin-ich {
     max-height: 0;
@@ -844,6 +952,59 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     }
   }
 
+  /* ── Behandlungen im mobilen Menü ──────────────────────────────────── */
+
+  .mobil-alle {
+    display: block;
+    margin-block-end: var(--raum-3);
+    font-size: var(--t-sm);
+    font-weight: 700;
+    color: var(--akzent-schrift);
+    text-decoration: none;
+  }
+
+  .mobil-bereiche {
+    display: grid;
+    gap: 2px;
+  }
+
+  .mobil-bereich > summary {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-2);
+    /* Zielgröße nach WCAG 2.5.8 – auf dem Telefon ist das keine Formalie. */
+    min-block-size: 2.75rem;
+    padding-inline: var(--raum-2);
+    border-radius: var(--radius);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobil-bereich > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobil-bereich > summary svg {
+    margin-inline-start: auto;
+    opacity: 0.6;
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .mobil-bereich[open] > summary svg {
+    transform: rotate(180deg);
+  }
+
+  .mobil-bereich[open] > summary {
+    background: var(--flaeche-warm-2);
+  }
+
+  .mobil-bereich > .mobil-liste {
+    padding-inline-start: var(--raum-4);
+    margin-block: var(--raum-1) var(--raum-3);
+  }
+
   .mobil-sprache {
     margin-block-start: var(--raum-6);
     padding-block-start: var(--raum-5);
@@ -859,7 +1020,15 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   .haupt-liste {
-    position: relative;
+    /*
+     * KEIN `position: relative`.
+     *
+     * Sonst wäre sie der Bezug für das große Menü, und das Feld begänne an
+     * einem einzelnen Menüpunkt statt an der Pille. Das wandernde Feld
+     * darunter braucht deshalb keinen positionierten Vorfahren mehr: Es
+     * rechnet seine Lage gegen seinen tatsächlichen Bezugskasten aus, siehe
+     * `stellen()` im Skriptteil.
+     */
     display: flex;
     gap: var(--raum-1);
     list-style: none;
@@ -884,8 +1053,9 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    */
   .haupt-laeufer {
     position: absolute;
-    inset-block: 0;
+    inset-block-start: 0;
     inset-inline-start: 0;
+    block-size: var(--h, 0);
     /* Hinter den Beschriftungen, nicht darüber. */
     z-index: 0;
     inline-size: var(--b, 0);
@@ -908,7 +1078,16 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       inset 0 -1px 0 rgb(255 255 255 / 0.2);
     opacity: 0;
     pointer-events: none;
-    transform: translate3d(var(--x, 0), 0, 0);
+    /*
+     * Verborgen ist es kleiner, nicht nur durchsichtig.
+     *
+     * Vorher wurde nur die Deckkraft geschaltet: Das Feld blieb in voller
+     * Größe stehen und verschwand. Zusammen mit der Federkurve auf der
+     * Bewegung sah das aus, als bräche die Animation ab – „löst nicht
+     * richtig auf". Ein Feld, das beim Gehen um sechs Prozent einfällt,
+     * geht; eines, das nur blasser wird, wird ausgeknipst.
+     */
+    transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(0.94);
     transition:
       transform var(--zeit-lang) var(--kurve-feder),
       inline-size var(--zeit-lang) var(--kurve-feder),
@@ -921,8 +1100,211 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     z-index: 1;
   }
 
+  /* ── Das große Behandlungsmenü ─────────────────────────────────────── */
+
+  /*
+   * Der Listenpunkt mit dem großen Menü ist ABSICHTLICH nicht positioniert.
+   *
+   * Das Feld darin ist `position: absolute` und richtet sich am nächsten
+   * positionierten Vorfahren aus. Wäre das der `<li>`, begänne es an einem
+   * einzelnen Menüpunkt und wäre höchstens so breit wie „Leistungen".
+   * Ohne Positionierung ist der Bezug die Menüliste – das Feld beginnt an
+   * ihrer linken Kante und darf sich über die ganze Leiste ziehen.
+   *
+   * Die Beschriftung braucht ihre Ebene trotzdem, sonst läuft das
+   * wandernde Feld darüber statt darunter. Sie bekommt sie selbst.
+   */
+  .haupt-liste li.hat-mega {
+    /*
+     * Die Auswahl nennt die Liste mit – sonst gewinnt `.haupt-liste li`.
+     *
+     * `.hat-mega` allein hat eine Klasse, `.haupt-liste li` eine Klasse und
+     * einen Typ; bei ungleicher Spezifität hilft die Reihenfolge nicht. Der
+     * Listenpunkt blieb deshalb positioniert, das Feld hing weiter an ihm
+     * statt an der Pille, und `kopf-pruefen` meldete es auf zwölf Wegen:
+     * 69 px zu hoch im ausgeklappten, 15 px im angedockten Zustand.
+     */
+    position: static;
+  }
+
+  .hat-mega > .mega > summary {
+    position: relative;
+    z-index: 1;
+  }
+
+  .mega > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mega > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mega-pfeil {
+    transition: transform var(--zeit) var(--kurve);
+    opacity: 0.7;
+  }
+
+  .mega[open] .mega-pfeil {
+    transform: rotate(180deg);
+  }
+
+  /*
+   * Das Feld hängt an der Menüliste, nicht am Punkt.
+   *
+   * `top: calc(100% + …)`: Die Liste sitzt mittig in einer 4,25 rem hohen
+   * Zeile; ihre Unterkante liegt also über der Unterkante der Glaspille.
+   * Der Zuschlag setzt das Feld unter die Pille statt mitten hinein.
+   */
+  .mega-feld {
+    position: absolute;
+    /*
+     * Bündig unter der Pille, über ihre ganze Breite.
+     *
+     * Bezug ist `.kopf-glas` – keine Zahl, kein Zustandsunterschied, keine
+     * Sprachabhängigkeit. Der erste Versuch hing am Menüpunkt und brauchte
+     * zwei geschätzte Abstände; `kopf-pruefen` hat sie prompt auf Englisch
+     * und Französisch widerlegt, wo die Standortleiste höher ist.
+     */
+    inset-inline: 0;
+    top: 100%;
+    /*
+     * Ein Fingerbreit Luft – als Außenabstand, nicht im `top`.
+     *
+     * `top: 100%` trifft die Innenkante des Rahmens; gemessen sitzt das Feld
+     * damit exakt 1 px über der Außenkante der Pille. Der Abstand gehört
+     * trotzdem hierher und nicht in die Rechnung: Er ist ein Gestaltungswert
+     * und hängt an nichts – nicht am Zustand, nicht an der Sprache. Genau
+     * das unterscheidet ihn von den beiden geschätzten Abständen, die diese
+     * Stelle vorher hatte.
+     */
+    margin-block-start: 0.5rem;
+    z-index: var(--z-overlay);
+    max-height: min(72vh, 38rem);
+    overflow-y: auto;
+    padding: var(--raum-5);
+    background: var(--glas-flaeche-stark);
+    -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    border: 1px solid var(--glas-rand);
+    border-radius: var(--radius-xl);
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      0 24px 48px -24px rgb(20 16 14 / 0.34),
+      0 6px 16px -10px rgb(20 16 14 / 0.18);
+  }
+
+  /* Dieselbe Begründung wie beim Standortwähler: Ohne Weichzeichner bleibt
+     von „durchscheinend plus unscharf" nur „durchscheinend" – und dann steht
+     die Überschrift der Seite scharf durch das Menü. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mega-feld {
+      background: var(--flaeche);
+    }
+  }
+
+  .mega-alle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    margin-block-end: var(--raum-5);
+    padding-block-end: var(--raum-4);
+    border-block-end: 1px solid var(--linie);
+    width: 100%;
+    font-size: var(--t-sm);
+    font-weight: 700;
+    color: var(--akzent-schrift);
+    text-decoration: none;
+  }
+
+  .mega-alle:hover {
+    text-decoration: underline;
+  }
+
+  .mega-spalten {
+    display: grid;
+    /* Schmaler als eine Textspalte sein darf: Hier stehen Namen, keine
+       Sätze. Elf Bereiche passen damit in zwei Reihen statt in drei – und
+       zwei Reihen sieht man ohne zu rollen. */
+    grid-template-columns: repeat(auto-fill, minmax(min(11.5rem, 100%), 1fr));
+    gap: var(--raum-5) var(--raum-4);
+  }
+
+  .mega-block {
+    min-width: 0;
+  }
+
+  /*
+   * Bereichsnamen in Groß- und Kleinschreibung, nicht in Versalien.
+   *
+   * Versalien sind hier zweimal im Weg. Erstens brauchen sie Breite:
+   * „KINDERZAHNHEILKUNDE" mit 0,08 em Sperrung passte in keine der sechs
+   * Spalten und brach mitten im Wort um – „KINDERZAHNHEILKUND / E".
+   * Zweitens liest man sie langsamer, und in einem Menü mit
+   * dreiundvierzig Einträgen ist Überfliegen die einzige Bedienart, die
+   * zählt.
+   *
+   * Die Abstufung zum Verweis darunter trägt jetzt das Gewicht und die
+   * Farbe: Bereich in voller Tinte und fett, Behandlung in weicher Tinte
+   * und normal.
+   */
+  .mega-titel {
+    margin: 0 0 var(--raum-2);
+    font-size: var(--t-sm);
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: var(--tinte);
+  }
+
+  .mega-titel a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .mega-titel a:hover {
+    color: var(--akzent-schrift);
+  }
+
+  .mega-block ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+  }
+
+  .mega-block li {
+    /* Die Grundregel `.haupt-liste li` setzt `position: relative; z-index: 1`
+       – hier drin wäre das eine Ebene je Verweis, ohne Nutzen. */
+    position: static;
+  }
+
+  .mega-block a {
+    display: block;
+    padding: 0.32rem 0.5rem;
+    margin-inline: -0.5rem;
+    border-radius: var(--radius);
+    font-size: var(--t-sm);
+    line-height: 1.35;
+    color: var(--tinte-weich);
+    text-decoration: none;
+    transition: background-color var(--zeit-schnell) var(--kurve),
+      color var(--zeit-schnell) var(--kurve);
+  }
+
+  .mega-block a:hover,
+  .mega-block a:focus-visible {
+    background: var(--flaeche-warm-2);
+    color: var(--tinte);
+  }
+
   .haupt-laeufer[data-sichtbar] {
     opacity: 1;
+    transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1);
   }
 
   /*
@@ -1262,7 +1644,56 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     font-variant-numeric: tabular-nums;
   }
 
-  @media (max-width: 68rem) {
+  /*
+   * Der schmale Schreibtisch: angedockt trägt die obere Zeile zwei
+   * Bedienelemente mehr, als sie Platz hat.
+   *
+   * Gemessen: Der Inhalt der oberen Zeile braucht auf Deutsch 1166 px, auf
+   * Englisch und Französisch 1245 – die Menüpunkte sind dort länger und
+   * „Book an appointment" misst 45 px mehr als „Termin buchen". Der
+   * Standortwähler (39 px) und die Sprachwahl (118 px) sind neu
+   * dazugekommen; sie stehen im angedockten Zustand für die eingeklappte
+   * Leiste.
+   *
+   * Die Obergrenze von 84 rem ist deshalb keine runde Zahl, sondern die
+   * gemessene: 1245 px Inhalt plus 96 px Rand ergeben 1341 – darunter passt
+   * die französische Fassung nicht mehr. Wer nur auf Deutsch prüft, setzt
+   * hier 78 rem und übersieht es; genau das ist beim ersten Versuch
+   * passiert, gefunden bei 1249 px auf /fr/.
+   *
+   * Weichen müssen Telefonnummer und Lupe – und zwar nur hier und nur
+   * angedockt. Beide sind keine Navigation: Die Nummer steht in der
+   * Fußzeile, auf der Kontaktseite und wieder oben, sobald man
+   * hochscrollt; die Suche liegt unter /suche/. Der Standortwähler und die
+   * Sprachwahl dagegen haben sonst gar keinen Platz mehr, denn die Leiste
+   * darunter ist ja eingeklappt.
+   *
+   * `display: none` ist hier zulässig, weil es ganze Bedienelemente
+   * entfernt und nicht deren Namen – anders als damals beim Berater-Knopf,
+   * wo `display: none` den Text wegnahm und die Schaltfläche namenlos
+   * zurückließ (siehe `namen-pruefen.mjs`).
+   */
+  @media (min-width: 74.0625rem) and (max-width: 84rem) {
+    .kopf:global(.ist-angedockt) .telefon,
+    .kopf:global(.ist-angedockt) .lupe-link {
+      display: none;
+    }
+  }
+
+  /*
+   * Ab wann das waagerechte Menü dem Menüknopf weicht: 74 rem, nicht 68.
+   *
+   * Der Grund ist Rechnen, nicht Geschmack. Angedockt trägt die obere Zeile
+   * jetzt Standortwähler und Sprachwahl zusätzlich – auf Englisch und
+   * Französisch zusammen 1245 px. Bei 68 rem stehen 993 px zur Verfügung;
+   * selbst ohne Telefonnummer und Lupe fehlten 42.
+   *
+   * Zwischen 68 und 74 rem übernimmt deshalb der Menüknopf. Verloren geht
+   * dabei nichts: Im Mobilmenü stehen dieselben Punkte, alle
+   * Behandlungsbereiche einzeln aufklappbar UND die Sprachwahl – es ist
+   * dort mehr zu sehen als in der Leiste, nicht weniger.
+   */
+  @media (max-width: 74rem) {
     .haupt {
       display: none;
     }
@@ -1384,18 +1815,19 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    */
 
   /*
-   * Beide Standortwähler, nicht einer.
+   * Alles, was sich aufklappt – nicht nur der eine Wähler.
    *
-   * Es gibt ihn zweimal: in der Leiste (`.waehler`) und im Kopf, sobald
-   * gescrollt wurde (`.ort-kompakt`). Hier stand nur der erste – und damit
-   * blieb der zweite offen, wenn man daneben klickte, mit Escape schloss
-   * oder das Fenster wechselte. Ein Menü, das nur auf seinen eigenen Knopf
-   * hört, legt sich über die Seite und bleibt dort liegen.
+   * Drei Dinge klappen im Kopf auf: der Standortwähler in der Leiste
+   * (`.waehler`), der kompakte im Kopf (`.ort-kompakt`) und das große
+   * Behandlungsmenü (`.mega`). Hier stand nur der erste – und damit blieben
+   * die anderen offen, wenn man daneben klickte, mit Escape schloss oder
+   * das Fenster wechselte. Ein Menü, das nur auf seinen eigenen Knopf hört,
+   * legt sich über die Seite und bleibt dort liegen.
    *
    * Eine Konstante statt zweier Zeichenketten an sechs Stellen: Der Fehler
    * bestand ja gerade darin, dass eine Stelle den neuen Wähler nicht kannte.
    */
-  const WAEHLER = '.waehler[open], .ort-kompakt[open]';
+  const WAEHLER = '.waehler[open], .ort-kompakt[open], .mega[open]';
 
   function waehlerZu() {
     for (const d of document.querySelectorAll<HTMLDetailsElement>(WAEHLER)) {
@@ -1527,6 +1959,47 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       }
     }
 
+    /* ── Das große Behandlungsmenü öffnet auch beim Überfahren ─────────
+     *
+     * Klicken funktioniert überall und ist der Grundzustand – ein `<details>`
+     * braucht dafür keine Zeile JavaScript. Am Schreibtisch erwartet man von
+     * einem großen Menü aber, dass es beim Hinfahren aufgeht.
+     *
+     * Nur für Geräte mit echtem Zeiger: Auf einem Touchscreen meldet der
+     * Browser den ersten Tipp als `pointerenter` UND als Klick – das Menü
+     * ginge auf und sofort wieder zu.
+     *
+     * Die Verzögerungen sind nicht Geschmack: 120 ms beim Öffnen verhindern,
+     * dass das Feld aufspringt, wenn jemand nur über „Leistungen" hinweg zu
+     * „Team" fährt. 220 ms beim Schließen überbrücken den Weg vom Menüpunkt
+     * ins Feld – dazwischen liegt ein Spalt, und ohne Nachlauf klappte es
+     * genau dort zu.
+     */
+    const mega = document.querySelector<HTMLDetailsElement>('.mega');
+    if (mega && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      let aufZeit: number | undefined;
+      let zuZeit: number | undefined;
+
+      mega.addEventListener('pointerenter', () => {
+        window.clearTimeout(zuZeit);
+        aufZeit = window.setTimeout(() => {
+          mega.open = true;
+        }, 120);
+      });
+
+      mega.addEventListener('pointerleave', () => {
+        window.clearTimeout(aufZeit);
+        zuZeit = window.setTimeout(() => {
+          mega.open = false;
+        }, 220);
+      });
+
+      abbauen.push(() => {
+        window.clearTimeout(aufZeit);
+        window.clearTimeout(zuZeit);
+      });
+    }
+
     /* ── Das wandernde Feld im Hauptmenü ────────────────────────────────
      *
      * Es folgt dem Zeiger von Punkt zu Punkt und kehrt beim Verlassen zum
@@ -1541,22 +2014,63 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     if (liste && laeufer && links.length > 0) {
       let zuletzt: HTMLElement | null = null;
 
+      /*
+       * Gemessen gegen den tatsächlichen Bezugskasten, nicht gegen die Liste.
+       *
+       * Vorher stand hier `liste.getBoundingClientRect()`, weil die Liste
+       * `position: relative` trug und damit der Bezug war. Seit sie das
+       * nicht mehr tut – das große Menü braucht die Pille als Bezug –, wäre
+       * diese Rechnung um den Abstand vom Pillenrand zur Liste daneben.
+       *
+       * `offsetParent` beantwortet die Frage, statt sie vorauszusetzen: Es
+       * IST der Kasten, auf den sich `top` und `left` beziehen. Damit stimmt
+       * die Rechnung auch, wenn später wieder jemand eine Ebene dazwischen
+       * positioniert.
+       */
       const stellen = (ziel: HTMLElement) => {
-        const l = liste.getBoundingClientRect();
+        const bezug = (laeufer.offsetParent ?? liste).getBoundingClientRect();
         const z = ziel.getBoundingClientRect();
-        laeufer.style.setProperty('--x', `${z.left - l.left}px`);
+        laeufer.style.setProperty('--x', `${z.left - bezug.left}px`);
+        laeufer.style.setProperty('--y', `${z.top - bezug.top}px`);
         laeufer.style.setProperty('--b', `${z.width}px`);
+        laeufer.style.setProperty('--h', `${z.height}px`);
       };
 
-      const verbergen = () => {
+      /*
+       * Wann das Feld zuletzt verschwunden ist.
+       *
+       * Es entscheidet, ob das nächste Erscheinen springen darf. Wer den
+       * aktiven Punkt überquert und gleich weiterzieht, hat das Feld eine
+       * Zehntelsekunde nicht gesehen – ein Sprung an die neue Stelle wirkt
+       * dann wie ein Aussetzer. Wer eine Minute später zurückkommt, erwartet
+       * keine Bewegung von der alten Stelle her.
+       */
+      let versteckSeit = 0;
+
+      /**
+       * Ausblenden – auf Wunsch erst noch zum Ziel gleiten.
+       *
+       * Der Kommentar oben verspricht seit jeher, das Feld kehre beim
+       * Verlassen zum aktiven Punkt zurück. Der Code tat das nie: Er nahm
+       * nur die Deckkraft weg und ließ das Feld stehen, wo es gerade war.
+       * Über dem aktiven Punkt sah man es deshalb schlagartig verschwinden,
+       * mitten in der Bewegung.
+       */
+      const verbergen = (ziel?: HTMLElement | null) => {
+        if (ziel) stellen(ziel);
         delete laeufer.dataset.sichtbar;
+        versteckSeit = performance.now();
         zuletzt = null;
       };
 
       const zeigen = (ziel: HTMLElement) => {
-        /* Über dem aktiven Punkt nicht – dort steht schon seine eigene Fläche. */
+        /*
+         * Über dem aktiven Punkt nicht – dort steht schon seine eigene
+         * Fläche. Aber es gleitet dorthin und löst sich dort auf, statt an
+         * Ort und Stelle auszugehen.
+         */
         if (ziel.classList.contains('ist-aktiv')) {
-          verbergen();
+          verbergen(ziel);
           return;
         }
         /*
@@ -1565,7 +2079,10 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
          * Null stand. Danach soll es gleiten, das ist ja der Sinn.
          */
         const warVerborgen = !laeufer.hasAttribute('data-sichtbar');
-        if (warVerborgen) {
+        /* Nur springen, wenn es wirklich weg war – nicht bei einem
+           Wimpernschlag über dem aktiven Punkt. */
+        const langeWeg = performance.now() - versteckSeit > 420;
+        if (warVerborgen && langeWeg) {
           const alterUebergang = laeufer.style.transition;
           laeufer.style.transition = 'none';
           stellen(ziel);
@@ -1584,9 +2101,19 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
         link.addEventListener('pointerenter', () => zeigen(link));
         link.addEventListener('focus', () => zeigen(link));
       }
-      liste.addEventListener('pointerleave', verbergen);
+      /*
+       * Beim Verlassen zurück zum aktiven Punkt – oder an Ort und Stelle
+       * auflösen, wenn es keinen gibt (etwa auf einer Unterseite ohne
+       * eigenen Menüpunkt).
+       *
+       * Die Klammern sind nicht Zierrat: `verbergen` bekäme als Zuhörer das
+       * Ereignis als erstes Argument, und `stellen(PointerEvent)` wirft.
+       */
+      const aktiverPunkt = () => links.find((l) => l.classList.contains('ist-aktiv')) ?? null;
+
+      liste.addEventListener('pointerleave', () => verbergen(aktiverPunkt()));
       liste.addEventListener('focusout', (e) => {
-        if (!liste.contains(e.relatedTarget as Node)) verbergen();
+        if (!liste.contains(e.relatedTarget as Node)) verbergen(aktiverPunkt());
       });
 
       /* Die Breite der Punkte ändert sich mit der Fenstergröße und mit der
