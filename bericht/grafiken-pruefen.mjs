@@ -73,6 +73,7 @@ import {
   ringReihe,
   stapelBalken,
   kennzahl,
+  kennzahlReihe,
   grafikStil,
 } from './grafiken.mjs';
 
@@ -175,15 +176,41 @@ const prozent = (a, b) => Math.round(((b - a) / a) * 100);
 
 const grafiken = [
   [
-    'kennzahl – Kurzfassung',
-    `<div class="grafik-reihe">
-      ${kennzahl({ wert: prozent(A.htmlKB, N.htmlKB), einheit: '%', label: 'HTML je Seite', richtung: 'runter' })}
-      ${kennzahl({ wert: prozent(A.skripte, N.skripte), einheit: '%', label: 'Skripte je Seite', richtung: 'runter' })}
-      ${kennzahl({ wert: N.fremd, label: 'Anfragen an fremde Server', richtung: 'keine', wertung: 'gut' })}
-      ${kennzahl({ wert: 0, label: 'tote Adressen aus dem Altbestand', richtung: 'keine', wertung: 'gut' })}
-      ${kennzahl({ wert: prozent(A.hreflang, N.hreflang), einheit: '%', label: 'hreflang je Seite', richtung: 'rauf' })}
-      ${kennzahl({ wert: prozent(A.schema, N.schema), einheit: '%', label: 'JSON-LD-Blöcke je Seite', richtung: 'runter', wertung: 'offen' })}
-    </div>`,
+    /* Über `kennzahlReihe` und nicht mit einem selbst geschriebenen
+       `<div class="grafik-reihe">`: Genau so steht es im Bericht. Eine Probe,
+       die das Umschließende anders baut als das Dokument, prüft eine
+       Anordnung, die niemand ausliefert. */
+    'kennzahlReihe – Kurzfassung, sechs Kacheln (bricht auf dem Telefon um)',
+    kennzahlReihe({
+      titel: 'Der Umbau in sechs Zahlen',
+      hinweis: 'Alle Werte aus analyse/vergleich/erhebung.json, Median je Seite.',
+      zahlen: [
+        { wert: prozent(A.htmlKB, N.htmlKB), einheit: '%', label: 'HTML je Seite', richtung: 'runter' },
+        { wert: prozent(A.skripte, N.skripte), einheit: '%', label: 'Skripte je Seite', richtung: 'runter' },
+        { wert: N.fremd, label: 'Anfragen an fremde Server', richtung: 'keine', wertung: 'gut' },
+        { wert: 0, label: 'tote Adressen aus dem Altbestand', richtung: 'keine', wertung: 'gut' },
+        { wert: prozent(A.hreflang, N.hreflang), einheit: '%', label: 'hreflang je Seite', richtung: 'rauf' },
+        { wert: prozent(A.schema, N.schema), einheit: '%', label: 'JSON-LD-Blöcke je Seite', richtung: 'runter', wertung: 'offen' },
+      ],
+    }),
+  ],
+  [
+    /* Zeichenketten statt Zahlen, weil im Bericht „2,7 s" steht: `kennzahl`
+       gibt eine Zeichenkette unverändert durch, formatiert also NICHT – und
+       eine Prüfung, die nur Zahlen einspeist, sieht nie, ob das stimmt. */
+    'kennzahlReihe – Werte als Zeichenkette, ohne Pfeil',
+    kennzahlReihe({
+      titel: 'Core Web Vitals, schlechtester Wert aus zehn Läufen',
+      zahlen: [
+        { wert: '2,7 s', label: 'LCP (größtes Element)', richtung: 'keine', wertung: 'offen' },
+        { wert: '0,001', label: 'CLS (Layoutsprünge)', richtung: 'keine', wertung: 'gut' },
+        { wert: '0 ms', label: 'TBT (blockierte Zeit)', richtung: 'keine', wertung: 'gut' },
+      ],
+    }),
+  ],
+  [
+    'kennzahl – einzeln, ohne Reihe',
+    kennzahl({ wert: 0, label: 'tote Adressen aus dem Altbestand', richtung: 'keine', wertung: 'gut' }),
   ],
   [
     'paarBalken – gemischte Einheiten, Maßstab je Zeile',

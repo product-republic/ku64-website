@@ -1193,6 +1193,45 @@ export function kennzahl({
   });
 }
 
+/**
+ * Mehrere Kacheln als eine Reihe mit gemeinsamer Überschrift.
+ *
+ * `kennzahl()` gibt eine einzelne Kachel zurück; eine Reihe daraus ist der
+ * Normalfall im Bericht, und ohne diese Funktion müsste jede Markdown-Stelle
+ * das umgebende `<div>` selbst schreiben. Genau das ist der Grund, warum es
+ * sie gibt: Ein Grafikblock nennt eine Art und ihre Angaben, kein HTML.
+ *
+ * Das Ergebnis ist – anders als bei allen übrigen Funktionen hier – kein
+ * einzelnes SVG, sondern ein `<div>` mit mehreren. Eine Reihe MUSS umbrechen
+ * können: Vier Kacheln in einem gemeinsamen SVG würden auf 390 px entweder
+ * überlaufen oder auf ein Viertel schrumpfen. Der Umbruch gehört dem
+ * Layout, nicht der Zeichnung.
+ *
+ * Die Überschrift steht als Text davor, nicht als `<title>` in einem SVG:
+ * Sie gilt für alle Kacheln zusammen, und ein `role="group"` mit
+ * `aria-label` sagt der Vorlesehilfe genau das.
+ *
+ * Beispiel:
+ *
+ *   kennzahlReihe({
+ *     titel: 'Der Umbau in drei Zahlen',
+ *     zahlen: [
+ *       { wert: 0, label: 'tote Adressen', richtung: 'keine', wertung: 'gut' },
+ *       { wert: -80, einheit: '%', label: 'HTML je Seite', richtung: 'runter', wertung: 'gut' },
+ *     ],
+ *   });
+ */
+export function kennzahlReihe({ titel = '', zahlen = [], hinweis } = {}) {
+  const kacheln = zahlen.map((z) => kennzahl(z)).join('');
+  if (!kacheln) return '';
+
+  const beschriftung = titel ? ` role="group" aria-label="${esc(titel)}"` : '';
+  const kopf = titel ? `<p class="kennzahlen-titel">${esc(titel)}</p>` : '';
+  const fuss = hinweis ? `<p class="kennzahlen-hinweis">${esc(hinweis)}</p>` : '';
+
+  return `<div class="kennzahlen"${beschriftung}>${kopf}<div class="grafik-reihe">${kacheln}</div>${fuss}</div>`;
+}
+
 /* ── Beigaben für die Seite ──────────────────────────────────────────── */
 
 /**
@@ -1213,8 +1252,24 @@ export function grafikStil() {
   margin: 1.4rem 0 1.9rem;
 }
 .grafik-reihe .grafik { margin: 0; }
+/* Eine Reihe steckt im Bericht in einer <figure class="grafik">, die den
+   Außenabstand schon setzt – sonst stünde er zweimal. */
+.grafik .grafik-reihe, .kennzahlen .grafik-reihe { margin: 0; }
+.kennzahlen-titel {
+  margin: 0 0 0.9rem;
+  font-weight: 700;
+  /* Derselbe Grad wie ein Grafiktitel im SVG (16 Einheiten bei Maßstab 1). */
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.kennzahlen-hinweis {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--tinte-weich);
+}
 @media print {
   /* Eine Grafik, die über den Seitenumbruch läuft, ist zweimal halb da. */
-  .grafik, .grafik-reihe { break-inside: avoid; }
+  .grafik, .grafik-reihe, .kennzahlen { break-inside: avoid; }
 }`;
 }

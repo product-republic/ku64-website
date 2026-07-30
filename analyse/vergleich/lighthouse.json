@@ -1,7 +1,7 @@
 {
- "erhobenAm": "2026-07-30T01:33:21.329Z",
+ "erhobenAm": "2026-07-30T03:31:37.478Z",
  "lighthouseVersion": "13.4.1",
- "basis": "http://127.0.0.1:4400",
+ "basis": "http://127.0.0.1:4430",
  "hinweis": "Gemessen gegen server/index.mjs mit OEFFENTLICHE_HOSTS=127.0.0.1. Ohne diese Variable setzt der Server die Vorschau-Sperre (X-Robots-Tag: noindex) und Lighthouse zieht SEO auf 69 – das wäre die Vorschau-Adresse, nicht die Website. Es wird nichts abgeschaltet: derselbe Code, anderer Host.",
  "laeufe": [
   {
@@ -9,15 +9,15 @@
    "name": "startseite",
    "geraet": "mobil",
    "kategorien": {
-    "leistung": 92,
-    "barrierefreiheit": 94,
+    "leistung": 98,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 3376.7902999999997,
-     "anzeige": "3.4 s"
+     "wert": 2254.5703,
+     "anzeige": "2.3 s"
     },
     "cls": {
      "wert": 0,
@@ -28,11 +28,11 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 1096.2378749999998,
+     "wert": 1118.7128750000002,
      "anzeige": "1.1 s"
     },
     "fcp": {
-     "wert": 1096.2378749999998,
+     "wert": 1118.7128750000002,
      "anzeige": "1.1 s"
     }
    },
@@ -45,14 +45,6 @@
      "gewicht": 0,
      "betroffen": 3,
      "hinweis": "Est savings of 539 KiB"
-    },
-    {
-     "pruefung": "lcp-discovery-insight",
-     "bereich": "leistung",
-     "titel": "LCP request discovery",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": null
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -76,15 +68,7 @@
      "titel": "Time to Interactive",
      "gewicht": 0,
      "betroffen": null,
-     "hinweis": "3.4 s"
-    },
-    {
-     "pruefung": "button-name",
-     "bereich": "barrierefreiheit",
-     "titel": "Buttons do not have an accessible name",
-     "gewicht": 10,
-     "betroffen": 1,
-     "hinweis": null
+     "hinweis": "2.3 s"
     }
    ]
   },
@@ -93,15 +77,15 @@
    "name": "startseite",
    "geraet": "schreibtisch",
    "kategorien": {
-    "leistung": 99,
+    "leistung": 100,
     "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 1042.396,
-     "anzeige": "1.0 s"
+     "wert": 482.0402,
+     "anzeige": "0.5 s"
     },
     "cls": {
      "wert": 0.0010777079690310611,
@@ -112,11 +96,11 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 292.220253916688,
+     "wert": 300.60406175021944,
      "anzeige": "0.3 s"
     },
     "fcp": {
-     "wert": 291.094,
+     "wert": 290.0603,
      "anzeige": "0.3 s"
     }
    },
@@ -129,14 +113,6 @@
      "gewicht": 0,
      "betroffen": 4,
      "hinweis": "Est savings of 867 KiB"
-    },
-    {
-     "pruefung": "lcp-discovery-insight",
-     "bereich": "leistung",
-     "titel": "LCP request discovery",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": null
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -162,13 +138,13 @@
    "geraet": "mobil",
    "kategorien": {
     "leistung": 97,
-    "barrierefreiheit": 94,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 2553.1021,
+     "wert": 2551.1748,
      "anzeige": "2.6 s"
     },
     "cls": {
@@ -180,12 +156,12 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 1125.877625,
-     "anzeige": "1.1 s"
+     "wert": 1171.4685,
+     "anzeige": "1.2 s"
     },
     "fcp": {
-     "wert": 1125.877625,
-     "anzeige": "1.1 s"
+     "wert": 1171.4685,
+     "anzeige": "1.2 s"
     }
    },
    "schirmbild": "analyse/vergleich/schirm/potsdam-mobil.jpg",
@@ -197,14 +173,6 @@
      "gewicht": 0,
      "betroffen": 1,
      "hinweis": "Est savings of 116 KiB"
-    },
-    {
-     "pruefung": "lcp-discovery-insight",
-     "bereich": "leistung",
-     "titel": "LCP request discovery",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": null
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -229,14 +197,6 @@
      "gewicht": 0,
      "betroffen": null,
      "hinweis": "2.6 s"
-    },
-    {
-     "pruefung": "button-name",
-     "bereich": "barrierefreiheit",
-     "titel": "Buttons do not have an accessible name",
-     "gewicht": 10,
-     "betroffen": 1,
-     "hinweis": null
     }
    ]
   },
@@ -252,7 +212,7 @@
    },
    "metriken": {
     "lcp": {
-     "wert": 523.4868,
+     "wert": 521.2986000000001,
      "anzeige": "0.5 s"
     },
     "cls": {
@@ -264,11 +224,11 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 276.35850000000005,
+     "wert": 335.1845555004061,
      "anzeige": "0.3 s"
     },
     "fcp": {
-     "wert": 276.35850000000005,
+     "wert": 296.62325,
      "anzeige": "0.3 s"
     }
    },
@@ -281,14 +241,6 @@
      "gewicht": 0,
      "betroffen": 1,
      "hinweis": "Est savings of 18 KiB"
-    },
-    {
-     "pruefung": "lcp-discovery-insight",
-     "bereich": "leistung",
-     "titel": "LCP request discovery",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": null
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -314,13 +266,13 @@
    "geraet": "mobil",
    "kategorien": {
     "leistung": 100,
-    "barrierefreiheit": 95,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 1502.1207,
+     "wert": 1503.5475,
      "anzeige": "1.5 s"
     },
     "cls": {
@@ -332,12 +284,12 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 1096.6508749999998,
-     "anzeige": "1.1 s"
+     "wert": 1188.4343749999998,
+     "anzeige": "1.2 s"
     },
     "fcp": {
-     "wert": 1096.6508749999998,
-     "anzeige": "1.1 s"
+     "wert": 1188.4343749999998,
+     "anzeige": "1.2 s"
     }
    },
    "schirmbild": "analyse/vergleich/schirm/zahnimplantate-mobil.jpg",
@@ -357,14 +309,6 @@
      "gewicht": 0,
      "betroffen": 2,
      "hinweis": "Est savings of 150 ms"
-    },
-    {
-     "pruefung": "button-name",
-     "bereich": "barrierefreiheit",
-     "titel": "Buttons do not have an accessible name",
-     "gewicht": 10,
-     "betroffen": 1,
-     "hinweis": null
     }
    ]
   },
@@ -380,7 +324,7 @@
    },
    "metriken": {
     "lcp": {
-     "wert": 402.8091,
+     "wert": 401.3346,
      "anzeige": "0.4 s"
     },
     "cls": {
@@ -392,11 +336,11 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 274.51137500000004,
+     "wert": 272.66825000000006,
      "anzeige": "0.3 s"
     },
     "fcp": {
-     "wert": 274.51137500000004,
+     "wert": 272.66825000000006,
      "anzeige": "0.3 s"
     }
    },
@@ -425,58 +369,42 @@
    "name": "team",
    "geraet": "mobil",
    "kategorien": {
-    "leistung": 80,
-    "barrierefreiheit": 91,
+    "leistung": 99,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 2329.5801,
-     "anzeige": "2.3 s"
+     "wert": 2031.0494,
+     "anzeige": "2.0 s"
     },
     "cls": {
-     "wert": 0.3709188038604578,
-     "anzeige": "0.371"
+     "wert": 0,
+     "anzeige": "0"
     },
     "tbt": {
      "wert": 0,
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 1256.725125,
+     "wert": 1330.56175,
      "anzeige": "1.3 s"
     },
     "fcp": {
-     "wert": 1256.725125,
+     "wert": 1330.56175,
      "anzeige": "1.3 s"
     }
    },
    "schirmbild": "analyse/vergleich/schirm/team-mobil.jpg",
    "beanstandungen": [
     {
-     "pruefung": "cls-culprits-insight",
-     "bereich": "leistung",
-     "titel": "Layout shift culprits",
-     "gewicht": 0,
-     "betroffen": 1,
-     "hinweis": null
-    },
-    {
      "pruefung": "image-delivery-insight",
      "bereich": "leistung",
      "titel": "Improve image delivery",
      "gewicht": 0,
-     "betroffen": 4,
-     "hinweis": "Est savings of 43 KiB"
-    },
-    {
-     "pruefung": "lcp-discovery-insight",
-     "bereich": "leistung",
-     "titel": "LCP request discovery",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": null
+     "betroffen": 3,
+     "hinweis": "Est savings of 32 KiB"
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -500,31 +428,7 @@
      "titel": "Time to Interactive",
      "gewicht": 0,
      "betroffen": null,
-     "hinweis": "2.4 s"
-    },
-    {
-     "pruefung": "layout-shifts",
-     "bereich": "leistung",
-     "titel": "Avoid large layout shifts",
-     "gewicht": 0,
-     "betroffen": 1,
-     "hinweis": "1 layout shift found"
-    },
-    {
-     "pruefung": "button-name",
-     "bereich": "barrierefreiheit",
-     "titel": "Buttons do not have an accessible name",
-     "gewicht": 10,
-     "betroffen": 1,
-     "hinweis": null
-    },
-    {
-     "pruefung": "color-contrast",
-     "bereich": "barrierefreiheit",
-     "titel": "Background and foreground colors do not have a sufficient contrast ratio.",
-     "gewicht": 7,
-     "betroffen": 6,
-     "hinweis": null
+     "hinweis": "2.1 s"
     }
    ]
   },
@@ -533,50 +437,42 @@
    "name": "team",
    "geraet": "schreibtisch",
    "kategorien": {
-    "leistung": 97,
-    "barrierefreiheit": 96,
+    "leistung": 100,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 440.7282,
+     "wert": 403.6192,
      "anzeige": "0.4 s"
     },
     "cls": {
-     "wert": 0.11527220150940896,
-     "anzeige": "0.115"
+     "wert": 0.0010777079690310611,
+     "anzeige": "0.001"
     },
     "tbt": {
      "wert": 0,
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 321.0923,
+     "wert": 332.42879999999997,
      "anzeige": "0.3 s"
     },
     "fcp": {
-     "wert": 321.0923,
+     "wert": 332.42879999999997,
      "anzeige": "0.3 s"
     }
    },
    "schirmbild": "analyse/vergleich/schirm/team-schreibtisch.jpg",
    "beanstandungen": [
     {
-     "pruefung": "cls-culprits-insight",
-     "bereich": "leistung",
-     "titel": "Layout shift culprits",
-     "gewicht": 0,
-     "betroffen": 1,
-     "hinweis": null
-    },
-    {
      "pruefung": "image-delivery-insight",
      "bereich": "leistung",
      "titel": "Improve image delivery",
      "gewicht": 0,
-     "betroffen": 12,
-     "hinweis": "Est savings of 477 KiB"
+     "betroffen": 9,
+     "hinweis": "Est savings of 366 KiB"
     },
     {
      "pruefung": "network-dependency-tree-insight",
@@ -592,23 +488,7 @@
      "titel": "Render-blocking requests",
      "gewicht": 0,
      "betroffen": 2,
-     "hinweis": "Est savings of 40 ms"
-    },
-    {
-     "pruefung": "layout-shifts",
-     "bereich": "leistung",
-     "titel": "Avoid large layout shifts",
-     "gewicht": 0,
-     "betroffen": 2,
-     "hinweis": "2 layout shifts found"
-    },
-    {
-     "pruefung": "color-contrast",
-     "bereich": "barrierefreiheit",
-     "titel": "Background and foreground colors do not have a sufficient contrast ratio.",
-     "gewicht": 7,
-     "betroffen": 6,
-     "hinweis": null
+     "hinweis": "Est savings of 30 ms"
     }
    ]
   },
@@ -617,15 +497,15 @@
    "name": "blog",
    "geraet": "mobil",
    "kategorien": {
-    "leistung": 97,
-    "barrierefreiheit": 94,
+    "leistung": 96,
+    "barrierefreiheit": 100,
     "bestPractices": 100,
     "seo": 100
    },
    "metriken": {
     "lcp": {
-     "wert": 2626.7072,
-     "anzeige": "2.6 s"
+     "wert": 2700.4896000000003,
+     "anzeige": "2.7 s"
     },
     "cls": {
      "wert": 0,
@@ -636,11 +516,11 @@
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 1171.134,
+     "wert": 1179.612,
      "anzeige": "1.2 s"
     },
     "fcp": {
-     "wert": 1171.134,
+     "wert": 1179.612,
      "anzeige": "1.2 s"
     }
    },
@@ -677,14 +557,6 @@
      "gewicht": 0,
      "betroffen": null,
      "hinweis": "2.7 s"
-    },
-    {
-     "pruefung": "button-name",
-     "bereich": "barrierefreiheit",
-     "titel": "Buttons do not have an accessible name",
-     "gewicht": 10,
-     "betroffen": 1,
-     "hinweis": null
     }
    ]
   },
@@ -700,23 +572,23 @@
    },
    "metriken": {
     "lcp": {
-     "wert": 664.5267999999999,
+     "wert": 740,
      "anzeige": "0.7 s"
     },
     "cls": {
-     "wert": 0.0010777079690310611,
-     "anzeige": "0.001"
+     "wert": 0,
+     "anzeige": "0"
     },
     "tbt": {
      "wert": 0,
      "anzeige": "0 ms"
     },
     "speedIndex": {
-     "wert": 277.6585,
+     "wert": 347,
      "anzeige": "0.3 s"
     },
     "fcp": {
-     "wert": 277.6585,
+     "wert": 347,
      "anzeige": "0.3 s"
     }
    },
@@ -753,7 +625,7 @@
   {
    "pruefung": "image-delivery-insight",
    "titel": "Improve image delivery",
-   "msMax": 900,
+   "msMax": 750,
    "bytesMax": 888088,
    "clsMax": 0,
    "wo": [
@@ -761,8 +633,8 @@
     "startseite/schreibtisch (Est savings of 867 KiB)",
     "potsdam/mobil (Est savings of 116 KiB)",
     "potsdam/schreibtisch (Est savings of 18 KiB)",
-    "team/mobil (Est savings of 43 KiB)",
-    "team/schreibtisch (Est savings of 477 KiB)",
+    "team/mobil (Est savings of 32 KiB)",
+    "team/schreibtisch (Est savings of 366 KiB)",
     "blog/mobil (Est savings of 243 KiB)",
     "blog/schreibtisch (Est savings of 582 KiB)"
    ]
@@ -781,34 +653,9 @@
     "zahnimplantate/mobil (Est savings of 150 ms)",
     "zahnimplantate/schreibtisch",
     "team/mobil (Est savings of 150 ms)",
-    "team/schreibtisch (Est savings of 40 ms)",
+    "team/schreibtisch (Est savings of 30 ms)",
     "blog/mobil (Est savings of 150 ms)",
     "blog/schreibtisch"
-   ]
-  },
-  {
-   "pruefung": "layout-shifts",
-   "titel": "Avoid large layout shifts",
-   "msMax": 0,
-   "bytesMax": 0,
-   "clsMax": 0.371,
-   "wo": [
-    "team/mobil (1 layout shift found)",
-    "team/schreibtisch (2 layout shifts found)"
-   ]
-  },
-  {
-   "pruefung": "lcp-discovery-insight",
-   "titel": "LCP request discovery",
-   "msMax": 0,
-   "bytesMax": 0,
-   "clsMax": 0,
-   "wo": [
-    "startseite/mobil",
-    "startseite/schreibtisch",
-    "potsdam/mobil",
-    "potsdam/schreibtisch",
-    "team/mobil"
    ]
   },
   {
@@ -837,21 +684,10 @@
    "bytesMax": 0,
    "clsMax": 0,
    "wo": [
-    "startseite/mobil (3.4 s)",
+    "startseite/mobil (2.3 s)",
     "potsdam/mobil (2.6 s)",
-    "team/mobil (2.4 s)",
+    "team/mobil (2.1 s)",
     "blog/mobil (2.7 s)"
-   ]
-  },
-  {
-   "pruefung": "cls-culprits-insight",
-   "titel": "Layout shift culprits",
-   "msMax": 0,
-   "bytesMax": 0,
-   "clsMax": 0,
-   "wo": [
-    "team/mobil",
-    "team/schreibtisch"
    ]
   }
  ]

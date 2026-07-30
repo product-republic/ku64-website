@@ -1,72 +1,120 @@
 # KU64 – Stand, Vergleich und Prognose
 
-**Erhoben am 29. Juli 2026.** Alle Zahlen in diesem Dokument sind gemessen,
-nicht geschätzt. Wo etwas nicht messbar war, steht das dabei.
+**Erhoben am 29. und 30. Juli 2026.** Jede Zahl in diesem Dokument ist
+gemessen und mit dem Skript benannt, das sie erzeugt. Wo etwas nicht messbar
+war oder aus fremder Quelle stammt, steht es dabei.
 
 ---
 
 ## Für wen welches Kapitel
 
-Dieses Dokument ist für drei Leserkreise geschrieben. Niemand muss alles
-lesen.
+Niemand muss alles lesen.
 
 | | Kapitel | Warum |
 |---|---|---|
-| **Praxisinhaber** | Kurzfassung, 1, 5, 6, 9, 10 | Ziel, Risiko, Prognose, was von der Praxis gebraucht wird |
-| **Marketing / Kaufmännische Leitung** | Kurzfassung, 4, 5, 7, 9 | Vergleich, Textrisiko, Messbarkeit, Prognose |
-| **Agentur / Technik** | alles, besonders 0, 2, 3, 4, 11 | Methodik, Messwerte, Prüfkette, Rohdaten |
+| **Praxisinhaber** | Urteil, 1, 5, 6, 7, 11, 12 | Was ist gut, was nicht, was kostet es, was wird von der Praxis gebraucht |
+| **Marketing / Kaufmännische Leitung** | Urteil, 4, 5, 6, 8, 10, 11 | Vergleich, Risiken, Messbarkeit, Prognose, Kosten |
+| **Agentur / Technik** | alles, besonders 0, 2, 3, 4, 13 | Methodik, Messwerte, Prüfkette, Rohdaten |
+
+---
+
+## Das Urteil in fünf Sätzen
+
+**Technisch ist der Neubau der alten Website in jeder messbaren Hinsicht
+überlegen** — ein Fünftel des Gewichts, kein Drittanbieter beim Seitenaufruf,
+keine tote Adresse aus dem Altbestand, Barrierefreiheit auf 100.
+
+**Inhaltlich fehlt Substanz, und zwar messbar:** Die Behandlungstexte haben
+89 Prozent ihres Umfangs verloren, der Bereich *Über uns* 97 Prozent.
+
+**Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:** 116
+örtliche Behandlungsseiten existieren, und **keine einzige** ist zur
+Indexierung angemeldet — für Google gibt es weiterhin genau eine Seite je
+Behandlung. Der Grund ist derselbe: Es gibt noch keine örtlichen Inhalte.
+
+**Zwei Livegang-Sperren sind noch offen** — Impressum und
+Datenschutzerklärung sind Entwürfe mit Platzhaltern, und die Preisangaben
+sind aus Fotos einer gedruckten Auswertung abgetippt und nicht gegengeprüft.
+
+**Der Hebel liegt nicht in der Technik.** Er liegt in zwölf
+Behandlungstexten, vierundzwanzig Fotos, einer Stunde Personendurchsicht und
+zwei Formularen mit Pflichtangaben.
 
 ---
 
 ## Kurzfassung
 
-**Was gebaut wurde.** Ein vollständiger Neubau der Website mit einer anderen
-Grundordnung: Jede Behandlung gehört zu einem Standort statt zu keinem. 1.084
-Seiten, drei Sprachen, fünfzehn automatische Prüfungen, kein Drittanbieter,
-kein Cookie.
+**Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
+Behandlung gehört zu einem Standort statt zu keinem. 1.083 Seiten, drei
+Sprachen, kein Cookie, kein Einwilligungsbanner, fünfzehn automatische
+Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
+
+```grafik
+{
+  "art": "kennzahlReihe",
+  "titel": "Der Umbau in vier Zahlen",
+  "zahlen": [
+    { "wert": 0, "label": "tote Adressen von 552", "richtung": "keine", "wertung": "gut" },
+    { "wert": -80, "einheit": "%", "label": "HTML je Seite", "richtung": "runter", "wertung": "gut" },
+    { "wert": -89, "einheit": "%", "label": "Text auf Behandlungsseiten", "richtung": "runter", "wertung": "schlecht" },
+    { "wert": 100, "label": "Barrierefreiheit (Lighthouse)", "richtung": "keine", "wertung": "gut" }
+  ]
+}
+```
 
 **Was messbar besser ist.**
 
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Technik je Seite, alt gegen neu",
+  "besserIst": "klein",
+  "hinweis": "Alt: 340 Seiten der laufenden Website. Neu: 210 Seiten der Sitemap. Die Mischung ist nicht dieselbe – siehe Kapitel 0.",
+  "zeilen": [
+    { "label": "HTML (Median)", "alt": 224, "neu": 45, "einheit": "kB" },
+    { "label": "Skripte", "alt": 25.8, "neu": 5.2 },
+    { "label": "Stylesheets", "alt": 22.9, "neu": 1.2 },
+    { "label": "Ebenensprünge (Summe)", "alt": 15, "neu": 0 }
+  ]
+}
+```
+
 | | vorher | nachher |
 |---|---:|---:|
-| Tote Adressen aus dem Altbestand | *90,8 % wären es geworden* | **0 von 552** |
+| Tote Adressen aus dem Altbestand | 467 von 552 wären es geworden | **0** |
 | HTML je Seite (Median) | 224 kB | **45 kB** |
-| Skripte je Seite | 26 | **5** |
-| Anfragen an fremde Server | 660 | **0** |
+| Skripte je Seite | 25,8 | **5,2** |
+| Fremde Skripte, Summe über alle Seiten | 660 | **0** |
 | Sprünge in der Überschriftengliederung | 15 | **0** |
-| Örtliche Landeseiten je Behandlung | 1 | **bis zu 4** |
 | Englische Seiten | 54 | **361** |
-| Ladezeit mobil (LCP) | *nicht erhoben* | **1,0–1,7 s** |
+| Lighthouse Barrierefreiheit, mobil | nicht erhoben | **100** |
 
-**Was schlechter ist — und zwar deutlich.** Die Behandlungstexte sind von 74
-auf 37 Seiten und von 170.785 auf 20.650 Wörter geschrumpft. Ballast
-herausgerechnet: rund 1.600 Wörter eigener Inhalt je Behandlungsseite vorher,
-rund 195 jetzt. Zu Implantaten hatte die alte Website neun Seiten — Kosten,
-Haltbarkeit, Rauchen, Periimplantitis, Sinuslift —, also genau die Fragen,
-mit denen Menschen mit Behandlungsabsicht suchen. Die neue hat zwei.
+**Was schlechter ist.** Die Behandlungstexte sind von 170.785 auf 18.444
+Wörter geschrumpft, der Bereich *Über uns* von 16.176 auf 469. Zu Implantaten
+hatte die alte Website fünf Seiten mit zusammen 10.952 Wörtern — Kosten,
+Haltbarkeit, Rauchen, Implantat oder Brücke —, also genau die Fragen, mit
+denen Menschen mit Behandlungsabsicht suchen. Die neue hat eine mit 722.
+**Kapitel 5 rechnet es vor.**
 
-**Das ist der Punkt, an dem dieser Umbau Sichtbarkeit verlieren kann.**
-Kapitel 5 rechnet es vor und sagt, was dagegen zu tun ist.
+**Was noch nicht wirkt.** 116 örtliche Behandlungsseiten sind gebaut, 0 sind
+indexierbar. **Kapitel 6.**
 
-**Was inhaltlich veraltet ist.** Auf der heute laufenden Website werden in
-Blogbeiträgen mindestens neun Personen namentlich als Teil der Praxis
-vorgestellt, die dort nicht mehr arbeiten — darunter ein ausführliches
-Fachzitat von Dr. Matthias Leyh im Präsens. Die Personen*seiten* sind sauber;
-die *Texte* sind es nicht. Kapitel 6 listet jeden Fall.
+**Was inhaltlich veraltet ist.** In sechs Blogbeiträgen werden mindestens
+zehn Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr
+arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 
 **Was jetzt gebraucht wird.**
 
-| Von wem | Was | Wirkung |
-|---|---|---|
-| Praxis | 24 Fotos | Standorte zeigen derzeit Videostandbilder |
-| Praxis | fachliche Freigabe der 36 Behandlungstexte | ohne sie kann kein Text ausgebaut werden |
-| Praxis | zwölf Behandlungstexte ausbauen | das größte inhaltliche Risiko |
-| Praxis | eine Stunde Durchsicht der Personennennungen | Kapitel 6 |
-| Praxis | Impressum und Datenschutz befüllen | beides sind Entwürfe |
-| Betrieb | eine Berechtigung bei GitHub, zwei Schlüssel | Übersetzungslauf und Sprachberater |
-
-**Der Hebel liegt nicht mehr in der Technik.** Er liegt in zwölf
-Behandlungstexten, vierundzwanzig Fotos und einer Stunde Durchsicht.
+| Von wem | Was | Aufwand | Wirkung |
+|---|---|---|---|
+| Praxis | Impressum und Datenschutz befüllen | 1–2 Std. | **Livegang-Sperre** |
+| Praxis | Preisangaben gegen die Originalauswertung prüfen | 2 Std. | **Livegang-Sperre** |
+| Praxis | fachliche Freigabe der 36 Behandlungstexte | 1 Tag | Voraussetzung für alles Weitere |
+| Praxis | zwölf Behandlungstexte ausbauen | 12 Tage | größtes inhaltliches Risiko |
+| Praxis | 24 Fotos | – | Standorte zeigen Videostandbilder |
+| Praxis | Personennennungen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
+| Praxis | Belegseiten wiederherstellen | 1 Tag | Vertrauenssignale |
+| Betrieb | eine GitHub-Berechtigung, zwei Schlüssel | 15 Min. | Übersetzungslauf, Sprachberater |
 
 ---
 
@@ -82,7 +130,7 @@ demselben Skript ab und wertet sie mit denselben Regeln aus:
 | | alte Website | neue Website |
 |---|---:|---:|
 | erhobene Seiten | 340 | 210 |
-| Quelle der Adressliste | Crawl vom 26.07. (341 erreichbare) | Sitemap |
+| Quelle der Adressliste | Crawl vom 26.07. (341 erreichbare) | Sitemap, Stand 29.07. |
 | Fehler beim Abruf | 1 | 0 |
 
 Je Seite erfasst: Auslieferungsgröße des HTML, Titel, Description, Wortzahl
@@ -94,54 +142,81 @@ noindex, Antwortzeit.
 Die alte Website wurde mit vier gleichzeitigen Verbindungen und Pausen
 abgefragt — weniger Last als ein einzelner Suchmaschinenbesuch.
 
-**Was NICHT gemessen werden konnte.** Die Core Web Vitals der alten Website.
-Der Browser dieser Arbeitsumgebung erreicht keine externen Adressen; der
-Proxy weist die Verbindung ab. Für die neue Fassung liegen die Werte vor
-(lokal, gedrosselt wie ein Mobilgerät), für die alte nicht. Diese Lücke
-schließt ein Klick: `pagespeed.web.dev` auf `https://ku64.de/` dauert dreißig
-Sekunden und liefert genau die fehlende Spalte. Solange sie fehlt, steht in
-den Vergleichstabellen an dieser Stelle „nicht erhoben" — und nicht eine
-Zahl, die gut klingt.
+### 0.1 Die beiden Stichproben sind nicht deckungsgleich
 
-**Ein Vorbehalt zu allen Wortzahlen.** Gezählt wird der sichtbare Text der
-ganzen Seite, also einschließlich Navigation und Fußbereich. Beide Fassungen
-tragen unterschiedlich viel davon: Die kleinste alte Seite hat 697 Wörter,
-die kleinste neue 363. Diese Differenz steckt in jeder Zahl. Wo es auf den
-eigentlichen Inhalt ankommt — Kapitel 5 —, ist sie herausgerechnet und das
-Verfahren angegeben.
+Das ist die wichtigste Einschränkung dieses Berichts, und sie betrifft **jede
+Je-Seite-Kennzahl** in den Kapiteln 2.4, 3.4 und 4:
+
+- **Alt** sind 340 Seiten, darunter 101 Teamseiten — die schwersten und
+  langsamsten der alten Website, eine mit 690 kB und 6,4 Sekunden — und 54
+  englische.
+- **Neu** sind die 210 Seiten der Sitemap. Darin ist **keine** englische oder
+  französische Seite (sie tragen `noindex`), **keine** örtliche
+  Behandlungsseite (sie zeigen per Canonical auf die übergreifende) und kein
+  Behandlerprofil, das auf die Teamübersicht verweist.
+
+Die Seitenmischung ist also verschieden. Wo es auf den Vergleich derselben
+Sache ankommt — Kapitel 4 und 5 —, wird deshalb nicht Mittelwert gegen
+Mittelwert gestellt, sondern **Seitenpaar gegen Seitenpaar**:
+`analyse/vergleich/paare-bilden.mjs` verbindet jede der 340 alten Adressen
+über die Weiterleitungsliste mit ihrem heutigen Ziel. Diese Zahlen sind
+belastbar; die Mittelwerte sind Anhaltspunkte.
+
+### 0.2 Drei Zahlen dieses Berichts stammen nicht aus eigener Messung
+
+1. **Core Web Vitals der alten Website: nicht erhoben.** Der Browser dieser
+   Arbeitsumgebung erreicht keine externen Adressen; der Proxy weist die
+   Verbindung ab. Auch die PageSpeed-Schnittstelle von Google war am
+   Messtag am Tageskontingent. Ein Klick schließt die Lücke:
+   `pagespeed.web.dev` auf `https://ku64.de/` dauert dreißig Sekunden.
+   Solange steht in den Tabellen *nicht erhoben* — und keine Zahl, die gut
+   klingt.
+2. **Die Größenordnung „ein Drittel bis die Hälfte" in Kapitel 11.1** ist
+   eine Faustregel aus der Fachliteratur zu Relaunches ohne
+   Weiterleitungsarbeit, keine Messung an dieser Website. Sie ist als solche
+   gekennzeichnet.
+3. **Kosten in Kapitel 10** sind Treiber und Größenordnungen, keine
+   Abrechnung. Die tatsächlichen Beträge kennt nur, wer die Verträge hat.
+
+### 0.3 Vorbehalt zu allen Wortzahlen
+
+Gezählt wird der sichtbare Text der ganzen Seite, einschließlich Navigation
+und Fußbereich. Beide Fassungen tragen unterschiedlich viel davon: Die
+kleinste alte Seite hat 697 Wörter, die kleinste neue 363. Diese Differenz
+steckt in jeder Zahl. Wo es auf den eigentlichen Inhalt ankommt — Kapitel 5
+—, ist sie herausgerechnet und das Verfahren angegeben.
 
 ---
 
 ## 1. Was die neue Website erreichen soll
 
-Nicht „modern aussehen". Sechs benennbare Ziele, jedes mit einem messbaren
-Ergebnis:
+Nicht „modern aussehen". Sechs benennbare Ziele:
 
-**1. Aus einer anonymen Leistungsseite eine örtliche Seite machen.**
-Auf der alten Website lag jede Behandlung standortübergreifend unter
-`/leistungen/…`. Wer über `/potsdam/` einstieg und auf „Zahnimplantate"
-klickte, landete auf einer Seite ohne Adresse, ohne Telefonnummer, ohne die
-richtige Terminbuchung. Für Google war es eine Seite; für die Praxis sind es
-vier Standorte, die vier verschiedene Einzugsgebiete bedienen.
+**1. Aus einer anonymen Leistungsseite eine örtliche machen.** Auf der alten
+Website lag jede Behandlung standortübergreifend unter `/leistungen/`. Wer
+über `/potsdam/` einstieg und auf „Zahnimplantate" klickte, landete auf einer
+Seite ohne Adresse, ohne Telefonnummer, ohne die richtige Terminbuchung. Für
+Google war es eine Seite; für die Praxis sind es vier Standorte mit vier
+Einzugsgebieten. *Stand der Einlösung: Kapitel 6.*
 
 **2. Keinen Adressbestand verlieren.** Ein Relaunch, der Adressen fallen
-lässt, verliert die Sichtbarkeit, die über Jahre entstanden ist — und zwar
-sofort und ohne Warnung.
+lässt, verliert die Sichtbarkeit von Jahren — sofort und ohne Warnung.
+*Eingelöst: 0 von 552 Adressen laufen ins Leere.*
 
 **3. Bedienbar für alle.** Eine Zahnarztpraxis hat überdurchschnittlich viele
 ältere Patienten und Patientinnen mit eingeschränktem Sehvermögen. Kontrast,
-Tastaturbedienung und Screenreader sind hier kein Zusatz.
+Tastaturbedienung und Screenreader sind hier kein Zusatz. *Eingelöst:
+Lighthouse Barrierefreiheit 100 auf allen geprüften Seiten.*
 
 **4. Selbstbedienung, wo sie Zeit spart.** Termin, Anamnese, Rückfragen,
 Orientierung — ohne Anruf an der Rezeption.
 
 **5. Wartbarkeit.** Eine Änderung an einer Stelle, und die Website zieht
-überall nach. Kein Redaktionssystem, in dem dieselbe Angabe an vier Orten
-gepflegt werden muss und an dreien veraltet.
+überall nach. *Kapitel 9.*
 
-**6. Mehrsprachigkeit.** Berlin-Charlottenburg hat eine internationale
-Patientenschaft. Die alte Website hatte 54 englische Seiten von 341 — die
-englische Fassung endete dort, wo es interessant wurde.
+**6. Mehrsprachigkeit.** Die alte Website hatte 54 englische Seiten von 341 —
+die englische Fassung endete dort, wo es interessant wurde. *Neu: 361, aber
+bei 97,9 Prozent und nicht freigegeben.*
 
 ---
 
@@ -158,13 +233,15 @@ Aus dem Crawl vom 26.07.2026 (`analyse/altbestand/crawl-bericht.md`):
 | weitergeleitet (3xx) | 315 |
 | Fehler (4xx/5xx) | 6 |
 
-Zum Vergleich: Die `.htaccess` des alten Servers belegte 238 Adressen. Der
-Crawl fand 341 tatsächlich ausgelieferte Seiten. Die Weiterleitungsliste war
-also schon vor dem Umbau unvollständig.
+Die `.htaccess` des alten Servers belegte 238 Adressen. Der Crawl fand 341
+ausgelieferte Seiten — die Weiterleitungsliste war also schon vor dem Umbau
+unvollständig.
 
 ### 2.2 Inhalt nach Bereichen
 
-340 erhobene Seiten, **629.817 Wörter**, im Mittel 1.852 je Seite.
+340 erhobene Seiten, **629.817 Wörter**, im Mittel 1.852 je Seite. Davon
+110.947 Wörter auf den 54 englischen Seiten; der deutschsprachige Bestand
+umfasst **518.870 Wörter auf 286 Seiten**.
 
 | Bereich | Seiten | Wörter | Ø je Seite |
 |---|---:|---:|---:|
@@ -183,42 +260,39 @@ also schon vor dem Umbau unvollständig.
 | Sonstige | 9 | 24.511 | 2.723 |
 
 **Das Missverhältnis ist der eigentliche Befund.** Der Kurfürstendamm hatte
-eine Seite. Wilmersdorf hatte eine Seite. Berlin-Mitte hatte drei. Potsdam
-hatte siebzehn — der einzige Standort mit einer eigenen Struktur. 74
-Behandlungsseiten hingen an keinem davon.
+eine Seite. Wilmersdorf hatte eine. Berlin-Mitte drei. Potsdam siebzehn — der
+einzige Standort mit eigener Struktur. 74 Behandlungsseiten hingen an keinem
+davon.
 
 ### 2.3 Der strukturelle Kernfehler
 
 Die 74 Behandlungsseiten lagen in einer tiefen, ortlosen Hierarchie:
 
-| URL-Tiefe | Seiten |
+| Ebenen im Pfad | Seiten |
 |---|---:|
-| 2 Ebenen (`/leistungen/x/`) | 12 |
-| **3 Ebenen** (`/leistungen/fach/x/`) | **49** |
-| 4 Ebenen | 12 |
+| 1 (`/leistungen/`, die Übersicht) | 1 |
+| 2 (`/leistungen/x/`) | 12 |
+| **3** (`/leistungen/fach/x/`) | **49** |
+| 4 | 12 |
+| Summe | 74 |
 
-Beispiel Implantate — neun Seiten, keine einzige mit Ortsbezug:
+Beispiel Implantate — fünf Seiten, keine mit Ortsbezug:
 
 ```
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/periimplantitis/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/sinuslift/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/praeimplantationsdiagnostik/
-/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/
-/potsdam/implantate/
+/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/                          3.136 W
+/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/   2.764 W
+/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/     2.553 W
+/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/   1.276 W
+/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/ 1.223 W
 ```
 
-Die neunte ist die Ausnahme, die die Regel bestätigt: In Potsdam gab es eine
-örtliche Fassung — 1.865 Wörter statt 3.136, also eine verkürzte Kopie. Genau
-dieses Muster (Hauptseite ohne Ort, Zweitfassung mit Ort und weniger Inhalt)
-erzeugt konkurrierende Seiten zum selben Thema.
+Dazu `/potsdam/implantate/` mit 1.865 Wörtern — eine verkürzte örtliche
+Kopie. Genau dieses Muster (Hauptseite ohne Ort, Zweitfassung mit Ort und
+weniger Inhalt) erzeugt konkurrierende Seiten zum selben Thema.
 
 ### 2.4 Technik
 
-Gemessen über 340 Seiten:
+Gemessen über 340 Seiten. **Grundmenge beachten: siehe 0.1.**
 
 | | Mittel | Median | Maximum |
 |---|---:|---:|---:|
@@ -231,17 +305,17 @@ Gemessen über 340 Seiten:
 
 Die langsamsten Seiten:
 
-| Seite | Antwortzeit |
-|---|---:|
-| `/team/` | 6.428 ms |
-| `/en/dentist-berlin-mitte/` | 5.975 ms |
-| `/berlinmitte/` | 3.176 ms |
-| `/` | 2.881 ms |
+| Seite | Antwortzeit | HTML |
+|---|---:|---:|
+| `/team/` | 6.428 ms | 690 kB |
+| `/en/dentist-berlin-mitte/` | 5.975 ms | 665 kB |
+| `/berlinmitte/` | 3.176 ms | – |
+| `/` | 2.881 ms | 402 kB |
 
-Ein Dokument von 690 kB und eine Antwortzeit von 6,4 Sekunden — das ist die
-Teamseite, also die Seite, auf der Menschen nachsehen, wer sie behandeln
-wird. Insgesamt banden die 340 Seiten **8.764 Skript-Einbindungen** und
-**7.774 Stylesheets**, davon 660 von fremden Servern.
+Ein Dokument von 690 kB und 6,4 Sekunden Antwortzeit — das ist die Teamseite,
+also die Seite, auf der Menschen nachsehen, wer sie behandeln wird. Über alle
+340 Seiten summiert: **8.764 Skript-Einbindungen**, davon 660 von fremden
+Servern, und **7.774 Stylesheets** (fremde: 0).
 
 ### 2.5 Was an der alten Website gut war
 
@@ -261,71 +335,54 @@ Verkaufsunterlage.
 | strukturierte Daten (JSON-LD) je Seite | 3,1 |
 | hreflang-Angaben je Seite | 2,7 |
 
-**Die alte Website war handwerklich gepflegt.** Titel, Beschreibungen,
-Alternativtexte, Canonicals, strukturierte Daten — alles vorhanden, nichts
-doppelt. Wer sie betreut hat, hat sauber gearbeitet.
-
-Die Probleme lagen woanders: in der Struktur (Behandlungen ohne Ort), in der
-Technik darunter (26 Skripte, 23 Stylesheets, 1,5 Sekunden Serverzeit) und im
-Adressbestand. Das sind Probleme, die man nicht durch sorgfältiges Pflegen
-löst, sondern nur durch einen Umbau.
+**Die alte Website war handwerklich gepflegt.** Wer sie betreut hat, hat
+sauber gearbeitet. Ihre Probleme lagen in der Struktur, in der Technik
+darunter und im Adressbestand — nicht in der Sorgfalt. Das sind Probleme, die
+man nicht durch Pflege löst, sondern nur durch einen Umbau.
 
 ---
 
 ## 3. Die neue Website
 
-### 3.1 Die Struktur
+### 3.1 Umfang in Zahlen
 
-Jede Behandlungsseite gehört zu genau einem Standort:
+| | | Quelle |
+|---|---:|---|
+| gebaute Seiten | **1.083** | `npm run build` |
+| davon zur Indexierung angemeldet | **207** | `sitemap-0.xml` |
+| davon mit `noindex` (deutsch) | 11 | gebautes HTML |
+| interne Verweise | 85.295 | `npm run verweise:pruefen` |
+| davon ins Leere | **0** | dieselbe Prüfung |
+| Standorte | 4 | `src/data/standorte.ts` |
+| Behandlungen | 36 | `src/data/leistungen.ts` |
+| örtliche Behandlungsseiten (deutsch) | 116 | gebautes HTML |
+| Preisrahmen | 15 für 13 Behandlungen | `src/data/preise.ts` |
+| Personen im Register | 139, davon 99 veröffentlicht | `src/data/team.ts` |
+| Profile mit Fließtext | 97 | `src/data/profile.json` |
+| Blogbeiträge | 30 (31 Seiten mit Übersicht) | `src/data/blog.json` |
+| Beschwerdeseiten | 30 (31 Seiten mit Übersicht) | `src/data/beschwerden.json` |
+| Weiterleitungen aus dem Altbestand | 476 | `src/data/weiterleitungen.ts` |
+| Sprachen | 3 (DE, EN, FR) | `src/i18n/sprachen.ts` |
+| Textbausteine der Oberfläche | 7.467 | `npm run sprachen:pruefen` |
 
-```
-/potsdam/leistungen/zahnimplantate/
-   → Adresse, Telefon, Sprechzeiten und Terminbuchung von Potsdam
-```
-
-Gibt es eine Behandlung an einem Standort nicht, steht das offen da, mit
-einem Verweis dorthin, wo es sie gibt — statt stillschweigend den Standort zu
-wechseln.
-
-### 3.2 Umfang in Zahlen
-
-| | |
-|---|---:|
-| gebaute Seiten | **1.084** |
-| davon in der Sitemap | 207 |
-| interne Verweise | 85.295 |
-| davon ins Leere | **0** |
-| Standorte | 4 |
-| Behandlungen | 36 |
-| Preisrahmen | 15 für 13 Behandlungen |
-| Behandlerprofile | 99 veröffentlicht (139 im Bestand) |
-| Blogbeiträge | 30 |
-| Beschwerdeseiten | 31 |
-| Weiterleitungen aus dem Altbestand | 479 |
-| Sprachen | 3 (DE, EN, FR) |
-| Textbausteine der Oberfläche | 7.336 |
-
-### 3.3 Was es neu gibt
+### 3.2 Was es neu gibt
 
 | Funktion | Was sie tut | Stand |
 |---|---|---|
 | **Standortgedächtnis** | merkt den gewählten Standort, bietet ihn beim nächsten Besuch an — ohne automatische Umleitung | fertig |
 | **Suche** | durchsucht alle Inhalte, sprachabhängig | fertig |
-| **Chat-Berater** | beantwortet Fragen aus der eigenen Wissensbasis, die aus denselben Daten entsteht wie die Seiten | fertig, Schlüssel gesetzt |
-| **Sprachberater** | dasselbe per Sprache statt Text | gebaut, **nicht verbunden** |
-| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung, per E-Mail | gebaut, Schlüssel gesetzt, **noch nicht erfolgreich durchgelaufen** |
-| **Digitale Anamnese** | Bogen vorab ausfüllen statt im Wartezimmer | fertig |
+| **Chat-Berater** | beantwortet Fragen aus der eigenen Wissensbasis | fertig |
+| **Sprachberater** | dasselbe per Sprache | gebaut, **nicht verbunden** |
+| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung | gebaut, **nie erfolgreich durchgelaufen** |
+| **Digitale Anamnese** | Bogen vorab ausfüllen | fertig |
 | **Teamfilter** | Team nach Behandlungsart filtern | fertig |
 | **Lesefortschritt** | im Blog | fertig |
 | **KI-Transparenzseite** | legt offen, welches System wo arbeitet (Art. 50 KI-VO) | fertig |
 | **Kontaktformular** | mit Drosselung, ohne Drittanbieter | fertig |
-| **RSS-Feed** | für den Blog | fertig |
-| **`security.txt`** | Meldeweg für Sicherheitslücken | fertig |
-| **Vorschaubilder** | 153 Karten fürs Teilen, mit echtem Foto des jeweiligen Standorts | fertig |
+| **RSS-Feed**, **`security.txt`** | | fertig |
+| **Vorschaubilder** | 153 Karten fürs Teilen, mit echtem Foto des Standorts | fertig |
 
-### 3.4 Technik
-
-Gemessen über 210 Seiten:
+### 3.3 Technik
 
 | | Mittel | Median | Maximum |
 |---|---:|---:|---:|
@@ -333,121 +390,101 @@ Gemessen über 210 Seiten:
 | eingebundene Skripte | **5,2** | 5 | 6 |
 | davon von fremden Servern | **0** | 0 | 0 |
 | eingebundene Stylesheets | **1,2** | 1 | 2 |
-| Bilder je Seite | 1,7 | 1 | 76 |
 | hreflang-Angaben je Seite | 8,0 | 8 | 8 |
 
-Dazu: eigener Auslieferungsserver mit sechs Sicherheitsköpfen, Brotli-
-Kompression und Haltbarkeitsregeln je Dateityp. Kein Cookie, kein
-Drittanbieter, kein Einwilligungsbanner — weil es nichts einzuwilligen gibt.
+Dazu ein eigener Auslieferungsserver mit sechs Sicherheitsköpfen,
+Brotli-Kompression und Haltbarkeitsregeln je Dateityp.
 
-### 3.5 Ladeverhalten der neuen Fassung
+**Wichtige Einschränkung zu „kein Drittanbieter".** Der Satz gilt für den
+Seitenaufruf: Wer eine Seite lädt, sendet nichts an Dritte, es gibt kein
+Cookie und kein Einwilligungsbanner. Er gilt **nicht** für drei Funktionen:
 
-Gemessen im Browser, Telefonformat, gedrosselt auf mobiles Netz und
-vierfach verlangsamte CPU:
+| Funktion | Anbieter | Was übertragen wird |
+|---|---|---|
+| Chat-Berater | Anthropic | Freitext der Person |
+| Lächeln-Vorschau | Google (Gemini) | **ein Gesichtsfoto** |
+| Sprachberater | ElevenLabs | Stimme, während des Gesprächs |
+| Übersetzungslauf | Anthropic | nur eigene Texte, nachts, ohne Personenbezug |
 
-| Seite | FCP | LCP | CLS | übertragen | Anfragen |
-|---|---:|---:|---:|---:|---:|
-| Startseite | 968 ms | 1.116 ms | 0,028 | 522 kB | 15 |
-| Standortseite | 1.056 ms | 1.644 ms | 0 | 224 kB | 12 |
-| Behandlungsseite | 1.044 ms | 1.044 ms | 0 | 69 kB | 11 |
-| Teamübersicht | 1.040 ms | 1.040 ms | 0 | 67 kB | 10 |
-| Blogübersicht | 1.008 ms | 1.704 ms | 0 | 365 kB | 13 |
+Für die Lächeln-Vorschau ist ein Gesichtsfoto ein biometrisches Datum nach
+Art. 9 DSGVO. Die Seite holt dafür eine ausdrückliche Einwilligung ein und
+speichert nichts — aber **ein Auftragsverarbeitungsvertrag mit Google, ein
+Eintrag im Verarbeitungsverzeichnis und ein Absatz in der
+Datenschutzerklärung fehlen bislang.** Der Quelltext des Endpunkts sagt das
+selbst; im Bericht muss es genauso stehen.
 
-Alle Werte liegen im grünen Bereich der Core Web Vitals (LCP unter 2,5 s,
-CLS unter 0,1). Die Startseite trägt das Kopfvideo — daher die 522 kB;
-gezeigt wird bis zum Abspielen ein 45-kB-Standbild, und auf dem Telefon
-bleibt es dabei.
+### 3.4 Barrierefreiheit
 
-Eine unabhängige Bestätigung liegt vor: PageSpeed Insights auf die
-Vorschau-Adresse, mobil, am 28.07. — **Leistung 100, Best Practices 100,
-SEO 100**, LCP 1,5 s, TBT 0 ms, CLS 0. Barrierefreiheit stand dort bei 90;
-die Ursachen sind seither behoben (Kapitel 3.6).
+| Prüfpunkt | Ergebnis | Prüfung |
+|---|---|---|
+| Bedienelemente ohne zugänglichen Namen | **0**, in vier Breiten | `namen:pruefen` |
+| Bilder ohne Alternativtext | 0 | `barrierefrei:pruefen` |
+| Seiten ohne oder mit mehreren H1 | 0 | dieselbe |
+| Sprünge in der Überschriftengliederung | **0** (alt: 15) | dieselbe |
+| Farbkontrast unter WCAG 1.4.3 | **0**, hell und dunkel, 8 Seiten × 2 Breiten | `kontrast:pruefen` |
+| doppelte `id`-Attribute | 0 | `ids:pruefen` |
+| Lighthouse Barrierefreiheit | **100** mobil und Desktop | `lighthouse-lauf.mjs` |
 
-### 3.6 Barrierefreiheit
-
-| Prüfpunkt | Ergebnis |
-|---|---|
-| Bedienelemente ohne zugänglichen Namen | 0 auf 1.084 Seiten |
-| Bilder ohne Alternativtext | 0 |
-| Seiten ohne oder mit mehreren H1 | 0 |
-| Sprünge in der Überschriftengliederung | **0** (alt: 15) |
-| Farbkontrast unter WCAG 1.4.3 | **0** — geprüft hell und dunkel, Telefon und Schreibtisch |
-| doppelte `id`-Attribute | 0 |
-
-Der Kontrast war bis zum 28.07. an 33 Stellen unter der Norm, in beiden
-Farbmodi. Zwei Ursachen: ein Grauton bei 4,45:1 statt der geforderten 4,5:1,
-und `opacity: 0.5` an abgeblendeten Elementen, das den Kontrast auf 1,92:1
-drückte. Beides behoben, und es gibt jetzt eine Prüfung dafür, die es vorher
-nicht gab.
-
-### 3.7 Die Prüfkette
-
-Fünfzehn Prüfungen laufen bei jedem Bau oder gegen die laufende Seite. Jede
-ist entstanden, weil ein Fehler durchgerutscht ist — und jede wurde
-absichtlich einmal zum Fehlschlagen gebracht, bevor ihr geglaubt wurde.
-
-| Prüfung | Was sie verhindert |
-|---|---|
-| `daten:pruefen` | Querverweise auf Behandlungen oder Standorte, die es nicht gibt |
-| `bilder:pruefen` | Stock-Fotos, fremde Bildquellen, fehlende Bilder |
-| `glas:pruefen` | Glasflächen ohne funktionierenden Weichzeichner |
-| `sprachen:pruefen` | unübersetzte Texte, verlorene Auszeichnung, kaputter Sprachwähler |
-| `urls:abgleichen` | tote Adressen aus dem Altbestand |
-| `verweise:pruefen` | interne Verweise ins Leere (85.295 geprüft) |
-| `ids:pruefen` | doppelte `id`-Attribute |
-| `barrierefrei:pruefen` | namenlose Knöpfe, fehlende Alt-Texte, Ebenensprünge |
-| `sitemap:liste` | Sitemap-Einträge, die zugleich `noindex` tragen |
-| `kontrast:pruefen` | Schrift unter der Kontrastnorm, hell und dunkel |
-| `klickpfad` | alles, was nur bis zum ersten Seitenwechsel funktioniert |
-| `formulare:pruefen` | Formulare, die hinter dem Reverse Proxy abgewiesen werden |
-| `indexierung:pruefen` | offene Vorschau — und vergessenes `noindex` nach dem Livegang |
-| `personen:pruefen` | Namen ehemaliger Kolleginnen und Kollegen im Fließtext |
-| `durchgang` | Überlauf, abgeschnittene Überschriften, Browserfehler |
+Der Weg dorthin ist Teil des Befunds: Am 28.07. standen 33 Stellen unter der
+Kontrastnorm. Am 30.07. fand Lighthouse **zwei weitere Fehler, die keine der
+bestehenden Prüfungen sehen konnte** — beide sind behoben, und beide haben
+eine neue Prüfung nach sich gezogen. Kapitel 4.5.
 
 ---
 
-## 4. Der Vergleich
+## 4. Der direkte Vergleich
 
-### 4.1 Adressbestand — die wichtigste Tabelle
+### 4.1 Adressbestand
 
-552 Adressen des Altbestands, geprüft gegen die gebaute neue Website:
+552 Adressen des Altbestands, geprüft gegen die gebaute neue Website
+(`npm run urls:abgleichen`):
 
-| | Anzahl | Anteil |
-|---|---:|---:|
-| unter derselben Adresse vorhanden | 85 | 15,4 % |
-| über eine Weiterleitung erreichbar | 466 | 84,4 % |
-| bewusst ohne Ziel | 1 | 0,2 % |
-| **tot** | **0** | **0,0 %** |
+```grafik
+{
+  "art": "stapelBalken",
+  "titel": "552 Adressen des Altbestands – wo sie heute landen",
+  "teile": [
+    { "label": "unter derselben Adresse vorhanden", "wert": 85, "farbe": "gut" },
+    { "label": "über eine Weiterleitung erreichbar", "wert": 466, "farbe": "tinte-weich" },
+    { "label": "bewusst ohne Ziel", "wert": 1, "farbe": "offen" },
+    { "label": "tot", "wert": 0, "farbe": "schlecht" }
+  ]
+}
+```
 
-Ohne diese Arbeit wären 90,8 Prozent aller Adressen, die Google von der alten
-Website kennt, ins Leere gelaufen. Das ist der teuerste einzelne Fehler, den
-ein Relaunch machen kann, und der am leichtesten vermeidbare.
+Ohne diese Arbeit wären **467 der 552 Adressen** ins Leere gelaufen, also
+84,6 Prozent.
+
+> **Zur oft genannten Zahl 90,8 Prozent:** Sie stammt aus der Auswertung der
+> alten `.htaccess` — 216 tote von 238 dort eingetragenen Adressen. Andere
+> Grundmenge, anderer Prozentsatz. Für die 552 tatsächlich erreichbaren
+> Adressen gilt 84,6 Prozent. Beide Zahlen sind richtig, aber sie meinen
+> nicht dasselbe, und in einer Tabelle nebeneinander wäre das irreführend.
 
 ### 4.2 Sitemap
 
 | | alt | neu |
 |---|---:|---:|
-| erreichbare Seiten | 341 | 1.084 |
-| davon zur Indexierung angemeldet | 341 | **207** |
+| erreichbare Seiten | 341 | 1.083 |
+| **zur Indexierung angemeldet** | **341** ¹ | **207** |
 
-Die neue Website baut dreimal so viele Seiten und meldet weniger als ein
-Drittel davon an. Das ist Absicht:
+¹ Für die alte Website ist der Sitemap-Umfang nicht belegt; der Crawl fand
+341 erreichbare Seiten ohne `noindex`. „Kein noindex" ist nicht dasselbe wie
+„in der Sitemap angemeldet" — die Zahl ist eine Obergrenze, keine Messung.
 
-- **Sprachfassungen** (EN, FR) tragen `noindex`, solange sie nicht
-  gegengelesen sind — 722 der 1.084 Seiten.
-- **Behandlungen je Standort** melden nur die Fassung an, die eigenen Inhalt
-  trägt; die übrigen zeigen per Canonical auf die standortübergreifende
-  Seite. Sonst konkurrieren vier fast gleiche Seiten miteinander.
-- **Behandlerprofile ohne eigene Substanz** (26 von 97) zeigen auf die
-  Teamübersicht. Eine Seite mit 64 Wörtern über eine Person ist für
-  Suchmaschinen eine dünne Seite und schadet dem Rest.
-- **Entwürfe** (Impressum, Datenschutz) sind draußen, bis die Praxis die
-  Pflichtangaben liefert.
+**Die neue Website baut dreimal so viele Seiten und meldet weniger als ein
+Drittel an.** Das ist zum Teil Absicht und zum Teil ein offener Punkt:
 
-Bis heute Mittag standen drei dieser Seiten trotz `noindex` in der Sitemap —
-ein Widerspruch, den die Search Console als Fehler meldet. Gefunden bei
-dieser Erhebung, behoben, und es gibt jetzt eine Prüfung, die beides
-gegeneinander hält.
+| Warum ausgeschlossen | Seiten | Absicht oder Rückstand |
+|---|---:|---|
+| Sprachfassungen EN/FR, nicht gegengelesen | 722 | Rückstand |
+| örtliche Behandlungsfassungen ohne eigenen Inhalt | 116 | **Rückstand — Kapitel 6** |
+| Behandlerprofile ohne eigene Substanz | 26 | Absicht |
+| Entwürfe (Impressum, Datenschutz) | 2 | Rückstand |
+| Teamübersicht ohne Team (Wilmersdorf) | 1 | Datenlücke |
+
+Ein Praxisinhaber, der später in der Search Console 207 statt 341 Seiten
+sieht, muss das vorher wissen. Deshalb steht es hier und nicht im Anhang.
 
 ### 4.3 SEO im direkten Vergleich
 
@@ -460,114 +497,369 @@ gegeneinander hält.
 | Seiten ohne Description | 0 | 0 | = |
 | Description über 160 Zeichen | 16 | 5 | **+** |
 | doppelte Titel | 0 | 0 | = |
-| Seiten ohne Canonical | 0 | 0 | = |
+| **Seiten ohne Canonical** | **0** | **3** | **–** |
 | Bilder ohne Alt-Text | 0 | 0 | = |
 | Ebenensprünge in Überschriften | 15 | **0** | **+** |
 | hreflang je Seite | 2,7 | **8,0** | **+** |
-| JSON-LD-Blöcke je Seite | 3,1 | 2,4 | – |
-| örtliche Landeseiten je Behandlung | **1** | **bis zu 4** | **+** |
+| JSON-LD-Blöcke je Seite | 3,1 | 2,4 | ~ |
+| **indexierbare Seiten je Behandlung** | **1** | **1** | **=** |
 | tote Adressen aus dem Altbestand | — | **0** | **+** |
 | HTML je Seite | 246 kB | **51 kB** | **+** |
 | Skripte je Seite | 25,8 | **5,2** | **+** |
-| Drittanbieter je Seite | 1,9 | **0** | **+** |
+| Fremde Skripte je Seite | 1,9 | **0** | **+** |
 
-Die strukturierten Daten sind je Seite etwas weniger geworden (2,4 statt
-3,1). Das ist kein Verlust an Substanz: Die alte Fassung wiederholte auf
-jeder Seite denselben Organisationsblock mehrfach. Die neue setzt je Seitenart
-genau die Typen, die dorthin gehören — bis zu 21 Blöcke auf der Seite, wo sie
-hingehören (Standortübersicht mit vier vollständigen `Dentist`-Einträgen).
+Die drei Seiten ohne Canonical sind Impressum, Datenschutz und die
+Wilmersdorfer Teamübersicht — dieselben drei, die `noindex` tragen. Bei einer
+Seite, die nicht indexiert werden soll, ist ein fehlendes Canonical folgenlos;
+in der Tabelle steht es trotzdem, weil die Zeile sonst falsch wäre.
 
-### 4.4 Ladeverhalten
+Die strukturierten Daten sind je Seite weniger geworden (2,4 statt 3,1). Kein
+Substanzverlust: Die alte Fassung wiederholte auf jeder Seite denselben
+Organisationsblock mehrfach. Die neue setzt je Seitenart die Typen, die
+dorthin gehören — bis zu 21 Blöcke auf der Standortübersicht.
 
-| | alt | neu |
-|---|---:|---:|
-| HTML je Seite (Median) | 224 kB | **45 kB** |
-| Skripte je Seite | 25,8 | **5,2** |
-| Stylesheets je Seite | 22,9 | **1,2** |
-| Anfragen von fremden Servern | 660 insgesamt | **0** |
-| Serverantwortzeit (Mittel) | 1.491 ms | nicht vergleichbar erhoben |
-| LCP mobil, gedrosselt | *nicht erhoben* | 1.040–1.704 ms |
-| CLS | *nicht erhoben* | 0–0,028 |
+### 4.4 Ladeverhalten — echte Lighthouse-Werte
 
-Die Serverantwortzeit der neuen Fassung wurde lokal gemessen (7 ms im Mittel)
-und ist deshalb **nicht** mit den 1.491 ms der alten vergleichbar — dort steckt
-die Netzstrecke mit drin. Die belastbare Aussage ist die darüber: Ein
-Dokument, das ein Fünftel wiegt und ein Fünftel der Skripte lädt, ist auf
-jedem Gerät schneller, und die gemessenen Core Web Vitals der neuen Fassung
-liegen vollständig im grünen Bereich.
+Gemessen mit **Lighthouse 13.4.1** gegen den eigenen Auslieferungsserver, je
+Seite mobil und Desktop (`scripts/lighthouse-lauf.mjs`, Ergebnis in
+`analyse/vergleich/lighthouse.json`).
+
+> **Eine Messvoraussetzung, die im Skript kommentiert steht:** Der Server
+> setzt auf jeder Adresse, die nicht `ku64.de` ist, den Kopf
+> `X-Robots-Tag: noindex` — die Vorschau-Sperre aus Kapitel 12. Lighthouse
+> bewertet das als „Page is blocked from indexing" und gibt SEO 69. Für die
+> Messung läuft der Server deshalb mit `OEFFENTLICHE_HOSTS=127.0.0.1`, also
+> so, wie er sich unter der echten Domain verhält. Wer das nicht tut, misst
+> den Schutz und nicht die Website.
+
+Mobil bedeutet dabei: gedrosselte CPU (Faktor 4) und ein gebremstes
+Mobilfunknetz. Das ist der harte Fall, nicht der Schönwetterfall.
+
+```grafik
+{
+  "art": "ringReihe",
+  "titel": "Startseite, mobil, gedrosselt",
+  "hinweis": "Lighthouse 13.4.1, 30.07.2026. Schwellen: ab 90 gut, ab 50 verbesserungsbedürftig.",
+  "ringe": [
+    { "wert": 98, "beschriftung": "Leistung" },
+    { "wert": 100, "beschriftung": "Barrierefreiheit" },
+    { "wert": 100, "beschriftung": "Best Practices" },
+    { "wert": 100, "beschriftung": "SEO" }
+  ]
+}
+```
+
+```grafik
+{
+  "art": "ringReihe",
+  "titel": "Startseite, Desktop",
+  "hinweis": "Dieselbe Seite, dieselbe Messung, ungedrosselt.",
+  "ringe": [
+    { "wert": 100, "beschriftung": "Leistung" },
+    { "wert": 100, "beschriftung": "Barrierefreiheit" },
+    { "wert": 100, "beschriftung": "Best Practices" },
+    { "wert": 100, "beschriftung": "SEO" }
+  ]
+}
+```
+
+Die drei Noten rechts sind auf **allen** gemessenen Seiten und auf beiden
+Geräten 100 — auf zehn Läufen ohne eine Ausnahme. Sie bestehen aus
+Ja/Nein-Prüfungen, sind also keine Momentaufnahme, sondern eine Eigenschaft
+des Baus. Bewegung gibt es nur bei der Leistung, und nur mobil:
+
+```grafik
+{
+  "art": "ringReihe",
+  "titel": "Leistungsnote mobil, fünf Seiten",
+  "hinweis": "Barrierefreiheit, Best Practices und SEO sind auf jeder dieser fünf Seiten 100 – deshalb steht hier nur die Leistung.",
+  "ringe": [
+    { "wert": 98, "beschriftung": "Start" },
+    { "wert": 97, "beschriftung": "Standort" },
+    { "wert": 100, "beschriftung": "Behandlung" },
+    { "wert": 99, "beschriftung": "Team" },
+    { "wert": 96, "beschriftung": "Blog" }
+  ]
+}
+```
+
+Die drei Kennzahlen, an denen Google die Nutzererfahrung misst — Core Web
+Vitals —, stehen auf jeder gemessenen Seite im grünen Bereich:
+
+```grafik
+{
+  "art": "kennzahlReihe",
+  "titel": "Core Web Vitals, schlechtester Wert aus zehn Läufen",
+  "hinweis": "Grenzwerte von Google: LCP unter 2,5 s, CLS unter 0,1, TBT unter 200 ms. Der LCP von 2,7 s auf der Blogübersicht liegt knapp über der Schwelle – siehe unten, es ist ein Bild.",
+  "zahlen": [
+    { "wert": "2,7 s", "label": "LCP (größtes Element)", "richtung": "keine", "wertung": "offen" },
+    { "wert": "0,001", "label": "CLS (Layoutsprünge)", "richtung": "keine", "wertung": "gut" },
+    { "wert": "0 ms", "label": "TBT (blockierte Zeit)", "richtung": "keine", "wertung": "gut" }
+  ]
+}
+```
+
+**Ein TBT von 0 ms auf jeder Seite und jedem Gerät** ist der Wert, der die
+Architektur am deutlichsten beschreibt: Es gibt keinen Moment, in dem die
+Seite geladen aussieht und auf eine Berührung nicht reagiert. Die alte Website
+lud 25,8 Skripte je Seite, davon 1,9 von fremden Servern; hier gibt es beim
+Seitenaufruf keines von außen und 5,2 eigene.
+
+Die vollständige Messung, alle zehn Läufe. Gemessen wurden fünf Seiten,
+je eine je Seitenart: die Startseite `/`, eine Standortseite `/potsdam/`, eine
+Behandlungsseite `/berlin-charlottenburg/leistungen/zahnimplantate/`, eine
+Teamübersicht `/berlin-charlottenburg/team/` und die Blogübersicht `/blog/`.
+
+Erst die vier Noten:
+
+| Seite | Gerät | Leistung | Barrierefr. | Best Pr. | SEO |
+|---|---|---|---|---|---|
+| Start | mobil | **98** | **100** | **100** | **100** |
+| Start | Desktop | **100** | **100** | **100** | **100** |
+| Standort | mobil | **97** | **100** | **100** | **100** |
+| Standort | Desktop | **100** | **100** | **100** | **100** |
+| Behandlung | mobil | **100** | **100** | **100** | **100** |
+| Behandlung | Desktop | **100** | **100** | **100** | **100** |
+| Team | mobil | **99** | **100** | **100** | **100** |
+| Team | Desktop | **100** | **100** | **100** | **100** |
+| Blog | mobil | **96** | **100** | **100** | **100** |
+| Blog | Desktop | **100** | **100** | **100** | **100** |
+
+Dann die Messwerte, aus denen die Leistungsnote gerechnet wird:
+
+| Seite | Gerät | LCP | CLS | TBT | Speed Index |
+|---|---|---|---|---|---|
+| Start | mobil | 2,3 s | 0 | 0 ms | 1,1 s |
+| Start | Desktop | 0,5 s | 0,001 | 0 ms | 0,3 s |
+| Standort | mobil | 2,6 s | 0 | 0 ms | 1,2 s |
+| Standort | Desktop | 0,5 s | 0 | 0 ms | 0,3 s |
+| Behandlung | mobil | 1,5 s | 0 | 0 ms | 1,2 s |
+| Behandlung | Desktop | 0,4 s | 0 | 0 ms | 0,3 s |
+| Team | mobil | 2,0 s | 0 | 0 ms | 1,3 s |
+| Team | Desktop | 0,4 s | 0,001 | 0 ms | 0,3 s |
+| Blog | mobil | 2,7 s | 0 | 0 ms | 1,2 s |
+| Blog | Desktop | 0,7 s | 0 | 0 ms | 0,3 s |
+
+Zwei Tabellen und nicht eine: Zehn Spalten wären auf Papier rechts
+abgeschnitten. Das ist keine Formsache — `bericht/vergleich-pdf.mjs` bricht
+den Bau ab, wenn eine Tabelle breiter ist als der Satzspiegel, weil ein
+abgeschnittener Zahlenwert im PDF nicht auffällt.
+
+**Was Lighthouse noch beanstandet — und was davon zählt.** Über alle zehn
+Läufe bleiben drei Punkte übrig, und alle drei sind bekannt:
+
+| Beanstandung | wo | Größe | Stand |
+|---|---|---|---|
+| **Bildauslieferung** (kein WebP/AVIF, keine `srcset`) | 8 von 10 Läufen | bis **867 kB** je Seite | offen, Kapitel 11 |
+| **Blockierende Stylesheets** | alle 10 Läufe | **150 ms** mobil, 30 ms Desktop | offen, Kapitel 11 |
+| Ladekette (`network dependency tree`) | alle 10 Läufe | ohne Zeitangabe | Hinweis, kein Mangel |
+
+Die Bildauslieferung ist der einzige verbliebene Posten mit echtem Gewicht —
+und er löst sich zum Teil von selbst, wenn die 24 Platzhalter durch echte
+Fotos ersetzt werden (Kapitel 9), weil dabei ohnehin jedes Bild neu durch die
+Aufbereitung läuft. Er ist auch der Grund für den einen LCP über der Schwelle:
+Auf der Blogübersicht ist das größte Element ein Beitragsbild.
+
+**Zur Streuung.** Die Leistungsnote der Startseite ergab in mehreren
+Durchgängen 89 bis 98 (LCP 2,3 bis 3,8 s). Das ist normale
+Lighthouse-Streuung auf gedrosselter CPU in einem Container. Eine einzelne
+Leistungszahl ist deshalb **keine Zusage**. Barrierefreiheit, Best Practices
+und SEO waren in jedem Durchgang identisch — sie bestehen aus Ja/Nein-Prüfungen.
+
+**Für die alte Website liegen keine Lighthouse-Werte vor** (Kapitel 0.2). Was
+sich vergleichen lässt, ist gemessen: ein Fünftel des HTML, ein Fünftel der
+Skripte, ein Zwanzigstel der Stylesheets, keine fremden Server.
+
+### 4.5 Was die Messung an echten Fehlern gefunden hat
+
+Diese vier Punkte waren am 29.07. noch in der Website. Alle sind behoben und
+nachgemessen; jeder hat eine neue Prüfung nach sich gezogen, weil keine
+bestehende ihn sehen konnte.
+
+| Fehler | Wirkung | Warum keine Prüfung ihn fand |
+|---|---|---|
+| **Das Kopfvideo hat nie gespielt** | Startseite und drei Standortseiten zeigten ein Standbild statt des Rundgangs | Das Skript war gültiges JavaScript, das nichts tat — keine Fehlermeldung. Und weil das Standbild absichtlich ein Bild *aus* dem Video ist, sah ein stehendes Video wie ein laufendes aus. |
+| **Berater-Knopf ohne Namen am Telefon** | WCAG 4.1.2 Stufe A, auf **jeder** Seite bis 512 px Breite | `barrierefrei:pruefen` liest HTML; dort steht der Name. Dass CSS ihn bei schmaler Breite entfernt, ist im HTML nicht sichtbar. |
+| **Layoutsprung auf der Teamseite** | CLS 0,371 (Grenze 0,1), Leistungsnote 80 | Keine Prüfung messte Layoutsprünge. |
+| **Kontrast 3,5:1 in den Filterknöpfen** | sechs Stellen, mobil und Desktop | `kontrast:pruefen` besuchte die Teamseite nicht — die einzige Seite mit Filterknöpfen. |
+
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Teamseite mobil, vor und nach der Korrektur",
+  "besserIst": "gross",
+  "hinweis": "Lighthouse 13.4.1, mobil, gedrosselt. CLS umgekehrt aufgetragen: 0,371 vorher, 0 nachher.",
+  "zeilen": [
+    { "label": "Leistung", "alt": 80, "neu": 100 },
+    { "label": "Barrierefreiheit", "alt": 91, "neu": 100 }
+  ]
+}
+```
+
+Neu entstanden sind dabei drei Prüfungen: `skripte:pruefen` (findet
+Skript-Code, der als Zeichenkette im HTML landet und nichts tut),
+`namen:pruefen` (misst zugängliche Namen im Browser in vier Breiten) und die
+erweiterte Seitenliste der Kontrastprüfung. Alle drei wurden gegen den
+fehlerhaften Stand laufen gelassen, bevor ihnen geglaubt wurde.
 
 ---
 
-## 5. Das größte Risiko des Umbaus: der Textverlust
+## 5. Der Textbestand — das größte inhaltliche Risiko
 
-Dieses Kapitel steht bewusst nicht im Anhang.
+### 5.0 Gut oder schlecht? Die kurze Antwort
 
-### 5.1 Der Befund
+Die Zahl in diesem Kapitel — **−56 Prozent Text, auf Behandlungsseiten
+−89 Prozent** — ist die unangenehmste im ganzen Dokument. Sie verdient eine
+Antwort in einem Satz, und die Antwort ist zweiteilig:
 
-| | alt | neu |
-|---|---:|---:|
-| Behandlungsseiten | 74 | **37** |
-| Wörter auf Behandlungsseiten | 170.785 | **20.650** |
-| Ø je Behandlungsseite | 2.307 | **558** |
+**Für die Lesbarkeit ist es gut. Für die Sichtbarkeit bei Google ist es
+schlecht.** Beides gleichzeitig, und beides aus demselben Grund.
 
-Vorlagen-Ballast herausgerechnet (alt ~700, neu ~363 Wörter):
+Die alte Seite zu Zahnimplantaten hatte 10.952 Wörter auf fünf Seiten. Kein
+Mensch liest das. Ein erheblicher Teil davon war Wiederholung, Vorlagentext
+und Füllmaterial — genau die Sorte Text, die aus Suchmaschinengründen
+geschrieben wird und nicht für Leser. Dass die neue Seite 722 Wörter hat, ist
+insofern eine Verbesserung.
+
+Nur: **Google unterscheidet nicht zwischen Füllmaterial und Substanz — es
+sieht, dass zu „Kosten Zahnimplantat" keine Seite mehr existiert.** Und diese
+Frage ist keine Füllfrage. Sie ist die Frage, die ein Mensch mit
+Behandlungsabsicht als erstes stellt. Von den fünf alten Implantatseiten
+behandelten vier je eine solche Frage — Kosten, Haltbarkeit, Rauchen,
+Implantat oder Brücke. Diese vier Fragen haben heute keine Seite.
+
+Der Fehler war also nicht das Kürzen. Der Fehler war, beim Kürzen die
+**Themen** mitzukürzen. 1.200 gute Wörter zu „Was kostet ein Implantat" sind
+besser als 2.800 schlechte — aber sie müssen existieren.
+
+**Was daraus folgt:** Es ist kein Konstruktionsfehler des Neubaus und keine
+Nacharbeit am Programm. Es ist Redaktionsarbeit, sie ist bezifferbar (zwölf
+Behandlungen × etwa ein Arbeitstag, Abschnitt 5.5), und sie kann in derselben
+Bewegung das Kernversprechen aus Kapitel 6 einlösen, wenn die Texte als
+**örtliche** Fassungen entstehen. Wer nur eine Zahl aus diesem Kapitel
+mitnimmt, sollte diese nehmen: **zwölf Texte.**
+
+*Ein Vorbehalt zur Messung selbst:* Gezählt sind Wörter, nicht Substanz. Ein
+Verhältnis von Substanz zu Füllmaterial ließe sich nur durch Lesen bestimmen,
+und dafür braucht es die fachliche Freigabe (Schritt 1). Die Richtung des
+Befunds ändert sich dadurch nicht — 18 Themen ohne eigene Seite sind 18
+Themen ohne eigene Seite, unabhängig davon, wie gut die alten Texte waren.
+
+### 5.1 Die Gesamtbilanz
+
+Deutschsprachiger Bestand, gepaarte Seiten (`paare.json`):
+
+```grafik
+{
+  "art": "bereichsBalken",
+  "titel": "Wörter je Bereich, alt gegen neu",
+  "hinweis": "Nicht logarithmisch: Der Befund IST das Missverhältnis. Eine Achse, die es einebnet, unterschlägt ihn.",
+  "zeilen": [
+    { "label": "Behandlungen", "alt": 170785, "neu": 18444 },
+    { "label": "Zahnbeschwerden", "alt": 102543, "neu": 88827 },
+    { "label": "Team", "alt": 95342, "neu": 41034 },
+    { "label": "Blog", "alt": 66002, "neu": 56008 },
+    { "label": "Über uns", "alt": 16176, "neu": 469 }
+  ]
+}
+```
+
+| Bereich | Seiten alt → neu | Wörter alt → neu | | Was passiert ist |
+|---|---:|---:|---:|---|
+| Zahnbeschwerden | 31 → 31 | 102.543 → 88.827 | −13 % | übernommen |
+| Blog | 31 → 31 | 66.002 → 56.008 | −15 % | übernommen |
+| Team | 101 → 74 | 95.342 → 41.034 | −57 % | bewusst zusammengefasst |
+| **Behandlungen** | **74 → 33** | **170.785 → 18.444** | **−89 %** | **neu geschrieben** |
+| **Über uns** | **10 → 1** | **16.176 → 469** | **−97 %** | **zusammengefaltet** |
+| **Gesamt (deutsch)** | **286 → 210** | **518.870 → 228.334** | **−56 %** | |
+
+**Die Reihenfolge ist die ganze Geschichte: Übernommen bleibt erhalten. Neu
+geschrieben schrumpft. Zusammengefaltet verschwindet.** Damit ist die Lücke
+keine Eigenschaft der neuen Website, sondern eine offene Redaktionsaufgabe.
+
+**Wichtig zur Grundmenge:** Die 33 neuen Behandlungsseiten sind die
+*indexierbaren* — die standortübergreifenden plus Übersicht. Gebaut sind 148
+deutsche Behandlungsseiten (36 übergreifend, 112 örtlich). Die örtlichen
+tragen aber denselben Text und sind nicht angemeldet, siehe Kapitel 6.
+
+### 5.2 Vorlagen-Ballast herausgerechnet
+
+Die kleinste alte Seite hat 697 Wörter, die kleinste neue 363 — das ist der
+Textanteil, den jede Seite ihrer Vorlage verdankt. Abgezogen:
 
 | | alt | neu |
 |---|---:|---:|
 | Ø eigener Inhalt je Behandlungsseite | **~1.600 Wörter** | **~195 Wörter** |
 
-Zwei konkrete Paare:
+### 5.3 Achtzehn Themen haben keine eigene Seite mehr
 
-| Thema | alt | neu |
-|---|---:|---:|
-| Zahnimplantate | 3.136 Wörter | 722 Wörter |
-| Bleaching / Zahnaufhellung | 4.918 Wörter | 577 Wörter |
+Nicht gekürzt, sondern zusammengefaltet. Die Weiterleitung ist technisch
+sauber, der Inhalt ist weg. Zusammen **34.811 Wörter**.
 
-### 5.2 Was das bedeutet
+| Thema | Umfang bisher | führt jetzt auf |
+|---|---:|---|
+| Faltenbehandlung | 4.341 W | `/leistungen/` |
+| Longevity | 3.719 W | `/leistungen/` |
+| Hyaluron / Lippen | 3.539 W | `/leistungen/` |
+| Zornesfalte | 3.440 W | `/leistungen/` |
+| Hilfsprojekt Südafrika | 3.000 W | `/ueber-uns/` |
+| Ästhetische Medizin (Übersicht) | 2.710 W | `/leistungen/` |
+| Location | 2.069 W | `/ueber-uns/` |
+| Soziales Engagement | 1.608 W | `/ueber-uns/` |
+| Kooperationspartner | 1.495 W | `/ueber-uns/` |
+| Presseinfo | 1.325 W | `/ueber-uns/` |
+| Best Practice | 1.043 W | `/ueber-uns/` |
+| Auszeichnungen | 1.042 W | `/ueber-uns/` |
+| Ganzheitliche Zahnmedizin | 1.028 W | `/leistungen/` |
+| Anfahrt | 1.018 W | `/standorte/` |
+| Ultraschall-Reiniger (Potsdam) | 1.004 W | `/ueber-uns/` |
+| Mitgliedschaften | 897 W | `/ueber-uns/` |
+| Galerie | 771 W | `/ueber-uns/` |
+| Link-Tree | 762 W | `/` |
 
-Die alte Website hatte zu Implantaten **neun** Seiten. Sie beantworteten
-genau die Fragen, mit denen Menschen suchen:
+Zwei Gruppen brauchen zwei verschiedene Entscheidungen:
 
-- Was kostet ein Zahnimplantat?
-- Implantate und Rauchen
-- Periimplantitis
-- Sinuslift
-- Wie lange hält ein Implantat?
-- Implantat oder Brücke?
+**Ästhetische Medizin** — vier Seiten, 14.010 Wörter. Kann Absicht sein: Für
+eine Zahnarztpraxis ist Werbung für Botulinumtoxin und Hyaluron
+heilmittelwerberechtlich heikel, § 11 HWG setzt engere Grenzen als bei
+zahnmedizinischen Leistungen. Kann auch übersehen worden sein. **Die Praxis
+muss entscheiden** — und wissen, dass es ein umsatzstarker Bereich ist.
 
-Das sind keine Füllseiten. Das sind Suchanfragen mit Kaufabsicht — jemand,
-der „Zahnimplantat Kosten Berlin" eingibt, sucht einen Termin, nicht einen
-Aufsatz. Die neue Website hat zu Implantaten zwei Seiten mit zusammen 1.191
-Wörtern.
+**Belege und Auszeichnungen** — acht Seiten aus `/ueber-uns/`, 12.410 Wörter.
+Hier sehe ich keinen guten Grund. Auszeichnungen, Mitgliedschaften,
+Kooperationspartner und Presseberichte sind die Nachweise, auf die Google bei
+medizinischen Themen abstellt, und für Patientinnen der Unterschied zwischen
+behaupteter und belegter Kompetenz. Sie gehören zurück — als eigene Seiten,
+nicht als Absatz.
 
-**Das ist der Punkt, an dem der Relaunch Sichtbarkeit verlieren kann** — und
-zwar genau dort, wo sie am meisten wert ist. Die Strukturverbesserung
-(Behandlung mit Ort) wirkt auf lokale Suchanfragen. Der Textverlust wirkt auf
-fachliche Suchanfragen. Beides zusammen kann sich aufheben.
+### 5.4 Wo mehrere Seiten zu einer wurden
 
-### 5.3 Warum es so gekommen ist
+Siebzehn neue Behandlungsseiten ersetzen jeweils mehrere alte. Die neue Seite
+ist dabei kürzer als jede einzelne alte:
 
-Die Behandlungstexte wurden neu geschrieben, weil die alten übernommen und
-fachlich nicht geprüft gewesen wären. Neu geschrieben heißt: kürzer, weil
-jeder Satz verantwortet werden muss. Das war die richtige Entscheidung für
-die Qualität und die falsche für den Umfang.
+| Thema | Seiten | alt | neu | |
+|---|---:|---:|---:|---:|
+| Kinderzahnheilkunde | 5 → 1 | 11.919 W | 557 W | −95 % |
+| Zahnimplantate | 5 → 1 | 10.952 W | 722 W | −93 % |
+| Parodontitis | 4 → 1 | 9.919 W | 566 W | −94 % |
+| Prophylaxe | 4 → 1 | 8.383 W | 554 W | −93 % |
+| Füllungen | 2 → 1 | 8.063 W | 518 W | −94 % |
+| Inlays / Onlays | 2 → 1 | 7.495 W | 451 W | −94 % |
+| Smile Design | 3 → 1 | 6.270 W | 519 W | −92 % |
+| Wurzelkanal | 3 → 1 | 5.505 W | 578 W | −89 % |
 
-### 5.4 Was zu tun ist
+### 5.5 Was zu tun ist
 
-**Empfehlung, nach Dringlichkeit:**
-
-1. **Die 36 Behandlungstexte fachlich freigeben lassen** (steht ohnehin aus).
-   Ohne Freigabe kann nichts ausgebaut werden.
-2. **Die zwölf umsatzstärksten Behandlungen auf 1.200–1.800 Wörter bringen.**
-   Welche das sind, weiß die Praxis. Aufwand: etwa ein Arbeitstag Redaktion je
-   Behandlung, wenn die fachlichen Angaben vorliegen.
-3. **Die Unterseiten zurückholen, die Suchvolumen haben.** Kosten, Haltbarkeit,
-   Risiken, Alternativen — als eigene Seiten unter der jeweiligen Behandlung,
-   und zwar örtlich, also mit dem Vorteil der neuen Struktur. Die alten
-   Adressen leiten bereits dorthin; sie würden dann wieder auf eine Seite
-   zeigen, die die Frage tatsächlich beantwortet.
-4. **Erst dann live gehen** — oder bewusst mit dem Wissen live gehen, dass
-   diese Lücke besteht, und sie in den ersten drei Monaten schließen.
+1. **Die 36 Behandlungstexte fachlich freigeben lassen.** Ohne Freigabe kann
+   nichts ausgebaut werden. *1 Tag.*
+2. **Die zwölf umsatzstärksten Behandlungen auf 1.200–1.800 Wörter bringen** —
+   und zwar **als örtliche Fassungen**, damit gleichzeitig Kapitel 6 gelöst
+   wird. Welche zwölf, weiß die Praxis. *Etwa ein Arbeitstag je Behandlung.*
+3. **Die Unterthemen zurückholen, die Suchvolumen haben** — Kosten,
+   Haltbarkeit, Risiken, Alternativen. Die alten Adressen leiten bereits
+   dorthin; sie würden dann wieder auf eine Seite zeigen, die die Frage
+   beantwortet.
+4. **Die acht Belegseiten wiederherstellen.** *1 Tag.*
 
 Ohne Schritt 2 und 3 ist mit einem Rückgang bei fachlichen Suchanfragen zu
 rechnen. Mit ihnen ist die neue Struktur der alten in beiden Disziplinen
@@ -575,139 +867,166 @@ rechnen. Mit ihnen ist die neue Struktur der alten in beiden Disziplinen
 
 ---
 
-## 6. Sind die Inhalte aktuell? Der Personenabgleich
+## 6. Das Kernversprechen: gebaut, aber noch nicht wirksam
 
-Die Frage der Praxis war konkret: Stehen auf der Website noch Menschen, die
-nicht mehr da sind — Matthias Leyh, Birte Habedank, „oder oder". Die Antwort
-ist nachprüfbar, und sie fällt in zwei Teile.
+Dies ist der Befund, der beim Gegenprüfen dieses Berichts aufgetaucht ist,
+und er betrifft das Ziel, für das der Umbau gemacht wurde.
 
-### 6.1 Die Personenseiten: sauber
+### 6.1 Der Befund
 
-`src/data/team.ts` führt 139 Menschen. 99 sind bestätigt und erscheinen auf
-der Website; **40 stehen auf `bestaetigt: false`** und erscheinen nirgends —
-sie behalten nur die Weiterleitung ihrer alten Adresse, damit Suchtreffer und
-Lesezeichen aus Jahren nicht ins Leere laufen.
+```
+örtliche Behandlungsseiten, deutsch, gebaut          116
+davon in der Sitemap angemeldet                        0
+Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistungen/zahnimplantate/
+```
+
+Für Google gibt es damit **genau eine indexierbare, ortlose Seite je
+Behandlung** — derselbe Zustand, den Kapitel 1 als Kernproblem der alten
+Website beschreibt.
+
+### 6.2 Warum das so ist, und warum es richtig gemacht ist
+
+Vier Seiten mit demselben Text unterscheiden sich für eine Suchmaschine
+nicht. Angemeldet würden sie einander Konkurrenz machen und alle vier
+schwächen. Die Regel im Quelltext lautet deshalb: Eine örtliche Fassung wird
+angemeldet, **sobald sie eigenen Inhalt trägt** — eigene Behandelnde, eigene
+Geräte, eigener Ablauf, eigene Preise, eigene Wege. Bis dahin zeigt sie per
+Canonical auf die übergreifende Seite.
+
+`src/data/standortfassungen.ts` sagt das selbst, und die Liste der
+eigenständigen Fassungen ist leer: *„Stand 28.07.2026 erfüllt keine der 112
+Fassungen die Regel oben. Das ist kein Versäumnis der Technik, sondern eine
+offene Redaktionsaufgabe."*
+
+### 6.3 Was daraus folgt
+
+Für Besucher ist die Architektur schon heute wirksam: Wer über `/potsdam/`
+einsteigt, sieht Potsdamer Adresse, Potsdamer Telefonnummer und Potsdamer
+Terminbuchung — genau das, was auf der alten Website fehlte. Für
+Suchmaschinen ist sie es nicht.
+
+**Die Aufgabe ist dieselbe wie in Kapitel 5.** Wer die zwölf
+Behandlungstexte als örtliche Fassungen schreibt, löst beides mit derselben
+Arbeit: Der Text wächst, und die Seite wird anmeldbar. Wer sie als
+übergreifende Texte schreibt, löst nur die Hälfte.
+
+Empfehlung für die Reihenfolge: Kurfürstendamm zuerst — dort sitzen alle
+Fachbereiche, das Meisterlabor und die meisten Behandelnden. Dann Potsdam.
+Berlin-Mitte und Wilmersdorf zuletzt; für Wilmersdorf ist bislang nicht
+einmal ein Team hinterlegt.
+
+---
+
+## 7. Sind die Inhalte aktuell? Der Personenabgleich
+
+Die Frage der Praxis war konkret: Stehen noch Menschen auf der Website, die
+nicht mehr da sind — Matthias Leyh, Birte Habedank? Die Antwort fällt in zwei
+Teile, und nur einer ist beruhigend.
+
+### 7.1 Die Personenseiten: sauber
+
+`src/data/team.ts` führt 139 Menschen. 99 sind bestätigt und erscheinen; **40
+stehen auf `bestaetigt: false`** und erscheinen nirgends — sie behalten nur
+die Weiterleitung ihrer alten Adresse, damit Suchtreffer und Lesezeichen aus
+Jahren nicht ins Leere laufen.
 
 Stichprobe auf der **heute laufenden** Website:
 
 | Adresse auf ku64.de | Status |
 |---|---|
-| `/team/zahnaerzte/dr-birte-habedank/` | 301 → weitergeleitet |
-| `/team/zahnaerzte/dr-matthias-leyh/` | 301 → `/team/` |
-| `/potsdam/team/dr-birte-habedank/` | 301 → weitergeleitet |
+| `/team/zahnaerzte/dr-birte-habedank/` | 301, weitergeleitet |
+| `/team/zahnaerzte/dr-matthias-leyh/` | 301 auf `/team/` |
+| `/potsdam/team/dr-birte-habedank/` | 301, weitergeleitet |
 | `/team/zahnaerzte/dr-stephan-ziegler/` | 200 (Gründungspartner, aktuell) |
 
-Die Personenseiten sind also auf beiden Fassungen in Ordnung. Wer gegangen
-ist, hat keine Seite mehr.
+Wer gegangen ist, hat keine Seite mehr — auf beiden Fassungen.
 
-### 6.2 Die Texte: nicht sauber
+### 7.2 Die Texte: nicht sauber
 
-Was das Team-Register nicht abdeckt, sind **Namen im Fließtext**. Blogbeiträge
-von 2019 bis 2024 stellen Kolleginnen und Kollegen namentlich vor — und diese
+Was das Register nicht abdeckt, sind **Namen im Fließtext**. Blogbeiträge von
+2019 bis 2024 stellen Kolleginnen und Kollegen namentlich vor, und diese
 Sätze wissen nichts vom Register.
 
-**Auf der heute laufenden Website nachgeprüft:**
+**Auf der heute laufenden Website nachgeprüft, alle mit Status 200:**
 
-| Seite auf ku64.de | Status | dort namentlich genannt |
-|---|---|---|
-| `/blog/neuigkeiten-aus-der-praxis/` | 200 | Dr. Matthias Leyh, Dr. Eva Schneider |
-| `/blog/social-media-2024/` | 200 | Dr. Alexandra Wolff, Dr. Bahaa Youssef, Dr. Benedikt Straub |
-| `/blog/social-media-2023/` | 200 | Dr. Jan Wagner |
-
-Alle diese Beiträge sind heute abrufbar. Alle genannten Personen stehen in
-keinem aktuellen Register. Der Beitrag über Matthias Leyh zitiert ihn mit
-einer ausführlichen fachlichen Aussage — im Präsens, als „Zahnarzt für
-Zahnästhetik bei KU64".
-
-**Und das ist beim Umbau mitgekommen.** Die Blogbeiträge wurden 1:1
-übernommen, weil sie inhaltlich wertvoll sind. Damit steht dasselbe auch auf
-der neuen Fassung.
-
-### 6.3 Die vollständige Liste
-
-`npm run personen:pruefen` durchsucht alle Inhaltsquellen — Blog,
-Beschwerdeseiten, Behandlerprofile, Leistungstexte, Standortdaten,
-Oberflächentexte — und unterscheidet drei Fälle.
-
-**Nennungen ausdrücklich als ehemalig geführter Personen — 3:**
-
-| Name | Wo |
+| Seite auf ku64.de | dort namentlich genannt |
 |---|---|
-| Alexandra Sophia Fischer | Behandlerprofil (Grußformel im eigenen Text) |
-| Frederike Brüning | Blog: „Herzlich Willkommen Kinderzahnärztin …" |
-| Dominik Demski | Blog: „Unser Ausbildungsleiter …" |
+| `/blog/neuigkeiten-aus-der-praxis/` | Dr. Matthias Leyh, Dr. Eva Schneider |
+| `/blog/social-media-2024/` | Dr. Alexandra Wolff, Dr. Bahaa Youssef, Dr. Benedikt Straub |
+| `/blog/social-media-2023/` | Dr. Jan Wagner, Dr. Jameela Abdul Haq |
+| `/blog/ku64-in-den-medien/` | Dr. Yevgeni Viktorov |
+| `/blog/kinder-betreuung/` | Dr. Yevgeni Viktorov |
+| `/blog/360zahn-aus-duesseldorf/` | Dr. Elham Andabili-Barthel |
 
-**Als KU64-zugehörig vorgestellt, in keinem Register — 12** (davon 9 nach
-Durchsicht plausibel ehemalige Kolleginnen und Kollegen):
+Zusammen **zehn Nennungen von neun Personen in sechs Beiträgen** — alle im
+Präsens, alle als Teil der Praxis vorgestellt („Unser Kinderzahnarzt Dr. X",
+„unsere Zahnärztin und Endo-Spezialistin"). Der Beitrag über Matthias Leyh
+zitiert ihn mit einer langen fachlichen Aussage als „Zahnarzt für
+Zahnästhetik bei KU64", samt namentlich genannter Patientin.
 
-| Name | Zusammenhang |
-|---|---|
-| Dr. Matthias Leyh | ausführliches Fachzitat, „Zahnarzt für Zahnästhetik bei KU64" |
-| Dr. Eva Schneider | „unsere Zahnärztin und Endo-Spezialistin" |
-| Dr. Benedikt Straub | „Unser KU64-Beauty-Experte" |
-| Dr. Bahaa Youssef | „Unser Kinderzahnarzt" |
-| Dr. Alexandra Wolff | „unserer Mitarbeiterinnen und Mitarbeiter" |
-| Dr. Jan Wagner | „Unsere Implantologen" |
-| Dr. Jameela Abdul Haq | „unsere Kinderzahnärztin … seit 2021 unser Team" |
-| Dr. Yevgeni Viktorov | „KU64-Zahnarzt und -Parodontologe" |
-| Dr. Elham Andabili-Barthel | Partnerschaft, Zugehörigkeit unklar |
-| Prof. Dr. Anabel Ternes | extern (SRH Institut) — Fehltreffer |
-| Dr. Frederike Arnold-Brüning | fremde Praxis im Lebenslauf — Fehltreffer |
-| „Dr. Mathers Institutes" | Fortbildungsanbieter — Fehltreffer |
+**Und das ist beim Umbau mitgekommen.** Die Beiträge wurden 1:1 übernommen,
+weil sie inhaltlich wertvoll sind. Damit steht dasselbe auf der neuen
+Fassung.
+
+### 7.3 Was `npm run personen:pruefen` meldet
+
+Das Skript durchsucht alle Inhaltsquellen und unterscheidet drei Fälle.
+
+**Ausdrücklich als ehemalig geführt — 3:** Alexandra Sophia Fischer
+(Profiltext), Frederike Brüning (Blog), Dominik Demski (Blog).
+
+**Als KU64-zugehörig vorgestellt, in keinem Register — 12,** davon nach
+Durchsicht 9 plausibel ehemalige Kolleginnen und Kollegen: Leyh, Schneider,
+Straub, Youssef, Wolff, Wagner, Abdul Haq, Viktorov, Andabili-Barthel. Drei
+Fehltreffer: Prof. Dr. Anabel Ternes (extern), „Dr. Mathers Institutes"
+(Fortbildungsanbieter), und **Dr. Stefan Ziegler** — siehe 7.4.
 
 **Ohne KU64-Bezug — 14.** Referenten, Doktorväter, frühere Arbeitgeber in
-Lebensläufen. Die sind in Ordnung und werden nur gezählt, nicht gemeldet.
+Lebensläufen. In Ordnung.
 
-### 6.4 Ein Nebenbefund: derselbe Mensch, zwei Schreibweisen
+### 7.4 Nebenbefund: derselbe Mensch, zwei Schreibweisen
 
-Ein Blogbeitrag zitiert **„Dr. Stefan Ziegler"**. Im Team steht
-**„Dr. Stephan Ziegler"** — Geschäftsführender Gründungspartner. Das ist
-dieselbe Person mit zwei Schreibweisen des Vornamens. Für Suchmaschinen sind
-das zwei Menschen, und für die Praxis ist es der Name des Gründers.
+Ein Blogbeitrag zitiert **„Dr. Stefan Ziegler"**. Im Team steht **„Dr.
+Stephan Ziegler"**, Geschäftsführender Gründungspartner. Dieselbe Person mit
+zwei Schreibweisen des Vornamens. Für Suchmaschinen sind das zwei Menschen —
+und es ist der Name des Gründers.
 
-### 6.5 Was zu tun ist
+### 7.5 Was zu tun ist
 
-Diese Prüfung entscheidet nichts — sie legt eine Liste vor. Ob eine Nennung
-bleibt, gekürzt oder ersetzt wird, weiß nur die Praxis. Drei Wege, je nach
-Fall:
+Diese Prüfung entscheidet nichts, sie legt eine Liste vor. Drei Wege:
 
-1. **Bleiben lassen.** Ein Rückblick auf 2019 darf Menschen nennen, die
-   damals da waren — wenn erkennbar ist, dass es ein Rückblick ist. Bei
-   Beiträgen mit Jahreszahl im Titel ist das gegeben.
-2. **Zeitform ändern.** Aus „Unser Kinderzahnarzt Dr. X empfiehlt" wird
-   „Damals empfahl unser Kinderzahnarzt Dr. X" — oder der Name entfällt und
-   die fachliche Aussage bleibt.
-3. **Entfernen.** Bei Zitaten, die wie eine gegenwärtige Aussage der Praxis
-   wirken, und bei Personen, die ausdrücklich als aktuelles Teammitglied
-   vorgestellt werden.
+1. **Bleiben lassen,** wo erkennbar ein Rückblick vorliegt — bei Beiträgen
+   mit Jahreszahl im Titel ist das gegeben.
+2. **Zeitform ändern:** aus „Unser Kinderzahnarzt Dr. X empfiehlt" wird
+   „Damals empfahl…", oder der Name entfällt und die Aussage bleibt.
+3. **Entfernen** bei Zitaten, die wie eine gegenwärtige Aussage der Praxis
+   wirken.
 
-**Der dringlichste Fall ist Matthias Leyh**, weil dort ein langes fachliches
-Zitat im Präsens steht und die genannte Patientin namentlich vorkommt.
+**Dringlichster Fall ist Matthias Leyh** — langes Fachzitat im Präsens, mit
+namentlich genannter Patientin.
 
-**Aufwand:** Es sind neun Stellen in vier Blogbeiträgen. Eine Stunde
-Durchsicht durch jemanden, der weiß, wer noch da ist — danach eine halbe
-Stunde Umsetzung.
+**Aufwand:** zehn Stellen in sechs Beiträgen. Eine Stunde Durchsicht durch
+jemanden, der weiß, wer noch da ist, plus eine halbe Stunde Umsetzung.
 
-**Und danach bleibt es sauber:** `npm run personen:pruefen` läuft künftig
-mit. Wer aus dem Team ausscheidet und in `team.ts` auf `bestaetigt: false`
-gesetzt wird, taucht ab diesem Moment in der Liste auf, wenn sein Name noch
-irgendwo im Text steht.
+**Danach bleibt es sauber:** `personen:pruefen` läuft künftig mit. Wer aus
+dem Team ausscheidet und auf `bestaetigt: false` gesetzt wird, taucht ab
+diesem Moment in der Liste auf, wenn sein Name noch irgendwo im Text steht.
 
 ---
 
-## 7. Analytics und Anbindung ans Dashboard
+## 8. Analytics und Anbindung ans Dashboard
 
 **Stand heute: Es gibt keine Messung.** Kein Analysewerkzeug, kein Cookie,
-kein Zählpixel, kein Drittanbieter. Der Server schreibt bewusst keine Adressen
-und keine IP-Adressen mit.
+kein Zählpixel. Der Server schreibt bewusst keine Adressen und keine
+IP-Adressen mit.
 
-Das ist kein Versäumnis, sondern eine Zusage: Die Datenschutzseite sagt
-wörtlich, dass diese Website keine Analyse- und Werbe-Cookies setzt — und
-deshalb gibt es auch kein Einwilligungsbanner. Ein nachträglich eingebautes
-Google Analytics würde diese Zusage brechen, ein Banner erzwingen und damit
-die erste Sekunde jedes Besuchs kosten.
+Das ist kein Versäumnis, sondern eine Zusage: Die Datenschutzseite sagt, dass
+diese Website keine Analyse- und Werbe-Cookies setzt — und deshalb gibt es
+kein Einwilligungsbanner. Ein nachträglich eingebautes Google Analytics würde
+diese Zusage brechen, ein Banner erzwingen und die erste Sekunde jedes
+Besuchs kosten.
 
-### 7.1 Was gemessen werden soll
+### 8.1 Was gemessen werden soll
 
 Nicht „Besucher". Die Fragen, die die Praxis wirklich hat:
 
@@ -720,78 +1039,68 @@ Nicht „Besucher". Die Fragen, die die Praxis wirklich hat:
 | **Was wird gesucht und nicht gefunden?** | Suchanfragen ohne Treffer |
 | Werden die Berater genutzt? | Gespräche, Dauer, Themen |
 | Braucht es die Sprachen? | Sprachwechsel je Sprache |
-| Woher kommen die Leute? | Referrer, gröbstmöglich |
 
 Die fünfte Zeile ist die wertvollste. Eine Liste der Suchanfragen ohne
 Treffer ist die direkteste Aussage darüber, was auf der Website fehlt — und
 sie kostet nichts als das Mitzählen.
 
-### 7.2 Vorschlag: eigene Messung, serverseitig, ohne Cookies
+### 8.2 Vorschlag: eigene Messung, serverseitig, ohne Cookies
 
 Die Website liefert alles vom eigenen Server aus. Dann kann sie dort auch
 zählen, ohne dass ein Byte an Dritte geht.
 
-**Wie es funktionieren würde:**
-
-- Der Auslieferungsserver zählt **Ereignisse**, keine Personen: „Seite X
-  aufgerufen", „Terminknopf an Standort Y geklickt", „Suche nach Z ohne
-  Treffer". Aggregiert, nach Stunde.
+- Der Server zählt **Ereignisse**, keine Personen: „Seite X aufgerufen",
+  „Terminknopf an Standort Y geklickt", „Suche nach Z ohne Treffer".
+  Aggregiert, nach Stunde.
 - **Keine IP-Adresse**, kein Cookie, keine Kennung über Seiten hinweg. Damit
-  gibt es keine „Sitzungen" und keine „eindeutigen Besucher" — bewusst.
-  Diese Zahlen sind der Preis dafür, dass kein Banner nötig ist.
-- Die Zähler liegen in einer kleinen Datei oder Datenbank neben der
-  Anwendung. Ein geschützter Endpunkt (`/api/kennzahlen/`, nur mit
-  Schlüssel) gibt sie als JSON aus.
-- **Das Dashboard** (`dashboard.product-republic.com`, liegt bereits als
-  Railway-Projekt vor) holt sich diesen JSON in seinem gewohnten Takt und
-  stellt ihn dar — neben den übrigen Kennzahlen, die dort schon stehen.
+  gibt es keine „Sitzungen" und keine „eindeutigen Besucher" — bewusst. Das
+  ist der Preis dafür, dass kein Banner nötig ist.
+- Ein geschützter Endpunkt (`/api/kennzahlen/`, nur mit Schlüssel) gibt die
+  Zähler als JSON aus.
+- **Das Dashboard** (`dashboard.product-republic.com`, liegt als
+  Railway-Projekt vor) holt diesen JSON in seinem Takt und stellt ihn dar.
 
-**Aufwand:** Zählung und Endpunkt etwa 1–2 Tage; die Darstellung im Dashboard
-hängt davon ab, was dort schon steht.
+**Aufwand:** Zählung und Endpunkt 1–2 Tage; die Darstellung hängt davon ab,
+was im Dashboard schon steht.
 
 **Was diese Lösung nicht kann:** Verweildauer, Absprungrate, Nutzerpfade über
 mehrere Seiten. Dafür bräuchte es eine Kennung je Gerät — und damit die
 Einwilligung, die wir gerade nicht brauchen.
 
-### 7.3 Alternative, falls mehr gewünscht ist
+### 8.3 Alternative, falls mehr gewünscht ist
 
 **Plausible oder Matomo, selbst gehostet.** Beide messen ohne Cookies und
-gelten in Deutschland überwiegend als einwilligungsfrei, wenn sie auf eigener
-Infrastruktur laufen und IP-Adressen kürzen. Sie liefern Pfade und
-Verweildauer.
-
-Zu bedenken: Der Text der Datenschutzseite müsste angepasst werden — die
-heutige Formulierung („keine Analyse-Werkzeuge") wäre dann falsch. Und es
-kommt ein Skript auf jede Seite, das heute nicht da ist.
+gelten überwiegend als einwilligungsfrei, wenn sie auf eigener Infrastruktur
+laufen und IP-Adressen kürzen. Sie liefern Pfade und Verweildauer. Zu
+bedenken: Der Text der Datenschutzseite müsste angepasst werden, und es kommt
+ein Skript auf jede Seite, das heute nicht da ist.
 
 **Google Analytics 4** würde ich nicht empfehlen: Einwilligungsbanner,
-US-Datentransfer, und für eine Praxis mit vier Standorten liefert es keine
-Antwort, die die eigene Zählung nicht auch gäbe.
+US-Datentransfer, und für vier Standorte keine Antwort, die die eigene
+Zählung nicht auch gäbe.
 
-### 7.4 Was zuerst gebraucht wird — auch ohne Analytics
+### 8.4 Was zuerst gebraucht wird — auch ohne Analytics
 
-Zwei Dinge, die mehr bringen als jedes Werkzeug und heute noch fehlen:
-
-1. **Google Search Console** für die neue Domain einrichten, Sitemap
-   eintragen. Sie zeigt kostenlos, mit welchen Suchbegriffen die Seite
-   gefunden wird — die einzige Quelle, die das kann.
+1. **Google Search Console** für die Domain einrichten, Sitemap eintragen.
+   Sie zeigt kostenlos, mit welchen Suchbegriffen die Seite gefunden wird —
+   die einzige Quelle, die das kann.
 2. **Google Business Profile** je Standort mit der jeweiligen Standortseite
    verknüpfen. Für eine Praxis ist der Kartenblock oft wichtiger als jedes
    organische Ergebnis.
 
 ---
 
-## 8. Wie man künftig Änderungen macht
+## 9. Wie man künftig Änderungen macht
 
-Die Website hat kein Redaktionssystem. Das ist eine Entscheidung, keine
-Auslassung: Ein Redaktionssystem, in dem dieselbe Angabe an vier Stellen
-gepflegt wird, war eines der Probleme der alten Fassung.
+Die Website hat kein Redaktionssystem. Das ist eine Entscheidung: Ein System,
+in dem dieselbe Angabe an vier Stellen gepflegt wird, war eines der Probleme
+der alten Fassung.
 
 Stattdessen gibt es **Datendateien**. Eine Änderung dort zieht überall nach —
-Seiten, Navigation, Vergleichstabellen, Sitemap, Vorschaubilder, strukturierte
-Daten und die Antworten des Chat-Beraters.
+Seiten, Navigation, Vergleichstabellen, Sitemap, Vorschaubilder,
+strukturierte Daten und die Antworten des Chat-Beraters.
 
-### 8.1 Wo was steht
+### 9.1 Wo was steht
 
 | Ich möchte ändern … | Datei |
 |---|---|
@@ -804,23 +1113,24 @@ Daten und die Antworten des Chat-Beraters.
 | Beschwerdeseiten | `src/data/beschwerden.json` |
 | Fotos und Kopfvideos je Standort | `src/data/medien.ts` |
 | Weiterleitungen alter Adressen | `src/data/weiterleitungen.ts` |
-| jeden Text der Oberfläche (Knöpfe, Hinweise) | `src/i18n/texte.ts` |
+| **welche örtliche Fassung eigenen Inhalt hat** | `src/data/standortfassungen.ts` |
+| jeden Text der Oberfläche | `src/i18n/texte.ts` |
 | Übersetzungen | `src/inhalte/en.json`, `fr.json` |
 | Farben, Abstände, Schriftgrößen | `src/styles/tokens.css` |
 
 **Beispiel.** Potsdam bietet ab September Aligner an. Eine Zeile in
 `src/data/leistungen.ts`: `verfuegbar: ['berlin-charlottenburg', 'potsdam']`.
-Damit entstehen automatisch: die Seite `/potsdam/leistungen/aligner/`, der
+Damit entstehen automatisch die Seite `/potsdam/leistungen/aligner/`, der
 Eintrag in der Potsdamer Leistungsübersicht, die Zeile in der
-Vergleichstabelle, der Sitemap-Eintrag, das Vorschaubild fürs Teilen, der
-Eintrag in der Wissensbasis des Beraters — und die englische und französische
-Fassung, sobald der nächtliche Übersetzungslauf durch ist.
+Vergleichstabelle, das Vorschaubild fürs Teilen, der Eintrag in der
+Wissensbasis des Beraters — und die englische und französische Fassung,
+sobald der nächtliche Übersetzungslauf durch ist.
 
-### 8.2 Der Weg einer Änderung
+### 9.2 Der Weg einer Änderung
 
 ```
 1. Datei ändern
-2. npm run build          ← 13 Prüfungen laufen mit
+2. npm run build          ← 9 Prüfungen laufen mit
 3. npm start              ← lokal ansehen
 4. npm run klickpfad      ← Bedienung nach Seitenwechsel
 5. git commit && git push ← Railway baut und veröffentlicht selbst
@@ -828,11 +1138,42 @@ Fassung, sobald der nächtliche Übersetzungslauf durch ist.
 
 Schritt 2 ist der wichtige. Der Bau bricht ab, wenn eine Behandlung auf einen
 Standort verweist, den es nicht gibt; wenn ein interner Verweis ins Leere
-zeigt; wenn ein Bild fehlt; wenn ein Text unübersetzt bleibt; wenn ein
-Kontrast unter die Norm fällt. **Man kann die Website nicht kaputt
-veröffentlichen, ohne dass es vorher jemand sagt.**
+zeigt; wenn ein Bild fehlt; wenn ein eingebettetes Skript nicht ausführbar
+ist; wenn eine Sitemap-Adresse `noindex` trägt.
 
-### 8.3 Wer kann was ohne Entwickler
+### 9.3 Die Prüfkette
+
+**Neun Prüfungen laufen beim Bauen** und brauchen nichts weiter:
+
+| Prüfung | Was sie verhindert |
+|---|---|
+| `daten:pruefen` | Querverweise auf Behandlungen oder Standorte, die es nicht gibt |
+| `bilder-pruefen` | Stock-Fotos, fremde Bildquellen, fehlende Bilder |
+| `glas:pruefen` | Glasflächen ohne funktionierenden Weichzeichner |
+| `sprachen:pruefen` | verlorene Auszeichnung, kaputter Sprachwähler, veraltete Übersetzungen |
+| `urls:abgleichen` | tote Adressen aus dem Altbestand |
+| `verweise:pruefen` | interne Verweise ins Leere (85.295 geprüft) |
+| `ids:pruefen` | doppelte `id`-Attribute |
+| `skripte:pruefen` | eingebettete Skripte, die nichts tun |
+| `barrierefrei:pruefen` | namenlose Knöpfe, fehlende Alt-Texte, Ebenensprünge |
+| `sitemap:liste` | Sitemap-Einträge, die zugleich `noindex` tragen |
+
+**Sechs weitere brauchen einen laufenden Server** und gehören vor jeden
+Livegang:
+
+| Prüfung | Was sie verhindert |
+|---|---|
+| `klickpfad` | alles, was nur bis zum ersten Seitenwechsel funktioniert |
+| `kontrast:pruefen` | Schrift unter der Kontrastnorm, hell und dunkel |
+| `namen:pruefen` | Bedienelemente, die in einer Breite ihren Namen verlieren |
+| `formulare:pruefen` | Formulare, die hinter dem Reverse Proxy abgewiesen werden |
+| `indexierung:pruefen` | offene Vorschau — und vergessenes `noindex` nach dem Livegang |
+| `durchgang` | Überlauf, abgeschnittene Überschriften, Browserfehler |
+
+Dazu `personen:pruefen` und `lighthouse-lauf.mjs`, die berichten statt
+abzubrechen.
+
+### 9.4 Wer kann was ohne Entwickler
 
 | Aufgabe | Nötige Kenntnis |
 |---|---|
@@ -844,83 +1185,120 @@ veröffentlichen, ohne dass es vorher jemand sagt.**
 | Neue Seitenart, neue Funktion | Entwickler |
 | Gestaltung ändern | Entwickler |
 
-Für alles in der oberen Gruppe reicht ein Texteditor und die Bereitschaft,
-Anführungszeichen stehen zu lassen. Die Prüfungen fangen den Rest.
-
-### 8.4 Übersetzungen
+### 9.5 Übersetzungen
 
 Ein Arbeitsablauf bei GitHub übersetzt nachts, was auf Deutsch neu
-dazugekommen ist, und legt das Ergebnis als Pull Request vor. Niemand muss
-daran denken.
+dazugekommen ist, und legt das Ergebnis als Pull Request vor.
 
-**Das funktioniert derzeit nicht vollständig:** Der Lauf braucht die
-Berechtigung, Pull Requests anzulegen. Sie ist in den Repository-Einstellungen
-noch nicht gesetzt (Kapitel 10).
+**Das funktioniert derzeit nicht:** Der Lauf braucht die Berechtigung, Pull
+Requests anzulegen. Sie ist in den Repository-Einstellungen nicht gesetzt.
+Stand heute: EN und FR bei **97,9 Prozent**, 156 beziehungsweise 155
+Schlüssel ohne Übersetzung, eine veraltet.
 
 ---
 
-## 9. Was sich prognostizieren lässt
+## 10. Was das kostet
+
+Keine Abrechnung — Treiber und Größenordnungen. Die Beträge kennt nur, wer
+die Verträge hat.
+
+### 10.1 Laufende Kosten
+
+| Posten | Wovon es abhängt |
+|---|---|
+| **Hosting (Railway)** | ein Dienst, statische Auslieferung; die Größenordnung ist ein zweistelliger Eurobetrag im Monat |
+| **Chat-Berater (Anthropic)** | je Gespräch; abhängig davon, wie viele Fragen gestellt werden |
+| **Lächeln-Vorschau (Google Gemini)** | je Bild, und Bildgenerierung ist der teuerste Posten. Begrenzt auf 5 Versuche je Stunde und IP |
+| **Sprachberater (ElevenLabs)** | je Sprechminute. Begrenzt auf 10 Gespräche je Stunde und IP |
+| **Übersetzungslauf (Anthropic)** | nachts, nur für neu dazugekommene Texte |
+
+Die Drosselungen sind Bremsen, keine Mauern. **Wer die Kosten deckeln will,
+braucht ein Ausgabenlimit beim Anbieter** — nicht nur eine Ratenbegrenzung im
+Code. Das ist ein offener Punkt.
+
+### 10.2 Einmalige Kosten, die noch anfallen
+
+| Posten | Aufwand |
+|---|---|
+| Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage Redaktion |
+| Acht Belegseiten wiederherstellen | 1 Tag |
+| 24 Fotos | Fotograf |
+| Fachliche Freigabe der Behandlungstexte | 1 Tag Praxis |
+| Impressum und Datenschutz befüllen | 1–2 Std. Praxis, ggf. anwaltliche Prüfung |
+| Preisangaben gegenprüfen | 2 Std. Praxis |
+| Personennennungen durchsehen | 1,5 Std. |
+| Serverseitige Zählung und Dashboard | 1–2 Tage Entwicklung |
+| EN und FR gegenlesen | 2 × 1 Tag |
+| Bildauslieferung optimieren (WebP, srcset) | 1 Tag Entwicklung |
+
+### 10.3 Was fehlt, um einen Termin zu nennen
+
+Ein Livegang-Datum steht in diesem Bericht bewusst nicht, weil es von zwei
+Dingen abhängt, die nicht in der Entwicklung liegen: der fachlichen Freigabe
+der Texte und den Pflichtangaben für Impressum und Datenschutz. Sobald für
+beides ein Datum steht, ergibt sich der Rest daraus.
+
+---
+
+## 11. Was sich prognostizieren lässt
 
 Zahlen zu versprechen wäre unseriös. Was sich begründen lässt, sind
 Richtungen und Größenordnungen — jeweils mit dem Mechanismus dahinter.
 
-### 9.1 Was mit hoher Sicherheit eintritt
+### 11.1 Was mit hoher Sicherheit eintritt
 
 **Kein Einbruch durch verlorene Adressen.** 0 von 552 Altadressen laufen ins
-Leere. Der typische Verlauf nach einem Relaunch ohne diese Arbeit — 30 bis
-60 Prozent weniger organische Besuche über drei bis sechs Monate — entfällt.
-Das ist kein Zugewinn, sondern ein vermiedener Schaden; er fällt nur
-niemandem auf, weil nichts passiert.
+Leere; ohne die Weiterleitungsarbeit wären es 467 gewesen. Für Relaunches
+ohne diese Arbeit werden in der Fachliteratur Einbrüche in der Größenordnung
+von einem Drittel bis der Hälfte der organischen Besuche über drei bis sechs
+Monate beschrieben. **Das ist eine Faustregel und keine Messung an dieser
+Website** — sie steht hier, weil ein vermiedener Schaden sonst unsichtbar
+bleibt.
 
 **Bessere Werte in der Search Console.** Ebenensprünge von 15 auf 0, keine
-Sitemap-Widersprüche mehr, sauberes hreflang über drei Sprachen, keine
-doppelten Titel. Das sind Meldungen, die verschwinden.
+Sitemap-Widersprüche, sauberes hreflang über drei Sprachen, keine doppelten
+Titel. Das sind Meldungen, die verschwinden.
 
-**Deutlich schnellere Seiten auf dem Telefon.** HTML von 224 auf 45 kB im
-Median, Skripte von 26 auf 5, Drittanbieter von 660 auf 0. Die gemessenen
-Core Web Vitals liegen im grünen Bereich. Da Google die Ladeerfahrung als
-Rankingfaktor führt und mobile Abbrüche stark mit der Ladezeit korrelieren,
-wirkt das in beide Richtungen — Sichtbarkeit und Abschlussquote.
+**Deutlich schnellere Seiten.** HTML von 224 auf 45 kB im Median, Skripte von
+26 auf 5, fremde Server von 660 Einbindungen auf 0. Lighthouse: Best
+Practices und SEO auf 100, Barrierefreiheit auf 100.
 
-### 9.2 Was wahrscheinlich ist, aber von der Praxis abhängt
+### 11.2 Was wahrscheinlich ist, aber von der Praxis abhängt
 
-**Örtliche Sichtbarkeit je Standort.** Wo bisher eine Seite für „Zahnimplantate"
-stand, stehen künftig bis zu vier, jede mit eigener Adresse, eigener
-Telefonnummer und eigenen strukturierten Daten. Für Suchanfragen der Art
-„Zahnarzt Implantate Potsdam" oder „Kieferorthopädie Berlin Mitte" ist das der
-Unterschied zwischen „irgendwo in Berlin" und „hier".
-
-Die Wirkung hängt an zwei Dingen, die nicht in der Website liegen: an den
-Google-Business-Profilen der vier Standorte und daran, dass die örtlichen
-Seiten eigenen Inhalt tragen — nicht dieselben Sätze viermal.
+**Örtliche Sichtbarkeit — erst nach Kapitel 6.** Wo bisher eine Seite für
+„Zahnimplantate" stand, können künftig vier stehen, jede mit eigener Adresse,
+Telefonnummer und strukturierten Daten. **Heute ist es noch eine.** Die
+Wirkung hängt an den örtlichen Texten und an den Google-Business-Profilen der
+vier Standorte.
 
 **Weniger Anrufe für Routinefragen.** Öffnungszeiten, Anfahrt, Kosten,
 Ablauf — vier Standorte, drei Sprachen, dazu Chat und Suche. Wie stark, hängt
 davon ab, wie sichtbar die Selbstbedienung ist. Messbar wird es erst mit
-Kapitel 7.
+Kapitel 8.
 
-**Internationale Patienten.** Von 54 englischen Seiten auf 361, dazu 361 auf
-Französisch. Ob daraus Termine werden, entscheidet sich am Standort
-Kurfürstendamm und nicht an der Website — aber die Website steht dem jetzt
-nicht mehr im Weg.
+**Internationale Patienten.** Von 54 englischen Seiten auf 361. Ob daraus
+Termine werden, entscheidet sich am Standort und nicht an der Website — aber
+die Website steht dem nicht mehr im Weg.
 
-### 9.3 Was gegen den Erfolg arbeitet
+### 11.3 Was gegen den Erfolg arbeitet
 
 **Der Textverlust bei den Behandlungen** (Kapitel 5). Von ~1.600 auf ~195
-Wörter eigenen Inhalt je Behandlungsseite. Fachliche Suchanfragen mit
-Kaufabsicht — „Zahnimplantat Kosten", „Periimplantitis Behandlung" — laufen
+Wörter eigenen Inhalt je Seite. Fachliche Suchanfragen mit Kaufabsicht laufen
 heute auf Seiten, die die Frage kürzer beantworten als vorher. Wird das nicht
-geschlossen, ist ein Rückgang in diesem Segment wahrscheinlich, und zwar
-unabhängig davon, wie gut alles andere ist.
+geschlossen, ist ein Rückgang in diesem Segment wahrscheinlich — unabhängig
+davon, wie gut alles andere ist.
 
-**Fehlende Fotos.** 0 von 24 angemeldeten Motiven liegen vor. Drei der vier
-Standorte haben derzeit ein Standbild aus dem Kopfvideo; Wilmersdorf hat nur
-die Außenansicht.
+**Die fehlenden Belegseiten** (Kapitel 5.3). Auszeichnungen, Mitgliedschaften
+und Kooperationen sind bei medizinischen Themen Rankingfaktoren und
+Vertrauenssignale.
 
-**Die noch nicht fachlich freigegebenen Texte.** Sie stehen live, sobald die
-Seite live geht.
+**Fehlende Fotos.** 0 von 24 angemeldeten Motiven liegen vor. Drei Standorte
+zeigen ein Standbild aus dem Kopfvideo; Wilmersdorf nur die Außenansicht.
 
-### 9.4 Eine ehrliche Gesamteinschätzung
+**Zwei Livegang-Sperren.** Impressum und Datenschutz sind Entwürfe; die
+Preisangaben sind aus Fotos einer gedruckten Auswertung abgetippt.
+
+### 11.4 Eine ehrliche Gesamteinschätzung
 
 Wenn die Seite so live geht, wie sie heute ist:
 
@@ -929,41 +1307,48 @@ Wenn die Seite so live geht, wie sie heute ist:
   Textverlust wirkt noch nicht voll, weil Google die neuen Seiten erst
   bewerten muss.
 - **Mittelfristig (3–9 Monate):** Die Schere geht auf. Örtliche Anfragen
-  gewinnen, fachliche verlieren. Wie das Saldo aussieht, entscheidet Kapitel
-  5.4 — nichts anderes.
-- **Langfristig:** Die Struktur ist der alten überlegen, und die Wartbarkeit
-  erst recht. Eine Behandlung an einem Standort zu ergänzen ist eine Zeile;
-  auf der alten Website war es eine neue Seite, die jemand von Hand anlegen,
+  gewinnen — aber nur, wenn Kapitel 6 gelöst ist. Fachliche verlieren, wenn
+  Kapitel 5 offen bleibt.
+- **Langfristig:** Die Struktur ist der alten überlegen, die Wartbarkeit erst
+  recht. Eine Behandlung an einem Standort zu ergänzen ist eine Zeile; auf
+  der alten Website war es eine neue Seite, die jemand von Hand anlegen,
   verlinken und in die Sitemap eintragen musste — und die vergessen wurde.
-
-**Der Hebel liegt nicht mehr in der Technik.** Er liegt in zwölf
-Behandlungstexten und vierundzwanzig Fotos.
 
 ---
 
-## 10. Was offen ist
+## 12. Was offen ist
 
-### Bei der Entwicklung
+### Livegang-Sperren
 
-| Punkt | Umfang |
+| Punkt | Warum |
 |---|---|
-| FAQ-Texte aus dem Seitenkopf in den Übersetzungskatalog | ~70 Sätze auf 10 Seiten |
-| 33 Typfehler, die `astro check` meldet und der Bau nicht sieht | ein halber Tag |
-| Sprachberater verbinden **oder** ausblenden | Entscheidung nötig |
-| Serverseitige Zählung und Dashboard-Endpunkt | 1–2 Tage, nach Freigabe |
+| **Impressum befüllen** | Entwurf mit Platzhaltern. `noindex` beseitigt keine Impressumspflicht (§ 5 DDG) — die Seite ist öffentlich erreichbar |
+| **Datenschutzerklärung befüllen** | dasselbe für Art. 13 DSGVO; fehlt u. a. die Speicherdauer der Serverprotokolle |
+| **Preisangaben gegenprüfen** | Die Werte sind aus **Fotos der gedruckten Auswertung** übernommen. Bei Preisen einer Zahnarztpraxis ist ein Zahlendreher keine Unschönheit, sondern eine falsche Auskunft |
+| **AV-Vertrag mit Google** | für die Lächeln-Vorschau; sie überträgt ein Gesichtsfoto |
 
 ### Bei der Praxis
 
-| Punkt | Warum es blockiert |
+| Punkt | Aufwand |
 |---|---|
-| **24 Fotos** (Liste in `BILDER-BEDARF.md`) | Standorte zeigen derzeit Videostandbilder |
-| **Fachliche Freigabe der 36 Behandlungstexte** | ohne sie kann kein Text ausgebaut werden |
-| **Zwölf Behandlungstexte ausbauen** | das größte inhaltliche Risiko, Kapitel 5 |
-| **Neun Personennennungen durchsehen** | Kapitel 6 – eine Stunde, betrifft auch die heute laufende Website |
-| **Verfügbarkeit je Standort bestätigen** | die Zuordnung stammt aus dem Altbestand |
-| **Eine Preisquelle statt zweier** | 13 Behandlungen führen Kosten im Text *und* einen Preisrahmen |
-| **Impressum und Datenschutz befüllen** | beide sind Entwürfe mit Platzhaltern und deshalb `noindex` |
-| **EN und FR gegenlesen** | beide bei 99,7 %, aber nicht freigegeben |
+| Fachliche Freigabe der 36 Behandlungstexte | 1 Tag |
+| Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage |
+| Acht Belegseiten wiederherstellen | 1 Tag |
+| Entscheidung zur ästhetischen Medizin | – |
+| 24 Fotos | Fotograf |
+| Zehn Personennennungen durchsehen | 1,5 Std. |
+| Verfügbarkeit je Standort bestätigen | 2 Std. |
+| EN und FR gegenlesen | 2 Tage |
+
+### Bei der Entwicklung
+
+| Punkt | Aufwand |
+|---|---|
+| Bildauslieferung: WebP und srcset (bis 888 kB je Seite vermeidbar) | 1 Tag |
+| Kritisches CSS inline (zwei blockierende Stilblätter, ~150 ms) | 0,5 Tage |
+| Serverseitige Zählung und Dashboard-Endpunkt | 1–2 Tage |
+| Sprachberater verbinden **oder** ausblenden | Entscheidung nötig |
+| Restdeutsch: 62 Auszeichnungs-Funde, Schwerpunkte Anamnese und Kontakt | 1 Tag |
 
 ### Beim Betrieb
 
@@ -971,50 +1356,69 @@ Behandlungstexten und vierundzwanzig Fotos.
 |---|---|
 | **GitHub → Actions → „Allow GitHub Actions to create and approve pull requests"** | der nächtliche Übersetzungslauf kann sein Ergebnis nicht vorlegen |
 | **ElevenLabs-Schlüssel und Agent-ID** | Sprachberater sagt „noch nicht verbunden" |
-| **Lächeln-Vorschau einmal durchlaufen lassen** | ob der Gemini-Schlüssel trägt, ist ungetestet |
+| **Lächeln-Vorschau einmal durchlaufen lassen** | ungetestet |
+| **Ausgabenlimits bei Anthropic, Google, ElevenLabs** | die Drosselungen im Code sind Bremsen, keine Mauern |
 | **Search Console und Business Profile** | Kapitel 8.4 |
+
+### Erledigt seit der ersten Fassung dieses Berichts
+
+| Punkt | |
+|---|---|
+| 39 Typfehler aus `astro check` | 0 Fehler über 142 Dateien |
+| Fehlende `tsconfig.json` | angelegt; Prüfumfang 52 → 142 Dateien |
+| FAQ-Texte im Seitenkopf | 131 Schlüssel in den Katalog verlegt |
+| Kopfvideo startete nie | behoben, nachgemessen |
+| Berater-Knopf ohne Namen am Telefon | behoben, neue Prüfung |
+| Layoutsprung Teamseite (CLS 0,371) | behoben, jetzt 0 |
+| Kontrast in den Filterknöpfen | behoben, Prüfliste erweitert |
+| Drei Sitemap-Einträge mit `noindex` | behoben, neue Prüfung |
+| Vorschau war indexierbar | gesperrt, neue Prüfung in beide Richtungen |
 
 ---
 
-## 11. Anhang
+## 13. Anhang
 
-### 11.1 Woher die Zahlen stammen
+### 13.1 Woher die Zahlen stammen
 
 | Zahl | Quelle |
 |---|---|
-| Adressbestand alt | `analyse/altbestand/crawl-bericht.md`, Crawl vom 26.07. |
+| Adressbestand alt | `analyse/altbestand/crawl-bericht.md`, Crawl 26.07. |
 | Seitenweise Messung beider Fassungen | `analyse/vergleich/erheben.mjs` → `erhebung.json`, 29.07. |
-| Core Web Vitals neu | Playwright, Telefonformat, 1,6 Mbit/s, CPU ×4 |
-| PageSpeed neu | Google PageSpeed Insights, mobil, 28.07. |
+| Seitenpaare, zusammengefaltete und verlorene Themen | `analyse/vergleich/paare-bilden.mjs` → `paare.json` |
+| Lighthouse | `scripts/lighthouse-lauf.mjs` → `lighthouse.json`, Lighthouse 13.4.1 |
 | Weiterleitungen | `npm run urls:abgleichen` gegen die gebaute Fassung |
-| Barrierefreiheit | `npm run barrierefrei:pruefen`, `npm run kontrast:pruefen` |
+| Barrierefreiheit | `barrierefrei:pruefen`, `kontrast:pruefen`, `namen:pruefen` |
 | Interne Verweise | `npm run verweise:pruefen` |
 | Sprachstand | `npm run sprachen:pruefen` |
+| Personennennungen | `npm run personen:pruefen` |
 
-### 11.2 Die Erhebung wiederholen
+### 13.2 Die Erhebung wiederholen
 
-```bash
+```
 npm run build
-npm start &
+OEFFENTLICHE_HOSTS=127.0.0.1 npm start &
 node analyse/vergleich/erheben.mjs http://127.0.0.1:4321
+node analyse/vergleich/paare-bilden.mjs
+node scripts/lighthouse-lauf.mjs http://127.0.0.1:4321
+node bericht/vergleich-bauen.mjs && node bericht/vergleich-pdf.mjs
 ```
 
-Das Skript schreibt `analyse/vergleich/erhebung.json`. Alle Tabellen dieses
-Dokuments lassen sich daraus nachrechnen.
-
-### 11.3 Bekannte Grenzen dieser Analyse
+### 13.3 Bekannte Grenzen dieser Analyse
 
 1. **Core Web Vitals der alten Website fehlen.** Aus dieser Arbeitsumgebung
    nicht erhebbar. Ein PageSpeed-Lauf auf `ku64.de` schließt die Lücke.
-2. **Wortzahlen enthalten Navigations- und Fußtext.** Wo es darauf ankam,
-   ist der Ballast herausgerechnet und das Verfahren angegeben.
-3. **Keine Rankingdaten.** Weder für alt noch neu liegen Positionen oder
-   Suchvolumina vor. Ohne Search-Console-Zugang zur alten Domain ist jede
-   Aussage über konkrete Suchbegriffe geraten — und steht deshalb nicht drin.
-4. **Die neue Fassung ist nicht live.** Alle Messungen betreffen die
+2. **Die beiden Stichproben sind unterschiedlich zusammengesetzt** — siehe
+   0.1. Je-Seite-Mittelwerte sind Anhaltspunkte, die Seitenpaare sind
+   belastbar.
+3. **Wortzahlen enthalten Navigations- und Fußtext.** Wo es darauf ankam, ist
+   der Ballast herausgerechnet und das Verfahren angegeben.
+4. **Keine Rankingdaten.** Ohne Search-Console-Zugang zur alten Domain ist
+   jede Aussage über konkrete Suchbegriffe geraten — und steht deshalb nicht
+   drin.
+5. **Die neue Fassung ist nicht live.** Alle Messungen betreffen die
    Vorschau. Unter der echten Domain können Serverzeiten abweichen.
 
 ---
 
-*Erstellt am 29.07.2026. Die Zahlen dieses Dokuments sind reproduzierbar;
-die Skripte liegen unter `analyse/vergleich/`.*
+*Erstellt am 30.07.2026. Alle Zahlen sind reproduzierbar; die Skripte liegen
+unter `analyse/vergleich/` und `scripts/`.*
