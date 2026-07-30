@@ -1321,7 +1321,8 @@ export const LEISTUNGEN: Leistung[] = [
     kosten: 'Narkose 600 bis 1.500 € zusätzlich zur Behandlung',
     kasse:
       'Die Kasse übernimmt die Narkose nur in bestimmten Fällen, etwa bei nachgewiesener Phobie oder Behinderung. Sonst ist sie privat zu tragen.',
-    verfuegbar: NUR_KUDAMM,
+    /* Von der Praxis bestätigt: Die Vollnarkose gibt es auch in Potsdam. */
+    verfuegbar: KUDAMM_POTSDAM,
     related: ['zahnarztangst', 'lachgas', 'weisheitszaehne', 'all-on-4'],
     faq: [
       {

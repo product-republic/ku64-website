@@ -159,6 +159,39 @@ const ziel = `/laecheln-vorschau/?standort=${encodeURIComponent(standort.slug)}#
     margin-block: var(--raum-6, 1.8rem) 0;
   }
 
+  /*
+   * Die Beschriftung darf umbrechen – sonst schiebt sie die ganze Seite.
+   *
+   * `.knopf` trägt `white-space: nowrap`, und das ist überall sonst
+   * richtig: Ein Knopf, dessen Text in zwei Zeilen zerfällt, sieht aus wie
+   * zwei Knöpfe. Hier ist die Beschriftung der längste Text im Block –
+   * „Foto hochladen und Lächeln probetragen" misst ungebrochen 386 px. Das
+   * ist mehr als die 350 px Satzspiegel eines 390-px-Geräts.
+   *
+   * Die Folge war kein abgeschnittener Knopf, sondern eine Seite, die sich
+   * seitlich schieben ließ: Ein Rasterkind hat von Haus aus
+   * `min-width: auto` und schrumpft nicht unter seinen kleinstmöglichen
+   * Inhalt. Der Knopf hat also nicht sich selbst gesprengt, sondern die
+   * Spalte, den Block und das Dokument – gemeldet als „Querlauf" auf
+   * /potsdam/ und /berlin-charlottenburg/.
+   *
+   * `durchgang.mjs` hätte das gefunden. Es lief nur nicht: Seit dem Einbau
+   * des Einwilligungsdialogs brach die Prüfung vorher ab.
+   */
+  .smile-knopf :global(.knopf) {
+    white-space: normal;
+    text-wrap: balance;
+    max-inline-size: 100%;
+  }
+
+  /* Und damit die Spalte auch dann nachgibt, wenn später ein langes Wort
+     dazukommt: Ein Rasterkind muss die Erlaubnis bekommen, schmaler zu
+     werden als sein Inhalt. */
+  .smile-text,
+  .smile-bild {
+    min-width: 0;
+  }
+
   .smile-klein {
     margin-block: var(--raum-4, 1rem) 0;
     font-size: 0.82rem;

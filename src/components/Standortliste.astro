@@ -1,0 +1,180 @@
+---
+/**
+ * Die ausklappbare Standortliste – einmal geschrieben, zweimal benutzt.
+ *
+ * Sie hängt an zwei Stellen im Kopf: in der Standortleiste, solange die Seite
+ * ganz oben steht, und am kompakten Wähler in der oberen Zeile, sobald
+ * gescrollt wurde. Beide zeigen dieselben vier Standorte mit derselben
+ * Kennzeichnung des aktuellen – und genau deshalb steht das Markup hier und
+ * nicht zweimal in `Navigation.astro`.
+ *
+ * ── Warum die Liste weiß, wo sie hängt, aber nicht wie sie aussieht ──────
+ *
+ * Alles, was zur Liste selbst gehört – Fläche, Rundung, Zeilen –, steht in
+ * diesem Bauteil. Wo sie erscheint, entscheidet der Aufrufer: Sie ist
+ * `position: absolute` und richtet sich am nächsten positionierten Vorfahren
+ * aus. Am Wähler in der Leiste ist das der Wähler selbst, am kompakten Wähler
+ * oben die Glaspille – dort soll sie an deren Unterkante ansetzen und nicht
+ * mitten im Kopf beginnen.
+ *
+ * Astro grenzt Stile auf das Bauteil ein, in dem sie stehen. Die Stile für
+ * diese Liste mussten deshalb mit dem Markup hierher wandern; wären sie in
+ * `Navigation.astro` geblieben, hätten sie hier nicht gegriffen.
+ */
+import { inhalte } from '../i18n/daten';
+import { texte } from '../i18n/katalog';
+
+interface Props {
+  /** Slug des aktuell gewählten Standorts – oder `null` auf den
+      standortübergreifenden Seiten. */
+  aktiv: string | null;
+}
+
+const { aktiv } = Astro.props;
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+---
+
+<div class="waehler-liste">
+  <p class="waehler-hinweis">{t('nav.waehlerHinweis')}</p>
+  <ul>
+    {
+      daten.standorte.map((s) => (
+        <li>
+          <a href={`/${s.slug}/`} class:list={['waehler-link', { 'ist-aktiv': s.slug === aktiv }]}>
+            <span class="waehler-punkt" style={`background:${s.akzent}`} aria-hidden="true" />
+            <span>
+              <strong>{s.name}</strong>
+              <small>
+                {s.strasse}, {s.ort}
+              </small>
+            </span>
+            {s.slug === aktiv && <span class="marke marke-erfolg">{t('geruest.aktuell')}</span>}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  /*
+   * Die Liste wächst aus der Kopfleiste heraus – sie schwebt nicht davor.
+   *
+   * Vorher: ein eigener Kasten mit eigener Rundung, eigenem Rahmen und einem
+   * halben Zentimeter Luft darüber. Er sah aus wie ein Fenster einer anderen
+   * Anwendung, das zufällig über der Seite lag. Der Zwischenraum war das
+   * Schlimmste daran: Er machte aus einem Menü, das zum Kopf gehört, ein
+   * Etwas, das darunter klebt.
+   *
+   * Jetzt sitzt sie bündig an der Unterkante (`top: 100%`), hat oben keine
+   * Rundung und keinen Rahmen mehr und rundet nur noch unten – genau wie die
+   * Kopfleiste selbst, deren untere Ecken sie damit fortsetzt. Ihre Fläche
+   * ist dieselbe Glasfarbe, ihr Weichzeichner derselbe.
+   *
+   * Der Schatten bleibt: Er ist nicht Zierrat, sondern das, was die Fläche
+   * vom Inhalt darunter abhebt. Ohne ihn steht die Liste auf dem Text.
+   */
+  .waehler-liste {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 100%;
+    z-index: var(--z-overlay);
+    width: min(24rem, calc(100vw - 2rem));
+    padding: var(--raum-5) var(--raum-4);
+    /*
+     * Eigener Schriftgrad statt geerbtem.
+     *
+     * Die Liste hängt an zwei verschieden großen Bedienelementen – am Wähler
+     * in der Leiste, die im angedockten Zustand auf `--t-xs` schrumpft, und
+     * am kompakten Wähler oben. Geerbt wäre die Adresse eines Standorts
+     * einmal kleiner als das andere Mal, ohne dass sich am Inhalt etwas
+     * ändert. Was zur Auswahl steht, wird nicht kleiner, weil man gescrollt
+     * hat.
+     */
+    font-size: var(--t-sm);
+    background: var(--glas-flaeche-stark);
+    -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    border: 1px solid var(--glas-rand);
+    border-block-start: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    border-end-start-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
+    /* Nur nach unten und zur Seite, nicht nach oben – nach oben schließt sie
+       an die Leiste an, und ein Schatten an einer Nahtstelle ist eine Fuge. */
+    box-shadow:
+      inset 0 1px 0 var(--glas-glanz),
+      0 18px 40px -20px rgb(20 16 14 / 0.3),
+      0 4px 12px -8px rgb(20 16 14 / 0.16);
+  }
+
+  /*
+   * Ohne Weichzeichner deckend.
+   *
+   * Der Glaseffekt lebt davon, dass der Hintergrund verschwimmt. Kann der
+   * Browser das nicht, bleibt von "durchscheinend plus unscharf" nur
+   * "durchscheinend" übrig – und dann steht die Überschrift der Seite scharf
+   * durch das Menü. Bei Dekoration wäre das hinnehmbar; bei einer Liste, aus
+   * der jemand seinen Standort wählt, nicht.
+   */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .waehler-liste {
+      background: var(--flaeche);
+    }
+  }
+
+  .waehler-hinweis {
+    margin-bottom: var(--raum-3);
+    color: var(--tinte-leise);
+    line-height: var(--zeile-normal);
+  }
+
+  .waehler-liste ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  .waehler-link {
+    display: flex;
+    align-items: center;
+    gap: var(--raum-3);
+    padding: var(--raum-3);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background-color var(--zeit-schnell) var(--kurve);
+  }
+
+  .waehler-link:hover {
+    background: var(--flaeche-warm);
+  }
+
+  .waehler-link.ist-aktiv {
+    background: var(--flaeche-warm-2);
+  }
+
+  .waehler-punkt {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .waehler-link strong {
+    display: block;
+    font-size: var(--t-sm);
+  }
+
+  .waehler-link small {
+    display: block;
+    color: var(--tinte-leise);
+    line-height: 1.3;
+  }
+
+  .waehler-link .marke {
+    margin-inline-start: auto;
+  }
+</style>

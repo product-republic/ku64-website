@@ -43,7 +43,8 @@
     "langtexte:bauen": "node scripts/langtexte-bauen.mjs",
     "korpus:einspielen": "node scripts/korpus-einspielen.mjs",
     "freigabe:pruefen": "node scripts/freigabe-pruefen.mjs",
-    "abschnitt:pruefen": "node scripts/abschnitt-pruefen.mjs"
+    "abschnitt:pruefen": "node scripts/abschnitt-pruefen.mjs",
+    "kopf:pruefen": "node scripts/kopf-pruefen.mjs"
   },
   "repository": {
     "type": "git",

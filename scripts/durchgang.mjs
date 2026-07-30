@@ -31,6 +31,8 @@
  */
 
 import { chromium } from 'playwright';
+import { kopfKlick, warteAufRuhe } from './lib/kopf-klick.mjs';
+import { nurNotwendiges } from './lib/einwilligung-abwaehlen.mjs';
 
 const portIndex = process.argv.indexOf('--port');
 const PORT = portIndex >= 0 ? process.argv[portIndex + 1] : '4340';
@@ -128,6 +130,10 @@ for (const geraet of GERAETE) {
     const antwort = await seite.goto(BASIS + pfad, { waitUntil: 'networkidle' });
     geprueft++;
 
+    /* Der Auswahldialog ist ein Modal und fängt jeden Klick ab – auch die
+       dieser Prüfung. Begründung in scripts/lib/einwilligung-abwaehlen.mjs. */
+    await nurNotwendiges(seite);
+
     const melden = (was, detail) =>
       befunde.push({ geraet: geraet.name, pfad, art, was, detail });
 
@@ -152,12 +158,57 @@ for (const geraet of GERAETE) {
         melden(`Überschrift abgeschnitten (${zustand})`, titel);
       }
 
-      /* Bedienelemente: öffnen, prüfen, wieder schließen. */
-      const waehler = await seite.$('.waehler summary, .waehler > summary');
-      if (waehler) {
-        await waehler.click();
+      /*
+       * Bedienelemente: öffnen, prüfen, wieder schließen.
+       *
+       * Den Standortwähler gibt es zweimal, und welcher gilt, hängt vom
+       * Zustand ab: oben der in der Leiste, gescrollt der kompakte im
+       * Kopf – die Leiste ist dann eingeklappt.
+       *
+       * Hier stand vorher nur `.waehler summary`. Nach dem Umbau des Kopfes
+       * lief die Prüfung in einen Timeout („element is not visible"), und
+       * das war die richtige Meldung: Sie klickte auf ein Bedienelement,
+       * das es in diesem Zustand nicht mehr gibt. Der Ausweg ist nicht,
+       * den Klick zu überspringen – dann prüfte gescrollt niemand mehr,
+       * ob man den Standort überhaupt wechseln kann.
+       */
+      const waehlerAuswahl =
+        zustand === 'gescrollt'
+          ? ['.ort-kompakt > summary', '.waehler > summary']
+          : ['.waehler > summary', '.ort-kompakt > summary'];
+
+      let geklickt = null;
+      let waehlerWurzel = '';
+      for (const auswahl of waehlerAuswahl) {
+        const el = await seite.$(auswahl);
+        if (!el || !(await el.isVisible())) continue;
+        waehlerWurzel = auswahl.split(' ')[0];
+        /* Erst wenn der Kopf zu Ende umgebaut hat – sonst misst die
+           Trefferprobe einen Zwischenstand. Siehe warteAufRuhe(). */
+        await warteAufRuhe(seite, auswahl);
+        /*
+         * `kopfKlick` statt `el.click()`.
+         *
+         * Playwright rollt vor dem Klick ins Bild – und ein klebender Kopf
+         * hat seine Layoutposition ganz oben im Dokument. Der Klick scrollte
+         * die Seite damit auf null, der Kopf klappte wieder aus, und die
+         * Prüfung meldete „öffnet nicht". Begründung und Messwerte in
+         * scripts/lib/kopf-klick.mjs.
+         */
+        geklickt = await kopfKlick(seite, auswahl);
+        break;
+      }
+
+      if (!geklickt) {
+        melden(`kein bedienbarer Standortwähler (${zustand})`, '');
+      } else if (!geklickt.ok) {
+        melden(`Standortwähler nicht anklickbar (${zustand})`, geklickt.grund);
+      } else {
         await seite.waitForTimeout(200);
-        const offen = await seite.evaluate(() => !!document.querySelector('.waehler[open]'));
+        const offen = await seite.evaluate(
+          (w) => !!document.querySelector(`${w}[open]`),
+          waehlerWurzel,
+        );
         if (!offen) melden(`Standortwähler öffnet nicht (${zustand})`, '');
         else await seite.keyboard.press('Escape');
       }

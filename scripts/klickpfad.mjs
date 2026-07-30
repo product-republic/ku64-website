@@ -36,6 +36,7 @@
  */
 
 import { chromium } from 'playwright';
+import { nurNotwendiges } from './lib/einwilligung-abwaehlen.mjs';
 
 const BASIS = process.env.KLICKPFAD_BASIS || 'http://127.0.0.1:4331';
 
@@ -98,6 +99,19 @@ const seitenfehler = [];
 seite.on('pageerror', (e) => seitenfehler.push(e.message.split('\n')[0]));
 
 await seite.goto(`${BASIS}/potsdam/`, { waitUntil: 'networkidle' });
+
+/*
+ * Erst den Auswahldialog beantworten, dann klicken.
+ *
+ * Ohne das läuft JEDER Klick dieser Prüfung in einen Timeout – das Modal
+ * fängt ihn ab, und zwar genau so, wie es soll. Zehn von zwölf Prüfungen
+ * standen deshalb auf rot, und der Abbruchtext behauptete, etwas überlebe
+ * den Seitenwechsel nicht. Die Begründung steht in
+ * scripts/lib/einwilligung-abwaehlen.mjs.
+ */
+if ((await nurNotwendiges(seite)) === 'bleibt-offen') {
+  befunde.push('Auswahldialog schließt nicht – alles Weitere misst ihn statt der Seite');
+}
 
 console.log('\n[klickpfad] Nach dem ersten Seitenwechsel');
 await weiter(seite, '/potsdam/team/');
@@ -225,6 +239,11 @@ const mobil = await browser.newPage({ viewport: { width: 390, height: 800 } });
 mobil.on('pageerror', (e) => seitenfehler.push(e.message.split('\n')[0]));
 
 await mobil.goto(`${BASIS}/potsdam/`, { waitUntil: 'networkidle' });
+
+/* Eigener Tab, eigener Speicher – der Dialog steht hier erneut. */
+if ((await nurNotwendiges(mobil)) === 'bleibt-offen') {
+  befunde.push('Auswahldialog schließt auf dem Telefon nicht');
+}
 await weiter(mobil, '/potsdam/leistungen/');
 
 await pruefe('mobiles Menü öffnet nach einem Seitenwechsel', async () => {

@@ -287,7 +287,7 @@ export const STANDORTE: Standort[] = [
       },
       {
         titel: 'Was hier möglich ist',
-        text: '{anzahl} der {gesamt} KU64-Leistungen werden in Potsdam erbracht, darunter die vollständige Implantologie mit eigener Oralchirurgie und 3D-Röntgen. Drei Leistungen bleiben dem Kurfürstendamm vorbehalten: feste Zähne an einem Tag, die feste Zahnspange und die Behandlung in Vollnarkose. Das sagen wir hier, damit niemand für einen dieser drei Fälle nach Potsdam fährt und dann weitergeschickt wird. Die Wege zwischen den Häusern sind eingespielt – wer hier anfängt und für einen Schritt nach Berlin muss, wird nicht neu untersucht.',
+        text: '{anzahl} der {gesamt} KU64-Leistungen werden in Potsdam erbracht, darunter die vollständige Implantologie mit eigener Oralchirurgie und 3D-Röntgen. Zwei Leistungen bleiben dem Kurfürstendamm vorbehalten: feste Zähne an einem Tag und die feste Zahnspange. Das sagen wir hier, damit niemand für einen dieser beiden Fälle nach Potsdam fährt und dann weitergeschickt wird. Die Wege zwischen den Häusern sind eingespielt – wer hier anfängt und für einen Schritt nach Berlin muss, wird nicht neu untersucht.',
       },
       {
         titel: 'Wer hier behandelt',
