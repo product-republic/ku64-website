@@ -59,7 +59,7 @@ export const TEXTE = {
   'leistung.nichtAngebotenAn': 'Nicht angeboten an:',
   'leistung.nichtAngebotenHinweis':
     'Wir sagen das offen, damit Sie nicht vergeblich dort anrufen.',
-  'leistung.kasse': 'Zahlt die Krankenkasse?',
+  'leistung.kasse': 'Krankenkasse',
   'leistung.ablauf': 'So läuft es ab',
   'leistung.synonyme': 'Auch bekannt als',
   'leistung.haeufigeFragen': '{name}: häufige Fragen',
@@ -676,30 +676,6 @@ export const TEXTE = {
   'nav.terminBuchen': 'Termin buchen',
   'nav.suchen': 'Suchen',
 
-  // ── Fußzeile ────────────────────────────────────────────────────────
-  'fuss.unsereStandorte': 'Unsere Standorte',
-  'fuss.behandlungsbereiche': 'Leistungsbereiche',
-  'fuss.haeufigGesucht': 'Häufig gesucht',
-  'fuss.service': 'Service',
-  'fuss.oeffnungszeiten': 'Öffnungszeiten',
-  'fuss.aktuellGewaehlt': '(aktuell gewählt)',
-  'fuss.impressum': 'Impressum',
-  'fuss.datenschutz': 'Datenschutz',
-  'fuss.barrierefreiheit': 'Barrierefreiheit',
-  'fuss.cookieEinstellungen': 'Cookie-Einstellungen',
-  'fuss.karriere': 'Karriere',
-  'fuss.notfall': 'Zahnärztlicher Notfall',
-  'fuss.laechelnVorschau': 'Lächeln-Vorschau',
-
-  // ── Standorte und Zeiten ────────────────────────────────────────────
-  'standort.geoeffnet': 'Jetzt geöffnet',
-
-  // ── Leistungen ────────────────────────────────────────────────────
-  'leistung.dauer': 'Dauer',
-  'leistung.kosten': 'Kosten',
-  'leistung.kasse': 'Krankenkasse',
-  'leistung.ablauf': 'So läuft es ab',
-
   // ── Sprache ─────────────────────────────────────────────────────────
   'sprache.waehlen': 'Sprache wählen',
   'sprache.hinweisTitel': 'Wir haben auf {sprache} umgestellt',
@@ -859,6 +835,219 @@ export const TEXTE = {
   'standorte.matrixBeschriftung': 'Verfügbarkeit der Leistungen je KU64-Standort',
 
   // ── Kontakt ─────────────────────────────────────────────────────────
+
+  /* ── Häufige Fragen ───────────────────────────────────────────────────
+   *
+   * Sie standen als Datenfeld im Vorspann von zehn Seiten:
+   * `const faq = [{ frage: '…', antwort: '…' }]`. Das war die letzte Lücke
+   * derselben Art wie bei den Leistungsseiten und den Beschwerdeseiten – nur
+   * an der unangenehmsten Stelle: Diese Sätze erscheinen nicht bloß sichtbar
+   * auf der Seite, sie wandern über `schemaFaq()` zusätzlich als FAQPage in
+   * das JSON-LD. Unübersetzt hieß das: Auf /en/ stand deutscher Text, und
+   * Google bekam ihn als strukturierte Daten der englischen Seite gemeldet.
+   *
+   * Der Sprachwächter konnte davon nichts sehen. Er vergleicht den Katalog
+   * mit der Quellfassung und liest die Auszeichnung – den Vorspann einer
+   * Astro-Datei las er nicht. Seit `scripts/deutsch-finden.mjs` das tut,
+   * fällt ein neuer Satz an dieser Stelle sofort auf.
+   *
+   * Zahlen, Namen und Adressen kommen als Platzhalter herein, nicht als
+   * zusammengeklebte Satzteile. Beim Zusammenkleben wäre der Schaden hier
+   * doppelt: einmal im Text, den man liest, und einmal in den
+   * strukturierten Daten, die man nicht sieht.
+   */
+
+  /** Listentrenner. Einzelnes Wort, weil eine Aufzählung kein Satz ist –
+      dieselbe Ausnahme wie bei `leistung.oder`. */
+  'liste.und': 'und',
+
+  'faq.titel': 'Häufige Fragen',
+  'faq.haeufigGefragt': 'Häufig gefragt',
+
+  // ── Startseite ──────────────────────────────────────────────────────
+  'faq.start.wieVieleStandorte.frage': 'Wie viele KU64-Standorte gibt es?',
+  'faq.start.wieVieleStandorte.antwort':
+    'KU64 ist an {anzahl} Standorten vertreten: {standorte}. Das Leistungsangebot unterscheidet sich je Standort.',
+  'faq.start.alleLeistungen.frage': 'Bietet jeder Standort alle Leistungen an?',
+  'faq.start.alleLeistungen.antwort':
+    'Nein. Die Hauptpraxis am Kurfürstendamm bietet das breiteste Spektrum inklusive Vollnarkose, Kieferorthopädie und All-on-4. Potsdam deckt das volle Standardspektrum inklusive Implantologie und Oralchirurgie ab. Auf jeder Standortseite sehen Sie ausschließlich das, was dort tatsächlich angeboten wird – und wohin Sie für alles Übrige gehen.',
+  'faq.start.terminBuchen.frage': 'Wie buche ich einen Termin?',
+  'faq.start.terminBuchen.antwort':
+    'Online über die Terminseite Ihres Standorts oder telefonisch. Für den ersten Besuch füllen Sie den Anamnesebogen vorab digital aus – das spart Zeit vor Ort und Sie müssen im Wartezimmer nichts auf Papier ausfüllen.',
+  'faq.start.akuteSchmerzen.frage': 'Was mache ich bei akuten Zahnschmerzen?',
+  'faq.start.akuteSchmerzen.antwort':
+    'Rufen Sie den Standort an, der Ihnen am nächsten liegt. Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Bei starken Schmerzen sagen Sie das direkt am Telefon – wir halten Termine für Akutfälle frei.',
+
+  // ── Digitale Beratung ───────────────────────────────────────────────
+  'faq.beratung.mensch.frage': 'Spreche ich mit einem Menschen?',
+  'faq.beratung.mensch.antwort':
+    'Nein. Sie sprechen mit einem KI-System, und die Stimme ist synthetisch erzeugt. Einen Menschen erreichen Sie unter der Telefonnummer Ihres Standorts.',
+  'faq.beratung.aufzeichnung.frage': 'Wird das Gespräch aufgezeichnet?',
+  'faq.beratung.aufzeichnung.antwort':
+    'Für die Dauer des Gesprächs wird Ihre Stimme verarbeitet, um die Antwort zu erzeugen. Eine dauerhafte Aufzeichnung findet nicht statt, und wir ordnen das Gespräch keiner Person zu. Sie können jederzeit auflegen.',
+  'faq.beratung.ersetztPraxis.frage': 'Ersetzt das eine Beratung in der Praxis?',
+  'faq.beratung.ersetztPraxis.antwort':
+    'Nein. Der Sprachberater erklärt Leistungen, Abläufe und Kostenrahmen. Er stellt keine Diagnose und beurteilt keine Beschwerden. Alles, was Ihren konkreten Fall betrifft, gehört in eine persönliche Untersuchung.',
+  'faq.beratung.lieberSchreiben.frage': 'Was, wenn ich lieber schreibe?',
+  'faq.beratung.lieberSchreiben.antwort':
+    'Dann nutzen Sie den Chat unten rechts – inhaltlich beantwortet er dieselben Fragen. Manche Menschen tippen lieber, andere sprechen lieber; beides ist gleichwertig.',
+  'faq.beratung.terminBuchen.frage': 'Kann ich darüber einen Termin buchen?',
+  'faq.beratung.terminBuchen.antwort':
+    'Nein, der Berater nimmt keine Termine entgegen und erfasst keine persönlichen Daten. Er verweist Sie auf die Terminseite Ihres Standorts oder auf unsere Telefonnummer.',
+
+  // ── Notfall ─────────────────────────────────────────────────────────
+  'faq.notfall.echterNotfall.frage': 'Wann ist ein Zahnproblem ein echter Notfall?',
+  'faq.notfall.echterNotfall.antwort':
+    'Bei starken, nicht beherrschbaren Schmerzen, bei einer Schwellung im Gesicht oder am Hals, bei Fieber zusammen mit Zahnschmerzen, bei einer Blutung, die nicht aufhört, und bei einem ausgeschlagenen oder abgebrochenen Zahn nach einem Unfall. Bei Atem- oder Schluckbeschwerden zählt jede Minute – dann sofort 112.',
+  'faq.notfall.ausgeschlagenerZahn.frage': 'Was mache ich mit einem ausgeschlagenen Zahn?',
+  'faq.notfall.ausgeschlagenerZahn.antwort':
+    'Den Zahn nur an der Krone anfassen, nie an der Wurzel, und nicht säubern oder abschrubben. Sofort in eine Zahnrettungsbox legen; wenn keine da ist, in kalte H-Milch, notfalls in Speichel. Nicht in Wasser. Dann so schnell wie möglich zu uns – am besten innerhalb der ersten Stunde. Bei Kindern gilt das auch für Milchzähne: Nehmen Sie den Zahn mit, wir entscheiden dann.',
+  'faq.notfall.fuellungVerloren.frage':
+    'Eine Füllung oder Krone ist herausgefallen – ist das dringend?',
+  'faq.notfall.fuellungVerloren.antwort':
+    'Meist nicht akut gefährlich, aber es sollte zeitnah versorgt werden, damit der Zahn nicht bricht oder Karies entsteht. Bewahren Sie die Krone auf und bringen Sie sie mit – oft lässt sie sich wieder einsetzen. Kauen Sie in der Zwischenzeit auf der anderen Seite.',
+  'faq.notfall.schmerzenBisTermin.frage': 'Was hilft bis zum Termin gegen die Schmerzen?',
+  'faq.notfall.schmerzenBisTermin.antwort':
+    'Kühlen Sie von außen mit einem Tuch dazwischen, nicht direkt auf der Haut, und in Intervallen. Halten Sie den Kopf hoch, auch beim Schlafen. Rezeptfreie Schmerzmittel wie Ibuprofen können helfen – bitte nur nach Packungsbeilage und nicht, wenn Sie sie nicht vertragen. Legen Sie niemals eine Tablette direkt auf das Zahnfleisch, das verätzt die Schleimhaut. Keine Wärme, kein Alkohol.',
+  'faq.notfall.nachtsUndFeiertags.frage': 'Wer hilft nachts und an Feiertagen?',
+  'faq.notfall.nachtsUndFeiertags.antwort':
+    'Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Außerhalb unserer Sprechzeiten hilft der zahnärztliche Notdienst der Kassenzahnärztlichen Vereinigung weiter – die Nummern stehen unten.',
+
+  // ── Terminseite (allgemein) ─────────────────────────────────────────
+  'faq.termine.buchen.frage': 'Wie buche ich einen Termin bei KU64?',
+  'faq.termine.buchen.antwort':
+    'Online über den Terminkalender Ihres Standorts oder telefonisch. Beides führt zum selben Kalender – es gibt keine getrennten Kontingente. Für die Online-Buchung brauchen Sie nur wenige Angaben; den Anamnesebogen füllen Sie danach digital aus.',
+  'faq.termine.absagen.frage': 'Kann ich einen Termin wieder absagen oder verschieben?',
+  'faq.termine.absagen.antwort':
+    'Ja. Bitte sagen Sie spätestens 24 Stunden vorher ab – telefonisch oder über den Link in Ihrer Bestätigungsmail. So kann jemand anderes den Termin bekommen, und das ist bei einer ausgebuchten Praxis der eigentliche Grund für die Frist.',
+  'faq.termine.mitbringen.frage': 'Was muss ich zum ersten Termin mitbringen?',
+  'faq.termine.mitbringen.antwort':
+    'Ihre Versichertenkarte, gegebenenfalls Bonusheft und Allergiepass sowie eine Liste Ihrer Medikamente. Wichtig sind vor allem Blutverdünner, Bisphosphonate, ein Herzklappenersatz, Diabetes, eine Schwangerschaft und Allergien gegen Betäubungsmittel – diese Angaben ändern die Behandlung.',
+  'faq.termine.starkeSchmerzen.frage': 'Was mache ich bei starken Schmerzen?',
+  'faq.termine.starkeSchmerzen.antwort':
+    'Rufen Sie den Standort an, statt online zu buchen. Wir halten an jedem Standort Zeiten für Schmerzpatientinnen und -patienten frei und können am Telefon einschätzen, wie dringend es ist. Außerhalb der Sprechzeiten hilft die Notfallseite weiter.',
+  'faq.termine.doctolib.frage': 'Warum werde ich zu Doctolib weitergeleitet?',
+  'faq.termine.doctolib.antwort':
+    'Der Kalender liegt bei Doctolib, einem eigenständigen Dienst. Wir betten ihn bewusst nicht in diese Seite ein – so werden beim bloßen Lesen keine Daten an Dritte übertragen. Erst wenn Sie den Kalender öffnen, werden Ihre IP-Adresse übermittelt und Cookies gesetzt.',
+  'faq.termine.ohnePortal.frage': 'Kann ich auch ohne Online-Portal einen Termin bekommen?',
+  'faq.termine.ohnePortal.antwort':
+    'Ja, jederzeit telefonisch oder per E-Mail. Die Online-Buchung ist ein Angebot, keine Voraussetzung – die Nummer Ihres Standorts steht auf dessen Terminseite.',
+
+  // ── Lächeln-Vorschau ────────────────────────────────────────────────
+  'faq.laecheln.fotoGespeichert.frage': 'Wird mein Foto gespeichert?',
+  'faq.laecheln.fotoGespeichert.antwort':
+    'Nein. Ihr Foto wird ausschließlich für die Dauer der Berechnung im Arbeitsspeicher verarbeitet und danach verworfen. Es wird nicht auf einer Festplatte abgelegt, nicht in eine Datenbank geschrieben und nicht für das Training von KI-Modellen verwendet. Auch Ihre E-Mail-Adresse nutzen wir nur für diesen einen Versand.',
+  'faq.laecheln.versprechen.frage': 'Ist das Ergebnis ein Behandlungsversprechen?',
+  'faq.laecheln.versprechen.antwort':
+    'Nein, ausdrücklich nicht. Die Vorschau ist eine unverbindliche Illustration, wie ein Lächeln aussehen könnte. Was in Ihrem Fall tatsächlich möglich ist, hängt von Zahnstellung, Zahnsubstanz, Zahnfleisch und Kieferverhältnissen ab – das lässt sich nur bei einer persönlichen Untersuchung beurteilen.',
+  'faq.laecheln.welchesFoto.frage': 'Was für ein Foto brauche ich?',
+  'faq.laecheln.welchesFoto.antwort':
+    'Ein frontales Porträt bei gutem, gleichmäßigem Licht, auf dem Sie lächeln und die oberen Zähne sichtbar sind. Kein starkes Gegenlicht, keine Schönheitsfilter und möglichst ohne Maske oder Hand vor dem Mund.',
+  'faq.laecheln.werSiehtEs.frage': 'Wer sieht mein Foto?',
+  'faq.laecheln.werSiehtEs.antwort':
+    'Für die Berechnung wird das Bild an unseren KI-Dienstleister übermittelt und dort verarbeitet. Niemand aus unserem Team sieht Ihr Foto, es sei denn, Sie zeigen es uns selbst beim Termin. Details stehen in unserer Datenschutzerklärung.',
+  'faq.laecheln.fuerKind.frage': 'Kann ich das für mein Kind machen?',
+  'faq.laecheln.fuerKind.antwort':
+    'Nein. Die Vorschau ist ausschließlich für volljährige Personen und nur für ein Foto von Ihnen selbst gedacht. Bitte laden Sie keine Fotos anderer Personen hoch.',
+
+  // ── Digitale Anamnese (Standortseite) ───────────────────────────────
+  'faq.anamnese.wasIstDas.frage': 'Was ist ein Anamnesebogen und warum brauchen Sie den?',
+  'faq.anamnese.wasIstDas.antwort':
+    'Der Anamnesebogen erfasst Ihre Vorerkrankungen, Medikamente, Allergien und Unverträglichkeiten. Das ist keine Formalität: Blutverdünner, Bisphosphonate, Herzerkrankungen oder eine Schwangerschaft ändern konkret, wie und womit wir behandeln dürfen. Ohne diese Angaben können wir bestimmte Eingriffe nicht sicher durchführen.',
+  'faq.anamnese.dauer.frage': 'Wie lange dauert das Ausfüllen?',
+  'faq.anamnese.dauer.antwort':
+    'Etwa fünf bis zehn Minuten. Sie können zwischendurch pausieren und in Ruhe auf Ihrem Medikamentenplan nachsehen – das ist zu Hause deutlich einfacher als auf einem Klemmbrett im Wartezimmer.',
+  'faq.anamnese.datensicherheit.frage': 'Sind meine Gesundheitsdaten dabei sicher?',
+  'faq.anamnese.datensicherheit.antwort':
+    'Die Anamnese läuft über Nelly Solutions, einen auf Zahnarztpraxen spezialisierten Anbieter mit Serverstandort in der EU. Die Daten fließen verschlüsselt direkt in unser Praxisverwaltungssystem. Diese Website selbst speichert keine Gesundheitsdaten – sie leitet Sie nur zum Formular weiter.',
+  'faq.anamnese.mussDigital.frage': 'Muss ich das digital machen?',
+  'faq.anamnese.mussDigital.antwort':
+    'Nein. Wenn Sie lieber auf Papier ausfüllen, sagen Sie das einfach beim Termin – wir haben die Bögen selbstverständlich weiterhin vor Ort. Digital ist ein Angebot, keine Bedingung.',
+  'faq.anamnese.erneut.frage': 'Ich war schon einmal da – muss ich das erneut ausfüllen?',
+  'faq.anamnese.erneut.antwort':
+    'Bei Wiedervorstellung fragen wir in längeren Abständen nach Änderungen. Wenn sich bei Ihnen etwas geändert hat – neue Medikamente, eine neue Diagnose, eine Schwangerschaft –, sagen Sie uns das bitte in jedem Fall, auch zwischen den Terminen.',
+
+  /* ── Standortstartseite ────────────────────────────────────────────────
+   *
+   * Hier tragen fast alle Sätze einen Platzhalter: Standortname, Ort,
+   * Adresse, Anzahl. Genau deshalb waren sie mit einer Vorlagenzeichenkette
+   * gebaut – und genau deshalb standen sie auf /en/ deutsch da.
+   */
+  'faq.ort.titel': 'Fragen zu KU64 {name}',
+  'faq.ort.oepnv.frage': 'Wie erreiche ich KU64 {name} mit öffentlichen Verkehrsmitteln?',
+  'faq.ort.oepnv.antwort': '{oepnv}. Die Praxis liegt in der {strasse}, {plz} {ort}.',
+  'faq.ort.parken.frage': 'Kann ich bei KU64 {name} parken?',
+  'faq.ort.barrierefrei.frage': 'Ist die Praxis in {ort} barrierefrei?',
+  'faq.ort.barrierefrei.antwortJa':
+    'Ja, KU64 {name} ist barrierefrei zugänglich. Melden Sie sich gern vorab, wenn Sie besondere Unterstützung benötigen – dann bereiten wir alles vor.',
+  'faq.ort.barrierefrei.antwortRuecksprache':
+    'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.',
+  'faq.ort.leistungen.frage': 'Welche Leistungen bietet KU64 {name} an?',
+  'faq.ort.leistungen.antwort':
+    'An diesem Standort behandeln wir {anzahl} Leistungen aus {bereiche} Fachbereichen, darunter {beispiele}. Nicht jede Leistung wird an jedem KU64-Standort angeboten – auf dieser Seite sehen Sie ausschließlich das Angebot in {ort}.',
+  'faq.ort.neuePatienten.frage': 'Nehmen Sie neue Patientinnen und Patienten auf?',
+  'faq.ort.neuePatienten.antwort':
+    'Ja. Sie können online einen Termin buchen oder uns anrufen. Für den ersten Termin füllen Sie den Anamnesebogen bequem vorab digital aus – das spart Zeit im Wartezimmer.',
+
+  // ── Terminseite eines Standorts ─────────────────────────────────────
+  'faq.ortTermine.zweiKalender.frage': 'Warum gibt es bei KU64 {name} zwei Terminkalender?',
+  'faq.ortTermine.zweiKalender.antwort':
+    'Zahnmedizin und Kieferorthopädie werden hier von getrennten Teams behandelt und haben deshalb je einen eigenen Kalender: {kalender}. Wählen Sie den Kalender, der zu Ihrem Anliegen passt – bei Unsicherheit rufen Sie an, wir ordnen es zu.',
+  'faq.ortTermine.bisWann.frage': 'Bis wann kann ich in {ort} einen Termin bekommen?',
+  'faq.ortTermine.bisWann.antwort':
+    '{zeiten}. Die kürzeren Tage sind fest so gelegt – ein Abendtermin ist an ihnen nicht möglich, dafür an den übrigen.',
+  'faq.ortTermine.bisWannTag': '{tag} bis {bis} Uhr',
+  'faq.ortTermine.wochenende.frage':
+    'Kann ich bei KU64 {name} am Wochenende einen Termin bekommen?',
+  'faq.ortTermine.wochenende.antwort':
+    '{tage} behandeln wir nach Vereinbarung. Das heißt: nicht ohne Termin, aber sehr wohl möglich – rufen Sie unter {telefon} an, dann klären wir es.',
+  'faq.ortTermine.anfahrt.frage': 'Wie komme ich zu KU64 {name}?',
+  'faq.ortTermine.anfahrt.antwort':
+    '{oepnv}. {parken} Die Adresse lautet {strasse}, {plz} {ort}.',
+  /* ── Vorschlagsfragen des Beraters ────────────────────────────────────
+   *
+   * Sie standen als `standardVorschlaege` im Vorspann von Berater.astro –
+   * dem Baustein, der auf JEDER Seite steht. Damit waren sie der Posten mit
+   * der größten Reichweite unter den fest verdrahteten Fragen: vier deutsche
+   * Sätze auf über tausend gebauten Seiten, in jeder Sprache.
+   *
+   * Zwei Fassungen, weil die Auswahl davon abhängt, ob die Seite zu einem
+   * Standort gehört. Mit Standort kann die erste Frage konkret werden, ohne
+   * Standort muss sie zuerst zur Wahl führen.
+   */
+  'berater.vorschlagLeistungenOrt': 'Welche Leistungen gibt es bei KU64 {name}?',
+  'berater.vorschlagZahnreinigung': 'Was kostet eine professionelle Zahnreinigung?',
+  'berater.vorschlagAngst': 'Ich habe Angst vor dem Zahnarzt – wie läuft der erste Termin?',
+  'berater.vorschlagAnfahrt': 'Wie komme ich zu Ihnen und kann ich parken?',
+  'berater.vorschlagWelcherStandort': 'Welcher Standort passt zu mir?',
+  'berater.vorschlagImplantate': 'An welchen Standorten gibt es Implantate?',
+  /* Beschriftungen der Angabenliste auf /ki-transparenz/. Sie standen als
+     nackte <dt>-Texte in der Vorlage; einzelne Substantive fallen dem
+     Deutschfinder nicht auf, auf der englischen Seite aber sofort. */
+  'kitrans.marke': 'Transparenz',
+  'kitrans.anbieter': 'Anbieter',
+  'kitrans.modell': 'Modell',
+  'kitrans.grenzen': 'Grenzen',
+  'kitrans.kontaktformular': 'Kontaktformular',
+  'kitrans.datenschutzerklaerung': 'Datenschutzerklärung',
+  /* ── Beschwerdeübersicht: die Gruppenüberschriften ─────────────────────
+   *
+   * Acht Überschriften, die als `frage` in einem Datenfeld im Vorspann von
+   * zahnbeschwerden/index.astro standen – gefunden von der neuen
+   * Vorspannsuche in scripts/deutsch-finden.mjs, gleich beim ersten Lauf.
+   *
+   * Sie sind absichtlich in der Sprache formuliert, in der jemand seine
+   * Beschwerde beschreibt, und nicht in der Fachsprache: „Es tut weh" statt
+   * „Schmerzsymptomatik". Genau das muss beim Übersetzen erhalten bleiben.
+   */
+  'beschw.gruppeSchmerzen': 'Es tut weh',
+  'beschw.gruppeZahnfleisch': 'Etwas stimmt mit dem Zahnfleisch nicht',
+  'beschw.gruppeZahnsubstanz': 'Am Zahn selbst',
+  'beschw.gruppeAussehen': 'Die Zähne gefallen mir nicht',
+  'beschw.gruppeMund': 'Im Mund',
+  'beschw.gruppeKinder': 'Bei Kindern, mit Spange',
+  'beschw.gruppeVorbeugen': 'Damit es gar nicht erst so weit kommt',
+  'beschw.gruppeSonstiges': 'Sonstiges',
 } as const;
 
 export type TextSchluessel = keyof typeof TEXTE;

@@ -33,7 +33,7 @@
  * alles Erfasste gehört auf die neue Website.
  */
 
-import { mkdir, writeFile, readFile, stat } from 'node:fs/promises';
+import { mkdir, writeFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const HIER = import.meta.dirname;

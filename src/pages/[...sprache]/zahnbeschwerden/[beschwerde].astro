@@ -251,7 +251,7 @@ const schema = [
     beschwerde.faq.length > 0 && (
       <section class="abschnitt-eng">
         <div class="huelle fragen">
-          <FaqBlock titel="Häufig gefragt" eintraege={beschwerde.faq} />
+          <FaqBlock titel={t('faq.haeufigGefragt')} eintraege={beschwerde.faq} />
         </div>
       </section>
     )
@@ -268,8 +268,12 @@ const schema = [
               : 'Die Leistungen, die hier in Frage kommen – jeweils mit den Standorten, an denen es sie gibt:'}
           </p>
           <div class="raster">
+            {/* `standortSlug={null}`: Beschwerdeseiten sind bewusst nicht
+                standortscharf – Zahnfleischbluten ist in Potsdam dasselbe wie
+                am Kurfürstendamm (siehe data/beschwerden.ts). Die Karte
+                verlinkt deshalb auf die standortfreie Leistungsseite. */}
             {behandlungen.map((l) => (
-              <LeistungKarte leistung={l} />
+              <LeistungKarte leistung={l} standortSlug={null} />
             ))}
           </div>
         </div>

@@ -42,32 +42,16 @@ const brotkrumen = [
   { name: t('krume.digitaleAnamnese'), pfad },
 ];
 
+/* Häufige Fragen zur digitalen Anamnese – Text aus dem Katalog. */
 const faq = [
+  { frage: t('faq.anamnese.wasIstDas.frage'), antwort: t('faq.anamnese.wasIstDas.antwort') },
+  { frage: t('faq.anamnese.dauer.frage'), antwort: t('faq.anamnese.dauer.antwort') },
   {
-    frage: 'Was ist ein Anamnesebogen und warum brauchen Sie den?',
-    antwort:
-      'Der Anamnesebogen erfasst Ihre Vorerkrankungen, Medikamente, Allergien und Unverträglichkeiten. Das ist keine Formalität: Blutverdünner, Bisphosphonate, Herzerkrankungen oder eine Schwangerschaft ändern konkret, wie und womit wir behandeln dürfen. Ohne diese Angaben können wir bestimmte Eingriffe nicht sicher durchführen.',
+    frage: t('faq.anamnese.datensicherheit.frage'),
+    antwort: t('faq.anamnese.datensicherheit.antwort'),
   },
-  {
-    frage: 'Wie lange dauert das Ausfüllen?',
-    antwort:
-      'Etwa fünf bis zehn Minuten. Sie können zwischendurch pausieren und in Ruhe auf Ihrem Medikamentenplan nachsehen – das ist zu Hause deutlich einfacher als auf einem Klemmbrett im Wartezimmer.',
-  },
-  {
-    frage: 'Sind meine Gesundheitsdaten dabei sicher?',
-    antwort:
-      'Die Anamnese läuft über Nelly Solutions, einen auf Zahnarztpraxen spezialisierten Anbieter mit Serverstandort in der EU. Die Daten fließen verschlüsselt direkt in unser Praxisverwaltungssystem. Diese Website selbst speichert keine Gesundheitsdaten – sie leitet Sie nur zum Formular weiter.',
-  },
-  {
-    frage: 'Muss ich das digital machen?',
-    antwort:
-      'Nein. Wenn Sie lieber auf Papier ausfüllen, sagen Sie das einfach beim Termin – wir haben die Bögen selbstverständlich weiterhin vor Ort. Digital ist ein Angebot, keine Bedingung.',
-  },
-  {
-    frage: 'Ich war schon einmal da – muss ich das erneut ausfüllen?',
-    antwort:
-      'Bei Wiedervorstellung fragen wir in längeren Abständen nach Änderungen. Wenn sich bei Ihnen etwas geändert hat – neue Medikamente, eine neue Diagnose, eine Schwangerschaft –, sagen Sie uns das bitte in jedem Fall, auch zwischen den Terminen.',
-  },
+  { frage: t('faq.anamnese.mussDigital.frage'), antwort: t('faq.anamnese.mussDigital.antwort') },
+  { frage: t('faq.anamnese.erneut.frage'), antwort: t('faq.anamnese.erneut.antwort') },
 ];
 ---
 

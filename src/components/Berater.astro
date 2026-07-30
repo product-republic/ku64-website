@@ -20,11 +20,11 @@
  * dasselbe sagen.
  */
 import type { Standort } from '../data/standorte';
-import { kiSystem, WEG_ZUM_MENSCHEN } from '../data/ki-systeme';
 import { inhalte } from '../i18n/daten';
-import { texte } from '../i18n/katalog';
+import { texte, wegZumMenschenIn } from '../i18n/katalog';
 
-const t = texte(inhalte(Astro).sprache);
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
 
 
 interface Props {
@@ -45,22 +45,34 @@ const telefonVerweis = standort
   ? `<a href="tel:${standort.telefonRaw.replace(/\s/g, '')}">${standort.telefon}</a>`
   : '';
 
+/* Vorschlagsfragen aus dem Katalog.
+
+   Sie standen hier als deutsche Zeichenketten – auf jeder Seite dieser
+   Website, also auch auf jeder englischen und französischen. Der
+   Sprachwächter zählte sie nicht, weil sie nie im Katalog standen; die
+   Restdeutsch-Prüfung zählte sie sehr wohl, aber verteilt über tausend
+   Seiten und damit ohne erkennbare Ursache. */
 const standardVorschlaege = standort
   ? [
-      `Welche Leistungen gibt es bei KU64 ${standort.name}?`,
-      'Was kostet eine professionelle Zahnreinigung?',
-      'Ich habe Angst vor dem Zahnarzt – wie läuft der erste Termin?',
-      'Wie komme ich zu Ihnen und kann ich parken?',
+      t('berater.vorschlagLeistungenOrt', { name: standort.name }),
+      t('berater.vorschlagZahnreinigung'),
+      t('berater.vorschlagAngst'),
+      t('berater.vorschlagAnfahrt'),
     ]
   : [
-      'Welcher Standort passt zu mir?',
-      'An welchen Standorten gibt es Implantate?',
-      'Was kostet eine professionelle Zahnreinigung?',
+      t('berater.vorschlagWelcherStandort'),
+      t('berater.vorschlagImplantate'),
+      t('berater.vorschlagZahnreinigung'),
     ];
 
 const fragen = vorschlaege.length > 0 ? vorschlaege : standardVorschlaege;
 
-const system = kiSystem('berater')!;
+/* Offenlegung und Weg zum Menschen in der Sprache dieser Seite – der
+   Wortlaut kommt weiter aus `src/data/ki-systeme.ts`, jetzt aber durch den
+   Katalog. Vorher stand hier auf jeder englischen Seite ein deutscher Satz,
+   und zwar genau der, der nach Artikel 50 „klar" sein muss. */
+const system = daten.kiSystem('berater')!;
+const wegZumMenschen = wegZumMenschenIn(daten.sprache);
 ---
 
 <div class="berater nicht-drucken">
@@ -80,7 +92,7 @@ const system = kiSystem('berater')!;
   <div class="fenster" id="berater-fenster" role="dialog" aria-labelledby="berater-titel" hidden>
     <header class="f-kopf">
       <div>
-        <p class="f-titel" id="berater-titel">Digitaler Berater</p>
+        <p class="f-titel" id="berater-titel">{t('start.digitalerBerater')}</p>
         <p class="f-unter">
           {standort ? `KU64 ${standort.name}` : t('berater.standortWaehlen')}
         </p>
@@ -105,7 +117,7 @@ const system = kiSystem('berater')!;
           standort ? (
             <span set:html={t('berater.menschUnter', { telefon: telefonVerweis })} />
           ) : (
-            WEG_ZUM_MENSCHEN
+            wegZumMenschen
           )
         }
         {' '}
@@ -470,8 +482,30 @@ const system = kiSystem('berater')!;
       inset-inline: var(--raum-4);
       inset-block-end: var(--raum-4);
     }
+    /*
+     * `display: none` hätte den Knopf namenlos gemacht.
+     *
+     * Der einzige Text des Knopfes steht in diesem `span`. Ihn auf schmalen
+     * Bildschirmen mit `display: none` zu entfernen, nimmt ihn auch dem
+     * Screenreader – ab dann heißt das Bedienelement nur noch
+     * „Schaltfläche". Gefunden hat es Lighthouse (button-name, WCAG 4.1.2
+     * Stufe A) in ALLEN fünf mobilen Läufen; am Schreibtisch war es
+     * fehlerfrei, deshalb fiel es nie auf.
+     *
+     * `.nur-screenreader` versteckt denselben Text nur visuell. Der Knopf
+     * behält seinen Namen, und es braucht kein zweites `aria-label`, das
+     * beim nächsten Textwechsel vergessen würde.
+     */
     .ruf-text {
-      display: none;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
     }
     .ruf {
       padding: 1rem;

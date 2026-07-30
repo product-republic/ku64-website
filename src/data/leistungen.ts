@@ -1415,7 +1415,15 @@ export function kategorienMitLeistungen(standortSlug: string) {
  * die es hier nicht gibt, werden mit dem Zielstandort zurückgegeben, damit die
  * Seite gezielt dorthin verlinken kann statt ins Leere.
  */
-export function verwandteLeistungen(leistung: Leistung, standortSlug: string) {
+export interface VerwandteLeistung {
+  leistung: Leistung;
+  /** Gibt es die verwandte Leistung am aufgerufenen Standort? */
+  amStandort: boolean;
+  /** Standorte, an denen es sie gibt – für den Verweis „dort schon". */
+  alternativStandorte: string[];
+}
+
+export function verwandteLeistungen(leistung: Leistung, standortSlug: string): VerwandteLeistung[] {
   return leistung.related
     .map((slug) => getLeistung(slug))
     .filter((l): l is Leistung => Boolean(l))

@@ -198,7 +198,7 @@ const schema = [
         }
 
         <FaqBlock
-          titel={`${leistung.name}: häufige Fragen`}
+          titel={t('leistung.haeufigeFragen', { name: leistung.name })}
           eintraege={leistung.faq}
         />
 
@@ -261,9 +261,11 @@ const schema = [
           {
             verwandteHier.length > 0 && (
               <nav class="verwandt" aria-labelledby="verwandt-titel">
-                <p class="kk-titel" id="verwandt-titel">
-                  Passt dazu
-                </p>
+                {/* Aus dem Katalog, nicht fest verdrahtet: Der Schlüssel ist
+                    da und übersetzt, die globale Fassung dieser Seite nutzt
+                    ihn längst – hier stand „Passt dazu" auf Englisch und
+                    Französisch mit. */}
+                <p class="kk-titel" id="verwandt-titel">{t('leistung.passtDazu')}</p>
                 <ul>
                   {verwandteHier.map((v) => (
                     <li>

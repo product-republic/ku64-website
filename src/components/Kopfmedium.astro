@@ -45,6 +45,23 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
 {
   medium?.art === 'video' && (
     <div class="kopfmedium">
+      {/* `aria-hidden`/`tabindex="-1"`: Rein dekorativ: Was zu sehen ist,
+          steht als Text daneben. Ein Alternativtext hier würde Screenreadern
+          dieselbe Information ein zweites Mal vorlesen. */}
+      {/*
+        Das Standbild vorab anfordern.
+
+        Es IST das größte Element der Seite und damit der Wert, den Google
+        als LCP misst. Ein `poster`-Attribut findet der Browser aber erst,
+        wenn er das `<video>` erreicht, und lädt es dann in normaler
+        Reihenfolge – Lighthouse beanstandet genau das (`lcp-discovery`).
+
+        `fetchpriority` am `<video>` wäre der naheliegende Griff und hilft
+        nicht: Das Attribut gilt für `img`, `link`, `script` und `iframe`,
+        nicht für `video`. Ein erster Versuch damit ließ den LCP unverändert
+        bei 3,5 s. Wirksam ist der Vorablade-Hinweis auf die Bilddatei selbst.
+      */}
+      <link rel="preload" as="image" href={medium.video.poster} fetchpriority="high" />
       <video
         class="kopfmedium-video"
         poster={medium.video.poster}
@@ -53,9 +70,6 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
         muted
         loop
         playsinline
-        /* Rein dekorativ: Was zu sehen ist, steht als Text daneben. Ein
-           Alternativtext hier würde Screenreadern dieselbe Information ein
-           zweites Mal vorlesen. */
         aria-hidden="true"
         tabindex="-1"
       >
@@ -68,14 +82,15 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
 {
   medium?.art === 'bild' && bild && (
     <div class="kopfmedium">
+      {/* `fetchpriority="high"`: Der Kopf ist der größte Inhaltsblock der
+          Seite – dieses Bild soll als erstes geladen werden, nicht als
+          letztes. */}
       <img
         class="kopfmedium-bild"
         src={bild.pfad}
         alt=""
         width={bild.breite}
         height={bild.hoehe}
-        /* Der Kopf ist der größte Inhaltsblock der Seite – dieses Bild soll
-           als erstes geladen werden, nicht als letztes. */
         fetchpriority="high"
         decoding="async"
       />
@@ -86,7 +101,6 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
 {
   medium?.art === 'video' && (
     <script is:inline data-astro-rerun>
-      {`
       (() => {
         const v = document.querySelector('.kopfmedium-video');
         if (!v) return;
@@ -121,7 +135,6 @@ const bild = medium?.art === 'bild' ? getBild(medium.schluessel) : undefined;
            Element fest, das niemand mehr sieht. Bei jedem Wechsel einen mehr. */
         document.addEventListener('astro:before-swap', () => beobachter.disconnect(), { once: true });
       })();
-      `}
     </script>
   )
 }

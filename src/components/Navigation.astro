@@ -1258,10 +1258,11 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     knopf?.addEventListener('click', () => {
       const offen = knopf.getAttribute('aria-expanded') === 'true';
       knopf.setAttribute('aria-expanded', String(!offen));
-      knopf.setAttribute(
-        'aria-label',
-        offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen,
-      );
+      /* Fehlt das Datenattribut, bleibt die vorhandene Beschriftung stehen.
+         Ohne Abfrage schreibt setAttribute die Zeichenkette „undefined" in
+         aria-label – ein Screenreader liest sie dann vor. */
+      const label = offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen;
+      if (label) knopf.setAttribute('aria-label', label);
       if (menue) menue.hidden = offen;
     });
 

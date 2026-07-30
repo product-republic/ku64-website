@@ -8,7 +8,7 @@
     "bilder:liste": "node --experimental-strip-types --no-warnings scripts/bilder-liste.mjs",
     "durchgang": "node scripts/durchgang.mjs",
     "sitemap:liste": "node --experimental-strip-types --no-warnings scripts/sitemap-liste.mjs",
-    "build": "npm run daten:pruefen && npm run bilder:liste && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen && npm run verweise:pruefen && npm run ids:pruefen && npm run barrierefrei:pruefen && npm run sitemap:liste",
+    "build": "npm run daten:pruefen && npm run bilder:liste && npm run og:bilder && astro build && node scripts/bilder-pruefen.mjs && npm run glas:pruefen && npm run sprachen:pruefen && npm run urls:abgleichen && npm run verweise:pruefen && npm run ids:pruefen && npm run skripte:pruefen && npm run barrierefrei:pruefen && npm run sitemap:liste",
     "build:schnell": "astro build",
     "preview": "astro preview",
     "start": "node ./server/index.mjs",
@@ -27,10 +27,13 @@
     "klickpfad": "node scripts/klickpfad.mjs",
     "formulare:pruefen": "node scripts/formulare-pruefen.mjs",
     "kontrast:pruefen": "node scripts/kontrast-pruefen.mjs",
+    "namen:pruefen": "node scripts/namen-pruefen.mjs",
+    "grafiken:pruefen": "node bericht/grafiken-pruefen.mjs",
     "indexierung:pruefen": "node scripts/indexierung-pruefen.mjs",
     "personen:pruefen": "node --experimental-strip-types --no-warnings scripts/personen-pruefen.mjs",
     "verweise:pruefen": "node scripts/verweise-pruefen.mjs",
     "ids:pruefen": "node scripts/ids-pruefen.mjs",
+    "skripte:pruefen": "node scripts/skripte-pruefen.mjs",
     "barrierefrei:pruefen": "node scripts/barrierefrei-pruefen.mjs"
   },
   "repository": {

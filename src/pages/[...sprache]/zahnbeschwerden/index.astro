@@ -12,6 +12,7 @@
  */
 import { inhalte } from '../../../i18n/daten';
 import { texte } from '../../../i18n/katalog';
+import type { TextSchluessel } from '../../../i18n/texte';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import { AKUT } from '../../../data/beschwerden';
@@ -32,10 +33,16 @@ const pfad = '/zahnbeschwerden/';
  * „Zahnstein“ bei „Zahnschmerzen“, weil beide mit „Zahn“ anfangen, obwohl
  * das eine eine Vorsorgefrage ist und das andere ein Notfall.
  */
-const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
+/*
+ * `name` ist eine interne Bezeichnung und erscheint nirgends auf der Seite;
+ * `frage` ist die Überschrift, die man liest, und kommt deshalb als Schlüssel
+ * aus dem Katalog. Bis eben stand hier der deutsche Satz – auf /en/ war die
+ * Überschrift damit deutsch, während die Karten darunter englisch waren.
+ */
+const GRUPPEN: { name: string; frage: TextSchluessel; slugs: string[] }[] = [
   {
     name: 'Schmerzen',
-    frage: 'Es tut weh',
+    frage: 'beschw.gruppeSchmerzen',
     slugs: [
       'zahnschmerzen',
       'druckschmerz',
@@ -47,7 +54,7 @@ const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
   },
   {
     name: 'Zahnfleisch',
-    frage: 'Etwas stimmt mit dem Zahnfleisch nicht',
+    frage: 'beschw.gruppeZahnfleisch',
     slugs: [
       'zahnfleischbluten',
       'zahnfleischentzuendung',
@@ -58,7 +65,7 @@ const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
   },
   {
     name: 'Zahnsubstanz',
-    frage: 'Am Zahn selbst',
+    frage: 'beschw.gruppeZahnsubstanz',
     slugs: [
       'karies-symptome',
       'loch-im-zahn',
@@ -70,12 +77,12 @@ const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
   },
   {
     name: 'Aussehen',
-    frage: 'Die Zähne gefallen mir nicht',
+    frage: 'beschw.gruppeAussehen',
     slugs: ['gelbe-zaehne', 'zahnverfaerbung', 'zahnstein-entfernen-behandeln', 'schiefe-zaehne'],
   },
   {
     name: 'Mund und Atem',
-    frage: 'Im Mund',
+    frage: 'beschw.gruppeMund',
     slugs: [
       'mundgeruch-was-tun',
       'mundtrockenheit',
@@ -86,12 +93,12 @@ const GRUPPEN: { name: string; frage: string; slugs: string[] }[] = [
   },
   {
     name: 'Kinder und Zahnspange',
-    frage: 'Bei Kindern, mit Spange',
+    frage: 'beschw.gruppeKinder',
     slugs: ['kreuzbiss-kinder', 'sport-mit-zahnspange'],
   },
   {
     name: 'Vorbeugen',
-    frage: 'Damit es gar nicht erst so weit kommt',
+    frage: 'beschw.gruppeVorbeugen',
     slugs: ['ernaehrung-gesunde-zaehne', 'zahnarzt-schwangerschaft'],
   },
 ];
@@ -113,7 +120,7 @@ const gruppen = [
     eintraege: g.slugs.map((s) => alleBeschwerden.find((b) => b.slug === s)).filter(Boolean),
   })).filter((g) => g.eintraege.length > 0),
   ...(uebrig.length
-    ? [{ name: t('krume.weitere'), frage: 'Sonstiges', slugs: [], eintraege: uebrig }]
+    ? [{ name: t('krume.weitere'), frage: 'beschw.gruppeSonstiges' as TextSchluessel, slugs: [], eintraege: uebrig }]
     : []),
 ];
 
@@ -179,7 +186,7 @@ function kurz(titel: string): string {
     gruppen.map((g) => (
       <section class="abschnitt gruppe">
         <div class="huelle">
-          <h2>{g.frage}</h2>
+          <h2>{t(g.frage)}</h2>
           <div class="raster">
             {g.eintraege.map((b) => (
               <a href={`/zahnbeschwerden/${b!.slug}/`} class="karte">

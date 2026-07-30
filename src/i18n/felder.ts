@@ -122,6 +122,26 @@ export const SPEC_BESCHWERDE: Feldspec = {
   },
 };
 
+/**
+ * Register der KI-Systeme (src/data/ki-systeme.ts).
+ *
+ * Diese Datei ist eine Datendatei wie standorte.ts, und sie hatte dieselbe
+ * Lücke: Ihre Sätze standen auf /ki-transparenz/, im Chatfenster und auf der
+ * Beratungsseite – in jeder Sprache deutsch. Bei einer Offenlegung nach
+ * Artikel 50 der Verordnung (EU) 2024/1689 ist das nicht nur unschön: Sie
+ * muss „klar" sein, und ein deutscher Satz ist für jemanden, der die englische
+ * Fassung der Seite liest, nicht klar.
+ *
+ * `slug` bleibt außen vor – er ist Sprungziel und Fremdschlüssel. `anbieter`
+ * und `modell` sind drin, obwohl Firmen- und Produktnamen darin stehen: Bei
+ * „Anthropic PBC, Verarbeitung in der Europäischen Union" ist die Hälfte des
+ * Satzes eine Angabe und keine Bezeichnung. Die Namen selbst schützt
+ * UNVERAENDERT in quelle.ts.
+ */
+export const SPEC_KISYSTEM: Feldspec = {
+  texte: ['name', 'zweck', 'wo', 'offenlegung', 'anbieter', 'modell', 'daten', 'nichtDaten', 'grenzen'],
+};
+
 type Beliebig = Record<string, unknown>;
 
 /**

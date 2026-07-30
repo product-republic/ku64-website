@@ -8,13 +8,22 @@
  * KI-Systemen vollständig gelesen.
  */
 interface Props {
-  titel?: string;
+  /*
+   * Kein Vorgabewert.
+   *
+   * Hier stand `titel = 'Häufige Fragen'`. Ein deutscher Vorgabewert in einem
+   * Baustein, den jede Sprache benutzt, ist genau die Art Lücke, die niemand
+   * bemerkt: Wer den Titel vergisst, bekommt Deutsch – ohne Fehler, ohne
+   * Meldung, auf /en/. Jetzt verlangt TypeScript ihn, und der Aufrufer holt
+   * ihn aus dem Katalog.
+   */
+  titel: string;
   eintraege: { frage: string; antwort: string }[];
   /** Erste Frage geöffnet anzeigen. */
   ersteOffen?: boolean;
 }
 
-const { titel = 'Häufige Fragen', eintraege, ersteOffen = true } = Astro.props;
+const { titel, eintraege, ersteOffen = true } = Astro.props;
 ---
 
 {

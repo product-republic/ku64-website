@@ -77,23 +77,28 @@ const faq = [
   ...(standort.doctolib.length > 1
     ? [
         {
-          frage: `Warum gibt es bei KU64 ${standort.name} zwei Terminkalender?`,
-          antwort: `Zahnmedizin und Kieferorthopädie werden hier von getrennten Teams behandelt und haben deshalb je einen eigenen Kalender: ${standort.doctolib
-            .map((d) => d.label)
-            .join(' und ')}. Wählen Sie den Kalender, der zu Ihrem Anliegen passt – bei Unsicherheit rufen Sie an, wir ordnen es zu.`,
+          frage: t('faq.ortTermine.zweiKalender.frage', { name: standort.name }),
+          antwort: t('faq.ortTermine.zweiKalender.antwort', {
+            kalender: standort.doctolib.map((d) => d.label).join(` ${t('liste.und')} `),
+          }),
         },
       ]
     : []),
 
   /* Sprechzeiten, die vom Üblichen abweichen – bei der KiezPraxis enden
-     Dienstag und Donnerstag mittags. Das steht sonst nur in der Tabelle. */
+     Dienstag und Donnerstag mittags. Das steht sonst nur in der Tabelle.
+
+     Die Tageskürzel selbst bleiben, wie sie in den Standortdaten stehen; der
+     Satz um sie herum kommt aus dem Katalog. */
   ...(abweichend.length > 0
     ? [
         {
-          frage: `Bis wann kann ich in ${standort.ort} einen Termin bekommen?`,
-          antwort: `${wochentags
-            .map((z) => `${z.tag} bis ${z.bis} Uhr`)
-            .join(', ')}. Die kürzeren Tage sind fest so gelegt – ein Abendtermin ist an ihnen nicht möglich, dafür an den übrigen.`,
+          frage: t('faq.ortTermine.bisWann.frage', { ort: standort.ort }),
+          antwort: t('faq.ortTermine.bisWann.antwort', {
+            zeiten: wochentags
+              .map((z) => t('faq.ortTermine.bisWannTag', { tag: z.tag, bis: z.bis! }))
+              .join(', '),
+          }),
         },
       ]
     : []),
@@ -103,18 +108,27 @@ const faq = [
   ...(wochenende.length > 0
     ? [
         {
-          frage: `Kann ich bei KU64 ${standort.name} am Wochenende einen Termin bekommen?`,
-          antwort: `${wochenende.join(' und ')} behandeln wir nach Vereinbarung. Das heißt: nicht ohne Termin, aber sehr wohl möglich – rufen Sie unter ${standort.telefon} an, dann klären wir es.`,
+          frage: t('faq.ortTermine.wochenende.frage', { name: standort.name }),
+          antwort: t('faq.ortTermine.wochenende.antwort', {
+            tage: wochenende.join(` ${t('liste.und')} `),
+            telefon: standort.telefon,
+          }),
         },
       ]
     : []),
 
   {
-    frage: `Wie komme ich zu KU64 ${standort.name}?`,
-    antwort: `${standort.anfahrt.oepnv.join('. ')}. ${standort.anfahrt.parken} Die Adresse lautet ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
+    frage: t('faq.ortTermine.anfahrt.frage', { name: standort.name }),
+    antwort: t('faq.ortTermine.anfahrt.antwort', {
+      oepnv: standort.anfahrt.oepnv.join('. '),
+      parken: standort.anfahrt.parken,
+      strasse: standort.strasse,
+      plz: standort.plz,
+      ort: standort.ort,
+    }),
   },
 ];
-------
+---
 
 <Basis
   titel={`Termin in ${standort.ort}`}

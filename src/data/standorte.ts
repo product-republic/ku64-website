@@ -632,7 +632,7 @@ export function tageNachVereinbarung(s: Standort): Wochentag[] {
  */
 /** Nur die Einschränkung, ohne Zahl – für Stellen, die beides getrennt zeigen. */
 export function oeffnungsZusatz(s: Standort): string | undefined {
-  const { tage, zusatz } = s.oeffnungsangabe;
+  const { zusatz } = s.oeffnungsangabe;
   return zusatz ? `Tage/Woche · ${zusatz}` : `Tage/Woche`;
 }
 

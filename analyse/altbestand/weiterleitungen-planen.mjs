@@ -45,7 +45,6 @@ import path from 'node:path';
 import { readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { LEISTUNGEN, KATEGORIEN } from '../../src/data/leistungen.ts';
-import { STANDORTE } from '../../src/data/standorte.ts';
 import { TEAM } from '../../src/data/team.ts';
 
 const HIER = import.meta.dirname;
@@ -83,8 +82,6 @@ for (const m of TEAM) for (const a of m.alteAdressen ?? []) {
 }
 
 /* ── Was es auf der neuen Website gibt ───────────────────────────────────── */
-
-const STANDORT_SLUGS = STANDORTE.map((s) => s.slug);
 
 /** Alte Standortkennungen auf neue Slugs. Der Kudamm lag früher an der Wurzel. */
 const ORTSPRAEFIXE = [
@@ -516,6 +513,9 @@ const REGELTEXT = {
   GRUPPE: 'Sammelseite des Teams → Teamseite',
   SEITE: 'gleichnamige Seite am Standort',
   ORT: 'unterhalb eines Standorts, kein genaueres Ziel',
+  ALTBESTAND: 'aus dem Altbestand von Hand nachgetragen',
+  BLOG: 'Beitrag, Kategorie oder Feed des alten Blogs',
+  TECHNIK: 'technische Adresse wie sitemap.xml',
 };
 
 const datei = `/**
@@ -534,11 +534,14 @@ const datei = `/**
  *
  * ── Was NICHT weitergeleitet wird ──────────────────────────────────────────
  *
- * Blog und Fachbeiträge. Diese Inhalte gibt es auf der neuen Website nicht,
- * und eine Weiterleitung auf eine unpassende Seite ist keine Lösung, sondern
- * eine verschleierte Fehlerseite – Google nennt das „soft 404“ und behandelt
- * es genauso. Sie stehen offen in der Auswertung, damit die Entscheidung
- * darüber (Inhalte übernehmen oder aufgeben) bewusst getroffen wird.
+ * Adressen ohne passendes Ziel. Eine Weiterleitung auf eine unpassende Seite
+ * ist keine Lösung, sondern eine verschleierte Fehlerseite – Google nennt das
+ * „soft 404“ und behandelt es genauso. Sie stehen offen in \`OHNE_ZIEL\`, damit
+ * die Entscheidung darüber bewusst getroffen wird.
+ *
+ * Der Blog gehört nicht mehr dazu: Die Beiträge sind übernommen, deshalb gibt
+ * es die Regel \`BLOG\` – alte Kategorie- und Feed-Adressen zeigen auf die
+ * Übersicht, einzelne Beiträge auf ihren neuen Ort.
  *
  * ── Zur Art der Weiterleitung ──────────────────────────────────────────────
  *
@@ -555,7 +558,19 @@ export interface Weiterleitung {
   /** Ziel auf der neuen Website. */
   nach: string;
   /** Nach welcher Regel das Ziel bestimmt wurde – siehe Planungsskript. */
-  regel: 'HAND' | 'PERSON' | 'LEISTUNG' | 'BEREICH' | 'GRUPPE' | 'SEITE' | 'ORT';
+  regel:
+    | 'HAND'
+    | 'PERSON'
+    | 'LEISTUNG'
+    | 'BEREICH'
+    | 'GRUPPE'
+    | 'SEITE'
+    | 'ORT'
+    | 'ALTBESTAND'
+    /** Beiträge, Kategorien und Feed des alten Blogs. */
+    | 'BLOG'
+    /** Technische Adressen wie sitemap.xml. */
+    | 'TECHNIK';
 }
 
 export const WEITERLEITUNGEN: Weiterleitung[] = [

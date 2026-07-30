@@ -62,14 +62,20 @@ const kombinationen = {
 };
 ---
 
+{/*
+  `sprachwahlPfad="/"`: Es gibt keine Route /404/ – die Seite wird als
+  404.html gebaut und für jede unbekannte Adresse ausgeliefert. Der
+  Sprachwähler zeigt deshalb auf die Startseite der jeweiligen Sprache statt
+  auf eine zweite Seite, die es nicht gibt.
+
+  Der Hinweis steht hier und nicht zwischen den Attributen: Ein Kommentar in
+  der Attributliste ist kein Kommentar mehr. Astro liest dort jedes Wort als
+  eigenes Attribut – die Ausgabe blieb zufällig heil, die Typprüfung nicht.
+*/}
 <Basis
   titel={t('fehler.seitentitel')}
   description={t('fehler.beschreibung')}
   pfad="/404/"
-  {/* Es gibt keine Route /404/ – die Seite wird als 404.html gebaut und für
-      jede unbekannte Adresse ausgeliefert. Der Sprachwähler zeigt deshalb
-      auf die Startseite der jeweiligen Sprache statt auf eine zweite Seite,
-      die es nicht gibt. */}
   sprachwahlPfad="/"
   noindex={true}
 >

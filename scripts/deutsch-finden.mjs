@@ -61,6 +61,16 @@ const KEIN_TEXT = [
    */
   /[<>]|=["'{]|\{[a-z]/i,
   /*
+   * Katalogschlüssel und Feldpfade.
+   *
+   * Der Vorspann ist voll von ihnen: `t('faq.start.terminBuchen.frage')`,
+   * `standort.anfahrt.parken`, `'ui.krume.start'`. Sie enthalten deutsche
+   * Wörter und sind trotzdem nie Anzeigetext – sie sind die Adresse, unter der
+   * der Anzeigetext liegt. Ein Punkt zwischen Wörtern ohne Leerzeichen
+   * drumherum kommt in keinem Satz vor.
+   */
+  /^[a-zA-Z_$][\w$]*(\.[\w$]+)+$/,
+  /*
    * Und kein Code.
    *
    * Die Suche nach Textknoten mit Ausdruck darin ersetzt `{…}` durch ein
@@ -87,9 +97,13 @@ async function dateien(ordner, treffer = []) {
 /**
  * Der Auszeichnungsteil einer Astro-Datei.
  *
- * Alles vor dem zweiten `---` ist Vorspann (TypeScript), alles in `<style>`
- * ist CSS, alles in `<script>` ist Client-Code. Kommentare zählen nicht:
- * Sie sind auf Deutsch, und das ist Absicht.
+ * Alles vor dem zweiten `---` ist Vorspann, alles in `<style>` ist CSS, alles
+ * in `<script>` ist Client-Code. Kommentare zählen nicht: Sie sind auf
+ * Deutsch, und das ist Absicht.
+ *
+ * Der Vorspann wird hier nur abgeschnitten, nicht verworfen – er geht an
+ * `vorspann()` weiter. Dass er lange gar nicht geprüft wurde, war die Lücke,
+ * durch die rund siebzig FAQ-Sätze auf /en/ und /fr/ deutsch geblieben sind.
  */
 function auszeichnung(quelle) {
   let s = quelle;
@@ -103,11 +117,56 @@ function auszeichnung(quelle) {
   return s;
 }
 
+/**
+ * Der Vorspannteil einer Astro-Datei – das TypeScript zwischen den beiden `---`.
+ *
+ * ── Warum dieser Teil dazugehört ───────────────────────────────────────
+ *
+ * Weil er die letzte Lücke war. Auf zehn Seiten standen die häufigen Fragen
+ * als Datenfeld im Vorspann:
+ *
+ *   const faq = [{ frage: 'Wie buche ich einen Termin?', antwort: '…' }];
+ *
+ * Rund siebzig Sätze, sichtbar auf der Seite und zusätzlich als FAQPage im
+ * JSON-LD. Der Katalog kannte sie nicht, also meldete der Sprachwächter
+ * nichts. Die Auszeichnungssuche dieses Skripts sah sie nicht, weil sie den
+ * Vorspann bis eben ausdrücklich abgeschnitten hat – der Kommentar dazu stand
+ * direkt darüber und begründete es damit, dass Vorspann „TypeScript" sei.
+ *
+ * Das war die falsche Unterscheidung. Ob ein Satz auf der Seite landet, hängt
+ * nicht daran, in welchem Teil der Datei er steht, sondern daran, ob ihn
+ * jemand ausgibt. Dieselbe Lücke gab es auch bei `standardVorschlaege` in
+ * Berater.astro – vier deutsche Fragen auf jeder einzelnen Seite.
+ *
+ * ── Was hier weggeworfen wird ──────────────────────────────────────────
+ *
+ * Kommentare: Sie sind auf Deutsch, und das ist Absicht. Importzeilen: ihre
+ * Zeichenketten sind Dateipfade. Der Rest wird nach Zeichenketten durchsucht.
+ */
+function vorspann(quelle) {
+  if (!quelle.startsWith('---')) return '';
+  const ende = quelle.indexOf('\n---', 3);
+  if (ende < 0) return '';
+  let s = quelle.slice(3, ende);
+
+  /* Blockkommentare zuerst – sonst bleiben ihre Zeilen als Zeichenketten
+     stehen, und die Liste besteht zu neun Zehnteln aus Erklärtext. */
+  s = s.replace(/\/\*[\s\S]*?\*\//g, ' ');
+  /* Zeilenkommentare, ohne über das `//` in `https://` zu stolpern. */
+  s = s.replace(/(^|[^:\\])\/\/[^\n]*/g, '$1');
+  /* Importzeilen: dort steht nie Anzeigetext, immer ein Pfad. */
+  s = s.replace(/^\s*import[\s\S]*?from\s+['"][^'"]+['"];?/gm, ' ');
+  s = s.replace(/^\s*import\s+['"][^'"]+['"];?/gm, ' ');
+
+  return s;
+}
+
 const befunde = [];
 
 for (const datei of await dateien(path.join(WURZEL, 'src'))) {
   const quelle = await readFile(datei, 'utf8');
   const markup = auszeichnung(quelle);
+  const kopf = vorspann(quelle);
   const kurz = path.relative(WURZEL, datei);
 
   /* Freistehender Text zwischen Tags, dazu Attribute, die Anzeigetext
@@ -140,36 +199,74 @@ for (const datei of await dateien(path.join(WURZEL, 'src'))) {
   for (const m of markup.matchAll(/'([^'\\]{6,}?)'/g)) kandidaten.push(m[1]);
   for (const m of markup.matchAll(/`([^`$\\]{6,}?)`/g)) kandidaten.push(m[1]);
 
-  for (const roh of kandidaten) {
-    const text = roh.replace(/\s+/g, ' ').trim();
-    if (text.length < 4) continue;
-    if (KEIN_TEXT.some((r) => r.test(text))) continue;
-    if (!DEUTSCH.test(text)) continue;
-    befunde.push({ datei: kurz, text });
+  /*
+   * Zeichenketten im Vorspann.
+   *
+   * Einfache und doppelte Anführungszeichen zeilenweise, damit ein
+   * unpaariges Anführungszeichen nicht den halben Vorspann als einen
+   * Treffer einsammelt. Vorlagenzeichenketten zusätzlich mit den Ausdrücken
+   * durch ein Zeichen ersetzt – aus
+   * `Kann ich bei KU64 ${standort.name} parken?` bleibt dann der deutsche
+   * Satz übrig, und genau der stand auf /en/.
+   */
+  const kopfKandidaten = [];
+  for (const m of kopf.matchAll(/'([^'\\\n]{4,})'/g)) kopfKandidaten.push(m[1]);
+  for (const m of kopf.matchAll(/"([^"\\\n]{4,})"/g)) kopfKandidaten.push(m[1]);
+  const kopfOhneAusdruecke = kopf.replace(/\$\{[^{}]*\}/g, '\u0001');
+  for (const m of kopfOhneAusdruecke.matchAll(/`([^`\\]{4,}?)`/g)) {
+    kopfKandidaten.push(m[1].replaceAll('\u0001', ' '));
+  }
+
+  for (const [herkunft, liste] of [
+    ['Auszeichnung', kandidaten],
+    ['Vorspann', kopfKandidaten],
+  ]) {
+    for (const roh of liste) {
+      const text = roh.replace(/\s+/g, ' ').trim();
+      if (text.length < 4) continue;
+      if (KEIN_TEXT.some((r) => r.test(text))) continue;
+      if (!DEUTSCH.test(text)) continue;
+      befunde.push({ datei: kurz, text, herkunft });
+    }
   }
 }
 
 /* Doppelte zusammenfassen – derselbe Satz in drei Vorlagen ist ein Posten. */
 const nachText = new Map();
 for (const b of befunde) {
-  if (!nachText.has(b.text)) nachText.set(b.text, new Set());
-  nachText.get(b.text).add(b.datei);
+  if (!nachText.has(b.text)) nachText.set(b.text, { dateien: new Set(), herkunft: new Set() });
+  nachText.get(b.text).dateien.add(b.datei);
+  nachText.get(b.text).herkunft.add(b.herkunft);
 }
 
-const sortiert = [...nachText.entries()].sort((a, b) => b[1].size - a[1].size);
+const sortiert = [...nachText.entries()].sort((a, b) => b[1].dateien.size - a[1].dateien.size);
 
-console.log(`[deutsch] ${sortiert.length} verschiedene deutsche Zeichenketten in Vorlagen\n`);
+/* Woher ein Satz kommt, entscheidet darüber, wie er zu beheben ist: Ein Satz
+   in der Auszeichnung wird durch `t('…')` ersetzt, einer im Vorspann durch
+   einen Aufbau aus `t('…')` mit Platzhaltern. Deshalb getrennt gezählt. */
+const ausVorspann = sortiert.filter(([, v]) => v.herkunft.has('Vorspann')).length;
+console.log(`[deutsch] ${sortiert.length} verschiedene deutsche Zeichenketten in Vorlagen`);
+console.log(
+  `          davon ${ausVorspann} im Vorspann (Datenfelder wie \`const faq = […]\`), ` +
+    `${sortiert.length - ausVorspann} nur in der Auszeichnung\n`,
+);
 
 const nachDatei = new Map();
-for (const [text, dateienSet] of sortiert) {
-  for (const d of dateienSet) {
+for (const [text, v] of sortiert) {
+  for (const d of v.dateien) {
     if (!nachDatei.has(d)) nachDatei.set(d, []);
-    nachDatei.get(d).push(text);
+    nachDatei.get(d).push({ text, wo: [...v.herkunft].join('+') });
   }
 }
 
-for (const [datei, texte] of [...nachDatei.entries()].sort((a, b) => b[1].length - a[1].length)) {
-  console.log(`${datei}  (${texte.length})`);
-  if (!KURZ) for (const t of texte.slice(0, 40)) console.log(`    ${t.slice(0, 100)}`);
+for (const [datei, eintraege] of [...nachDatei.entries()].sort(
+  (a, b) => b[1].length - a[1].length,
+)) {
+  console.log(`${datei}  (${eintraege.length})`);
+  if (!KURZ) {
+    for (const e of eintraege.slice(0, 40)) {
+      console.log(`    [${e.wo}] ${e.text.slice(0, 100)}`);
+    }
+  }
   console.log('');
 }

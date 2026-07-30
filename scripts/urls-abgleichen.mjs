@@ -24,7 +24,7 @@
  * ausgewertet – die kennt Google sicher, denn sie stehen seit Jahren dort.
  */
 
-import { readFile, readdir, stat } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

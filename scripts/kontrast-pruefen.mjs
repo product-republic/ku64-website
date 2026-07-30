@@ -43,13 +43,27 @@ import { chromium } from 'playwright';
 
 const BASIS = process.env.KLICKPFAD_BASIS || 'http://127.0.0.1:4331';
 
-/** Eine Seite je Bauart – mehr sagt nichts Neues über die Bausteine. */
+/**
+ * Eine Seite je Bauart – mehr sagt nichts Neues über die Bausteine.
+ *
+ * Die Teamseite stand hier zuerst NICHT, und das hat einen Fehler
+ * durchgelassen: `.chip-zahl` in den Filterknöpfen kam über `opacity: 0.65`
+ * auf 3,5:1. Gefunden hat es später Lighthouse. Die Teamseite ist die
+ * einzige Seite mit Filterknöpfen – ein Baustein, den es nur dort gibt, wird
+ * von einer Liste ohne diese Seite nie geprüft.
+ *
+ * Wer hier etwas ergänzt, ergänzt es wegen eines Bausteins, den keine der
+ * anderen Seiten trägt. Umgekehrt gilt: Ein neuer Baustein braucht eine
+ * Seite in dieser Liste.
+ */
 const SEITEN = [
   ['/', 'Start'],
   ['/berlin-charlottenburg/', 'Standort'],
   ['/berlin-charlottenburg/leistungen/bleaching/', 'Behandlung'],
+  ['/berlin-charlottenburg/team/', 'Team (Filterknöpfe)'],
   ['/blog/', 'Blogübersicht'],
   ['/kontakt/', 'Kontakt'],
+  ['/suche/', 'Suche'],
   ['/en/', 'Start (EN)'],
 ];
 

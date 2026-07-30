@@ -26,6 +26,7 @@ import {
   SPEC_BESCHWERDE,
   SPEC_BEITRAG,
   SPEC_KATEGORIE,
+  SPEC_KISYSTEM,
   SPEC_LEISTUNG,
   SPEC_PERSON,
   SPEC_STANDORT,
@@ -33,6 +34,7 @@ import {
 import { TEXTE, type TextSchluessel } from './texte';
 import type { Leistung, Kategorie } from '../data/leistungen';
 import type { Standort } from '../data/standorte';
+import { KI_SYSTEME, WEG_ZUM_MENSCHEN, type KiSystem } from '../data/ki-systeme';
 
 export interface Katalogeintrag {
   text: string;
@@ -163,6 +165,32 @@ export function standortIn(s: Standort, sprache: Sprache): Standort {
 
 export function standorteIn(liste: Standort[], sprache: Sprache): Standort[] {
   return sprache === QUELLSPRACHE ? liste : liste.map((s) => standortIn(s, sprache));
+}
+
+/* ── KI-Systeme ────────────────────────────────────────────────────────
+ *
+ * Die Offenlegungen nach Artikel 50 der KI-Verordnung. Sie standen bis eben
+ * unübersetzt in jeder Sprachfassung – und zwar an drei Stellen gleichzeitig:
+ * im Chatfenster jeder Seite, über dem Sprachberater und auf
+ * /ki-transparenz/. Ein Hinweis, den man nicht lesen kann, ist kein Hinweis.
+ */
+
+export function kiSystemIn(slug: string, sprache: Sprache): KiSystem | undefined {
+  const roh = KI_SYSTEME.find((s) => s.slug === slug);
+  if (!roh) return undefined;
+  if (sprache === QUELLSPRACHE) return roh;
+  return gepuffert(`ki:${sprache}:${slug}`, () =>
+    anwenden(roh, SPEC_KISYSTEM, `kisystem.${slug}`, nachschlagen(sprache)),
+  );
+}
+
+export function kiSystemeIn(sprache: Sprache): KiSystem[] {
+  return KI_SYSTEME.map((s) => kiSystemIn(s.slug, sprache)!);
+}
+
+/** Der Weg zum Menschen – steht neben jeder Offenlegung, gehört zu keinem System. */
+export function wegZumMenschenIn(sprache: Sprache): string {
+  return nachschlagen(sprache)('kisystem.wegZumMenschen', WEG_ZUM_MENSCHEN);
 }
 
 /* ── Die langen Inhalte ────────────────────────────────────────────────

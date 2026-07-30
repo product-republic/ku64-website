@@ -6,7 +6,7 @@ import Basis from '../../../../layouts/Basis.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import Bild from '../../../../components/Bild.astro';
 import { STANDORTE } from '../../../../data/standorte';
-import { teamAn, gruppenAn, anzahlZahnaerzte, fachgebieteVon, GRUPPENNAMEN } from '../../../../data/team';
+import { teamAn, anzahlZahnaerzte, fachgebieteVon, GRUPPENNAMEN } from '../../../../data/team';
 import { schemaBrotkrumen, kanonisch } from '../../../../lib/seo';
 import profile from '../../../../data/profile.json';
 
@@ -141,6 +141,35 @@ if (team.length > 0) {
               <p class="filter-stand" role="status" aria-live="polite" data-vorlage={`{n} von ${team.length}`}></p>
             </div>
 
+            {/*
+              Die Leiste wird HIER sichtbar geschaltet, nicht im Modul.
+
+              Der Grundsatz bleibt: Ohne JavaScript keine Filterleiste, denn
+              ein Filter, der nicht filtert, ist schlimmer als keiner. Falsch
+              war nur der Zeitpunkt. Das Modul läuft nach dem ersten
+              Farbauftrag – die Leiste erschien also, nachdem die Seite schon
+              stand, und schob das ganze Teamraster nach unten.
+
+              Gemessen von Lighthouse: CLS 0,371 am Telefon und 0,115 am
+              Schreibtisch, Googles Grenze ist 0,1. Die zwei Chipreihen sind
+              auf dem Telefon rund 250 Pixel hoch, etwa die halbe Sichthöhe.
+              Es war der einzige Sprung der Seite und zog die Leistungsnote
+              auf 80.
+
+              Dieses Skript steht unmittelbar hinter der Leiste und läuft
+              während des Einlesens – vor dem ersten Farbauftrag. Damit ist
+              die Leiste von Anfang an da und nichts verschiebt sich. Ist
+              JavaScript aus, läuft auch dieses Skript nicht, und es bleibt
+              beim alten Verhalten: keine Leiste, keine Lücke.
+            */}
+            <script is:inline data-astro-rerun>
+              (() => {
+                const s = document.currentScript;
+                const leiste = s && s.previousElementSibling;
+                if (leiste && leiste.classList.contains('filter')) leiste.hidden = false;
+              })();
+            </script>
+
             <p class="filter-leer" hidden>
               {t('teamliste.niemand', { ort: standort.ort })}
               <button type="button" class="filter-zuruecksetzen">{t('teamliste.auswahlAufheben')}</button>
@@ -251,6 +280,10 @@ if (team.length > 0) {
     const raster = document.getElementById('teamraster');
 
     if (leiste && raster) {
+      /* Sichtbar ist sie schon – das erledigt das Inline-Skript im Markup,
+         damit nichts nachträglich verschoben wird. Hier wird nur noch die
+         Bedienung angehängt. Zur Sicherheit trotzdem gesetzt: Nach einem
+         Seitenwechsel kommt die Leiste frisch aus dem Server-HTML. */
       leiste.hidden = false;
 
       const karten = [...raster.querySelectorAll<HTMLElement>('[data-bereich]')];
@@ -370,10 +403,29 @@ if (team.length > 0) {
     color: var(--knopf-schrift);
   }
 
+  /*
+   * Die Anzahl im Filterknopf tritt zurück – über die Farbe, nicht über die
+   * Deckkraft.
+   *
+   * `opacity: 0.65` rechnete den Kontrast auf 3,5:1 herunter; nötig sind
+   * 4,5:1 (WCAG 1.4.3), und bei 12 px hilft auch die Ausnahme für große
+   * Schrift nicht. Gefunden hat es Lighthouse auf dieser Seite, mobil UND am
+   * Schreibtisch, sechs Stellen.
+   *
+   * Dieselbe Ursache wie beim Trenner im Blog und bei den Sprachen im
+   * Aufbau: Abblenden ist keine Abstufung, sondern eine Kontraständerung.
+   */
   .chip-zahl {
     font-variant-numeric: tabular-nums;
     font-size: 0.85em;
-    opacity: 0.65;
+    color: var(--tinte-leise);
+  }
+
+  /* Im aktiven Knopf steht helle Schrift auf dunklem Grund – dort wäre der
+     leise Ton zu dunkel. */
+  .chip[aria-pressed='true'] .chip-zahl {
+    color: inherit;
+    opacity: 0.8;
   }
 
   .filter-stand {

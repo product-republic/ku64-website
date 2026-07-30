@@ -34,38 +34,27 @@ const brotkrumen = [
 
 /* Die Fragen, die an jedem Standort dieselbe Antwort haben. Standortabhängige
    Fragen stehen bewusst NICHT hier, sondern dort, wo sie gelten. */
+/*
+ * Häufige Fragen zur Terminbuchung – Text aus dem Katalog.
+ *
+ * Die `id` bleibt eine Kennung und keine Anzeige: Auf sie zeigt ein
+ * Sprunganker von der Doctolib-Schaltfläche, und Anker sind in jeder Sprache
+ * dieselben.
+ */
 const faq = [
+  { frage: t('faq.termine.buchen.frage'), antwort: t('faq.termine.buchen.antwort') },
+  { frage: t('faq.termine.absagen.frage'), antwort: t('faq.termine.absagen.antwort') },
+  { frage: t('faq.termine.mitbringen.frage'), antwort: t('faq.termine.mitbringen.antwort') },
   {
-    frage: 'Wie buche ich einen Termin bei KU64?',
-    antwort:
-      'Online über den Terminkalender Ihres Standorts oder telefonisch. Beides führt zum selben Kalender – es gibt keine getrennten Kontingente. Für die Online-Buchung brauchen Sie nur wenige Angaben; den Anamnesebogen füllen Sie danach digital aus.',
-  },
-  {
-    frage: 'Kann ich einen Termin wieder absagen oder verschieben?',
-    antwort:
-      'Ja. Bitte sagen Sie spätestens 24 Stunden vorher ab – telefonisch oder über den Link in Ihrer Bestätigungsmail. So kann jemand anderes den Termin bekommen, und das ist bei einer ausgebuchten Praxis der eigentliche Grund für die Frist.',
-  },
-  {
-    frage: 'Was muss ich zum ersten Termin mitbringen?',
-    antwort:
-      'Ihre Versichertenkarte, gegebenenfalls Bonusheft und Allergiepass sowie eine Liste Ihrer Medikamente. Wichtig sind vor allem Blutverdünner, Bisphosphonate, ein Herzklappenersatz, Diabetes, eine Schwangerschaft und Allergien gegen Betäubungsmittel – diese Angaben ändern die Behandlung.',
-  },
-  {
-    frage: 'Was mache ich bei starken Schmerzen?',
-    antwort:
-      'Rufen Sie den Standort an, statt online zu buchen. Wir halten an jedem Standort Zeiten für Schmerzpatientinnen und -patienten frei und können am Telefon einschätzen, wie dringend es ist. Außerhalb der Sprechzeiten hilft die Notfallseite weiter.',
+    frage: t('faq.termine.starkeSchmerzen.frage'),
+    antwort: t('faq.termine.starkeSchmerzen.antwort'),
   },
   {
     id: 'doctolib',
-    frage: 'Warum werde ich zu Doctolib weitergeleitet?',
-    antwort:
-      'Der Kalender liegt bei Doctolib, einem eigenständigen Dienst. Wir betten ihn bewusst nicht in diese Seite ein – so werden beim bloßen Lesen keine Daten an Dritte übertragen. Erst wenn Sie den Kalender öffnen, werden Ihre IP-Adresse übermittelt und Cookies gesetzt.',
+    frage: t('faq.termine.doctolib.frage'),
+    antwort: t('faq.termine.doctolib.antwort'),
   },
-  {
-    frage: 'Kann ich auch ohne Online-Portal einen Termin bekommen?',
-    antwort:
-      'Ja, jederzeit telefonisch oder per E-Mail. Die Online-Buchung ist ein Angebot, keine Voraussetzung – die Nummer Ihres Standorts steht auf dessen Terminseite.',
-  },
+  { frage: t('faq.termine.ohnePortal.frage'), antwort: t('faq.termine.ohnePortal.antwort') },
 ];
 ---
 

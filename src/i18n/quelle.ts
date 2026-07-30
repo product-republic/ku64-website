@@ -15,11 +15,13 @@
 
 import { KATEGORIEN, LEISTUNGEN } from '../data/leistungen.ts';
 import { STANDORTE } from '../data/standorte.ts';
+import { KI_SYSTEME, WEG_ZUM_MENSCHEN } from '../data/ki-systeme.ts';
 import {
   sammeln,
   SPEC_BESCHWERDE,
   SPEC_BEITRAG,
   SPEC_KATEGORIE,
+  SPEC_KISYSTEM,
   SPEC_LEISTUNG,
   SPEC_PERSON,
   SPEC_STANDORT,
@@ -44,6 +46,18 @@ export function quelltexte(): Record<string, string> {
   for (const s of STANDORTE) {
     Object.assign(aus, sammeln(s, SPEC_STANDORT, `standort.${s.slug}`));
   }
+
+  /*
+   * Die KI-Systeme. Ihre Sätze stehen auf /ki-transparenz/, im Chatfenster
+   * und über dem Sprachberater – bis eben nur auf Deutsch, weil sie in einer
+   * Datendatei standen, die hier nicht gelesen wurde.
+   */
+  for (const s of KI_SYSTEME) {
+    Object.assign(aus, sammeln(s, SPEC_KISYSTEM, `kisystem.${s.slug}`));
+  }
+  /* Der Weg zum Menschen steht neben jeder Offenlegung und ist deshalb eine
+     eigene Konstante, kein Feld eines Systems. */
+  aus['kisystem.wegZumMenschen'] = WEG_ZUM_MENSCHEN;
 
   /*
    * Und die langen Inhalte: Behandlerprofile, Blogbeiträge,
@@ -108,6 +122,16 @@ export function kontextFuer(schluessel: string): string {
     if (feld === 'kasse')
       return 'Hinweis zur Kostenübernahme durch die deutsche gesetzliche Krankenversicherung. Das deutsche System nicht durch ein Landessystem der Zielsprache ersetzen – es geht um deutsche Kassen.';
     return 'Beschreibung einer Zahnbehandlung für Patientinnen und Patienten.';
+  }
+  if (schluessel.startsWith('kisystem.')) {
+    const feld = schluessel.split('.').slice(2).join('.');
+    if (feld === 'offenlegung')
+      return 'Pflichthinweis nach Artikel 50 der EU-KI-Verordnung: Die Person muss erfahren, dass sie mit einer Maschine spricht. Wörtlich und unbeschönigt übersetzen – „digitaler Assistent" oder „smart helper" wäre keine Offenlegung mehr. Keine Abschwächung, keine Höflichkeitsfloskel davor.';
+    if (feld === 'anbieter' || feld === 'modell')
+      return 'Anbieter oder Modellbezeichnung eines KI-Systems. Firmen-, Produkt- und Modellnamen bleiben unverändert; nur die Angaben darum herum werden übersetzt.';
+    if (feld === 'grenzen' || feld === 'nichtDaten')
+      return 'Was ein KI-System ausdrücklich nicht tut oder nicht verarbeitet. Rechtlich relevante Zusage – keine Aussage weglassen, keine hinzufügen, nichts abschwächen.';
+    return 'Angabe zu einem KI-System auf der Website einer Zahnarztpraxis: was es tut, wo man ihm begegnet, welche Daten fließen.';
   }
   if (schluessel.startsWith('kategorie.')) return 'Name oder Beschreibung eines zahnmedizinischen Fachbereichs.';
   if (schluessel.startsWith('standort.')) {

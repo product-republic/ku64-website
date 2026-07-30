@@ -26,31 +26,33 @@ const brotkrumen = [
   { name: t('krume.notfall'), pfad },
 ];
 
+/*
+ * Häufige Fragen im Notfall – Text aus dem Katalog.
+ *
+ * Bei diesen fünf war die Lücke am unangenehmsten: Wer auf der englischen
+ * Seite nachliest, was mit einem ausgeschlagenen Zahn zu tun ist, hat es
+ * eilig und liest keine Fremdsprache.
+ */
 const faq = [
   {
-    frage: 'Wann ist ein Zahnproblem ein echter Notfall?',
-    antwort:
-      'Bei starken, nicht beherrschbaren Schmerzen, bei einer Schwellung im Gesicht oder am Hals, bei Fieber zusammen mit Zahnschmerzen, bei einer Blutung, die nicht aufhört, und bei einem ausgeschlagenen oder abgebrochenen Zahn nach einem Unfall. Bei Atem- oder Schluckbeschwerden zählt jede Minute – dann sofort 112.',
+    frage: t('faq.notfall.echterNotfall.frage'),
+    antwort: t('faq.notfall.echterNotfall.antwort'),
   },
   {
-    frage: 'Was mache ich mit einem ausgeschlagenen Zahn?',
-    antwort:
-      'Den Zahn nur an der Krone anfassen, nie an der Wurzel, und nicht säubern oder abschrubben. Sofort in eine Zahnrettungsbox legen; wenn keine da ist, in kalte H-Milch, notfalls in Speichel. Nicht in Wasser. Dann so schnell wie möglich zu uns – am besten innerhalb der ersten Stunde. Bei Kindern gilt das auch für Milchzähne: Nehmen Sie den Zahn mit, wir entscheiden dann.',
+    frage: t('faq.notfall.ausgeschlagenerZahn.frage'),
+    antwort: t('faq.notfall.ausgeschlagenerZahn.antwort'),
   },
   {
-    frage: 'Eine Füllung oder Krone ist herausgefallen – ist das dringend?',
-    antwort:
-      'Meist nicht akut gefährlich, aber es sollte zeitnah versorgt werden, damit der Zahn nicht bricht oder Karies entsteht. Bewahren Sie die Krone auf und bringen Sie sie mit – oft lässt sie sich wieder einsetzen. Kauen Sie in der Zwischenzeit auf der anderen Seite.',
+    frage: t('faq.notfall.fuellungVerloren.frage'),
+    antwort: t('faq.notfall.fuellungVerloren.antwort'),
   },
   {
-    frage: 'Was hilft bis zum Termin gegen die Schmerzen?',
-    antwort:
-      'Kühlen Sie von außen mit einem Tuch dazwischen, nicht direkt auf der Haut, und in Intervallen. Halten Sie den Kopf hoch, auch beim Schlafen. Rezeptfreie Schmerzmittel wie Ibuprofen können helfen – bitte nur nach Packungsbeilage und nicht, wenn Sie sie nicht vertragen. Legen Sie niemals eine Tablette direkt auf das Zahnfleisch, das verätzt die Schleimhaut. Keine Wärme, kein Alkohol.',
+    frage: t('faq.notfall.schmerzenBisTermin.frage'),
+    antwort: t('faq.notfall.schmerzenBisTermin.antwort'),
   },
   {
-    frage: 'Wer hilft nachts und an Feiertagen?',
-    antwort:
-      'Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Außerhalb unserer Sprechzeiten hilft der zahnärztliche Notdienst der Kassenzahnärztlichen Vereinigung weiter – die Nummern stehen unten.',
+    frage: t('faq.notfall.nachtsUndFeiertags.frage'),
+    antwort: t('faq.notfall.nachtsUndFeiertags.antwort'),
   },
 ];
 

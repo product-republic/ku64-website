@@ -258,6 +258,49 @@
     body { font-size: 10.5pt; }
     h2 { break-after: avoid; }
     .tabelle { break-inside: avoid; }
+
+    /* Das Papier ist schmaler als jede Bildschirmbreite, das Raster fällt
+       also ohnehin auf eine Spalte zurück. Ausdrücklich hingeschrieben,
+       damit der Text nicht in die 15rem-Spalte der Schiene rutscht, sollte
+       die Schiene je wieder eingeblendet werden. */
+    .seite { display: block; max-width: none; padding: 0; }
+    main { padding-block: 0; }
+
+    /* overflow-x: auto ist auf Papier ein stiller Beschnitt: Was rechts
+       hinausragt, wäre einfach weg – ohne Balken, der es verrät. Sichtbar
+       lassen; die Kopfzellen dürfen dafür umbrechen, damit breite Tabellen
+       schrumpfen statt abgeschnitten zu werden. Zahlen bleiben in einer
+       Zeile, sonst zerfällt der Spaltenvergleich. */
+    .tabelle { overflow: visible; }
+    th { white-space: normal; }
+    td.zahl, th.zahl { white-space: nowrap; }
+    tbody tr:hover { background: none; }
+
+    /* Keine Überschrift als letzte Zeile einer Seite. Das gilt auch für die
+       fett gesetzten Einzeiler, die im Text die Tabellen ankündigen („Was
+       messbar besser ist.") – sie sind Überschriften, auch wenn sie im
+       Markdown keine sind. Absätze, die außer dem fetten Satz nichts
+       enthalten, sind genau diese Fälle. */
+    h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+    p:has(> strong:only-child) { break-after: avoid; break-inside: avoid; }
+
+    /* Keine Tabelle mitten durchgeschnitten. Passt eine doch nicht auf eine
+       Seite, bricht sie zwischen Zeilen und wiederholt den Kopf. */
+    table, thead, tr, th, td { break-inside: avoid; }
+    thead { display: table-header-group; }
+    pre, li { break-inside: avoid; }
+    p, li { orphans: 2; widows: 2; }
+
+    /* Der Kapitelabstand von 4rem ist für den Schirm gedacht; auf Papier
+       kostet er bei vierzehn Kapiteln Seiten. */
+    h2 { margin-top: 2.1rem; }
+    h3 { margin-top: 1.5rem; }
+    p, ul, ol { max-width: none; }
+
+    /* Die Trennlinie ist unsichtbar (height: 0) und trägt nur Abstand. Auf
+       dem Schirm ist das Luft, im gebrochenen Satz sind es Löcher. */
+    hr { margin: 1rem 0; }
+    .nachsatz { margin-top: 1.5rem; }
   }
 </style>
 

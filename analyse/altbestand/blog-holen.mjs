@@ -203,7 +203,6 @@ await Promise.all(
           try {
             const ziel = path.join(BILDER_ZIEL, `${slug}.jpg`);
             const bearbeitet = sharp(roh).resize({ width: 1400, withoutEnlargement: true });
-            const { width, height } = await bearbeitet.metadata();
             await bearbeitet.jpeg({ quality: 80, mozjpeg: true, progressive: true }).toFile(ziel);
             const masse = await sharp(ziel).metadata();
             bild = { pfad: `/blog/${slug}.jpg`, breite: masse.width, hoehe: masse.height };

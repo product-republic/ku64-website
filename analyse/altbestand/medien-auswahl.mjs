@@ -196,7 +196,7 @@ for (const eintrag of BILDER) {
   }
 
   const bild = sharp(quelle);
-  const { width, height } = await bild.metadata();
+  const { width } = await bild.metadata();
   const breite = Math.min(width, BREITE_QUER);
 
   if (await neuRechnen(quelle, ziel, vorlauf.get(`/medien/${eintrag.nach}`))) {

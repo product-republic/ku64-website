@@ -17,10 +17,9 @@
  * Gespräch beginnt, hat ihn gelesen, weil er im Weg stand.
  */
 import { inhalte } from '../../i18n/daten';
-import { texte } from '../../i18n/katalog';
+import { texte, wegZumMenschenIn } from '../../i18n/katalog';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { kiSystem, WEG_ZUM_MENSCHEN } from '../../data/ki-systeme';
 import { schemaBrotkrumen, schemaFaq } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -37,33 +36,33 @@ const brotkrumen = [
   { name: t('krume.digitaleBeratung'), pfad },
 ];
 
-const system = kiSystem('sprachberater')!;
+const system = daten.kiSystem('sprachberater')!;
+const wegZumMenschen = wegZumMenschenIn(daten.sprache);
 
+/*
+ * Häufige Fragen – Text aus dem Katalog.
+ *
+ * Sie standen hier als deutsche Zeichenketten und liefen ungefiltert auch in
+ * das FAQPage-JSON-LD. Auf /en/ und /fr/ war damit beides deutsch: der
+ * Aufklapptext und die strukturierten Daten.
+ */
 const faq = [
+  { frage: t('faq.beratung.mensch.frage'), antwort: t('faq.beratung.mensch.antwort') },
   {
-    frage: 'Spreche ich mit einem Menschen?',
-    antwort:
-      'Nein. Sie sprechen mit einem KI-System, und die Stimme ist synthetisch erzeugt. Einen Menschen erreichen Sie unter der Telefonnummer Ihres Standorts.',
+    frage: t('faq.beratung.aufzeichnung.frage'),
+    antwort: t('faq.beratung.aufzeichnung.antwort'),
   },
   {
-    frage: 'Wird das Gespräch aufgezeichnet?',
-    antwort:
-      'Für die Dauer des Gesprächs wird Ihre Stimme verarbeitet, um die Antwort zu erzeugen. Eine dauerhafte Aufzeichnung findet nicht statt, und wir ordnen das Gespräch keiner Person zu. Sie können jederzeit auflegen.',
+    frage: t('faq.beratung.ersetztPraxis.frage'),
+    antwort: t('faq.beratung.ersetztPraxis.antwort'),
   },
   {
-    frage: 'Ersetzt das eine Beratung in der Praxis?',
-    antwort:
-      'Nein. Der Sprachberater erklärt Leistungen, Abläufe und Kostenrahmen. Er stellt keine Diagnose und beurteilt keine Beschwerden. Alles, was Ihren konkreten Fall betrifft, gehört in eine persönliche Untersuchung.',
+    frage: t('faq.beratung.lieberSchreiben.frage'),
+    antwort: t('faq.beratung.lieberSchreiben.antwort'),
   },
   {
-    frage: 'Was, wenn ich lieber schreibe?',
-    antwort:
-      'Dann nutzen Sie den Chat unten rechts – inhaltlich beantwortet er dieselben Fragen. Manche Menschen tippen lieber, andere sprechen lieber; beides ist gleichwertig.',
-  },
-  {
-    frage: 'Kann ich darüber einen Termin buchen?',
-    antwort:
-      'Nein, der Berater nimmt keine Termine entgegen und erfasst keine persönlichen Daten. Er verweist Sie auf die Terminseite Ihres Standorts oder auf unsere Telefonnummer.',
+    frage: t('faq.beratung.terminBuchen.frage'),
+    antwort: t('faq.beratung.terminBuchen.antwort'),
   },
 ];
 ---
@@ -100,7 +99,7 @@ const faq = [
           <circle cx="10" cy="6.2" r="1" fill="currentColor" />
         </svg>
         <span>
-          <strong>{system.offenlegung}</strong> {WEG_ZUM_MENSCHEN}{' '}
+          <strong>{system.offenlegung}</strong> {wegZumMenschen}{' '}
           <a href="/ki-transparenz/">{t('beratung.welchesSystemHierArbeitet')}</a>
         </span>
       </p>

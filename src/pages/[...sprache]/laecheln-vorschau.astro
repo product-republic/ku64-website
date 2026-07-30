@@ -24,32 +24,16 @@ const brotkrumen = [
   { name: t('krume.laechelnVorschau'), pfad },
 ];
 
+/* Häufige Fragen zur Lächeln-Vorschau – Text aus dem Katalog. */
 const faq = [
   {
-    frage: 'Wird mein Foto gespeichert?',
-    antwort:
-      'Nein. Ihr Foto wird ausschließlich für die Dauer der Berechnung im Arbeitsspeicher verarbeitet und danach verworfen. Es wird nicht auf einer Festplatte abgelegt, nicht in eine Datenbank geschrieben und nicht für das Training von KI-Modellen verwendet. Auch Ihre E-Mail-Adresse nutzen wir nur für diesen einen Versand.',
+    frage: t('faq.laecheln.fotoGespeichert.frage'),
+    antwort: t('faq.laecheln.fotoGespeichert.antwort'),
   },
-  {
-    frage: 'Ist das Ergebnis ein Behandlungsversprechen?',
-    antwort:
-      'Nein, ausdrücklich nicht. Die Vorschau ist eine unverbindliche Illustration, wie ein Lächeln aussehen könnte. Was in Ihrem Fall tatsächlich möglich ist, hängt von Zahnstellung, Zahnsubstanz, Zahnfleisch und Kieferverhältnissen ab – das lässt sich nur bei einer persönlichen Untersuchung beurteilen.',
-  },
-  {
-    frage: 'Was für ein Foto brauche ich?',
-    antwort:
-      'Ein frontales Porträt bei gutem, gleichmäßigem Licht, auf dem Sie lächeln und die oberen Zähne sichtbar sind. Kein starkes Gegenlicht, keine Schönheitsfilter und möglichst ohne Maske oder Hand vor dem Mund.',
-  },
-  {
-    frage: 'Wer sieht mein Foto?',
-    antwort:
-      'Für die Berechnung wird das Bild an unseren KI-Dienstleister übermittelt und dort verarbeitet. Niemand aus unserem Team sieht Ihr Foto, es sei denn, Sie zeigen es uns selbst beim Termin. Details stehen in unserer Datenschutzerklärung.',
-  },
-  {
-    frage: 'Kann ich das für mein Kind machen?',
-    antwort:
-      'Nein. Die Vorschau ist ausschließlich für volljährige Personen und nur für ein Foto von Ihnen selbst gedacht. Bitte laden Sie keine Fotos anderer Personen hoch.',
-  },
+  { frage: t('faq.laecheln.versprechen.frage'), antwort: t('faq.laecheln.versprechen.antwort') },
+  { frage: t('faq.laecheln.welchesFoto.frage'), antwort: t('faq.laecheln.welchesFoto.antwort') },
+  { frage: t('faq.laecheln.werSiehtEs.frage'), antwort: t('faq.laecheln.werSiehtEs.antwort') },
+  { frage: t('faq.laecheln.fuerKind.frage'), antwort: t('faq.laecheln.fuerKind.antwort') },
 ];
 ---
 

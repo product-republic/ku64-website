@@ -14,11 +14,14 @@
  *
  * ── Was NICHT weitergeleitet wird ──────────────────────────────────────────
  *
- * Blog und Fachbeiträge. Diese Inhalte gibt es auf der neuen Website nicht,
- * und eine Weiterleitung auf eine unpassende Seite ist keine Lösung, sondern
- * eine verschleierte Fehlerseite – Google nennt das „soft 404“ und behandelt
- * es genauso. Sie stehen offen in der Auswertung, damit die Entscheidung
- * darüber (Inhalte übernehmen oder aufgeben) bewusst getroffen wird.
+ * Adressen ohne passendes Ziel. Eine Weiterleitung auf eine unpassende Seite
+ * ist keine Lösung, sondern eine verschleierte Fehlerseite – Google nennt das
+ * „soft 404“ und behandelt es genauso. Sie stehen offen in `OHNE_ZIEL`, damit
+ * die Entscheidung darüber bewusst getroffen wird.
+ *
+ * Der Blog gehört nicht mehr dazu: Die Beiträge sind übernommen, deshalb gibt
+ * es die Regel `BLOG` – alte Kategorie- und Feed-Adressen zeigen auf die
+ * Übersicht, einzelne Beiträge auf ihren neuen Ort.
  *
  * ── Zur Art der Weiterleitung ──────────────────────────────────────────────
  *
@@ -35,7 +38,19 @@ export interface Weiterleitung {
   /** Ziel auf der neuen Website. */
   nach: string;
   /** Nach welcher Regel das Ziel bestimmt wurde – siehe Planungsskript. */
-  regel: 'HAND' | 'PERSON' | 'LEISTUNG' | 'BEREICH' | 'GRUPPE' | 'SEITE' | 'ORT' | 'ALTBESTAND';
+  regel:
+    | 'HAND'
+    | 'PERSON'
+    | 'LEISTUNG'
+    | 'BEREICH'
+    | 'GRUPPE'
+    | 'SEITE'
+    | 'ORT'
+    | 'ALTBESTAND'
+    /** Beiträge, Kategorien und Feed des alten Blogs. */
+    | 'BLOG'
+    /** Technische Adressen wie sitemap.xml. */
+    | 'TECHNIK';
 }
 
 export const WEITERLEITUNGEN: Weiterleitung[] = [

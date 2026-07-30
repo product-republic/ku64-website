@@ -24,9 +24,18 @@ import path from 'node:path';
 
 const NEU = process.argv[2] || 'http://127.0.0.1:4343';
 
+/*
+ * `NUR_NEU=1` misst nur die neue Fassung.
+ *
+ * Wofür: Die alte Fassung liegt auf ku64.de, und wer ohne Zugang nach außen
+ * messen will, wartet sonst fünfmal auf einen Verbindungsabbruch. Der
+ * Schalter stand hier und wurde nirgends gelesen – gemessen wurde also immer
+ * beides, egal was gesetzt war.
+ */
+const NUR_NEU = process.env.NUR_NEU === '1';
+
 /* Vergleichbare Seiten, nicht beliebige: dieselbe Aufgabe in beiden
    Fassungen. Die neue Adresse ist jeweils das Weiterleitungsziel der alten. */
-const NUR_NEU = process.env.NUR_NEU === '1';
 const PAARE = [
   ['Startseite', 'https://ku64.de/', '/'],
   ['Standort Potsdam', 'https://ku64.de/potsdam/', '/potsdam/'],
@@ -150,7 +159,7 @@ const ergebnisse = [];
 
 for (const [name, alt, neuPfad] of PAARE) {
   process.stdout.write(`${name} … `);
-  const a = await messen(alt);
+  const a = NUR_NEU ? null : await messen(alt);
   const n = await messen(NEU + neuPfad);
   ergebnisse.push({ name, alt: a, neu: n });
   const z = (w) => (w?.lcp ? `${Math.round(w.lcp)} ms` : '–');

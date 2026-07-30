@@ -22,9 +22,11 @@ import {
   verwandteLeistungen,
   type Kategorie,
   type Leistung,
+  type VerwandteLeistung,
 } from '../data/leistungen';
 import { STANDORTE, getStandort, type Standort } from '../data/standorte';
 import { BESCHWERDEN, getBeschwerde, type Beschwerde } from '../data/beschwerden';
+import type { KiSystem } from '../data/ki-systeme';
 import { BEITRAEGE, beitrag as beitragRoh, type Beitrag } from '../lib/blog';
 import profile from '../data/profile.json';
 import {
@@ -33,6 +35,8 @@ import {
   beschwerdeIn,
   beschwerdenIn,
   kategorieIn,
+  kiSystemIn,
+  kiSystemeIn,
   leistungIn,
   leistungenIn,
   personIn,
@@ -53,7 +57,13 @@ export interface Inhalte {
   kategorie(slug: string): Kategorie | undefined;
   leistungenHier(standortSlug: string): Leistung[];
   leistungenAnderswo(standortSlug: string): Leistung[];
-  verwandte(leistung: Leistung, standortSlug: string): Leistung[];
+  /*
+   * Verwandte Leistungen kommen mit ihrer Verfügbarkeit am aufgerufenen
+   * Standort zurück, nicht als nackte Liste. Die Leistungsseite trennt
+   * danach: „auch hier" gegen „dort schon" – ohne diese Angabe könnte sie
+   * das nicht, und genau das stand hier vorher als Typ.
+   */
+  verwandte(leistung: Leistung, standortSlug: string): VerwandteLeistung[];
   gruppen(standortSlug: string): { kategorie: Kategorie; leistungen: Leistung[] }[];
   /* ── Die langen Inhalte ──────────────────────────────────────────────
    *
@@ -66,6 +76,14 @@ export interface Inhalte {
   beitrag(slug: string): Beitrag | undefined;
   beschwerden: Beschwerde[];
   beschwerde(slug: string): Beschwerde | undefined;
+  /* ── KI-Systeme ──────────────────────────────────────────────────────
+   *
+   * Auch sie über `inhalte(Astro)` und nicht per direktem Import: Wer
+   * `KI_SYSTEME` selbst importiert, bekommt die deutsche Offenlegung – auf
+   * jeder Seite, in jeder Sprache. Genau das war der Zustand.
+   */
+  kiSystem(slug: string): KiSystem | undefined;
+  kiSysteme: KiSystem[];
 }
 
 /** Nur das Nötige aus dem Astro-Objekt – so ist die Funktion auch testbar. */
@@ -103,7 +121,10 @@ export function inhalte(astro: MitParametern): Inhalte {
     leistungenAnderswo: (standortSlug) =>
       leistungenIn(leistungenNichtAmStandort(standortSlug), sprache),
     verwandte: (leistung, standortSlug) =>
-      leistungenIn(verwandteLeistungen(leistung, standortSlug), sprache),
+      verwandteLeistungen(leistung, standortSlug).map((v) => ({
+        ...v,
+        leistung: leistungIn(v.leistung, sprache),
+      })),
     gruppen: (standortSlug) =>
       kategorienMitLeistungen(standortSlug).map((g) => ({
         kategorie: kategorieIn(g.kategorie, sprache),
@@ -122,6 +143,10 @@ export function inhalte(astro: MitParametern): Inhalte {
     },
     get beschwerden() {
       return beschwerdenIn(BESCHWERDEN, sprache);
+    },
+    kiSystem: (slug) => kiSystemIn(slug, sprache),
+    get kiSysteme() {
+      return kiSystemeIn(sprache);
     },
     beschwerde: (slug) => {
       const b = getBeschwerde(slug);

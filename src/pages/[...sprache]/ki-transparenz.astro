@@ -20,7 +20,6 @@ import { inhalte } from '../../i18n/daten';
 import { texte } from '../../i18n/katalog';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
-import { KI_SYSTEME } from '../../data/ki-systeme';
 import { schemaBrotkrumen } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -38,7 +37,7 @@ const brotkrumen = [
 ---
 
 <Basis
-  titel="KI-Transparenz"
+  titel={t('krume.kiTransparenz')}
   description={t('ki.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
@@ -46,7 +45,7 @@ const brotkrumen = [
 >
   <section class="kopf abschnitt-eng">
     <div class="huelle">
-      <span class="marke marke-akzent">Transparenz</span>
+      <span class="marke marke-akzent">{t('kitrans.marke')}</span>
       <h1>{t('kitrans.woAufDieserWebsite')}</h1>
       <p class="unter">{t('kitrans.dreiSystemeUndWir')}</p>
     </div>
@@ -66,11 +65,11 @@ const brotkrumen = [
           ))
         }
       </ul>
-      <p class="klein">{t('kitrans.oderSchriftlichUeberDas')}<a href="/kontakt/">Kontaktformular</a>{t('kitrans.beidesBeantwortetEinMensch')}</p>
+      <p class="klein">{t('kitrans.oderSchriftlichUeberDas')}<a href="/kontakt/">{t('kitrans.kontaktformular')}</a>{t('kitrans.beidesBeantwortetEinMensch')}</p>
     </section>
 
     {
-      KI_SYSTEME.map((s) => (
+      daten.kiSysteme.map((s) => (
         <section class="system" id={s.slug}>
           <h2>{s.name}</h2>
           <p class="zweck">{s.zweck}</p>
@@ -83,11 +82,11 @@ const brotkrumen = [
               <dd>{s.wo}</dd>
             </div>
             <div>
-              <dt>Anbieter</dt>
+              <dt>{t('kitrans.anbieter')}</dt>
               <dd>{s.anbieter}</dd>
             </div>
             <div>
-              <dt>Modell</dt>
+              <dt>{t('kitrans.modell')}</dt>
               <dd>{s.modell}</dd>
             </div>
             <div>
@@ -99,7 +98,7 @@ const brotkrumen = [
               <dd>{s.nichtDaten}</dd>
             </div>
             <div>
-              <dt>Grenzen</dt>
+              <dt>{t('kitrans.grenzen')}</dt>
               <dd>{s.grenzen}</dd>
             </div>
           </dl>
@@ -111,7 +110,7 @@ const brotkrumen = [
       <h2>{t('kitrans.rechtlicherRahmen')}</h2>
       <p>{t('kitrans.dieseAngabenSetzenArtikel')}</p>
       <p>{t('kitrans.fuerDieLaechelnVorschau')}<code>trainedAlgorithmicMedia</code>{t('kitrans.erBleibtDamitAuch')}</p>
-      <p>{t('kitrans.wieIhreDatenVerarbeitet')}<a href="/datenschutz/">Datenschutzerklärung</a>{t('kitrans.welcheDiensteBeimAufruf')}<a href="/cookies/">Cookie-Einstellungen</a>.
+      <p>{t('kitrans.wieIhreDatenVerarbeitet')}<a href="/datenschutz/">{t('kitrans.datenschutzerklaerung')}</a>{t('kitrans.welcheDiensteBeimAufruf')}<a href="/cookies/">{t('krume.cookieEinstellungen')}</a>.
       </p>
     </section>
   </div>

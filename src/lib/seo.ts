@@ -4,11 +4,7 @@
  * fehlenden oder doppelten Meta-Angaben.
  */
 
-import {
-  type Standort,
-  adresseEinzeilig,
-  oeffnungszeitenSchema,
-} from '../data/standorte';
+import { type Standort, oeffnungszeitenSchema } from '../data/standorte';
 import type { Leistung } from '../data/leistungen';
 
 export const SITE_NAME = 'KU64 – Die Zahnspezialisten';

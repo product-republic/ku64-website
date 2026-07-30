@@ -20,6 +20,11 @@ analyse/altbestand/htaccess.txt
 bericht/befundbericht.html
 bericht/KU64-Befundbericht.pdf
 
+# Die Probeseite der Berichtsgrafiken – erzeugt von grafiken-pruefen.mjs,
+# mit eingebetteter Schrift und deshalb groß. Das Modul liegt im Repo, die
+# Probe daraus nicht.
+bericht/grafiken-probe.html
+
 # Ergebnisse der Medienanalyse – werden lokal gegen das Backup erzeugt.
 analyse/altbestand/medien-bericht.md
 analyse/altbestand/medien-benutzt.txt

@@ -10,6 +10,7 @@
 import type { APIRoute } from 'astro';
 import { STANDORTE } from '../data/standorte';
 import { KATEGORIEN, LEISTUNGEN, leistungenFuerStandort } from '../data/leistungen';
+import { anzahlBehandelnde } from '../data/team';
 
 export const GET: APIRoute = ({ site }) => {
   const basis = (site ?? new URL('https://ku64.de')).origin;
@@ -43,7 +44,17 @@ export const GET: APIRoute = ({ site }) => {
       `Öffnungszeiten: ${zeiten}`,
       s.zeitenHinweis ? `Hinweis: ${s.zeitenHinweis}` : '',
       `Eröffnet: ${s.eroeffnet}`,
-      s.anzahlZahnaerzte ? `Behandelnde: ${s.anzahlZahnaerzte}` : '',
+      /* Gerechnet, nicht gepflegt. Hier stand `s.anzahlZahnaerzte` – ein Feld,
+         das aus standorte.ts entfernt wurde, weil solche Zahlen lautlos
+         altern. Die Bedingung war damit immer falsch, und die Zeile fehlte
+         in llms-full.txt vollständig: Ein KI-System, das diese Datei liest,
+         erfuhr nicht, wie viele Behandelnde an einem Standort arbeiten.
+
+         Die Null bleibt draußen. Für Wilmersdorf ist noch niemand
+         eingetragen, und „Behandelnde: 0" wäre keine fehlende Angabe,
+         sondern eine falsche – ein KI-System würde daraus schließen, dort
+         behandelt niemand. */
+      anzahlBehandelnde(s.slug) > 0 ? `Behandelnde: ${anzahlBehandelnde(s.slug)}` : '',
       `Anfahrt: ${s.anfahrt.oepnv.join('; ')}`,
       `Parken: ${s.anfahrt.parken}`,
       `Barrierefrei: ${s.anfahrt.barrierefrei ? 'ja' : `nein – ${s.anfahrt.barrierefreiHinweis ?? ''}`}`,

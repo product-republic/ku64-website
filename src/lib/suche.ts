@@ -27,13 +27,13 @@
  *                   Patienten tatsächlich verwenden – „PZR", „Hollywood
  *                   Smile", „Zähne bleichen".
  *   `patientenfrage` ist die Frage, die jemand wirklich eintippt.
- *   `alteAdressen`  enthält unter `/zahnbeschwerden/…` genau die Beschwerden,
- *                   nach denen auf der alten Website gesucht wurde – und die
- *                   Zuordnung zur Leistung ist dort schon gepflegt.
+ *   `FUEHRT_ZU`     ordnet jeder der dreißig Beschwerdeseiten die Behandlungen
+ *                   zu, die in Frage kommen – von Hand gepflegt in
+ *                   `data/beschwerden.ts`.
  *
  * Die dritte Quelle ist der eigentliche Gewinn: Sie ist nicht für die Suche
- * angelegt worden, sie fällt aus der Weiterleitungsarbeit ab. Wer eine alte
- * Beschwerdeadresse einträgt, verbessert damit die Suche mit.
+ * angelegt worden, sie fällt aus der Arbeit an den Beschwerdeseiten ab. Wer
+ * dort eine Zuordnung einträgt, verbessert damit die Suche mit.
  *
  * ── Standort ────────────────────────────────────────────────────────────
  *
@@ -45,17 +45,11 @@
 
 import { LEISTUNGEN, KATEGORIEN, BESCHWERDEN_GEPLANT } from '../data/leistungen';
 import { STANDORTE } from '../data/standorte';
-import { BESCHWERDEN } from '../data/beschwerden.ts';
+import { BESCHWERDEN, FUEHRT_ZU } from '../data/beschwerden.ts';
 import { BEITRAEGE } from './blog.ts';
 import { veroeffentlichbar } from '../data/team.ts';
 import profile from '../data/profile.json';
-import {
-  type Indexeintrag,
-  type Trefferart,
-  type Treffer,
-  normieren,
-  zerlegen,
-} from './suche-kern.ts';
+import { type Indexeintrag, type Trefferart, type Treffer } from './suche-kern.ts';
 import {
   beitraegeIn,
   beschwerdenIn,
@@ -69,16 +63,6 @@ import { QUELLSPRACHE, type Sprache } from '../i18n/sprachen.ts';
 import { type TextSchluessel } from '../i18n/texte.ts';
 
 export * from './suche-kern.ts';
-
-/**
- * Ein Slug ist ein Suchbegriff.
- *
- * `/zahnbeschwerden/mundgeruch-was-tun/` wird zu „mundgeruch was tun" – also
- * genau zu dem, was jemand eingegeben hat, als diese Adresse entstand.
- */
-function ausSlug(pfad: string): string {
-  return pfad.replace(/^\/zahnbeschwerden\//, '').replace(/\/$/, '').replace(/-/g, ' ');
-}
 
 // ── Index bauen ───────────────────────────────────────────────────────
 
@@ -221,9 +205,24 @@ const SEITEN: Seiteneintrag[] = [
 /**
  * Beschwerdebegriffe je Leistung.
  *
- * Zwei Quellen, beide schon vorhanden: `BESCHWERDEN_GEPLANT` (was als eigene
- * Seite kommen soll) und die Adressen unter `/zahnbeschwerden/` aus
- * `alteAdressen` (wonach auf der alten Website gesucht wurde).
+ * Wer „zahnfleischbluten" eintippt, soll neben der Beschwerdeseite auch die
+ * Behandlung finden, um die es geht. Dafür bekommt jede Leistung die Begriffe
+ * der Beschwerden, die zu ihr führen, ins starke Feld.
+ *
+ * Zwei Quellen:
+ *
+ * 1. `FUEHRT_ZU` in `data/beschwerden.ts` – die von Hand gepflegte Zuordnung
+ *    der dreißig bestehenden Beschwerdeseiten. Sie ist die eigentliche
+ *    Quelle, und sie stand hier vorher nicht.
+ *
+ *    Vorher wurde stattdessen `leistung.alteAdressen` gelesen – ein Feld, das
+ *    es auf `Leistung` nie gab (nur auf Teammitgliedern). Der Zweig lief
+ *    damit immer über eine leere Liste, ohne Fehler und ohne Wirkung: von
+ *    dreißig Beschwerden trug keine einzige zur Suche bei.
+ *
+ * 2. `BESCHWERDEN_GEPLANT` – Beschwerden, deren Seite noch fehlt. Ihre
+ *    Begriffe sollen trotzdem zur passenden Behandlung führen, denn gesucht
+ *    wird schon heute nach ihnen.
  */
 function beschwerdenJeLeistung(): Map<string, string[]> {
   const karte = new Map<string, string[]>();
@@ -234,14 +233,12 @@ function beschwerdenJeLeistung(): Map<string, string[]> {
     karte.set(slug, liste);
   };
 
-  for (const b of BESCHWERDEN_GEPLANT) {
-    for (const ziel of b.fuehrtZu) dazu(ziel, b.slug.replace(/-/g, ' '));
+  for (const [beschwerde, ziele] of Object.entries(FUEHRT_ZU)) {
+    for (const ziel of ziele) dazu(ziel, beschwerde.replace(/-/g, ' '));
   }
 
-  for (const l of LEISTUNGEN) {
-    for (const alt of l.alteAdressen ?? []) {
-      if (alt.startsWith('/zahnbeschwerden/')) dazu(l.slug, ausSlug(alt));
-    }
+  for (const b of BESCHWERDEN_GEPLANT) {
+    for (const ziel of b.fuehrtZu) dazu(ziel, b.slug.replace(/-/g, ' '));
   }
 
   return karte;

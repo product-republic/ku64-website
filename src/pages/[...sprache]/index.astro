@@ -23,33 +23,40 @@ export function getStaticPaths() {
 
 const daten = inhalte(Astro);
 
-
-const faq = [
-  {
-    frage: 'Wie viele KU64-Standorte gibt es?',
-    antwort: `KU64 ist an ${daten.standorte.length} Standorten vertreten: ${daten.standorte.map(
-      (s) => `${s.name} (${s.strasse}, ${s.plz} ${s.ort})`,
-    ).join(', ')}. Das Leistungsangebot unterscheidet sich je Standort.`,
-  },
-  {
-    frage: 'Bietet jeder Standort alle Leistungen an?',
-    antwort:
-      'Nein. Die Hauptpraxis am Kurfürstendamm bietet das breiteste Spektrum inklusive Vollnarkose, Kieferorthopädie und All-on-4. Potsdam deckt das volle Standardspektrum inklusive Implantologie und Oralchirurgie ab. Auf jeder Standortseite sehen Sie ausschließlich das, was dort tatsächlich angeboten wird – und wohin Sie für alles Übrige gehen.',
-  },
-  {
-    frage: 'Wie buche ich einen Termin?',
-    antwort:
-      'Online über die Terminseite Ihres Standorts oder telefonisch. Für den ersten Besuch füllen Sie den Anamnesebogen vorab digital aus – das spart Zeit vor Ort und Sie müssen im Wartezimmer nichts auf Papier ausfüllen.',
-  },
-  {
-    frage: 'Was mache ich bei akuten Zahnschmerzen?',
-    antwort:
-      'Rufen Sie den Standort an, der Ihnen am nächsten liegt. Mehrere unserer Standorte haben sieben Tage die Woche geöffnet, auch am Wochenende. Bei starken Schmerzen sagen Sie das direkt am Telefon – wir halten Termine für Akutfälle frei.',
-  },
-];
-
 const gesamtLeistungen = daten.leistungen.length;
 const t = texte(daten.sprache);
+
+/*
+ * Häufige Fragen – Text aus dem Katalog, Zahlen und Adressen als Platzhalter.
+ *
+ * Diese vier Sätze standen bis eben hier als deutsche Zeichenkette. Sie
+ * erscheinen sichtbar auf der Seite UND über `schemaFaq()` im JSON-LD; auf
+ * /en/ und /fr/ waren damit beide deutsch. Die Standortliste bleibt eine
+ * Aufzählung aus Eigennamen und Adressen und wird nicht übersetzt.
+ */
+const faq = [
+  {
+    frage: t('faq.start.wieVieleStandorte.frage'),
+    antwort: t('faq.start.wieVieleStandorte.antwort', {
+      anzahl: daten.standorte.length,
+      standorte: daten.standorte
+        .map((s) => `${s.name} (${s.strasse}, ${s.plz} ${s.ort})`)
+        .join(', '),
+    }),
+  },
+  {
+    frage: t('faq.start.alleLeistungen.frage'),
+    antwort: t('faq.start.alleLeistungen.antwort'),
+  },
+  {
+    frage: t('faq.start.terminBuchen.frage'),
+    antwort: t('faq.start.terminBuchen.antwort'),
+  },
+  {
+    frage: t('faq.start.akuteSchmerzen.frage'),
+    antwort: t('faq.start.akuteSchmerzen.antwort'),
+  },
+];
 
 /* Die Länge des Satzes bestimmt seine Schriftgröße im Kopf – siehe die
    Erklärung bei `h1` weiter unten. Sie kommt aus dem Text selbst, damit sie

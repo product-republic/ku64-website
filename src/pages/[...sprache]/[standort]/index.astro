@@ -40,35 +40,55 @@ const brotkrumen = [
   { name: `KU64 ${standort.name}`, pfad },
 ];
 
-/* Standortbezogene Fragen – beantworten das, was Menschen vor dem ersten
-   Besuch an genau diesem Ort wissen wollen. */
+/*
+ * Standortbezogene Fragen – beantworten das, was Menschen vor dem ersten
+ * Besuch an genau diesem Ort wissen wollen.
+ *
+ * Der Text kommt aus dem Katalog, die Angaben aus den Standortdaten. Bis eben
+ * war der Satz eine Vorlagenzeichenkette mit eingesetztem Standortnamen – und
+ * genau deshalb unübersetzbar: Der Wächter sieht nur, was im Katalog steht,
+ * und das war hier nichts. Auf /en/ stand „Kann ich bei KU64 Potsdam parken?"
+ * unter einem sonst englischen Kopfbereich.
+ *
+ * Die Antwort auf die Parkfrage kommt unverändert aus `anfahrt.parken`. Sie
+ * steht schon in der Quellfassung der Standortdaten (SPEC_STANDORT) und wird
+ * dort übersetzt; ein zweiter Schlüssel dafür wäre eine zweite Wahrheit.
+ */
 const faq = [
   {
-    frage: `Wie erreiche ich KU64 ${standort.name} mit öffentlichen Verkehrsmitteln?`,
-    antwort: `${standort.anfahrt.oepnv.join('. ')}. Die Praxis liegt in der ${standort.strasse}, ${standort.plz} ${standort.ort}.`,
+    frage: t('faq.ort.oepnv.frage', { name: standort.name }),
+    antwort: t('faq.ort.oepnv.antwort', {
+      oepnv: standort.anfahrt.oepnv.join('. '),
+      strasse: standort.strasse,
+      plz: standort.plz,
+      ort: standort.ort,
+    }),
   },
   {
-    frage: `Kann ich bei KU64 ${standort.name} parken?`,
+    frage: t('faq.ort.parken.frage', { name: standort.name }),
     antwort: standort.anfahrt.parken,
   },
   {
-    frage: `Ist die Praxis in ${standort.ort} barrierefrei?`,
+    frage: t('faq.ort.barrierefrei.frage', { ort: standort.ort }),
     antwort: standort.anfahrt.barrierefrei
-      ? `Ja, KU64 ${standort.name} ist barrierefrei zugänglich. Melden Sie sich gern vorab, wenn Sie besondere Unterstützung benötigen – dann bereiten wir alles vor.`
-      : (standort.anfahrt.barrierefreiHinweis ??
-        'Bitte sprechen Sie uns vorab an, wir finden gemeinsam eine Lösung.'),
+      ? t('faq.ort.barrierefrei.antwortJa', { name: standort.name })
+      : (standort.anfahrt.barrierefreiHinweis ?? t('faq.ort.barrierefrei.antwortRuecksprache')),
   },
   {
-    frage: `Welche Leistungen bietet KU64 ${standort.name} an?`,
-    antwort: `An diesem Standort behandeln wir ${alleHier.length} Leistungen aus ${gruppen.length} Fachbereichen, darunter ${alleHier
-      .slice(0, 5)
-      .map((l) => l.name)
-      .join(', ')}. Nicht jede Leistung wird an jedem KU64-Standort angeboten – auf dieser Seite sehen Sie ausschließlich das Angebot in ${standort.ort}.`,
+    frage: t('faq.ort.leistungen.frage', { name: standort.name }),
+    antwort: t('faq.ort.leistungen.antwort', {
+      anzahl: alleHier.length,
+      bereiche: gruppen.length,
+      beispiele: alleHier
+        .slice(0, 5)
+        .map((l) => l.name)
+        .join(', '),
+      ort: standort.ort,
+    }),
   },
   {
-    frage: 'Nehmen Sie neue Patientinnen und Patienten auf?',
-    antwort:
-      'Ja. Sie können online einen Termin buchen oder uns anrufen. Für den ersten Termin füllen Sie den Anamnesebogen bequem vorab digital aus – das spart Zeit im Wartezimmer.',
+    frage: t('faq.ort.neuePatienten.frage'),
+    antwort: t('faq.ort.neuePatienten.antwort'),
   },
 ];
 
@@ -266,7 +286,7 @@ const schema = [
   </section>
 
   <div class="huelle">
-    <FaqBlock titel={`Fragen zu KU64 ${standort.name}`} eintraege={faq} />
+    <FaqBlock titel={t('faq.ort.titel', { name: standort.name })} eintraege={faq} />
   </div>
 
   <TerminBand slot="abschluss" standort={standort} />
