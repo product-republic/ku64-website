@@ -17,6 +17,8 @@ import { veroeffentlichbar } from '../../../../data/team';
 import FaqBlock from '../../../../components/FaqBlock.astro';
 import LeistungsListe from '../../../../components/LeistungsListe.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
+import Langtext from '../../../../components/Langtext.astro';
+import { langtext, unterthemen, anriss } from '../../../../lib/langtexte';
 import { alleKombinationen } from '../../../../data/leistungen';
 import { fassungIstEigenstaendig } from '../../../../data/standortfassungen';
 import { bereichsbild } from '../../../../data/bildbedarf';
@@ -58,6 +60,21 @@ const behandelnde = (leistung.behandler ?? [])
   .filter((m) => m !== undefined && m.standorte.includes(standort.slug));
 
 const pfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
+
+/*
+ * Der wiederhergestellte Originaltext und die Unterthemen.
+ *
+ * Beides ist über den Slug angebunden, nicht über den Standort: Der
+ * Fachtext zu Zahnimplantaten ist an allen fünf Standorten derselbe – was
+ * sich unterscheidet, sind Adresse, Team, Sprechzeiten und Termin, und die
+ * stehen ohnehin auf jeder Fassung eigens.
+ *
+ * Dass der Text noch nicht ortsbezogen ist, ist die verbliebene
+ * Redaktionsaufgabe (Kapitel 6 des Berichts). Sie wird nicht dadurch
+ * gelöst, dass hier fünf Kopien desselben Absatzes entstehen.
+ */
+const eigenerText = langtext(leistung.slug);
+const themen = unterthemen(leistung.slug);
 const ortsname = standort.ortsname;
 
 /* Titel und Description tragen den Ortsbezug – das ist der Unterschied
@@ -193,6 +210,52 @@ const schema = [
                   </li>
                 ))}
               </ol>
+            </section>
+          )
+        }
+
+        {/*
+          Der Originaltext der Praxis.
+
+          Steht VOR den häufigen Fragen und nach Ablauf und Kosten: Wer die
+          Seite überfliegt, will zuerst wissen, was es ist, was es kostet und
+          wie es abläuft. Wer bleibt, liest weiter. Die FAQ bilden den
+          Abschluss, weil sie Einzelfragen aufgreifen – auch solche, die der
+          Langtext schon behandelt.
+        */}
+        {
+          eigenerText && (
+            <section class="abschnitt-eng" aria-labelledby="ausfuehrlich-titel">
+              <h2 id="ausfuehrlich-titel">{t('leistung.ausfuehrlich', { name: leistung.name })}</h2>
+              <Langtext langtext={eigenerText} />
+            </section>
+          )
+        }
+
+        {/*
+          Die Unterthemen, die eine eigene Seite haben.
+
+          Prominent und nicht als Fußnote: Das sind die Fragen, mit denen
+          Menschen mit Behandlungsabsicht suchen – Kosten, Haltbarkeit,
+          Alternativen. Auf der alten Website hatten sie eigene Seiten, im
+          ersten Neubau waren sie verschwunden. Wer hier landet und „was
+          kostet das" wissen will, soll den Weg dorthin sehen, ohne zu
+          scrollen.
+        */}
+        {
+          themen.length > 0 && (
+            <section class="unterthemen" aria-labelledby="unterthemen-titel">
+              <h2 id="unterthemen-titel">{t('leistung.imEinzelnen', { name: leistung.name })}</h2>
+              <ul class="unterthemen-liste">
+                {themen.map((u) => (
+                  <li>
+                    <a href={`${pfad}${u.slug}/`} class="unterthema">
+                      <span class="unterthema-name">{u.titel ?? u.slug}</span>
+                      <span class="unterthema-anriss">{anriss(u, 120)}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </section>
           )
         }

@@ -1,0 +1,362 @@
+---
+/**
+ * Ein Inhalt eines Drittanbieters – gesperrt, bis jemand ihn freigibt.
+ *
+ * ── Was das löst ────────────────────────────────────────────────────────
+ *
+ * Die übliche Sperre ist ein grauer Kasten mit „Dieser Inhalt wurde
+ * blockiert". Der sagt nur, was NICHT da ist, und man klickt ihn frei, ohne
+ * zu wissen, was kommt. Hier steht stattdessen eine verschwommene Vorschau:
+ * Man sieht, dass dort eine Karte, ein Rundgang, ein Video liegt – und
+ * entscheidet in Kenntnis der Sache.
+ *
+ * ── Die entscheidende Eigenschaft ───────────────────────────────────────
+ *
+ * Die Vorschau kommt aus EIGENEN Dateien. Kein Bild, kein Vorschaubild, kein
+ * Aufwärm-Abruf geht vor der Freigabe an den Drittanbieter – auch nicht als
+ * `preconnect`. Genau daran scheitern die meisten „Zwei-Klick-Lösungen":
+ * Sie zeigen als Platzhalter das Vorschaubild von YouTube und haben damit
+ * die Verbindung schon aufgebaut, gegen die sie schützen sollen.
+ *
+ * Der `iframe` wird erst im Moment der Freigabe erzeugt und in den DOM
+ * gehängt. Vorher existiert er nicht – kein `src`, kein `data-src`, kein
+ * `hidden`. Ein verstecktes `iframe` mit gesetztem `src` lädt.
+ *
+ * ── Warum die Freigabe hier auch die Einwilligung setzt ─────────────────
+ *
+ * Wer auf „Karte laden" klickt, hat entschieden. Ihn danach noch durch den
+ * Auswahldialog zu schicken wäre eine zweite Frage auf dieselbe Antwort.
+ * Der Klick erteilt die Einwilligung für die Kategorie des Dienstes und
+ * merkt sie – dieselbe Speicherung wie im Dialog, damit beides nicht
+ * auseinanderläuft.
+ *
+ * `nurEinmal` schaltet das ab: Beim Sprachberater soll jedes Gespräch
+ * einzeln zugestimmt werden, weil dort die Stimme übertragen wird.
+ *
+ * ── Barrierefreiheit ────────────────────────────────────────────────────
+ *
+ * Die verschwommene Fläche ist `aria-hidden` – eine Vorlesehilfe kann mit
+ * einem unscharfen Bild nichts anfangen. Was dort liegt, steht im
+ * zugänglichen Namen der Schaltfläche, und der ist vollständig: nicht
+ * „Laden", sondern „Karte von Google Maps laden – dabei werden Daten an
+ * Google übertragen". Ein Knopf, der nur „Laden" heißt, ist in einer
+ * Liste aller Bedienelemente nicht unterscheidbar.
+ */
+import { DIENSTE } from '../data/dienste';
+
+interface Props {
+  /** Slug aus `dienste.ts`. Ein Dienst ohne Eintrag ist ein Baufehler. */
+  dienst: string;
+  /** Die Adresse, die nach der Freigabe in den `iframe` kommt. */
+  adresse: string;
+  /** Was dort zu sehen sein wird – für Schaltfläche und Vorlesehilfe. */
+  titel: string;
+  /** Seitenverhältnis der Fläche, damit nichts springt. */
+  verhaeltnis?: string;
+  /** Höhe statt Verhältnis, wo eine Karte eine feste Höhe braucht. */
+  hoehe?: string;
+  /** Einwilligung merken (Standard) oder nur für diesen Aufruf gelten lassen. */
+  nurEinmal?: boolean;
+  /** Erlaubnisse für den `iframe`, z. B. 'fullscreen; xr-spatial-tracking'. */
+  erlauben?: string;
+}
+
+const {
+  dienst: slug,
+  adresse,
+  titel,
+  verhaeltnis = '16 / 9',
+  hoehe,
+  nurEinmal = false,
+  erlauben,
+} = Astro.props;
+
+const d = DIENSTE.find((x) => x.slug === slug);
+
+/*
+ * Ein Dienst, der nicht im Verzeichnis steht, wird nicht eingebettet –
+ * und zwar mit Abbruch beim Bauen, nicht mit einer leeren Fläche.
+ *
+ * Das ist der Grund, warum es diese Datei gibt: Sonst bindet in einem halben
+ * Jahr jemand ein Fenster ein, das in keiner Datenschutzerklärung steht.
+ */
+if (!d) {
+  throw new Error(
+    `[Drittinhalt] „${slug}" steht nicht in src/data/dienste.ts.\n` +
+      'Kein eingebetteter Drittanbieter ohne Eintrag im Verzeichnis – sonst fehlt er in ' +
+      'der Datenschutzerklärung, in /cookies/ und im Auswahldialog.',
+  );
+}
+
+if (d.stand !== 'aktiv') {
+  throw new Error(
+    `[Drittinhalt] „${slug}" steht als „${d.stand}" im Verzeichnis und darf nicht eingebettet ` +
+      'werden. Erst den Eintrag auf „aktiv" setzen und VERZEICHNIS_FASSUNG hochzählen.',
+  );
+}
+
+/* Der Name der Schaltfläche nennt Dienst und Folge – siehe Kopfkommentar. */
+const knopfName = `${titel} laden – dabei werden Daten an ${d.anbieter.split(',')[0]} übertragen`;
+
+/* Ohne bestätigten AV-Vertrag wird nicht geladen, auch nicht auf Klick.
+   Eine Einwilligung ersetzt keinen Vertrag. */
+const gesperrt = !d.avVertrag;
+---
+
+<figure
+  class="dritt"
+  data-dienst={slug}
+  data-adresse={adresse}
+  data-kategorie={d.kategorie}
+  data-nur-einmal={nurEinmal ? '1' : null}
+  data-erlauben={erlauben}
+  data-titel={titel}
+  style={hoehe ? `--dritt-hoehe:${hoehe}` : `--dritt-verhaeltnis:${verhaeltnis}`}
+>
+  <div class="dritt-flaeche">
+    {/* Die verschwommene Vorschau. `aria-hidden`, weil unscharf keine
+        Information ist – sie steht im Namen der Schaltfläche. */}
+    <div class="dritt-vorschau" aria-hidden="true">
+      <slot name="vorschau" />
+    </div>
+
+    <div class="dritt-frage" data-rolle="frage">
+      <p class="dritt-titel">{titel}</p>
+      {
+        gesperrt ? (
+          <p class="dritt-text">
+            Noch nicht freigegeben: Für {d.name} liegt der Auftragsverarbeitungsvertrag mit{' '}
+            {d.anbieter.split(',')[0]} nicht bestätigt vor. Bis dahin wird dieser Inhalt auch
+            auf Klick nicht geladen.
+          </p>
+        ) : (
+          <>
+            <p class="dritt-text">
+              Wird erst auf Ihren Klick geladen. Dabei werden{' '}
+              {d.daten.slice(0, 2).join(' und ')} an {d.anbieter.split(',')[0]} übertragen.
+            </p>
+            <button type="button" class="knopf knopf-primaer" data-rolle="freigeben" aria-label={knopfName}>
+              {titel} laden
+            </button>
+            <p class="dritt-fein">
+              <a href="/cookies/">Was dabei übertragen wird</a>
+            </p>
+          </>
+        )
+      }
+    </div>
+  </div>
+
+  <figcaption class="dritt-fuss">
+    <slot name="fuss" />
+  </figcaption>
+</figure>
+
+<script>
+  import { beimSeitenaufbau } from '../lib/seitenaufbau';
+
+  /*
+   * Nach jedem Seitenaufbau neu binden.
+   *
+   * Der ClientRouter tauscht den Körper aus, ohne Module erneut auszuwerten –
+   * ohne diesen Umweg funktioniert die Freigabe nur auf der zuerst geladenen
+   * Seite. Genau dieser Fehler hat in diesem Projekt schon den
+   * Sprachumschalter und die Standortwahl gekostet.
+   */
+  beimSeitenaufbau(() => {
+    const SCHLUESSEL = 'ku64:einwilligung';
+    const TAGE = 182;
+
+    function fassung() {
+      const el = document.querySelector('script[data-fassung]');
+      return el ? Number((el as HTMLElement).dataset.fassung) : 1;
+    }
+
+    function gespeichert() {
+      try {
+        const roh = localStorage.getItem(SCHLUESSEL);
+        if (!roh) return null;
+        const e = JSON.parse(roh);
+        if (!e || !Array.isArray(e.kategorien) || e.fassung !== fassung()) return null;
+        const alter = (Date.now() - Date.parse(e.am)) / 86400000;
+        return isFinite(alter) && alter <= TAGE ? e : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function merken(kategorie: string) {
+      const vorher = gespeichert();
+      const kategorien = new Set<string>(vorher ? vorher.kategorien : []);
+      kategorien.add(kategorie);
+      const e = { kategorien: [...kategorien], am: new Date().toISOString(), fassung: fassung() };
+      try {
+        localStorage.setItem(SCHLUESSEL, JSON.stringify(e));
+      } catch {
+        /* Privater Modus: Die Freigabe gilt dann nur für diese Seite. */
+      }
+      document.dispatchEvent(new CustomEvent('ku64:einwilligung', { detail: e }));
+    }
+
+    function einsetzen(figur: HTMLElement) {
+      if (figur.dataset.geladen === '1') return;
+      figur.dataset.geladen = '1';
+
+      const flaeche = figur.querySelector('.dritt-flaeche');
+      const frage = figur.querySelector('[data-rolle="frage"]');
+      if (!flaeche) return;
+
+      const rahmen = document.createElement('iframe');
+      rahmen.src = figur.dataset.adresse || '';
+      rahmen.title = figur.dataset.titel || '';
+      rahmen.loading = 'lazy';
+      /* `referrerpolicy`: Der Drittanbieter braucht nicht zu wissen, auf
+         welcher Unterseite jemand war – die Domain genügt ihm. */
+      rahmen.referrerPolicy = 'strict-origin-when-cross-origin';
+      if (figur.dataset.erlauben) rahmen.setAttribute('allow', figur.dataset.erlauben);
+      rahmen.className = 'dritt-rahmen';
+
+      frage?.remove();
+      figur.querySelector('.dritt-vorschau')?.remove();
+      flaeche.appendChild(rahmen);
+    }
+
+    /* Schon freigegebene Kategorien: sofort einsetzen, ohne zweite Frage. */
+    function nachziehen() {
+      const e = gespeichert();
+      for (const figur of document.querySelectorAll<HTMLElement>('.dritt')) {
+        if (figur.dataset.nurEinmal === '1') continue;
+        const k = figur.dataset.kategorie || '';
+        if (e && e.kategorien.includes(k)) einsetzen(figur);
+      }
+    }
+
+    for (const figur of document.querySelectorAll<HTMLElement>('.dritt')) {
+      figur.querySelector('[data-rolle="freigeben"]')?.addEventListener('click', () => {
+        if (figur.dataset.nurEinmal !== '1') merken(figur.dataset.kategorie || '');
+        einsetzen(figur);
+      });
+    }
+
+    nachziehen();
+
+    /* Wer im Dialog nachträglich zustimmt, soll die Karte sehen, ohne die
+       Seite neu zu laden. */
+    const hoerer = () => nachziehen();
+    document.addEventListener('ku64:einwilligung', hoerer);
+    document.addEventListener('astro:before-swap', () => {
+      document.removeEventListener('ku64:einwilligung', hoerer);
+    }, { once: true });
+  });
+</script>
+
+<style>
+  .dritt {
+    margin: 1.6rem 0;
+  }
+
+  .dritt-flaeche {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--linie);
+    background: var(--flaeche-dunkel);
+    /* Fester Platz von Anfang an: Ein Kasten, der beim Laden wächst, ist
+       ein Layout-Sprung – und der zählt bei Lighthouse als CLS. */
+    aspect-ratio: var(--dritt-verhaeltnis, 16 / 9);
+  }
+
+  /* Wo eine Höhe angegeben ist, gilt sie statt des Verhältnisses. */
+  .dritt[style*='--dritt-hoehe'] .dritt-flaeche {
+    aspect-ratio: auto;
+    height: var(--dritt-hoehe);
+  }
+
+  .dritt-vorschau {
+    position: absolute;
+    inset: 0;
+  }
+
+  .dritt-vorschau :global(img),
+  .dritt-vorschau :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /*
+   * Die Unschärfe.
+   *
+   * `scale`, weil `blur` sonst eine helle Kante nach innen zieht – dieselbe
+   * Maßnahme wie beim Kopfvideo. Zusätzlich abgedunkelt, damit die Schrift
+   * darüber die 4,5:1 erreicht: Über einem unscharfen Bild lässt sich der
+   * Kontrast nicht berechnen, deshalb liegt zusätzlich ein Schleier darauf
+   * (siehe `.dritt-frage::before`).
+   */
+  .dritt-vorschau :global(img),
+  .dritt-vorschau :global(svg) {
+    filter: blur(10px) brightness(0.75) saturate(0.9);
+    scale: 1.08;
+  }
+
+  .dritt-frage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.2rem;
+    text-align: center;
+    /* Deckender Schleier: Der Untergrund ist ein unscharfes Bild, dessen
+       Helligkeit niemand kennt. Ohne ihn wäre der Kontrast Glückssache. */
+    background: color-mix(in oklab, var(--flaeche-dunkel) 62%, transparent);
+    color: #fff;
+  }
+
+  .dritt-titel {
+    margin: 0;
+    font-weight: 650;
+    font-size: 1.02rem;
+  }
+
+  .dritt-text {
+    margin: 0;
+    max-width: 34rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    /* Reines Weiß auf dem Schleier – gemessen über 7:1. */
+    color: #fff;
+  }
+
+  .dritt-fein {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  .dritt-fein a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .dritt-rahmen {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .dritt-fuss {
+    margin: 0.5rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--tinte-leise);
+  }
+
+  .dritt-fuss:empty {
+    display: none;
+  }
+</style>

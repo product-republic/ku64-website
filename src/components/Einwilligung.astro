@@ -1,0 +1,381 @@
+---
+/**
+ * Die Auswahl, was geladen werden darf.
+ *
+ * ── Warum das kein „Cookie-Banner" heißt ────────────────────────────────
+ *
+ * Weil es keiner ist. Cookies sind das Nebenprodukt; die Frage ist, ob Daten
+ * an Google, Doctolib oder Matterport gehen. „Wir verwenden Cookies, um
+ * Ihnen das beste Erlebnis zu bieten" beantwortet diese Frage nicht – es
+ * verdeckt sie.
+ *
+ * ── Was hier anders ist als üblich ──────────────────────────────────────
+ *
+ * 1. Ablehnen ist genauso schnell wie Annehmen. Zwei gleich große
+ *    Schaltflächen, im selben Schritt, in derselben Reihe. Alles andere ist
+ *    nach Artikel 4 Nr. 11 DSGVO keine freiwillige Einwilligung. Die
+ *    Ablehnung steht bewusst LINKS: Wer von links liest, sieht sie zuerst.
+ *
+ * 2. Es steht drin, wofür. Nicht „Statistik", sondern welche vier Dienste in
+ *    welcher Kategorie stehen und was sie übertragen. Die Liste kommt aus
+ *    `dienste.ts` – wer einen Dienst hinzufügt, kann sie nicht vergessen.
+ *
+ * 3. Kein Dunkelmuster. Kein Vorhaken, kein „berechtigtes Interesse" als
+ *    Umweg, kein zweiter Dialog beim Ablehnen, keine eingeblendete
+ *    Verzögerung, die das Ablehnen mühsam macht.
+ *
+ * 4. Es erscheint nur, wenn es etwas zu entscheiden gibt. Steht kein
+ *    einziger einwilligungspflichtiger Dienst auf `aktiv`, bleibt der
+ *    Dialog weg – dann wäre er eine Frage ohne Gegenstand.
+ *
+ * ── Warum kein Layout-Sprung ────────────────────────────────────────────
+ *
+ * Der Dialog liegt in einem `<dialog>` über der Seite, nicht im Textfluss.
+ * Ein Balken, der oben eingeschoben wird, verschiebt den ganzen Inhalt nach
+ * unten – genau der Layout-Sprung, den Lighthouse als CLS zählt. Die
+ * Teamseite hatte deswegen 0,371; das soll nicht durch die Hintertür
+ * zurückkommen.
+ *
+ * `<dialog>` und nicht ein eigenes `div`: Es bringt den Fokusfang, das
+ * Schließen mit Escape und die Rolle für die Vorlesehilfe mit. Nachgebaut
+ * wäre das dreißig Zeilen JavaScript, die alle Fehler noch vor sich haben.
+ *
+ * ── Warum das Skript `is:inline` ist ────────────────────────────────────
+ *
+ * Es muss laufen, bevor irgendetwas anderes einen Drittanbieter anfassen
+ * kann. Ein gebündeltes Modul lädt später – dann stünde die Frage nach der
+ * Antwort.
+ *
+ * ACHTUNG bei Änderungen: `is:inline` gibt den Inhalt WÖRTLICH aus. Die
+ * Astro-Schreibweise {`…`} landet als Text im HTML und ergibt gültiges
+ * JavaScript, das nichts tut – lautlos. Das hat hier schon einmal ein
+ * Kopfvideo und eine CLS-Korrektur gekostet; `skripte-pruefen.mjs` sucht
+ * seitdem danach.
+ */
+import { DIENSTE, KATEGORIE_NAMEN, VERZEICHNIS_FASSUNG, type Kategorie } from '../data/dienste';
+import { MESSKENNUNG } from '../data/messung';
+
+/* Nur Kategorien, in denen wirklich ein aktiver Dienst steht. Eine
+   Kategorie ohne Dienst wäre eine Frage ohne Gegenstand. */
+const REIHENFOLGE: Kategorie[] = ['funktion', 'statistik', 'ki'];
+const aktive = DIENSTE.filter((d) => d.stand === 'aktiv');
+const kategorien = REIHENFOLGE.filter((k) => aktive.some((d) => d.kategorie === k));
+
+/* Ohne einwilligungspflichtigen Dienst gibt es nichts zu fragen. */
+const noetig = kategorien.length > 0;
+
+const ohneAvVertrag = aktive.filter((d) => !d.avVertrag && d.kategorie !== 'notwendig');
+---
+
+{
+  noetig && (
+    <dialog class="einwilligung" id="einwilligung" aria-labelledby="ew-titel">
+      <form method="dialog" class="ew-inhalt">
+        <h2 id="ew-titel">Was darf geladen werden?</h2>
+
+        <p class="ew-vorspann">
+          Diese Website funktioniert ohne alles, was hier steht. Für einzelne Funktionen
+          werden aber Daten an andere Unternehmen übertragen – Sie entscheiden, für welche.
+          Ihre Entscheidung gilt sechs Monate und lässt sich jederzeit auf{' '}
+          <a href="/cookies/">Cookie-Einstellungen</a> ändern.
+        </p>
+
+        <ul class="ew-liste">
+          {kategorien.map((k) => (
+            <li>
+              <label class="ew-zeile">
+                {/* Nicht vorgehakt – siehe Kopfkommentar. */}
+                <input type="checkbox" name="kategorie" value={k} />
+                <span>
+                  <strong>{KATEGORIE_NAMEN[k].name}</strong>
+                  <span class="ew-erklaerung">{KATEGORIE_NAMEN[k].erklaerung}</span>
+                  <span class="ew-dienste">
+                    {aktive
+                      .filter((d) => d.kategorie === k)
+                      .map((d) => d.name)
+                      .join(' · ')}
+                  </span>
+                </span>
+              </label>
+            </li>
+          ))}
+        </ul>
+
+        {ohneAvVertrag.length > 0 && (
+          <p class="ew-vorbehalt">
+            <strong>Hinweis der Praxis:</strong> Für{' '}
+            {ohneAvVertrag.map((d) => d.name).join(', ')} liegt der
+            Auftragsverarbeitungsvertrag noch nicht bestätigt vor. Solange das so ist,
+            werden diese Dienste auch bei Zustimmung nicht geladen.
+          </p>
+        )}
+
+        {/* Ablehnen links, damit es zuerst gelesen wird. Beide gleich groß. */}
+        <div class="ew-knoepfe">
+          <button type="button" class="knopf ew-knopf" data-ew="ablehnen">
+            Nur das Notwendige
+          </button>
+          <button type="button" class="knopf ew-knopf" data-ew="auswahl">
+            Auswahl speichern
+          </button>
+          <button type="button" class="knopf knopf-primaer ew-knopf" data-ew="alles">
+            Alles erlauben
+          </button>
+        </div>
+
+        <p class="ew-fuss">
+          Was genau übertragen wird, steht im{' '}
+          <a href="/cookies/">Verzeichnis der Dienste</a> und in der{' '}
+          <a href="/datenschutz/">Datenschutzerklärung</a>.
+        </p>
+      </form>
+    </dialog>
+  )
+}
+
+{
+  noetig && (
+    <script
+      is:inline
+      data-astro-rerun
+      data-fassung={String(VERZEICHNIS_FASSUNG)}
+      data-messkennung={MESSKENNUNG}
+      data-kategorien={kategorien.join(',')}
+      data-gesperrt={ohneAvVertrag.map((d) => d.kategorie).join(',')}
+    >
+      (() => {
+        const skript = document.currentScript;
+        const dialog = document.getElementById('einwilligung');
+        if (!skript || !dialog) return;
+
+        const SCHLUESSEL = 'ku64:einwilligung';
+        const TAGE = 182;
+        const FASSUNG = Number(skript.dataset.fassung);
+        const MESSKENNUNG = skript.dataset.messkennung || '';
+        const ALLE = (skript.dataset.kategorien || '').split(',').filter(Boolean);
+        /* Kategorien, deren Dienste ohne AV-Vertrag sind: nicht laden, auch
+           wenn zugestimmt wurde. Eine Einwilligung ersetzt keinen Vertrag. */
+        const GESPERRT = (skript.dataset.gesperrt || '').split(',').filter(Boolean);
+
+        function lesen() {
+          try {
+            const roh = localStorage.getItem(SCHLUESSEL);
+            if (!roh) return null;
+            const e = JSON.parse(roh);
+            if (!e || !Array.isArray(e.kategorien)) return null;
+            if (e.fassung !== FASSUNG) return null;
+            const alter = (Date.now() - Date.parse(e.am)) / 86400000;
+            if (!isFinite(alter) || alter > TAGE) return null;
+            return e;
+          } catch {
+            return null;
+          }
+        }
+
+        function messenErlaubt() {
+          const h = location.hostname.toLowerCase();
+          return !(h === 'localhost' || h === '127.0.0.1' || h.endsWith('.up.railway.app'));
+        }
+
+        function anwenden(e) {
+          document.dispatchEvent(new CustomEvent('ku64:einwilligung', { detail: e }));
+          if (!e) return;
+          const frei = (k) => e.kategorien.includes(k) && !GESPERRT.includes(k);
+
+          if (frei('statistik') && MESSKENNUNG && messenErlaubt()) {
+            if (!window.__ku64_ga) {
+              window.__ku64_ga = true;
+              const s = document.createElement('script');
+              s.async = true;
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(MESSKENNUNG);
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () { window.dataLayer.push(arguments); };
+              window.gtag('js', new Date());
+              window.gtag('config', MESSKENNUNG, {
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false,
+              });
+            }
+          }
+        }
+
+        function speichern(kategorien) {
+          const e = { kategorien: kategorien, am: new Date().toISOString(), fassung: FASSUNG };
+          try { localStorage.setItem(SCHLUESSEL, JSON.stringify(e)); } catch {}
+          dialog.close();
+          anwenden(e);
+        }
+
+        dialog.addEventListener('click', (ereignis) => {
+          const knopf = ereignis.target.closest('[data-ew]');
+          if (!knopf) return;
+          const was = knopf.dataset.ew;
+          if (was === 'ablehnen') return speichern([]);
+          if (was === 'alles') return speichern(ALLE.slice());
+          const gewaehlt = [...dialog.querySelectorAll('input[name="kategorie"]:checked')].map((i) => i.value);
+          speichern(gewaehlt);
+        });
+
+        /* Escape schließt den Dialog, ohne zu speichern – dann ist nichts
+           erlaubt und beim nächsten Aufruf wird erneut gefragt. Genau so
+           soll es sein: Wegklicken ist keine Zustimmung. */
+        dialog.addEventListener('cancel', () => {
+          document.dispatchEvent(new CustomEvent('ku64:einwilligung', { detail: null }));
+        });
+
+        const vorhanden = lesen();
+        if (vorhanden) {
+          anwenden(vorhanden);
+        } else if (!dialog.open) {
+          dialog.showModal();
+        }
+      })();
+    </script>
+  )
+}
+
+<style>
+  .einwilligung {
+    /* Kein Rand, kein Standard-Aussehen des Browsers. */
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(38rem, calc(100vw - 2rem));
+    /* Unten statt mittig: Auf dem Telefon ist die Mitte dort, wo gerade
+       gelesen wird. Unten liegt es im Daumenbereich und verdeckt weniger. */
+    margin: auto auto max(1rem, env(safe-area-inset-bottom)) auto;
+    color: var(--tinte);
+  }
+
+  .einwilligung::backdrop {
+    /* Kein schwarzer Vorhang: Die Seite soll lesbar bleiben, damit die
+       Entscheidung im Zusammenhang fällt und nicht unter Druck. */
+    background: color-mix(in oklab, var(--flaeche-dunkel) 45%, transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .ew-inhalt {
+    background: var(--flaeche);
+    border: 1px solid var(--linie);
+    border-radius: 14px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-shadow: 0 18px 50px -12px rgb(0 0 0 / 0.28);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    /* Sehr kleine Höhen: Der Dialog darf scrollen, statt abgeschnitten zu
+       werden – auf einem Telefon im Querformat ist das der Normalfall. */
+    max-height: min(80vh, 40rem);
+    overflow-y: auto;
+  }
+
+  .ew-inhalt h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+
+  .ew-vorspann,
+  .ew-fuss,
+  .ew-vorbehalt {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .ew-fuss {
+    color: var(--tinte-leise);
+    font-size: 0.82rem;
+  }
+
+  .ew-vorbehalt {
+    /* Gelb markiert, trägt keine Fläche – dieselbe Regel wie überall. */
+    border-left: 4px solid var(--gelb);
+    padding-left: 0.8rem;
+  }
+
+  .ew-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ew-zeile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--linie);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .ew-zeile:hover {
+    border-color: var(--tinte-leise);
+  }
+
+  /* Der Fokus gehört sichtbar an die ganze Zeile, nicht nur an das
+     Kästchen – sonst weiß man mit der Tastatur nicht, wo man ist. */
+  .ew-zeile:focus-within {
+    outline: 2px solid var(--akzent);
+    outline-offset: 2px;
+  }
+
+  .ew-zeile input {
+    /* Groß genug, um mit dem Finger getroffen zu werden. */
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.15rem;
+    accent-color: var(--akzent);
+  }
+
+  .ew-zeile > span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ew-erklaerung {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--tinte-weich);
+  }
+
+  .ew-dienste {
+    font-size: 0.78rem;
+    color: var(--tinte-leise);
+  }
+
+  .ew-knoepfe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  /* Gleiches Gewicht für alle drei: `flex: 1 1 0` gibt jedem denselben
+     Anteil. Eine kleinere Ablehnung wäre ein Dunkelmuster. */
+  .ew-knopf {
+    flex: 1 1 0;
+    min-width: 9rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .einwilligung[open] .ew-inhalt {
+      animation: ew-auf 220ms ease-out;
+    }
+  }
+
+  @keyframes ew-auf {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+</style>

@@ -63,6 +63,11 @@ export const TEXTE = {
   'leistung.ablauf': 'So läuft es ab',
   'leistung.synonyme': 'Auch bekannt als',
   'leistung.haeufigeFragen': '{name}: häufige Fragen',
+  'leistung.ausfuehrlich': '{name} ausführlich',
+  'leistung.imEinzelnen': '{name} im Einzelnen',
+  'leistung.zurueckZur': 'Zurück zu {name}',
+  'leistung.teilVon': 'Dieser Text gehört zu {name}.',
+  'leistung.woErhaeltlich': 'Wo Sie {name} bekommen',
   'leistung.passtDazu': 'Passt dazu',
   'leistung.ansprechperson': 'Ihre Ansprechperson',
   'leistung.ansprechpersonen': 'Ihre Ansprechpersonen',
@@ -466,6 +471,7 @@ export const TEXTE = {
   'leistuebersicht.nichtsGefundenHier':
     'Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.',
   'leistuebersicht.anAnderenStandorten': 'An anderen KU64-Standorten',
+  'leistuebersicht.mehrZu': 'Mehr zu {name} – ausführlich',
   'leistuebersicht.anderswoText':
     'Diese Leistungen gibt es in {ort} nicht. Damit Sie nicht vergeblich suchen, führen wir Sie direkt zum richtigen Standort.',
   'standorte.behandlung': 'Leistung',

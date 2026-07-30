@@ -10,6 +10,8 @@ import LeistungKarte from '../../../../components/LeistungKarte.astro';
 import TerminBand from '../../../../components/TerminBand.astro';
 import { STANDORTE } from '../../../../data/standorte';
 import { schemaBrotkrumen } from '../../../../lib/seo';
+import Langtext from '../../../../components/Langtext.astro';
+import { kategorietext } from '../../../../lib/langtexte';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
@@ -96,6 +98,26 @@ const suchindex = alleHier.map((l) => ({
               </div>
             ))}
           </div>
+
+          {/*
+            Der Übersichtstext der Kategorie – wiederhergestellt.
+
+            Fünf der alten Seiten waren genau das: „Zahnersatz in Berlin",
+            „Ihr Kieferorthopäde in Berlin", „Ästhetische Zahnmedizin",
+            „Oralchirurgie", „Ästhetische Medizin", zusammen 7.901 Wörter.
+            Sie standen im ersten Neubau nur noch als Anker auf dieser Seite,
+            und ein Anker trägt keinen Text.
+
+            Er steht UNTER den Karten: Wer die Übersicht öffnet, sucht
+            zuerst eine Behandlung. Wer sich einlesen will, findet den Text
+            darunter – und die Suchmaschine findet ihn überhaupt erst wieder.
+          */}
+          {kategorietext(g.kategorie.slug) && (
+            <details class="kategorie-text">
+              <summary>{t('leistuebersicht.mehrZu', { name: g.kategorie.name })}</summary>
+              <Langtext langtext={kategorietext(g.kategorie.slug)!} titel={null} />
+            </details>
+          )}
         </section>
       ))
     }

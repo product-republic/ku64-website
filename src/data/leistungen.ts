@@ -156,6 +156,25 @@ export const KATEGORIEN: Kategorie[] = [
       'Für alle, die den Zahnarztbesuch aufschieben: Behandlung in Sedierung, unter Lachgas oder in Vollnarkose.',
     rang: 10,
   },
+  {
+    /*
+     * Gesichtsästhetik – bewusst NICHT unter „Ästhetische Zahnmedizin".
+     *
+     * Veneers und Bleaching arbeiten am Zahn, Botulinumtoxin und Hyaluron am
+     * Gesicht. Das sind zwei Disziplinen mit zwei Ausbildungen, und sie
+     * unterliegen verschiedenem Recht: § 11 HWG setzt der Werbung für
+     * Faltenbehandlungen engere Grenzen als für zahnmedizinische Leistungen.
+     *
+     * In einer gemeinsamen Kategorie wäre dieser Unterschied unsichtbar –
+     * und die Praxis müsste bei jeder Textänderung selbst daran denken,
+     * welche Regel gilt. Getrennt ist es an der Struktur ablesbar.
+     */
+    slug: 'aesthetik-medizin',
+    name: 'Ästhetische Medizin',
+    beschreibung:
+      'Behandlungen im Gesicht statt am Zahn: Mimikfalten glätten und Volumen zurückgeben – ärztlich durchgeführt, ohne Operation.',
+    rang: 11,
+  }
 ];
 
 const ALLE = STANDORT_SLUGS;
@@ -1370,6 +1389,224 @@ export const LEISTUNGEN: Leistung[] = [
         frage: 'Kann ich die Aufnahme mitnehmen?',
         antwort:
           'Ja. Sie erhalten die Daten auf Wunsch digital – etwa für eine Zweitmeinung oder für mitbehandelnde Fachärztinnen und Fachärzte.',
+      },
+    ],
+  },
+
+  /*
+   * ── Sieben Behandlungen, die es schon gab ────────────────────────────
+   *
+   * Diese sieben hatten auf ku64.de eigene Seiten mit zusammen 16.700
+   * Wörtern und waren im ersten Neubau auf die Übersicht zusammengefaltet –
+   * technisch saubere Weiterleitungen, inhaltlich weg. Ihr Fachtext steht in
+   * `src/inhalte/langtexte.json` und wird von `Langtext.astro` gesetzt;
+   * hier stehen nur die Angaben, die eine Behandlungsseite ausmachen.
+   *
+   * Zwei Dinge sind bewusst zurückhaltend gesetzt:
+   *
+   * `verfuegbar` steht auf dem Kurfürstendamm. Die alten Seiten nannten
+   * durchweg „Praxis KU64 in Berlin Charlottenburg", und die Website ist
+   * genau darauf gebaut, eine Behandlung nicht an einem Ort anzukündigen, an
+   * dem es sie nicht gibt. Wo die Praxis mehr Standorte bestätigt, wird die
+   * Liste erweitert – zu wenig behauptet ist heilbar, zu viel nicht.
+   *
+   * `kosten` fehlt überall. Die Preise der ästhetischen Medizin lagen nicht
+   * in der Auswertung, aus der `preise.ts` stammt. Eine erfundene Spanne
+   * wäre schlimmer als keine.
+   *
+   * Zur ästhetischen Medizin gehört ein Hinweis, der nicht technisch ist:
+   * § 11 HWG setzt der Werbung für Botulinumtoxin und Hyaluron engere
+   * Grenzen als bei zahnmedizinischen Leistungen. Der Text ist wortgleich
+   * der der Praxis und stand dort jahrelang öffentlich; die rechtliche
+   * Prüfung gehört trotzdem in die Freigabe.
+   */
+  {
+    slug: 'zahnsanierung',
+    name: 'Zahnsanierung',
+    kategorie: 'zahnersatz',
+    kurz: 'Mehrere Befunde in einem geplanten Ablauf behandeln – statt Zahn für Zahn.',
+    teaser:
+      'Wenn an vielen Zähnen gleichzeitig etwas zu tun ist, ist die Reihenfolge entscheidend. Eine Zahnsanierung plant alle Schritte vorab: was zuerst, was zusammen in einer Sitzung, was warten kann – und was das insgesamt kostet.',
+    synonyme: [
+      'Zahnsanierung',
+      'Gebisssanierung',
+      'Komplettsanierung',
+      'Zähne komplett machen lassen',
+      'Vollsanierung',
+      'Zahnsanierung in Narkose',
+    ],
+    patientenfrage: 'Können mehrere kaputte Zähne in einem Durchgang behandelt werden?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['keramik-kronen', 'zahnimplantate', 'behandlung-in-narkose'],
+    faq: [
+      {
+        frage: 'Wie lange dauert eine Zahnsanierung?',
+        antwort:
+          'Das hängt vom Befund ab und wird vor dem ersten Termin geplant. Der Unterschied zur Behandlung Zahn für Zahn liegt genau darin: Sie wissen von Anfang an, wie viele Sitzungen es werden.',
+      },
+      {
+        frage: 'Geht das auch in einer Narkose?',
+        antwort:
+          'Ja. Gerade bei einer umfangreichen Sanierung lässt sich vieles in einer Sitzung zusammenfassen – siehe Behandlung in Narkose.',
+      },
+    ],
+  },
+  {
+    slug: 'ganzheitliche-zahnmedizin',
+    name: 'Ganzheitliche Zahnmedizin',
+    kategorie: 'funktion',
+    kurz: 'Den Mund im Zusammenhang mit dem übrigen Körper betrachten.',
+    teaser:
+      'Kiefergelenk, Zähne, Muskulatur und Haltung hängen zusammen. Die ganzheitliche Zahnheilkunde sucht die Ursache nicht immer dort, wo der Schmerz sitzt – und arbeitet bei Bedarf mit Osteopathie und Physiotherapie zusammen.',
+    synonyme: [
+      'ganzheitliche Zahnmedizin',
+      'ganzheitliche Zahnheilkunde',
+      'biologische Zahnmedizin',
+      'Zahnmedizin und Osteopathie',
+      'Materialunverträglichkeit',
+    ],
+    patientenfrage: 'Können Zähne Beschwerden im ganzen Körper auslösen?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['cmd-behandlung', 'dentosophie', 'knirscherschiene'],
+    faq: [
+      {
+        frage: 'Was ist daran anders als an einer normalen Behandlung?',
+        antwort:
+          'Der Blick ist weiter: Neben dem Befund am Zahn geht es um Kiefergelenk, Muskulatur, Haltung und Materialverträglichkeit. Die Behandlung selbst folgt derselben Zahnmedizin.',
+      },
+    ],
+  },
+  {
+    slug: 'kieferchirurgische-kombinationstherapie',
+    name: 'Kieferchirurgische Kombinationstherapie',
+    kategorie: 'chirurgie',
+    kurz: 'Zahnspange und Kieferoperation zusammen, wenn die Kiefer zueinander falsch stehen.',
+    teaser:
+      'Bei ausgewachsenen Kiefern lässt sich eine deutliche Fehlstellung nicht mehr allein mit einer Zahnspange lösen. Kieferorthopädie und Kieferchirurgie arbeiten dann in einem gemeinsamen Plan – erst die Zähne in Position, dann die Kiefer.',
+    synonyme: [
+      'kieferchirurgische Kombinationstherapie',
+      'Dysgnathie',
+      'Kieferfehlstellung Operation',
+      'Umstellungsosteotomie',
+      'Kieferverlagerung',
+    ],
+    patientenfrage: 'Was passiert, wenn Ober- und Unterkiefer nicht zueinander passen?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['feste-zahnspange', 'weisheitszaehne', 'cmd-behandlung'],
+    faq: [
+      {
+        frage: 'Warum reicht eine Zahnspange nicht?',
+        antwort:
+          'Eine Zahnspange bewegt Zähne, keine Kiefer. Steht der Kiefer selbst falsch, verschiebt sie die Zähne nur innerhalb der falschen Position – die Ursache bleibt.',
+      },
+    ],
+  },
+  {
+    slug: 'longevity',
+    name: 'Longevity Zahnmedizin',
+    kategorie: 'vorsorge',
+    kurz: 'Die eigenen Zähne so lange behalten wie möglich – als Plan, nicht als Hoffnung.',
+    teaser:
+      'Zähne altern mit. Das Longevity-Konzept behandelt Zahngesundheit als etwas, das über Jahrzehnte geplant wird: Substanz erhalten, statt sie später zu ersetzen, und Entzündungen früh finden, weil sie nicht im Mund bleiben.',
+    synonyme: [
+      'Longevity',
+      'Longevity Zahnmedizin',
+      'Zahngesundheit im Alter',
+      'Zähne lange behalten',
+      'präventive Zahnmedizin',
+      'Zahnmedizin und Lebenserwartung',
+    ],
+    patientenfrage: 'Was kann ich tun, um meine eigenen Zähne bis ins Alter zu behalten?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['prophylaxe-4-0', 'zahnvorsorge', 'parodontitis-behandlung'],
+    faq: [
+      {
+        frage: 'Ist das eine Behandlung oder ein Konzept?',
+        antwort:
+          'Ein Konzept, das die einzelnen Behandlungen ordnet: Prophylaxe, Früherkennung und Zahnerhalt in einer Reihenfolge, die auf Jahrzehnte angelegt ist.',
+      },
+    ],
+  },
+  {
+    slug: 'faltenbehandlung',
+    name: 'Faltenbehandlung',
+    kategorie: 'aesthetik-medizin',
+    kurz: 'Mimikfalten glätten – ohne Operation, im ärztlichen Rahmen.',
+    teaser:
+      'Falten entstehen dort, wo sich das Gesicht bewegt. Eine Behandlung mit Botulinumtoxin entspannt gezielt einzelne Muskeln; das Ergebnis hält einige Monate und ist umkehrbar. Durchgeführt von Ärztinnen und Ärzten der Praxis.',
+    synonyme: [
+      'Faltenbehandlung',
+      'Botox',
+      'Botulinumtoxin',
+      'Falten glätten',
+      'Stirnfalten',
+      'Krähenfüße',
+      'Faltenbehandlung Berlin',
+    ],
+    patientenfrage: 'Wie lange hält eine Faltenbehandlung?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['zornesfalte', 'hyaluron-lippen', 'smile-design'],
+    faq: [
+      {
+        frage: 'Ist das umkehrbar?',
+        antwort:
+          'Ja. Die Wirkung baut sich nach einigen Monaten von selbst ab. Wer nicht nachbehandeln lässt, kehrt in den Ausgangszustand zurück.',
+      },
+      {
+        frage: 'Warum bei einer Zahnarztpraxis?',
+        antwort:
+          'Weil dieselben Muskeln, die Falten bilden, auch beim Kauen und Sprechen arbeiten – und weil die Ärztinnen und Ärzte hier die Gesichtsanatomie täglich vor sich haben.',
+      },
+    ],
+  },
+  {
+    slug: 'zornesfalte',
+    name: 'Zornesfalte behandeln',
+    kategorie: 'aesthetik-medizin',
+    kurz: 'Die Falte zwischen den Augenbrauen, die strenger wirkt, als man sich fühlt.',
+    teaser:
+      'Die Zornesfalte entsteht durch einen kleinen Muskel zwischen den Augenbrauen, der bei Konzentration mitarbeitet. Wird er gezielt entspannt, verliert der Blick den strengen Ausdruck, ohne dass die Mimik verschwindet.',
+    synonyme: [
+      'Zornesfalte',
+      'Glabellafalte',
+      'Falte zwischen den Augenbrauen',
+      'Zornesfalte entfernen',
+      'Stirnfalte',
+    ],
+    patientenfrage: 'Kann man die Falte zwischen den Augenbrauen behandeln?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['faltenbehandlung', 'hyaluron-lippen'],
+    faq: [
+      {
+        frage: 'Sieht man danach noch, wenn ich mich freue?',
+        antwort:
+          'Ja. Behandelt wird ein einzelner Muskel, nicht das Gesicht. Ziel ist, den unbeabsichtigt strengen Ausdruck zu nehmen – nicht die Mimik.',
+      },
+    ],
+  },
+  {
+    slug: 'hyaluron-lippen',
+    name: 'Hyaluron-Behandlung',
+    kategorie: 'aesthetik-medizin',
+    kurz: 'Volumen mit einem Stoff, den der Körper selbst herstellt.',
+    teaser:
+      'Hyaluronsäure bindet Wasser und gibt Volumen zurück – an den Lippen, an den Wangen, in einzelnen Falten. Der Körper baut sie über Monate wieder ab, weshalb sich das Ergebnis in Schritten aufbauen lässt.',
+    synonyme: [
+      'Hyaluron',
+      'Hyaluronsäure',
+      'Lippen aufspritzen',
+      'Lippenunterspritzung',
+      'Volumenaufbau',
+      'Nasolabialfalte',
+    ],
+    patientenfrage: 'Wie natürlich sieht eine Lippenbehandlung mit Hyaluron aus?',
+    verfuegbar: ['berlin-charlottenburg'],
+    related: ['faltenbehandlung', 'zornesfalte', 'smile-design'],
+    faq: [
+      {
+        frage: 'Was passiert, wenn es mir nicht gefällt?',
+        antwort:
+          'Hyaluronsäure wird vom Körper abgebaut und lässt sich zusätzlich mit einem Enzym auflösen. Deshalb wird in kleinen Schritten gearbeitet.',
       },
     ],
   },

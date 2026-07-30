@@ -1,0 +1,200 @@
+---
+/**
+ * Ein Unterthema, standortübergreifend – die kanonische Fassung.
+ *
+ * ── Warum diese Seite die wichtigere ist ────────────────────────────────
+ *
+ * Die alte Adresse lautete
+ *
+ *     /leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/
+ *
+ * und trug keinen Ort. Genau dorthin zeigen die Suchergebnisse, die Backlinks
+ * und die Lesezeichen von Jahren. Die Weiterleitung führt heute auf
+ * `/leistungen/zahnimplantate/zahnimplantat-kosten/` – und diese Seite ist es.
+ *
+ * Ohne sie liefen 29 Adressen des Altbestands ins Leere. Genau das hat
+ * `urls-abgleichen.mjs` beim ersten Bau gemeldet, und zwar zu Recht: Die
+ * Weiterleitungen waren schon auf die zurückgekehrten Unterseiten gebogen,
+ * die standortfreie Fassung fehlte aber noch. Eine Weiterleitung auf eine
+ * Seite, die es nicht gibt, ist eine Fehlerseite mit Umweg.
+ *
+ * ── Wegweiser, kein Ersatz ──────────────────────────────────────────────
+ *
+ * Wie die standortübergreifende Behandlungsseite: Sie beantwortet die Frage
+ * vollständig – das ist der Grund, warum jemand kommt – und führt dann zu den
+ * Standorten, an denen die Behandlung stattfindet. Sie kündigt keine
+ * Terminbuchung an, weil ein Termin immer an einem Ort ist.
+ *
+ * Das Canonical zeigt auf diese Seite, nicht auf eine Standortfassung: Der
+ * Fachtext ist ortsunabhängig, und fünf gleiche Texte mit fünf Canonicals auf
+ * fünf verschiedene Adressen wären genau der Duplikatfehler, den die
+ * Standortarchitektur vermeiden soll.
+ */
+import { inhalte } from '../../../../i18n/daten';
+import { texte } from '../../../../i18n/katalog';
+import { mitSprachen } from '../../../../i18n/sprachen';
+import Basis from '../../../../layouts/Basis.astro';
+import Langtext from '../../../../components/Langtext.astro';
+import { LEISTUNGEN } from '../../../../data/leistungen';
+import { alleUnterthemen, unterthema, anriss } from '../../../../lib/langtexte';
+import { schemaBrotkrumen, descriptionKuerzen } from '../../../../lib/seo';
+
+export function getStaticPaths() {
+  const bekannt = new Set(LEISTUNGEN.map((l) => l.slug));
+  return mitSprachen(
+    alleUnterthemen()
+      /* Ein Unterthema ohne seine Behandlung wäre eine Seite ohne Eltern.
+         Kommt vor, wenn eine Behandlung aus dem Katalog genommen wird –
+         dann soll der Bau nicht abbrechen, aber die Seite auch nicht
+         entstehen. `inhalt-pruefen.mjs` meldet solche Waisen. */
+      .filter((u) => bekannt.has(u.leistung))
+      .map((u) => ({ params: { leistung: u.leistung, unterthema: u.slug } })),
+  );
+}
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const { leistung: leistungSlug, unterthema: unterthemaSlug } = Astro.params;
+
+const leistung = daten.leistung(leistungSlug!)!;
+const thema = unterthema(leistungSlug!, unterthemaSlug!)!;
+
+const leistungPfad = `/leistungen/${leistung.slug}/`;
+const pfad = `${leistungPfad}${thema.slug}/`;
+
+const titel = thema.titel ?? `${leistung.name}: ${thema.slug}`;
+
+const brotkrumen = [
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.leistungen'), pfad: '/leistungen/' },
+  { name: leistung.name, pfad: leistungPfad },
+  { name: titel, pfad },
+];
+
+const beschreibung = descriptionKuerzen(anriss(thema, 300));
+
+const wo = daten.standorte.filter((s) => leistung.verfuegbar.includes(s.slug));
+
+const geschwister = alleUnterthemen()
+  .filter((u) => u.leistung === leistungSlug && u.slug !== thema.slug)
+  .slice(0, 6);
+---
+
+<Basis
+  titel={titel}
+  description={beschreibung}
+  standort={null}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <div class="huelle abschnitt">
+    <header class="kopf">
+      <p class="kopf-hinweis">
+        <a href={leistungPfad}>{t('leistung.zurueckZur', { name: leistung.name })}</a>
+      </p>
+      <h1>{titel}</h1>
+    </header>
+
+    <Langtext langtext={thema} titel={null} basisStufe={2} />
+
+    {/* Wo es die Behandlung gibt – der Weg vom Text zum Termin. */}
+    {
+      wo.length > 0 && (
+        <section class="wo" aria-labelledby="wo-titel">
+          <h2 id="wo-titel">{t('leistung.woErhaeltlich', { name: leistung.name })}</h2>
+          <ul class="wo-liste">
+            {wo.map((s) => (
+              <li>
+                <a href={`/${s.slug}/leistungen/${leistung.slug}/`}>KU64 {s.name}</a>
+                <span class="wo-ort">{s.ort}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      geschwister.length > 0 && (
+        <section class="weiter" aria-labelledby="weiter-titel">
+          <h2 id="weiter-titel">{t('leistung.imEinzelnen', { name: leistung.name })}</h2>
+          <ul class="weiter-liste">
+            {geschwister.map((u) => (
+              <li>
+                <a href={`${leistungPfad}${u.slug}/`}>{u.titel ?? u.slug}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</Basis>
+
+<style>
+  .kopf {
+    max-width: 38rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .kopf-hinweis {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: var(--tinte-leise);
+  }
+
+  .kopf h1 {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .wo,
+  .weiter {
+    max-width: 38rem;
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--linie);
+  }
+
+  .wo h2,
+  .weiter h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.7rem;
+  }
+
+  .wo-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .wo-liste li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    align-items: baseline;
+    line-height: 1.5;
+  }
+
+  .wo-ort {
+    font-size: 0.85rem;
+    color: var(--tinte-leise);
+  }
+
+  .weiter-liste {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .weiter-liste li {
+    line-height: 1.55;
+  }
+</style>

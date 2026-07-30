@@ -1,0 +1,381 @@
+---
+/**
+ * Der wiederhergestellte Originaltext einer Seite.
+ *
+ * ── Worum es hier geht ──────────────────────────────────────────────────
+ *
+ * Die alte Website hatte auf den Behandlungsseiten 117.595 Wörter, der
+ * Neubau hatte 18.444. Nicht weil gekürzt wurde – sondern weil beim
+ * Neuschreiben die Themen mitverschwanden: Zu Zahnimplantaten gab es fünf
+ * Seiten, und vier davon beantworteten je eine Frage, die ein Mensch mit
+ * Behandlungsabsicht stellt. Kosten. Haltbarkeit. Rauchen. Implantat oder
+ * Brücke.
+ *
+ * Dieser Baustein setzt diesen Text. Er ist wortgleich der der Praxis;
+ * geändert wurden nur Überschriften, die in Versalien geschrieben waren.
+ *
+ * ── Warum ein Inhaltsverzeichnis ────────────────────────────────────────
+ *
+ * Ein Text von 2.400 Wörtern ohne Sprungmarken ist eine Wand. Die alte
+ * Website hatte auf 24 Seiten ein „Inhaltsverzeichnis" – handgepflegt und
+ * damit an den Stellen falsch, an denen jemand eine Überschrift geändert
+ * hat. Hier entsteht es aus den Abschnitten selbst und kann nicht veralten.
+ *
+ * Es erscheint ab vier Abschnitten. Darunter ist es länger als hilfreich.
+ *
+ * ── Warum die Überschriftenebenen neu vergeben werden ───────────────────
+ *
+ * Auf der alten Seite war der Langtext die ganze Seite, seine Zwischenzeilen
+ * waren `h2`. Hier steht er teils innerhalb einer Seite, die `h2` schon für
+ * „Ablauf", „Kosten", „Häufige Fragen" verwendet, und teils direkt unter der
+ * `h1`. Übernommen ergäbe das zwei gleichrangige Gliederungen und
+ * Ebenensprünge – genau die 15 Ebenensprünge, die auf der alten Website
+ * gemessen wurden und hier auf 0 stehen.
+ *
+ * Die Ebenen werden deshalb ab `basisStufe` lückenlos neu vergeben; das
+ * Verfahren und die drei Sprünge, die ein starres Verschieben erzeugt hatte,
+ * stehen unten am Code. `barrierefrei-pruefen.mjs` prüft es nach.
+ *
+ * ── Warum die Herkunft dabeisteht ───────────────────────────────────────
+ *
+ * Damit beim fachlichen Gegenlesen nachvollziehbar ist, woher jeder Absatz
+ * kommt. Die Praxis muss diese Texte freigeben; eine Freigabe ohne Quelle
+ * ist keine.
+ */
+import type { Langtext } from '../lib/langtexte';
+
+interface Props {
+  langtext: Langtext;
+  /**
+   * Überschrift über dem Ganzen. `null` lässt sie weg – richtig auf einer
+   * Unterthemenseite, wo der Langtext der Hauptinhalt ist und keine
+   * Einleitung braucht.
+   */
+  titel?: string | null;
+  /** Ab wie vielen Abschnitten das Inhaltsverzeichnis erscheint. */
+  abZuVerzeichnis?: number;
+  /**
+   * Die Ebene, auf der die flachste Zwischenzeile landet.
+   *
+   * 2 auf einer Seite, deren Hauptinhalt der Langtext ist (Unterthema –
+   * direkt unter der H1). 3 innerhalb einer Seite, die selbst schon H2
+   * verwendet (Behandlungsseite, Kategorieübersicht). Ein falscher Wert
+   * erzeugt einen Ebenensprung, den `barrierefrei-pruefen.mjs` findet.
+   */
+  basisStufe?: 2 | 3 | 4;
+  /** Quellenangabe zeigen – im Entwurf hilfreich, später abschaltbar. */
+  herkunftZeigen?: boolean;
+}
+
+const {
+  langtext,
+  titel = null,
+  abZuVerzeichnis = 4,
+  herkunftZeigen = false,
+  basisStufe = 3,
+} = Astro.props;
+
+/**
+ * Eine Kennung je Abschnitt, aus seiner Überschrift.
+ *
+ * Aus dem Text und nicht aus dem Index: Eine Sprungmarke `#abschnitt-7`
+ * zeigt nach der nächsten Textänderung woandershin, und ein Verweis von
+ * außen führt ins Leere. Doppelte Kennungen bekommen eine Ziffer – zwei
+ * gleiche `id` sind ein Fehler, den `ids-pruefen.mjs` findet.
+ */
+const gesehen = new Map<string, number>();
+function kennung(text: string): string {
+  const grund =
+    text
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 60) || 'abschnitt';
+  const n = (gesehen.get(grund) ?? 0) + 1;
+  gesehen.set(grund, n);
+  return n === 1 ? grund : `${grund}-${n}`;
+}
+
+/* Nur Abschnitte mit Inhalt. Eine Überschrift über nichts ist im Neubau
+   eine leere Zeile – und im Inhaltsverzeichnis ein Verweis auf nichts. */
+const mitInhalt = langtext.abschnitte.filter((a) => a.bloecke.length > 0);
+
+/*
+ * Die Ebenen neu durchnumerieren, statt die alten um eins zu verschieben.
+ *
+ * Der erste Entwurf schob starr: h2 → h3, h3 → h4. Das ergab drei
+ * verschiedene Ebenensprünge, die `barrierefrei-pruefen.mjs` gemeldet hat:
+ *
+ *   H1 → H3   auf 363 Seiten – Unterthemenseiten, auf denen der Langtext
+ *             direkt unter der H1 steht und deshalb bei H2 anfangen muss
+ *   H2 → H4   auf  12 Seiten – Kategorietexte, deren flachste Ebene auf der
+ *             alten Seite ein H3 war
+ *   H1 → H4   auf   9 Seiten
+ *
+ * Der Fehler war die Annahme, jeder alte Text fange bei h2 an. Er kann bei
+ * h3 anfangen, oder h2 und h4 benutzen und h3 überspringen – dann erbt der
+ * Neubau den Sprung der alten Seite.
+ *
+ * Also: die tatsächlich vorkommenden Ebenen sammeln, sortieren und
+ * lückenlos ab `basisStufe` neu vergeben. Was auf der alten Seite tiefer
+ * lag, liegt hier tiefer – aber ohne Loch.
+ */
+const vorhandeneStufen = [...new Set(mitInhalt.map((a) => a.stufe).filter(Boolean))].sort();
+const stufeZu = new Map<string, number>();
+vorhandeneStufen.forEach((s, i) => stufeZu.set(s as string, Math.min(6, basisStufe + i)));
+
+/*
+ * Und dann die Folge erzwingen, nicht nur die Zuordnung.
+ *
+ * Umnumerieren allein reichte nicht, und der Grund liegt in der alten Seite:
+ * Dort standen Teaser-Kästen als `h4` VOR den eigentlichen Abschnitten. Auf
+ * /leistungen/zahnaufhellung/ sind die ersten acht Überschriften
+ * „Angstpatienten welcome", „7 Tage die Woche", „Prophylaxe-Shop",
+ * „Familientermine mit Spieleparadies" – alle h4 –, und erst danach beginnt
+ * mit h3 der Fachtext. In der Dokumentreihenfolge ist das ein Sprung von H2
+ * auf H4, ganz gleich, wie sauber die Zuordnung ist.
+ *
+ * Eine Gliederung ist aber genau das: eine Reihenfolge. Deshalb wird hier
+ * mitgezählt, welche Ebene zuletzt stand, und keine Überschrift darf mehr
+ * als eine Ebene tiefer einsteigen. Tiefer als die Vorgängerin geht immer,
+ * eine Ebene zurück auch – nur das Loch nicht.
+ *
+ * Das verändert die Gliederung gegenüber der alten Seite. Es macht sie
+ * richtig: Ein Kasten „7 Tage die Woche" IST keine Unterebene des
+ * Fachabschnitts, der nach ihm kommt.
+ */
+let zuletzt = basisStufe - 1;
+const abschnitte = mitInhalt.map((a) => {
+  const gewuenscht = a.stufe ? (stufeZu.get(a.stufe) ?? basisStufe) : basisStufe;
+  const ebene = a.ueberschrift ? Math.max(basisStufe, Math.min(gewuenscht, zuletzt + 1)) : basisStufe;
+  if (a.ueberschrift) zuletzt = ebene;
+  return {
+    ...a,
+    ebene,
+    id: a.ueberschrift ? kennung(a.ueberschrift) : null,
+  };
+});
+
+const mitUeberschrift = abschnitte.filter((a) => a.ueberschrift && a.id);
+const verzeichnis = mitUeberschrift.length >= abZuVerzeichnis ? mitUeberschrift : [];
+
+/*
+ * Eine eigene Kennung je Vorkommen des Bausteins.
+ *
+ * Ein fester Wert wäre auf der Behandlungsübersicht fünfmal vergeben – dort
+ * stehen fünf Kategorietexte auf einer Seite. `aria-labelledby` greift dann
+ * die erste Überschrift, und vier Inhaltsverzeichnisse tragen den Namen des
+ * ersten. `ids-pruefen.mjs` hat genau das gemeldet: fünfmal
+ * `langtext-inhalt-titel` auf zwölf Seiten.
+ *
+ * Abgeleitet aus der Herkunft, nicht aus einem Zähler: Derselbe Text ergibt
+ * bei jedem Bau dieselbe Kennung, und `git diff` bleibt aussagekräftig.
+ */
+const eigenId = `lt-${langtext.herkunft.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').slice(-48)}`;
+
+/**
+ * Aufeinanderfolgende Listenpunkte zu einer Liste zusammenfassen.
+ *
+ * Gespeichert ist je Block seine Art; sechs `li` hintereinander sind eine
+ * Liste mit sechs Punkten und nicht sechs Listen mit je einem. Ohne diesen
+ * Schritt stünde zwischen jedem Punkt ein Listenabstand, und eine
+ * Vorlesehilfe kündigte sechsmal „Liste mit 1 Eintrag" an.
+ */
+type Gruppe =
+  | { art: 'absatz'; text: string }
+  | { art: 'liste'; punkte: string[] }
+  | { art: 'zeilen'; zeilen: string[] };
+
+function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
+  const aus: Gruppe[] = [];
+  for (const b of bloecke) {
+    const letzte = aus[aus.length - 1];
+    if (b.art === 'li') {
+      if (letzte && letzte.art === 'liste') letzte.punkte.push(b.text);
+      else aus.push({ art: 'liste', punkte: [b.text] });
+    } else if (b.art === 'zeile') {
+      if (letzte && letzte.art === 'zeilen') letzte.zeilen.push(b.text);
+      else aus.push({ art: 'zeilen', zeilen: [b.text] });
+    } else {
+      aus.push({ art: 'absatz', text: b.text });
+    }
+  }
+  return aus;
+}
+---
+
+<div class="langtext">
+  {titel && <h2 class="langtext-titel">{titel}</h2>}
+
+  {
+    verzeichnis.length > 0 && (
+      <nav class="langtext-inhalt" aria-labelledby={`${eigenId}-titel`}>
+        <p class="langtext-inhalt-titel" id={`${eigenId}-titel`}>
+          Auf dieser Seite
+        </p>
+        <ol>
+          {verzeichnis.map((a) => (
+            <li>
+              <a href={`#${a.id}`}>{a.ueberschrift}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+
+  {
+    abschnitte.map((a) => (
+      <section class="langtext-abschnitt">
+        {a.ueberschrift && a.id && (
+          <>
+            {a.ebene === 2 && <h2 id={a.id}>{a.ueberschrift}</h2>}
+            {a.ebene === 3 && <h3 id={a.id}>{a.ueberschrift}</h3>}
+            {a.ebene === 4 && <h4 id={a.id}>{a.ueberschrift}</h4>}
+            {a.ebene >= 5 && <h5 id={a.id}>{a.ueberschrift}</h5>}
+          </>
+        )}
+        {gruppieren(a.bloecke).map((g) =>
+          g.art === 'absatz' ? (
+            <p>{g.text}</p>
+          ) : g.art === 'liste' ? (
+            <ul>
+              {g.punkte.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          ) : (
+            /* Tabellenzellen der alten Seite. Ohne die Zeilenstruktur, die
+               beim Auslesen verloren geht, wäre eine nachgebaute Tabelle
+               eine Erfindung – deshalb als Liste, was sie inhaltlich ist. */
+            <ul class="langtext-zeilen">
+              {g.zeilen.map((z) => (
+                <li>{z}</li>
+              ))}
+            </ul>
+          ),
+        )}
+      </section>
+    ))
+  }
+
+  {
+    herkunftZeigen && (
+      <p class="langtext-herkunft">
+        Übernommen von <code>{langtext.herkunft}</code> – {langtext.woerter.toLocaleString('de-DE')}{' '}
+        Wörter, wortgleich. Fachliche Freigabe durch die Praxis steht aus.
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .langtext {
+    /* Lesbreite. Ein Fließtext über die ganze Spalte ist bei 2.400 Wörtern
+       nicht mehr lesbar – 68 Zeichen sind die Grenze, ab der das Auge die
+       Zeile verliert. */
+    max-width: 38rem;
+  }
+
+  .langtext-titel {
+    margin-top: 0;
+  }
+
+  .langtext-abschnitt + .langtext-abschnitt {
+    margin-top: 1.8rem;
+  }
+
+  .langtext h2,
+  .langtext h3,
+  .langtext h4,
+  .langtext h5 {
+    /* Scroll-Ziel nicht unter der Kopfleiste: Ohne das landet die
+       angesprungene Überschrift hinter der klebenden Navigation. */
+    scroll-margin-top: 5rem;
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+  }
+
+  .langtext h2 {
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+
+  .langtext h3 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+
+  .langtext h4 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .langtext h5 {
+    font-size: 1rem;
+  }
+
+  .langtext p {
+    margin: 0 0 0.9rem;
+    line-height: 1.7;
+  }
+
+  .langtext ul {
+    margin: 0 0 1rem;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .langtext li {
+    line-height: 1.6;
+  }
+
+  /* ── Inhaltsverzeichnis ──────────────────────────────────────────── */
+
+  .langtext-inhalt {
+    margin: 0 0 2rem;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid var(--gelb);
+    background: var(--flaeche-warm, var(--flaeche));
+    border-radius: 0 10px 10px 0;
+  }
+
+  .langtext-inhalt-titel {
+    margin: 0 0 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .langtext-inhalt ol {
+    margin: 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .langtext-inhalt a {
+    line-height: 1.5;
+  }
+
+  .langtext-herkunft {
+    margin: 2rem 0 0;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--linie);
+    font-size: 0.82rem;
+    color: var(--tinte-leise);
+  }
+
+  .langtext-herkunft code {
+    font-size: 0.95em;
+  }
+</style>

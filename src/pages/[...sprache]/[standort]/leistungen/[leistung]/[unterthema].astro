@@ -1,0 +1,178 @@
+---
+/**
+ * Ein Unterthema einer Behandlung – die Seite, die zurückkommt.
+ *
+ * ── Warum diese Seiten wieder eigene Adressen haben ─────────────────────
+ *
+ * Die alte Website hatte zu Zahnimplantaten fünf Seiten. Vier davon
+ * beantworteten je eine Frage: „Was kostet ein Zahnimplantat", „Wie lange
+ * hält es", „Implantat und Rauchen", „Implantat oder Brücke". Genau die
+ * Fragen, die jemand mit Behandlungsabsicht eintippt.
+ *
+ * Im ersten Neubau waren sie zu einer Seite mit 722 Wörtern
+ * zusammengefaltet. Technisch saubere Weiterleitungen, aber: Wer „kosten
+ * zahnimplantat berlin" sucht, fand keine Seite mehr, die das beantwortet.
+ * Ein Absatz auf Position 60 einer langen Seite ist keine Antwort auf eine
+ * Suchanfrage.
+ *
+ * Deshalb steht jedes Unterthema wieder für sich – und zwar besser als
+ * vorher: Es liegt unter seinem Standort, trägt dessen Adresse und
+ * Terminbuchung, und es ist mit der Hauptseite in beiden Richtungen
+ * verbunden. Auf der alten Website war die Verbindung nur eine Ebene tief
+ * und ohne Rückweg.
+ *
+ * ── Was hier NICHT steht ────────────────────────────────────────────────
+ *
+ * Kein eigener Preis, kein eigener Ablauf, keine eigenen FAQ. Das sind
+ * Angaben der Behandlung, nicht des Unterthemas; sie stehen einmal auf der
+ * Hauptseite. Eine Kostenspanne, die an zwei Stellen gepflegt wird, ist an
+ * einer davon veraltet.
+ */
+import { inhalte } from '../../../../../i18n/daten';
+import { texte } from '../../../../../i18n/katalog';
+import { mitSprachen } from '../../../../../i18n/sprachen';
+import Basis from '../../../../../layouts/Basis.astro';
+import Langtext from '../../../../../components/Langtext.astro';
+import TerminBand from '../../../../../components/TerminBand.astro';
+import { STANDORTE } from '../../../../../data/standorte';
+import { LEISTUNGEN, leistungenFuerStandort } from '../../../../../data/leistungen';
+import { alleUnterthemen, unterthema, anriss } from '../../../../../lib/langtexte';
+import { schemaBrotkrumen, descriptionKuerzen } from '../../../../../lib/seo';
+
+export function getStaticPaths() {
+  const pfade = [];
+
+  /*
+   * Ein Unterthema entsteht nur dort, wo auch seine Behandlung angeboten
+   * wird. Sonst stünde „Zahnimplantat Kosten" unter einem Standort, der
+   * keine Implantate setzt – und die Terminbuchung darunter führte zu einer
+   * Behandlung, die es dort nicht gibt.
+   */
+  for (const standort of STANDORTE) {
+    const angeboten = new Set(leistungenFuerStandort(standort.slug).map((l) => l.slug));
+    for (const u of alleUnterthemen()) {
+      if (!angeboten.has(u.leistung)) continue;
+      pfade.push({
+        params: { standort: standort.slug, leistung: u.leistung, unterthema: u.slug },
+      });
+    }
+  }
+
+  return mitSprachen(pfade);
+}
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const {
+  standort: standortSlug,
+  leistung: leistungSlug,
+  unterthema: unterthemaSlug,
+} = Astro.params;
+
+const standort = daten.standort(standortSlug!)!;
+const leistung = daten.leistungen.find((l) => l.slug === leistungSlug)!;
+const thema = unterthema(leistungSlug!, unterthemaSlug!)!;
+
+const leistungPfad = `/${standort.slug}/leistungen/${leistung.slug}/`;
+const pfad = `${leistungPfad}${thema.slug}/`;
+
+/* Die Überschrift der alten Seite ist der Titel. Sie ist die Frage, die
+   jemand gestellt hat – ein erfundener Titel wäre schlechter. */
+const titel = thema.titel ?? `${leistung.name}: ${thema.slug}`;
+
+const brotkrumen = [
+  { name: t('krume.start'), pfad: `/${standort.slug}/` },
+  { name: t('krume.leistungen'), pfad: `/${standort.slug}/leistungen/` },
+  { name: leistung.name, pfad: leistungPfad },
+  { name: titel, pfad },
+];
+
+/* Die Beschreibung ist der erste Absatz der Seite – nichts Erfundenes.
+   Was in der Suchmaschine steht, steht auch auf der Seite. */
+const beschreibung = descriptionKuerzen(anriss(thema, 300));
+
+/* Die Geschwister, damit man von hier zu den anderen Fragen kommt. */
+const geschwister = alleUnterthemen()
+  .filter((u) => u.leistung === leistungSlug && u.slug !== thema.slug)
+  .slice(0, 6);
+---
+
+<Basis
+  titel={`${titel} – ${standort.name}`}
+  description={beschreibung}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <div class="huelle abschnitt">
+    <header class="kopf">
+      <p class="kopf-hinweis">
+        <a href={leistungPfad}>{t('leistung.zurueckZur', { name: leistung.name })}</a>
+      </p>
+      <h1>{titel}</h1>
+    </header>
+
+    <Langtext langtext={thema} titel={null} basisStufe={2} />
+
+    {
+      geschwister.length > 0 && (
+        <section class="weiter" aria-labelledby="weiter-titel">
+          <h2 id="weiter-titel">{t('leistung.imEinzelnen', { name: leistung.name })}</h2>
+          <ul class="weiter-liste">
+            {geschwister.map((u) => (
+              <li>
+                <a href={`${leistungPfad}${u.slug}/`}>{u.titel ?? u.slug}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+
+  <TerminBand slot="abschluss" standort={standort} anlass={leistung.name} />
+</Basis>
+
+<style>
+  .kopf {
+    max-width: 38rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .kopf-hinweis {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: var(--tinte-leise);
+  }
+
+  .kopf h1 {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .weiter {
+    max-width: 38rem;
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--linie);
+  }
+
+  .weiter h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.7rem;
+  }
+
+  .weiter-liste {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .weiter-liste li {
+    line-height: 1.55;
+  }
+</style>
