@@ -20,6 +20,7 @@ import Navigation from '../components/Navigation.astro';
 import Fusszeile from '../components/Fusszeile.astro';
 import Brotkrumen from '../components/Brotkrumen.astro';
 import Berater from '../components/Berater.astro';
+import Einwilligung from '../components/Einwilligung.astro';
 import Sprachhinweis from '../components/Sprachhinweis.astro';
 import { type Standort } from '../data/standorte';
 import { titelBauen, descriptionKuerzen, kanonisch, SITE_NAME } from '../lib/seo';
@@ -341,6 +342,20 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
     <Fusszeile standort={standort} />
 
     <Berater standort={standort} />
+
+    {/*
+      Die Auswahl, was geladen werden darf.
+
+      Ganz am Ende des Körpers, nicht im Kopf: Ein `<dialog>` liegt in einer
+      eigenen Ebene über der Seite und braucht dort keinen Platz. Vor allem
+      verschiebt es nichts – ein Balken oben würde den ganzen Inhalt nach
+      unten drücken und wäre genau der Layout-Sprung, den Lighthouse als CLS
+      zählt (die Teamseite stand deswegen einmal bei 0,371).
+
+      Der Baustein entscheidet selbst, ob er überhaupt etwas ausgibt: Steht
+      kein einwilligungspflichtiger Dienst auf „aktiv", bleibt er leer.
+    */}
+    <Einwilligung />
 
     {/* Standortgedächtnis: merkt sich ausschließlich den zuletzt bewusst
         gewählten Standort, um auf standortfreien Seiten passend zu verlinken.

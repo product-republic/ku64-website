@@ -1,0 +1,133 @@
+---
+/**
+ * Ein Kartenbild aus eigener Hand – für die verschwommene Vorschau.
+ *
+ * ── Warum selbst gezeichnet ─────────────────────────────────────────────
+ *
+ * `Drittinhalt.astro` zeigt vor der Freigabe eine unscharfe Vorschau, damit
+ * man sieht, was dort liegt. Genau dabei scheitern die üblichen
+ * Zwei-Klick-Lösungen: Sie nehmen als Platzhalter ein Kartenbild von Google
+ * – und haben die Verbindung damit schon aufgebaut, gegen die sie schützen
+ * sollen. Ein statisches Bild von `maps.googleapis.com` überträgt IP-Adresse
+ * und Referrer wie die Karte selbst.
+ *
+ * Also ein SVG, hier gezeichnet, aus Daten, die wir haben: Anschrift,
+ * Koordinaten, nächste Haltestelle. Es sieht aus wie eine Karte, es ist
+ * keine, und es fragt niemanden.
+ *
+ * ── Warum das ehrlich ist ───────────────────────────────────────────────
+ *
+ * Die Straßen sind schematisch, nicht der Stadtplan von Berlin. Verschwommen
+ * ist das nicht zu unterscheiden, und darum geht es auch nicht: Die Vorschau
+ * beantwortet die Frage „was ist das für ein Kasten", nicht „wo genau ist
+ * die Praxis". Wer die Lage wissen will, liest die Anschrift daneben oder
+ * lädt die Karte.
+ *
+ * Deshalb steht die Anschrift auch IM Bild – scharf gesetzt und in der
+ * Vorschau mit unscharf, aber als Text im SVG vorhanden. Ein Mensch, der die
+ * Karte nicht lädt, hat damit trotzdem alles, was er braucht.
+ *
+ * ── Kein Zufall ─────────────────────────────────────────────────────────
+ *
+ * Die Linien entstehen aus den Koordinaten, nicht aus `Math.random()`. Zwei
+ * Bauläufe ergeben dasselbe SVG, und `git diff` bleibt aussagekräftig.
+ */
+import type { Standort } from '../data/standorte';
+
+interface Props {
+  standort: Standort;
+}
+
+const { standort } = Astro.props;
+
+/*
+ * Aus den Koordinaten eine feste Zahlenfolge machen.
+ *
+ * Damit sehen die fünf Standorte verschieden aus, ohne dass irgendwo ein
+ * Zufallsgenerator läuft: dieselbe Praxis ergibt immer dasselbe Bild.
+ */
+let z = Math.abs(Math.round((standort.geo.lat * 1e5 + standort.geo.lng * 1e5) % 100000)) || 1;
+const naechste = () => {
+  z = (z * 1103515245 + 12345) % 2147483648;
+  return z / 2147483648;
+};
+
+const B = 800;
+const H = 450;
+
+/* Zwei Hauptachsen und einige Nebenstraßen – schematisch. */
+const achsen = [
+  { x1: 0, y1: H * 0.62, x2: B, y2: H * 0.52, dicke: 16 },
+  { x1: B * 0.46, y1: 0, x2: B * 0.54, y2: H, dicke: 12 },
+];
+
+const neben = Array.from({ length: 7 }, () => {
+  const waagerecht = naechste() > 0.5;
+  const p = 0.12 + naechste() * 0.76;
+  return waagerecht
+    ? { x1: 0, y1: H * p, x2: B, y2: H * (p + (naechste() - 0.5) * 0.06), dicke: 4 }
+    : { x1: B * p, y1: 0, x2: B * (p + (naechste() - 0.5) * 0.06), y2: H, dicke: 4 };
+});
+
+/* Häuserblöcke als Rechtecke zwischen den Straßen. */
+const bloecke = Array.from({ length: 16 }, () => ({
+  x: naechste() * B * 0.9,
+  y: naechste() * H * 0.9,
+  b: 40 + naechste() * 90,
+  h: 26 + naechste() * 60,
+}));
+
+const pinX = B * 0.5;
+const pinY = H * 0.5;
+---
+
+<svg
+  viewBox={`0 0 ${B} ${H}`}
+  width="100%"
+  height="100%"
+  role="img"
+  aria-label={`Schematische Lageskizze: KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}`}
+  preserveAspectRatio="xMidYMid slice"
+>
+  {/* Grundfläche */}
+  <rect width={B} height={H} fill="#e8e6df" />
+
+  {/* Blöcke */}
+  {bloecke.map((b) => <rect x={b.x} y={b.y} width={b.b} height={b.h} rx="3" fill="#dcd9d0" />)}
+
+  {/* Nebenstraßen, dann Hauptachsen darüber */}
+  {
+    neben.map((s) => (
+      <line x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke="#f4f2ec" stroke-width={s.dicke} />
+    ))
+  }
+  {
+    achsen.map((s) => (
+      <line
+        x1={s.x1}
+        y1={s.y1}
+        x2={s.x2}
+        y2={s.y2}
+        stroke="#fdfcf8"
+        stroke-width={s.dicke}
+        stroke-linecap="round"
+      />
+    ))
+  }
+
+  {/* Ein Grünstreifen – Berlin hat viele, und die Fläche wirkt sonst leer */}
+  <rect x={B * 0.06} y={H * 0.08} width={B * 0.2} height={H * 0.22} rx="8" fill="#d6ddcd" />
+
+  {/* Die Marke. Kein Symbol aus einer Schrift: „📍" fehlt in mancher
+      Schriftfamilie und wird dann als Ersatzkasten gesetzt. */}
+  <g transform={`translate(${pinX} ${pinY})`}>
+    <path d="M0 6 C-14 -8 -20 -16 -20 -24 A20 20 0 0 1 20 -24 C20 -16 14 -8 0 6 Z" fill="#b71e3f" />
+    <circle cx="0" cy="-24" r="7" fill="#fff" />
+  </g>
+
+  {/* Die Anschrift als Text im Bild – siehe Kopfkommentar. */}
+  <g font-family="Inter, system-ui, sans-serif" fill="#1d1d1b">
+    <text x="28" y={H - 52} font-size="26" font-weight="700">KU64 {standort.name}</text>
+    <text x="28" y={H - 22} font-size="20">{standort.strasse}, {standort.plz} {standort.ort}</text>
+  </g>
+</svg>

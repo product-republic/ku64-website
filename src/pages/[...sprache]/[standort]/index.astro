@@ -14,6 +14,10 @@ import Kopfmedium from '../../../components/Kopfmedium.astro';
 import { STANDORTE, zeitLesbar } from '../../../data/standorte';
 import { kopfmediumFuer } from '../../../data/medien';
 import { schemaStandort, schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
+import Drittinhalt from '../../../components/Drittinhalt.astro';
+import Bild from '../../../components/Bild.astro';
+import { rundgangFuer, rundgangAdresse } from '../../../data/rundgaenge';
+import SmileBand from '../../../components/SmileBand.astro';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
@@ -25,6 +29,16 @@ const t = texte(daten.sprache);
 
 const standort = daten.standort(Astro.params.standort!)!;
 const pfad = `/${standort.slug}/`;
+
+/*
+ * Der 360°-Rundgang, falls es für diesen Standort einen gibt.
+ *
+ * Drei von fünf haben einen – Kurfürstendamm, Hausvogteiplatz und Potsdam.
+ * Wilmersdorf und Charlottenburg nicht. Die Lücke bleibt sichtbar, statt mit
+ * dem Rundgang einer anderen Praxis gefüllt zu werden: „Unsere Räume" über
+ * fremden Räumen wäre eine Falschangabe.
+ */
+const rundgang = rundgangFuer(standort.slug);
 
 const gruppen = daten.gruppen(standort.slug);
 const alleHier = daten.leistungenHier(standort.slug);
@@ -289,6 +303,33 @@ const schema = [
     <FaqBlock titel={t('faq.ort.titel', { name: standort.name })} eintraege={faq} />
   </div>
 
+  <SmileBand standort={standort} sprache={daten.sprache} />
+
+  {
+    rundgang && (
+      <section class="abschnitt" aria-labelledby="rundgang-titel">
+        <div class="huelle">
+          <h2 id="rundgang-titel">{t('ort.rundgang')}</h2>
+          <p class="rundgang-text">{rundgang.beschreibung}</p>
+          <Drittinhalt
+            dienst="matterport"
+            adresse={rundgangAdresse(rundgang.modell)}
+            titel={t('ort.rundgang')}
+            verhaeltnis="16 / 10"
+            erlauben="fullscreen; xr-spatial-tracking; gyroscope; accelerometer; vr"
+          >
+            {rundgang.standbild ? (
+              <Bild slot="vorschau" schluessel={rundgang.standbild} alt="" />
+            ) : (
+              <div slot="vorschau" class="rundgang-ersatz" />
+            )}
+            <Fragment slot="fuss">{t('ort.rundgangFuss')}</Fragment>
+          </Drittinhalt>
+        </div>
+      </section>
+    )
+  }
+
   <TerminBand slot="abschluss" standort={standort} />
 </Basis>
 
@@ -485,5 +526,18 @@ const schema = [
 
   .hinweis {
     margin-block-start: var(--raum-5);
+  }
+
+  .rundgang-text {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-3) 0;
+    color: var(--tinte-weich);
+  }
+
+  /* Kein grauer Kasten, wenn ein Standbild fehlt: Markenfläche statt Leere. */
+  .rundgang-ersatz {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(140deg, var(--flaeche-dunkel), color-mix(in oklab, var(--akzent) 35%, var(--flaeche-dunkel)));
   }
 </style>

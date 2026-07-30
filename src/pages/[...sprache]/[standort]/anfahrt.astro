@@ -6,6 +6,8 @@ import TerminBand from '../../../components/TerminBand.astro';
 import { STANDORTE, zeitLesbar, naechsterStandort } from '../../../data/standorte';
 import { schemaBrotkrumen } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
+import Drittinhalt from '../../../components/Drittinhalt.astro';
+import Kartenvorschau from '../../../components/Kartenvorschau.astro';
 
 export function getStaticPaths() {
   return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
@@ -55,6 +57,27 @@ const sedierungHier = daten
 /* Kartenlink statt eingebetteter Karte: Eine Google-Maps-Einbettung würde ohne
    Einwilligung Daten an Google senden. Der Link tut es erst auf Klick. */
 const kartenZiel = `https://www.openstreetmap.org/?mlat=${standort.geo.lat}&mlon=${standort.geo.lng}#map=17/${standort.geo.lat}/${standort.geo.lng}`;
+
+/*
+ * Die eingebettete Karte mit Routenplanung – geladen erst auf Klick.
+ *
+ * Bis hierhin gab es nur zwei Verweise: einen zu Google Maps und einen zu
+ * OpenStreetMap, beide in einem neuen Fenster. Das war die datensparsame
+ * Lösung und bleibt es auch – sie steht weiter darüber.
+ *
+ * Was fehlte, ist die Route AUF der Seite. Wer aus Potsdam kommt und wissen
+ * will, wie lange er braucht, musste die Website verlassen. Jetzt liegt die
+ * Karte hier, hinter einer verschwommenen Vorschau aus eigenen Dateien: Vor
+ * dem Klick geht kein Byte an Google, auch kein Kartenbild.
+ *
+ * `output=embed` ist die einbettbare Fassung ohne Anmeldung und ohne
+ * API-Schlüssel. Der Zielpunkt ist die Praxis; den Startpunkt gibt die
+ * Besucherin in der Karte selbst ein – wir kennen ihn nicht und wollen ihn
+ * nicht kennen.
+ */
+const karteEinbetten =
+  'https://www.google.com/maps?output=embed&hl=de&z=16&q=' +
+  encodeURIComponent(`KU64 ${standort.name}, ${standort.strasse}, ${standort.plz} ${standort.ort}`);
 const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
   `${standort.strasse}, ${standort.plz} ${standort.ort}`,
 )}`;
@@ -113,6 +136,18 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
             <p class="klein">
               {t('standort.kartenHinweis')}
             </p>
+
+            <Drittinhalt
+              dienst="google-maps"
+              adresse={karteEinbetten}
+              titel={t('anfahrt.karteMitRoute')}
+              hoehe="22rem"
+            >
+              <Kartenvorschau slot="vorschau" standort={standort} />
+              <Fragment slot="fuss">
+                {t('anfahrt.karteFuss')}
+              </Fragment>
+            </Drittinhalt>
           </div>
   
         </div>

@@ -472,6 +472,22 @@ export const TEXTE = {
     'Zu Ihrer Suche haben wir hier nichts gefunden. Fragen Sie gern unseren digitalen Berater oder rufen Sie uns an – wir sagen Ihnen, ob wir Ihnen weiterhelfen können.',
   'leistuebersicht.anAnderenStandorten': 'An anderen KU64-Standorten',
   'leistuebersicht.mehrZu': 'Mehr zu {name} – ausführlich',
+  'anfahrt.karteMitRoute': 'Karte mit Routenplanung',
+  'anfahrt.karteFuss':
+    'Der Weg steht darüber auch in Worten – die Karte ist ein Angebot, keine Voraussetzung.',
+  'ort.rundgang': '360°-Rundgang durch die Praxis',
+  'smile.augenbraue': 'Kostenlos und unverbindlich',
+  'smile.titel': 'Sehen Sie Ihr neues Lächeln, bevor Sie sich entscheiden',
+  'smile.vorspann':
+    'Laden Sie ein Foto hoch und probieren Sie aus, wie Ihre Zähne nach einer Behandlung aussehen könnten. Das Ergebnis besprechen Sie danach mit uns in {ort} – oder Sie behalten es für sich.',
+  'smile.schritt1': 'Ein Foto von vorn, bei Tageslicht, mit sichtbaren Zähnen.',
+  'smile.schritt2': 'Sie wählen, was verändert werden soll – Farbe, Form, Stellung.',
+  'smile.schritt3': 'Sie bekommen die Vorschau per E-Mail und können sie mitbringen.',
+  'smile.knopf': 'Foto hochladen und Lächeln probetragen',
+  'smile.hinweis':
+    'Die Vorschau wird von einer KI erzeugt und ist keine Behandlungsplanung und kein Heilversprechen. Ihr Foto wird nur für die Vorschau verarbeitet und nicht zum Training verwendet.',
+  'ort.rundgangFuss':
+    'Sie bewegen sich frei durch die Räume. Geladen wird der Rundgang erst, wenn Sie ihn starten.',
   'leistuebersicht.anderswoText':
     'Diese Leistungen gibt es in {ort} nicht. Damit Sie nicht vergeblich suchen, führen wir Sie direkt zum richtigen Standort.',
   'standorte.behandlung': 'Leistung',

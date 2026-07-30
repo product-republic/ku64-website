@@ -28349,6 +28349,10 @@
       "text": "Search treatments",
       "quelle": "0f5689be"
     },
+    "ui.leistuebersicht.mehrZu": {
+      "text": "More on {name} – in detail",
+      "quelle": "ee940ff1"
+    },
     "ui.leistuebersicht.nichtsGefundenHier": {
       "text": "We didn't find anything for your search here. Feel free to ask our digital advisor or give us a call – we'll let you know if we can help.",
       "quelle": "8aa00c4b"
@@ -28389,6 +28393,10 @@
       "text": "Your contacts",
       "quelle": "6afec13b"
     },
+    "ui.leistung.ausfuehrlich": {
+      "text": "{name} in detail",
+      "quelle": "7b42c4a3"
+    },
     "ui.leistung.beraterHinweisLink": {
       "text": "digital adviser",
       "quelle": "ffcf1c13"
@@ -28424,6 +28432,10 @@
     "ui.leistung.hierAnsehen": {
       "text": "View {name} here",
       "quelle": "64d45dd2"
+    },
+    "ui.leistung.imEinzelnen": {
+      "text": "{name} – the individual questions",
+      "quelle": "ad8910c6"
     },
     "ui.leistung.inOrt": {
       "text": "in {ort}",
@@ -28469,6 +28481,10 @@
       "text": "Also known as",
       "quelle": "510e0e45"
     },
+    "ui.leistung.teilVon": {
+      "text": "This text belongs to {name}.",
+      "quelle": "7d2135a4"
+    },
     "ui.leistung.termin": {
       "text": "Appointment",
       "quelle": "12c12fbc"
@@ -28485,9 +28501,17 @@
       "text": "{wo} of {gesamt} locations",
       "quelle": "52670215"
     },
+    "ui.leistung.woErhaeltlich": {
+      "text": "Where you can have {name}",
+      "quelle": "89aaf80d"
+    },
     "ui.leistung.woLassen": {
       "text": "Where would you like to have {name} done?",
       "quelle": "d5d795ef"
+    },
+    "ui.leistung.zurueckZur": {
+      "text": "Back to {name}",
+      "quelle": "a6323cb6"
     },
     "ui.nav.andererStandort": {
       "text": "A different location",

@@ -114,6 +114,38 @@ const faq = [
             </select>
           </label>
 
+          {/*
+            Der Standort aus der Adresse übernehmen.
+
+            Wer über das Band auf einer Standortseite hierher kommt, hat den
+            Ort schon gewählt – ihn erneut zu fragen wäre eine Frage, deren
+            Antwort man kennt. Die Auswahl bleibt frei: Es ist eine
+            Vorbelegung, keine Festlegung, und das Feld ist ohnehin
+            freiwillig.
+
+            Als eingebettetes Skript und nicht als Modul, weil es beim Aufbau
+            laufen muss – ein nachgeladenes Modul setzte das Feld erst, wenn
+            jemand vielleicht schon etwas anderes gewählt hat.
+
+            ACHTUNG: `is:inline` gibt den Inhalt WÖRTLICH aus. Die
+            Astro-Schreibweise mit geschweifter Klammer und Backtick landet
+            als Text im HTML und ergibt gültiges JavaScript, das nichts tut –
+            lautlos. `skripte-pruefen.mjs` sucht danach.
+          */}
+          <script is:inline data-astro-rerun>
+            (() => {
+              const feld = document.getElementById('standort');
+              if (!feld) return;
+              const wunsch = new URLSearchParams(location.search).get('standort');
+              if (!wunsch) return;
+              /* Nur setzen, wenn es die Auswahl wirklich gibt – ein
+                 erfundener Wert würde das Feld auf leer zurückfallen lassen
+                 und sähe wie ein Fehler der Seite aus. */
+              const gibtEs = [...feld.options].some((o) => o.value === wunsch);
+              if (gibtEs) feld.value = wunsch;
+            })();
+          </script>
+
           {/* Honeypot gegen Bots – für Menschen unsichtbar. */}
           <div class="honig" aria-hidden="true">
             <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>

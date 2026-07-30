@@ -1,0 +1,203 @@
+---
+/**
+ * Die Lächeln-Vorschau, prominent auf der Standortseite.
+ *
+ * ── Warum sie dorthin gehört ────────────────────────────────────────────
+ *
+ * Bisher stand sie an genau zwei Stellen: in der Fußzeile und als eine Zeile
+ * auf der Startseite. Das ist die Platzierung für eine Kleinigkeit – und die
+ * Lächeln-Vorschau ist keine. Sie ist der Grund, warum jemand zum ersten Mal
+ * über eine Behandlung nachdenkt, die er sich vorher nicht vorstellen konnte.
+ *
+ * Ein Mensch, der auf der Potsdamer Standortseite landet, ist nicht auf der
+ * Startseite gewesen und liest die Fußzeile nicht. Deshalb steht das Angebot
+ * jetzt auf jeder Standortseite, in voller Breite, mit Bild.
+ *
+ * ── Warum der Upload nicht hier passiert ────────────────────────────────
+ *
+ * Der naheliegende Wunsch wäre ein Dateifeld direkt in diesem Band. Technisch
+ * ginge das – nur würde die Datei beim Seitenwechsel verloren gehen: Ein
+ * `File` überlebt keine Navigation. Wer hier ein Foto wählte, müsste es auf
+ * der Werkzeugseite ein zweites Mal wählen. Ein Feld, das man zweimal
+ * ausfüllt, ist schlechter als eines, das man einmal ausfüllt.
+ *
+ * Die Alternative – das Foto als Daten-URL durch `sessionStorage` schleusen –
+ * legt ein Gesichtsfoto in den Browserspeicher, wo es niemand mehr aufräumt.
+ * Bei einem Gesundheitsbezug ist das die falsche Abkürzung.
+ *
+ * Deshalb: Das Band erklärt, zeigt und führt hin – mit dem Standort im
+ * Verweis, damit auf der Werkzeugseite schon die richtige Praxis ausgewählt
+ * ist. Ein Klick, dann das Foto, dann das Ergebnis.
+ *
+ * ── Was das Band NICHT tut ──────────────────────────────────────────────
+ *
+ * Es zeigt kein Vorher-Nachher-Beispiel eines echten Menschen. Für
+ * Behandlungsergebnisse gilt § 11 Abs. 1 Satz 3 Nr. 1 HWG: Werbung mit
+ * Vorher-Nachher-Bildern operativer plastischer Eingriffe ist verboten, und
+ * bei zahnmedizinischen Ergebnissen ist die Grenze unscharf. Gezeigt wird
+ * deshalb die Praxis, nicht ein Ergebnis.
+ */
+import Bild from './Bild.astro';
+import { texte } from '../i18n/katalog';
+import type { Sprache } from '../i18n/sprachen';
+import type { Standort } from '../data/standorte';
+
+interface Props {
+  standort: Standort;
+  sprache: Sprache;
+  /** Bildschlüssel für die Fläche links. */
+  bild?: string;
+}
+
+const { standort, sprache, bild } = Astro.props;
+const t = texte(sprache);
+
+/* Der Standort geht als Parameter mit, damit die Auswahl auf der
+   Werkzeugseite schon steht. `#foto` springt direkt an das Dateifeld – wer
+   geklickt hat, will hochladen und nicht erst wieder lesen. */
+const ziel = `/laecheln-vorschau/?standort=${encodeURIComponent(standort.slug)}#foto`;
+---
+
+<section class="smile" aria-labelledby="smile-titel">
+  <div class="huelle smile-innen">
+    <div class="smile-text">
+      <p class="smile-augenbraue">{t('smile.augenbraue')}</p>
+      <h2 id="smile-titel">{t('smile.titel')}</h2>
+      <p class="smile-vorspann">{t('smile.vorspann', { ort: standort.ort })}</p>
+
+      <ol class="smile-schritte">
+        <li>{t('smile.schritt1')}</li>
+        <li>{t('smile.schritt2')}</li>
+        <li>{t('smile.schritt3')}</li>
+      </ol>
+
+      <p class="smile-knopf">
+        <a href={ziel} class="knopf knopf-primaer knopf-gross">{t('smile.knopf')}</a>
+      </p>
+
+      <p class="smile-klein">{t('smile.hinweis')}</p>
+    </div>
+
+    <div class="smile-bild">
+      {
+        bild ? (
+          <Bild schluessel={bild} alt="" />
+        ) : (
+          /* Kein grauer Kasten, solange die echten Fotos fehlen: eine Fläche
+             in Markenfarben mit dem Namen des Standorts. */
+          <div class="smile-ersatz" aria-hidden="true">
+            <span>KU64</span>
+            <span class="smile-ersatz-ort">{standort.ort}</span>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .smile {
+    /* Gelb markiert, trägt keine Fläche – dieselbe Regel wie überall im
+       Projekt (siehe tokens.css). Der Balken oben macht den Block auffindbar,
+       ohne ihn in eine Werbefarbe zu tauchen. */
+    border-block: 1px solid var(--linie);
+    border-top: 4px solid var(--gelb);
+    background: var(--flaeche);
+    padding-block: var(--raum-8, 3rem);
+  }
+
+  .smile-innen {
+    display: grid;
+    gap: var(--raum-6, 2rem);
+    align-items: center;
+  }
+
+  @media (min-width: 52rem) {
+    .smile-innen {
+      /* Text zuerst, Bild daneben – auf dem Telefon untereinander, und dort
+         steht der Text oben. Ein Bild über der Erklärung wäre Dekoration vor
+         Inhalt. */
+      grid-template-columns: 1.15fr 1fr;
+    }
+  }
+
+  .smile-augenbraue {
+    margin: 0 0 var(--raum-2, 0.4rem);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .smile-text h2 {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .smile-vorspann {
+    max-width: var(--breite-text);
+    margin-block: var(--raum-4, 1rem) 0;
+    font-size: var(--t-lg, 1.06rem);
+    color: var(--tinte-weich);
+  }
+
+  .smile-schritte {
+    margin-block: var(--raum-5, 1.4rem) 0;
+    padding-left: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-width: var(--breite-text);
+  }
+
+  .smile-schritte li {
+    line-height: 1.55;
+  }
+
+  .smile-knopf {
+    margin-block: var(--raum-6, 1.8rem) 0;
+  }
+
+  .smile-klein {
+    margin-block: var(--raum-4, 1rem) 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--tinte-leise);
+    max-width: var(--breite-text);
+  }
+
+  .smile-bild :global(img),
+  .smile-ersatz {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+  }
+
+  .smile-ersatz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    background: linear-gradient(
+      140deg,
+      var(--flaeche-dunkel),
+      color-mix(in oklab, var(--akzent) 40%, var(--flaeche-dunkel))
+    );
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    letter-spacing: 0.02em;
+  }
+
+  .smile-ersatz-ort {
+    font-size: 0.42em;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+</style>

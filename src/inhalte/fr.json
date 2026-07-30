@@ -28253,6 +28253,10 @@
       "text": "Rechercher une prestation",
       "quelle": "0f5689be"
     },
+    "ui.leistuebersicht.mehrZu": {
+      "text": "En savoir plus sur {name} – en détail",
+      "quelle": "ee940ff1"
+    },
     "ui.leistuebersicht.nichtsGefundenHier": {
       "text": "Aucun résultat ici pour votre recherche. N'hésitez pas à demander à notre conseiller numérique ou à nous appeler – nous vous dirons si nous pouvons vous aider.",
       "quelle": "8aa00c4b"
@@ -28293,6 +28297,10 @@
       "text": "Vos contacts",
       "quelle": "6afec13b"
     },
+    "ui.leistung.ausfuehrlich": {
+      "text": "{name} en détail",
+      "quelle": "7b42c4a3"
+    },
     "ui.leistung.beraterHinweisLink": {
       "text": "conseiller numérique",
       "quelle": "ffcf1c13"
@@ -28328,6 +28336,10 @@
     "ui.leistung.hierAnsehen": {
       "text": "Voir {name} ici",
       "quelle": "64d45dd2"
+    },
+    "ui.leistung.imEinzelnen": {
+      "text": "{name} – les questions en particulier",
+      "quelle": "ad8910c6"
     },
     "ui.leistung.inOrt": {
       "text": "à {ort}",
@@ -28373,6 +28385,10 @@
       "text": "Aussi appelé",
       "quelle": "510e0e45"
     },
+    "ui.leistung.teilVon": {
+      "text": "Ce texte relève de {name}.",
+      "quelle": "7d2135a4"
+    },
     "ui.leistung.termin": {
       "text": "Rendez-vous",
       "quelle": "12c12fbc"
@@ -28389,9 +28405,17 @@
       "text": "{wo} sur {gesamt} cabinets",
       "quelle": "52670215"
     },
+    "ui.leistung.woErhaeltlich": {
+      "text": "Où bénéficier de {name}",
+      "quelle": "89aaf80d"
+    },
     "ui.leistung.woLassen": {
       "text": "Où souhaitez-vous faire {name} ?",
       "quelle": "d5d795ef"
+    },
+    "ui.leistung.zurueckZur": {
+      "text": "Retour à {name}",
+      "quelle": "a6323cb6"
     },
     "ui.nav.andererStandort": {
       "text": "Un autre cabinet",
