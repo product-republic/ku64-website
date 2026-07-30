@@ -17,6 +17,26 @@ import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 import Diensteverzeichnis from '../../components/Diensteverzeichnis.astro';
+import { TRAEGER, angabe } from '../../data/traeger';
+import { DIENSTE } from '../../data/dienste';
+
+/*
+ * Der Vertragsstand kommt aus dem Diensteverzeichnis, nicht aus dem Text.
+ *
+ * `dienste.ts` führt `avVertrag` je Dienst – dieselbe Angabe ein zweites
+ * Mal in die Erklärung zu schreiben hieße, sie beim nächsten Vertrag an
+ * zwei Stellen pflegen zu müssen. Eine davon würde vergessen, und dann
+ * behauptet die Datenschutzerklärung etwas anderes als der Wächter prüft.
+ */
+function avStand(...anbieterTeile: string[]): string {
+  const treffer = DIENSTE.filter(
+    (d) => d.stand === 'aktiv' && anbieterTeile.some((teil) => (d.anbieter ?? '').includes(teil)),
+  );
+  if (treffer.length === 0) return '<code>[Dienst nicht im Verzeichnis]</code>';
+  return treffer.every((d) => d.avVertrag)
+    ? 'liegt vor'
+    : '<code>[liegt noch nicht bestätigt vor]</code>';
+}
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
 
@@ -50,11 +70,20 @@ const brotkrumen = [
 
     <div class="fliesstext">
       <h2>{t('ds.1Verantwortlicher')}</h2>
-      <p set:html={t('ds.verantwortlicherAngaben')} />
-      <p set:html={t('ds.datenschutzbeauftragter')} />
+      <p
+        set:html={t('ds.verantwortlicherAngaben', {
+          name: angabe(TRAEGER.name),
+          strasse: angabe(TRAEGER.strasse),
+          plzOrt: angabe(TRAEGER.plzOrt),
+          telefon: angabe(TRAEGER.telefon),
+          epost: angabe(TRAEGER.epost),
+          vertretung: angabe(TRAEGER.vertretung),
+        })}
+      />
+      <p set:html={t('ds.datenschutzbeauftragter', { dsb: angabe(TRAEGER.datenschutzbeauftragter) })} />
 
       <h2>{t('ds.2WasBeimAufruf')}</h2>
-      <p set:html={t('ds.serverdaten')} />
+      <p set:html={t('ds.serverdaten', { protokolle: angabe(TRAEGER.protokolldauer) })} />
       <p set:html={t('ds.keineAnalyse')} />
       <p set:html={t('ds.schriften')} />
 
@@ -68,16 +97,21 @@ const brotkrumen = [
 
       <h2 id="doctolib">{t('ds.4Doctolib')}</h2>
       <p set:html={t('ds.doctolibEins')} />
-      <p set:html={t('ds.doctolibZwei')} />
+      <p set:html={t('ds.doctolibZwei', { av: angabe(TRAEGER.avDoctolib) })} />
 
       <h2 id="anamnese">{t('ds.5Anamnese')}</h2>
       <p set:html={t('ds.anamneseEins')} />
-      <p set:html={t('ds.anamneseZwei')} />
+      <p
+        set:html={t('ds.anamneseZwei', {
+          frist: angabe(TRAEGER.aufbewahrungPatientenakte),
+          av: angabe(TRAEGER.avNelly),
+        })}
+      />
 
       <h2 id="berater">{t('ds.6Berater')}</h2>
       <p set:html={t('ds.beraterText')} />
       <p set:html={t('ds.beraterSprache')} />
-      <p set:html={t('ds.beraterHinweis')} />
+      <p set:html={t('ds.beraterHinweis', { av: avStand('Anthropic') })} />
 
       <h2 id="laecheln">{t('ds.7Laecheln')}</h2>
       <p set:html={t('ds.laechelnEins')} />
@@ -88,7 +122,7 @@ const brotkrumen = [
         <li>{t('ds.dasErgebnisWirdIhnen')}</li>
         <li>{t('ds.nachAbschlussDerAnfrage')}</li>
       </ul>
-      <p set:html={t('ds.laechelnSchluss')} />
+      <p set:html={t('ds.laechelnSchluss', { av: avStand('Google') })} />
 
       {/*
         Das vollständige Verzeichnis, erzeugt aus src/data/dienste.ts.
@@ -124,10 +158,10 @@ const brotkrumen = [
 
       <h2>{t('ds.9IhreRechte')}</h2>
       <p>{t('ds.rechteText')}</p>
-      <p set:html={t('ds.beschwerdeText')} />
+      <p set:html={t('ds.beschwerdeText', { behoerde: angabe(TRAEGER.aufsichtsbehoerde) })} />
 
       <h2>{t('ds.10Aenderungen')}</h2>
-      <p set:html={t('ds.aenderungenText')} />
+      <p set:html={t('ds.aenderungenText', { stand: angabe(TRAEGER.standDatum) })} />
     </div>
   </div>
 </Basis>

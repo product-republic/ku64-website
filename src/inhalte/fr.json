@@ -28010,24 +28010,24 @@
    "quelle": "a7ded7cb"
   },
   "ui.ds.aenderungenText": {
-   "text": "Nous adaptons cette déclaration en cas d'évolution du site ou du cadre juridique. Dernière mise à jour : <code>[date de publication à indiquer]</code>.",
-   "quelle": "ffba5898"
+   "text": "Nous adaptons cette déclaration en cas d'évolution du site ou du cadre juridique. Dernière mise à jour : {stand}.",
+   "quelle": "2b94b3e3"
   },
   "ui.ds.anamneseEins": {
    "text": "Le questionnaire médical est fourni par Nelly Solutions. Ce site se contente de vous y rediriger et ne traite lui-même <strong>aucune donnée de santé</strong>. Vos informations sont transmises directement du formulaire vers notre logiciel de gestion de cabinet.",
    "quelle": "ba04eddd"
   },
   "ui.ds.anamneseZwei": {
-   "text": "La base juridique du traitement de vos données de santé est l'art. 9, al. 2, let. h du RGPD, en lien avec le § 630f du Code civil allemand (BGB, obligation de documentation). Durée de conservation du dossier patient : <code>[généralement 10 ans – à confirmer]</code>. Contrat de sous-traitance avec Nelly Solutions : <code>[statut à compléter]</code>.",
-   "quelle": "3457b6df"
+   "text": "La base juridique du traitement de vos données de santé est l'art. 9, al. 2, let. h du RGPD, en lien avec le § 630f du Code civil allemand (BGB, obligation de documentation). Durée de conservation du dossier patient : {frist}. Contrat de sous-traitance avec Nelly Solutions : {av}.",
+   "quelle": "e1de470d"
   },
   "ui.ds.beidesKoennenSieJederzeit": {
    "text": "Vous pouvez supprimer les deux à tout moment via les paramètres de votre navigateur. Il ne s'agit pas de données personnelles au sens strict ni de profils d'utilisateurs.",
    "quelle": "035256b6"
   },
   "ui.ds.beraterHinweis": {
-   "text": "L'assistant a pour consigne de ne collecter aucune donnée de santé ni de poser de diagnostic. Merci toutefois de ne lui communiquer aucune information sensible – pour tout ce qui concerne votre santé, le rendez-vous en personne reste le bon cadre. Base légale : art. 6, al. 1, let. f RGPD. Contrats de sous-traitance : <code>[statut à compléter]</code>.",
-   "quelle": "9a4c8cf5"
+   "text": "L'assistant a pour consigne de ne collecter aucune donnée de santé ni de poser de diagnostic. Merci toutefois de ne lui communiquer aucune information sensible – pour tout ce qui concerne votre santé, le rendez-vous en personne reste le bon cadre. Base légale : art. 6, al. 1, let. f RGPD. Contrats de sous-traitance : {av}.",
+   "quelle": "438b11d2"
   },
   "ui.ds.beraterSprache": {
    "text": "<strong>Assistant vocal.</strong> Le dialogue vocal passe par ElevenLabs. Le microphone n'est activé qu'après votre autorisation explicite. Votre voix est traitée pour générer la réponse ; nous n'en réalisons aucun enregistrement durable.",
@@ -28042,24 +28042,24 @@
    "quelle": "3309452f"
   },
   "ui.ds.beschwerdeText": {
-   "text": "Vous pouvez également déposer une réclamation auprès d'une autorité de contrôle – celle compétente est celle de votre lieu de résidence ou du siège du cabinet : <code>[autorité de contrôle compétente à indiquer]</code>.",
-   "quelle": "2f1dc21a"
+   "text": "Vous pouvez également déposer une réclamation auprès d'une autorité de contrôle – celle compétente est celle de votre lieu de résidence ou du siège du cabinet : {behoerde}.",
+   "quelle": "5eb3981b"
   },
   "ui.ds.dasErgebnisWirdIhnen": {
    "text": "Le résultat vous est affiché et envoyé à l'adresse que vous avez indiquée. Cette adresse n'est utilisée que pour cet envoi, puis elle n'est pas conservée.",
    "quelle": "e0e309d0"
   },
   "ui.ds.datenschutzbeauftragter": {
-   "text": "Délégué(e) à la protection des données : <code>[Nom, coordonnées]</code>",
-   "quelle": "f4f95c77"
+   "text": "Délégué(e) à la protection des données : {dsb}",
+   "quelle": "d0b2fb18"
   },
   "ui.ds.doctolibEins": {
    "text": "La prise de rendez-vous se fait via Doctolib. Le calendrier n'est <strong>pas intégré</strong> à ce site : vous êtes redirigé vers Doctolib via un lien, et le changement d'adresse vous indique que vous vous trouvez alors sur doctolib.de. Tant que vous restez sur notre site, aucune connexion avec Doctolib n'est établie – y compris aucun chargement préalable en arrière-plan.",
    "quelle": "029152df"
   },
   "ui.ds.doctolibZwei": {
-   "text": "Ce n'est que sur le site de Doctolib que votre adresse IP et les données de votre navigateur y sont traitées et que des cookies sont déposés. Doctolib en est responsable ; sa politique de confidentialité s'applique. Comme nous n'intégrons rien, aucun consentement au sens de l'art. 25, al. 1 du TDDDG n'est requis sur notre site. Contrat de sous-traitance pour la gestion des rendez-vous : <code>[statut à compléter]</code>.",
-   "quelle": "a2e9cef1"
+   "text": "Ce n'est que sur le site de Doctolib que votre adresse IP et les données de votre navigateur y sont traitées et que des cookies sont déposés. Doctolib en est responsable ; sa politique de confidentialité s'applique. Comme nous n'intégrons rien, aucun consentement au sens de l'art. 25, al. 1 du TDDDG n'est requis sur notre site. Contrat de sous-traitance pour la gestion des rendez-vous : {av}.",
+   "quelle": "f668b5c6"
   },
   "ui.ds.entwurf": {
    "text": "<strong>Version provisoire.</strong> La partie technique décrit exactement le fonctionnement de ce site. Avant publication, cette déclaration doit être complétée par les informations du cabinet et vérifiée par un avocat. Les passages marqués <code>[…]</code> restent à compléter.",
@@ -28086,8 +28086,8 @@
    "quelle": "f13ad419"
   },
   "ui.ds.laechelnSchluss": {
-   "text": "L'image générée est une illustration sans engagement et ne constitue pas un résultat de traitement. Vous pouvez retirer votre consentement à tout moment, avec effet pour l'avenir ; comme rien n'est stocké, il n'y a alors rien à supprimer. Contrat de sous-traitance avec Google : <code>[statut à compléter]</code>.",
-   "quelle": "aad69f88"
+   "text": "L'image générée est une illustration sans engagement et ne constitue pas un résultat de traitement. Vous pouvez retirer votre consentement à tout moment, avec effet pour l'avenir ; comme rien n'est stocké, il n'y a alors rien à supprimer. Contrat de sous-traitance avec Google : {av}.",
+   "quelle": "b7412f53"
   },
   "ui.ds.laechelnSpeicher": {
    "text": "Votre photo est transmise à notre serveur et n'y est conservée qu'en mémoire vive. Elle n'est <strong>jamais enregistrée sur un support de stockage</strong> ni intégrée à une base de données.",
@@ -28122,12 +28122,12 @@
    "quelle": "24f50bb8"
   },
   "ui.ds.serverdaten": {
-   "text": "Lorsque vous consultez une page, votre navigateur transmet à notre serveur des données techniquement nécessaires : adresse IP, date et heure, adresse consultée, type de navigateur et système d'exploitation. Ces données sont nécessaires pour l'affichage de la page. La base juridique est l'art. 6, al. 1, let. f du RGPD. Durée de conservation des journaux du serveur : <code>[nombre de jours]</code>.",
-   "quelle": "2417ea87"
+   "text": "Lorsque vous consultez une page, votre navigateur transmet à notre serveur des données techniquement nécessaires : adresse IP, date et heure, adresse consultée, type de navigateur et système d'exploitation. Ces données sont nécessaires pour l'affichage de la page. La base juridique est l'art. 6, al. 1, let. f du RGPD. Durée de conservation des journaux du serveur : {protokolle}.",
+   "quelle": "0284b898"
   },
   "ui.ds.verantwortlicherAngaben": {
-   "text": "<code>[Nom complet du cabinet / de l'organisme responsable, adresse, téléphone, e-mail, représentation légale]</code>",
-   "quelle": "d46bdf35"
+   "text": "{name}<br />{strasse}, {plzOrt}<br />Téléphone : {telefon}<br />E-mail : {epost}<br />{vertretung}",
+   "quelle": "18e72f0e"
   },
   "ui.ew.allesErlauben": {
    "text": "Tout autoriser",
@@ -28686,16 +28686,16 @@
    "quelle": "4628d2d4"
   },
   "ui.imp.anschrift": {
-   "text": "<code>[Nom complet du cabinet / de la société]</code><br /><code>[Forme juridique]</code><br /><code>[Rue, numéro]</code><br /><code>[Code postal, ville]</code>",
-   "quelle": "7effb441"
+   "text": "{name}<br />{rechtsform}<br />{strasse}<br />{plzOrt}",
+   "quelle": "c6b137c0"
   },
   "ui.imp.berufsAngaben": {
-   "text": "Titre professionnel : <code>[p. ex. chirurgien-dentiste]</code>, décerné en <code>[Pays]</code><br />Ordre compétent : <code>[Ordre des chirurgiens-dentistes, adresse, site web]</code><br />Union des chirurgiens-dentistes conventionnés compétente : <code>[…]</code><br />Autorité de surveillance : <code>[…]</code>",
-   "quelle": "9fa611f4"
+   "text": "Titre professionnel : {berufsbezeichnung}, décerné en {verleihstaat}<br />Ordre compétent : {kammer}<br />Union des chirurgiens-dentistes conventionnés compétente : {kzv}<br />Autorité de surveillance : {aufsicht}",
+   "quelle": "3dca2305"
   },
   "ui.imp.berufsRegeln": {
-   "text": "Les réglementations professionnelles suivantes s'appliquent : loi sur l'art dentaire (ZHG), règlement professionnel de l'ordre des chirurgiens-dentistes compétent, barème des honoraires dentaires (GOZ), loi sur les professions de santé du Land. Consultables sous <code>[Référence]</code>.",
-   "quelle": "0bd6e3ba"
+   "text": "Les réglementations professionnelles suivantes s'appliquent : loi sur l'art dentaire (ZHG), règlement professionnel de l'ordre des chirurgiens-dentistes compétent, barème des honoraires dentaires (GOZ), loi sur les professions de santé du Land. Consultables sous {fundstelle}.",
+   "quelle": "04176b7f"
   },
   "ui.imp.berufsrechtlicheAngaben": {
    "text": "Informations professionnelles réglementaires",
@@ -28710,8 +28710,8 @@
    "quelle": "682f1ad9"
   },
   "ui.imp.bildnachweiseAngabe": {
-   "text": "<code>[Auteurs et licences des images utilisées]</code>",
-   "quelle": "3200ad6b"
+   "text": "{nachweise}",
+   "quelle": "8d27f9aa"
   },
   "ui.imp.entwurf": {
    "text": "<strong>Version provisoire.</strong> Des mentions légales se composent d'informations factuelles sur le cabinet. Les champs marqués par <code>[…]</code> doivent être complétés par le cabinet avant publication.",
@@ -28722,24 +28722,24 @@
    "quelle": "98036bb4"
   },
   "ui.imp.haftpflichtAngabe": {
-   "text": "<code>[Nom et adresse de l'assureur]</code><br />Zone de couverture géographique : <code>[…]</code>",
-   "quelle": "cc48bab9"
+   "text": "{versicherer}<br />Zone de couverture géographique : {geltungsbereich}",
+   "quelle": "a257ae5b"
   },
   "ui.imp.kontakt": {
-   "text": "Téléphone : <code>[Numéro]</code><br />E-mail : <code>[Adresse]</code>",
-   "quelle": "bbcf3fd1"
+   "text": "Téléphone : {telefon}<br />Télécopie : {fax}<br />E-mail : {epost}",
+   "quelle": "4d98a2ab"
   },
   "ui.imp.register": {
    "text": "Immatriculation",
    "quelle": "07e35466"
   },
   "ui.imp.registerAngabe": {
-   "text": "Tribunal d'immatriculation : <code>[…]</code><br />Numéro d'immatriculation : <code>[…]</code>",
-   "quelle": "8f5a057a"
+   "text": "Tribunal d'immatriculation : {registergericht}<br />Numéro d'immatriculation : {registernummer}",
+   "quelle": "305e16bc"
   },
   "ui.imp.schlichtungsstelle": {
-   "text": "En cas de litige lié à une relation de traitement, l'organe de conciliation de l'ordre des chirurgiens-dentistes compétent est à votre disposition : <code>[Adresse]</code>.",
-   "quelle": "2fb60a32"
+   "text": "En cas de litige lié à une relation de traitement, l'organe de conciliation de l'ordre des chirurgiens-dentistes compétent est à votre disposition : {stelle}.",
+   "quelle": "72e75ef0"
   },
   "ui.imp.seitentitel": {
    "text": "Mentions légales",
@@ -28750,20 +28750,20 @@
    "quelle": "6138259e"
   },
   "ui.imp.streitbeilegungText": {
-   "text": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges. Nous <code>[ne sommes pas]</code> disposés et <code>[ne sommes pas]</code> tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.",
-   "quelle": "e6df6eb7"
+   "text": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges. Nous {bereit} disposés et {bereit} tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.",
+   "quelle": "47a7e66f"
   },
   "ui.imp.ustId": {
    "text": "Numéro de TVA intracommunautaire",
    "quelle": "d3dfdf45"
   },
   "ui.imp.ustIdAngabe": {
-   "text": "<code>[N° de TVA selon § 27a UStG, le cas échéant]</code>",
-   "quelle": "b6e92f67"
+   "text": "{ustId}",
+   "quelle": "fc20567e"
   },
   "ui.imp.verantwortlichAngabe": {
-   "text": "<code>[Nom, adresse]</code>",
-   "quelle": "2225af5d"
+   "text": "{verantwortlich}",
+   "quelle": "ccd29197"
   },
   "ui.imp.verantwortlichFuerDenInhalt": {
    "text": "Responsable du contenu selon l'art. 18 al. 2 MStV",
@@ -28774,8 +28774,8 @@
    "quelle": "d74d025a"
   },
   "ui.imp.vertretungAngabe": {
-   "text": "<code>[Noms de la direction / des associés]</code>",
-   "quelle": "09069ae6"
+   "text": "{vertretung}",
+   "quelle": "fbe1de5f"
   },
   "ui.karriere.arbeitenBeiKu64": {
    "text": "Travailler chez KU64",

@@ -28110,24 +28110,24 @@
    "quelle": "a7ded7cb"
   },
   "ui.ds.aenderungenText": {
-   "text": "We update this notice whenever the website or the legal situation changes. Last updated: <code>[enter date on publication]</code>.",
-   "quelle": "ffba5898"
+   "text": "We update this notice whenever the website or the legal situation changes. Last updated: {stand}.",
+   "quelle": "2b94b3e3"
   },
   "ui.ds.anamneseEins": {
    "text": "The medical history form is provided by Nelly Solutions. This website merely redirects you there and does not process any <strong>health data</strong> itself. Your details go directly from the form into our practice management system.",
    "quelle": "ba04eddd"
   },
   "ui.ds.anamneseZwei": {
-   "text": "The legal basis for processing your health data is Art. 9(2)(h) GDPR in conjunction with § 630f BGB (documentation requirement). Retention period of patient records: <code>[usually 10 years – please confirm]</code>. Data processing agreement with Nelly Solutions: <code>[status to be added]</code>.",
-   "quelle": "3457b6df"
+   "text": "The legal basis for processing your health data is Art. 9(2)(h) GDPR in conjunction with § 630f BGB (documentation requirement). Retention period of patient records: {frist}. Data processing agreement with Nelly Solutions: {av}.",
+   "quelle": "e1de470d"
   },
   "ui.ds.beidesKoennenSieJederzeit": {
    "text": "You can delete both at any time via your browser settings. This is not personal data in the strict sense, nor a user profile.",
    "quelle": "035256b6"
   },
   "ui.ds.beraterHinweis": {
-   "text": "The adviser is instructed not to ask for health data or make diagnoses. Please still avoid sharing sensitive details with it – for anything medical, your personal appointment is the right place. Legal basis: Art. 6(1)(f) GDPR. Data processing agreements: <code>[add status]</code>.",
-   "quelle": "9a4c8cf5"
+   "text": "The adviser is instructed not to ask for health data or make diagnoses. Please still avoid sharing sensitive details with it – for anything medical, your personal appointment is the right place. Legal basis: Art. 6(1)(f) GDPR. Data processing agreements: {av}.",
+   "quelle": "438b11d2"
   },
   "ui.ds.beraterSprache": {
    "text": "<strong>Voice adviser.</strong> The voice dialogue runs via ElevenLabs. The microphone is only activated after your explicit permission. Your voice is processed to generate the answer; we do not make any permanent recording.",
@@ -28142,24 +28142,24 @@
    "quelle": "3309452f"
   },
   "ui.ds.beschwerdeText": {
-   "text": "You may also lodge a complaint with a supervisory authority – the competent one is either where you live or where the practice is based: <code>[enter competent supervisory authority]</code>.",
-   "quelle": "2f1dc21a"
+   "text": "You may also lodge a complaint with a supervisory authority – the competent one is either where you live or where the practice is based: {behoerde}.",
+   "quelle": "5eb3981b"
   },
   "ui.ds.dasErgebnisWirdIhnen": {
    "text": "The result is shown to you and sent to the address you provide. The address is used only for this one email and is not stored afterwards.",
    "quelle": "e0e309d0"
   },
   "ui.ds.datenschutzbeauftragter": {
-   "text": "Data Protection Officer: <code>[Name, contact details]</code>",
-   "quelle": "f4f95c77"
+   "text": "Data Protection Officer: {dsb}",
+   "quelle": "d0b2fb18"
   },
   "ui.ds.doctolibEins": {
    "text": "Appointment booking is handled via Doctolib. The calendar is <strong>not embedded</strong> on this website: you are taken there via a link, and the change in web address shows you that you are then on doctolib.de. As long as you remain on our site, no connection to Doctolib is made – not even loading in the background.",
    "quelle": "029152df"
   },
   "ui.ds.doctolibZwei": {
-   "text": "Only once you are on Doctolib's site will your IP address and browser data be processed there and cookies set. Doctolib is responsible for this; Doctolib's privacy policy applies. Because nothing is embedded on our site, no consent under § 25(1) TDDDG is required here. Data processing agreement for appointment management: <code>[status to be added]</code>.",
-   "quelle": "a2e9cef1"
+   "text": "Only once you are on Doctolib's site will your IP address and browser data be processed there and cookies set. Doctolib is responsible for this; Doctolib's privacy policy applies. Because nothing is embedded on our site, no consent under § 25(1) TDDDG is required here. Data processing agreement for appointment management: {av}.",
+   "quelle": "f668b5c6"
   },
   "ui.ds.entwurf": {
    "text": "<strong>Draft version.</strong> The technical part describes exactly how this website behaves. Before publication, this policy must be completed with the practice's details and reviewed by a solicitor. Sections marked with <code>[…]</code> still need to be filled in.",
@@ -28186,8 +28186,8 @@
    "quelle": "f13ad419"
   },
   "ui.ds.laechelnSchluss": {
-   "text": "The generated image is a non-binding illustration and not a treatment outcome. You can withdraw your consent at any time with effect for the future; since nothing is stored, there is nothing left to delete afterwards. Data processing agreement with Google: <code>[add status]</code>.",
-   "quelle": "aad69f88"
+   "text": "The generated image is a non-binding illustration and not a treatment outcome. You can withdraw your consent at any time with effect for the future; since nothing is stored, there is nothing left to delete afterwards. Data processing agreement with Google: {av}.",
+   "quelle": "b7412f53"
   },
   "ui.ds.laechelnSpeicher": {
    "text": "Your photo is transferred to our server and held there only in working memory. It is <strong>never written to storage</strong> and is not added to any database.",
@@ -28222,12 +28222,12 @@
    "quelle": "24f50bb8"
   },
   "ui.ds.serverdaten": {
-   "text": "When you visit a page, your browser sends technically necessary data to our server: IP address, time, page requested, browser type and operating system. This data is required to deliver the page to you. The legal basis is Art. 6(1)(f) GDPR. Server logs are kept for: <code>[number of days]</code>.",
-   "quelle": "2417ea87"
+   "text": "When you visit a page, your browser sends technically necessary data to our server: IP address, time, page requested, browser type and operating system. This data is required to deliver the page to you. The legal basis is Art. 6(1)(f) GDPR. Server logs are kept for: {protokolle}.",
+   "quelle": "0284b898"
   },
   "ui.ds.verantwortlicherAngaben": {
-   "text": "<code>[Full name of the practice / operator, address, phone, email, legal representation]</code>",
-   "quelle": "d46bdf35"
+   "text": "{name}<br />{strasse}, {plzOrt}<br />Phone: {telefon}<br />Email: {epost}<br />{vertretung}",
+   "quelle": "18e72f0e"
   },
   "ui.ew.allesErlauben": {
    "text": "Allow everything",
@@ -28786,16 +28786,16 @@
    "quelle": "4628d2d4"
   },
   "ui.imp.anschrift": {
-   "text": "<code>[Full name of the practice / company]</code><br /><code>[Legal form]</code><br /><code>[Street, house number]</code><br /><code>[Postcode, town]</code>",
-   "quelle": "7effb441"
+   "text": "{name}<br />{rechtsform}<br />{strasse}<br />{plzOrt}",
+   "quelle": "c6b137c0"
   },
   "ui.imp.berufsAngaben": {
-   "text": "Professional title: <code>[e.g. dentist]</code>, awarded in <code>[Country]</code><br />Competent chamber: <code>[Dental chamber, address, website]</code><br />Competent Association of Statutory Health Insurance Dentists: <code>[…]</code><br />Supervisory authority: <code>[…]</code>",
-   "quelle": "9fa611f4"
+   "text": "Professional title: {berufsbezeichnung}, awarded in {verleihstaat}<br />Competent chamber: {kammer}<br />Competent Association of Statutory Health Insurance Dentists: {kzv}<br />Supervisory authority: {aufsicht}",
+   "quelle": "3dca2305"
   },
   "ui.imp.berufsRegeln": {
-   "text": "The following professional regulations apply: Dental Practitioners Act (ZHG), professional code of conduct of the competent dental chamber, Schedule of Fees for Dentists (GOZ), Health Professions Act of the federal state. Available at <code>[Reference]</code>.",
-   "quelle": "0bd6e3ba"
+   "text": "The following professional regulations apply: Dental Practitioners Act (ZHG), professional code of conduct of the competent dental chamber, Schedule of Fees for Dentists (GOZ), Health Professions Act of the federal state. Available at {fundstelle}.",
+   "quelle": "04176b7f"
   },
   "ui.imp.berufsrechtlicheAngaben": {
    "text": "Professional regulatory information",
@@ -28810,8 +28810,8 @@
    "quelle": "682f1ad9"
   },
   "ui.imp.bildnachweiseAngabe": {
-   "text": "<code>[Copyright holders and licences of the images used]</code>",
-   "quelle": "3200ad6b"
+   "text": "{nachweise}",
+   "quelle": "8d27f9aa"
   },
   "ui.imp.entwurf": {
    "text": "<strong>Draft version.</strong> A legal notice consists of factual information about the practice. Fields marked with <code>[…]</code> are to be completed by the practice before publication.",
@@ -28822,24 +28822,24 @@
    "quelle": "98036bb4"
   },
   "ui.imp.haftpflichtAngabe": {
-   "text": "<code>[Name and address of the insurer]</code><br />Geographical scope: <code>[…]</code>",
-   "quelle": "cc48bab9"
+   "text": "{versicherer}<br />Geographical scope: {geltungsbereich}",
+   "quelle": "a257ae5b"
   },
   "ui.imp.kontakt": {
-   "text": "Phone: <code>[Number]</code><br />Email: <code>[Address]</code>",
-   "quelle": "bbcf3fd1"
+   "text": "Phone: {telefon}<br />Fax: {fax}<br />Email: {epost}",
+   "quelle": "4d98a2ab"
   },
   "ui.imp.register": {
    "text": "Register entry",
    "quelle": "07e35466"
   },
   "ui.imp.registerAngabe": {
-   "text": "Register court: <code>[…]</code><br />Register number: <code>[…]</code>",
-   "quelle": "8f5a057a"
+   "text": "Register court: {registergericht}<br />Register number: {registernummer}",
+   "quelle": "305e16bc"
   },
   "ui.imp.schlichtungsstelle": {
-   "text": "For disputes arising from a treatment relationship, the arbitration board of the responsible dental association is available: <code>[Address]</code>.",
-   "quelle": "2fb60a32"
+   "text": "For disputes arising from a treatment relationship, the arbitration board of the responsible dental association is available: {stelle}.",
+   "quelle": "72e75ef0"
   },
   "ui.imp.seitentitel": {
    "text": "Legal notice",
@@ -28850,20 +28850,20 @@
    "quelle": "6138259e"
   },
   "ui.imp.streitbeilegungText": {
-   "text": "The European Commission provides a platform for online dispute resolution. We are <code>[not]</code> willing and <code>[not]</code> obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
-   "quelle": "e6df6eb7"
+   "text": "The European Commission provides a platform for online dispute resolution. We are {bereit} willing and {bereit} obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
+   "quelle": "47a7e66f"
   },
   "ui.imp.ustId": {
    "text": "VAT identification number",
    "quelle": "d3dfdf45"
   },
   "ui.imp.ustIdAngabe": {
-   "text": "<code>[VAT ID under § 27a UStG, if applicable]</code>",
-   "quelle": "b6e92f67"
+   "text": "{ustId}",
+   "quelle": "fc20567e"
   },
   "ui.imp.verantwortlichAngabe": {
-   "text": "<code>[Name, address]</code>",
-   "quelle": "2225af5d"
+   "text": "{verantwortlich}",
+   "quelle": "ccd29197"
   },
   "ui.imp.verantwortlichFuerDenInhalt": {
    "text": "Responsible for content under § 18(2) MStV",
@@ -28874,8 +28874,8 @@
    "quelle": "d74d025a"
   },
   "ui.imp.vertretungAngabe": {
-   "text": "<code>[Names of management / partners]</code>",
-   "quelle": "09069ae6"
+   "text": "{vertretung}",
+   "quelle": "fbe1de5f"
   },
   "ui.karriere.arbeitenBeiKu64": {
    "text": "Working at KU64",

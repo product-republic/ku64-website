@@ -640,40 +640,40 @@ export const TEXTE = {
   'imp.entwurf':
     '<strong>Entwurfsfassung.</strong> Ein Impressum besteht aus Tatsachenangaben über die Praxis. Die mit <code>[…]</code> markierten Felder sind vor Veröffentlichung von der Praxis zu befüllen.',
   'imp.anschrift':
-    '<code>[Vollständiger Name der Praxis / Gesellschaft]</code><br /><code>[Rechtsform]</code><br /><code>[Straße, Hausnummer]</code><br /><code>[PLZ, Ort]</code>',
-  'imp.kontakt': 'Telefon: <code>[Nummer]</code><br />E-Mail: <code>[Adresse]</code>',
+    '{name}<br />{rechtsform}<br />{strasse}<br />{plzOrt}',
+  'imp.kontakt': 'Telefon: {telefon}<br />Telefax: {fax}<br />E-Mail: {epost}',
   'imp.vertretung': 'Vertretungsberechtigte',
-  'imp.vertretungAngabe': '<code>[Namen der Geschäftsführung / Partner]</code>',
+  'imp.vertretungAngabe': '{vertretung}',
   'imp.register': 'Registereintrag',
   'imp.registerAngabe':
-    'Registergericht: <code>[…]</code><br />Registernummer: <code>[…]</code>',
+    'Registergericht: {registergericht}<br />Registernummer: {registernummer}',
   'imp.ustId': 'Umsatzsteuer-Identifikationsnummer',
-  'imp.ustIdAngabe': '<code>[USt-IdNr. nach § 27a UStG, falls vorhanden]</code>',
+  'imp.ustIdAngabe': '{ustId}',
   'imp.berufsAngaben':
-    'Berufsbezeichnung: <code>[z. B. Zahnarzt / Zahnärztin]</code>, verliehen in <code>[Land]</code><br />Zuständige Kammer: <code>[Zahnärztekammer, Anschrift, Website]</code><br />Zuständige Kassenzahnärztliche Vereinigung: <code>[…]</code><br />Aufsichtsbehörde: <code>[…]</code>',
+    'Berufsbezeichnung: {berufsbezeichnung}, verliehen in {verleihstaat}<br />Zuständige Kammer: {kammer}<br />Zuständige Kassenzahnärztliche Vereinigung: {kzv}<br />Aufsichtsbehörde: {aufsicht}',
   'imp.berufsRegeln':
-    'Es gelten folgende berufsrechtliche Regelungen: Zahnheilkundegesetz (ZHG), Berufsordnung der zuständigen Zahnärztekammer, Gebührenordnung für Zahnärzte (GOZ), Heilberufsgesetz des Landes. Einsehbar unter <code>[Fundstelle]</code>.',
+    'Es gelten folgende berufsrechtliche Regelungen: Zahnheilkundegesetz (ZHG), Berufsordnung der zuständigen Zahnärztekammer, Gebührenordnung für Zahnärzte (GOZ), Heilberufsgesetz des Landes. Einsehbar unter {fundstelle}.',
   'imp.haftpflicht': 'Berufshaftpflichtversicherung',
   'imp.haftpflichtAngabe':
-    '<code>[Name und Anschrift des Versicherers]</code><br />Räumlicher Geltungsbereich: <code>[…]</code>',
-  'imp.verantwortlichAngabe': '<code>[Name, Anschrift]</code>',
+    '{versicherer}<br />Räumlicher Geltungsbereich: {geltungsbereich}',
+  'imp.verantwortlichAngabe': '{verantwortlich}',
   'imp.streitbeilegung': 'Streitbeilegung',
   'imp.streitbeilegungText':
-    'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind <code>[nicht]</code> bereit und <code>[nicht]</code> verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+    'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind {bereit} bereit und {bereit} verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
   'imp.schlichtungsstelle':
-    'Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der zuständigen Zahnärztekammer zur Verfügung: <code>[Anschrift]</code>.',
+    'Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der zuständigen Zahnärztekammer zur Verfügung: {stelle}.',
   'imp.bildnachweise': 'Bildnachweise',
-  'imp.bildnachweiseAngabe': '<code>[Urheber und Lizenzen der verwendeten Bilder]</code>',
+  'imp.bildnachweiseAngabe': '{nachweise}',
   'ds.seitentitel': 'Datenschutzerklärung',
   'ds.beschreibung': 'Wie diese Website mit Ihren Daten umgeht – konkret und nachvollziehbar.',
   'ds.entwurf':
     '<strong>Entwurfsfassung.</strong> Der technische Teil beschreibt exakt das Verhalten dieser Website. Vor Veröffentlichung muss die Erklärung um die Angaben der Praxis ergänzt und anwaltlich geprüft werden. Die mit <code>[…]</code> markierten Stellen sind noch zu befüllen.',
   'ds.verantwortlicherAngaben':
-    '<code>[Vollständiger Name der Praxis / des Trägers, Anschrift, Telefon, E-Mail, gesetzliche Vertretung]</code>',
+    '{name}<br />{strasse}, {plzOrt}<br />Telefon: {telefon}<br />E-Mail: {epost}<br />{vertretung}',
   'ds.datenschutzbeauftragter':
-    'Datenschutzbeauftragte oder Datenschutzbeauftragter: <code>[Name, Kontakt]</code>',
+    'Datenschutzbeauftragte oder Datenschutzbeauftragter: {dsb}',
   'ds.serverdaten':
-    'Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem. Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle: <code>[Anzahl Tage]</code>.',
+    'Beim Aufruf einer Seite überträgt Ihr Browser technisch notwendige Daten an unseren Server: IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browsertyp und Betriebssystem. Diese Daten sind für die Auslieferung der Seite erforderlich. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer der Serverprotokolle: {protokolle}.',
   'ds.keineAnalyse':
     '<strong>Nichts läuft ungefragt.</strong> Beim Aufruf einer Seite wird kein Analyse-Werkzeug geladen und kein Zählpixel eingebunden. Eine Besuchsstatistik führen wir nur, wenn Sie ausdrücklich zustimmen – welche Daten dabei an wen gehen, steht unten im Verzeichnis der Dienste. Werbe-Cookies setzt diese Website nicht, auch nicht mit Zustimmung.',
   'ds.schriften':
@@ -688,19 +688,19 @@ export const TEXTE = {
   'ds.doctolibEins':
     'Die Terminbuchung läuft über Doctolib. Der Kalender ist auf dieser Website <strong>nicht eingebettet</strong>: Sie werden über einen Verweis dorthin geleitet und erkennen am Wechsel der Adresse, dass Sie sich ab dann auf doctolib.de befinden. Solange Sie auf unserer Seite bleiben, findet keinerlei Verbindung zu Doctolib statt – auch kein Vorabladen im Hintergrund.',
   'ds.doctolibZwei':
-    'Erst auf der Seite von Doctolib werden Ihre IP-Adresse und Browserdaten dort verarbeitet und Cookies gesetzt. Verantwortlich dafür ist Doctolib; es gilt die Datenschutzerklärung von Doctolib. Weil wir nichts einbetten, ist auf unserer Seite dafür keine Einwilligung nach § 25 Abs. 1 TDDDG erforderlich. Auftragsverarbeitungsvertrag für die Terminverwaltung: <code>[Status ergänzen]</code>.',
+    'Erst auf der Seite von Doctolib werden Ihre IP-Adresse und Browserdaten dort verarbeitet und Cookies gesetzt. Verantwortlich dafür ist Doctolib; es gilt die Datenschutzerklärung von Doctolib. Weil wir nichts einbetten, ist auf unserer Seite dafür keine Einwilligung nach § 25 Abs. 1 TDDDG erforderlich. Auftragsverarbeitungsvertrag für die Terminverwaltung: {av}.',
   'ds.5Anamnese': '5. Digitale Anamnese (Nelly Solutions)',
   'ds.anamneseEins':
     'Der Anamnesebogen wird von Nelly Solutions bereitgestellt. Diese Website leitet Sie lediglich dorthin weiter und verarbeitet selbst <strong>keine Gesundheitsdaten</strong>. Ihre Angaben fließen direkt vom Formular in unser Praxisverwaltungssystem.',
   'ds.anamneseZwei':
-    'Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der Patientenakte: <code>[in der Regel 10 Jahre – bitte bestätigen]</code>. Auftragsverarbeitungsvertrag mit Nelly Solutions: <code>[Status ergänzen]</code>.',
+    'Rechtsgrundlage für die Verarbeitung Ihrer Gesundheitsdaten ist Art. 9 Abs. 2 lit. h DSGVO in Verbindung mit § 630f BGB (Dokumentationspflicht). Aufbewahrungsdauer der Patientenakte: {frist}. Auftragsverarbeitungsvertrag mit Nelly Solutions: {av}.',
   'ds.6Berater': '6. Digitaler Berater (Text und Sprache)',
   'ds.beraterText':
     '<strong>Textchat.</strong> Ihre Frage wird an unseren Server und von dort an Anthropic übermittelt, um die Antwort zu erzeugen. Der Gesprächsverlauf existiert ausschließlich in Ihrem Browserfenster und geht beim Schließen verloren. Wir speichern weder Fragen noch Antworten und legen keine Gesprächsprotokolle an. Zur Missbrauchsabwehr zählen wir kurzzeitig Anfragen je IP-Adresse im Arbeitsspeicher.',
   'ds.beraterSprache':
     '<strong>Sprachberater.</strong> Der Sprachdialog läuft über ElevenLabs. Das Mikrofon wird erst nach Ihrer ausdrücklichen Freigabe aktiviert. Ihre Stimme wird zur Erzeugung der Antwort verarbeitet; eine dauerhafte Aufzeichnung durch uns findet nicht statt.',
   'ds.beraterHinweis':
-    'Der Berater ist angewiesen, keine Gesundheitsdaten abzufragen und keine Diagnosen zu stellen. Bitte teilen Sie ihm dennoch keine sensiblen Angaben mit – für alles Medizinische ist der persönliche Termin der richtige Ort. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Auftragsverarbeitungsverträge: <code>[Status ergänzen]</code>.',
+    'Der Berater ist angewiesen, keine Gesundheitsdaten abzufragen und keine Diagnosen zu stellen. Bitte teilen Sie ihm dennoch keine sensiblen Angaben mit – für alles Medizinische ist der persönliche Termin der richtige Ort. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Auftragsverarbeitungsverträge: {av}.',
   'ds.7Laecheln': '7. Lächeln-Vorschau (Foto-Upload)',
   'ds.laechelnEins':
     'Ein Gesichtsfoto ist ein <strong>biometrisches Datum</strong> und damit eine besondere Kategorie personenbezogener Daten nach Art. 9 DSGVO. Wir verarbeiten es ausschließlich auf Grundlage Ihrer ausdrücklichen, vorher erteilten Einwilligung (Art. 9 Abs. 2 lit. a DSGVO).',
@@ -709,15 +709,15 @@ export const TEXTE = {
     'Ihr Foto wird an unseren Server übertragen und dort ausschließlich im Arbeitsspeicher gehalten. Es wird <strong>nicht auf einen Datenträger geschrieben</strong> und in keine Datenbank aufgenommen.',
   'ds.laechelnGoogle': 'Zur Analyse und Bilderzeugung wird es an Google (Gemini) übermittelt.',
   'ds.laechelnSchluss':
-    'Die erzeugte Darstellung ist eine unverbindliche Illustration und kein Behandlungsergebnis. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen; da nichts gespeichert wird, gibt es danach nichts zu löschen. Auftragsverarbeitungsvertrag mit Google: <code>[Status ergänzen]</code>.',
+    'Die erzeugte Darstellung ist eine unverbindliche Illustration und kein Behandlungsergebnis. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen; da nichts gespeichert wird, gibt es danach nichts zu löschen. Auftragsverarbeitungsvertrag mit Google: {av}.',
   'ds.kontaktText':
     'Wenn Sie uns anrufen oder schreiben, verarbeiten wir Ihre Angaben zur Bearbeitung Ihres Anliegens (Art. 6 Abs. 1 lit. b und f DSGVO). Bitte senden Sie uns keine Gesundheitsdaten per unverschlüsselter E-Mail – dieser Weg ist technisch nicht vertraulich.',
   'ds.rechteText':
     'Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen.',
   'ds.beschwerdeText':
-    'Sie können sich außerdem bei einer Aufsichtsbehörde beschweren – zuständig ist die Behörde an Ihrem Wohnsitz oder am Sitz der Praxis: <code>[zuständige Aufsichtsbehörde eintragen]</code>.',
+    'Sie können sich außerdem bei einer Aufsichtsbehörde beschweren – zuständig ist die Behörde an Ihrem Wohnsitz oder am Sitz der Praxis: {behoerde}.',
   'ds.aenderungenText':
-    'Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert. Stand: <code>[Datum bei Veröffentlichung eintragen]</code>.',
+    'Wir passen diese Erklärung an, wenn sich die Website oder die Rechtslage ändert. Stand: {stand}.',
   'ds.10Aenderungen': '10. Änderungen',
   'ds.1Verantwortlicher': '1. Verantwortlicher',
   'ds.2WasBeimAufruf': '2. Was beim Aufruf dieser Website passiert',

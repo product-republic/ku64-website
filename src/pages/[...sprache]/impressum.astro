@@ -10,6 +10,7 @@
 import { sprachpfade } from '../../i18n/sprachen';
 import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
+import { TRAEGER, angabe } from '../../data/traeger';
 import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
@@ -46,34 +47,65 @@ const brotkrumen = [
 
     <div class="fliesstext">
       <h2>{t('imp.angabenNach5Ddg')}</h2>
-      <p set:html={t('imp.anschrift')} />
-      <p set:html={t('imp.kontakt')} />
+      <p
+        set:html={t('imp.anschrift', {
+          name: angabe(TRAEGER.name),
+          rechtsform: angabe(TRAEGER.rechtsform),
+          strasse: angabe(TRAEGER.strasse),
+          plzOrt: angabe(TRAEGER.plzOrt),
+        })}
+      />
+      <p
+        set:html={t('imp.kontakt', {
+          telefon: angabe(TRAEGER.telefon),
+          fax: angabe(TRAEGER.fax),
+          epost: angabe(TRAEGER.epost),
+        })}
+      />
 
       <h2>{t('imp.vertretung')}</h2>
-      <p set:html={t('imp.vertretungAngabe')} />
+      <p set:html={t('imp.vertretungAngabe', { vertretung: angabe(TRAEGER.vertretung) })} />
 
       <h2>{t('imp.register')}</h2>
-      <p set:html={t('imp.registerAngabe')} />
+      <p
+        set:html={t('imp.registerAngabe', {
+          registergericht: angabe(TRAEGER.registergericht),
+          registernummer: angabe(TRAEGER.registernummer),
+        })}
+      />
 
       <h2>{t('imp.ustId')}</h2>
-      <p set:html={t('imp.ustIdAngabe')} />
+      <p set:html={t('imp.ustIdAngabe', { ustId: angabe(TRAEGER.ustId) })} />
 
       <h2>{t('imp.berufsrechtlicheAngaben')}</h2>
-      <p set:html={t('imp.berufsAngaben')} />
-      <p set:html={t('imp.berufsRegeln')} />
+      <p
+        set:html={t('imp.berufsAngaben', {
+          berufsbezeichnung: angabe(TRAEGER.berufsbezeichnung),
+          verleihstaat: angabe(TRAEGER.verleihstaat),
+          kammer: angabe(TRAEGER.kammer),
+          kzv: angabe(TRAEGER.kassenzahnaerztlicheVereinigung),
+          aufsicht: angabe(TRAEGER.aufsicht),
+        })}
+      />
+      <p set:html={t('imp.berufsRegeln', { fundstelle: angabe(TRAEGER.berufsordnungFundstelle) })} />
 
       <h2>{t('imp.haftpflicht')}</h2>
-      <p set:html={t('imp.haftpflichtAngabe')} />
+      <p
+        set:html={t('imp.haftpflichtAngabe', {
+          versicherer: angabe(TRAEGER.versicherer),
+          geltungsbereich: angabe(TRAEGER.versicherungGeltungsbereich),
+        })}
+      />
 
       <h2>{t('imp.verantwortlichFuerDenInhalt')}</h2>
-      <p set:html={t('imp.verantwortlichAngabe')} />
+      <p set:html={t('imp.verantwortlichAngabe', { verantwortlich: angabe(TRAEGER.inhaltlichVerantwortlich) })} />
 
       <h2>{t('imp.streitbeilegung')}</h2>
-      <p set:html={t('imp.streitbeilegungText')} />
-      <p set:html={t('imp.schlichtungsstelle')} />
+      <p set:html={t('imp.streitbeilegungText', { bereit: angabe(TRAEGER.streitbeilegungBereit) })} />
+      <p set:html={t('imp.schlichtungsstelle', { stelle: angabe(TRAEGER.schlichtungsstelle) })} />
 
       <h2>{t('imp.bildnachweise')}</h2>
-      <p set:html={t('imp.bildnachweiseAngabe')} />
+      <p set:html={t('imp.bildnachweiseAngabe', { nachweise: angabe(TRAEGER.bildnachweise) })} />
     </div>
   </div>
 </Basis>
