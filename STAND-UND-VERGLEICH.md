@@ -1177,23 +1177,49 @@ Der Dialog liegt in einem `<dialog>` über der Seite und nicht als Balken im
 Textfluss: Ein Balken verschiebt den Inhalt und wäre genau der Layout-Sprung,
 den Lighthouse als CLS zählt.
 
-### 7b.5 Was hier noch offen ist — und es ist nicht wenig
+### 7b.5 In Betrieb, und zwar nachgemessen
 
-**Vier aktive Dienste haben keinen bestätigten Auftragsverarbeitungsvertrag:**
-Google Analytics, Google Maps, Matterport und die Claude-Dienste. Die Technik
-sperrt sie deshalb, auch bei Zustimmung — eine Einwilligung ersetzt keinen
-Vertrag. Praktisch heißt das: **Rundgang und Karte sind gebaut und nicht in
-Betrieb.** 21 Einbettungen zeigen den Sperrhinweis statt eines Ladeknopfs.
+Die Praxis hat die Auftragsverarbeitungsverträge für alle vier aktiven Dienste
+bestätigt. Bis dahin stand `avVertrag: false`, und die Technik hat sie gesperrt
+— auch bei Zustimmung, weil eine Einwilligung keinen Vertrag ersetzt. Damit
+waren Rundgang und Karte einen halben Tag lang gebaut und nicht in Betrieb: 21
+Einbettungen mit Sperrhinweis, null Ladeknöpfe.
 
-Das ist richtig gebaut und ein offener Punkt der Praxis. Sie führt Analytics
-und Matterport heute schon live; sobald der Vertragsstand bestätigt ist, wird
-der Eintrag umgestellt und die Verzeichnisfassung hochgezählt — dann wird auch
-erneut gefragt, weil eine Zustimmung von gestern keinen Dienst deckt, den es
-gestern nicht gab.
+**Die Verzeichnisfassung steigt dabei von 1 auf 2, und das ist keine
+Formsache.** Im Dialog stand vorher wörtlich, diese Dienste würden „auch bei
+Zustimmung nicht geladen". Wer daraufhin „Alles erlauben" geklickt hat, hat es
+in dem Wissen getan, dass nichts passiert. Genau dieses Wissen ist jetzt falsch
+— also wird erneut gefragt. Eine Zustimmung, deren Bedeutung sich nachträglich
+ändert, ist keine.
 
-**Das Verzeichnis selbst ist noch nicht übersetzt.** Kategorienamen, Zwecke und
-Begründungen stehen auf Deutsch, sichtbar auch auf den englischen und
-französischen Seiten. Der Dialog selbst ist übersetzt.
+**Dass es wirklich funktioniert, ist gemessen und nicht behauptet.** Der halbe
+Tag Stillstand hat eine Lücke gezeigt, die alle bisherigen Prüfungen hatten:
+Sie suchten nach dem Zuviel, nie nach dem Zuwenig. Eine Sperre, die nichts
+durchlässt, besteht jede statische Prüfung mit Bestnote.
+
+`freigabe-pruefen.mjs` fährt deshalb einen echten Browser und schreibt jede
+Netzanfrage mit:
+
+| | vor dem Klick | nach dem Klick |
+|---|---|---|
+| Anfragen an fremde Hosts | **0** | die des Dienstes |
+| `<iframe>` in der Seite | **0** | **1**, mit der erwarteten Adresse |
+| Ladeknopf | **1** | verschwunden |
+| Entscheidung gemerkt | nein | ja, mit Fassung 2 |
+
+Geprüft wird der Weg eines Menschen, der die Statistik nicht will, den
+Rundgang aber schon: erst „Nur das Notwendige", dann den Rundgang einzeln
+freigeben. Dass das geht, ist selbst eine Zusage — Ablehnen darf keine
+Funktion kosten. Die Prüfung bestätigt danach, dass die Statistik trotzdem aus
+bleibt.
+
+Gegenprobe mit zwei eingebauten Fehlern, beide gefunden: Matterport wieder
+zugesperrt (zwei Befunde, „gesperrt und nicht bedienbar") und ein `<iframe>`
+vorab ins HTML gesetzt.
+
+**Was hier noch offen ist:** Das Verzeichnis selbst ist nicht übersetzt.
+Kategorienamen, Zwecke und Begründungen stehen auf Deutsch, sichtbar auch auf
+den englischen und französischen Seiten. Der Dialog selbst ist übersetzt.
 
 ---
 

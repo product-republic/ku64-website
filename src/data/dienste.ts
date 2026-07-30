@@ -45,13 +45,20 @@
  *
  * ── Ein Vorbehalt, der nicht wegprogrammiert werden kann ────────────────
  *
- * Google Analytics setzt Daten in die USA. Dafür braucht es den
- * EU-US Data Privacy Framework und einen Auftragsverarbeitungsvertrag mit
- * Google. Beides muss die Praxis abschließen; die Technik hier kann nur
- * dafür sorgen, dass ohne Einwilligung nichts geladen wird. Solange
- * `avVertrag: false` steht, weist `/cookies/` darauf hin und die Prüfung
- * `dienste-pruefen` bricht den Bau ab, wenn so ein Dienst auf `aktiv`
- * gestellt wird.
+ * Google Analytics und Google Maps setzen Daten in die USA, Matterport und
+ * Anthropic ebenso. Dafür braucht es den EU-US Data Privacy Framework und
+ * einen Auftragsverarbeitungsvertrag – beides Sache der Praxis, nicht der
+ * Technik.
+ *
+ * `avVertrag` hält diesen Stand fest, und das Feld hat Zähne: Steht es auf
+ * `false`, lädt `Drittinhalt.astro` den Dienst nicht, auch nicht auf Klick und
+ * auch nicht bei Zustimmung. Eine Einwilligung ersetzt keinen Vertrag.
+ *
+ * Für die vier aktiven Dienste hat die Praxis die Verträge am 30. Juli 2026
+ * bestätigt. Was die Technik weiterhin nicht kann: prüfen, ob das stimmt. Wer
+ * das Feld ohne Vertrag auf `true` setzt, umgeht keine Sperre, sondern trägt
+ * eine Falschangabe in ein Verzeichnis, das in der Datenschutzerklärung
+ * abgedruckt wird.
  */
 
 export type Kategorie = 'notwendig' | 'funktion' | 'statistik' | 'ki';
@@ -278,7 +285,7 @@ export const DIENSTE: Dienst[] = [
         dauer: '2 Jahre',
       },
     ],
-    avVertrag: false,
+    avVertrag: true,
     hinweise: 'https://policies.google.com/privacy',
     begruendung:
       'Ohne Messung lässt sich nicht sagen, ob der Umbau gewirkt hat. Analytics ist dafür ' +
@@ -348,7 +355,7 @@ export const DIENSTE: Dienst[] = [
         dauer: 'siehe Hinweise von Matterport',
       },
     ],
-    avVertrag: false,
+    avVertrag: true,
     hinweise: 'https://matterport.com/de/legal/privacy-policy',
     begruendung:
       'Auf der alten Website stand der Rundgang als eingebettetes Fenster mitten auf der ' +
@@ -381,7 +388,7 @@ export const DIENSTE: Dienst[] = [
         dauer: 'bis 6 Monate, siehe Hinweise von Google',
       },
     ],
-    avVertrag: false,
+    avVertrag: true,
     hinweise: 'https://policies.google.com/privacy',
     begruendung:
       'Der Weg zur Praxis steht auf jeder Anfahrtsseite in Worten, mit Haltestellen, ' +
@@ -428,7 +435,7 @@ export const DIENSTE: Dienst[] = [
       'die Seiteninhalte, die zur Beantwortung nötig sind',
     ],
     ablagen: [],
-    avVertrag: false,
+    avVertrag: true,
     hinweise: 'https://www.anthropic.com/legal/privacy',
     begruendung:
       'Die Anfrage geht über unseren eigenen Server – Ihr Browser baut keine Verbindung zu ' +
@@ -487,8 +494,22 @@ export const DIENSTE: Dienst[] = [
  *
  * `dienste-pruefen.mjs` bricht den Bau ab, wenn ein Dienst hinzukommt oder
  * seine Kategorie wechselt, ohne dass diese Zahl steigt.
+ *
+ * ── Fassung 2, am 30. Juli 2026 ─────────────────────────────────────────
+ *
+ * Die Praxis hat die Auftragsverarbeitungsverträge für Google Analytics,
+ * Google Maps, Matterport und die Claude-Dienste bestätigt. Bis dahin stand
+ * `avVertrag: false`, und die Technik hat diese Dienste gesperrt – auch bei
+ * Zustimmung, weil eine Einwilligung keinen Vertrag ersetzt.
+ *
+ * Dass die Fassung dabei steigt, ist keine Formsache. Im Dialog stand vorher
+ * wörtlich, diese Dienste würden „auch bei Zustimmung nicht geladen". Wer
+ * daraufhin „Alles erlauben" geklickt hat, hat es in dem Wissen getan, dass
+ * nichts passiert. Genau dieses Wissen ist jetzt falsch – also wird erneut
+ * gefragt. Eine Zustimmung, deren Bedeutung sich nachträglich ändert, ist
+ * keine.
  */
-export const VERZEICHNIS_FASSUNG = 1;
+export const VERZEICHNIS_FASSUNG = 2;
 
 /** Alle Dienste einer Kategorie, die tatsächlich in Betrieb sind. */
 export function dienste(kategorie: Kategorie): Dienst[] {

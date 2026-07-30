@@ -879,11 +879,20 @@ Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistung
 <h3 id="7b4-ablehnen-ist-genauso-schnell-wie-annehmen">7b.4 Ablehnen ist genauso schnell wie Annehmen</h3>
 <p>Drei Schaltflächen, gleich groß, in einer Reihe, im selben Schritt — „Nur das Notwendige" steht links, weil sie zuerst gelesen wird. Kein Vorhaken, kein zweiter Dialog beim Ablehnen, kein „berechtigtes Interesse" als Umweg.</p>
 <p>Der Dialog liegt in einem <code>&lt;dialog&gt;</code> über der Seite und nicht als Balken im Textfluss: Ein Balken verschiebt den Inhalt und wäre genau der Layout-Sprung, den Lighthouse als CLS zählt.</p>
-<h3 id="7b5-was-hier-noch-offen-ist-und-es-ist-nicht-wenig">7b.5 Was hier noch offen ist — und es ist nicht wenig</h3>
-<p class="nachsatz"><em>Vier aktive Dienste haben keinen bestätigten Auftragsverarbeitungsvertrag:</em></p>
-<p>Google Analytics, Google Maps, Matterport und die Claude-Dienste. Die Technik sperrt sie deshalb, auch bei Zustimmung — eine Einwilligung ersetzt keinen Vertrag. Praktisch heißt das: <strong>Rundgang und Karte sind gebaut und nicht in Betrieb.</strong> 21 Einbettungen zeigen den Sperrhinweis statt eines Ladeknopfs.</p>
-<p>Das ist richtig gebaut und ein offener Punkt der Praxis. Sie führt Analytics und Matterport heute schon live; sobald der Vertragsstand bestätigt ist, wird der Eintrag umgestellt und die Verzeichnisfassung hochgezählt — dann wird auch erneut gefragt, weil eine Zustimmung von gestern keinen Dienst deckt, den es gestern nicht gab.</p>
-<p><strong>Das Verzeichnis selbst ist noch nicht übersetzt.</strong> Kategorienamen, Zwecke und Begründungen stehen auf Deutsch, sichtbar auch auf den englischen und französischen Seiten. Der Dialog selbst ist übersetzt.</p>
+<h3 id="7b5-in-betrieb-und-zwar-nachgemessen">7b.5 In Betrieb, und zwar nachgemessen</h3>
+<p>Die Praxis hat die Auftragsverarbeitungsverträge für alle vier aktiven Dienste bestätigt. Bis dahin stand <code>avVertrag: false</code>, und die Technik hat sie gesperrt — auch bei Zustimmung, weil eine Einwilligung keinen Vertrag ersetzt. Damit waren Rundgang und Karte einen halben Tag lang gebaut und nicht in Betrieb: 21 Einbettungen mit Sperrhinweis, null Ladeknöpfe.</p>
+<p><strong>Die Verzeichnisfassung steigt dabei von 1 auf 2, und das ist keine Formsache.</strong> Im Dialog stand vorher wörtlich, diese Dienste würden „auch bei Zustimmung nicht geladen". Wer daraufhin „Alles erlauben" geklickt hat, hat es in dem Wissen getan, dass nichts passiert. Genau dieses Wissen ist jetzt falsch — also wird erneut gefragt. Eine Zustimmung, deren Bedeutung sich nachträglich ändert, ist keine.</p>
+<p><strong>Dass es wirklich funktioniert, ist gemessen und nicht behauptet.</strong> Der halbe Tag Stillstand hat eine Lücke gezeigt, die alle bisherigen Prüfungen hatten: Sie suchten nach dem Zuviel, nie nach dem Zuwenig. Eine Sperre, die nichts durchlässt, besteht jede statische Prüfung mit Bestnote.</p>
+<p><code>freigabe-pruefen.mjs</code> fährt deshalb einen echten Browser und schreibt jede Netzanfrage mit:</p>
+<div class="tabelle"><table><thead><tr><th></th><th>vor dem Klick</th><th>nach dem Klick</th></tr></thead><tbody>
+<tr><td>Anfragen an fremde Hosts</td><td><strong>0</strong></td><td>die des Dienstes</td></tr>
+<tr><td><code>&lt;iframe&gt;</code> in der Seite</td><td><strong>0</strong></td><td><strong>1</strong>, mit der erwarteten Adresse</td></tr>
+<tr><td>Ladeknopf</td><td><strong>1</strong></td><td>verschwunden</td></tr>
+<tr><td>Entscheidung gemerkt</td><td>nein</td><td>ja, mit Fassung 2</td></tr>
+</tbody></table></div>
+<p>Geprüft wird der Weg eines Menschen, der die Statistik nicht will, den Rundgang aber schon: erst „Nur das Notwendige", dann den Rundgang einzeln freigeben. Dass das geht, ist selbst eine Zusage — Ablehnen darf keine Funktion kosten. Die Prüfung bestätigt danach, dass die Statistik trotzdem aus bleibt.</p>
+<p>Gegenprobe mit zwei eingebauten Fehlern, beide gefunden: Matterport wieder zugesperrt (zwei Befunde, „gesperrt und nicht bedienbar") und ein <code>&lt;iframe&gt;</code> vorab ins HTML gesetzt.</p>
+<p><strong>Was hier noch offen ist:</strong> Das Verzeichnis selbst ist nicht übersetzt. Kategorienamen, Zwecke und Begründungen stehen auf Deutsch, sichtbar auch auf den englischen und französischen Seiten. Der Dialog selbst ist übersetzt.</p>
 <hr />
 <h2 id="8-analytics-und-anbindung-ans-dashboard">8. Analytics und Anbindung ans Dashboard</h2>
 <p><strong>Stand heute: Es gibt keine Messung.</strong> Kein Analysewerkzeug, kein Cookie, kein Zählpixel. Der Server schreibt bewusst keine Adressen und keine IP-Adressen mit.</p>
