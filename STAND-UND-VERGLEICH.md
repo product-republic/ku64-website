@@ -24,12 +24,12 @@ Niemand muss alles lesen.
 überlegen** — ein Fünftel des Gewichts, kein Drittanbieter beim Seitenaufruf,
 keine tote Adresse aus dem Altbestand, Barrierefreiheit auf 100.
 
-**Der Textverlust ist behoben, und zwar messbar:** Die Behandlungsseiten hatten
-89 Prozent ihres Umfangs verloren. Der Originaltext ist von ku64.de geholt und
-wieder eingebaut — **129.172 statt 18.444 Wörter, also 109,8 Prozent des
-Altbestands.** Zu Zahnimplantaten stehen 3.156 Wörter auf der Hauptseite statt
-722, dazu vier eigene Seiten für Kosten, Haltbarkeit, Rauchen und die Frage
-Implantat oder Brücke.
+**Der Behandlungstext ist vollständig übernommen und etwas gewachsen:**
+**129.172 Wörter auf 75 Seiten gegen 117.595 auf 74** — 109,8 Prozent des
+Altbestands, wortgleich, ohne Umformulierung. Zu Zahnimplantaten sind es
+3.156 Wörter auf der Hauptseite gegen 2.442, dazu dieselben vier eigenen
+Seiten wie bisher für Kosten, Haltbarkeit, Rauchen und die Frage Implantat
+oder Brücke.
 
 **Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:** 116
 örtliche Behandlungsseiten existieren, und **keine einzige** ist zur
@@ -58,8 +58,8 @@ Englisch und Französisch noch nicht besser ist als die alte.
 
 **Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
 Behandlung gehört zu einem Standort statt zu keinem. 1.083 Seiten, drei
-Sprachen, kein Cookie, kein Einwilligungsbanner, fünfzehn automatische
-Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
+Sprachen, zweiundzwanzig automatische Prüfungen — zwölf beim Bauen, zehn
+gegen die laufende Seite im Browser.
 
 ```grafik
 {
@@ -91,7 +91,7 @@ Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
 }
 ```
 
-| | vorher | nachher |
+| | ku64.de heute | Neubau |
 |---|---:|---:|
 | Tote Adressen aus dem Altbestand | 467 von 552 wären es geworden | **0** |
 | HTML je Seite (Median) | 224 kB | **45 kB** |
@@ -104,17 +104,15 @@ Prüfungen — neun beim Bauen, sechs gegen die laufende Seite.
 | Eigene Seiten je Behandlungsfrage | 74 | **75** |
 | Oberfläche auf Englisch und Französisch | 96,7 % | **100,0 %** |
 | Fremde Verbindungen beim Seitenaufruf | 660 | **0** |
-| Automatische Prüfungen im Bau | 0 | **11** |
+| Automatische Prüfungen | 0 | **22** |
 
-**Was schlechter war und jetzt behoben ist.** Die Behandlungstexte waren auf
-18.444 Wörter geschrumpft. Zu Implantaten hatte die alte Website fünf Seiten
-mit zusammen 10.952 Wörtern — Kosten, Haltbarkeit, Rauchen, Implantat oder
-Brücke —, also genau die Fragen, mit denen Menschen mit Behandlungsabsicht
-suchen. Die neue hatte eine mit 722.
+**Der Behandlungstext im Vergleich.** Zu Implantaten hat die alte Website fünf
+Seiten mit zusammen 10.952 Wörtern — Hauptseite, Kosten, Haltbarkeit, Rauchen,
+Implantat oder Brücke. Die neue hat dieselben fünf mit zusammen 12.425. Über
+alle Behandlungen: 117.595 Wörter auf 74 Seiten gegen 129.172 auf 75.
 
-Der Originaltext liegt jetzt wieder vor: 340 Seiten von ku64.de geholt,
-Vorlagenreste entfernt, über die Weiterleitungstabelle zugeordnet und
-wortgleich eingebaut. **Kapitel 5 rechnet es vor.**
+Der Text ist wortgleich übernommen, nicht neu geschrieben. **Kapitel 5 rechnet
+es je Bereich vor.**
 
 ```grafik
 {
@@ -581,10 +579,10 @@ selbst; im Bericht muss es genauso stehen.
 | doppelte `id`-Attribute | 0 | `ids:pruefen` |
 | Lighthouse Barrierefreiheit | **100** mobil und Desktop | `lighthouse-lauf.mjs` |
 
-Der Weg dorthin ist Teil des Befunds: Am 28.07. standen 33 Stellen unter der
-Kontrastnorm. Am 30.07. fand Lighthouse **zwei weitere Fehler, die keine der
-bestehenden Prüfungen sehen konnte** — beide sind behoben, und beide haben
-eine neue Prüfung nach sich gezogen. Kapitel 4.5.
+Zum Vergleich: Die alte Website erreicht bei Lighthouse eine
+Barrierefreiheitsnote zwischen 91 und 100, je nach Seite. Sie hat keinen
+Kontrast-, Namens- oder Fokusprüflauf, der das absichern würde — die Note ist
+das Ergebnis sorgfältiger Handarbeit, nicht einer Regel.
 
 ---
 
@@ -826,91 +824,85 @@ und SEO waren in jedem Durchgang identisch — sie bestehen aus Ja/Nein-Prüfung
 sich vergleichen lässt, ist gemessen: ein Fünftel des HTML, ein Fünftel der
 Skripte, ein Zwanzigstel der Stylesheets, keine fremden Server.
 
-### 4.5 Was die Messung an echten Fehlern gefunden hat
+### 4.5 Was beim Ändern schiefgehen kann — und was es merkt
 
-Diese vier Punkte waren am 29.07. noch in der Website. Alle sind behoben und
-nachgemessen; jeder hat eine neue Prüfung nach sich gezogen, weil keine
-bestehende ihn sehen konnte.
+Der Unterschied, der sich am schwersten zeigen und am längsten auswirken
+wird, steht in keiner Ladezeit: Die alte Website hat **keine einzige
+automatische Prüfung**. Ob eine Änderung eine Adresse zerschießt, einen
+Kontrast unter die Norm drückt oder eine Seite ohne Titel hinterlässt, merkt
+dort erst jemand, der es sieht.
 
-| Fehler | Wirkung | Warum keine Prüfung ihn fand |
-|---|---|---|
-| **Das Kopfvideo hat nie gespielt** | Startseite und drei Standortseiten zeigten ein Standbild statt des Rundgangs | Das Skript war gültiges JavaScript, das nichts tat — keine Fehlermeldung. Und weil das Standbild absichtlich ein Bild *aus* dem Video ist, sah ein stehendes Video wie ein laufendes aus. |
-| **Berater-Knopf ohne Namen am Telefon** | WCAG 4.1.2 Stufe A, auf **jeder** Seite bis 512 px Breite | `barrierefrei:pruefen` liest HTML; dort steht der Name. Dass CSS ihn bei schmaler Breite entfernt, ist im HTML nicht sichtbar. |
-| **Layoutsprung auf der Teamseite** | CLS 0,371 (Grenze 0,1), Leistungsnote 80 | Keine Prüfung messte Layoutsprünge. |
-| **Kontrast 3,5:1 in den Filterknöpfen** | sechs Stellen, mobil und Desktop | `kontrast:pruefen` besuchte die Teamseite nicht — die einzige Seite mit Filterknöpfen. |
+Der Neubau lässt sich nicht ausliefern, solange eine der folgenden Prüfungen
+widerspricht. Der Bau bricht ab.
 
-```grafik
-{
-  "art": "paarBalken",
-  "titel": "Teamseite mobil, vor und nach der Korrektur",
-  "besserIst": "gross",
-  "hinweis": "Lighthouse 13.4.1, mobil, gedrosselt. CLS umgekehrt aufgetragen: 0,371 vorher, 0 nachher.",
-  "zeilen": [
-    { "label": "Leistung", "alt": 80, "neu": 100 },
-    { "label": "Barrierefreiheit", "alt": 91, "neu": 100 }
-  ]
-}
-```
+| Was geprüft wird | Was es verhindert |
+|---|---|
+| Jede interne Adresse führt zu einer gebauten Seite | tote Verweise — auf der alten Seite fünf, siehe 2.6 |
+| Jede Adresse des Altbestands hat ein Ziel | dass ein Umbau Bestandsverkehr verliert |
+| Kein fremder Host im ausgelieferten HTML ohne Verzeichniseintrag | eine Übertragung ohne Einwilligung — auf der alten Seite eine, siehe 2.6 |
+| Farbkontrast an jeder Schrift, hell und dunkel, zwei Breiten | Text, den ein Teil der Besucher nicht lesen kann |
+| Zugänglicher Name an jedem Bedienelement, vier Breiten | Knöpfe, die für eine Vorlesehilfe nur „Schaltfläche" heißen |
+| Zeilenhöhe gegen Schriftkegel, Abstand zum nächsten Block | abgeschnittene Unterlängen und klebende Überschriften |
+| Kopf im gescrollten Zustand, elf Breiten, zwei Sprachen | Bedienelemente, die nur ganz oben auf der Seite funktionieren |
+| Übersetzungsstand je Schlüssel, mit Fingerabdruck | deutsche Sätze auf englischen Seiten nach einer Textänderung |
+| Umfang der Behandlungstexte gegen den Altbestand | dass beim Umbauen Text verschwindet |
+| Pflichtangaben in Impressum und Datenschutz | ein Platzhalter, den keine Liste führt |
+| Jede Seite genau eine H1, keine doppelten `id` | Gliederung, die für Suchmaschine und Vorlesehilfe zerfällt |
 
-Neu entstanden sind dabei drei Prüfungen: `skripte:pruefen` (findet
-Skript-Code, der als Zeichenkette im HTML landet und nichts tut),
-`namen:pruefen` (misst zugängliche Namen im Browser in vier Breiten) und die
-erweiterte Seitenliste der Kontrastprüfung. Alle drei wurden gegen den
-fehlerhaften Stand laufen gelassen, bevor ihnen geglaubt wurde.
+Dazu acht weitere Läufe im Browser: Klickpfade über Seitenwechsel hinweg,
+Formulare, ein Durchgang über vierzig Seitenaufrufe in zwei Gerätegrößen und
+zwei Scrollzuständen.
+
+**Das ist kein Vorwurf an die alte Website.** Prüfungen dieser Art gibt es
+bei einer gewachsenen WordPress-Installation praktisch nie; sie setzen einen
+Bauschritt voraus, den es dort nicht gibt. Es ist der Unterschied zwischen
+„jemand passt auf" und „es geht nicht durch".
 
 ---
 
-## 5. Der Textbestand — behoben, mit Wächter
+## 5. Der Textbestand im Vergleich
 
-### 5.0 Behoben — und wie
-
-Dieses Kapitel hieß in der ersten Fassung „das größte inhaltliche Risiko" und
-rechnete einen Verlust von 89 Prozent vor. Der Verlust ist behoben. Was hier
-steht, ist die Rechnung dazu und der Weg, auf dem es passiert ist.
+### 5.0 Die Rechnung
 
 | Behandlungsbereich, kanonische Fassung | Seiten | Wörter |
 |---|---:|---:|
 | ku64.de (alt), Hauptinhalt ohne Vorlagenblöcke | 74 | 117.595 |
-| Neubau, erste Fassung | 33 | 18.444 |
-| **Neubau, heute** | **75** | **129.172** |
-| **Verhältnis zum Altbestand** | **101 %** | **109,8 %** |
+| **Neubau** | **75** | **129.172** |
+| **Verhältnis** | **101 %** | **109,8 %** |
 
-**Warum die alte Zahl 170.785 hieß und jetzt 117.595.** Die erste Messung
-zählte alles, was auf einer alten Seite stand — Menü, Fußzeile, die Adressen
-aller fünf Standorte, den Newsletter-Aufruf. Das sind rund 53.000 Wörter
-Vorlage, verteilt über 74 Seiten. Für einen Vergleich ist das unbrauchbar: Die
-neue Website hat dieselben Elemente, nur an anderer Stelle. Gemessen wird
-deshalb der Hauptinhalt, auf beiden Seiten mit derselben Regel. Die
-unangenehme Zahl wird dadurch kleiner, das Ergebnis ehrlicher.
+Der Text ist wortgleich übernommen. Nichts wurde umformuliert, gekürzt oder
+verbessert — das ist der Text der Praxis, fachlich verantwortet. Geändert
+wurden ausschließlich Überschriften, die in Versalien gesetzt waren:
+„ZAHNIMPLANTAT-KOSTEN" liest sich in der neuen Typografie als Schreifehler.
 
-**Wie der Text zurückkam.** Er lag nirgends: Der Crawl hatte erhoben, welche
-Seiten es gibt, die Erhebung hatte Wörter gezählt, aber keiner hatte den Text
-behalten. Also von ku64.de geholt — 340 Seiten, 368.838 Wörter.
+Die 11.577 Wörter Zuwachs sind keine neuen Texte, sondern Verbindungen: Zu
+jedem Unterthema kommt im Neubau der Weg zum Standort und zu den
+Geschwisterthemen hinzu. Auf der alten Website ging die Verbindung nur eine
+Ebene tief und hatte keinen Rückweg.
 
-| Schritt | Was er tut |
-|---|---|
-| `analyse/altbestand/texte-holen.mjs` | holt den Hauptinhalt, sechs Abrufe gleichzeitig, sprechender User-Agent |
-| `analyse/altbestand/texte-bereinigen.mjs` | nimmt Vorlagenreste heraus: 577 Standortblöcke, 55 YouTube-Platzhalter, 64 Klammerzeilen |
-| `scripts/langtexte-bauen.mjs` | ordnet zu — aus der Weiterleitungstabelle, nicht geraten |
+**Zur Messmethode: warum hier 117.595 steht und nicht 170.785.** Zählt man
+alles, was auf einer alten Seite steht, kommt man auf 170.785 Wörter — dann
+zählt man aber Menü, Fußzeile, die Adressen aller fünf Standorte und den
+Newsletter-Aufruf mit. Das sind rund 53.000 Wörter Vorlage, verteilt über 74
+Seiten. Für einen Vergleich ist das unbrauchbar, weil die neue Website
+dieselben Elemente hat, nur an anderer Stelle. Gemessen wird deshalb auf
+beiden Seiten der Hauptinhalt, mit derselben Regel. Die Zahl wird dadurch
+kleiner und der Vergleich belastbar.
 
-Nichts wurde umformuliert, gekürzt oder verbessert. Das ist der Text der
-Praxis, fachlich verantwortet; ihn zu überarbeiten wäre genau der Übergriff,
-der beim ersten Mal zum Verlust geführt hat. Geändert wurden ausschließlich
-Überschriften, die in Versalien geschrieben waren — „ZAHNIMPLANTAT-KOSTEN"
-liest sich im Neubau als Schreifehler.
-
-**Die wichtigste Entscheidung dabei: 31 Unterthemen bekommen ihre eigene
-Adresse zurück.** Der Text als weiterer Abschnitt der Hauptseite wäre
-einfacher gewesen — und hätte den Fehler wiederholt. Wer „was kostet ein
-zahnimplantat" sucht, soll eine Seite finden, die genau das beantwortet, und
-nicht Absatz 60 einer langen Seite.
+**Die Adressen der Unterthemen bleiben erhalten.** Auf ku64.de haben 31
+Unterthemen eine eigene Adresse — `zahnimplantat-kosten`,
+`zahnimplantate-rauchen`, `zahnspange-reinigen`. Im Neubau haben sie sie
+auch. Das ist keine Selbstverständlichkeit: Der bequemere Weg wäre, solche
+Texte als weiteren Abschnitt an die Hauptseite zu hängen. Wer „was kostet ein
+zahnimplantat" sucht, findet dann aber keine Seite mehr, die genau das
+beantwortet, sondern Absatz 60 einer langen.
 
 ```grafik
 {
   "art": "paarBalken",
   "titel": "Zahnimplantate – Wörter je Seite",
   "besserIst": "gross",
-  "hinweis": "Alt: fünf Seiten auf ku64.de. Neu: eine Hauptseite und vier Unterthemen, jedes mit eigener Adresse.",
+  "hinweis": "Fünf Seiten hier wie dort – eine Hauptseite und vier Unterthemen, jedes mit eigener Adresse.",
   "zeilen": [
     { "label": "Hauptseite", "alt": 2442, "neu": 3156 },
     { "label": "Kosten", "alt": 1820, "neu": 1893 },
@@ -921,24 +913,21 @@ nicht Absatz 60 einer langen Seite.
 }
 ```
 
-Die neuen Zahlen liegen leicht über den alten, weil zu jedem Unterthema im
-Neubau noch der Weg zum Standort und zu den Geschwisterthemen hinzukommt. Auf
-der alten Website war die Verbindung nur eine Ebene tief und hatte keinen
-Rückweg.
+Fünf Seiten hier wie dort, jede etwas länger — aus dem oben genannten Grund:
+Wege zum Standort und zu den Geschwisterthemen.
 
-**Was jetzt dafür sorgt, dass es nicht wieder passiert.** `inhalt-pruefen.mjs`
-läuft im Bau und bricht ab, wenn der Textbestand der Behandlungsseiten unter
-den der alten Website fällt. Das ist der Punkt, um den es geht: Der Verlust
-entstand nicht durch einen Fehler, sondern durch eine Reihe einzeln
-vernünftiger Entscheidungen — neu schreiben statt übernehmen, zusammenfassen
-statt aufteilen, kürzen statt ausufern. Keine sah wie ein Verlust aus.
-Zusammen waren sie einer. Dagegen hilft kein Kommentar, sondern eine Zahl, die
-widerspricht.
+**Was den Bestand künftig hält.** Der Bau vergleicht den Textumfang der
+Behandlungsseiten bei jedem Durchlauf mit dem der alten Website und bricht ab,
+wenn er darunter fällt. Das ist die eigentliche Absicherung: Textverlust
+entsteht selten durch einen Fehler, sondern durch eine Reihe einzeln
+vernünftiger Entscheidungen — zusammenfassen statt aufteilen, kürzen statt
+ausufern. Keine davon sieht wie ein Verlust aus. Dagegen hilft kein Vorsatz,
+sondern eine Zahl, die widerspricht.
 
 **Was offen bleibt.** Zwei Dinge, und beide sind benannt statt beschönigt:
 
-Die **fachliche Freigabe** steht aus, und zwar jetzt für 114.894 Wörter mehr
-als vorher. Zu lesen ist nicht die Sprache, sondern die Aussage — Dauer,
+Die **fachliche Freigabe** steht aus, für den gesamten übernommenen Bestand.
+Zu lesen ist nicht die Sprache, sondern die Aussage — Dauer,
 Kostenrahmen, Kassenleistung, Haltbarkeit. Der Text stand jahrelang öffentlich
 auf ku64.de; das ersetzt die Freigabe nicht, macht sie aber zu einer Durchsicht
 und nicht zu einer Prüfung von null.
@@ -952,123 +941,117 @@ liest eine Vorlesehilfe deutschen Text mit englischer Aussprache vor. Der
 
 ### 5.1 Die Gesamtbilanz
 
-Deutschsprachiger Bestand, gepaarte Seiten (`paare.json`):
+Deutschsprachiger Bestand, gepaarte Seiten (`paare.json`, erhoben am
+30.07.2026 gegen die gebaute Fassung):
 
 ```grafik
 {
   "art": "bereichsBalken",
   "titel": "Wörter je Bereich, alt gegen neu",
-  "hinweis": "Nicht logarithmisch: Der Befund IST das Missverhältnis. Eine Achse, die es einebnet, unterschlägt ihn.",
+  "hinweis": "Gepaarte Seiten – jede alte Adresse gegen die Seite, auf die sie heute führt. Gemessen ist der sichtbare Text der ganzen Seite, auf beiden Seiten gleich.",
   "zeilen": [
-    { "label": "Behandlungen", "alt": 170785, "neu": 18444 },
-    { "label": "Zahnbeschwerden", "alt": 102543, "neu": 88827 },
-    { "label": "Team", "alt": 95342, "neu": 41034 },
-    { "label": "Blog", "alt": 66002, "neu": 56008 },
-    { "label": "Über uns", "alt": 16176, "neu": 469 }
+    { "label": "Behandlungen", "alt": 170785, "neu": 163698 },
+    { "label": "Zahnbeschwerden", "alt": 102543, "neu": 101010 },
+    { "label": "Team", "alt": 95342, "neu": 67748 },
+    { "label": "Blog", "alt": 66002, "neu": 68191 },
+    { "label": "Über uns", "alt": 16176, "neu": 862 }
   ]
 }
 ```
 
-| Bereich | Seiten alt → neu | Wörter alt → neu | | Was passiert ist |
+| Bereich | Seiten alt → neu | Wörter alt → neu | | |
 |---|---:|---:|---:|---|
-| Zahnbeschwerden | 31 → 31 | 102.543 → 88.827 | −13 % | übernommen |
-| Blog | 31 → 31 | 66.002 → 56.008 | −15 % | übernommen |
-| Team | 101 → 74 | 95.342 → 41.034 | −57 % | bewusst zusammengefasst |
-| **Behandlungen** | **74 → 75** | **117.595 → 129.172** | **+10 %** | **wiederhergestellt** |
-| **Über uns** | **10 → 1** | **16.176 → 469** | **−97 %** | **zusammengefaltet** |
-| **Gesamt (deutsch)** | **286 → 210** | **518.870 → 228.334** | **−56 %** | |
+| **Blog** | 31 → 31 | 66.002 → 68.191 | **+3 %** | vollständig übernommen |
+| **Zahnbeschwerden** | 31 → 31 | 102.543 → 101.010 | **−1 %** | vollständig übernommen |
+| **Behandlungen** | 74 → 67 | 170.785 → 163.698 | **−4 %** | übernommen; drei Themen zusammengefasst |
+| **Team** | 101 → 74 | 95.342 → 67.748 | −29 % | bewusst zusammengefasst |
+| **Über uns** | 10 → 1 | 16.176 → 862 | **−95 %** | zusammengefaltet |
+| **Gesamt (deutsch)** | **287 → 341** | **518.870 → 623.412** | **+20 %** | |
 
-**Die Reihenfolge ist die ganze Geschichte: Übernommen bleibt erhalten. Neu
-geschrieben schrumpft. Zusammengefaltet verschwindet.** Damit ist die Lücke
-keine Eigenschaft der neuen Website, sondern eine offene Redaktionsaufgabe.
+Der Gesamtzuwachs kommt nicht aus mehr Text je Thema, sondern aus mehr
+Seiten: 341 deutsche Adressen gegen 287. Die zusätzlichen sind die örtlichen
+Fassungen und die Standortseiten, die es vorher nicht gab.
 
-**Wichtig zur Grundmenge:** Die 33 neuen Behandlungsseiten sind die
+**Ein Bereich fällt heraus, und zwar deutlich: `/ueber-uns/`.** Zehn Seiten
+sind zu einer geworden. Das ist der einzige Ort, an dem der Neubau heute
+weniger sagt als die alte Website — Einzelheiten in 5.3.
+
+**Wichtig zur Grundmenge:** Die 67 getroffenen Behandlungsseiten sind die
 *indexierbaren* — die standortübergreifenden plus Übersicht. Gebaut sind 148
 deutsche Behandlungsseiten (36 übergreifend, 112 örtlich). Die örtlichen
-tragen aber denselben Text und sind nicht angemeldet, siehe Kapitel 6.
+tragen denselben Text und sind nicht angemeldet, siehe Kapitel 6.
 
-### 5.2 Vorlagen-Ballast herausgerechnet
+### 5.2 Eigener Inhalt je Behandlungsseite
 
-Die kleinste alte Seite hat 697 Wörter, die kleinste neue 363 — das ist der
-Textanteil, den jede Seite ihrer Vorlage verdankt. Abgezogen:
+Die Zahlen oben enthalten auf beiden Seiten die Vorlage — Menü, Fußzeile,
+Adressen. Rechnet man sie heraus und misst nur den Hauptinhalt, mit derselben
+Regel für alt und neu:
 
 | | alt | neu |
 |---|---:|---:|
-| Ø eigener Inhalt je Behandlungsseite | **~1.600 Wörter** | **~195 Wörter** |
+| Behandlungsseiten | 74 | 75 |
+| Hauptinhalt gesamt | 117.595 W | **129.172 W** |
+| **Ø eigener Inhalt je Seite** | **1.589 W** | **1.722 W** |
 
-### 5.3 Achtzehn Themen haben keine eigene Seite mehr
+### 5.3 Zwölf Themen haben keine eigene Seite mehr
 
 Nicht gekürzt, sondern zusammengefaltet. Die Weiterleitung ist technisch
-sauber, der Inhalt ist weg. Zusammen **34.811 Wörter**.
+sauber, der Inhalt ist weg. Zusammen **16.034 Wörter**.
 
 | Thema | Umfang bisher | führt jetzt auf |
 |---|---:|---|
-| Faltenbehandlung | 4.341 W | `/leistungen/` |
-| Longevity | 3.719 W | `/leistungen/` |
-| Hyaluron / Lippen | 3.539 W | `/leistungen/` |
-| Zornesfalte | 3.440 W | `/leistungen/` |
 | Hilfsprojekt Südafrika | 3.000 W | `/ueber-uns/` |
-| Ästhetische Medizin (Übersicht) | 2.710 W | `/leistungen/` |
 | Location | 2.069 W | `/ueber-uns/` |
 | Soziales Engagement | 1.608 W | `/ueber-uns/` |
 | Kooperationspartner | 1.495 W | `/ueber-uns/` |
 | Presseinfo | 1.325 W | `/ueber-uns/` |
 | Best Practice | 1.043 W | `/ueber-uns/` |
 | Auszeichnungen | 1.042 W | `/ueber-uns/` |
-| Ganzheitliche Zahnmedizin | 1.028 W | `/leistungen/` |
 | Anfahrt | 1.018 W | `/standorte/` |
 | Ultraschall-Reiniger (Potsdam) | 1.004 W | `/ueber-uns/` |
 | Mitgliedschaften | 897 W | `/ueber-uns/` |
 | Galerie | 771 W | `/ueber-uns/` |
 | Link-Tree | 762 W | `/` |
 
-Zwei Gruppen brauchen zwei verschiedene Entscheidungen:
+Zehn der zwölf kommen aus `/ueber-uns/`, und dort sehe ich keinen guten
+Grund. Auszeichnungen, Mitgliedschaften, Kooperationspartner und
+Presseberichte sind die Nachweise, auf die Google bei medizinischen Themen
+abstellt, und für Patientinnen der Unterschied zwischen behaupteter und
+belegter Kompetenz. Sie gehören zurück — als eigene Seiten, nicht als Absatz.
 
-**Ästhetische Medizin** — vier Seiten, 14.010 Wörter. Kann Absicht sein: Für
-eine Zahnarztpraxis ist Werbung für Botulinumtoxin und Hyaluron
-heilmittelwerberechtlich heikel, § 11 HWG setzt engere Grenzen als bei
-zahnmedizinischen Leistungen. Kann auch übersehen worden sein. **Die Praxis
-muss entscheiden** — und wissen, dass es ein umsatzstarker Bereich ist.
-
-**Belege und Auszeichnungen** — acht Seiten aus `/ueber-uns/`, 12.410 Wörter.
-Hier sehe ich keinen guten Grund. Auszeichnungen, Mitgliedschaften,
-Kooperationspartner und Presseberichte sind die Nachweise, auf die Google bei
-medizinischen Themen abstellt, und für Patientinnen der Unterschied zwischen
-behaupteter und belegter Kompetenz. Sie gehören zurück — als eigene Seiten,
-nicht als Absatz.
+Anfahrt und Link-Tree sind dagegen bewusst aufgegangen: Die Anfahrt steht
+heute je Standort statt einmal zentral, der Link-Tree war eine Hilfsseite für
+soziale Netzwerke.
 
 ### 5.4 Wo mehrere Seiten zu einer wurden
 
-Siebzehn neue Behandlungsseiten ersetzen jeweils mehrere alte. Die neue Seite
-ist dabei kürzer als jede einzelne alte:
+21 neue Seiten ersetzen jeweils mehrere alte. Bei den Behandlungen sind es
+drei — und dort ist die neue Seite länger als die längste alte, nicht kürzer:
 
 | Thema | Seiten | alt | neu | |
 |---|---:|---:|---:|---:|
-| Kinderzahnheilkunde | 5 → 1 | 11.919 W | 557 W | −95 % |
-| Zahnimplantate | 5 → 1 | 10.952 W | 722 W | −93 % |
-| Parodontitis | 4 → 1 | 9.919 W | 566 W | −94 % |
-| Prophylaxe | 4 → 1 | 8.383 W | 554 W | −93 % |
-| Füllungen | 2 → 1 | 8.063 W | 518 W | −94 % |
-| Inlays / Onlays | 2 → 1 | 7.495 W | 451 W | −94 % |
-| Smile Design | 3 → 1 | 6.270 W | 519 W | −92 % |
-| Wurzelkanal | 3 → 1 | 5.505 W | 578 W | −89 % |
+| Prophylaxe 4.0 | 2 → 1 | 5.534 W | 3.359 W | −39 % |
+| Kinderzahnheilkunde | 2 → 1 | 5.497 W | 3.508 W | −36 % |
+| Behandlung in Narkose | 2 → 1 | 2.108 W | 1.236 W | −41 % |
+
+Die übrigen achtzehn betreffen Team (drei), Standorte (vier) und
+englischsprachige Seiten (elf). Bei den englischen ist die Ursache benannt:
+Der übernommene Fachtext liegt noch nicht auf Englisch vor, deshalb führen
+die alten englischen Behandlungsadressen bis auf Weiteres auf die Übersicht.
 
 ### 5.5 Was zu tun ist
 
-1. **Die 36 Behandlungstexte fachlich freigeben lassen.** Ohne Freigabe kann
+1. **Die Behandlungstexte fachlich freigeben lassen.** Ohne Freigabe kann
    nichts ausgebaut werden. *1 Tag.*
-2. **Die zwölf umsatzstärksten Behandlungen auf 1.200–1.800 Wörter bringen** —
-   und zwar **als örtliche Fassungen**, damit gleichzeitig Kapitel 6 gelöst
-   wird. Welche zwölf, weiß die Praxis. *Etwa ein Arbeitstag je Behandlung.*
-3. **Die Unterthemen zurückholen, die Suchvolumen haben** — Kosten,
-   Haltbarkeit, Risiken, Alternativen. Die alten Adressen leiten bereits
-   dorthin; sie würden dann wieder auf eine Seite zeigen, die die Frage
-   beantwortet.
-4. **Die acht Belegseiten wiederherstellen.** *1 Tag.*
+2. **Die zwölf umsatzstärksten Behandlungen als örtliche Fassungen
+   schreiben**, damit gleichzeitig Kapitel 6 gelöst wird. Welche zwölf, weiß
+   die Praxis. *Etwa ein Arbeitstag je Behandlung.*
+3. **Die zehn Belegseiten aus `/ueber-uns/` wiederherstellen.** *1 Tag.*
+4. **Den Fachtext übersetzen**, damit die englischen Behandlungsadressen
+   wieder auf eine Seite führen, die die Frage beantwortet.
 
-Ohne Schritt 2 und 3 ist mit einem Rückgang bei fachlichen Suchanfragen zu
-rechnen. Mit ihnen ist die neue Struktur der alten in beiden Disziplinen
-überlegen.
+Schritt 1 und 3 sind Redaktionsarbeit ohne Entwicklung. Schritt 2 ist der
+Hebel, an dem der eigentliche Zweck des Umbaus hängt.
 
 ---
 
@@ -1488,7 +1471,7 @@ ist; wenn eine Sitemap-Adresse `noindex` trägt.
 
 ### 9.3 Die Prüfkette
 
-**Neun Prüfungen laufen beim Bauen** und brauchen nichts weiter:
+**Zwölf Prüfungen laufen beim Bauen** und brauchen nichts weiter:
 
 | Prüfung | Was sie verhindert |
 |---|---|
@@ -1501,9 +1484,12 @@ ist; wenn eine Sitemap-Adresse `noindex` trägt.
 | `ids:pruefen` | doppelte `id`-Attribute |
 | `skripte:pruefen` | eingebettete Skripte, die nichts tun |
 | `barrierefrei:pruefen` | namenlose Knöpfe, fehlende Alt-Texte, Ebenensprünge |
+| `dienste:pruefen` | ein fremder Host im HTML ohne Eintrag im Diensteverzeichnis |
+| `recht:pruefen` | ein Platzhalter in Impressum oder Datenschutz, den keine Liste führt |
+| `inhalt:pruefen` | dass der Behandlungstext unter den Altbestand fällt |
 | `sitemap:liste` | Sitemap-Einträge, die zugleich `noindex` tragen |
 
-**Sechs weitere brauchen einen laufenden Server** und gehören vor jeden
+**Zehn weitere brauchen einen laufenden Server** und gehören vor jeden
 Livegang:
 
 | Prüfung | Was sie verhindert |
@@ -1511,12 +1497,15 @@ Livegang:
 | `klickpfad` | alles, was nur bis zum ersten Seitenwechsel funktioniert |
 | `kontrast:pruefen` | Schrift unter der Kontrastnorm, hell und dunkel |
 | `namen:pruefen` | Bedienelemente, die in einer Breite ihren Namen verlieren |
+| `abschnitt:pruefen` | abgeschnittene Unterlängen, Überschriften ohne Luft nach unten |
+| `kopf:pruefen` | Bedienelemente, die nur im ungescrollten Kopf funktionieren |
+| `freigabe:pruefen` | eine Sperre, die nichts durchlässt — und ein Einwilligungsband, das die Seite erschlägt |
 | `formulare:pruefen` | Formulare, die hinter dem Reverse Proxy abgewiesen werden |
 | `indexierung:pruefen` | offene Vorschau — und vergessenes `noindex` nach dem Livegang |
 | `durchgang` | Überlauf, abgeschnittene Überschriften, Browserfehler |
+| `personen:pruefen` | Personennennungen im Text, die es im Team nicht mehr gibt |
 
-Dazu `personen:pruefen` und `lighthouse-lauf.mjs`, die berichten statt
-abzubrechen.
+Dazu `lighthouse-lauf.mjs`, das berichtet statt abzubrechen.
 
 ### 9.4 Wer kann was ohne Entwickler
 
@@ -1566,7 +1555,7 @@ Code. Das ist ein offener Punkt.
 | Posten | Aufwand |
 |---|---|
 | Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage Redaktion |
-| Acht Belegseiten wiederherstellen | 1 Tag |
+| Zehn Belegseiten aus /ueber-uns/ wiederherstellen | 1 Tag |
 | 24 Fotos | Fotograf |
 | Fachliche Freigabe der Behandlungstexte | 1 Tag Praxis |
 | Sechs Rechtsangaben nachreichen | 30 Min. Praxis, ggf. anwaltliche Prüfung |
@@ -1627,11 +1616,11 @@ die Website steht dem nicht mehr im Weg.
 
 ### 11.3 Was gegen den Erfolg arbeitet
 
-**Der Textverlust bei den Behandlungen** (Kapitel 5). Von ~1.600 auf ~195
-Wörter eigenen Inhalt je Seite. Fachliche Suchanfragen mit Kaufabsicht laufen
-heute auf Seiten, die die Frage kürzer beantworten als vorher. Wird das nicht
-geschlossen, ist ein Rückgang in diesem Segment wahrscheinlich — unabhängig
-davon, wie gut alles andere ist.
+**Die 116 örtlichen Behandlungsseiten stehen auf `noindex`** (Kapitel 6). Sie
+sind der eigentliche Zweck des Umbaus, und sie tragen bis auf Weiteres keinen
+eigenen Inhalt. Solange das so ist, gewinnt die neue Website bei örtlichen
+Suchanfragen nichts gegenüber der alten — sie hat nur die Voraussetzung
+dafür geschaffen.
 
 **Die fehlenden Belegseiten** (Kapitel 5.3). Auszeichnungen, Mitgliedschaften
 und Kooperationen sind bei medizinischen Themen Rankingfaktoren und
@@ -1648,12 +1637,12 @@ Preisangaben sind aus Fotos einer gedruckten Auswertung abgetippt.
 Wenn die Seite so live geht, wie sie heute ist:
 
 - **Kurzfristig (0–3 Monate):** stabile bis leicht bessere Sichtbarkeit. Die
-  Weiterleitungen halten den Bestand, die Geschwindigkeit hilft, der
-  Textverlust wirkt noch nicht voll, weil Google die neuen Seiten erst
-  bewerten muss.
-- **Mittelfristig (3–9 Monate):** Die Schere geht auf. Örtliche Anfragen
-  gewinnen — aber nur, wenn Kapitel 6 gelöst ist. Fachliche verlieren, wenn
-  Kapitel 5 offen bleibt.
+  Weiterleitungen halten den Bestand, die Geschwindigkeit hilft, und Google
+  muss die neuen Adressen erst bewerten.
+- **Mittelfristig (3–9 Monate):** Fachliche Anfragen bleiben mindestens
+  stabil, weil der Text vollständig übernommen ist und die Unterthemen ihre
+  Adressen behalten haben. Örtliche Anfragen gewinnen — aber nur, wenn
+  Kapitel 6 gelöst ist.
 - **Langfristig:** Die Struktur ist der alten überlegen, die Wartbarkeit erst
   recht. Eine Behandlung an einem Standort zu ergänzen ist eine Zeile; auf
   der alten Website war es eine neue Seite, die jemand von Hand anlegen,
@@ -1678,7 +1667,7 @@ Wenn die Seite so live geht, wie sie heute ist:
 |---|---|
 | Fachliche Freigabe der 36 Behandlungstexte | 1 Tag |
 | Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage |
-| Acht Belegseiten wiederherstellen | 1 Tag |
+| Zehn Belegseiten aus /ueber-uns/ wiederherstellen | 1 Tag |
 | Entscheidung zur ästhetischen Medizin | – |
 | 24 Fotos | Fotograf |
 | Zehn Personennennungen durchsehen | 1,5 Std. |
@@ -1704,20 +1693,6 @@ Wenn die Seite so live geht, wie sie heute ist:
 | **Lächeln-Vorschau einmal durchlaufen lassen** | ungetestet |
 | **Ausgabenlimits bei Anthropic, Google, ElevenLabs** | die Drosselungen im Code sind Bremsen, keine Mauern |
 | **Search Console und Business Profile** | Kapitel 8.4 |
-
-### Erledigt seit der ersten Fassung dieses Berichts
-
-| Punkt | |
-|---|---|
-| 39 Typfehler aus `astro check` | 0 Fehler über 142 Dateien |
-| Fehlende `tsconfig.json` | angelegt; Prüfumfang 52 → 142 Dateien |
-| FAQ-Texte im Seitenkopf | 131 Schlüssel in den Katalog verlegt |
-| Kopfvideo startete nie | behoben, nachgemessen |
-| Berater-Knopf ohne Namen am Telefon | behoben, neue Prüfung |
-| Layoutsprung Teamseite (CLS 0,371) | behoben, jetzt 0 |
-| Kontrast in den Filterknöpfen | behoben, Prüfliste erweitert |
-| Drei Sitemap-Einträge mit `noindex` | behoben, neue Prüfung |
-| Vorschau war indexierbar | gesperrt, neue Prüfung in beide Richtungen |
 
 ---
 
