@@ -640,3 +640,46 @@ export function oeffnungstageText(s: Standort): string {
   const { tage, zusatz } = s.oeffnungsangabe;
   return zusatz ? `${tage} Tage/Woche · ${zusatz}` : `${tage} Tage/Woche`;
 }
+
+/**
+ * Dieselbe Angabe, aber in Stücken, die nicht auseinandergerissen werden.
+ *
+ * ── Warum das nötig ist ─────────────────────────────────────────────────
+ *
+ * In der schmalen Spalte einer Standortkarte bricht
+ * „7 Tage/Woche · Sa + So nach Vereinbarung" dort, wo zufällig die Zeile
+ * endet:
+ *
+ *     7 Tage/Woche · Sa
+ *     + So nach
+ *     Vereinbarung
+ *
+ * Das ist nicht nur unschön, es ist kurz missverständlich: In der ersten
+ * Zeile steht „Sa" allein hinter „7 Tage/Woche", und wer nur überfliegt,
+ * liest samstags geöffnet – ohne den Vorbehalt, der eine Zeile tiefer steht.
+ *
+ * Zerlegt in Sinneinheiten bricht es dort, wo auch ein Mensch trennen würde:
+ *
+ *     7 Tage/Woche ·
+ *     Sa + So
+ *     nach Vereinbarung
+ *
+ * ── Warum als Stücke und nicht mit geschützten Leerzeichen ──────────────
+ *
+ * Geschützte Leerzeichen im Datenwert würden dasselbe bewirken und wären
+ * unsichtbar: Wer den Text später bearbeitet, tippt normale Leerzeichen und
+ * merkt nicht, dass er die Regel aufhebt. Hier steht die Trennung im Code,
+ * mit dieser Begründung daneben.
+ */
+export function oeffnungstageTeile(s: Standort): string[] {
+  const { tage, zusatz } = s.oeffnungsangabe;
+  if (!zusatz) return [`${tage} Tage/Woche`];
+
+  /* „Sa + So nach Vereinbarung" → „Sa + So" und „nach Vereinbarung". Der
+     Vorbehalt ist immer der Teil ab „nach"; steht er nicht drin, bleibt der
+     Zusatz ein Stück. */
+  const teil = /^(.*?)\s+(nach\s+Vereinbarung)$/i.exec(zusatz);
+  return teil
+    ? [`${tage} Tage/Woche ·`, teil[1], teil[2]]
+    : [`${tage} Tage/Woche ·`, zusatz];
+}

@@ -436,6 +436,18 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     text-transform: uppercase;
     color: var(--tinte-leise);
     max-width: 5.6rem;
+    /*
+     * Die Zeilenhöhe steht hier ausdrücklich, weil `max-height` sie sonst
+     * beschneidet.
+     *
+     * Geerbt waren 1,6 – bei 0,54 rem also 13,8 px Inhalt in einem Kasten
+     * von `max-height: 1.4em` = 12,1 px. Mit `overflow: hidden` fehlten
+     * 3 px, und weil der Text in Versalien steht, sah man es nicht sofort:
+     * abgeschnitten wurde die Unterkante von „M" und „N", nicht eine
+     * Unterlänge. `npm run abschnitt:pruefen` hat es auf sechs Ansichten
+     * gefunden.
+     */
+    line-height: 1.4;
     /* Nimmt keinen Platz, solange die Leiste die Angabe trägt. */
     max-height: 0;
     opacity: 0;

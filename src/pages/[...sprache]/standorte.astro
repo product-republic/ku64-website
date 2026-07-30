@@ -1,6 +1,6 @@
 ---
 import { inhalte } from '../../i18n/daten';
-import { oeffnungstageText } from '../../data/standorte';
+import { oeffnungstageTeile } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen, schemaOrganisation, kanonisch } from '../../lib/seo';
@@ -61,7 +61,7 @@ const schema = [
         {
           daten.standorte.map((s) => {
             const anzahl = daten.leistungenHier(s.slug).length;
-            const tage = oeffnungstageText(s);
+            const tage = oeffnungstageTeile(s);
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
                 <h2>
@@ -76,7 +76,14 @@ const schema = [
                 </ul>
                 <dl class="fakten">
                   <div><dt>{t('orte.behandlungen')}</dt><dd>{anzahl}</dd></div>
-                  <div><dt>Geöffnet</dt><dd>{tage}</dd></div>
+                  <div>
+                    <dt>Geöffnet</dt>
+                    {/* Je Sinneinheit ein Stück, das nicht umbrochen wird –
+                        Begründung bei `oeffnungstageTeile` in standorte.ts. */}
+                    <dd class="zeiten">
+                      {tage.map((teil) => <span>{teil}</span>)}
+                    </dd>
+                  </div>
                   <div><dt>Seit</dt><dd>{s.eroeffnet.slice(0, 4)}</dd></div>
                 </dl>
                 <p class="tel">{s.telefon}</p>
@@ -179,4 +186,17 @@ const schema = [
   .ja a { display: block; color: var(--erfolg); font-weight: 700; text-decoration: none; font-size: var(--t-md); }
   .ja a:hover { transform: scale(1.25); }
   .nein { color: var(--linie-stark); }
+
+  /* Die Öffnungsangabe bricht nur zwischen den Sinneinheiten, nie in einer.
+     `inline` und nicht `flex`, damit „7 Tage/Woche" ohne Zusatz weiterhin in
+     der Zeile der Beschriftung steht und keine eigene Zeile beansprucht. */
+  .zeiten span {
+    white-space: nowrap;
+  }
+
+  .zeiten span + span::before {
+    /* Ein normales Leerzeichen als Trennstelle – hier DARF gebrochen werden. */
+    content: ' ';
+    white-space: normal;
+  }
 </style>

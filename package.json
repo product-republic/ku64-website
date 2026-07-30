@@ -42,7 +42,8 @@
     "inhalt:pruefen": "node --experimental-strip-types --no-warnings scripts/inhalt-pruefen.mjs",
     "langtexte:bauen": "node scripts/langtexte-bauen.mjs",
     "korpus:einspielen": "node scripts/korpus-einspielen.mjs",
-    "freigabe:pruefen": "node scripts/freigabe-pruefen.mjs"
+    "freigabe:pruefen": "node scripts/freigabe-pruefen.mjs",
+    "abschnitt:pruefen": "node scripts/abschnitt-pruefen.mjs"
   },
   "repository": {
     "type": "git",

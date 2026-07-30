@@ -202,6 +202,29 @@ h4 {
   line-height: var(--zeile-eng);
   letter-spacing: var(--spur-titel);
   text-wrap: balance;
+  /*
+   * Luft nach unten.
+   *
+   * Der Reset ganz oben setzt `margin: 0` auf alles, und Abstände entstehen
+   * in diesem Projekt über `margin-block-start` am folgenden Geschwister.
+   * Für Überschriften reicht das nicht: Nicht jeder Block, der nach einer
+   * Überschrift kommt, bringt einen Abstand mit – ein `.raster` etwa nicht.
+   * Dann steht die Kartenreihe direkt unter der Unterlänge des „g".
+   *
+   * Angrenzende Ränder fallen zusammen, der größere gewinnt. Wo ein
+   * Geschwister schon einen Abstand mitbringt, ändert diese Zeile deshalb
+   * nichts; wo keiner da war, entsteht einer.
+   */
+  margin-block-end: var(--raum-5);
+}
+
+/* Eine Überschrift, auf die unmittelbar nichts folgt, braucht den Abstand
+   nicht – sonst wächst jede Karte unten um eine Zeile. */
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child {
+  margin-block-end: 0;
 }
 
 h1 {
@@ -214,7 +237,9 @@ h2 {
 }
 h3 {
   font-size: var(--t-xl);
-  line-height: 1.15;
+  /* 1,22 wie --zeile-eng: darunter schneidet die Zeilenbox die Unterlänge –
+     gemessen an „Vorsorge & Prophylaxe" auf der Standortseite. */
+  line-height: 1.22;
 }
 h4 {
   font-size: var(--t-lg);
@@ -644,6 +669,42 @@ a:hover {
     box-shadow var(--zeit-schnell) var(--kurve);
 }
 
+/*
+ * Der Rand, der aus einer Fläche eine Linse macht.
+ *
+ * ── Was im Vorbild den Unterschied ausmacht ─────────────────────────────
+ *
+ * Unschärfe hatten die Schaltflächen schon. Was fehlte, ist die Kante: Im
+ * Vorbild läuft eine helle Linie um die Pille, oben hell und unten fast weg –
+ * das Licht, das sich in der Rundung des Glases bricht. Ohne sie wirkt eine
+ * durchscheinende Fläche wie ein Loch, nicht wie ein Körper.
+ *
+ * ── Warum als Verlauf im Rahmen und nicht als Pseudoelement ─────────────
+ *
+ * Ein `::before` mit `backdrop-filter` oder `mask` erzeugt je Schaltfläche
+ * eine eigene Compositing-Ebene. Auf der Startseite stehen sieben Knöpfe, im
+ * Menü drei – das sind zehn Ebenen für einen Lichtreflex, und auf einem
+ * älteren Telefon kostet das mehr als der Effekt wert ist.
+ *
+ * Zwei ineinandergelegte Hintergründe kosten dagegen nichts extra: Der
+ * Verlauf liegt im `border-box`, die Fläche im `padding-box`. Der Rahmen ist
+ * durchsichtig und zeigt deshalb den Verlauf darunter – ein Rand, der oben
+ * anders aussieht als unten, ohne ein einziges zusätzliches Element.
+ *
+ * ── Warum nur die Kante und kein Glanzstreifen ──────────────────────────
+ *
+ * Ein zweiter Verlauf über die obere Hälfte sah auf dem Schirm gut aus und
+ * auf Text schlecht: Er hebt die Fläche hinter der Schrift auf, und der
+ * Kontrast fällt in der oberen Hälfte messbar ab. `kontrast-pruefen` hat das
+ * gemeldet. Die Kante allein trägt den Eindruck und lässt die Fläche in
+ * Ruhe.
+ */
+.knopf {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
 .knopf:active {
   transform: translateY(1px);
 }
@@ -698,7 +759,17 @@ a:hover {
  * dahinter durch die Schrift hindurch.
  */
 .knopf-primaer {
-  background: var(--knopf-flaeche);
+  /* Erste Ebene: die Fläche im padding-box. Zweite: der Kantenverlauf im
+     border-box, den der durchsichtige Rahmen durchscheinen lässt. */
+  background:
+    linear-gradient(var(--knopf-flaeche), var(--knopf-flaeche)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(255 255 255 / 0.42),
+        rgb(255 255 255 / 0.12) 45%,
+        rgb(255 255 255 / 0.06)
+      )
+      border-box;
   color: var(--knopf-schrift);
   -webkit-backdrop-filter: blur(24px) saturate(1.6);
   backdrop-filter: blur(24px) saturate(1.6);
@@ -762,9 +833,16 @@ a:hover {
  *      Fläche Dicke; ohne sie liegt sie flach auf der Seite statt darüber.
  */
 .knopf-sekundaer {
-  background: var(--scheibe-flaeche);
+  background:
+    linear-gradient(var(--scheibe-flaeche), var(--scheibe-flaeche)) padding-box,
+    linear-gradient(
+        to bottom,
+        rgb(255 255 255 / 0.95),
+        var(--scheibe-rand) 55%,
+        rgb(20 16 14 / 0.14)
+      )
+      border-box;
   color: var(--tinte);
-  border: 1px solid var(--scheibe-rand);
   -webkit-backdrop-filter: blur(20px) saturate(var(--glas-saettigung));
   backdrop-filter: blur(20px) saturate(var(--glas-saettigung));
   box-shadow:

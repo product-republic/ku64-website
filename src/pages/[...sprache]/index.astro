@@ -13,7 +13,7 @@ import Basis from '../../layouts/Basis.astro';
 import Bild from '../../components/Bild.astro';
 import Kopfmedium from '../../components/Kopfmedium.astro';
 import { standortbildFuer } from '../../data/medien';
-import { oeffnungstageText } from '../../data/standorte';
+import { oeffnungstageTeile } from '../../data/standorte';
 import { schemaOrganisation, schemaFaq } from '../../lib/seo';
 import { texte } from '../../i18n/katalog';
 
@@ -131,7 +131,13 @@ const ueberschrift = t('start.ueberschrift');
                   </div>
                   <div>
                     <dt>{t('karte.geoeffnet')}</dt>
-                    <dd>{oeffnungstageText(s)}</dd>
+                    {/* Je Sinneinheit ein Stück, das nicht umbrochen wird –
+                        sonst steht „Sa" allein hinter „7 Tage/Woche" und der
+                        Vorbehalt erst eine Zeile tiefer. Siehe
+                        `oeffnungstageTeile` in standorte.ts. */}
+                    <dd class="zeiten">
+                      {oeffnungstageTeile(s).map((teil) => <span>{teil}</span>)}
+                    </dd>
                   </div>
                   <div>
                     <dt>{t('karte.telefon')}</dt>
@@ -322,7 +328,22 @@ const ueberschrift = t('start.ueberschrift');
     h1 {
       max-width: none;
       font-size: min(7.5rem, 100cqi / (var(--zeichen, 28) * 0.53));
-      line-height: 1.02;
+      /*
+       * KEIN eigenes `line-height` mehr – es galt hier 1,02.
+       *
+       * Bei 73 px Schriftgrad sind das 74,8 px Zeilenbox für einen
+       * Schriftkegel von 1,21 em, also 88 px. Die Unterlänge des „ü" in
+       * „dürfen" ragte 14,2 px darunter hinaus und lag unter dem nächsten
+       * Kasten. Auf dem Schirm sah es aus, als sei der Text unten
+       * angeschnitten – gemeldet von `npm run abschnitt:pruefen`.
+       *
+       * Eine große Überschrift verträgt die 1,22 aus `--zeile-eng` ohne
+       * Weiteres: Sie steht hier in EINER Zeile, die Zeilenhöhe wirkt
+       * deshalb nicht als Durchschuss, sondern nur als Kastenhöhe – und
+       * genau die fehlte darunter.
+       *
+       * Die optische Enge trägt die Laufweite, nicht die Zeile.
+       */
       letter-spacing: -0.02em;
       /*
        * Hier KEIN `balance`: Es verteilt gleichmäßig auf zwei Zeilen, auch
@@ -511,5 +532,14 @@ const ueberschrift = t('start.ueberschrift');
     font-size: var(--t-sm);
     font-weight: 600;
     color: var(--akzent-schrift);
+  }
+
+  .zeiten span {
+    white-space: nowrap;
+  }
+
+  .zeiten span + span::before {
+    content: ' ';
+    white-space: normal;
   }
 </style>

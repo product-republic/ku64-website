@@ -156,7 +156,25 @@
   /* Enger als zuvor: Eine Serifenlose in großem Grad verträgt weniger
      Durchschuss als eine Serifenschrift, sonst zerfällt die Überschrift in
      einzelne Zeilen statt einen Block zu bilden. */
-  --zeile-eng: 1.05;
+  /*
+   * 1,12 und nicht 1,05.
+   *
+   * Bei 1,05 ist die Zeilenbox kleiner als der Kegel der Schrift: Inter hat
+   * 0,97 em über und 0,24 em unter der Grundlinie, zusammen 1,21. Was
+   * darüber hinausragt, schneidet der nächste Kasten ab – sichtbar an jedem
+   * „g", „y" und „ß" am Zeilenende. Auf der Startseite traf es „Digital,
+   * bevor Sie ankommen".
+   *
+   * 1,22 ist genau dieser Kegel, aufgerundet. Ein erster Versuch mit 1,12
+   * sah besser aus und schnitt weiter ab – gemessen mit
+   * `abschnitt-pruefen.mjs`: h1 um 4,3 px, h2 um 2,9 px. Die Zahl ist keine
+   * Geschmacksfrage, sondern die Höhe der Schrift.
+   *
+   * Enger wirkt die Überschrift trotzdem, weil `--spur-titel` die Laufweite
+   * zusammenzieht. Optische Enge kommt von der Laufweite, nicht davon, dass
+   * man Buchstaben abschneidet.
+   */
+  --zeile-eng: 1.22;
   --zeile-normal: 1.5;
   --zeile-weit: 1.7;
 
