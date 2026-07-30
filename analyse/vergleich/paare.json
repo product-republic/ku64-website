@@ -1,0 +1,4099 @@
+{
+ "erhobenAm": "2026-07-29T18:24:43.866Z",
+ "paare": [
+  {
+   "alt": "/",
+   "neu": "/",
+   "art": "sammelseite",
+   "woerterAlt": 4211,
+   "woerterNeu": 544,
+   "bytesAlt": 401747,
+   "bytesNeu": 42248
+  },
+  {
+   "alt": "/anamnese/",
+   "neu": "/anamnese/",
+   "art": "eigene-seite",
+   "woerterAlt": 827,
+   "woerterNeu": 546,
+   "bytesAlt": 211436,
+   "bytesNeu": 34676
+  },
+  {
+   "alt": "/berlin-charlottenburg/",
+   "neu": "/berlin-charlottenburg/",
+   "art": "eigene-seite",
+   "woerterAlt": 2628,
+   "woerterNeu": 677,
+   "bytesAlt": 278035,
+   "bytesNeu": 65878
+  },
+  {
+   "alt": "/berlinmitte/",
+   "neu": "/berlinmitte/",
+   "art": "eigene-seite",
+   "woerterAlt": 1780,
+   "woerterNeu": 716,
+   "bytesAlt": 308022,
+   "bytesNeu": 62827
+  },
+  {
+   "alt": "/berlinmitte/kontakt/",
+   "neu": "/berlinmitte/kontakt/",
+   "art": "eigene-seite",
+   "woerterAlt": 773,
+   "woerterNeu": 466,
+   "bytesAlt": 220081,
+   "bytesNeu": 43727
+  },
+  {
+   "alt": "/berlinmitte/link-tree/",
+   "neu": "/berlinmitte/kontakt/",
+   "art": "eigene-seite",
+   "woerterAlt": 748,
+   "woerterNeu": 466,
+   "bytesAlt": 213691,
+   "bytesNeu": 43727
+  },
+  {
+   "alt": "/blog/",
+   "neu": "/blog/",
+   "art": "sammelseite",
+   "woerterAlt": 1027,
+   "woerterNeu": 1137,
+   "bytesAlt": 269306,
+   "bytesNeu": 64821
+  },
+  {
+   "alt": "/blog/20-jahre-ku64/",
+   "neu": "/blog/20-jahre-ku64/",
+   "art": "eigene-seite",
+   "woerterAlt": 2154,
+   "woerterNeu": 1895,
+   "bytesAlt": 243673,
+   "bytesNeu": 50379
+  },
+  {
+   "alt": "/blog/360zahn-aus-duesseldorf/",
+   "neu": "/blog/360zahn-aus-duesseldorf/",
+   "art": "eigene-seite",
+   "woerterAlt": 1104,
+   "woerterNeu": 777,
+   "bytesAlt": 217572,
+   "bytesNeu": 39556
+  },
+  {
+   "alt": "/blog/architektur-design/",
+   "neu": "/blog/architektur-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 2490,
+   "woerterNeu": 2281,
+   "bytesAlt": 270230,
+   "bytesNeu": 56374
+  },
+  {
+   "alt": "/blog/box-legende-axel-schulz-sagt-karies-den-kampf-an/",
+   "neu": "/blog/box-legende-axel-schulz-sagt-karies-den-kampf-an/",
+   "art": "eigene-seite",
+   "woerterAlt": 1094,
+   "woerterNeu": 591,
+   "bytesAlt": 219486,
+   "bytesNeu": 38166
+  },
+  {
+   "alt": "/blog/boys-day-in-der-zahnarztpraxis-ku64-3/",
+   "neu": "/blog/boys-day-in-der-zahnarztpraxis-ku64-3/",
+   "art": "eigene-seite",
+   "woerterAlt": 1296,
+   "woerterNeu": 992,
+   "bytesAlt": 226959,
+   "bytesNeu": 43951
+  },
+  {
+   "alt": "/blog/flowable-injection-technique/",
+   "neu": "/blog/flowable-injection-technique/",
+   "art": "eigene-seite",
+   "woerterAlt": 2851,
+   "woerterNeu": 2494,
+   "bytesAlt": 286920,
+   "bytesNeu": 57171
+  },
+  {
+   "alt": "/blog/interview-dentosophie-clara-constanze-meinberg/",
+   "neu": "/blog/interview-dentosophie-clara-constanze-meinberg/",
+   "art": "eigene-seite",
+   "woerterAlt": 1736,
+   "woerterNeu": 1423,
+   "bytesAlt": 230008,
+   "bytesNeu": 46295
+  },
+  {
+   "alt": "/blog/interviews/",
+   "neu": "/blog/interviews/",
+   "art": "eigene-seite",
+   "woerterAlt": 1374,
+   "woerterNeu": 1051,
+   "bytesAlt": 220055,
+   "bytesNeu": 41874
+  },
+  {
+   "alt": "/blog/kinder-betreuung/",
+   "neu": "/blog/kinder-betreuung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2684,
+   "woerterNeu": 2486,
+   "bytesAlt": 254225,
+   "bytesNeu": 58810
+  },
+  {
+   "alt": "/blog/ku64-die-gruene-praxis/",
+   "neu": "/blog/ku64-die-gruene-praxis/",
+   "art": "eigene-seite",
+   "woerterAlt": 1263,
+   "woerterNeu": 928,
+   "bytesAlt": 216199,
+   "bytesNeu": 40854
+  },
+  {
+   "alt": "/blog/ku64-in-den-medien/",
+   "neu": "/blog/ku64-in-den-medien/",
+   "art": "eigene-seite",
+   "woerterAlt": 3895,
+   "woerterNeu": 3813,
+   "bytesAlt": 357791,
+   "bytesNeu": 75485
+  },
+  {
+   "alt": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/",
+   "neu": "/blog/ku64-mitarbeiter-und-mitarbeitersuche/",
+   "art": "eigene-seite",
+   "woerterAlt": 2334,
+   "woerterNeu": 942,
+   "bytesAlt": 261237,
+   "bytesNeu": 43736
+  },
+  {
+   "alt": "/blog/kunst-ausstellungen-bei-ku64/",
+   "neu": "/blog/kunst-ausstellungen-bei-ku64/",
+   "art": "eigene-seite",
+   "woerterAlt": 1254,
+   "woerterNeu": 1001,
+   "bytesAlt": 235195,
+   "bytesNeu": 43745
+  },
+  {
+   "alt": "/blog/mundpilz-hausmittel/",
+   "neu": "/blog/mundpilz-hausmittel/",
+   "art": "eigene-seite",
+   "woerterAlt": 3996,
+   "woerterNeu": 3718,
+   "bytesAlt": 315699,
+   "bytesNeu": 68498
+  },
+  {
+   "alt": "/blog/neuigkeiten-aus-der-praxis/",
+   "neu": "/blog/neuigkeiten-aus-der-praxis/",
+   "art": "eigene-seite",
+   "woerterAlt": 2601,
+   "woerterNeu": 2380,
+   "bytesAlt": 285273,
+   "bytesNeu": 56803
+  },
+  {
+   "alt": "/blog/patient-ist-bei-ku64-gast-koenig/",
+   "neu": "/blog/patient-ist-bei-ku64-gast-koenig/",
+   "art": "eigene-seite",
+   "woerterAlt": 1333,
+   "woerterNeu": 1009,
+   "bytesAlt": 217989,
+   "bytesNeu": 41231
+  },
+  {
+   "alt": "/blog/referral-growth-culture-award-2026/",
+   "neu": "/blog/referral-growth-culture-award-2026/",
+   "art": "eigene-seite",
+   "woerterAlt": 1866,
+   "woerterNeu": 1529,
+   "bytesAlt": 249280,
+   "bytesNeu": 48313
+  },
+  {
+   "alt": "/blog/social-media-2023/",
+   "neu": "/blog/social-media-2023/",
+   "art": "eigene-seite",
+   "woerterAlt": 3068,
+   "woerterNeu": 2695,
+   "bytesAlt": 267233,
+   "bytesNeu": 55547
+  },
+  {
+   "alt": "/blog/social-media-2024/",
+   "neu": "/blog/social-media-2024/",
+   "art": "eigene-seite",
+   "woerterAlt": 7604,
+   "woerterNeu": 7374,
+   "bytesAlt": 374256,
+   "bytesNeu": 92542
+  },
+  {
+   "alt": "/blog/social-media-april-2025/",
+   "neu": "/blog/social-media-april-2025/",
+   "art": "eigene-seite",
+   "woerterAlt": 1159,
+   "woerterNeu": 876,
+   "bytesAlt": 222302,
+   "bytesNeu": 40915
+  },
+  {
+   "alt": "/blog/social-media-ferbruar-2025/",
+   "neu": "/blog/social-media-ferbruar-2025/",
+   "art": "eigene-seite",
+   "woerterAlt": 1379,
+   "woerterNeu": 1056,
+   "bytesAlt": 227711,
+   "bytesNeu": 41362
+  },
+  {
+   "alt": "/blog/social-media-januar-2025/",
+   "neu": "/blog/social-media-januar-2025/",
+   "art": "eigene-seite",
+   "woerterAlt": 1449,
+   "woerterNeu": 1127,
+   "bytesAlt": 225660,
+   "bytesNeu": 41828
+  },
+  {
+   "alt": "/blog/social-media-maerz-2025/",
+   "neu": "/blog/social-media-maerz-2025/",
+   "art": "eigene-seite",
+   "woerterAlt": 1248,
+   "woerterNeu": 926,
+   "bytesAlt": 223769,
+   "bytesNeu": 40468
+  },
+  {
+   "alt": "/blog/social-media-mai-2025/",
+   "neu": "/blog/social-media-mai-2025/",
+   "art": "eigene-seite",
+   "woerterAlt": 1540,
+   "woerterNeu": 1218,
+   "bytesAlt": 230062,
+   "bytesNeu": 42741
+  },
+  {
+   "alt": "/blog/ultraschallreiniger-potsdam-strahlender-zahnersatz/",
+   "neu": "/blog/ultraschallreiniger-potsdam-strahlender-zahnersatz/",
+   "art": "eigene-seite",
+   "woerterAlt": 1079,
+   "woerterNeu": 796,
+   "bytesAlt": 216689,
+   "bytesNeu": 40834
+  },
+  {
+   "alt": "/blog/west-coast-kids-2026-hilfsprojekt-suedafrika/",
+   "neu": "/blog/west-coast-kids-2026-hilfsprojekt-suedafrika/",
+   "art": "eigene-seite",
+   "woerterAlt": 1961,
+   "woerterNeu": 1496,
+   "bytesAlt": 245686,
+   "bytesNeu": 46208
+  },
+  {
+   "alt": "/blog/white-smile-das-perfekte-hochzeitslaecheln-zu-ihrem-schoensten-tag/",
+   "neu": "/blog/white-smile-das-perfekte-hochzeitslaecheln-zu-ihrem-schoensten-tag/",
+   "art": "eigene-seite",
+   "woerterAlt": 1106,
+   "woerterNeu": 819,
+   "bytesAlt": 217260,
+   "bytesNeu": 41007
+  },
+  {
+   "alt": "/blog/zahnfuellung-rausgefallen/",
+   "neu": "/blog/zahnfuellung-rausgefallen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2813,
+   "woerterNeu": 2579,
+   "bytesAlt": 263873,
+   "bytesNeu": 58135
+  },
+  {
+   "alt": "/blog/zahnprothese-reinigen/",
+   "neu": "/blog/zahnprothese-reinigen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2754,
+   "woerterNeu": 2458,
+   "bytesAlt": 270250,
+   "bytesNeu": 56691
+  },
+  {
+   "alt": "/blog/zahnseide-vorher-oder-nachher/",
+   "neu": "/blog/zahnseide-vorher-oder-nachher/",
+   "art": "eigene-seite",
+   "woerterAlt": 2490,
+   "woerterNeu": 2141,
+   "bytesAlt": 259722,
+   "bytesNeu": 53750
+  },
+  {
+   "alt": "/datenschutzerklaerung/",
+   "neu": "/datenschutz/",
+   "art": "eigene-seite",
+   "woerterAlt": 13592,
+   "woerterNeu": 1028,
+   "bytesAlt": 322810,
+   "bytesNeu": 36013
+  },
+  {
+   "alt": "/downloads/",
+   "neu": "/anamnese/",
+   "art": "eigene-seite",
+   "woerterAlt": 772,
+   "woerterNeu": 546,
+   "bytesAlt": 212583,
+   "bytesNeu": 34676
+  },
+  {
+   "alt": "/en/",
+   "neu": null,
+   "art": "ohne-ziel",
+   "woerterAlt": 4060,
+   "woerterNeu": null,
+   "bytesAlt": 354184,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/about-us/",
+   "neu": "/en/ueber-uns/",
+   "art": "eigene-seite",
+   "woerterAlt": 2790,
+   "woerterNeu": null,
+   "bytesAlt": 273395,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/charlottenburg-berlin/",
+   "neu": "/en/berlin-charlottenburg/",
+   "art": "eigene-seite",
+   "woerterAlt": 2221,
+   "woerterNeu": null,
+   "bytesAlt": 238242,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/contact/",
+   "neu": "/en/kontakt/",
+   "art": "eigene-seite",
+   "woerterAlt": 697,
+   "woerterNeu": null,
+   "bytesAlt": 193949,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/dental-problems/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 915,
+   "woerterNeu": null,
+   "bytesAlt": 183184,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/dentist-berlin-mitte/",
+   "neu": "/en/berlinmitte/",
+   "art": "eigene-seite",
+   "woerterAlt": 2244,
+   "woerterNeu": null,
+   "bytesAlt": 665422,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/imprint/",
+   "neu": "/en/impressum/",
+   "art": "eigene-seite",
+   "woerterAlt": 1197,
+   "woerterNeu": null,
+   "bytesAlt": 183354,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/jobs-career/",
+   "neu": "/en/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1304,
+   "woerterNeu": null,
+   "bytesAlt": 203452,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/potsdam/",
+   "neu": null,
+   "art": "ohne-ziel",
+   "woerterAlt": 2353,
+   "woerterNeu": null,
+   "bytesAlt": 301104,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/privacy-policy/",
+   "neu": "/en/datenschutz/",
+   "art": "eigene-seite",
+   "woerterAlt": 14784,
+   "woerterNeu": null,
+   "bytesAlt": 278609,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 967,
+   "woerterNeu": null,
+   "bytesAlt": 249177,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/",
+   "neu": "/en/leistungen/#aesthetik",
+   "art": "eigene-seite",
+   "woerterAlt": 1632,
+   "woerterNeu": null,
+   "bytesAlt": 215251,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/amalgam-removal/",
+   "neu": "/en/leistungen/kunststofffuellungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 1081,
+   "woerterNeu": null,
+   "bytesAlt": 192119,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/bleaching-teeth-whitening/",
+   "neu": "/en/leistungen/zahnaufhellung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1984,
+   "woerterNeu": null,
+   "bytesAlt": 226417,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dental-remediation/",
+   "neu": "/en/leistungen/#zahnersatz",
+   "art": "eigene-seite",
+   "woerterAlt": 1089,
+   "woerterNeu": null,
+   "bytesAlt": 202601,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/",
+   "neu": "/en/leistungen/#zahnersatz",
+   "art": "eigene-seite",
+   "woerterAlt": 3170,
+   "woerterNeu": null,
+   "bytesAlt": 269772,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/bridges/",
+   "neu": "/en/leistungen/zahnbruecken/",
+   "art": "eigene-seite",
+   "woerterAlt": 2168,
+   "woerterNeu": null,
+   "bytesAlt": 295191,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/cerec-dental-restorations/",
+   "neu": "/en/leistungen/inlays-onlays/",
+   "art": "eigene-seite",
+   "woerterAlt": 1384,
+   "woerterNeu": null,
+   "bytesAlt": 202838,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/crowns/",
+   "neu": "/en/leistungen/keramik-kronen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2348,
+   "woerterNeu": null,
+   "bytesAlt": 265444,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/inlays/",
+   "neu": "/en/leistungen/inlays-onlays/",
+   "art": "eigene-seite",
+   "woerterAlt": 774,
+   "woerterNeu": null,
+   "bytesAlt": 198045,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/digital-smile-design/",
+   "neu": "/en/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 1426,
+   "woerterNeu": null,
+   "bytesAlt": 209885,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/aesthetic-dentistry-dental-aesthetics/veneers/",
+   "neu": "/en/leistungen/veneers/",
+   "art": "eigene-seite",
+   "woerterAlt": 1963,
+   "woerterNeu": null,
+   "bytesAlt": 230300,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/dental-laboratory-in-house/",
+   "neu": "/en/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 1360,
+   "woerterNeu": null,
+   "bytesAlt": 212687,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/endodontics-root-canal-treatment/",
+   "neu": "/en/leistungen/wurzelkanalbehandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1872,
+   "woerterNeu": null,
+   "bytesAlt": 216342,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 843,
+   "woerterNeu": null,
+   "bytesAlt": 198521,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/bite-correction/",
+   "neu": "/en/leistungen/cmd-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2122,
+   "woerterNeu": null,
+   "bytesAlt": 218559,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/caries-treatment/",
+   "neu": "/en/leistungen/karies-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2518,
+   "woerterNeu": null,
+   "bytesAlt": 244486,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/initial-examination-check-up/",
+   "neu": "/en/leistungen/zahnvorsorge/",
+   "art": "eigene-seite",
+   "woerterAlt": 2206,
+   "woerterNeu": null,
+   "bytesAlt": 229244,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/laser-treatment/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 1867,
+   "woerterNeu": null,
+   "bytesAlt": 225435,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/holistic-dentistry/tooth-decay-caries-risk-determination/",
+   "neu": "/en/leistungen/zahnvorsorge/",
+   "art": "eigene-seite",
+   "woerterAlt": 950,
+   "woerterNeu": null,
+   "bytesAlt": 200543,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/medicine-aesthetic/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2420,
+   "woerterNeu": null,
+   "bytesAlt": 225871,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/medicine-aesthetic/hyaluronic-acid-fillers-berlin-ku64/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 3097,
+   "woerterNeu": null,
+   "bytesAlt": 248919,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/medicine-aesthetic/wrinkle-treatment-in-berlin/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 4122,
+   "woerterNeu": null,
+   "bytesAlt": 289646,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/medicine-aesthetic/wrinkles-forehead/",
+   "neu": "/en/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 3066,
+   "woerterNeu": null,
+   "bytesAlt": 243569,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/",
+   "neu": "/en/leistungen/#chirurgie",
+   "art": "eigene-seite",
+   "woerterAlt": 1498,
+   "woerterNeu": null,
+   "bytesAlt": 212728,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/all-on-4/",
+   "neu": "/en/leistungen/all-on-4/",
+   "art": "eigene-seite",
+   "woerterAlt": 939,
+   "woerterNeu": null,
+   "bytesAlt": 193567,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/dental-bone-grafting/",
+   "neu": "/en/leistungen/knochenaufbau/",
+   "art": "eigene-seite",
+   "woerterAlt": 1134,
+   "woerterNeu": null,
+   "bytesAlt": 206069,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/dental-implants/",
+   "neu": "/en/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 2456,
+   "woerterNeu": null,
+   "bytesAlt": 262972,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-implant-costs/",
+   "neu": "/en/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 2417,
+   "woerterNeu": null,
+   "bytesAlt": 201184,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-surgery-smoking/",
+   "neu": "/en/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 1594,
+   "woerterNeu": null,
+   "bytesAlt": 200700,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/oral-surgery-mkg-surgery/maxillofacial-combination-therapy/",
+   "neu": "/en/leistungen/#chirurgie",
+   "art": "eigene-seite",
+   "woerterAlt": 814,
+   "woerterNeu": null,
+   "bytesAlt": 198631,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/orthodontics/",
+   "neu": "/en/leistungen/#kieferorthopaedie",
+   "art": "eigene-seite",
+   "woerterAlt": 1911,
+   "woerterNeu": null,
+   "bytesAlt": 211942,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/orthodontics/braces/",
+   "neu": "/en/leistungen/feste-zahnspange/",
+   "art": "eigene-seite",
+   "woerterAlt": 1288,
+   "woerterNeu": null,
+   "bytesAlt": 195660,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/orthodontics/invisalign/",
+   "neu": "/en/leistungen/aligner/",
+   "art": "eigene-seite",
+   "woerterAlt": 1203,
+   "woerterNeu": null,
+   "bytesAlt": 196943,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/pediatric-dentist/",
+   "neu": "/en/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 2321,
+   "woerterNeu": null,
+   "bytesAlt": 234327,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/pediatric-dentist/child-prophylaxis/",
+   "neu": "/en/leistungen/kinderprophylaxe/",
+   "art": "eigene-seite",
+   "woerterAlt": 1050,
+   "woerterNeu": null,
+   "bytesAlt": 191026,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/pediatric-dentist/first-visit-to-ku64/",
+   "neu": "/en/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 2012,
+   "woerterNeu": null,
+   "bytesAlt": 219071,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/pediatric-dentist/pediatric-orthodontics/",
+   "neu": "/en/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 1455,
+   "woerterNeu": null,
+   "bytesAlt": 199644,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/pediatric-dentist/vollnarkose/",
+   "neu": "/en/leistungen/behandlung-in-narkose/",
+   "art": "eigene-seite",
+   "woerterAlt": 967,
+   "woerterNeu": null,
+   "bytesAlt": 196075,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/periodontics/",
+   "neu": "/en/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1981,
+   "woerterNeu": null,
+   "bytesAlt": 232998,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/prophylaxis-4-0/",
+   "neu": "/en/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 2173,
+   "woerterNeu": null,
+   "bytesAlt": 220304,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/prophylaxis-4-0/air-flow/",
+   "neu": "/en/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 896,
+   "woerterNeu": null,
+   "bytesAlt": 192870,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/prophylaxis-4-0/ammp8-test/",
+   "neu": "/en/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 2235,
+   "woerterNeu": null,
+   "bytesAlt": 226291,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/en/services/prophylaxis-4-0/gbt-guided-biofilm-therapy/",
+   "neu": "/en/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 1609,
+   "woerterNeu": null,
+   "bytesAlt": 203026,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/impressum/",
+   "neu": "/impressum/",
+   "art": "eigene-seite",
+   "woerterAlt": 1299,
+   "woerterNeu": 409,
+   "bytesAlt": 214098,
+   "bytesNeu": 30878
+  },
+  {
+   "alt": "/jobs-karriere/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1565,
+   "woerterNeu": 580,
+   "bytesAlt": 238920,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/jobs-karriere/kinderzahnarzt-stellenangebot-job-berlin/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 993,
+   "woerterNeu": 580,
+   "bytesAlt": 214696,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/jobs-karriere/wir-bilden-aus/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1639,
+   "woerterNeu": 580,
+   "bytesAlt": 231951,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/jobs-karriere/zahnarzt-job-berlin/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1504,
+   "woerterNeu": 580,
+   "bytesAlt": 226431,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/jobs-karriere/zahnmedizinischer-fachangestellter-berlin/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1501,
+   "woerterNeu": 580,
+   "bytesAlt": 225193,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/jobs-karriere/zahnmedizinischer-prophylaxeassistent-berlin/",
+   "neu": "/karriere/",
+   "art": "eigene-seite",
+   "woerterAlt": 1587,
+   "woerterNeu": 580,
+   "bytesAlt": 227906,
+   "bytesNeu": 60312
+  },
+  {
+   "alt": "/kontakt/",
+   "neu": "/kontakt/",
+   "art": "sammelseite",
+   "woerterAlt": 832,
+   "woerterNeu": 531,
+   "bytesAlt": 224571,
+   "bytesNeu": 42993
+  },
+  {
+   "alt": "/kontakt/anfahrt/",
+   "neu": "/standorte/",
+   "art": "sammelseite",
+   "woerterAlt": 1018,
+   "woerterNeu": 550,
+   "bytesAlt": 210263,
+   "bytesNeu": 74093
+  },
+  {
+   "alt": "/leistungen/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 1039,
+   "woerterNeu": 1798,
+   "bytesAlt": 280904,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 2710,
+   "woerterNeu": 1798,
+   "bytesAlt": 255072,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/faltenbehandlung-in-berlin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 4341,
+   "woerterNeu": 1798,
+   "bytesAlt": 321231,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/hyaluron-lippen/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3539,
+   "woerterNeu": 1798,
+   "bytesAlt": 277621,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/zornesfalte-entfernen/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3440,
+   "woerterNeu": 1798,
+   "bytesAlt": 278117,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/angstpatienten/",
+   "neu": "/leistungen/zahnarztangst/",
+   "art": "eigene-seite",
+   "woerterAlt": 1249,
+   "woerterNeu": 517,
+   "bytesAlt": 224100,
+   "bytesNeu": 45793
+  },
+  {
+   "alt": "/leistungen/endodontie-wurzelkanalbehandlung/",
+   "neu": "/leistungen/wurzelkanalbehandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2558,
+   "woerterNeu": 578,
+   "bytesAlt": 259108,
+   "bytesNeu": 48107
+  },
+  {
+   "alt": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/",
+   "neu": "/leistungen/wurzelkanalbehandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1251,
+   "woerterNeu": 578,
+   "bytesAlt": 229593,
+   "bytesNeu": 48107
+  },
+  {
+   "alt": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/",
+   "neu": "/leistungen/wurzelkanalbehandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1696,
+   "woerterNeu": 578,
+   "bytesAlt": 234728,
+   "bytesNeu": 48107
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 1028,
+   "woerterNeu": 1798,
+   "bytesAlt": 229817,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/bisshebung/",
+   "neu": "/leistungen/cmd-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2088,
+   "woerterNeu": 483,
+   "bytesAlt": 250869,
+   "bytesNeu": 44040
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/dentosophie/",
+   "neu": "/leistungen/dentosophie/",
+   "art": "eigene-seite",
+   "woerterAlt": 3053,
+   "woerterNeu": 748,
+   "bytesAlt": 342254,
+   "bytesNeu": 49293
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/erstuntersuchung/",
+   "neu": "/leistungen/zahnvorsorge/",
+   "art": "eigene-seite",
+   "woerterAlt": 3510,
+   "woerterNeu": 560,
+   "bytesAlt": 344943,
+   "bytesNeu": 47276
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/karies-risiko-bestimmung/",
+   "neu": "/leistungen/zahnvorsorge/",
+   "art": "eigene-seite",
+   "woerterAlt": 1093,
+   "woerterNeu": 560,
+   "bytesAlt": 232298,
+   "bytesNeu": 47276
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/kariesbehandlung/",
+   "neu": "/leistungen/karies-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2607,
+   "woerterNeu": 521,
+   "bytesAlt": 279449,
+   "bytesNeu": 45991
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung/",
+   "neu": "/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3003,
+   "woerterNeu": 566,
+   "bytesAlt": 304040,
+   "bytesNeu": 48085
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/longevity/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3719,
+   "woerterNeu": 1798,
+   "bytesAlt": 357586,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/zahnfleischaufbau/",
+   "neu": "/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 2732,
+   "woerterNeu": 566,
+   "bytesAlt": 259916,
+   "bytesNeu": 48085
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/zahnfuellung/",
+   "neu": "/leistungen/kunststofffuellungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 4792,
+   "woerterNeu": 518,
+   "bytesAlt": 381588,
+   "bytesNeu": 46185
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/",
+   "neu": "/leistungen/#chirurgie",
+   "art": "eigene-seite",
+   "woerterAlt": 1649,
+   "woerterNeu": null,
+   "bytesAlt": 243302,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/all-on-4/",
+   "neu": "/leistungen/all-on-4/",
+   "art": "eigene-seite",
+   "woerterAlt": 2960,
+   "woerterNeu": 508,
+   "bytesAlt": 315227,
+   "bytesNeu": 43222
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/kieferchirurgische-kombinationstherapie/",
+   "neu": "/leistungen/#chirurgie",
+   "art": "eigene-seite",
+   "woerterAlt": 935,
+   "woerterNeu": null,
+   "bytesAlt": 230809,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/knochenaufbau/",
+   "neu": "/leistungen/knochenaufbau/",
+   "art": "eigene-seite",
+   "woerterAlt": 1228,
+   "woerterNeu": 465,
+   "bytesAlt": 236598,
+   "bytesNeu": 43514
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/weisheitszahnentfernung/",
+   "neu": "/leistungen/weisheitszaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 1123,
+   "woerterNeu": 544,
+   "bytesAlt": 233679,
+   "bytesNeu": 45288
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/",
+   "neu": "/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 3136,
+   "woerterNeu": 722,
+   "bytesAlt": 305837,
+   "bytesNeu": 48570
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/",
+   "neu": "/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 1276,
+   "woerterNeu": 722,
+   "bytesAlt": 219536,
+   "bytesNeu": 48570
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/",
+   "neu": "/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 2764,
+   "woerterNeu": 722,
+   "bytesAlt": 270056,
+   "bytesNeu": 48570
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/periimplantitis/",
+   "neu": "/leistungen/implantat-prophylaxe/",
+   "art": "eigene-seite",
+   "woerterAlt": 2717,
+   "woerterNeu": 451,
+   "bytesAlt": 259534,
+   "bytesNeu": 44713
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/praeimplantationsdiagnostik/",
+   "neu": "/leistungen/dvt-3d-roentgen/",
+   "art": "eigene-seite",
+   "woerterAlt": 1115,
+   "woerterNeu": 452,
+   "bytesAlt": 217992,
+   "bytesNeu": 43445
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/sinuslift/",
+   "neu": "/leistungen/knochenaufbau/",
+   "art": "eigene-seite",
+   "woerterAlt": 1174,
+   "woerterNeu": 465,
+   "bytesAlt": 218693,
+   "bytesNeu": 43514
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/",
+   "neu": "/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 1223,
+   "woerterNeu": 722,
+   "bytesAlt": 219857,
+   "bytesNeu": 48570
+  },
+  {
+   "alt": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/",
+   "neu": "/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 2553,
+   "woerterNeu": 722,
+   "bytesAlt": 231828,
+   "bytesNeu": 48570
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/",
+   "neu": "/leistungen/#kieferorthopaedie",
+   "art": "eigene-seite",
+   "woerterAlt": 2287,
+   "woerterNeu": null,
+   "bytesAlt": 246602,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/craniomandibulaere-dysfunktion/",
+   "neu": "/leistungen/cmd-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1480,
+   "woerterNeu": 483,
+   "bytesAlt": 233149,
+   "bytesNeu": 44040
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/feste-zahnspange/",
+   "neu": "/leistungen/feste-zahnspange/",
+   "art": "eigene-seite",
+   "woerterAlt": 1410,
+   "woerterNeu": 507,
+   "bytesAlt": 229787,
+   "bytesNeu": 43516
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/invisalign/",
+   "neu": "/leistungen/aligner/",
+   "art": "eigene-seite",
+   "woerterAlt": 1442,
+   "woerterNeu": 571,
+   "bytesAlt": 231748,
+   "bytesNeu": 45607
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/knirscherschiene/",
+   "neu": "/leistungen/knirscherschiene/",
+   "art": "eigene-seite",
+   "woerterAlt": 1196,
+   "woerterNeu": 447,
+   "bytesAlt": 228122,
+   "bytesNeu": 44492
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/osteopathie/",
+   "neu": "/leistungen/cmd-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1099,
+   "woerterNeu": 483,
+   "bytesAlt": 222825,
+   "bytesNeu": 44040
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/retentionsspangen/",
+   "neu": "/leistungen/retainer/",
+   "art": "eigene-seite",
+   "woerterAlt": 975,
+   "woerterNeu": 445,
+   "bytesAlt": 218840,
+   "bytesNeu": 42599
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/schnarcher-schutzschiene/",
+   "neu": "/leistungen/knirscherschiene/",
+   "art": "eigene-seite",
+   "woerterAlt": 1177,
+   "woerterNeu": 447,
+   "bytesAlt": 224470,
+   "bytesNeu": 44492
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/sos-zahnspangen/",
+   "neu": "/leistungen/aligner/",
+   "art": "eigene-seite",
+   "woerterAlt": 1180,
+   "woerterNeu": 571,
+   "bytesAlt": 227028,
+   "bytesNeu": 45607
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/win-brackets-lingualtechnik/",
+   "neu": "/leistungen/feste-zahnspange/",
+   "art": "eigene-seite",
+   "woerterAlt": 1457,
+   "woerterNeu": 507,
+   "bytesAlt": 235506,
+   "bytesNeu": 43516
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/zahnkorrektur/",
+   "neu": "/leistungen/aligner/",
+   "art": "eigene-seite",
+   "woerterAlt": 1004,
+   "woerterNeu": 571,
+   "bytesAlt": 224478,
+   "bytesNeu": 45607
+  },
+  {
+   "alt": "/leistungen/kieferorthopaedie/zahnspange-reinigen/",
+   "neu": "/leistungen/feste-zahnspange/",
+   "art": "eigene-seite",
+   "woerterAlt": 844,
+   "woerterNeu": 507,
+   "bytesAlt": 219034,
+   "bytesNeu": 43516
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/",
+   "neu": "/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 2368,
+   "woerterNeu": 557,
+   "bytesAlt": 266106,
+   "bytesNeu": 46608
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/",
+   "neu": "/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 2563,
+   "woerterNeu": 557,
+   "bytesAlt": 252364,
+   "bytesNeu": 46608
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/fissurenversiegelung/",
+   "neu": "/leistungen/fissurenversiegelung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1352,
+   "woerterNeu": 427,
+   "bytesAlt": 224952,
+   "bytesNeu": 43964
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/karies-bei-kindern/",
+   "neu": "/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 2982,
+   "woerterNeu": 557,
+   "bytesAlt": 275732,
+   "bytesNeu": 46608
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/kinderkieferorthopaedie/",
+   "neu": "/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 3129,
+   "woerterNeu": 557,
+   "bytesAlt": 312994,
+   "bytesNeu": 46608
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/kinderprophylaxe/",
+   "neu": "/leistungen/kinderprophylaxe/",
+   "art": "eigene-seite",
+   "woerterAlt": 1175,
+   "woerterNeu": 428,
+   "bytesAlt": 223995,
+   "bytesNeu": 43570
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/lachgasbehandlung/",
+   "neu": "/leistungen/lachgas/",
+   "art": "eigene-seite",
+   "woerterAlt": 1050,
+   "woerterNeu": 477,
+   "bytesAlt": 222448,
+   "bytesNeu": 43734
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/therapeutisches-zaubern/",
+   "neu": "/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 877,
+   "woerterNeu": 557,
+   "bytesAlt": 217786,
+   "bytesNeu": 46608
+  },
+  {
+   "alt": "/leistungen/kinderzahnarzt/vollnarkose/",
+   "neu": "/leistungen/behandlung-in-narkose/",
+   "art": "eigene-seite",
+   "woerterAlt": 1091,
+   "woerterNeu": 483,
+   "bytesAlt": 223594,
+   "bytesNeu": 43363
+  },
+  {
+   "alt": "/leistungen/parodontologie-zahnfleischbehandlung/",
+   "neu": "/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3149,
+   "woerterNeu": 566,
+   "bytesAlt": 283264,
+   "bytesNeu": 48085
+  },
+  {
+   "alt": "/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/",
+   "neu": "/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1035,
+   "woerterNeu": 566,
+   "bytesAlt": 221074,
+   "bytesNeu": 48085
+  },
+  {
+   "alt": "/leistungen/prophylaxe-4-0/",
+   "neu": "/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 2555,
+   "woerterNeu": 554,
+   "bytesAlt": 256125,
+   "bytesNeu": 47061
+  },
+  {
+   "alt": "/leistungen/prophylaxe-4-0/air-flow/",
+   "neu": "/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 1033,
+   "woerterNeu": 554,
+   "bytesAlt": 223625,
+   "bytesNeu": 47061
+  },
+  {
+   "alt": "/leistungen/prophylaxe-4-0/ammp8-schnelltest-gewebeabbau/",
+   "neu": "/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 2979,
+   "woerterNeu": 554,
+   "bytesAlt": 265746,
+   "bytesNeu": 47061
+  },
+  {
+   "alt": "/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/",
+   "neu": "/leistungen/prophylaxe-4-0/",
+   "art": "eigene-seite",
+   "woerterAlt": 1816,
+   "woerterNeu": 554,
+   "bytesAlt": 234255,
+   "bytesNeu": 47061
+  },
+  {
+   "alt": "/leistungen/smile-design-dentallabor/",
+   "neu": "/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 1557,
+   "woerterNeu": 519,
+   "bytesAlt": 247921,
+   "bytesNeu": 44515
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/",
+   "neu": "/leistungen/#aesthetik",
+   "art": "eigene-seite",
+   "woerterAlt": 1902,
+   "woerterNeu": null,
+   "bytesAlt": 247093,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/amalgamentfernung/",
+   "neu": "/leistungen/kunststofffuellungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 3271,
+   "woerterNeu": 518,
+   "bytesAlt": 332512,
+   "bytesNeu": 46185
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/bleaching-zahnaufhellung/",
+   "neu": "/leistungen/zahnaufhellung/",
+   "art": "eigene-seite",
+   "woerterAlt": 4918,
+   "woerterNeu": 577,
+   "bytesAlt": 407044,
+   "bytesNeu": 47580
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/digital-smile-design/",
+   "neu": "/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 3142,
+   "woerterNeu": 519,
+   "bytesAlt": 313481,
+   "bytesNeu": 44515
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/ku64-smile-swiss-smile/",
+   "neu": "/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 1571,
+   "woerterNeu": 519,
+   "bytesAlt": 230584,
+   "bytesNeu": 44515
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/veneers/",
+   "neu": "/leistungen/veneers/",
+   "art": "eigene-seite",
+   "woerterAlt": 5420,
+   "woerterNeu": 695,
+   "bytesAlt": 401314,
+   "bytesNeu": 48913
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/",
+   "neu": "/leistungen/#zahnersatz",
+   "art": "eigene-seite",
+   "woerterAlt": 3023,
+   "woerterNeu": null,
+   "bytesAlt": 335613,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/cerec/",
+   "neu": "/leistungen/inlays-onlays/",
+   "art": "eigene-seite",
+   "woerterAlt": 3381,
+   "woerterNeu": 451,
+   "bytesAlt": 339296,
+   "bytesNeu": 44177
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/inlays/",
+   "neu": "/leistungen/inlays-onlays/",
+   "art": "eigene-seite",
+   "woerterAlt": 4114,
+   "woerterNeu": 451,
+   "bytesAlt": 374940,
+   "bytesNeu": 44177
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/kronen/",
+   "neu": "/leistungen/keramik-kronen/",
+   "art": "eigene-seite",
+   "woerterAlt": 3100,
+   "woerterNeu": 518,
+   "bytesAlt": 300850,
+   "bytesNeu": 46143
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/zahnbruecken/",
+   "neu": "/leistungen/zahnbruecken/",
+   "art": "eigene-seite",
+   "woerterAlt": 3833,
+   "woerterNeu": 481,
+   "bytesAlt": 339934,
+   "bytesNeu": 44924
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnersatz/zahnprothese/",
+   "neu": "/leistungen/teilprothese/",
+   "art": "eigene-seite",
+   "woerterAlt": 5218,
+   "woerterNeu": 465,
+   "bytesAlt": 406240,
+   "bytesNeu": 44129
+  },
+  {
+   "alt": "/leistungen/zahnaesthetik/zahnsanierung/",
+   "neu": "/leistungen/#zahnersatz",
+   "art": "eigene-seite",
+   "woerterAlt": 4803,
+   "woerterNeu": null,
+   "bytesAlt": 396228,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/leistungen/zahnschmuck/",
+   "neu": "/leistungen/zahnschmuck/",
+   "art": "eigene-seite",
+   "woerterAlt": 3526,
+   "woerterNeu": 411,
+   "bytesAlt": 335477,
+   "bytesNeu": 42592
+  },
+  {
+   "alt": "/link-tree/",
+   "neu": "/",
+   "art": "sammelseite",
+   "woerterAlt": 762,
+   "woerterNeu": 544,
+   "bytesAlt": 228299,
+   "bytesNeu": 42248
+  },
+  {
+   "alt": "/online-termine/",
+   "neu": "/termine/",
+   "art": "eigene-seite",
+   "woerterAlt": 879,
+   "woerterNeu": 632,
+   "bytesAlt": 218385,
+   "bytesNeu": 37161
+  },
+  {
+   "alt": "/potsdam/",
+   "neu": "/potsdam/",
+   "art": "eigene-seite",
+   "woerterAlt": 2375,
+   "woerterNeu": 735,
+   "bytesAlt": 335267,
+   "bytesNeu": 63945
+  },
+  {
+   "alt": "/potsdam/anaesthesie/",
+   "neu": "/leistungen/behandlung-in-narkose/",
+   "art": "eigene-seite",
+   "woerterAlt": 1017,
+   "woerterNeu": 483,
+   "bytesAlt": 221726,
+   "bytesNeu": 43363
+  },
+  {
+   "alt": "/potsdam/anamnese/",
+   "neu": null,
+   "art": "ohne-ziel",
+   "woerterAlt": 815,
+   "woerterNeu": null,
+   "bytesAlt": 211913,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/bleaching/",
+   "neu": "/potsdam/leistungen/zahnaufhellung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1614,
+   "woerterNeu": null,
+   "bytesAlt": 245526,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/cerec-in-potsdam/",
+   "neu": "/potsdam/leistungen/inlays-onlays/",
+   "art": "eigene-seite",
+   "woerterAlt": 1538,
+   "woerterNeu": null,
+   "bytesAlt": 235527,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/dentallabor/",
+   "neu": "/potsdam/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 891,
+   "woerterNeu": null,
+   "bytesAlt": 215083,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/digital-smile-design/",
+   "neu": "/potsdam/leistungen/smile-design/",
+   "art": "eigene-seite",
+   "woerterAlt": 987,
+   "woerterNeu": null,
+   "bytesAlt": 216665,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/endodontologie/",
+   "neu": "/potsdam/leistungen/wurzelkanalbehandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 927,
+   "woerterNeu": null,
+   "bytesAlt": 216485,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/implantate/",
+   "neu": "/potsdam/leistungen/zahnimplantate/",
+   "art": "eigene-seite",
+   "woerterAlt": 1865,
+   "woerterNeu": null,
+   "bytesAlt": 240778,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/kinderzahnarzt/",
+   "neu": "/potsdam/leistungen/kinderzahnarzt/",
+   "art": "eigene-seite",
+   "woerterAlt": 1941,
+   "woerterNeu": null,
+   "bytesAlt": 241923,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/link-tree/",
+   "neu": "/potsdam/",
+   "art": "eigene-seite",
+   "woerterAlt": 754,
+   "woerterNeu": 735,
+   "bytesAlt": 218333,
+   "bytesNeu": 63945
+  },
+  {
+   "alt": "/potsdam/oralchirurgie/",
+   "neu": "/potsdam/leistungen/zahnentfernung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1712,
+   "woerterNeu": null,
+   "bytesAlt": 233887,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/parodontitisbehandlung/",
+   "neu": "/potsdam/leistungen/parodontitis-behandlung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1683,
+   "woerterNeu": null,
+   "bytesAlt": 243853,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/professionelle-zahnreinigung/",
+   "neu": "/potsdam/leistungen/professionelle-zahnreinigung/",
+   "art": "eigene-seite",
+   "woerterAlt": 1416,
+   "woerterNeu": null,
+   "bytesAlt": 225357,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/ultraschall-reiniger/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1004,
+   "woerterNeu": 469,
+   "bytesAlt": 216874,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/potsdam/zahnaesthetik/",
+   "neu": "/potsdam/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2131,
+   "woerterNeu": null,
+   "bytesAlt": 271756,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/potsdam/zahnersatz/",
+   "neu": "/potsdam/leistungen/",
+   "art": "eigene-seite",
+   "woerterAlt": 1795,
+   "woerterNeu": null,
+   "bytesAlt": 244386,
+   "bytesNeu": null
+  },
+  {
+   "alt": "/standorte/",
+   "neu": "/standorte/",
+   "art": "sammelseite",
+   "woerterAlt": 1046,
+   "woerterNeu": 550,
+   "bytesAlt": 216124,
+   "bytesNeu": 74093
+  },
+  {
+   "alt": "/team/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 1691,
+   "woerterNeu": 994,
+   "bytesAlt": 689724,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/bleaching-kosmetik-shop/joana-charlott-radsack/",
+   "neu": "/berlin-charlottenburg/team/joana-charlott-radsack/",
+   "art": "eigene-seite",
+   "woerterAlt": 861,
+   "woerterNeu": 450,
+   "bytesAlt": 213518,
+   "bytesNeu": 44172
+  },
+  {
+   "alt": "/team/bleaching/anja-baranowsky/",
+   "neu": "/berlin-charlottenburg/team/anja-baranowsky/",
+   "art": "eigene-seite",
+   "woerterAlt": 951,
+   "woerterNeu": 536,
+   "bytesAlt": 216959,
+   "bytesNeu": 45464
+  },
+  {
+   "alt": "/team/bleaching/emma-gloria-findeisen/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 866,
+   "woerterNeu": 994,
+   "bytesAlt": 211748,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/bleaching/lysann-kosiol/",
+   "neu": "/berlin-charlottenburg/team/lysann-kosiol/",
+   "art": "eigene-seite",
+   "woerterAlt": 859,
+   "woerterNeu": 444,
+   "bytesAlt": 215302,
+   "bytesNeu": 43550
+  },
+  {
+   "alt": "/team/bleaching/maryam-karimi/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 805,
+   "woerterNeu": 994,
+   "bytesAlt": 214614,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/bleaching/melissa-albalizade/",
+   "neu": "/berlin-charlottenburg/team/melissa-albalizade/",
+   "art": "eigene-seite",
+   "woerterAlt": 880,
+   "woerterNeu": 461,
+   "bytesAlt": 215560,
+   "bytesNeu": 43999
+  },
+  {
+   "alt": "/team/bleaching/ricco-molkentin/",
+   "neu": "/berlin-charlottenburg/team/ricco-molkentin/",
+   "art": "eigene-seite",
+   "woerterAlt": 899,
+   "woerterNeu": 481,
+   "bytesAlt": 212193,
+   "bytesNeu": 44264
+  },
+  {
+   "alt": "/team/dentalhygieniker/adina-mauder/",
+   "neu": "/berlin-charlottenburg/team/adina-mauder/",
+   "art": "eigene-seite",
+   "woerterAlt": 1369,
+   "woerterNeu": 954,
+   "bytesAlt": 223437,
+   "bytesNeu": 51678
+  },
+  {
+   "alt": "/team/dentalhygieniker/aisegkioul-netzipoglou-housein/",
+   "neu": "/berlin-charlottenburg/team/aisegkioul-netzipoglou-housein/",
+   "art": "eigene-seite",
+   "woerterAlt": 918,
+   "woerterNeu": 511,
+   "bytesAlt": 220603,
+   "bytesNeu": 45525
+  },
+  {
+   "alt": "/team/dentalhygieniker/atoosa-hafezi/",
+   "neu": "/berlin-charlottenburg/team/atoosa-hafezi/",
+   "art": "eigene-seite",
+   "woerterAlt": 883,
+   "woerterNeu": 467,
+   "bytesAlt": 215543,
+   "bytesNeu": 43827
+  },
+  {
+   "alt": "/team/dentalhygieniker/edin-plavsic/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 826,
+   "woerterNeu": 994,
+   "bytesAlt": 215794,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/dentalhygieniker/eva-caspers/",
+   "neu": "/berlinmitte/team/eva-caspers/",
+   "art": "eigene-seite",
+   "woerterAlt": 1014,
+   "woerterNeu": 593,
+   "bytesAlt": 214767,
+   "bytesNeu": 43841
+  },
+  {
+   "alt": "/team/dentalhygieniker/malou-fricke/",
+   "neu": "/berlin-charlottenburg/team/malou-fricke/",
+   "art": "eigene-seite",
+   "woerterAlt": 976,
+   "woerterNeu": 555,
+   "bytesAlt": 216137,
+   "bytesNeu": 44390
+  },
+  {
+   "alt": "/team/dentalhygieniker/michaela-kunkel/",
+   "neu": "/berlin-charlottenburg/team/michaela-kunkel/",
+   "art": "eigene-seite",
+   "woerterAlt": 838,
+   "woerterNeu": 423,
+   "bytesAlt": 216480,
+   "bytesNeu": 45461
+  },
+  {
+   "alt": "/team/dentalhygieniker/saskia-baer/",
+   "neu": "/potsdam/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 804,
+   "woerterNeu": 500,
+   "bytesAlt": 213124,
+   "bytesNeu": 57605
+  },
+  {
+   "alt": "/team/dsd-koordination-dentalberatung/viktoria-genkel/",
+   "neu": "/berlin-charlottenburg/team/viktoria-genkel/",
+   "art": "eigene-seite",
+   "woerterAlt": 898,
+   "woerterNeu": 480,
+   "bytesAlt": 213978,
+   "bytesNeu": 44074
+  },
+  {
+   "alt": "/team/human-resources/adrianna-targatz/",
+   "neu": "/berlin-charlottenburg/team/adrianna-targatz/",
+   "art": "eigene-seite",
+   "woerterAlt": 919,
+   "woerterNeu": 477,
+   "bytesAlt": 217184,
+   "bytesNeu": 43796
+  },
+  {
+   "alt": "/team/human-resources/delphine-martineau-rewig/",
+   "neu": "/berlin-charlottenburg/team/delphine-martineau-rewig/",
+   "art": "eigene-seite",
+   "woerterAlt": 895,
+   "woerterNeu": 471,
+   "bytesAlt": 217294,
+   "bytesNeu": 43736
+  },
+  {
+   "alt": "/team/human-resources/karoline-hansen/",
+   "neu": "/potsdam/team/karoline-hansen/",
+   "art": "eigene-seite",
+   "woerterAlt": 1006,
+   "woerterNeu": 587,
+   "bytesAlt": 217209,
+   "bytesNeu": 45343
+  },
+  {
+   "alt": "/team/human-resources/lulu-buerger/",
+   "neu": "/berlin-charlottenburg/team/lulu-buerger/",
+   "art": "eigene-seite",
+   "woerterAlt": 863,
+   "woerterNeu": 446,
+   "bytesAlt": 216399,
+   "bytesNeu": 44638
+  },
+  {
+   "alt": "/team/human-resources/susan-feldmann/",
+   "neu": "/berlin-charlottenburg/team/susan-feldmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 926,
+   "woerterNeu": 511,
+   "bytesAlt": 218723,
+   "bytesNeu": 45540
+  },
+  {
+   "alt": "/team/it-technik/marcel-baer/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 848,
+   "woerterNeu": 994,
+   "bytesAlt": 211651,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/kommunikation/petros-prontis/",
+   "neu": "/berlin-charlottenburg/team/petros-prontis/",
+   "art": "eigene-seite",
+   "woerterAlt": 873,
+   "woerterNeu": 458,
+   "bytesAlt": 219174,
+   "bytesNeu": 44221
+  },
+  {
+   "alt": "/team/materialverwaltung/sabine-kuehnau-falkenau/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 826,
+   "woerterNeu": 994,
+   "bytesAlt": 217342,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/organigramm/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 1701,
+   "woerterNeu": 994,
+   "bytesAlt": 246769,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/alisar-lala/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 849,
+   "woerterNeu": 994,
+   "bytesAlt": 214960,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/amar-alrejebi/",
+   "neu": "/berlin-charlottenburg/team/amar-alrejebi/",
+   "art": "eigene-seite",
+   "woerterAlt": 910,
+   "woerterNeu": 496,
+   "bytesAlt": 212904,
+   "bytesNeu": 44827
+  },
+  {
+   "alt": "/team/prophylaxe/amy-beckmann/",
+   "neu": "/potsdam/team/amy-beckmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 876,
+   "woerterNeu": 454,
+   "bytesAlt": 215602,
+   "bytesNeu": 43534
+  },
+  {
+   "alt": "/team/prophylaxe/bettina-ehrhardt/",
+   "neu": "/berlin-charlottenburg/team/bettina-ehrhardt/",
+   "art": "eigene-seite",
+   "woerterAlt": 854,
+   "woerterNeu": 439,
+   "bytesAlt": 215399,
+   "bytesNeu": 43441
+  },
+  {
+   "alt": "/team/prophylaxe/ievgeniia-nevzgoda/",
+   "neu": "/berlin-charlottenburg/team/ievgeniia-nevzgoda/",
+   "art": "eigene-seite",
+   "woerterAlt": 946,
+   "woerterNeu": 528,
+   "bytesAlt": 213670,
+   "bytesNeu": 45087
+  },
+  {
+   "alt": "/team/prophylaxe/jessica-oberlaender/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 812,
+   "woerterNeu": 994,
+   "bytesAlt": 215483,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/karin-wagner/",
+   "neu": "/berlin-charlottenburg/team/karin-wagner/",
+   "art": "eigene-seite",
+   "woerterAlt": 1005,
+   "woerterNeu": 590,
+   "bytesAlt": 219270,
+   "bytesNeu": 48192
+  },
+  {
+   "alt": "/team/prophylaxe/kevin-cords/",
+   "neu": "/berlin-charlottenburg/team/kevin-cords/",
+   "art": "eigene-seite",
+   "woerterAlt": 853,
+   "woerterNeu": 440,
+   "bytesAlt": 215521,
+   "bytesNeu": 43450
+  },
+  {
+   "alt": "/team/prophylaxe/kim-jasmin-yudaev/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 810,
+   "woerterNeu": 994,
+   "bytesAlt": 216190,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/madeleine-kettner/",
+   "neu": "/potsdam/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 881,
+   "woerterNeu": 500,
+   "bytesAlt": 217552,
+   "bytesNeu": 57605
+  },
+  {
+   "alt": "/team/prophylaxe/melanie-ruedel/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 841,
+   "woerterNeu": 994,
+   "bytesAlt": 215062,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/nicole-dickhoff-kranz/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 771,
+   "woerterNeu": 994,
+   "bytesAlt": 211304,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/prophylaxe/nicole-lindenau/",
+   "neu": "/berlin-charlottenburg/team/nicole-lindenau/",
+   "art": "eigene-seite",
+   "woerterAlt": 966,
+   "woerterNeu": 551,
+   "bytesAlt": 216522,
+   "bytesNeu": 44677
+  },
+  {
+   "alt": "/team/prophylaxe/nurcan-sahin/",
+   "neu": "/berlinmitte/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 834,
+   "woerterNeu": 425,
+   "bytesAlt": 213041,
+   "bytesNeu": 51457
+  },
+  {
+   "alt": "/team/prophylaxe/zeynep-cinar/",
+   "neu": "/berlin-charlottenburg/team/zeynep-cinar/",
+   "art": "eigene-seite",
+   "woerterAlt": 875,
+   "woerterNeu": 460,
+   "bytesAlt": 215750,
+   "bytesNeu": 43684
+  },
+  {
+   "alt": "/team/rezeption-service/ayca-kilic/",
+   "neu": "/berlinmitte/team/ayca-kilic/",
+   "art": "eigene-seite",
+   "woerterAlt": 874,
+   "woerterNeu": 446,
+   "bytesAlt": 211861,
+   "bytesNeu": 42060
+  },
+  {
+   "alt": "/team/rezeption-service/ina-lehmann/",
+   "neu": "/berlin-charlottenburg/team/ina-lehmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 929,
+   "woerterNeu": 514,
+   "bytesAlt": 216657,
+   "bytesNeu": 44178
+  },
+  {
+   "alt": "/team/rezeption-service/lisa-hauk/",
+   "neu": "/berlinmitte/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 848,
+   "woerterNeu": 425,
+   "bytesAlt": 212975,
+   "bytesNeu": 51457
+  },
+  {
+   "alt": "/team/rezeption-service/sarah-henkel/",
+   "neu": "/berlinmitte/team/sarah-henkel/",
+   "art": "eigene-seite",
+   "woerterAlt": 981,
+   "woerterNeu": 561,
+   "bytesAlt": 215721,
+   "bytesNeu": 42778
+  },
+  {
+   "alt": "/team/sterilisation-qm/monika-kuckelt/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 844,
+   "woerterNeu": 994,
+   "bytesAlt": 215009,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/telefon-service/angie-skall/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 843,
+   "woerterNeu": 994,
+   "bytesAlt": 215440,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/telefon-service/doreen-ziliox/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 807,
+   "woerterNeu": 994,
+   "bytesAlt": 215506,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/telefon-service/magnus-salecker/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 798,
+   "woerterNeu": 994,
+   "bytesAlt": 214601,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/verwaltung/celina-leppin/",
+   "neu": "/potsdam/team/celina-leppin/",
+   "art": "eigene-seite",
+   "woerterAlt": 883,
+   "woerterNeu": 470,
+   "bytesAlt": 214921,
+   "bytesNeu": 44214
+  },
+  {
+   "alt": "/team/verwaltung/denise-matzas/",
+   "neu": "/berlin-charlottenburg/team/denise-matzas/",
+   "art": "eigene-seite",
+   "woerterAlt": 856,
+   "woerterNeu": 440,
+   "bytesAlt": 214988,
+   "bytesNeu": 43344
+  },
+  {
+   "alt": "/team/verwaltung/michaela-dulz/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 833,
+   "woerterNeu": 994,
+   "bytesAlt": 215495,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/verwaltung/patricia-willer/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 837,
+   "woerterNeu": 994,
+   "bytesAlt": 215514,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/verwaltung/sandra-mueller/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 809,
+   "woerterNeu": 994,
+   "bytesAlt": 214971,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/verwaltung/vivien-zacher/",
+   "neu": "/berlin-charlottenburg/team/vivien-zacher/",
+   "art": "eigene-seite",
+   "woerterAlt": 884,
+   "woerterNeu": 469,
+   "bytesAlt": 215616,
+   "bytesNeu": 43782
+  },
+  {
+   "alt": "/team/zahnaerzte/abby-ferguson/",
+   "neu": "/berlin-charlottenburg/team/abby-ferguson/",
+   "art": "eigene-seite",
+   "woerterAlt": 1030,
+   "woerterNeu": 603,
+   "bytesAlt": 219731,
+   "bytesNeu": 45443
+  },
+  {
+   "alt": "/team/zahnaerzte/alexandra-fischer/",
+   "neu": "/berlin-charlottenburg/team/alexandra-fischer/",
+   "art": "eigene-seite",
+   "woerterAlt": 1060,
+   "woerterNeu": 645,
+   "bytesAlt": 220289,
+   "bytesNeu": 46905
+  },
+  {
+   "alt": "/team/zahnaerzte/amjad-misherqi/",
+   "neu": "/berlin-charlottenburg/team/amjad-misherqi/",
+   "art": "eigene-seite",
+   "woerterAlt": 1000,
+   "woerterNeu": 581,
+   "bytesAlt": 221741,
+   "bytesNeu": 46141
+  },
+  {
+   "alt": "/team/zahnaerzte/clara-constanze-meinberg/",
+   "neu": "/berlin-charlottenburg/team/clara-constanze-meinberg/",
+   "art": "eigene-seite",
+   "woerterAlt": 893,
+   "woerterNeu": 474,
+   "bytesAlt": 214673,
+   "bytesNeu": 44861
+  },
+  {
+   "alt": "/team/zahnaerzte/clara-marlene-schulz/",
+   "neu": "/potsdam/team/clara-marlene-schulz/",
+   "art": "eigene-seite",
+   "woerterAlt": 1063,
+   "woerterNeu": 643,
+   "bytesAlt": 218731,
+   "bytesNeu": 46419
+  },
+  {
+   "alt": "/team/zahnaerzte/denise-moldenhauer/",
+   "neu": "/potsdam/team/denise-moldenhauer/",
+   "art": "eigene-seite",
+   "woerterAlt": 1018,
+   "woerterNeu": 592,
+   "bytesAlt": 216733,
+   "bytesNeu": 44504
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-alexandra-wolf/",
+   "neu": "/berlin-charlottenburg/team/dr-alexandra-wolf/",
+   "art": "eigene-seite",
+   "woerterAlt": 1284,
+   "woerterNeu": 867,
+   "bytesAlt": 240678,
+   "bytesNeu": 52168
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-andrej-knezevic/",
+   "neu": "/berlin-charlottenburg/team/dr-andrej-knezevic/",
+   "art": "eigene-seite",
+   "woerterAlt": 1091,
+   "woerterNeu": 667,
+   "bytesAlt": 216739,
+   "bytesNeu": 46517
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-anna-lena-zopfs/",
+   "neu": "/potsdam/team/dr-anna-lena-zopfs/",
+   "art": "eigene-seite",
+   "woerterAlt": 918,
+   "woerterNeu": 510,
+   "bytesAlt": 213918,
+   "bytesNeu": 44266
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-cora-betko/",
+   "neu": "/berlinmitte/team/dr-cora-betko/",
+   "art": "eigene-seite",
+   "woerterAlt": 958,
+   "woerterNeu": 540,
+   "bytesAlt": 217850,
+   "bytesNeu": 45296
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-elisabeth-futterlieb/",
+   "neu": "/potsdam/team/dr-elisabeth-futterlieb/",
+   "art": "eigene-seite",
+   "woerterAlt": 978,
+   "woerterNeu": 554,
+   "bytesAlt": 218297,
+   "bytesNeu": 46712
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-frank-schreiber/",
+   "neu": "/berlin-charlottenburg/team/dr-frank-schreiber/",
+   "art": "eigene-seite",
+   "woerterAlt": 944,
+   "woerterNeu": 531,
+   "bytesAlt": 216113,
+   "bytesNeu": 46043
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-heike-hoppe-zirbs/",
+   "neu": "/berlin-charlottenburg/team/dr-heike-hoppe-zirbs/",
+   "art": "eigene-seite",
+   "woerterAlt": 977,
+   "woerterNeu": 563,
+   "bytesAlt": 219776,
+   "bytesNeu": 47121
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-isabella-piekos/",
+   "neu": "/berlin-charlottenburg/team/dr-isabella-piekos/",
+   "art": "eigene-seite",
+   "woerterAlt": 882,
+   "woerterNeu": 468,
+   "bytesAlt": 222408,
+   "bytesNeu": 45446
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-jana-huesch/",
+   "neu": "/berlinmitte/team/dr-jana-huesch/",
+   "art": "eigene-seite",
+   "woerterAlt": 969,
+   "woerterNeu": 550,
+   "bytesAlt": 213584,
+   "bytesNeu": 44063
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-jonathan-botmann/",
+   "neu": "/berlin-charlottenburg/team/dr-jonathan-botmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 1291,
+   "woerterNeu": 870,
+   "bytesAlt": 220393,
+   "bytesNeu": 48224
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-karin-loeer/",
+   "neu": "/berlin-charlottenburg/team/dr-karin-loeer/",
+   "art": "eigene-seite",
+   "woerterAlt": 850,
+   "woerterNeu": 436,
+   "bytesAlt": 219775,
+   "bytesNeu": 44583
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-maike-bauer/",
+   "neu": "/berlinmitte/team/dr-maike-bauer/",
+   "art": "eigene-seite",
+   "woerterAlt": 946,
+   "woerterNeu": 528,
+   "bytesAlt": 217335,
+   "bytesNeu": 44529
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-med-dent-eric-paul-oehme/",
+   "neu": "/berlin-charlottenburg/team/dr-med-dent-eric-paul-oehme/",
+   "art": "eigene-seite",
+   "woerterAlt": 1084,
+   "woerterNeu": 674,
+   "bytesAlt": 224082,
+   "bytesNeu": 48077
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-sabine-gousetis/",
+   "neu": "/berlin-charlottenburg/team/dr-sabine-gousetis/",
+   "art": "eigene-seite",
+   "woerterAlt": 942,
+   "woerterNeu": 527,
+   "bytesAlt": 220418,
+   "bytesNeu": 45948
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-silvia-munoz/",
+   "neu": "/berlinmitte/team/dr-silvia-munoz/",
+   "art": "eigene-seite",
+   "woerterAlt": 944,
+   "woerterNeu": 528,
+   "bytesAlt": 218925,
+   "bytesNeu": 44161
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-stephan-ziegler/",
+   "neu": "/berlin-charlottenburg/team/dr-stephan-ziegler/",
+   "art": "eigene-seite",
+   "woerterAlt": 987,
+   "woerterNeu": 571,
+   "bytesAlt": 225092,
+   "bytesNeu": 47223
+  },
+  {
+   "alt": "/team/zahnaerzte/dr-surian-herrmann/",
+   "neu": "/berlin-charlottenburg/team/dr-surian-herrmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 1015,
+   "woerterNeu": 601,
+   "bytesAlt": 217776,
+   "bytesNeu": 46095
+  },
+  {
+   "alt": "/team/zahnaerzte/erny-grundmann/",
+   "neu": "/berlin-charlottenburg/team/erny-grundmann/",
+   "art": "eigene-seite",
+   "woerterAlt": 1153,
+   "woerterNeu": 730,
+   "bytesAlt": 223103,
+   "bytesNeu": 50507
+  },
+  {
+   "alt": "/team/zahnaerzte/inke-supantia/",
+   "neu": "/berlin-charlottenburg/team/inke-supantia/",
+   "art": "eigene-seite",
+   "woerterAlt": 1000,
+   "woerterNeu": 576,
+   "bytesAlt": 219033,
+   "bytesNeu": 46069
+  },
+  {
+   "alt": "/team/zahnaerzte/jackeline-schaupp/",
+   "neu": "/berlin-charlottenburg/team/jackeline-schaupp/",
+   "art": "eigene-seite",
+   "woerterAlt": 1383,
+   "woerterNeu": 912,
+   "bytesAlt": 229038,
+   "bytesNeu": 50455
+  },
+  {
+   "alt": "/team/zahnaerzte/janna-mitscherling/",
+   "neu": "/potsdam/team/janna-mitscherling/",
+   "art": "eigene-seite",
+   "woerterAlt": 921,
+   "woerterNeu": 513,
+   "bytesAlt": 218581,
+   "bytesNeu": 45611
+  },
+  {
+   "alt": "/team/zahnaerzte/jargalmaa-kleister/",
+   "neu": "/berlin-charlottenburg/team/jargalmaa-kleister/",
+   "art": "eigene-seite",
+   "woerterAlt": 1081,
+   "woerterNeu": 657,
+   "bytesAlt": 222449,
+   "bytesNeu": 49152
+  },
+  {
+   "alt": "/team/zahnaerzte/jiotis-hondralis/",
+   "neu": "/berlin-charlottenburg/team/jiotis-hondralis/",
+   "art": "eigene-seite",
+   "woerterAlt": 1012,
+   "woerterNeu": 611,
+   "bytesAlt": 222634,
+   "bytesNeu": 47096
+  },
+  {
+   "alt": "/team/zahnaerzte/juliane-kottenhagen/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 809,
+   "woerterNeu": 994,
+   "bytesAlt": 215707,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnaerzte/juliane-reichmuth/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 839,
+   "woerterNeu": 994,
+   "bytesAlt": 216810,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnaerzte/lais-haidari/",
+   "neu": "/berlin-charlottenburg/team/lais-haidari/",
+   "art": "eigene-seite",
+   "woerterAlt": 889,
+   "woerterNeu": 469,
+   "bytesAlt": 217294,
+   "bytesNeu": 44662
+  },
+  {
+   "alt": "/team/zahnaerzte/malte-labonte/",
+   "neu": "/berlinmitte/team/malte-labonte/",
+   "art": "eigene-seite",
+   "woerterAlt": 1051,
+   "woerterNeu": 629,
+   "bytesAlt": 219212,
+   "bytesNeu": 46028
+  },
+  {
+   "alt": "/team/zahnaerzte/mohamed-abudrya/",
+   "neu": "/berlin-charlottenburg/team/mohamed-abudrya/",
+   "art": "eigene-seite",
+   "woerterAlt": 989,
+   "woerterNeu": 575,
+   "bytesAlt": 217447,
+   "bytesNeu": 45512
+  },
+  {
+   "alt": "/team/zahnaerzte/nils-radsack/",
+   "neu": "/potsdam/team/nils-radsack/",
+   "art": "eigene-seite",
+   "woerterAlt": 955,
+   "woerterNeu": 535,
+   "bytesAlt": 218500,
+   "bytesNeu": 44761
+  },
+  {
+   "alt": "/team/zahnaerzte/samaneh-salehipour/",
+   "neu": "/berlin-charlottenburg/team/samaneh-salehipour/",
+   "art": "eigene-seite",
+   "woerterAlt": 918,
+   "woerterNeu": 502,
+   "bytesAlt": 216802,
+   "bytesNeu": 44004
+  },
+  {
+   "alt": "/team/zahnaerzte/tim-walter/",
+   "neu": "/berlin-charlottenburg/team/tim-walter/",
+   "art": "eigene-seite",
+   "woerterAlt": 1148,
+   "woerterNeu": 720,
+   "bytesAlt": 221930,
+   "bytesNeu": 48862
+  },
+  {
+   "alt": "/team/zahnaerzte/tsong-ung-an/",
+   "neu": "/berlin-charlottenburg/team/tsong-ung-an/",
+   "art": "eigene-seite",
+   "woerterAlt": 941,
+   "woerterNeu": 522,
+   "bytesAlt": 218283,
+   "bytesNeu": 45165
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/cheyenne-bande/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 814,
+   "woerterNeu": 994,
+   "bytesAlt": 214933,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/dominik-ruffo/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 948,
+   "woerterNeu": 994,
+   "bytesAlt": 214220,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/eugenia-nicoleta-dutu/",
+   "neu": "/berlin-charlottenburg/team/eugenia-nicoleta-dutu/",
+   "art": "eigene-seite",
+   "woerterAlt": 866,
+   "woerterNeu": 452,
+   "bytesAlt": 211711,
+   "bytesNeu": 43508
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/grit-roggelin-henning/",
+   "neu": "/potsdam/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 741,
+   "woerterNeu": 500,
+   "bytesAlt": 212146,
+   "bytesNeu": 57605
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/huyen-nguyen-dieu/",
+   "neu": "/potsdam/team/huyen-nguyen-dieu/",
+   "art": "eigene-seite",
+   "woerterAlt": 939,
+   "woerterNeu": 521,
+   "bytesAlt": 217340,
+   "bytesNeu": 45021
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/lisbany-martinez-cubillas/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 794,
+   "woerterNeu": 994,
+   "bytesAlt": 216514,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/marlies-vlahek/",
+   "neu": "/berlin-charlottenburg/team/",
+   "art": "eigene-seite",
+   "woerterAlt": 803,
+   "woerterNeu": 994,
+   "bytesAlt": 214769,
+   "bytesNeu": 134607
+  },
+  {
+   "alt": "/team/zahnmedizinische-fachangestellte/steffi-kohl/",
+   "neu": "/berlin-charlottenburg/team/steffi-kohl/",
+   "art": "eigene-seite",
+   "woerterAlt": 920,
+   "woerterNeu": 505,
+   "bytesAlt": 216768,
+   "bytesNeu": 44004
+  },
+  {
+   "alt": "/ueber-uns/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 2926,
+   "woerterNeu": 469,
+   "bytesAlt": 309072,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/auszeichnungen/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1042,
+   "woerterNeu": 469,
+   "bytesAlt": 247147,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/best-practice/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1043,
+   "woerterNeu": 469,
+   "bytesAlt": 225273,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/galerie/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 771,
+   "woerterNeu": 469,
+   "bytesAlt": 221176,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/hilfsprojekt-suedafrika/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 3000,
+   "woerterNeu": 469,
+   "bytesAlt": 293713,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/kooperationspartner/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1495,
+   "woerterNeu": 469,
+   "bytesAlt": 217680,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/location/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 2069,
+   "woerterNeu": 469,
+   "bytesAlt": 258254,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/mitgliedschaften/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 897,
+   "woerterNeu": 469,
+   "bytesAlt": 224929,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/presseinfo/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1325,
+   "woerterNeu": 469,
+   "bytesAlt": 217484,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/soziales-engagement/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1608,
+   "woerterNeu": 469,
+   "bytesAlt": 227346,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/wilmersdorf/",
+   "neu": "/wilmersdorf/",
+   "art": "eigene-seite",
+   "woerterAlt": 2478,
+   "woerterNeu": 739,
+   "bytesAlt": 290172,
+   "bytesNeu": 60815
+  },
+  {
+   "alt": "/zahnbeschwerden/",
+   "neu": "/zahnbeschwerden/",
+   "art": "sammelseite",
+   "woerterAlt": 2709,
+   "woerterNeu": 1007,
+   "bytesAlt": 286698,
+   "bytesNeu": 49882
+  },
+  {
+   "alt": "/zahnbeschwerden/druckschmerz/",
+   "neu": "/zahnbeschwerden/druckschmerz/",
+   "art": "eigene-seite",
+   "woerterAlt": 2375,
+   "woerterNeu": 2125,
+   "bytesAlt": 275630,
+   "bytesNeu": 60223
+  },
+  {
+   "alt": "/zahnbeschwerden/ernaehrung-gesunde-zaehne/",
+   "neu": "/zahnbeschwerden/ernaehrung-gesunde-zaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 2881,
+   "woerterNeu": 2370,
+   "bytesAlt": 280198,
+   "bytesNeu": 61226
+  },
+  {
+   "alt": "/zahnbeschwerden/gelbe-zaehne/",
+   "neu": "/zahnbeschwerden/gelbe-zaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 3014,
+   "woerterNeu": 2618,
+   "bytesAlt": 252714,
+   "bytesNeu": 66064
+  },
+  {
+   "alt": "/zahnbeschwerden/karies-symptome/",
+   "neu": "/zahnbeschwerden/karies-symptome/",
+   "art": "eigene-seite",
+   "woerterAlt": 4496,
+   "woerterNeu": 4181,
+   "bytesAlt": 324808,
+   "bytesNeu": 89765
+  },
+  {
+   "alt": "/zahnbeschwerden/kreidezaehne/",
+   "neu": "/zahnbeschwerden/kreidezaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 4931,
+   "woerterNeu": 4542,
+   "bytesAlt": 334405,
+   "bytesNeu": 96445
+  },
+  {
+   "alt": "/zahnbeschwerden/kreuzbiss-kinder/",
+   "neu": "/zahnbeschwerden/kreuzbiss-kinder/",
+   "art": "eigene-seite",
+   "woerterAlt": 4299,
+   "woerterNeu": 2767,
+   "bytesAlt": 300494,
+   "bytesNeu": 67513
+  },
+  {
+   "alt": "/zahnbeschwerden/loch-im-zahn/",
+   "neu": "/zahnbeschwerden/loch-im-zahn/",
+   "art": "eigene-seite",
+   "woerterAlt": 4075,
+   "woerterNeu": 4445,
+   "bytesAlt": 303038,
+   "bytesNeu": 85308
+  },
+  {
+   "alt": "/zahnbeschwerden/mundgeruch-was-tun/",
+   "neu": "/zahnbeschwerden/mundgeruch-was-tun/",
+   "art": "eigene-seite",
+   "woerterAlt": 4283,
+   "woerterNeu": 3567,
+   "bytesAlt": 316678,
+   "bytesNeu": 81123
+  },
+  {
+   "alt": "/zahnbeschwerden/mundpilz-mundsoor/",
+   "neu": "/zahnbeschwerden/mundpilz-mundsoor/",
+   "art": "eigene-seite",
+   "woerterAlt": 5067,
+   "woerterNeu": 4299,
+   "bytesAlt": 354598,
+   "bytesNeu": 93702
+  },
+  {
+   "alt": "/zahnbeschwerden/mundschleimhautentzuendung/",
+   "neu": "/zahnbeschwerden/mundschleimhautentzuendung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3094,
+   "woerterNeu": 2746,
+   "bytesAlt": 301354,
+   "bytesNeu": 72463
+  },
+  {
+   "alt": "/zahnbeschwerden/mundtrockenheit/",
+   "neu": "/zahnbeschwerden/mundtrockenheit/",
+   "art": "eigene-seite",
+   "woerterAlt": 2730,
+   "woerterNeu": 2436,
+   "bytesAlt": 255674,
+   "bytesNeu": 61396
+  },
+  {
+   "alt": "/zahnbeschwerden/schiefe-zaehne/",
+   "neu": "/zahnbeschwerden/schiefe-zaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 2929,
+   "woerterNeu": 2600,
+   "bytesAlt": 286907,
+   "bytesNeu": 72029
+  },
+  {
+   "alt": "/zahnbeschwerden/schmerzempfindliche-zaehne/",
+   "neu": "/zahnbeschwerden/schmerzempfindliche-zaehne/",
+   "art": "eigene-seite",
+   "woerterAlt": 3100,
+   "woerterNeu": 2734,
+   "bytesAlt": 277849,
+   "bytesNeu": 71843
+  },
+  {
+   "alt": "/zahnbeschwerden/sport-mit-zahnspange/",
+   "neu": "/zahnbeschwerden/sport-mit-zahnspange/",
+   "art": "eigene-seite",
+   "woerterAlt": 2633,
+   "woerterNeu": 2204,
+   "bytesAlt": 252941,
+   "bytesNeu": 61173
+  },
+  {
+   "alt": "/zahnbeschwerden/vereiterter-zahn/",
+   "neu": "/zahnbeschwerden/vereiterter-zahn/",
+   "art": "eigene-seite",
+   "woerterAlt": 3199,
+   "woerterNeu": 3268,
+   "bytesAlt": 294077,
+   "bytesNeu": 75901
+  },
+  {
+   "alt": "/zahnbeschwerden/weisheitszahn-op/",
+   "neu": "/zahnbeschwerden/weisheitszahn-op/",
+   "art": "eigene-seite",
+   "woerterAlt": 3689,
+   "woerterNeu": 3426,
+   "bytesAlt": 290873,
+   "bytesNeu": 76477
+  },
+  {
+   "alt": "/zahnbeschwerden/zahn-abgebrochen/",
+   "neu": "/zahnbeschwerden/zahn-abgebrochen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2992,
+   "woerterNeu": 2739,
+   "bytesAlt": 265231,
+   "bytesNeu": 69745
+  },
+  {
+   "alt": "/zahnbeschwerden/zahn-locker/",
+   "neu": "/zahnbeschwerden/zahn-locker/",
+   "art": "eigene-seite",
+   "woerterAlt": 3077,
+   "woerterNeu": 2790,
+   "bytesAlt": 317020,
+   "bytesNeu": 74466
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnarzt-schwangerschaft/",
+   "neu": "/zahnbeschwerden/zahnarzt-schwangerschaft/",
+   "art": "eigene-seite",
+   "woerterAlt": 3270,
+   "woerterNeu": 1490,
+   "bytesAlt": 303901,
+   "bytesNeu": 56656
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnerosion-behandeln/",
+   "neu": "/zahnbeschwerden/zahnerosion-behandeln/",
+   "art": "eigene-seite",
+   "woerterAlt": 2755,
+   "woerterNeu": 2390,
+   "bytesAlt": 254222,
+   "bytesNeu": 67014
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnfleischbluten/",
+   "neu": "/zahnbeschwerden/zahnfleischbluten/",
+   "art": "eigene-seite",
+   "woerterAlt": 2781,
+   "woerterNeu": 2478,
+   "bytesAlt": 290239,
+   "bytesNeu": 70971
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnfleischentzuendung/",
+   "neu": "/zahnbeschwerden/zahnfleischentzuendung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3295,
+   "woerterNeu": 2898,
+   "bytesAlt": 284144,
+   "bytesNeu": 73510
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnfleischrueckgang/",
+   "neu": "/zahnbeschwerden/zahnfleischrueckgang/",
+   "art": "eigene-seite",
+   "woerterAlt": 4026,
+   "woerterNeu": 3949,
+   "bytesAlt": 319855,
+   "bytesNeu": 82505
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnfleischtaschen/",
+   "neu": "/zahnbeschwerden/zahnfleischtaschen/",
+   "art": "eigene-seite",
+   "woerterAlt": 2763,
+   "woerterNeu": 2443,
+   "bytesAlt": 266707,
+   "bytesNeu": 70816
+  },
+  {
+   "alt": "/zahnbeschwerden/zahngifte/",
+   "neu": "/zahnbeschwerden/zahngifte/",
+   "art": "eigene-seite",
+   "woerterAlt": 2513,
+   "woerterNeu": 2125,
+   "bytesAlt": 251297,
+   "bytesNeu": 62992
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnschmelzdefekte/",
+   "neu": "/zahnbeschwerden/zahnschmelzdefekte/",
+   "art": "eigene-seite",
+   "woerterAlt": 2724,
+   "woerterNeu": 2628,
+   "bytesAlt": 285016,
+   "bytesNeu": 68418
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnschmerzen/",
+   "neu": "/zahnbeschwerden/zahnschmerzen/",
+   "art": "eigene-seite",
+   "woerterAlt": 3233,
+   "woerterNeu": 2848,
+   "bytesAlt": 287310,
+   "bytesNeu": 74222
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnstein-entfernen-behandeln/",
+   "neu": "/zahnbeschwerden/zahnstein-entfernen-behandeln/",
+   "art": "eigene-seite",
+   "woerterAlt": 2532,
+   "woerterNeu": 2219,
+   "bytesAlt": 262474,
+   "bytesNeu": 64718
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnverfaerbung/",
+   "neu": "/zahnbeschwerden/zahnverfaerbung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3368,
+   "woerterNeu": 3462,
+   "bytesAlt": 283554,
+   "bytesNeu": 77611
+  },
+  {
+   "alt": "/zahnbeschwerden/zahnwurzelentzuendung/",
+   "neu": "/zahnbeschwerden/zahnwurzelentzuendung/",
+   "art": "eigene-seite",
+   "woerterAlt": 3710,
+   "woerterNeu": 3033,
+   "bytesAlt": 313369,
+   "bytesNeu": 76405
+  },
+  {
+   "alt": "/zahnunfall/",
+   "neu": "/notfall/",
+   "art": "eigene-seite",
+   "woerterAlt": 1123,
+   "woerterNeu": 775,
+   "bytesAlt": 220152,
+   "bytesNeu": 40736
+  }
+ ],
+ "gefaltet": [
+  {
+   "neu": "/berlin-charlottenburg/team/",
+   "bereich": "team",
+   "woerterNeu": 994,
+   "erhoben": true,
+   "anzahlAlt": 25,
+   "woerterAlt": 22424,
+   "quellen": [
+    {
+     "pfad": "/team/organigramm/",
+     "woerter": 1701
+    },
+    {
+     "pfad": "/team/",
+     "woerter": 1691
+    },
+    {
+     "pfad": "/team/zahnmedizinische-fachangestellte/dominik-ruffo/",
+     "woerter": 948
+    },
+    {
+     "pfad": "/team/bleaching/emma-gloria-findeisen/",
+     "woerter": 866
+    },
+    {
+     "pfad": "/team/prophylaxe/alisar-lala/",
+     "woerter": 849
+    },
+    {
+     "pfad": "/team/it-technik/marcel-baer/",
+     "woerter": 848
+    },
+    {
+     "pfad": "/team/sterilisation-qm/monika-kuckelt/",
+     "woerter": 844
+    },
+    {
+     "pfad": "/team/telefon-service/angie-skall/",
+     "woerter": 843
+    },
+    {
+     "pfad": "/team/prophylaxe/melanie-ruedel/",
+     "woerter": 841
+    },
+    {
+     "pfad": "/team/zahnaerzte/juliane-reichmuth/",
+     "woerter": 839
+    },
+    {
+     "pfad": "/team/verwaltung/patricia-willer/",
+     "woerter": 837
+    },
+    {
+     "pfad": "/team/verwaltung/michaela-dulz/",
+     "woerter": 833
+    },
+    {
+     "pfad": "/team/dentalhygieniker/edin-plavsic/",
+     "woerter": 826
+    },
+    {
+     "pfad": "/team/materialverwaltung/sabine-kuehnau-falkenau/",
+     "woerter": 826
+    },
+    {
+     "pfad": "/team/zahnmedizinische-fachangestellte/cheyenne-bande/",
+     "woerter": 814
+    },
+    {
+     "pfad": "/team/prophylaxe/jessica-oberlaender/",
+     "woerter": 812
+    },
+    {
+     "pfad": "/team/prophylaxe/kim-jasmin-yudaev/",
+     "woerter": 810
+    },
+    {
+     "pfad": "/team/verwaltung/sandra-mueller/",
+     "woerter": 809
+    },
+    {
+     "pfad": "/team/zahnaerzte/juliane-kottenhagen/",
+     "woerter": 809
+    },
+    {
+     "pfad": "/team/telefon-service/doreen-ziliox/",
+     "woerter": 807
+    },
+    {
+     "pfad": "/team/bleaching/maryam-karimi/",
+     "woerter": 805
+    },
+    {
+     "pfad": "/team/zahnmedizinische-fachangestellte/marlies-vlahek/",
+     "woerter": 803
+    },
+    {
+     "pfad": "/team/telefon-service/magnus-salecker/",
+     "woerter": 798
+    },
+    {
+     "pfad": "/team/zahnmedizinische-fachangestellte/lisbany-martinez-cubillas/",
+     "woerter": 794
+    },
+    {
+     "pfad": "/team/prophylaxe/nicole-dickhoff-kranz/",
+     "woerter": 771
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 8,
+   "woerterAlt": 17297,
+   "quellen": [
+    {
+     "pfad": "/en/services/medicine-aesthetic/wrinkle-treatment-in-berlin/",
+     "woerter": 4122
+    },
+    {
+     "pfad": "/en/services/medicine-aesthetic/hyaluronic-acid-fillers-berlin-ku64/",
+     "woerter": 3097
+    },
+    {
+     "pfad": "/en/services/medicine-aesthetic/wrinkles-forehead/",
+     "woerter": 3066
+    },
+    {
+     "pfad": "/en/services/medicine-aesthetic/",
+     "woerter": 2420
+    },
+    {
+     "pfad": "/en/services/holistic-dentistry/laser-treatment/",
+     "woerter": 1867
+    },
+    {
+     "pfad": "/en/services/",
+     "woerter": 967
+    },
+    {
+     "pfad": "/en/dental-problems/",
+     "woerter": 915
+    },
+    {
+     "pfad": "/en/services/holistic-dentistry/",
+     "woerter": 843
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/kinderzahnarzt/",
+   "bereich": "leistungen",
+   "woerterNeu": 557,
+   "erhoben": true,
+   "anzahlAlt": 5,
+   "woerterAlt": 11919,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kinderzahnarzt/kinderkieferorthopaedie/",
+     "woerter": 3129
+    },
+    {
+     "pfad": "/leistungen/kinderzahnarzt/karies-bei-kindern/",
+     "woerter": 2982
+    },
+    {
+     "pfad": "/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/",
+     "woerter": 2563
+    },
+    {
+     "pfad": "/leistungen/kinderzahnarzt/",
+     "woerter": 2368
+    },
+    {
+     "pfad": "/leistungen/kinderzahnarzt/therapeutisches-zaubern/",
+     "woerter": 877
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/zahnimplantate/",
+   "bereich": "leistungen",
+   "woerterNeu": 722,
+   "erhoben": true,
+   "anzahlAlt": 5,
+   "woerterAlt": 10952,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/",
+     "woerter": 3136
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantate-und-rauchen/",
+     "woerter": 2764
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-kosten/",
+     "woerter": 2553
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/implantat-oder-bruecke/",
+     "woerter": 1276
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/zahnimplantat-haltbarkeit/",
+     "woerter": 1223
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/parodontitis-behandlung/",
+   "bereich": "leistungen",
+   "woerterNeu": 566,
+   "erhoben": true,
+   "anzahlAlt": 4,
+   "woerterAlt": 9919,
+   "quellen": [
+    {
+     "pfad": "/leistungen/parodontologie-zahnfleischbehandlung/",
+     "woerter": 3149
+    },
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/laserbehandlung/",
+     "woerter": 3003
+    },
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/zahnfleischaufbau/",
+     "woerter": 2732
+    },
+    {
+     "pfad": "/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/",
+     "woerter": 1035
+    }
+   ]
+  },
+  {
+   "neu": "/karriere/",
+   "bereich": "sonstige",
+   "woerterNeu": 580,
+   "erhoben": true,
+   "anzahlAlt": 6,
+   "woerterAlt": 8789,
+   "quellen": [
+    {
+     "pfad": "/jobs-karriere/wir-bilden-aus/",
+     "woerter": 1639
+    },
+    {
+     "pfad": "/jobs-karriere/zahnmedizinischer-prophylaxeassistent-berlin/",
+     "woerter": 1587
+    },
+    {
+     "pfad": "/jobs-karriere/",
+     "woerter": 1565
+    },
+    {
+     "pfad": "/jobs-karriere/zahnarzt-job-berlin/",
+     "woerter": 1504
+    },
+    {
+     "pfad": "/jobs-karriere/zahnmedizinischer-fachangestellter-berlin/",
+     "woerter": 1501
+    },
+    {
+     "pfad": "/jobs-karriere/kinderzahnarzt-stellenangebot-job-berlin/",
+     "woerter": 993
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/prophylaxe-4-0/",
+   "bereich": "leistungen",
+   "woerterNeu": 554,
+   "erhoben": true,
+   "anzahlAlt": 4,
+   "woerterAlt": 8383,
+   "quellen": [
+    {
+     "pfad": "/leistungen/prophylaxe-4-0/ammp8-schnelltest-gewebeabbau/",
+     "woerter": 2979
+    },
+    {
+     "pfad": "/leistungen/prophylaxe-4-0/",
+     "woerter": 2555
+    },
+    {
+     "pfad": "/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/",
+     "woerter": 1816
+    },
+    {
+     "pfad": "/leistungen/prophylaxe-4-0/air-flow/",
+     "woerter": 1033
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/kunststofffuellungen/",
+   "bereich": "leistungen",
+   "woerterNeu": 518,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 8063,
+   "quellen": [
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/zahnfuellung/",
+     "woerter": 4792
+    },
+    {
+     "pfad": "/leistungen/zahnaesthetik/amalgamentfernung/",
+     "woerter": 3271
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/#zahnersatz",
+   "bereich": "leistungen",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 7826,
+   "quellen": [
+    {
+     "pfad": "/leistungen/zahnaesthetik/zahnsanierung/",
+     "woerter": 4803
+    },
+    {
+     "pfad": "/leistungen/zahnaesthetik/zahnersatz/",
+     "woerter": 3023
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/inlays-onlays/",
+   "bereich": "leistungen",
+   "woerterNeu": 451,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 7495,
+   "quellen": [
+    {
+     "pfad": "/leistungen/zahnaesthetik/zahnersatz/inlays/",
+     "woerter": 4114
+    },
+    {
+     "pfad": "/leistungen/zahnaesthetik/zahnersatz/cerec/",
+     "woerter": 3381
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/prophylaxe-4-0/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 4,
+   "woerterAlt": 6913,
+   "quellen": [
+    {
+     "pfad": "/en/services/prophylaxis-4-0/ammp8-test/",
+     "woerter": 2235
+    },
+    {
+     "pfad": "/en/services/prophylaxis-4-0/",
+     "woerter": 2173
+    },
+    {
+     "pfad": "/en/services/prophylaxis-4-0/gbt-guided-biofilm-therapy/",
+     "woerter": 1609
+    },
+    {
+     "pfad": "/en/services/prophylaxis-4-0/air-flow/",
+     "woerter": 896
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/zahnimplantate/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 3,
+   "woerterAlt": 6467,
+   "quellen": [
+    {
+     "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/",
+     "woerter": 2456
+    },
+    {
+     "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-implant-costs/",
+     "woerter": 2417
+    },
+    {
+     "pfad": "/en/services/oral-surgery-mkg-surgery/dental-implants/dental-surgery-smoking/",
+     "woerter": 1594
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/smile-design/",
+   "bereich": "leistungen",
+   "woerterNeu": 519,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 6270,
+   "quellen": [
+    {
+     "pfad": "/leistungen/zahnaesthetik/digital-smile-design/",
+     "woerter": 3142
+    },
+    {
+     "pfad": "/leistungen/zahnaesthetik/ku64-smile-swiss-smile/",
+     "woerter": 1571
+    },
+    {
+     "pfad": "/leistungen/smile-design-dentallabor/",
+     "woerter": 1557
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/kinderzahnarzt/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 3,
+   "woerterAlt": 5788,
+   "quellen": [
+    {
+     "pfad": "/en/services/pediatric-dentist/",
+     "woerter": 2321
+    },
+    {
+     "pfad": "/en/services/pediatric-dentist/first-visit-to-ku64/",
+     "woerter": 2012
+    },
+    {
+     "pfad": "/en/services/pediatric-dentist/pediatric-orthodontics/",
+     "woerter": 1455
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/wurzelkanalbehandlung/",
+   "bereich": "leistungen",
+   "woerterNeu": 578,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 5505,
+   "quellen": [
+    {
+     "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/",
+     "woerter": 2558
+    },
+    {
+     "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/",
+     "woerter": 1696
+    },
+    {
+     "pfad": "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/",
+     "woerter": 1251
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/cmd-behandlung/",
+   "bereich": "leistungen",
+   "woerterNeu": 483,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 4667,
+   "quellen": [
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/bisshebung/",
+     "woerter": 2088
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/craniomandibulaere-dysfunktion/",
+     "woerter": 1480
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/osteopathie/",
+     "woerter": 1099
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/zahnvorsorge/",
+   "bereich": "leistungen",
+   "woerterNeu": 560,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 4603,
+   "quellen": [
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/erstuntersuchung/",
+     "woerter": 3510
+    },
+    {
+     "pfad": "/leistungen/ganzheitliche-zahnmedizin/karies-risiko-bestimmung/",
+     "woerter": 1093
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/#zahnersatz",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 4259,
+   "quellen": [
+    {
+     "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/",
+     "woerter": 3170
+    },
+    {
+     "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dental-remediation/",
+     "woerter": 1089
+    }
+   ]
+  },
+  {
+   "neu": "/potsdam/leistungen/",
+   "bereich": "standorte",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 3926,
+   "quellen": [
+    {
+     "pfad": "/potsdam/zahnaesthetik/",
+     "woerter": 2131
+    },
+    {
+     "pfad": "/potsdam/zahnersatz/",
+     "woerter": 1795
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/feste-zahnspange/",
+   "bereich": "leistungen",
+   "woerterNeu": 507,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 3711,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferorthopaedie/win-brackets-lingualtechnik/",
+     "woerter": 1457
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/feste-zahnspange/",
+     "woerter": 1410
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/zahnspange-reinigen/",
+     "woerter": 844
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/aligner/",
+   "bereich": "leistungen",
+   "woerterNeu": 571,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 3626,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferorthopaedie/invisalign/",
+     "woerter": 1442
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/sos-zahnspangen/",
+     "woerter": 1180
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/zahnkorrektur/",
+     "woerter": 1004
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/zahnvorsorge/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 3156,
+   "quellen": [
+    {
+     "pfad": "/en/services/holistic-dentistry/initial-examination-check-up/",
+     "woerter": 2206
+    },
+    {
+     "pfad": "/en/services/holistic-dentistry/tooth-decay-caries-risk-determination/",
+     "woerter": 950
+    }
+   ]
+  },
+  {
+   "neu": "/potsdam/",
+   "bereich": "standorte",
+   "woerterNeu": 735,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 3129,
+   "quellen": [
+    {
+     "pfad": "/potsdam/",
+     "woerter": 2375
+    },
+    {
+     "pfad": "/potsdam/link-tree/",
+     "woerter": 754
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/smile-design/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 2786,
+   "quellen": [
+    {
+     "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/digital-smile-design/",
+     "woerter": 1426
+    },
+    {
+     "pfad": "/en/services/dental-laboratory-in-house/",
+     "woerter": 1360
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/#chirurgie",
+   "bereich": "leistungen",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 2584,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/",
+     "woerter": 1649
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/kieferchirurgische-kombinationstherapie/",
+     "woerter": 935
+    }
+   ]
+  },
+  {
+   "neu": "/potsdam/team/",
+   "bereich": "team",
+   "woerterNeu": 500,
+   "erhoben": true,
+   "anzahlAlt": 3,
+   "woerterAlt": 2426,
+   "quellen": [
+    {
+     "pfad": "/team/prophylaxe/madeleine-kettner/",
+     "woerter": 881
+    },
+    {
+     "pfad": "/team/dentalhygieniker/saskia-baer/",
+     "woerter": 804
+    },
+    {
+     "pfad": "/team/zahnmedizinische-fachangestellte/grit-roggelin-henning/",
+     "woerter": 741
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/knochenaufbau/",
+   "bereich": "leistungen",
+   "woerterNeu": 465,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 2402,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/knochenaufbau/",
+     "woerter": 1228
+    },
+    {
+     "pfad": "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/sinuslift/",
+     "woerter": 1174
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/knirscherschiene/",
+   "bereich": "leistungen",
+   "woerterNeu": 447,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 2373,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kieferorthopaedie/knirscherschiene/",
+     "woerter": 1196
+    },
+    {
+     "pfad": "/leistungen/kieferorthopaedie/schnarcher-schutzschiene/",
+     "woerter": 1177
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/#chirurgie",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 2312,
+   "quellen": [
+    {
+     "pfad": "/en/services/oral-surgery-mkg-surgery/",
+     "woerter": 1498
+    },
+    {
+     "pfad": "/en/services/oral-surgery-mkg-surgery/maxillofacial-combination-therapy/",
+     "woerter": 814
+    }
+   ]
+  },
+  {
+   "neu": "/en/leistungen/inlays-onlays/",
+   "bereich": "sonstige",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 2158,
+   "quellen": [
+    {
+     "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/cerec-dental-restorations/",
+     "woerter": 1384
+    },
+    {
+     "pfad": "/en/services/aesthetic-dentistry-dental-aesthetics/dentures/inlays/",
+     "woerter": 774
+    }
+   ]
+  },
+  {
+   "neu": "/leistungen/behandlung-in-narkose/",
+   "bereich": "leistungen",
+   "woerterNeu": 483,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 2108,
+   "quellen": [
+    {
+     "pfad": "/leistungen/kinderzahnarzt/vollnarkose/",
+     "woerter": 1091
+    },
+    {
+     "pfad": "/potsdam/anaesthesie/",
+     "woerter": 1017
+    }
+   ]
+  },
+  {
+   "neu": "/potsdam/leistungen/smile-design/",
+   "bereich": "standorte",
+   "woerterNeu": null,
+   "erhoben": false,
+   "anzahlAlt": 2,
+   "woerterAlt": 1878,
+   "quellen": [
+    {
+     "pfad": "/potsdam/digital-smile-design/",
+     "woerter": 987
+    },
+    {
+     "pfad": "/potsdam/dentallabor/",
+     "woerter": 891
+    }
+   ]
+  },
+  {
+   "neu": "/berlinmitte/team/",
+   "bereich": "team",
+   "woerterNeu": 425,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 1682,
+   "quellen": [
+    {
+     "pfad": "/team/rezeption-service/lisa-hauk/",
+     "woerter": 848
+    },
+    {
+     "pfad": "/team/prophylaxe/nurcan-sahin/",
+     "woerter": 834
+    }
+   ]
+  },
+  {
+   "neu": "/anamnese/",
+   "bereich": "sonstige",
+   "woerterNeu": 546,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 1599,
+   "quellen": [
+    {
+     "pfad": "/anamnese/",
+     "woerter": 827
+    },
+    {
+     "pfad": "/downloads/",
+     "woerter": 772
+    }
+   ]
+  },
+  {
+   "neu": "/berlinmitte/kontakt/",
+   "bereich": "standorte",
+   "woerterNeu": 466,
+   "erhoben": true,
+   "anzahlAlt": 2,
+   "woerterAlt": 1521,
+   "quellen": [
+    {
+     "pfad": "/berlinmitte/kontakt/",
+     "woerter": 773
+    },
+    {
+     "pfad": "/berlinmitte/link-tree/",
+     "woerter": 748
+    }
+   ]
+  }
+ ],
+ "verloren": [
+  {
+   "alt": "/leistungen/aesthetische-medizin/faltenbehandlung-in-berlin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 4341,
+   "woerterNeu": 1798,
+   "bytesAlt": 321231,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/longevity/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3719,
+   "woerterNeu": 1798,
+   "bytesAlt": 357586,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/hyaluron-lippen/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3539,
+   "woerterNeu": 1798,
+   "bytesAlt": 277621,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/zornesfalte-entfernen/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 3440,
+   "woerterNeu": 1798,
+   "bytesAlt": 278117,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/ueber-uns/hilfsprojekt-suedafrika/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 3000,
+   "woerterNeu": 469,
+   "bytesAlt": 293713,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/leistungen/aesthetische-medizin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 2710,
+   "woerterNeu": 1798,
+   "bytesAlt": 255072,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/ueber-uns/location/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 2069,
+   "woerterNeu": 469,
+   "bytesAlt": 258254,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/soziales-engagement/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1608,
+   "woerterNeu": 469,
+   "bytesAlt": 227346,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/kooperationspartner/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1495,
+   "woerterNeu": 469,
+   "bytesAlt": 217680,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/presseinfo/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1325,
+   "woerterNeu": 469,
+   "bytesAlt": 217484,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/best-practice/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1043,
+   "woerterNeu": 469,
+   "bytesAlt": 225273,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/auszeichnungen/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1042,
+   "woerterNeu": 469,
+   "bytesAlt": 247147,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/leistungen/ganzheitliche-zahnmedizin/",
+   "neu": "/leistungen/",
+   "art": "sammelseite",
+   "woerterAlt": 1028,
+   "woerterNeu": 1798,
+   "bytesAlt": 229817,
+   "bytesNeu": 114071
+  },
+  {
+   "alt": "/kontakt/anfahrt/",
+   "neu": "/standorte/",
+   "art": "sammelseite",
+   "woerterAlt": 1018,
+   "woerterNeu": 550,
+   "bytesAlt": 210263,
+   "bytesNeu": 74093
+  },
+  {
+   "alt": "/potsdam/ultraschall-reiniger/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 1004,
+   "woerterNeu": 469,
+   "bytesAlt": 216874,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/mitgliedschaften/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 897,
+   "woerterNeu": 469,
+   "bytesAlt": 224929,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/ueber-uns/galerie/",
+   "neu": "/ueber-uns/",
+   "art": "sammelseite",
+   "woerterAlt": 771,
+   "woerterNeu": 469,
+   "bytesAlt": 221176,
+   "bytesNeu": 33589
+  },
+  {
+   "alt": "/link-tree/",
+   "neu": "/",
+   "art": "sammelseite",
+   "woerterAlt": 762,
+   "woerterNeu": 544,
+   "bytesAlt": 228299,
+   "bytesNeu": 42248
+  }
+ ],
+ "bereiche": {
+  "leistungen": {
+   "seitenAlt": 74,
+   "seitenNeuGetroffen": 33,
+   "woerterAlt": 170785,
+   "woerterNeu": 18444
+  },
+  "zahnbeschwerden": {
+   "seitenAlt": 31,
+   "seitenNeuGetroffen": 31,
+   "woerterAlt": 102543,
+   "woerterNeu": 88827
+  },
+  "blog": {
+   "seitenAlt": 31,
+   "seitenNeuGetroffen": 31,
+   "woerterAlt": 66002,
+   "woerterNeu": 56008
+  },
+  "team": {
+   "seitenAlt": 101,
+   "seitenNeuGetroffen": 74,
+   "woerterAlt": 95342,
+   "woerterNeu": 41034
+  }
+ }
+}
