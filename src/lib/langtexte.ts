@@ -54,9 +54,56 @@ import * as fr from '../inhalte/langtexte-fr.json';
 
 export type BlockArt = 'p' | 'li' | 'zeile';
 
+/**
+ * Eine Stelle im Blocktext, die auf eine gebaute Seite zeigt.
+ *
+ * ── Warum es das überhaupt gibt ─────────────────────────────────────────
+ *
+ * Beim Import wurde die WordPress-Auszeichnung samt aller `<a href>`
+ * verworfen (Begründung oben). Das war für die Sicherheit richtig und für
+ * den Text folgenlos – aber es hat eine Aussage mitgenommen: Auf
+ * `/ueber-uns/` steht unter „Unsere Leistungen" eine Liste von 19 Themen,
+ * und jedes davon war auf ku64.de ein Verweis. Im Neubau standen sie als
+ * toter Text da; wer „Wurzelkanalbehandlung" las, kam von dort nicht zur
+ * Wurzelkanalbehandlung.
+ *
+ * ── Warum ein Ausschnitt und nicht der ganze Block ──────────────────────
+ *
+ * Die Punkte haben die Form „Thema – Nutzenversprechen". Verlinkt gehört
+ * der Teil VOR dem Gedankenstrich. Wäre der ganze Punkt der Link, würde der
+ * Werbesatz zum Ankertext, und ein Ankertext, der „für eine umfassende
+ * zahnmedizinische Versorgung" heißt, sagt weder einer Vorlesehilfe noch
+ * einer Suchmaschine, wohin er führt.
+ *
+ * `text` ist deshalb ein wörtlicher Ausschnitt aus `Block.text`. Zwei
+ * Verweise in einem Block sind erlaubt und in einem Fall nötig: Der Punkt
+ * „Behandlung gegen Mundgeruch & Karies" nennt zwei Themen, und beide haben
+ * eine eigene Seite. Ein Punkt, der zwei Themen nennt, darf nicht so tun,
+ * als sei er eines.
+ *
+ * ── Warum ein deutscher Pfad ────────────────────────────────────────────
+ *
+ * `ziel` ist immer der deutsche (präfixlose) Pfad. `Langtext.astro` schickt
+ * ihn durch `pfadInSprache`, damit eine Seite unter /en/ nicht auf die
+ * deutsche Adresse zeigt. Ein zweiter Satz Ziele je Sprache wäre eine
+ * zweite Pflegestelle – und damit die Stelle, an der eine davon veraltet.
+ */
+export interface Verweis {
+  /** Wörtlicher Ausschnitt aus `Block.text`, der zum Link wird. */
+  text: string;
+  /** Deutscher Zielpfad, z. B. `/leistungen/karies-behandlung/`. */
+  ziel: string;
+}
+
 export interface Block {
   art: BlockArt;
   text: string;
+  /**
+   * Optional – und das ist der Punkt: Die 114.894 Wörter Bestand bleiben
+   * ohne dieses Feld unverändert gültig, angereichert sind nur die Blöcke,
+   * für die jemand ein Ziel von Hand eingetragen hat.
+   */
+  verweise?: Verweis[];
 }
 
 export interface Abschnitt {

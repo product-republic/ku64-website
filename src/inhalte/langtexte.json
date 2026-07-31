@@ -1,5 +1,5 @@
 {
- "erzeugtAm": "2026-07-31T16:40:17.322Z",
+ "erzeugtAm": "2026-07-31T16:45:58.979Z",
  "quelle": "analyse/altbestand/texte.json",
  "hinweis": "Erzeugt von scripts/langtexte-bauen.mjs. Nicht von Hand bearbeiten – der nächste Lauf überschreibt es. Der Text ist wortgleich der von ku64.de; geändert wurden nur Versalien in Überschriften. Fachlich verantwortet die Praxis.",
  "leistungen": {
@@ -21865,71 +21865,177 @@
       },
       {
        "art": "li",
-       "text": "Parodontitisbehandlung & systematische Zahnfleischtherapie – die gesunde Basis für Ihre Zähne"
+       "text": "Parodontitisbehandlung & systematische Zahnfleischtherapie – die gesunde Basis für Ihre Zähne",
+       "verweise": [
+        {
+         "text": "Parodontitisbehandlung & systematische Zahnfleischtherapie",
+         "ziel": "/leistungen/parodontitis-behandlung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Laserbehandlung – sanfte und präzise Zahnmedizin mit modernster Technologie"
+       "text": "Laserbehandlung – sanfte und präzise Zahnmedizin mit modernster Technologie",
+       "verweise": [
+        {
+         "text": "Laserbehandlung",
+         "ziel": "/leistungen/parodontitis-behandlung/laserbehandlung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Wurzelkanalbehandlung (Endodontie) – Zahnerhalt durch präzise Wurzelbehandlungen"
+       "text": "Wurzelkanalbehandlung (Endodontie) – Zahnerhalt durch präzise Wurzelbehandlungen",
+       "verweise": [
+        {
+         "text": "Wurzelkanalbehandlung (Endodontie)",
+         "ziel": "/leistungen/wurzelkanalbehandlung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Oralchirurgie & Kiefer- und Gesichtschirurgie – fachkundige Eingriffe für Gesundheit & Ästhetik"
+       "text": "Oralchirurgie & Kiefer- und Gesichtschirurgie – fachkundige Eingriffe für Gesundheit & Ästhetik",
+       "verweise": [
+        {
+         "text": "Oralchirurgie & Kiefer- und Gesichtschirurgie",
+         "ziel": "/leistungen/#chirurgie"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Zahnbehandlungen & Operationen unter Vollnarkose – für maximalen Komfort, auch für Angstpatienten"
+       "text": "Zahnbehandlungen & Operationen unter Vollnarkose – für maximalen Komfort, auch für Angstpatienten",
+       "verweise": [
+        {
+         "text": "Zahnbehandlungen & Operationen unter Vollnarkose",
+         "ziel": "/leistungen/behandlung-in-narkose/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Weisheitszahnentfernung – schonend und professionell durchgeführt"
+       "text": "Weisheitszahnentfernung – schonend und professionell durchgeführt",
+       "verweise": [
+        {
+         "text": "Weisheitszahnentfernung",
+         "ziel": "/leistungen/weisheitszaehne/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Gnathologie & Kiefergelenktherapie – für eine optimale Funktion des Kiefers"
+       "text": "Gnathologie & Kiefergelenktherapie – für eine optimale Funktion des Kiefers",
+       "verweise": [
+        {
+         "text": "Gnathologie & Kiefergelenktherapie",
+         "ziel": "/leistungen/cmd-behandlung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Kieferorthopädie (Zahnspange/Brackets/Invisalign) – unsichtbare und klassische Lösungen für ein perfektes Lächeln"
+       "text": "Kieferorthopädie (Zahnspange/Brackets/Invisalign) – unsichtbare und klassische Lösungen für ein perfektes Lächeln",
+       "verweise": [
+        {
+         "text": "Kieferorthopädie (Zahnspange/Brackets/Invisalign)",
+         "ziel": "/leistungen/#kieferorthopaedie"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Professionelle Zahnreinigung (Prophylaxe) – für gesunde, strahlende Zähne"
+       "text": "Professionelle Zahnreinigung (Prophylaxe) – für gesunde, strahlende Zähne",
+       "verweise": [
+        {
+         "text": "Professionelle Zahnreinigung (Prophylaxe)",
+         "ziel": "/leistungen/professionelle-zahnreinigung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Behandlung gegen Mundgeruch & Karies – nachhaltige Lösungen für Ihre Mundgesundheit"
+       "text": "Behandlung gegen Mundgeruch & Karies – nachhaltige Lösungen für Ihre Mundgesundheit",
+       "verweise": [
+        {
+         "text": "Mundgeruch",
+         "ziel": "/zahnbeschwerden/mundgeruch-was-tun/"
+        },
+        {
+         "text": "Karies",
+         "ziel": "/leistungen/karies-behandlung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Air Flow – sanfte Entfernung von Verfärbungen für natürlich weiße Zähne"
+       "text": "Air Flow – sanfte Entfernung von Verfärbungen für natürlich weiße Zähne",
+       "verweise": [
+        {
+         "text": "Air Flow",
+         "ziel": "/leistungen/prophylaxe-4-0/air-flow/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Knirscher-Schutzschienen – Schutz für Zähne und Kiefergelenke bei nächtlichem Zähneknirschen"
+       "text": "Knirscher-Schutzschienen – Schutz für Zähne und Kiefergelenke bei nächtlichem Zähneknirschen",
+       "verweise": [
+        {
+         "text": "Knirscher-Schutzschienen",
+         "ziel": "/leistungen/knirscherschiene/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "ganzheitliche Amalgamentfernung und -entgiftung – sichere und professionelle Entfernung alter Füllungen"
+       "text": "ganzheitliche Amalgamentfernung und -entgiftung – sichere und professionelle Entfernung alter Füllungen",
+       "verweise": [
+        {
+         "text": "ganzheitliche Amalgamentfernung und -entgiftung",
+         "ziel": "/leistungen/kunststofffuellungen/amalgamentfernung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Bleaching (Zahnaufhellung) – strahlendes Lächeln mit professioneller Zahnaufhellung"
+       "text": "Bleaching (Zahnaufhellung) – strahlendes Lächeln mit professioneller Zahnaufhellung",
+       "verweise": [
+        {
+         "text": "Bleaching (Zahnaufhellung)",
+         "ziel": "/leistungen/zahnaufhellung/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Osteopathie – ganzheitliche Behandlung für Ihre Mund- und Kiefergesundheit"
+       "text": "Osteopathie – ganzheitliche Behandlung für Ihre Mund- und Kiefergesundheit",
+       "verweise": [
+        {
+         "text": "Osteopathie",
+         "ziel": "/leistungen/cmd-behandlung/osteopathie/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "3D-Röntgen-Technologie – maximale Präzision bei Diagnosen und Behandlungen"
+       "text": "3D-Röntgen-Technologie – maximale Präzision bei Diagnosen und Behandlungen",
+       "verweise": [
+        {
+         "text": "3D-Röntgen-Technologie",
+         "ziel": "/leistungen/dvt-3d-roentgen/"
+        }
+       ]
       },
       {
        "art": "li",
-       "text": "Hochwertiger Zahnersatz – Implantate, Kronen, Brücken und Veneers für langlebige Ästhetik"
+       "text": "Hochwertiger Zahnersatz – Implantate, Kronen, Brücken und Veneers für langlebige Ästhetik",
+       "verweise": [
+        {
+         "text": "Hochwertiger Zahnersatz",
+         "ziel": "/leistungen/#zahnersatz"
+        }
+       ]
       },
       {
        "art": "li",

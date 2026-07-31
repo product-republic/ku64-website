@@ -106,6 +106,46 @@ function abweichungen(de, u) {
   return gruende;
 }
 
+/**
+ * Die Verweisziele des deutschen Originals an die Übersetzung weitergeben.
+ *
+ * ── Warum die Ziele nur einmal gepflegt werden ──────────────────────────
+ *
+ * Welcher Strichpunkt auf `/ueber-uns/` wohin zeigt, steht von Hand in
+ * `scripts/langtexte-bauen.mjs` und landet in der deutschen `langtexte.json`.
+ * Ein zweiter Satz Ziele je Sprache wäre eine zweite Pflegestelle – und damit
+ * die Stelle, an der eine davon veraltet, ohne dass es jemand merkt. Die
+ * Übersetzung erbt sie deshalb hier, Block für Block über den Index; dass die
+ * Blockfolge übereinstimmt, hat `abweichungen()` unmittelbar davor geprüft.
+ *
+ * Aus dem Zielpfad wird in `Langtext.astro` über `pfadInSprache` die
+ * /en/- bzw. /fr/-Adresse. Eine englische Seite verlinkt also nicht die
+ * deutsche.
+ *
+ * ── Was nicht mitkommt, und warum das gemeldet wird ─────────────────────
+ *
+ * Der Linktext ist ein wörtlicher Ausschnitt des deutschen Blocktextes –
+ * „Wurzelkanalbehandlung (Endodontie)". In der Übersetzung steht dort etwas
+ * anderes, und ein Ausschnitt, den es im Text nicht gibt, kann nicht verlinkt
+ * werden. Solche Verweise fallen weg statt an geratener Stelle zu greifen;
+ * gezählt werden sie trotzdem, sonst wäre die Übersetzung stiller ärmer als
+ * das Original.
+ */
+function zieleDurchreichen(de, abschnitte, verloren) {
+  return abschnitte.map((a, i) => ({
+    ...a,
+    bloecke: a.bloecke.map((b, k) => {
+      const quelle = de.abschnitte[i]?.bloecke[k]?.verweise;
+      if (!quelle?.length) return b;
+      const passend = quelle.filter((v) => b.text.includes(v.text));
+      for (const v of quelle) {
+        if (!passend.includes(v)) verloren.push(`${v.text} → ${v.ziel}`);
+      }
+      return passend.length ? { ...b, verweise: passend } : b;
+    }),
+  }));
+}
+
 for (const sprache of ['en', 'fr']) {
   const ordner = path.join(VERZEICHNIS, sprache);
   if (!existsSync(ordner)) {
@@ -127,6 +167,7 @@ for (const sprache of ['en', 'fr']) {
   const fassung = { leistungen: {}, unterthemen: {}, kategorien: {}, neu: {}, themen: {} };
 
   const abgelehnt = [];
+  const verloreneVerweise = [];
   let uebernommen = 0;
   let woerterGesamt = 0;
 
@@ -174,7 +215,7 @@ for (const sprache of ['en', 'fr']) {
 
     fassung[eintrag.bereich][eintrag.schluessel] = {
       titel: u.titel ?? null,
-      abschnitte: u.abschnitte,
+      abschnitte: zieleDurchreichen(de, u.abschnitte, verloreneVerweise),
     };
     uebernommen++;
     woerterGesamt += woerter(u.abschnitte);
@@ -218,6 +259,18 @@ for (const sprache of ['en', 'fr']) {
     console.log(`         ${abgelehnt.length} abgelehnt:`);
     for (const a of abgelehnt.slice(0, 15)) console.log(`           ${a}`);
     if (abgelehnt.length > 15) console.log(`           … und ${abgelehnt.length - 15} weitere`);
+  }
+
+  /* Kein Abbruch – ein Punkt ohne Link ist keine kaputte Seite. Aber sichtbar,
+     damit niemand annimmt, /en/ueber-uns/ verlinke wie /ueber-uns/. */
+  if (verloreneVerweise.length) {
+    console.log(
+      `         ${verloreneVerweise.length} Verweis(e) ohne Entsprechung im übersetzten Text:`,
+    );
+    for (const v of verloreneVerweise.slice(0, 10)) console.log(`           ${v}`);
+    if (verloreneVerweise.length > 10) {
+      console.log(`           … und ${verloreneVerweise.length - 10} weitere`);
+    }
   }
 
   /*

@@ -42,9 +42,9 @@
  * kommt. Die Praxis muss diese Texte freigeben; eine Freigabe ohne Quelle
  * ist keine.
  */
-import type { Langtext } from '../lib/langtexte';
+import type { Langtext, Verweis } from '../lib/langtexte';
 import { texte } from '../i18n/katalog';
-import type { Sprache } from '../i18n/sprachen';
+import { pfadInSprache, type Sprache } from '../i18n/sprachen';
 
 interface Props {
   langtext: Langtext;
@@ -236,26 +236,80 @@ const eigenId = `lt-${langtext.herkunft.replace(/[^a-z0-9]+/gi, '-').replace(/^-
  * Schritt stünde zwischen jedem Punkt ein Listenabstand, und eine
  * Vorlesehilfe kündigte sechsmal „Liste mit 1 Eintrag" an.
  */
-type Gruppe =
-  | { art: 'absatz'; text: string }
-  | { art: 'liste'; punkte: string[] }
-  | { art: 'zeilen'; zeilen: string[] };
+interface Stueck {
+  text: string;
+  verweise?: Verweis[];
+}
 
-function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
+type Gruppe =
+  | { art: 'absatz'; stueck: Stueck }
+  | { art: 'liste'; punkte: Stueck[] }
+  | { art: 'zeilen'; zeilen: Stueck[] };
+
+function gruppieren(bloecke: { art: string; text: string; verweise?: Verweis[] }[]): Gruppe[] {
   const aus: Gruppe[] = [];
   for (const b of bloecke) {
     const letzte = aus[aus.length - 1];
+    const s: Stueck = { text: b.text, verweise: b.verweise };
     if (b.art === 'li') {
-      if (letzte && letzte.art === 'liste') letzte.punkte.push(b.text);
-      else aus.push({ art: 'liste', punkte: [b.text] });
+      if (letzte && letzte.art === 'liste') letzte.punkte.push(s);
+      else aus.push({ art: 'liste', punkte: [s] });
     } else if (b.art === 'zeile') {
-      if (letzte && letzte.art === 'zeilen') letzte.zeilen.push(b.text);
-      else aus.push({ art: 'zeilen', zeilen: [b.text] });
+      if (letzte && letzte.art === 'zeilen') letzte.zeilen.push(s);
+      else aus.push({ art: 'zeilen', zeilen: [s] });
     } else {
-      aus.push({ art: 'absatz', text: b.text });
+      aus.push({ art: 'absatz', stueck: s });
     }
   }
   return aus;
+}
+
+/**
+ * Einen Blocktext in Stücke zerlegen – verlinkte und unverlinkte.
+ *
+ * Gespeichert ist je Verweis ein wörtlicher Ausschnitt des Textes. Hier wird
+ * er gesucht und der Text an dieser Stelle geteilt; alles davor und danach
+ * bleibt Text. So wird nur „Wurzelkanalbehandlung (Endodontie)" zum Link und
+ * nicht der ganze Punkt samt Werbesatz.
+ *
+ * ── Warum ein nicht gefundener Ausschnitt kein Fehler ist ───────────────
+ *
+ * Die Ziele stehen nur in der deutschen Fassung und werden beim Einspielen
+ * der Übersetzungen durchgereicht – der Ausschnitt ist damit deutsch, der
+ * Text unter /en/ ist es irgendwann nicht mehr. Findet sich der Ausschnitt
+ * nicht, steht hier der Punkt ohne Link: dieselbe Aussage, ein Weg weniger.
+ * Die Alternative wäre, an einer geratenen Stelle zu verlinken – und ein
+ * Ankertext, der mitten im Wort anfängt, ist schlechter als keiner.
+ * `korpus-einspielen.mjs` meldet, wie viele Verweise so verlorengehen.
+ */
+function zerlegen(text: string, verweise: Verweis[] | undefined): Stueck[] {
+  if (!verweise?.length) return [{ text }];
+
+  /* Nach Fundstelle sortiert, nicht in Eintragsreihenfolge: Sonst hinge das
+     Ergebnis daran, in welcher Reihenfolge jemand die Tabelle gepflegt hat. */
+  const treffer = verweise
+    .map((v) => ({ v, ab: text.indexOf(v.text) }))
+    .filter((t) => t.ab >= 0 && t.v.text.length > 0)
+    .sort((a, b) => a.ab - b.ab);
+
+  const stuecke: Stueck[] = [];
+  let gelesen = 0;
+  for (const t of treffer) {
+    /* Überlappung überspringen – zwei Links über denselben Buchstaben wären
+       verschachtelte `a`-Elemente und damit ungültiges HTML. */
+    if (t.ab < gelesen) continue;
+    if (t.ab > gelesen) stuecke.push({ text: text.slice(gelesen, t.ab) });
+    stuecke.push({ text: t.v.text, verweise: [t.v] });
+    gelesen = t.ab + t.v.text.length;
+  }
+  if (gelesen < text.length) stuecke.push({ text: text.slice(gelesen) });
+  return stuecke;
+}
+
+/** Der Zielpfad eines Stücks in der Sprache dieser Seite – oder `null`. */
+function zielVon(s: Stueck): string | null {
+  const z = s.verweise?.[0]?.ziel;
+  return z ? pfadInSprache(z, sprache) : null;
 }
 ---
 
@@ -292,11 +346,21 @@ function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
         )}
         {gruppieren(a.bloecke).map((g) =>
           g.art === 'absatz' ? (
-            <p>{g.text}</p>
+            <p>
+              {zerlegen(g.stueck.text, g.stueck.verweise).map((s) => {
+                const ziel = zielVon(s);
+                return ziel ? <a href={ziel}>{s.text}</a> : s.text;
+              })}
+            </p>
           ) : g.art === 'liste' ? (
             <ul>
               {g.punkte.map((p) => (
-                <li>{p}</li>
+                <li>
+                  {zerlegen(p.text, p.verweise).map((s) => {
+                    const ziel = zielVon(s);
+                    return ziel ? <a href={ziel}>{s.text}</a> : s.text;
+                  })}
+                </li>
               ))}
             </ul>
           ) : (
@@ -305,7 +369,12 @@ function gruppieren(bloecke: { art: string; text: string }[]): Gruppe[] {
                eine Erfindung – deshalb als Liste, was sie inhaltlich ist. */
             <ul class="langtext-zeilen">
               {g.zeilen.map((z) => (
-                <li>{z}</li>
+                <li>
+                  {zerlegen(z.text, z.verweise).map((s) => {
+                    const ziel = zielVon(s);
+                    return ziel ? <a href={ziel}>{s.text}</a> : s.text;
+                  })}
+                </li>
               ))}
             </ul>
           ),

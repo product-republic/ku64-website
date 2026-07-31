@@ -298,7 +298,12 @@ function abschnitte(bloecke) {
       laufend = { ueberschrift: b.text, stufe: b.art, bloecke: [] };
       continue;
     }
-    laufend.bloecke.push({ art: b.art, text: b.text });
+    /* `verweise` nur setzen, wenn es welche gibt – sonst stünde in jedem der
+       vielen tausend Blöcke ein leeres Feld, und `git diff` zeigte beim
+       nächsten Lauf eine Änderung an 114.894 Wörtern, die keine ist. */
+    laufend.bloecke.push(
+      b.verweise?.length ? { art: b.art, text: b.text, verweise: b.verweise } : { art: b.art, text: b.text },
+    );
   }
   if (laufend.bloecke.length || laufend.ueberschrift) aus.push(laufend);
 
@@ -729,11 +734,188 @@ const ERGAENZUNGEN = [
   },
 ];
 
+/*
+ * ── Die 19 Strichpunkte unter „Unsere Leistungen" ───────────────────────
+ *
+ * Auf `/ueber-uns/` steht eine Liste von 19 Themen. Auf ku64.de war jedes
+ * davon ein Verweis; beim Import ist die WordPress-Auszeichnung samt aller
+ * `<a href>` weggefallen (Begründung im Kopf von `src/lib/langtexte.ts`).
+ * Übrig blieb toter Text: Wer „Wurzelkanalbehandlung" las, kam von dort
+ * nicht zur Wurzelkanalbehandlung.
+ *
+ * ── Warum von Hand und nicht per Textähnlichkeit ────────────────────────
+ *
+ * Ein Automat würde 15 der 19 richtig treffen und bei vieren falsch liegen,
+ * und zwar leise. „Oralchirurgie & Kiefer- und Gesichtschirurgie",
+ * „Kieferorthopädie" und „Hochwertiger Zahnersatz" sind Sammelbegriffe ohne
+ * Einzelseite – die nächstbeste Behandlung wäre eine Verengung (Zahnersatz
+ * ist nicht Kronen). „Behandlung gegen Mundgeruch & Karies" nennt zwei
+ * Themen mit je eigener Seite; jeder Automat würde eines davon verlieren.
+ * Eine Zuordnung, die man nicht nachlesen kann, ist keine.
+ *
+ * ── Wohin die drei Sammelbegriffe zeigen ────────────────────────────────
+ *
+ * Auf die Kategorieabschnitte der Behandlungsübersicht. Dort steht nicht
+ * irgendeine Liste, sondern der Originaltext der jeweiligen alten
+ * Kategorieseite: /leistungen/kieferchirurgie-mkg-chirurgie/ (909 W),
+ * /leistungen/kieferorthopaedie/ (1.519 W) und
+ * /leistungen/zahnaesthetik/zahnersatz/ (2.268 W) liegen als
+ * `kategorien.chirurgie`, `.kieferorthopaedie` und `.zahnersatz` im Korpus
+ * und werden auf `/leistungen/` gesetzt. Das Ziel ist also kein Notbehelf,
+ * sondern genau der Text, den der Punkt meint.
+ *
+ * ── Zwei Punkte bleiben ohne Link, und das ist Absicht ──────────────────
+ *
+ * „Allgemeine Zahnheilkunde" und „Exklusiv in Berlin: Brite Veneers" haben
+ * im Altbestand KEINE eigene Seite – null Wörter, beide kommen dort nur als
+ * Nebensatz auf anderen Seiten vor. Ein Link auf die Übersicht bzw. auf
+ * /leistungen/veneers/ würde behaupten, dort stehe das Thema; das tut es
+ * nicht. Solange es keinen Text gibt, ist Text ohne Link die ehrlichere
+ * Darstellung – erfunden wird hier nichts. Sie stehen in OFFEN.md.
+ *
+ * Form: `text` ist der ganze Strichpunkt (zur Identifikation), `verweise`
+ * sind die Ausschnitte daraus, die zum Link werden. Verlinkt wird der Teil
+ * VOR dem Gedankenstrich – sonst wird das Nutzenversprechen zum Ankertext.
+ */
+const VERWEISE = [
+  {
+    quelle: '/ueber-uns/',
+    text: 'Parodontitisbehandlung & systematische Zahnfleischtherapie – die gesunde Basis für Ihre Zähne',
+    verweise: [
+      {
+        text: 'Parodontitisbehandlung & systematische Zahnfleischtherapie',
+        ziel: '/leistungen/parodontitis-behandlung/',
+      },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Laserbehandlung – sanfte und präzise Zahnmedizin mit modernster Technologie',
+    /* Die alte Seite /leistungen/ganzheitliche-zahnmedizin/laserbehandlung/
+       (2.223 W) liegt heute als Unterthema der Parodontitisbehandlung. */
+    verweise: [
+      { text: 'Laserbehandlung', ziel: '/leistungen/parodontitis-behandlung/laserbehandlung/' },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Wurzelkanalbehandlung (Endodontie) – Zahnerhalt durch präzise Wurzelbehandlungen',
+    verweise: [
+      { text: 'Wurzelkanalbehandlung (Endodontie)', ziel: '/leistungen/wurzelkanalbehandlung/' },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Oralchirurgie & Kiefer- und Gesichtschirurgie – fachkundige Eingriffe für Gesundheit & Ästhetik',
+    verweise: [
+      { text: 'Oralchirurgie & Kiefer- und Gesichtschirurgie', ziel: '/leistungen/#chirurgie' },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Zahnbehandlungen & Operationen unter Vollnarkose – für maximalen Komfort, auch für Angstpatienten',
+    verweise: [
+      {
+        text: 'Zahnbehandlungen & Operationen unter Vollnarkose',
+        ziel: '/leistungen/behandlung-in-narkose/',
+      },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Weisheitszahnentfernung – schonend und professionell durchgeführt',
+    verweise: [{ text: 'Weisheitszahnentfernung', ziel: '/leistungen/weisheitszaehne/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Gnathologie & Kiefergelenktherapie – für eine optimale Funktion des Kiefers',
+    /* Gnathologie hatte nie eine eigene Adresse; die Kiefergelenktherapie
+       heißt im Neubau CMD-Behandlung und trägt den Text der alten Seite
+       /leistungen/kieferorthopaedie/craniomandibulaere-dysfunktion/. */
+    verweise: [
+      { text: 'Gnathologie & Kiefergelenktherapie', ziel: '/leistungen/cmd-behandlung/' },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Kieferorthopädie (Zahnspange/Brackets/Invisalign) – unsichtbare und klassische Lösungen für ein perfektes Lächeln',
+    verweise: [
+      {
+        text: 'Kieferorthopädie (Zahnspange/Brackets/Invisalign)',
+        ziel: '/leistungen/#kieferorthopaedie',
+      },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Professionelle Zahnreinigung (Prophylaxe) – für gesunde, strahlende Zähne',
+    verweise: [
+      {
+        text: 'Professionelle Zahnreinigung (Prophylaxe)',
+        ziel: '/leistungen/professionelle-zahnreinigung/',
+      },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Behandlung gegen Mundgeruch & Karies – nachhaltige Lösungen für Ihre Mundgesundheit',
+    /* Der einzige Punkt mit zwei Zielen. Beide Themen haben im Altbestand
+       einen eigenen, umfangreichen Text – Mundgeruch 3.529 Wörter unter
+       /zahnbeschwerden/mundgeruch-was-tun/, Karies die Behandlungsseite.
+       Auf eines von beiden zu verlinken hieße, das andere zu verschweigen. */
+    verweise: [
+      { text: 'Mundgeruch', ziel: '/zahnbeschwerden/mundgeruch-was-tun/' },
+      { text: 'Karies', ziel: '/leistungen/karies-behandlung/' },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Air Flow – sanfte Entfernung von Verfärbungen für natürlich weiße Zähne',
+    verweise: [{ text: 'Air Flow', ziel: '/leistungen/prophylaxe-4-0/air-flow/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Knirscher-Schutzschienen – Schutz für Zähne und Kiefergelenke bei nächtlichem Zähneknirschen',
+    verweise: [{ text: 'Knirscher-Schutzschienen', ziel: '/leistungen/knirscherschiene/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'ganzheitliche Amalgamentfernung und -entgiftung – sichere und professionelle Entfernung alter Füllungen',
+    verweise: [
+      {
+        text: 'ganzheitliche Amalgamentfernung und -entgiftung',
+        ziel: '/leistungen/kunststofffuellungen/amalgamentfernung/',
+      },
+    ],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Bleaching (Zahnaufhellung) – strahlendes Lächeln mit professioneller Zahnaufhellung',
+    verweise: [{ text: 'Bleaching (Zahnaufhellung)', ziel: '/leistungen/zahnaufhellung/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Osteopathie – ganzheitliche Behandlung für Ihre Mund- und Kiefergesundheit',
+    verweise: [{ text: 'Osteopathie', ziel: '/leistungen/cmd-behandlung/osteopathie/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: '3D-Röntgen-Technologie – maximale Präzision bei Diagnosen und Behandlungen',
+    verweise: [{ text: '3D-Röntgen-Technologie', ziel: '/leistungen/dvt-3d-roentgen/' }],
+  },
+  {
+    quelle: '/ueber-uns/',
+    text: 'Hochwertiger Zahnersatz – Implantate, Kronen, Brücken und Veneers für langlebige Ästhetik',
+    verweise: [{ text: 'Hochwertiger Zahnersatz', ziel: '/leistungen/#zahnersatz' }],
+  },
+];
+
 const eintragVon = new Map(texte.eintraege.map((e) => [e.pfad, e]));
 const korrekturTreffer = new Map(KORREKTUREN.map((k) => [k, 0]));
 const ergaenzungTreffer = new Map(ERGAENZUNGEN.map((e) => [e, 0]));
 const entfernTreffer = new Map(ENTFERNEN.map((e) => [e, 0]));
 const artwechselTreffer = new Map(ARTWECHSEL.map((w) => [w, 0]));
+const verweisTreffer = new Map(VERWEISE.map((v) => [v, 0]));
 
 for (const t of THEMEN) {
   if (t.ohneLangtext) continue;
@@ -774,7 +956,26 @@ for (const t of THEMEN) {
         artwechselTreffer.set(w, artwechselTreffer.get(w) + 1);
       }
 
-      return { art, text };
+      /* Ziele NACH den Korrekturen anhängen: Der Ausschnitt, der zum Link
+         wird, muss im fertigen Text stehen und nicht im rohen – sonst
+         verlinkt der Baustein auf einen Wortlaut, den es nicht mehr gibt. */
+      let verweise;
+      for (const v of VERWEISE) {
+        if (v.quelle !== t.quelle || v.text !== text) continue;
+        for (const einzel of v.verweise) {
+          if (text.includes(einzel.text)) continue;
+          console.error(
+            `[langtexte] ABBRUCH: Der Linktext „${einzel.text}" steht nicht in\n` +
+              `            „${text.slice(0, 80)}…". Ein Ausschnitt, den es im Text nicht\n` +
+              '            gibt, wird beim Setzen stillschweigend übergangen.',
+          );
+          process.exit(1);
+        }
+        verweise = v.verweise.map((e) => ({ text: e.text, ziel: e.ziel }));
+        verweisTreffer.set(v, verweisTreffer.get(v) + 1);
+      }
+
+      return verweise ? { art, text, verweise } : { art, text };
     });
 
   const mitErgaenzung = [];
@@ -828,6 +1029,10 @@ const schiefe = [
   /* Ein Artwechsel darf mehrfach greifen – er betrifft eine ganze Gattung.
      Null Treffer ist trotzdem ein Abbruch: Dann ist die Regel wirkungslos. */
   ...[...artwechselTreffer].filter(([, n]) => n === 0).map(([w, n]) => [`Artwechsel ${w.von}→${w.nach} auf ${w.quelle}`, n]),
+  /* Genau einmal, aus demselben Grund wie bei den Korrekturen: 0× heißt, der
+     Punkt heißt heute anders und steht wieder ohne Link da – und das sieht
+     man ihm nicht an. */
+  ...[...verweisTreffer].filter(([, n]) => n !== 1).map(([v, n]) => [`Verweis auf „${v.text.slice(0, 60)}…"`, n]),
 ];
 if (schiefe.length) {
   console.error('\n[langtexte] ABBRUCH: Korrekturen, die nicht genau einmal gegriffen haben:');
