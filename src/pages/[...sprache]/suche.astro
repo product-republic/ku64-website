@@ -522,7 +522,30 @@ const schema = [
     max-width: 46rem;
   }
 
-  .treffer {
+  /*
+   * ── Warum diese sechs Regeln `:global()` tragen ──────────────────────
+   *
+   * Astro bindet Komponentenstile an ein `data-astro-cid-…`-Attribut, das
+   * beim Bauen in jedes Element des Markups geschrieben wird. Die Treffer
+   * stehen aber nicht im Markup: Sie entstehen zur Laufzeit über
+   * `document.createElement` (siehe Skriptteil) und bekommen dieses Attribut
+   * nie. Die Regeln daneben griffen deshalb nicht – auch nicht
+   * `.treffer { display: grid }`.
+   *
+   * Sichtbar wurde es als fehlende Leerzeichen: Ohne Raster standen Marke,
+   * Titel und Auszug als drei Inline-Spans hintereinander in einer Zeile,
+   * und aus „Leistung“, „Dentosophie“ und „Atmung, Zungenlage …“ wurde
+   * „LeistungDentosophieAtmung, Zungenlage …“. Es fehlte kein Leerzeichen im
+   * Text – es fehlte der Zeilenumbruch, den das Raster macht.
+   *
+   * `.ergebnisse` steht im Markup und trägt den Bereichsselektor. Alles
+   * darunter ist ausdrücklich global, aber eben nur darunter: Die Regeln
+   * gelten für die Trefferliste und für nichts sonst.
+   *
+   * Wer hier eine Klasse ergänzt, die im Skript erzeugt wird, muss sie
+   * genauso schreiben. Sonst fällt sie still aus.
+   */
+  .ergebnisse :global(.treffer) {
     display: grid;
     gap: var(--raum-1);
     padding: var(--raum-4) var(--raum-5);
@@ -532,11 +555,11 @@ const schema = [
     color: inherit;
   }
 
-  .treffer:hover {
+  .ergebnisse :global(.treffer:hover) {
     border-color: var(--akzent);
   }
 
-  .tr-marke {
+  .ergebnisse :global(.tr-marke) {
     font-size: var(--t-xs);
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -544,19 +567,19 @@ const schema = [
     color: var(--tinte-leise);
   }
 
-  .tr-titel {
+  .ergebnisse :global(.tr-titel) {
     font-weight: 600;
     line-height: var(--zeile-eng);
   }
 
-  .tr-kurz {
+  .ergebnisse :global(.tr-kurz) {
     font-size: var(--t-sm);
     color: var(--tinte-weich);
     line-height: var(--zeile-normal);
   }
 
-  .tr-ueber,
-  .tr-anderswo {
+  .ergebnisse :global(.tr-ueber),
+  .ergebnisse :global(.tr-anderswo) {
     font-size: var(--t-xs);
     color: var(--tinte-leise);
   }

@@ -72,6 +72,20 @@ const t = texte(daten.sprache);
    * Kopfleiste selbst, deren untere Ecken sie damit fortsetzt. Ihre Fläche
    * ist dieselbe Glasfarbe, ihr Weichzeichner derselbe.
    *
+   * ── Warum „dieselbe Glasfarbe" wörtlich zu nehmen ist ─────────────────
+   *
+   * Bündig war sie schon lange – und sah trotzdem aus wie eine weiße Karte
+   * unter einer warmen Pille. Der Grund war das Material, nicht die Lage:
+   * Die Liste trug `--glas-flaeche-stark` (90 % Weiß) bei 28 px Unschärfe,
+   * die Kopfpille `--glas-kopf-flaeche` (52 %) bei 20 px. Über dem
+   * gemessenen Untergrund der Kopfleiste – rgb(148,166,149) – sind das
+   * rgb(244,246,244) gegen rgb(204,212,204): rund 40 Helligkeitsstufen
+   * Sprung an der Naht, mehr als jede Trennlinie ausmacht.
+   *
+   * Beides steht jetzt auf denselben Werten. Der dichtere Grund war aber
+   * kein Versehen – er trug den Kontrast der Adresszeilen. Deshalb sind die
+   * mit `--tinte-weich` nachgezogen; die Begründung steht dort.
+   *
    * Der Schatten bleibt: Er ist nicht Zierrat, sondern das, was die Fläche
    * vom Inhalt darunter abhebt. Ohne ihn steht die Liste auf dem Text.
    */
@@ -81,7 +95,17 @@ const t = texte(daten.sprache);
     top: 100%;
     z-index: var(--z-overlay);
     width: min(24rem, calc(100vw - 2rem));
-    padding: var(--raum-5) var(--raum-4);
+    /*
+     * Seitlich dasselbe Polster wie `.kopf-inner`, damit die Zeilen der
+     * Liste mit Wortmarke und Knöpfen darüber auf einer Flucht stehen. Mit
+     * den früheren 16 px standen sie 8 px eingerückt – im getrennten Kasten
+     * unauffällig, im durchgehenden Körper ein Versatz.
+     *
+     * Oben weniger als unten: Oben grenzt die Liste an die Pille, dort
+     * polstert die Pille schon mit; unten ist Schluss.
+     */
+    padding-block: var(--raum-4) var(--raum-5);
+    padding-inline: var(--raum-5);
     /*
      * Eigener Schriftgrad statt geerbtem.
      *
@@ -93,19 +117,31 @@ const t = texte(daten.sprache);
      * hat.
      */
     font-size: var(--t-sm);
-    background: var(--glas-flaeche-stark);
-    -webkit-backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
-    backdrop-filter: blur(28px) saturate(var(--glas-saettigung));
+    /* Dieselbe Fläche und dieselbe Unschärfe wie `.kopf-glasflaeche`. Gleiche
+       Deckung allein reicht nicht: Ein anderer Radius mischt den Untergrund
+       anders und ergibt an der Naht wieder zwei Farben. */
+    background: var(--glas-kopf-flaeche);
+    -webkit-backdrop-filter: blur(var(--glas-kopf-unschaerfe)) saturate(var(--glas-saettigung));
+    backdrop-filter: blur(var(--glas-kopf-unschaerfe)) saturate(var(--glas-saettigung));
     border: 1px solid var(--glas-rand);
     border-block-start: 0;
     border-start-start-radius: 0;
     border-start-end-radius: 0;
     border-end-start-radius: var(--radius-xl);
     border-end-end-radius: var(--radius-xl);
-    /* Nur nach unten und zur Seite, nicht nach oben – nach oben schließt sie
-       an die Leiste an, und ein Schatten an einer Nahtstelle ist eine Fuge. */
+    /*
+     * Nach oben nichts – dort ist keine Kante, dort ist die Naht.
+     *
+     * Hier stand `inset 0 1px 0 var(--glas-glanz)`: eine Lichtkante, wie sie
+     * die Oberkante eines eigenen Körpers trägt. Genau an der Nahtstelle war
+     * sie die helle Linie, die aus einem Körper zwei machte.
+     *
+     * Die untere Innenkante übernimmt sie stattdessen von der Pille: Solange
+     * die Liste offen ist, endet der gemeinsame Körper hier unten, also
+     * gehört die Kante hierher (siehe `.kopf-glas:has(…[open])`).
+     */
     box-shadow:
-      inset 0 1px 0 var(--glas-glanz),
+      inset 0 -1px 0 var(--glas-rand-unten),
       0 18px 40px -20px rgb(20 16 14 / 0.3),
       0 4px 12px -8px rgb(20 16 14 / 0.16);
   }
@@ -125,9 +161,22 @@ const t = texte(daten.sprache);
     }
   }
 
+  /*
+   * Dunkler, seit die Fläche heller ist.
+   *
+   * `--tinte-leise` stand hier, solange die Liste mit 90 % Deckung ihren
+   * eigenen, fast weißen Grund mitbrachte – gegen den gemessenen Untergrund
+   * der Kopfleiste rgb(148,166,149) waren das 4,56:1, gerade eben die 4,5:1
+   * aus WCAG 1.4.3. Auf der angeglichenen Fläche mit 52 % blieben davon
+   * 3,29:1: durchgefallen.
+   *
+   * `--tinte-weich` kommt dort auf 5,87:1. Dieselbe Entscheidung wie bei
+   * `.logo-ort` in `Navigation.astro`, aus demselben Grund: dunklere Schrift
+   * statt dichteres Glas.
+   */
   .waehler-hinweis {
     margin-bottom: var(--raum-3);
-    color: var(--tinte-leise);
+    color: var(--tinte-weich);
     line-height: var(--zeile-normal);
   }
 
@@ -168,9 +217,11 @@ const t = texte(daten.sprache);
     font-size: var(--t-sm);
   }
 
+  /* Die Adresszeile trägt dieselbe Rechnung wie `.waehler-hinweis` – auf der
+     angeglichenen Fläche reicht `--tinte-leise` nicht mehr. */
   .waehler-link small {
     display: block;
-    color: var(--tinte-leise);
+    color: var(--tinte-weich);
     line-height: 1.3;
   }
 

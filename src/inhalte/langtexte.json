@@ -1,5 +1,5 @@
 {
- "erzeugtAm": "2026-07-31T08:15:51.599Z",
+ "erzeugtAm": "2026-07-31T16:40:17.322Z",
  "quelle": "analyse/altbestand/texte.json",
  "hinweis": "Erzeugt von scripts/langtexte-bauen.mjs. Nicht von Hand bearbeiten – der nächste Lauf überschreibt es. Der Text ist wortgleich der von ku64.de; geändert wurden nur Versalien in Überschriften. Fachlich verantwortet die Praxis.",
  "leistungen": {
