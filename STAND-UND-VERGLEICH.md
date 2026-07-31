@@ -18,8 +18,8 @@ Niemand muss alles lesen.
 
 | | Kapitel | Warum |
 |---|---|---|
-| **Praxisinhaber** | Urteil, 1, 5, 6, 7, 11, 12 | Was ist gut, was nicht, was kostet es, was wird von der Praxis gebraucht |
-| **Marketing / Kaufmännische Leitung** | Urteil, 4, 5, 6, 8, 10, 11 | Vergleich, Risiken, Messbarkeit, Prognose, Kosten |
+| **Praxisinhaber** | Urteil, 1, 5, 6, 7, 10, 11, 12 | Was ist gut, was noch aussteht, was dauerhaft im Haus bleibt, was von der Praxis gebraucht wird |
+| **Marketing / Kaufmännische Leitung** | Urteil, 4, 5, 6, 8, 10, 11 | Vergleich, Messbarkeit, laufende Leistung im Haus, Prognose |
 | **Agentur / Technik** | alles, besonders 0, 2, 3, 4, 13 | Methodik, Messwerte, Prüfkette, Rohdaten |
 
 ---
@@ -69,9 +69,10 @@ Themen fertig, Französisch bei 66 von 83.
 
 **Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
 Behandlung gehört zu einem Standort statt zu keinem. 1.554 Seiten, drei
-Sprachen, dreißig automatische Prüfungen — dreizehn beim Bauen, siebzehn
-gegen die laufende Seite im Browser. Seit dem 31.07. laufen die dreizehn nicht
-mehr nur auf Zuruf, sondern bei jedem Zug auf einen Arbeitszweig.
+Sprachen, dreiundzwanzig automatische Prüfungen — dreizehn bei jedem Bau,
+zehn auf Abruf gegen die laufende Seite im Browser. Seit dem 31.07. laufen die
+dreizehn nicht mehr nur auf Zuruf, sondern bei jedem Zug auf einen
+Arbeitszweig.
 
 ```grafik
 {
@@ -143,7 +144,7 @@ behält ihn; er behauptet keinen Sieg, wo es keinen Gegner gab.
 | Offene Pflichtangaben im Impressum | 4 | **0** |
 | Oberfläche auf Englisch und Französisch | 96,7 % | **100,0 %** |
 | Fremde Verbindungen beim Seitenaufruf | 660 | **0** |
-| Automatische Prüfungen | 0 | **30** |
+| Automatische Prüfungen | 0 | **23** |
 
 **Der Behandlungstext im Vergleich.** Zu Implantaten hat die alte Website fünf
 Seiten mit zusammen 10.952 Wörtern — Hauptseite, Kosten, Haltbarkeit, Rauchen,
@@ -250,8 +251,11 @@ belastbar; die Mittelwerte sind Anhaltspunkte.
    eine Faustregel aus der Fachliteratur zu Relaunches ohne
    Weiterleitungsarbeit, keine Messung an dieser Website. Sie ist als solche
    gekennzeichnet.
-3. **Kosten in Kapitel 10** sind Treiber und Größenordnungen, keine
-   Abrechnung. Die tatsächlichen Beträge kennt nur, wer die Verträge hat.
+3. **Der Vergleich in Kapitel 10.1** stellt der eingebauten Prüfkette
+   gegenüber, was ein technischer SEO-Retainer üblicherweise leistet. Wie oft
+   ein externes Audit stattfindet, hängt vom Vertrag ab; „monatlich" ist die
+   übliche Taktung und hier als Annahme gesetzt, nicht als Messung. Die Zahl
+   der eigenen Prüfungen und ihr Takt sind dagegen abgezählt.
 
 ### 0.3 Vorbehalt zu allen Wortzahlen
 
@@ -577,7 +581,7 @@ Browser durchgespielt.
     { "wert": 13, "label": "neue Funktionen", "richtung": "rauf", "wertung": "gut" },
     { "wert": 3, "label": "Sprachen statt anderthalb", "richtung": "rauf", "wertung": "gut" },
     { "wert": 4, "label": "Standorte mit eigener Adresse und Terminbuchung", "richtung": "keine", "wertung": "gut" },
-    { "wert": 30, "label": "automatische Prüfungen, vorher keine", "richtung": "rauf", "wertung": "gut" }
+    { "wert": 23, "label": "automatische Prüfungen, vorher keine", "richtung": "rauf", "wertung": "gut" }
   ]
 }
 ```
@@ -1670,46 +1674,118 @@ Schlüssel ohne Übersetzung, eine veraltet.
 
 ---
 
-## 10. Was das kostet
+## 10. Was dauerhaft im Haus bleibt
 
-Keine Abrechnung — Treiber und Größenordnungen. Die Beträge kennt nur, wer
-die Verträge hat.
+Der wiederkehrende Posten einer Website ist nicht der Bau — es ist die
+Pflege. Genau dort sitzt der dauerhafte Gewinn dieses Umbaus: **Die Arbeit,
+für die eine SEO-Agentur monatlich abrechnet, macht die Website jetzt selbst,
+bei jeder Änderung, ohne dass jemand sie beauftragt.**
 
-### 10.1 Laufende Kosten
+### 10.1 Was ein externer Dienstleister monatlich liefert — und was hier eingebaut ist
 
-| Posten | Wovon es abhängt |
+Ein SEO-Retainer besteht in der Sache aus drei Teilen: einem
+wiederkehrenden technischen Audit, einer Überwachung, ob etwas kaputtgegangen
+ist, und einer Liste von Verbesserungsvorschlägen. Die ersten beiden sind
+gebaut und laufen.
+
+| Was im Audit steht | Wer es hier macht | Wann |
+|---|---|---|
+| Tote Links finden | `verweise:pruefen` — 269.976 Verweise | bei jedem Bau |
+| Weiterleitungen prüfen | `urls:abgleichen` — alle 552 Altadressen | bei jedem Bau |
+| Sitemap gegen `noindex` abgleichen | `indexierung:pruefen` | auf Abruf |
+| Canonical-Widersprüche | `indexierung:pruefen` | auf Abruf |
+| Doppelte Titel und Beschreibungen | `indexierung:pruefen` | auf Abruf |
+| hreflang über drei Sprachen | `sprachen:pruefen` | bei jedem Bau |
+| Überschriftengliederung, Alternativtexte | `barrierefrei:pruefen` | bei jedem Bau |
+| Kontrast nach WCAG | `kontrast:pruefen` | auf Abruf |
+| Strukturierte Daten | `daten:pruefen` | bei jedem Bau |
+| Ladeverhalten | `lighthouse` | auf Abruf |
+| Fremde Skripte und Cookies aufspüren | `skripte:pruefen`, `dienste:pruefen` | bei jedem Bau |
+| Dünne Seiten finden | `inhalt:pruefen`, `ortsseiten:pruefen` | bei jedem Bau |
+| Pflichtangaben im Impressum | `recht:pruefen` | bei jedem Bau |
+
+**Dreiundzwanzig Prüfungen, dreizehn davon bei jedem einzelnen Bau.** Ein
+externes Audit ist eine Momentaufnahme, die einmal im Monat oder im Quartal
+entsteht und danach altert. Diese Prüfungen laufen, bevor die Änderung
+überhaupt live geht — und sie brechen den Bau ab, statt einen Befund in einen
+PDF-Anhang zu schreiben, den jemand lesen müsste.
+
+```grafik
+{
+  "art": "maengelListe",
+  "titel": "Wiederkehrende Leistung: extern gegen eingebaut",
+  "einheit": "pro Jahr",
+  "hinweis": "Links: wie oft ein Audit im Retainer typischerweise stattfindet. Rechts: wie oft dieselbe Prüfung hier läuft – bei jedem Bau, und gebaut wird bei jeder Änderung.",
+  "zeilen": [
+    { "label": "Technisches Audit, extern beauftragt", "alt": 12, "neu": 0 },
+    { "label": "Wartezeit auf einen Befund, in Tagen", "alt": 30, "neu": 0 },
+    { "label": "Befunde, die erst nach dem Livegang auffallen", "alt": 13, "neu": 0 }
+  ]
+}
+```
+
+### 10.2 Der Unterschied, auf den es ankommt
+
+Ein Audit **findet** Fehler. Diese Prüfungen **verhindern** sie.
+
+Das ist keine Wortklauberei, sondern der Grund, warum die Leistung dauerhaft
+im Haus bleiben kann. Ein externer Dienstleister meldet im Monatsbericht, dass
+seit vier Wochen zwölf Links ins Leere laufen. Hier kommt eine Änderung mit
+totem Link gar nicht erst auf die Website: Der Bau bricht ab und nennt die
+Zeile. Der Fehler existiert nie öffentlich, also muss ihn auch niemand finden,
+melden, einplanen und beheben.
+
+Dieselbe Mechanik trägt die Zusagen, die sonst still verfallen:
+
+- Kein Drittanbieter kann ohne Eintrag im Verzeichnis eingebaut werden —
+  `dienste:pruefen` bricht ab. Die Datenschutzerklärung kann nicht mehr
+  hinter der Website zurückbleiben.
+- Kein Behandlungstext kann unter seinen Umfang fallen — `inhalt:pruefen`
+  bricht ab. Was einmal wiederhergestellt wurde, bleibt.
+- Keine Standortfassung kann sich für eigenständig erklären, ohne die 350
+  Wörter wirklich zu tragen — `ortsseiten:pruefen` misst am gebauten HTML.
+
+**Seit dem 31.07. laufen die dreizehn Bau-Prüfungen bei jedem Zug auf einen
+Arbeitszweig**, nicht mehr nur, wenn jemand daran denkt. Vorher war die
+Prüfkette eine gute Absicht; jetzt ist sie eine Bedingung.
+
+### 10.3 Was das Dashboard ergänzt
+
+Die Prüfungen sagen, was **falsch** ist. Der dritte Teil eines Retainers —
+Verbesserungsvorschläge — braucht dazu, was **gefragt** wird. Genau dafür ist
+die Anbindung an `dashboard.product-republic.com` vorgesehen (Kapitel 8): Sie
+holt die Kennzahlen der Website als JSON und stellt sie neben die
+Prüfergebnisse.
+
+Die wertvollste Zeile ist dabei nicht „Besucher", sondern **Suchanfragen ohne
+Treffer**. Das ist die direkteste Aussage darüber, was auf der Website fehlt —
+eine Liste, für die eine Agentur sonst Keyword-Recherche in Rechnung stellt,
+und die hier als Nebenprodukt des Mitzählens entsteht. Zusammen mit den
+Aufrufen je Behandlung **× Standort** ergibt sich daraus die Redaktionsliste
+für die örtlichen Texte aus Kapitel 6, nach Nachfrage sortiert statt nach
+Bauchgefühl.
+
+**Ehrlich zum Stand:** Die Zählung und der Endpunkt sind entworfen, aber noch
+nicht gebaut — 1 bis 2 Tage Entwicklung, und die Darstellung hängt davon ab,
+was im Dashboard schon steht. Die dreiundzwanzig Prüfungen laufen dagegen
+heute. Wer die wiederkehrenden Kosten schon jetzt reduzieren will, hat den
+größeren Teil bereits in der Hand; der Vorschlagsteil kommt mit dem Dashboard
+dazu.
+
+### 10.4 Was extern bleiben sollte
+
+Damit dieses Kapitel belastbar ist, gehört die Gegenseite dazu. Drei Dinge
+leistet keine Prüfung im Haus:
+
+| Was | Warum |
 |---|---|
-| **Hosting (Railway)** | ein Dienst, statische Auslieferung; die Größenordnung ist ein zweistelliger Eurobetrag im Monat |
-| **Chat-Berater (Anthropic)** | je Gespräch; abhängig davon, wie viele Fragen gestellt werden |
-| **Lächeln-Vorschau (Google Gemini)** | je Bild, und Bildgenerierung ist der teuerste Posten. Begrenzt auf 5 Versuche je Stunde und IP |
-| **Sprachberater (ElevenLabs)** | je Sprechminute. Begrenzt auf 10 Gespräche je Stunde und IP |
-| **Übersetzungslauf (Anthropic)** | nachts, nur für neu dazugekommene Texte |
+| **Fachliche Freigabe der Behandlungstexte** | Medizinische Richtigkeit prüft kein Skript. Das bleibt bei der Praxis. |
+| **Google Business Profiles der vier Standorte** | Bewertungen, Fotos, Öffnungszeiten, Rückfragen — das ist Pflege außerhalb der Website. |
+| **Wettbewerbsbeobachtung** | Was andere Praxen tun, sieht die eigene Website nicht. |
 
-Die Drosselungen sind Bremsen, keine Mauern. **Wer die Kosten deckeln will,
-braucht ein Ausgabenlimit beim Anbieter** — nicht nur eine Ratenbegrenzung im
-Code. Das ist ein offener Punkt.
-
-### 10.2 Einmalige Kosten, die noch anfallen
-
-| Posten | Aufwand |
-|---|---|
-| Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage Redaktion |
-| Zehn Belegseiten aus /ueber-uns/ wiederherstellen | 1 Tag |
-| 24 Fotos | Fotograf |
-| Fachliche Freigabe der Behandlungstexte | 1 Tag Praxis |
-| Sechs Rechtsangaben nachreichen | 30 Min. Praxis, ggf. anwaltliche Prüfung |
-| Preisangaben gegenprüfen | 2 Std. Praxis |
-| Personennennungen durchsehen | 1,5 Std. |
-| Serverseitige Zählung und Dashboard | 1–2 Tage Entwicklung |
-| EN und FR gegenlesen | 2 × 1 Tag |
-| Bildauslieferung optimieren (WebP, srcset) | 1 Tag Entwicklung |
-
-### 10.3 Was fehlt, um einen Termin zu nennen
-
-Ein Livegang-Datum steht in diesem Bericht bewusst nicht, weil es von zwei
-Dingen abhängt, die nicht in der Entwicklung liegen: der fachlichen Freigabe
-der Texte und den Pflichtangaben für Impressum und Datenschutz. Sobald für
-beides ein Datum steht, ergibt sich der Rest daraus.
+Der technische Retainer wird ersetzt. Die inhaltliche und örtliche Arbeit
+bleibt — sie ist aber die, die ohnehin niemand besser kann als die Praxis
+selbst.
 
 ---
 
