@@ -479,8 +479,27 @@ const faq = [
   .spalten {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--raum-8);
-    align-items: start;
+    gap: var(--raum-6);
+    /* `stretch` statt `start`: Beide Spalten sind gleich hoch. Vorher trug nur
+       das Ergebnis einen Rahmen, das Formular stand nackt daneben und endete
+       auf einer anderen Höhe – zwei Elemente, die dasselbe Gewicht haben,
+       sahen aus wie Inhalt und Beiwerk. */
+    align-items: stretch;
+  }
+
+  /* Eine Karte, zweimal. Die Unterscheidung macht die Fläche, nicht die Form:
+     Das Formular steht auf der Grundfläche, das Ergebnis auf der warmen. */
+  .formular,
+  .ergebnis {
+    display: flex;
+    flex-direction: column;
+    padding: var(--raum-6);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-xl);
+  }
+
+  .formular {
+    background: var(--flaeche);
   }
 
   /* ── Formular ── */
@@ -491,8 +510,34 @@ const faq = [
     margin: 0;
   }
 
+  /* Die drei Schritte sind jetzt sichtbar getrennt. Vorher lagen sie nur mit
+     Abstand untereinander – die Nummern behaupteten eine Gliederung, die das
+     Auge nicht bestätigt bekam.
+
+     Die Linie ist ein Pseudoelement und NICHT `border-block-start`: Ein
+     `<legend>` sitzt im `<fieldset>` von Haus aus auf der Rahmenlinie und
+     schneidet eine Lücke hinein. Als Rahmen gezeichnet lief die Trennung
+     deshalb rechts neben „Einwilligung" ins Leere statt über die Karte. */
   .schritt + .schritt {
-    margin-block-start: var(--raum-7);
+    position: relative;
+    margin-block-start: var(--raum-6);
+    padding-block-start: var(--raum-6);
+  }
+
+  .schritt + .schritt::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 1px;
+    background: var(--linie);
+  }
+
+  /* Der letzte Schritt trägt den Absendeknopf und wird nach unten gedrückt,
+     damit die Karte auch dann sauber abschließt, wenn das Ergebnis daneben
+     höher ist. */
+  .schritt:last-of-type {
+    margin-block-start: auto;
   }
 
   legend {
@@ -665,23 +710,40 @@ const faq = [
 
   /* ── Ergebnis ── */
 
+  /* Kein `position: sticky` mehr: Ein klebendes Element kann nicht zugleich
+     die Höhe seiner Nachbarspalte annehmen. Gleiche Höhe war die Vorgabe. */
   .ergebnis {
-    position: sticky;
-    top: 7.5rem;
     min-height: 22rem;
-    padding: var(--raum-5);
-    border: 1px solid var(--linie);
-    border-radius: var(--radius-xl);
     background: var(--flaeche-warm);
+  }
+
+  /* Die Zustände füllen die Karte, statt bei 20rem aufzuhören und darunter
+     Leerraum zu lassen. Nur so steht der Platzhalter mittig in der Fläche,
+     die er tatsächlich einnimmt. */
+  .platzhalter,
+  .laeuft,
+  .fertig {
+    flex: 1;
   }
 
   .platzhalter,
   .laeuft {
     display: grid;
     place-items: center;
-    min-height: 20rem;
     text-align: center;
     color: var(--tinte-leise);
+  }
+
+  .fertig {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Die Knöpfe sitzen unten an der Karte, nicht direkt unter dem Bild –
+     sonst wandert die wichtigste Handlung mit der Bildhöhe. */
+  .fertig .ergebnis-knoepfe {
+    margin-block-start: auto;
+    padding-block-start: var(--raum-5);
   }
 
   .spinner {
@@ -874,8 +936,14 @@ const faq = [
     .spalten {
       grid-template-columns: minmax(0, 1fr);
     }
+    /* Untereinander gibt es keine gemeinsame Höhe mehr auszugleichen: Der
+       Absendeknopf gehört wieder direkt unter Schritt 3, nicht ans Kartenende. */
+    .schritt:last-of-type {
+      margin-block-start: var(--raum-6);
+    }
+    .formular,
     .ergebnis {
-      position: static;
+      padding: var(--raum-5);
     }
   }
 </style>
