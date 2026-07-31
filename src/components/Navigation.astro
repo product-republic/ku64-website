@@ -1835,6 +1835,35 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   /*
+   * ── Angedockt trägt zwei Elemente mehr – auch auf großen Telefonen ────
+   *
+   * Beim Andocken wandern Standortwähler und Sprachwahl nach oben in die
+   * Aktionsleiste (siehe `.ist-angedockt .ort-kompakt` weiter oben). Die
+   * Leiste braucht dann rund 50 px mehr, bekommt aber dieselbe Breite.
+   * Was nicht hineinpasst, schiebt sie in ihr letztes Kind – den
+   * Menüknopf, der dadurch aus der Pille ragt.
+   *
+   * Unter 26 rem ist das über Polster und Lücken gelöst. Darüber fehlte es:
+   * gemessen bei 430 px im angedockten Zustand stand der Menüknopf 11,1 px
+   * über der Pille. Ein Gerät mit 430 px ist kein Sonderfall – iPhone 15
+   * Pro Max und Pixel 8 Pro liegen dort.
+   *
+   * Die Bedingung ist deshalb nicht „schmal", sondern „angedockt und noch
+   * im Telefonsatz": bis 46 rem, dieselbe Grenze, ab der die Telefonnummer
+   * aus der Leiste verschwindet.
+   */
+  @media (max-width: 46rem) {
+    .kopf:global(.ist-angedockt) .kopf-inner {
+      padding-inline: var(--raum-3);
+      gap: var(--raum-3);
+    }
+
+    .kopf:global(.ist-angedockt) .kopf-aktionen {
+      gap: var(--raum-3);
+    }
+  }
+
+  /*
    * Ab wann das waagerechte Menü dem Menüknopf weicht: 74 rem, nicht 68.
    *
    * Der Grund ist Rechnen, nicht Geschmack. Angedockt trägt die obere Zeile
@@ -1924,30 +1953,143 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     }
 
     /*
-     * Der Kopf muss schrumpfen können, nicht nur schmaler aussehen.
+     * ── Erst Platz schaffen, dann schrumpfen ────────────────────────────
      *
-     * Auf Englisch heißt der Knopf „Book an appointment" statt „Termin
-     * buchen" – sechs Zeichen mehr, und der Kopf lief bei 390 Pixeln um acht
-     * darüber hinaus. Feste Abstände zu verkleinern reicht dagegen nicht:
-     * Ein Flex-Element mit `white-space: nowrap` schiebt hinaus, statt sich
-     * zu fügen, solange ihm niemand `min-width: 0` erlaubt.
+     * Vorher stand hier nur die zweite Hälfte: `min-width: 0` plus
+     * `overflow: hidden`, damit der Kopf nicht über den Rand läuft. Das
+     * verhinderte zwar das seitliche Schieben, aber um den Preis, dass
+     * ausgerechnet der Terminknopf nachgab. Gemessen bei 360 px im
+     * eingeklappten Kopf: Der Text war 16,6 px BREITER als sein Knopf und
+     * lief unter dem Polster hindurch bis an die Pillenkante – genau das,
+     * was auf dem Gerät als „zu eng am Rand" auffällt. Bei 393 px waren es
+     * 1,4 px, bei 375 px 9,2.
      *
-     * Die Beschriftung wird dann notfalls abgeschnitten. Das ist der
-     * richtige Ausgang: Ein Knopf, dessen Text am Rand endet, ist bedienbar;
-     * eine Seite, die sich seitlich schieben lässt, ist es nicht.
+     * Der Knopf war nie das Problem. Der Platz war falsch verteilt:
+     *
+     *     Glaspille bei 360 px                          320 px
+     *     − Innenpolster (2 × 24)                        48 px
+     *     − zwei Lücken (2 × 24)                         48 px
+     *     = für Logo und Aktionen                       224 px
+     *       gebraucht: Logo 98 + Aktionen 148           246 px
+     *
+     * Die beiden Lücken sind der auffälligste Posten, und eine davon war
+     * ganz umsonst: `.haupt` ist auf dem Telefon leer und 0 px breit,
+     * erzeugt als Flex-Kind aber trotzdem auf beiden Seiten einen Abstand.
+     *
+     * Also: Polster und Lücke auf --raum-3, die leere Navigation ganz aus
+     * dem Fluss. Das gibt 60 px zurück – mehr als die 22, die fehlten.
+     */
+    /*
+     * Polster und Lücken auf --raum-2.
+     *
+     * Der eingeklappte Kopf trägt ein Element mehr als der ausgeklappte:
+     * Beim Scrollen wandert der Standortwähler nach oben in die
+     * Aktionsleiste. Gemessen bei 360 px braucht sie damit 219 px statt
+     * 181 – und bekommt 200. Die 19 px Unterschied schob sie in ihr
+     * letztes Kind, den Menüknopf, der dadurch 6,3 px über die Pille
+     * hinausragte.
+     *
+     *     Logo 98 + Lücke + [Ort 38 + Lücke + Termin 113 + Lücke + Menü 44]
+     *
+     * Vier Lücken und zwei Polster à 12 px sind 72 px Zwischenraum auf einem
+     * 360-px-Gerät. Auf 8 px zurückgenommen bleiben 48 – und der Kopf hat
+     * wieder Luft, statt sie seinen Knöpfen abzunehmen.
+     */
+    .kopf-inner {
+      padding-inline: var(--raum-2);
+      gap: var(--raum-2);
+    }
+
+    .kopf-aktionen {
+      gap: var(--raum-2);
+    }
+
+    .haupt:empty {
+      display: none;
+    }
+
+    /*
+     * Die Pille rückt näher an den Schirmrand.
+     *
+     * `--rand` ist `clamp(1.25rem, 5vw, 3rem)` und bleibt bei 360 px auf
+     * seinem Mindestwert von 20 px stehen – der Prozentanteil greift dort
+     * nicht mehr. Zwei mal 20 px sind auf einem 360-px-Gerät mehr Rahmen,
+     * als die Pille verträgt, wenn vier Elemente hineinsollen.
+     *
+     * 12 px sehen auf einem kleinen Gerät nicht knapp aus, sondern richtig:
+     * Der Rahmen wächst sonst mit, während der Inhalt schrumpft.
+     */
+    .kopf-glas {
+      max-width: calc(100vw - 2 * var(--raum-2));
+    }
+
+    /*
+     * Zielgrößen geben nicht nach.
+     *
+     * Nachdem der Terminknopf `flex: none` bekommen hatte, gab statt seiner
+     * der Menüknopf nach – gemessen bei 360 px auf 32 px Breite und 10,3 px
+     * über die Pille hinaus. Damit war die WCAG-Zielgröße von 24 px zwar
+     * noch gehalten, die bequemen 44 px aber nicht mehr, und ein Knopf, der
+     * aus seiner eigenen Leiste ragt, sieht nach Fehler aus.
+     *
+     * Ein Flex-Kind ohne `flex: none` ist immer der Kandidat, der zahlt.
+     * Hier soll niemand zahlen: Der Platz reicht, seit Rahmen, Polster und
+     * Lücken zurückgebaut sind.
+     */
+    .kopf-aktionen .menue-knopf,
+    .kopf-aktionen .ort-kompakt {
+      flex: none;
+    }
+
+    /*
+     * Der Terminknopf gibt nicht mehr nach.
+     *
+     * Er ist der Grund, warum die meisten Menschen die Seite auf dem Handy
+     * öffnen; wenn etwas weichen muss, dann nicht er. Mit dem
+     * zurückgewonnenen Platz muss auch nichts mehr weichen – auf Englisch
+     * („Book an appointment", sechs Zeichen mehr) ebenso wenig, nachgemessen
+     * bei 360 px.
+     */
+    .kopf-aktionen .knopf-primaer {
+      flex: none;
+    }
+
+    /*
+     * `min-width: 0` bleibt als Netz für den Fall, den niemand vorhergesehen
+     * hat – eine dritte Sprache, ein längerer Ortsname. Dann gibt zuerst das
+     * Logo nach, nicht der Terminknopf. Eine Seite, die sich seitlich
+     * schieben lässt, bleibt der schlechteste Ausgang von allen.
      */
     .kopf-aktionen {
       min-width: 0;
     }
 
-    .kopf-aktionen .knopf {
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
     .logo {
       min-width: 0;
+      overflow: hidden;
+    }
+  }
+
+  /*
+   * ── Unter 22 rem gibt der Standortwähler den Platz frei ───────────────
+   *
+   * Bei 320 px – iPhone SE der ersten Generationen, und was an Android
+   * darunter liegt – reicht auch der zurückgebaute Zwischenraum nicht:
+   * Logo, Ort, Termin und Menü brauchen 317 px, die Pille hat 304.
+   *
+   * Von den vieren ist der Ort der einzige, der anderswo vollständig
+   * erreichbar ist: Das Mobilmenü führt ihn mit Überschrift und allen vier
+   * Praxen („Bitte wählen Sie Ihren Standort für passende Angaben"), und
+   * direkt unter dem Kopf steht die Zeile mit dem aktuellen Standort samt
+   * Adresse. Das Symbol im Kopf ist eine Abkürzung, kein einziger Zugang.
+   *
+   * Der Terminknopf dagegen ist der Grund, warum die meisten Menschen die
+   * Seite auf dem Telefon öffnen, und der Menüknopf führt zu allem
+   * Übrigen. Beide bleiben in voller Zielgröße.
+   */
+  @media (max-width: 22rem) {
+    .kopf-aktionen .ort-kompakt {
+      display: none;
     }
   }
 </style>
