@@ -260,21 +260,61 @@ const gesperrt = !d.avVertrag;
     margin: 1.6rem 0;
   }
 
+  /*
+   * ── Das Seitenverhältnis ist eine MINDESThöhe, keine feste ───────────
+   *
+   * Vorher stand hier `aspect-ratio` direkt auf der Fläche, und die Frage
+   * lag mit `position: absolute` darin. Eine absolut liegende Frage trägt
+   * nichts zur Höhe bei – sie wurde abgeschnitten, sobald sie mehr Platz
+   * brauchte, als 16:9 hergibt.
+   *
+   * Auf dem Telefon ist das der Normalfall, nicht die Ausnahme: Bei 362 px
+   * Breite sind 16:9 genau 204 px, und darin sollen Titel, der Satz „Wird
+   * erst auf Ihren Klick geladen …", die Schaltfläche mit dem vollen
+   * Videotitel und die Zeile zum Verzeichnis stehen. Gemessen lief die
+   * Schaltfläche links und rechts aus dem Kasten, vom Titel blieb die
+   * untere Hälfte. Übrig blieb eine dunkle Fläche – als sei das Video
+   * kaputt.
+   *
+   * Jetzt liegen alle Kinder in derselben Rasterzelle. Das `::before` hält
+   * das Verhältnis als Untergrenze – der Platz steht also weiterhin von
+   * Anfang an, es gibt keinen Layout-Sprung –, und die Zeile wächst, wenn
+   * die Frage mehr braucht. Nach der Zustimmung fällt die Frage weg, und
+   * der Rahmen sitzt wieder exakt im Verhältnis.
+   */
   .dritt-flaeche {
     position: relative;
+    display: grid;
+    /*
+     * `minmax(0, 1fr)`, nicht das voreingestellte `auto`.
+     *
+     * Eine auto-Spalte nimmt die max-content-Breite ihrer Kinder. Die kommt
+     * hier aus `.dritt-text { max-width: 34rem }` – gemessen 558 px – und
+     * überlief den 356 px breiten Kasten, statt sich ihm zu fügen. Die
+     * Null als Untergrenze ist der entscheidende Teil: Ohne sie greift
+     * `min-width: auto` und die Spalte schrumpft nicht unter ihren Inhalt.
+     */
+    grid-template-columns: minmax(0, 1fr);
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid var(--linie);
     background: var(--flaeche-dunkel);
-    /* Fester Platz von Anfang an: Ein Kasten, der beim Laden wächst, ist
-       ein Layout-Sprung – und der zählt bei Lighthouse als CLS. */
+  }
+
+  .dritt-flaeche::before {
+    content: '';
+    grid-area: 1 / 1;
     aspect-ratio: var(--dritt-verhaeltnis, 16 / 9);
   }
 
+  .dritt-flaeche > * {
+    grid-area: 1 / 1;
+  }
+
   /* Wo eine Höhe angegeben ist, gilt sie statt des Verhältnisses. */
-  .dritt[style*='--dritt-hoehe'] .dritt-flaeche {
+  .dritt[style*='--dritt-hoehe'] .dritt-flaeche::before {
     aspect-ratio: auto;
-    height: var(--dritt-hoehe);
+    min-height: var(--dritt-hoehe);
   }
 
   .dritt-vorschau {
@@ -305,9 +345,15 @@ const gesperrt = !d.avVertrag;
     scale: 1.08;
   }
 
+  /*
+   * Die Frage liegt jetzt IM Raster, nicht darüber – nur so bestimmt sie
+   * die Höhe mit. `min-width: 0` gehört dazu: Ohne das schiebt die
+   * Schaltfläche, deren Name den vollen Videotitel trägt, die Zelle
+   * auseinander, statt umzubrechen.
+   */
   .dritt-frage {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -325,6 +371,24 @@ const gesperrt = !d.avVertrag;
     margin: 0;
     font-weight: 650;
     font-size: 1.02rem;
+    /* Der Videotitel ist redaktionell und kann lang sein. */
+    text-wrap: balance;
+  }
+
+  /*
+   * Die Schaltfläche trägt den vollen Videotitel („Video laden: Dr. Ziegler
+   * erklärt, was Berlins größte Zahnarztpraxis einzigartig macht"). Das ist
+   * Absicht – ein Knopf, der nur „Laden" heißt, sagt einer Vorlesehilfe
+   * nicht, WAS geladen wird, und `namen-pruefen.mjs` besteht darauf.
+   *
+   * Ein Knopf erbt aber `white-space: nowrap`; gemessen lief er dadurch auf
+   * dem Telefon beidseitig aus dem Kasten. Er darf umbrechen.
+   */
+  .dritt-frage .knopf {
+    max-width: 100%;
+    white-space: normal;
+    text-wrap: balance;
+    line-height: 1.35;
   }
 
   .dritt-text {

@@ -1098,35 +1098,45 @@ Regel für alt und neu:
 | Hauptinhalt gesamt | 117.595 W | **129.742 W** |
 | **Ø eigener Inhalt je Seite** | **1.589 W** | **1.730 W** |
 
-### 5.3 Zwölf Themen haben keine eigene Seite mehr
+### 5.3 Die zwölf zusammengefalteten Themen sind wieder da
 
-Nicht gekürzt, sondern zusammengefaltet. Die Weiterleitung ist technisch
-sauber, der Inhalt ist weg. Zusammen **16.034 Wörter**.
+Ein erster Entwurf des Neubaus hatte zwölf Themen zu Absätzen unter
+`/ueber-uns/` zusammengefaltet – zusammen 16.034 Wörter, die als eigene
+Seiten verschwunden waren. Zehn davon sind die Nachweise, auf die Google bei
+medizinischen Themen abstellt und die für Patientinnen den Unterschied
+zwischen behaupteter und belegter Kompetenz ausmachen.
 
-| Thema | Umfang bisher | führt jetzt auf |
-|---|---:|---|
-| Hilfsprojekt Südafrika | 3.000 W | `/ueber-uns/` |
-| Location | 2.069 W | `/ueber-uns/` |
-| Soziales Engagement | 1.608 W | `/ueber-uns/` |
-| Kooperationspartner | 1.495 W | `/ueber-uns/` |
-| Presseinfo | 1.325 W | `/ueber-uns/` |
-| Best Practice | 1.043 W | `/ueber-uns/` |
-| Auszeichnungen | 1.042 W | `/ueber-uns/` |
-| Anfahrt | 1.018 W | `/standorte/` |
-| Ultraschall-Reiniger (Potsdam) | 1.004 W | `/ueber-uns/` |
-| Mitgliedschaften | 897 W | `/ueber-uns/` |
-| Galerie | 771 W | `/ueber-uns/` |
-| Link-Tree | 762 W | `/` |
+**Sie stehen wieder als eigene, indexierbare Seiten.** Gemessen am gebauten
+HTML:
 
-Zehn der zwölf kommen aus `/ueber-uns/`, und dort sehe ich keinen guten
-Grund. Auszeichnungen, Mitgliedschaften, Kooperationspartner und
-Presseberichte sind die Nachweise, auf die Google bei medizinischen Themen
-abstellt, und für Patientinnen der Unterschied zwischen behaupteter und
-belegter Kompetenz. Sie gehören zurück — als eigene Seiten, nicht als Absatz.
+| Thema | Adresse | eigener Text |
+|---|---|---:|
+| Hilfsprojekt Südafrika | `/ueber-uns/hilfsprojekt-suedafrika/` | 2.468 W |
+| Location | `/ueber-uns/location/` | 1.531 W |
+| Soziales Engagement | `/ueber-uns/soziales-engagement/` | 1.048 W |
+| Kooperationspartner | `/ueber-uns/kooperationspartner/` | 887 W |
+| Presseinfo | `/ueber-uns/presseinfo/` | 739 W |
+| Best Practice | `/ueber-uns/best-practice/` | 396 W |
+| Auszeichnungen | `/ueber-uns/auszeichnungen/` | 390 W |
+| Ultraschall-Reiniger (Potsdam) | `/ueber-uns/ultraschallreiniger/` | 360 W |
+| Mitgliedschaften | `/ueber-uns/mitgliedschaften/` | 188 W |
+| Galerie | `/ueber-uns/galerie/` | 133 W |
+| Link-Tree | `/link-tree/` | eigene Seite, bewusst `noindex` |
 
-Anfahrt und Link-Tree sind dagegen bewusst aufgegangen: Die Anfahrt steht
-heute je Standort statt einmal zentral, der Link-Tree war eine Hilfsseite für
-soziale Netzwerke.
+Über alle Über-uns-Seiten zusammen: **10.972 Wörter auf 11 Seiten gegen 9.083
+auf 10** – 120,8 Prozent des Altbestands (Kapitel 5.0).
+
+Zwei Punkte zur Einordnung. Der Link-Tree ist eine eigene Seite, trägt aber
+bewusst `noindex`: Er ist kein Inhalt, sondern der Verteiler hinter dem einen
+Link im Instagram-Profil, und indexiert würde er für „KU64" mit der
+Startseite konkurrieren. Die **Anfahrt** ist als einzige nicht
+wiederhergestellt worden, und das ist Absicht: Sie steht heute je Standort
+statt einmal zentral – vier ortsbezogene Wegbeschreibungen sind für Google
+wie für Patientinnen die bessere Antwort als eine gemeinsame.
+
+Dass diese Seiten nicht wieder still verschwinden, sichert `inhalt:pruefen`
+bei jedem Bau: Fällt eine Über-uns-Seite unter ihren Umfang, bricht der Lauf
+ab (Kapitel 4.5).
 
 ### 5.4 Wo mehrere Seiten zu einer wurden
 
