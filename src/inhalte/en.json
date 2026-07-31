@@ -27818,24 +27818,28 @@
       "quelle": "968ee1df"
     },
     "ui.dritt.laden": {
-      "text": "Load {titel}",
-      "quelle": "145e46eb"
+      "text": "Accept and play",
+      "quelle": "7dbc048f"
     },
     "ui.dritt.ladenName": {
-      "text": "Load {titel} – this transfers data to {anbieter}",
-      "quelle": "cd7e2bfd"
+      "text": "{titel}: Accept and play – this sends data to {anbieter}",
+      "quelle": "337f3f4b"
     },
     "ui.dritt.nochNichtFrei": {
       "text": "Not yet cleared: for {dienst}, the data processing agreement with {anbieter} has not been confirmed. Until it is, this content will not be loaded even on click.",
       "quelle": "5a76844e"
+    },
+    "ui.dritt.uebertragung": {
+      "text": "This sends {daten} to {anbieter}.",
+      "quelle": "c1f3acea"
     },
     "ui.dritt.wasUebertragen": {
       "text": "What is transferred",
       "quelle": "6852ac25"
     },
     "ui.dritt.wirdGeladen": {
-      "text": "Loaded only when you click. Doing so transfers {daten} to {anbieter}.",
-      "quelle": "6be2e27e"
+      "text": "Agree once, then it just works.",
+      "quelle": "9ed5f88b"
     },
     "ui.ds.10Aenderungen": {
       "text": "10. Changes",
