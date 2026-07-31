@@ -1273,3 +1273,167 @@ export function grafikStil() {
   .grafik, .grafik-reihe, .kennzahlen { break-inside: avoid; }
 }`;
 }
+
+/* ── 8. Mängelliste: vorher belastet, jetzt frei ─────────────────────── */
+
+/**
+ * Eine Liste von Mängeln, je mit der Zahl von vorher, einem Pfeil und der
+ * Zahl von jetzt. Für die Frage „was war kaputt, und ist es weg?".
+ *
+ * ── Warum nicht zwei Balken nebeneinander ───────────────────────────────
+ *
+ * `paarBalken` vergleicht Größen. Hier ist die Aussage eine andere: Der
+ * neue Wert ist fast immer null, und null hat keine Balkenlänge. Ein
+ * Balkenpaar mit einem unsichtbaren zweiten Balken sieht aus wie ein
+ * Fehler in der Grafik, nicht wie ein behobener Mangel.
+ *
+ * Also: die alte Zahl als Zahl, ein Pfeil, die neue Zahl in Grün, und ein
+ * Häkchen, wenn nichts übrig ist. Der Blick geht die Spalte hinunter und
+ * sieht eine Reihe von Nullen – das ist die Aussage.
+ *
+ * ── Warum das Häkchen zusätzlich Text ist ──────────────────────────────
+ *
+ * Ein Häkchen allein ist Farbe plus Form. Wer Rot und Grün nicht
+ * unterscheidet, sieht zwei gleiche Zeichen. Deshalb steht die Zahl immer
+ * daneben: „340 → 0" ist auch ohne Farbe eindeutig, und im `<desc>` steht
+ * derselbe Satz noch einmal für die Vorlesehilfe.
+ *
+ * zeilen: [{ label, alt, neu }]
+ *   label  worum es geht
+ *   alt    wie viele Seiten es vorher betraf
+ *   neu    wie viele es jetzt betrifft (meist 0)
+ */
+export function maengelListe({ titel = '', zeilen = [], einheit = 'Seiten', hinweis } = {}) {
+  const liste = zeilen
+    .map((z) => ({
+      label: String(z.label ?? ''),
+      alt: Math.max(0, Number(z.alt) || 0),
+      neu: Math.max(0, Number(z.neu) || 0),
+    }))
+    .filter((z) => z.label);
+  if (liste.length === 0) return '';
+
+  const teile = [];
+  let y = 0;
+
+  if (titel) {
+    const kopf = textBlock({
+      x: 0,
+      y: 0,
+      text: titel,
+      platz: BEZUG,
+      grad: GRAD.titel,
+      gewicht: 700,
+      maxZeilen: 2,
+    });
+    teile.push(kopf.inhalt);
+    y = kopf.hoehe + 6;
+  }
+
+  /* Rechte Spalte: „340 → 0 ✓". Feste Breite, damit die Pfeile
+     untereinander stehen – eine Spalte, die je Zeile wandert, liest sich
+     als Unordnung, auch wenn jede Zahl für sich stimmt. */
+  const spalte = 118;
+  const platzLabel = BEZUG - spalte - 10;
+
+  for (const z of liste) {
+    const grund = y + GRAD.zeile * OBEN;
+    const behoben = z.neu === 0;
+
+    /*
+     * Zwei Zeilen statt kleinerer Schrift.
+     *
+     * `textBlock` verkleinert, wenn der Text nicht passt – bis LESBAR, also
+     * 12,8 Einheiten. Das klingt sicher, ist es aber nicht: Die Grafik
+     * rechnet in einer viewBox von 400 Einheiten und steht auf dem Telefon
+     * in einer Karte von 313 px. 12,8 Einheiten sind dort 10 px. Der
+     * Grafikprüfer hat genau das gemeldet, und er hatte recht.
+     *
+     * Also umbrechen lassen und die Zeilenhöhe aus dem tatsächlichen Block
+     * nehmen, statt sie zu raten.
+     */
+    const beschriftung = textBlock({
+      x: 0,
+      y,
+      text: z.label,
+      platz: platzLabel,
+      grad: GRAD.zeile,
+      maxZeilen: 2,
+    });
+    teile.push(beschriftung.inhalt);
+
+    /* Die alte Zahl: durchgestrichen, wenn sie weg ist. Das Durchstreichen
+       ist die zweite, farbunabhängige Ansage neben dem Häkchen. */
+    const xAlt = BEZUG - spalte;
+    teile.push(
+      txt(xAlt, grund, String(z.alt), {
+        grad: GRAD.wert,
+        gewicht: 650,
+        ton: behoben ? 'tinte-leise' : 'schlecht',
+      }),
+    );
+    if (behoben) {
+      const b = breite(String(z.alt), GRAD.wert, true);
+      teile.push(
+        `<line x1="${n(xAlt - 1)}" y1="${n(grund - GRAD.wert * 0.3)}" ` +
+          `x2="${n(xAlt + b + 1)}" y2="${n(grund - GRAD.wert * 0.3)}" ` +
+          `style="stroke:var(--tinte-leise);stroke-width:1.2"/>`,
+      );
+    }
+
+    teile.push(
+      txt(BEZUG - spalte + 46, grund, '→', {
+        grad: GRAD.wert,
+        ton: 'tinte-leise',
+      }),
+    );
+
+    /*
+     * Der Restbestand steht in `tinte`, nicht in `offen`.
+     *
+     * `--offen` ist rgb(154,107,18) und kommt auf Weiß auf 4,49:1 – bei
+     * 4,5:1 verfehlt das die Norm um einen Hundertstel. Für die großen
+     * Ringzahlen reicht es (ab 24 px gilt 3:1), für eine 13er-Zahl nicht.
+     * Gemeldet hat es der Grafikprüfer; die Farbe hier zu behalten hieße,
+     * eine Kontrastregel zu brechen, die dieser Bericht anderen vorhält.
+     */
+    teile.push(
+      txt(BEZUG - spalte + 70, grund, String(z.neu), {
+        grad: GRAD.wert,
+        gewicht: 700,
+        ton: behoben ? 'gut' : 'tinte',
+      }),
+    );
+
+    if (behoben) {
+      /* Das Häkchen als Pfad, nicht als Zeichen: ✓ fehlt in manchen
+         Druckschriften und wird dann als Kästchen gesetzt. */
+      const hx = BEZUG - 22;
+      const hy = grund - GRAD.wert * 0.34;
+      teile.push(
+        `<path d="M${n(hx)} ${n(hy)} l3.2 3.4 l6.2 -7.2" fill="none" ` +
+          `style="stroke:var(--gut);stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/>`,
+      );
+    }
+
+    y += Math.max(beschriftung.hoehe, GRAD.zeile * DURCHSCHUSS) + 5;
+  }
+
+  y += fussnoteBlock(teile, hinweis, y);
+
+  const satz = liste
+    .map(
+      (z) =>
+        `${z.label}: vorher ${z.alt} ${einheit}, jetzt ${z.neu}` +
+        (z.neu === 0 ? ' – behoben' : ''),
+    )
+    .join('. ');
+
+  return huelle({
+    hoehe: y + 2,
+    titel: titel || 'Mängel vorher und jetzt',
+    desc: (titel ? `${titel}. ` : '') + satz + '.',
+    inhalt: teile.join(''),
+    schluessel: `maengel|${titel}|${JSON.stringify(liste)}|${hinweis ?? ''}`,
+  });
+}

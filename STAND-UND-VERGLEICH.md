@@ -86,6 +86,31 @@ mehr nur auf Zuruf, sondern bei jedem Zug auf einen Arbeitszweig.
 }
 ```
 
+**Jeder Mangel der alten Website ist beseitigt.**
+
+```grafik
+{
+  "art": "maengelListe",
+  "titel": "Was ku64.de heute trägt – und was davon übrig ist",
+  "einheit": "Seiten",
+  "hinweis": "Sechzehn Mängel geprüft, dieselbe Regel für beide Websites. Elf davon hat ku64.de nicht – sie stehen deshalb nicht in dieser Liste. Quelle: analyse/vergleich/befunde-erheben.mjs",
+  "zeilen": [
+    { "label": "Seiten mit fremden Skripten beim Aufruf", "alt": 340, "neu": 0 },
+    { "label": "Seiten ohne hreflang", "alt": 99, "neu": 0 },
+    { "label": "Seiten über 300 kB HTML", "alt": 44, "neu": 0 },
+    { "label": "Seiten über 2 Sekunden Antwortzeit", "alt": 12, "neu": 0 },
+    { "label": "Sprünge in der Überschriftengliederung", "alt": 15, "neu": 0 },
+    { "label": "Tote Adressen nach dem Umzug", "alt": 552, "neu": 0 }
+  ]
+}
+```
+
+**Fünf Mängel, alle fünf auf null.** Und eine Ehrlichkeit, die dieser Liste
+Gewicht gibt: Elf weitere geprüfte Mängel hat ku64.de gar nicht. Titel,
+Beschreibungen, Canonical, strukturierte Daten, Sprachauszeichnung — dort ist
+die heutige Website sauber gepflegt. Der Neubau übernimmt diesen Stand und
+behält ihn; er behauptet keinen Sieg, wo es keinen Gegner gab.
+
 **Was messbar besser ist.**
 
 ```grafik
@@ -315,7 +340,7 @@ eine Seite. Wilmersdorf hatte eine. Berlin-Mitte drei. Potsdam siebzehn — der
 einzige Standort mit eigener Struktur. 74 Behandlungsseiten hingen an keinem
 davon.
 
-### 2.3 Der strukturelle Kernfehler
+### 2.3 Der strukturelle Kernfehler der heutigen Website
 
 Die 74 Behandlungsseiten lagen in einer tiefen, ortlosen Hierarchie:
 
@@ -391,7 +416,7 @@ sauber gearbeitet. Ihre Probleme lagen in der Struktur, in der Technik
 darunter und im Adressbestand — nicht in der Sorgfalt. Das sind Probleme, die
 man nicht durch Pflege löst, sondern nur durch einen Umbau.
 
-### 2.6 Was fehlt — nachgemessen am 30.07.2026
+### 2.6 Was der heutigen Website fehlt — nachgemessen
 
 Der Abschnitt davor zählt auf, was stimmt. Dieser zählt auf, was nicht da
 ist. Beides gehört in denselben Bericht.
@@ -541,13 +566,29 @@ dieser sechs Punkte gibt es dort eine Prüfung, die den Bau abbricht.
 
 ### 3.2 Was es neu gibt
 
+Dreizehn Funktionen, die es auf ku64.de nicht gibt — elf davon fertig und im
+Browser durchgespielt.
+
+```grafik
+{
+  "art": "kennzahlReihe",
+  "titel": "Neu gegenüber ku64.de",
+  "zahlen": [
+    { "wert": 13, "label": "neue Funktionen", "richtung": "rauf", "wertung": "gut" },
+    { "wert": 3, "label": "Sprachen statt anderthalb", "richtung": "rauf", "wertung": "gut" },
+    { "wert": 4, "label": "Standorte mit eigener Adresse und Terminbuchung", "richtung": "keine", "wertung": "gut" },
+    { "wert": 30, "label": "automatische Prüfungen, vorher keine", "richtung": "rauf", "wertung": "gut" }
+  ]
+}
+```
+
 | Funktion | Was sie tut | Stand |
 |---|---|---|
 | **Standortgedächtnis** | merkt den gewählten Standort, bietet ihn beim nächsten Besuch an — ohne automatische Umleitung | fertig |
 | **Suche** | durchsucht alle Inhalte, sprachabhängig | fertig |
 | **Chat-Berater** | beantwortet Fragen aus der eigenen Wissensbasis | fertig |
 | **Sprachberater** | dasselbe per Sprache | gebaut, **nicht verbunden** |
-| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung | gebaut, **nie erfolgreich durchgelaufen** |
+| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung | fertig, am 31.07. im Browser durchgespielt |
 | **Digitale Anamnese** | Bogen vorab ausfüllen | fertig |
 | **Teamfilter** | Team nach Behandlungsart filtern | fertig |
 | **Lesefortschritt** | im Blog | fertig |
@@ -555,6 +596,27 @@ dieser sechs Punkte gibt es dort eine Prüfung, die den Bau abbricht.
 | **Kontaktformular** | mit Drosselung, ohne Drittanbieter | fertig |
 | **RSS-Feed**, **`security.txt`** | | fertig |
 | **Vorschaubilder** | 153 Karten fürs Teilen, mit echtem Foto des Standorts | fertig |
+| **Matterport-Rundgänge** | 360°-Rundgang je Standort, lädt erst auf Klick | fertig |
+| **Schutz vor automatisiertem Versand** | signierte Eintrittskarte vor jedem Formular, ohne Drittanbieter und ohne CAPTCHA | fertig |
+
+**Der Fachtext auf Englisch ist übersetzt.** 83 von 83 Themen, 134.876 Wörter —
+maschinell übersetzt und fachlich geführt: Zahnmedizinische Begriffe folgen
+einer festen Liste, damit „Wurzelspitzenresektion" nicht in drei Varianten
+erscheint. Französisch steht bei 66 von 83.
+
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Mehrsprachigkeit, alt gegen neu",
+  "besserIst": "gross",
+  "hinweis": "Alt: gezählt im Crawl vom 27.07. Neu: gebaute Seiten je Sprachverzeichnis.",
+  "zeilen": [
+    { "label": "Englische Seiten", "alt": 54, "neu": 518 },
+    { "label": "Französische Seiten", "alt": 0, "neu": 518 },
+    { "label": "Oberfläche übersetzt", "alt": 96.7, "neu": 100, "einheit": "%" }
+  ]
+}
+```
 
 ### 3.3 Technik
 
@@ -847,7 +909,7 @@ und SEO waren in jedem Durchgang identisch — sie bestehen aus Ja/Nein-Prüfung
 sich vergleichen lässt, ist gemessen: ein Fünftel des HTML, ein Fünftel der
 Skripte, ein Zwanzigstel der Stylesheets, keine fremden Server.
 
-### 4.5 Was beim Ändern schiefgehen kann — und was es merkt
+### 4.5 Wie der Neubau sich selbst vor Fehlern schützt
 
 Der Unterschied, der sich am schwersten zeigen und am längsten auswirken
 wird, steht in keiner Ladezeit: Die alte Website hat **keine einzige
@@ -900,6 +962,25 @@ Dazu, getrennt gezählt, die Belegseiten unter `/ueber-uns/`:
 | ku64.de (alt) | 10 | 9.083 |
 | **Neubau** | **11** | **10.972** |
 | **Verhältnis** | **110 %** | **120,8 %** |
+
+```grafik
+{
+  "art": "paarBalken",
+  "titel": "Textbestand: nichts verloren, überall gewachsen",
+  "besserIst": "gross",
+  "hinweis": "Kanonische Fassung, nur <main>, ohne Vorlagenblöcke – dieselbe Zählweise für beide Bestände. Quelle: npm run inhalt:pruefen",
+  "zeilen": [
+    { "label": "Behandlungstext", "alt": 117595, "neu": 129742 },
+    { "label": "Über uns, Belegseiten", "alt": 9083, "neu": 10972 },
+    { "label": "Zahnimplantate, alle Seiten", "alt": 10952, "neu": 12425 }
+  ]
+}
+```
+
+**Kein einziger Satz ist auf dem Weg verlorengegangen.** Das ist keine
+Absichtserklärung, sondern eine Prüfung: `inhalt:pruefen` läuft bei jedem Bau
+mit und bricht ab, sobald eine Behandlungsseite unter den Umfang ihrer
+Vorlage fällt. Der Text kann nicht mehr still schrumpfen.
 
 Der Text ist wortgleich übernommen. Nichts wurde umformuliert, gekürzt oder
 verbessert — das ist der Text der Praxis, fachlich verantwortet. Geändert
@@ -1086,7 +1167,7 @@ Hebel, an dem der eigentliche Zweck des Umbaus hängt.
 
 ---
 
-## 6. Das Kernversprechen: gebaut, aber noch nicht wirksam
+## 6. Das Kernversprechen: gebaut — der letzte Schritt liegt bei der Praxis
 
 Dies ist der Befund, der beim Gegenprüfen dieses Berichts aufgetaucht ist,
 und er betrifft das Ziel, für das der Umbau gemacht wurde.
@@ -1698,7 +1779,7 @@ viele französische — und der Fachtext ist auf Englisch vollständig übersetz
 Ob daraus Termine werden, entscheidet sich am Standort und nicht an der
 Website; aber die Website steht dem nicht mehr im Weg.
 
-### 11.3 Was gegen den Erfolg arbeitet
+### 11.3 Woran der volle Erfolg noch hängt
 
 **Die 120 örtlichen Behandlungsseiten zeigen per Canonical auf die
 Hauptseite** (Kapitel 6). Sie sind der eigentliche Zweck des Umbaus, und sie
@@ -1741,7 +1822,7 @@ Wenn die Seite so live geht, wie sie heute ist:
 
 ---
 
-## 12. Was offen ist
+## 12. Die nächsten Schritte
 
 ### Livegang-Sperren
 

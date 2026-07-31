@@ -1,0 +1,235 @@
+{
+  "erhobenAm": "2026-07-30T21:32:15.537Z",
+  "altSeiten": 340,
+  "neuSeiten": 341,
+  "maengel": [
+    {
+      "schluessel": "fremdeSkripte",
+      "name": "Fremde Skripte beim Seitenaufruf",
+      "warum": "Jedes fremde Skript überträgt die IP-Adresse des Besuchers, bevor er zugestimmt hat.",
+      "seiten": 340,
+      "anteil": 1,
+      "summe": 660,
+      "beispiele": [
+        "/",
+        "/anamnese/",
+        "/berlin-charlottenburg/"
+      ],
+      "neuSeiten": 0,
+      "neuSumme": 0,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneAlt",
+      "name": "Bilder ohne Alternativtext",
+      "warum": "Wer einen Screenreader benutzt, erfährt nicht, was das Bild zeigt.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": 0,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": 0,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "spruenge",
+      "name": "Sprünge in der Überschriftengliederung",
+      "warum": "Eine übersprungene Ebene macht die Seite für Screenreader unnavigierbar.",
+      "seiten": 15,
+      "anteil": 0.04411764705882353,
+      "summe": 15,
+      "beispiele": [
+        "/berlinmitte/kontakt/",
+        "/blog/flowable-injection-technique/",
+        "/blog/social-media-april-2025/"
+      ],
+      "neuSeiten": 0,
+      "neuSumme": 0,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "mehrfachH1",
+      "name": "Seiten mit mehr als einer H1",
+      "warum": "Mehrere Hauptüberschriften heben sich gegenseitig auf — weder Google noch ein Screenreader weiß dann, worum es auf der Seite geht.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneH1",
+      "name": "Seiten ohne H1",
+      "warum": "Ohne Hauptüberschrift fehlt der Seite die Ansage, worum es geht.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneTitel",
+      "name": "Seiten ohne Titel",
+      "warum": "Der Titel ist die Zeile, die in Google steht.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneBeschreibung",
+      "name": "Seiten ohne Meta-Beschreibung",
+      "warum": "Ohne sie schneidet Google sich selbst einen Textschnipsel zurecht.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneCanonical",
+      "name": "Seiten ohne Canonical",
+      "warum": "Ohne Canonical entscheidet Google selbst, welche Fassung die richtige ist.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneSchema",
+      "name": "Seiten ohne strukturierte Daten",
+      "warum": "Ohne sie kennt Google weder Adresse noch Öffnungszeiten noch Bewertungen.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneLang",
+      "name": "Seiten ohne Sprachauszeichnung",
+      "warum": "Ohne `lang` liest der Screenreader deutschen Text mit englischer Aussprache vor.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "ohneHreflang",
+      "name": "Seiten ohne hreflang",
+      "warum": "Ohne hreflang weiß Google nicht, dass die englische Fassung dieselbe Seite ist.",
+      "seiten": 99,
+      "anteil": 0.2911764705882353,
+      "summe": null,
+      "beispiele": [
+        "/team/bleaching-kosmetik-shop/joana-charlott-radsack/",
+        "/team/bleaching/anja-baranowsky/",
+        "/team/bleaching/emma-gloria-findeisen/"
+      ],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "schwer",
+      "name": "Seiten über 300 kB HTML",
+      "warum": "Auf dem Telefon im Mobilfunknetz ist das die Sekunde vor dem Absprung.",
+      "seiten": 44,
+      "anteil": 0.12941176470588237,
+      "summe": null,
+      "beispiele": [
+        "/",
+        "/berlinmitte/",
+        "/blog/ku64-in-den-medien/"
+      ],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "langsam",
+      "name": "Seiten über 2 Sekunden Antwortzeit",
+      "warum": "Zwei Sekunden sind die Grenze, ab der Besucher abbrechen.",
+      "seiten": 12,
+      "anteil": 0.03529411764705882,
+      "summe": null,
+      "beispiele": [
+        "/",
+        "/berlin-charlottenburg/",
+        "/berlinmitte/"
+      ],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "duenn",
+      "name": "Seiten unter 150 Wörtern",
+      "warum": "Zu wenig Text, um für irgendetwas zu ranken.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "doppelterTitel",
+      "name": "Seiten mit einem Titel, den es mehrfach gibt",
+      "warum": "Zwei Seiten mit demselben Titel konkurrieren in Google gegeneinander — beide verlieren.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    },
+    {
+      "schluessel": "doppelteBeschreibung",
+      "name": "Seiten mit einer Beschreibung, die es mehrfach gibt",
+      "warum": "Dieselbe Beschreibung auf vielen Seiten sagt Google: Hier steht überall dasselbe.",
+      "seiten": 0,
+      "anteil": 0,
+      "summe": null,
+      "beispiele": [],
+      "neuSeiten": 0,
+      "neuSumme": null,
+      "behoben": true,
+      "entschaerft": false
+    }
+  ]
+}

@@ -74,6 +74,7 @@ import {
   stapelBalken,
   kennzahl,
   kennzahlReihe,
+  maengelListe,
   grafikStil,
 } from './grafiken.mjs';
 
@@ -291,6 +292,21 @@ const grafiken = [
       titel: 'Wörter je Bereich, alt gegen neu',
       zeilen: bereiche,
       hinweis: 'Lineare Achse, absteigend – die Begründung steht im Kopfkommentar von grafiken.mjs. Nach Thema gruppiert, nicht nach Pfad; Sprachfassungen sind nicht erhoben und bleiben draußen.',
+    }),
+  ],
+  [
+    'maengelListe – behoben, teilweise behoben, offen',
+    maengelListe({
+      titel: 'Mängel der alten Website',
+      zeilen: [
+        { label: 'Seiten mit fremden Skripten beim Aufruf', alt: 340, neu: 0 },
+        { label: 'Tote Adressen nach dem Umzug', alt: 552, neu: 0 },
+        { label: 'Ein Prüffall mit sehr langer Beschriftung, die umbrechen müsste', alt: 15, neu: 0 },
+        { label: 'Prüffall: nicht ganz behoben', alt: 40, neu: 7 },
+        { label: 'Prüffall: vierstellig', alt: 1234, neu: 0 },
+      ],
+      hinweis:
+        'Erfundene Prüffälle für die Randlagen: lange Beschriftung, Restbestand statt null, vierstellige Zahl. Die echten Zahlen stehen im Bericht.',
     }),
   ],
 ];
