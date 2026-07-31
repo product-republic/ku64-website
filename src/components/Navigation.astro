@@ -2251,6 +2251,34 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     .kopf:global(.ist-angedockt) .kopf-aktionen {
       gap: var(--raum-3);
     }
+
+    /*
+     * Oben angedockt endet die Pille gerade, nicht rund.
+     *
+     * Angedockt liegt ihre Oberkante bei y = 0 – gemessen bei 320, 402, 780
+     * und 1280 px. Die beiden oberen Ecken sind aber mit 28 px gerundet, und
+     * in den zwei Zwickeln, die dadurch links und rechts oben frei bleiben,
+     * scrollt die Seite durch. Auf dem Telefon ist das kein Detail: Dort
+     * beginnt gleich unter der Statusleiste die Überschrift, und von ihr
+     * bleibt in den Zwickeln ein drei Pixel hoher Streifen stehen, der wie
+     * eine gestrichelte Linie über dem Kopf aussieht.
+     *
+     * Eckig oben heißt: Die beiden Seitenlinien laufen gerade nach oben aus
+     * dem Bild, und der Kopf sitzt an der Kante des Schirms statt davor.
+     * Unten bleibt es rund – dort schwebt die Pille wirklich, und dort
+     * setzt auch die ausgeklappte Standortliste an.
+     *
+     * NUR MOBIL und NUR angedockt. Auf dem Schreibtisch steht der Kopf mit
+     * Abstand zum Fensterrand; eine Pille, die dort oben eckig wird, sähe
+     * abgeschnitten aus statt angesetzt.
+     *
+     * `.kopf-glasflaeche` braucht keine eigene Regel: Sie erbt den Radius
+     * über `border-radius: inherit`.
+     */
+    .kopf:global(.ist-angedockt) .kopf-glas {
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
   }
 
   /*
