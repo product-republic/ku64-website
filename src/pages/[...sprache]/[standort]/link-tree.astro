@@ -1,0 +1,121 @@
+---
+/**
+ * Der Link-Tree eines Standorts – Ziel des Links im jeweiligen Profil.
+ *
+ * Die Begründung steht vollständig in `/link-tree.astro`; hier nur der
+ * Unterschied: Jede der drei alten Adressen stand in einem anderen Profil,
+ * und jede soll den Terminkalender IHRES Standorts öffnen. Ein Potsdamer,
+ * der über das Potsdamer Profil kommt und in Berlin landet, ist genau der
+ * Fehler, für den dieser Umbau gemacht wurde.
+ *
+ * Gebaut für alle vier Standorte, nicht nur für die drei mit alter Adresse:
+ * Ein Profil kommt dazu, sobald es eines gibt, und dann soll die Seite schon
+ * da sein statt erst gebaut werden müssen.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
+import { mitSprachen } from '../../../i18n/sprachen';
+import Basis from '../../../layouts/Basis.astro';
+import Logo from '../../../components/Logo.astro';
+import { STANDORTE } from '../../../data/standorte';
+
+export function getStaticPaths() {
+  return mitSprachen(STANDORTE.map((s) => ({ params: { standort: s.slug } })));
+}
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const standort = daten.standort(Astro.params.standort!)!;
+const basis = `/${standort.slug}`;
+const pfad = `${basis}/link-tree/`;
+
+const ziele = [
+  { pfad: `${basis}/termine/`, text: t('nav.terminBuchen'), stark: true },
+  { pfad: `${basis}/anfahrt/`, text: t('nav.anfahrt') },
+  { pfad: `tel:${standort.telefonRaw.replace(/\s/g, '')}`, text: standort.telefon },
+  { pfad: '/notfall/', text: t('fuss.notfall') },
+  { pfad: `${basis}/leistungen/`, text: t('nav.behandlungen') },
+  { pfad: `${basis}/team/`, text: t('nav.team') },
+];
+---
+
+<Basis
+  titel={t('linktree.hierAmOrt', { ort: standort.name })}
+  description={t('linktree.beschreibung')}
+  standort={standort}
+  pfad={pfad}
+  brotkrumen={[]}
+  noindex={true}
+>
+  <div class="huelle abschnitt">
+    <div class="baum">
+      <Logo hoehe="3rem" />
+      <h1 class="baum-ort">KU64 {standort.name}</h1>
+      <p class="baum-vorspann">{t('linktree.vorspann')}</p>
+
+      <nav class="baum-liste" aria-label={t('linktree.hierAmOrt', { ort: standort.name })}>
+        {
+          ziele.map((z) => (
+            <a href={z.pfad} class:list={['knopf', z.stark ? 'knopf-primaer' : 'knopf-sekundaer']}>
+              {z.text}
+            </a>
+          ))
+        }
+      </nav>
+
+      <p class="baum-fuss">
+        <a href={`${basis}/`}>{t('linktree.zurWebsite')}</a>
+      </p>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  .baum {
+    max-width: 24rem;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--raum-5);
+  }
+
+  /* Die Überschrift ist der Standortname. Klein gesetzt, weil sie auf dieser
+     Seite kein Titel ist, sondern eine Bestätigung: „Du bist bei der
+     richtigen Praxis gelandet." Eine H1 braucht die Seite trotzdem – ohne
+     sie meldet `barrierefrei-pruefen.mjs` „H1: 0 statt 1", und zwar zu
+     Recht: Eine Seite ohne Überschrift hat für eine Vorlesehilfe keinen
+     Namen. */
+  .baum-ort {
+    margin: 0;
+    font-family: var(--schrift-titel);
+    font-size: var(--t-lg);
+    font-weight: 600;
+  }
+
+  .baum-vorspann {
+    margin: 0;
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .baum-liste {
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-3);
+    inline-size: 100%;
+  }
+
+  .baum-liste :global(.knopf) {
+    inline-size: 100%;
+    justify-content: center;
+    min-block-size: 3rem;
+  }
+
+  .baum-fuss {
+    margin: 0;
+    font-size: var(--t-sm);
+  }
+</style>

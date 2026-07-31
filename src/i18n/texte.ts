@@ -674,6 +674,14 @@ export const TEXTE = {
    * zusammen – es vergleicht den deutschen Katalogtext mit dem Wert im
    * Register und bricht bei Abweichung ab.
    */
+  /* Der Link-Tree – das Ziel des einen Links im Instagram-Profil. */
+  'linktree.titel': 'Alle Links zu KU64',
+  'linktree.beschreibung':
+    'Termin, Standorte, Notfall, Lächeln-Vorschau und Karriere – die wichtigsten Wege zu KU64 auf einen Blick.',
+  'linktree.vorspann':
+    'Schön, dass Sie da sind. Hier geht es direkt weiter – oder zur ganzen Website.',
+  'linktree.zurWebsite': 'Zur Website von KU64',
+  'linktree.hierAmOrt': 'Alle Links zu KU64 {ort}',
   'video.ueberschrift': 'Im Video',
   'ds.avLiegtVor': 'liegt vor',
   'ds.avOffen': 'liegt noch nicht bestätigt vor',

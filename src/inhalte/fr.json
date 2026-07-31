@@ -29361,6 +29361,26 @@
       "text": "Retour à {name}",
       "quelle": "a6323cb6"
     },
+    "ui.linktree.beschreibung": {
+      "text": "Rendez-vous, cabinets, urgences, aperçu du sourire et carrières – les chemins les plus rapides vers KU64.",
+      "quelle": "5f4717ef"
+    },
+    "ui.linktree.hierAmOrt": {
+      "text": "Tous les liens vers KU64 {ort}",
+      "quelle": "7ed20c20"
+    },
+    "ui.linktree.titel": {
+      "text": "Tous les liens vers KU64",
+      "quelle": "dccc2403"
+    },
+    "ui.linktree.vorspann": {
+      "text": "Ravis de vous voir. Continuez directement ici – ou vers le site complet.",
+      "quelle": "c5ed567f"
+    },
+    "ui.linktree.zurWebsite": {
+      "text": "Aller sur le site de KU64",
+      "quelle": "57d167f2"
+    },
     "ui.liste.und": {
       "text": "et",
       "quelle": "5ad4af9a"

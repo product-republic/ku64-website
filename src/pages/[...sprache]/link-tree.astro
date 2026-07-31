@@ -1,0 +1,153 @@
+---
+/**
+ * Der Link-Tree – die Seite hinter dem Link im Instagram-Profil.
+ *
+ * ── Warum es sie überhaupt wieder gibt ──────────────────────────────────
+ *
+ * Der erste Neubau hat sie gestrichen: `/link-tree/` leitete auf `/`,
+ * `/potsdam/link-tree/` auf `/potsdam/`, `/berlinmitte/link-tree/` auf die
+ * Kontaktseite. Die Begründung war, dass dort im Altbestand null Wörter
+ * standen – was stimmt, weil dort nur Links standen und der Textabzug Links
+ * nicht mitnimmt.
+ *
+ * Das ist der Fehler, den diese Datei behebt: Der Wert dieser Seite war nie
+ * ihr Text. Sie ist das Ziel des einen Links, den Instagram und TikTok im
+ * Profil zulassen. Wer dort tippt, landet nach einer Weiterleitung auf der
+ * Startseite und sucht dann auf einem Telefon mit einer Hand nach dem
+ * Terminkalender. Genau das soll ein Link-Tree ersparen.
+ *
+ * Und niemand merkt, wenn es nicht funktioniert: Die Adresse steht in einer
+ * Profilzeile, die man alle paar Monate anfasst.
+ *
+ * ── Warum sie `noindex` trägt ───────────────────────────────────────────
+ *
+ * Weil sie kein Inhalt ist, sondern ein Verteiler. Indexiert stünde sie in
+ * der Suche neben der Startseite und würde für „KU64" mit ihr konkurrieren –
+ * eine Seite aus sechs Schaltflächen gegen eine Seite, die die Frage
+ * beantwortet. Sie ist deshalb auch nicht in der Sitemap; beides zusammen
+ * wäre der Widerspruch, den die Search Console meldet.
+ *
+ * Erreichbar bleibt sie vollständig. `noindex` heißt „nicht in den Index",
+ * nicht „nicht abrufbar".
+ *
+ * ── Warum drei Fassungen und nicht eine ─────────────────────────────────
+ *
+ * Weil die alten drei Adressen weiterleben: `/link-tree/`,
+ * `/potsdam/link-tree/`, `/berlinmitte/link-tree/`. Jede steht in einem
+ * anderen Profil, und jede soll den Terminkalender IHRES Standorts öffnen –
+ * ein Potsdamer, der über das Potsdamer Profil kommt und in Berlin landet,
+ * ist genau der Fehler, für den dieser ganze Umbau gemacht wurde.
+ */
+import { inhalte } from '../../i18n/daten';
+import { texte } from '../../i18n/katalog';
+import { sprachpfade } from '../../i18n/sprachen';
+import Basis from '../../layouts/Basis.astro';
+import Logo from '../../components/Logo.astro';
+
+export function getStaticPaths() {
+  return sprachpfade();
+}
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const pfad = '/link-tree/';
+
+/*
+ * Die Ziele. Sechs, nicht sechzehn.
+ *
+ * Ein Link-Tree mit zwanzig Einträgen ist eine Navigation, und die gibt es
+ * schon – zwei Zeilen weiter unten, als Verweis auf die ganze Website. Hier
+ * steht, was jemand auf dem Telefon in drei Sekunden treffen will.
+ */
+const ziele = [
+  { pfad: '/termine/', text: t('nav.terminBuchen'), stark: true },
+  { pfad: '/standorte/', text: t('nav.standorte') },
+  { pfad: '/notfall/', text: t('fuss.notfall') },
+  { pfad: '/laecheln-vorschau/', text: t('fuss.laechelnVorschau') },
+  { pfad: '/karriere/', text: t('fuss.karriere') },
+  { pfad: '/leistungen/', text: t('nav.behandlungen') },
+];
+---
+
+<Basis
+  titel={t('linktree.titel')}
+  description={t('linktree.beschreibung')}
+  pfad={pfad}
+  brotkrumen={[]}
+  noindex={true}
+>
+  <div class="huelle abschnitt">
+    <div class="baum">
+      <Logo hoehe="3rem" />
+      {/* Eine H1 braucht auch diese Seite – ohne sie hat sie für eine
+          Vorlesehilfe keinen Namen. Klein gesetzt: Sie ist hier eine
+          Bestätigung, kein Titel. */}
+      <h1 class="baum-titel">{t('linktree.titel')}</h1>
+      <p class="baum-vorspann">{t('linktree.vorspann')}</p>
+
+      <nav class="baum-liste" aria-label={t('linktree.titel')}>
+        {
+          ziele.map((z) => (
+            <a href={z.pfad} class:list={['knopf', z.stark ? 'knopf-primaer' : 'knopf-sekundaer']}>
+              {z.text}
+            </a>
+          ))
+        }
+      </nav>
+
+      <p class="baum-fuss">
+        <a href="/">{t('linktree.zurWebsite')}</a>
+      </p>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  /*
+   * Eine Spalte, mittig, mit großen Zielen.
+   *
+   * Diese Seite wird fast ausschließlich auf dem Telefon geöffnet, meist
+   * einhändig, oft unterwegs. Die Schaltflächen sind deshalb über die volle
+   * Breite und deutlich höher als die 24 × 24 Pixel, die WCAG 2.5.8
+   * mindestens verlangt.
+   */
+  .baum {
+    max-width: 24rem;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--raum-5);
+  }
+
+  .baum-titel {
+    margin: 0;
+    font-size: var(--t-lg);
+  }
+
+  .baum-vorspann {
+    margin: 0;
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .baum-liste {
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-3);
+    inline-size: 100%;
+  }
+
+  .baum-liste :global(.knopf) {
+    inline-size: 100%;
+    justify-content: center;
+    min-block-size: 3rem;
+  }
+
+  .baum-fuss {
+    margin: 0;
+    font-size: var(--t-sm);
+  }
+</style>

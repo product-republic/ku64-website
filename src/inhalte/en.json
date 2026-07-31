@@ -29361,6 +29361,26 @@
       "text": "Back to {name}",
       "quelle": "a6323cb6"
     },
+    "ui.linktree.beschreibung": {
+      "text": "Appointment, locations, emergencies, smile preview and careers – the quickest ways to KU64 at a glance.",
+      "quelle": "5f4717ef"
+    },
+    "ui.linktree.hierAmOrt": {
+      "text": "All links to KU64 {ort}",
+      "quelle": "7ed20c20"
+    },
+    "ui.linktree.titel": {
+      "text": "All links to KU64",
+      "quelle": "dccc2403"
+    },
+    "ui.linktree.vorspann": {
+      "text": "Good to see you. Straight on from here – or to the full website.",
+      "quelle": "c5ed567f"
+    },
+    "ui.linktree.zurWebsite": {
+      "text": "Go to the KU64 website",
+      "quelle": "57d167f2"
+    },
     "ui.liste.und": {
       "text": "and",
       "quelle": "5ad4af9a"

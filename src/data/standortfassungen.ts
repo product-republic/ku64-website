@@ -113,6 +113,19 @@ export function ausSitemapAusschliessen(pfad: string): boolean {
 
   if (NOINDEX_SEITEN.includes(p)) return true;
 
+  /*
+   * Der Link-Tree – Ziel des einen Links im Instagram-Profil.
+   *
+   * Er trägt `noindex`, weil er kein Inhalt ist, sondern ein Verteiler:
+   * Indexiert stünde er in der Suche neben der Startseite und würde für
+   * „KU64" mit ihr konkurrieren. In der Sitemap wäre er der Widerspruch,
+   * den die Search Console meldet.
+   *
+   * Erreichbar bleibt er vollständig – `noindex` heißt „nicht in den
+   * Index", nicht „nicht abrufbar".
+   */
+  if (/^(\/[a-z-]+)?\/link-tree\/$/.test(p)) return true;
+
   /* Teamübersicht eines Standorts ohne eigenes Team – dort steht nichts, was
      man indexieren könnte, und die Seite sagt das selbst per `noindex`. */
   const teamUebersicht = p.match(/^\/([a-z-]+)\/team\/$/);

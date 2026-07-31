@@ -117,6 +117,27 @@ const MESSEN = (zustand) => {
     spracheUnten: { sichtbar: sichtbar(spracheUnten) },
     wahlUnten: { sichtbar: sichtbar(wahlUnten) },
     ortSichtbarIn,
+    /*
+     * Wird der Ortsname beschnitten?
+     *
+     * Er stand in einem Kasten mit fester Breite und `overflow: hidden`.
+     * „KURFÜRSTENDAMM" braucht 92 Pixel, der Kasten war 90 – zwei Pixel, und
+     * die trafen das letzte M. Auffallen konnte das nur jemandem, der genau
+     * hinsah; gemessen hat es niemand.
+     *
+     * Beide Richtungen: `scrollWidth` gegen `clientWidth` findet den
+     * waagerechten Schnitt, `scrollHeight` gegen `clientHeight` den
+     * senkrechten. Der senkrechte war der Fehler davor, an derselben Stelle.
+     *
+     * Ein Pixel Toleranz, weil Browser Bruchteile aufrunden.
+     */
+    ortSchnitt: ortUnterMarke && sichtbar(ortUnterMarke)
+      ? {
+          quer: Math.max(0, ortUnterMarke.scrollWidth - ortUnterMarke.clientWidth - 1),
+          hoch: Math.max(0, ortUnterMarke.scrollHeight - ortUnterMarke.clientHeight - 1),
+          text: ortUnterMarke.textContent?.trim() ?? '',
+        }
+      : null,
     /* Fokussierbar heißt: Man landet beim Tabben darin. Ein unsichtbares
        Bedienelement, das den Fokus nimmt, führt ins Leere. */
     fokussierbarOben: wahlOben
@@ -268,6 +289,13 @@ for (const [breitenname, w, h] of BREITEN) {
     await warteAufRuhe(seite, '.ort-kompakt');
 
     const unten = await seite.evaluate(MESSEN, 'gescrollt');
+
+    if (unten.ortSchnitt?.quer) {
+      melde(wo, `der Ortsname „${unten.ortSchnitt.text}" ist um ${unten.ortSchnitt.quer} px beschnitten`);
+    }
+    if (unten.ortSchnitt?.hoch) {
+      melde(wo, `der Ortsname „${unten.ortSchnitt.text}" wird unten um ${unten.ortSchnitt.hoch} px abgeschnitten`);
+    }
 
     if (!unten.angedockt) {
       melde(wo, 'nach 600 px Scrollen nicht angedockt – der Rest der Prüfung misst nichts');
