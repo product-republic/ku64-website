@@ -86,6 +86,22 @@
  * auch hier. Zwei gepflegte Listen laufen auseinander, eine abgeleitete
  * nicht.
  *
+ * ── Warum er NICHT in der Baukette hängt ────────────────────────────────
+ *
+ * Aus demselben Grund wie `layout:pruefen`, `kopf:pruefen`, `abschnitt:pruefen`
+ * und `klickpfad`: Er braucht einen laufenden Server und Chromium. `npm run
+ * build` baut erst das, was er prüfen soll – in der Kette gäbe es zum
+ * Zeitpunkt seines Laufs noch keinen Server, gegen den er messen könnte.
+ * Er steht deshalb wie die anderen Browser-Wächter als eigener Aufruf da,
+ * und `.github/workflows/waechter.yml` nennt ihn in der Liste dessen, was
+ * dort ausdrücklich nicht läuft.
+ *
+ * Das ist NICHT die Bemerkung „er ist gerade rot, deshalb bleibt er draußen".
+ * Er ist grün, und zwar auf allen neun geprüften Seiten in allen vier
+ * Breiten – nachgemessen. Wer ihn eines Tages in die Kette hängen will,
+ * braucht zuerst einen Schritt, der den Server startet; die Wächterei ist
+ * dann keine Frage mehr des guten Willens.
+ *
  * ── Aufruf ──────────────────────────────────────────────────────────────
  *
  *   npm run build:schnell
@@ -94,6 +110,23 @@
  *
  * Endet mit Rückgabewert 1, sobald etwas gefunden wurde – mit den gemessenen
  * Zahlen, damit man weiß, wie weit es daneben liegt und nicht nur, DASS.
+ *
+ * ── Gegenprobe ──────────────────────────────────────────────────────────
+ *
+ * Ein Wächter, der nie angeschlagen hat, ist eine Vermutung. Dieser hier hat
+ * dreimal angeschlagen, jedes Mal an einem absichtlich eingebauten Fehler,
+ * der danach wieder zurückgebaut wurde:
+ *
+ *   1. `.dritt-flaeche { height: 120px }` – 414 Befunde. Der Kasten schnitt
+ *      241 px seines eigenen Inhalts ab, die Schaltfläche stand 81 px
+ *      darunter und war an 3 von 3 Messpunkten von `figcaption.dritt-fuss`
+ *      verdeckt.
+ *   2. `:global` an der Rahmenregel entfernt, also genau Fassung 3 von oben –
+ *      113 Befunde, darunter „iframe 304×154 px in einem Kasten von
+ *      230×508 px" und „der Kasten ist von 361,3 auf 508 px gewachsen".
+ *      Das sind die Zahlen aus dem Kommentar in `Drittinhalt.astro`.
+ *   3. Die Schaltfläche auf 18,8 px Höhe geschrumpft – 48 Befunde, und zwar
+ *      NUR die zur Trefferfläche. Ein Wächter muss auch schweigen können.
  */
 
 import { chromium } from 'playwright';

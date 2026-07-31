@@ -22,7 +22,8 @@
 # ── Was hier NICHT läuft ────────────────────────────────────────────────────
 #
 # Die Prüfungen mit Browser (`kopf:pruefen`, `layout:pruefen`,
-# `formulare:pruefen`, `klickpfad`, `lighthouse`). Sie brauchen einen laufenden
+# `einbettung:pruefen`, `formulare:pruefen`, `klickpfad`, `lighthouse`). Sie
+# brauchen einen laufenden
 # Server und Chromium, dauern Minuten und melden je nach Läufer Abweichungen im
 # Subpixelbereich. Sie gehören in einen eigenen, seltener laufenden Ablauf –
 # und bis dahin bleiben sie Handarbeit. Das hier zu verschweigen wäre derselbe
@@ -84,6 +85,6 @@ jobs:
             echo 'Vollständige Ausgabe im Protokoll des Schritts „Bauen und prüfen".'
             echo
             echo 'Nicht enthalten: die Prüfungen mit Browser (kopf, layout,'
-            echo 'formulare, klickpfad, lighthouse). Sie brauchen einen laufenden'
-            echo 'Server und bleiben bis auf Weiteres Handarbeit.'
+            echo 'einbettung, formulare, klickpfad, lighthouse). Sie brauchen einen'
+            echo 'laufenden Server und bleiben bis auf Weiteres Handarbeit.'
           } >> "$GITHUB_STEP_SUMMARY"
