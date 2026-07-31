@@ -1,6 +1,6 @@
 # Was offen ist
 
-Stand 31. Juli 2026, abends. Diese Datei ist die Übergabe zwischen Sitzungen –
+Stand 1. August 2026, nachts. Diese Datei ist die Übergabe zwischen Sitzungen –
 sie gehört ins Repository und nicht in einen Prompt, weil ein Prompt verloren
 geht und das Repository bleibt.
 
@@ -45,7 +45,7 @@ KLICKPFAD_BASIS=http://127.0.0.1:4331 npm run klickpfad
 
 | | | woher die Zahl kommt |
 |---|---|---|
-| Seiten gebaut | 1.554 (258 davon in der Sitemap – EN und FR tragen noch `noindex`) | `find dist/client -name index.html \| wc -l`, `sitemap-*.xml` |
+| Seiten gebaut | 1.554 (257 davon in der Sitemap – EN und FR tragen noch `noindex`) | `find dist/client -name index.html \| wc -l`, `sitemap-*.xml` |
 | Behandlungen | 43, an 4 Standorten, mit standortgenauer Verfügbarkeit | `npm run daten:pruefen` |
 | Beschwerdeseiten | 31 unter `/zahnbeschwerden/` | `npm run daten:pruefen` |
 | Team | 139 Einträge, 99 veröffentlicht (76 Ku'damm, 14 Potsdam, 10 Mitte, 0 Wilmersdorf) | `npm run daten:pruefen` |
@@ -53,7 +53,7 @@ KLICKPFAD_BASIS=http://127.0.0.1:4331 npm run klickpfad
 | Tote Adressen des Altbestands | 0 von 552 | `npm run urls:abgleichen` |
 | Übersetzbare Textbausteine | 7.634 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden | `npm run sprachen:pruefen` |
 | Katalog EN / FR | je 100,0 % – 0 fehlend, 0 veraltet | `npm run sprachen:pruefen` |
-| Automatische Prüfungen | 23 – 12 in der Baukette, 11 auf Abruf | `package.json`, Abschnitt `scripts` |
+| Automatische Prüfungen | 26 – 13 in der Baukette, 13 auf Abruf | `ls scripts/*-pruefen.mjs` |
 | Echte Fotos | 0 von 24 angemeldeten Motiven | `BILDER-BEDARF.md` |
 
 **Ein voller Katalog heißt nicht: fertig übersetzt.** Der Wächter meldet
@@ -250,7 +250,12 @@ Der Katalog steht auf 100,0 Prozent, und trotzdem ist auf 518 englischen und
 518 französischen Seiten deutscher Text zu sehen. Kein Widerspruch: Der
 Katalog zählt Schlüssel, und diese Stellen haben keinen.
 
-Die größte Gruppe ist gemessen und benannt:
+**Die Öffnungszeiten sind seit dem 1. August erledigt** – der größte Einzelposten
+dieser Liste. 2.682 Treffer je Sprache stehen jetzt auf null, und
+`sprachen:pruefen` hat dafür eine neue Ebene 3b bekommen, die deutsche
+Wortmarken in Tabellenzellen sucht. Was die Marker der Ebene 3 prinzipiell
+nicht finden können, findet jetzt sie. Die Tabelle unten ist der Stand
+VORHER und bleibt als Beleg stehen:
 
 | Stelle | EN-Seiten | FR-Seiten | Herkunft |
 |---|---|---|---|
@@ -259,10 +264,14 @@ Die größte Gruppe ist gemessen und benannt:
 | `geschlossen` | 93 | 93 | `zeitLesbar()` ebenda |
 | `Tage/Woche` samt Zusatz | 11 | 11 | `oeffnungstageText()`, `oeffnungsZusatz()`, `oeffnungstageTeile()` |
 
-**Auf Französisch ist das nicht nur unübersetzt, sondern falsch lesbar.** `Di`
-heißt dort *dimanche*, also Sonntag. In unserer Tabelle steht es für Dienstag.
-Eine französische Besucherin liest die Dienstagszeile als Sonntag und kommt an
-einem Tag, an dem geschlossen ist.
+**Auf Französisch war das nicht nur unübersetzt, sondern falsch lesbar.** `Di`
+heißt dort *dimanche*, also Sonntag. In unserer Tabelle stand es für Dienstag.
+Eine französische Besucherin las die Dienstagszeile als Sonntag und wäre an
+einem Tag gekommen, an dem geschlossen ist.
+
+Was bleibt, ist Fließtext, der nie durch den Katalog lief – Aufgabe 45, die
+vollständige Übersetzung. Die Zahl 518 bewegt sich dadurch nicht, weil sie an
+Funktionswörtern hängt und nicht an den Zeitangaben.
 
 Der Zusatz `Sa + So nach Vereinbarung` darf dabei **nicht** als Zeichenkette
 übersetzt werden. Er gehört aus den Tagen abgeleitet, an denen
@@ -275,10 +284,10 @@ Nachzählen lässt sich der Stand jederzeit:
 cd dist/client && grep -rl "nach Vereinbarung" --include=index.html en fr | wc -l
 ```
 
-### 11. Zwei Ebenen liegen über Bedienelementen
+### 11. Zwei Ebenen lagen über Bedienelementen — ERLEDIGT (1. August)
 
-Beides gemessen, beides unabhängig von der Einwilligung reproduzierbar, beides
-außerhalb der Bauteile, in denen es auffällt:
+Beide behoben. 18 Messzellen, vorher bis 100 Prozent verdeckt, nachher 18 von
+18 auf „Knopf". Der Befund bleibt hier stehen, weil die Ursache lehrreich ist:
 
 - **Das Einwilligungsband** (`#einwilligung`) ist 210,5 px hoch bei 402 und
   360 px Breite und 264,1 px bei 320 px. Steht ein Bedienelement gerade am
@@ -293,7 +302,7 @@ außerhalb der Bauteile, in denen es auffällt:
   liegt an anderen Bildlaufständen zu 61 bis 99 Prozent über derselben
   Schaltfläche. Korrektur in `Berater.astro`.
 
-### 12. Über-uns steht auf Standortseiten in keinem Menü
+### 12. Über-uns stand auf Standortseiten in keinem Menü — ERLEDIGT (1. August)
 
 Gemessen am gebauten Stand: Auf einer Standortseite führen die Menüpunkte nach
 Leistungen, Praxis, Team, Anfahrt und Kontakt. `/ueber-uns/` ist von dort **nur
@@ -304,6 +313,60 @@ Fußzeile.
 
 Das sind 16.176 Wörter, die eigens aus dem Altbestand zurückgeholt wurden – und
 genau die Sorte Unsichtbarkeit, die dem Altbestand vorgeworfen wird.
+
+**Behoben.** Jedes der zehn Themen steht jetzt auf 518 von 519 deutschen Seiten
+(die 519. ist `404.html` und hat kein Menü). Am Schreibtisch als Aufklappfeld
+neben „Leistungen", auf dem Telefon als Klappe im Menü – dort auf jedem
+Seitentyp. Dazu eine Blog-Zeile; `/blog/` hatte auf 350 der 519 Seiten keinen
+Verweis. Zwei Altfehler fielen dabei mit: das Mobilmenü ragte auf EN und FR
+52,4 px unter die Fensterkante, und die Kopfnavigation brach dort zwischen
+1.184 und 1.202 px zweizeilig um.
+
+### 13. Wer macht was? Eine Behandlerliste von 43
+
+**Gemessen:** Von 43 Behandlungen hat genau **eine** eine hinterlegte
+Behandlerliste (Dentosophie). Von 120 örtlichen Behandlungsseiten können
+deshalb **zwei** sagen, wer die Behandlung dort durchführt.
+
+Das ist der Grund, warum Punkt 3 der Liste „Noch nicht gebaut" nicht
+weiterkommt: Die örtlichen Behandlungsseiten brauchen 350 eigene Wörter, um
+für sich zu stehen, und liegen bei 140. Der erste der fünf Punkte, die das
+lösen würden, steht in `src/data/standortfassungen.ts` an erster Stelle –
+zwei bis drei namentliche Behandelnde je Behandlung und Standort. Ohne ihn
+ist die Schwelle aus Daten nicht erreichbar.
+
+**Es wurde ausdrücklich kein Text erzeugt, der die Schwelle umgeht.** Sie
+steht genau dafür da, dass keine dünnen Standortfassungen entstehen. Sie zu
+umschreiben wäre der Fehler, den die Datei beschreibt – nur unsichtbar.
+
+Die Bestellung steht als Teil E in `FREIGABEN.md`: 43 Zeilen, je Behandlung
+zwei bis drei Namen aus den 99 veröffentlichten Personen. Standort und Profil
+rechnet die Website selbst dazu.
+
+### 14. Railway deployt aus einer anderen Branch
+
+**Gefunden am 1. August, nachts.** Der Dienst `web` im Railway-Projekt
+`ku64-website` hängt an der Branch `claude/ku64-website-analysis-redesign-9hwmcb`.
+Gearbeitet wird auf `claude/ku64-website-analysis-redesign-qp6hz8`.
+
+Letzter Deploy: Commit `bffd4eb`, 19:05 UTC. Alles danach ist gepusht, aber
+nicht online.
+
+Geprüft: Die Deploy-Branch ist ein **reiner Vorfahr** der Arbeitsbranch –
+`git merge-base --is-ancestor` bestätigt es, und `git log deploy..arbeit`
+zeigt nur Commits in eine Richtung. Ein Umstellen verliert also nichts.
+
+Zwei Wege, beide brauchen eine Entscheidung:
+
+1. In Railway die Quell-Branch des Dienstes umstellen. Eine Einstellung,
+   jederzeit umkehrbar. Das MCP-Werkzeug `update-service` kann Quellen
+   ausdrücklich nicht ändern – also von Hand in der Oberfläche.
+2. Die Arbeitsbranch in die Deploy-Branch mergen.
+
+Solange keins von beidem passiert, zeigt
+https://web-production-4452b1.up.railway.app den Stand von 19:05 Uhr.
+
+---
 
 ## Was diese Sitzung gelernt hat
 
