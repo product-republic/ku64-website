@@ -1,8 +1,15 @@
 # Was offen ist
 
-Stand 27. Juli 2026, abends. Diese Datei ist die Übergabe zwischen Sitzungen –
+Stand 31. Juli 2026, abends. Diese Datei ist die Übergabe zwischen Sitzungen –
 sie gehört ins Repository und nicht in einen Prompt, weil ein Prompt verloren
 geht und das Repository bleibt.
+
+**Die Zahlen hier sind nachgemessen, nicht fortgeschrieben.** Sie standen vier
+Tage lang auf dem Stand vom 27. Juli, während die Website auf 1.554 Seiten
+gewachsen war – 1.086 stand noch in der Tabelle. Wer eine Zahl aus dieser Datei
+in einen Kundenbericht übernimmt, übernimmt sie also aus einer Quelle, die
+altert. Vor dem Weitergeben gehört jede Zahl einmal neu erhoben; wie, steht
+jeweils daneben.
 
 Die Begründungen zu allen Entscheidungen stehen als Kommentare in den
 jeweiligen Dateien. Wer wissen will, *warum* etwas so ist, findet es dort und
@@ -36,17 +43,22 @@ KLICKPFAD_BASIS=http://127.0.0.1:4331 npm run klickpfad
 
 ## Der Stand in Zahlen
 
-| | |
-|---|---|
-| Seiten gebaut | 1086 (362 davon in der Sitemap – EN und FR tragen noch `noindex`) |
-| Behandlungen | 36, an 4 Standorten, mit standortgenauer Verfügbarkeit |
-| Beschwerdeseiten | 31 unter `/zahnbeschwerden/` |
-| Team | 140 Einträge, 100 veröffentlicht (77 Ku'damm, 14 Potsdam, 10 Mitte) |
-| Blog | vollständig übernommen, mit Lesefortschritt |
-| Tote Adressen des Altbestands | 0 von 552 |
-| Deutsche Sätze außerhalb des Katalogs | 0 (der eine Fund ist eine Baustellenmeldung, die nur im Entwicklungsmodus erscheint) |
-| Übersetzbare Textbausteine | 7401 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden |
-| Echte Fotos | 0 von 24 angemeldeten Motiven |
+| | | woher die Zahl kommt |
+|---|---|---|
+| Seiten gebaut | 1.554 (258 davon in der Sitemap – EN und FR tragen noch `noindex`) | `find dist/client -name index.html \| wc -l`, `sitemap-*.xml` |
+| Behandlungen | 43, an 4 Standorten, mit standortgenauer Verfügbarkeit | `npm run daten:pruefen` |
+| Beschwerdeseiten | 31 unter `/zahnbeschwerden/` | `npm run daten:pruefen` |
+| Team | 139 Einträge, 99 veröffentlicht (76 Ku'damm, 14 Potsdam, 10 Mitte, 0 Wilmersdorf) | `npm run daten:pruefen` |
+| Blog | vollständig übernommen, mit Lesefortschritt | – |
+| Tote Adressen des Altbestands | 0 von 552 | `npm run urls:abgleichen` |
+| Übersetzbare Textbausteine | 7.634 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden | `npm run sprachen:pruefen` |
+| Katalog EN / FR | je 100,0 % – 0 fehlend, 0 veraltet | `npm run sprachen:pruefen` |
+| Automatische Prüfungen | 23 – 12 in der Baukette, 11 auf Abruf | `package.json`, Abschnitt `scripts` |
+| Echte Fotos | 0 von 24 angemeldeten Motiven | `BILDER-BEDARF.md` |
+
+**Ein voller Katalog heißt nicht: fertig übersetzt.** Der Wächter meldet
+zusätzlich „Restdeutsch in 518 gebauten Seiten" je Sprache. Das sind Stellen,
+die gar nicht durch den Katalog laufen – siehe Punkt 10.
 
 ---
 
@@ -68,7 +80,7 @@ Pixel breit.
 
 ### 2. Fachliche Freigabe der neu geschriebenen Behandlungstexte
 
-36 Behandlungen, davon sind die aus dem Altbestand übernommenen bereits
+43 Behandlungen, davon sind die aus dem Altbestand übernommenen bereits
 freigegeben – sie standen auf ku64.de. Neu geschrieben sind die übrigen; sie
 tragen in `src/data/leistungen.ts` den Vermerk, dass sie fachlich zu prüfen
 sind.
@@ -137,10 +149,27 @@ Ohne das schiebt der Übersetzungslauf seinen Zweig zwar, kann aber keinen
 Pull Request daraus machen. Die Arbeit ist dann da und nur der Umschlag
 fehlt.
 
-### 7. Sechs Rechtsangaben, die es heute auch nicht gibt
+### 7. Rechtsangaben – erledigt, die Begründung bleibt wichtig
 
-`npm run recht:pruefen` zählt sie bei jedem Bau. Stand: 24 Angaben belegt,
-sechs offen.
+**Dieser Punkt ist geschlossen.** `npm run recht:pruefen` meldet: 25 Angaben
+belegt, 5 nicht einschlägig, **0 offen**, geprüft auf 6 gebauten Seiten. Er
+steht hier weiter, weil die Begründung gebraucht wird, sobald jemand fragt,
+warum Register und Versicherung im Impressum fehlen.
+
+„Nicht einschlägig" heißt nicht „weggelassen", sondern steht mit Fundstelle in
+`src/data/traeger.ts`:
+
+| Feld | Warum es nicht dastehen muss |
+|---|---|
+| `registergericht`, `registernummer` | kein Registereintrag nach § 5 Abs. 1 Nr. 4 DDG |
+| `ustId` | zahnärztliche Heilbehandlung ist nach § 4 Nr. 14 Buchst. a UStG steuerfrei |
+| `versicherer`, `versicherungGeltungsbereich` | § 2 Abs. 1 Nr. 11 DL-InfoV greift nicht – Art. 2 Abs. 2 Buchst. f der Richtlinie 2006/123/EG nimmt Gesundheitsdienstleistungen aus |
+
+Offen ist davon nur noch die **Rechtsform**, und sie ist keine Rechtsfrage,
+sondern eine Auskunft: Die heutige Seite sagt „ist ein MVZ" – das ist eine
+Versorgungsform, keine Rechtsform.
+
+Was hier ursprünglich stand:
 
 | Feld | Was gebraucht wird |
 |---|---|
@@ -215,6 +244,67 @@ Zu entscheiden hat das die Praxis, und es sind zwei getrennte Fragen:
 
 ---
 
+### 10. Restdeutsch: 518 Seiten je Sprache, die am Katalog vorbeilaufen
+
+Der Katalog steht auf 100,0 Prozent, und trotzdem ist auf 518 englischen und
+518 französischen Seiten deutscher Text zu sehen. Kein Widerspruch: Der
+Katalog zählt Schlüssel, und diese Stellen haben keinen.
+
+Die größte Gruppe ist gemessen und benannt:
+
+| Stelle | EN-Seiten | FR-Seiten | Herkunft |
+|---|---|---|---|
+| Wochentagskürzel `Mo Di Mi Do Fr Sa So` | 355 | 355 | `z.tag` wird roh gerendert – ein Datenschlüssel, kein Text |
+| `nach Vereinbarung` | 138 | 138 | `zeitLesbar()` in `src/data/standorte.ts` |
+| `geschlossen` | 93 | 93 | `zeitLesbar()` ebenda |
+| `Tage/Woche` samt Zusatz | 11 | 11 | `oeffnungstageText()`, `oeffnungsZusatz()`, `oeffnungstageTeile()` |
+
+**Auf Französisch ist das nicht nur unübersetzt, sondern falsch lesbar.** `Di`
+heißt dort *dimanche*, also Sonntag. In unserer Tabelle steht es für Dienstag.
+Eine französische Besucherin liest die Dienstagszeile als Sonntag und kommt an
+einem Tag, an dem geschlossen ist.
+
+Der Zusatz `Sa + So nach Vereinbarung` darf dabei **nicht** als Zeichenkette
+übersetzt werden. Er gehört aus den Tagen abgeleitet, an denen
+`nachVereinbarung` gilt – sonst laufen Daten und Übersetzung auseinander,
+sobald sich eine Öffnungszeit ändert, und niemand merkt es.
+
+Nachzählen lässt sich der Stand jederzeit:
+
+```bash
+cd dist/client && grep -rl "nach Vereinbarung" --include=index.html en fr | wc -l
+```
+
+### 11. Zwei Ebenen liegen über Bedienelementen
+
+Beides gemessen, beides unabhängig von der Einwilligung reproduzierbar, beides
+außerhalb der Bauteile, in denen es auffällt:
+
+- **Das Einwilligungsband** (`#einwilligung`) ist 210,5 px hoch bei 402 und
+  360 px Breite und 264,1 px bei 320 px. Steht ein Bedienelement gerade am
+  unteren Bildrand, verdeckt es das Band vollständig: Für die
+  Zustimmen-Schaltfläche der Einbettungen sind das 100 Prozent auf `/`,
+  `/berlin-charlottenburg/`, `/berlinmitte/` und `/leistungen/zahnarztangst/`.
+  `elementFromPoint` liefert dort `DIV.ew-band` statt des Knopfes.
+  Weiterscrollen behebt es – aber nur, wenn man auf die Idee kommt.
+  Die Korrektur gehört in `Einwilligung.astro` bzw. `Basis.astro`: Solange
+  das Band offen ist, unten Platz freihalten.
+- **Die Chat-Blase** (`.berater`) misst 370 × 56 px bei 402 px Breite und
+  liegt an anderen Bildlaufständen zu 61 bis 99 Prozent über derselben
+  Schaltfläche. Korrektur in `Berater.astro`.
+
+### 12. Über-uns steht auf Standortseiten in keinem Menü
+
+Gemessen am gebauten Stand: Auf einer Standortseite führen die Menüpunkte nach
+Leistungen, Praxis, Team, Anfahrt und Kontakt. `/ueber-uns/` ist von dort **nur
+über die Fußzeile** erreichbar, `/blog/` gar nicht. In der Fußzeile stehen
+5 der 10 Themen; Best Practice, Mitgliedschaften, Hilfsprojekt Südafrika,
+Soziales Engagement und Ultraschallreiniger stehen in keinem Menü und in keiner
+Fußzeile.
+
+Das sind 16.176 Wörter, die eigens aus dem Altbestand zurückgeholt wurden – und
+genau die Sorte Unsichtbarkeit, die dem Altbestand vorgeworfen wird.
+
 ## Was diese Sitzung gelernt hat
 
 Drei Fehler waren vom selben Typ, und der Typ ist es wert, gemerkt zu werden:
@@ -260,7 +350,7 @@ glaubt.
 
 | Datei | Inhalt |
 |---|---|
-| `SITEMAP.md` | alle 362 Seiten, nach Standort gegliedert, zum Weitergeben |
+| `SITEMAP.md` | alle 257 Seiten der Sitemap, nach Standort gegliedert, zum Weitergeben |
 | `BILDER-BEDARF.md` | jedes fehlende Foto mit Beschreibung und Format |
 | `ANALYSE.md` | Befunde zum Altbestand |
 | `README.md` | Aufbau, Sprachsystem, Deployment |

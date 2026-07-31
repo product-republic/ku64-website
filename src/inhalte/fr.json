@@ -27818,12 +27818,16 @@
       "quelle": "968ee1df"
     },
     "ui.dritt.laden": {
-      "text": "Charger {titel}",
-      "quelle": "145e46eb"
+      "text": "Accepter et lire",
+      "quelle": "7dbc048f"
     },
     "ui.dritt.ladenName": {
-      "text": "Charger {titel} – cela transmet des données à {anbieter}",
-      "quelle": "cd7e2bfd"
+      "text": "{titel} : accepter et lire – des données sont alors transmises à {anbieter}",
+      "quelle": "337f3f4b"
+    },
+    "ui.dritt.uebertragung": {
+      "text": "{daten} sont alors transmises à {anbieter}.",
+      "quelle": "c1f3acea"
     },
     "ui.dritt.nochNichtFrei": {
       "text": "Pas encore autorisé : pour {dienst}, le contrat de sous-traitance avec {anbieter} n’est pas confirmé. Jusque-là, ce contenu ne sera pas chargé, même en cliquant.",
@@ -27834,8 +27838,8 @@
       "quelle": "6852ac25"
     },
     "ui.dritt.wirdGeladen": {
-      "text": "Chargé uniquement lorsque vous cliquez. Cela transmet {daten} à {anbieter}.",
-      "quelle": "6be2e27e"
+      "text": "Acceptez une fois, puis cela démarre.",
+      "quelle": "9ed5f88b"
     },
     "ui.ds.10Aenderungen": {
       "text": "10. Modifications",
