@@ -95,18 +95,18 @@ export function fassungIstEigenstaendig(standortSlug: string, leistungSlug: stri
 /**
  * Seiten, die selbst `noindex` tragen.
  *
- * Impressum und Datenschutzerklärung sind ENTWÜRFE mit Platzhaltern, bis die
- * Praxis die Pflichtangaben liefert – deshalb tragen sie `noindex`, und
- * deshalb dürfen sie auch nicht in der Sitemap stehen. Beides zusammen wäre
- * ein Widerspruch mit Ansage: Die Sitemap sagt „bitte aufnehmen", die Seite
- * sagt „bitte nicht".
+ * Die Liste ist leer, und das ist eine Nachricht: Impressum und
+ * Datenschutzerklärung standen hier, solange sie Entwürfe mit Platzhaltern
+ * waren. Beide sind freigegeben, `recht-pruefen.mjs` zählt null offene
+ * Felder, und ein Impressum, das Google nicht finden darf, ist ein
+ * Impressum, das niemand findet.
  *
- * Sobald die Angaben vorliegen und das `noindex` in der jeweiligen Seite
- * fällt, gehört der Eintrag hier ebenfalls weg. Damit das niemand vergisst,
- * prüft `scripts/sitemap-liste.mjs` jede Sitemap-Adresse gegen das gebaute
- * HTML und bricht ab, wenn beides auseinanderläuft – in beide Richtungen.
+ * Die Liste bleibt stehen, weil der nächste Entwurf kommt. Wer hier etwas
+ * einträgt, muss dieselbe Seite auch auf `noindex` setzen –
+ * `scripts/sitemap-liste.mjs` prüft jede Sitemap-Adresse gegen das gebaute
+ * HTML und bricht ab, wenn beides auseinanderläuft, in beide Richtungen.
  */
-const NOINDEX_SEITEN = ['/impressum/', '/datenschutz/'];
+const NOINDEX_SEITEN: string[] = [];
 
 export function ausSitemapAusschliessen(pfad: string): boolean {
   const p = pfad.replace(/^https?:\/\/[^/]+/, '');

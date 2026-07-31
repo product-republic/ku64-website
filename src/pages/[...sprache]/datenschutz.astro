@@ -56,8 +56,11 @@ const brotkrumen = [
   description={t('ds.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
+  {/* Kein `noindex` mehr: Die Seite war ein Entwurf mit Platzhaltern, solange
+      Pflichtangaben fehlten. Es fehlt keine mehr – `recht-pruefen.mjs` zählt
+      0 offene Felder –, und ein Impressum, das Google nicht finden darf, ist
+      ein Impressum, das niemand findet. */}
   schema={[schemaBrotkrumen(brotkrumen)]}
-  noindex={true}
 >
   <div class="huelle abschnitt">
     <h1>{t('ds.seitentitel')}</h1>
