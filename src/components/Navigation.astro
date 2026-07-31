@@ -12,7 +12,9 @@ import Sprachwahl from './Sprachwahl.astro';
 import Standortliste from './Standortliste.astro';
 import Logo from './Logo.astro';
 import { texte } from '../i18n/katalog';
+import type { TextSchluessel } from '../i18n/texte';
 import { sprachdefinition } from '../i18n/sprachen';
+import { GRUPPENFOLGE, THEMEN_MIT_SEITE } from '../data/themen';
 
 const daten = inhalte(Astro);
 
@@ -55,23 +57,103 @@ const sprachbasis = sprachdefinition(daten.sprache).praefix
  */
 const suchpfad = `${sprachbasis}/suche/${standort ? `?ort=${standort.slug}` : ''}`;
 
-const punkte = standort
+/**
+ * Ein Punkt der Hauptnavigation.
+ *
+ * Ausdrücklich als Typ und nicht aus den Literalen abgeleitet: Die beiden
+ * Zweige unten tragen verschiedene Felder, und TypeScript würde daraus eine
+ * Vereinigung bilden, auf der `p.themen` nicht existiert. Der Fehler käme
+ * erst in `astro check`, also nach dem Bau.
+ */
+interface Menuepunkt {
+  name: string;
+  pfad: string;
+  /** Klappt das große Behandlungsfeld auf. */
+  mega?: boolean;
+  /** Klappt das Über-uns-Feld mit den zehn Themen auf. */
+  themen?: boolean;
+  /**
+   * Steht ausschließlich im Mobilmenü.
+   *
+   * Am Schreibtisch ist auf Standortseiten kein Platz – das ist gemessen,
+   * nicht vermutet: Zwischen Navigation und Aktionen bleiben dort bei
+   * 1.186 px, also einen Pixel über dem Umschaltpunkt zum Menüknopf,
+   * 84,0 px auf Deutsch, 4,8 px auf Englisch und 5,3 px auf Französisch.
+   * Ein sechster Punkt misst 112,5 / 120,6 / 164,4 px. Er bräche also auf
+   * Englisch ab rund 1.300 px und auf Französisch ab rund 1.306 px um – auf
+   * dem verbreitetsten Notebook, und kein Wächter meldete es.
+   *
+   * Ihn nur oberhalb 1.350 px einzublenden wäre schlimmer: ein Menüpunkt,
+   * den es bei 1.280 px nicht gibt. Im Mobilmenü ist dagegen Platz, und
+   * unterhalb von 74 rem ist das Mobilmenü ohnehin die einzige Navigation.
+   */
+  nurMobil?: boolean;
+}
+
+const punkte: Menuepunkt[] = standort
   ? [
       { name: t('nav.behandlungen'), pfad: `${basis}/leistungen/`, mega: true },
       { name: t('nav.praxis'), pfad: `${basis}/praxis/` },
       { name: t('nav.team'), pfad: `${basis}/team/` },
       { name: t('nav.anfahrt'), pfad: `${basis}/anfahrt/` },
       { name: t('nav.kontakt'), pfad: `${basis}/kontakt/` },
+      /*
+       * Über KU64 und Blog fehlten auf Standortseiten vollständig.
+       *
+       * Gezählt am gebauten Stand: Auf allen 354 Standortseiten je Sprache –
+       * 1.062 der 1.555 Dateien – war `/ueber-uns/` ausschließlich über die
+       * Fußzeile erreichbar, und die liegt dort bei 1.280 × 800 px auf
+       * y = 7.260 px von 7.802 px Seitenhöhe: neun Bildschirmhöhen. Auf dem
+       * Telefon waren es zwölf, hinter zwei Überlagerungen.
+       *
+       * `/blog/` hatte auf 350 der 519 deutschen Seiten überhaupt keinen
+       * Verweis – dieselbe Menge Standortseiten.
+       */
+      { name: t('nav.ueberKu64'), pfad: '/ueber-uns/', themen: true, nurMobil: true },
+      { name: 'Blog', pfad: `${basis}/blog/`, nurMobil: true },
     ]
   : [
       { name: t('nav.standorte'), pfad: '/standorte/' },
       { name: t('nav.behandlungen'), pfad: '/leistungen/', mega: true },
-      { name: t('nav.ueberKu64'), pfad: '/ueber-uns/' },
+      { name: t('nav.ueberKu64'), pfad: '/ueber-uns/', themen: true },
       { name: 'Blog', pfad: '/blog/' },
       { name: t('nav.kontakt'), pfad: '/kontakt/' },
     ];
 
 const aktiv = (ziel: string) => pfad === ziel || (ziel !== '/' && pfad.startsWith(ziel));
+
+/*
+ * Die zehn Themen unter `/ueber-uns/`, in ihren vier Gruppen.
+ *
+ * ── Warum sie überhaupt ins Menü gehören ────────────────────────────────
+ *
+ * Weil fünf von ihnen in gar keiner Navigation standen. Gezählt am gebauten
+ * Stand: `best-practice`, `mitgliedschaften`, `hilfsprojekt-suedafrika`,
+ * `soziales-engagement` und `ultraschallreiniger` waren auf je 11 der 519
+ * deutschen Seiten verlinkt – auf der Übersicht und den zehn Themenseiten
+ * selbst. Auf den übrigen 508 gab es keinen einzigen Verweis darauf. Die
+ * anderen fünf standen in der Fußzeile, sonst nirgends.
+ *
+ * Das sind zusammen 16.176 Wörter, die eigens aus dem Altbestand
+ * zurückgeholt wurden – Architektur, Presse, Auszeichnungen,
+ * Mitgliedschaften, ein Hilfsprojekt. Sie unsichtbar zu lassen wäre genau
+ * der Vorwurf, den dieser Umbau der alten Website macht.
+ *
+ * ── Die Reihenfolge kommt aus den Daten ─────────────────────────────────
+ *
+ * `GRUPPENFOLGE` bestimmt sie, dieselbe Konstante, aus der auch
+ * `/ueber-uns/` seine Abschnitte baut. Eine zweite Ordnung an dieser Stelle
+ * wäre eine zweite Wahrheit; kommt ein Thema dazu, steht es hier von selbst.
+ */
+const themenGruppen = GRUPPENFOLGE.map((gruppe) => ({
+  gruppe,
+  name: t(`ueber.gruppe.${gruppe}` as TextSchluessel),
+  themen: THEMEN_MIT_SEITE.filter((x) => x.gruppe === gruppe).map((x) => ({
+    slug: x.slug,
+    titel: t(`thema.${x.slug}.titel` as TextSchluessel),
+    pfad: `${sprachbasis}/ueber-uns/${x.slug}/`,
+  })),
+})).filter((g) => g.themen.length > 0);
 
 /*
  * Alle Behandlungen, nach Bereich gruppiert – für das große Menü.
@@ -153,8 +235,59 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
         */}
         <span class="haupt-laeufer" aria-hidden="true"></span>
         {
-          punkte.map((p) =>
-            p.mega ? (
+          /*
+            `nurMobil` fällt hier heraus, nicht im Mobilmenü.
+
+            Ein `display: none` hätte dasselbe Bild ergeben und wäre falsch
+            gewesen: Der Punkt stünde weiter im Baum, wäre für Screenreader
+            und Tastatur vorhanden und für das Auge nicht. Was am
+            Schreibtisch nicht hingehört, gehört dort auch nicht ins HTML.
+          */
+          punkte.filter((p) => !p.nurMobil).map((p) =>
+            p.themen ? (
+              /*
+                Dasselbe Bauprinzip wie das Behandlungsfeld, aber
+                ausdrücklich NICHT dieselben Klassennamen.
+
+                `kopf-pruefen.mjs` zählt `.mega-block` und `.mega-block a`
+                über das ganze Dokument und prüft damit, ob das
+                Behandlungsmenü vollständig ist. Ein zweites Feld mit
+                denselben Klassen zählte mit – der Wächter bliebe grün und
+                misste ab dann etwas anderes, als sein Kommentar behauptet.
+                Ein auf fünf Blöcke zerbrochenes Behandlungsmenü käme dann
+                durch. Deshalb `.themen-*` statt `.mega-*`.
+              */
+              <li class="hat-mega">
+                <details class="themen">
+                  <summary class:list={['haupt-link', { 'ist-aktiv': aktiv(p.pfad) }]}>
+                    {p.name}
+                    <svg class="mega-pfeil" viewBox="0 0 12 8" width="9" height="6" aria-hidden="true">
+                      <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                  </summary>
+                  <div class="themen-feld">
+                    <a href={p.pfad} class="mega-alle">
+                      {t('ueber.inEigenenWorten')}
+                      <span aria-hidden="true">→</span>
+                    </a>
+                    <div class="themen-spalten">
+                      {themenGruppen.map((g) => (
+                        <div class="themen-block">
+                          <p class="themen-titel">{g.name}</p>
+                          <ul>
+                            {g.themen.map((x) => (
+                              <li>
+                                <a href={x.pfad}>{x.titel}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </details>
+              </li>
+            ) : p.mega ? (
               /*
                 Ein `<details>` und kein Knopf mit `hidden`-Feld.
                 Ohne JavaScript klappt es trotzdem auf, und die Tastatur
@@ -419,11 +552,49 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           )
         }
         {
-          punkte.map((p) => (
-            <li>
-              <a href={p.pfad}>{p.name}</a>
-            </li>
-          ))
+          punkte.map((p) =>
+            p.themen ? (
+              /*
+                Im Mobilmenü steht Über KU64 als Klappe – auf JEDEM Seitentyp.
+
+                Hier ist der Platz, der am Schreibtisch fehlt, und hier war
+                die Lücke am größten: Auf dem Telefon lag der einzige Weg zu
+                diesen Seiten in der Fußzeile, gemessen zwölf Bildschirmhöhen
+                unter dem Seitenanfang und hinter zwei Überlagerungen.
+                Aufgeklappt sind es zwei Berührungen.
+
+                Die Gruppenüberschriften bleiben weg. Vier Zwischenzeilen für
+                elf Ziele wären in einer schmalen Spalte mehr Gliederung als
+                Inhalt; auf `/ueber-uns/` selbst stehen sie, dort tragen sie.
+              */
+              <li>
+                <details class="mobil-thema">
+                  <summary>
+                    {p.name}
+                    <svg viewBox="0 0 12 8" width="10" height="7" aria-hidden="true">
+                      <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                  </summary>
+                  <ul class="mobil-liste mobil-liste-klein">
+                    <li>
+                      <a href={p.pfad}>{t('ueber.inEigenenWorten')}</a>
+                    </li>
+                    {themenGruppen.flatMap((g) =>
+                      g.themen.map((x) => (
+                        <li>
+                          <a href={x.pfad}>{x.titel}</a>
+                        </li>
+                      )),
+                    )}
+                  </ul>
+                </details>
+              </li>
+            ) : (
+              <li>
+                <a href={p.pfad}>{p.name}</a>
+              </li>
+            ),
+          )
         }
       </ul>
       {
@@ -1382,12 +1553,14 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     position: static;
   }
 
-  .hat-mega > .mega > summary {
+  .hat-mega > .mega > summary,
+  .hat-mega > .themen > summary {
     position: relative;
     z-index: 1;
   }
 
-  .mega > summary {
+  .mega > summary,
+  .themen > summary {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -1395,7 +1568,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     list-style: none;
   }
 
-  .mega > summary::-webkit-details-marker {
+  .mega > summary::-webkit-details-marker,
+  .themen > summary::-webkit-details-marker {
     display: none;
   }
 
@@ -1404,7 +1578,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     opacity: 0.7;
   }
 
-  .mega[open] .mega-pfeil {
+  .mega[open] .mega-pfeil,
+  .themen[open] .mega-pfeil {
     transform: rotate(180deg);
   }
 
@@ -1415,7 +1590,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Zeile; ihre Unterkante liegt also über der Unterkante der Glaspille.
    * Der Zuschlag setzt das Feld unter die Pille statt mitten hinein.
    */
-  .mega-feld {
+  .mega-feld,
+  .themen-feld {
     position: absolute;
     /*
      * Bündig unter der Pille, über ihre ganze Breite.
@@ -1457,7 +1633,8 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
      von „durchscheinend plus unscharf" nur „durchscheinend" – und dann steht
      die Überschrift der Seite scharf durch das Menü. */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .mega-feld {
+    .mega-feld,
+    .themen-feld {
       background: var(--flaeche);
     }
   }
@@ -1478,6 +1655,73 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
 
   .mega-alle:hover {
     text-decoration: underline;
+  }
+
+  /*
+   * Die vier Gruppen des Über-uns-Feldes – vier Spalten, nicht elf.
+   *
+   * Das Behandlungsfeld füllt seine Spalten automatisch auf, weil es elf
+   * Bereiche mit stark unterschiedlicher Länge trägt. Hier sind es genau
+   * vier Gruppen mit drei, vier, zwei und einem Thema. `auto-fill` mit
+   * 11,5 rem legte sie bei 1.280 px in sechs Spalten, von denen zwei leer
+   * blieben, und die Titel („Zahnarzt on the beach – die Architektur von
+   * KU64", 48 Zeichen) brächen dreizeilig um.
+   *
+   * Vier feste Spalten, ab 62 rem zwei, darunter eine. Die Reihenfolge
+   * bleibt die von `GRUPPENFOLGE` – gelesen wird von links nach rechts.
+   */
+  .themen-spalten {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--raum-5) var(--raum-5);
+  }
+
+  @media (max-width: 78rem) {
+    .themen-spalten {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .themen-block {
+    min-width: 0;
+  }
+
+  /* Gruppenname als Zwischenüberschrift: klein, gesperrt, leise – dieselbe
+     Sprache wie `.mobil-titel` im Menü und wie die Gruppen auf
+     `/ueber-uns/`. Sie ordnet, sie ist kein Ziel. */
+  .themen-titel {
+    margin-block-end: var(--raum-3);
+    font-size: var(--t-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinte-leise);
+  }
+
+  .themen-block ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--raum-1);
+  }
+
+  .themen-block a {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    margin-inline-start: -0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    text-decoration: none;
+    /* Die Titel sind Sätze, keine Namen – „Best Practice: Führungen,
+       Coachings und Workshops" misst 48 Zeichen. Sie dürfen umbrechen. */
+    text-wrap: pretty;
+  }
+
+  .themen-block a:hover,
+  .themen-block a:focus-visible {
+    color: var(--tinte);
+    background: var(--flaeche-warm);
   }
 
   .mega-spalten {
@@ -2114,7 +2358,31 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     -webkit-backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
     backdrop-filter: blur(24px) saturate(var(--glas-saettigung));
     padding-block: var(--raum-5);
-    max-height: calc(100dvh - 8rem);
+    /*
+     * Die Höhe des Kopfes wird gemessen, nicht geschätzt.
+     *
+     * Hier stand `calc(100dvh - 8rem)`. Die 8 rem waren eine Annahme über
+     * die Höhe dessen, was über dem Menü steht – und die stimmt nur auf
+     * Deutsch. Auf Englisch und Französisch ist die Standortleiste
+     * zweizeilig, weil „Vous consultez KU64 Potsdam · Berliner Straße 139,
+     * 14467 Potsdam" nicht in eine Zeile passt.
+     *
+     * Gemessen am Stand vor dieser Änderung, Menü geöffnet:
+     *
+     *     /potsdam/       Oberkante 127,0 px   ragt −1 px unters Fenster
+     *     /en/potsdam/    Oberkante 180,4 px   ragt 52,4 px unters Fenster
+     *     /fr/potsdam/    Oberkante 180,4 px   ragt 52,4 px unters Fenster
+     *
+     * 180,4 − 128 = 52,4. Die Abweichung IST die falsche Annahme. Unten
+     * fehlten damit auf jeder englischen und französischen Standortseite
+     * gut fünfzig Pixel Menü – dort steht die Sprachwahl.
+     *
+     * `--menue-oben` setzt das Skript weiter unten aus der tatsächlichen
+     * Lage des Menüs, mit einem ResizeObserver auf der Pille. Ohne
+     * JavaScript bleibt es bei den 8 rem von vorher – nicht besser als
+     * heute, aber auch nicht schlechter.
+     */
+    max-height: calc(100dvh - var(--menue-oben, 8rem));
     overflow-y: auto;
   }
 
@@ -2167,6 +2435,61 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     white-space: nowrap;
   }
 
+  /*
+   * Über KU64 als Klappe in der flachen Liste.
+   *
+   * Die Zeile sieht aus wie ihre Nachbarn – gleicher Grad, gleiche Höhe,
+   * gleiches Polster –, nur mit einem Pfeil am Ende. Das ist Absicht: Sie
+   * IST ein Menüpunkt und wird nur nicht sofort verlassen. Sie im Stil der
+   * Behandlungsbereiche zu setzen (kleiner, fetter, gesperrt) hätte sie wie
+   * einen Unterpunkt von „Kontakt" aussehen lassen.
+   *
+   * Gemessen kostet sie 54,6 bis 55,1 px – auf Standortseiten kommt sie
+   * dazu, auf allen übrigen ersetzt sie die bisherige flache Zeile und
+   * kostet dort exakt nichts.
+   */
+  .mobil-thema > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--raum-2);
+    padding: var(--raum-3) var(--raum-2);
+    border-radius: var(--radius);
+    font-size: var(--t-lg);
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobil-thema > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobil-thema > summary:hover {
+    background: var(--flaeche-warm);
+  }
+
+  .mobil-thema > summary svg {
+    flex: none;
+    opacity: 0.6;
+    transition: transform var(--zeit) var(--kurve);
+  }
+
+  .mobil-thema[open] > summary svg {
+    transform: rotate(180deg);
+  }
+
+  .mobil-thema[open] > summary {
+    background: var(--flaeche-warm-2);
+  }
+
+  /* Eingerückt, damit die elf Ziele als Inhalt der Klappe lesbar sind und
+     nicht als Fortsetzung der Hauptliste. */
+  .mobil-thema > .mobil-liste {
+    padding-inline-start: var(--raum-2);
+    margin-block: var(--raum-2);
+  }
+
   .mobil-titel {
     margin-block: var(--raum-5) var(--raum-2);
     font-size: var(--t-xs);
@@ -2213,6 +2536,40 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   @media (min-width: 74.0625rem) and (max-width: 84rem) {
     .kopf:global(.ist-angedockt) .telefon,
     .kopf:global(.ist-angedockt) .lupe-link {
+      display: none;
+    }
+  }
+
+  /*
+   * ── Der schmale Streifen, in dem UNGEDOCKT nichts mehr passt ──────────
+   *
+   * Die Regel darüber gilt nur angedockt, und das war eine Lücke. Gemessen
+   * im Breitenlauf 1.600 → 1.186 px in 2-px-Schritten, ungescrollt,
+   * Kriterium Punkthöhe über 45 px:
+   *
+   *     /potsdam/       kein Umbruch bis 1.186 px
+   *     /en/potsdam/    Umbruch ab 1.202 px, Punkte 65,4 statt 39,9 px hoch
+   *     /fr/potsdam/    Umbruch ab 1.202 px
+   *
+   * Zwischen 1.184 px – dort übernimmt der Menüknopf – und 1.202 px stand
+   * die Navigation auf englischen und französischen Standortseiten also
+   * zweizeilig. Achtzehn Pixel breit ist dieser Streifen, und trotzdem
+   * echt: Ein Fenster, das man von Hand schmaler zieht, geht durch ihn
+   * hindurch.
+   *
+   * Kein Wächter hat das gesehen, und das ist der eigentliche Befund:
+   * `kopf-pruefen.mjs` fährt seinen Breitenlauf ausschließlich im
+   * ANGEDOCKTEN Zustand. Dort ist der Kopf in genau dieser Spanne der WEITE
+   * Fall, weil Telefonnummer und Lupe schon weg sind. Der ungedockte Kopf
+   * stand in keiner seiner Listen.
+   *
+   * Weichen muss die Lupe, aus demselben Grund wie auf dem Telefon: Die
+   * Suche steht als benanntes Feld im Mobilmenü und unter `/suche/`; das
+   * Symbol ist die am leichtesten zu ersetzende der drei Angaben. Die
+   * Rufnummer bleibt – sie ist bei einer Zahnarztpraxis keine Zugabe.
+   */
+  @media (min-width: 74.0625rem) and (max-width: 76rem) {
+    .lupe-link {
       display: none;
     }
   }
@@ -2601,7 +2958,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Eine Konstante statt zweier Zeichenketten an sechs Stellen: Der Fehler
    * bestand ja gerade darin, dass eine Stelle den neuen Wähler nicht kannte.
    */
-  const WAEHLER = '.waehler[open], .ort-kompakt[open], .mega[open]';
+  const WAEHLER = '.waehler[open], .ort-kompakt[open], .mega[open], .themen[open]';
 
   function waehlerZu() {
     for (const d of document.querySelectorAll<HTMLDetailsElement>(WAEHLER)) {
@@ -2674,7 +3031,43 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
        * prüfbar.
        */
       document.documentElement.toggleAttribute('data-menue-offen', !offen);
+      hoeheMelden();
     });
+
+    /*
+     * Wie viel Platz über dem Menü steht – gemessen, nicht geschätzt.
+     *
+     * `.mobilmenue` bekommt seine Obergrenze aus `100dvh` minus dem, was
+     * darüber liegt. Diese Zahl stand als `8rem` im Stilteil und war eine
+     * Annahme, die nur auf Deutsch stimmte: Auf Englisch und Französisch
+     * bricht die Standortleiste zweizeilig um, und das Menü ragte um genau
+     * die Differenz unter die Fensterkante – gemessen 52,4 px auf
+     * /en/potsdam/ und /fr/potsdam/ bei 360 und 402 px Breite.
+     *
+     * Der Beobachter hängt an der Glaspille und nicht am Menü: Das Menü
+     * ändert seine Höhe selbst, wenn jemand einen Bereich aufklappt, und
+     * ein Beobachter, der auf die eigene Größe reagiert, dreht sich im
+     * Kreis. Die Pille ändert sich nur, wenn sich der Kopf ändert – beim
+     * Andocken, beim Drehen des Geräts, beim Nachladen der Schrift.
+     */
+    const pille = document.querySelector<HTMLElement>('.kopf-glas');
+
+    function hoeheMelden() {
+      if (!menue) return;
+      const oben = menue.getBoundingClientRect().top;
+      /* Angedockt steht der Kopf bei 0; ungescrollt weiter unten. Was zählt,
+         ist der Abstand zur Fensteroberkante, und der ist nie negativ. */
+      document.documentElement.style.setProperty('--menue-oben', `${Math.max(0, oben)}px`);
+    }
+
+    if (pille && 'ResizeObserver' in window) {
+      const beobachter = new ResizeObserver(hoeheMelden);
+      beobachter.observe(pille);
+      abbauen.push(() => beobachter.disconnect());
+    }
+    window.addEventListener('resize', hoeheMelden);
+    abbauen.push(() => window.removeEventListener('resize', hoeheMelden));
+    hoeheMelden();
 
     /*
      * Angedockt oder nicht.
@@ -2764,29 +3157,49 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
      * ins Feld – dazwischen liegt ein Spalt, und ohne Nachlauf klappte es
      * genau dort zu.
      */
-    const mega = document.querySelector<HTMLDetailsElement>('.mega');
-    if (mega && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      let aufZeit: number | undefined;
-      let zuZeit: number | undefined;
+    /*
+     * ── Über ALLE Aufklappfelder, nicht über das erste ─────────────────
+     *
+     * Hier stand `document.querySelector('.mega')`. Das fand genau ein
+     * Element, und solange es nur das Behandlungsfeld gab, war das richtig.
+     * Seit „Über KU64" ein zweites Feld hat, wäre es der Fehlertyp, der in
+     * diesem Bauteil schon zweimal aufgetreten ist: Der zweite Aufklapp
+     * ginge beim Überfahren nicht auf – und niemand merkte es, weil Klicken
+     * weiterhin funktioniert. Dieselbe Falle steht in der `WAEHLER`-
+     * Konstante beschrieben.
+     *
+     * Die Zeitgeber liegen jetzt je Feld, nicht global: Zwei Felder, die
+     * sich einen Zeitgeber teilen, löschen einander die Verzögerung, und wer
+     * von „Leistungen" nach „Über KU64" fährt, bekäme beide gleichzeitig.
+     */
+    const felder = document.querySelectorAll<HTMLDetailsElement>('.mega, .themen');
+    if (felder.length && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      for (const feld of felder) {
+        let aufZeit: number | undefined;
+        let zuZeit: number | undefined;
 
-      mega.addEventListener('pointerenter', () => {
-        window.clearTimeout(zuZeit);
-        aufZeit = window.setTimeout(() => {
-          mega.open = true;
-        }, 120);
-      });
+        feld.addEventListener('pointerenter', () => {
+          window.clearTimeout(zuZeit);
+          aufZeit = window.setTimeout(() => {
+            /* Beim Öffnen des einen schließt das andere – sonst stünden zwei
+               Felder gleichzeitig unter derselben Pille. */
+            for (const anderes of felder) if (anderes !== feld) anderes.open = false;
+            feld.open = true;
+          }, 120);
+        });
 
-      mega.addEventListener('pointerleave', () => {
-        window.clearTimeout(aufZeit);
-        zuZeit = window.setTimeout(() => {
-          mega.open = false;
-        }, 220);
-      });
+        feld.addEventListener('pointerleave', () => {
+          window.clearTimeout(aufZeit);
+          zuZeit = window.setTimeout(() => {
+            feld.open = false;
+          }, 220);
+        });
 
-      abbauen.push(() => {
-        window.clearTimeout(aufZeit);
-        window.clearTimeout(zuZeit);
-      });
+        abbauen.push(() => {
+          window.clearTimeout(aufZeit);
+          window.clearTimeout(zuZeit);
+        });
+      }
     }
 
     /* ── Das wandernde Feld im Hauptmenü ────────────────────────────────
