@@ -150,6 +150,12 @@ const faq = [
           <div class="honig" aria-hidden="true">
             <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           </div>
+
+          {/* Eintrittskarte, vom Skript beim Seitenaufbau geholt – siehe
+              src/lib/eintrittskarte.ts. Hier ohne `<noscript>`-Ersatz: Diese
+              Seite braucht ohnehin JavaScript für Foto-Auswahl, Fortschritt
+              und Vorher-Nachher-Regler. */}
+          <input type="hidden" name="karte" value="" />
         </fieldset>
 
         {/* Schritt 3 */}
@@ -255,6 +261,7 @@ const faq = [
 
 <script>
   import { beimSeitenaufbau } from '../../lib/seitenaufbau';
+  import { karteHolen } from '../../lib/karte-holen';
 
   /*
    * Nach jedem Seitenaufbau neu binden.
@@ -268,6 +275,11 @@ const faq = [
     const form = document.getElementById('formular') as HTMLFormElement | null;
     /* Das Modul bleibt geladen, auch wenn man die Seite verlässt. */
     if (!form) return;
+
+    /* Eintrittskarte gleich beim Aufbau holen. Sie braucht drei Sekunden
+       Reifezeit; bis ein Foto ausgewählt und zwei Haken gesetzt sind, ist sie
+       längst gültig. */
+    karteHolen(form);
 
     const fotoFeld = document.getElementById('foto') as HTMLInputElement;
     const ablage = document.getElementById('ablage')!;
@@ -449,6 +461,10 @@ const faq = [
       fertig.hidden = true;
       platzhalter.hidden = false;
       ablageWeg.click();
+      /* Neue Karte: Die alte ist mit dem ersten Durchlauf verbraucht. Ohne
+         diese Zeile scheitert genau der zweite Versuch – also der, den dieser
+         Knopf anbietet. */
+      karteHolen(form);
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });

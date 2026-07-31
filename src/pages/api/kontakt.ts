@@ -25,6 +25,7 @@ import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 import { STANDORTE, getStandort } from '../../data/standorte';
 import { drosseln, zuVieleAnfragen } from '../../lib/drosselung';
+import { kartePruefen, karteEinloesen, KARTE_FEHLT_TEXT } from '../../lib/eintrittskarte';
 
 export const prerender = false;
 
@@ -61,6 +62,20 @@ export const POST: APIRoute = async ({ request }) => {
    */
   if (daten.website) return antwort({ ok: true });
 
+  /*
+   * Eintrittskarte. Anders als der Honigtopf ist das keine Falle, sondern eine
+   * Bedingung: Ohne eine Karte, die dieser Server ausgestellt hat, gibt es
+   * keine E-Mail. Damit reicht ein `curl` mit passendem `Origin` nicht mehr –
+   * genau so ließ sich dieser Endpunkt vorher ansprechen.
+   *
+   * Hier wird ehrlich abgelehnt, nicht wie beim Honigtopf freundlich getan.
+   * Der Honigtopf trifft nur Bots; diese Prüfung kann auch einen Menschen
+   * treffen, dessen Formular zwei Stunden offen stand – und der muss erfahren,
+   * dass seine Nachricht NICHT angekommen ist.
+   */
+  const karte = kartePruefen(daten.karte);
+  if (!karte.ok) return antwort({ fehler: KARTE_FEHLT_TEXT }, 400);
+
   const name = (daten.name ?? '').trim();
   const email = (daten.email ?? '').trim();
   const nachricht = (daten.nachricht ?? '').trim();
@@ -89,6 +104,24 @@ export const POST: APIRoute = async ({ request }) => {
       400,
     );
   }
+
+  /*
+   * Karte entwerten – hier und nicht später.
+   *
+   * Zuerst stand diese Zeile direkt vor `sendMail`, was richtig aussah: erst
+   * einlösen, wenn die Mail wirklich rausgeht. Die Gegenprobe hat gezeigt, was
+   * daran falsch war. Ohne eingerichtetes SMTP kehrt der Endpunkt weiter unten
+   * zum `mailto`-Ausweichweg zurück – und zwar VOR dieser Zeile. Dieselbe
+   * Karte ging damit beliebig oft durch; genau die Wiederverwendung, die sie
+   * verhindern soll. Solange kein Postausgang eingerichtet ist, wäre die
+   * Einmaligkeit also wirkungslos gewesen, und das ist heute der Normalfall.
+   *
+   * Die Stelle jetzt: nach der Feldprüfung (ein Tippfehler verbraucht die
+   * Karte nicht) und vor jeder Verzweigung, die eine Antwort erzeugt – egal
+   * ob per SMTP oder als fertiger `mailto:`-Link. Beides ist eine erledigte
+   * Einreichung.
+   */
+  karteEinloesen(daten.karte);
 
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_VON } = process.env;
 

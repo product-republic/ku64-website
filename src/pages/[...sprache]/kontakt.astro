@@ -155,6 +155,22 @@ const brotkrumen = [
           <input id="k-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </p>
 
+        {/* Die Eintrittskarte holt das Skript beim Seitenaufbau – siehe
+            src/lib/eintrittskarte.ts. Sie kann nicht beim Bauen hier stehen:
+            Diese Seite ist statisch, eine eingebaute Karte trüge das Datum des
+            Deploys und wäre für alle Besucher dieselbe. */}
+        <input type="hidden" name="karte" value="" />
+
+        <noscript>
+          <p class="hinweis hinweis-warnung">
+            Dieses Formular braucht JavaScript, weil es vor dem Versand eine
+            Prüfung gegen automatisierte Nachrichten durchläuft. Ohne
+            JavaScript schreiben Sie uns bitte direkt an die E-Mail-Adresse
+            Ihres Standorts – die Adressen stehen oben auf dieser Seite. Eine
+            Barriere können Sie an jede davon melden.
+          </p>
+        </noscript>
+
         <button type="submit" class="knopf knopf-primaer knopf-gross">Nachricht senden</button>
 
         {/* `aria-live`: Die Rückmeldung erscheint ohne Seitenwechsel und muss
@@ -167,14 +183,29 @@ const brotkrumen = [
 </Basis>
 
 <script>
+  import { karteHolen } from '../../lib/karte-holen';
+
   /*
-    Fortschrittliche Verbesserung: Ohne dieses Skript sendet das Formular ganz
-    normal und der Server antwortet mit JSON. Mit ihm bleibt man auf der Seite.
+    Fortschrittliche Verbesserung: Mit diesem Skript bleibt man beim Absenden
+    auf der Seite.
+
+    Eine Einschränkung, die mit der Eintrittskarte dazugekommen ist: Ohne
+    JavaScript kommt das Formular nicht mehr durch, weil die Karte per fetch
+    geholt wird. Für diesen Fall steht ein `<noscript>` im Formular, das auf
+    die E-Mail-Adressen der Standorte weiter oben verweist – die stehen auf
+    dieser Seite ohnehin und sind der direktere Weg. Das ist bewusst so
+    entschieden und nicht übersehen: Diese Seite ist der schriftliche Weg für
+    Menschen, die nicht telefonieren können, und der darf nicht wortlos
+    verschwinden.
   */
   function formularVerdrahten() {
     const formular = document.querySelector<HTMLFormElement>('#kontaktformular');
     if (!formular || formular.dataset.verdrahtet) return;
     formular.dataset.verdrahtet = 'ja';
+
+    /* Sofort holen, nicht erst beim Absenden: Die Karte muss drei Sekunden alt
+       sein, und die soll der Besucher nicht am Knopf abwarten. */
+    karteHolen(formular);
 
     const rueckmeldung = formular.querySelector<HTMLElement>('.rueckmeldung');
     const knopf = formular.querySelector<HTMLButtonElement>('button[type=submit]');
@@ -218,6 +249,11 @@ const brotkrumen = [
         rueckmeldung.className = 'rueckmeldung schlecht';
       } finally {
         knopf.disabled = false;
+        /* Jede Karte gilt einmal. Wer eine zweite Nachricht schreibt – oder
+           gerade eine abgelehnte korrigiert –, braucht eine neue; sonst
+           scheitert der zweite Versuch an einer Prüfung, die den ersten
+           gemeint hat. `formular.reset()` oben leert das Feld ohnehin. */
+        karteHolen(formular);
       }
     });
   }

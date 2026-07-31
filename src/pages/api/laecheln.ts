@@ -24,6 +24,7 @@
 import type { APIRoute } from 'astro';
 import { GoogleGenAI } from '@google/genai';
 import nodemailer from 'nodemailer';
+import { kartePruefen, karteEinloesen, KARTE_FEHLT_TEXT } from '../../lib/eintrittskarte';
 
 export const prerender = false;
 
@@ -177,6 +178,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return antwort({ ok: true }, 200);
   }
 
+  /* Eintrittskarte – siehe src/lib/eintrittskarte.ts. Hier wiegt sie schwerer
+     als beim Kontaktformular: Jeder Durchlauf kostet einen Bildabruf bei
+     Gemini, also echtes Geld, und zwar bevor überhaupt eine Mail entsteht. */
+  const karte = kartePruefen(formular.get('karte'));
+  if (!karte.ok) return antwort({ fehler: KARTE_FEHLT_TEXT }, 400);
+
   if (!einwilligung || !volljaehrig) {
     return antwort(
       { fehler: 'Ohne Ihre ausdrückliche Einwilligung dürfen wir das Foto nicht verarbeiten.' },
@@ -199,6 +206,14 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email)) {
     return antwort({ fehler: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' }, 400);
   }
+
+  /* Karte entwerten, bevor sich der Weg gabelt. Stand sie erst vor dem
+     Bildabruf, ging sie ohne gesetzten GEMINI_API_KEY nie verloren, weil der
+     Demo-Zweig darunter vorher zurückkehrt – dieselbe Lücke wie beim
+     Kontaktformular ohne SMTP. Ab hier ist die Einreichung erledigt, in jedem
+     Zweig. Die Feldprüfungen liegen davor: Ein abgelehntes Dateiformat soll
+     die Karte nicht kosten. */
+  karteEinloesen(formular.get('karte'));
 
   const schluessel = process.env.GEMINI_API_KEY;
   if (!schluessel) {
