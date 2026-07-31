@@ -58,12 +58,36 @@ const pfade = adressen.map((a) => a.replace(basis, '')).sort();
  * eine zweite Liste im Quelltext – zwei Listen laufen auseinander.
  */
 const widersprueche = [];
+/*
+ * Und der zweite Widerspruch, der ohne Prüfung unsichtbar bleibt: eine
+ * Adresse, die in der Sitemap steht und per Canonical auf eine ANDERE zeigt.
+ *
+ * Die Sitemap sagt „das hier ist ein Original", das Canonical sagt „nein, das
+ * Original steht dort drüben". Google folgt in aller Regel dem Canonical und
+ * meldet die Adresse als „Alternative Seite mit richtigem kanonischen Tag" –
+ * das klingt harmlos, heißt aber: Die Sitemap ist zu einem Teil Rauschen.
+ *
+ * Gefunden hat diese Prüfung 96 Adressen von 353. Es waren die Unterthemen
+ * unter einem Standort – `/potsdam/leistungen/aligner/zahnkorrektur/` und
+ * dieselbe Seite unter drei weiteren Orten, gemessen 100 Prozent wortgleich.
+ * Die Ausschlussregel in `standortfassungen.ts` prüfte nur
+ * `/<ort>/leistungen/<slug>/` und sah eine Ebene tiefer nicht hin.
+ *
+ * Das ist der Grund, warum hier gegen das gebaute HTML geprüft wird und nicht
+ * gegen die Regel: Die Regel war der Fehler.
+ */
+const falschesOriginal = [];
+
 for (const p of pfade) {
   const datei = path.join(WURZEL, 'dist', 'client', p.replace(/^\//, ''), 'index.html');
   if (!existsSync(datei)) continue;
   const html = await readFile(datei, 'utf8');
   if (/<meta[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) {
     widersprueche.push(p);
+  }
+  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1];
+  if (canonical && canonical.replace(basis, '') !== p) {
+    falschesOriginal.push([p, canonical.replace(basis, '')]);
   }
 }
 
@@ -77,6 +101,25 @@ if (widersprueche.length) {
     '\n          Entweder gehört die Seite in den Index – dann muss das noindex weg –,\n' +
       '          oder sie gehört nicht in die Sitemap. Der Filter dafür steht in\n' +
       '          astro.config.mjs bei der Sitemap-Integration.',
+  );
+  process.exit(1);
+}
+
+if (falschesOriginal.length) {
+  console.error(
+    `\n[sitemap] ABBRUCH: ${falschesOriginal.length} Adresse(n) stehen in der Sitemap` +
+      ' und verweisen per Canonical auf eine andere Seite:',
+  );
+  for (const [p, k] of falschesOriginal.slice(0, 12)) console.error(`    ${p}\n        → ${k}`);
+  if (falschesOriginal.length > 12) {
+    console.error(`    … und ${falschesOriginal.length - 12} weitere`);
+  }
+  console.error(
+    '\n          Die Sitemap meldet diese Adressen als Original, die Seite selbst\n' +
+      '          verweist auf ein anderes. Entweder hat die Seite eigene Substanz –\n' +
+      '          dann gehört das `kanonischStatt` weg –, oder sie hat keine, dann\n' +
+      '          gehört sie nicht in die Sitemap: `ausSitemapAusschliessen()` in\n' +
+      '          src/data/standortfassungen.ts.',
   );
   process.exit(1);
 }

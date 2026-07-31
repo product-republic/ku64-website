@@ -4,14 +4,14 @@
 > `dist/client/sitemap-0.xml`, also aus derselben Datei, die Google
 > bekommt. Neu schreiben mit `npm run sitemap:liste`.
 
-**353 Seiten**, Stand des letzten Bauvorgangs.
+**257 Seiten**, Stand des letzten Bauvorgangs.
 
 ## Für Suchmaschinen
 
 | Datei | Zweck |
 |---|---|
 | `https://ku64.de/sitemap-index.xml` | **Diese Adresse in die Google Search Console eintragen.** Sie verweist auf alle weiteren. |
-| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 353 Adressen |
+| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 257 Adressen |
 | `https://ku64.de/robots.txt` | Verweist ebenfalls auf die Sitemap – Suchmaschinen finden sie so auch ohne Eintragung |
 
 **Englisch und Französisch stehen absichtlich nicht drin.** Beide Fassungen
@@ -22,7 +22,7 @@ stehen sie ohne weiteres Zutun drin.
 
 ## Nach Standort
 
-### KU64 Kurfürstendamm — 90 Seiten
+### KU64 Kurfürstendamm — 59 Seiten
 
 <details>
 <summary><strong>Übersicht</strong> – 1 Seite</summary>
@@ -38,43 +38,6 @@ stehen sie ohne weiteres Zutun drin.
 - [Kontakt](https://ku64.de/berlin-charlottenburg/kontakt/)  `/berlin-charlottenburg/kontakt/`
 - [Praxis](https://ku64.de/berlin-charlottenburg/praxis/)  `/berlin-charlottenburg/praxis/`
 - [Termine](https://ku64.de/berlin-charlottenburg/termine/)  `/berlin-charlottenburg/termine/`
-
-</details>
-
-<details>
-<summary><strong>Behandlungen</strong> – 31 Seiten</summary>
-
-- [Sos zahnspangen](https://ku64.de/berlin-charlottenburg/leistungen/aligner/sos-zahnspangen/)  `/berlin-charlottenburg/leistungen/aligner/sos-zahnspangen/`
-- [Zahnkorrektur](https://ku64.de/berlin-charlottenburg/leistungen/aligner/zahnkorrektur/)  `/berlin-charlottenburg/leistungen/aligner/zahnkorrektur/`
-- [Craniomandibulaere dysfunktion](https://ku64.de/berlin-charlottenburg/leistungen/cmd-behandlung/craniomandibulaere-dysfunktion/)  `/berlin-charlottenburg/leistungen/cmd-behandlung/craniomandibulaere-dysfunktion/`
-- [Osteopathie](https://ku64.de/berlin-charlottenburg/leistungen/cmd-behandlung/osteopathie/)  `/berlin-charlottenburg/leistungen/cmd-behandlung/osteopathie/`
-- [Praeimplantationsdiagnostik](https://ku64.de/berlin-charlottenburg/leistungen/dvt-3d-roentgen/praeimplantationsdiagnostik/)  `/berlin-charlottenburg/leistungen/dvt-3d-roentgen/praeimplantationsdiagnostik/`
-- [Feste zahnspange](https://ku64.de/berlin-charlottenburg/leistungen/feste-zahnspange/feste-zahnspange/)  `/berlin-charlottenburg/leistungen/feste-zahnspange/feste-zahnspange/`
-- [Zahnspange reinigen](https://ku64.de/berlin-charlottenburg/leistungen/feste-zahnspange/zahnspange-reinigen/)  `/berlin-charlottenburg/leistungen/feste-zahnspange/zahnspange-reinigen/`
-- [Periimplantitis](https://ku64.de/berlin-charlottenburg/leistungen/implantat-prophylaxe/periimplantitis/)  `/berlin-charlottenburg/leistungen/implantat-prophylaxe/periimplantitis/`
-- [Cerec](https://ku64.de/berlin-charlottenburg/leistungen/inlays-onlays/cerec/)  `/berlin-charlottenburg/leistungen/inlays-onlays/cerec/`
-- [Erster besuch bei ku64](https://ku64.de/berlin-charlottenburg/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/)  `/berlin-charlottenburg/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/`
-- [Karies bei kindern](https://ku64.de/berlin-charlottenburg/leistungen/kinderzahnarzt/karies-bei-kindern/)  `/berlin-charlottenburg/leistungen/kinderzahnarzt/karies-bei-kindern/`
-- [Kinderzahnarzt](https://ku64.de/berlin-charlottenburg/leistungen/kinderzahnarzt/kinderzahnarzt/)  `/berlin-charlottenburg/leistungen/kinderzahnarzt/kinderzahnarzt/`
-- [Therapeutisches zaubern](https://ku64.de/berlin-charlottenburg/leistungen/kinderzahnarzt/therapeutisches-zaubern/)  `/berlin-charlottenburg/leistungen/kinderzahnarzt/therapeutisches-zaubern/`
-- [Schnarcher schutzschiene](https://ku64.de/berlin-charlottenburg/leistungen/knirscherschiene/schnarcher-schutzschiene/)  `/berlin-charlottenburg/leistungen/knirscherschiene/schnarcher-schutzschiene/`
-- [Sinuslift](https://ku64.de/berlin-charlottenburg/leistungen/knochenaufbau/sinuslift/)  `/berlin-charlottenburg/leistungen/knochenaufbau/sinuslift/`
-- [Amalgamentfernung](https://ku64.de/berlin-charlottenburg/leistungen/kunststofffuellungen/amalgamentfernung/)  `/berlin-charlottenburg/leistungen/kunststofffuellungen/amalgamentfernung/`
-- [Laserbehandlung](https://ku64.de/berlin-charlottenburg/leistungen/parodontitis-behandlung/laserbehandlung/)  `/berlin-charlottenburg/leistungen/parodontitis-behandlung/laserbehandlung/`
-- [Photothermische therapie emundo](https://ku64.de/berlin-charlottenburg/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/)  `/berlin-charlottenburg/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/`
-- [Zahnfleischaufbau](https://ku64.de/berlin-charlottenburg/leistungen/parodontitis-behandlung/zahnfleischaufbau/)  `/berlin-charlottenburg/leistungen/parodontitis-behandlung/zahnfleischaufbau/`
-- [Air flow](https://ku64.de/berlin-charlottenburg/leistungen/prophylaxe-4-0/air-flow/)  `/berlin-charlottenburg/leistungen/prophylaxe-4-0/air-flow/`
-- [Gbt guided biofilm therapy](https://ku64.de/berlin-charlottenburg/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/)  `/berlin-charlottenburg/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/`
-- [Prophylaxe 4 0](https://ku64.de/berlin-charlottenburg/leistungen/prophylaxe-4-0/prophylaxe-4-0/)  `/berlin-charlottenburg/leistungen/prophylaxe-4-0/prophylaxe-4-0/`
-- [Ku64 smile swiss smile](https://ku64.de/berlin-charlottenburg/leistungen/smile-design/ku64-smile-swiss-smile/)  `/berlin-charlottenburg/leistungen/smile-design/ku64-smile-swiss-smile/`
-- [Smile design dentallabor](https://ku64.de/berlin-charlottenburg/leistungen/smile-design/smile-design-dentallabor/)  `/berlin-charlottenburg/leistungen/smile-design/smile-design-dentallabor/`
-- [Endodontie fuer ueberweiser](https://ku64.de/berlin-charlottenburg/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/)  `/berlin-charlottenburg/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/`
-- [Endodontie fuer ueberwiesene patienten](https://ku64.de/berlin-charlottenburg/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/)  `/berlin-charlottenburg/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/`
-- [Implantat oder bruecke](https://ku64.de/berlin-charlottenburg/leistungen/zahnimplantate/implantat-oder-bruecke/)  `/berlin-charlottenburg/leistungen/zahnimplantate/implantat-oder-bruecke/`
-- [Implantate und rauchen](https://ku64.de/berlin-charlottenburg/leistungen/zahnimplantate/implantate-und-rauchen/)  `/berlin-charlottenburg/leistungen/zahnimplantate/implantate-und-rauchen/`
-- [Zahnimplantat haltbarkeit](https://ku64.de/berlin-charlottenburg/leistungen/zahnimplantate/zahnimplantat-haltbarkeit/)  `/berlin-charlottenburg/leistungen/zahnimplantate/zahnimplantat-haltbarkeit/`
-- [Zahnimplantat kosten](https://ku64.de/berlin-charlottenburg/leistungen/zahnimplantate/zahnimplantat-kosten/)  `/berlin-charlottenburg/leistungen/zahnimplantate/zahnimplantat-kosten/`
-- [Karies risiko bestimmung](https://ku64.de/berlin-charlottenburg/leistungen/zahnvorsorge/karies-risiko-bestimmung/)  `/berlin-charlottenburg/leistungen/zahnvorsorge/karies-risiko-bestimmung/`
 
 </details>
 
@@ -138,7 +101,7 @@ stehen sie ohne weiteres Zutun drin.
 
 </details>
 
-### KU64 Potsdam — 45 Seiten
+### KU64 Potsdam — 16 Seiten
 
 <details>
 <summary><strong>Übersicht</strong> – 1 Seite</summary>
@@ -154,41 +117,6 @@ stehen sie ohne weiteres Zutun drin.
 - [Kontakt](https://ku64.de/potsdam/kontakt/)  `/potsdam/kontakt/`
 - [Praxis](https://ku64.de/potsdam/praxis/)  `/potsdam/praxis/`
 - [Termine](https://ku64.de/potsdam/termine/)  `/potsdam/termine/`
-
-</details>
-
-<details>
-<summary><strong>Behandlungen</strong> – 29 Seiten</summary>
-
-- [Sos zahnspangen](https://ku64.de/potsdam/leistungen/aligner/sos-zahnspangen/)  `/potsdam/leistungen/aligner/sos-zahnspangen/`
-- [Zahnkorrektur](https://ku64.de/potsdam/leistungen/aligner/zahnkorrektur/)  `/potsdam/leistungen/aligner/zahnkorrektur/`
-- [Craniomandibulaere dysfunktion](https://ku64.de/potsdam/leistungen/cmd-behandlung/craniomandibulaere-dysfunktion/)  `/potsdam/leistungen/cmd-behandlung/craniomandibulaere-dysfunktion/`
-- [Osteopathie](https://ku64.de/potsdam/leistungen/cmd-behandlung/osteopathie/)  `/potsdam/leistungen/cmd-behandlung/osteopathie/`
-- [Praeimplantationsdiagnostik](https://ku64.de/potsdam/leistungen/dvt-3d-roentgen/praeimplantationsdiagnostik/)  `/potsdam/leistungen/dvt-3d-roentgen/praeimplantationsdiagnostik/`
-- [Periimplantitis](https://ku64.de/potsdam/leistungen/implantat-prophylaxe/periimplantitis/)  `/potsdam/leistungen/implantat-prophylaxe/periimplantitis/`
-- [Cerec](https://ku64.de/potsdam/leistungen/inlays-onlays/cerec/)  `/potsdam/leistungen/inlays-onlays/cerec/`
-- [Erster besuch bei ku64](https://ku64.de/potsdam/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/)  `/potsdam/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/`
-- [Karies bei kindern](https://ku64.de/potsdam/leistungen/kinderzahnarzt/karies-bei-kindern/)  `/potsdam/leistungen/kinderzahnarzt/karies-bei-kindern/`
-- [Kinderzahnarzt](https://ku64.de/potsdam/leistungen/kinderzahnarzt/kinderzahnarzt/)  `/potsdam/leistungen/kinderzahnarzt/kinderzahnarzt/`
-- [Therapeutisches zaubern](https://ku64.de/potsdam/leistungen/kinderzahnarzt/therapeutisches-zaubern/)  `/potsdam/leistungen/kinderzahnarzt/therapeutisches-zaubern/`
-- [Schnarcher schutzschiene](https://ku64.de/potsdam/leistungen/knirscherschiene/schnarcher-schutzschiene/)  `/potsdam/leistungen/knirscherschiene/schnarcher-schutzschiene/`
-- [Sinuslift](https://ku64.de/potsdam/leistungen/knochenaufbau/sinuslift/)  `/potsdam/leistungen/knochenaufbau/sinuslift/`
-- [Amalgamentfernung](https://ku64.de/potsdam/leistungen/kunststofffuellungen/amalgamentfernung/)  `/potsdam/leistungen/kunststofffuellungen/amalgamentfernung/`
-- [Laserbehandlung](https://ku64.de/potsdam/leistungen/parodontitis-behandlung/laserbehandlung/)  `/potsdam/leistungen/parodontitis-behandlung/laserbehandlung/`
-- [Photothermische therapie emundo](https://ku64.de/potsdam/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/)  `/potsdam/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/`
-- [Zahnfleischaufbau](https://ku64.de/potsdam/leistungen/parodontitis-behandlung/zahnfleischaufbau/)  `/potsdam/leistungen/parodontitis-behandlung/zahnfleischaufbau/`
-- [Air flow](https://ku64.de/potsdam/leistungen/prophylaxe-4-0/air-flow/)  `/potsdam/leistungen/prophylaxe-4-0/air-flow/`
-- [Gbt guided biofilm therapy](https://ku64.de/potsdam/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/)  `/potsdam/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/`
-- [Prophylaxe 4 0](https://ku64.de/potsdam/leistungen/prophylaxe-4-0/prophylaxe-4-0/)  `/potsdam/leistungen/prophylaxe-4-0/prophylaxe-4-0/`
-- [Ku64 smile swiss smile](https://ku64.de/potsdam/leistungen/smile-design/ku64-smile-swiss-smile/)  `/potsdam/leistungen/smile-design/ku64-smile-swiss-smile/`
-- [Smile design dentallabor](https://ku64.de/potsdam/leistungen/smile-design/smile-design-dentallabor/)  `/potsdam/leistungen/smile-design/smile-design-dentallabor/`
-- [Endodontie fuer ueberweiser](https://ku64.de/potsdam/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/)  `/potsdam/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/`
-- [Endodontie fuer ueberwiesene patienten](https://ku64.de/potsdam/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/)  `/potsdam/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/`
-- [Implantat oder bruecke](https://ku64.de/potsdam/leistungen/zahnimplantate/implantat-oder-bruecke/)  `/potsdam/leistungen/zahnimplantate/implantat-oder-bruecke/`
-- [Implantate und rauchen](https://ku64.de/potsdam/leistungen/zahnimplantate/implantate-und-rauchen/)  `/potsdam/leistungen/zahnimplantate/implantate-und-rauchen/`
-- [Zahnimplantat haltbarkeit](https://ku64.de/potsdam/leistungen/zahnimplantate/zahnimplantat-haltbarkeit/)  `/potsdam/leistungen/zahnimplantate/zahnimplantat-haltbarkeit/`
-- [Zahnimplantat kosten](https://ku64.de/potsdam/leistungen/zahnimplantate/zahnimplantat-kosten/)  `/potsdam/leistungen/zahnimplantate/zahnimplantat-kosten/`
-- [Karies risiko bestimmung](https://ku64.de/potsdam/leistungen/zahnvorsorge/karies-risiko-bestimmung/)  `/potsdam/leistungen/zahnvorsorge/karies-risiko-bestimmung/`
 
 </details>
 
@@ -209,7 +137,7 @@ stehen sie ohne weiteres Zutun drin.
 
 </details>
 
-### KU64 Berlin-Mitte — 33 Seiten
+### KU64 Berlin-Mitte — 14 Seiten
 
 <details>
 <summary><strong>Übersicht</strong> – 1 Seite</summary>
@@ -229,31 +157,6 @@ stehen sie ohne weiteres Zutun drin.
 </details>
 
 <details>
-<summary><strong>Behandlungen</strong> – 19 Seiten</summary>
-
-- [Periimplantitis](https://ku64.de/berlinmitte/leistungen/implantat-prophylaxe/periimplantitis/)  `/berlinmitte/leistungen/implantat-prophylaxe/periimplantitis/`
-- [Cerec](https://ku64.de/berlinmitte/leistungen/inlays-onlays/cerec/)  `/berlinmitte/leistungen/inlays-onlays/cerec/`
-- [Erster besuch bei ku64](https://ku64.de/berlinmitte/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/)  `/berlinmitte/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/`
-- [Karies bei kindern](https://ku64.de/berlinmitte/leistungen/kinderzahnarzt/karies-bei-kindern/)  `/berlinmitte/leistungen/kinderzahnarzt/karies-bei-kindern/`
-- [Kinderzahnarzt](https://ku64.de/berlinmitte/leistungen/kinderzahnarzt/kinderzahnarzt/)  `/berlinmitte/leistungen/kinderzahnarzt/kinderzahnarzt/`
-- [Therapeutisches zaubern](https://ku64.de/berlinmitte/leistungen/kinderzahnarzt/therapeutisches-zaubern/)  `/berlinmitte/leistungen/kinderzahnarzt/therapeutisches-zaubern/`
-- [Schnarcher schutzschiene](https://ku64.de/berlinmitte/leistungen/knirscherschiene/schnarcher-schutzschiene/)  `/berlinmitte/leistungen/knirscherschiene/schnarcher-schutzschiene/`
-- [Amalgamentfernung](https://ku64.de/berlinmitte/leistungen/kunststofffuellungen/amalgamentfernung/)  `/berlinmitte/leistungen/kunststofffuellungen/amalgamentfernung/`
-- [Laserbehandlung](https://ku64.de/berlinmitte/leistungen/parodontitis-behandlung/laserbehandlung/)  `/berlinmitte/leistungen/parodontitis-behandlung/laserbehandlung/`
-- [Photothermische therapie emundo](https://ku64.de/berlinmitte/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/)  `/berlinmitte/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/`
-- [Zahnfleischaufbau](https://ku64.de/berlinmitte/leistungen/parodontitis-behandlung/zahnfleischaufbau/)  `/berlinmitte/leistungen/parodontitis-behandlung/zahnfleischaufbau/`
-- [Air flow](https://ku64.de/berlinmitte/leistungen/prophylaxe-4-0/air-flow/)  `/berlinmitte/leistungen/prophylaxe-4-0/air-flow/`
-- [Gbt guided biofilm therapy](https://ku64.de/berlinmitte/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/)  `/berlinmitte/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/`
-- [Prophylaxe 4 0](https://ku64.de/berlinmitte/leistungen/prophylaxe-4-0/prophylaxe-4-0/)  `/berlinmitte/leistungen/prophylaxe-4-0/prophylaxe-4-0/`
-- [Ku64 smile swiss smile](https://ku64.de/berlinmitte/leistungen/smile-design/ku64-smile-swiss-smile/)  `/berlinmitte/leistungen/smile-design/ku64-smile-swiss-smile/`
-- [Smile design dentallabor](https://ku64.de/berlinmitte/leistungen/smile-design/smile-design-dentallabor/)  `/berlinmitte/leistungen/smile-design/smile-design-dentallabor/`
-- [Endodontie fuer ueberweiser](https://ku64.de/berlinmitte/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/)  `/berlinmitte/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/`
-- [Endodontie fuer ueberwiesene patienten](https://ku64.de/berlinmitte/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/)  `/berlinmitte/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/`
-- [Karies risiko bestimmung](https://ku64.de/berlinmitte/leistungen/zahnvorsorge/karies-risiko-bestimmung/)  `/berlinmitte/leistungen/zahnvorsorge/karies-risiko-bestimmung/`
-
-</details>
-
-<details>
 <summary><strong>Team</strong> – 9 Seiten</summary>
 
 - [Team](https://ku64.de/berlinmitte/team/)  `/berlinmitte/team/`
@@ -268,7 +171,7 @@ stehen sie ohne weiteres Zutun drin.
 
 </details>
 
-### KU64 Wilmersdorf — 22 Seiten
+### KU64 Wilmersdorf — 5 Seiten
 
 <details>
 <summary><strong>Übersicht</strong> – 1 Seite</summary>
@@ -284,29 +187,6 @@ stehen sie ohne weiteres Zutun drin.
 - [Kontakt](https://ku64.de/wilmersdorf/kontakt/)  `/wilmersdorf/kontakt/`
 - [Praxis](https://ku64.de/wilmersdorf/praxis/)  `/wilmersdorf/praxis/`
 - [Termine](https://ku64.de/wilmersdorf/termine/)  `/wilmersdorf/termine/`
-
-</details>
-
-<details>
-<summary><strong>Behandlungen</strong> – 17 Seiten</summary>
-
-- [Periimplantitis](https://ku64.de/wilmersdorf/leistungen/implantat-prophylaxe/periimplantitis/)  `/wilmersdorf/leistungen/implantat-prophylaxe/periimplantitis/`
-- [Cerec](https://ku64.de/wilmersdorf/leistungen/inlays-onlays/cerec/)  `/wilmersdorf/leistungen/inlays-onlays/cerec/`
-- [Erster besuch bei ku64](https://ku64.de/wilmersdorf/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/)  `/wilmersdorf/leistungen/kinderzahnarzt/erster-besuch-bei-ku64/`
-- [Karies bei kindern](https://ku64.de/wilmersdorf/leistungen/kinderzahnarzt/karies-bei-kindern/)  `/wilmersdorf/leistungen/kinderzahnarzt/karies-bei-kindern/`
-- [Kinderzahnarzt](https://ku64.de/wilmersdorf/leistungen/kinderzahnarzt/kinderzahnarzt/)  `/wilmersdorf/leistungen/kinderzahnarzt/kinderzahnarzt/`
-- [Therapeutisches zaubern](https://ku64.de/wilmersdorf/leistungen/kinderzahnarzt/therapeutisches-zaubern/)  `/wilmersdorf/leistungen/kinderzahnarzt/therapeutisches-zaubern/`
-- [Schnarcher schutzschiene](https://ku64.de/wilmersdorf/leistungen/knirscherschiene/schnarcher-schutzschiene/)  `/wilmersdorf/leistungen/knirscherschiene/schnarcher-schutzschiene/`
-- [Amalgamentfernung](https://ku64.de/wilmersdorf/leistungen/kunststofffuellungen/amalgamentfernung/)  `/wilmersdorf/leistungen/kunststofffuellungen/amalgamentfernung/`
-- [Laserbehandlung](https://ku64.de/wilmersdorf/leistungen/parodontitis-behandlung/laserbehandlung/)  `/wilmersdorf/leistungen/parodontitis-behandlung/laserbehandlung/`
-- [Photothermische therapie emundo](https://ku64.de/wilmersdorf/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/)  `/wilmersdorf/leistungen/parodontitis-behandlung/photothermische-therapie-emundo/`
-- [Zahnfleischaufbau](https://ku64.de/wilmersdorf/leistungen/parodontitis-behandlung/zahnfleischaufbau/)  `/wilmersdorf/leistungen/parodontitis-behandlung/zahnfleischaufbau/`
-- [Air flow](https://ku64.de/wilmersdorf/leistungen/prophylaxe-4-0/air-flow/)  `/wilmersdorf/leistungen/prophylaxe-4-0/air-flow/`
-- [Gbt guided biofilm therapy](https://ku64.de/wilmersdorf/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/)  `/wilmersdorf/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/`
-- [Prophylaxe 4 0](https://ku64.de/wilmersdorf/leistungen/prophylaxe-4-0/prophylaxe-4-0/)  `/wilmersdorf/leistungen/prophylaxe-4-0/prophylaxe-4-0/`
-- [Endodontie fuer ueberweiser](https://ku64.de/wilmersdorf/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/)  `/wilmersdorf/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberweiser/`
-- [Endodontie fuer ueberwiesene patienten](https://ku64.de/wilmersdorf/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/)  `/wilmersdorf/leistungen/wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/`
-- [Karies risiko bestimmung](https://ku64.de/wilmersdorf/leistungen/zahnvorsorge/karies-risiko-bestimmung/)  `/wilmersdorf/leistungen/zahnvorsorge/karies-risiko-bestimmung/`
 
 </details>
 

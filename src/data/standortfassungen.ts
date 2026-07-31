@@ -134,6 +134,28 @@ export function ausSitemapAusschliessen(pfad: string): boolean {
   // /<ort>/leistungen/  und  /<ort>/blog/  und  /<ort>/anamnese/
   if (/^\/[a-z-]+\/(leistungen|blog|anamnese)\/$/.test(p)) return true;
 
+  /*
+   * Ein Unterthema unter einem Standort – immer ausgeschlossen.
+   *
+   * Diese Regel fehlte bis zum 31.07.2026, und sie fehlte teuer: 96 der 353
+   * Sitemap-Adressen waren Unterthemen unter einem Ort. Gemessen am gebauten
+   * HTML sind `/berlin-charlottenburg/leistungen/aligner/zahnkorrektur/` und
+   * dieselbe Adresse unter Potsdam zu 100 Prozent wortgleich – 288 Wörter
+   * beide. Der Grund liegt in der Sache: Das Unterthema beantwortet eine
+   * fachliche Frage („Wie lange hält ein Implantat"), keine örtliche.
+   *
+   * Keine Ausnahme über `fassungIstEigenstaendig()`. Eigene Substanz kann
+   * eine Standortfassung nur dort bekommen, wo Ablauf, Geräte und
+   * Behandelnde beschrieben sind – auf der Behandlungsseite. Ein Unterthema
+   * trägt davon nichts.
+   *
+   * Die Regel stand vorher eine Ebene zu hoch: Der Ausdruck darunter endet
+   * nach dem Leistungs-Slug und hat die tiefere Ebene nie gesehen. Wer eine
+   * solche Regel schreibt, sollte sie gegen die gebaute Sitemap halten –
+   * `scripts/sitemap-liste.mjs` tut das seit demselben Tag.
+   */
+  if (/^\/[a-z-]+\/leistungen\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(p)) return true;
+
   // /<ort>/leistungen/<slug>/ – nur, wenn die Fassung nicht für sich steht
   const treffer = p.match(/^\/([a-z-]+)\/leistungen\/([a-z0-9-]+)\/$/);
   if (treffer) return !fassungIstEigenstaendig(treffer[1], treffer[2]);

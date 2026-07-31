@@ -27,6 +27,29 @@
  * Angaben der Behandlung, nicht des Unterthemas; sie stehen einmal auf der
  * Hauptseite. Eine Kostenspanne, die an zwei Stellen gepflegt wird, ist an
  * einer davon veraltet.
+ *
+ * ── Warum das Canonical auf die standortfreie Fassung zeigt ─────────────
+ *
+ * Weil hier nichts steht, was nur an diesem Ort gilt. Gemessen am gebauten
+ * HTML: `/berlin-charlottenburg/leistungen/aligner/zahnkorrektur/` und
+ * `/potsdam/leistungen/aligner/zahnkorrektur/` sind zu 100 Prozent
+ * wortgleich, 288 Wörter beide. Der Text ist der wiederhergestellte
+ * Originaltext; er ist an vier Orten derselbe, weil er eine fachliche Frage
+ * beantwortet und keine örtliche.
+ *
+ * Ohne dieses Canonical meldete die Website Google 96 zusätzliche Originale
+ * derselben 24 Aussagen – ein Viertel der gesamten Sitemap. Genau der
+ * Befund, für den `standortfassungen.ts` gebaut wurde; die dortige Regel sah
+ * nur `/<ort>/leistungen/<slug>/` und eine Ebene tiefer nicht hin.
+ *
+ * Die Seite bleibt vollständig erreichbar und behält Adresse, Telefonnummer
+ * und Terminkalender ihres Standorts – für Besucher ändert sich nichts.
+ *
+ * Anders als bei der Behandlungsseite selbst gibt es hier KEINE Ausnahme
+ * über `fassungIstEigenstaendig()`: Eigene Substanz kann eine
+ * Standortfassung nur dort bekommen, wo Ablauf, Geräte und Behandelnde
+ * beschrieben werden – und das ist die Behandlungsseite, nicht die Antwort
+ * auf „Wie lange hält ein Implantat".
  */
 import { inhalte } from '../../../../../i18n/daten';
 import { texte } from '../../../../../i18n/katalog';
@@ -105,6 +128,7 @@ const geschwister = alleUnterthemen()
   pfad={pfad}
   brotkrumen={brotkrumen}
   schema={[schemaBrotkrumen(brotkrumen)]}
+  kanonischStatt={`/leistungen/${leistung.slug}/${thema.slug}/`}
 >
   <div class="huelle abschnitt">
     <header class="kopf">
