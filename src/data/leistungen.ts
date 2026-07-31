@@ -37,6 +37,36 @@ export interface Kategorie {
   beschreibung: string;
   /** Reihenfolge in Navigation und Übersichten. */
   rang: number;
+  /**
+   * Die Farbe, an der man die Kategorie wiedererkennt.
+   *
+   * ── Warum eine Farbe und keine Icons ──────────────────────────────────
+   *
+   * Elf Kategorien bräuchten elf Piktogramme, und zahnmedizinische Symbole
+   * sind notorisch mehrdeutig: Für Vorsorge, Zahnerhalt, Zahnersatz und
+   * Implantologie zeichnet jeder denselben Zahn. Dazu käme für jedes ein
+   * Alternativtext in drei Sprachen. Viel Pflege, wenig Orientierung.
+   *
+   * Eine Farbe je Kategorie leistet dasselbe billiger – vorausgesetzt, sie
+   * gilt ÜBERALL: im großen Menü, auf der Leistungsübersicht, auf der
+   * Behandlungsseite. Dann ist sie ein Wiedererkennungszeichen und nicht
+   * Dekoration.
+   *
+   * ── Warum genau diese Farben ──────────────────────────────────────────
+   *
+   * Kein Regenbogen. Die Marke hat zwei Farben – Gelb #FFCC00 aus den
+   * Praxisräumen und Hausrot #B71E3F –, und die Reihe läuft in elf Schritten
+   * von der einen zur anderen, in der Reihenfolge des `rang`. Vorsorge
+   * beginnt sonnig, die Ästhetische Medizin endet im Hausrot. Das ist
+   * nebenbei die Reihenfolge, in der Behandlungen ernster werden.
+   *
+   * ── Und was die Farbe NICHT tut ───────────────────────────────────────
+   *
+   * Sie trägt keine Bedeutung allein (WCAG 1.4.1): Jede Kategorie steht
+   * ausgeschrieben daneben. Und sie färbt keinen Text – die Beschriftungen
+   * bleiben in voller Tinte, weil #FFCC00 auf Weiß 1,7:1 ergibt.
+   */
+  farbe: string;
 }
 
 export interface FaqEintrag {
@@ -91,6 +121,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Alles, was dafür sorgt, dass größere Behandlungen gar nicht erst nötig werden – von der professionellen Zahnreinigung bis zur Früherkennung.',
     rang: 1,
+    farbe: '#FFCC00',
   },
   {
     slug: 'aesthetik',
@@ -98,6 +129,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Behandlungen, bei denen es um das Aussehen Ihrer Zähne geht: Farbe, Form, Stellung und das Zusammenspiel mit Ihrem Gesicht.',
     rang: 2,
+    farbe: '#FBB812',
   },
   {
     slug: 'zahnersatz',
@@ -105,6 +137,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Wenn Zahnsubstanz fehlt: Füllungen, Inlays, Kronen, Brücken und Prothesen – gefertigt im eigenen Meisterlabor.',
     rang: 3,
+    farbe: '#F5A423',
   },
   {
     slug: 'implantologie',
@@ -112,6 +145,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Künstliche Zahnwurzeln als festes Fundament für einzelne Zähne, Brücken oder einen kompletten Kiefer.',
     rang: 4,
+    farbe: '#EC9033',
   },
   {
     slug: 'zahnerhalt',
@@ -119,6 +153,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Den eigenen Zahn retten, statt ihn zu ersetzen – Wurzelkanalbehandlung, Parodontitistherapie und schonende Füllungen.',
     rang: 5,
+    farbe: '#E17C41',
   },
   {
     slug: 'kieferorthopaedie',
@@ -126,6 +161,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Zahnfehlstellungen korrigieren – mit fast unsichtbaren Schienen oder klassischen Spangen, für Kinder und Erwachsene.',
     rang: 6,
+    farbe: '#D66A4E',
   },
   {
     slug: 'chirurgie',
@@ -133,6 +169,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Operative Eingriffe im Mund: Weisheitszähne, Zahnentfernungen, Knochenaufbau – mit Erfahrung und schonender Technik.',
     rang: 7,
+    farbe: '#CA585A',
   },
   {
     slug: 'kinder',
@@ -140,6 +177,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Zahnmedizin, die Kindern keine Angst macht – von der ersten Kontrolle bis zur Behandlung von Kreidezähnen.',
     rang: 8,
+    farbe: '#C24A5C',
   },
   {
     slug: 'funktion',
@@ -147,6 +185,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Wenn Kiefer, Muskeln und Zähne nicht zusammenspielen: Knirschen, CMD, Kiefergelenkschmerzen und Verspannungen.',
     rang: 9,
+    farbe: '#BC3E56',
   },
   {
     slug: 'angst',
@@ -154,6 +193,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Für alle, die den Zahnarztbesuch aufschieben: Behandlung in Sedierung, unter Lachgas oder in Vollnarkose.',
     rang: 10,
+    farbe: '#B7314B',
   },
   {
     /*
@@ -173,6 +213,7 @@ export const KATEGORIEN: Kategorie[] = [
     beschreibung:
       'Behandlungen im Gesicht statt am Zahn: Mimikfalten glätten und Volumen zurückgeben – ärztlich durchgeführt, ohne Operation.',
     rang: 11,
+    farbe: '#B71E3F',
   }
 ];
 

@@ -177,7 +177,7 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
                     </a>
                     <div class="mega-spalten">
                       {kategorienHier.map((k) => (
-                        <div class="mega-block">
+                        <div class="mega-block" style={`--kat:${k.farbe}`}>
                           <p class="mega-titel">
                             <a href={`${p.pfad}#${k.slug}`}>{k.name}</a>
                           </p>
@@ -559,25 +559,40 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   /*
-   * Der Ortsname sitzt unter der Marke – und nicht breiter als sie.
+   * Der Ortsname sitzt unter der Marke.
    *
-   * „KURFÜRSTENDAMM" ist vierzehn Zeichen lang und lief damit deutlich über
-   * das Logo hinaus. Das sah nicht nach Zusatz aus, sondern nach zweiter
-   * Zeile eines längeren Namens.
+   * ── Was hier schiefging, und warum zweimal ────────────────────────────
    *
-   * Die Breite ist an das Logo gebunden: 1,75rem Höhe bei einem
-   * Seitenverhältnis von 267:83,4 ergeben rund 5,6rem. Damit der längste
-   * Ortsname hineinpasst, sind Schriftgrad und Laufweite entsprechend
-   * gesetzt – enger als vorher, aber immer noch gesperrt genug, um als
-   * Auszeichnung gelesen zu werden.
+   * Erst stand die Breite auf 5,6rem, gerechnet aus der Logohöhe: 1,75rem
+   * bei 267:83,4. Die Rechnung war richtig und die Annahme falsch – gemessen
+   * braucht „KURFÜRSTENDAMM" 92 Pixel, der Kasten war 90 breit. Zwei Pixel,
+   * und die trafen ausgerechnet das letzte M.
+   *
+   * Das ist derselbe Fehler wie bei der Zeilenhöhe darunter, nur waagerecht:
+   * eine Maßzahl aus einer Rechnung statt aus einer Messung, kombiniert mit
+   * `overflow: hidden`, das den Beweis versteckt.
+   *
+   * Deshalb jetzt keine Breitenschranke mehr. Der Name ist so breit, wie er
+   * ist; `white-space: nowrap` verhindert, dass er stattdessen umbricht.
+   * Platz ist da – gemessen endet der Block auch bei 390 Pixeln
+   * Fensterbreite bei 143 Pixeln, die Navigation beginnt weit rechts davon.
+   * `kopf-pruefen.mjs` misst es jetzt bei jedem Lauf.
+   *
+   * ── Und der Kontrast ──────────────────────────────────────────────────
+   *
+   * `--tinte-leise` (#6F6F67) ergibt gegen den gemessenen Untergrund der
+   * Kopfleiste über einem Foto – rgb(148,166,149) – 2,4:1. Für Text dieser
+   * Größe sind 4,5:1 gefordert. Volle Tinte kommt auf 6,5:1. Dieselbe
+   * Entscheidung wie bei den Menüpunkten, aus demselben Grund: Dunklere
+   * Schrift statt dichteres Glas.
    */
   .logo-ort {
     font-size: 0.54rem;
     font-weight: 600;
     letter-spacing: 0.045em;
     text-transform: uppercase;
-    color: var(--tinte-leise);
-    max-width: 5.6rem;
+    color: var(--tinte);
+    white-space: nowrap;
     /*
      * Die Zeilenhöhe steht hier ausdrücklich, weil `max-height` sie sonst
      * beschneidet.
@@ -1061,21 +1076,30 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     inline-size: var(--b, 0);
     border-radius: var(--radius-voll);
     /*
-     * Getönt, nicht weiß.
+     * Weißliches Glas – und der Weg dorthin über zwei Fehlversuche.
      *
-     * Der erste Versuch nahm `--scheibe-flaeche` – dieselbe Farbe wie die
-     * alten Einzelflächen. Auf der hellen Kopfleiste ist das Weiß auf Weiß:
-     * Die Mechanik lief einwandfrei, zu sehen war nichts. Eine Glasfläche
-     * braucht etwas, wogegen sie sich abhebt, und auf hellem Grund ist das
-     * ein Hauch Dunkel, kein weiterer Hauch Hell.
+     * Erster Versuch: `--scheibe-flaeche`, also weiß. Ergebnis war Weiß auf
+     * Weiß, die Mechanik lief und zu sehen war nichts.
+     * Zweiter Versuch: getönt, `--tinte` zu 7 Prozent. Sichtbar ja, aber als
+     * grauer Schatten unter der Beschriftung – „zu durchsichtig".
+     *
+     * Der Denkfehler in beiden: Eine Glasfläche hebt sich nicht durch ihre
+     * FARBE ab, sondern durch ihre KANTE und ihren Schatten. Weiß mit einer
+     * weißen Kante und einem weichen Schlagschatten liest sich auf der
+     * hellen Kopfleiste als aufliegende Scheibe – dieselbe Sprache wie die
+     * Schaltflächen, und genau das ist gewollt.
+     *
+     * Der Schatten liegt AUSSEN. Innen lagen vorher zwei Kanten übereinander
+     * – der Rahmen und der `inset 0 1px 0`-Glanz –, und oben ergab das eine
+     * doppelte Linie. Eine Kante genügt.
      */
-    background: color-mix(in oklab, var(--tinte) 7%, transparent);
-    border: 1px solid color-mix(in oklab, var(--tinte) 6%, transparent);
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
     -webkit-backdrop-filter: blur(16px) saturate(var(--glas-saettigung));
     backdrop-filter: blur(16px) saturate(var(--glas-saettigung));
     box-shadow:
-      inset 0 1px 0 var(--glas-glanz),
-      inset 0 -1px 0 rgb(255 255 255 / 0.2);
+      0 1px 2px rgb(0 0 0 / 0.06),
+      0 6px 16px rgb(0 0 0 / 0.06);
     opacity: 0;
     pointer-events: none;
     /*
@@ -1252,6 +1276,44 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Farbe: Bereich in voller Tinte und fett, Behandlung in weicher Tinte
    * und normal.
    */
+  /*
+   * Die Kategoriefarbe – ein Strich, kein Icon.
+   *
+   * ── Warum keine Icons ─────────────────────────────────────────────────
+   *
+   * Elf Kategorien bräuchten elf Piktogramme, und in der Zahnmedizin sehen
+   * die alle gleich aus: Für Vorsorge, Zahnerhalt, Zahnersatz und
+   * Implantologie zeichnet jeder denselben Zahn. Dazu je ein Alternativtext
+   * in drei Sprachen. Viel Pflege, wenig Orientierung.
+   *
+   * ── Was der Strich leistet ────────────────────────────────────────────
+   *
+   * Er gibt dem Menü einen Rhythmus, ohne den Text zu verändern: Elf
+   * Überschriften in einer Reihe sind eine Wand, elf Überschriften mit einer
+   * durchlaufenden Farbskala sind eine Ordnung. Die Farben laufen in der
+   * Reihenfolge des `rang` von Markengelb zu Hausrot – kein Regenbogen,
+   * sondern die zwei Farben der Marke und die Töne dazwischen.
+   *
+   * Dieselbe Farbe steht in `leistungen.ts` und lässt sich überall
+   * verwenden, wo eine Kategorie auftaucht. Erst dann ist sie ein
+   * Wiedererkennungszeichen und nicht Dekoration.
+   *
+   * ── Und was sie nicht tut ─────────────────────────────────────────────
+   *
+   * Sie trägt keine Bedeutung allein (WCAG 1.4.1) – der Name steht
+   * ausgeschrieben daneben. Und sie färbt keinen Text: #FFCC00 auf Weiß
+   * ergibt 1,7:1.
+   */
+  .mega-titel::before {
+    content: '';
+    display: block;
+    inline-size: 1.6rem;
+    block-size: 3px;
+    margin-block-end: 0.45rem;
+    border-radius: var(--radius-voll);
+    background: var(--kat, var(--linie));
+  }
+
   .mega-titel {
     margin: 0 0 var(--raum-2);
     font-size: var(--t-sm);
@@ -1409,8 +1471,21 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     color: var(--tinte);
   }
 
-  .haupt-link:hover::after,
-  .haupt-link:focus-visible::after,
+  /*
+   * NUR der aktive Punkt hat eine eigene Fläche.
+   *
+   * Vorher blendete beim Überfahren zusätzlich die Fläche des Punktes ein –
+   * gleichzeitig mit dem wandernden Feld. Zu sehen waren damit zwei Pillen
+   * übereinander: eine, die von 0,86 auf 1 aufpoppt, und eine, die
+   * herübergleitet. Das war der Grund, warum die Bewegung „komisch" aussah;
+   * sie war nicht komisch, sie war doppelt.
+   *
+   * Der Fokus braucht keine eigene Fläche mehr: Das wandernde Feld folgt
+   * auch der Tastatur (`focus`-Zuhörer weiter unten), und `:focus-visible`
+   * bekommt zusätzlich den globalen Fokusrahmen aus `global.css`. Der ist
+   * sichtbar, wenn das Feld ausnahmsweise nicht erscheint – nämlich über dem
+   * aktiven Punkt.
+   */
   .haupt-link.ist-aktiv::after {
     opacity: 1;
     transform: scale(1);
@@ -1445,17 +1520,81 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     white-space: nowrap;
   }
 
+  /*
+   * Der Punkt vor der Rufnummer: geöffnet oder nicht.
+   *
+   * Er ist `aria-hidden` – die Öffnungszeiten stehen als Text in der
+   * Standortleiste. Hier ist er ein Blickfang, kein Informationsträger, und
+   * darf deshalb ausschließlich über Farbe und Bewegung sprechen.
+   */
   .punkt {
-    width: 7px;
-    height: 7px;
+    position: relative;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--tinte-leise);
     flex-shrink: 0;
   }
 
+  /*
+   * Geöffnet: kräftiges Grün, und ein Ring, der atmet.
+   *
+   * ── Warum der Ring pulsiert und nicht der Punkt ───────────────────────
+   *
+   * Ein Punkt, der selbst größer und kleiner wird, springt beim Lesen der
+   * Rufnummer daneben – das Auge folgt der Größenänderung und verliert die
+   * Ziffern. Ein Ring, der nach außen läuft und dabei verschwindet, macht
+   * dasselbe Versprechen („hier ist gerade jemand") und lässt den Text in
+   * Ruhe. Es ist die Bewegung eines Funksignals, nicht die eines Herzens.
+   *
+   * Der Ring liegt deshalb in einem Pseudoelement mit `transform: scale()` –
+   * das läuft im Compositor. Eine Animation auf `box-shadow` müsste der
+   * Browser bei jedem Bild neu zeichnen, und zwar unter der Kopfleiste, die
+   * ohnehin einen Weichzeichner trägt.
+   *
+   * ── Und die Farbe ────────────────────────────────────────────────────
+   *
+   * `--erfolg` (#1F7A52) blieb auf der hellen Kopfleiste unauffällig. Der
+   * Punkt bekommt jetzt zusätzlich einen satten Kern über einen zweiten,
+   * stehenden Ring – zusammen liest er sich als leuchtender Punkt statt als
+   * dunkelgrünes Pünktchen.
+   */
   .punkt.offen {
     background: var(--erfolg);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--erfolg) 22%, transparent);
+    box-shadow: 0 0 0 2.5px color-mix(in oklab, var(--erfolg) 30%, transparent);
+  }
+
+  .punkt.offen::after {
+    content: '';
+    position: absolute;
+    inset: -2.5px;
+    border-radius: 50%;
+    border: 1.5px solid color-mix(in oklab, var(--erfolg) 70%, transparent);
+    animation: punkt-welle 2.4s var(--kurve-weich) infinite;
+  }
+
+  @keyframes punkt-welle {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.75;
+    }
+    70% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+    }
+  }
+
+  /* Wer Bewegung abbestellt hat, bekommt den Ring stehend – nicht gar
+     keinen: Er trägt zur Auffälligkeit bei, um die es hier geht. */
+  @media (prefers-reduced-motion: reduce) {
+    .punkt.offen::after {
+      animation: none;
+      opacity: 0.6;
+    }
   }
 
   /* ── Standortleiste ── */

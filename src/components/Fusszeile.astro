@@ -150,19 +150,28 @@ const t = texte(daten.sprache);
           <li><a href={basis ? `${basis}/blog/` : '/blog/'}>{t('krume.blog')}</a></li>
         </ul>
 
-        {/* Über KU64.
-            Stand bis eben in keiner Fußzeile – die Seite war über den Kopf
-            erreichbar und sonst nirgends. Hier stehen die vier Belegseiten,
-            weil sie das sind, was jemand sucht, der wissen will, ob er es
-            mit einer ernsthaften Praxis zu tun hat: Auszeichnungen, Presse,
-            Fachgesellschaften, Partner. */}
-        <p class="fuss-titel fuss-titel-2">{t('nav.ueberKu64')}</p>
+      </div>
+
+      {/* Spalte 5: Über KU64.
+          Stand bis eben in keiner Fußzeile – die Seite war über den Kopf
+          erreichbar und sonst nirgends. Hier stehen die Belegseiten, weil
+          sie das sind, was jemand sucht, der wissen will, ob er es mit einer
+          ernsthaften Praxis zu tun hat: Architektur, Auszeichnungen, Presse,
+          Partner.
+
+          Eigene Spalte und nicht angehängt an „Standorte + Service": Dort
+          standen danach drei Überschriften untereinander und die Spalte war
+          doppelt so lang wie ihre Nachbarn. Fünf Spalten sind kein Gedränge,
+          sondern die Form, die der Inhalt hat. */}
+      <div class="fuss-block">
+        <p class="fuss-titel">{t('nav.ueberKu64')}</p>
         <ul>
           <li><a href="/ueber-uns/">{t('ueber.inEigenenWorten')}</a></li>
           <li><a href="/ueber-uns/location/">{t('thema.location.titel')}</a></li>
           <li><a href="/ueber-uns/auszeichnungen/">{t('thema.auszeichnungen.titel')}</a></li>
           <li><a href="/ueber-uns/presseinfo/">{t('thema.presseinfo.titel')}</a></li>
           <li><a href="/ueber-uns/kooperationspartner/">{t('thema.kooperationspartner.titel')}</a></li>
+          <li><a href="/ueber-uns/galerie/">{t('thema.galerie.titel')}</a></li>
         </ul>
       </div>
     </div>
@@ -196,7 +205,23 @@ const t = texte(daten.sprache);
   .fuss-raster {
     display: grid;
     gap: var(--raum-7) var(--raum-6);
-    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+    /*
+     * Fünf Spalten, sobald Platz ist – nicht „so viele wie passen".
+     *
+     * `auto-fit` mit 14rem ergab bei 1440 Pixeln vier Spalten und schob den
+     * fünften Block unter den ersten. Ein Fußbereich, dessen Spaltenzahl mit
+     * der Fensterbreite springt, hat keine Ordnung, sondern einen Zufall.
+     *
+     * Unter 64rem greift weiter die automatische Verteilung: zwei Spalten
+     * auf dem Tablet, eine auf dem Telefon.
+     */
+    grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  }
+
+  @media (min-width: 64rem) {
+    .fuss-raster {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
   }
 
   .fuss-titel {

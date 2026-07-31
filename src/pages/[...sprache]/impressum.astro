@@ -28,15 +28,21 @@ const brotkrumen = [
 ];
 ---
 
+{/*
+  Kein `noindex` mehr: Die Seite war ein Entwurf mit Platzhaltern, solange
+  Pflichtangaben fehlten. Es fehlt keine mehr – `recht-pruefen.mjs` zählt null
+  offene Felder –, und ein Impressum, das Google nicht finden darf, ist ein
+  Impressum, das niemand findet.
+
+  Der Hinweis stand kurzzeitig ZWISCHEN den Attributen von `<Basis>`. Astro
+  baut das klaglos, `astro check` nicht: Es meldete „Unterminated string
+  literal" am schließenden Tag, dreißig Zeilen weiter unten.
+*/}
 <Basis
   titel={t('imp.seitentitel')}
   description={t('imp.beschreibung')}
   pfad={pfad}
   brotkrumen={brotkrumen}
-  {/* Kein `noindex` mehr: Die Seite war ein Entwurf mit Platzhaltern, solange
-      Pflichtangaben fehlten. Es fehlt keine mehr – `recht-pruefen.mjs` zählt
-      0 offene Felder –, und ein Impressum, das Google nicht finden darf, ist
-      ein Impressum, das niemand findet. */}
   schema={[schemaBrotkrumen(brotkrumen)]}
 >
   <div class="huelle abschnitt">

@@ -7,14 +7,40 @@
  * in der Kopfleiste und im mobilen Menü. Alles, was er mitbringt, gibt es
  * damit ebenfalls zweimal – und ein `id` zweimal ist keins.
  *
- * Der Umschalter steht in der Standortleiste, direkt neben dem
- * Standortwähler. Das ist kein Zufall: Beides beantwortet dieselbe Frage –
- * in welchem Kontext sehe ich diese Seite gerade? – und beides ist an
- * derselben Stelle umkehrbar.
- *
  * Benannt sind die Sprachen mit ihrer Eigenbezeichnung, nicht mit Flaggen.
  * Flaggen stehen für Länder, nicht für Sprachen: Französisch spricht man auch
  * in Belgien und Kanada, und für Englisch gäbe es keine richtige Wahl.
+ *
+ * ── Was hier zuletzt falsch war ─────────────────────────────────────────
+ *
+ * Drei Dinge, alle drei sichtbar:
+ *
+ * 1. DIE GEWÄHLTE SPRACHE WAR EINE DUNKLE PILLE UND BLIEB STEHEN. Beim
+ *    Überfahren erschien daneben eine zweite, helle Fläche – zwei
+ *    Markierungen gleichzeitig, und die aktive klebte am Anfang. Jetzt gibt
+ *    es genau EINE Fläche. Sie ruht auf der gewählten Sprache, gleitet zu
+ *    der, über der der Zeiger steht, und kehrt zurück, wenn er die Gruppe
+ *    verlässt. Dieselbe Mechanik wie im Hauptmenü, aus demselben Grund.
+ *
+ * 2. „EN" STAND IN `--tinte-leise` AUF GRAUEM GLAS. Gemessen gegen den
+ *    Untergrund der Kopfleiste über einem Foto sind das 2,4:1; gefordert
+ *    sind 4,5:1. Alle drei Kürzel stehen jetzt in voller Tinte.
+ *
+ *    Damit entfällt die farbliche Kennzeichnung „im Aufbau". Das ist kein
+ *    Verlust: Sie war die Ursache des schlechten Kontrasts, und die
+ *    Information steht im `title` und im Sprachhinweis – dort mit Worten
+ *    statt mit einem Grauton, den niemand deuten kann.
+ *
+ * 3. EIN KAPUTTER KOMMENTAR HAT EINE REGEL GEFRESSEN. Im Stilteil endete ein
+ *    Blockkommentar zu früh, danach lief Fließtext weiter und ein zweites
+ *    Kommentarende schloss ihn noch einmal. Der CSS-Parser fing sich erst an
+ *    der übernächsten Regel – `[data-freigegeben='nein']` fehlte im gebauten
+ *    Stylesheet vollständig. Nachweisbar: eine Suche nach
+ *    `data-freigegeben` über `dist/` fand null Treffer.
+ *
+ *    Aufgefallen ist es nur, weil die verschluckte Regel dieselbe Farbe
+ *    setzte wie die Grundregel. Hätte sie etwas anderes getan, wäre es
+ *    monatelang unbemerkt geblieben.
  */
 import { pfadInSprache, SPRACHEN, spracheAusParameter } from '../i18n/sprachen';
 import { texte } from '../i18n/katalog';
@@ -33,10 +59,13 @@ const fassungen = SPRACHEN.map((s) => ({
   ziel: pfadInSprache(pfad, s.code),
   aktiv: s.code === aktuell,
 }));
-
 ---
 
 <div class="sprachwahl" role="group" aria-label={t('sprache.waehlen')}>
+  {/* Die gleitende Fläche. Liegt hinter den Kürzeln und wird im Browser
+      gesetzt; ohne JavaScript bleibt sie unsichtbar, und die gewählte
+      Sprache ist an ihrer Schriftstärke zu erkennen. */}
+  <span class="sprach-laeufer" aria-hidden="true"></span>
   {
     fassungen.map((f) => (
       <a
@@ -57,9 +86,9 @@ const fassungen = SPRACHEN.map((s) => ({
   }
 </div>
 
-
 <style>
   .sprachwahl {
+    position: relative;
     display: flex;
     gap: 0.125rem;
     padding: 0.15rem;
@@ -68,50 +97,68 @@ const fassungen = SPRACHEN.map((s) => ({
   }
 
   .sprachwahl a {
+    /* Über der gleitenden Fläche, nicht darunter. */
+    position: relative;
+    z-index: 1;
     padding: 0.2rem 0.55rem;
     border-radius: var(--radius-voll);
     font-size: var(--t-xs);
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: var(--tinte-leise);
-    text-decoration: none;
-    transition: background var(--kurve), color var(--kurve);
-  }
-
-  .sprachwahl a:hover,
-  .sprachwahl a:focus-visible {
-    background: var(--scheibe-flaeche);
+    /*
+     * Volle Tinte für alle drei – siehe Punkt 2 im Kopfkommentar.
+     *
+     * Nebenbei repariert: Hier stand `transition: background var(--kurve)`.
+     * `--kurve` ist eine Zeitfunktion und keine Dauer; der Kurzform fehlte
+     * der erste Wert, und der Übergang lief nie. Jetzt braucht es keinen
+     * mehr: Es wechselt keine Farbe, es gleitet eine Fläche.
+     */
     color: var(--tinte);
+    text-decoration: none;
   }
 
-  /* Die gewählte Sprache dunkel statt gelb: Sie zeigt einen Zustand an und
-     fordert zu nichts auf – ein gelbes Feld daneben sah aus wie ein Knopf. */
+  /* Die gewählte Sprache bleibt erkennbar, auch wenn die Fläche gerade
+     woanders steht: schwerer gesetzt, nicht anders gefärbt. */
   .sprachwahl a[aria-current='true'] {
-    background: var(--knopf-flaeche);
-    color: var(--knopf-schrift);
+    font-weight: 700;
   }
 
   /*
-   * Sprachen im Aufbau treten zurück – über die Farbe, nicht über die
-   * Deckkraft.
+   * Die eine Fläche.
    *
-   * Hier stand `opacity: 0.5`. Das blendet nicht nur ab, es rechnet den
-   * Kontrast herunter: aus dem leisen Ton wurden 1,92:1, also weit unter
-   * den 4,5:1 für normalen Text. Zurücktreten heißt leiser, nicht
-   * unleserlich – gerade bei einem Bedienelement, das man treffen soll.
-   *
-   * Der leise Ton allein reicht als Unterschied: Die gewählte Sprache steht
-   * auf dunklem Grund, die freigegebenen in voller Tinte, die im Aufbau
-   * leise. Drei Stufen, alle lesbar.
+   * Weißliches Glas mit dunkler Schrift darüber – dieselbe Sprache wie das
+   * wandernde Feld im Hauptmenü. Kein Weichzeichner: Die Fläche ist rund
+   * dreißig Pixel breit, ein `backdrop-filter` darauf kostet eine eigene
+   * Ebene und bringt auf dieser Größe nichts.
    */
-   * `:not([aria-current])` ist nicht kosmetisch: Auf /en/ ist Englisch
-   * zugleich die gewählte Sprache UND eine im Aufbau. Ohne die Einschränkung
-   * gewinnt die leise Farbe gegen die helle Schrift des dunklen Feldes –
-   * dunkel auf dunkel, 1,82:1. Die erste Fassung dieser Korrektur hatte
-   * genau das gebaut.
-   */
-  .sprachwahl a[data-freigegeben='nein']:not([aria-current='true']) {
-    color: var(--tinte-leise);
+  .sprach-laeufer {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 0;
+    inline-size: var(--b, 0);
+    block-size: var(--h, 0);
+    border-radius: var(--radius-voll);
+    background: var(--scheibe-flaeche);
+    border: 1px solid var(--scheibe-rand);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(var(--x, 0), var(--y, 0), 0);
+    transition:
+      transform var(--zeit-lang) var(--kurve-feder),
+      inline-size var(--zeit-lang) var(--kurve-feder),
+      opacity var(--zeit) var(--kurve-weich);
+  }
+
+  .sprach-laeufer[data-sichtbar] {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sprach-laeufer {
+      transition: opacity var(--zeit) var(--kurve-weich);
+    }
   }
 
   /* Der ausgeschriebene Name steht Screenreadern immer zur Verfügung –
@@ -124,5 +171,81 @@ const fassungen = SPRACHEN.map((s) => ({
     clip-path: inset(50%);
     white-space: nowrap;
   }
-
 </style>
+
+<script>
+  import { beimSeitenaufbau } from '../lib/seitenaufbau';
+
+  /*
+   * Nach jedem Seitenaufbau neu binden – der ClientRouter tauscht den Körper
+   * aus, ohne Module erneut auszuwerten. Genau dieser Fehler hat in diesem
+   * Projekt schon einmal den Sprachumschalter gekostet.
+   *
+   * Und je Wähler, nicht einmal: Es gibt zwei auf jeder Seite.
+   */
+  beimSeitenaufbau(() => {
+    for (const gruppe of document.querySelectorAll<HTMLElement>('.sprachwahl')) {
+      const laeufer = gruppe.querySelector<HTMLElement>('.sprach-laeufer');
+      const links = [...gruppe.querySelectorAll<HTMLAnchorElement>('a')];
+      if (!laeufer || links.length === 0) continue;
+
+      const aktiv = () => links.find((l) => l.getAttribute('aria-current') === 'true') ?? null;
+
+      const stellen = (ziel: HTMLElement) => {
+        const z = ziel.getBoundingClientRect();
+        const bezug = gruppe.getBoundingClientRect();
+        laeufer.style.setProperty('--x', `${z.left - bezug.left}px`);
+        laeufer.style.setProperty('--y', `${z.top - bezug.top}px`);
+        laeufer.style.setProperty('--b', `${z.width}px`);
+        laeufer.style.setProperty('--h', `${z.height}px`);
+      };
+
+      /* Ohne Übergang setzen – sonst gleitet die Fläche bei jedem
+         Seitenaufbau sichtbar von der linken Kante zur gewählten Sprache. */
+      const ohneUebergang = (ziel: HTMLElement) => {
+        const vorher = laeufer.style.transition;
+        laeufer.style.transition = 'none';
+        stellen(ziel);
+        void laeufer.offsetWidth;
+        laeufer.style.transition = vorher;
+      };
+
+      const ruhe = aktiv();
+      if (ruhe) {
+        ohneUebergang(ruhe);
+        laeufer.dataset.sichtbar = '';
+      }
+
+      for (const link of links) {
+        const hin = () => {
+          stellen(link);
+          laeufer.dataset.sichtbar = '';
+        };
+        link.addEventListener('pointerenter', hin);
+        link.addEventListener('focus', hin);
+      }
+
+      const zurueck = () => {
+        const a = aktiv();
+        if (a) stellen(a);
+        else delete laeufer.dataset.sichtbar;
+      };
+
+      gruppe.addEventListener('pointerleave', zurueck);
+      gruppe.addEventListener('focusout', (e) => {
+        if (!gruppe.contains(e.relatedTarget as Node)) zurueck();
+      });
+
+      /* Die Kürzel sind in jeder Sprache gleich breit, die Umgebung nicht:
+         Beim Andocken der Kopfleiste wandert der Wähler. Ohne Beobachter
+         säße die Fläche danach neben ihrem Kürzel. */
+      if ('ResizeObserver' in window) {
+        const beobachter = new ResizeObserver(() => {
+          const a = aktiv();
+          if (a) ohneUebergang(a);
+        });
+        beobachter.observe(gruppe);
+      }
+    }
+  });
+</script>
