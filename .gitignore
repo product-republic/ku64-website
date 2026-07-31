@@ -37,3 +37,8 @@ analyse/altbestand/roh/
 
 # Bildschirmfotos zur Sichtprüfung – werden bei Bedarf neu erzeugt.
 ansichten/
+
+# Die Zwischenablage des Korpuslaufs: eine Datei je Thema und Sprache.
+# Ins Repository gehört das Ergebnis (src/inhalte/langtexte-en.json und
+# -fr.json), nicht die 166 Einzelantworten, aus denen es entsteht.
+.uebersetzung/

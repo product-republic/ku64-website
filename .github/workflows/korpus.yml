@@ -1,0 +1,229 @@
+# Übersetzt den wiederhergestellten Originaltext nach Englisch und Französisch.
+#
+# ── Warum dieser Lauf getrennt von „Übersetzungen nachziehen" steht ─────────
+#
+# `uebersetzungen.yml` hält den KATALOG aktuell: 7.633 kurze Bausteine, von
+# denen sich bei einer Änderung ein Dutzend bewegt. Der Lauf ist billig und
+# darf deshalb bei jedem Zug auf den Zweig starten.
+#
+# Hier geht es um 83 Themen zu zusammen 123.540 Wörtern – je Sprache. Ein
+# vollständiger Lauf sind 166 Abrufe und mehrere hunderttausend Token. Das
+# darf nicht versehentlich passieren, nur weil jemand eine Datei unter
+# `src/data/` angefasst hat. Deshalb ausschließlich von Hand.
+#
+# ── Warum er wiederholbar ist ───────────────────────────────────────────────
+#
+# Der Lauf schreibt eine Datei je Thema und Sprache nach `.uebersetzung/` und
+# überspringt, was schon dasteht. Diese Zwischenablage liegt im Cache, gebunden
+# an den Fingerabdruck von `langtexte.json`: Solange der deutsche Text
+# unverändert ist, setzt jeder weitere Lauf dort fort, wo der vorige aufgehört
+# hat. Ändert sich der deutsche Text, greift der Schlüssel nicht mehr, und es
+# wird neu übersetzt – was richtig ist, denn dann stimmt die alte Übersetzung
+# nicht mehr.
+#
+# ── Warum `hoechstens` standardmäßig 4 ist ──────────────────────────────────
+#
+# Damit der erste Lauf beweist, dass es geht, und nicht, dass es teuer ist.
+# Vier Abrufe zeigen, ob der Schlüssel hinterlegt ist, ob die Form der Antwort
+# stimmt und ob `korpus-einspielen.mjs` sie annimmt. Erst danach lohnt „0".
+#
+# ── Was eingerichtet sein muss ──────────────────────────────────────────────
+#
+#   Settings → Secrets and variables → Actions → New repository secret
+#   Name: ANTHROPIC_API_KEY
+#
+# Derselbe Schlüssel wie für `uebersetzungen.yml`. Er steht an genau einer
+# Stelle, ist für niemanden lesbar und gehört ausdrücklich NICHT in eine
+# `.env`, nicht ins Repository und nicht in das Feld für Umgebungsvariablen
+# der Entwicklungsumgebung – dort steht, dass die Werte für alle sichtbar sind,
+# die diese Umgebung verwenden.
+
+name: Korpus übersetzen
+
+on:
+  workflow_dispatch:
+    inputs:
+      sprache:
+        description: 'Nur eine Sprache (en, fr) – leer lassen für beide'
+        required: false
+        default: ''
+      hoechstens:
+        description: 'Höchstens so viele Abrufe in diesem Lauf (0 = alle)'
+        required: false
+        default: '4'
+      modell:
+        description: 'Modell'
+        required: false
+        default: 'claude-sonnet-5'
+
+# Zwei Läufe gleichzeitig würden sich dieselbe Zwischenablage teilen und
+# einander die Dateien wegschreiben. Aber NICHT abbrechen: Ein Lauf, der zur
+# Hälfte durch ist, hat bereits Geld gekostet.
+concurrency:
+  group: korpus-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  uebersetzen:
+    runs-on: ubuntu-latest
+    # Ein vollständiger Lauf über 166 Abrufe dauert bei vier gleichzeitigen
+    # Aufträgen gut eine Stunde. Drei Stunden lassen Luft, ohne dass ein
+    # hängender Abruf den Läufer den ganzen Tag belegt.
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      # Erst sagen, was ansteht – ohne einen einzigen Abruf. Steht das im
+      # Protokoll, ist auch bei einem abgebrochenen Lauf nachvollziehbar,
+      # wovon die Rede war.
+      - name: Umfang zeigen
+        run: |
+          npm run korpus:uebersetzen -- --trocken | tee /tmp/umfang.txt
+          {
+            echo '### Umfang'
+            echo '```'
+            cat /tmp/umfang.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Die Zwischenablage aus vorherigen Läufen. Der Schlüssel hängt am
+      # Fingerabdruck des deutschen Korpus: Ändert sich der Text, ist die alte
+      # Übersetzung ohnehin hinfällig.
+      - name: Zwischenablage wiederherstellen
+        uses: actions/cache@v4
+        with:
+          path: .uebersetzung
+          key: korpus-${{ hashFiles('src/inhalte/langtexte.json') }}-${{ github.run_id }}
+          restore-keys: |
+            korpus-${{ hashFiles('src/inhalte/langtexte.json') }}-
+
+      - name: Übersetzen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KORPUS_MODELL: ${{ inputs.modell }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY fehlt. Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          args="--hoechstens=${{ inputs.hoechstens }}"
+          if [ -n "${{ inputs.sprache }}" ]; then
+            args="$args --sprache=${{ inputs.sprache }}"
+          fi
+          npm run korpus:uebersetzen -- $args | tee /tmp/lauf.txt
+
+      # Einspielen läuft auch dann, wenn oben einzelne Abrufe misslungen sind:
+      # Was da ist, gehört in die Sprachdateien. Was fehlt, bleibt auf der
+      # Website deutsch und mit `lang="de"` ausgezeichnet – sichtbar unfertig
+      # statt unsichtbar beschädigt.
+      - name: Einspielen
+        if: always()
+        run: |
+          # Ohne pipefail wäre der Rückgabewert der von `tee` – ein
+          # gescheitertes Einspielen sähe dann aus wie ein gelungenes.
+          set -o pipefail
+          npm run korpus:einspielen -- .uebersetzung | tee /tmp/einspielen.txt
+          {
+            echo '### Eingespielt'
+            echo '```'
+            cat /tmp/einspielen.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Erst sichern, dann prüfen. Die Reihenfolge ist in `uebersetzungen.yml`
+      # teuer gelernt worden: Dort stand die Gegenprobe davor und hat einen
+      # dreistündigen Lauf wegen eines Befunds verworfen, der mit der
+      # Übersetzung nichts zu tun hatte.
+      - name: Als Pull Request vorlegen
+        id: pr
+        if: always()
+        continue-on-error: true
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: korpus/${{ github.ref_name }}
+          base: ${{ github.ref_name }}
+          add-paths: |
+            src/inhalte/langtexte-en.json
+            src/inhalte/langtexte-fr.json
+          title: 'Korpus übersetzt'
+          commit-message: |
+            Korpus übersetzt
+
+            Automatisch erzeugt von npm run korpus:uebersetzen und
+            korpus:einspielen. Übernommen wurde nur, was strukturell zum
+            deutschen Original passt: gleiche Zahl Abschnitte, gleiche Zahl
+            Blöcke, gleiche art je Block, gleiche stufe je Abschnitt.
+
+            Bitte gegenlesen, bevor das gilt: Angaben zu Kosten,
+            Kassenleistung und Behandlungsdauer sind heilmittelwerberechtlich
+            heikel und dürfen sich nicht unbemerkt verschieben.
+          body: |
+            ## Was hier drin ist
+
+            Der wiederhergestellte Originaltext von ku64.de in englischer und
+            französischer Fassung. Übernommen wurde ausschließlich, was
+            strukturell zum deutschen Original passt – der Rest steht in der
+            Zusammenfassung des Laufs, namentlich.
+
+            ## Was zu prüfen ist
+
+            Nicht die Sprache – die stimmt in aller Regel. Zu prüfen sind die
+            **Aussagen**: Kosten, Kassenleistung, Behandlungsdauer,
+            Verfügbarkeit je Standort. Eine Übersetzung, die aus „in der Regel
+            nicht" ein „not covered" macht, ist sprachlich richtig und
+            fachlich eine andere Aussage.
+
+            Ebenfalls zu prüfen: Eigennamen. KU64, GRAFT, KARHARD, Invisalign,
+            CEREC und Palais Ritz sollen unverändert dastehen.
+
+            ## Was noch nicht gilt
+
+            Solange die Fassungen nicht gegengelesen sind, bleiben `/en/` und
+            `/fr/` auf `noindex`. Siehe `src/data/standortfassungen.ts`.
+          delete-branch: true
+
+      - name: Gegenprobe
+        id: gegenprobe
+        if: always()
+        continue-on-error: true
+        run: npm run build
+
+      - name: Befund vermerken
+        if: always()
+        run: |
+          zweig="korpus/${{ github.ref_name }}"
+          if [ "${{ steps.pr.outcome }}" = "success" ]; then
+            echo '### Übersetzung liegt als Pull Request vor' >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo '### Übersetzung liegt auf dem Zweig `'"$zweig"'`'
+              echo
+              echo 'Ein Pull Request konnte nicht angelegt werden. Das liegt an'
+              echo 'einer Einstellung, nicht an der Übersetzung:'
+              echo
+              echo '> Settings → Actions → General → Workflow permissions →'
+              echo '> „Allow GitHub Actions to create and approve pull requests"'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "${{ steps.gegenprobe.outcome }}" = "success" ]; then
+            echo '### Gegenprobe bestanden' >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo '### Gegenprobe fehlgeschlagen'
+              echo
+              echo 'Die Übersetzung ist gesichert. Der Build hat aber etwas'
+              echo 'gefunden – das Protokoll dieses Laufs sagt, was. Behoben'
+              echo 'gehört es, bevor der Zweig zusammengeführt wird.'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi

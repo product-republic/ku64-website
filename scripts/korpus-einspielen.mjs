@@ -114,7 +114,17 @@ for (const sprache of ['en', 'fr']) {
   }
 
   const dateien = (await readdir(ordner)).filter((d) => d.endsWith('.json'));
-  const fassung = { leistungen: {}, unterthemen: {}, kategorien: {}, neu: {} };
+
+  /*
+   * Die Bereiche stehen hier ausgeschrieben und nicht als `{}`-Sammelbecken.
+   *
+   * Der Grund ist der Fehler, der hier bis zum 31.07.2026 saß: `themen` fehlte.
+   * Die zehn wiederhergestellten Belegseiten unter /ueber-uns/ hätten damit nie
+   * eine Übersetzung bekommen – nicht mit einer Fehlermeldung, sondern indem
+   * `fassung['themen'][…] = …` auf `undefined` zugegriffen hätte. Ein Bereich,
+   * der neu dazukommt, muss hier eingetragen werden, sonst fällt er still aus.
+   */
+  const fassung = { leistungen: {}, unterthemen: {}, kategorien: {}, neu: {}, themen: {} };
 
   const abgelehnt = [];
   let uebernommen = 0;
@@ -133,6 +143,13 @@ for (const sprache of ['en', 'fr']) {
       u = JSON.parse(await readFile(path.join(ordner, d), 'utf8'));
     } catch (f) {
       abgelehnt.push(`${eintrag.schluessel}: unlesbar (${f.message})`);
+      continue;
+    }
+
+    /* Ein Bereich, den `fassung` nicht kennt, wird gemeldet und nicht
+       stillschweigend verworfen – sonst wäre der obige Fehler nur verschoben. */
+    if (!(eintrag.bereich in fassung)) {
+      abgelehnt.push(`${eintrag.schluessel}: Bereich "${eintrag.bereich}" ist hier nicht vorgesehen`);
       continue;
     }
 
@@ -174,7 +191,16 @@ for (const sprache of ['en', 'fr']) {
           'Erzeugt von scripts/korpus-einspielen.mjs. Nicht von Hand bearbeiten. Ein Thema, ' +
           'dessen Struktur vom deutschen Original abweicht, wird nicht übernommen – dort steht ' +
           'auf der Website weiter Deutsch, ausgezeichnet mit lang="de".',
-        themen: uebernommen,
+        /*
+         * `anzahl`, nicht `themen`.
+         *
+         * `themen` ist seit dem 31.07.2026 ein BEREICH des Korpus. Hätte die
+         * Kennzahl weiter so geheißen, stünde in der Datei erst die Zahl und
+         * danach – durch `...fassung` – das Verzeichnis; `src/lib/langtexte.ts`
+         * liest `themen` als Verzeichnis und hätte je nach Reihenfolge eine
+         * Zahl bekommen. Kein Absturz, nur zehn Seiten ohne Übersetzung.
+         */
+        anzahl: uebernommen,
         woerter: woerterGesamt,
         ...fassung,
       },
