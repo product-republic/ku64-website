@@ -1,0 +1,88 @@
+---
+/**
+ * Die Vorschaufläche eines gesperrten Videos – aus eigener Hand.
+ *
+ * ── Warum nicht das Vorschaubild von YouTube ────────────────────────────
+ *
+ * `https://i.ytimg.com/vi/<id>/maxresdefault.jpg` wäre ein Aufruf, und zwar
+ * genau der, den die Sperre verhindern soll: IP-Adresse und Referrer gehen
+ * an Google, bevor jemand zugestimmt hat. Dass man das Bild „nur" lädt,
+ * ändert daran nichts.
+ *
+ * Also ein SVG, hier gezeichnet, in den Farben des Hauses. Es sieht aus wie
+ * ein Videoplatz, es ist keiner, und es fragt niemanden. Dieselbe
+ * Entscheidung wie bei `Kartenvorschau.astro`, aus demselben Grund.
+ *
+ * ── Warum es nicht überall gleich aussieht ──────────────────────────────
+ *
+ * Die Neigung der Streifen entsteht aus dem Titel. Damit unterscheiden sich
+ * zwei Videos auf derselben Seite sichtbar, ohne dass irgendwo ein
+ * Zufallsgenerator läuft: Derselbe Titel ergibt immer dasselbe Bild, und
+ * `git diff` bleibt aussagekräftig.
+ *
+ * ── Barrierefreiheit ────────────────────────────────────────────────────
+ *
+ * Kein `title`, kein `role="img"`, kein Text im SVG: `Drittinhalt.astro`
+ * setzt die ganze Fläche auf `aria-hidden`, weil eine unscharfe Grafik
+ * keine Information ist. Was dort liegt, steht im Namen der Schaltfläche.
+ */
+interface Props {
+  titel: string;
+}
+
+const { titel } = Astro.props;
+
+/* Eine feste Zahl aus dem Titel – kein Math.random(), siehe Kopfkommentar. */
+let z = 0;
+for (const c of titel) z = (z * 31 + c.codePointAt(0)!) % 100000;
+const neigung = 8 + (z % 14);
+
+const B = 800;
+const H = 450;
+
+/* Diagonale Bänder in den Hausfarben. Sie erinnern an die geschwungene
+   Landschaft am Kurfürstendamm, ohne sie nachzubauen. */
+const baender = Array.from({ length: 7 }, (_, i) => ({
+  x: (i - 1) * (B / 5),
+  breite: B / 9 + ((z >> i) % 5) * 6,
+  deckkraft: 0.1 + ((z >> (i * 2)) % 5) * 0.05,
+}));
+---
+
+<svg
+  class="videovorschau"
+  viewBox={`0 0 ${B} ${H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  focusable="false"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id={`vv-${z}`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFCC00" />
+      <stop offset="100%" stop-color="#F5A623" />
+    </linearGradient>
+  </defs>
+
+  <rect width={B} height={H} fill={`url(#vv-${z})`} />
+
+  <g transform={`skewX(-${neigung})`}>
+    {
+      baender.map((b) => (
+        <rect x={b.x} y={-H} width={b.breite} height={H * 3} fill="#ffffff" opacity={b.deckkraft} />
+      ))
+    }
+  </g>
+
+  {/* Das Abspielzeichen – gezeichnet, kein Bild. */}
+  <circle cx={B / 2} cy={H / 2} r="62" fill="#1c1c1a" opacity="0.72" />
+  <path d={`M ${B / 2 - 20} ${H / 2 - 30} L ${B / 2 + 34} ${H / 2} L ${B / 2 - 20} ${H / 2 + 30} Z`} fill="#ffffff" />
+</svg>
+
+<style>
+  .videovorschau {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+</style>

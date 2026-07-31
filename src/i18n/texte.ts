@@ -674,6 +674,7 @@ export const TEXTE = {
    * zusammen – es vergleicht den deutschen Katalogtext mit dem Wert im
    * Register und bricht bei Abweichung ab.
    */
+  'video.ueberschrift': 'Im Video',
   'ds.avLiegtVor': 'liegt vor',
   'ds.avOffen': 'liegt noch nicht bestätigt vor',
   'ds.avDienstFehlt': 'Dienst nicht im Verzeichnis',

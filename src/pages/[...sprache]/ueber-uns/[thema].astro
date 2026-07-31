@@ -41,6 +41,8 @@ import type { TextSchluessel } from '../../../i18n/texte';
 import Basis from '../../../layouts/Basis.astro';
 import Bild from '../../../components/Bild.astro';
 import Langtext from '../../../components/Langtext.astro';
+import Video from '../../../components/Video.astro';
+import { videosZuThema } from '../../../data/videos';
 import { THEMEN_MIT_SEITE, getThema } from '../../../data/themen';
 import { ueberThema } from '../../../lib/langtexte';
 import { schemaBrotkrumen, descriptionKuerzen } from '../../../lib/seo';
@@ -81,6 +83,8 @@ const standort = thema.standort ? daten.standorte.find((s) => s.slug === thema.s
 /* Die übrigen Themen – ohne dieses. Eine Seite, die auf sich selbst
    verweist, hat einen Verweis zu viel. */
 const weitere = THEMEN_MIT_SEITE.filter((x) => x.slug !== slug);
+
+const videos = videosZuThema(slug);
 
 /*
  * Die Galerie nach Standort, mit dem Standort daneben.
@@ -135,6 +139,17 @@ const galerie = (thema.bilder ?? []).flatMap((b) => {
     }
 
     {langtext && <Langtext langtext={langtext} sprache={daten.sprache} titel={null} basisStufe={2} />}
+
+    {
+      videos.length > 0 && (
+        <section class="videos" aria-labelledby="videos-titel">
+          <h2 id="videos-titel">{t('video.ueberschrift')}</h2>
+          {videos.map((v) => (
+            <Video video={v} />
+          ))}
+        </section>
+      )
+    }
 
     <section class="weiter" aria-labelledby="weiter-titel">
       <h2 id="weiter-titel">{t('thema.weitereThemen')}</h2>
@@ -224,6 +239,19 @@ const galerie = (thema.bilder ?? []).flatMap((b) => {
     block-size: 100%;
     object-fit: cover;
     aspect-ratio: 3 / 2;
+  }
+
+  .videos {
+    max-width: 44rem;
+    margin-block-start: var(--raum-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-5);
+  }
+
+  .videos h2 {
+    margin: 0;
+    font-size: 1.1rem;
   }
 
   .weiter {

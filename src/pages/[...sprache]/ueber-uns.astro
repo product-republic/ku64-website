@@ -27,6 +27,8 @@ import { sprachpfade } from '../../i18n/sprachen';
 import type { TextSchluessel } from '../../i18n/texte';
 import Basis from '../../layouts/Basis.astro';
 import Langtext from '../../components/Langtext.astro';
+import Video from '../../components/Video.astro';
+import { videosZuThema } from '../../data/videos';
 import { anzahlGesamt, anzahlZahnaerzte } from '../../data/team';
 import { GRUPPENFOLGE, THEMEN_MIT_SEITE, THEMA_UEBERSICHT } from '../../data/themen';
 import { ueberThema } from '../../lib/langtexte';
@@ -51,6 +53,7 @@ const seit = Number(aeltester.eroeffnet.slice(0, 4));
 const jahre = new Date().getFullYear() - seit;
 
 const eigeneWorte = THEMA_UEBERSICHT ? ueberThema(THEMA_UEBERSICHT.slug, daten.sprache) : undefined;
+const videos = THEMA_UEBERSICHT ? videosZuThema(THEMA_UEBERSICHT.slug) : [];
 
 /* Nach Gruppen, in der Reihenfolge aus `themen.ts` – und innerhalb einer
    Gruppe in der Reihenfolge, in der sie dort stehen. Alphabetisch wäre eine
@@ -106,6 +109,21 @@ const themenGruppen = GRUPPENFOLGE.map((gruppe) => ({
             titel={t('ueber.inEigenenWorten')}
             basisStufe={3}
           />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    videos.length > 0 && (
+      <section class="abschnitt" aria-labelledby="videos-titel">
+        <div class="huelle">
+          <h2 id="videos-titel">{t('video.ueberschrift')}</h2>
+          <div class="videos">
+            {videos.map((v) => (
+              <Video video={v} />
+            ))}
+          </div>
         </div>
       </section>
     )
@@ -180,6 +198,7 @@ const themenGruppen = GRUPPENFOLGE.map((gruppe) => ({
   .themen-vorspann { max-width: var(--breite-text); margin-block: calc(var(--raum-6) * -1) var(--raum-6); font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-weit); }
   .themen-gruppe + .themen-gruppe { margin-block-start: var(--raum-7); }
   .themen-gruppe h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinte-leise); margin-block-end: var(--raum-4); }
+  .videos { max-width: 44rem; display: flex; flex-direction: column; gap: var(--raum-5); }
   .thema { text-decoration: none; }
   .thema h4 { font-size: var(--t-md); margin-block-end: var(--raum-2); }
   .thema p { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }

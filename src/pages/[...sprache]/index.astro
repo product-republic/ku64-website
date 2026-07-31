@@ -10,6 +10,8 @@
 import { inhalte } from '../../i18n/daten';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
+import Video from '../../components/Video.astro';
+import { videosStart } from '../../data/videos';
 import Bild from '../../components/Bild.astro';
 import Kopfmedium from '../../components/Kopfmedium.astro';
 import { standortbildFuer } from '../../data/medien';
@@ -62,6 +64,8 @@ const faq = [
    Erklärung bei `h1` weiter unten. Sie kommt aus dem Text selbst, damit sie
    in jeder Sprache stimmt, ohne dass jemand daran denken muss. */
 const ueberschrift = t('start.ueberschrift');
+
+const startVideos = videosStart();
 ---
 
 <Basis
@@ -175,6 +179,21 @@ const ueberschrift = t('start.ueberschrift');
     </div>
   </section>
 
+  {
+    startVideos.length > 0 && (
+      <section class="abschnitt" aria-labelledby="start-videos-titel">
+        <div class="huelle">
+          <h2 id="start-videos-titel">{t('video.ueberschrift')}</h2>
+          <div class="start-videos">
+            {startVideos.map((v) => (
+              <Video video={v} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   <section class="abschnitt">
     <div class="huelle">
       <h2>{t('start.digitalTitel')}</h2>
@@ -237,6 +256,8 @@ const ueberschrift = t('start.ueberschrift');
 </script>
 
 <style>
+  .start-videos { max-width: 44rem; display: flex; flex-direction: column; gap: var(--raum-5); }
+
   /*
    * Der Kopf der Startseite steht auf einem Medium, nicht auf einem Verlauf.
    *

@@ -1,0 +1,49 @@
+---
+/**
+ * Ein Video des KU64-Kanals – gesperrt, bis jemand es freigibt.
+ *
+ * ── Warum überhaupt YouTube ─────────────────────────────────────────────
+ *
+ * Weil die fünfzehn Filme dort liegen und nirgends sonst. Die drei
+ * Kopfvideos der Standorte liegen als MP4 im eigenen Bestand und spielen
+ * ohne Einwilligung – das ist der richtige Weg für alles, was wir haben.
+ * Für einen zehnminütigen Film, den die Praxis 2017 gedreht hat, ist er es
+ * nicht: Selbstgehostet wären das dreistellige Megabyte je Datei, ohne
+ * adaptives Streaming und ohne Untertitel.
+ *
+ * ── Was vor der Freigabe passiert: nichts ───────────────────────────────
+ *
+ * Kein `iframe`, kein `data-src`, kein `preconnect`, und vor allem kein
+ * Vorschaubild von `i.ytimg.com`. Genau daran scheitern die üblichen
+ * Zwei-Klick-Lösungen: Sie zeigen als Platzhalter das Vorschaubild von
+ * YouTube und haben die Verbindung damit schon aufgebaut.
+ *
+ * Die Vorschau ist deshalb selbst gezeichnet – siehe `Videovorschau.astro`.
+ *
+ * ── Warum der Titel auf der Schaltfläche steht ──────────────────────────
+ *
+ * „Video laden" sagt nicht, was geladen wird. Auf der Seite zu den
+ * Zahnimplantaten liegt „Fester Zahnersatz auf Implantaten", auf der Seite
+ * zur Zahnarztangst „Angstfrei beim Zahnarzt" – wer freigibt, soll wissen,
+ * wofür.
+ */
+import Drittinhalt from './Drittinhalt.astro';
+import Videovorschau from './Videovorschau.astro';
+import { einbettung, type Video } from '../data/videos';
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+---
+
+<Drittinhalt
+  dienst="youtube"
+  adresse={einbettung(video)}
+  titel={video.titel}
+  verhaeltnis="16 / 9"
+  erlauben="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+>
+  <Videovorschau slot="vorschau" titel={video.titel} />
+</Drittinhalt>

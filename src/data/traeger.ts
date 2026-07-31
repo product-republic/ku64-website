@@ -231,7 +231,14 @@ export const TRAEGER = {
    * teil. Das ist eine Entscheidung der Praxis und keine Rechtsfolge –
    * deshalb steht sie hier als übernommene Angabe und nicht als Annahme.
    */
-  streitbeilegungBereit: { wert: 'nein', quelle: IMPRESSUM_ALT },
+  /*
+   * „ja" oder „nein" – der Schalter für die beiden Sätze im Impressum.
+   *
+   * Ausdrücklich als `string` typisiert und nicht als Literal: Sonst hält
+   * TypeScript den Vergleich mit „ja" für tot und meldet einen Fehler,
+   * obwohl genau dieser Fall eintritt, sobald die Praxis beitritt.
+   */
+  streitbeilegungBereit: { wert: 'nein' as string, quelle: IMPRESSUM_ALT },
 
   schlichtungsstelle: {
     wert: 'Schlichtungsstelle der Zahnärztekammer Berlin, Stallstraße 1, 10585 Berlin',
@@ -321,5 +328,5 @@ export const TRAEGER = {
 export function offeneAngaben(): { feld: string; frage: string }[] {
   return Object.entries(TRAEGER)
     .filter(([, a]) => istOffen(a))
-    .map(([feld, a]) => ({ feld, frage: (a as Offen).offen }));
+    .map(([feld, a]) => ({ feld, frage: (a as unknown as Offen).offen }));
 }

@@ -15,6 +15,8 @@ import { STANDORTE, zeitLesbar } from '../../../data/standorte';
 import { kopfmediumFuer } from '../../../data/medien';
 import { schemaStandort, schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 import Drittinhalt from '../../../components/Drittinhalt.astro';
+import Video from '../../../components/Video.astro';
+import { videosZuStandort } from '../../../data/videos';
 import Bild from '../../../components/Bild.astro';
 import { rundgangFuer, rundgangAdresse } from '../../../data/rundgaenge';
 import SmileBand from '../../../components/SmileBand.astro';
@@ -39,6 +41,7 @@ const pfad = `/${standort.slug}/`;
  * fremden Räumen wäre eine Falschangabe.
  */
 const rundgang = rundgangFuer(standort.slug);
+const ortVideos = videosZuStandort(standort.slug);
 
 const gruppen = daten.gruppen(standort.slug);
 const alleHier = daten.leistungenHier(standort.slug);
@@ -330,10 +333,27 @@ const schema = [
     )
   }
 
+  {
+    ortVideos.length > 0 && (
+      <section class="abschnitt" aria-labelledby="ort-videos-titel">
+        <div class="huelle">
+          <h2 id="ort-videos-titel">{t('video.ueberschrift')}</h2>
+          <div class="ort-videos">
+            {ortVideos.map((v) => (
+              <Video video={v} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   <TerminBand slot="abschluss" standort={standort} />
 </Basis>
 
 <style>
+  .ort-videos { max-width: 44rem; display: flex; flex-direction: column; gap: var(--raum-5); }
+
   .held {
     padding-block: clamp(var(--raum-7), 9vw, var(--raum-10)) var(--raum-8);
     /* Ohne Medium: ein Hauch Hausfarbe im Verlauf, mehr nicht. Das war vorher

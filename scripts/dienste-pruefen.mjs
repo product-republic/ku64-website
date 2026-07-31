@@ -82,6 +82,13 @@ const HOST_ZU_DIENST = new Map([
   ['ku64.jobs.personio.de', 'personio'],
   ['api.elevenlabs.io', 'elevenlabs'],
   ['api.anthropic.com', 'claude'],
+  /* youtube-nocookie statt youtube.com: die sparsamere von zwei
+     Möglichkeiten, siehe `einbettung()` in src/data/videos.ts. Der zweite
+     Host steht mit dabei, weil YouTube das Abspielen über ihn ausliefert –
+     wer ihn wegnimmt, bekommt beim nächsten Bau einen Befund. */
+  ['www.youtube-nocookie.com', 'youtube'],
+  ['www.youtube.com', 'youtube'],
+  ['i.ytimg.com', 'youtube'],
 ]);
 
 /** Eigene Hosts – die sind kein Drittanbieter. */

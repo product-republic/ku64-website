@@ -218,7 +218,7 @@ export const DIENSTE: Dienst[] = [
         dauer: 'bis 13 Monate, siehe Hinweise von Doctolib',
       },
     ],
-    avVertrag: false,
+    avVertrag: true,
     hinweise: 'https://www.doctolib.de/terms/agreement',
     begruendung:
       'Heute ist Doctolib ein sichtbarer Verweis: Wer klickt, wechselt bewusst und weiß, ' +
@@ -402,20 +402,38 @@ export const DIENSTE: Dienst[] = [
     slug: 'youtube',
     name: 'YouTube-Videos',
     kategorie: 'funktion',
-    stand: 'verworfen',
-    zweck: 'Videos abspielen.',
-    anbieter: 'Google Ireland Limited',
-    land: 'Irland/USA',
-    rechtsgrundlage: 'entfällt – nicht eingebaut',
-    daten: [],
-    ablagen: [],
-    avVertrag: false,
+    stand: 'aktiv',
+    zweck: 'Die fünfzehn Filme des KU64-Kanals abspielen – Behandlungen, Räume, Hilfsprojekt.',
+    anbieter: 'Google Ireland Limited, Dublin',
+    land: 'Irland, Übermittlung in die USA',
+    rechtsgrundlage: 'Ihre Einwilligung – Artikel 6 Abs. 1 lit. a DSGVO.',
+    daten: [
+      'IP-Adresse',
+      'Browser und Betriebssystem',
+      'aufgerufene Adresse dieser Website',
+      'Kennung des abgespielten Videos',
+    ],
+    ablagen: [
+      {
+        name: 'VISITOR_INFO1_LIVE, YSC und weitere von youtube-nocookie.com',
+        art: 'cookie',
+        inhalt: 'Kennung der Wiedergabesitzung und Einstellungen des Abspielers.',
+        dauer: 'Sitzung bis 6 Monate, siehe Hinweise von Google',
+      },
+    ],
+    avVertrag: true,
     hinweise: 'https://policies.google.com/privacy',
     begruendung:
-      'Die alte Website bettete YouTube ein und zeigte deshalb auf 35 Seiten den Satz ' +
-      '„Sie sehen gerade einen Platzhalterinhalt von YouTube" – ein Hinweis, wo ein Video ' +
-      'stehen sollte. Die Videos liegen hier auf dem eigenen Server und spielen ohne ' +
-      'Einwilligung, ohne Cookie und ohne fremden Server.',
+      'Die alte Website bettete YouTube auf 89 Seiten ein – und zeigte dort den Satz „Sie ' +
+      'sehen gerade einen Platzhalterinhalt von YouTube", also einen Hinweis anstelle des ' +
+      'Films. Drei der Einbettungen sind heute leer: zwei Videos sperren das Einbetten, ' +
+      'eines ist gelöscht.\n\n' +
+      'Hier liegen die fünfzehn abspielbaren Filme wieder an ihren Seiten, aber erst auf ' +
+      'Klick. Vorher steht eine selbst gezeichnete Vorschau – kein Vorschaubild von ' +
+      'i.ytimg.com, denn auch das wäre schon ein Aufruf bei Google. Eingebettet wird über ' +
+      'youtube-nocookie.com und ohne verwandte Videos fremder Kanäle.\n\n' +
+      'Die Kopfvideos der Standorte liegen weiterhin auf dem eigenen Server und spielen ' +
+      'ohne Einwilligung – was wir selbst ausliefern können, liefern wir selbst aus.',
   },
 
   /* ── KI ───────────────────────────────────────────────────────────── */
@@ -508,8 +526,27 @@ export const DIENSTE: Dienst[] = [
  * nichts passiert. Genau dieses Wissen ist jetzt falsch – also wird erneut
  * gefragt. Eine Zustimmung, deren Bedeutung sich nachträglich ändert, ist
  * keine.
+ *
+ * ── Fassung 3, am 31. Juli 2026 ─────────────────────────────────────────
+ *
+ * YouTube wechselt von `verworfen` auf `aktiv`. Die Begründung „die Videos
+ * liegen hier auf dem eigenen Server" stimmte für die drei Kopfvideos der
+ * Standorte und für die fünfzehn Filme des KU64-Kanals nicht – die lagen
+ * nirgends und fehlten deshalb auf 89 Seiten.
+ *
+ * Das ist eine neue Kategorie im Dialog für jeden, der vorher nur
+ * „Funktion" abgelehnt hatte? Nein – YouTube liegt in derselben Kategorie
+ * wie Karte und Rundgang. Aber es ist ein neuer Dienst in einer Kategorie,
+ * der jemand vielleicht zugestimmt hat, ohne ihn zu kennen. Genau dafür
+ * steht diese Zahl: Wer „Funktion erlauben" geklickt hat, hat das für
+ * Doctolib, Karte und Rundgang getan, nicht für Google-Videoserver. Also
+ * wird erneut gefragt.
+ *
+ * Doctolib steht dabei auf `avVertrag: true` – die Praxis hat den Vertrag
+ * am 30. Juli 2026 bestätigt, und die Datenschutzerklärung schreibt es seit
+ * damals. Dass hier `false` stand, war ein Widerspruch im eigenen Haus.
  */
-export const VERZEICHNIS_FASSUNG = 2;
+export const VERZEICHNIS_FASSUNG = 3;
 
 /** Alle Dienste einer Kategorie, die tatsächlich in Betrieb sind. */
 export function dienste(kategorie: Kategorie): Dienst[] {

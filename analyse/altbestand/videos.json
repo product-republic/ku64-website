@@ -6,50 +6,60 @@
  "videos": [
   {
    "id": "Wq8qHQFIzHc",
-   "titel": null,
+   "titel": "Fester Zahnersatz auf Implantaten - von den KU64-Profis",
    "seiten": [
     "/en/services/oral-surgery-mkg-surgery/all-on-4/",
     "/en/services/oral-surgery-mkg-surgery/dental-implants/",
     "/leistungen/kieferchirurgie-mkg-chirurgie/all-on-4/",
     "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "4uQ4-PxGy00",
-   "titel": null,
+   "titel": "Invisalign - die (fast) unsichtbare Zahnspange!  Wie funktioniert es und was bringt es genau",
    "seiten": [
     "/en/services/orthodontics/",
     "/en/services/orthodontics/invisalign/",
     "/leistungen/kieferorthopaedie/",
     "/leistungen/kieferorthopaedie/invisalign/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "434t6vWU7xY",
-   "titel": null,
+   "titel": "Bleaching @ KU64 Zahnarztpraxis - Professionelle Zahnaufhellung vom Profi by FLÄSH",
    "seiten": [
     "/en/services/aesthetic-dentistry-dental-aesthetics/bleaching-teeth-whitening/",
     "/leistungen/zahnaesthetik/bleaching-zahnaufhellung/",
     "/potsdam/bleaching/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "2Nj4RhEWaBo",
-   "titel": null,
+   "titel": "DIE KU64 WURZELKANALBEHANDLUNG IST EINFÜHLSAM UND ZERTIFIZIERT",
    "seiten": [
     "/leistungen/endodontie-wurzelkanalbehandlung/",
     "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/",
     "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "H5rZlJahXlI",
-   "titel": null,
+   "titel": "Warum ist die KU64-Prophylaxe so gut? Vergleich: NORMALE ZAHNREINIGUNG vs AIRFLOW (GBT by EMS)",
    "seiten": [
     "/leistungen/prophylaxe-4-0/",
     "/leistungen/prophylaxe-4-0/air-flow/",
     "/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "Wx9hrm-JJ1w",
@@ -57,103 +67,131 @@
    "seiten": [
     "/",
     "/en/"
-   ]
+   ],
+   "verfuegbar": false,
+   "status": 403
   },
   {
    "id": "PSF1lx3Jcos",
-   "titel": null,
+   "titel": "KU64 OPENING: Deutschlands größte Zahnarztpraxis jetzt noch moderner!",
    "seiten": [
     "/blog/social-media-2023/",
     "/leistungen/kinderzahnarzt/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "uF_XiHk2qXo",
-   "titel": null,
+   "titel": "Zahnarzt Dr. Stephan Ziegler im VIDEOPORTRÄT (Zahnarztpraxis KU64 Berlin Kudamm Charlottenburg)",
    "seiten": [
     "/en/about-us/",
     "/ueber-uns/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "9nQD9nEWyRw",
-   "titel": null,
+   "titel": "KU64 - Potsdams neue & innovative Zahnarztpraxis in der Berliner Str. 139",
    "seiten": [
     "/en/potsdam/",
     "/potsdam/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "XHOmBV4js_E",
-   "titel": null,
+   "titel": "Video Placeholder",
    "seiten": [
     "/en/services/pediatric-dentist/",
     "/en/services/prophylaxis-4-0/air-flow/"
-   ]
+   ],
+   "kanal": "Elementor",
+   "verfuegbar": true
   },
   {
    "id": "muaxpuOsZHU",
-   "titel": null,
+   "titel": "Ehrenamtliches Projekt von KU64 in Paternoster (Südafrika) - in Kooperation mit BIG SMILE e.V.",
    "seiten": [
     "/ueber-uns/hilfsprojekt-suedafrika/",
     "/ueber-uns/soziales-engagement/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "eN3NMkTVjPs",
-   "titel": null,
+   "titel": "KU64-Inhaber Dr. Stephan Ziegler erklärt, was Berlins größte Zahnarztpraxis so einzigartig macht!",
    "seiten": [
     "/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "jW70o1z7T3E",
    "titel": null,
    "seiten": [
     "/blog/ku64-in-den-medien/"
-   ]
+   ],
+   "verfuegbar": false,
+   "status": 403
   },
   {
    "id": "AzLK39ecthQ",
-   "titel": null,
+   "titel": "#KU64 - Berlins bekannteste & außergewöhnlichste #Zahnarztpraxis",
    "seiten": [
     "/blog/social-media-2024/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "CbANJM0jCUk",
-   "titel": null,
+   "titel": "Big Smile e.V. & Axel Schulz in Afrika (2024)",
    "seiten": [
     "/blog/social-media-2024/"
-   ]
+   ],
+   "kanal": "Big Smile e.V.",
+   "verfuegbar": true
   },
   {
    "id": "13d84kubM2g",
-   "titel": null,
+   "titel": "ANGSTFREI BEIM ZAHNARZT! Video der Zahnarztpraxis KU64 in Berlin Kudamm Charlottenburg",
    "seiten": [
     "/leistungen/angstpatienten/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "Y9Qqa0LEvBw",
    "titel": null,
    "seiten": [
     "/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/"
-   ]
+   ],
+   "verfuegbar": false,
+   "status": 404
   },
   {
    "id": "LCAqQ5QSlIA",
-   "titel": null,
+   "titel": "KU64 BEHANDELTE IM JANUAR 2017 ZUM 7. MAL SÜDAFRIKANISCHE SCHULKINDER IN PATERNOSTER",
    "seiten": [
     "/ueber-uns/hilfsprojekt-suedafrika/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   },
   {
    "id": "OZIRhNtACsk",
-   "titel": null,
+   "titel": "Flohmarkt zugunsten von Südafrika in der Zahnarztpraxis KU64",
    "seiten": [
     "/ueber-uns/hilfsprojekt-suedafrika/"
-   ]
+   ],
+   "kanal": "KU64 Zahnarzt",
+   "verfuegbar": true
   }
  ]
 }

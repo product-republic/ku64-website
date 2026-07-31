@@ -14,6 +14,8 @@ import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import Langtext from '../../../components/Langtext.astro';
+import Video from '../../../components/Video.astro';
+import { videosZuLeistung } from '../../../data/videos';
 import { langtext, unterthemen, anriss } from '../../../lib/langtexte';
 import Bild from '../../../components/Bild.astro';
 import LeistungsListe from '../../../components/LeistungsListe.astro';
@@ -52,6 +54,7 @@ const beschwerden = beschwerdenZuBehandlung(leistung.slug);
  */
 const eigenerText = langtext(leistung.slug, daten.sprache);
 const themen = unterthemen(leistung.slug, daten.sprache);
+const videos = videosZuLeistung(leistung.slug);
 
 /*
  * Wer die Behandlung durchführt.
@@ -196,6 +199,17 @@ const schema = [
       <h2>{t('leistung.synonyme')}</h2>
       <p>{leistung.synonyme.join(' · ')}</p>
     </div>
+
+    {
+      videos.length > 0 && (
+        <section class="videos" aria-labelledby="videos-titel">
+          <h2 id="videos-titel">{t('video.ueberschrift')}</h2>
+          {videos.map((v) => (
+            <Video video={v} />
+          ))}
+        </section>
+      )
+    }
 
     {
       eigenerText && (
@@ -410,6 +424,18 @@ const schema = [
   .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
 
   .ausfuehrlich,
+  .videos {
+    max-width: 44rem;
+    margin-block-start: var(--raum-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--raum-5);
+  }
+
+  .videos h2 {
+    margin: 0;
+  }
+
   .unterthemen {
     margin-block-start: var(--raum-8, 2.5rem);
   }

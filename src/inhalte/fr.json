@@ -30508,6 +30508,10 @@
     "ui.ueber.zahnaerztinnenUndZahnaerzte": {
       "text": "Dentistes",
       "quelle": "740fbae5"
+    },
+    "ui.video.ueberschrift": {
+      "text": "En vidéo",
+      "quelle": "ebd377d0"
     }
   }
 }
