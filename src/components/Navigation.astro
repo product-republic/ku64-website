@@ -340,15 +340,84 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   <div class="mobilmenue" id="mobilmenue" hidden>
     <nav class="huelle" aria-label={t('geruest.mobileNavigation')}>
       <ul class="mobil-liste">
-        <li>
-          <a href={suchpfad} class="mobil-suche">
+        {/*
+          Die Suche steht hier als FELD, nicht als Verweis.
+
+          Vorher war es ein Link: antippen, Seite wechseln, warten, dann erst
+          tippen. Drei Schritte für eine Frage, die man schon im Kopf hat.
+          Jetzt steht der Cursor eine Berührung entfernt.
+
+          Es bleibt ein `<form method="get">`: Ohne JavaScript sendet es an
+          `/suche/?q=…` und die Ergebnisseite antwortet – dieselbe Adresse,
+          die auch ein Lesezeichen oder ein geteilter Link trägt. Die Suche
+          ist der Weg, auf dem jemand findet, was er sucht; sie darf nicht an
+          einem nicht geladenen Skript hängen.
+
+          `type="search"` statt `text`: Das Telefon zeigt dann eine Tastatur
+          mit Lupe statt mit Absatzmarke, und iOS blendet ein Kreuz zum Leeren
+          ein. Die Schriftgröße kommt aus `global.css` – auf Fingergeräten
+          mindestens 16 px, sonst zoomt iOS beim Fokus die ganze Seite heran.
+
+          Der Standort steht als verstecktes Feld da und nicht in der Adresse
+          des Formulars. Das ist kein Geschmack, sondern Notwendigkeit: Ein
+          `GET`-Formular WIRFT die Abfrage seiner `action` weg und schreibt
+          seine eigenen Felder hin. Mit `action="/suche/?ort=…"` wäre nach dem
+          Absenden `/suche/?q=implantat` herausgekommen – gemessen – und die
+          Suche hätte vergessen, aus welcher Praxis man kam. Als Feld reist er
+          mit: `/suche/?q=implantat&ort=berlin-charlottenburg`.
+
+          `size="1"`: Ein Eingabefeld ist ohne diese Angabe zwanzig Zeichen
+          breit, und diese zwanzig Zeichen sind seine Mindestbreite – auch als
+          Flex-Kind mit `min-width: 0`. Gemessen hat das die Spalte des Menüs
+          auf 322 px aufgezogen, 42 px mehr, als das Menü bei 320 px Gerät
+          hergibt; das Feld hing rechts aus dem Bild. Ein Zeichen als
+          Mindestbreite, den Rest holt sich `flex: 1`.
+        */}
+        <li class="mobil-suche-punkt">
+          <form class="mobil-suche" role="search" method="get" action={`${sprachbasis}/suche/`}>
             <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
               <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8" />
               <path d="M12.8 12.8 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
             </svg>
-            {t('nav.suchen')}
-          </a>
+            <input
+              type="search"
+              name="q"
+              size="1"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              enterkeyhint="search"
+              placeholder={t('nav.suchen')}
+              aria-label={t('nav.suchen')}
+            />
+            {standort && <input type="hidden" name="ort" value={standort.slug} />}
+          </form>
         </li>
+        {/*
+          Die Rufnummer steht hier, weil sie oben nicht mehr steht.
+
+          In der Kopfleiste blieb auf dem Telefon von ihr nur ein 8 px großer
+          Punkt übrig: `.telefon-nr` ist unter 46 rem ausgeblendet, und der
+          Punkt selbst trägt `aria-hidden`. Übrig war damit ein Verweis ohne
+          Namen und ohne Fläche – für eine Zahnarztpraxis ausgerechnet der
+          Weg, den ein Mensch mit Schmerzen zuerst sucht.
+
+          Hier hat sie beides: einen Namen links, die Nummer rechts, den
+          Ampelpunkt davor und die volle Zeilenhöhe des Menüs als Ziel.
+        */}
+        {
+          standort && (
+            <li>
+              <a href={`tel:${standort.telefonRaw.replace(/\s/g, '')}`} class="mobil-telefon">
+                {t('karte.telefon')}
+                <span class="mobil-telefon-nr">
+                  <span class:list={['punkt', { offen: offenJetzt }]} aria-hidden="true" />
+                  {standort.telefon}
+                </span>
+              </a>
+            </li>
+          )
+        }
         {
           punkte.map((p) => (
             <li>
@@ -1007,6 +1076,30 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     .logo-ort {
       max-height: 1.4em;
       opacity: 1;
+      /*
+       * Der Abstand gehört hier dazu, nicht nur ins Angedockte.
+       *
+       * Auf dem Telefon steht die Ortszeile IMMER – die Regel darüber blendet
+       * sie dauerhaft ein. Den Abstand von 0,3 rem setzte bisher allein
+       * `.ist-angedockt`, weil er für den ausklappenden Fall gedacht war: Ein
+       * Außenabstand verschwindet nicht mit `max-height: 0` und ließe sonst
+       * eine Lücke stehen.
+       *
+       * Auf dem Telefon klappt hier aber nichts, und deshalb sprang der
+       * Abstand beim Scrollen. Gemessen bei 402 px auf /berlin-charlottenburg/:
+       *
+       *     oben        margin-block-start 0 px      Luft zur Marke 0,0 px
+       *     angedockt   margin-block-start 4,8 px    Luft zur Marke 4,8 px
+       *
+       * Sonst war alles gleich – Breite 91,6, Höhe 12,1, Schriftgrad 8,64.
+       * Es war nie die Größe, es war immer nur diese Lücke.
+       *
+       * Jetzt steht der größere Wert in beiden Zuständen. Die Regel für den
+       * angedockten Kopf setzt denselben Wert noch einmal; das ist kein
+       * Widerspruch, sondern gilt weiterhin für breite Bildschirme, wo die
+       * Zeile tatsächlich ein- und ausklappt.
+       */
+      margin-block-start: 0.3rem;
     }
 
     /* Die ausgeschriebene Fassung in der Leiste ist damit doppelt. */
@@ -1555,10 +1648,105 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     background: color-mix(in oklab, var(--tinte) 8%, transparent);
   }
 
+  /*
+   * Die Suche im Mobilmenü: ein Feld mit Kontur, kein siebter Menüpunkt.
+   *
+   * Ohne Rahmen stünde sie als Wort zwischen sechs anderen Wörtern in
+   * derselben Spalte und wäre damit versteckt. Die Kontur sagt vor dem Lesen,
+   * dass hier etwas eingegeben und nicht angetippt wird – dieselbe Form wie
+   * das große Feld auf der Ergebnisseite, damit der Sprung dorthin nicht wie
+   * ein Wechsel in eine andere Anwendung wirkt.
+   *
+   * `flex`, nicht `inline-flex`: Das Feld soll die Menübreite füllen. Als
+   * Inline-Kasten wäre es genau so breit wie sein Platzhaltertext, und rechts
+   * daneben bliebe eine tote Fläche, die aussieht, als gehörte sie dazu.
+   */
   .mobil-suche {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: var(--raum-3);
+    padding-inline: var(--raum-4);
+    border: 1px solid var(--linie);
+    border-radius: var(--radius-voll);
+    background: var(--flaeche);
+    transition: border-color var(--zeit-schnell) var(--kurve);
+  }
+
+  /* Etwas Luft zur ersten Zeile darunter: Die Liste setzt 2 px zwischen ihre
+     Punkte, und ein Eingabefeld 2 px über einem Verweis liest sich, als wäre
+     der Verweis eine Vorschlagszeile des Feldes. */
+  .mobil-suche-punkt {
+    margin-block-end: var(--raum-3);
+  }
+
+  .mobil-suche:focus-within {
+    border-color: var(--akzent-schrift);
+  }
+
+  .mobil-suche svg {
+    flex: none;
+    color: var(--tinte-leise);
+  }
+
+  .mobil-suche input {
+    flex: 1;
+    min-width: 0;
+    /* 2,75 rem sind 44 px – die kleinste Fläche, die eine Fingerspitze
+       zuverlässig trifft. Die Höhe kommt vom Feld, nicht von der
+       Schriftgröße, sonst hinge sie an der Sprache des Platzhalters. */
+    min-block-size: 2.75rem;
+    border: 0;
+    padding: 0;
+    background: none;
+    font-family: inherit;
+    font-weight: 500;
+    /*
+     * Ausdrücklich `--t-lg`, nicht geerbt.
+     *
+     * `global.css` hebt Eingabefelder auf Fingergeräten auf mindestens 16 px,
+     * weil iOS sonst beim Fokus die ganze Seite heranzoomt. Diese Regel hier
+     * ist über den Astro-Bereichsselektor spezifischer und würde sie schlagen
+     * – dieselbe Falle, in die der Berater schon einmal gelaufen ist. `--t-lg`
+     * beginnt bei 1,125 rem und liegt damit immer darüber; nebenbei steht die
+     * Suche dann im selben Grad wie die Menüpunkte unter ihr.
+     */
+    font-size: var(--t-lg);
+    color: inherit;
+  }
+
+  .mobil-suche input::placeholder {
+    color: var(--tinte-leise);
+  }
+
+  /* Das Kreuzchen von Safari und Chrome sitzt in einem runden Feld schief und
+     tut dasselbe wie die Rücktaste. */
+  .mobil-suche input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  /*
+   * Der Fokusring gehört um die Kontur, nicht um das nackte Feld.
+   *
+   * `global.css` legt ihn mit 3 px Abstand um das fokussierte Element. Am
+   * Eingabefeld läge er damit quer über der Pille. Um das Formular gelegt
+   * umschließt er, was man auch sieht – gleiche Stärke, gleiche Farbe.
+   *
+   * Im `@supports`, weil die Unterdrückung am Feld sonst ohne Ersatz bliebe:
+   * Kennt ein Browser `:has()` nicht, greift keine der beiden Regeln und der
+   * Ring aus `global.css` bleibt stehen. Lieber an der falschen Stelle als
+   * gar nicht.
+   */
+  @supports selector(:has(*)) {
+    .mobil-suche:has(input:focus-visible) {
+      outline: 3px solid var(--tinte);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgb(255 255 255 / 0.85);
+    }
+
+    .mobil-suche input:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   .haupt-link {
@@ -1934,6 +2122,17 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     list-style: none;
     padding: 0;
     display: grid;
+    /*
+     * `minmax(0, 1fr)` und nicht die stillschweigende Spur.
+     *
+     * Eine Rasterspalte ohne Angabe ist `auto`, und `auto` heißt: mindestens
+     * so breit wie der breiteste Inhalt. Ein einziger Eintrag, der nicht
+     * schmaler kann – ein Eingabefeld, ein langes Wort ohne Trennstelle –
+     * zieht damit die ganze Spalte auf und schiebt alle anderen Zeilen mit
+     * aus dem Bild. Die Null als Untergrenze nimmt der Spur dieses Recht: Sie
+     * ist so breit wie das Menü und keinen Pixel breiter.
+     */
+    grid-template-columns: minmax(0, 1fr);
     gap: 2px;
   }
 
@@ -1954,6 +2153,18 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   .mobil-liste-klein a {
     font-size: var(--t-sm);
     color: var(--tinte-weich);
+  }
+
+  /* Name links, Nummer rechts – das `space-between` von `.mobil-liste a`
+     macht das schon. Hier bleibt nur, was die Nummer selbst braucht:
+     Ziffern gleicher Breite, damit sie nicht zappelt, und den Ampelpunkt
+     dicht davor statt am anderen Zeilenende. */
+  .mobil-telefon-nr {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--raum-2);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
 
   .mobil-titel {
@@ -2071,7 +2282,27 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
   }
 
   @media (max-width: 46rem) {
-    .telefon-nr {
+    /*
+     * Die Rufnummer verlässt die Kopfleiste ganz – nicht nur ihre Ziffern.
+     *
+     * Hier stand vorher `.telefon-nr { display: none }`. Übrig blieb der
+     * Verweis mit dem Ampelpunkt darin: 8 px breit, `aria-hidden`, also ein
+     * Ziel ohne Namen und weit unter den 24 px, die WCAG 2.5.8 verlangt.
+     * Anrufen konnte damit niemand; im Weg stand es trotzdem.
+     *
+     * Und zwar messbar. Angedockt trägt die Zeile bei 390 px: Wortmarke
+     * 99,6 + Wähler 38,4 + Punkt 8 + „Book an appointment" 150 + Menüknopf
+     * 44, dazu vier Lücken à 12 – zusammen 388 px in einer Pille, die innen
+     * 350 hat. Der Menüknopf, das letzte Kind und nicht schrumpfbar, stand
+     * deshalb 19 px außerhalb des Fensters (Englisch) bzw. 17 px
+     * (Französisch); auf Deutsch ging es aus, weil „Termin buchen" 36 px
+     * kürzer ist. Punkt und Lücke sind 20 px – genau die, die fehlten.
+     *
+     * Verloren geht nichts: Die Nummer steht jetzt als eigene Zeile im
+     * Mobilmenü, mit Namen und voller Zeilenhöhe, dazu in der Fußzeile, auf
+     * der Kontaktseite und ab 46 rem wieder hier oben.
+     */
+    .telefon {
       display: none;
     }
 
