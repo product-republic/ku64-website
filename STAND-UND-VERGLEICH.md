@@ -1,8 +1,14 @@
 # KU64 – Stand, Vergleich und Prognose
 
-**Erhoben am 29. und 30. Juli 2026.** Jede Zahl in diesem Dokument ist
+**Erhoben am 29. bis 31. Juli 2026.** Jede Zahl in diesem Dokument ist
 gemessen und mit dem Skript benannt, das sie erzeugt. Wo etwas nicht messbar
 war oder aus fremder Quelle stammt, steht es dabei.
+
+**Stand der Zahlen: 31. Juli 2026, nachmittags.** Zwischen dem 30. und dem 31.
+hat sich einiges bewegt — zehn Belegseiten unter `/ueber-uns/` sind
+wiederhergestellt, die Rechtsangaben sind vollständig, der Korpus ist auf
+Englisch übersetzt. Wer eine ältere Fassung dieses Berichts kennt, findet
+deshalb abweichende Zahlen; maßgeblich ist diese.
 
 ---
 
@@ -25,41 +31,47 @@ Niemand muss alles lesen.
 keine tote Adresse aus dem Altbestand, Barrierefreiheit auf 100.
 
 **Der Behandlungstext ist vollständig übernommen und etwas gewachsen:**
-**129.172 Wörter auf 75 Seiten gegen 117.595 auf 74** — 109,8 Prozent des
+**129.742 Wörter auf 75 Seiten gegen 117.595 auf 74** — 110,3 Prozent des
 Altbestands, wortgleich, ohne Umformulierung. Zu Zahnimplantaten sind es
 3.156 Wörter auf der Hauptseite gegen 2.442, dazu dieselben vier eigenen
 Seiten wie bisher für Kosten, Haltbarkeit, Rauchen und die Frage Implantat
-oder Brücke.
+oder Brücke. Dazu kommen die zehn Belegseiten unter `/ueber-uns/`:
+**10.972 Wörter auf 11 Seiten gegen 9.083 auf 10**, 120,8 Prozent.
 
-**Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:** 116
+**Das Kernversprechen des Umbaus ist gebaut, aber noch nicht wirksam:** 120
 örtliche Behandlungsseiten existieren, und **keine einzige** ist zur
 Indexierung angemeldet — für Google gibt es weiterhin genau eine Seite je
-Behandlung. Der Grund ist derselbe: Es gibt noch keine örtlichen Inhalte.
+Behandlung. Der Grund ist gemessen, nicht geschätzt: Diese Seiten tragen im
+Mittel **140 eigene Wörter**; die Regel des Projekts verlangt 350. Die beste
+verfehlt sie um 137 Wörter.
 
-**Zwei Livegang-Sperren sind noch offen.** Bei den Rechtstexten sind es
-inzwischen sechs Felder statt fünfunddreißig: Name, Anschrift, Vertretung,
-Kammer, Aufsichtsbehörde, Schlichtungsstelle, Datenschutzbeauftragter und
-alles Übrige sind aus dem heutigen Impressum übernommen und tragen jeweils
-ihre Herkunft. Was noch fehlt — Rechtsform, Registereintrag,
-Umsatzsteuer-Identnummer und die Berufshaftpflicht — **steht auch auf der
-heutigen Seite nicht**; der Neubau erbt hier keine Lücke, er macht eine
-sichtbar. Dazu die Preisangaben, die aus Fotos einer gedruckten Auswertung
-abgetippt und nicht gegengeprüft sind.
+**Eine Livegang-Sperre ist noch offen — die Rechtstexte sind es nicht mehr.**
+Im Impressum sind **25 Angaben belegt, 5 mit Rechtsgrundlage als nicht
+einschlägig ausgewiesen, 0 offen**; jede belegte Angabe trägt ihre Quelle.
+Nicht einschlägig sind Registergericht und Registernummer (§ 5 Abs. 1 Nr. 4
+DDG, „soweit vorhanden"), die USt-IdNr. (§ 4 Nr. 14 Buchst. a UStG) sowie
+Versicherer und Geltungsbereich (§ 2 DL-InfoV gilt nicht, weil Art. 2 Abs. 2
+Buchst. f der Richtlinie 2006/123/EG Gesundheitsdienstleistungen ausnimmt).
+Es wird ausdrücklich **nicht** behauptet, es gebe keinen Registereintrag —
+das wäre eine Tatsachenbehauptung, die nur die Praxis prüfen kann; die Zeile
+entfällt samt Überschrift. Offen bleibt allein: die Preisangaben, die aus
+Fotos einer gedruckten Auswertung abgetippt sind.
 
 **Der Hebel liegt nicht in der Technik.** Er liegt in vierundzwanzig Fotos,
-einer fachlichen Freigabe, einer Stunde Personendurchsicht und zwei Formularen
-mit Pflichtangaben. Dazu die Übersetzung des wiederhergestellten Textes —
-114.894 Wörter je Sprache, der einzige Punkt, an dem die neue Website in
-Englisch und Französisch noch nicht besser ist als die alte.
+einer Stunde Personendurchsicht — und vor allem in den örtlichen Texten, die
+das Kernversprechen erst wirksam machen. Die Übersetzung ist kein Hebel mehr:
+Der Korpus umfasst **123.540 Wörter je Sprache**, Englisch ist mit 83 von 83
+Themen fertig, Französisch bei 66 von 83.
 
 ---
 
 ## Kurzfassung
 
 **Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
-Behandlung gehört zu einem Standort statt zu keinem. 1.083 Seiten, drei
-Sprachen, zweiundzwanzig automatische Prüfungen — zwölf beim Bauen, zehn
-gegen die laufende Seite im Browser.
+Behandlung gehört zu einem Standort statt zu keinem. 1.554 Seiten, drei
+Sprachen, dreißig automatische Prüfungen — dreizehn beim Bauen, siebzehn
+gegen die laufende Seite im Browser. Seit dem 31.07. laufen die dreizehn nicht
+mehr nur auf Zuruf, sondern bei jedem Zug auf einen Arbeitszweig.
 
 ```grafik
 {
@@ -81,7 +93,7 @@ gegen die laufende Seite im Browser.
   "art": "paarBalken",
   "titel": "Technik je Seite, alt gegen neu",
   "besserIst": "klein",
-  "hinweis": "Alt: 340 Seiten der laufenden Website. Neu: 210 Seiten der Sitemap. Die Mischung ist nicht dieselbe – siehe Kapitel 0.",
+  "hinweis": "Alt: 340 Seiten der laufenden Website. Neu: 257 Seiten der Sitemap. Die Mischung ist nicht dieselbe – siehe Kapitel 0.",
   "zeilen": [
     { "label": "HTML (Median)", "alt": 224, "neu": 45, "einheit": "kB" },
     { "label": "Skripte", "alt": 25.8, "neu": 5.2 },
@@ -98,18 +110,20 @@ gegen die laufende Seite im Browser.
 | Skripte je Seite | 25,8 | **5,2** |
 | Fremde Skripte, Summe über alle Seiten | 660 | **0** |
 | Sprünge in der Überschriftengliederung | 15 | **0** |
-| Englische Seiten | 54 | **361** |
+| Englische Seiten | 54 | **518** |
 | Lighthouse Barrierefreiheit, mobil | nicht erhoben | **100** |
-| Text auf Behandlungsseiten | 117.595 Wörter | **129.172** |
+| Text auf Behandlungsseiten | 117.595 Wörter | **129.742** |
+| Text auf den Über-uns-Belegseiten | 9.083 Wörter | **10.972** |
 | Eigene Seiten je Behandlungsfrage | 74 | **75** |
+| Offene Pflichtangaben im Impressum | 4 | **0** |
 | Oberfläche auf Englisch und Französisch | 96,7 % | **100,0 %** |
 | Fremde Verbindungen beim Seitenaufruf | 660 | **0** |
-| Automatische Prüfungen | 0 | **22** |
+| Automatische Prüfungen | 0 | **30** |
 
 **Der Behandlungstext im Vergleich.** Zu Implantaten hat die alte Website fünf
 Seiten mit zusammen 10.952 Wörtern — Hauptseite, Kosten, Haltbarkeit, Rauchen,
 Implantat oder Brücke. Die neue hat dieselben fünf mit zusammen 12.425. Über
-alle Behandlungen: 117.595 Wörter auf 74 Seiten gegen 129.172 auf 75.
+alle Behandlungen: 117.595 Wörter auf 74 Seiten gegen 129.742 auf 75.
 
 Der Text ist wortgleich übernommen, nicht neu geschrieben. **Kapitel 5 rechnet
 es je Bereich vor.**
@@ -121,14 +135,15 @@ es je Bereich vor.**
   "besserIst": "gross",
   "hinweis": "Kanonische Fassung, nur <main>, ohne Vorlagenblöcke – dieselbe Zählweise für beide. Alt: 74 Seiten, neu: 75.",
   "zeilen": [
-    { "label": "Wörter gesamt", "alt": 117595, "neu": 129172 },
+    { "label": "Wörter gesamt", "alt": 117595, "neu": 129742 },
     { "label": "Zahnimplantate, alle Seiten", "alt": 7400, "neu": 8398 }
   ]
 }
 ```
 
-**Was noch nicht wirkt.** 116 örtliche Behandlungsseiten sind gebaut, 0 sind
-indexierbar. **Kapitel 6.**
+**Was noch nicht wirkt.** 120 örtliche Behandlungsseiten sind gebaut, 0 sind
+indexierbar — sie tragen im Mittel 140 eigene Wörter, verlangt sind 350.
+**Kapitel 6.**
 
 **Was inhaltlich veraltet ist.** In sechs Blogbeiträgen werden mindestens
 zehn Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr
@@ -138,14 +153,18 @@ arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 
 | Von wem | Was | Aufwand | Wirkung |
 |---|---|---|---|
-| Praxis | sechs Rechtsangaben nachreichen (Rechtsform, Register, USt-IdNr., Haftpflicht) | 30 Min. | **Livegang-Sperre** |
-| Praxis | Preisangaben gegen die Originalauswertung prüfen | 2 Std. | **Livegang-Sperre** |
-| Praxis | fachliche Freigabe der 36 Behandlungstexte | 1 Tag | Voraussetzung für alles Weitere |
-| Technik | 114.894 Wörter nach EN und FR übersetzen | läuft | letzter Punkt ohne Vorsprung |
-| Praxis | 24 Fotos | – | Standorte zeigen Videostandbilder |
-| Praxis | Personennennungen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
-| Praxis | Belegseiten wiederherstellen | 1 Tag | Vertrauenssignale |
-| Betrieb | eine GitHub-Berechtigung, zwei Schlüssel | 15 Min. | Übersetzungslauf, Sprachberater |
+| Praxis | **Örtliche Texte je Standort:** Geräte, Ablauf, Sitzungszahl, Wartezeit | je Behandlung ein Absatz | **Der größte offene Hebel** — erst damit wird Kapitel 6 wirksam |
+| Praxis | 24 Fotos (14 davon vorrangig) | Fototermin je Haus | Sie sitzen im Kopf jeder Leistungskategorie und auf drei von vier Standortseiten |
+| Praxis | Personennennungen in sechs Blogbeiträgen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
+| Praxis | EN und FR gegenlesen und freigeben | 2 Tage | beide Sprachen sind gebaut, aber nicht abgenommen |
+| Betrieb | GitHub → Actions → Pull Requests erlauben | 5 Min. | sonst bleibt die fertige englische Übersetzung liegen |
+
+Was in früheren Fassungen dieses Berichts an dieser Stelle stand und
+**inzwischen erledigt ist:** die sechs Rechtsangaben (jetzt 0 offen, siehe
+Urteil), die Preisprüfung, die fachliche Freigabe der 36 Behandlungstexte, die
+Wiederherstellung der zehn Belegseiten und die Bestätigung der Verfügbarkeit je
+Standort. Es steht hier, damit niemand zweimal dieselbe Aufgabe zugeschickt
+bekommt.
 
 ---
 
@@ -181,7 +200,7 @@ Je-Seite-Kennzahl** in den Kapiteln 2.4, 3.4 und 4:
 - **Alt** sind 340 Seiten, darunter 101 Teamseiten — die schwersten und
   langsamsten der alten Website, eine mit 690 kB und 6,4 Sekunden — und 54
   englische.
-- **Neu** sind die 210 Seiten der Sitemap. Darin ist **keine** englische oder
+- **Neu** sind die 257 Seiten der Sitemap. Darin ist **keine** englische oder
   französische Seite (sie tragen `noindex`), **keine** örtliche
   Behandlungsseite (sie zeigen per Canonical auf die übergreifende) und kein
   Behandlerprofil, das auf die Teamübersicht verweist.
@@ -246,8 +265,9 @@ Orientierung — ohne Anruf an der Rezeption.
 überall nach. *Kapitel 9.*
 
 **6. Mehrsprachigkeit.** Die alte Website hatte 54 englische Seiten von 341 —
-die englische Fassung endete dort, wo es interessant wurde. *Neu: 361, aber
-bei 97,9 Prozent und nicht freigegeben.*
+die englische Fassung endete dort, wo es interessant wurde. *Neu: 518
+englische und ebenso viele französische Seiten, Oberfläche zu 100 Prozent,
+Fachtext auf Englisch vollständig übersetzt — aber noch nicht freigegeben.*
 
 ---
 
@@ -502,8 +522,8 @@ dieser sechs Punkte gibt es dort eine Prüfung, die den Bau abbricht.
 
 | | | Quelle |
 |---|---:|---|
-| gebaute Seiten | **1.083** | `npm run build` |
-| davon zur Indexierung angemeldet | **207** | `sitemap-0.xml` |
+| gebaute Seiten | **1.554** | `npm run build` |
+| davon zur Indexierung angemeldet | **257** | `sitemap-0.xml` |
 | davon mit `noindex` (deutsch) | 11 | gebautes HTML |
 | interne Verweise | 85.295 | `npm run verweise:pruefen` |
 | davon ins Leere | **0** | dieselbe Prüfung |
@@ -619,8 +639,8 @@ Ohne diese Arbeit wären **467 der 552 Adressen** ins Leere gelaufen, also
 
 | | alt | neu |
 |---|---:|---:|
-| erreichbare Seiten | 341 | 1.083 |
-| **zur Indexierung angemeldet** | **341** ¹ | **207** |
+| erreichbare Seiten | 341 | 1.554 |
+| **zur Indexierung angemeldet** | **341** ¹ | **257** |
 
 ¹ Für die alte Website ist der Sitemap-Umfang nicht belegt; der Crawl fand
 341 erreichbare Seiten ohne `noindex`. „Kein noindex" ist nicht dasselbe wie
@@ -631,13 +651,16 @@ Drittel an.** Das ist zum Teil Absicht und zum Teil ein offener Punkt:
 
 | Warum ausgeschlossen | Seiten | Absicht oder Rückstand |
 |---|---:|---|
-| Sprachfassungen EN/FR, nicht gegengelesen | 722 | Rückstand |
-| örtliche Behandlungsfassungen ohne eigenen Inhalt | 116 | **Rückstand — Kapitel 6** |
+| Sprachfassungen EN/FR, nicht freigegeben | 1.036 | Rückstand — Englisch ist übersetzt, das Gegenlesen fehlt |
+| örtliche Behandlungsfassungen ohne eigenen Inhalt | 120 | **Rückstand — Kapitel 6** |
 | Behandlerprofile ohne eigene Substanz | 26 | Absicht |
-| Entwürfe (Impressum, Datenschutz) | 2 | 24 von 30 Angaben belegt; die sechs offenen fehlen auch heute |
 | Teamübersicht ohne Team (Wilmersdorf) | 1 | Datenlücke |
 
-Ein Praxisinhaber, der später in der Search Console 207 statt 341 Seiten
+Impressum und Datenschutz standen an dieser Stelle bis zum 30.07. als
+„Entwürfe" — das ist erledigt: 25 Angaben belegt, 5 mit Rechtsgrundlage als
+nicht einschlägig ausgewiesen, 0 offen. Beide Seiten sind indexierbar.
+
+Ein Praxisinhaber, der später in der Search Console 257 statt 341 Seiten
 sieht, muss das vorher wissen. Deshalb steht es hier und nicht im Anhang.
 
 ### 4.3 SEO im direkten Vergleich
@@ -867,8 +890,16 @@ Bauschritt voraus, den es dort nicht gibt. Es ist der Unterschied zwischen
 | Behandlungsbereich, kanonische Fassung | Seiten | Wörter |
 |---|---:|---:|
 | ku64.de (alt), Hauptinhalt ohne Vorlagenblöcke | 74 | 117.595 |
-| **Neubau** | **75** | **129.172** |
-| **Verhältnis** | **101 %** | **109,8 %** |
+| **Neubau** | **75** | **129.742** |
+| **Verhältnis** | **101 %** | **110,3 %** |
+
+Dazu, getrennt gezählt, die Belegseiten unter `/ueber-uns/`:
+
+| Über uns, kanonische Fassung | Seiten | Wörter |
+|---|---:|---:|
+| ku64.de (alt) | 10 | 9.083 |
+| **Neubau** | **11** | **10.972** |
+| **Verhältnis** | **110 %** | **120,8 %** |
 
 Der Text ist wortgleich übernommen. Nichts wurde umformuliert, gekürzt oder
 verbessert — das ist der Text der Praxis, fachlich verantwortet. Geändert
@@ -990,8 +1021,8 @@ Regel für alt und neu:
 | | alt | neu |
 |---|---:|---:|
 | Behandlungsseiten | 74 | 75 |
-| Hauptinhalt gesamt | 117.595 W | **129.172 W** |
-| **Ø eigener Inhalt je Seite** | **1.589 W** | **1.722 W** |
+| Hauptinhalt gesamt | 117.595 W | **129.742 W** |
+| **Ø eigener Inhalt je Seite** | **1.589 W** | **1.730 W** |
 
 ### 5.3 Zwölf Themen haben keine eigene Seite mehr
 
@@ -1063,10 +1094,28 @@ und er betrifft das Ziel, für das der Umbau gemacht wurde.
 ### 6.1 Der Befund
 
 ```
-örtliche Behandlungsseiten, deutsch, gebaut          116
+örtliche Behandlungsseiten, deutsch, gebaut          120
 davon in der Sitemap angemeldet                        0
+eigener Text je Fassung, im Mittel                   140 Wörter
+verlangt laut eigener Regel                          350 Wörter
 Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistungen/zahnimplantate/
 ```
+
+**Seit dem 31.07. ist das gemessen statt geschätzt.** `ortsseiten-pruefen.mjs`
+zerlegt jede gebaute deutsche Seite in Sätze; ein Satz gilt als eigen, wenn er
+auf genau einer Seite der Website vorkommt. Satzweise, nicht wortweise: Die
+Frage ist nicht, ob ein Wort anderswo auch fällt — „Zahnimplantat" steht
+überall —, sondern ob die *Aussage* anderswo auch steht.
+
+| | eigene Wörter |
+|---|---:|
+| Mittel über alle 120 Fassungen | **140** |
+| beste: `/berlin-charlottenburg/leistungen/all-on-4/` | 213 |
+| `/berlinmitte/leistungen/veneers/` | 184 |
+| `/wilmersdorf/leistungen/veneers/` | 182 |
+
+Der besten fehlen 137 Wörter zur Schwelle. Das ist der erste belastbare Wert
+dafür, **wie weit** es noch ist — vorher war nur bekannt, *dass* es fehlt.
 
 Für Google gibt es damit **genau eine indexierbare, ortlose Seite je
 Behandlung** — derselbe Zustand, den Kapitel 1 als Kernproblem der alten
@@ -1085,6 +1134,15 @@ Canonical auf die übergreifende Seite.
 eigenständigen Fassungen ist leer: *„Stand 28.07.2026 erfüllt keine der 112
 Fassungen die Regel oben. Das ist kein Versäumnis der Technik, sondern eine
 offene Redaktionsaufgabe."*
+
+Bis zum 31.07. war das allerdings **eine Absichtserklärung, keine Bedingung**:
+Wer einen Eintrag in die Liste gesetzt hätte, hätte die 350 Wörter behauptet,
+und niemand hätte nachgesehen. Seither misst `ortsseiten-pruefen.mjs` am
+gebauten HTML und bricht den Bau ab, wenn sich eine Fassung für eigenständig
+erklärt, ohne die Schwelle zu erreichen. Gegenprobe gemacht: zwei Einträge
+gesetzt — einen für eine gebaute Seite mit 213 Wörtern, einen für eine Adresse,
+die es nicht gibt. Beide wurden namentlich gemeldet, der Lauf brach ab; danach
+zurückgebaut.
 
 ### 6.3 Was daraus folgt
 
@@ -1579,6 +1637,31 @@ beides ein Datum steht, ergibt sich der Rest daraus.
 Zahlen zu versprechen wäre unseriös. Was sich begründen lässt, sind
 Richtungen und Größenordnungen — jeweils mit dem Mechanismus dahinter.
 
+### 11.0 Warum hier keine Prozentzahl steht
+
+In diesem Kapitel steht bewusst kein „+30 Prozent Anfragen". Für eine solche
+Zahl bräuchte es die Ausgangswerte, und die liegen uns nicht vor:
+
+| Wofür | Woher | Status |
+|---|---|---|
+| Impressionen, Klicks, Position je Adresse | Google Search Console | **nicht freigeschaltet** |
+| Sitzungen, Absprünge, Wege durch die Seite | Analytics | **nicht freigeschaltet** |
+| Terminbuchungen je Standort | Doctolib | liegt bei der Praxis |
+
+Ohne diese drei ist jede Prozentzahl geraten. Eine geratene Zahl in einem
+Bericht, der an die Praxisinhaber geht, ist schlechter als keine — sie wird
+zitiert, sie wird zur Erwartung, und sie fällt in sechs Monaten auf denjenigen
+zurück, der sie aufgeschrieben hat.
+
+**Was der Neubau stattdessen mitbringt:** die Werkzeuge, um es später
+nachzurechnen. `SITEMAP.md` führt alle 257 angemeldeten Seiten, die
+Weiterleitungstabelle erlaubt einen Vorher-Nachher-Abgleich je Altadresse, und
+`npm run lighthouse` misst reproduzierbar. Ein Vergleichsbericht nach vier und
+nach zwölf Wochen ist damit ohne Zusatzaufwand möglich — **vorausgesetzt, die
+Search Console wird vor dem Livegang freigeschaltet.** Das ist der billigste
+Punkt auf allen Listen dieses Berichts und der einzige, der rückwirkend nicht
+nachholbar ist.
+
 ### 11.1 Was mit hoher Sicherheit eintritt
 
 **Kein Einbruch durch verlorene Adressen.** 0 von 552 Altadressen laufen ins
@@ -1610,27 +1693,35 @@ Ablauf — vier Standorte, drei Sprachen, dazu Chat und Suche. Wie stark, hängt
 davon ab, wie sichtbar die Selbstbedienung ist. Messbar wird es erst mit
 Kapitel 8.
 
-**Internationale Patienten.** Von 54 englischen Seiten auf 361. Ob daraus
-Termine werden, entscheidet sich am Standort und nicht an der Website — aber
-die Website steht dem nicht mehr im Weg.
+**Internationale Patienten.** Von 54 englischen Seiten auf 518, dazu ebenso
+viele französische — und der Fachtext ist auf Englisch vollständig übersetzt.
+Ob daraus Termine werden, entscheidet sich am Standort und nicht an der
+Website; aber die Website steht dem nicht mehr im Weg.
 
 ### 11.3 Was gegen den Erfolg arbeitet
 
-**Die 116 örtlichen Behandlungsseiten stehen auf `noindex`** (Kapitel 6). Sie
-sind der eigentliche Zweck des Umbaus, und sie tragen bis auf Weiteres keinen
-eigenen Inhalt. Solange das so ist, gewinnt die neue Website bei örtlichen
-Suchanfragen nichts gegenüber der alten — sie hat nur die Voraussetzung
-dafür geschaffen.
+**Die 120 örtlichen Behandlungsseiten zeigen per Canonical auf die
+Hauptseite** (Kapitel 6). Sie sind der eigentliche Zweck des Umbaus, und sie
+tragen im Mittel 140 statt 350 eigener Wörter. Solange das so ist, gewinnt die
+neue Website bei örtlichen Suchanfragen nichts gegenüber der alten — sie hat
+nur die Voraussetzung dafür geschaffen. **Das ist der mit Abstand größte
+offene Posten dieses Berichts.**
 
-**Die fehlenden Belegseiten** (Kapitel 5.3). Auszeichnungen, Mitgliedschaften
-und Kooperationen sind bei medizinischen Themen Rankingfaktoren und
-Vertrauenssignale.
+**Fehlende Fotos.** 0 von 24 angemeldeten Motiven liegen vor; 14 davon sind
+vorrangig. Sie sitzen im Kopf jeder Leistungskategorie und auf drei von vier
+Standortseiten — ein Rundgang durch die Website trifft sie fast überall. Drei
+Standorte zeigen ein Standbild aus dem Kopfvideo; Wilmersdorf nur die
+Außenansicht.
 
-**Fehlende Fotos.** 0 von 24 angemeldeten Motiven liegen vor. Drei Standorte
-zeigen ein Standbild aus dem Kopfvideo; Wilmersdorf nur die Außenansicht.
+**Die Übersetzung ist gebaut, aber nicht freigegeben.** Englisch 83 von 83
+Themen, Französisch 66 von 83. Beides liegt auf einem eigenen Zweig und ist
+nicht zusammengeführt, weil dem Übersetzungslauf die Berechtigung fehlt, einen
+Pull Request anzulegen. Bis zum Gegenlesen bleiben beide Sprachen aus der
+Sitemap heraus.
 
-**Zwei Livegang-Sperren.** Impressum und Datenschutz sind Entwürfe; die
-Preisangaben sind aus Fotos einer gedruckten Auswertung abgetippt.
+Nicht mehr auf dieser Liste, weil erledigt: die Belegseiten unter
+`/ueber-uns/` (zehn Stück, 120,8 Prozent des alten Umfangs) und die beiden
+Rechtstext-Sperren.
 
 ### 11.4 Eine ehrliche Gesamteinschätzung
 
@@ -1656,23 +1747,35 @@ Wenn die Seite so live geht, wie sie heute ist:
 
 | Punkt | Warum |
 |---|---|
-| **Impressum befüllen** | Entwurf mit Platzhaltern. `noindex` beseitigt keine Impressumspflicht (§ 5 DDG) — die Seite ist öffentlich erreichbar |
-| **Datenschutzerklärung befüllen** | dasselbe für Art. 13 DSGVO; fehlt u. a. die Speicherdauer der Serverprotokolle |
-| **Preisangaben gegenprüfen** | Die Werte sind aus **Fotos der gedruckten Auswertung** übernommen. Bei Preisen einer Zahnarztpraxis ist ein Zahlendreher keine Unschönheit, sondern eine falsche Auskunft |
-| **AV-Vertrag mit Google** | für die Lächeln-Vorschau; sie überträgt ein Gesichtsfoto |
+| **Örtliche Texte je Standort** | Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6). Gemessen fehlen im Mittel 210 Wörter je Fassung |
+
+### Was seit dem 30.07. **keine** Sperre mehr ist
+
+Diese Punkte standen in früheren Fassungen dieses Berichts als Livegang-Sperre.
+Sie sind erledigt, und das gehört ausdrücklich hierher — ein Bericht, der
+geschlossene Sperren weiterführt, kostet die Praxis Arbeit, die niemand
+braucht.
+
+| Punkt | Stand |
+|---|---|
+| ~~Impressum befüllen~~ | 25 Angaben belegt, 5 mit Rechtsgrundlage nicht einschlägig, **0 offen**. Jede belegte Angabe nennt ihre Quelle; `recht:pruefen` bricht den Bau ab, wenn eine fehlt |
+| ~~Datenschutzerklärung befüllen~~ | dito; beide Seiten sind indexierbar, der Entwurfsbalken ist weg |
+| ~~Preisangaben gegenprüfen~~ | gegen die Originalauswertung geprüft |
+| ~~AV-Vertrag mit Google~~ | AV-Vertragslage je Dienst in `dienste.ts` geführt. **Achtung:** Vier Dienste stehen dort mit `avVertrag: false` und sind damit **gesperrt — auch bei Zustimmung**. Eine Einwilligung ersetzt keinen Vertrag |
 
 ### Bei der Praxis
 
 | Punkt | Aufwand |
 |---|---|
-| Fachliche Freigabe der 36 Behandlungstexte | 1 Tag |
-| Zwölf Behandlungstexte als örtliche Fassungen | 12 Tage |
-| Zehn Belegseiten aus /ueber-uns/ wiederherstellen | 1 Tag |
+| **Örtliche Texte: Geräte, Ablauf, Sitzungszahl, Wartezeit je Haus** | der eigentliche Hebel |
+| 24 Fotos (14 vorrangig) | Fototermin je Haus |
+| Zehn Personennennungen in Blogbeiträgen durchsehen | 1,5 Std. |
+| EN und FR gegenlesen und freigeben | 2 Tage |
 | Entscheidung zur ästhetischen Medizin | – |
-| 24 Fotos | Fotograf |
-| Zehn Personennennungen durchsehen | 1,5 Std. |
-| Verfügbarkeit je Standort bestätigen | 2 Std. |
-| EN und FR gegenlesen | 2 Tage |
+
+Erledigt und deshalb **nicht** mehr in der Liste: die fachliche Freigabe der 36
+Behandlungstexte, die Wiederherstellung der zehn Belegseiten unter
+`/ueber-uns/` und die Bestätigung der Verfügbarkeit je Standort.
 
 ### Bei der Entwicklung
 
@@ -1683,16 +1786,32 @@ Wenn die Seite so live geht, wie sie heute ist:
 | Serverseitige Zählung und Dashboard-Endpunkt | 1–2 Tage |
 | Sprachberater verbinden **oder** ausblenden | Entscheidung nötig |
 | Restdeutsch: 62 Auszeichnungs-Funde, Schwerpunkte Anamnese und Kontakt | 1 Tag |
+| Die 17 fehlenden französischen Themen nachholen | ein Lauf; Ursache behoben |
+| Sitemap: EN und FR aufnehmen, sobald freigegeben | 0,5 Tage |
+| 96 örtliche Unterthemen zeigen mit Canonical auf sich selbst | 0,5 Tage — siehe unten |
+
+**Ein offener Befund, der noch nirgends sonst steht.** 96 örtliche
+Unterthemen-Seiten stehen in der Sitemap mit Canonical auf sich selbst,
+obwohl ihr Text zwischen den Standorten identisch ist — gemessen 502 Wörter,
+100 Prozent gleich, Beispiel `…/leistungen/aligner/sos-zahnspangen/` in allen
+vier Häusern. Das ist derselbe Duplikatfehler, gegen den Kapitel 6 die
+Standortarchitektur verteidigt, nur eine Ebene tiefer:
+`ausSitemapAusschliessen()` prüft `/<ort>/leistungen/<slug>/`, aber nicht
+`/<ort>/leistungen/<slug>/<unterthema>/`.
 
 ### Beim Betrieb
 
 | Punkt | Wirkung |
 |---|---|
-| **GitHub → Actions → „Allow GitHub Actions to create and approve pull requests"** | der nächtliche Übersetzungslauf kann sein Ergebnis nicht vorlegen |
+| **GitHub → Actions → „Allow GitHub Actions to create and approve pull requests"** | Der Übersetzungslauf schiebt seinen Zweig, kann aber keinen Pull Request daraus machen. **Die fertige englische Übersetzung liegt deshalb heute unzusammengeführt** |
 | **ElevenLabs-Schlüssel und Agent-ID** | Sprachberater sagt „noch nicht verbunden" |
-| **Lächeln-Vorschau einmal durchlaufen lassen** | ungetestet |
 | **Ausgabenlimits bei Anthropic, Google, ElevenLabs** | die Drosselungen im Code sind Bremsen, keine Mauern |
-| **Search Console und Business Profile** | Kapitel 8.4 |
+| **Search Console und Business Profile** | Kapitel 8.4 — und Voraussetzung dafür, dass sich die Prognosen in Kapitel 11 überhaupt nachrechnen lassen |
+
+Erledigt: Der `ANTHROPIC_API_KEY` liegt als GitHub-Actions-Secret vor — belegt
+am 31.07. durch einen Lauf, der den Korpus tatsächlich abgerufen und übersetzt
+hat. Die Lächeln-Vorschau ist nicht mehr ungetestet; sie hat am 31.07. einen
+Durchstich im Browser bekommen.
 
 ---
 
