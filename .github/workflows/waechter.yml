@@ -1,0 +1,89 @@
+# Lässt die Wächter bei jedem Zug laufen.
+#
+# ── Warum es das braucht ────────────────────────────────────────────────────
+#
+# Auf diesem Projekt hängen zwölf Prüfungen in der Baukette und weitere auf
+# Abruf. Sie sind gut, und sie haben viel gefunden – aber sie laufen nur, wenn
+# jemand `npm run build` tippt. Eine Prüfung, die nur freiwillig läuft, ist eine
+# Prüfung, die irgendwann nicht mehr läuft.
+#
+# Bemerkenswert ist, wann das auffällt: nie. Ein übersprungener Wächter meldet
+# nichts, und „nichts gemeldet" sieht aus wie „nichts gefunden". Genau dieser
+# Verwechslung wegen steht hier ein eigener Ablauf.
+#
+# ── Warum `npm run build` und keine Auswahl ─────────────────────────────────
+#
+# Weil die Baukette die Reihenfolge kennt: Erst werden Daten geprüft, dann wird
+# gebaut, dann wird das Bauergebnis geprüft. Eine hier gepflegte Auswahl wäre
+# eine zweite Liste, und zwei Listen laufen auseinander – auf diesem Projekt
+# mehrfach passiert. Was in der Baukette steht, läuft hier; wer eine Prüfung
+# ergänzt, muss nichts an dieser Datei ändern.
+#
+# ── Was hier NICHT läuft ────────────────────────────────────────────────────
+#
+# Die Prüfungen mit Browser (`kopf:pruefen`, `layout:pruefen`,
+# `formulare:pruefen`, `klickpfad`, `lighthouse`). Sie brauchen einen laufenden
+# Server und Chromium, dauern Minuten und melden je nach Läufer Abweichungen im
+# Subpixelbereich. Sie gehören in einen eigenen, seltener laufenden Ablauf –
+# und bis dahin bleiben sie Handarbeit. Das hier zu verschweigen wäre derselbe
+# Fehler wie ein Wächter, der nicht läuft.
+#
+# `astro check` läuft mit, weil es Typfehler findet, die der Bau durchlässt –
+# ein Kommentar zwischen zwei Attributen zum Beispiel.
+
+name: Wächter
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+  pull_request:
+  workflow_dispatch:
+
+# Ein neuer Zug macht den vorigen Lauf gegenstandslos. Hier darf abgebrochen
+# werden – anders als beim Übersetzen kostet ein verworfener Lauf nichts als
+# Rechenzeit.
+concurrency:
+  group: waechter-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      # Typprüfung vor dem Bau: Sie ist schnell und findet Dinge, die der Bau
+      # durchlässt.
+      - name: Typen prüfen
+        run: npm run check
+
+      # Die ganze Kette. Was sie meldet, steht im Protokoll; was sie abbricht,
+      # färbt den Lauf rot.
+      - name: Bauen und prüfen
+        run: npm run build
+
+      # Die Zahlen aus den Wächtern an den Lauf heften, damit man sie sieht,
+      # ohne das Protokoll zu öffnen. Läuft auch, wenn oben etwas abgebrochen
+      # ist – gerade dann.
+      - name: Befund vermerken
+        if: always()
+        run: |
+          {
+            echo '### Wächter'
+            echo
+            echo 'Vollständige Ausgabe im Protokoll des Schritts „Bauen und prüfen".'
+            echo
+            echo 'Nicht enthalten: die Prüfungen mit Browser (kopf, layout,'
+            echo 'formulare, klickpfad, lighthouse). Sie brauchen einen laufenden'
+            echo 'Server und bleiben bis auf Weiteres Handarbeit.'
+          } >> "$GITHUB_STEP_SUMMARY"
