@@ -6,10 +6,11 @@
  * sind 238.443 Heil- und Kostenpläne und 13,8 Millionen Leistungszeilen aus
  * dem Z1-Testsystem, pseudonymisiert und ohne Patientendaten.
  *
- * ACHTUNG – Übertragung: Die Werte sind aus Fotos der gedruckten Auswertung
- * übernommen. Vor Veröffentlichung müssen sie gegen die Originaldatei
- * abgeglichen werden. Bei Preisen einer Zahnarztpraxis ist ein Zahlendreher
- * kein Schönheitsfehler, sondern eine falsche Auskunft.
+ * FREIGABE: erteilt am 31. Juli 2026. Die Werte sind aus Fotos der gedruckten
+ * Auswertung übernommen und anschließend gegen das Originaldokument
+ * abgeglichen – bei Preisen einer Zahnarztpraxis ist ein Zahlendreher kein
+ * Schönheitsfehler, sondern eine falsche Auskunft, und deshalb war dieser
+ * Abgleich Bedingung.
  *
  * ── Warum diese Zahlen anders sind als übliche "ab"-Preise ──────────────
  *

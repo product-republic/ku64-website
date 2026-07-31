@@ -27165,10 +27165,6 @@
       "text": "KU64 Berlin-Mitte – Hausvogteiplatz",
       "quelle": "fc6f60b6"
     },
-    "standort.berlinmitte.zeitenHinweis": {
-      "text": "Opening hours at Hausvogteiplatz may differ from the main practice – please confirm before your visit.",
-      "quelle": "a0af2407"
-    },
     "standort.potsdam.anfahrt.oepnv.0": {
       "text": "Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 minutes on foot)",
       "quelle": "21f58e50"
@@ -27264,10 +27260,6 @@
     "standort.wilmersdorf.nameLang": {
       "text": "KU64 – DIE KIEZPRAXIS in Berlin-Wilmersdorf",
       "quelle": "0bd62dbc"
-    },
-    "standort.wilmersdorf.zeitenHinweis": {
-      "text": "Opening hours for the KiezPraxis are not yet confirmed – please check before publication.",
-      "quelle": "f4aaeaf5"
     },
     "ui.anamnese.absendenFertig": {
       "text": "Submit – done",
@@ -27897,6 +27889,22 @@
       "text": "The legal basis for processing your health data is Art. 9(2)(h) GDPR in conjunction with § 630f BGB (documentation requirement). Retention period of patient records: {frist}. Data processing agreement with Nelly Solutions: {av}.",
       "quelle": "e1de470d"
     },
+    "ui.ds.aufbewahrungsfrist": {
+      "text": "as a rule ten years after completion of treatment (§ 630f (3) of the German Civil Code)",
+      "quelle": "f5f30f77"
+    },
+    "ui.ds.avDienstFehlt": {
+      "text": "service not listed in the register",
+      "quelle": "ad4c675c"
+    },
+    "ui.ds.avLiegtVor": {
+      "text": "in place",
+      "quelle": "0b9322e5"
+    },
+    "ui.ds.avOffen": {
+      "text": "not yet confirmed",
+      "quelle": "3d47b469"
+    },
     "ui.ds.beidesKoennenSieJederzeit": {
       "text": "You can delete both at any time via your browser settings. This is not personal data in the strict sense, nor a user profile.",
       "quelle": "035256b6"
@@ -27984,6 +27992,10 @@
     "ui.ds.nachAbschlussDerAnfrage": {
       "text": "Once your enquiry is complete, the photo and result are no longer kept on our server.",
       "quelle": "ee063677"
+    },
+    "ui.ds.protokolldauer": {
+      "text": "Our own server keeps no access log. Technical logs are generated at the hosting provider, which deletes them automatically after a short period",
+      "quelle": "4cec6972"
     },
     "ui.ds.rechteText": {
       "text": "You have the right to access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and objection (Art. 21 GDPR). You may withdraw any consent given at any time with effect for the future.",
@@ -28625,9 +28637,13 @@
       "text": "Dispute resolution",
       "quelle": "6138259e"
     },
-    "ui.imp.streitbeilegungText": {
-      "text": "The European Commission provides a platform for online dispute resolution. We are {bereit} willing and {bereit} obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
-      "quelle": "47a7e66f"
+    "ui.imp.streitbeilegungJa": {
+      "text": "We take part in dispute resolution proceedings before a consumer arbitration board within the meaning of the German VSBG.",
+      "quelle": "20e7af00"
+    },
+    "ui.imp.streitbeilegungNein": {
+      "text": "We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board within the meaning of the German VSBG.",
+      "quelle": "e7a4bcf3"
     },
     "ui.imp.ustId": {
       "text": "VAT identification number",

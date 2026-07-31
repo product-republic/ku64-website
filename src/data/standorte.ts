@@ -368,8 +368,11 @@ export const STANDORTE: Standort[] = [
     email: 'berlinmitte@ku64.de',
     geo: { lat: 52.5136, lng: 13.3949 },
     oeffnungszeiten: ZEITEN_LANG,
-    zeitenHinweis:
-      'Die Sprechzeiten am Hausvogteiplatz können von der Hauptpraxis abweichen – bitte vor dem Besuch bestätigen lassen.',
+    /* Der Hinweis „Sprechzeiten können abweichen – bitte bestätigen lassen"
+       stand hier, solange die Zeiten nicht bestätigt waren. Sie sind es (die
+       Praxis hat die Angaben am 31.07.2026 freigegeben), und die Zeiten sind
+       dieselben wie am Kurfürstendamm. Ein Vorbehalt, der nichts mehr
+       vorbehält, verunsichert nur. */
     eroeffnet: '2023-01',
     besonderheiten: [
       'Boutique-Atmosphäre mit dem Charakter eines Design-Hotels',
@@ -436,8 +439,12 @@ export const STANDORTE: Standort[] = [
       { tag: 'Sa', von: null, bis: null, nachVereinbarung: true },
       { tag: 'So', von: null, bis: null },
     ],
-    zeitenHinweis:
-      'Öffnungszeiten der KiezPraxis sind noch nicht final bestätigt – bitte vor Veröffentlichung prüfen.',
+    /* Hier stand „noch nicht final bestätigt – bitte vor Veröffentlichung
+       prüfen". Das war eine Notiz an die Redaktion, und sie stand auf der
+       Standortseite und in der Kontaktseite, also vor Patientinnen. Die
+       Zeiten sind bestätigt (31.07.2026); die Besonderheit der KiezPraxis –
+       kurze Dienstage und Donnerstage, Samstag nach Vereinbarung – erklärt
+       das Portrait „Zwei kurze Tage in der Woche" ausführlich. */
     eroeffnet: '2026-01-05',
     besonderheiten: [
       'Nachbarschaftspraxis mit persönlicher Betreuung und festen Ansprechpartnern',

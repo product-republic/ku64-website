@@ -658,8 +658,39 @@ export const TEXTE = {
     '{versicherer}<br />Räumlicher Geltungsbereich: {geltungsbereich}',
   'imp.verantwortlichAngabe': '{verantwortlich}',
   'imp.streitbeilegung': 'Streitbeilegung',
-  'imp.streitbeilegungText':
-    'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind {bereit} bereit und {bereit} verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+  /*
+   * Sätze, die eine TATSACHE aus `traeger.ts` oder `dienste.ts` in Worte
+   * fassen – und deshalb hierher gehören und nicht dorthin.
+   *
+   * Der Grund ist auf drei Sprachen gemessen worden: In `traeger.ts` stand
+   * `streitbeilegungBereit: 'nicht'`, und die englische Seite schrieb „We are
+   * nicht willing and nicht obliged". Dasselbe bei „liegt vor" (viermal auf
+   * der englischen Datenschutzerklärung), bei der Protokolldauer und bei der
+   * Aufbewahrungsfrist der Patientenakte.
+   *
+   * Die Regel daraus: Eine Zeichenkette, die in einem übersetzten Satz landet,
+   * muss selbst übersetzbar sein. `traeger.ts` hält die Tatsache und die
+   * Quelle; die Formulierung steht hier. `recht-pruefen.mjs` hält beides
+   * zusammen – es vergleicht den deutschen Katalogtext mit dem Wert im
+   * Register und bricht bei Abweichung ab.
+   */
+  'ds.avLiegtVor': 'liegt vor',
+  'ds.avOffen': 'liegt noch nicht bestätigt vor',
+  'ds.avDienstFehlt': 'Dienst nicht im Verzeichnis',
+  'ds.protokolldauer':
+    'Unser eigener Server führt kein Zugriffsprotokoll. Beim Hoster fallen technische Protokolle an, die dieser nach kurzer Frist automatisch löscht',
+  'ds.aufbewahrungsfrist':
+    'in der Regel zehn Jahre nach Abschluss der Behandlung (§ 630f Abs. 3 BGB)',
+  'imp.streitbeilegungNein':
+    'Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des VSBG teilzunehmen.',
+  'imp.streitbeilegungJa':
+    'Wir nehmen an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des VSBG teil.',
+
+  /* Der Hinweis auf die OS-Plattform der Europäischen Kommission ist hier
+     ersatzlos entfallen: Sie wurde am 20. Juli 2025 abgeschaltet, und die
+     Verordnung (EU) 524/2013 ist seit dem 20. Juli 2025 aufgehoben. Ein
+     Impressum, das auf eine abgeschaltete Plattform verweist, nennt einen
+     Rechtsbehelf, den es nicht gibt. Auf ku64.de steht der Satz heute noch. */
   'imp.schlichtungsstelle':
     'Für Streitigkeiten aus einem Behandlungsverhältnis steht die Schlichtungsstelle der zuständigen Zahnärztekammer zur Verfügung: {stelle}.',
   'imp.bildnachweise': 'Bildnachweise',

@@ -10,7 +10,7 @@
 import { sprachpfade } from '../../i18n/sprachen';
 import { spracheAusParameter } from '../../i18n/sprachen';
 import { texte } from '../../i18n/katalog';
-import { TRAEGER, angabe } from '../../data/traeger';
+import { TRAEGER, angabe, zeigen, offeneAngaben } from '../../data/traeger';
 import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
@@ -40,10 +40,12 @@ const brotkrumen = [
     <h1>{t('imp.seitentitel')}</h1>
     <Vorrangklausel />
 
-    {/* `set:html` wie in der Datenschutzerklärung: Die Felder, die die Praxis
-        noch befüllt, stehen als <code> mitten im Satz. Warum das hier die
-        richtige Ausnahme ist, steht bei den Rechtstexten in texte.ts. */}
-    <p class="hinweis hinweis-warnung entwurf" set:html={t('imp.entwurf')} />
+    {/* Der Entwurfshinweis erscheint nur, solange wirklich etwas offen ist.
+        Ein Warnbalken, der immer da steht, wird nicht mehr gelesen –
+        `recht-pruefen.mjs` prüft beides, das Erscheinen und das Verschwinden. */}
+    {offeneAngaben().length > 0 && (
+      <p class="hinweis hinweis-warnung entwurf" set:html={t('imp.entwurf')} />
+    )}
 
     <div class="fliesstext">
       <h2>{t('imp.angabenNach5Ddg')}</h2>
@@ -66,16 +68,30 @@ const brotkrumen = [
       <h2>{t('imp.vertretung')}</h2>
       <p set:html={t('imp.vertretungAngabe', { vertretung: angabe(TRAEGER.vertretung) })} />
 
-      <h2>{t('imp.register')}</h2>
-      <p
-        set:html={t('imp.registerAngabe', {
-          registergericht: angabe(TRAEGER.registergericht),
-          registernummer: angabe(TRAEGER.registernummer),
-        })}
-      />
+      {/* Register, Umsatzsteuer und Haftpflicht stehen nur da, wenn sie
+          einschlägig sind. Die Begründung, warum sie es hier nicht sind,
+          steht in `traeger.ts` – und zwar je Feld, nicht pauschal.
 
-      <h2>{t('imp.ustId')}</h2>
-      <p set:html={t('imp.ustIdAngabe', { ustId: angabe(TRAEGER.ustId) })} />
+          Weggelassen wird die ganze Überschrift mit: „Registereintrag" über
+          einer leeren Zeile sieht aus wie ein Fehler und ist einer. */}
+      {zeigen(TRAEGER.registergericht) && (
+        <>
+          <h2>{t('imp.register')}</h2>
+          <p
+            set:html={t('imp.registerAngabe', {
+              registergericht: angabe(TRAEGER.registergericht),
+              registernummer: angabe(TRAEGER.registernummer),
+            })}
+          />
+        </>
+      )}
+
+      {zeigen(TRAEGER.ustId) && (
+        <>
+          <h2>{t('imp.ustId')}</h2>
+          <p set:html={t('imp.ustIdAngabe', { ustId: angabe(TRAEGER.ustId) })} />
+        </>
+      )}
 
       <h2>{t('imp.berufsrechtlicheAngaben')}</h2>
       <p
@@ -89,19 +105,33 @@ const brotkrumen = [
       />
       <p set:html={t('imp.berufsRegeln', { fundstelle: angabe(TRAEGER.berufsordnungFundstelle) })} />
 
-      <h2>{t('imp.haftpflicht')}</h2>
-      <p
-        set:html={t('imp.haftpflichtAngabe', {
-          versicherer: angabe(TRAEGER.versicherer),
-          geltungsbereich: angabe(TRAEGER.versicherungGeltungsbereich),
-        })}
-      />
+      {zeigen(TRAEGER.versicherer) && (
+        <>
+          <h2>{t('imp.haftpflicht')}</h2>
+          <p
+            set:html={t('imp.haftpflichtAngabe', {
+              versicherer: angabe(TRAEGER.versicherer),
+              geltungsbereich: angabe(TRAEGER.versicherungGeltungsbereich),
+            })}
+          />
+        </>
+      )}
 
       <h2>{t('imp.verantwortlichFuerDenInhalt')}</h2>
       <p set:html={t('imp.verantwortlichAngabe', { verantwortlich: angabe(TRAEGER.inhaltlichVerantwortlich) })} />
 
       <h2>{t('imp.streitbeilegung')}</h2>
-      <p set:html={t('imp.streitbeilegungText', { bereit: angabe(TRAEGER.streitbeilegungBereit) })} />
+      {/* Der Satz kommt vollständig aus dem Katalog, nicht als Lückentext mit
+          einem eingesetzten „nicht": Auf der englischen Seite stand deshalb
+          „We are nicht willing and nicht obliged". Die Tatsache steht in
+          `traeger.ts`, die Formulierung im Katalog. */}
+      <p>
+        {t(
+          TRAEGER.streitbeilegungBereit.wert === 'ja'
+            ? 'imp.streitbeilegungJa'
+            : 'imp.streitbeilegungNein',
+        )}
+      </p>
       <p set:html={t('imp.schlichtungsstelle', { stelle: angabe(TRAEGER.schlichtungsstelle) })} />
 
       <h2>{t('imp.bildnachweise')}</h2>

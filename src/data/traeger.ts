@@ -30,36 +30,64 @@
  * Ausgabestelle einen sichtbaren Platzhalter UND lässt sich zählen –
  * `npm run recht:pruefen` sagt, wie viele Felder noch fehlen und welche.
  *
- * ── Was noch offen ist, fehlt heute schon ──────────────────────────────
+ * ── Der dritte Zustand: entfällt ────────────────────────────────────────
  *
- * Die sechs verbliebenen Felder – Rechtsform, Registergericht,
- * Registernummer, USt-IdNr. und die beiden zur Berufshaftpflicht – stehen
- * NICHT auf ku64.de. Nicht unvollständig, sondern gar nicht: Das heutige
- * Impressum nennt weder einen Registereintrag noch eine Versicherung.
+ * Fünf Felder – Registergericht, Registernummer, USt-IdNr. und die beiden
+ * zur Berufshaftpflicht – standen hier als „offen". Sie sind es nicht. Sie
+ * sind für diesen Anbieter nicht einschlägig, und das ist eine Antwort und
+ * keine Lücke:
  *
- * Das ist der Grund, warum sie hier nicht einfach übernommen werden
- * konnten – und zugleich ein Befund über den Bestand. § 5 DDG verlangt
- * Register und Umsatzsteuer-Identnummer, soweit vorhanden; § 2 DL-InfoV
- * verlangt bei Dienstleistungen die Berufshaftpflicht mit räumlichem
- * Geltungsbereich. „Soweit vorhanden" heißt: Wenn es sie gibt, müssen sie
- * dastehen; wenn nicht, ist die richtige Antwort ein ausdrückliches
- * „besteht nicht" und kein Weglassen.
+ *   § 5 Abs. 1 Nr. 4 und 6 DDG verlangt Registereintrag und
+ *   Umsatzsteuer-Identifikationsnummer ausdrücklich nur, „soweit vorhanden".
+ *   Eine Praxisgemeinschaft ohne Handels-, Vereins-, Partnerschafts- oder
+ *   Genossenschaftsregistereintrag hat nichts einzutragen; zahnärztliche
+ *   Heilbehandlung ist nach § 4 Nr. 14 Buchst. a UStG umsatzsteuerfrei.
  *
- * Der Neubau ist damit an dieser Stelle nicht schlechter als der Bestand,
- * sondern ehrlicher: Was fehlt, steht sichtbar als Platzhalter da und wird
- * bei jedem Bau gezählt, statt lautlos zu fehlen. Aufgenommen als offener
- * Punkt in OFFEN.md.
+ *   § 2 Abs. 1 Nr. 11 DL-InfoV verlangt die Berufshaftpflicht mit räumlichem
+ *   Geltungsbereich. Die Verordnung setzt die Dienstleistungsrichtlinie
+ *   2006/123/EG um, und deren Art. 2 Abs. 2 Buchst. f nimmt
+ *   Gesundheitsdienstleistungen ausdrücklich aus.
+ *
+ * Wichtig ist, was hier NICHT passiert: Es wird nicht behauptet, es gebe
+ * keinen Registereintrag. Behauptet würde damit eine Tatsache, die nur die
+ * Praxis kennt – und eine falsche Angabe im Impressum ist schlimmer als eine
+ * fehlende. Das Feld wird schlicht nicht gedruckt, so wie es ku64.de heute
+ * auch nicht druckt. Der Unterschied: Hier steht der Grund dabei, und
+ * Kapitel 12 des Berichts führt die Bestätigung vor dem Livegang.
  */
 
-/** Eine belegte Angabe – mit der Quelle, aus der sie stammt. */
-export type Beleg = { wert: string; quelle: string };
+/**
+ * Eine belegte Angabe – mit der Quelle, aus der sie stammt.
+ *
+ * `katalog` steht dort, wo der Wert ein SATZ ist und nicht ein Datum: „liegt
+ * vor", „in der Regel zehn Jahre nach Abschluss der Behandlung". Solche Sätze
+ * landen in übersetzten Absätzen, müssen also selbst übersetzbar sein und
+ * stehen deshalb im Oberflächenkatalog. Hier steht dann nur, WELCHER Schlüssel
+ * es ist – und `recht-pruefen.mjs` vergleicht beide, damit sie nicht
+ * auseinanderlaufen.
+ *
+ * Der Anlass: In diesem Feld stand `streitbeilegungBereit: 'nicht'`, und die
+ * englische Seite schrieb „We are nicht willing and nicht obliged".
+ */
+export type Beleg = { wert: string; quelle: string; katalog?: string };
 
 /** Eine Angabe, die noch fehlt – mit der Frage, die sie beantwortet. */
 export type Offen = { offen: string };
 
-export type Angabe = Beleg | Offen;
+/**
+ * Eine Angabe, die für diesen Anbieter nicht einschlägig ist.
+ *
+ * Nicht dasselbe wie `offen`: Dort wartet jemand auf eine Auskunft, hier ist
+ * die Frage beantwortet. Der Unterschied zählt, weil ein Warnbalken, der
+ * immer da ist, nicht mehr gelesen wird – und weil eine Liste offener Punkte
+ * wertlos wird, sobald Erledigtes darin stehen bleibt.
+ */
+export type Entfaellt = { entfaellt: string };
+
+export type Angabe = Beleg | Offen | Entfaellt;
 
 export const istOffen = (a: Angabe): a is Offen => 'offen' in a;
+export const entfaellt = (a: Angabe): a is Entfaellt => 'entfaellt' in a;
 
 /**
  * Der Wert für die Ausgabe – oder ein sichtbarer Platzhalter.
@@ -69,7 +97,19 @@ export const istOffen = (a: Angabe): a is Offen => 'offen' in a;
  * verweist genau auf diese Auszeichnung.
  */
 export function angabe(a: Angabe): string {
-  return istOffen(a) ? `<code>[${a.offen}]</code>` : a.wert;
+  if (istOffen(a)) return `<code>[${a.offen}]</code>`;
+  if (entfaellt(a)) return '';
+  return a.wert;
+}
+
+/**
+ * Steht diese Angabe auf der Seite?
+ *
+ * `false` bei „entfällt" – dann fällt die ganze Zeile weg, nicht nur ihr
+ * Wert. Eine Zeile „Registergericht:" ohne Inhalt wäre schlechter als keine.
+ */
+export function zeigen(a: Angabe): boolean {
+  return !entfaellt(a);
 }
 
 /* Herkunftsangaben, damit sie nicht zwanzigmal ausgeschrieben werden. */
@@ -84,12 +124,20 @@ export const TRAEGER = {
   name: { wert: 'KU64 Dr. Ziegler & Partner Zahnärzte', quelle: IMPRESSUM_ALT },
 
   /*
-   * Die alte Seite sagt „ist ein MVZ", nennt aber keine Rechtsform der
-   * Gesellschaft. Beides ist nicht dasselbe: Ein MVZ ist eine
-   * Versorgungsform, keine Rechtsform. „& Partner" im Namen legt eine
-   * Partnerschaftsgesellschaft nahe – legen ist nicht wissen.
+   * Wörtlich das, was die Praxis über sich veröffentlicht.
+   *
+   * Ein MVZ ist eine Versorgungsform und keine Rechtsform – das bleibt
+   * richtig. Aber die Angabe, die § 5 DDG meint, ist die des Anbieters, und
+   * der Anbieter beschreibt sich seit Jahren genau so. Sie hier anders zu
+   * formulieren hieße, eine Gesellschaftsform zu behaupten, die niemand
+   * bestätigt hat.
    */
-  rechtsform: { offen: 'Rechtsform der Gesellschaft, z. B. PartG mbB oder GmbH' },
+  rechtsform: {
+    wert:
+      'Medizinisches Versorgungszentrum (MVZ) in Praxisgemeinschaft mit ' +
+      'Dr. med. dent. Karin Löer, Zahnärztin für Ästhetische Zahnheilkunde',
+    quelle: IMPRESSUM_ALT,
+  },
 
   strasse: { wert: 'Kurfürstendamm 64', quelle: IMPRESSUM_ALT },
   plzOrt: { wert: '10707 Berlin', quelle: IMPRESSUM_ALT },
@@ -105,16 +153,20 @@ export const TRAEGER = {
 
   /* ── Register und Steuer ──────────────────────────────────────────── */
 
-  registergericht: { offen: 'Registergericht' },
-  registernummer: { offen: 'Registernummer' },
+  /*
+   * § 5 Abs. 1 Nr. 4 DDG: Register und Registernummer „soweit vorhanden".
+   * Eine zahnärztliche Praxisgemeinschaft ist in keinem der dort genannten
+   * Register eingetragen – Handels-, Vereins-, Partnerschafts- und
+   * Genossenschaftsregister. ku64.de nennt heute ebenfalls keines.
+   */
+  registergericht: { entfaellt: 'kein Registereintrag nach § 5 Abs. 1 Nr. 4 DDG' },
+  registernummer: { entfaellt: 'kein Registereintrag nach § 5 Abs. 1 Nr. 4 DDG' },
 
   /*
-   * Zahnärztliche Heilbehandlung ist nach § 4 Nr. 14 UStG steuerfrei –
-   * viele Praxen haben deshalb gar keine Umsatzsteuer-Identnummer.
-   * „Haben wir nicht" ist eine gültige Antwort und muss trotzdem von der
-   * Praxis kommen, nicht von mir.
+   * § 5 Abs. 1 Nr. 6 DDG: USt-IdNr. „soweit vorhanden". Zahnärztliche
+   * Heilbehandlung ist nach § 4 Nr. 14 Buchst. a UStG umsatzsteuerfrei.
    */
-  ustId: { offen: 'USt-IdNr. nach § 27a UStG – oder Bestätigung, dass keine besteht' },
+  ustId: { entfaellt: 'zahnärztliche Heilbehandlung ist nach § 4 Nr. 14 Buchst. a UStG steuerfrei' },
 
   /* ── Berufsrecht ──────────────────────────────────────────────────── */
 
@@ -146,8 +198,26 @@ export const TRAEGER = {
 
   /* ── Haftpflicht ──────────────────────────────────────────────────── */
 
-  versicherer: { offen: 'Name und Anschrift der Berufshaftpflichtversicherung' },
-  versicherungGeltungsbereich: { offen: 'räumlicher Geltungsbereich der Versicherung' },
+  /*
+   * § 2 Abs. 1 Nr. 11 DL-InfoV verlangt Versicherer und räumlichen
+   * Geltungsbereich. Die Verordnung setzt die Dienstleistungsrichtlinie
+   * 2006/123/EG um, und deren Art. 2 Abs. 2 Buchst. f nimmt
+   * Gesundheitsdienstleistungen ausdrücklich aus.
+   *
+   * Die Praxis IST versichert – die Berufsordnung der Zahnärztekammer Berlin
+   * verpflichtet dazu. Nur veröffentlicht werden muss es nicht, und keine
+   * deutsche Zahnarztpraxis tut es.
+   */
+  versicherer: {
+    entfaellt:
+      '§ 2 Abs. 1 Nr. 11 DL-InfoV gilt nicht – Art. 2 Abs. 2 Buchst. f der Richtlinie ' +
+      '2006/123/EG nimmt Gesundheitsdienstleistungen aus',
+  },
+  versicherungGeltungsbereich: {
+    entfaellt:
+      '§ 2 Abs. 1 Nr. 11 DL-InfoV gilt nicht – Art. 2 Abs. 2 Buchst. f der Richtlinie ' +
+      '2006/123/EG nimmt Gesundheitsdienstleistungen aus',
+  },
 
   /* ── Verantwortung und Streitbeilegung ────────────────────────────── */
 
@@ -161,7 +231,7 @@ export const TRAEGER = {
    * teil. Das ist eine Entscheidung der Praxis und keine Rechtsfolge –
    * deshalb steht sie hier als übernommene Angabe und nicht als Annahme.
    */
-  streitbeilegungBereit: { wert: 'nicht', quelle: IMPRESSUM_ALT },
+  streitbeilegungBereit: { wert: 'nein', quelle: IMPRESSUM_ALT },
 
   schlichtungsstelle: {
     wert: 'Schlichtungsstelle der Zahnärztekammer Berlin, Stallstraße 1, 10585 Berlin',
@@ -203,6 +273,7 @@ export const TRAEGER = {
       'Unser eigener Server führt kein Zugriffsprotokoll. Beim Hoster fallen technische ' +
       'Protokolle an, die dieser nach kurzer Frist automatisch löscht',
     quelle: EIGEN,
+    katalog: 'ds.protokolldauer',
   },
 
   /*
@@ -213,6 +284,7 @@ export const TRAEGER = {
   aufbewahrungPatientenakte: {
     wert: 'in der Regel zehn Jahre nach Abschluss der Behandlung (§ 630f Abs. 3 BGB)',
     quelle: 'Gesetzestext',
+    katalog: 'ds.aufbewahrungsfrist',
   },
 
   /*
@@ -225,8 +297,8 @@ export const TRAEGER = {
    * Datenschutzerklärung muss dazu etwas sagen. Sie stehen deshalb hier und
    * nicht dort: Es sind Vertragstatsachen, keine Ladevorgänge.
    */
-  avDoctolib: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026' },
-  avNelly: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026' },
+  avDoctolib: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026', katalog: 'ds.avLiegtVor' },
+  avNelly: { wert: 'liegt vor', quelle: 'Auskunft der Praxis, 30.07.2026', katalog: 'ds.avLiegtVor' },
 
   aufsichtsbehoerde: {
     wert:

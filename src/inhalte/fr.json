@@ -27165,10 +27165,6 @@
       "text": "KU64 Berlin-Mitte – Hausvogteiplatz",
       "quelle": "fc6f60b6"
     },
-    "standort.berlinmitte.zeitenHinweis": {
-      "text": "Les horaires de Hausvogteiplatz peuvent différer de ceux du cabinet principal – merci de les confirmer avant votre visite.",
-      "quelle": "a0af2407"
-    },
     "standort.potsdam.anfahrt.oepnv.0": {
       "text": "Tram 93, 99 Berliner Straße/Große Weinmeisterstraße (2 minutes à pied)",
       "quelle": "21f58e50"
@@ -27264,10 +27260,6 @@
     "standort.wilmersdorf.nameLang": {
       "text": "KU64 – DIE KIEZPRAXIS à Berlin-Wilmersdorf",
       "quelle": "0bd62dbc"
-    },
-    "standort.wilmersdorf.zeitenHinweis": {
-      "text": "Les horaires de la KiezPraxis ne sont pas encore confirmés – merci de les vérifier avant publication.",
-      "quelle": "f4aaeaf5"
     },
     "ui.anamnese.absendenFertig": {
       "text": "Envoyer – terminé",
@@ -27897,6 +27889,22 @@
       "text": "La base juridique du traitement de vos données de santé est l'art. 9, al. 2, let. h du RGPD, en lien avec le § 630f du Code civil allemand (BGB, obligation de documentation). Durée de conservation du dossier patient : {frist}. Contrat de sous-traitance avec Nelly Solutions : {av}.",
       "quelle": "e1de470d"
     },
+    "ui.ds.aufbewahrungsfrist": {
+      "text": "en règle générale dix ans après la fin du traitement (§ 630f al. 3 du code civil allemand)",
+      "quelle": "f5f30f77"
+    },
+    "ui.ds.avDienstFehlt": {
+      "text": "service absent du registre",
+      "quelle": "ad4c675c"
+    },
+    "ui.ds.avLiegtVor": {
+      "text": "conclu",
+      "quelle": "0b9322e5"
+    },
+    "ui.ds.avOffen": {
+      "text": "pas encore confirmé",
+      "quelle": "3d47b469"
+    },
     "ui.ds.beidesKoennenSieJederzeit": {
       "text": "Vous pouvez supprimer les deux à tout moment via les paramètres de votre navigateur. Il ne s'agit pas de données personnelles au sens strict ni de profils d'utilisateurs.",
       "quelle": "035256b6"
@@ -27984,6 +27992,10 @@
     "ui.ds.nachAbschlussDerAnfrage": {
       "text": "Une fois la demande terminée, la photo et le résultat ne sont plus présents sur notre serveur.",
       "quelle": "ee063677"
+    },
+    "ui.ds.protokolldauer": {
+      "text": "Notre propre serveur ne tient aucun journal d’accès. Des journaux techniques sont générés chez l’hébergeur, qui les supprime automatiquement après un court délai",
+      "quelle": "4cec6972"
     },
     "ui.ds.rechteText": {
       "text": "Vous disposez d'un droit d'accès (art. 15), de rectification (art. 16), d'effacement (art. 17), de limitation du traitement (art. 18), de portabilité des données (art. 20) et d'opposition (art. 21 RGPD). Vous pouvez retirer à tout moment un consentement donné, avec effet pour l'avenir.",
@@ -28625,9 +28637,13 @@
       "text": "Règlement des litiges",
       "quelle": "6138259e"
     },
-    "ui.imp.streitbeilegungText": {
-      "text": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges. Nous {bereit} disposés et {bereit} tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.",
-      "quelle": "47a7e66f"
+    "ui.imp.streitbeilegungJa": {
+      "text": "Nous participons aux procédures de règlement des litiges devant un organisme de médiation de la consommation au sens de la loi allemande VSBG.",
+      "quelle": "20e7af00"
+    },
+    "ui.imp.streitbeilegungNein": {
+      "text": "Nous ne sommes ni disposés ni tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation au sens de la loi allemande VSBG.",
+      "quelle": "e7a4bcf3"
     },
     "ui.imp.ustId": {
       "text": "Numéro de TVA intracommunautaire",

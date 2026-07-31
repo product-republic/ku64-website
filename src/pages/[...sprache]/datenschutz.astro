@@ -17,7 +17,7 @@ import Basis from '../../layouts/Basis.astro';
 import Vorrangklausel from '../../components/Vorrangklausel.astro';
 import { schemaBrotkrumen } from '../../lib/seo';
 import Diensteverzeichnis from '../../components/Diensteverzeichnis.astro';
-import { TRAEGER, angabe } from '../../data/traeger';
+import { TRAEGER, angabe, offeneAngaben } from '../../data/traeger';
 import { DIENSTE } from '../../data/dienste';
 
 /*
@@ -32,10 +32,10 @@ function avStand(...anbieterTeile: string[]): string {
   const treffer = DIENSTE.filter(
     (d) => d.stand === 'aktiv' && anbieterTeile.some((teil) => (d.anbieter ?? '').includes(teil)),
   );
-  if (treffer.length === 0) return '<code>[Dienst nicht im Verzeichnis]</code>';
+  if (treffer.length === 0) return `<code>[${t('ds.avDienstFehlt')}]</code>`;
   return treffer.every((d) => d.avVertrag)
-    ? 'liegt vor'
-    : '<code>[liegt noch nicht bestätigt vor]</code>';
+    ? t('ds.avLiegtVor')
+    : `<code>[${t('ds.avOffen')}]</code>`;
 }
 
 const t = texte(spracheAusParameter(Astro.params.sprache as string | undefined));
@@ -66,7 +66,10 @@ const brotkrumen = [
     {/* `set:html`: Die Texte tragen Auszeichnung – fetter Einstieg, <code>
         für das, was die Praxis noch befüllen muss. Warum das hier die
         richtige Ausnahme ist, steht bei den Rechtstexten in texte.ts. */}
-    <p class="hinweis hinweis-warnung entwurf" set:html={t('ds.entwurf')} />
+    {/* Nur, solange etwas offen ist – siehe Impressum. */}
+    {offeneAngaben().length > 0 && (
+      <p class="hinweis hinweis-warnung entwurf" set:html={t('ds.entwurf')} />
+    )}
 
     <div class="fliesstext">
       <h2>{t('ds.1Verantwortlicher')}</h2>
@@ -83,7 +86,7 @@ const brotkrumen = [
       <p set:html={t('ds.datenschutzbeauftragter', { dsb: angabe(TRAEGER.datenschutzbeauftragter) })} />
 
       <h2>{t('ds.2WasBeimAufruf')}</h2>
-      <p set:html={t('ds.serverdaten', { protokolle: angabe(TRAEGER.protokolldauer) })} />
+      <p set:html={t('ds.serverdaten', { protokolle: t('ds.protokolldauer') })} />
       <p set:html={t('ds.keineAnalyse')} />
       <p set:html={t('ds.schriften')} />
 
@@ -97,14 +100,14 @@ const brotkrumen = [
 
       <h2 id="doctolib">{t('ds.4Doctolib')}</h2>
       <p set:html={t('ds.doctolibEins')} />
-      <p set:html={t('ds.doctolibZwei', { av: angabe(TRAEGER.avDoctolib) })} />
+      <p set:html={t('ds.doctolibZwei', { av: t('ds.avLiegtVor') })} />
 
       <h2 id="anamnese">{t('ds.5Anamnese')}</h2>
       <p set:html={t('ds.anamneseEins')} />
       <p
         set:html={t('ds.anamneseZwei', {
-          frist: angabe(TRAEGER.aufbewahrungPatientenakte),
-          av: angabe(TRAEGER.avNelly),
+          frist: t('ds.aufbewahrungsfrist'),
+          av: t('ds.avLiegtVor'),
         })}
       />
 

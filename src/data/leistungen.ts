@@ -6,25 +6,24 @@
  * nicht verfügbar, wird sie dort NICHT als Seite erzeugt – stattdessen verweist
  * die Standort-Übersicht auf den nächstgelegenen Standort, der sie anbietet.
  *
- * ACHTUNG – fachliche Freigabe steht AUS: Die Texte dieser Datei sind NEU
- * GESCHRIEBEN und bewusst patientenverständlich gehalten. Vor Veröffentlichung
- * müssen sie zahnärztlich geprüft und gegen das Heilmittelwerbegesetz (HWG)
- * abgeglichen werden. Insbesondere Aussagen zu Erfolgsaussichten, Haltbarkeit
- * und Preisen.
+ * FACHLICHE FREIGABE: erteilt am 31. Juli 2026 durch die Praxis. Die neu
+ * geschriebenen Behandlungstexte sind zahnärztlich gegengelesen und gegen das
+ * Heilmittelwerbegesetz (HWG) abgeglichen – Aussagen zu Erfolgsaussichten,
+ * Haltbarkeit und Preisen eingeschlossen.
  *
- * Das betrifft NICHT die übernommenen Inhalte: Die Beschwerdeseiten
+ * Die übernommenen Inhalte brauchten diese Freigabe nie: Die Beschwerdeseiten
  * (`beschwerden.ts`), die Blogbeiträge, die Personenprofile und die
- * Dentosophie-Seite standen bereits auf ku64.de veröffentlicht und sind damit
- * freigegeben. Einzelne Einträge dieser Datei, die aus dem Altbestand
- * stammen, sind an Ort und Stelle als solche vermerkt.
+ * Dentosophie-Seite standen bereits auf ku64.de veröffentlicht.
  *
- * Der Unterschied entscheidet über den Aufwand: 36 neu geschriebene
- * Behandlungstexte zu prüfen ist eine Sitzung, alles zu prüfen wären Wochen.
+ * Wer hier künftig einen Satz ändert, ändert damit einen freigegebenen Text.
+ * Das ist kein Verbot, sondern ein Hinweis: Inhaltliche Änderungen laufen
+ * über das Dashboard und werden in Notion dokumentiert – siehe Kapitel 9 des
+ * Berichts.
  *
- * ACHTUNG – Verfügbarkeit: Die Zuordnung `verfuegbar` ist eine begründete
- * Annahme auf Basis der öffentlich auffindbaren Angaben. Falsche Angaben führen
- * Patientinnen und Patienten an den falschen Standort. Vor Live-Gang je Standort
- * bestätigen lassen. Siehe ANALYSE.md, Abschnitt "Offene Datenpunkte".
+ * VERFÜGBARKEIT: `verfuegbar` ist am 31. Juli 2026 je Standort bestätigt.
+ * Die Angabe war vorher eine begründete Annahme aus öffentlich auffindbaren
+ * Quellen; bei der Bestätigung kam unter anderem heraus, dass die Behandlung
+ * in Vollnarkose auch in Potsdam stattfindet.
  */
 
 // Endung bewusst mitgeschrieben: Das Skript scripts/og-bilder.mjs lädt diese

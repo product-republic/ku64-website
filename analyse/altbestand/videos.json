@@ -1,0 +1,159 @@
+{
+ "erhobenAm": "2026-07-31",
+ "hinweis": "Erzeugt von analyse/altbestand/videos-holen.mjs. Videokennungen aus den Einbettungen von ku64.de – ohne Abruf bei YouTube.",
+ "seitenGeprueft": 89,
+ "seitenFehler": 0,
+ "videos": [
+  {
+   "id": "Wq8qHQFIzHc",
+   "titel": null,
+   "seiten": [
+    "/en/services/oral-surgery-mkg-surgery/all-on-4/",
+    "/en/services/oral-surgery-mkg-surgery/dental-implants/",
+    "/leistungen/kieferchirurgie-mkg-chirurgie/all-on-4/",
+    "/leistungen/kieferchirurgie-mkg-chirurgie/zahnimplantate/"
+   ]
+  },
+  {
+   "id": "4uQ4-PxGy00",
+   "titel": null,
+   "seiten": [
+    "/en/services/orthodontics/",
+    "/en/services/orthodontics/invisalign/",
+    "/leistungen/kieferorthopaedie/",
+    "/leistungen/kieferorthopaedie/invisalign/"
+   ]
+  },
+  {
+   "id": "434t6vWU7xY",
+   "titel": null,
+   "seiten": [
+    "/en/services/aesthetic-dentistry-dental-aesthetics/bleaching-teeth-whitening/",
+    "/leistungen/zahnaesthetik/bleaching-zahnaufhellung/",
+    "/potsdam/bleaching/"
+   ]
+  },
+  {
+   "id": "2Nj4RhEWaBo",
+   "titel": null,
+   "seiten": [
+    "/leistungen/endodontie-wurzelkanalbehandlung/",
+    "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberweiser/",
+    "/leistungen/endodontie-wurzelkanalbehandlung/endodontie-fuer-ueberwiesene-patienten/"
+   ]
+  },
+  {
+   "id": "H5rZlJahXlI",
+   "titel": null,
+   "seiten": [
+    "/leistungen/prophylaxe-4-0/",
+    "/leistungen/prophylaxe-4-0/air-flow/",
+    "/leistungen/prophylaxe-4-0/gbt-guided-biofilm-therapy/"
+   ]
+  },
+  {
+   "id": "Wx9hrm-JJ1w",
+   "titel": null,
+   "seiten": [
+    "/",
+    "/en/"
+   ]
+  },
+  {
+   "id": "PSF1lx3Jcos",
+   "titel": null,
+   "seiten": [
+    "/blog/social-media-2023/",
+    "/leistungen/kinderzahnarzt/"
+   ]
+  },
+  {
+   "id": "uF_XiHk2qXo",
+   "titel": null,
+   "seiten": [
+    "/en/about-us/",
+    "/ueber-uns/"
+   ]
+  },
+  {
+   "id": "9nQD9nEWyRw",
+   "titel": null,
+   "seiten": [
+    "/en/potsdam/",
+    "/potsdam/"
+   ]
+  },
+  {
+   "id": "XHOmBV4js_E",
+   "titel": null,
+   "seiten": [
+    "/en/services/pediatric-dentist/",
+    "/en/services/prophylaxis-4-0/air-flow/"
+   ]
+  },
+  {
+   "id": "muaxpuOsZHU",
+   "titel": null,
+   "seiten": [
+    "/ueber-uns/hilfsprojekt-suedafrika/",
+    "/ueber-uns/soziales-engagement/"
+   ]
+  },
+  {
+   "id": "eN3NMkTVjPs",
+   "titel": null,
+   "seiten": [
+    "/"
+   ]
+  },
+  {
+   "id": "jW70o1z7T3E",
+   "titel": null,
+   "seiten": [
+    "/blog/ku64-in-den-medien/"
+   ]
+  },
+  {
+   "id": "AzLK39ecthQ",
+   "titel": null,
+   "seiten": [
+    "/blog/social-media-2024/"
+   ]
+  },
+  {
+   "id": "CbANJM0jCUk",
+   "titel": null,
+   "seiten": [
+    "/blog/social-media-2024/"
+   ]
+  },
+  {
+   "id": "13d84kubM2g",
+   "titel": null,
+   "seiten": [
+    "/leistungen/angstpatienten/"
+   ]
+  },
+  {
+   "id": "Y9Qqa0LEvBw",
+   "titel": null,
+   "seiten": [
+    "/leistungen/parodontologie-zahnfleischbehandlung/photothermische-therapie-emundo/"
+   ]
+  },
+  {
+   "id": "LCAqQ5QSlIA",
+   "titel": null,
+   "seiten": [
+    "/ueber-uns/hilfsprojekt-suedafrika/"
+   ]
+  },
+  {
+   "id": "OZIRhNtACsk",
+   "titel": null,
+   "seiten": [
+    "/ueber-uns/hilfsprojekt-suedafrika/"
+   ]
+  }
+ ]
+}

@@ -43,7 +43,8 @@
 import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { TRAEGER, istOffen, offeneAngaben } from '../src/data/traeger.ts';
+import { TRAEGER, istOffen, entfaellt, offeneAngaben } from '../src/data/traeger.ts';
+import { TEXTE } from '../src/i18n/texte.ts';
 
 const WURZEL = path.resolve(import.meta.dirname, '..');
 const AUSGABE = ['dist/client', 'dist'].map((d) => path.join(WURZEL, d)).find((d) => existsSync(d));
@@ -54,13 +55,66 @@ const befunde = [];
 
 for (const [feld, a] of Object.entries(TRAEGER)) {
   if (istOffen(a)) continue;
+
+  /*
+   * „Entfällt" braucht keine Quelle, aber einen Grund – und zwar einen, der
+   * die Rechtsgrundlage nennt. Ohne ihn wäre der Zustand die bequemste Art,
+   * eine Pflichtangabe verschwinden zu lassen: Feld auf „entfällt", fertig,
+   * niemand fragt nach.
+   */
+  if (entfaellt(a)) {
+    if (!a.entfaellt || !a.entfaellt.trim()) {
+      befunde.push(`traeger.ts: "${feld}" entfällt, aber ohne Begründung`);
+    } else if (!/§|Art\.|Richtlinie/.test(a.entfaellt)) {
+      befunde.push(
+        `traeger.ts: "${feld}" entfällt mit der Begründung „${a.entfaellt}" – ` +
+          'darin steht keine Rechtsgrundlage. Eine Pflichtangabe entfällt nicht, weil sie ' +
+          'unpassend wirkt, sondern weil eine Norm sie nicht verlangt.',
+      );
+    }
+    continue;
+  }
+
   if (!a.quelle || !a.quelle.trim()) {
     befunde.push(`traeger.ts: "${feld}" hat einen Wert, aber keine Quelle`);
   }
   if (!a.wert || !a.wert.trim()) {
     befunde.push(`traeger.ts: "${feld}" ist leer – dann gehört dort { offen: … } hin`);
   }
+
+  /*
+   * Nennt eine Angabe einen Katalogschlüssel, muss der deutsche Katalogtext
+   * genau ihr Wert sein. Sonst behauptet das Register das eine und die Seite
+   * das andere – und zwar unsichtbar, weil beides für sich plausibel aussieht.
+   */
+  if (a.katalog) {
+    const imKatalog = TEXTE[a.katalog];
+    if (imKatalog === undefined) {
+      befunde.push(`traeger.ts: "${feld}" verweist auf „${a.katalog}" – den Schlüssel gibt es nicht`);
+    } else if (imKatalog !== a.wert) {
+      befunde.push(
+        `traeger.ts: "${feld}" hat den Wert „${a.wert}", im Katalog steht unter ` +
+          `„${a.katalog}" aber „${imKatalog}"`,
+      );
+    }
+  }
 }
+
+/* ── 1b. Was entfällt, steht auch nicht auf der Seite ─────────────────── */
+
+/*
+ * Der Wert allein wegzulassen reicht nicht: Bliebe die Überschrift stehen,
+ * stünde „Registereintrag" über einer leeren Zeile – und das sieht aus wie
+ * ein Fehler, weil es einer ist.
+ *
+ * Geprüft wird an der deutschen Fassung gegen den Oberflächenkatalog: Der
+ * Text der Überschrift darf im gebauten Impressum nicht vorkommen.
+ */
+const UEBERSCHRIFT_ZU = {
+  registergericht: 'imp.register',
+  ustId: 'imp.ustId',
+  versicherer: 'imp.haftpflicht',
+};
 
 /* ── 2. Kein Platzhalter ohne Eintrag im Register ─────────────────────── */
 
@@ -98,6 +152,21 @@ for (const seite of SEITEN) {
       );
     }
 
+    /* Nur die deutsche Fassung: Die Überschriften der Kataloge stehen dort
+       in der Quellsprache, und genau die liegt in `TEXTE`. */
+    if (seite === 'impressum' && praefix === '') {
+      for (const [feld, schluessel] of Object.entries(UEBERSCHRIFT_ZU)) {
+        if (!entfaellt(TRAEGER[feld])) continue;
+        const ueberschrift = TEXTE[schluessel];
+        if (html.includes(`>${ueberschrift}<`)) {
+          befunde.push(
+            `impressum: „${ueberschrift}" steht auf der Seite, obwohl „${feld}" entfällt – ` +
+              'eine Überschrift ohne Angabe darunter.',
+          );
+        }
+      }
+    }
+
     /* ── 3. Der Entwurfshinweis passt zum Zustand ─────────────────────── */
 
     const hatHinweis = html.includes('class="hinweis hinweis-warnung entwurf"');
@@ -117,15 +186,22 @@ for (const seite of SEITEN) {
 
 /* ── Bericht ──────────────────────────────────────────────────────────── */
 
-const belegt = Object.values(TRAEGER).filter((a) => !istOffen(a)).length;
+const belegt = Object.values(TRAEGER).filter((a) => !istOffen(a) && !entfaellt(a)).length;
+const nichtEinschlaegig = Object.entries(TRAEGER).filter(([, a]) => entfaellt(a));
 
 console.log(
-  `[recht] ${belegt} Angabe(n) belegt, ${offen.length} offen – ${geprueft} gebaute Seiten geprüft`,
+  `[recht] ${belegt} Angabe(n) belegt, ${nichtEinschlaegig.length} nicht einschlägig, ` +
+    `${offen.length} offen – ${geprueft} gebaute Seiten geprüft`,
 );
 
 if (offen.length) {
   console.log('\n[recht] Das muss von der Praxis kommen:');
   for (const o of offen) console.log(`          ${o.feld.padEnd(28)} ${o.frage}`);
+}
+
+if (nichtEinschlaegig.length) {
+  console.log('\n[recht] Nicht einschlägig – steht mit Grund in traeger.ts:');
+  for (const [feld, a] of nichtEinschlaegig) console.log(`          ${feld.padEnd(28)} ${a.entfaellt}`);
 }
 
 if (befunde.length === 0) {
