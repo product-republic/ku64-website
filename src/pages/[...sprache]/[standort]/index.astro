@@ -282,7 +282,7 @@ const schema = [
 
       <div>
         <h2>{t('standort.sprechzeiten')}</h2>
-        <table class="zeiten-gross">
+        <table class="zeiten zeiten-luftig">
           <caption class="nur-screenreader">
             {t('standort.oeffnungszeitenVon', { name: standort.name })}
           </caption>
@@ -520,27 +520,26 @@ const schema = [
     margin-block-end: var(--raum-4);
   }
 
-  .zeiten-gross {
-    width: 100%;
-    max-width: 22rem;
+  /* Früher hieß dieselbe Tabelle hier `.zeiten-gross` und trug eine
+     zeichengleiche Kopie der Regeln von /kontakt/ – zwei Namen für eine Sache.
+     Sie heißt jetzt `.zeiten` wie überall (global.css, Abschnitt
+     „Sprechzeiten"); eigen ist ihr nur die größere Zeilenluft, denn auf der
+     Standortseite ist die Sprechzeit eine Hauptangabe und keine Randnotiz. */
+  .zeiten {
     margin-block-start: var(--raum-4);
-    border-collapse: collapse;
   }
 
-  .zeiten-gross th,
-  .zeiten-gross td {
+  .zeiten-luftig th,
+  .zeiten-luftig td {
     padding-block: var(--raum-3);
     border-bottom: 1px solid var(--linie);
-    text-align: start;
   }
 
-  .zeiten-gross th {
+  .zeiten-luftig th {
     font-weight: 600;
-    width: 4rem;
   }
 
-  .zeiten-gross td {
-    font-variant-numeric: tabular-nums;
+  .zeiten-luftig td {
     color: var(--tinte-weich);
   }
 

@@ -273,23 +273,23 @@ const t = texte(daten.sprache);
     line-height: var(--zeile-normal);
   }
 
+  /* Breite, Ausrichtung und Spaltenabstand stehen zentral in global.css
+     (Abschnitt „Sprechzeiten"). Hier nur, was die Fußzeile eigen hat: kleinere
+     Schrift und ein enger Zeilentakt – sieben Zeilen unter der Adresse dürfen
+     die Fußzeile nicht in die Länge ziehen. */
   .zeiten {
     margin-block-start: var(--raum-4);
-    border-collapse: collapse;
     font-size: var(--t-xs);
     color: var(--tinte-weich);
   }
 
-  .zeiten th {
-    text-align: start;
-    font-weight: 500;
-    padding-inline-end: var(--raum-4);
+  .zeiten th,
+  .zeiten td {
     padding-block: 1px;
   }
 
-  .zeiten td {
-    font-variant-numeric: tabular-nums;
-    padding-block: 1px;
+  .zeiten th {
+    font-weight: 500;
   }
 
   .fuss-unten {

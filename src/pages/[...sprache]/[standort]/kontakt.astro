@@ -281,8 +281,10 @@ const nichtHier = daten.leistungenAnderswo(standort.slug);
   .hinweis { margin-block: var(--raum-6); }
   .unten { margin-block: var(--raum-8) var(--raum-6); }
   .klein { font-size: var(--t-sm); color: var(--tinte-weich); margin-block-end: var(--raum-3); }
-  .zeiten { width: 100%; max-width: 22rem; border-collapse: collapse; }
-  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); text-align: start; }
-  .zeiten th { font-weight: 600; width: 4rem; }
-  .zeiten td { font-variant-numeric: tabular-nums; color: var(--tinte-weich); }
+  /* Breite, Ausrichtung und Spaltenabstand: global.css, Abschnitt „Sprechzeiten".
+     Die Trennlinie läuft jetzt nur noch unter dem Paar statt unter 22rem – sie
+     unterstreicht die Zeile, statt ins Leere zu laufen. */
+  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); }
+  .zeiten th { font-weight: 600; }
+  .zeiten td { color: var(--tinte-weich); }
 </style>

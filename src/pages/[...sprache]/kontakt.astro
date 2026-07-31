@@ -312,9 +312,10 @@ const brotkrumen = [
   address { font-style: normal; margin-block: var(--raum-2) var(--raum-3); font-size: var(--t-sm); color: var(--tinte-leise); line-height: var(--zeile-normal); }
   .tel { display: block; font-size: var(--t-lg); font-weight: 700; color: var(--akzent-schrift); text-decoration: none; }
   .mail { display: block; font-size: var(--t-sm); color: var(--tinte-weich); margin-block-start: var(--raum-1); word-break: break-all; }
-  .zeiten { width: 100%; margin-block: var(--raum-4); border-collapse: collapse; font-size: var(--t-xs); }
-  .zeiten th { text-align: start; font-weight: 500; padding-block: 2px; color: var(--tinte-weich); }
-  .zeiten td { text-align: end; font-variant-numeric: tabular-nums; color: var(--tinte-leise); }
+  /* Breite, Ausrichtung und Spaltenabstand: global.css, Abschnitt „Sprechzeiten". */
+  .zeiten { margin-block: var(--raum-4); font-size: var(--t-xs); }
+  .zeiten th { font-weight: 500; padding-block: 2px; color: var(--tinte-weich); }
+  .zeiten td { color: var(--tinte-leise); }
   .ort .knopf { margin-block-start: auto; align-self: flex-start; }
   .notfall { margin-block-start: var(--raum-7); border-color: var(--fehler); background: var(--fehler-flaeche); max-width: var(--breite-text); }
 </style>

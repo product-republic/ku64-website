@@ -187,6 +187,34 @@ Speicherdauer der Serverprotokolle aus dem eigenen Code.
 
 ---
 
+### 9. Zwei Strichpunkte auf `/ueber-uns/` ohne Ziel
+
+Unter „Unsere Leistungen" stehen 19 Themen. 17 davon sind wieder verlinkt –
+die Zuordnung steht namentlich in `scripts/langtexte-bauen.mjs` und wird von
+`npm run verweise:pruefen` gegen die gebauten Seiten gehalten.
+
+Zwei bleiben Text, und zwar absichtlich:
+
+| Strichpunkt | Text im Altbestand |
+|---|---|
+| Allgemeine Zahnheilkunde | **0 Wörter eigener Text** – keine Seite auf ku64.de trägt das Thema. Der Begriff steht dort als Nebensatz auf der Startseite, in zwei Behandlerprofilen, in Stellenanzeigen und auf `/ueber-uns/` selbst. |
+| Exklusiv in Berlin: Brite Veneers | **0 Wörter eigener Text** – keine Seite auf ku64.de trägt das Thema. Drei Erwähnungen als Nebensatz: auf der Startseite (Absatz zum Dentallabor), in `/blog/ku64-in-den-medien/` und auf `/ueber-uns/` selbst. |
+
+Ein Link auf `/leistungen/` bzw. `/leistungen/veneers/` wäre möglich und
+wurde bewusst nicht gesetzt: Er würde behaupten, dort stehe das Thema. Zur
+Allgemeinen Zahnheilkunde steht dort eine Liste aller Behandlungen, und die
+Veneers-Seite handelt von Veneers, nicht vom Markenprodukt Brite Veneers.
+
+Zu entscheiden hat das die Praxis, und es sind zwei getrennte Fragen:
+
+1. Soll es die Seiten geben? Dann braucht es Text von der Praxis – neu
+   geschrieben, denn wiederherzustellen gibt es nichts.
+2. Oder sollen die beiden Punkte auf das jeweils nächstliegende Ziel zeigen,
+   obwohl es das Thema nur streift? Dann genügt ein Eintrag in der Tabelle
+   `VERWEISE` in `scripts/langtexte-bauen.mjs`.
+
+---
+
 ## Was diese Sitzung gelernt hat
 
 Drei Fehler waren vom selben Typ, und der Typ ist es wert, gemerkt zu werden:

@@ -1162,6 +1162,60 @@ a:hover {
   border-color: transparent;
 }
 
+/* ─────────────────────────── Sprechzeiten ─────────────────────────── */
+
+/**
+ * Dieselbe Angabe steht an sechs Stellen: Fußzeile, /kontakt/, und je Standort
+ * Startseite, Kontakt, Anfahrt, Termine. Sie hatte sechs eigene Fassungen –
+ * vier linksbündig, zwei rechtsbündig, drei verschiedene Spaltenbreiten. Eine
+ * Angabe, die überall dieselbe ist, gehört in eine Regel; die sechs Stellen
+ * setzen darüber nur noch Schriftgröße, Farbe und Zeilenluft.
+ *
+ * `table.zeiten` und nicht `.zeiten`: In standorte.astro trägt ein <dd>
+ * denselben Namen, und das ist keine Tabelle.
+ *
+ * Die Tabellenziffern kommen aus der Ziffernregel weiter oben (td, th) – hier
+ * noch einmal zu deklarieren hieße, dieselbe Entscheidung an sieben Stellen
+ * pflegen zu müssen.
+ */
+table.zeiten {
+  /*
+   * Rechtsbündig hat nur Sinn, wenn die Spalte so breit ist wie ihr breitester
+   * Wert. Mit `width: 100%` wächst der Abstand zwischen Kürzel und Zeit mit dem
+   * Behälter – auf der Anfahrtsseite füllt die Karte die ganze Hülle, dort
+   * lägen über 900 px zwischen „Mo" und der Uhrzeit, und das Auge verliert die
+   * Zeile. `max-content` nimmt sich, was der Inhalt braucht; `max-width`
+   * verhindert, dass sie in der schmalen Fußzeilenspalte hinausläuft.
+   */
+  width: max-content;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+table.zeiten th {
+  /*
+   * Keine feste Breite. Die bisherigen 4rem waren gegen ein zweistelliges
+   * Kürzel rund 40 px tote Fläche, und bei 200 % Schriftgröße fraßen sie so
+   * viel Platz, dass selbst „08:00 – 20:00" umbrach. Der Abstand kommt jetzt
+   * allein aus dem Innenabstand und ist damit an allen sechs Stellen derselbe.
+   */
+  width: auto;
+  text-align: start;
+  /* Zwei Zeichen dürfen nie umbrechen, auch nicht in der schmalsten Spalte. */
+  white-space: nowrap;
+  padding-inline-end: var(--raum-5);
+}
+
+table.zeiten td {
+  /*
+   * `end` statt `right`: Die Bündigkeit folgt der Leserichtung. Kein `nowrap` –
+   * wenn eine lange Angabe wie „nach Vereinbarung" bei sehr großer Schrift doch
+   * umbricht, sollen beide Zeilen rechts stehen bleiben statt die Tabelle aus
+   * der Karte zu schieben.
+   */
+  text-align: end;
+}
+
 /* ─────────────────────────── Marken & Hinweise ─────────────────────────── */
 
 .marke {

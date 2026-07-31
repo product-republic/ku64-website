@@ -298,10 +298,13 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
   address { font-style: normal; line-height: var(--zeile-weit); color: var(--tinte-weich); }
   .adresse-knoepfe { display: flex; flex-wrap: wrap; gap: var(--raum-3); margin-block: var(--raum-4); }
   .klein { font-size: var(--t-xs); color: var(--tinte-leise); line-height: var(--zeile-normal); }
-  .zeiten { width: 100%; border-collapse: collapse; margin-block-end: var(--raum-4); }
-  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); text-align: start; }
-  .zeiten th { font-weight: 600; width: 4rem; }
-  .zeiten td { font-variant-numeric: tabular-nums; color: var(--tinte-weich); }
+  /* Breite, Ausrichtung und Spaltenabstand: global.css, Abschnitt „Sprechzeiten".
+     Hier fiel es am stärksten auf: Die Karte ist das einzige Kind ihres Rasters
+     und füllt die ganze Hülle, die Tabelle lief also über rund 63rem. */
+  .zeiten { margin-block-end: var(--raum-4); }
+  .zeiten th, .zeiten td { padding-block: var(--raum-2); border-bottom: 1px solid var(--linie); }
+  .zeiten th { font-weight: 600; }
+  .zeiten td { color: var(--tinte-weich); }
   .wege { padding-inline-start: var(--raum-5); color: var(--tinte-weich); line-height: var(--zeile-weit); }
   .wege li + li { margin-block-start: var(--raum-3); }
   .text { color: var(--tinte-weich); line-height: var(--zeile-weit); max-width: var(--breite-text); }
