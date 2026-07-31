@@ -57,9 +57,46 @@ html {
   scroll-behavior: smooth;
   /* Sticky-Navigation darf Sprungziele nicht verdecken. */
   scroll-padding-top: 6rem;
+  /*
+   * Und das Einwilligungsband darf es unten genauso wenig.
+   *
+   * Oben war das seit Langem bedacht, unten nicht – dabei ist das Band mit
+   * gemessenen 210,5 px (bei 402 und 360 px Breite) und 264,1 px (bei
+   * 320 px) höher als die Kopfleiste. Wer einem Sprungziel folgt oder ein
+   * Element per `scrollIntoView` heranholt, bekam es an die untere Bildkante
+   * gerechnet – also genau unter das Band.
+   *
+   * Gemessen an der Zustimmen-Schaltfläche der Einbettungen: 100 Prozent
+   * Überdeckung auf `/`, `/berlin-charlottenburg/`, `/berlinmitte/` und
+   * `/leistungen/zahnarztangst/`. `elementFromPoint` auf die Knopfmitte
+   * lieferte dort `DIV.ew-band`.
+   *
+   * `--ew-hoehe` setzt der Einwilligungsdialog selbst, gemessen an seinem
+   * eigenen Kasten (siehe `hoeheMelden()` in `Einwilligung.astro`). Ist kein
+   * Band da, ist die Ersatzangabe 0 – dann kostet diese Zeile nichts.
+   *
+   * Gedeckelt bei 50 vh, nicht bei 30. Der Deckel gilt dem AUFGEKLAPPTEN
+   * Band, das bis 78 dvh wachsen darf – ein Sprungziel soll dann nicht im
+   * obersten Fünftel landen. Zugeklappt ist er aber schon erreicht: Auf der
+   * Startseite bei 320 px misst das Band 281,6 px, und das sind 34 vh von
+   * 820 px Höhe. Mit 30 vh blieb die Zustimmen-Schaltfläche dort um 2,5 px
+   * unter der Bandkante hängen – gemessen, eine von achtzehn Zellen. Bei
+   * 50 vh greift der Deckel im zugeklappten Zustand nie.
+   */
+  scroll-padding-bottom: calc(1rem + min(var(--ew-hoehe, 0px), 50vh));
 }
 
+/*
+ * Das Ende der Seite gehört nicht unter das Band.
+ *
+ * `scroll-padding` hilft beim Springen, nicht am Dokumentende: Dort ist
+ * schlicht nichts mehr, wohin gescrollt werden könnte, und die letzten
+ * 210 px der Fußzeile blieben verdeckt. Dieser Innenabstand schiebt sie
+ * frei und verschwindet mit dem Band von selbst.
+ */
 body {
+  padding-block-end: min(var(--ew-hoehe, 0px), 50vh);
+  transition: padding-block-end var(--zeit) var(--kurve);
   min-height: 100dvh;
   font-family: var(--schrift-text);
   font-size: var(--t-md);
@@ -69,6 +106,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-synthesis-weight: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 /**

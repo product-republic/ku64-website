@@ -239,6 +239,34 @@ const wegZumMenschen = wegZumMenschenIn(daten.sprache);
     inset-inline-end: var(--raum-5);
     z-index: var(--z-dialog);
     transition: inset-block-end var(--zeit) var(--kurve);
+    /*
+     * Die Hülle nimmt keine Klicks – nur das, was man sieht.
+     *
+     * Sie ist unsichtbar und hat keinen Hintergrund, war aber trotzdem ein
+     * Ziel. Unter 32 rem setzt die Regel weiter unten `inset-inline` auf
+     * BEIDE Seiten, damit das Chatfenster die Breite bekommt; damit ist die
+     * Hülle im eingeklappten Zustand ein 370 × 56 px großer, vollkommen
+     * durchsichtiger Streifen quer über den unteren Bildrand – bei 402 px
+     * Gerätebreite 92 Prozent des Bildschirms. Der Knopf darin ist rund
+     * 56 px breit und sitzt rechts; die übrigen rund 314 px waren totes
+     * Land, das Berührungen verschluckte.
+     *
+     * Gemessen an der Zustimmen-Schaltfläche der Einbettungen: bis zu
+     * 99 Prozent Überdeckung, und `document.elementFromPoint` auf die
+     * Knopfmitte lieferte `DIV.berater` statt des Knopfes. Sichtbar war
+     * nichts – der Klick ging einfach ins Leere, was schlimmer ist als eine
+     * sichtbare Sperre, weil niemand darauf kommt, weiterzuscrollen.
+     *
+     * `pointer-events: none` an der Hülle, `auto` an ihren Kindern: Der
+     * Knopf und das Fenster bleiben bedienbar, der leere Rest ist keine
+     * Fläche mehr. Das gilt in jeder Breite, nicht nur unter 32 rem – auch
+     * am Schreibtisch ist die Hülle ein paar Pixel größer als ihr Inhalt.
+     */
+    pointer-events: none;
+  }
+
+  .berater > * {
+    pointer-events: auto;
   }
 
   @media (prefers-reduced-motion: reduce) {
