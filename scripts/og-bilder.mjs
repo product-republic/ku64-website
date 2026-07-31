@@ -250,6 +250,26 @@ async function main() {
   });
   anzahl++;
 
+  /*
+   * Die Karte für den Stand-und-Vergleich-Bericht.
+   *
+   * Der Bericht ist kein Teil der Website, bekommt aber dieselbe Karte –
+   * er wird als Datei und als Link weitergereicht, und ohne Vorschaubild
+   * baut die Gegenstelle sich selbst eines: meist ein dunkler Schnappschuss
+   * der Seite. Für ein Dokument, das eine Erstvorstellung eröffnet, ist der
+   * erste Eindruck genau dieses Bild.
+   *
+   * Dasselbe Motiv wie die Startseite, weil der Bericht über diese Website
+   * spricht und nicht über einen einzelnen Standort.
+   */
+  await bildSchreiben('bericht.jpg', {
+    titel: 'Stand, Vergleich und Prognose',
+    unterzeile: 'Der Neubau, gemessen gegen ku64.de',
+    fusszeile: 'product-republic · Juli 2026',
+    foto: FOTO_STANDARD,
+  });
+  anzahl++;
+
   for (const s of STANDORTE) {
     const foto = FOTO_JE_STANDORT[s.slug] ?? FOTO_STANDARD;
 
