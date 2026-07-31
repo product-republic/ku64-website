@@ -46,6 +46,7 @@
  *
  *   ANTHROPIC_API_KEY=… node scripts/korpus-uebersetzen.mjs [ziel]
  *   node scripts/korpus-uebersetzen.mjs --trocken     (zeigt nur den Umfang)
+ *   node scripts/korpus-uebersetzen.mjs --probe       (zeigt einen Auftrag)
  *   … --sprache=en        nur eine Sprache
  *   … --hoechstens=4      höchstens vier neue Übersetzungen in diesem Lauf
  *
@@ -64,6 +65,7 @@ import Anthropic from '@anthropic-ai/sdk';
 
 const WURZEL = path.resolve(import.meta.dirname, '..');
 const TROCKEN = process.argv.includes('--trocken');
+const PROBE = process.argv.includes('--probe');
 const schalter = (name) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1] || '';
 const NUR_SPRACHE = schalter('sprache');
 const HOECHSTENS = Number(schalter('hoechstens')) || Infinity;
@@ -127,6 +129,72 @@ if (TROCKEN) {
   process.exit(0);
 }
 
+/*
+ * ── `--probe`: den Auftrag ansehen, bevor er Geld kostet ────────────────
+ *
+ * Der erste Lauf hat vier Themen übersetzt und alle vier verloren, weil im
+ * Auftrag „SCHLÜSSEL (unverändert zurückgeben): undefined" stand. Das Modell
+ * hat zurückgegeben, was dastand. Nichts daran war ein Fehler im
+ * herkömmlichen Sinn: kein Absturz, keine Ausnahme, vier vollständige
+ * Übersetzungen – nur unbrauchbar.
+ *
+ * Der Auftrag ist die eine Stelle dieses Skripts, die niemand sieht. Deshalb
+ * zwei Dinge, beide ohne einen einzigen Abruf:
+ *
+ *   1. ALLE Aufträge werden auf das Wort „undefined" geprüft. Jede
+ *      Zeichenkette, die aus einem fehlenden Feld entsteht, endet so.
+ *   2. Einer wird vollständig ausgegeben – zum Lesen.
+ *
+ * Punkt 1 läuft im Arbeitsablauf vor dem Übersetzen. Ein Auftrag mit einer
+ * Lücke kostet damit nichts mehr.
+ */
+if (PROBE) {
+  const kaputt = [];
+  for (const a of arbeit) {
+    for (const sprache of Object.keys(SPRACHEN)) {
+      const text = auftrag(deutsch[a.bereich][a.schluessel], a.schluessel, sprache);
+      /*
+       * Gesucht wird `undefined`, `NaN` und `[object Object]` – die drei
+       * Formen, in denen eine Lücke in einer Zeichenkette landet.
+       *
+       * NICHT `null`: Das steht im Gerüst mit Absicht („ueberschrift": null
+       * beim Einleitungsabschnitt) und ist gültiger Inhalt. Die erste Fassung
+       * dieser Prüfung suchte auch danach und meldete 166 von 166 Aufträgen –
+       * eine Prüfung, die immer anschlägt, sagt so wenig wie eine, die nie
+       * anschlägt.
+       */
+      if (/\bundefined\b|\bNaN\b|\[object Object\]/.test(text)) {
+        kaputt.push(`${sprache} ${a.bereich}/${a.schluessel}`);
+      }
+    }
+  }
+
+  const erste = arbeit.find((a) => a.bereich === 'themen') ?? arbeit[0];
+  console.log(
+    `\n[korpus] Ein vollständiger Auftrag – ${erste.bereich}/${erste.schluessel}, en:\n` +
+      '─'.repeat(72),
+  );
+  console.log(auftrag(deutsch[erste.bereich][erste.schluessel], erste.schluessel, 'en'));
+  console.log('─'.repeat(72));
+
+  if (kaputt.length) {
+    console.error(
+      `\n[korpus] ABBRUCH: ${kaputt.length} Auftrag/Aufträge enthalten „undefined" oder „null"\n` +
+        '         im Anweisungsteil. Das ist ein fehlendes Feld, kein Text – das\n' +
+        '         Modell würde das Wort übernehmen:\n',
+    );
+    for (const k of kaputt.slice(0, 10)) console.error(`           ${k}`);
+    if (kaputt.length > 10) console.error(`           … und ${kaputt.length - 10} weitere`);
+    process.exit(1);
+  }
+
+  console.log(
+    `\n[korpus] ${arbeit.length * 2} Aufträge geprüft, keiner enthält eine Lücke.\n` +
+      '[korpus] --probe: nichts geschrieben, nichts abgerufen.',
+  );
+  process.exit(0);
+}
+
 /* ── Schlüssel ───────────────────────────────────────────────────────── */
 
 if (!process.env.ANTHROPIC_API_KEY) {
@@ -171,7 +239,26 @@ function geruest(eintrag) {
   }));
 }
 
-function auftrag(eintrag, sprache) {
+/**
+ * Der Auftrag.
+ *
+ * `schluessel` steht als EIGENES Argument da und wird nicht aus `eintrag`
+ * gelesen. Hier stand `eintrag.schluessel`, und `eintrag` ist der Langtext –
+ * ein Objekt aus `titel`, `herkunft`, `woerter` und `abschnitte`, ohne
+ * Schlüssel. Im Auftrag stand deshalb wörtlich:
+ *
+ *     SCHLÜSSEL (unverändert zurückgeben): undefined
+ *
+ * Das Modell hat getan, was dastand, und `"schluessel": "undefined"`
+ * zurückgegeben. Vier vollständige, brauchbare Übersetzungen sind daran beim
+ * Einspielen gescheitert – die Prüfung hat gegriffen, aber die Arbeit war
+ * bezahlt. `undefined` ist in einer Zeichenkette kein Fehler, sondern ein
+ * Wort; nichts an diesem Lauf hat gewarnt.
+ *
+ * Deshalb gibt es jetzt `--probe`: Es zeigt einen vollständigen Auftrag, ohne
+ * einen einzigen Abruf. Wer einen Auftrag baut, muss ihn einmal gelesen haben.
+ */
+function auftrag(eintrag, schluessel, sprache) {
   const s = SPRACHEN[sprache];
   return (
     `Übersetze den folgenden Text einer Berliner Zahnarztpraxis nach ${s.name}.\n\n` +
@@ -190,7 +277,7 @@ function auftrag(eintrag, sprache) {
     '5. ANTWORTE AUSSCHLIESSLICH MIT JSON in genau dieser Form, ohne Vor- und Nachwort,\n' +
     '   ohne Code-Zaun:\n\n' +
     '   { "schluessel": "…", "titel": "…" | null, "abschnitte": [ … ] }\n\n' +
-    `SCHLÜSSEL (unverändert zurückgeben): ${eintrag.schluessel}\n\n` +
+    `SCHLÜSSEL (unverändert zurückgeben): ${schluessel}\n\n` +
     'DIESE FORM MUSS DIE ANTWORT HABEN (Texte durch die Übersetzung ersetzen):\n' +
     `${JSON.stringify(geruest(eintrag), null, 1)}\n\n` +
     'DAS ORIGINAL:\n' +
@@ -229,7 +316,7 @@ async function einThema(i, sprache) {
       const antwort = await client.messages.create({
         model: MODELL,
         max_tokens: 16000,
-        messages: [{ role: 'user', content: auftrag(eintrag, sprache) }],
+        messages: [{ role: 'user', content: auftrag(eintrag, schluessel, sprache) }],
       });
       const text = antwort.content.map((t) => (t.type === 'text' ? t.text : '')).join('');
       const u = alsJson(text);
@@ -242,7 +329,11 @@ async function einThema(i, sprache) {
         );
       }
 
-      await writeFile(datei, JSON.stringify({ schluessel, ...u }, null, 1));
+      /* `schluessel` steht NACH dem Spread und gewinnt damit gegen das, was
+         das Modell zurückgibt. Vorher stand er davor – und wurde von der
+         Antwort überschrieben. Welchen Schlüssel eine Datei trägt, ist keine
+         Frage an das Modell: Wir wissen ihn. */
+      await writeFile(datei, JSON.stringify({ ...u, schluessel }, null, 1));
       fertig++;
       console.log(
         `[korpus] ${sprache} ${String(fertig).padStart(3)}/${auftraege.length}  ` +
@@ -271,16 +362,50 @@ async function einThema(i, sprache) {
  * Die Reihenfolge ist Sprache für Sprache und darin absteigend nach Umfang:
  * Der längste Text ist der, an dem sich zuerst zeigt, ob das Verfahren trägt.
  */
+/**
+ * Ist die vorhandene Datei brauchbar – oder nur vorhanden?
+ *
+ * Der Unterschied hat einen ganzen Lauf gekostet. Die vier Dateien des ersten
+ * Laufs waren da, vollständig und gut übersetzt, und trugen alle
+ * `"schluessel": "undefined"`. Ein zweiter Lauf hätte sie übersprungen, weil
+ * sie existieren; das Einspielen hätte sie wieder abgelehnt, weil sie sich
+ * falsch nennen. Die Zwischenablage wäre dauerhaft vergiftet gewesen, und
+ * zwar unsichtbar – „0 lagen schon vor" wäre zu „4 lagen schon vor" geworden
+ * und alles hätte nach Fortschritt ausgesehen.
+ *
+ * Geprüft wird deshalb, was beim Einspielen zählt: der Schlüssel und die Zahl
+ * der Abschnitte. Was daran scheitert, gilt als nicht vorhanden und wird neu
+ * übersetzt. Ein Zwischenstand, der nicht mehr passt, soll sich selbst
+ * ersetzen und nicht darauf warten, dass jemand an einen Cache-Schlüssel
+ * denkt.
+ */
+async function brauchbarVorhanden(datei, schluessel, eintrag) {
+  if (!existsSync(datei)) return false;
+  try {
+    const u = JSON.parse(await readFile(datei, 'utf8'));
+    return u.schluessel === schluessel && u.abschnitte?.length === eintrag.abschnitte.length;
+  } catch {
+    return false;
+  }
+}
+
 const auftraege = [];
+let veraltet = 0;
 for (const sprache of Object.keys(SPRACHEN)) {
   if (NUR_SPRACHE && sprache !== NUR_SPRACHE) continue;
   for (let i = 0; i < arbeit.length; i++) {
-    if (existsSync(path.join(ZIEL, sprache, `${i}.json`))) {
+    const datei = path.join(ZIEL, sprache, `${i}.json`);
+    const { bereich, schluessel } = arbeit[i];
+    if (await brauchbarVorhanden(datei, schluessel, deutsch[bereich][schluessel])) {
       uebersprungen++;
       continue;
     }
+    if (existsSync(datei)) veraltet++;
     auftraege.push([i, sprache]);
   }
+}
+if (veraltet) {
+  console.log(`[korpus] ${veraltet} vorhandene Datei(en) passen nicht mehr – sie werden neu übersetzt`);
 }
 auftraege.length = Math.min(auftraege.length, HOECHSTENS);
 

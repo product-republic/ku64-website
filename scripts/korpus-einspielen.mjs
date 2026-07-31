@@ -219,6 +219,29 @@ for (const sprache of ['en', 'fr']) {
     for (const a of abgelehnt.slice(0, 15)) console.log(`           ${a}`);
     if (abgelehnt.length > 15) console.log(`           … und ${abgelehnt.length - 15} weitere`);
   }
+
+  /*
+   * Alles abgelehnt heißt: nicht der Inhalt ist schuld, sondern das Verfahren.
+   *
+   * Einzelne Ablehnungen sind ein gültiger Zustand – dort bleibt Deutsch
+   * stehen, mit `lang="de"`, sichtbar unfertig. Null von vier ist etwas
+   * anderes: Dann stimmt eine Annahme nicht, und der Lauf soll rot sein.
+   *
+   * Genau dieser Fall ist am 31.07.2026 eingetreten. Vier gute Übersetzungen
+   * trugen `"schluessel": "undefined"`, weil im Auftrag ein Feld fehlte, das
+   * es an der Stelle nie gab. Der Lauf war grün, der Pull Request entstand,
+   * und in den Sprachdateien stand null. Nur wer die Zahl gelesen hat, hätte
+   * es gemerkt.
+   */
+  if (dateien.length > 0 && uebernommen === 0) {
+    console.error(
+      `\n[korpus] ABBRUCH: ${dateien.length} Datei(en) lagen vor und keine einzige\n` +
+        '         wurde übernommen. Das ist kein Inhaltsproblem, sondern ein\n' +
+        '         Verfahrensfehler – die Gründe stehen oben, alle mit demselben\n' +
+        '         Muster.',
+    );
+    process.exit(1);
+  }
 }
 
 console.log('\n[korpus] Bitte anschließend `npm run build` – inhalt:pruefen sieht die Abdeckung.');

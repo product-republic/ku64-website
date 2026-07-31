@@ -89,6 +89,7 @@ jobs:
       # wovon die Rede war.
       - name: Umfang zeigen
         run: |
+          set -o pipefail
           npm run korpus:uebersetzen -- --trocken | tee /tmp/umfang.txt
           {
             echo '### Umfang'
@@ -96,6 +97,20 @@ jobs:
             cat /tmp/umfang.txt
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      # Den Auftrag ansehen, bevor er Geld kostet.
+      #
+      # Der erste Lauf hat vier Themen übersetzt und alle vier verloren: Im
+      # Auftrag stand „SCHLÜSSEL (unverändert zurückgeben): undefined", weil
+      # ein Feld an dieser Stelle nie existierte. Das Modell hat zurückgegeben,
+      # was dastand. Kein Absturz, kein Warnhinweis, vier vollständige und
+      # unbrauchbare Übersetzungen.
+      #
+      # Dieser Schritt prüft alle 166 Aufträge auf „undefined", „NaN" und
+      # „[object Object]" und gibt einen vollständig aus – ohne einen einzigen
+      # Abruf. Er bricht ab, und zwar bewusst VOR dem Übersetzen.
+      - name: Auftrag prüfen
+        run: npm run korpus:uebersetzen -- --probe
 
       # Die Zwischenablage aus vorherigen Läufen. Der Schlüssel hängt am
       # Fingerabdruck des deutschen Korpus: Ändert sich der Text, ist die alte
