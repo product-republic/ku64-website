@@ -234,9 +234,6 @@ Und unabhängig davon gilt für jede Zahl auf der Seite: Der Preisrahmen ist
 ein **Brutto-Kostenproxy, nicht der Eigenanteil nach Kassenerstattung**. Ohne
 diesen Hinweis liest ihn jede gesetzlich Versicherte falsch. Er steht
 deshalb an jeder Stelle dabei.
-
----
-
 ## C. Die 24 Fotos
 
 Sie kommen laut Absprache nach und nach. Bis dahin steht an jeder Stelle ein
@@ -261,3 +258,129 @@ Ohne diese kann niemand messen, ob der Umzug funktioniert hat:
 | Zugang zum heutigen Server | falls Weiterleitungen dort gesetzt werden sollen statt bei uns |
 | Rechtsform der Gesellschaft | fehlt im Impressum – heute auch |
 | Bestätigung Zuständigkeit Potsdam | Brandenburger Landesrecht: eigener Impressumsblock nötig oder nicht? |
+
+
+
+---
+
+---
+
+## E. Wer macht was, an welchem Standort?
+
+Das ist die kleinste Bestellung dieser Liste und die mit der größten Wirkung.
+
+**Gemessen:** Von 43 Behandlungen hat genau **eine** eine hinterlegte
+Behandlerliste (Dentosophie). Von 120 örtlichen Behandlungsseiten können
+deshalb **2** sagen, wer die Behandlung dort durchführt. Auf den übrigen 118
+steht niemand.
+
+**Was daran hängt:** Die örtlichen Behandlungsseiten verweisen heute per
+Canonical auf die Hauptseite, weil ihnen eigener Inhalt fehlt – im Mittel
+140 eigene Wörter, verlangt sind 350. Der erste der fünf Punkte, die das
+lösen würden, ist genau dieser: zwei bis drei namentliche Behandelnde je
+Behandlung und Standort. Ohne ihn ist die Schwelle aus Daten nicht
+erreichbar, und kein noch so guter Text ersetzt ihn.
+
+**Was gebraucht wird:** je Behandlung zwei bis drei Namen aus der Liste der
+99 veröffentlichten Personen. Mehr nicht – Standort und Profil rechnet die
+Website selbst dazu.
+
+### Vorsorge & Prophylaxe
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Professionelle Zahnreinigung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Prophylaxe 4.0 | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Vorsorgeuntersuchung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Implantatprophylaxe | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| 3D-Röntgen (DVT) | Kurfürstendamm, Potsdam | _offen_ |
+| Longevity Zahnmedizin | Kurfürstendamm | _offen_ |
+
+### Ästhetische Zahnmedizin
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Veneers | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Zahnaufhellung (Bleaching) | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Digitales Smile Design | Kurfürstendamm, Potsdam, Berlin-Mitte | _offen_ |
+| Zahnschmuck | Kurfürstendamm, Potsdam, Berlin-Mitte | _offen_ |
+
+### Zahnersatz
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Kronen aus Vollkeramik | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Zahnbrücken | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Inlays & Onlays | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Prothesen & Teilprothesen | Kurfürstendamm, Potsdam, Berlin-Mitte | _offen_ |
+| Zahnsanierung | Kurfürstendamm | _offen_ |
+
+### Implantologie
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Zahnimplantate | Kurfürstendamm, Potsdam | _offen_ |
+| Sofortimplantate | Kurfürstendamm, Potsdam | _offen_ |
+| Feste Zähne an einem Tag (All-on-4) | Kurfürstendamm | _offen_ |
+| Knochenaufbau | Kurfürstendamm, Potsdam | _offen_ |
+
+### Zahnerhalt
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Wurzelkanalbehandlung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Parodontitis-Behandlung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Kariesbehandlung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Zahnfarbene Füllungen | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+
+### Kieferorthopädie
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Unsichtbare Zahnschienen (Aligner) | Kurfürstendamm, Potsdam | _offen_ |
+| Feste Zahnspange | Kurfürstendamm | _offen_ |
+| Retainer | Kurfürstendamm, Potsdam | _offen_ |
+
+### Oralchirurgie
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Weisheitszähne entfernen | Kurfürstendamm, Potsdam | _offen_ |
+| Zahnentfernung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Kieferchirurgische Kombinationstherapie | Kurfürstendamm | _offen_ |
+
+### Kinderzahnheilkunde
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Kinderzahnheilkunde | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Kreidezähne (MIH) | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Kinderprophylaxe | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Fissurenversiegelung | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+
+### Funktion & Schmerz
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| CMD & Kiefergelenkbeschwerden | Kurfürstendamm, Potsdam | _offen_ |
+| Dentosophie | Kurfürstendamm, Potsdam | Clara-Constanze Meinberg, Dr. Elisabeth Futterlieb |
+| Knirscherschiene | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Ganzheitliche Zahnmedizin | Kurfürstendamm | _offen_ |
+
+### Angstfreie Behandlung
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Behandlung bei Zahnarztangst | Kurfürstendamm, Potsdam, Berlin-Mitte, Wilmersdorf | _offen_ |
+| Behandlung in Vollnarkose | Kurfürstendamm, Potsdam | _offen_ |
+| Behandlung mit Lachgas | Kurfürstendamm, Potsdam | _offen_ |
+
+### Ästhetische Medizin
+
+| Behandlung | angeboten an | wer macht das dort? |
+|---|---|---|
+| Faltenbehandlung | Kurfürstendamm | _offen_ |
+| Zornesfalte behandeln | Kurfürstendamm | _offen_ |
+| Hyaluron-Behandlung | Kurfürstendamm | _offen_ |
+
+---
