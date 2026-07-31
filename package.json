@@ -25,6 +25,7 @@
     "vergleich": "npm run grafiken:pruefen && node bericht/vergleich-bauen.mjs && npm run bericht:pruefen && node bericht/vergleich-pdf.mjs",
     "lighthouse": "node scripts/lighthouse-lauf.mjs",
     "layout:pruefen": "node scripts/layout-pruefen.mjs",
+    "einbettung:pruefen": "node scripts/einbettung-pruefen.mjs",
     "ansichten": "node scripts/ansichten.mjs",
     "weiterleitungen:planen": "OHNE_WEITERLEITUNGEN=1 astro build && node --experimental-strip-types --no-warnings analyse/altbestand/weiterleitungen-planen.mjs",
     "klickpfad": "node scripts/klickpfad.mjs",
