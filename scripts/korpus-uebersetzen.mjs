@@ -53,6 +53,8 @@
  * `--hoechstens` zählt ABRUFE, nicht Themen: Es ist die Größe, die Geld
  * kostet. Gedacht für den ersten Lauf – vier Abrufe beweisen, dass der
  * Schlüssel da ist und die Form stimmt, und kosten dabei fast nichts.
+ * Die Grenze schneidet Thema für Thema ab, nicht Sprache für Sprache: Vier
+ * Abrufe sind zwei Themen in BEIDEN Sprachen, nicht vier in einer.
  *
  * Ergebnis: <ziel>/arbeit.json, <ziel>/en/<i>.json, <ziel>/fr/<i>.json
  * Danach:   node scripts/korpus-einspielen.mjs <ziel>
@@ -359,8 +361,20 @@ async function einThema(i, sprache) {
  * Auftrag – sonst zählte `--hoechstens` die übersprungenen mit und ein zweiter
  * Lauf mit „höchstens vier" käme nie über die ersten vier hinaus.
  *
- * Die Reihenfolge ist Sprache für Sprache und darin absteigend nach Umfang:
- * Der längste Text ist der, an dem sich zuerst zeigt, ob das Verfahren trägt.
+ * Die Reihenfolge ist Thema für Thema – absteigend nach Umfang – und darin
+ * beide Sprachen nebeneinander. Der längste Text ist der, an dem sich zuerst
+ * zeigt, ob das Verfahren trägt.
+ *
+ * Sprache für Sprache wäre die naheliegende Reihenfolge und war es auch, bis
+ * der Lauf vom 31.07. sie widerlegt hat: `--hoechstens=4` hat vier englische
+ * Abrufe erzeugt und keinen einzigen französischen, und `langtexte-fr.json`
+ * kam mit „anzahl: 0" heraus. Der Lauf war grün. Bewiesen war damit genau die
+ * Hälfte dessen, was oben als Zweck der Grenze steht – Französisch hat einen
+ * eigenen Auftrag (Vouvoiement, geschützte Leerzeichen, « »), und ob DER
+ * durchgeht, hatte niemand gesehen.
+ *
+ * Eine Grenze, die immer nur denselben Teil der Arbeit prüft, ist ein Test,
+ * der die interessante Hälfte überspringt.
  */
 /**
  * Ist die vorhandene Datei brauchbar – oder nur vorhanden?
@@ -391,9 +405,9 @@ async function brauchbarVorhanden(datei, schluessel, eintrag) {
 
 const auftraege = [];
 let veraltet = 0;
-for (const sprache of Object.keys(SPRACHEN)) {
-  if (NUR_SPRACHE && sprache !== NUR_SPRACHE) continue;
-  for (let i = 0; i < arbeit.length; i++) {
+for (let i = 0; i < arbeit.length; i++) {
+  for (const sprache of Object.keys(SPRACHEN)) {
+    if (NUR_SPRACHE && sprache !== NUR_SPRACHE) continue;
     const datei = path.join(ZIEL, sprache, `${i}.json`);
     const { bereich, schluessel } = arbeit[i];
     if (await brauchbarVorhanden(datei, schluessel, deutsch[bereich][schluessel])) {
