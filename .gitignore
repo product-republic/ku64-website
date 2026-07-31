@@ -42,3 +42,11 @@ ansichten/
 # Ins Repository gehört das Ergebnis (src/inhalte/langtexte-en.json und
 # -fr.json), nicht die 166 Einzelantworten, aus denen es entsteht.
 .uebersetzung/
+
+# Messskripte, die beim Prüfen im Browser entstehen und nach dem Lauf nichts
+# mehr aussagen. Sie werden für einen einzelnen Messvorgang geschrieben,
+# hängen an einer Portnummer und einem Bauzustand und wären eine Woche später
+# irreführend. Was aus ihnen folgt, steht als Zahl im Commit; was sie prüfen
+# sollen, gehört als Wächter nach `scripts/`.
+*-tmp.mjs
+.audit-tmp.mjs
