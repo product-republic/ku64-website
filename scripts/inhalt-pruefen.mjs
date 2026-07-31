@@ -66,6 +66,22 @@ const ALT = {
   behandlungen: { seiten: 74, woerter: 117595 },
 };
 
+/*
+ * Der wiederhergestellte Über-uns-Bestand, gemessen am bereinigten Korpus.
+ *
+ * Zehn Seiten mit zusammen 9.083 Wörtern eigenem Inhalt – die Galerie zählt
+ * nicht mit, ihr Inhalt sind die Bilder. Der erste Neubau hatte davon null:
+ * Neun Adressen leiteten auf `/ueber-uns/` weiter, und dort standen 862
+ * neu geschriebene Wörter.
+ *
+ * Warum das eine eigene Prüfung braucht und nicht in der Behandlungssumme
+ * mitläuft: Die Behandlungssumme kann steigen, während die zehn Belegseiten
+ * verschwinden. Genau so ist es beim ersten Mal passiert – niemand hat es
+ * gemerkt, weil die Gesamtzahl gut aussah.
+ */
+const UEBER_UNS_RESTAURIERT = 9083;
+const UEBER_UNS_MINDESTENS = Math.floor(UEBER_UNS_RESTAURIERT * 0.95);
+
 /** Wie viel Text mindestens in den kanonischen Behandlungsseiten stehen muss. */
 const UNTERGRENZE = ALT.behandlungen.woerter;
 
@@ -121,6 +137,12 @@ const bestand = {
 };
 const quelleGesamt = Object.values(bestand).reduce((a, b) => a + b, 0);
 
+/* Die Über-uns-Themen zählen NICHT in `quelleGesamt`: Diese Zahl wird unten
+   gegen den Altbestand der BEHANDLUNGSseiten gehalten, und Auszeichnungen
+   sind keine Behandlung. Zusammengezählt sähe der Bestand größer aus, als
+   er an der Stelle ist, um die es geht. */
+const themenBestand = summe(lang.themen);
+
 if (quelleGesamt < QUELLE_MINDESTENS) {
   melden(
     `In langtexte.json stehen nur ${quelleGesamt.toLocaleString('de-DE')} Wörter. ` +
@@ -141,7 +163,37 @@ for (const [name, wert] of [
   if (wert === 0) melden(`In langtexte.json ist der Bereich „${name}" leer.`);
 }
 
-/* ── 2. Jedes Unterthema braucht seine Behandlung ─────────────────────── */
+/* ── 1b. Die zehn Belegseiten unter /ueber-uns/ ───────────────────────── */
+
+if (themenBestand < UEBER_UNS_MINDESTENS) {
+  melden(
+    `Die Über-uns-Themen tragen nur ${themenBestand.toLocaleString('de-DE')} Wörter. ` +
+      `Wiederhergestellt waren ${UEBER_UNS_RESTAURIERT.toLocaleString('de-DE')} auf zehn ` +
+      `Seiten – Architektur, Auszeichnungen, Presse, Mitgliedschaften, Kooperationen, ` +
+      `Engagement. Neu erzeugen mit node scripts/langtexte-bauen.mjs.`,
+  );
+}
+
+/*
+ * Jedes Thema aus `themen.ts` braucht auch eine Seite.
+ *
+ * Der Text kann vollständig in `langtexte.json` stehen und trotzdem
+ * unerreichbar sein: Steht in `weiterleitungen.ts` noch ein Eintrag für
+ * `/ueber-uns/auszeichnungen/`, hat die Weiterleitung in Astro Vorrang und
+ * die Seite wird gar nicht erst gebaut. Genau das war beim ersten Bau so,
+ * und die Datei war dabei die ganze Zeit korrekt.
+ */
+const { THEMEN, THEMEN_MIT_SEITE } = await import(
+  pathToFileURL(path.join(WURZEL, 'src/data/themen.ts')).href
+);
+
+for (const th of THEMEN) {
+  if (th.ohneLangtext) continue;
+  const eintrag = lang.themen?.[th.slug];
+  if (!eintrag || !eintrag.woerter) {
+    melden(`Thema „${th.slug}" hat keinen Text in langtexte.json – Quelle war ${th.quelle}.`);
+  }
+}
 
 const { LEISTUNGEN } = await import(pathToFileURL(path.join(WURZEL, 'src/data/leistungen.ts')).href);
 const bekannt = new Set(LEISTUNGEN.map((l) => l.slug));
@@ -226,6 +278,29 @@ if (gebaut < UNTERGRENZE) {
  */
 const duenn = jeSeite.filter((s) => s.n < 250).sort((a, z) => a.n - z.n);
 
+/* ── 3b. Stehen die Über-uns-Seiten wirklich da? ──────────────────────── */
+
+/* Die Übersicht zählt mit: Der Text von `/ueber-uns/` selbst ist einer der
+   zehn wiederhergestellten – ihn wegzulassen hieße, elf Seiten gegen zehn zu
+   halten und dabei eine davon zu unterschlagen. */
+let ueberUnsGebaut = woerter(await readFile(path.join(DIST, 'ueber-uns', 'index.html'), 'utf8'));
+for (const th of THEMEN_MIT_SEITE) {
+  const datei = path.join(DIST, 'ueber-uns', th.slug, 'index.html');
+  if (!existsSync(datei)) {
+    melden(
+      `/ueber-uns/${th.slug}/ ist nicht gebaut worden. Häufigste Ursache: In ` +
+        `weiterleitungen.ts steht noch ein Eintrag mit dieser Adresse – eine Weiterleitung ` +
+        `hat in Astro Vorrang vor einer echten Seite.`,
+    );
+    continue;
+  }
+  const n = woerter(await readFile(datei, 'utf8'));
+  ueberUnsGebaut += n;
+  /* 100 Wörter sind der Vorlagenanteil dieser Seiten (Überschrift, Anreißer,
+     Verweisliste). Darunter steht nichts Eigenes mehr. */
+  if (n < 100) melden(`/ueber-uns/${th.slug}/ hat nur ${n} Wörter im Hauptbereich.`);
+}
+
 /* ── Ergebnis ────────────────────────────────────────────────────────── */
 
 console.log(
@@ -234,7 +309,8 @@ console.log(
     `           ${String(Object.keys(lang.unterthemen ?? {}).length).padStart(3)} Unterthemen     ${bestand.unterthemen.toLocaleString('de-DE').padStart(8)}\n` +
     `           ${String(Object.keys(lang.kategorien ?? {}).length).padStart(3)} Kategorietexte  ${bestand.kategorien.toLocaleString('de-DE').padStart(8)}\n` +
     `           ${''.padStart(3)}                 ${'—'.repeat(8)}\n` +
-    `           ${''.padStart(3)}                 ${quelleGesamt.toLocaleString('de-DE').padStart(8)} Wörter`,
+    `           ${''.padStart(3)}                 ${quelleGesamt.toLocaleString('de-DE').padStart(8)} Wörter\n` +
+    `           ${String(Object.keys(lang.themen ?? {}).length).padStart(3)} Über uns        ${themenBestand.toLocaleString('de-DE').padStart(8)} Wörter (getrennt gezählt)`,
 );
 
 console.log(
@@ -243,6 +319,20 @@ console.log(
     `           neu  ${String(kanonisch.length).padStart(4)} Seiten  ${gebaut.toLocaleString('de-DE').padStart(9)} Wörter` +
     `   ${((gebaut / UNTERGRENZE) * 100).toFixed(1)} %`,
 );
+
+console.log(
+  `\n[inhalt] Über uns\n` +
+    `           alt    10 Seiten  ${UEBER_UNS_RESTAURIERT.toLocaleString('de-DE').padStart(9)} Wörter eigener Inhalt\n` +
+    `           neu  ${String(THEMEN_MIT_SEITE.length + 1).padStart(4)} Seiten  ${ueberUnsGebaut.toLocaleString('de-DE').padStart(9)} Wörter gebaut` +
+    `   ${((ueberUnsGebaut / UEBER_UNS_RESTAURIERT) * 100).toFixed(1)} %`,
+);
+
+if (ueberUnsGebaut < UEBER_UNS_RESTAURIERT) {
+  melden(
+    `In den gebauten Über-uns-Seiten stehen ${ueberUnsGebaut.toLocaleString('de-DE')} Wörter. ` +
+      `Wiederhergestellt waren ${UEBER_UNS_RESTAURIERT.toLocaleString('de-DE')}.`,
+  );
+}
 
 if (duenn.length) {
   console.log(`\n[inhalt] ${duenn.length} Seite(n) mit weniger als 250 Wörtern:`);

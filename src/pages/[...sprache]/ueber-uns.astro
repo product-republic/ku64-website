@@ -1,9 +1,35 @@
 ---
+/**
+ * Über KU64 – die Übersicht.
+ *
+ * ── Warum diese Seite nicht mehr 862 Wörter hat ─────────────────────────
+ *
+ * Sie hatte auf ku64.de 2.211 eigene Wörter, und der erste Neubau hatte
+ * davon keines übernommen: Er beschrieb die Praxis neu, kürzer und in
+ * eigenen Worten. Das war der Fehler, um den es in diesem Projekt geht –
+ * neu geschrieben ist nicht dasselbe wie übernommen, und was die Praxis
+ * über sich sagt, sagt niemand besser als die Praxis.
+ *
+ * Der Originaltext steht deshalb hier, unter „Die Praxis in eigenen
+ * Worten". Vier unausgefüllte Platzhalter („Auf … Quadratmetern") und zwei
+ * falsche Jahreszahlen sind dabei korrigiert; jede Korrektur steht mit Grund
+ * in `scripts/langtexte-bauen.mjs`.
+ *
+ * ── Und warum sie trotzdem nicht nur Fließtext ist ──────────────────────
+ *
+ * Die Zahlen oben kommen aus `team.ts` und `standorte.ts` und nicht aus dem
+ * Text. Eine Zahl im Fließtext veraltet, sobald jemand eingestellt wird;
+ * eine Zahl aus den Daten nicht.
+ */
 import { inhalte } from '../../i18n/daten';
 import { texte } from '../../i18n/katalog';
 import { sprachpfade } from '../../i18n/sprachen';
+import type { TextSchluessel } from '../../i18n/texte';
 import Basis from '../../layouts/Basis.astro';
+import Langtext from '../../components/Langtext.astro';
 import { anzahlGesamt, anzahlZahnaerzte } from '../../data/team';
+import { GRUPPENFOLGE, THEMEN_MIT_SEITE, THEMA_UEBERSICHT } from '../../data/themen';
+import { ueberThema } from '../../lib/langtexte';
 import { schemaBrotkrumen, schemaOrganisation } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -23,6 +49,16 @@ const brotkrumen = [
 const aeltester = [...daten.standorte].sort((a, b) => a.eroeffnet.localeCompare(b.eroeffnet))[0];
 const seit = Number(aeltester.eroeffnet.slice(0, 4));
 const jahre = new Date().getFullYear() - seit;
+
+const eigeneWorte = THEMA_UEBERSICHT ? ueberThema(THEMA_UEBERSICHT.slug, daten.sprache) : undefined;
+
+/* Nach Gruppen, in der Reihenfolge aus `themen.ts` – und innerhalb einer
+   Gruppe in der Reihenfolge, in der sie dort stehen. Alphabetisch wäre eine
+   Aussage über das Alphabet. */
+const themenGruppen = GRUPPENFOLGE.map((gruppe) => ({
+  gruppe,
+  themen: THEMEN_MIT_SEITE.filter((x) => x.gruppe === gruppe),
+})).filter((g) => g.themen.length > 0);
 ---
 
 <Basis
@@ -60,7 +96,44 @@ const jahre = new Date().getFullYear() - seit;
     </div>
   </section>
 
-  <section class="abschnitt flaeche-warm">
+  {
+    eigeneWorte && (
+      <section class="abschnitt">
+        <div class="huelle">
+          <Langtext
+            langtext={eigeneWorte}
+            sprache={daten.sprache}
+            titel={t('ueber.inEigenenWorten')}
+            basisStufe={3}
+          />
+        </div>
+      </section>
+    )
+  }
+
+  <section class="abschnitt flaeche-warm" aria-labelledby="themen-titel">
+    <div class="huelle">
+      <h2 id="themen-titel">{t('ueber.themenTitel')}</h2>
+      <p class="themen-vorspann">{t('ueber.themenVorspann')}</p>
+      {
+        themenGruppen.map((g) => (
+          <div class="themen-gruppe">
+            <h3>{t(`ueber.gruppe.${g.gruppe}` as TextSchluessel)}</h3>
+            <div class="raster">
+              {g.themen.map((x) => (
+                <a class="karte karte-klickbar thema" href={`/ueber-uns/${x.slug}/`}>
+                  <h4>{t(`thema.${x.slug}.titel` as TextSchluessel)}</h4>
+                  <p>{t(`thema.${x.slug}.kurz` as TextSchluessel)}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="abschnitt">
     <div class="huelle">
       <h2>{t('ueber.wofuerWirStehen')}</h2>
       <div class="raster">
@@ -80,10 +153,10 @@ const jahre = new Date().getFullYear() - seit;
     </div>
   </section>
 
-  <section class="abschnitt">
+  <section class="abschnitt flaeche-warm">
     <div class="huelle">
       <h2>{t('ueber.unsereStandorte')}</h2>
-      <div class="raster">
+      <div class="raster ortraster">
         {daten.standorte.map((s) => (
           <a class="karte karte-klickbar ort" href={`/${s.slug}/`} style={`--akzent:${s.akzent}`}>
             <h3>KU64 {s.name}</h3>
@@ -104,8 +177,19 @@ const jahre = new Date().getFullYear() - seit;
   .zahlen p { font-size: var(--t-xs); color: var(--tinte-weich); }
   .flaeche-warm { background: var(--flaeche-warm); border-block: 1px solid var(--linie); }
   h2 { margin-block-end: var(--raum-6); }
+  .themen-vorspann { max-width: var(--breite-text); margin-block: calc(var(--raum-6) * -1) var(--raum-6); font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  .themen-gruppe + .themen-gruppe { margin-block-start: var(--raum-7); }
+  .themen-gruppe h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinte-leise); margin-block-end: var(--raum-4); }
+  .thema { text-decoration: none; }
+  .thema h4 { font-size: var(--t-md); margin-block-end: var(--raum-2); }
+  .thema p { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-normal); }
   .wert h3 { font-size: var(--t-lg); margin-block-end: var(--raum-3); }
   .wert p { font-size: var(--t-sm); color: var(--tinte-weich); line-height: var(--zeile-weit); }
+  /* Vier Standorte, vier Spalten – dieselbe Begründung wie auf /standorte/:
+     Drei und einer liest sich wie drei wichtige und ein nachgereichter. */
+  @media (min-width: 64rem) {
+    .ortraster { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
   .ort { text-decoration: none; overflow: hidden; padding-block-start: calc(var(--raum-5) + 4px); }
   /* Das gelbe Band über der Karte ist entfallen – siehe Standortwahl.astro:
      Eine Auszeichnung auf jeder Karte zeichnet keine aus. */

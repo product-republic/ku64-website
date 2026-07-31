@@ -1,0 +1,252 @@
+---
+/**
+ * Eine der zehn Belegseiten unter `/ueber-uns/`.
+ *
+ * ── Warum es diese Seiten wieder gibt ───────────────────────────────────
+ *
+ * Die alte Website hatte zehn davon, der erste Neubau keine: Neun Adressen
+ * leiteten auf `/ueber-uns/` weiter, eine auf `/standorte/`. Zusammen 16.176
+ * Wörter, im Neubau 862.
+ *
+ * Bei Auszeichnungen, Mitgliedschaften, Kooperationspartnern und
+ * Presseberichten ist das nicht bloß Textverlust. Es sind die Nachweise, auf
+ * die Google bei medizinischen Themen abstellt, und für Patientinnen der
+ * Unterschied zwischen behaupteter und belegter Kompetenz. Ein Absatz auf
+ * einer Sammelseite ist kein Nachweis; eine Seite mit Namen, Jahr und
+ * Auslober ist einer.
+ *
+ * ── Warum unter derselben Adresse wie früher ────────────────────────────
+ *
+ * `/ueber-uns/auszeichnungen/` heißt im Neubau wieder
+ * `/ueber-uns/auszeichnungen/`. Damit braucht diese Adresse keine
+ * Weiterleitung mehr – jeder Link von außen, jedes Lesezeichen und jedes
+ * alte Suchergebnis führt wieder dorthin, wo es hinführen sollte, ohne
+ * Umweg und ohne Verlust.
+ *
+ * `weiterleitungen-nachziehen.mjs` entfernt die Einträge, die dadurch zu
+ * Weiterleitungen auf sich selbst würden.
+ *
+ * ── Die eine Adresse, die sich ändert ───────────────────────────────────
+ *
+ * `/potsdam/ultraschall-reiniger/` wird `/ueber-uns/ultraschallreiniger/`.
+ * Der Grund: `/potsdam/…` ist im Neubau der Namensraum eines Standorts, und
+ * dort liegen Behandlungen, Team, Anfahrt, Termine – kein Produkt. Der Bezug
+ * zum Standort geht nicht verloren, er steht als Hinweis auf der Seite und
+ * verlinkt dorthin.
+ */
+import { inhalte } from '../../../i18n/daten';
+import { texte } from '../../../i18n/katalog';
+import { mitSprachen } from '../../../i18n/sprachen';
+import type { TextSchluessel } from '../../../i18n/texte';
+import Basis from '../../../layouts/Basis.astro';
+import Bild from '../../../components/Bild.astro';
+import Langtext from '../../../components/Langtext.astro';
+import { THEMEN_MIT_SEITE, getThema } from '../../../data/themen';
+import { ueberThema } from '../../../lib/langtexte';
+import { schemaBrotkrumen, descriptionKuerzen } from '../../../lib/seo';
+
+export function getStaticPaths() {
+  return mitSprachen(THEMEN_MIT_SEITE.map((t) => ({ params: { thema: t.slug } })));
+}
+
+const daten = inhalte(Astro);
+const t = texte(daten.sprache);
+
+const slug = Astro.params.thema!;
+const thema = getThema(slug)!;
+const langtext = ueberThema(slug, daten.sprache);
+
+const titel = t(`thema.${slug}.titel` as TextSchluessel);
+const kurz = t(`thema.${slug}.kurz` as TextSchluessel);
+
+const pfad = `/ueber-uns/${slug}/`;
+const brotkrumen = [
+  { name: t('krume.start'), pfad: '/' },
+  { name: t('krume.ueberKu64'), pfad: '/ueber-uns/' },
+  { name: titel, pfad },
+];
+
+/*
+ * Die Beschreibung kommt aus dem Anreißer und nicht aus dem Fließtext.
+ *
+ * Bei den Behandlungsseiten ist es umgekehrt – dort steht der erste Absatz
+ * des Originaltextes in der Beschreibung, weil er die Frage beantwortet.
+ * Hier fangen mehrere Seiten mit einem Vorspann an, der auf allen ähnlich
+ * klingt („Seit der Gründung von KU64…"). Der Anreißer sagt, worum es geht.
+ */
+const beschreibung = descriptionKuerzen(kurz);
+
+const standort = thema.standort ? daten.standorte.find((s) => s.slug === thema.standort) : undefined;
+
+/* Die übrigen Themen – ohne dieses. Eine Seite, die auf sich selbst
+   verweist, hat einen Verweis zu viel. */
+const weitere = THEMEN_MIT_SEITE.filter((x) => x.slug !== slug);
+
+/*
+ * Die Galerie nach Standort, mit dem Standort daneben.
+ *
+ * `flatMap` statt `map` mit Filter: Ein Bildblock zu einem Standort, den es
+ * in `standorte.ts` nicht (mehr) gibt, fällt heraus, statt eine Überschrift
+ * „KU64 undefined" zu erzeugen.
+ */
+const galerie = (thema.bilder ?? []).flatMap((b) => {
+  const ort = daten.standorte.find((s) => s.slug === b.standort);
+  return ort ? [{ ort, schluessel: b.schluessel }] : [];
+});
+---
+
+<Basis
+  titel={titel}
+  description={beschreibung}
+  standort={null}
+  pfad={pfad}
+  brotkrumen={brotkrumen}
+  schema={[schemaBrotkrumen(brotkrumen)]}
+>
+  <div class="huelle abschnitt">
+    <header class="kopf">
+      <p class="kopf-hinweis"><a href="/ueber-uns/">{t('thema.zurueckZurUebersicht')}</a></p>
+      <h1>{titel}</h1>
+      <p class="lead">{kurz}</p>
+      {
+        standort && (
+          <p class="ort-hinweis">
+            <a href={`/${standort.slug}/`}>{t('thema.erhaeltlichIn', { ort: standort.name })}</a>
+          </p>
+        )
+      }
+    </header>
+
+    {
+      galerie.map(({ ort, schluessel }, gi) => (
+        <section class="galerie-ort" aria-labelledby={`galerie-${ort.slug}`}>
+          <h2 id={`galerie-${ort.slug}`}>KU64 {ort.name}</h2>
+          <p class="galerie-claim">{ort.claim}</p>
+          <div class="galerie">
+            {schluessel.map((b, i) => (
+              <Bild schluessel={b} klasse="galerie-bild" vorrang={gi === 0 && i === 0} />
+            ))}
+          </div>
+          <p class="galerie-mehr">
+            <a href={`/${ort.slug}/praxis/`}>{t('thema.zurPraxis', { ort: ort.name })}</a>
+          </p>
+        </section>
+      ))
+    }
+
+    {langtext && <Langtext langtext={langtext} sprache={daten.sprache} titel={null} basisStufe={2} />}
+
+    <section class="weiter" aria-labelledby="weiter-titel">
+      <h2 id="weiter-titel">{t('thema.weitereThemen')}</h2>
+      <ul class="weiter-liste">
+        {
+          weitere.map((x) => (
+            <li>
+              <a href={`/ueber-uns/${x.slug}/`}>{t(`thema.${x.slug}.titel` as TextSchluessel)}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Basis>
+
+<style>
+  .kopf {
+    max-width: 38rem;
+    margin-bottom: 2rem;
+  }
+
+  .kopf-hinweis {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: var(--tinte-leise);
+  }
+
+  .kopf h1 {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .lead {
+    margin: var(--raum-4) 0 0;
+    font-size: var(--t-lg);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .ort-hinweis {
+    margin: var(--raum-4) 0 0;
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+
+  .galerie-ort + .galerie-ort {
+    margin-block-start: var(--raum-8);
+  }
+
+  .galerie-ort h2 {
+    margin: 0 0 var(--raum-2);
+    font-size: var(--t-lg);
+  }
+
+  .galerie-claim {
+    max-width: 38rem;
+    margin: 0 0 var(--raum-5);
+    font-size: var(--t-sm);
+    color: var(--tinte-weich);
+    line-height: var(--zeile-weit);
+  }
+
+  .galerie-mehr {
+    margin: var(--raum-4) 0 0;
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+
+  /* Die Galerie steht über die volle Breite, nicht in der Lesespalte: Bilder
+     sind hier der Inhalt und nicht die Beigabe zum Text. */
+  .galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    gap: var(--raum-4);
+  }
+
+  .galerie :global(.galerie-bild) {
+    margin: 0;
+    border-radius: var(--rund-m);
+    overflow: hidden;
+  }
+
+  .galerie :global(.galerie-bild img) {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .weiter {
+    max-width: 38rem;
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--linie);
+  }
+
+  .weiter h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.7rem;
+  }
+
+  .weiter-liste {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .weiter-liste li {
+    line-height: 1.55;
+  }
+</style>

@@ -847,6 +847,60 @@ export const TEXTE = {
   'ueber.seitGruendung': 'seit der Gründung {jahr}',
   'ueber.jahre': 'Jahre',
   'ueber.standorte': 'Standorte',
+
+  /* ── Die Themen unter /ueber-uns/ ────────────────────────────────────
+   *
+   * Titel und Anreißer der zehn wiederhergestellten Belegseiten. Sie stehen
+   * hier und nicht in `src/data/themen.ts`, weil der Sprachwächter nur
+   * findet, was im Katalog steht – und weil eine Überschrift, die auf drei
+   * Sprachen erscheinen soll, in den Katalog gehört.
+   *
+   * Der Fließtext der Seiten kommt aus dem Altbestand und liegt in
+   * `src/inhalte/langtexte.json`; er wird über `langtexte-*.json` übersetzt.
+   */
+  'ueber.themenTitel': 'Was KU64 ausmacht',
+  'ueber.themenVorspann':
+    'Zehn Seiten, die belegen, was auf dieser Seite behauptet wird: die Architektur, die Auszeichnungen, die Presse, die Fachgesellschaften, die Partner und das, was wir außerhalb der Praxis tun.',
+  'ueber.inEigenenWorten': 'Die Praxis in eigenen Worten',
+  'ueber.gruppe.haus': 'Das Haus',
+  'ueber.gruppe.belege': 'Belege',
+  'ueber.gruppe.engagement': 'Engagement',
+  'ueber.gruppe.praxis': 'Aus der Praxis',
+  'thema.zurueckZurUebersicht': 'Zurück zu Über KU64',
+  'thema.zurPraxis': 'Die Praxis in {ort} ansehen',
+  'thema.erhaeltlichIn': 'Erhältlich bei KU64 {ort}',
+  'thema.weitereThemen': 'Weitere Themen über KU64',
+
+  'thema.location.titel': 'Zahnarzt on the beach – die Architektur von KU64',
+  'thema.location.kurz':
+    'Wie aus einem Kino am Kurfürstendamm eine Dünenlandschaft wurde: die Architekten GRAFT, das Design Hotel Q!, „Environmental Healing" und die Idee, Architektur als Teil der Behandlung zu verstehen.',
+  'thema.best-practice.titel': 'Best Practice: Führungen, Coachings und Workshops',
+  'thema.best-practice.kurz':
+    'Banken, Automobilindustrie, Hotellerie und Kliniken aus dem In- und Ausland waren schon zu Gast. Was Sie bei einer Führung durch KU64 sehen – und an wen Sie sich wenden.',
+  'thema.galerie.titel': 'Galerie',
+  'thema.galerie.kurz':
+    'Aufnahmen aus den vier Praxen: Empfang, Wartebereich, Behandlungsraum und das eigene Meisterlabor.',
+  'thema.auszeichnungen.titel': 'Auszeichnungen',
+  'thema.auszeichnungen.kurz':
+    'Siegel und Preise aus Zahnmedizin, Innovation, Dienstleistung und Architektur – von der QM-Zertifizierung nach DIN ISO 9001 bis zum Designpreis des Bundes Deutscher Architekten.',
+  'thema.presseinfo.titel': 'KU64 in der Presse',
+  'thema.presseinfo.kurz':
+    'Von „the coolest dental clinic in the world" bis zu Fernsehbeiträgen: 21 Jahre Berichterstattung über KU64, chronologisch.',
+  'thema.mitgliedschaften.titel': 'Mitgliedschaften',
+  'thema.mitgliedschaften.kurz':
+    'Die zahnmedizinischen Fachgesellschaften, in denen KU64 Mitglied ist – und Anlaufstellen für Notdienst, Kassenfragen und Kinderzähne.',
+  'thema.kooperationspartner.titel': 'Kooperationspartner',
+  'thema.kooperationspartner.kurz':
+    'Mit welchen Laboren, Fachpraxen, Kliniken, Stiftungen und Partnern außerhalb der Zahnmedizin wir zusammenarbeiten.',
+  'thema.hilfsprojekt-suedafrika.titel': 'Westcoast Kids – Freiwilligenarbeit in Südafrika',
+  'thema.hilfsprojekt-suedafrika.kurz':
+    'Einmal im Jahr fliegt ein KU64-Team an die Westküste Südafrikas und behandelt dort Kinder in Kitas und Grundschulen. Wie das Projekt entstand, was es bewirkt und wie man es unterstützt.',
+  'thema.soziales-engagement.titel': 'Soziales Engagement',
+  'thema.soziales-engagement.kurz':
+    'Die Förder- und Hilfsprojekte der Zahnspezialisten – laufende und abgeschlossene, mit Namen und Zweck.',
+  'thema.ultraschallreiniger.titel': 'Ultraschallreiniger für Zahnersatz und Schienen',
+  'thema.ultraschallreiniger.kurz':
+    'Herausnehmbaren Zahnersatz, Schienen und Sportschienen zu Hause gründlich reinigen – erhältlich in unserer Praxis in Potsdam.',
   'karriere.vorspann':
     '{anzahl} Standorte, alle Fachbereiche unter einem Dach und ein eigenes Meisterlabor – für Zahnmedizin, Prophylaxe, Assistenz und Verwaltung.',
   'blogz.vorspann':

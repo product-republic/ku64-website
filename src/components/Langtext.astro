@@ -138,9 +138,22 @@ function kennung(text: string): string {
   return n === 1 ? grund : `${grund}-${n}`;
 }
 
-/* Nur Abschnitte mit Inhalt. Eine Überschrift über nichts ist im Neubau
-   eine leere Zeile – und im Inhaltsverzeichnis ein Verweis auf nichts. */
-const mitInhalt = langtext.abschnitte.filter((a) => a.bloecke.length > 0);
+/*
+ * Nur Abschnitte mit Inhalt. Eine Überschrift über nichts ist im Neubau
+ * eine leere Zeile – und im Inhaltsverzeichnis ein Verweis auf nichts.
+ *
+ * Ausnahme, gleichlautend zu `scripts/langtexte-bauen.mjs`: Eine Überschrift,
+ * unter der nur TIEFERE Überschriften stehen, ist deren Titel und nicht leer.
+ * Die Regel steht an beiden Stellen, weil beide filtern – stünde sie nur im
+ * Erzeuger, würfe dieser Baustein die Überschrift beim Rendern wieder weg.
+ */
+const RANG: Record<string, number> = { h2: 2, h3: 3, h4: 4 };
+const mitInhalt = langtext.abschnitte.filter((a, i) => {
+  if (a.bloecke.length > 0) return true;
+  if (!a.ueberschrift || !a.stufe) return false;
+  const naechste = langtext.abschnitte[i + 1];
+  return Boolean(naechste?.stufe && RANG[naechste.stufe] > RANG[a.stufe]);
+});
 
 /*
  * Die Ebenen neu durchnumerieren, statt die alten um eins zu verschieben.

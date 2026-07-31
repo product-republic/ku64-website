@@ -4,14 +4,14 @@
 > `dist/client/sitemap-0.xml`, also aus derselben Datei, die Google
 > bekommt. Neu schreiben mit `npm run sitemap:liste`.
 
-**341 Seiten**, Stand des letzten Bauvorgangs.
+**351 Seiten**, Stand des letzten Bauvorgangs.
 
 ## Für Suchmaschinen
 
 | Datei | Zweck |
 |---|---|
 | `https://ku64.de/sitemap-index.xml` | **Diese Adresse in die Google Search Console eintragen.** Sie verweist auf alle weiteren. |
-| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 341 Adressen |
+| `https://ku64.de/sitemap-0.xml` | Die eigentliche Liste mit allen 351 Adressen |
 | `https://ku64.de/robots.txt` | Verweist ebenfalls auf die Sitemap – Suchmaschinen finden sie so auch ohne Eintragung |
 
 **Englisch und Französisch stehen absichtlich nicht drin.** Beide Fassungen
@@ -311,7 +311,23 @@ stehen sie ohne weiteres Zutun drin.
 </details>
 
 
-## Standortübergreifend — 151 Seiten
+## Standortübergreifend — 161 Seiten
+
+<details>
+<summary><strong>ueber-uns</strong> – 10 Seiten</summary>
+
+- [Auszeichnungen](https://ku64.de/ueber-uns/auszeichnungen/)  `/ueber-uns/auszeichnungen/`
+- [Best practice](https://ku64.de/ueber-uns/best-practice/)  `/ueber-uns/best-practice/`
+- [Galerie](https://ku64.de/ueber-uns/galerie/)  `/ueber-uns/galerie/`
+- [Hilfsprojekt suedafrika](https://ku64.de/ueber-uns/hilfsprojekt-suedafrika/)  `/ueber-uns/hilfsprojekt-suedafrika/`
+- [Kooperationspartner](https://ku64.de/ueber-uns/kooperationspartner/)  `/ueber-uns/kooperationspartner/`
+- [Location](https://ku64.de/ueber-uns/location/)  `/ueber-uns/location/`
+- [Mitgliedschaften](https://ku64.de/ueber-uns/mitgliedschaften/)  `/ueber-uns/mitgliedschaften/`
+- [Presseinfo](https://ku64.de/ueber-uns/presseinfo/)  `/ueber-uns/presseinfo/`
+- [Soziales engagement](https://ku64.de/ueber-uns/soziales-engagement/)  `/ueber-uns/soziales-engagement/`
+- [Ultraschallreiniger](https://ku64.de/ueber-uns/ultraschallreiniger/)  `/ueber-uns/ultraschallreiniger/`
+
+</details>
 
 <details>
 <summary><strong>Hauptseiten</strong> – 14 Seiten</summary>

@@ -66,6 +66,27 @@ for (const [kategorie, t] of Object.entries(lang.kategorien ?? {})) {
   if (t.herkunft) ZIEL.set(t.herkunft, `/leistungen/#${kategorie}`);
 }
 
+/*
+ * Die Über-uns-Themen aus `themen.ts` und nicht aus `langtexte.json`.
+ *
+ * Der Unterschied ist die Galerie: Sie hat keinen Langtext – ihr Inhalt sind
+ * die Bilder –, steht aber unter derselben Adresse wie früher und braucht
+ * deshalb genauso, dass ihre Weiterleitung verschwindet. Aus dem Langtext
+ * gelesen wäre sie die eine, die übrig bliebe, und `/ueber-uns/galerie/`
+ * leitete auf `/ueber-uns/` weiter, obwohl es die Seite wieder gibt.
+ */
+const themenQuelle = await readFile(path.join(WURZEL, 'src', 'data', 'themen.ts'), 'utf8');
+const themenBlock = themenQuelle.slice(
+  themenQuelle.indexOf('export const THEMEN'),
+  themenQuelle.indexOf('export const THEMEN_MIT_SEITE'),
+);
+for (const eintrag of themenBlock.match(/\{[^{}]*\}/g) ?? []) {
+  if (/aufUebersicht:\s*true/.test(eintrag)) continue;
+  const slug = /slug:\s*'([^']+)'/.exec(eintrag)?.[1];
+  const quelle = /quelle:\s*'([^']+)'/.exec(eintrag)?.[1];
+  if (slug && quelle) ZIEL.set(quelle, `/ueber-uns/${slug}/`);
+}
+
 /* ── Datei umschreiben ───────────────────────────────────────────────── */
 
 let quelle = await readFile(DATEI, 'utf8');

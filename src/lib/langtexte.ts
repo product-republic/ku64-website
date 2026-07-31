@@ -88,11 +88,26 @@ export interface NeuesThema extends Langtext {
   ankerVorher: string | null;
 }
 
+/**
+ * Ein Thema unter `/ueber-uns/`.
+ *
+ * Eigener Bereich und kein `neu`: Die zusammengefalteten Behandlungsthemen
+ * sind Behandlungen und liegen unter `/leistungen/`. Diese hier sind die zehn
+ * Belegseiten der Praxis – Auszeichnungen, Presse, Mitgliedschaften,
+ * Kooperationen, Engagement, Architektur. Sie in denselben Topf zu werfen
+ * hätte geheißen, dass eine Zählung „Themen" beides meint und keine Aussage
+ * mehr trifft.
+ */
+export interface UeberThema extends Langtext {
+  slug: string;
+}
+
 type Bestandsdatei = {
   leistungen?: Record<string, Langtext>;
   unterthemen?: Record<string, Unterthema>;
   kategorien?: Record<string, Langtext>;
   neu?: Record<string, NeuesThema>;
+  themen?: Record<string, UeberThema>;
 };
 
 const DEUTSCH = daten as unknown as Bestandsdatei;
@@ -119,6 +134,7 @@ const LEISTUNGEN = DEUTSCH.leistungen ?? {};
 const UNTERTHEMEN = DEUTSCH.unterthemen ?? {};
 const NEUE = DEUTSCH.neu ?? {};
 const KATEGORIEN = DEUTSCH.kategorien ?? {};
+const THEMEN = DEUTSCH.themen ?? {};
 
 /**
  * Ein Eintrag in der gewünschten Sprache – oder auf Deutsch.
@@ -246,6 +262,23 @@ export function kategorietexte(): { kategorie: string; text: Langtext }[] {
     .map(([kategorie, text]) => ({ kategorie, text }));
 }
 
+/**
+ * Der Text einer Über-uns-Seite – oder `undefined`.
+ *
+ * `undefined` ist ein gültiger Fall: Die Galerie hat keinen Langtext, ihr
+ * Inhalt sind die Bilder. Siehe `ohneLangtext` in `src/data/themen.ts`.
+ */
+export function ueberThema(slug: string, sprache: Sprache = 'de'): UeberThema | undefined {
+  const t = THEMEN[slug];
+  if (!brauchbar(t)) return undefined;
+  return inSprache('themen', slug, t, sprache);
+}
+
+/** Alle Über-uns-Themen mit Text – für Prüfung und Bericht. */
+export function ueberThemen(): UeberThema[] {
+  return Object.values(THEMEN).filter(brauchbar);
+}
+
 export function neuesThema(slug: string): NeuesThema | undefined {
   const n = NEUE[slug];
   return brauchbar(n) ? n : undefined;
@@ -262,6 +295,7 @@ export function bestand(): {
   unterthemen: number;
   kategorien: number;
   neu: number;
+  themen: number;
   gesamt: number;
 } {
   const summe = (xs: Langtext[]) => xs.reduce((s, x) => s + x.woerter, 0);
@@ -269,7 +303,8 @@ export function bestand(): {
   const u = summe(Object.values(UNTERTHEMEN).filter(brauchbar));
   const k = summe(Object.values(KATEGORIEN).filter(brauchbar));
   const n = summe(Object.values(NEUE).filter(brauchbar));
-  return { hauptseiten: h, unterthemen: u, kategorien: k, neu: n, gesamt: h + u + k + n };
+  const t = summe(Object.values(THEMEN).filter(brauchbar));
+  return { hauptseiten: h, unterthemen: u, kategorien: k, neu: n, themen: t, gesamt: h + u + k + n + t };
 }
 
 /**
@@ -288,6 +323,7 @@ export function abdeckung(sprache: Sprache): { themen: number; uebersetzt: numbe
     ['unterthemen', UNTERTHEMEN as Record<string, Langtext>],
     ['kategorien', KATEGORIEN],
     ['neu', NEUE as Record<string, Langtext>],
+    ['themen', THEMEN as Record<string, Langtext>],
   ];
   let themen = 0;
   let uebersetzt = 0;

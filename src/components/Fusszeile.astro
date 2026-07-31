@@ -149,6 +149,21 @@ const t = texte(daten.sprache);
               darauf erreicht man über die Marken an den Beiträgen. */}
           <li><a href={basis ? `${basis}/blog/` : '/blog/'}>{t('krume.blog')}</a></li>
         </ul>
+
+        {/* Über KU64.
+            Stand bis eben in keiner Fußzeile – die Seite war über den Kopf
+            erreichbar und sonst nirgends. Hier stehen die vier Belegseiten,
+            weil sie das sind, was jemand sucht, der wissen will, ob er es
+            mit einer ernsthaften Praxis zu tun hat: Auszeichnungen, Presse,
+            Fachgesellschaften, Partner. */}
+        <p class="fuss-titel fuss-titel-2">{t('nav.ueberKu64')}</p>
+        <ul>
+          <li><a href="/ueber-uns/">{t('ueber.inEigenenWorten')}</a></li>
+          <li><a href="/ueber-uns/location/">{t('thema.location.titel')}</a></li>
+          <li><a href="/ueber-uns/auszeichnungen/">{t('thema.auszeichnungen.titel')}</a></li>
+          <li><a href="/ueber-uns/presseinfo/">{t('thema.presseinfo.titel')}</a></li>
+          <li><a href="/ueber-uns/kooperationspartner/">{t('thema.kooperationspartner.titel')}</a></li>
+        </ul>
       </div>
     </div>
 
