@@ -315,11 +315,70 @@ async function einThema(i, sprache) {
 
   for (let versuch = 1; versuch <= VERSUCHE; versuch++) {
     try {
-      const antwort = await client.messages.create({
+      /* Der Lauf vom 31.07. hat 17 Themen verloren, alle französisch, alle mit
+         einer Meldung, die in die Irre führt. Zehn meldeten „Unexpected end of
+         JSON input", sieben „Unterminated string in JSON at position N", mit N
+         zwischen 2.282 und 37.952. Beides sieht nach einem kaputten Auftrag
+         aus. Beides ist es nicht.
+
+         Nachgemessen, was die Meldungen bedeuten:
+         `JSON.parse` sagt „Unexpected end of JSON input" AUSSCHLIESSLICH bei
+         leerer Eingabe – jede andere Abbruchstelle nennt eine Position und
+         einen anderen Text. Zehn Antworten enthielten also gar keinen Text.
+         Und die Position bei „Unterminated string" ist die Länge dessen, was
+         ankam. Aus einer festen Obergrenze von 16.000 Token kamen demnach
+         einmal 2.282 und einmal 37.952 Zeichen zurück.
+
+         Diese Streuung ist der Befund. Eine Obergrenze, die nur die Antwort
+         begrenzt, liefert bei gleichem Wert etwa gleich viel Text. Hier teilen
+         sich zwei Dinge dasselbe Budget: `max_tokens` deckelt bei
+         claude-sonnet-5 Denken UND Antwort zusammen – und Denken ist an, weil
+         wir es nicht abgeschaltet haben. Das Feld `thinking` wegzulassen heißt
+         bei diesem Modell „adaptiv", nicht „aus". Was das Denken verbraucht,
+         fehlt der Antwort: mal blieb ein Rest, mal nichts.
+
+         Dass es nur Französisch traf, folgt daraus: Die englische Fassung ist
+         kürzer, sie passte neben das Denken noch in die 16.000. Alle 83
+         englischen Themen gingen durch.
+
+         Zwei Änderungen, beide nötig – die zweite allein hätte die vier
+         kürzesten der siebzehn wieder bei 16.000 gelassen:
+         1. Denken ausdrücklich aus. Diese Aufgabe ist eine Übersetzung mit
+            fester Struktur; das Budget gehört der Antwort.
+         2. Die Grenze richtet sich nach dem Umfang. Sie kostet nichts –
+            abgerechnet wird, was erzeugt wird; `max_tokens` ist eine Decke,
+            keine Bestellung. 64.000 ist die Reißleine, nicht die Modellgrenze:
+            claude-sonnet-5 könnte 128.000. */
+      const decke = Math.min(64000, Math.max(16000, eintrag.woerter * 8));
+
+      /* Gestreamt, weil das SDK oberhalb von rund 16.000 Token sonst in einen
+         HTTP-Zeitablauf läuft – und da liegen wir hier fast immer.
+         `finalMessage()` liefert danach dieselbe Antwort wie `create`. */
+      const strom = client.messages.stream({
         model: MODELL,
-        max_tokens: 16000,
+        max_tokens: decke,
+        thinking: { type: 'disabled' },
         messages: [{ role: 'user', content: auftrag(eintrag, schluessel, sprache) }],
       });
+      const antwort = await strom.finalMessage();
+
+      /* VOR dem Auswerten. Sonst heißt „Budget aufgebraucht" wieder
+         „Unexpected end of JSON input", und wer das liest, sucht im Auftrag
+         statt an der Grenze. Genau dieser Umweg hat heute 17 Themen gekostet. */
+      if (antwort.stop_reason === 'max_tokens') {
+        throw new Error(
+          `Antwort abgeschnitten – ${decke} Token reichten nicht ` +
+            `(${eintrag.woerter} W deutsch). Grenze erhöhen.`,
+        );
+      }
+
+      /* Eine leere Antwort ohne `max_tokens` ist etwas anderes und soll auch
+         etwas anderes heißen – sonst landen wieder zwei Ursachen unter einer
+         Meldung. */
+      if (!antwort.content.some((t) => t.type === 'text' && t.text.trim())) {
+        throw new Error(`Antwort ohne Text (stop_reason: ${antwort.stop_reason})`);
+      }
+
       const text = antwort.content.map((t) => (t.type === 'text' ? t.text : '')).join('');
       const u = alsJson(text);
 
