@@ -310,15 +310,100 @@ const gesperrt = !d.avVertrag;
     grid-area: 1 / 1;
   }
 
+  /*
+   * ── Der Rahmen entsteht erst im Browser, deshalb `:global` ───────────
+   *
+   * Astro schreibt sein Bereichsmerkmal (`data-astro-cid-…`) beim BAUEN in
+   * die Auszeichnung und hängt dasselbe Merkmal an jeden Selektor dieses
+   * Stilblocks. Der `iframe` hier entsteht aber erst im Moment der Freigabe
+   * per `document.createElement` – vorher darf er nicht existieren, das ist
+   * der Kern dieses Bauteils. Er kann das Merkmal also nie tragen.
+   *
+   * Aus `.dritt-rahmen { … }` wurde damit `.dritt-rahmen[data-astro-cid-…]`
+   * und aus `.dritt-flaeche > *` wurde `.dritt-flaeche[…] > [data-astro-cid-…]`.
+   * Beide gingen am Rahmen vorbei. Gemessen mit der alten Fassung, auf
+   * /berlin-charlottenburg/ bei 402 px: Der Rahmen fiel auf die
+   * Browservorgabe 304x154 px zurück (300x150 plus 2 px eingelassener
+   * Standardrand) und landete mangels `grid-area` nicht in Zelle 1/1,
+   * sondern öffnete eine zweite Rasterzeile. Der Kasten WUCHS dadurch von
+   * 225 auf 375,2 px, die erste Zeile blieb leer, und 66 % der Fläche waren
+   * blanker dunkler Grund – auf dem Schreibtisch 94,6 %. Das sah aus wie
+   * ein kaputtes Video, war aber unser eigener Kasten.
+   *
+   * `:global` steht hier nicht aus Bequemlichkeit, sondern weil das Ziel zur
+   * Bauzeit nicht existiert. Eingegrenzt bleibt es trotzdem: Der Elternteil
+   * `.dritt-flaeche` behält sein Merkmal, die Regel wirkt also nur in diesem
+   * Bauteil.
+   *
+   * ACHTUNG für später: Jede weitere Regel, die den Rahmen betrifft, muss
+   * denselben Weg nehmen. Eine Regel für `.dritt-rahmen` ohne `:global`
+   * greift stillschweigend nicht – man sieht es erst am fertigen Bild.
+   */
+  .dritt-flaeche > :global(.dritt-rahmen) {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
   /* Wo eine Höhe angegeben ist, gilt sie statt des Verhältnisses. */
   .dritt[style*='--dritt-hoehe'] .dritt-flaeche::before {
     aspect-ratio: auto;
     min-height: var(--dritt-hoehe);
   }
 
+  /*
+   * ── Die Vorschau beschneidet sich selbst ─────────────────────────────
+   *
+   * `overflow` gehört hierher, nicht nur an den Kasten. Die Vorschau ist
+   * absichtlich größer als ihr Platz: `scale: 1.08` gegen die helle Kante
+   * des Weichzeichners (siehe unten), und ein Foto kommt als
+   * `<figure><img>` herein und bringt seine eigene Höhe mit – auf
+   * /berlinmitte/ ein quadratisches Bild in einem 16:10-Kasten.
+   *
+   * Solange dieser Überstand nur vom Kasten beschnitten wurde, war er dort
+   * trotzdem vorhanden: `.dritt-flaeche` wurde damit zu einem eigenen
+   * Rollbereich. Gemessen `scrollHeight - clientHeight`: 10 bis 16 px auf
+   * den meisten Seiten, 134 px auf /berlinmitte/ bei 402 px, 395 px auf dem
+   * Schreibtisch. Sichtbar war das nicht – aber ein `scrollIntoView`
+   * irgendwo tiefer im Baum konnte die Frage um genau diesen Betrag nach
+   * oben schieben, und dann stand der Titel über der Kastenkante.
+   *
+   * `overflow: clip` statt `hidden`: `hidden` beschneidet zwar auch, macht
+   * das Element aber zu einem rollbaren Behälter – genau das soll weg.
+   *
+   * Ein `overflow: hidden` als Rückfall davor bringt nichts: esbuild fasst
+   * zwei Werte derselben Eigenschaft beim Verkleinern zu einem zusammen,
+   * im gebauten Stilblatt stand danach nur noch `overflow:clip`. Nötig ist
+   * er auch nicht – Browser ohne `clip` verwerfen die Zeile und beschneiden
+   * die Vorschau weiterhin über `.dritt-flaeche`; ihnen fehlt nur die
+   * Rollsperre. Und wer `color-mix` versteht, das eine Regel weiter unten
+   * den Schleier mischt, versteht auch `clip`: dieselbe Baureihe.
+   */
   .dritt-vorschau {
     position: absolute;
     inset: 0;
+    overflow: clip;
+  }
+
+  /*
+   * Ein Bild kommt nicht nackt herein, sondern in seiner eigenen Hülle
+   * (`Bild.astro` liefert `<figure class="bild">`). Ohne diese Regel ist die
+   * Hülle so hoch wie das Bild und nicht so hoch wie der Kasten – dann
+   * greift das `object-fit: cover` darunter ins Leere, weil es keine Höhe
+   * gibt, auf die es zuschneiden könnte. `:global`, weil die Hülle aus einem
+   * anderen Bauteil stammt und dessen Merkmal trägt, nicht unseres.
+   */
+  .dritt-vorschau > :global(*:not(img):not(svg)) {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    /* Die Ecken rundet der Kasten. Eine zweite Rundung darin zeigt an vier
+       Stellen den dunklen Grund. */
+    border-radius: 0;
   }
 
   .dritt-vorschau :global(img),
@@ -327,6 +412,17 @@ const gesperrt = !d.avVertrag;
     height: 100%;
     object-fit: cover;
     display: block;
+    /*
+     * `min-height` zusätzlich zu `height`, und das ist kein Gürtel zum
+     * Hosenträger: `Bild.astro` setzt `.bild img { height: auto }` mit einer
+     * höheren Gewichtung (zwei Klassen plus Bereichsmerkmal) und gewinnt
+     * damit gegen das `height: 100%` von hier. Gemessen war das Bild auf
+     * /berlinmitte/ dadurch quadratisch statt zugeschnitten und stand
+     * 134 px über den Kasten hinaus. `min-height` ist dort nicht gesetzt,
+     * greift also – und ergibt zusammen mit `object-fit: cover` genau den
+     * Zuschnitt, der hier gemeint war.
+     */
+    min-height: 100%;
   }
 
   /*
@@ -408,13 +504,6 @@ const gesperrt = !d.avVertrag;
     color: #fff;
     text-decoration: underline;
     text-underline-offset: 2px;
-  }
-
-  .dritt-rahmen {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
   }
 
   .dritt-fuss {
