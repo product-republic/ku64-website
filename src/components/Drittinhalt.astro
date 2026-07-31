@@ -134,16 +134,15 @@ const gesperrt = !d.avVertrag;
           </p>
         ) : (
           <>
-            <p class="dritt-text">
-              {t('dritt.wirdGeladen', {
-                daten: d.daten.slice(0, 2).join(' und '),
-                anbieter: d.anbieter.split(',')[0],
-              })}
-            </p>
+            <p class="dritt-text">{t('dritt.wirdGeladen')}</p>
             <button type="button" class="knopf knopf-primaer" data-rolle="freigeben" aria-label={knopfName}>
-              {t('dritt.laden', { titel })}
+              {t('dritt.laden')}
             </button>
             <p class="dritt-fein">
+              {t('dritt.uebertragung', {
+                daten: d.daten.slice(0, 2).join(' und '),
+                anbieter: d.anbieter.split(',')[0],
+              })}{' '}
               <a href="/cookies/#verzeichnis">{t('dritt.wasUebertragen')}</a>
             </p>
           </>

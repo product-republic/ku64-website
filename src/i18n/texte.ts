@@ -593,11 +593,24 @@ export const TEXTE = {
   'langtext.aufDieserSeite': 'Auf dieser Seite',
   'langtext.herkunft':
     'Übernommen von {adresse} – {woerter} Wörter, wortgleich. Fachliche Freigabe durch die Praxis steht aus.',
-  'dritt.wirdGeladen':
-    'Wird erst auf Ihren Klick geladen. Dabei werden {daten} an {anbieter} übertragen.',
-  'dritt.laden': '{titel} laden',
+  /*
+   * Kurz und einladend, nicht belehrend.
+   *
+   * Vorher stand hier ein Absatz über IP-Adresse, Browser und
+   * Betriebssystem, darunter eine Schaltfläche, die den vollen Videotitel
+   * wiederholte. Auf dem Telefon war das eine Wand aus Kleingedrucktem vor
+   * einem Video – der sicherste Weg, dass niemand klickt.
+   *
+   * Die Pflichtangabe entfällt nicht, sie wandert: Ein Satz in Kleinschrift
+   * unter der Schaltfläche, dazu der Verweis ins Verzeichnis. Was übertragen
+   * wird, steht damit weiterhin VOR dem Klick da – nur nicht mehr als
+   * Hauptdarsteller.
+   */
+  'dritt.wirdGeladen': 'Einmal zustimmen, dann läuft es.',
+  'dritt.laden': 'Akzeptieren und abspielen',
   'dritt.ladenName':
-    '{titel} laden – dabei werden Daten an {anbieter} übertragen',
+    '{titel}: Akzeptieren und abspielen – dabei werden Daten an {anbieter} übertragen',
+  'dritt.uebertragung': 'Dabei gehen {daten} an {anbieter}.',
   'dritt.wasUebertragen': 'Was dabei übertragen wird',
   'dritt.nochNichtFrei':
     'Noch nicht freigegeben: Für {dienst} liegt der Auftragsverarbeitungsvertrag mit {anbieter} nicht bestätigt vor. Bis dahin wird dieser Inhalt auch auf Klick nicht geladen.',

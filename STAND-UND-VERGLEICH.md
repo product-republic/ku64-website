@@ -521,6 +521,43 @@ Von 662 Adressen liegen 509 auf Deutsch und 153 auf Englisch — das sind
 nennt einen russischen Übersetzer; russische Seiten hat der Crawl keine
 gefunden.
 
+#### Zwei Conversion-Wege, die heute nicht tragen
+
+Auf der Startseite von ku64.de sitzt ein Chat-Widget. Es wird über
+`https://ku64.de/wp-content/cache/min/1/init.js` in einen Container mit der
+Kennung `chatbot-container` geladen und stammt von **ORA / infoskop**
+(`widget.infoskop-ora.de`, Website-Token `03455a6d-…`). Zwei Befunde dazu,
+beide am 31.07.2026 am laufenden System geprüft:
+
+**Der Dienst antwortet.** `…/packs/js/sdk.js` liefert 200 und 241 kB. Ein
+serverseitiger Ausfall ist es also nicht.
+
+**Das Skript setzt ein Erkennungsmerkmal, bevor irgendetwas gefragt wird.**
+Im Quelltext läuft `rSAFor()` unmittelbar beim Laden: Die Funktion ruft
+`document.requestStorageAccess()` und schreibt ein Cookie `ora_user_token…`
+mit einer frisch erzeugten UUID. Erst danach wird die SDK geladen, der ein
+`consent`-Wert übergeben wird. Die Reihenfolge ist damit verkehrt herum — das
+Merkmal steht, bevor die Einwilligung geprüft ist.
+
+Die Praxis berichtet, dass **Chat und die Online-Rezeption in der Bedienung
+nicht funktionieren**. Das ist der wichtigere Punkt und zugleich der, den
+dieser Bericht nicht selbst gemessen hat: Die Prüfumgebung erreicht die
+laufende Seite nur über einen Proxy ohne Browser, das Verhalten im echten
+Gerät ließ sich hier nicht nachstellen. Es steht deshalb als Beobachtung der
+Praxis da, nicht als eigene Messung — und gehört auf jedem Testgerät noch
+einmal nachvollzogen, bevor jemand daraus eine Zahl macht.
+
+**Warum das schwerer wiegt als jeder Ladezeitwert.** Chat und Online-Rezeption
+sind auf einer Praxis-Website die beiden Wege, auf denen aus einem Besuch ein
+Termin wird. Ein Kontaktweg, der angeboten wird und nicht trägt, ist schlechter
+als keiner: Wer ihn anklickt, hat sich bereits entschieden, Kontakt
+aufzunehmen, und bekommt statt einer Antwort nichts. Diese Person ruft in aller
+Regel nicht danach noch an.
+
+Im Neubau übernehmen diese Aufgabe der Chat-Berater aus eigener Wissensbasis
+und die Terminstrecke je Standort — beide ohne Drittanbieter beim Seitenaufruf
+und beide vor dem Livegang im Browser durchzuspielen.
+
 #### Was das zusammen bedeutet
 
 Nichts davon ist Schlamperei im Detail. Alternativtexte, Bildmaße, Canonical,
@@ -1151,8 +1188,9 @@ drei — und dort ist die neue Seite länger als die längste alte, nicht kürze
 
 Die übrigen achtzehn betreffen Team (drei), Standorte (vier) und
 englischsprachige Seiten (elf). Bei den englischen ist die Ursache benannt:
-Der übernommene Fachtext liegt noch nicht auf Englisch vor, deshalb führen
-die alten englischen Behandlungsadressen bis auf Weiteres auf die Übersicht.
+Der übernommene Fachtext ist auf Englisch übersetzt (83 von 83 Themen), aber
+noch nicht gegengelesen und freigegeben — deshalb führen die alten englischen
+Behandlungsadressen bis auf Weiteres auf die Übersicht.
 
 ### 5.5 Was zu tun ist
 
