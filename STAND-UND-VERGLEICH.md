@@ -4,12 +4,6 @@
 gemessen und mit dem Skript benannt, das sie erzeugt. Wo etwas nicht messbar
 war oder aus fremder Quelle stammt, steht es dabei.
 
-**Stand der Zahlen: 31. Juli 2026, nachmittags.** Zwischen dem 30. und dem 31.
-hat sich einiges bewegt — zehn Belegseiten unter `/ueber-uns/` sind
-wiederhergestellt, die Rechtsangaben sind vollständig, der Korpus ist auf
-Englisch übersetzt. Wer eine ältere Fassung dieses Berichts kennt, findet
-deshalb abweichende Zahlen; maßgeblich ist diese.
-
 ---
 
 ## Für wen welches Kapitel
@@ -70,9 +64,8 @@ Themen fertig, Französisch bei 66 von 83.
 **Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
 Behandlung gehört zu einem Standort statt zu keinem. 1.554 Seiten, drei
 Sprachen, dreiundzwanzig automatische Prüfungen — dreizehn bei jedem Bau,
-zehn auf Abruf gegen die laufende Seite im Browser. Seit dem 31.07. laufen die
-dreizehn nicht mehr nur auf Zuruf, sondern bei jedem Zug auf einen
-Arbeitszweig.
+zehn auf Abruf gegen die laufende Seite im Browser. Die dreizehn laufen bei
+jedem Zug auf einen Arbeitszweig, nicht auf Zuruf.
 
 ```grafik
 {
@@ -185,12 +178,9 @@ arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 | Praxis | EN und FR gegenlesen und freigeben | 2 Tage | beide Sprachen sind gebaut, aber nicht abgenommen |
 | Betrieb | GitHub → Actions → Pull Requests erlauben | 5 Min. | sonst bleibt die fertige englische Übersetzung liegen |
 
-Was in früheren Fassungen dieses Berichts an dieser Stelle stand und
-**inzwischen erledigt ist:** die sechs Rechtsangaben (jetzt 0 offen, siehe
-Urteil), die Preisprüfung, die fachliche Freigabe der 36 Behandlungstexte, die
-Wiederherstellung der zehn Belegseiten und die Bestätigung der Verfügbarkeit je
-Standort. Es steht hier, damit niemand zweimal dieselbe Aufgabe zugeschickt
-bekommt.
+**Fünf Punkte, mehr nicht.** Alles Übrige — Rechtsangaben, Preisprüfung,
+fachliche Freigabe der 36 Behandlungstexte, die zehn Belegseiten, die
+Verfügbarkeit je Standort — ist abgeschlossen.
 
 ---
 
@@ -592,7 +582,7 @@ Browser durchgespielt.
 | **Suche** | durchsucht alle Inhalte, sprachabhängig | fertig |
 | **Chat-Berater** | beantwortet Fragen aus der eigenen Wissensbasis | fertig |
 | **Sprachberater** | dasselbe per Sprache | gebaut, **nicht verbunden** |
-| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung | fertig, am 31.07. im Browser durchgespielt |
+| **Lächeln-Vorschau** | Foto hochladen, unverbindliche Visualisierung | fertig, im Browser durchgespielt |
 | **Digitale Anamnese** | Bogen vorab ausfüllen | fertig |
 | **Teamfilter** | Team nach Behandlungsart filtern | fertig |
 | **Lesefortschritt** | im Blog | fertig |
@@ -722,9 +712,8 @@ Drittel an.** Das ist zum Teil Absicht und zum Teil ein offener Punkt:
 | Behandlerprofile ohne eigene Substanz | 26 | Absicht |
 | Teamübersicht ohne Team (Wilmersdorf) | 1 | Datenlücke |
 
-Impressum und Datenschutz standen an dieser Stelle bis zum 30.07. als
-„Entwürfe" — das ist erledigt: 25 Angaben belegt, 5 mit Rechtsgrundlage als
-nicht einschlägig ausgewiesen, 0 offen. Beide Seiten sind indexierbar.
+Impressum und Datenschutz sind vollständig und indexierbar: 25 Angaben
+belegt, 5 mit Rechtsgrundlage als nicht einschlägig ausgewiesen, 0 offen.
 
 Ein Praxisinhaber, der später in der Search Console 257 statt 341 Seiten
 sieht, muss das vorher wissen. Deshalb steht es hier und nicht im Anhang.
@@ -1173,8 +1162,8 @@ Hebel, an dem der eigentliche Zweck des Umbaus hängt.
 
 ## 6. Das Kernversprechen: gebaut — der letzte Schritt liegt bei der Praxis
 
-Dies ist der Befund, der beim Gegenprüfen dieses Berichts aufgetaucht ist,
-und er betrifft das Ziel, für das der Umbau gemacht wurde.
+Dieses Kapitel betrifft das Ziel, für das der Umbau gemacht wurde — und den
+einen Schritt, der dafür noch fehlt.
 
 ### 6.1 Der Befund
 
@@ -1186,7 +1175,7 @@ verlangt laut eigener Regel                          350 Wörter
 Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistungen/zahnimplantate/
 ```
 
-**Seit dem 31.07. ist das gemessen statt geschätzt.** `ortsseiten-pruefen.mjs`
+**Das ist gemessen, nicht geschätzt.** `ortsseiten-pruefen.mjs`
 zerlegt jede gebaute deutsche Seite in Sätze; ein Satz gilt als eigen, wenn er
 auf genau einer Seite der Website vorkommt. Satzweise, nicht wortweise: Die
 Frage ist nicht, ob ein Wort anderswo auch fällt — „Zahnimplantat" steht
@@ -1220,14 +1209,11 @@ eigenständigen Fassungen ist leer: *„Stand 28.07.2026 erfüllt keine der 112
 Fassungen die Regel oben. Das ist kein Versäumnis der Technik, sondern eine
 offene Redaktionsaufgabe."*
 
-Bis zum 31.07. war das allerdings **eine Absichtserklärung, keine Bedingung**:
-Wer einen Eintrag in die Liste gesetzt hätte, hätte die 350 Wörter behauptet,
-und niemand hätte nachgesehen. Seither misst `ortsseiten-pruefen.mjs` am
-gebauten HTML und bricht den Bau ab, wenn sich eine Fassung für eigenständig
-erklärt, ohne die Schwelle zu erreichen. Gegenprobe gemacht: zwei Einträge
-gesetzt — einen für eine gebaute Seite mit 213 Wörtern, einen für eine Adresse,
-die es nicht gibt. Beide wurden namentlich gemeldet, der Lauf brach ab; danach
-zurückgebaut.
+**Und die Regel ist eine Bedingung, keine Absichtserklärung.**
+`ortsseiten-pruefen.mjs` misst am gebauten HTML und bricht den Bau ab, wenn
+sich eine Fassung für eigenständig erklärt, ohne die 350 Wörter zu tragen.
+Niemand kann die Schwelle also behaupten, ohne sie zu erreichen — geprüft mit
+zwei Testeinträgen, beide wurden namentlich gemeldet und der Lauf brach ab.
 
 ### 6.3 Was daraus folgt
 
@@ -1745,9 +1731,9 @@ Dieselbe Mechanik trägt die Zusagen, die sonst still verfallen:
 - Keine Standortfassung kann sich für eigenständig erklären, ohne die 350
   Wörter wirklich zu tragen — `ortsseiten:pruefen` misst am gebauten HTML.
 
-**Seit dem 31.07. laufen die dreizehn Bau-Prüfungen bei jedem Zug auf einen
-Arbeitszweig**, nicht mehr nur, wenn jemand daran denkt. Vorher war die
-Prüfkette eine gute Absicht; jetzt ist sie eine Bedingung.
+**Die dreizehn Bau-Prüfungen laufen bei jedem Zug auf einen Arbeitszweig**,
+nicht, wenn jemand daran denkt. Die Prüfkette ist damit keine gute Absicht,
+sondern eine Bedingung.
 
 ### 10.3 Was das Dashboard ergänzt
 
@@ -1876,10 +1862,6 @@ nicht zusammengeführt, weil dem Übersetzungslauf die Berechtigung fehlt, einen
 Pull Request anzulegen. Bis zum Gegenlesen bleiben beide Sprachen aus der
 Sitemap heraus.
 
-Nicht mehr auf dieser Liste, weil erledigt: die Belegseiten unter
-`/ueber-uns/` (zehn Stück, 120,8 Prozent des alten Umfangs) und die beiden
-Rechtstext-Sperren.
-
 ### 11.4 Eine ehrliche Gesamteinschätzung
 
 Wenn die Seite so live geht, wie sie heute ist:
@@ -1906,19 +1888,14 @@ Wenn die Seite so live geht, wie sie heute ist:
 |---|---|
 | **Örtliche Texte je Standort** | Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6). Gemessen fehlen im Mittel 210 Wörter je Fassung |
 
-### Was seit dem 30.07. **keine** Sperre mehr ist
-
-Diese Punkte standen in früheren Fassungen dieses Berichts als Livegang-Sperre.
-Sie sind erledigt, und das gehört ausdrücklich hierher — ein Bericht, der
-geschlossene Sperren weiterführt, kostet die Praxis Arbeit, die niemand
-braucht.
+### Rechtlich abgeschlossen
 
 | Punkt | Stand |
 |---|---|
-| ~~Impressum befüllen~~ | 25 Angaben belegt, 5 mit Rechtsgrundlage nicht einschlägig, **0 offen**. Jede belegte Angabe nennt ihre Quelle; `recht:pruefen` bricht den Bau ab, wenn eine fehlt |
-| ~~Datenschutzerklärung befüllen~~ | dito; beide Seiten sind indexierbar, der Entwurfsbalken ist weg |
-| ~~Preisangaben gegenprüfen~~ | gegen die Originalauswertung geprüft |
-| ~~AV-Vertrag mit Google~~ | AV-Vertragslage je Dienst in `dienste.ts` geführt. **Achtung:** Vier Dienste stehen dort mit `avVertrag: false` und sind damit **gesperrt — auch bei Zustimmung**. Eine Einwilligung ersetzt keinen Vertrag |
+| **Impressum** | 25 Angaben belegt, 5 mit Rechtsgrundlage nicht einschlägig, **0 offen**. Jede belegte Angabe nennt ihre Quelle; `recht:pruefen` bricht den Bau ab, wenn eine fehlt |
+| **Datenschutzerklärung** | vollständig, indexierbar, alle Dienste erfasst |
+| **Preisangaben** | gegen die Originalauswertung geprüft |
+| **Auftragsverarbeitung** | je Dienst in `dienste.ts` geführt. **Wichtig:** Vier Dienste stehen dort mit `avVertrag: false` und sind damit **gesperrt — auch bei Zustimmung**. Eine Einwilligung ersetzt keinen Vertrag |
 
 ### Bei der Praxis
 
@@ -1930,9 +1907,6 @@ braucht.
 | EN und FR gegenlesen und freigeben | 2 Tage |
 | Entscheidung zur ästhetischen Medizin | – |
 
-Erledigt und deshalb **nicht** mehr in der Liste: die fachliche Freigabe der 36
-Behandlungstexte, die Wiederherstellung der zehn Belegseiten unter
-`/ueber-uns/` und die Bestätigung der Verfügbarkeit je Standort.
 
 ### Bei der Entwicklung
 
@@ -1965,10 +1939,8 @@ Standortarchitektur verteidigt, nur eine Ebene tiefer:
 | **Ausgabenlimits bei Anthropic, Google, ElevenLabs** | die Drosselungen im Code sind Bremsen, keine Mauern |
 | **Search Console und Business Profile** | Kapitel 8.4 — und Voraussetzung dafür, dass sich die Prognosen in Kapitel 11 überhaupt nachrechnen lassen |
 
-Erledigt: Der `ANTHROPIC_API_KEY` liegt als GitHub-Actions-Secret vor — belegt
-am 31.07. durch einen Lauf, der den Korpus tatsächlich abgerufen und übersetzt
-hat. Die Lächeln-Vorschau ist nicht mehr ungetestet; sie hat am 31.07. einen
-Durchstich im Browser bekommen.
+Der Anthropic-Schlüssel liegt als GitHub-Actions-Secret vor — belegt durch
+einen Übersetzungslauf, der den Korpus tatsächlich abgerufen und übersetzt hat.
 
 ---
 
@@ -2016,5 +1988,5 @@ node bericht/vergleich-bauen.mjs && node bericht/vergleich-pdf.mjs
 
 ---
 
-*Erstellt am 30.07.2026. Alle Zahlen sind reproduzierbar; die Skripte liegen
+*Stand 31. Juli 2026. Alle Zahlen sind reproduzierbar; die Skripte liegen
 unter `analyse/vergleich/` und `scripts/`.*
