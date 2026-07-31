@@ -89,7 +89,19 @@ const fassungen = SPRACHEN.map((s) => ({
 <style>
   .sprachwahl {
     position: relative;
-    display: flex;
+    /*
+     * `inline-flex`, nicht `flex`.
+     *
+     * Als Block füllte der Regler die Breite seines Elternteils. In der
+     * Kopfleiste fiel das nicht auf – dort steht er in einer Flex-Zeile und
+     * wird ohnehin nach Inhalt bemessen. Im Mobilmenü steht er in einem
+     * Block, und dort lief der Rahmen über die ganze Bildschirmbreite,
+     * während die drei Kürzel links in der Ecke klebten.
+     *
+     * Ein Segmentregler umschließt seine Segmente. Alles andere sieht aus
+     * wie ein Eingabefeld, in dem oben links drei Wörter stehen.
+     */
+    display: inline-flex;
     gap: 0.125rem;
     padding: 0.15rem;
     border: 1px solid var(--linie);

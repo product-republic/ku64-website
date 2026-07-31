@@ -395,6 +395,24 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
           </>
         )
       }
+      {/*
+        Der Standortwähler gehört ins Menü, nicht nur in die Leiste.
+
+        Bisher stand er ausschließlich in der Standortleiste unter dem Kopf.
+        Die klappt beim Scrollen ein – und dann blieb als einziger Zugang der
+        kompakte Wähler oben, der sich mit Termin- und Menüknopf um den Platz
+        stritt und dessen Ausklappliste auf die Leiste gerechnet ist, nicht
+        auf ihn.
+
+        Hier ist er immer erreichbar, in voller Breite, mit Adresse je
+        Standort. Damit kann der kompakte Wähler auf dem Telefon aus dem
+        angedockten Kopf verschwinden, ohne dass etwas verloren geht.
+      */}
+      <div class="mobil-standort">
+        <p class="mobil-titel">{t('nav.standortWaehlenKurz')}</p>
+        <Standortliste aktiv={standort?.slug ?? null} />
+      </div>
+
       {/* Auf schmalen Bildschirmen steht die Sprachwahl hier statt in der
           Leiste: Dort drängte sie sich als dritte Zeile unter Ort und
           Wähler und machte den Kopf höher als den Inhalt darüber. */}
@@ -1020,8 +1038,64 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     margin-block: var(--raum-1) var(--raum-3);
   }
 
-  .mobil-sprache {
+  .mobil-standort {
     margin-block-start: var(--raum-6);
+    padding-block-start: var(--raum-5);
+    border-block-start: 1px solid var(--linie);
+  }
+
+  /*
+   * Im Menü steht die Liste im Fluss, nicht als Ausklapp.
+   *
+   * `Standortliste` ist für den Ausklapp unter einem Wähler gebaut:
+   * `position: absolute`, oben eckig, oben ohne Rahmen, damit sie an der
+   * Leiste ansetzt. Im Menü gibt es nichts, woran sie ansetzen könnte – dort
+   * ist sie der Inhalt selbst.
+   *
+   * Kein Glas, kein Schatten, keine Rundung: Sie schwebt hier über nichts.
+   * Ein Weichzeichner über dem Menü, das selbst schon Glas ist, ergibt
+   * milchige Fläche und kostet auf dem Telefon spürbar Rechenzeit.
+   */
+  /*
+   * ── Der Ausklapp im Kopf füllt die Pille, statt darin zu schweben ─────
+   *
+   * `Standortliste` ist auf die Standortleiste gerechnet: `width: min(24rem,
+   * 100vw - 2rem)`, rechtsbündig, oben eckig und ohne Rahmen, damit sie
+   * nahtlos an der Leiste ansetzt.
+   *
+   * Unter dem kompakten Wähler im Kopf ergab das eine sichtbare Stufe.
+   * Gemessen bei 402 px auf `/potsdam/`, angedockt und aufgeklappt:
+   *
+   *     Pille   x =  8 … 394
+   *     Liste   x = 23 … 393
+   *
+   * Fünfzehn Pixel schmaler auf der linken Seite, dazu eckige obere Ecken
+   * gegen eine runde Pille – die Kante, die im Bild auffällt. Das Glas war
+   * nie das Problem; die Breite war es.
+   *
+   * `inset-inline: 0` statt fester Breite: Die Liste nimmt die Pillenbreite
+   * und setzt deren Rundung unten fort. Oben bleibt sie eckig und rahmenlos
+   * – dort ist keine Kante, dort ist die Naht.
+   */
+  .kopf-aktionen .ort-kompakt :global(.waehler-liste) {
+    inset-inline: 0;
+    width: auto;
+  }
+
+  .mobil-standort :global(.waehler-liste) {
+    position: static;
+    width: auto;
+    padding: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .mobil-sprache {
+    margin-block-start: var(--raum-5);
     padding-block-start: var(--raum-5);
     border-block-start: 1px solid var(--linie);
   }
@@ -2087,11 +2161,46 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
    * Seite auf dem Telefon öffnen, und der Menüknopf führt zu allem
    * Übrigen. Beide bleiben in voller Zielgröße.
    */
-  @media (max-width: 22rem) {
-    .kopf-aktionen .ort-kompakt {
-      display: none;
-    }
-  }
+  /*
+   * ── Auf dem Telefon steht der Standort im Menü, nicht im Kopf ─────────
+   *
+   * Der kompakte Wähler war dort ein Fremdkörper. Er stritt mit Termin- und
+   * Menüknopf um den Platz – bei 360 px angedockt blieben dem Terminknopf
+   * rechnerisch 19 px zu wenig –, und seine Ausklappliste ist auf die
+   * Standortleiste gerechnet: oben eckig, oben ohne Rahmen, damit sie
+   * nahtlos daran ansetzt. Unter dem kleinen Symbol im Kopf hing damit eine
+   * Fläche, die sichtbar zu etwas anderem gehörte.
+   *
+   * Beides ist mit einer Entscheidung erledigt: Auf dem Telefon steht der
+   * Wähler in der Standortleiste unter dem Kopf – und, seit dieser Fassung,
+   * zusätzlich im Menü. Damit ist er auch dann erreichbar, wenn die Leiste
+   * beim Scrollen einklappt, und der Kopf behält seine zwei Knöpfe.
+   *
+   * Eine frühere Fassung blendete ihn nur unter 22 rem aus, mit der
+   * Begründung, er stehe ja im Menü. Das stimmte damals nicht – im Menü gab
+   * es ihn nicht. Deshalb steht er jetzt zuerst dort, und erst dann
+   * verschwindet er hier.
+   */
+  /*
+   * ── Der Wähler BLEIBT im angedockten Kopf ─────────────────────────────
+   *
+   * Ein Zwischenstand hatte ihn auf dem Telefon ganz entfernt, weil er nun
+   * auch im Menü steht. `kopf-pruefen.mjs` hat das mit acht Befunden
+   * zurückgewiesen, und zu Recht – zwei davon wiegen schwer:
+   *
+   *     „gescrollt gibt es keinen Standortwähler mehr"
+   *     „gescrollt steht nirgends mehr, in welcher Praxis man ist"
+   *
+   * Der zweite ist der eigentliche: Wer auf `/potsdam/` liest und scrollt,
+   * muss sehen, dass er in Potsdam ist. Sonst gelten Öffnungszeiten,
+   * Telefonnummer und Terminstrecke für einen Ort, den niemand mehr nennt.
+   * Der Wächter merkt an, dass der Umbau daran schon zweimal gescheitert
+   * ist – ein Grund mehr, ihn nicht zu übergehen.
+   *
+   * Der Eintrag im Menü bleibt trotzdem: Er ist der zweite Weg, nicht der
+   * Ersatz. Was hier zu lösen war, ist nicht die Erreichbarkeit, sondern
+   * das Aussehen des Ausklapps – siehe `Standortliste.astro`.
+   */
 </style>
 
 <script>
@@ -2181,6 +2290,21 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
       const label = offen ? knopf.dataset.labelOeffnen : knopf.dataset.labelSchliessen;
       if (label) knopf.setAttribute('aria-label', label);
       if (menue) menue.hidden = offen;
+      /*
+       * Der Zustand muss nach außen sichtbar sein.
+       *
+       * Der Berater-Knopf liegt `position: fixed` unten rechts und wusste
+       * nichts vom offenen Menü – er lag als runder Fleck über der
+       * Standortliste, genau auf „Berlin-Mitte". Zwei Komponenten, die
+       * einander nicht kennen, brauchen einen gemeinsamen Anschlag; ein
+       * Attribut am Wurzelelement ist der billigste.
+       *
+       * `:has(#mobilmenue:not([hidden]))` wäre ohne Skript ausgekommen, hängt
+       * aber daran, dass beide im selben Baum stehen und der Wähler
+       * unterstützt wird. Ein gesetztes Attribut ist nachlesbar und
+       * prüfbar.
+       */
+      document.documentElement.toggleAttribute('data-menue-offen', !offen);
     });
 
     /*

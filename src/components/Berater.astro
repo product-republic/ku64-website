@@ -185,6 +185,39 @@ const wegZumMenschen = wegZumMenschenIn(daten.sprache);
 </div>
 
 <style>
+  /*
+   * Bei offenem Mobilmenü tritt der Berater ab.
+   *
+   * Er liegt `position: fixed` unten rechts und weiß von sich aus nichts vom
+   * Menü. Geöffnet lag der runde Knopf mitten auf der Standortliste – genau
+   * über „Berlin-Mitte", also über einem Ziel, das man antippen will.
+   *
+   * `display: none` und nicht nur durchsichtig: Ein unsichtbarer Knopf
+   * fängt weiterhin Berührungen ab, und dann trifft der Finger den Standort
+   * darunter nicht. Genau das war der Fehler.
+   *
+   * Das Attribut setzt der Menüknopf in `Navigation.astro`.
+   */
+  :global(html[data-menue-offen]) .berater {
+    display: none;
+  }
+
+  /*
+   * Dasselbe, solange ein Wähler aufgeklappt ist.
+   *
+   * Der Standortwähler im Kopf spannt seine Liste über fast den ganzen
+   * Schirm; der Knopf lag darin auf „Berlin-Mitte". Es ist derselbe Fehler
+   * wie beim Menü, nur ein anderer Auslöser – deshalb hier gleich
+   * mitbehandelt statt beim nächsten Screenshot noch einmal.
+   *
+   * `:has()` statt eines zweiten Attributs: Die Wähler sind `<details>` und
+   * tragen ihren Zustand selbst. Ein Skript, das ihn zusätzlich nach außen
+   * spiegelt, ist eine zweite Wahrheit, die auseinanderlaufen kann.
+   */
+  :global(body:has(.ort-kompakt[open], .waehler[open])) .berater {
+    display: none;
+  }
+
   .berater {
     position: fixed;
     /*
@@ -469,6 +502,22 @@ const wegZumMenschen = wegZumMenschenIn(daten.sprache);
     line-height: var(--zeile-normal);
     resize: none;
     outline: none;
+  }
+
+  /*
+   * Auf Fingergeräten 16 px, sonst zoomt iOS beim Fokus die ganze Seite
+   * heran (Begründung ausführlich in `global.css`).
+   *
+   * Die Regel steht ZUSÄTZLICH hier, obwohl sie global schon existiert:
+   * `.f-eingabe textarea` ist spezifischer als das globale `textarea`, und
+   * Astro hängt an beide noch seinen Bereichsselektor. Die globale Regel
+   * verlor deshalb – gemessen blieb das Feld bei 14,2 px. Eine Regel, die
+   * man nicht nachmisst, ist eine Vermutung.
+   */
+  @media (pointer: coarse) {
+    .f-eingabe textarea {
+      font-size: 1rem;
+    }
   }
 
   .f-eingabe textarea:focus {

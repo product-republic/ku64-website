@@ -144,6 +144,35 @@ select {
   color: inherit;
 }
 
+/**
+ * Kein Zoomsprung beim Antippen eines Eingabefeldes.
+ *
+ * iOS Safari zoomt die ganze Seite heran, sobald ein Feld den Fokus bekommt
+ * und seine Schrift kleiner als 16 px ist. Das ist eingebautes Verhalten,
+ * keine Einstellung – gedacht als Lesehilfe. Herausgezoomt wird nicht
+ * automatisch wieder; man bleibt in der vergrößerten Ansicht sitzen und
+ * kann die Seite seitlich schieben.
+ *
+ * Aufgefallen ist es am Chat-Symbol unten. Die Ursache ist aber nicht der
+ * Berater, sondern jedes Feld, dessen Komponente eine kleinere Stufe setzt:
+ * `--t-sm` ist `clamp(0.875rem, …, 0.938rem)`, also 14 bis 15 px. Deshalb
+ * steht die Regel hier und nicht dort – sie deckt Kontaktformular,
+ * Anamnese, Suche und alles Künftige mit ab.
+ *
+ * `maximum-scale=1` im Viewport wäre der andere Weg und wäre falsch: Das
+ * verbietet ALLEN das Zoomen, auch denen, die es zum Lesen brauchen.
+ *
+ * `pointer: coarse` statt einer Breitenabfrage: Es geht um Finger, nicht um
+ * Fensterbreite. Ein schmales Fenster am Schreibtisch zoomt nicht.
+ */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: max(1rem, var(--t-sm));
+  }
+}
+
 button {
   cursor: pointer;
   background: none;
