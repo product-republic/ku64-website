@@ -32,6 +32,33 @@
  * Absatz.
  */
 
+import type { TextSchluessel } from '../i18n/texte';
+
+/**
+ * Die Übersetzungsfunktion, wie `texte(sprache)` in `src/i18n/katalog.ts`
+ * sie liefert.
+ *
+ * ── Warum sie hereingereicht und nicht importiert wird ───────────────────
+ *
+ * `katalog.ts` importiert den Typ `Standort` aus dieser Datei. Würde diese
+ * Datei zur Laufzeit `texte()` von dort holen, wäre der Kreis geschlossen –
+ * und zwar einer, den der Bundler auflöst, indem er eine der beiden Seiten
+ * beim ersten Zugriff noch leer sieht. Solche Fehler treten nicht beim
+ * Bauen auf, sondern auf einer einzelnen Seite zur Laufzeit.
+ *
+ * Als Parameter ist die Abhängigkeit umgekehrt: Wer eine Zeit lesbar machen
+ * will, hat `t` ohnehin schon, weil er eine Seite in einer Sprache baut.
+ * Nur `llms.txt.ts` hat keine Sprache – die Datei gibt es einmal, auf
+ * Deutsch, und sie holt sich `texte('de')` ausdrücklich.
+ *
+ * Nur der TYP wird importiert. `import type` verschwindet beim Übersetzen
+ * vollständig und kann deshalb keinen Kreis bilden.
+ */
+export type Uebersetzer = (
+  schluessel: TextSchluessel,
+  werte?: Record<string, string | number>,
+) => string;
+
 export type Wochentag = 'Mo' | 'Di' | 'Mi' | 'Do' | 'Fr' | 'Sa' | 'So';
 
 export interface Oeffnungszeit {
@@ -101,7 +128,7 @@ export interface Standort {
    * allen behandelten Tagen liegt – das fängt Tippfehler, ohne die
    * redaktionelle Entscheidung zu überschreiben.
    */
-  oeffnungsangabe: { tage: number; zusatz?: string };
+  oeffnungsangabe: { tage: number };
   /**
    * Portrait dieses Hauses – der Text, der es von den anderen unterscheidet.
    *
@@ -279,7 +306,7 @@ export const STANDORTE: Standort[] = [
   },
   {
     slug: 'potsdam',
-    oeffnungsangabe: { tage: 7, zusatz: 'Sa + So nach Vereinbarung' },
+    oeffnungsangabe: { tage: 7 },
     portrait: [
       {
         titel: 'Zahnmedizin im Palais Ritz',
@@ -395,7 +422,7 @@ export const STANDORTE: Standort[] = [
   },
   {
     slug: 'wilmersdorf',
-    oeffnungsangabe: { tage: 5, zusatz: 'Sa nach Vereinbarung' },
+    oeffnungsangabe: { tage: 5 },
     portrait: [
       {
         titel: 'Die KiezPraxis',
@@ -545,10 +572,63 @@ export function istGeoeffnet(s: Standort, jetzt: Date): boolean {
  * hätte das an sechs Stellen geändert werden müssen, und an der siebten
  * hätte es jemand vergessen.
  */
-export function zeitLesbar(z: Oeffnungszeit): string {
+export function zeitLesbar(z: Oeffnungszeit, t: Uebersetzer): string {
   if (z.von && z.bis) return `${z.von} – ${z.bis}`;
-  if (z.nachVereinbarung) return 'nach Vereinbarung';
-  return 'geschlossen';
+  if (z.nachVereinbarung) return t('zeit.nachVereinbarung');
+  return t('zeit.geschlossen');
+}
+
+/**
+ * Das Tageskürzel, wie es in der Zeitentabelle steht.
+ *
+ * ── Warum es diese Funktion gibt ─────────────────────────────────────────
+ *
+ * Weil sie gefehlt hat. In den sechs Zeitentabellen stand `{z.tag}` direkt
+ * im `<th>` – also der Schlüssel aus den Daten, nicht ein Text. Auf Deutsch
+ * fällt das nicht auf, denn dort ist der Schlüssel zufällig auch die
+ * richtige Beschriftung. Auf 355 englischen und 355 französischen Seiten
+ * stand deshalb „Mo Di Mi Do Fr Sa So".
+ *
+ * Auf Französisch war das nicht bloß unübersetzt, sondern eine falsche
+ * Auskunft: `Di` steht dort für *dimanche*, den Sonntag. Bei uns bezeichnet
+ * es den Dienstag. Wer die Zeile las, las die Dienstagszeiten als
+ * Sonntagszeiten – und stand am Sonntag vor einer geschlossenen Tür.
+ *
+ * Der Schlüssel bleibt deutsch, weil er ein Datenschlüssel ist und keine
+ * Beschriftung. Genau diese Trennung hat gefehlt.
+ */
+export function wochentagKurz(tag: Wochentag, t: Uebersetzer): string {
+  const schluessel = {
+    Mo: 'zeit.tag.mo',
+    Di: 'zeit.tag.di',
+    Mi: 'zeit.tag.mi',
+    Do: 'zeit.tag.do',
+    Fr: 'zeit.tag.fr',
+    Sa: 'zeit.tag.sa',
+    So: 'zeit.tag.so',
+  } as const;
+  return t(schluessel[tag]);
+}
+
+/**
+ * Der Vorbehalt „Sa + So nach Vereinbarung“ – gebaut, nicht gepflegt.
+ *
+ * Er stand als fertiger deutscher Satz im Datensatz (`oeffnungsangabe.zusatz`).
+ * Das hatte zwei Fehler auf einmal: Er war auf EN und FR deutsch, und er war
+ * eine zweite Wahrheit neben den Öffnungszeiten. Ändert die Praxis den
+ * Samstag, ändert sich die Tabelle – der Satz nicht, und kein Wächter hält
+ * einen Satz gegen Daten.
+ *
+ * Jetzt entsteht er aus denselben `oeffnungszeiten`, aus denen auch die
+ * Tabelle entsteht. Gibt es keinen Tag nach Vereinbarung, gibt es auch
+ * keinen Vorbehalt – ohne dass ihn jemand löschen müsste.
+ */
+function vorbehalt(s: Standort, t: Uebersetzer): string | undefined {
+  const tage = s.oeffnungszeiten.filter((z) => !z.von && !z.bis && z.nachVereinbarung);
+  if (tage.length === 0) return undefined;
+  return t('zeit.tageNachVereinbarung', {
+    tage: tage.map((z) => wochentagKurz(z.tag, t)).join(' + '),
+  });
 }
 
 /**
@@ -638,14 +718,16 @@ export function tageNachVereinbarung(s: Standort): Wochentag[] {
  * nach Vereinbarung“.
  */
 /** Nur die Einschränkung, ohne Zahl – für Stellen, die beides getrennt zeigen. */
-export function oeffnungsZusatz(s: Standort): string | undefined {
-  const { zusatz } = s.oeffnungsangabe;
-  return zusatz ? `Tage/Woche · ${zusatz}` : `Tage/Woche`;
+export function oeffnungsZusatz(s: Standort, t: Uebersetzer): string {
+  const v = vorbehalt(s, t);
+  const woche = t('standort.tageWoche');
+  return v ? `${woche} · ${v}` : woche;
 }
 
-export function oeffnungstageText(s: Standort): string {
-  const { tage, zusatz } = s.oeffnungsangabe;
-  return zusatz ? `${tage} Tage/Woche · ${zusatz}` : `${tage} Tage/Woche`;
+export function oeffnungstageText(s: Standort, t: Uebersetzer): string {
+  const kopf = t('zeit.tageWoche', { anzahl: s.oeffnungsangabe.tage });
+  const v = vorbehalt(s, t);
+  return v ? `${kopf} · ${v}` : kopf;
 }
 
 /**
@@ -678,15 +760,29 @@ export function oeffnungstageText(s: Standort): string {
  * merkt nicht, dass er die Regel aufhebt. Hier steht die Trennung im Code,
  * mit dieser Begründung daneben.
  */
-export function oeffnungstageTeile(s: Standort): string[] {
-  const { tage, zusatz } = s.oeffnungsangabe;
-  if (!zusatz) return [`${tage} Tage/Woche`];
+export function oeffnungstageTeile(s: Standort, t: Uebersetzer): string[] {
+  const kopf = t('zeit.tageWoche', { anzahl: s.oeffnungsangabe.tage });
+  const tageNachVereinbarung = s.oeffnungszeiten.filter(
+    (z) => !z.von && !z.bis && z.nachVereinbarung,
+  );
+  if (tageNachVereinbarung.length === 0) return [kopf];
 
-  /* „Sa + So nach Vereinbarung" → „Sa + So" und „nach Vereinbarung". Der
-     Vorbehalt ist immer der Teil ab „nach"; steht er nicht drin, bleibt der
-     Zusatz ein Stück. */
-  const teil = /^(.*?)\s+(nach\s+Vereinbarung)$/i.exec(zusatz);
-  return teil
-    ? [`${tage} Tage/Woche ·`, teil[1], teil[2]]
-    : [`${tage} Tage/Woche ·`, zusatz];
+  /*
+   * Zwei Stücke statt eines Zerlegens per Regel.
+   *
+   * Hier stand `/^(.*?)\s+(nach\s+Vereinbarung)$/i` und schnitt den fertigen
+   * deutschen Satz auseinander. Das ging nur, solange der Satz deutsch war –
+   * auf Französisch heißt er „Sa + Di sur rendez-vous", und der Ausdruck
+   * hätte ihn nicht getrennt, sondern gar nicht erkannt und alles in ein
+   * Stück gelegt.
+   *
+   * Jetzt entstehen beide Stücke getrennt, aus den Daten: erst die
+   * Tagesliste, dann der Vorbehalt. Zerlegen muss niemand mehr, und die
+   * Sinneinheiten stimmen in jeder Sprache.
+   */
+  return [
+    `${kopf} ·`,
+    tageNachVereinbarung.map((z) => wochentagKurz(z.tag, t)).join(' + '),
+    t('zeit.nachVereinbarung'),
+  ];
 }

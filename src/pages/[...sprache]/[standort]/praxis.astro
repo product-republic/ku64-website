@@ -98,7 +98,7 @@ const jahre = new Date().getFullYear() - Number(eroeffnetJahr);
           <dd>{oeffnungstage(standort)}</dd>
           {/* Der Zusatz gehört zwingend dazu: „7“ allein wäre für Potsdam das
               Versprechen fester Wochenendzeiten, die es dort nicht gibt. */}
-          <p>{oeffnungsZusatz(standort) ?? t('standort.tageWoche')}</p>
+          <p>{oeffnungsZusatz(standort, t)}</p>
         </div>
       </dl>
     </div>

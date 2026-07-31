@@ -11,7 +11,7 @@ import LeistungsListe from '../../../components/LeistungsListe.astro';
 import TerminBand from '../../../components/TerminBand.astro';
 import FaqBlock from '../../../components/FaqBlock.astro';
 import Kopfmedium from '../../../components/Kopfmedium.astro';
-import { STANDORTE, zeitLesbar } from '../../../data/standorte';
+import { STANDORTE, wochentagKurz, zeitLesbar } from '../../../data/standorte';
 import { kopfmediumFuer } from '../../../data/medien';
 import { schemaStandort, schemaBrotkrumen, schemaFaq } from '../../../lib/seo';
 import Drittinhalt from '../../../components/Drittinhalt.astro';
@@ -290,8 +290,8 @@ const schema = [
             {
               standort.oeffnungszeiten.map((z) => (
                 <tr>
-                  <th scope="row">{z.tag}</th>
-                  <td>{zeitLesbar(z)}</td>
+                  <th scope="row">{wochentagKurz(z.tag, t)}</th>
+                  <td>{zeitLesbar(z, t)}</td>
                 </tr>
               ))
             }

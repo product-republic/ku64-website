@@ -86,7 +86,7 @@ const nachVerfuegbarkeit = [...daten.standorte].sort(
       <div class="nummern">
         {
           nachVerfuegbarkeit.map((s) => {
-            const tage = oeffnungstageText(s);
+            const tage = oeffnungstageText(s, t);
             return (
               <a class="nummer" href={`tel:${s.telefonRaw.replace(/\s/g, '')}`} style={`--akzent:${s.akzent}`}>
                 <span class="n-ort">KU64 {s.name}</span>

@@ -29,7 +29,7 @@ import { inhalte } from '../../../i18n/daten';
 import { texte } from '../../../i18n/katalog';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
-import { STANDORTE, zeitLesbar, oeffnungstageText } from '../../../data/standorte';
+import { STANDORTE, wochentagKurz, zeitLesbar, oeffnungstageText } from '../../../data/standorte';
 import { veroeffentlichbar } from '../../../data/team';
 import { schemaBrotkrumen, schemaStandort } from '../../../lib/seo';
 
@@ -198,15 +198,15 @@ const nichtHier = daten.leistungenAnderswo(standort.slug);
   
           <div>
             <h2>Sprechzeiten</h2>
-            <p class="klein">{oeffnungstageText(standort)}</p>
+            <p class="klein">{oeffnungstageText(standort, t)}</p>
             <table class="zeiten">
               <caption class="nur-screenreader">Sprechzeiten KU64 {standort.name}</caption>
               <tbody>
                 {
                   standort.oeffnungszeiten.map((z) => (
                     <tr>
-                      <th scope="row">{z.tag}</th>
-                      <td>{zeitLesbar(z)}</td>
+                      <th scope="row">{wochentagKurz(z.tag, t)}</th>
+                      <td>{zeitLesbar(z, t)}</td>
                     </tr>
                   ))
                 }

@@ -30536,6 +30536,50 @@
     "ui.video.ueberschrift": {
       "text": "On video",
       "quelle": "ebd377d0"
+    },
+    "ui.zeit.tag.mo": {
+      "text": "Mon",
+      "quelle": "61e00255"
+    },
+    "ui.zeit.tag.di": {
+      "text": "Tue",
+      "quelle": "5fceb60e"
+    },
+    "ui.zeit.tag.mi": {
+      "text": "Wed",
+      "quelle": "5bdff8e3"
+    },
+    "ui.zeit.tag.do": {
+      "text": "Thu",
+      "quelle": "61ceb934"
+    },
+    "ui.zeit.tag.fr": {
+      "text": "Fri",
+      "quelle": "56d32511"
+    },
+    "ui.zeit.tag.sa": {
+      "text": "Sat",
+      "quelle": "38025279"
+    },
+    "ui.zeit.tag.so": {
+      "text": "Sun",
+      "quelle": "42026237"
+    },
+    "ui.zeit.nachVereinbarung": {
+      "text": "by appointment",
+      "quelle": "cdc743a9"
+    },
+    "ui.zeit.geschlossen": {
+      "text": "closed",
+      "quelle": "d266c7e1"
+    },
+    "ui.zeit.tageWoche": {
+      "text": "{anzahl} days a week",
+      "quelle": "316b9589"
+    },
+    "ui.zeit.tageNachVereinbarung": {
+      "text": "{tage} by appointment",
+      "quelle": "111bedf6"
     }
   }
 }

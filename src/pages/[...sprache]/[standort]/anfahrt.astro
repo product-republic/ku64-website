@@ -3,7 +3,7 @@ import { inhalte } from '../../../i18n/daten';
 import { mitSprachen } from '../../../i18n/sprachen';
 import Basis from '../../../layouts/Basis.astro';
 import TerminBand from '../../../components/TerminBand.astro';
-import { STANDORTE, zeitLesbar, naechsterStandort } from '../../../data/standorte';
+import { STANDORTE, wochentagKurz, zeitLesbar, naechsterStandort } from '../../../data/standorte';
 import { schemaBrotkrumen } from '../../../lib/seo';
 import { texte } from '../../../i18n/katalog';
 import Drittinhalt from '../../../components/Drittinhalt.astro';
@@ -258,8 +258,8 @@ const routeZiel = `https://www.google.com/maps/dir/?api=1&destination=${encodeUR
                 {
                   standort.oeffnungszeiten.map((z) => (
                     <tr>
-                      <th scope="row">{z.tag}</th>
-                      <td>{zeitLesbar(z)}</td>
+                      <th scope="row">{wochentagKurz(z.tag, t)}</th>
+                      <td>{zeitLesbar(z, t)}</td>
                     </tr>
                   ))
                 }

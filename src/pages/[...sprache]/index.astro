@@ -140,7 +140,7 @@ const startVideos = videosStart();
                         Vorbehalt erst eine Zeile tiefer. Siehe
                         `oeffnungstageTeile` in standorte.ts. */}
                     <dd class="zeiten">
-                      {oeffnungstageTeile(s).map((teil) => <span>{teil}</span>)}
+                      {oeffnungstageTeile(s, t).map((teil) => <span>{teil}</span>)}
                     </dd>
                   </div>
                   <div>

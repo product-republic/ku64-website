@@ -30536,6 +30536,50 @@
     "ui.video.ueberschrift": {
       "text": "En vidéo",
       "quelle": "ebd377d0"
+    },
+    "ui.zeit.tag.mo": {
+      "text": "Lun",
+      "quelle": "61e00255"
+    },
+    "ui.zeit.tag.di": {
+      "text": "Mar",
+      "quelle": "5fceb60e"
+    },
+    "ui.zeit.tag.mi": {
+      "text": "Mer",
+      "quelle": "5bdff8e3"
+    },
+    "ui.zeit.tag.do": {
+      "text": "Jeu",
+      "quelle": "61ceb934"
+    },
+    "ui.zeit.tag.fr": {
+      "text": "Ven",
+      "quelle": "56d32511"
+    },
+    "ui.zeit.tag.sa": {
+      "text": "Sam",
+      "quelle": "38025279"
+    },
+    "ui.zeit.tag.so": {
+      "text": "Dim",
+      "quelle": "42026237"
+    },
+    "ui.zeit.nachVereinbarung": {
+      "text": "sur rendez-vous",
+      "quelle": "cdc743a9"
+    },
+    "ui.zeit.geschlossen": {
+      "text": "fermé",
+      "quelle": "d266c7e1"
+    },
+    "ui.zeit.tageWoche": {
+      "text": "{anzahl} jours par semaine",
+      "quelle": "316b9589"
+    },
+    "ui.zeit.tageNachVereinbarung": {
+      "text": "{tage} sur rendez-vous",
+      "quelle": "111bedf6"
     }
   }
 }

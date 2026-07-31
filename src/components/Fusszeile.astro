@@ -5,7 +5,7 @@
  * nie als gleichrangige Kontaktmöglichkeit.
  */
 import { inhalte } from '../i18n/daten';
-import { type Standort, zeitLesbar } from '../data/standorte';
+import { type Standort, wochentagKurz, zeitLesbar } from '../data/standorte';
 import { texte } from '../i18n/katalog';
 
 const daten = inhalte(Astro);
@@ -65,8 +65,8 @@ const t = texte(daten.sprache);
               <tbody>
                 {standort.oeffnungszeiten.map((z) => (
                   <tr>
-                    <th scope="row">{z.tag}</th>
-                    <td>{zeitLesbar(z)}</td>
+                    <th scope="row">{wochentagKurz(z.tag, t)}</th>
+                    <td>{zeitLesbar(z, t)}</td>
                   </tr>
                 ))}
               </tbody>

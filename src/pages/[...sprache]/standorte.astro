@@ -63,7 +63,7 @@ const schema = [
         {
           daten.standorte.map((s) => {
             const anzahl = daten.leistungenHier(s.slug).length;
-            const tage = oeffnungstageTeile(s);
+            const tage = oeffnungstageTeile(s, t);
             return (
               <article class="karte karte-klickbar ort" style={`--akzent:${s.akzent}`}>
                 {/* Derselbe Raum wie auf der Startseite: der Empfang, bei

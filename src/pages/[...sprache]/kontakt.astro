@@ -1,7 +1,7 @@
 ---
 import { inhalte } from '../../i18n/daten';
 import { texte } from '../../i18n/katalog';
-import { zeitLesbar } from '../../data/standorte';
+import { wochentagKurz, zeitLesbar } from '../../data/standorte';
 import { sprachpfade } from '../../i18n/sprachen';
 import Basis from '../../layouts/Basis.astro';
 import { schemaBrotkrumen, schemaOrganisation } from '../../lib/seo';
@@ -45,8 +45,8 @@ const brotkrumen = [
               <tbody>
                 {s.oeffnungszeiten.map((z) => (
                   <tr>
-                    <th scope="row">{z.tag}</th>
-                    <td>{zeitLesbar(z)}</td>
+                    <th scope="row">{wochentagKurz(z.tag, t)}</th>
+                    <td>{zeitLesbar(z, t)}</td>
                   </tr>
                 ))}
               </tbody>

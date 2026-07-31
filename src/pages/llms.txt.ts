@@ -10,10 +10,18 @@
 
 import type { APIRoute } from 'astro';
 import { STANDORTE, oeffnungstageText } from '../data/standorte';
+/*
+ * Diese Datei gibt es einmal, auf Deutsch – sie hat keine Sprachfassung und
+ * bekommt deshalb den deutschen Übersetzer ausdrücklich, statt sich einen zu
+ * borgen. Ohne diese Zeile stünde hier der Satz einer beliebigen Sprache,
+ * je nachdem, welche Seite zuletzt gebaut wurde.
+ */
+import { texte } from '../i18n/katalog';
 import { KATEGORIEN, LEISTUNGEN, leistungenFuerStandort } from '../data/leistungen';
 
 export const GET: APIRoute = ({ site }) => {
   const basis = (site ?? new URL('https://ku64.de')).origin;
+  const t = texte('de');
 
   const zeilen: string[] = [
     '# KU64 – Die Zahnspezialisten',
@@ -32,7 +40,7 @@ export const GET: APIRoute = ({ site }) => {
 
   for (const s of STANDORTE) {
     const anzahl = leistungenFuerStandort(s.slug).length;
-    const tage = oeffnungstageText(s);
+    const tage = oeffnungstageText(s, t);
     zeilen.push(
       `- [KU64 ${s.name}](${basis}/${s.slug}/): ${s.strasse}, ${s.plz} ${s.ort}. Telefon ${s.telefon}. ${tage}. ${anzahl} Leistungen. ${s.claim}`,
     );

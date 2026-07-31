@@ -829,6 +829,49 @@ export const TEXTE = {
   'karte.tageWoche': '{anzahl} Tage/Woche',
   'karte.standortAnsehen': 'Standort ansehen',
 
+  /*
+   * ── Öffnungszeiten ──────────────────────────────────────────────────
+   *
+   * Diese elf Schlüssel gab es nicht, und das war auf 355 englischen und
+   * 355 französischen Seiten zu sehen: In der Zeitentabelle stand `z.tag`
+   * roh im `<th>` – also der DATENSCHLÜSSEL, nicht ein Text. „Mo Di Mi Do
+   * Fr Sa So" auf einer englischen Seite.
+   *
+   * Auf Französisch war es schlimmer als unübersetzt, nämlich falsch
+   * lesbar: `Di` heißt dort *dimanche*, also Sonntag. In unserer Tabelle
+   * stand es für Dienstag. Wer die Zeile las, kam an einem Tag, an dem
+   * geschlossen ist.
+   *
+   * Die Kürzel bleiben Kürzel und werden nicht ausgeschrieben: Die Spalte
+   * ist schmal, und `Mo–So` untereinander ist in jeder der drei Sprachen
+   * die übliche Form. Ausgeschrieben stehen die Tage in den
+   * strukturierten Daten, wo Maschinen sie lesen.
+   */
+  'zeit.tag.mo': 'Mo',
+  'zeit.tag.di': 'Di',
+  'zeit.tag.mi': 'Mi',
+  'zeit.tag.do': 'Do',
+  'zeit.tag.fr': 'Fr',
+  'zeit.tag.sa': 'Sa',
+  'zeit.tag.so': 'So',
+  'zeit.nachVereinbarung': 'nach Vereinbarung',
+  'zeit.geschlossen': 'geschlossen',
+  'zeit.tageWoche': '{anzahl} Tage/Woche',
+  /*
+   * Der Vorbehalt wird AUS DEN TAGEN gebaut, nicht als Satz übersetzt.
+   *
+   * In `standorte.ts` stand er als Zeichenkette im Datensatz: „Sa + So nach
+   * Vereinbarung". Übersetzt man den Satz, hat man zwei Wahrheiten – ändert
+   * die Praxis den Samstag, stimmt die deutsche Fassung und die
+   * französische nicht mehr, und niemand merkt es, weil kein Wächter einen
+   * Satz gegen Daten hält.
+   *
+   * Jetzt entsteht er aus denselben Öffnungszeiten, aus denen auch die
+   * Tabelle entsteht: `{tage}` ist die Liste der Tage mit
+   * `nachVereinbarung`, in der Sprache der Seite.
+   */
+  'zeit.tageNachVereinbarung': '{tage} nach Vereinbarung',
+
   // ── Fehlerseite ─────────────────────────────────────────────────────
   'fehler.titel': 'Diese Seite gibt es nicht',
   'fehler.text':

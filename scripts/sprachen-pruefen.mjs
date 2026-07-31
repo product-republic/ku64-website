@@ -83,6 +83,11 @@ const MARKER = [
 ];
 const SCHWELLE = 4;
 
+const WORTMARKEN = [
+  '>Mo<', '>Di<', '>Mi<', '>Do<', '>Fr<', '>Sa<', '>So<',
+  '>geschlossen<', '>nach Vereinbarung<', 'Tage/Woche',
+];
+
 const nurBericht = process.argv.includes('--bericht');
 
 const quelle = quelltexte();
@@ -167,6 +172,17 @@ for (const sprache of SPRACHEN) {
       if (streng) fehler++;
     } else {
       console.log('  Restdeutsch im HTML: keins gefunden');
+    }
+
+    /* ── Ebene 3b: deutsche Wortmarken, die kein Marker fängt ──────────── */
+    const marken = await deutscheWortmarkenSuchen(distSprache);
+    if (marken.length) {
+      const summe = marken.reduce((n, m) => n + m.seiten, 0);
+      console.log(`  ${marke}: ${marken.length} deutsche Wortmarke(n) in ${summe} Seitentreffern`);
+      for (const m of marken) console.log(`    · „${m.text}" auf ${m.seiten} Seiten`);
+      fehler++;
+    } else {
+      console.log('  Deutsche Wortmarken (Wochentage, Zeitangaben): keine');
     }
   }
 }
@@ -291,6 +307,57 @@ async function restdeutschSuchen(verzeichnis) {
 
   await durchlaufen(verzeichnis);
   return treffer;
+}
+
+/**
+ * Ebene 3b: deutsche Wortmarken, die die Markerliste prinzipiell nicht fängt.
+ *
+ * ── Warum es diese zweite Suche braucht ─────────────────────────────────
+ *
+ * Ebene 3 sucht deutsche FUNKTIONSWÖRTER – „und", „nicht", „werden". Sie
+ * findet damit ganze Sätze, die nicht übersetzt wurden, und das tut sie gut.
+ *
+ * Sie kann aber nichts finden, was aus einem einzelnen Wort besteht. Genau
+ * das war der Fehler, der sie vier Tage lang passiert hat: In sechs
+ * Öffnungszeiten-Tabellen stand `{z.tag}` roh im `<th>`, also der
+ * Datenschlüssel statt einer Beschriftung. „Mo Di Mi Do Fr Sa So" auf 355
+ * englischen und 355 französischen Seiten – und kein Marker traf, weil kein
+ * einziges Funktionswort darin vorkommt.
+ *
+ * Auf Französisch war es dabei nicht bloß unübersetzt, sondern eine falsche
+ * Auskunft: `Di` steht dort für *dimanche*, den Sonntag. In unserer Tabelle
+ * bezeichnete es den Dienstag.
+ *
+ * ── Warum in spitzen Klammern gesucht wird ──────────────────────────────
+ *
+ * `>geschlossen<` und nicht `geschlossen`: Nur so trifft die Suche eine
+ * Zelle, die genau dieses Wort enthält, und nicht das Wort mitten im Text.
+ * Ohne die Klammern meldete die Suche 53 englische Seiten, auf denen in
+ * Wahrheit „eingeschlossenen Leistungen" stand – ein Wächter, der
+ * Fehlalarme gibt, wird abgeschaltet.
+ *
+ * Eine Wortmarke reicht: Anders als bei den Funktionswörtern gibt es hier
+ * keinen Fall, in dem ein deutsches `<th>Di</th>` auf einer englischen Seite
+ * richtig wäre.
+ */
+
+async function deutscheWortmarkenSuchen(verzeichnis) {
+  const { readdir } = await import('node:fs/promises');
+  const zaehler = new Map(WORTMARKEN.map((m) => [m, 0]));
+
+  async function durchlaufen(ordner) {
+    for (const eintrag of await readdir(ordner, { withFileTypes: true })) {
+      const voll = path.join(ordner, eintrag.name);
+      if (eintrag.isDirectory()) await durchlaufen(voll);
+      else if (eintrag.name.endsWith('.html')) {
+        const html = await readFile(voll, 'utf8');
+        for (const m of WORTMARKEN) if (html.includes(m)) zaehler.set(m, zaehler.get(m) + 1);
+      }
+    }
+  }
+
+  await durchlaufen(verzeichnis);
+  return [...zaehler].filter(([, n]) => n > 0).map(([text, seiten]) => ({ text, seiten }));
 }
 
 /**
