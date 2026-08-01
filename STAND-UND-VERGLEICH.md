@@ -1519,6 +1519,164 @@ den englischen und französischen Seiten. Der Dialog selbst ist übersetzt.
 
 ---
 
+## 7c. Der Einwand: „zu viel auf einmal ändern kostet Rankings"
+
+Zwei Digitalagenturen haben der Praxis geraten, an der Website nicht zu viel
+auf einmal zu ändern — sie würde dann nicht mehr ranken, und der organische
+Verkehr wäre für längere Zeit weg.
+
+**Der Einwand ist berechtigt, und dieses Kapitel widerspricht ihm nicht
+pauschal.** Relaunches kosten regelmäßig Platzierungen. Wer davor warnt, tut
+seine Arbeit. Die Frage ist nicht, ob das vorkommt, sondern ob es *diesen*
+Umbau beschreibt — und das ist eine Frage von Messwerten, nicht von
+Überzeugungen.
+
+Alle Zahlen dieses Kapitels stammen aus einer Erhebung vom 31. Juli und
+1. August 2026, bei der jede einzelne Aussage anschließend von einem zweiten,
+unabhängigen Durchgang widerlegt werden sollte. Von 89 geprüften Aussagen hat
+**keine einzige** die erste Fassung unverändert überstanden; alle 89 stehen
+hier in der geschärften Fassung. Was der Prüfung nicht standhielt, steht
+nicht hier.
+
+### 7c.1 Wo der Einwand recht hat
+
+Sieben Punkte, alle belegt:
+
+**Der Umzugsanteil ist groß.** Von 552 erhobenen Altadressen behalten 103
+ihre Adresse, 448 wechseln sie — 81,2 Prozent. Ein 301 ist die beste
+verfügbare Lösung, aber keine Garantie: Er überträgt Signale weder sofort
+noch vollständig.
+
+**Ein Teil der Weiterleitungen ist qualitativ schwach.** Die 448 führen auf
+197 verschiedene Ziele. 217 Adressen zeigen auf ein Ziel, das mindestens fünf
+Altadressen einsammelt. Eine Weiterleitung auf eine Übersichtsseite, die den
+Inhalt der alten Adresse nicht trägt, wertet Google regelmäßig wie eine
+Fehlerseite.
+
+> **Dieser Punkt wurde am 1. August teilweise behoben.** Die Erhebung fand
+> 126 Adressen, die auf eine Team-Übersicht zeigten, obwohl bei 38 von ihnen
+> eine Personenseite existierte. Ursache war eine Regel aus einer Zeit, in
+> der es noch keine Personenseiten gab. Jetzt: 88 auf Übersichten, 120 auf
+> Personenseiten. Die verbliebenen 88 gehören zu Personen, die keine Seite
+> haben, und zu Gruppenseiten.
+
+**Englisch fällt beim Start aus.** ku64.de liefert heute 54 indexierbare
+englische Seiten mit 76.060 Wörtern aus. Im Neubau tragen alle 518
+EN-Seiten `noindex`, und die EN-Weiterleitungsziele ebenfalls. Beim
+Umschalten im heutigen Stand: 54 → 0. **Das ist der stärkste Punkt der
+Gegenseite** und der Grund, warum die englische Freigabe vor dem Livegang
+stehen sollte.
+
+**Die Startseite verliert Substanz.** Sichtbarer Text alt 1.915 Wörter,
+Neubau 366. Die Startseite ist in der Regel die stärkste Adresse einer
+Website.
+
+**Zwei Darstellungsvorteile gingen verloren.** Die alte Seite erlaubt große
+Bildvorschauen und lange Textausschnitte im Suchergebnis; der Neubau setzte
+auf 504 von 518 Seiten gar keine solche Angabe.
+
+> **Am 1. August behoben.** Die Angabe steht jetzt auf jeder indexierbaren
+> Seite.
+
+**Sterne im Suchergebnis kann der Neubau heute nicht bekommen.** Die alte
+Startseite trägt fünf Bewertungsauszeichnungen, der Neubau keine. Nachziehen
+lässt sich das nur aus einer belegbaren, einheitlichen Quelle — die alten
+Werte widersprechen einander (4,8 bei 882 Bewertungen gegen 5,0 bei 626).
+
+**Und der wichtigste Punkt: In der Kategorie, um die gestritten wird, ist
+nichts zu gewinnen.** Lighthouse SEO steht bei ku64.de auf 100 von 100 — auf
+allen drei geprüften Adressen, genau wie beim Neubau. Alle 315 bestehenden
+Weiterleitungen sind saubere 301, keine Serverfehler, keine Seite auf
+noindex, alle 341 Seiten mit Titel. **Die heutige Website ist technisch nicht
+kaputt.** Wer sie so darstellt, wird beim ersten Nachsehen widerlegt.
+
+### 7c.2 Warum er auf diesen Umbau trotzdem nicht zutrifft
+
+Die Warnung richtet sich gegen einen Umbau ohne Adressplan und mit
+Inhaltsverlust. Gemessen ist beides hier nicht der Fall.
+
+**Jede Altadresse hat ein benanntes, geprüftes Ziel.** 552 Adressen: 103
+unter derselben Adresse erhalten, 448 mit Weiterleitung auf eine Seite, die
+nachweislich existiert, eine bewusst ohne Ziel. Diese eine ist ein Tippfehler
+in einer Blogadresse, der auch auf ku64.de selbst ins Leere führt.
+
+**Es sind echte 301, vollständig geprüft.** Alle 458 Weiterleitungsrouten
+wurden gegen den Auslieferungsserver abgefragt, mit dem die Seite startet:
+458 von 458 mit Status 301 und Zieladresse im Kopf. Keine Zwischenseite mit
+Umleitung per Meta-Angabe. Die Ziele reduzieren sich auf 234 eindeutige
+Adressen — alle antworten mit 200, keine Kette, kein Selbstverweis.
+
+**Die Zuordnung ist gegenlesbar, nicht behauptet.** `weiterleitungen.ts`
+enthält 458 Einträge mit Quelle, Ziel und Herkunftsvermerk. Die Praxis und
+jede prüfende Agentur können Zeile für Zeile widersprechen.
+
+**Der deutsche Textbestand ist erhalten.** Mit demselben Ausleseverfahren,
+mit dem der Altbestand erhoben wurde: 290.357 Wörter auf den 257
+Sitemap-Adressen des Neubaus gegen 290.421 auf den 286 deutschen Altseiten —
+100,0 Prozent, verteilt auf 29 Adressen weniger. Über alle 518 deutschen
+Seiten sind es 682.832 Wörter, je Seite 1.318 statt 1.015.
+
+Bereichsweise: Beschwerdeseiten 31 → 31 Adressen, +0,2 Prozent Text. Blog
+alle 30 Beiträge erhalten. Team +2,6 Prozent. Behandlungsseiten +2,4 Prozent.
+Über uns 10 → 11 Seiten.
+
+**Textverlust kann nicht unbemerkt passieren.** Ein Wächter in der Baukette
+lässt den Bau scheitern, wenn der Behandlungstext unter den gemessenen
+Altbestand fällt — an einem künstlich gekürzten Bau nachgestellt. Grenze der
+Zusage, und sie gehört dazu: Er fängt den Einbruch, nicht jeden Einzelverlust.
+
+**Die Indexierungslage ist widerspruchsfrei.** Alle 257 Sitemap-Adressen
+tragen einen Self-Canonical, keine trägt noindex, zu jeder existiert eine
+Seite. Den Widerspruch „in der Sitemap, aber nicht indexierbar", den die
+Search Console als Fehler meldet, gibt es kein einziges Mal.
+
+**Zwei Prüfkategorien steigen messbar.** Best Practices 77 → 100 auf allen
+drei Seiten. Barrierefreiheit 97/94/94 → 100/100/100. Blockierzeit für
+Eingaben 348/89/460 Millisekunden → 0.
+
+### 7c.3 Was an echtem Risiko bleibt
+
+Ein Kapitel, das „kein Risiko" behauptet, verliert die Diskussion beim ersten
+Rückgang. Die folgenden Punkte sind gemessen und nach Gewicht geordnet.
+
+| Risiko | Maßnahme |
+|---|---|
+| **Englisch:** heute 54 indexierbare Seiten, im Neubau 0 | Freigabe nach dem Gegenlesen — ein Schalter. Bis dahin nicht umschalten oder den Ausfall bewusst hinnehmen. Französisch ist reiner Zugewinn: ku64.de hat 0 französische Adressen |
+| **Sammelweiterleitungen:** 88 Adressen zeigen weiter auf Übersichten | Einzeln durchsehen, ob es ein passgenaues Ziel gibt |
+| **Drei Personen ohne Seite** | Text nachziehen oder bewusst entscheiden |
+| **Potsdam:** 12 Ortstexte mit 9.418 Wörtern ohne Entsprechung; die Nachfolgeseiten tragen zu 93–97 Prozent den Berliner Text | Örtliche Behandlungsseiten mit eigenem Text füllen. Für „Zahnimplantate Potsdam" ist der heutige Stand ein Rückschritt |
+| **Karriere:** 6 Seiten mit 4.128 Wörtern → eine Seite mit 343 | Arbeitgeberinhalt neu schreiben |
+| **Bewertungssterne** fehlen | Aus einer einheitlichen, belegbaren Quelle aufsetzen |
+| **Bilder:** kein WebP, kein `srcset` | Der größte noch offene technische Hebel |
+
+**Und die Startseite ist technisch nicht schneller.** Erster sichtbarer
+Inhalt 2,1 gegen 1,5 Sekunden, größtes Element 4,7 gegen 4,6. Der Gewinn der
+Startseite liegt bei der Blockierzeit und der mobilen Videolast, nicht beim
+Bildaufbau. Das gehört genannt und nicht verschwiegen.
+
+### 7c.4 Was nur die Praxis liefern kann
+
+**Zugang zur Google Search Console — und zwar vor dem Livegang, nicht
+danach.** Ohne sie ist nicht messbar, welche Adressen überhaupt Besucher
+bringen, also welche der 448 Umzüge teuer sind. Und ohne sie lässt sich nach
+dem Umschalten nicht belegen, ob etwas passiert ist.
+
+Das ist zugleich die ehrlichste Auskunft zum ganzen Einwand: **Es liegen
+keine Search-Console- und keine Analytics-Daten vor.** Die Behauptung „ihr
+verliert Traffic" lässt sich mit dem vorhandenen Material weder bestätigen
+noch widerlegen — und jede Prozentzahl dazu, von welcher Seite auch immer,
+wäre erfunden.
+
+Dazu: Zugang zu Google Analytics für den Vorher-Nachher-Vergleich (der Neubau
+verwendet dieselbe Messkennung, die Zeitreihe bleibt ungeschnitten), die
+DNS-Verwaltung am Umschalttag und die Freigabe von Englisch und Französisch.
+
+Der Zugang zum heutigen Server ist **entbehrlich** — die Weiterleitungen
+liefert der Neubau selbst aus.
+
+
+---
+
 ## 8. Analytics und Anbindung ans Dashboard
 
 **Stand heute: Es gibt keine Messung.** Kein Analysewerkzeug, kein Cookie,
