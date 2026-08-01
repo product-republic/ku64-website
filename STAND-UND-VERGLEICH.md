@@ -59,6 +59,77 @@ Themen fertig, Französisch bei 66 von 83.
 
 ---
 
+## Was seit der letzten Fassung gelöst wurde
+
+Dieser Bericht ist ein Verlaufsdokument. Was hier steht, war beim letzten
+Stand offen und ist es jetzt nicht mehr — jede Zeile mit der Zahl, an der man
+es nachprüfen kann.
+
+**Stand dieser Fassung: 1. August 2026, morgens.** Alle Zahlen unten sind
+gegen einen frischen Bau desselben Tages gemessen, nicht fortgeschrieben.
+
+### Gefunden und behoben
+
+| Was | vorher | jetzt |
+|---|---|---|
+| **Sprechzeiten auf Englisch und Französisch** | 2.682 deutsche Treffer je Sprache | **0** |
+| **Über KU64 im Menü** | 5 der 10 Themen in gar keiner Navigation, verlinkt von je 11 der 519 deutschen Seiten | **518 von 519** je Thema |
+| **Zustimmen-Schaltfläche der Einbettungen** | bis 100 % von zwei festen Ebenen verdeckt, Klick ging ins Leere | **18 von 18 Messzellen frei** |
+| **Weiterleitungen auf Personenseiten** | 126 Altadressen auf eine Team-Übersicht, 82 auf ein Profil | **88 / 120** |
+| **robots.txt** | acht KI-Crawler-Gruppen ohne die Sperren der Hauptgruppe | **9 Gruppen mit denselben Sperren** |
+| **Adressen ohne Schrägstrich** | `/ahmet-turan` → 404 | **301 auf die Fassung mit Schrägstrich** |
+| **Darstellung im Suchergebnis** | auf 504 von 518 Seiten keine robots-Angabe | **504 Seiten mit `max-image-preview:large`** |
+| **Örtliche Unterthemen** | 96 Seiten mit Canonical auf sich selbst, in der Sitemap | **0 / 0** |
+| **Suche auf dem Telefon** | Verweis auf die Suchseite | **Feld im Menü, 44 px hoch, Standort reist mit** |
+
+Die drei wichtigsten in einem Satz:
+
+**Auf Französisch stand die Sprechzeitentabelle nicht nur unübersetzt da,
+sondern falsch.** `Di` heißt dort *dimanche* — Sonntag. In unserer Tabelle
+bezeichnete es den Dienstag. Wer die Zeile las, wäre an einem Tag gekommen,
+an dem geschlossen ist. Auf 355 Seiten je Sprache.
+
+**Fünf der zehn Belegseiten unter „Über KU64" standen in gar keiner
+Navigation** — Best Practice, Mitgliedschaften, Hilfsprojekt Südafrika,
+Soziales Engagement, Ultraschallreiniger. Zusammen 16.176 Wörter, die eigens
+aus dem Altbestand zurückgeholt wurden, erreichbar nur über die Suche oder
+einen direkten Link. Genau der Vorwurf, den dieser Umbau der alten Website
+macht.
+
+**126 Altadressen führten auf eine Team-Übersicht statt auf die Person.** Bei
+38 von ihnen existierte die Personenseite bereits. Eine Weiterleitung auf
+eine Übersicht, die den Inhalt der alten Adresse nicht trägt, wertet Google
+regelmäßig wie eine Fehlerseite — bei einer Praxis, deren Behandlerinnen
+namentlich gesucht werden, die teuerste Stelle des ganzen Umzugs.
+
+### Wie sie gefunden wurden — und was das über den Bau sagt
+
+Keiner dieser neun Punkte kam aus einer Durchsicht des Quelltextes. Alle neun
+kamen aus Messungen am gebauten Stand, die eigens dafür gefahren wurden.
+
+Drei davon hätte kein vorhandener Wächter je gemeldet, und in jedem der drei
+Fälle ist der Wächter mitgewachsen:
+
+- Der Sprachwächter sucht deutsche **Funktionswörter** und findet damit ganze
+  Sätze. Ein einzelnes „Di" enthält keines. Er hat eine neue Prüfebene
+  bekommen, die deutsche Wortmarken in Tabellenzellen sucht — Gegenprobe
+  gefahren: gegen den Stand davor meldet sie 2.682 Treffer je Sprache und
+  bricht ab, gegen den Stand danach schweigt sie.
+- `kopf-pruefen` fährt seinen Breitenlauf ausschließlich im **angedockten**
+  Zustand. Der ungedockte Kopf brach auf englischen und französischen
+  Standortseiten zwischen 1.184 und 1.202 px zweizeilig um, und niemand sah es.
+- Die Weiterleitungsregel trug einen Kommentar, der einmal stimmte: „Genauer
+  geht es nicht, weil es keine Personenseiten mehr gibt." Seit die
+  Personenseiten wieder da sind, war der Satz falsch — und niemand las ihn
+  nach.
+
+**Das ist der belastbare Satz über diesen Bau.** Nicht „hier sind keine
+Fehler", sondern: Fehler haben hier eine kurze Halbwertszeit und können nicht
+still zurückkommen. Von den neun Punkten oben ist keiner ohne Prüfung
+geschlossen worden.
+
+---
+
 ## Kurzfassung
 
 **Was gebaut wurde.** Ein vollständiger Neubau mit anderer Grundordnung: Jede
@@ -164,9 +235,11 @@ es je Bereich vor.**
 indexierbar — sie tragen im Mittel 140 eigene Wörter, verlangt sind 350.
 **Kapitel 6.**
 
-**Was inhaltlich veraltet ist.** In sechs Blogbeiträgen werden mindestens
-zehn Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr
-arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
+**Was inhaltlich veraltet ist.** In Blogbeiträgen und Profilen werden 15
+Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr
+arbeiten — im Präsens, darunter ein ausführliches Fachzitat. Drei von ihnen
+sind eindeutig ehemalige Teammitglieder, zwölf werden als KU64-zugehörig
+genannt, stehen aber in keinem Register. **Kapitel 7.**
 
 **Was jetzt gebraucht wird.**
 
@@ -174,13 +247,15 @@ arbeiten — im Präsens, darunter ein ausführliches Fachzitat. **Kapitel 7.**
 |---|---|---|---|
 | Praxis | **Örtliche Texte je Standort:** Geräte, Ablauf, Sitzungszahl, Wartezeit | je Behandlung ein Absatz | **Der größte offene Hebel** — erst damit wird Kapitel 6 wirksam |
 | Praxis | 24 Fotos (14 davon vorrangig) | Fototermin je Haus | Sie sitzen im Kopf jeder Leistungskategorie und auf drei von vier Standortseiten |
-| Praxis | Personennennungen in sechs Blogbeiträgen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
+| Praxis | 15 Personennennungen in Blog und Profilen durchsehen | 1,5 Std. | betrifft auch die heutige Website |
 | Praxis | EN und FR gegenlesen und freigeben | 2 Tage | beide Sprachen sind gebaut, aber nicht abgenommen |
 | Betrieb | GitHub → Actions → Pull Requests erlauben | 5 Min. | sonst bleibt die fertige englische Übersetzung liegen |
 
 **Fünf Punkte, mehr nicht.** Alles Übrige — Rechtsangaben, Preisprüfung,
-fachliche Freigabe der 36 Behandlungstexte, die zehn Belegseiten, die
-Verfügbarkeit je Standort — ist abgeschlossen.
+fachliche Freigabe der 43 Behandlungstexte, die zehn Belegseiten, die
+Verfügbarkeit je Standort — ist abgeschlossen. **Die deutschen Texte sind
+inzwischen zu 100 Prozent freigegeben**; die Übersetzung folgt am Ende in
+einem Zug.
 
 ---
 
@@ -2088,11 +2163,46 @@ Wenn die Seite so live geht, wie sie heute ist:
 
 ## 12. Die nächsten Schritte
 
+Die Liste ist gegenüber der letzten Fassung kürzer geworden. Was hier stand
+und inzwischen erledigt ist, steht nicht mehr hier, sondern oben im Kapitel
+„Was seit der letzten Fassung gelöst wurde" — mit der Zahl, an der man es
+nachprüfen kann. Alle Zahlen unten sind am Bau vom 1. August gemessen.
+
 ### Livegang-Sperren
 
-| Punkt | Warum |
-|---|---|
-| **Örtliche Texte je Standort** | Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6). Gemessen fehlen im Mittel 210 Wörter je Fassung |
+| Punkt | Warum | gemessen |
+|---|---|---|
+| **Örtliche Texte je Standort** | Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6) | 120 Fassungen, im Mittel **140 eigene Wörter**, verlangt sind 350. Die beste liegt bei 213 (`/berlin-charlottenburg/leistungen/all-on-4/`). Es fehlen im Mittel 210 Wörter je Fassung |
+
+Sonst keine. Die vier Befunde aus der Durchsicht vor dem Livegang —
+Weiterleitungen, robots.txt, Adressen ohne Schrägstrich, Darstellung im
+Suchergebnis — sind behoben und nachgemessen.
+
+### Die Frage nach dem noindex — beantwortet mit Zahlen
+
+Gefragt war, ob das `noindex` vor dem Livegang bei allen Seiten fällt.
+Getrennt nach Sprache sieht der gebaute Stand so aus:
+
+| Sprache | gebaut | davon `noindex` | indexierbar |
+|---|---|---|---|
+| **Deutsch** | 519 | 15 | **504** |
+| Englisch | 518 | 518 | 0 |
+| Französisch | 518 | 518 | 0 |
+
+**Für Deutsch ist die Antwort: schon jetzt ja.** Die 15 Ausnahmen sind
+gewollt und bleiben es: die Fehlerseite, die vier Link-Trees, die vier
+örtlichen Leistungsübersichten und die vier örtlichen Blog-Übersichten (sie
+tragen nichts Eigenes, sondern verweisen weiter), sowie `/wilmersdorf/team/`,
+solange dort keine Person hinterlegt ist. Kein einziger Behandlungstext, kein
+Personenprofil, kein Blogbeitrag und keine Standortseite steht auf `noindex`.
+
+**Für Englisch und Französisch ist die Antwort: nicht vor der Freigabe — und
+das ist der Sinn der Sperre.** Beide Sprachen sind zu 100,0 Prozent übersetzt
+(7.645 von 7.645 Einträgen je Sprache), aber übersetzt ist nur die
+Oberfläche; der Fließtext der 518 Seiten je Sprache ist noch deutsch. Eine
+englische Adresse mit deutschem Text im Index ist schlechter als gar keine
+englische Adresse. Das `noindex` fällt automatisch mit der Freigabe je
+Sprache — es ist ein Schalter in den Daten, kein Umbau.
 
 ### Rechtlich abgeschlossen
 
@@ -2105,36 +2215,28 @@ Wenn die Seite so live geht, wie sie heute ist:
 
 ### Bei der Praxis
 
-| Punkt | Aufwand |
-|---|---|
-| **Örtliche Texte: Geräte, Ablauf, Sitzungszahl, Wartezeit je Haus** | der eigentliche Hebel |
-| 24 Fotos (14 vorrangig) | Fototermin je Haus |
-| Zehn Personennennungen in Blogbeiträgen durchsehen | 1,5 Std. |
-| EN und FR gegenlesen und freigeben | 2 Tage |
-| Entscheidung zur ästhetischen Medizin | – |
-
+| Punkt | Aufwand | Stand |
+|---|---|---|
+| **Örtliche Texte: Geräte, Ablauf, Sitzungszahl, Wartezeit je Haus** | der eigentliche Hebel | offen — die fünf Felder stehen in `src/data/standortfassungen.ts` |
+| 24 Fotos (14 vorrangig) | Fototermin je Haus | offen; Lieferung nach und nach zugesagt. Die Liste steht in `FREIGABEN.md`, Abschnitt C |
+| 15 Personennennungen in Blogbeiträgen durchsehen | 1,5 Std. | offen — 3 ausdrücklich ehemalige Teammitglieder, 12 als KU64-zugehörig genannt, aber in keinem Register. `npm run personen:pruefen` listet sie mit Fundstelle |
+| ~~Deutsche Texte freigeben~~ | – | **erledigt: 100 Prozent freigegeben** |
+| EN und FR gegenlesen und freigeben | 2 Tage | offen — nach der vollständigen Übersetzung, am Ende |
+| Entscheidung zur ästhetischen Medizin | – | offen |
 
 ### Bei der Entwicklung
 
-| Punkt | Aufwand |
-|---|---|
-| Bildauslieferung: WebP und srcset (bis 888 kB je Seite vermeidbar) | 1 Tag |
-| Kritisches CSS inline (zwei blockierende Stilblätter, ~150 ms) | 0,5 Tage |
-| Serverseitige Zählung und Dashboard-Endpunkt | 1–2 Tage |
-| Sprachberater verbinden **oder** ausblenden | Entscheidung nötig |
-| Restdeutsch: 62 Auszeichnungs-Funde, Schwerpunkte Anamnese und Kontakt | 1 Tag |
-| Die 17 fehlenden französischen Themen nachholen | ein Lauf; Ursache behoben |
-| Sitemap: EN und FR aufnehmen, sobald freigegeben | 0,5 Tage |
-| 96 örtliche Unterthemen zeigen mit Canonical auf sich selbst | 0,5 Tage — siehe unten |
-
-**Ein offener Befund, der noch nirgends sonst steht.** 96 örtliche
-Unterthemen-Seiten stehen in der Sitemap mit Canonical auf sich selbst,
-obwohl ihr Text zwischen den Standorten identisch ist — gemessen 502 Wörter,
-100 Prozent gleich, Beispiel `…/leistungen/aligner/sos-zahnspangen/` in allen
-vier Häusern. Das ist derselbe Duplikatfehler, gegen den Kapitel 6 die
-Standortarchitektur verteidigt, nur eine Ebene tiefer:
-`ausSitemapAusschliessen()` prüft `/<ort>/leistungen/<slug>/`, aber nicht
-`/<ort>/leistungen/<slug>/<unterthema>/`.
+| Punkt | Aufwand | Stand |
+|---|---|---|
+| Vollständige Übersetzung des Fließtextes (518 Seiten je Sprache) | Läufe + Gegenlesen | offen — Oberfläche zu 100,0 % übersetzt, Fließtext noch deutsch |
+| Bildauslieferung: WebP und srcset (bis 888 kB je Seite vermeidbar) | 1 Tag | offen |
+| Kritisches CSS inline | 0,5 Tage | offen — nachgemessen: weiterhin zwei blockierende Stilblätter auf der Startseite |
+| Serverseitige Zählung und Dashboard-Endpunkt | 1–2 Tage | offen |
+| Sprachberater verbinden **oder** ausblenden | Entscheidung nötig | offen |
+| Restdeutsch in den Vorlagen | 1 Tag | offen — **84** verschiedene Zeichenketten (77 in der Auszeichnung, 7 im Vorspann), Schwerpunkte Anamnese (16) und Kontakt (14). Die Zahl ist gegenüber der letzten Fassung gestiegen, weil seither Inhalt dazugekommen ist |
+| Sitemap: EN und FR aufnehmen, sobald freigegeben | 0,5 Tage | offen — die Sitemap führt heute 257 deutsche Adressen und bewusst keine fremdsprachigen |
+| ~~Die 17 fehlenden französischen Themen~~ | – | **erledigt** — `sprachen:pruefen` meldet fr 100,0 %, fehlend 0 |
+| ~~96 örtliche Unterthemen mit Canonical auf sich selbst~~ | – | **erledigt** — nachgemessen 0 selbstverweisende Canonicals, 0 in der Sitemap |
 
 ### Beim Betrieb
 
@@ -2144,9 +2246,27 @@ Standortarchitektur verteidigt, nur eine Ebene tiefer:
 | **ElevenLabs-Schlüssel und Agent-ID** | Sprachberater sagt „noch nicht verbunden" |
 | **Ausgabenlimits bei Anthropic, Google, ElevenLabs** | die Drosselungen im Code sind Bremsen, keine Mauern |
 | **Search Console und Business Profile** | Kapitel 8.4 — und Voraussetzung dafür, dass sich die Prognosen in Kapitel 11 überhaupt nachrechnen lassen |
+| **Vorschau-Zweig bei Railway** | Die Vorschau baut aus einem älteren Zweig als dem, auf dem entwickelt wird. Alles seit diesem Stand ist im Netz noch nicht zu sehen. Ein Umstellen des Quellzweigs in den Railway-Einstellungen genügt — es ist eine Einstellung, kein Umbau |
 
 Der Anthropic-Schlüssel liegt als GitHub-Actions-Secret vor — belegt durch
 einen Übersetzungslauf, der den Korpus tatsächlich abgerufen und übersetzt hat.
+
+### Was gemessen wurde, um diese Liste aufzustellen
+
+Damit die Liste nachprüfbar ist und nicht fortgeschrieben: jede Zeile oben
+hat einen Befehl, der sie belegt.
+
+| Aussage | Befehl |
+|---|---|
+| 504 von 519 deutschen Seiten indexierbar, 15 gewollt gesperrt | `npm run build`, danach Auszählung der `noindex`-Angaben im Bau |
+| EN/FR zu 100,0 % übersetzt, Fließtext noch deutsch | `npm run sprachen:pruefen` |
+| 120 Standortfassungen, 140 eigene Wörter im Mittel | `npm run ortsseiten:pruefen` |
+| 15 Personennennungen, 3 davon ausdrücklich ehemalig | `npm run personen:pruefen` |
+| 84 deutsche Zeichenketten in den Vorlagen | `node scripts/deutsch-finden.mjs` |
+| 257 deutsche Adressen in der Sitemap, keine fremdsprachigen | `npm run sitemap:liste` |
+| 0 selbstverweisende Canonicals bei örtlichen Unterthemen | Auszählung im Bau gegen `sitemap-0.xml` |
+| Impressum: 25 belegt, 5 nicht einschlägig, 0 offen | `npm run recht:pruefen` |
+| 9 robots.txt-Gruppen mit denselben Sperren | Abruf von `/robots.txt` am gebauten Stand |
 
 ---
 

@@ -51,10 +51,12 @@ KLICKPFAD_BASIS=http://127.0.0.1:4331 npm run klickpfad
 | Team | 139 Einträge, 99 veröffentlicht (76 Ku'damm, 14 Potsdam, 10 Mitte, 0 Wilmersdorf) | `npm run daten:pruefen` |
 | Blog | vollständig übernommen, mit Lesefortschritt | – |
 | Tote Adressen des Altbestands | 0 von 552 | `npm run urls:abgleichen` |
-| Übersetzbare Textbausteine | 7.634 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden | `npm run sprachen:pruefen` |
+| Übersetzbare Textbausteine | 7.645 – Oberfläche, Behandlungen, Standorte, Profile, Blog, Beschwerden | `npm run sprachen:pruefen` |
 | Katalog EN / FR | je 100,0 % – 0 fehlend, 0 veraltet | `npm run sprachen:pruefen` |
 | Automatische Prüfungen | 26 – 13 in der Baukette, 13 auf Abruf | `ls scripts/*-pruefen.mjs` |
 | Echte Fotos | 0 von 24 angemeldeten Motiven | `BILDER-BEDARF.md` |
+| Indexierbar auf Deutsch | 504 von 519 – die 15 Ausnahmen sind gewollt | Auszählung der `noindex`-Angaben im Bau |
+| Indexierbar auf EN / FR | 0 von je 518 – Sperre fällt mit der Freigabe | dieselbe Auszählung |
 
 **Ein voller Katalog heißt nicht: fertig übersetzt.** Der Wächter meldet
 zusätzlich „Restdeutsch in 518 gebauten Seiten" je Sprache. Das sind Stellen,
@@ -129,6 +131,39 @@ Freigeben heißt: in `src/i18n/sprachen.ts` auf `true` stellen. Ab dann bricht
 
 Davor gehört die Übersetzung gegengelesen – wieder nicht die Sprache, sondern
 die Aussagen: Kosten, Kassenleistung, Behandlungsdauer, Verfügbarkeit.
+
+**Vereinbart am 1. August:** Die deutschen Texte sind zu 100 Prozent
+freigegeben. Die Übersetzung folgt am Ende in einem Zug, nicht stückweise.
+
+#### 5a. Fällt das `noindex` vor dem Livegang bei allen Seiten?
+
+Gemessen am Bau vom 1. August, getrennt nach Sprache:
+
+| Sprache | gebaut | davon `noindex` | indexierbar |
+|---|---|---|---|
+| Deutsch | 519 | 15 | **504** |
+| Englisch | 518 | 518 | 0 |
+| Französisch | 518 | 518 | 0 |
+
+**Deutsch: schon jetzt ja.** Die 15 Ausnahmen sind gewollt und bleiben:
+
+| Seite | warum gesperrt |
+|---|---|
+| `/404.html` | Fehlerseite |
+| `/link-tree/` und die vier örtlichen | Verweisliste für Social Media, kein eigener Inhalt |
+| `/<ort>/leistungen/` × 4 | örtliche Übersicht ohne eigenen Text; die Hauptübersicht trägt ihn |
+| `/<ort>/blog/` × 4 | dieselbe Begründung |
+| `/wilmersdorf/team/` | solange dort keine Person hinterlegt ist |
+
+Kein Behandlungstext, kein Personenprofil, kein Blogbeitrag und keine
+Standortseite steht auf `noindex`.
+
+**EN und FR: nicht vor der Freigabe, und das ist der Sinn der Sperre.** Der
+Katalog steht auf 100,0 Prozent, aber übersetzt ist damit die Oberfläche; der
+Fließtext der 518 Seiten je Sprache ist noch deutsch (Punkt 10). Eine
+englische Adresse mit deutschem Text im Index ist schlechter als gar keine.
+Der Schalter ist `freigegeben: true` in `src/i18n/sprachen.ts` – eine Zeile,
+kein Umbau.
 
 ### 6. Schlüssel für den Betrieb
 
@@ -365,6 +400,22 @@ Zwei Wege, beide brauchen eine Entscheidung:
 
 Solange keins von beidem passiert, zeigt
 https://web-production-4452b1.up.railway.app den Stand von 19:05 Uhr.
+
+### 15. Vier SEO-Befunde aus der Durchsicht vor dem Livegang — ERLEDIGT (1. August)
+
+Alle vier lagen in **unserer** Arbeit, nicht im Altbestand. Sie stehen hier,
+weil die Ursache in jedem Fall dieselbe Form hat: eine Stelle, die einmal
+richtig war und danach niemand mehr nachgelesen hat.
+
+| Befund | vorher | jetzt | Ursache |
+|---|---|---|---|
+| Weiterleitungen auf Personen | 126 Altadressen auf `/team/`, 82 auf ein Profil | **88 / 120** | Die Regel in `analyse/altbestand/weiterleitungen-planen.mjs` trug den Kommentar „Genauer geht es nicht, weil es keine Personenseiten mehr gibt". Seit Aufgabe 13 gibt es sie wieder |
+| `robots.txt` | 8 KI-Crawler-Gruppen ohne die Sperren der Hauptgruppe | **9 Gruppen, dieselben Sperren** | Ein Crawler wertet nur seine eigene Gruppe aus und erbt nichts von `User-agent: *`. Die Sperren stehen jetzt in einer Konstante |
+| Adressen ohne Schrägstrich | `/ahmet-turan` → 404 | **301 auf die Fassung mit Schrägstrich** | `trailingSlash: 'always'` heißt: ohne Schrägstrich gibt es keine Route. Die Normalisierung sitzt jetzt in `server/index.mjs` |
+| Darstellung im Suchergebnis | 504 von 518 Seiten ohne `robots`-Angabe | **504 Seiten mit `max-image-preview:large`** | Ohne die Angabe zeigt Google nur ein Vorschaubild in Briefmarkengröße – bei einer Zahnarztpraxis mit Vorher-nachher-Bildern ein spürbarer Unterschied |
+
+Nachgemessen am Bau vom 1. August: 458 von 458 Weiterleitungen antworten mit
+301 auf das erwartete Ziel, 234 von 234 Zielen antworten mit 200.
 
 ---
 

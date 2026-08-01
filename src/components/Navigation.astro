@@ -2240,6 +2240,55 @@ const offenJetzt = standort ? istGeoeffnet(standort, new Date()) : false;
     border-end-end-radius: 0;
   }
 
+  /*
+   * ── Auf dem Schreibtisch hängt die Liste unter dem Wort ───────────────
+   *
+   * Rechtsbündig ist auf dem Telefon richtig und auf dem Schreibtisch
+   * falsch. Dort steht „Standort wählen" links in der Leiste, die Liste
+   * klappte aber in der rechten unteren Ecke auf – gut einen halben
+   * Bildschirm daneben, unter dem Sprachumschalter, mit dem sie nichts zu
+   * tun hat. Wer klickt, sucht die Antwort dort, wo er geklickt hat.
+   *
+   * Die Umstellung braucht drei Dinge, und alle drei nur hier:
+   *
+   *   1. Der Bezugskasten wird der Wähler selbst. Sonst ist es `.kopf-glas`,
+   *      und daran lässt sich nur die Ecke ausrichten, nicht das Wort.
+   *   2. Der Wähler wird auf die volle Zeilenhöhe gezogen (`align-self:
+   *      stretch`), das Wort darin wieder mittig gesetzt. Erst damit trifft
+   *      `top: 100%` der Liste die Unterkante der ZEILE statt die des
+   *      Wortes; die restliche Strecke bis zur Kante der Pille ist genau die
+   *      untere Polsterung der Zeile, und die steht als `--raum-2` fest.
+   *      Ein gemessener Wert wäre hier zwar möglich, aber unnötig: Er stünde
+   *      in JavaScript und müsste bei jeder Änderung der Polsterung
+   *      nachgezogen werden.
+   *   3. Die Naht wandert mit. Die Liste setzt jetzt nicht mehr die rechte
+   *      untere Ecke der Pille fort, sondern hängt in der Mitte an deren
+   *      Unterkante – die Ecke bleibt also rund. Ohne diesen Teil bliebe
+   *      rechts eine eckige Ecke stehen, unter der nichts mehr steht.
+   *
+   * Auf dem Telefon bleibt alles wie es war: Dort ist die Pille kaum breiter
+   * als die Liste, und rechtsbündig ist die einzige Ausrichtung, die alle
+   * vier Standorte im Bild lässt (siehe die Messung bei `.waehler`).
+   */
+  @media (min-width: 74.0625rem) {
+    .standortleiste .waehler {
+      position: relative;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+
+    .standortleiste :global(.waehler-liste) {
+      inset-inline-end: auto;
+      inset-inline-start: -1px;
+      margin-block-start: calc(var(--raum-2) - 1px);
+    }
+
+    .standortleiste:has(.waehler[open]) .standortleiste-inner,
+    .kopf-glas:has(.waehler[open]) {
+      border-end-end-radius: var(--radius-xl);
+    }
+  }
 
   .wo-bin-ich {
     color: var(--tinte-leise);

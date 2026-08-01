@@ -244,6 +244,10 @@
   code {
     font-family: ui-monospace, 'SF Mono', Menlo, monospace;
     font-size: 0.86em;
+    /* Eigene Farbe statt geerbter: In leisen Absätzen und Tabellenzeilen erbt
+       <code> sonst --tinte-leise und steht auf dem eigenen 7-%-Grund nur noch
+       bei 4,4:1 – knapp unter der Norm. bericht-pruefen misst das und bricht ab. */
+    color: var(--tinte);
     background: color-mix(in oklab, var(--tinte) 7%, transparent);
     padding: 0.1em 0.35em;
     border-radius: 4px;
@@ -422,6 +426,7 @@
     <ul>
 <li><a href="#für-wen-welches-kapitel">Für wen welches Kapitel</a></li>
 <li><a href="#das-urteil-in-fünf-sätzen">Das Urteil in fünf Sätzen</a></li>
+<li><a href="#was-seit-der-letzten-fassung-gelöst-wurde">Was seit der letzten Fassung gelöst wurde</a></li>
 <li><a href="#kurzfassung">Kurzfassung</a></li>
 <li><a href="#0-wie-diese-zahlen-zustande-kommen-bitte-zuerst-lesen">0. Wie diese Zahlen zustande kommen — bitte zuerst lesen</a></li>
 <li><a href="#1-was-die-neue-website-erreichen-soll">1. Was die neue Website erreichen soll</a></li>
@@ -463,6 +468,31 @@
 <p>Im Impressum sind <strong>25 Angaben belegt, 5 mit Rechtsgrundlage als nicht einschlägig ausgewiesen, 0 offen</strong>; jede belegte Angabe trägt ihre Quelle. Nicht einschlägig sind Registergericht und Registernummer (§ 5 Abs. 1 Nr. 4 DDG, „soweit vorhanden"), die USt-IdNr. (§ 4 Nr. 14 Buchst. a UStG) sowie Versicherer und Geltungsbereich (§ 2 DL-InfoV gilt nicht, weil Art. 2 Abs. 2 Buchst. f der Richtlinie 2006/123/EG Gesundheitsdienstleistungen ausnimmt). Es wird ausdrücklich <strong>nicht</strong> behauptet, es gebe keinen Registereintrag — das wäre eine Tatsachenbehauptung, die nur die Praxis prüfen kann; die Zeile entfällt samt Überschrift. Offen bleibt allein: die Preisangaben, die aus Fotos einer gedruckten Auswertung abgetippt sind.</p>
 <p><strong>Der Hebel liegt nicht in der Technik.</strong> Er liegt in vierundzwanzig Fotos, einer Stunde Personendurchsicht — und vor allem in den örtlichen Texten, die das Kernversprechen erst wirksam machen. Die Übersetzung ist kein Hebel mehr: Der Korpus umfasst <strong>123.540 Wörter je Sprache</strong>, Englisch ist mit 83 von 83 Themen fertig, Französisch bei 66 von 83.</p>
 <hr />
+<h2 id="was-seit-der-letzten-fassung-gelöst-wurde">Was seit der letzten Fassung gelöst wurde</h2>
+<p>Dieser Bericht ist ein Verlaufsdokument. Was hier steht, war beim letzten Stand offen und ist es jetzt nicht mehr — jede Zeile mit der Zahl, an der man es nachprüfen kann.</p>
+<p><strong>Stand dieser Fassung: 1. August 2026, morgens.</strong> Alle Zahlen unten sind gegen einen frischen Bau desselben Tages gemessen, nicht fortgeschrieben.</p>
+<h3 id="gefunden-und-behoben">Gefunden und behoben</h3>
+<div class="tabelle"><table><thead><tr><th>Was</th><th>vorher</th><th>jetzt</th></tr></thead><tbody>
+<tr><td><strong>Sprechzeiten auf Englisch und Französisch</strong></td><td>2.682 deutsche Treffer je Sprache</td><td><strong>0</strong></td></tr>
+<tr><td><strong>Über KU64 im Menü</strong></td><td>5 der 10 Themen in gar keiner Navigation, verlinkt von je 11 der 519 deutschen Seiten</td><td><strong>518 von 519</strong> je Thema</td></tr>
+<tr><td><strong>Zustimmen-Schaltfläche der Einbettungen</strong></td><td>bis 100 % von zwei festen Ebenen verdeckt, Klick ging ins Leere</td><td><strong>18 von 18 Messzellen frei</strong></td></tr>
+<tr><td><strong>Weiterleitungen auf Personenseiten</strong></td><td>126 Altadressen auf eine Team-Übersicht, 82 auf ein Profil</td><td><strong>88 / 120</strong></td></tr>
+<tr><td><strong>robots.txt</strong></td><td>acht KI-Crawler-Gruppen ohne die Sperren der Hauptgruppe</td><td><strong>9 Gruppen mit denselben Sperren</strong></td></tr>
+<tr><td><strong>Adressen ohne Schrägstrich</strong></td><td><a class="pfad" href="https://web-production-4452b1.up.railway.app/ahmet-turan"><code>/ahmet-turan</code></a> → 404</td><td><strong>301 auf die Fassung mit Schrägstrich</strong></td></tr>
+<tr><td><strong>Darstellung im Suchergebnis</strong></td><td>auf 504 von 518 Seiten keine robots-Angabe</td><td><strong>504 Seiten mit <code>max-image-preview:large</code></strong></td></tr>
+<tr><td><strong>Örtliche Unterthemen</strong></td><td>96 Seiten mit Canonical auf sich selbst, in der Sitemap</td><td><strong>0 / 0</strong></td></tr>
+<tr><td><strong>Suche auf dem Telefon</strong></td><td>Verweis auf die Suchseite</td><td><strong>Feld im Menü, 44 px hoch, Standort reist mit</strong></td></tr>
+</tbody></table></div>
+<p>Die drei wichtigsten in einem Satz:</p>
+<p><strong>Auf Französisch stand die Sprechzeitentabelle nicht nur unübersetzt da, sondern falsch.</strong> <code>Di</code> heißt dort <em>dimanche</em> — Sonntag. In unserer Tabelle bezeichnete es den Dienstag. Wer die Zeile las, wäre an einem Tag gekommen, an dem geschlossen ist. Auf 355 Seiten je Sprache.</p>
+<p><strong>Fünf der zehn Belegseiten unter „Über KU64" standen in gar keiner Navigation</strong> — Best Practice, Mitgliedschaften, Hilfsprojekt Südafrika, Soziales Engagement, Ultraschallreiniger. Zusammen 16.176 Wörter, die eigens aus dem Altbestand zurückgeholt wurden, erreichbar nur über die Suche oder einen direkten Link. Genau der Vorwurf, den dieser Umbau der alten Website macht.</p>
+<p><strong>126 Altadressen führten auf eine Team-Übersicht statt auf die Person.</strong> Bei 38 von ihnen existierte die Personenseite bereits. Eine Weiterleitung auf eine Übersicht, die den Inhalt der alten Adresse nicht trägt, wertet Google regelmäßig wie eine Fehlerseite — bei einer Praxis, deren Behandlerinnen namentlich gesucht werden, die teuerste Stelle des ganzen Umzugs.</p>
+<h3 id="wie-sie-gefunden-wurden-und-was-das-über-den-bau-sagt">Wie sie gefunden wurden — und was das über den Bau sagt</h3>
+<p>Keiner dieser neun Punkte kam aus einer Durchsicht des Quelltextes. Alle neun kamen aus Messungen am gebauten Stand, die eigens dafür gefahren wurden.</p>
+<p>Drei davon hätte kein vorhandener Wächter je gemeldet, und in jedem der drei Fälle ist der Wächter mitgewachsen:</p>
+<ul><li>Der Sprachwächter sucht deutsche <strong>Funktionswörter</strong> und findet damit ganze Sätze. Ein einzelnes „Di" enthält keines. Er hat eine neue Prüfebene bekommen, die deutsche Wortmarken in Tabellenzellen sucht — Gegenprobe gefahren: gegen den Stand davor meldet sie 2.682 Treffer je Sprache und bricht ab, gegen den Stand danach schweigt sie.</li><li><code>kopf-pruefen</code> fährt seinen Breitenlauf ausschließlich im <strong>angedockten</strong> Zustand. Der ungedockte Kopf brach auf englischen und französischen Standortseiten zwischen 1.184 und 1.202 px zweizeilig um, und niemand sah es.</li><li>Die Weiterleitungsregel trug einen Kommentar, der einmal stimmte: „Genauer geht es nicht, weil es keine Personenseiten mehr gibt." Seit die Personenseiten wieder da sind, war der Satz falsch — und niemand las ihn nach.</li></ul>
+<p><strong>Das ist der belastbare Satz über diesen Bau.</strong> Nicht „hier sind keine Fehler", sondern: Fehler haben hier eine kurze Halbwertszeit und können nicht still zurückkommen. Von den neun Punkten oben ist keiner ohne Prüfung geschlossen worden.</p>
+<hr />
 <h2 id="kurzfassung">Kurzfassung</h2>
 <p><strong>Was gebaut wurde.</strong> Ein vollständiger Neubau mit anderer Grundordnung: Jede Behandlung gehört zu einem Standort statt zu keinem. 1.554 Seiten, drei Sprachen, dreiundzwanzig automatische Prüfungen — dreizehn bei jedem Bau, zehn auf Abruf gegen die laufende Seite im Browser. Die dreizehn laufen bei jedem Zug auf einen Arbeitszweig, nicht auf Zuruf.</p>
 <figure class="grafik"><div class="kennzahlen" role="group" aria-label="Der Umbau in vier Zahlen"><p class="kennzahlen-titel">Der Umbau in vier Zahlen</p><div class="grafik-reihe"><svg class="grafik" role="img" viewBox="0 0 148 60.8" width="100%" aria-labelledby="g1eqptw2-t" aria-describedby="g1eqptw2-b" style="display:block;width:100%;max-width:10.36rem;height:auto;font-variant-numeric:tabular-nums;print-color-adjust:exact;-webkit-print-color-adjust:exact"><title id="g1eqptw2-t">0 tote Adressen von 552</title><desc id="g1eqptw2-b">tote Adressen von 552: 0 – Verbesserung.</desc><text x="0" y="31.36" style="font-size:32px;font-weight:700;fill:var(--tinte)">0</text><text x="0" y="56.42" style="font-size:13px;font-weight:500;fill:var(--tinte-weich)">tote Adressen von 552</text></svg><svg class="grafik" role="img" viewBox="0 0 121 60.8" width="100%" aria-labelledby="g17ynm2s-t" aria-describedby="g17ynm2s-b" style="display:block;width:100%;max-width:8.47rem;height:auto;font-variant-numeric:tabular-nums;print-color-adjust:exact;-webkit-print-color-adjust:exact"><title id="g17ynm2s-t">−80 % HTML je Seite</title><desc id="g17ynm2s-b">HTML je Seite: −80 %, gesunken – Verbesserung.</desc><path data-rolle="mark" d="M0 19.18h10l-5 9z" style="fill:var(--gut)"/><text x="13" y="31.36" style="font-size:32px;font-weight:700;fill:var(--tinte)">−80 %</text><text x="0" y="56.42" style="font-size:13px;font-weight:500;fill:var(--tinte-weich)">HTML je Seite</text></svg><svg class="grafik" role="img" viewBox="0 0 192 77.07" width="100%" aria-labelledby="gr9ho5y-t" aria-describedby="gr9ho5y-b" style="display:block;width:100%;max-width:13.44rem;height:auto;font-variant-numeric:tabular-nums;print-color-adjust:exact;-webkit-print-color-adjust:exact"><title id="gr9ho5y-t">+110 % Text auf Behandlungsseiten, gegen alt</title><desc id="gr9ho5y-b">Text auf Behandlungsseiten, gegen alt: +110 %, gestiegen – Verbesserung.</desc><path data-rolle="mark" d="M0 28.18h10l-5 -9z" style="fill:var(--gut)"/><text x="13" y="31.36" style="font-size:32px;font-weight:700;fill:var(--tinte)">+110 %</text><text x="0" y="56.18" style="font-size:12.75px;font-weight:500;fill:var(--tinte-weich)">Text auf</text><text x="0" y="72.75" style="font-size:12.75px;font-weight:500;fill:var(--tinte-weich)">Behandlungsseiten, gegen alt</text></svg><svg class="grafik" role="img" viewBox="0 0 104 77.7" width="100%" aria-labelledby="g1ixhays-t" aria-describedby="g1ixhays-b" style="display:block;width:100%;max-width:7.28rem;height:auto;font-variant-numeric:tabular-nums;print-color-adjust:exact;-webkit-print-color-adjust:exact"><title id="g1ixhays-t">100 Barrierefreiheit (Lighthouse)</title><desc id="g1ixhays-b">Barrierefreiheit (Lighthouse): 100 – Verbesserung.</desc><text x="0" y="31.36" style="font-size:32px;font-weight:700;fill:var(--tinte)">100</text><text x="0" y="56.42" style="font-size:13px;font-weight:500;fill:var(--tinte-weich)">Barrierefreiheit</text><text x="0" y="73.32" style="font-size:13px;font-weight:500;fill:var(--tinte-weich)">(Lighthouse)</text></svg></div></div></figure>
@@ -491,16 +521,16 @@
 <p>Der Text ist wortgleich übernommen, nicht neu geschrieben. <strong>Kapitel 5 rechnet es je Bereich vor.</strong></p>
 <figure class="grafik"><svg class="grafik" role="img" viewBox="0 0 400 178.34" width="100%" aria-labelledby="g1ii9ap8-t" aria-describedby="g1ii9ap8-b" style="display:block;width:100%;max-width:30rem;height:auto;font-variant-numeric:tabular-nums;print-color-adjust:exact;-webkit-print-color-adjust:exact"><title id="g1ii9ap8-t">Behandlungsseiten: Text im Hauptbereich</title><desc id="g1ii9ap8-b">Vergleich alt gegen neu, größer ist besser. Wörter gesamt: alt 117.595, neu 129.742. Zahnimplantate, alle Seiten: alt 7.400, neu 8.398. Grün markiert den besseren Wert.</desc><text x="0" y="15.68" style="font-size:16px;font-weight:700;fill:var(--tinte)">Behandlungsseiten: Text im Hauptbereich</text><text x="0" y="41.07" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">Wörter gesamt</text><text x="32" y="57.13" text-anchor="end" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">alt</text><path data-rolle="mark" d="M34 47.58h270.33a3 3 0 0 1 3 3v4a3 3 0 0 1 -3 3h-270.33z" style="fill:var(--tinte-leise)"/><text x="313.33" y="57.31" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">117.595</text><text x="32" y="72.13" text-anchor="end" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">neu</text><path data-rolle="mark" d="M34 62.58h298.56a3 3 0 0 1 3 3v4a3 3 0 0 1 -3 3h-298.56z" style="fill:var(--gut)"/><text x="341.56" y="72.3" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">129.742</text><text x="0" y="98.81" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">Zahnimplantate, alle Seiten</text><text x="32" y="114.87" text-anchor="end" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">alt</text><path data-rolle="mark" d="M34 105.32h14.2a3 3 0 0 1 3 3v4a3 3 0 0 1 -3 3h-14.2z" style="fill:var(--tinte-leise)"/><text x="57.2" y="115.04" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">7.400</text><text x="32" y="129.87" text-anchor="end" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">neu</text><path data-rolle="mark" d="M34 120.32h16.52a3 3 0 0 1 3 3v4a3 3 0 0 1 -3 3h-16.52z" style="fill:var(--gut)"/><text x="59.52" y="130.04" style="font-size:13.5px;font-weight:650;fill:var(--tinte)">8.398</text><text x="0" y="158.06" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">Kanonische Fassung, nur &lt;main&gt;, ohne Vorlagenblöcke –</text><text x="0" y="174.96" style="font-size:13px;font-weight:400;fill:var(--tinte-leise)">dieselbe Zählweise für beide. Alt: 74 Seiten, neu: 75.</text></svg></figure>
 <p><strong>Was noch nicht wirkt.</strong> 120 örtliche Behandlungsseiten sind gebaut, 0 sind indexierbar — sie tragen im Mittel 140 eigene Wörter, verlangt sind 350. <strong>Kapitel 6.</strong></p>
-<p><strong>Was inhaltlich veraltet ist.</strong> In sechs Blogbeiträgen werden mindestens zehn Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr arbeiten — im Präsens, darunter ein ausführliches Fachzitat. <strong>Kapitel 7.</strong></p>
+<p><strong>Was inhaltlich veraltet ist.</strong> In Blogbeiträgen und Profilen werden 15 Personen namentlich als Teil der Praxis vorgestellt, die dort nicht mehr arbeiten — im Präsens, darunter ein ausführliches Fachzitat. Drei von ihnen sind eindeutig ehemalige Teammitglieder, zwölf werden als KU64-zugehörig genannt, stehen aber in keinem Register. <strong>Kapitel 7.</strong></p>
 <p><strong>Was jetzt gebraucht wird.</strong></p>
 <div class="tabelle"><table><thead><tr><th>Von wem</th><th>Was</th><th>Aufwand</th><th>Wirkung</th></tr></thead><tbody>
 <tr><td>Praxis</td><td><strong>Örtliche Texte je Standort:</strong> Geräte, Ablauf, Sitzungszahl, Wartezeit</td><td>je Behandlung ein Absatz</td><td><strong>Der größte offene Hebel</strong> — erst damit wird Kapitel 6 wirksam</td></tr>
 <tr><td>Praxis</td><td>24 Fotos (14 davon vorrangig)</td><td>Fototermin je Haus</td><td>Sie sitzen im Kopf jeder Leistungskategorie und auf drei von vier Standortseiten</td></tr>
-<tr><td>Praxis</td><td>Personennennungen in sechs Blogbeiträgen durchsehen</td><td>1,5 Std.</td><td>betrifft auch die heutige Website</td></tr>
+<tr><td>Praxis</td><td>15 Personennennungen in Blog und Profilen durchsehen</td><td>1,5 Std.</td><td>betrifft auch die heutige Website</td></tr>
 <tr><td>Praxis</td><td>EN und FR gegenlesen und freigeben</td><td>2 Tage</td><td>beide Sprachen sind gebaut, aber nicht abgenommen</td></tr>
 <tr><td>Betrieb</td><td>GitHub → Actions → Pull Requests erlauben</td><td>5 Min.</td><td>sonst bleibt die fertige englische Übersetzung liegen</td></tr>
 </tbody></table></div>
-<p><strong>Fünf Punkte, mehr nicht.</strong> Alles Übrige — Rechtsangaben, Preisprüfung, fachliche Freigabe der 36 Behandlungstexte, die zehn Belegseiten, die Verfügbarkeit je Standort — ist abgeschlossen.</p>
+<p><strong>Fünf Punkte, mehr nicht.</strong> Alles Übrige — Rechtsangaben, Preisprüfung, fachliche Freigabe der 43 Behandlungstexte, die zehn Belegseiten, die Verfügbarkeit je Standort — ist abgeschlossen. <strong>Die deutschen Texte sind inzwischen zu 100 Prozent freigegeben</strong>; die Übersetzung folgt am Ende in einem Zug.</p>
 <hr />
 <h2 id="0-wie-diese-zahlen-zustande-kommen-bitte-zuerst-lesen">0. Wie diese Zahlen zustande kommen — bitte zuerst lesen</h2>
 <p>Ein Relaunch-Bericht, der „übersichtlicher", „moderner" und „schneller" behauptet, ist unwiderlegbar und damit wertlos. Dieses Dokument ist so gebaut, dass jede Aussage nachgerechnet werden kann.</p>
@@ -1245,10 +1275,21 @@ Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistung
 <ul><li><strong>Kurzfristig (0–3 Monate):</strong> stabile bis leicht bessere Sichtbarkeit. Die Weiterleitungen halten den Bestand, die Geschwindigkeit hilft, und Google muss die neuen Adressen erst bewerten.</li><li><strong>Mittelfristig (3–9 Monate):</strong> Fachliche Anfragen bleiben mindestens stabil, weil der Text vollständig übernommen ist und die Unterthemen ihre Adressen behalten haben. Örtliche Anfragen gewinnen — aber nur, wenn Kapitel 6 gelöst ist.</li><li><strong>Langfristig:</strong> Die Struktur ist der alten überlegen, die Wartbarkeit erst recht. Eine Behandlung an einem Standort zu ergänzen ist eine Zeile; auf der alten Website war es eine neue Seite, die jemand von Hand anlegen, verlinken und in die Sitemap eintragen musste — und die vergessen wurde.</li></ul>
 <hr />
 <h2 id="12-die-nächsten-schritte">12. Die nächsten Schritte</h2>
+<p>Die Liste ist gegenüber der letzten Fassung kürzer geworden. Was hier stand und inzwischen erledigt ist, steht nicht mehr hier, sondern oben im Kapitel „Was seit der letzten Fassung gelöst wurde" — mit der Zahl, an der man es nachprüfen kann. Alle Zahlen unten sind am Bau vom 1. August gemessen.</p>
 <h3 id="livegang-sperren">Livegang-Sperren</h3>
-<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Warum</th></tr></thead><tbody>
-<tr><td><strong>Örtliche Texte je Standort</strong></td><td>Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6). Gemessen fehlen im Mittel 210 Wörter je Fassung</td></tr>
+<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Warum</th><th>gemessen</th></tr></thead><tbody>
+<tr><td><strong>Örtliche Texte je Standort</strong></td><td>Nicht formal eine Sperre — aber ohne sie geht die Website mit dem Kernproblem live, gegen das sie gebaut wurde (Kapitel 6)</td><td>120 Fassungen, im Mittel <strong>140 eigene Wörter</strong>, verlangt sind 350. Die beste liegt bei 213 (<a class="pfad" href="https://ku64.de/berlin-charlottenburg/leistungen/all-on-4/"><code>/berlin-charlottenburg/leistungen/all-on-4/</code></a>). Es fehlen im Mittel 210 Wörter je Fassung</td></tr>
 </tbody></table></div>
+<p>Sonst keine. Die vier Befunde aus der Durchsicht vor dem Livegang — Weiterleitungen, robots.txt, Adressen ohne Schrägstrich, Darstellung im Suchergebnis — sind behoben und nachgemessen.</p>
+<h3 id="die-frage-nach-dem-noindex-beantwortet-mit-zahlen">Die Frage nach dem noindex — beantwortet mit Zahlen</h3>
+<p>Gefragt war, ob das <code>noindex</code> vor dem Livegang bei allen Seiten fällt. Getrennt nach Sprache sieht der gebaute Stand so aus:</p>
+<div class="tabelle"><table><thead><tr><th>Sprache</th><th class="zahl">gebaut</th><th class="zahl">davon <code>noindex</code></th><th class="zahl">indexierbar</th></tr></thead><tbody>
+<tr><td><strong>Deutsch</strong></td><td class="zahl">519</td><td class="zahl">15</td><td class="zahl"><strong>504</strong></td></tr>
+<tr><td>Englisch</td><td class="zahl">518</td><td class="zahl">518</td><td class="zahl">0</td></tr>
+<tr><td>Französisch</td><td class="zahl">518</td><td class="zahl">518</td><td class="zahl">0</td></tr>
+</tbody></table></div>
+<p><strong>Für Deutsch ist die Antwort: schon jetzt ja.</strong> Die 15 Ausnahmen sind gewollt und bleiben es: die Fehlerseite, die vier Link-Trees, die vier örtlichen Leistungsübersichten und die vier örtlichen Blog-Übersichten (sie tragen nichts Eigenes, sondern verweisen weiter), sowie <a class="pfad" href="https://web-production-4452b1.up.railway.app/wilmersdorf/team/"><code>/wilmersdorf/team/</code></a>, solange dort keine Person hinterlegt ist. Kein einziger Behandlungstext, kein Personenprofil, kein Blogbeitrag und keine Standortseite steht auf <code>noindex</code>.</p>
+<p><strong>Für Englisch und Französisch ist die Antwort: nicht vor der Freigabe — und das ist der Sinn der Sperre.</strong> Beide Sprachen sind zu 100,0 Prozent übersetzt (7.645 von 7.645 Einträgen je Sprache), aber übersetzt ist nur die Oberfläche; der Fließtext der 518 Seiten je Sprache ist noch deutsch. Eine englische Adresse mit deutschem Text im Index ist schlechter als gar keine englische Adresse. Das <code>noindex</code> fällt automatisch mit der Freigabe je Sprache — es ist ein Schalter in den Daten, kein Umbau.</p>
 <h3 id="rechtlich-abgeschlossen">Rechtlich abgeschlossen</h3>
 <div class="tabelle"><table><thead><tr><th>Punkt</th><th>Stand</th></tr></thead><tbody>
 <tr><td><strong>Impressum</strong></td><td>25 Angaben belegt, 5 mit Rechtsgrundlage nicht einschlägig, <strong>0 offen</strong>. Jede belegte Angabe nennt ihre Quelle; <code>recht:pruefen</code> bricht den Bau ab, wenn eine fehlt</td></tr>
@@ -1257,33 +1298,48 @@ Canonical von /potsdam/leistungen/zahnimplantate/  →  https://ku64.de/leistung
 <tr><td><strong>Auftragsverarbeitung</strong></td><td>je Dienst in <code>dienste.ts</code> geführt. <strong>Wichtig:</strong> Vier Dienste stehen dort mit <code>avVertrag: false</code> und sind damit <strong>gesperrt — auch bei Zustimmung</strong>. Eine Einwilligung ersetzt keinen Vertrag</td></tr>
 </tbody></table></div>
 <h3 id="bei-der-praxis">Bei der Praxis</h3>
-<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Aufwand</th></tr></thead><tbody>
-<tr><td><strong>Örtliche Texte: Geräte, Ablauf, Sitzungszahl, Wartezeit je Haus</strong></td><td>der eigentliche Hebel</td></tr>
-<tr><td>24 Fotos (14 vorrangig)</td><td>Fototermin je Haus</td></tr>
-<tr><td>Zehn Personennennungen in Blogbeiträgen durchsehen</td><td>1,5 Std.</td></tr>
-<tr><td>EN und FR gegenlesen und freigeben</td><td>2 Tage</td></tr>
-<tr><td>Entscheidung zur ästhetischen Medizin</td><td>–</td></tr>
+<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Aufwand</th><th>Stand</th></tr></thead><tbody>
+<tr><td><strong>Örtliche Texte: Geräte, Ablauf, Sitzungszahl, Wartezeit je Haus</strong></td><td>der eigentliche Hebel</td><td>offen — die fünf Felder stehen in <code>src/data/standortfassungen.ts</code></td></tr>
+<tr><td>24 Fotos (14 vorrangig)</td><td>Fototermin je Haus</td><td>offen; Lieferung nach und nach zugesagt. Die Liste steht in <code>FREIGABEN.md</code>, Abschnitt C</td></tr>
+<tr><td>15 Personennennungen in Blogbeiträgen durchsehen</td><td>1,5 Std.</td><td>offen — 3 ausdrücklich ehemalige Teammitglieder, 12 als KU64-zugehörig genannt, aber in keinem Register. <code>npm run personen:pruefen</code> listet sie mit Fundstelle</td></tr>
+<tr><td>~~Deutsche Texte freigeben~~</td><td>–</td><td><strong>erledigt: 100 Prozent freigegeben</strong></td></tr>
+<tr><td>EN und FR gegenlesen und freigeben</td><td>2 Tage</td><td>offen — nach der vollständigen Übersetzung, am Ende</td></tr>
+<tr><td>Entscheidung zur ästhetischen Medizin</td><td>–</td><td>offen</td></tr>
 </tbody></table></div>
 <h3 id="bei-der-entwicklung">Bei der Entwicklung</h3>
-<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Aufwand</th></tr></thead><tbody>
-<tr><td>Bildauslieferung: WebP und srcset (bis 888 kB je Seite vermeidbar)</td><td>1 Tag</td></tr>
-<tr><td>Kritisches CSS inline (zwei blockierende Stilblätter, ~150 ms)</td><td>0,5 Tage</td></tr>
-<tr><td>Serverseitige Zählung und Dashboard-Endpunkt</td><td>1–2 Tage</td></tr>
-<tr><td>Sprachberater verbinden <strong>oder</strong> ausblenden</td><td>Entscheidung nötig</td></tr>
-<tr><td>Restdeutsch: 62 Auszeichnungs-Funde, Schwerpunkte Anamnese und Kontakt</td><td>1 Tag</td></tr>
-<tr><td>Die 17 fehlenden französischen Themen nachholen</td><td>ein Lauf; Ursache behoben</td></tr>
-<tr><td>Sitemap: EN und FR aufnehmen, sobald freigegeben</td><td>0,5 Tage</td></tr>
-<tr><td>96 örtliche Unterthemen zeigen mit Canonical auf sich selbst</td><td>0,5 Tage — siehe unten</td></tr>
+<div class="tabelle"><table><thead><tr><th>Punkt</th><th>Aufwand</th><th>Stand</th></tr></thead><tbody>
+<tr><td>Vollständige Übersetzung des Fließtextes (518 Seiten je Sprache)</td><td>Läufe + Gegenlesen</td><td>offen — Oberfläche zu 100,0 % übersetzt, Fließtext noch deutsch</td></tr>
+<tr><td>Bildauslieferung: WebP und srcset (bis 888 kB je Seite vermeidbar)</td><td>1 Tag</td><td>offen</td></tr>
+<tr><td>Kritisches CSS inline</td><td>0,5 Tage</td><td>offen — nachgemessen: weiterhin zwei blockierende Stilblätter auf der Startseite</td></tr>
+<tr><td>Serverseitige Zählung und Dashboard-Endpunkt</td><td>1–2 Tage</td><td>offen</td></tr>
+<tr><td>Sprachberater verbinden <strong>oder</strong> ausblenden</td><td>Entscheidung nötig</td><td>offen</td></tr>
+<tr><td>Restdeutsch in den Vorlagen</td><td>1 Tag</td><td>offen — <strong>84</strong> verschiedene Zeichenketten (77 in der Auszeichnung, 7 im Vorspann), Schwerpunkte Anamnese (16) und Kontakt (14). Die Zahl ist gegenüber der letzten Fassung gestiegen, weil seither Inhalt dazugekommen ist</td></tr>
+<tr><td>Sitemap: EN und FR aufnehmen, sobald freigegeben</td><td>0,5 Tage</td><td>offen — die Sitemap führt heute 257 deutsche Adressen und bewusst keine fremdsprachigen</td></tr>
+<tr><td>~~Die 17 fehlenden französischen Themen~~</td><td>–</td><td><strong>erledigt</strong> — <code>sprachen:pruefen</code> meldet fr 100,0 %, fehlend 0</td></tr>
+<tr><td>~~96 örtliche Unterthemen mit Canonical auf sich selbst~~</td><td>–</td><td><strong>erledigt</strong> — nachgemessen 0 selbstverweisende Canonicals, 0 in der Sitemap</td></tr>
 </tbody></table></div>
-<p><strong>Ein offener Befund, der noch nirgends sonst steht.</strong> 96 örtliche Unterthemen-Seiten stehen in der Sitemap mit Canonical auf sich selbst, obwohl ihr Text zwischen den Standorten identisch ist — gemessen 502 Wörter, 100 Prozent gleich, Beispiel <code>…/leistungen/aligner/sos-zahnspangen/</code> in allen vier Häusern. Das ist derselbe Duplikatfehler, gegen den Kapitel 6 die Standortarchitektur verteidigt, nur eine Ebene tiefer: <code>ausSitemapAusschliessen()</code> prüft <code>/&lt;ort&gt;/leistungen/&lt;slug&gt;/</code>, aber nicht <code>/&lt;ort&gt;/leistungen/&lt;slug&gt;/&lt;unterthema&gt;/</code>.</p>
 <h3 id="beim-betrieb">Beim Betrieb</h3>
 <div class="tabelle"><table><thead><tr><th>Punkt</th><th>Wirkung</th></tr></thead><tbody>
 <tr><td><strong>GitHub → Actions → „Allow GitHub Actions to create and approve pull requests"</strong></td><td>Der Übersetzungslauf schiebt seinen Zweig, kann aber keinen Pull Request daraus machen. <strong>Die fertige englische Übersetzung liegt deshalb heute unzusammengeführt</strong></td></tr>
 <tr><td><strong>ElevenLabs-Schlüssel und Agent-ID</strong></td><td>Sprachberater sagt „noch nicht verbunden"</td></tr>
 <tr><td><strong>Ausgabenlimits bei Anthropic, Google, ElevenLabs</strong></td><td>die Drosselungen im Code sind Bremsen, keine Mauern</td></tr>
 <tr><td><strong>Search Console und Business Profile</strong></td><td>Kapitel 8.4 — und Voraussetzung dafür, dass sich die Prognosen in Kapitel 11 überhaupt nachrechnen lassen</td></tr>
+<tr><td><strong>Vorschau-Zweig bei Railway</strong></td><td>Die Vorschau baut aus einem älteren Zweig als dem, auf dem entwickelt wird. Alles seit diesem Stand ist im Netz noch nicht zu sehen. Ein Umstellen des Quellzweigs in den Railway-Einstellungen genügt — es ist eine Einstellung, kein Umbau</td></tr>
 </tbody></table></div>
 <p>Der Anthropic-Schlüssel liegt als GitHub-Actions-Secret vor — belegt durch einen Übersetzungslauf, der den Korpus tatsächlich abgerufen und übersetzt hat.</p>
+<h3 id="was-gemessen-wurde-um-diese-liste-aufzustellen">Was gemessen wurde, um diese Liste aufzustellen</h3>
+<p>Damit die Liste nachprüfbar ist und nicht fortgeschrieben: jede Zeile oben hat einen Befehl, der sie belegt.</p>
+<div class="tabelle"><table><thead><tr><th>Aussage</th><th>Befehl</th></tr></thead><tbody>
+<tr><td>504 von 519 deutschen Seiten indexierbar, 15 gewollt gesperrt</td><td><code>npm run build</code>, danach Auszählung der <code>noindex</code>-Angaben im Bau</td></tr>
+<tr><td>EN/FR zu 100,0 % übersetzt, Fließtext noch deutsch</td><td><code>npm run sprachen:pruefen</code></td></tr>
+<tr><td>120 Standortfassungen, 140 eigene Wörter im Mittel</td><td><code>npm run ortsseiten:pruefen</code></td></tr>
+<tr><td>15 Personennennungen, 3 davon ausdrücklich ehemalig</td><td><code>npm run personen:pruefen</code></td></tr>
+<tr><td>84 deutsche Zeichenketten in den Vorlagen</td><td><code>node scripts/deutsch-finden.mjs</code></td></tr>
+<tr><td>257 deutsche Adressen in der Sitemap, keine fremdsprachigen</td><td><code>npm run sitemap:liste</code></td></tr>
+<tr><td>0 selbstverweisende Canonicals bei örtlichen Unterthemen</td><td>Auszählung im Bau gegen <code>sitemap-0.xml</code></td></tr>
+<tr><td>Impressum: 25 belegt, 5 nicht einschlägig, 0 offen</td><td><code>npm run recht:pruefen</code></td></tr>
+<tr><td>9 robots.txt-Gruppen mit denselben Sperren</td><td>Abruf von <code>/robots.txt</code> am gebauten Stand</td></tr>
+</tbody></table></div>
 <hr />
 <h2 id="13-anhang">13. Anhang</h2>
 <h3 id="131-woher-die-zahlen-stammen">13.1 Woher die Zahlen stammen</h3>
