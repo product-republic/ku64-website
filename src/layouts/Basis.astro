@@ -199,6 +199,35 @@ const nichtIndexieren = noindex || !sprachinfo.freigegeben;
       freigegeben werden.
     */}
     {!noindex && <link rel="canonical" href={canonical} />}
+    {/*
+      Wie das Suchergebnis aussehen darf.
+
+      ── Warum das dastehen muss ────────────────────────────────────────
+
+      Ohne diese Zeile gilt die Voreinstellung, und die ist eng: kurzer
+      Textausschnitt, kleine Bildvorschau, keine Videovorschau. Die heutige
+      ku64.de setzt `max-image-preview:large, max-snippet:-1,
+      max-video-preview:-1` auf jeder geprüften Seite – der Neubau setzte
+      auf 504 von 518 deutschen Seiten gar kein robots-Meta.
+
+      Das ist kein Rankingfaktor, sondern eine Darstellungsfrage: Wer heute
+      mit einem großen Bild im Ergebnis steht und morgen mit einem
+      briefmarkengroßen, verliert Klicks bei gleicher Position. Beim Umzug
+      einer Website ist das genau die Sorte stiller Verschlechterung, die
+      man später der Migration anlastet.
+
+      `follow` steht nicht dabei, weil es der Standard ist. `index` ebenso –
+      und wo NICHT indexiert werden soll, greift die Zeile darunter, die
+      dieses Meta ersetzt statt es zu ergänzen. Zwei robots-Angaben auf
+      derselben Seite sind ein Widerspruch, den Google nach der strengsten
+      auflöst.
+    */}
+    {!nichtIndexieren && (
+      <meta
+        name="robots"
+        content="max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      />
+    )}
     {nichtIndexieren && <meta name="robots" content="noindex, follow" />}
 
     {

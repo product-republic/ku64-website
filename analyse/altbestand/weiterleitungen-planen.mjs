@@ -403,15 +403,48 @@ for (const pfad of [...bestand].sort()) {
   }
 
   if (imTeambereich) {
-    /* Eine Person darunter oder die Sammelseite selbst – beides führt auf
-       die Teamseite. Genauer geht es nicht, weil es keine Personenseiten
-       mehr gibt. */
-    const istPerson = TEAM.some((m) => m.slug === letztes) || !GRUPPENSEITEN.includes(letztes);
-    vorschlag.push({
-      von: pfad,
-      nach: `/${ort ?? 'berlin-charlottenburg'}/team/`,
-      regel: istPerson ? 'PERSON' : 'GRUPPE',
-    });
+    /*
+     * Eine Person darunter oder die Sammelseite selbst.
+     *
+     * ── Was hier falsch war ─────────────────────────────────────────────
+     *
+     * Hier stand: „Genauer geht es nicht, weil es keine Personenseiten mehr
+     * gibt." Das stimmte, als die Regel geschrieben wurde, und stimmt seit
+     * Aufgabe 13 nicht mehr – jede veröffentlichte Person hat eine eigene
+     * Seite unter `/<ort>/team/<slug>/`.
+     *
+     * Die Regel hat deshalb 126 Adressen auf eine Übersichtsseite gelenkt,
+     * 105 davon auf `/berlin-charlottenburg/team/` allein. 38 von ihnen
+     * hatten eine gebaute Personenseite, die niemand ansteuerte.
+     *
+     * Das ist nicht bloß unschön. Eine Weiterleitung auf eine
+     * Übersichtsseite, die den Inhalt der alten Adresse nicht trägt, wertet
+     * Google regelmäßig wie eine Fehlerseite – die Signale der alten
+     * Adresse verfallen dann, statt umzuziehen. Bei einer Praxis, deren
+     * Behandlerinnen namentlich gesucht werden, ist das die teuerste
+     * Stelle des ganzen Umzugs.
+     *
+     * Jetzt: erst die Personenseite, und nur wenn es keine gibt, die
+     * Übersicht. Unbestätigte Personen haben keine Seite – für sie bleibt
+     * die Übersicht richtig, und das ist auch die ehrliche Auskunft.
+     */
+    const person = TEAM.find((m) => m.slug === letztes);
+    const uebersicht = `/${ort ?? 'berlin-charlottenburg'}/team/`;
+
+    if (person?.bestaetigt) {
+      /* An welchem Standort? Dem aus der alten Adresse, wenn die Person
+         dort arbeitet – sonst ihrem ersten. */
+      const zielOrt = person.standorte.includes(ort ?? '') ? ort : person.standorte[0];
+      vorschlag.push({
+        von: pfad,
+        nach: zielOrt ? `/${zielOrt}/team/${letztes}/` : uebersicht,
+        regel: 'PERSON',
+      });
+      continue;
+    }
+
+    const istPerson = Boolean(person) || !GRUPPENSEITEN.includes(letztes);
+    vorschlag.push({ von: pfad, nach: uebersicht, regel: istPerson ? 'PERSON' : 'GRUPPE' });
     continue;
   }
 

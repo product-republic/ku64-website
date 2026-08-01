@@ -274,6 +274,51 @@ const server = createServer((anfrage, antwort) => {
     return;
   }
 
+  /*
+   * Dieselbe Adresse ohne Schrägstrich am Ende.
+   *
+   * ── Der Befund ──────────────────────────────────────────────────────
+   *
+   *     /ahmet-turan/   →  301 auf die Personenseite
+   *     /ahmet-turan    →  404
+   *
+   * Auf ku64.de liefern heute BEIDE Formen einen 301. Die Website spannt
+   * also ein Netz, das eine Masche weniger hat als das alte – und zwar
+   * genau an den Adressen, die von außen verlinkt sind: Wer eine Adresse
+   * aus einer E-Mail, einem Verzeichniseintrag oder einem Presseartikel
+   * kopiert, hat den Schrägstrich oft nicht dabei.
+   *
+   * `trailingSlash: 'always'` in der Astro-Konfiguration erzeugt die
+   * Routen ausschließlich mit Schrägstrich; ohne ihn kennt der Adapter die
+   * Adresse nicht. Diese Umleitung setzt ihn davor.
+   *
+   * ── Warum hier und nicht in weiterleitungen.ts ──────────────────────
+   *
+   * Weil es 458 Einträge verdoppelt hätte, ohne eine einzige Entscheidung
+   * hinzuzufügen. Der Schrägstrich ist eine Frage der Schreibweise, keine
+   * der Zuordnung – und Schreibweisen gehören dorthin, wo die Adresse
+   * ankommt.
+   *
+   * Ausgenommen ist alles, was wie eine Datei aussieht: `/favicon.ico`
+   * darf keinen Schrägstrich bekommen. Die Prüfung ist ein Punkt im
+   * letzten Abschnitt der Adresse.
+   *
+   * Ohne Prüfung, ob es das Ziel gibt. Sie wäre hier nicht zu haben: Die
+   * 458 Weiterleitungen sind Routen des Adapters, keine Dateien, und der
+   * Adapter beantwortet eine Anfrage, statt Auskunft über seine Routen zu
+   * geben. Der Preis ist ein Zwischenschritt bei Adressen, die es nirgends
+   * gibt – aus einer 404 wird ein 301 auf eine 404. Der Gewinn ist, dass
+   * ALLE Adressen ohne Schrägstrich ankommen, auch die 458.
+   */
+  if (pfad !== '/' && !pfad.endsWith('/') && !pfad.split('/').pop().includes('.')) {
+    const anhang = (anfrage.url ?? '').slice(pfad.length);
+    antwort.statusCode = 301;
+    antwort.setHeader('Location', `${pfad}/${anhang}`);
+    antwort.setHeader('Cache-Control', 'public, max-age=86400');
+    antwort.end();
+    return;
+  }
+
   const datei = aufloesen(pfad);
 
   if (!datei) {
