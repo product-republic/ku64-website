@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ── Build ────────────────────────────────────────────────────────────────
+# Node-Stand: v26.13.1, geprüft 2026-11-18
 FROM node:26-alpine AS build
 WORKDIR /app
 
